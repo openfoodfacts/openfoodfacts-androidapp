@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Varning</string>
   <string name="alert_dialog_warning_msg_user">Användarnamn/lösenord har ändrats, var vänlig uppdatera informationen</string>
   <string name="alert_dialog_product_error_msg">Produkten kunde inte hittas, var vänlig försök igen</string>
-  <string name="toast_retrieving">Laddar...</string>
+  <string name="toast_retrieving">Laddar…</string>
   <string name="txtGenericName">Vanligt namn :</string>
   <string name="txtBarcode">Streckkod :</string>
   <string name="txtQuantity">Mängd:</string>
@@ -230,11 +230,11 @@
   <string name="txtPictureNeededDialogContent">Du bör lägga till minst en bild innan du skickar in den här produkten</string>
   <string name="txtPictureNeededDialogYes">Stanna</string>
   <string name="txtPictureNeededDialogNo">Kasta</string>
-  <string name="toastSending">Laddar upp...</string>
+  <string name="toastSending">Laddar upp…</string>
   <string name="dataSaved">Sparades lokalt i din enhet</string>
   <string name="txtInfoAddUser">Vänligen fyll i ditt användarnamn och lösenord</string>
   <string name="txtDataUpdated">Datan uppdaterades</string>
-  <string name="txtLoading">Laddar...</string>
+  <string name="txtLoading">Laddar…</string>
   <string name="txtDialogsContentDelete">Är du säker på att du vill ta bort det här utkastet?</string>
   <string name="txtDialogsContentInfoSave">Produkten är sparad lokalt. Du kan redigera den i menyn ”Redigera offline”</string>
   <string name="txtBarcodeRequire">Streckkod krävs</string>
@@ -310,15 +310,14 @@
   <string name="title_clear_history_dialog">Rensa</string>
   <string name="text_clear_history_dialog">Vill du rensa all skanningshistorik?</string>
   <string name="export_csv_history">Exportera CSV</string>
-  <string name="txt_exporting_history">Exporterar historik...</string>
+  <string name="txt_exporting_history">Exporterar historik…</string>
   <string name="txt_history_exported">Historik exporterad</string>
   <string name="permision_write_external_storage">Skrivbehörighet till externt lagringsutrymme behövs för att exportera historiken.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <string name="no_brand">Inget märke</string>
   <string name="no_title">Ingen rubrik</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">Näring</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>

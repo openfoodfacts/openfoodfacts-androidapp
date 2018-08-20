@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">Você deve adicionar pelo menos uma foto antes de enviar este produto</string>
   <string name="txtPictureNeededDialogYes">Permanecer</string>
   <string name="txtPictureNeededDialogNo">Descartar</string>
-  <string name="toastSending">A enviar...</string>
+  <string name="toastSending">A enviar…</string>
   <string name="dataSaved">Guardado localmente no seu dispositivo</string>
   <string name="txtInfoAddUser">Por favor, digite o seu nome de utilizador e palavra-passe</string>
   <string name="txtDataUpdated">Dados actualizados</string>
-  <string name="txtLoading">A carregar...</string>
+  <string name="txtLoading">A carregar…</string>
   <string name="txtDialogsContentDelete">Tem a certeza que deseja eliminar este rascunho?</string>
   <string name="txtDialogsContentInfoSave">O produto é guardado localmente, poderá editá-lo no menu \"Editar Offline\"</string>
   <string name="txtBarcodeRequire">Código de barras necessário</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Por favor não saia durante o procedimento...</string>
+  <string name="txtContentDialogUploading">Por favor não saia durante o procedimento…</string>
   <string name="txtAbout">As fotos que enviar ficam publicadas sob a licença livre Creative Commons Atribuição-CompartilhaIgual.</string>
   <string name="txtAllsent">Produtos enviados</string>
   <string name="txtPalm">O produto não contém óleo de palma</string>
@@ -310,15 +310,14 @@
   <string name="title_clear_history_dialog">Eliminar</string>
   <string name="text_clear_history_dialog">Deseja eliminar todo o histórico de digitalizações?</string>
   <string name="export_csv_history">Exportar para CSV</string>
-  <string name="txt_exporting_history">A exportar o histórico...</string>
+  <string name="txt_exporting_history">A exportar o histórico…</string>
   <string name="txt_history_exported">Histórico exportado</string>
   <string name="permision_write_external_storage">A permissão de escrita em armazenamento externo é necessária para exportar o histórico.</string>
   <string name="txt_nutrition_not_found">N/D</string>
   <string name="no_brand">Sem Marca</string>
   <string name="no_title">Sem Título</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Tabela para fatos de nutrição de %1$s de %2$s</string>
-  <string name="check_facts">Verifique</string>
+    <string name="check_facts">Verifique</string>
   <string name="nutrition">Nutrição</string>
   <string name="calculated_nutrition">Nutrição Calculada</string>
   <string name="please_enter_weight">Por favor insira o peso</string>

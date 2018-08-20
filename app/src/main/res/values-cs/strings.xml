@@ -238,7 +238,7 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Nahrávám...</string>
+  <string name="toastSending">Nahrávám…</string>
   <string name="dataSaved">Uloženo lokálně ve vašem zařízení</string>
   <string name="txtInfoAddUser">Prosím, zadejte své uživatelské jméno a heslo</string>
   <string name="txtDataUpdated">Data byla aktualizována</string>
@@ -247,7 +247,7 @@
   <string name="txtDialogsContentInfoSave">Produkt je uložen lokálně, můžete ho upravit v menu \"Editovat offline\"</string>
   <string name="txtBarcodeRequire">Je třeba zadat čárový kód</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Během procesu prosím nevypínejte...</string>
+  <string name="txtContentDialogUploading">Během procesu prosím nevypínejte…</string>
   <string name="txtAbout">Obrázky, které odesíláte jsou zveřejňovány pod svobodnou licencí \"Creative Commons Uveďte původ-Zachovejte licenci\" (CC BY-SA 2.5).</string>
   <string name="txtAllsent">Odeslané produkty</string>
   <string name="txtPalm">Výrobek neobsahuje palmový olej</string>
@@ -318,15 +318,14 @@
   <string name="title_clear_history_dialog">Vymazat</string>
   <string name="text_clear_history_dialog">Opravdu chcete vymazat celou historii skenování?</string>
   <string name="export_csv_history">Exportovat ve formátu CSV</string>
-  <string name="txt_exporting_history">Exportuji historii...</string>
+  <string name="txt_exporting_history">Exportuji historii…</string>
   <string name="txt_history_exported">Historie byla exportována</string>
   <string name="permision_write_external_storage">Pro export historie je zapotřebí práva zapisovat do externího úložiště.</string>
   <string name="txt_nutrition_not_found">Není k dispozici</string>
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">Nutriční hodnoty</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>

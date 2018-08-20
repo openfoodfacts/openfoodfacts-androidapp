@@ -325,8 +325,7 @@
   <string name="no_brand">אין מותג</string>
   <string name="no_title">אין כותרת</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">טבלת הערכים התזונתיים של %1$s מתוך %2$s</string>
-  <string name="check_facts">בדיקה</string>
+    <string name="check_facts">בדיקה</string>
   <string name="nutrition">תזונה</string>
   <string name="calculated_nutrition">תזונה מחושבת</string>
   <string name="please_enter_weight">נא להקליד את המשקל</string>

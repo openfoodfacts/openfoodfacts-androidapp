@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Attenzione</string>
   <string name="alert_dialog_warning_msg_user">Nome utente/password cambiata, per favore aggiorna le informazioni</string>
   <string name="alert_dialog_product_error_msg">prodotto non trovato, per favore prova ancora</string>
-  <string name="toast_retrieving">Caricamento...</string>
+  <string name="toast_retrieving">Caricamento…</string>
   <string name="txtGenericName">Nome generico :</string>
   <string name="txtBarcode">Codice a barre</string>
   <string name="txtQuantity">Quantità :</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">Dovresti aggiungere almeno una foto prima di inviare questo prodotto</string>
   <string name="txtPictureNeededDialogYes">Rimani</string>
   <string name="txtPictureNeededDialogNo">Annulla</string>
-  <string name="toastSending">Caricamento...</string>
+  <string name="toastSending">Caricamento…</string>
   <string name="dataSaved">Salvato localmente sul tuo dispositivo</string>
   <string name="txtInfoAddUser">Inserisci nome utente e password</string>
   <string name="txtDataUpdated">Dati aggiornati</string>
-  <string name="txtLoading">Caricamento...</string>
+  <string name="txtLoading">Caricamento…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Il prodotto è salvato localmente, lo puoi modificare nel menu Modifica Offline</string>
   <string name="txtBarcodeRequire">Codice a barre necessario</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Per favore non uscire durante il processo...</string>
+  <string name="txtContentDialogUploading">Per favore non uscire durante il processo…</string>
   <string name="txtAbout">Le immagini che carichi sono pubblicate sotto la licenza gratuita Creative Commons Attribution e Share Alike</string>
   <string name="txtAllsent">Prodotti inviati</string>
   <string name="txtPalm">Il prodotto non contiene olio di palma</string>
@@ -310,15 +310,14 @@
   <string name="title_clear_history_dialog">Cancella</string>
   <string name="text_clear_history_dialog">Vuoi cancellare tutta la cronologia delle scansioni?</string>
   <string name="export_csv_history">Esporta CSV</string>
-  <string name="txt_exporting_history">Sto esportando la cronologia...</string>
+  <string name="txt_exporting_history">Sto esportando la cronologia…</string>
   <string name="txt_history_exported">Cronologia esportata</string>
   <string name="permision_write_external_storage">è richiesto il permesso di scrittura sulla memoria esterna per esportare la cronologia</string>
   <string name="txt_nutrition_not_found">N/D</string>
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Verifica</string>
+    <string name="check_facts">Verifica</string>
   <string name="nutrition">Nutrizione</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>

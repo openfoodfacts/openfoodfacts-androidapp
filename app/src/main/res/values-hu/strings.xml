@@ -230,7 +230,7 @@
   <string name="txtPictureNeededDialogContent">Hozzá kell adnia legalább egy képet mielőtt beküldi ezt a terméket</string>
   <string name="txtPictureNeededDialogYes">Marad</string>
   <string name="txtPictureNeededDialogNo">Elvet</string>
-  <string name="toastSending">Feltöltés...</string>
+  <string name="toastSending">Feltöltés…</string>
   <string name="dataSaved">Elmentve az ön készülékére</string>
   <string name="txtInfoAddUser">Kérem, írja be a bejelentkezési adatait és jelszavát</string>
   <string name="txtDataUpdated">Adatok frissítve</string>
@@ -317,8 +317,7 @@
   <string name="no_brand">Nincs márka</string>
   <string name="no_title">Nincs cím</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">%1$s %2$s tápértékadatainak táblázata</string>
-  <string name="check_facts">Ellenőrzés</string>
+    <string name="check_facts">Ellenőrzés</string>
   <string name="nutrition">Tápanyag</string>
   <string name="calculated_nutrition">Kiszámított tápanyag</string>
   <string name="please_enter_weight">Kérem, írja be a súlyt</string>

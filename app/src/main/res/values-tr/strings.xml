@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Uyarı</string>
   <string name="alert_dialog_warning_msg_user">Kullanıcı/şifre değişti, lütfen bilgileri güncelleyin</string>
   <string name="alert_dialog_product_error_msg">Ürün bulunamadı, lütfen tekrar deneyin</string>
-  <string name="toast_retrieving">Yükleniyor...</string>
+  <string name="toast_retrieving">Yükleniyor…</string>
   <string name="txtGenericName">Yaygın isim :</string>
   <string name="txtBarcode">Barkod:</string>
   <string name="txtQuantity">Adet :</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Burada kal</string>
   <string name="txtPictureNeededDialogNo">Çıkar</string>
-  <string name="toastSending">Yükleniyor...</string>
+  <string name="toastSending">Yükleniyor…</string>
   <string name="dataSaved">Cihazınıza yerel olarak kaydedildi</string>
   <string name="txtInfoAddUser">Lütfen giriş ve şifrenizi girin</string>
   <string name="txtDataUpdated">Veri güncellendi</string>
-  <string name="txtLoading">Yükleniyor...</string>
+  <string name="txtLoading">Yükleniyor…</string>
   <string name="txtDialogsContentDelete">Bu taslağı silmek istediğinizden emin misiniz?</string>
   <string name="txtDialogsContentInfoSave">Ürün lokal olarak kaydedildi, \"Çevrimdışı düzenle\" menüsünden düzenleyebilirsiniz</string>
   <string name="txtBarcodeRequire">Barkod gerekli</string>
   <string name="txtOk">Tamam</string>
-  <string name="txtContentDialogUploading">Lütfen işlem sırasında çıkmayın...</string>
+  <string name="txtContentDialogUploading">Lütfen işlem sırasında çıkmayın…</string>
   <string name="txtAbout">Gönderdiğiniz resimler ücretsiz lisans Creative Commons Attribution ve ShareAlike kapsamında yayınlanmaktadır.</string>
   <string name="txtAllsent">Ürünler gönderildi</string>
   <string name="txtPalm">Ürün palmiye yağı içermiyor</string>
@@ -310,15 +310,14 @@
   <string name="title_clear_history_dialog">Temizle</string>
   <string name="text_clear_history_dialog">Tüm tarama geçmişini silmek istiyor musunuz?</string>
   <string name="export_csv_history">CSV olarak dışa aktar</string>
-  <string name="txt_exporting_history">Geçmiş dışa aktarılıyor...</string>
+  <string name="txt_exporting_history">Geçmiş dışa aktarılıyor…</string>
   <string name="txt_history_exported">Geçmiş dışa aktarıldı</string>
   <string name="permision_write_external_storage">Geçmişi dışa aktarmak için harici depolamaya yazma izni gerekli.</string>
   <string name="txt_nutrition_not_found">Mevcut Değil</string>
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">Beslenme</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>
@@ -570,7 +569,7 @@
   <string name="offline_notification_title">Göndermeniz gereken çevrimdışı katkılar</string>
   <string name="creator_history">Ürün %1$s e %2$s de CET tarafından eklendi</string>
   <string name="last_editor_history">%1$s e %2$s de CEST tarafından düzenlenen son ürün sayfası </string>
-  <string name="other_editors">Ürün sayfası ayrıca ... tarafından düzenlendi</string>
+  <string name="other_editors">Ürün sayfası ayrıca … tarafından düzenlendi</string>
   <string name="contribution_tab">Bağışlar</string>
   <string name="contribution_tab_summary">Kullanıcı ürün katkıları sekmesini göster</string>
   <string name="contribution_tab_title">Katkı sekmesini göster</string>

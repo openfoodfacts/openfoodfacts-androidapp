@@ -163,7 +163,7 @@
   <string name="alert_dialog_warning_title">警告</string>
   <string name="alert_dialog_warning_msg_user">用户／密码已改变，请更新信息。</string>
   <string name="alert_dialog_product_error_msg">产品未找到，请再次尝试。</string>
-  <string name="toast_retrieving">正在加载...</string>
+  <string name="toast_retrieving">正在加载…</string>
   <string name="txtGenericName">通用名</string>
   <string name="txtBarcode">条形码</string>
   <string name="txtQuantity">数量</string>
@@ -230,7 +230,7 @@
   <string name="dataSaved">保存在您的本地设备中</string>
   <string name="txtInfoAddUser">请输入您的用户名和密码</string>
   <string name="txtDataUpdated">数据已更新</string>
-  <string name="txtLoading">正在加载...</string>
+  <string name="txtLoading">正在加载…</string>
   <string name="txtDialogsContentDelete">你确定要移除这份草稿吗？</string>
   <string name="txtDialogsContentInfoSave">产品保存在本地，您可以在“离线编辑”中进行编辑</string>
   <string name="txtBarcodeRequire">条形码需求</string>
@@ -313,8 +313,7 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">营养</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>

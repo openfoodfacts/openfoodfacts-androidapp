@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Heşyarkirin</string>
   <string name="alert_dialog_warning_msg_user">N av/ şîfreya hat guhertin, ji kerema xwe ve agahî nu</string>
   <string name="alert_dialog_product_error_msg">Babetê dîtin ne, ji kerema xwe re dîsa biceribîne</string>
-  <string name="toast_retrieving">Ciji tıbe...</string>
+  <string name="toast_retrieving">Ciji tıbe…</string>
   <string name="txtGenericName">Nav navdêr:</string>
   <string name="txtBarcode">Barcode:</string>
   <string name="txtQuantity">Jimarî:</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Barke...</string>
+  <string name="toastSending">Barke…</string>
   <string name="dataSaved">Herêmî de ji ser amûrê xwe xilas</string>
   <string name="txtInfoAddUser">Ji kerema xwe navê bikarhêner û nasnavê xwe binivîsî</string>
   <string name="txtDataUpdated">Data ve</string>
-  <string name="txtLoading">Ciji tıbe...</string>
+  <string name="txtLoading">Ciji tıbe…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Product xilas herêmî de, \"girêdayî Edit\" tu pêşeka biguherînî</string>
   <string name="txtBarcodeRequire">Barcode pêwîst e</string>
   <string name="txtOk">Okay</string>
-  <string name="txtContentDialogUploading">Ji kerema xwe di pêvajoya dev ji...</string>
+  <string name="txtContentDialogUploading">Ji kerema xwe di pêvajoya dev ji…</string>
   <string name="txtAbout">Bışıne hûn pictures bo lîsansên azad bi bin lîsansa Creative Commons Attribution ShareAlike û weşandin.</string>
   <string name="txtAllsent">Tumar hatin şandin</string>
   <string name="txtPalm">Berhemên nahundirîne palmiyeya ne</string>
@@ -310,15 +310,14 @@
   <string name="title_clear_history_dialog">Vekirî</string>
   <string name="text_clear_history_dialog">Ma tu dixwazî ​​hemû dîroka lêgerînê jê bibî?</string>
   <string name="export_csv_history">Têrkirina csv</string>
-  <string name="txt_exporting_history">Dîroka tên şandin...</string>
+  <string name="txt_exporting_history">Dîroka tên şandin…</string>
   <string name="txt_history_exported">Dîroka dîrok</string>
   <string name="permision_write_external_storage">Hewe destûr depo Link to dîrokê.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">Xwarin û</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>

@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Babala</string>
   <string name="alert_dialog_warning_msg_user">User/password ay nabago, paki-update ang impormasyon</string>
   <string name="alert_dialog_product_error_msg">Hindi natagpuan ang produkto, paki subukang muli</string>
-  <string name="toast_retrieving">Naglo-load...</string>
+  <string name="toast_retrieving">Naglo-load…</string>
   <string name="txtGenericName">Karaniwang tawag :</string>
   <string name="txtBarcode">Barcode :</string>
   <string name="txtQuantity">Dami :</string>
@@ -230,16 +230,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Nag uupload...</string>
+  <string name="toastSending">Nag uupload…</string>
   <string name="dataSaved">I-save locally sa iyong device</string>
   <string name="txtInfoAddUser">Paki enter ang iyong login at password</string>
   <string name="txtDataUpdated">Na update na ang data</string>
-  <string name="txtLoading">Naglo-load...</string>
+  <string name="txtLoading">Naglo-load…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Ang produktong ito ay nai-save locally, pwede mo itong i-edit sa \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Kailangan ang barcode</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Mangyaring huwag mag exit habang nasa proseso...</string>
+  <string name="txtContentDialogUploading">Mangyaring huwag mag exit habang nasa proseso…</string>
   <string name="txtAbout">Ang mga larawang iyong pinadala ay na publish sa ilalaim ng free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Naipadala na ang mga produkto</string>
   <string name="txtPalm">Ang produkto ay hindi naglalaman ng anumang palm oil</string>
@@ -310,15 +310,14 @@
   <string name="title_clear_history_dialog">Burahin</string>
   <string name="text_clear_history_dialog">Gusto mo bang burahin lahat ng kasaysayan ng scan?</string>
   <string name="export_csv_history">Export CSV</string>
-  <string name="txt_exporting_history">Kasaysayan ng pag export...</string>
+  <string name="txt_exporting_history">Kasaysayan ng pag export…</string>
   <string name="txt_history_exported">Na export na ang kasaysayan</string>
   <string name="permision_write_external_storage">Magsulat ng external na permiso ng storage ito ay kailangan para ma export ang kasaysayan.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">Nutrisyon</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>

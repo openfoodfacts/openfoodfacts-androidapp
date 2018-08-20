@@ -171,7 +171,7 @@
   <string name="alert_dialog_warning_title">Brīdinājums</string>
   <string name="alert_dialog_warning_msg_user">Lietotājs / parole ir maiījusies, lūdzu atjauniniet informāciju</string>
   <string name="alert_dialog_product_error_msg">Produkts nav pieejams, lūdzu mēginiet vēlreiz</string>
-  <string name="toast_retrieving">Ielādē...</string>
+  <string name="toast_retrieving">Ielādē…</string>
   <string name="txtGenericName">Tautā saukts:</string>
   <string name="txtBarcode">Svītrukods:</string>
   <string name="txtQuantity">Daudzums:</string>
@@ -238,12 +238,12 @@
   <string name="dataSaved">Saglabāts jūsu ierīcē</string>
   <string name="txtInfoAddUser">Lūdzu, ievadiet savu lietotājvārdu un paroli</string>
   <string name="txtDataUpdated">Dati tiek atjaunoti</string>
-  <string name="txtLoading">Ielādē...</string>
+  <string name="txtLoading">Ielādē…</string>
   <string name="txtDialogsContentDelete">Vai tiešām vēlaties noņemt šo melnrakstu?</string>
   <string name="txtDialogsContentInfoSave">Produkts tiek saglabāts lokāli, to varat rediģēt izvēlnē \"Bezsaistes rediģēšana\"</string>
   <string name="txtBarcodeRequire">Nepieciešams svītru kods</string>
   <string name="txtOk">Labi</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
   <string name="txtAbout">Attēli, kurus jūs sūtāt, ir publicēti saskaņā ar bezmaksas licenci Creative Commons Attribution / Share-Alike.</string>
   <string name="txtAllsent">Produkti nosūtīti</string>
   <string name="txtPalm">Produkts nesatur palmu eļļu</string>
@@ -314,15 +314,14 @@
   <string name="title_clear_history_dialog">Notīrīt</string>
   <string name="text_clear_history_dialog">Vai vēlaties dzēst visu skenēšanas vēsturi?</string>
   <string name="export_csv_history">Eksportēt CSV</string>
-  <string name="txt_exporting_history">Exporting history...</string>
+  <string name="txt_exporting_history">Exporting history…</string>
   <string name="txt_history_exported">Vēsture eksportēta</string>
   <string name="permision_write_external_storage">Vēstures eksportēšanai ir nepieciešama ārējās atmiņas piekļuves atļauja.</string>
   <string name="txt_nutrition_not_found">Nav datu</string>
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">Uzturs</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>

@@ -195,7 +195,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="alert_dialog_warning_title">Ostrzeżenie</string>
   <string name="alert_dialog_warning_msg_user">Zmieniono nazwę użytkownika/ hasło, zaktualizuj informacje</string>
   <string name="alert_dialog_product_error_msg">Produkt nieznaleziony, spróbuj ponownie</string>
-  <string name="toast_retrieving">Ładowanie...</string>
+  <string name="toast_retrieving">Ładowanie…</string>
   <string name="txtGenericName">Potoczna nazwa :</string>
   <string name="txtBarcode">Kod kreskowy :</string>
   <string name="txtQuantity">Ilość :</string>
@@ -258,16 +258,16 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="txtPictureNeededDialogContent">Przed wysłaniem produktu należy dodać co najmniej jedno zdjęcie</string>
   <string name="txtPictureNeededDialogYes">Pozostań</string>
   <string name="txtPictureNeededDialogNo">Odrzuć</string>
-  <string name="toastSending">Wysyłanie...</string>
+  <string name="toastSending">Wysyłanie…</string>
   <string name="dataSaved">Zapisano lokalnie na urządzeniu</string>
   <string name="txtInfoAddUser">Proszę, wprowadź login i hasło</string>
   <string name="txtDataUpdated">Data aktualizacji</string>
-  <string name="txtLoading">Ładowanie...</string>
+  <string name="txtLoading">Ładowanie…</string>
   <string name="txtDialogsContentDelete">Jesteś pewien, że chcesz usunąć tę wersję roboczą?</string>
   <string name="txtDialogsContentInfoSave">Zapisano lokalnie, produkt możesz zmienić przez menu \"Edycja w trybie offline\"</string>
   <string name="txtBarcodeRequire">Wymagany kod kreskowy</string>
   <string name="txtOk">Dobrze</string>
-  <string name="txtContentDialogUploading">Proszę nie wychodzić w czasie procesu...</string>
+  <string name="txtContentDialogUploading">Proszę nie wychodzić w czasie procesu…</string>
   <string name="txtAbout">Publikujesz przesłane przez siebie obrazy na wolnej licencji reative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Wysłano produkty</string>
   <string name="txtPalm">Produkt nie zawiera oleju palmowego</string>
@@ -338,15 +338,14 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="title_clear_history_dialog">Wyczyść</string>
   <string name="text_clear_history_dialog">Czy chcesz usunąć całą historię skanów?</string>
   <string name="export_csv_history">Eksport CSV</string>
-  <string name="txt_exporting_history">Eksport historii...</string>
+  <string name="txt_exporting_history">Eksport historii…</string>
   <string name="txt_history_exported">Eksportowano historię</string>
   <string name="permision_write_external_storage">Aby uzyskać historię eksportu, konieczne jest zapisanie zewnętrznej pamięci masowej.</string>
   <string name="txt_nutrition_not_found">Nie dotyczy</string>
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">Odżywianie</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>

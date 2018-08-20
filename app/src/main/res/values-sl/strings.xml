@@ -175,7 +175,7 @@
   <string name="alert_dialog_warning_title">Opozorilo</string>
   <string name="alert_dialog_warning_msg_user">Uporabnik / geslo se je spremenilo, posodobite podatke</string>
   <string name="alert_dialog_product_error_msg">Izdelek ni najden, poskusite znova</string>
-  <string name="toast_retrieving">Nalaganje...</string>
+  <string name="toast_retrieving">Nalaganje…</string>
   <string name="txtGenericName">Pogosto ime :</string>
   <string name="txtBarcode">Črtna koda:</string>
   <string name="txtQuantity">Kolićina:</string>
@@ -238,16 +238,16 @@
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
   <string name="txtPictureNeededDialogNo">Discard</string>
-  <string name="toastSending">Nalaganje...</string>
+  <string name="toastSending">Nalaganje…</string>
   <string name="dataSaved">Lokalno shranjeno v napravi</string>
   <string name="txtInfoAddUser">Vnesite svojo prijavo in geslo</string>
   <string name="txtDataUpdated">Podatki so posodobljeni</string>
-  <string name="txtLoading">Nalaganje...</string>
+  <string name="txtLoading">Nalaganje…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Izdelek je shranjen lokalno, lahko ga uredite v meniju »Brez povezave«</string>
   <string name="txtBarcodeRequire">Potrebna je črtna koda</string>
   <string name="txtOk">V redu</string>
-  <string name="txtContentDialogUploading">Prosimo, ne izstopite med postopkom...</string>
+  <string name="txtContentDialogUploading">Prosimo, ne izstopite med postopkom…</string>
   <string name="txtAbout">Slike, ki jih pošljete, so objavljene pod licenco Creative Commons Attribution in ShareAlike.</string>
   <string name="txtAllsent">Poslani izdelki</string>
   <string name="txtPalm">Izdelek ne vsebuje palmovega olja</string>
@@ -318,15 +318,14 @@
   <string name="title_clear_history_dialog">Počisti</string>
   <string name="text_clear_history_dialog">Ali želite izbrisati vse zgodovine optičnega branja?</string>
   <string name="export_csv_history">Izvoz CSV</string>
-  <string name="txt_exporting_history">Izvozi zgodovino...</string>
+  <string name="txt_exporting_history">Izvozi zgodovino…</string>
   <string name="txt_history_exported">Zgodovina se je izvažala</string>
   <string name="permision_write_external_storage">Za izvoz zgodovine potrebujete dovoljenje za zunanji pomnilnik.</string>
   <string name="txt_nutrition_not_found">N/A</string>
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">Prehrana</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>

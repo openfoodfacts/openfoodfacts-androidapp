@@ -167,7 +167,7 @@
   <string name="alert_dialog_warning_title">Предупреждение</string>
   <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, моля обновете информацията</string>
   <string name="alert_dialog_product_error_msg">Продуктът не е намерен, моля опитайте пак</string>
-  <string name="toast_retrieving">Зареждане...</string>
+  <string name="toast_retrieving">Зареждане…</string>
   <string name="txtGenericName">Често срещано име :</string>
   <string name="txtBarcode">Баркод :</string>
   <string name="txtQuantity">Количество :</string>
@@ -234,7 +234,7 @@
   <string name="dataSaved">Запазено локално на устройството ви</string>
   <string name="txtInfoAddUser">Моля, въведете вашето потребителско име и парола</string>
   <string name="txtDataUpdated">Данните бяха актуализирани</string>
-  <string name="txtLoading">Зареждане...</string>
+  <string name="txtLoading">Зареждане…</string>
   <string name="txtDialogsContentDelete">Сигурни ли сте, че искате да премахнете тази чернова?</string>
   <string name="txtDialogsContentInfoSave">Продуктът е запазен локално, можете да го редактирате в менюто \"Редактиране офлайн\"</string>
   <string name="txtBarcodeRequire">Необходим е баркод</string>
@@ -317,8 +317,7 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+    <string name="check_facts">Check</string>
   <string name="nutrition">Хранене</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>
