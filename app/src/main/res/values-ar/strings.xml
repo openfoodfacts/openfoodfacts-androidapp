@@ -689,7 +689,7 @@
   <string name="edit_product_title">تعديل المنتج</string>
   <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
   <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
-  <string name="save_edits">Save edits</string>
+  <string name="save_edits">حفظ التعديلات</string>
   <string name="contribution_by">Contribution By</string>
   <string name="title_activity_product">العنوان</string>
   <string name="description_activity_product">description</string>
