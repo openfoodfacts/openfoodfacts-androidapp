@@ -672,7 +672,7 @@
   <string name="hint_serving_size">Exemples: 60 g, 12 oz, 20 cl, 2 oz liq</string>
   <string name="nutrient_already_added">%s est déjà présent dans les informations nutritionnelles</string>
   <string name="save_edits">Enregistrer les modifications</string>
-  <string name="contribution_by">Contribution By</string>
+  <string name="contribution_by">Contributeurs</string>
   <string name="title_activity_product">Titre</string>
   <string name="description_activity_product">description</string>
 </resources>
