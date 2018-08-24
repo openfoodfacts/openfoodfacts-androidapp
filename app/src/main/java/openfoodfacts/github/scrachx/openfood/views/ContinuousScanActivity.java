@@ -314,10 +314,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
         showAllViews();
         HashMap<String, String> productDetails = offlineSavedProduct.getProductDetailsMap();
-        if (productDetails.get("product_name") == null || productDetails.get("product_name").equals("")) {
-            name.setText(R.string.productNameNull);
+        String lc = productDetails.get("lang") != null ? productDetails.get("lang") : "en";
+        if (productDetails.get("product_name_" + lc) != null) {
+            name.setText(productDetails.get("product_name_" + lc));
+        } else if (productDetails.get("product_name_en") != null) {
+            name.setText(productDetails.get("product_name_en"));
         } else {
-            name.setText(productDetails.get("product_name"));
+            name.setText(R.string.productNameNull);
         }
         if (productDetails.get("add_brands") == null || productDetails.get("add_brands").equals("")) {
             brand.setText(R.string.productBrandNull);
