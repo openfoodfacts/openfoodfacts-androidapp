@@ -279,7 +279,7 @@
   <string name="cancel_button">crwdns35155:0crwdne35155:0</string>
   <string name="login_button">crwdns37120:0crwdne37120:0</string>
   <string name="create_account_button">crwdns37121:0crwdne37121:0</string>
-  <string name="warning_alert_data">crwdns37188:0crwdne37188:0</string>
+  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">crwdns37188:0crwdne37188:0</string>
   <string name="from_gallery">crwdns35157:0crwdne35157:0</string>
   <string name="product_sent">crwdns35158:0crwdne35158:0</string>
   <string name="action_edit_product">crwdns35159:0crwdne35159:0</string>
@@ -317,7 +317,8 @@
   <string name="no_brand">crwdns93485:0crwdne93485:0</string>
   <string name="no_title">crwdns93486:0crwdne93486:0</string>
   <!-- Nutrition info tab -->
-    <string name="check_facts">crwdns93489:0crwdne93489:0</string>
+  <string name="display_fact">crwdns94281:0%1$scrwdne94281:0</string>
+  <string name="check_facts">crwdns93489:0crwdne93489:0</string>
   <string name="nutrition">crwdns93490:0crwdne93490:0</string>
   <string name="calculated_nutrition">crwdns93491:0crwdne93491:0</string>
   <string name="please_enter_weight">crwdns93492:0crwdne93492:0</string>
@@ -622,7 +623,7 @@
   <string name="product_uploaded_successfully">crwdns93633:0crwdne93633:0</string>
   <string name="no_internet_connection">crwdns93634:0crwdne93634:0</string>
   <string name="no_internet_unable_to_extract_ingredients">crwdns93635:0crwdne93635:0</string>
-  <string name="percent"></string>
+  <string name="percent">crwdns93636:0%1$d%crwdne93636:0</string>
   <string name="overview">crwdns93637:0crwdne93637:0</string>
   <string name="ingredients">crwdns93638:0crwdne93638:0</string>
   <string name="nutrition_facts">crwdns93639:0crwdne93639:0</string>
@@ -630,7 +631,7 @@
   <string name="ingredients_picture">crwdns93641:0crwdne93641:0</string>
   <string name="take_ingredients_picture_to_extract">crwdns93642:0crwdne93642:0</string>
   <string name="ingredients_list">crwdns93643:0crwdne93643:0</string>
-  <string name="ingredients_hint" tools:ignore="StringFormatCount">crwdns93644:0crwdne93644:0</string>
+  <string name="ingredients_hint">crwdns93644:0crwdne93644:0</string>
   <string name="extract_ingredients">crwdns93645:0crwdne93645:0</string>
   <string name="extracting_ingredients">crwdns93646:0crwdne93646:0</string>
   <string name="looksGood">crwdns93647:0crwdne93647:0</string>
@@ -671,4 +672,7 @@
   <string name="hint_serving_size">crwdns94369:0crwdne94369:0</string>
   <string name="nutrient_already_added">crwdns94370:0%scrwdne94370:0</string>
   <string name="save_edits">crwdns94371:0crwdne94371:0</string>
+  <string name="contribution_by">crwdns94460:0crwdne94460:0</string>
+  <string name="title_activity_product">crwdns94461:0crwdne94461:0</string>
+  <string name="description_activity_product">crwdns94462:0crwdne94462:0</string>
 </resources>

@@ -239,7 +239,7 @@
   <string name="txtDialogsContentInfoSave">Produktet er gemt på enheden. Du kan redigere det via menuen \"Offline-redigering\"</string>
   <string name="txtBarcodeRequire">Stregkode kræves</string>
   <string name="txtOk">OK</string>
-  <string name="txtContentDialogUploading">Afslut venligst ikke under processen…</string>
+  <string name="txtContentDialogUploading">Afslut venligst ikke under processen...</string>
   <string name="txtAbout">Fotoene, du indsender, udgives under den gratis licens Creative Commons Kreditering og ShareAlike.</string>
   <string name="txtAllsent">Produkter sendt</string>
   <string name="txtPalm">Dette produkt indeholder ingen palmeolie</string>
@@ -279,7 +279,7 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">Brugernavn</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
+  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
   <string name="from_gallery">Fra galleri</string>
   <string name="product_sent">Produkt sendt med succes</string>
   <string name="action_edit_product">Rediger produkt</string>
@@ -310,13 +310,14 @@
   <string name="title_clear_history_dialog">Ryd</string>
   <string name="text_clear_history_dialog">Vil du slette al scanningshistorik?</string>
   <string name="export_csv_history">Eksport CSV</string>
-  <string name="txt_exporting_history">Exporting history…</string>
+  <string name="txt_exporting_history">Exporting history...</string>
   <string name="txt_history_exported">Historik eksporteret</string>
   <string name="permision_write_external_storage">Tilladelse til skrivning på eksternt lager er nødvendig for at eksportere historik.</string>
   <string name="txt_nutrition_not_found">Ikke fundet</string>
   <string name="no_brand">Intet mærke</string>
   <string name="no_title">Uden titel</string>
   <!-- Nutrition info tab -->
+  <string name="display_fact">Tabel til ernæringsfakta for %1$s af %2$s</string>
   <string name="check_facts">Tjek</string>
   <string name="nutrition">Ernæring</string>
   <string name="calculated_nutrition">Beregnet ernæring</string>
@@ -630,7 +631,7 @@
   <string name="ingredients_picture">Ingrediensfoto</string>
   <string name="take_ingredients_picture_to_extract">(Tag venligst et foto af ingredienserne for automatisk at udtrække dem)</string>
   <string name="ingredients_list">Ingrediensoversigt</string>
-  <string name="ingredients_hint" tools:ignore="StringFormatCount">Bevar rækkefølgen, angiv %-forholdet, når det er oplyst, adskil med et komma eller -, benyt () til delingredienser i en ingrediens, omkrans allergener med _</string>
+  <string name="ingredients_hint">Bevar rækkefølgen, angiv %-forholdet, når det er oplyst, adskil med et komma eller -, benyt () til delingredienser i en ingrediens, omkrans allergener med _</string>
   <string name="extract_ingredients">Udtræk ingredienser</string>
   <string name="extracting_ingredients">Uddrager ingredienser</string>
   <string name="looksGood">Ser godt ud</string>
@@ -671,4 +672,7 @@
   <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
   <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
   <string name="save_edits">Save edits</string>
+  <string name="contribution_by">Contribution By</string>
+  <string name="title_activity_product">Title</string>
+  <string name="description_activity_product">description</string>
 </resources>

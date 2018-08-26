@@ -1,14 +1,14 @@
-Nova group
+Groupe NOVA
 
-Nova groups
+Groupe NOVA
 
-Nova group:
+Groupe NOVA :
 
 Groupe 1
 Groupe 1 - Aliments non transformés ou transformés minimalement
 Aliments non transformés ou minimalement transformés
 
-Group 2
+Groupe 2
 Groupe 2 - Ingrédients culinaires transformés
 Ingrédients culinaires transformés
 

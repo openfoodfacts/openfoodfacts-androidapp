@@ -279,7 +279,7 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">Iniciar sesión</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
+  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
   <string name="from_gallery">Desde la galería</string>
   <string name="product_sent">Producto enviado correctamente</string>
   <string name="action_edit_product">Editar producto</string>
@@ -317,7 +317,8 @@
   <string name="no_brand">Sin marca</string>
   <string name="no_title">Sin título</string>
   <!-- Nutrition info tab -->
-    <string name="check_facts">Revisar</string>
+  <string name="display_fact">Tabla de información nutricional de %1$s de %2$s</string>
+  <string name="check_facts">Revisar</string>
   <string name="nutrition">Nutrición</string>
   <string name="calculated_nutrition">Nutrición calculada</string>
   <string name="please_enter_weight">Por favor, introduzca el peso</string>
@@ -630,7 +631,7 @@
   <string name="ingredients_picture">Imagen con los ingredientes del producto</string>
   <string name="take_ingredients_picture_to_extract">(Por favor, tome una foto de los ingredientes para extraerlos automáticamente)</string>
   <string name="ingredients_list">Lista de ingredientes</string>
-  <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Conservar el orden, indicar el % cuando se especifique, separar por una coma o use -, utilice () para ingredientes de otro ingrediente, utilice _ al inicio y final de los alérgenos</string>
+  <string name="ingredients_hint">Conservar el orden, indicar el % cuando se especifique, separar por una coma o use -, utilice () para ingredientes de otro ingrediente, utilice _ al inicio y final de los alérgenos</string>
   <string name="extract_ingredients">Extraer ingredientes</string>
   <string name="extracting_ingredients">Extrayendo los ingredientes</string>
   <string name="looksGood">Parece Correcto</string>
@@ -671,4 +672,7 @@
   <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
   <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
   <string name="save_edits">Save edits</string>
+  <string name="contribution_by">Contribution By</string>
+  <string name="title_activity_product">Título</string>
+  <string name="description_activity_product">description</string>
 </resources>
