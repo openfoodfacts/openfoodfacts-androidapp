@@ -8,14 +8,14 @@ v2 ! Tous les bénévoles OFF ont travaillé dur, sur la base de vos suggestions
 7. Aucune inscription requise
 8. Aussi léger qu'avant :)
 
-v2.8! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+v2.8! Après la grande V2, tous les volontaires OFF ont travaillé dur, sur la base de vos suggestions. Nous affichons maintenant 570k produits libérés de 182 pays par 10K + contributeurs, y compris vous 🙂
 1. Nous avons reconstruit toute l'expérience d'ajout de produit (et ça fonctionne même hors ligne). (merci Huzaifa)
 2. Vous pouvez maintenant obtenir des informations nutritionnelles pour la portion que vous mangez (Rutvik)
 3. Nous calculons maintenant les groupes NOVA en plus du Nutriscore (Huzaifa)
 4. Ménage (par Rutvik & Salfai)
 5. 🌎 Coréen et indonésien
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
-1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+2.8.8 ! Vous pensiez que nous nous arrêterions à l'ajour de produits ? Tous les bénévoles OFF ont continué à travailler dur. 590k produits, 182 pays, 10K+ contributeurs, y compris vous 🙂
+1. Vous pouvez maintenant modifier n'importe quel produit avec votre compte OFF. Cliquez sur ✏️ sur une page de produit pour le modifier.
+2. 🌍 Slovaque, hébreu, espagnol, arabe, néerlandais, hongrois et vietnamien (translate.openfoodfacts.org pour aider)
+3. Open Food Facts est un effort entièrement bénévole : vous pouvez donner du temps (world.openfoodfacts.org/contribute) ou de l'argent (donate.openfoodfacts.org)
