@@ -84,16 +84,16 @@
     <item>Axit caprylic (8:0)</item>
     <item>Casein</item>
     <item>Axit cerotic (26:0)</item>
-    <item>Chloride</item>
+    <item>Clo</item>
     <item>Cholesterol</item>
-    <item>Chromium</item>
-    <item>Copper</item>
+    <item>Crom</item>
+    <item>Đồng</item>
     <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
     <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
     <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
     <item>Elaidic acid (18:1 n-9)</item>
     <item>Erucic acid (22:1 n-9)</item>
-    <item>Fluoride</item>
+    <item>Flo</item>
     <item>Fructose</item>
     <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
     <item>Glucose</item>
@@ -141,12 +141,12 @@
     <item>Vitamin B2 (Riboflavin)</item>
     <item>Vitamin B3 / Vitamin PP (Niacin)</item>
     <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>Vitamin B9 (Axit folic)</item>
+    <item>Vitamin C (Axit ascorbic)</item>
     <item>Vitamin D</item>
     <item>Vitamin E</item>
     <item>Vitamin K</item>
-    <item>Zinc</item>
+    <item>Kẽm</item>
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
@@ -198,9 +198,9 @@
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
-  <string name="txtSalt">Salt</string>
+  <string name="txtSalt">Muối</string>
   <string name="txtFat">Fat</string>
-  <string name="txtSugars">Sugars</string>
+  <string name="txtSugars">Đường</string>
   <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Mật khẩu</string>
@@ -211,9 +211,9 @@
   <string name="txtInfoLoginNo">User not saved</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
-  <string name="txtYes">Yes</string>
-  <string name="txtNo">No</string>
-  <string name="hintNameProduct">Name</string>
+  <string name="txtYes">Có</string>
+  <string name="txtNo">Không</string>
+  <string name="hintNameProduct">Tên</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Weight</string>
@@ -336,7 +336,7 @@
   <string name="nutrition_per_quantity">For 100g/100ml</string>
   <string name="nutrition_proteins">Proteins</string>
   <string name="nutrition_proteins_short_name">Proteins (g)</string>
-  <string name="nutrition_salt">Salt</string>
+  <string name="nutrition_salt">Muối</string>
   <string name="nutrition_salt_short_name">Salt (g)</string>
   <string name="nutrition_satured_fat">Saturated fat</string>
   <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
@@ -344,7 +344,7 @@
   <string name="nutrition_serving_size">Kích thước phục vụ :</string>
   <string name="nutrition_sodium">Sodium</string>
   <string name="nutrition_sodium_short_name">Sodium (g)</string>
-  <string name="nutrition_sugars">Sugars</string>
+  <string name="nutrition_sugars">Đường</string>
   <string name="nutrition_sugars_short_name">Sugars (g)</string>
   <string name="nutrition_trans_fat">Trans fat</string>
   <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
