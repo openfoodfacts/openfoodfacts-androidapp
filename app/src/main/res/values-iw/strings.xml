@@ -651,7 +651,7 @@
   <string name="for_100g_100ml">ל־100 ג׳ / 100 מ״ל</string>
   <string name="per_serving">להגשה</string>
   <string name="serving_size">גודל ההגשה</string>
-  <string name="alcohol_unit" formatted="false">% vol / °</string>
+  <string name="alcohol_unit" formatted="false">% בנפח / °</string>
   <string name="add_a_nutrient">הוספת רכיב תזונתי</string>
   <string name="add_this_product">הוספת המוצר הזה</string>
   <string name="product_picture">תמונת המוצר</string>
