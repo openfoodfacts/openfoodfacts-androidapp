@@ -666,13 +666,13 @@
   <string name="uploading_ingredients_image">Subiendo la imagen de los ingredientes</string>
   <string name="uploading_front_image">Subiendo la imagen del frente</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
-  <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
+  <string name="sign_in_to_edit">por favor identificate para editar un producto</string>
+  <string name="hint_quantity">ejemplos: 2 l,250 g,1 kg, 25 cl, 6 fl oz, 1 libra</string>
   <string name="edit_product_title">Modifica un producto</string>
-  <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
-  <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
-  <string name="save_edits">Save edits</string>
-  <string name="contribution_by">Contribution By</string>
+  <string name="hint_serving_size">Ejemplos: 60 g, 12 oz, 20 cl, 2 fl oz</string>
+  <string name="nutrient_already_added">%s ya está presente en los datos nutricionales</string>
+  <string name="save_edits">Guardar ediciones</string>
+  <string name="contribution_by">Aportaciones de</string>
   <string name="title_activity_product">Título</string>
-  <string name="description_activity_product">description</string>
+  <string name="description_activity_product">descripción</string>
 </resources>
