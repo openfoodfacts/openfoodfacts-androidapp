@@ -617,7 +617,7 @@
   <string name="image_uploaded_successfully">Изображение успешно загружено</string>
   <string name="error_adding_product_photos">Что-то пошло не так, при попытке добавить фотографии продукта</string>
   <string name="ingredients_overwrite">Ingredients overwrite</string>
-  <string name="choose_mine">Choose mine</string>
+  <string name="choose_mine">Выбрать мой</string>
   <string name="keep_previous_version">Сохранить предыдущую версию</string>
   <string name="product_name_overwrite">Product name overwrite</string>
   <string name="yours">Ваши: </string>
@@ -637,13 +637,13 @@
   <string name="nutrition_facts">Nutrition Facts</string>
   <string name="your_version">Ваши</string>
   <string name="ingredients_picture">Изображение ингредиентов</string>
-  <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+  <string name="take_ingredients_picture_to_extract">(Сделайте снимок ингредиентов, чтобы извлечь их автоматически)</string>
   <string name="ingredients_list">Список ингредиентов</string>
   <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
   <string name="extract_ingredients">Распознать ингредиенты</string>
   <string name="extracting_ingredients">Распознавание ингредиентов</string>
   <string name="looksGood">Выглядит хорошо</string>
-  <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
+  <string name="skip_ingredients">Слишком плохо \n Пропустить ингредиенты</string>
   <string name="traces">Следы</string>
   <string name="traces_hint">Укажите ингредиенты, упоминаемые как \"Может содержать следы…\", \"Сделано на фабрике, которая также использует...\" и т. д. \nПримеры: молоко, глютен, орехи</string>
   <string name="nutrition_facts_not_specified">Пищевая ценность не указана на продукте.</string>
@@ -669,7 +669,7 @@
   <string name="country_where_purchased">Страна приобретения</string>
   <string name="stores">Магазины</string>
   <string name="additional_pictures">Дополнительные фотографии</string>
-  <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+  <string name="hint_product_pictures">(Добавьте дополнительные фото продукта, например, инструкции по утилизации, этикетки и т. д.)</string>
   <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
@@ -677,7 +677,7 @@
   <string name="sign_in_to_edit">Please sign in to edit a product.</string>
   <string name="hint_quantity">Например: 2 л, 250 г, 1 кг, 250 мл, 1 фунт</string>
   <string name="edit_product_title">Редактировать продукт</string>
-  <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
+  <string name="hint_serving_size">Примеры: 60 г, 12 унций, 20 мл, 2 л</string>
   <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
   <string name="save_edits">Сохранить изменения</string>
   <string name="contribution_by">Contribution By</string>
