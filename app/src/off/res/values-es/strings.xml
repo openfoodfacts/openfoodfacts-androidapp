@@ -27,11 +27,11 @@
   <string name="txt_broaden_search">- Amplia tu búsqueda \n- escanea y añádelo a Open Food Facts</string>
   <string name="Donation">Haz click aquí para donar a Open Food Facts</string>
   <string name="translate_help_title">Ayuda a traducir Open Food Facts</string>
-  <string name="translate_help_summary">Lleva la base de datos de Open Food Facts a tu idioma - no se requiere conocimiento técnico</string>
-  <string name="text_offline_info_dialog">Escanea productos incluso cuando estés sin conexión para agregarlos posteriormente a Open Food Facts. Los productos escaneados aparecerán aquí y podrás enviarlo usando el botón de abajo.</string>
-  <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
+  <string name="translate_help_summary">Lleva la base de datos de Open Food Facts a tu idioma - no hace falta tener conocimientos técnicos</string>
+  <string name="text_offline_info_dialog">Escanea los productos incluso cuando estés sin conexión para agregarlos posteriormente a Open Food Facts. Los productos escaneados aparecerán aquí y podrás enviarlo usando el botón de abajo.</string>
+  <string name="warning_alert_data">La información sobre tus alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
   <!-- OFF tagline in different languages -->
-  <string name="tagline">la información alimentaria libre</string>
+  <string name="tagline">la base de datos libre sobre productos alimenticios</string>
   <string name="product_not_found">El producto %1$s que escaneaste aún no existe en Open Food Facts. ¿Puedes agregarlo?</string>
   <string name="currently_on_version">Actualmente en Open Food Facts</string>
 </resources>
