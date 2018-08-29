@@ -15,9 +15,9 @@
   <string name="slide_1_title">Aporta más transparencia a los productos alimenticios</string>
   <string name="slide_1_desc">Escanea los productos, sácales una foto y haz que la comida sea más transparente</string>
   <string name="slide_2_title">Obtener los datos</string>
-  <string name="slide_2_desc">Información extensiva acerca del producto que has escaneado, descifrada para ti</string>
+  <string name="slide_2_desc">Información amplia acerca del producto que has escaneado, descifrada para ti</string>
   <string name="slide_3_title">Obtener el Nutriscore</string>
-  <string name="slide_3_desc">Una vista sintética de las propiedades nutricionales de tus productos alimenticios favoritos</string>
+  <string name="slide_3_desc">Una visión sintética de las propiedades nutricionales de tus productos alimenticios favoritos</string>
   <string name="slide_4_title">Funciona sin conexión</string>
   <string name="slide_4_desc">Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento</string>
   <string name="txtDialogsContent">El producto que escaneó no existe aún en Open Food Facts. Añádelo por favor.</string>
