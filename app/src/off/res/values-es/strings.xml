@@ -12,8 +12,8 @@
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-es.openfoodfacts.org/contribuyente/</string>
   <string name="txtHome">Open Food Facts es una base de datos abierta de productos alimenticios con ingredientes, alérgenos, información nutricional y toda la información que podemos encontrar en las etiquetas de los productos.</string>
-  <string name="slide_1_title">Colabora con la transparencia de los productos alimenticios</string>
-  <string name="slide_1_desc">Escanea productos, captúralos en fotografía y has que la transparencia de la comida suceda</string>
+  <string name="slide_1_title">Aporta más transparencia a los productos alimenticios</string>
+  <string name="slide_1_desc">Escanea los productos, sácales una foto y haz que la comida sea más transparente</string>
   <string name="slide_2_title">Obtener los datos</string>
   <string name="slide_2_desc">Información extensiva acerca del producto que has escaneado, descifrada para ti</string>
   <string name="slide_3_title">Obtener el Nutriscore</string>
