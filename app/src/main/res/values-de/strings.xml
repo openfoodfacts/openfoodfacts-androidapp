@@ -54,7 +54,7 @@
   <!-- nutrition energy units -->
   <string-array name="energy_units">
     <item>kcal</item>
-    <item>kj</item>
+    <item>kJ</item>
   </string-array>
   <!-- nutrition weight units -->
   <string-array name="nutrition_weight_units">
