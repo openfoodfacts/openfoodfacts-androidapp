@@ -10,17 +10,17 @@
     <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="zero">%d minutes ago</item>
-    <item quantity="one">منذ دقيقة</item>
-    <item quantity="two">%d minutes ago</item>
-    <item quantity="few">%d minutes ago</item>
-    <item quantity="many">%d minutes ago</item>
+    <item quantity="zero">منذ d% دقيقة مضت</item>
+    <item quantity="one">قبل دقيقة</item>
+    <item quantity="two">قبل دقيقة</item>
+    <item quantity="few">قبل دقيقة</item>
+    <item quantity="many">قبل دقيقة</item>
     <item quantity="other">%d minutes ago</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="zero">%d hours ago</item>
-    <item quantity="one">1 hour ago</item>
-    <item quantity="two">%d hours ago</item>
+    <item quantity="zero">قبل ساعة</item>
+    <item quantity="one">قبل ساعة</item>
+    <item quantity="two">قبل ساعة</item>
     <item quantity="few">%d hours ago</item>
     <item quantity="many">%d hours ago</item>
     <item quantity="other">%d منذ ساعات</item>
