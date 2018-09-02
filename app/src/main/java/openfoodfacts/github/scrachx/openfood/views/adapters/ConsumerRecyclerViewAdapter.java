@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import holloway.allergenChecker.Consumer;
+import holloway.allergenChecker.JSONManager;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ConsumerFragment.OnListFragmentInteractionListener;
 
@@ -23,6 +24,7 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
 
     private List<Consumer> mValues;
     private OnListFragmentInteractionListener mListener;
+    private JSONManager jsonManager = JSONManager.getInstance();
 
 
     public ConsumerRecyclerViewAdapter(@NonNull HashSet<Consumer> items, OnListFragmentInteractionListener listener) {
@@ -38,7 +40,7 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View mView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_consumer, parent, false);
+                .inflate(R.layout.fragment_consumer_list, parent, false);
         final ViewHolder mViewHolder = new ViewHolder(mView);
         mView.setOnClickListener(new View.OnClickListener() {
             /**
@@ -103,6 +105,26 @@ public class ConsumerRecyclerViewAdapter extends RecyclerView.Adapter<ConsumerRe
         @Override
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
+        }
+    }
+
+    /**
+     * Removes the consumer from the <code>RecyclerView</code> and deletes the <code>Consumer</code>
+     * file. Called when the user taps the delete button, shown by swiping.
+     *
+     * @param position The position of the <code>Consumer</code> in the <code>RecyclerView</code>
+     */
+    public void removeAt(int position) {
+        Consumer consumer = mValues.get(position);
+        System.out.println(consumer.getLinkedJSON().toString());
+        if (jsonManager.deleteConsumer(consumer)) {
+            if (mValues.remove(consumer)) {
+                Log.d("ConsumerAdapter", "removeAt: consumer removed from adapter list");
+            }
+            notifyItemRemoved(position);
+            Log.d("ConsumerAdapter", "removeAt: deleted " + consumer.getName());
+        } else {
+            Log.w("ConsumerAdapter", "Failed to delete consumer JSON file.");
         }
     }
 }

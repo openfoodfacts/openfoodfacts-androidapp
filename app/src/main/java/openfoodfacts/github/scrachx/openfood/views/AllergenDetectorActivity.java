@@ -4,10 +4,14 @@ import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashSet;
@@ -17,11 +21,13 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import holloway.allergenChecker.Consumer;
 import holloway.allergenChecker.JSONManager;
+import openfoodfacts.github.scrachx.openfood.FragmentConsumerEdit;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ConsumerFragment;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
+import openfoodfacts.github.scrachx.openfood.views.adapters.ConsumerRecyclerViewAdapter;
 
-public class AllergenDetectorActivity extends BaseActivity implements ConsumerFragment.OnListFragmentInteractionListener {
+public class AllergenDetectorActivity extends BaseActivity implements ConsumerFragment.OnListFragmentInteractionListener, FragmentConsumerEdit.OnFragmentInteractionListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -33,11 +39,23 @@ public class AllergenDetectorActivity extends BaseActivity implements ConsumerFr
     @BindView(R.id.consumerRecycleView)
     RecyclerView recyclerConsumerScanView;
 
+    @BindView(R.id.textView2)
+    TextView allergenWarningTextView;
+
+    private ConsumerRecyclerViewAdapter consumerAdapter;
     SwipeController consumerSwipeController = new SwipeController(this, position -> {
-        //TODO Delete consumer logic
+        consumerAdapter.removeAt(position);
+        consumerAdapter.notifyItemRemoved(position);
+        consumerAdapter.notifyItemRangeChanged(position, consumerAdapter.getItemCount());
+        consumerAdapter.notifyDataSetChanged();
+        recyclerConsumerScanView.refreshDrawableState();
+
+        //TODO delete action
         Toast toast = Toast.makeText(getBaseContext(), "Delete button tapped", Toast.LENGTH_SHORT);
         toast.show();
     });
+    private ConsumerFragment.OnListFragmentInteractionListener consumerFragmentListener;
+
     ItemTouchHelper itemTouchhelper = new ItemTouchHelper(consumerSwipeController);
 
     private JSONManager jsonManager = JSONManager.getInstance();
@@ -46,16 +64,22 @@ public class AllergenDetectorActivity extends BaseActivity implements ConsumerFr
         return jsonManager.getConsumers();
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Prevents duplication of Consumers
-        getConsumerList().clear();
-            if (getConsumerList() != null) {
-                jsonManager.setUpConsumers();
-            }
+        /* taken from http://stackoverflow.com/a/18296943#0#L0 */
+        FragmentManager fragMan = getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragMan.beginTransaction();
+
+        Fragment myFrag = ConsumerFragment.newInstance(1);
+        fragTransaction.add(R.id.allergenDetectorFragment, myFrag, "consumerFragment");
+        fragTransaction.commit();
+
+        getConsumerList().clear(); //Prevents duplication of Consumers
+        if (getConsumerList() != null) {
+            jsonManager.setUpConsumers();
+        }
 
 
         setContentView(R.layout.activity_allergen_detector);
@@ -72,18 +96,23 @@ public class AllergenDetectorActivity extends BaseActivity implements ConsumerFr
             }
         });
 
+        consumerAdapter = new ConsumerRecyclerViewAdapter(getConsumerList(), consumerFragmentListener);
     }
 
 
     /**
-     * Allow the user to create a new Consumer by loading a new layout.
+     * Allows the user to create a serializable {@link Consumer}.
+     * The method shall replace the fragment with {@link FragmentConsumerEdit}.
+     * Called when the {@link FloatingActionButton} is clicked.
      */
     @OnClick(R.id.consumerFAB)
     @Override
-    public void onFABClick(View view) {
-        //TODO Consumer setup layout
-        Toast toast = Toast.makeText(this, "Add Consumer", Toast.LENGTH_SHORT);
-        toast.show();
+    public void onFABClick() {
+        replaceFragment(FragmentConsumerEdit.newInstance());
+        recyclerConsumerScanView.setVisibility(View.GONE);
+        assert consumerFAB != null;
+        consumerFAB.setVisibility(View.GONE);
+        allergenWarningTextView.setVisibility(View.GONE);
     }
 
 
@@ -97,4 +126,18 @@ public class AllergenDetectorActivity extends BaseActivity implements ConsumerFr
         toast.show();
     }
 
+    /* taken from http://stackoverflow.com/a/18306258#0#L0 */
+    private void replaceFragment(Fragment fragment) {
+        String backStateName = fragment.getClass().getName();
+
+        FragmentManager manager = getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
+
+        if (!fragmentPopped) { //fragment not in back stack, create it.
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.allergenDetectorFragment, fragment);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
+    }
 }

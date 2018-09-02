@@ -1,36 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/linearLayout3"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dp"
+    tools:context=".fragments.ConsumerFragment">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/contentCard"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/consumerRecycleView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_short"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        android:visibility="visible"
+        app:layout_constraintHeight_percent="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/fragment_consumer_list">
 
-        <TextView
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:drawableLeft="@drawable/ic_person"
-            android:drawableStart="@drawable/ic_person"
-            android:gravity="center_vertical|center_horizontal"
-            android:padding="@dimen/spacing_large"
-            android:text="@tools:sample/first_names"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_default="spread"
-            app:layout_constraintWidth_percent="1" />
-    </android.support.v7.widget.CardView>
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="5dp"
+        android:text="@string/warning_alert_data"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+        android:visibility="visible"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consumerRecycleView" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/consumerFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="@color/blue"
+        app:fab_size="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/consumerRecycleView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_person_add_holo_dark" />
 
 </android.support.constraint.ConstraintLayout>

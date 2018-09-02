@@ -20,7 +20,9 @@ import static android.support.v7.widget.helper.ItemTouchHelper.LEFT;
 import static android.support.v7.widget.helper.ItemTouchHelper.RIGHT;
 
 /**
- * Created by Mehrosh.Mehboob on 19-Feb-18.
+ * Utility class for handling RecyclerView swiping.
+ *
+ * @author Mehrosh.Mehboob
  */
 enum ButtonsState {
     GONE,

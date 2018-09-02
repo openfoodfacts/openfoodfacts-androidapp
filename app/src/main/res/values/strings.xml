@@ -271,7 +271,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data">Your allergies information will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="from_gallery">From gallery</string>
     <string name="product_sent">Product sent successfully</string>
     <string name="action_edit_product">Edit product</string>
@@ -596,7 +596,7 @@
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
     <string name="product">Edit</string>
-    <string name="addNewConsumer">Add person...</string>
+    <string name="addNewConsumer">Add person…</string>
     <string name="allergenDetector">Allergen Detector</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Add new product</string>
@@ -616,5 +616,6 @@
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="title_activity_allergen_detector">AllergenDetector</string>
+    <string name="ConsumerName">Name</string>
 
 </resources>

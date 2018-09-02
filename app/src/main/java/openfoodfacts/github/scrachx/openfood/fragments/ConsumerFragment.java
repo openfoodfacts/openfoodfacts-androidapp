@@ -58,7 +58,7 @@ public class ConsumerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_consumer_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_consumer, container, false);
 
 
 
@@ -111,7 +111,7 @@ public class ConsumerFragment extends Fragment {
      *
      */
     public interface OnListFragmentInteractionListener {
-        void onFABClick(View view);
+        void onFABClick();
 
         void onConsumerItemTouch(View view, int position);
     }
