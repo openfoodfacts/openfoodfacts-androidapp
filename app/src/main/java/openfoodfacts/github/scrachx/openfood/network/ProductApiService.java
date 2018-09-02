@@ -35,6 +35,7 @@ public interface ProductApiService {
     
     @GET("data/taxonomies/vitamins.json")
     Single<CategoriesWrapper> getVitamins();
+    
     @GET("data/taxonomies/additives_classes.json")
     Single<CategoriesWrapper> getAdditivesClasses();
     
