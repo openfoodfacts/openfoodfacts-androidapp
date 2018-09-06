@@ -140,13 +140,13 @@
     <item>Taurina</item>
     <item>Grassi</item>
     <item>Vitamina A</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>Vitamina B1 (tiamina)</item>
+    <item>Vitamina B12 (cobalamina)</item>
+    <item>Vitamina B2 (riboflavina)</item>
+    <item>Vitamina B3 / Vitamina PP (niacina)</item>
+    <item>Vitamina B6 (piridossina)</item>
+    <item>Vitamina B9 (acido folico)</item>
+    <item>Vitamina C (acido ascorbico)</item>
     <item>Vitamina D</item>
     <item>Vitamina E</item>
     <item>Vitamina K</item>
@@ -235,7 +235,7 @@
   <string name="txtInfoAddUser">Inserisci nome utente e password</string>
   <string name="txtDataUpdated">Dati aggiornati</string>
   <string name="txtLoading">Caricamento…</string>
-  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+  <string name="txtDialogsContentDelete">Sicuro di voler rimuovere questa bozza?</string>
   <string name="txtDialogsContentInfoSave">Il prodotto è salvato localmente, lo puoi modificare nel menu Modifica Offline</string>
   <string name="txtBarcodeRequire">Codice a barre necessario</string>
   <string name="txtOk">OK</string>
@@ -314,16 +314,16 @@
   <string name="txt_history_exported">Cronologia esportata</string>
   <string name="permision_write_external_storage">è richiesto il permesso di scrittura sulla memoria esterna per esportare la cronologia</string>
   <string name="txt_nutrition_not_found">N/D</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">Senza marca</string>
+  <string name="no_title">Senza titolo</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
   <string name="check_facts">Verifica</string>
   <string name="nutrition">Nutrizione</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+  <string name="calculated_nutrition">Valori nutrizionali calcolati</string>
+  <string name="please_enter_weight">Inserisci il peso</string>
+  <string name="enter_weight">Inserisci il peso</string>
+  <string name="calculate_nutrition_facts">Calcola i valori nutrizionali</string>
   <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Carboidrato</string>
   <string name="nutrition_carbohydrate_short_name">Carboidrati (g)</string>
@@ -456,7 +456,7 @@
   <string name="contact_summary">Contatta la squadra</string>
   <string name="email_not_found">Nessuna applicazione email trovata</string>
   <string name="airplane_mode_active_dialog_title">Modalità aereo attivata</string>
-  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+  <string name="airplane_mode_active_dialog_message">La modalità aereo è attivata, disattivala per continuare.</string>
   <string name="airplane_mode_active_dialog_negative">Chiudi</string>
   <string name="airplane_mode_active_dialog_positive">Impostazioni</string>
   <string name="device_offline_dialog_title">Rete non disponibile</string>
