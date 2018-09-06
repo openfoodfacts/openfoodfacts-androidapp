@@ -21,11 +21,11 @@
   <string name="action_about">Informazioni</string>
   <string name="action_discover">Scopri</string>
   <string name="contribute">Come contribuire</string>
-  <string name="action_find">Cerca</string>
-  <string name="text_barcode">Scrivi il codice a barre:</string>
+  <string name="action_find">Trova</string>
+  <string name="text_barcode">Digita il codice a barre:</string>
   <string name="message_in_activity_save_product_offline">Solo una foto è obbligatoria per inviare un nuovo prodotto.</string>
-  <string name="product_incomplete_message">Questo prodotto non è completo. Di conseguenza, non potevamo eseguire il controllo degli allergeni.</string>
-  <string name="no_offline_data">Hai quasi finito</string>
+  <string name="product_incomplete_message">Questo prodotto non è completo. Non abbiamo quindi potuto controllare gli allergeni.</string>
+  <string name="no_offline_data">Fatto</string>
   <string name="first_offline">I prodotti aggiunti offline verranno visualizzati qui</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
@@ -138,7 +138,7 @@
     <item>Stearic acid (18:0)</item>
     <item>Saccarosio</item>
     <item>Taurina</item>
-    <item>Grassi</item>
+    <item>Grassi trans</item>
     <item>Vitamina A</item>
     <item>Vitamina B1 (tiamina)</item>
     <item>Vitamina B12 (cobalamina)</item>
@@ -160,31 +160,31 @@
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Segnalibro</string>
-  <string name="edit">Editare</string>
+  <string name="edit">Modifica</string>
   <string name="search_button">Cerca</string>
   <string name="no_products">Prodotti non trovati</string>
-  <string name="desc_list_item_icon">Icona Elemento</string>
+  <string name="desc_list_item_icon">Icona elemento</string>
   <string name="alert_dialog_warning_title">Attenzione</string>
   <string name="alert_dialog_warning_msg_user">Nome utente/password cambiata, per favore aggiorna le informazioni</string>
-  <string name="alert_dialog_product_error_msg">prodotto non trovato, per favore prova ancora</string>
+  <string name="alert_dialog_product_error_msg">Prodotto non trovato, per favore prova ancora</string>
   <string name="toast_retrieving">Caricamento…</string>
-  <string name="txtGenericName">Nome generico :</string>
-  <string name="txtBarcode">Codice a barre</string>
-  <string name="txtQuantity">Quantità :</string>
+  <string name="txtGenericName">Nome generico:</string>
+  <string name="txtBarcode">Codice a barre:</string>
+  <string name="txtQuantity">Quantità:</string>
   <string name="txtPackaging">Confezione:</string>
   <string name="txtBrands">Marche:</string>
   <string name="txtCategories">Categorie:</string>
-  <string name="txtLabels">Etichette, certificazioni, premi :</string>
+  <string name="txtLabels">Etichette, certificazioni, premi:</string>
   <string name="txtManufacturing">Luoghi di produzione:</string>
-  <string name="txtIngredientsOrigins">Origine degli ingredienti</string>
-  <string name="txtCity">Città, regione e nazione di acquisto:</string>
+  <string name="txtIngredientsOrigins">Origine degli ingredienti:</string>
+  <string name="txtCity">Città, regione e Paese di acquisto:</string>
   <string name="txtEMB">Codice EMB:</string>
-  <string name="txtManufactureUrl">Link alla pagina del prodotto sul sito ufficiale del produttore:</string>
+  <string name="txtManufactureUrl">Collegamento alla pagina del prodotto sul sito ufficiale del produttore:</string>
   <string name="txtStores">Negozi:</string>
-  <string name="txtCountries">Nazioni dove venduto:</string>
-  <string name="txtIngredients">Lista ingredienti:</string>
+  <string name="txtCountries">Paesi dove venduto:</string>
+  <string name="txtIngredients">Lista degli ingredienti:</string>
   <string name="Donate">Effettua una donazione</string>
-  <string name="Donation">Clicca qui per donare a Open Food Facts</string>
+  <string name="Donation">Fai clic qui per donare a Open Food Facts</string>
   <string name="txtSubstances">Sostanze o prodotti che causano allergie o intolleranze:</string>
   <string name="txtAdditives">Additivi:</string>
   <string name="txtTraces">Tracce:</string>
@@ -197,15 +197,15 @@
   <string name="txtNutritionLevelHigh">in grandi quantità</string>
   <string name="txtLogin">Login:</string>
   <string name="txtPass">Password:</string>
-  <string name="txtTitleHome">Apri il cibo e conosci cosa mangi</string>
+  <string name="txtTitleHome">Apri il cibo e scopri cosa mangi</string>
   <string name="txtSave">Salva</string>
   <string name="txtSignIn">Accedi</string>
   <string name="txtUser">Pannello utente</string>
   <string name="txtToastSaved">Utente salvato</string>
   <string name="txtSalt">Sale</string>
-  <string name="txtFat">Grasso</string>
+  <string name="txtFat">Grassi</string>
   <string name="txtSugars">Zuccheri</string>
-  <string name="hintBarcode">Codice a Barre</string>
+  <string name="hintBarcode">Codice a barre</string>
   <string name="hintLogin">Login</string>
   <string name="hintPass">Password</string>
   <string name="errorLogin">Login o password errati</string>
@@ -251,7 +251,7 @@
   <string name="create_account">Registrati</string>
   <string name="home_drawer">Homepage</string>
   <string name="search_drawer">Cerca</string>
-  <string name="search_by_barcode_drawer">Cerca per codice a barre</string>
+  <string name="search_by_barcode_drawer">Digita codice a barre</string>
   <string name="category_drawer">Categorie</string>
   <string name="search_by_category">Categoria</string>
   <string name="search_by_name_drawer">Cerca per nome</string>
@@ -538,7 +538,7 @@
   <string name="txtOptions">Opzioni</string>
   <string name="by_title">Titolo</string>
   <string name="by_brand">Marche</string>
-  <string name="by_barcode">Codice a Barre</string>
+  <string name="by_barcode">Codice a barre</string>
   <string name="by_time">Visualizzato di recente</string>
   <string name="sort">Ordine</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
@@ -562,7 +562,7 @@
   <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
   <string name="show_by">Mostrare</string>
   <string name="notify_title">Esportazione completata</string>
-  <string name="notify_content">Clicca per vedere i prodotti esportati</string>
+  <string name="notify_content">Fai clic per vedere i prodotti esportati</string>
   <string name="notification_channel_name">Esporta notifiche</string>
   <string name="notify_channel_description">Notification to show exported file\'s location</string>
   <string name="products_to_be_completed">Prodotti da completare</string>
@@ -662,9 +662,9 @@
   <string name="stores">Negozi</string>
   <string name="additional_pictures">Foto aggiuntive</string>
   <string name="hint_product_pictures">(Aggiungi più foto del prodotto, per esempio: istruzioni per il riciclo, etichette, ecc.)</string>
-  <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-  <string name="uploading_ingredients_image">Uploading ingredients image</string>
-  <string name="uploading_front_image">Uploading front image</string>
+  <string name="uploading_nutrition_image">Caricamento immagine informazioni nutrizionali</string>
+  <string name="uploading_ingredients_image">Caricamento immagine ingredienti</string>
+  <string name="uploading_front_image">Caricamento immagine frontale</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
   <string name="sign_in_to_edit">Please sign in to edit a product.</string>
   <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
