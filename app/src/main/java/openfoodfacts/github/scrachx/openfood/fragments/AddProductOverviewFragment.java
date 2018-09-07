@@ -792,8 +792,9 @@ public class AddProductOverviewFragment extends BaseFragment {
     @OnClick(R.id.hint_link)
     void searchProductLink() {
         String url = "https://www.google.com/search?q=" + code;
-        if (!brand.getText().toString().isEmpty()) {
-            url = url + " " + brand.getText().toString();
+        if (!brand.getChipAndTokenValues().isEmpty()) {
+            List<String> brandNames = brand.getChipAndTokenValues();
+            url = url + " " + StringUtils.join(brandNames, ' ');
         }
         if (!name.getText().toString().isEmpty()) {
             url = url + " " + name.getText().toString();
