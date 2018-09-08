@@ -290,7 +290,7 @@
   <string name="permission_denied">Per favore attiva il permesso nelle impostazioni</string>
   <string name="permission_storage">L\'autorizzazione Memoria è necessaria per scattare o selezionare foto</string>
   <string name="info_download_data">è necessario scaricare dei dati per rendere questa funzionalità operativa, premi si per scaricarli</string>
-  <string name="info_download_data_connection">è necessario scaricare dei dati per rendere questa funzionalità operativa, attiva la connessione internet.</string>
+  <string name="info_download_data_connection">È necessario scaricare dei dati per rendere questa funzionalità operativa. Attiva la connessione internet.</string>
   <string name="msg_input_empty">Per favore prima riempi i campi</string>
   <string name="new_offline_info">Scatta una foto del prodotto, degli ingredienti, delle informazioni nutrizionali e qualsiasi altra informazione sull\'etichetta. Grazie!</string>
   <!-- Strings related to login -->
@@ -460,7 +460,7 @@
   <string name="airplane_mode_active_dialog_negative">Chiudi</string>
   <string name="airplane_mode_active_dialog_positive">Impostazioni</string>
   <string name="device_offline_dialog_title">Rete non disponibile</string>
-  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+  <string name="device_offline_dialog_message">È necessaria una connessione di rete, vuoi modificare questa necessità nelle impostazioni?</string>
   <string name="device_offline_dialog_negative">Chiudi</string>
   <string name="device_offline_dialog_positive">Impostazioni</string>
   <string name="saving">Salvataggio…</string>
@@ -477,7 +477,7 @@
   <string name="FrequentlyAskedQuestions">Domande poste frequentemente</string>
   <string name="translate_help_title">Aiuta a tradurre Open Food Facts</string>
   <string name="translate_help_summary">Porta il database di Open Food Facts nella tua lingua - non è richiesta alcuna conoscenza tecnica</string>
-  <string name="please_check_your_connection">Si prega di verificare la connessione.</string>
+  <string name="please_check_your_connection">Controlla la connessione.</string>
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Ricerca avanzata &amp; grafici</string>
   <string name="connectivity_check">Per favore controlla la tua connessione Internet</string>
@@ -607,19 +607,19 @@
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Per favore aggiungi almeno una foto di questo prodotto prima di procedere</string>
   <string name="image_uploaded_successfully">Immagine caricata con successo</string>
-  <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
+  <string name="error_adding_product_photos">Qualcosa è andato storto durante il tentativo di aggiunta delle foto del prodotto</string>
   <string name="ingredients_overwrite">Sovrascrittura degli ingredienti</string>
   <string name="choose_mine">Scegli i miei</string>
   <string name="keep_previous_version">Tieni la versione precedente</string>
   <string name="product_name_overwrite">Sovrascrittura del nome del prodotto</string>
   <string name="yours">Yours: </string>
-  <string name="currently_on">Currently on %s: </string>
+  <string name="currently_on">Attualmente su %s: </string>
   <string name="quantity_overwrite">Sovrascrittura della quantità</string>
   <string name="link_overwrite">Sovrascrittura del collegamento</string>
   <string name="save_product">Vuoi salvare il prodotto?</string>
-  <string name="error_adding_product">Something went wrong when adding product</string>
+  <string name="error_adding_product">Qualcosa è andato storto durante l\'aggiunta del prodotto</string>
   <string name="photos">Foto</string>
-  <string name="please_wait">Please wait</string>
+  <string name="please_wait">Attendi</string>
   <string name="product_uploaded_successfully">Prodotto caricato con successo</string>
   <string name="no_internet_connection">Sembra che tu non sia connesso, le immagini verranno caricate quando la rete sarà disponibile</string>
   <string name="no_internet_unable_to_extract_ingredients">Nessuna connessione internet. Impossibile estrarre gli ingredienti</string>
