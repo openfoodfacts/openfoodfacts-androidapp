@@ -9,13 +9,13 @@ v2 ! Tutti i volontari di OFF hanno lavorato sodo sulla base dei tuoi suggerimen
 8. Leggero come prima :)
 
 v2.8 ! Dopo l'enorme V2 tutti i volontari di OFF hanno continuato a lavorare duramente sulla base dei tuoi suggerimenti. Ora abbiamo 570mila prodotti liberati da 182 Paesi da 10mila e più contributori incluso tu 🙂
-1. Abbiamo rifatto l'intera esperienza di aggiunta di prodotti (e funziona anche senza connessione). (thanks Huzaifa)
-2. You can now get nutrition facts for the portion you're eating (Rutvik)
-3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
-5. 🌎 Korean & Indonesian
+1. Abbiamo rifatto l'intera esperienza di aggiunta di prodotti (e funziona anche senza connessione). (Grazie Huzaifa)
+2. Ora puoi ottenere le informazioni nutrizionali per la porzione che stai mangiando (Rutvik)
+3. Ora calcoliamo i gruppi NOVA oltre al Nutriscore (Huzaifa)
+4. Miglioramenti vari (di Rutvik & Salfai)
+5. 🌎 coreano e indonesiano
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. tu 🙂
-1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+2.8.8 ! Pensavi che ci saremmo fermati all'aggiunta dei prodotti? Tutti i volontari di OFF hanno continuato a lavorare sodo. 590mila prodotti, 182 Paesi, 10mila e più contributori, incluso tu 🙂
+1. Ora puoi modificare qualsiasi prodotto con il tuo account OFF. Fai clic su ✏️ in una pagina prodotto da modificare.
+2. 🌍 Slovacco, ebraico, spagnolo, arabo, olandese, ungherese e vietnamita (translate.openfoodfacts.org per aiutare)
+3. Open Food Facts è un impegno completamente volontario: puoi donare tempo (world.openfoodfacts.org/contribute) o denaro (donate.openfoodfacts.org)
