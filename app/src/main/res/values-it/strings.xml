@@ -465,11 +465,11 @@
   <string name="device_offline_dialog_positive">Impostazioni</string>
   <string name="saving">Salvataggio…</string>
   <string name="scan_first_product">Scansione del primo prodotto</string>
-  <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+  <string name="preference_enable_mobile_data_title">Carica con i dati cellulare</string>
   <string name="preference_enable_mobile_data_summary_on">Carica nuovi prodotti utilizzando i dati mobili e WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Carica nuovi prodotti solo tramite Wi-Fi</string>
   <string name="device_on_mobile_data_warning_title">Informazioni</string>
-  <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+  <string name="device_on_mobile_data_warning_message">Il caricamento con i dati cellulare è disattivato, connettiti al WiFi o modifica l\'opzione tra le impostazioni</string>
   <string name="device_on_mobile_data_warning_positive">Impostazioni</string>
   <string name="device_on_mobile_data_warning_negative">Carica comunque</string>
   <string name="preference_choose_language_dialog_title">Scegli la lingua</string>
