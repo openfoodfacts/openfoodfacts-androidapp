@@ -12,7 +12,7 @@ Per scoprire il progetto Open Food Facts, visitare https://it.openfoodfacts.org
 - Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
 - You can start contributing today by adding a product from your food cupboard. 
 
-*** Get the Facts ***
+*** Prendi i fatti ***
 - Open Food Facts helps you to make sense of the fine print on products labels. Sarai in grado di trovare (secondo le indicazioni presenti sui prodotti):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
