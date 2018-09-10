@@ -23,11 +23,17 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
     private Context context;
     private ArrayList<String> images;
     private String barcode;
+    private final OnImageClickInterface onImageClick;
 
-    public ImagesAdapter(Context context, ArrayList<String> images, String barcode) {
+    public interface OnImageClickInterface {
+        void onImageClick(int position);
+    }
+
+    public ImagesAdapter(Context context, ArrayList<String> images, String barcode, OnImageClickInterface onImageClick) {
         this.context = context;
         this.images = images;
         this.barcode = barcode;
+        this.onImageClick = onImageClick;
     }
 
 
@@ -45,14 +51,13 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
         String imageName = images.get(position);
         ImageView imageView = holder.productImage;
 
-        //  327 / 019 / 020 / 5685 /
         String baseUrlString = "https://static.openfoodfacts.org/images/products/";
         String barcodePattern = new StringBuilder(barcode)
                 .insert(3, "/")
                 .insert(7, "/")
                 .insert(11, "/")
                 .toString();
-        String finalUrlString = baseUrlString + barcodePattern + "/" + imageName + ".100" + ".jpg";
+        String finalUrlString = baseUrlString + barcodePattern + "/" + imageName + ".400" + ".jpg";
 
         Picasso.with(context).load(finalUrlString).resize(400, 400).centerInside().placeholder(R.drawable.placeholder_thumb).into(imageView);
 
@@ -64,15 +69,23 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
         return images.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView productImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
             productImage = itemView.findViewById(R.id.img);
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+
+            int position = getAdapterPosition();
+            onImageClick.onImageClick(position);
+
+        }
     }
 
 
