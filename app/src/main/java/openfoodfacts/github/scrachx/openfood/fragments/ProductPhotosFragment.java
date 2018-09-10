@@ -20,10 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,11 +30,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
-import io.reactivex.schedulers.Schedulers;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
@@ -47,33 +38,13 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.splash.ISplashPresenter;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-import static android.Manifest.permission.CAMERA;
-import static android.app.Activity.RESULT_OK;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.apache.commons.lang3.StringUtils.isBlank;
-import static org.apache.commons.lang3.StringUtils.prependIfMissing;
 
 /**
  * @author prajwalm
  */
 
-public class ProductPhotosFragment extends BaseFragment {
+public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter.OnImageClickInterface {
 
     private OpenFoodAPIClient openFoodAPIClient;
     private Product product;
@@ -142,7 +113,7 @@ public class ProductPhotosFragment extends BaseFragment {
 
                     }
 
-                    adapter = new ImagesAdapter(getContext(), imageNames, product.getCode());
+                    adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick);
                     imagesRecycler.setAdapter(adapter);
                     imagesRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
@@ -159,6 +130,36 @@ public class ProductPhotosFragment extends BaseFragment {
 
             }
         });
+
+    }
+
+    public void openFullScreen(String mUrlImage) {
+        if (mUrlImage != null) {
+            Intent intent = new Intent(getContext(), FullScreenImage.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("imageurl", mUrlImage);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onImageClick(int position) {
+        Toast.makeText(getContext(), "Helo", Toast.LENGTH_LONG).show();
+        String baseUrlString = "https://static.openfoodfacts.org/images/products/";
+        String barcodePattern = new StringBuilder(product.getCode())
+                .insert(3, "/")
+                .insert(7, "/")
+                .insert(11, "/")
+                .toString();
+        String finalUrlString = baseUrlString + barcodePattern + "/" + imageNames.get(position) + ".400" + ".jpg";
+        openFullScreen(finalUrlString);
+
+    }
+
+}
+
+
 
 
 
@@ -353,5 +354,4 @@ public class ProductPhotosFragment extends BaseFragment {
     }
     */
 
-    }
-}
+
