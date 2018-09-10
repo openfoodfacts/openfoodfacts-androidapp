@@ -48,8 +48,6 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
     private OpenFoodAPIClient openFoodAPIClient;
     private Product product;
-    @BindView(R.id.images_text)
-    TextView textView;
     private ProductPhotosFragment mFragment;
     // A Array list to store image names
     private ArrayList<String> imageNames;
@@ -117,13 +115,6 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
                     imagesRecycler.setAdapter(adapter);
                     imagesRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
-                    String barcodePattern = new StringBuilder(product.getCode())
-                            .insert(3, "/")
-                            .insert(7, "/")
-                            .insert(11, "/")
-                            .toString();
-                    textView.setText(barcodePattern);
-
 
                 }
 
@@ -145,7 +136,6 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
     @Override
     public void onImageClick(int position) {
-        Toast.makeText(getContext(), "Helo", Toast.LENGTH_LONG).show();
         String baseUrlString = "https://static.openfoodfacts.org/images/products/";
         String barcodePattern = new StringBuilder(product.getCode())
                 .insert(3, "/")
