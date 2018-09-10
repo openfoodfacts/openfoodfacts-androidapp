@@ -16,25 +16,43 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.splash.ISplashPresenter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
@@ -52,17 +70,9 @@ public class ProductPhotosFragment extends BaseFragment {
 
     private OpenFoodAPIClient openFoodAPIClient;
     private Product product;
-    @BindView(R.id.imageProductTwo)
-    ImageView imageTwo;
-    @BindView(R.id.imageProductThree)
-    ImageView imageThree;
-    @BindView(R.id.imageProductViewFront)
-    ImageView imageFront;
+    @BindView(R.id.images_text)
+    TextView textView;
     private ProductPhotosFragment mFragment;
-    private String mUrlImageFront;
-    private String mUrlImageTwo;
-    private String mUrlImageThree;
-    private int count;
 
 
     @Override
@@ -82,6 +92,54 @@ public class ProductPhotosFragment extends BaseFragment {
         product = state.getProduct();
         mFragment = this;
 
+
+        openFoodAPIClient.getImages(product.getCode(), new OpenFoodAPIClient.OnImagesCallback() {
+            @Override
+            public void onImageResponse(boolean value, String response) {
+
+                if (value && response != null) {
+
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    JSONObject product = null;
+                    try {
+                        product = jsonObject.getJSONObject("product").getJSONObject("images");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    String collection = "";
+
+                    for (int i = 0; i < product.names().length(); i++) {
+
+                        try {
+                            collection = collection + product.names().getString(i) + "\n";
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+                    textView.setText(collection + "\n\n\n" + response);
+
+
+                }
+
+
+            }
+        });
+
+
+
+
+        /*
         if (isNotBlank(product.getImageFrontUrl())) {
 
             Picasso.with(view.getContext()).
@@ -269,5 +327,7 @@ public class ProductPhotosFragment extends BaseFragment {
                 .fit()
                 .into(view);
     }
+    */
 
+    }
 }
