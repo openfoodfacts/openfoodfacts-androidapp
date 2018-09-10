@@ -11,7 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/images_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/images_item">
 
+    </android.support.v7.widget.RecyclerView>
 
 
 </RelativeLayout>

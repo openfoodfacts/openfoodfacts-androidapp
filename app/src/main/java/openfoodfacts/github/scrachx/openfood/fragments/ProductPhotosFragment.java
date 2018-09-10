@@ -10,6 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.splash.ISplashPresenter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -65,6 +69,9 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.prependIfMissing;
 
+/**
+ * @author prajwalm
+ */
 
 public class ProductPhotosFragment extends BaseFragment {
 
@@ -73,6 +80,10 @@ public class ProductPhotosFragment extends BaseFragment {
     @BindView(R.id.images_text)
     TextView textView;
     private ProductPhotosFragment mFragment;
+    // A Array list to store image names
+    private ArrayList<String> imageNames;
+    private RecyclerView imagesRecycler;
+    private ImagesAdapter adapter;
 
 
     @Override
@@ -91,6 +102,9 @@ public class ProductPhotosFragment extends BaseFragment {
         final State state = (State) intent.getExtras().getSerializable("state");
         product = state.getProduct();
         mFragment = this;
+        // initialize the arraylist
+        imageNames = new ArrayList<>();
+        imagesRecycler = view.findViewById(R.id.images_recycler);
 
 
         openFoodAPIClient.getImages(product.getCode(), new OpenFoodAPIClient.OnImagesCallback() {
@@ -99,6 +113,7 @@ public class ProductPhotosFragment extends BaseFragment {
 
                 if (value && response != null) {
 
+                    // a json object referring to base json object
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response);
@@ -106,20 +121,20 @@ public class ProductPhotosFragment extends BaseFragment {
                         e.printStackTrace();
                     }
 
-                    JSONObject product = null;
+                    // a json object referring to images
+                    JSONObject images = null;
                     try {
-                        product = jsonObject.getJSONObject("product").getJSONObject("images");
+                        images = jsonObject.getJSONObject("product").getJSONObject("images");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
 
-                    String collection = "";
-
-                    for (int i = 0; i < product.names().length(); i++) {
+                    // loop through all the image names and store them in a array list
+                    for (int i = 0; i < images.names().length(); i++) {
 
                         try {
-                            collection = collection + product.names().getString(i) + "\n";
+                            imageNames.add(images.names().getString(i));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -127,7 +142,16 @@ public class ProductPhotosFragment extends BaseFragment {
 
                     }
 
-                    textView.setText(collection + "\n\n\n" + response);
+                    adapter = new ImagesAdapter(getContext(), imageNames, product.getCode());
+                    imagesRecycler.setAdapter(adapter);
+                    imagesRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
+
+                    String barcodePattern = new StringBuilder(product.getCode())
+                            .insert(3, "/")
+                            .insert(7, "/")
+                            .insert(11, "/")
+                            .toString();
+                    textView.setText(barcodePattern);
 
 
                 }
