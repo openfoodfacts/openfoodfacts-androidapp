@@ -621,7 +621,7 @@
   <string name="keep_previous_version">Сохранить предыдущую версию</string>
   <string name="product_name_overwrite">Перезапись названия</string>
   <string name="yours">Ваши: </string>
-  <string name="currently_on">Currently on %s: </string>
+  <string name="currently_on">Сейчас на %s: </string>
   <string name="quantity_overwrite">Перезапись количества</string>
   <string name="link_overwrite">Перезапись ссылки</string>
   <string name="save_product">Вы хотите сохранить продукт?</string>
