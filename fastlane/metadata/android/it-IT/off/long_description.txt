@@ -1,28 +1,28 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Fai una scansione dei prodotti alimentari o dei codici a barre per ottenere dati su ingredienti, additivi e valori nutrizionali.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+L'app consente di vedere i 547.000 prodotti (compresi i 175.000 negli Stati Uniti) già contenuti nel database libero e aperto di Open Food Facts, nonché di aggiungere foto e dati per i prodotti mancanti.
 
-Per scoprire il progetto Open Food Facts, visitare https://it.openfoodfacts.org
+Per scoprire il progetto Open Food Facts, visita https://it.openfoodfacts.org
 
 
-***Contribuire alla trasparenza del cibo***
+***Contribuisci alla trasparenza alimentare***
 
 - Open Food Facts è un database di prodotti alimentari realizzato da tutti, per tutti.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
-- You can start contributing today by adding a product from your food cupboard. 
+- Puoi usarlo per fare scelte alimentari migliori e, dato che sono dati aperti, chiunque può riutilizzarlo per qualsiasi scopo.
+- Open Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
+- Puoi iniziare a contribuire oggi aggiungendo un prodotto dalla tua dispensa. 
 
 *** Prendi i fatti ***
-- Open Food Facts helps you to make sense of the fine print on products labels. Sarai in grado di trovare (secondo le indicazioni presenti sui prodotti):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- Open Food Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai in grado di trovare (secondo le indicazioni presenti sui prodotti):
+- l'impronta di carbonio (emissioni di CO2) e l'imballaggio (comprese le istruzioni per il riciclo),
+- il Nutriscore (punteggio nutrizionale), i nutrienti, il contenuto di grassi, gli acidi grassi saturi, i carboidrati, gli zuccheri, le fibre, le proteine, il sale e il sodio.
+- i marchi, gli allergeni, le etichette (bio, senza glutine, vegano, vegetariano, halal, kosher ...), informazioni sulla tracciabilità (codici di imballaggio, origine degli ingredienti)
 - Su vini e birre troverai la gradazione alcolica.
 
 *** Funziona bene in qualsiasi condizione ***
 - Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
 - L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
-- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se ti manca una fotocamera o hai un problema con questa.
+- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se non hai una fotocamera o non funziona.
 
 *** Il tuo cibo, i tuoi dati ***
 - I tuoi dati personali sono tuoi e non vengono mai inviati online
@@ -33,4 +33,4 @@ Open Food Facts è anche disponibile sul web all'indirizzo
 https://world-it.openfoodfacts.org/
 Domande e feedback a: contact@openfoodfacts.org
 
-Per i cosmetici, è possibile installare Open Beauty Facts, per alimenti per animali domestici, Open Pet Food Facts e per tutti gli altri prodotti, Open Products Facts.
+Per i cosmetici è possibile installare Open Beauty Facts, per alimenti per animali domestici Open Pet Food Facts e per tutti gli altri prodotti Open Products Facts.
