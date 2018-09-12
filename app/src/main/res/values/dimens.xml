@@ -60,4 +60,6 @@
     <!--- AlertDialog ProductImage -->
     <dimen name="product_height">200dp</dimen>
     <dimen name="product_width">250dp</dimen>
+    <dimen name="photo_height">180dp</dimen>
+    <dimen name="photo_width">180dp</dimen>
 </resources>
