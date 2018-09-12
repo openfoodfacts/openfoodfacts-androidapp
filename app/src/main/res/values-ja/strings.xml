@@ -39,7 +39,7 @@
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl oz</item>
+    <item>液量オンス</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
@@ -63,8 +63,8 @@
     <item>g</item>
     <item>mg</item>
     <item>µg</item>
-    <item>% DV</item>
-    <item>IU</item>
+    <item>% 1日当たり</item>
+    <item>国際単位</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array

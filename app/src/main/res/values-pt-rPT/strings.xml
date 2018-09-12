@@ -18,7 +18,7 @@
     <item quantity="other">%d dias atrás</item>
   </plurals>
   <string name="action_settings">Configurações</string>
-  <string name="action_about">Acerca</string>
+  <string name="action_about">Sobre</string>
   <string name="action_discover">Descobrir</string>
   <string name="contribute">Como contribuir</string>
   <string name="action_find">Encontrar</string>
@@ -251,7 +251,7 @@
   <string name="create_account">Inscrever</string>
   <string name="home_drawer">Início</string>
   <string name="search_drawer">Procurar</string>
-  <string name="search_by_barcode_drawer">Escreva o código de barras</string>
+  <string name="search_by_barcode_drawer">Escrever o código de barras</string>
   <string name="category_drawer">Categorias</string>
   <string name="search_by_category">Categoria</string>
   <string name="search_by_name_drawer">Pesquisar pelo nome</string>

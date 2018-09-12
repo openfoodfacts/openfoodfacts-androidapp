@@ -5,7 +5,7 @@ scan_en.png
 Scansiona prodotti
 
 quickview_en.png
-Ottenere il Nutriscore
+Ottieni il Nutriscore
 
 history_en.png
 Your full scan history, fully private & exportable
