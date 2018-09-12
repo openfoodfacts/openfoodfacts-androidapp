@@ -535,6 +535,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             apiClient.syncOldHistory();
         }
 
+        handleIntent(getIntent());
     }
 
     private void scan() {
@@ -767,6 +768,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
         String type = intent.getType();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             Log.e("INTENT", "start activity");
