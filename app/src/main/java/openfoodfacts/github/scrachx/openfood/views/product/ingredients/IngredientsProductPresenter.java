@@ -47,9 +47,9 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
                                     }))
                             .filter(additiveName -> additiveName.isNotNull())
                             .toList()
-                            .doOnSubscribe(d -> view.showAdditivesState(ProductInfoState.LOADING))
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
+                            .doOnSubscribe(d -> view.showAdditivesState(ProductInfoState.LOADING))
                             .subscribe(additives -> {
                                 if (additives.isEmpty()) {
                                     view.showAdditivesState(ProductInfoState.EMPTY);
