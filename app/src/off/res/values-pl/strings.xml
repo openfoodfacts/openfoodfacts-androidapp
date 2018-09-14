@@ -32,6 +32,6 @@
   <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie mogą nie być dokładne, a wykrycie ich też nie może być pewne. Zatem, sprawdzaj dwa razy! </string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">baza bezpłatnych produktów spożywczych</string>
-  <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-  <string name="currently_on_version">Currently on Open Food Facts</string>
+  <string name="product_not_found">Zeskanowany produkt %1$s, który jeszcze nie figuruje w Open Food Facts. Dodać go?</string>
+  <string name="currently_on_version">Aktualnie na Otwartych faktach o Produktach</string>
 </resources>
