@@ -132,16 +132,17 @@ public class OpenFoodAPIClient {
                             .positiveText(R.string.txtYes)
                             .negativeText(R.string.txtNo)
                             .onPositive((dialog, which) -> {
-                                Intent intent = new Intent(activity, AddProductActivity.class);
-                                State st = new State();
-                                Product pd = new Product();
-                                pd.setCode(barcode);
-                                st.setProduct(pd);
-                                intent.putExtra("state", st);
-                                activity.startActivity(intent);
-                                activity.finish();
+                                if (!activity.isFinishing()) {
+                                    Intent intent = new Intent(activity, AddProductActivity.class);
+                                    State st = new State();
+                                    Product pd = new Product();
+                                    pd.setCode(barcode);
+                                    st.setProduct(pd);
+                                    intent.putExtra("state", st);
+                                    activity.startActivity(intent);
+                                    activity.finish();
+                                }
                             })
-                            .onNegative((dialog, which) -> activity.onBackPressed())
                             .show();
                 } else {
                     new HistoryTask().doInBackground(s.getProduct());
@@ -155,22 +156,28 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
+
+                if (activity == null || activity.isFinishing()) {
+                    return;
+                }
+
                 new MaterialDialog.Builder(activity)
                         .title(R.string.txtDialogsTitle)
                         .content(R.string.txtDialogsContent)
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
-                            Intent intent = new Intent(activity, AddProductActivity.class);
-                            State st = new State();
-                            Product pd = new Product();
-                            pd.setCode(barcode);
-                            st.setProduct(pd);
-                            intent.putExtra("state", st);
-                            activity.startActivity(intent);
-                            activity.finish();
+                            if (!activity.isFinishing()) {
+                                Intent intent = new Intent(activity, AddProductActivity.class);
+                                State st = new State();
+                                Product pd = new Product();
+                                pd.setCode(barcode);
+                                st.setProduct(pd);
+                                intent.putExtra("state", st);
+                                activity.startActivity(intent);
+                                activity.finish();
+                            }
                         })
-                        .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
             }
         });
