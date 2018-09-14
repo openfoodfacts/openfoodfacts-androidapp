@@ -168,13 +168,13 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <item>Tauryna</item>
     <item>Tłuszcze trans</item>
     <item>Witamina A</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>Witamina B1</item>
+    <item>Witamina B12</item>
+    <item>Witamina B2</item>
+    <item>Witamina B3</item>
+    <item>Witamina B6</item>
+    <item>Witamina B9</item>
+    <item>Witamina C</item>
     <item>Witamina D</item>
     <item>Witamina E</item>
     <item>Witamina K</item>
@@ -614,15 +614,15 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
   <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-  <string name="scan_sound">Scan sound</string>
+  <string name="scan_sound">Dźwięk Skanowania</string>
   <string name="trouble_scanning">Trouble Scanning?</string>
   <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
-  <string name="switch_camera">Switch camera</string>
-  <string name="autofocus">Autofocus</string>
+  <string name="switch_camera">Zmień Kamerę</string>
+  <string name="autofocus">Automatyczna Ostrość</string>
   <string name="initial_loading">Initial loading</string>
   <string name="preferences">Ustawienia</string>
   <string name="OFFlogo">Open Food Facts logo</string>
-  <string name="loading_product">Loading product %s</string>
+  <string name="loading_product">Ładowanie Produktu %s</string>
   <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
   <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
   <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
@@ -630,9 +630,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="choose_nutrient">Choose a nutrient</string>
   <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
   <string name="hint_product_URL">Link of the official page of the product</string>
-  <string name="product_language">Product language : </string>
+  <string name="product_language">Język produktu: </string>
   <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">Official website</string>
+  <string name="official_website">Oficjalna strona internetowa</string>
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
   <string name="image_uploaded_successfully">Image uploaded successfully</string>
@@ -641,29 +641,29 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="choose_mine">Choose mine</string>
   <string name="keep_previous_version">Keep previous version</string>
   <string name="product_name_overwrite">Product name overwrite</string>
-  <string name="yours">Yours: </string>
+  <string name="yours">Twoje: </string>
   <string name="currently_on">Currently on %s: </string>
   <string name="quantity_overwrite">Quantity overwrite</string>
   <string name="link_overwrite">Link overwrite</string>
   <string name="save_product">Do you want to save the product?</string>
   <string name="error_adding_product">Something went wrong when adding product</string>
-  <string name="photos">Photos</string>
-  <string name="please_wait">Please wait</string>
-  <string name="product_uploaded_successfully">Product uploaded successfully</string>
-  <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
+  <string name="photos">Zdjęcia</string>
+  <string name="please_wait">Proszę czekać</string>
+  <string name="product_uploaded_successfully">Produkt przesłany pomyślnie</string>
+  <string name="no_internet_connection">Wygląda na to, że nie masz połączenia z Internetem, zdjęcia zostaną przesłane, gdy sieć będzie dostępna</string>
   <string name="no_internet_unable_to_extract_ingredients">Brak połączenia z Internetem. Niemożliwe do ekstrakcji składniki</string>
   <string name="percent">%1$d%%</string>
   <string name="overview">Przegląd</string>
   <string name="ingredients">Składniki</string>
   <string name="nutrition_facts">Nutrition Facts</string>
-  <string name="your_version">Yours</string>
+  <string name="your_version">Twoje</string>
   <string name="ingredients_picture">Ingredients Picture</string>
   <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
   <string name="ingredients_list">Ingredients List</string>
   <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
   <string name="extract_ingredients">Extract ingredients</string>
   <string name="extracting_ingredients">Wyodrębnianie składników</string>
-  <string name="looksGood">Looks Good</string>
+  <string name="looksGood">Wygląda dobrze</string>
   <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
   <string name="traces">Ślady</string>
   <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
@@ -687,20 +687,20 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="manufacturing_place">Miejsce produkcji</string>
   <string name="emb_code">EMB Code</string>
   <string name="purchasing_details">Purchasing Details</string>
-  <string name="country_where_purchased">Country where purchased</string>
+  <string name="country_where_purchased">Kraj, w którym kupiono</string>
   <string name="stores">Sklepy</string>
-  <string name="additional_pictures">Additional Pictures</string>
+  <string name="additional_pictures">Dodatkowe zdjęcia</string>
   <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
   <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
+  <string name="sign_in_to_edit">Zaloguj się, aby edytować produkt.</string>
   <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
   <string name="edit_product_title">Edycja produktu</string>
   <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
   <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
-  <string name="save_edits">Save edits</string>
+  <string name="save_edits">Zapisz zmiany</string>
   <string name="contribution_by">Contribution By</string>
   <string name="title_activity_product">Tytuł</string>
   <string name="description_activity_product">description</string>
