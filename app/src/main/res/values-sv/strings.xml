@@ -624,7 +624,7 @@
   <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
   <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
   <string name="percent">%1$d%%</string>
-  <string name="overview">Overview</string>
+  <string name="overview">Översikt</string>
   <string name="ingredients">Ingredienser</string>
   <string name="nutrition_facts">Nutrition Facts</string>
   <string name="your_version">Yours</string>
@@ -634,7 +634,7 @@
   <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
   <string name="extract_ingredients">Extract ingredients</string>
   <string name="extracting_ingredients">Utvinner ingredienser</string>
-  <string name="looksGood">Looks Good</string>
+  <string name="looksGood">Ser bra ut</string>
   <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
   <string name="traces">Spår</string>
   <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
@@ -656,7 +656,7 @@
   <string name="manufacturing_details">Manufacturing Details</string>
   <string name="origin_of_ingredients">Origin of ingredients</string>
   <string name="manufacturing_place">Manufacturing place</string>
-  <string name="emb_code">EMB Code</string>
+  <string name="emb_code">EMB-kod</string>
   <string name="purchasing_details">Purchasing Details</string>
   <string name="country_where_purchased">Country where purchased</string>
   <string name="stores">Butiker</string>
