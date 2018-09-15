@@ -609,7 +609,7 @@
   <string name="image_uploaded_successfully">Image uploaded successfully</string>
   <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
   <string name="ingredients_overwrite">Ingredients overwrite</string>
-  <string name="choose_mine">Choose mine</string>
+  <string name="choose_mine">Välj min</string>
   <string name="keep_previous_version">Keep previous version</string>
   <string name="product_name_overwrite">Product name overwrite</string>
   <string name="yours">Yours: </string>
@@ -619,7 +619,7 @@
   <string name="save_product">Do you want to save the product?</string>
   <string name="error_adding_product">Something went wrong when adding product</string>
   <string name="photos">Photos</string>
-  <string name="please_wait">Please wait</string>
+  <string name="please_wait">Vänta</string>
   <string name="product_uploaded_successfully">Product uploaded successfully</string>
   <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
   <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
@@ -674,5 +674,5 @@
   <string name="save_edits">Save edits</string>
   <string name="contribution_by">Contribution By</string>
   <string name="title_activity_product">Titel</string>
-  <string name="description_activity_product">description</string>
+  <string name="description_activity_product">beskrivning</string>
 </resources>
