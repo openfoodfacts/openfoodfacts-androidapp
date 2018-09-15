@@ -38,9 +38,12 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -86,6 +89,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private int contributionType;
+    private CategoryNameDao mCategoryNameDao;
 
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
@@ -213,6 +217,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
         searchType = extras.getString(SEARCH_TYPE);
         searchQuery = extras.getString(SEARCH_QUERY);
+        mCategoryNameDao = Utils.getAppDaoSession(this).getCategoryNameDao();
         newSearchQuery();
 
 
@@ -393,7 +398,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
                 break;
             case SearchType.CATEGORY:
-                api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
+                String appLanguageCode = LocaleHelper.getLanguage(this);
+                CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.Name.eq(searchQuery), CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode)).unique();
+                api.getProductsByCategory(categoryName.getCategoryTag(), pageAddress, this::loadData);
                 break;
 
 
