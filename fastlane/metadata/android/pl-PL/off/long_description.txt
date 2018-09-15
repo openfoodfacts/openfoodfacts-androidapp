@@ -19,10 +19,10 @@ Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z ca
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - On wines and beers, you will find the alcohol content.
 
-*** Works well in any condition ***
+***Działa dobrze w każdej sytuacji***
 - Możesz dodać nowe produkty, nawet nie mając teraz połączenia.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+-Aplikacja ładuje tylko ściśle potrzebne elementy, aby zaoszczędzić pamięć i baterię
+-Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
 
 *** Your food, your data ***
 Twoje dany nigdy nie są wysyłane online
