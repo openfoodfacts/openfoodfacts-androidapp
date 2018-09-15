@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
@@ -11,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -25,6 +27,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.auth.api.credentials.Credential;
+import com.google.android.gms.auth.api.credentials.CredentialRequest;
+import com.google.android.gms.auth.api.credentials.CredentialRequestResponse;
+import com.google.android.gms.auth.api.credentials.Credentials;
+import com.google.android.gms.auth.api.credentials.CredentialsClient;
+import com.google.android.gms.auth.api.credentials.CredentialsOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -51,7 +67,7 @@ import retrofit2.Retrofit;
  * A login screen that offers login via login/password.
  * This Activity connect to the Chrome Custom Tabs Service on startup to prefetch the url.
  */
-public class LoginActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
+public class LoginActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback,GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -68,6 +84,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     @BindView(R.id.login_linearlayout)
     LinearLayout linearLayout;
 
+    private static final String KEY_IS_RESOLVING = "is_resolving";
+    private static final String TAG = LoginActivity.class.getSimpleName();
+    private boolean mIsResolving = false;
     private OpenFoodAPIService apiClient;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri userLoginUri;
@@ -77,7 +96,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     private ShakeDetector mShakeDetector;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
-
+    private CredentialRequest mCredentialRequest;
+    private CredentialsClient credentialsClient;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -95,6 +115,10 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_login);
+
+        if (savedInstanceState != null) {
+            mIsResolving = savedInstanceState.getBoolean(KEY_IS_RESOLVING);
+        }
 
         setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(toolbar);
@@ -118,6 +142,10 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     .content(R.string.login_true)
                     .neutralText(R.string.ok_button)
                     .show();
+        }
+
+        if(isGooglePlayServicesAvailable(this)){
+            requestCredentials();
         }
 
         apiClient = new Retrofit.Builder()
@@ -206,7 +234,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                             for (int i = 0; i < cookieValues.length; i++) {
                                 editor.putString(cookieValues[i], cookieValues[++i]);
                             }
-
+                            if(isGooglePlayServicesAvailable(context)){
+                                storeCredentials();
+                            }
                             break;
                         }
                     }
@@ -225,7 +255,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     finish();
                 }
                 Utils.hideKeyboard(context);
-
             }
 
             @Override
@@ -264,12 +293,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        customTabActivityHelper.bindCustomTabsService(this);
-    }
-
-    @Override
     protected void onStop() {
         super.onStop();
         customTabActivityHelper.unbindCustomTabsService(this);
@@ -298,5 +321,149 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             //register the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(KEY_IS_RESOLVING, mIsResolving);
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    private void requestCredentials(){
+        credentialsClient = Credentials.getClient(this);
+
+        mCredentialRequest = new CredentialRequest.Builder()
+                .setPasswordLoginSupported(true)
+                .build();
+
+        credentialsClient.request(mCredentialRequest).addOnCompleteListener(new OnCompleteListener<CredentialRequestResponse>() {
+            @Override
+            public void onComplete(@NonNull Task<CredentialRequestResponse> task) {
+                if (task.isSuccessful()) {
+                    onCredentialRetrieved(task.getResult().getCredential());
+                    return;
+                }
+                Exception e = task.getException();
+                if (e instanceof ResolvableApiException) {
+                    // This is most likely the case where the user has multiple saved
+                    // credentials and needs to pick one. This requires showing UI to
+                    // resolve the read request.
+                    ResolvableApiException rae = (ResolvableApiException) e;
+                    resolveResult(rae, 2);
+                } else if (e instanceof ApiException) {
+                    // The user must create an account or sign in manually.
+                    ApiException ae = (ApiException) e;
+                    if (ae.getStatusCode() == CommonStatusCodes.SIGN_IN_REQUIRED) {
+                        // This means only a hint is available, but we are handling that
+                        // elsewhere so no need to act here.
+                    } else {
+                        Log.w(TAG, "Unexpected status code: " + ae.getStatusCode());
+                    }
+                }
+            }
+        });
+
+    }
+
+    private void onCredentialRetrieved(Credential credential) {
+        String accountType = credential.getAccountType();
+        if (accountType == null) {
+            // Sign the user in with information from the Credential.
+            loginView.setText(credential.getId());
+            passwordView.setText(credential.getPassword());
+        }
+    }
+
+    private void resolveResult(ResolvableApiException rae, int requestCode) {
+        try {
+            rae.startResolutionForResult(LoginActivity.this, requestCode);
+            mIsResolving = true;
+        } catch (IntentSender.SendIntentException e) {
+            Log.e(TAG, "Failed to send resolution.", e);
+        }
+    }
+
+    private void storeCredentials(){
+        Credential credential = new Credential.Builder(loginView.getText().toString())
+                .setPassword(passwordView.getText().toString())
+                .build();
+        Snackbar snackbar = Snackbar
+                .make(linearLayout, R.string.toast_retrieving, Snackbar.LENGTH_LONG);
+        snackbar.show();
+        CredentialsOptions options = new CredentialsOptions.Builder()
+                .forceEnableSaveDialog()
+                .build();
+        credentialsClient = Credentials.getClient(this, options);
+        credentialsClient.save(credential).addOnCompleteListener(
+                new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.w(TAG,"Credential Saved");
+                            snackbar.dismiss();
+                            return;
+                        }
+
+                        Exception e = task.getException();
+                        if (e instanceof ResolvableApiException) {
+                            // The first time a credential is saved, the user is shown UI
+                            // to confirm the action. This requires resolution.
+                            snackbar.dismiss();
+                            ResolvableApiException rae = (ResolvableApiException) e;
+                            resolveResult(rae, 3);
+                        } else {
+                            // Save failure cannot be resolved.
+                            Log.w(TAG, "Save failed.", e);
+                            snackbar.dismiss();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2) {
+            if (resultCode == RESULT_OK) {
+                Credential credential = data.getParcelableExtra(Credential.EXTRA_KEY);
+                onCredentialRetrieved(credential);
+            } else {
+                Log.e(TAG, "Credential Read Failed");
+            }
+        }
+
+        if (requestCode == 3) {
+            if (resultCode == RESULT_OK) {
+                Log.d(TAG, "Credentials Stored Successfully");
+            }
+        }
+
+    }
+
+    public boolean isGooglePlayServicesAvailable(Activity activity) {
+        GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
+        int status = googleApiAvailability.isGooglePlayServicesAvailable(activity);
+        if(status != ConnectionResult.SUCCESS) {
+            if(googleApiAvailability.isUserResolvableError(status)) {
+                googleApiAvailability.getErrorDialog(activity, status, 2404).show();
+            }
+            return false;
+        }
+        return true;
     }
 }
