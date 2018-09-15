@@ -102,20 +102,20 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>Kwas α-linolenowy / ALA (18:3 n-3)</item>
+    <item>Kwas arachidowy (20:0)</item>
+    <item>Kwas arachidonowy / AA / ARA (20:4 n-6)</item>
+    <item>Kwas behenowy (22:0)</item>
     <item>Dwuwęglan</item>
     <item>Biotyna</item>
     <item>Kwas masłowy (4:0)</item>
     <item>Kofeina</item>
     <item>Wapń</item>
-    <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
-    <item>Caprylic acid (8:0)</item>
+    <item>Kwas dekanowy (10:0)</item>
+    <item>Kwas kapronowy (6:0)</item>
+    <item>Kwas kaprylowy (8:0)</item>
     <item>Kazeina</item>
-    <item>Cerotic acid (26:0)</item>
+    <item>Kwas cerotynowy (26:0)</item>
     <item>Chlorek</item>
     <item>Cholesterol</item>
     <item>Chrom</item>
@@ -156,14 +156,14 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
     <item>ph</item>
     <item>Fosfor</item>
-    <item>Sugar alcohols (Polyols)</item>
+    <item>Alkohole cukrowe (poliole)</item>
     <item>Tłuszcze wielonienasycone</item>
     <item>Potas</item>
     <item>Selen</item>
     <item>Białka surowicy</item>
     <item>Krzemionka</item>
     <item>Skrobia</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Kwas stearynowy (18:0)</item>
     <item>Sacharoza</item>
     <item>Tauryna</item>
     <item>Tłuszcze trans</item>
@@ -661,7 +661,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
   <string name="ingredients_list">Lista składników</string>
   <string name="ingredients_hint">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składników, oznacz alergeny za pomocą _</string>
-  <string name="extract_ingredients">Extract ingredients</string>
+  <string name="extract_ingredients">Wyodrębnij składniki</string>
   <string name="extracting_ingredients">Wyodrębnianie składników</string>
   <string name="looksGood">Wygląda dobrze</string>
   <string name="skip_ingredients">Źle \n Pomiń składniki</string>
