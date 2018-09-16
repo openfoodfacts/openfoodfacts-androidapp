@@ -57,9 +57,10 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
                 .insert(7, "/")
                 .insert(11, "/")
                 .toString();
-        String finalUrlString = baseUrlString + barcodePattern + "/" + imageName + ".400" + ".jpg";
+        //String finalUrlString = baseUrlString + barcodePattern + "/" + imageName + ".400" + ".jpg";
+        String finalUrlString = baseUrlString + barcodePattern + "/" + imageName +".jpg";
 
-        Picasso.with(context).load(finalUrlString).resize(400, 400).centerInside().placeholder(R.drawable.placeholder_thumb).into(imageView);
+        Picasso.with(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView);
 
 
     }

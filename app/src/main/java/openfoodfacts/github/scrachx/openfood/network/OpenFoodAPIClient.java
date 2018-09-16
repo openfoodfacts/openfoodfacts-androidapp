@@ -18,6 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
@@ -127,6 +128,7 @@ public class OpenFoodAPIClient {
                                     activity.finish();
                                 }
                             })
+                            .onNegative((dialog, which) -> activity.onBackPressed())
                             .show();
                 } else {
                     new HistoryTask().doInBackground(s.getProduct());
@@ -611,6 +613,27 @@ public class OpenFoodAPIClient {
 
     }
 
+    public interface OnEditImageCallback {
+        void onEditResponse(boolean value, String response);
+    }
+
+    public void editImage(String code, Map<String, String> imgMap, OnEditImageCallback onEditImageCallback) {
+        apiService.editImages(code, imgMap).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                onEditImageCallback.onEditResponse(true, response.body());
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                onEditImageCallback.onEditResponse(false, null);
+            }
+        });
+    }
+
+
     public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
 
         apiService.getProductByPackaging(packaging, page).enqueue(new Callback<Search>() {
@@ -835,6 +858,7 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(Call<Search> call, Throwable t) {
+
                 onIncompleteCallback.onIncompleteResponse(false, null);
             }
         });
