@@ -27,7 +27,7 @@ android {
     flavorDimensions "versionCode"
     productFlavors {
         off {
-            applicationId "openfoodfacts.github.scrachx.openfood"
+            applicationId "org.openfoodfacts.scanner"
             resValue "string", "app_name", "OpenFoodFacts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
