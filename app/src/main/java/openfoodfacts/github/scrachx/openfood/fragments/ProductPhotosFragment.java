@@ -121,7 +121,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
                     }
 
-                    adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick);
+                    adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick,product);
                     imagesRecycler.setAdapter(adapter);
                     imagesRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
@@ -157,8 +157,8 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
         imgMap.put("imgid", imageNames.get(position));
         imgMap.put("id", ProductImageField.OTHER.toString() + '_' + product.getLang());
-       // imgMap.put("angle", "90");
-       // imgMap.put("type","edit");
+        // imgMap.put("angle", "90");
+        // imgMap.put("type","edit");
 /*
         RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), product.getCode());
         RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.INGREDIENTS.toString() + '_' + product.getLang());
@@ -185,7 +185,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
         });*/
 
 
-         openFullScreen(finalUrlString);
+        openFullScreen(finalUrlString);
 
     }
 
