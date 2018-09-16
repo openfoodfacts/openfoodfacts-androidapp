@@ -2,8 +2,10 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,13 +28,19 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
@@ -53,6 +61,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     private ArrayList<String> imageNames;
     private RecyclerView imagesRecycler;
     private ImagesAdapter adapter;
+    private HashMap<String, String> imgMap;
 
 
     @Override
@@ -74,6 +83,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
         // initialize the arraylist
         imageNames = new ArrayList<>();
         imagesRecycler = view.findViewById(R.id.images_recycler);
+        imgMap = new HashMap<>();
 
 
         openFoodAPIClient.getImages(product.getCode(), new OpenFoodAPIClient.OnImagesCallback() {
@@ -136,14 +146,46 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
     @Override
     public void onImageClick(int position) {
+
         String baseUrlString = "https://static.openfoodfacts.org/images/products/";
         String barcodePattern = new StringBuilder(product.getCode())
                 .insert(3, "/")
                 .insert(7, "/")
                 .insert(11, "/")
                 .toString();
-        String finalUrlString = baseUrlString + barcodePattern + "/" + imageNames.get(position) + ".400" + ".jpg";
-        openFullScreen(finalUrlString);
+        String finalUrlString = baseUrlString + barcodePattern + "/" + imageNames.get(position) + ".jpg";
+
+        imgMap.put("imgid", imageNames.get(position));
+        imgMap.put("id", ProductImageField.OTHER.toString() + '_' + product.getLang());
+       // imgMap.put("angle", "90");
+       // imgMap.put("type","edit");
+/*
+        RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), product.getCode());
+        RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.INGREDIENTS.toString() + '_' + product.getLang());
+        // RequestBody image = RequestBody.create(MediaType.parse("image/*"), finalUrlString);
+
+        imgMap.put("code", barcode);
+        imgMap.put("imagefield", imageField);
+        //imgMap.put("imgupload_ingredients", image);
+
+        // Attribute the upload to the connected user
+        final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
+        final String password = settings.getString("pass", "");
+        if (!login.isEmpty() && !password.isEmpty()) {
+            imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+            imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+        }*/
+
+        /*openFoodAPIClient.editImage(product.getCode(), imgMap, new OpenFoodAPIClient.OnEditImageCallback() {
+            @Override
+            public void onEditResponse(boolean value, String response) {
+                Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+            }
+        });*/
+
+
+         openFullScreen(finalUrlString);
 
     }
 
