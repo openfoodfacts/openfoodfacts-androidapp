@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/login_linearlayout"
@@ -68,31 +69,43 @@
             android:text="@string/txtSignIn"
             android:textColor="@android:color/white" />
 
-        <Button
-            android:id="@+id/buttonCreateAccount"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button"
-            android:text="@string/create_account"
-            android:textColor="@android:color/white" />
-
         <TextView
             android:id="@+id/textInfoLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/font_small" />
-        
-        <TextView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/forgot_password"
-            android:id="@+id/forgotpassword"
-            android:textColor="@color/primary"
-            android:layout_gravity="center_horizontal"
-            android:padding="12sp"
-            android:textStyle="bold"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/createaccount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:gravity="center_horizontal"
+                android:padding="12sp"
+                android:text="@string/create_account"
+                android:textColor="@color/primary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/forgotpassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:padding="12sp"
+                android:text="@string/forgot_password"
+                android:textColor="@color/primary"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
 
