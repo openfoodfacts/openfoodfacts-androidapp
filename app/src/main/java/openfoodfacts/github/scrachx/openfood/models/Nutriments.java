@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -234,6 +235,7 @@ public class Nutriments implements Serializable {
         return null;
     }
 
+    @Nullable
     public String getModifier(String nutrimentName) {
         if (additionalProperties.get(nutrimentName + "_modifier") != null) {
             return additionalProperties.get(nutrimentName + "_modifier").toString();
