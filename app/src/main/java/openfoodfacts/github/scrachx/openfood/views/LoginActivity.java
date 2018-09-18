@@ -63,8 +63,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     TextView infoLogin;
     @BindView(R.id.buttonSave)
     Button save;
-    @BindView(R.id.buttonCreateAccount)
-    Button signup;
+    @BindView(R.id.createaccount)
+    TextView createAccount;
     @BindView(R.id.login_linearlayout)
     LinearLayout linearLayout;
 
@@ -108,7 +108,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
-        signup.setEnabled(true);
+        createAccount.setEnabled(true);
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString(getResources().getString(R.string.user), getResources().getString(R.string.txt_anonymous));
@@ -240,7 +240,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         save.setClickable(true);
     }
 
-    @OnClick(R.id.buttonCreateAccount)
+    @OnClick(R.id.createaccount)
     protected void onCreateUser() {
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
 
@@ -255,12 +255,13 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @Override
     public void onCustomTabsConnected() {
-        signup.setEnabled(true);
+        createAccount.setEnabled(true);
     }
 
     @Override
     public void onCustomTabsDisconnected() {
-        signup.setEnabled(false);
+        //TODO find out what do do with it
+        createAccount.setEnabled(false);
     }
 
     @Override
@@ -273,7 +274,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void onStop() {
         super.onStop();
         customTabActivityHelper.unbindCustomTabsService(this);
-        signup.setEnabled(false);
+        createAccount.setEnabled(false);
     }
 
     @Override
