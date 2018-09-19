@@ -114,8 +114,7 @@ public class CalculateDetails extends BaseActivity {
         if (carbohydrates != null) {
             String modifier = nutriments.getModifier(CARBOHYDRATES);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_carbohydrate),
-                                                       carbohydrates.getforanyvalue(value,
-                                                                                    spinnervalue),
+                                                       carbohydrates.getforanyvalue(value, spinnervalue),
                                                        carbohydrates.getForServing(),
                                                        carbohydrates.getUnit(),
                                                        modifier == null ? "" : modifier));

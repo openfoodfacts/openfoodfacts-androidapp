@@ -184,8 +184,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
             nutrimentItems.add(
                     new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                                       Utils.getEnergy(energy.getFor100g()),
-                                      Utils.getEnergy(energy
-                                                              .getForServing()),
+                                      Utils.getEnergy(energy.getForServing()),
                                       "kcal",
                                       nutriments.getModifier(ENERGY)));
         }
