@@ -1,9 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,15 +17,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.io.IOException;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
+import okhttp3.internal.Util;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
@@ -41,6 +48,9 @@ public class HomeFragment extends NavigationBaseFragment {
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
 
+    @BindView(R.id.tvTotalProductCount)
+    TextView tvTotalProductCount;
+
     private OpenFoodAPIService apiClient;
 
     @Override
@@ -53,6 +63,28 @@ public class HomeFragment extends NavigationBaseFragment {
         super.onViewCreated(view, savedInstanceState);
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if(getContext()!=null){
+            if(Utils.isNetworkConnected(getContext())){
+                Call<Search> call =  apiClient.getTotalProductCount();
+                call.enqueue(new Callback<Search>() {
+                    @Override
+                    public void onResponse(Call<Search> call, Response<Search> response) {
+                        tvTotalProductCount.setText("Total Product Count "+response.body().getCount());
+                    }
+
+                    @Override
+                    public void onFailure(Call<Search> call, Throwable t) {
+
+                    }
+                });
+            }
+        }
     }
 
     @OnClick(R.id.buttonScan)

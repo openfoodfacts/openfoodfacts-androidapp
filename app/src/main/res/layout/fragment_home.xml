@@ -47,6 +47,19 @@
             android:textColor="@color/md_black_1000"
             android:textSize="@dimen/font_normal" />
 
+        <TextView
+            android:id="@+id/tvTotalProductCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/spacing_larger"
+            android:gravity="center"
+            android:text="Total Product Count "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/md_black_1000"
+            android:textSize="@dimen/font_normal"
+            />
+
 
     </LinearLayout>
 
