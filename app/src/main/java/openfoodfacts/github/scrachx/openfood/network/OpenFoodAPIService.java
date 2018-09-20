@@ -334,7 +334,7 @@ public interface OpenFoodAPIService {
     @GET("state/to-be-completed/{page}.json")
     Call<Search> getIncompleteProducts(@Path("page") int page);
 
-    @GET("/.json")
+    @GET("/1.json")
     Call<Search> getTotalProductCount();
 }
 
