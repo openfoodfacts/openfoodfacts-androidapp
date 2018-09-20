@@ -39,7 +39,7 @@ Collecting the world's food, cosmetic and pet food was so passé. With the insan
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts sarà un progetto estremamente ambizioso. Eccone alcuni: 
 
 Open Crayons Facts - The largest open database of coloring crayons
 
