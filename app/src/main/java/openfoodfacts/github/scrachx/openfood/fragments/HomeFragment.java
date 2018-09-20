@@ -43,8 +43,8 @@ public class HomeFragment extends NavigationBaseFragment {
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
 
-    @BindView(R.id.tvTotalProductCount)
-    TextView tvTotalProductCount;
+    @BindView(R.id.textHome)
+    TextView textHome;
 
     private OpenFoodAPIService apiClient;
 
@@ -70,14 +70,17 @@ public class HomeFragment extends NavigationBaseFragment {
                 call.enqueue(new Callback<Search>() {
                     @Override
                     public void onResponse(Call<Search> call, Response<Search> response) {
-                        tvTotalProductCount.setText("Total Product Count "+response.body().getCount());
+                        textHome.setText("Open Food Facts is an open database of more than "+response.body().getCount()+" food products (plus the ones you'll contribute) with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.");
                     }
 
                     @Override
                     public void onFailure(Call<Search> call, Throwable t) {
-
+                        textHome.setText(R.string.txtHome);
                     }
                 });
+            }
+            else {
+                textHome.setText(R.string.txtHome);
             }
         }
     }
