@@ -14,10 +14,10 @@ Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfac
 
 *** Prendi i fatti ***
 
-You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
+Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
+- l'elenco degli ingredienti (compreso il contenuto di ceneri)
 - nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
+- marche, allergeni, etichette (biologico, vegano...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
 *** Funziona bene in qualsiasi condizione ***
@@ -31,4 +31,4 @@ You will also be able to find (according to the indications present on the produ
 - Puoi esportare la cronologia di scansione
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Per il cibo puoi installare Open Food Facts, per i cosmetici Open Beauty Facts e per tutti gli altri prodotti Open Products Facts.
