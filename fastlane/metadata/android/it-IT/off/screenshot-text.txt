@@ -27,13 +27,13 @@ categories_en.png
 Get alternatives for your favorite foods
 
 foodtransparency_en.png
-Become an actor of food transparency
+Diventa un attore della trasparenza alimentare
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Wikipedia per il cibo
+Wikipedia per i cosmetici
+Wikipedia per gli alimenti per animali
+Wikipedia dei prodotti
 
 product_view_ingredients_en.png
 Ingredienti
