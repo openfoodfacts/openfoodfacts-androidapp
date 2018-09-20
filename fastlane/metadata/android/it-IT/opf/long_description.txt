@@ -19,7 +19,7 @@ Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni
 *** Funziona bene in qualsiasi condizione ***
 - Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
 - L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
-- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se ti manca una fotocamera o hai un problema con questa.
+- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se non hai una fotocamera o non funziona.
 
 *** I tuoi prodotti, i tuoi dati ***
 - I tuoi dati personali sono tuoi e non vengono mai inviati online
