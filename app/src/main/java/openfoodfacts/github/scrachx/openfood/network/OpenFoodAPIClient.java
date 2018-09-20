@@ -808,12 +808,7 @@ public class OpenFoodAPIClient {
                 }
 
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onCategoryCallback.onCategoryResponse(false, null);
-                    } else {
-                        onCategoryCallback.onCategoryResponse(true, response.body());
-                    }
+                    onCategoryCallback.onCategoryResponse(true, response.body());
                 }
 
 
