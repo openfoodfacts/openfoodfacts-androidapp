@@ -290,7 +290,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             substanceProduct.append(" ");
 
             String allergen;
-            for (int i = 0; i < allergens.size(); i++) {
+            for (int i = 0; i < allergens.size() - 1; i++) {
                 allergen = allergens.get(i);
                 substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
                 substanceProduct.append(", ");
