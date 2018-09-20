@@ -14,13 +14,13 @@
     <item quantity="other">%d ngày trước</item>
   </plurals>
   <string name="action_settings">Cài đặt</string>
-  <string name="action_about">About</string>
+  <string name="action_about">Giới thiệu</string>
   <string name="action_discover">Khám phá</string>
   <string name="contribute">Làm cách nào để đóng góp</string>
   <string name="action_find">Tìm</string>
   <string name="text_barcode">Nhập mã vạch:</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="message_in_activity_save_product_offline">Bắt buộc có một hình ảnh để gửi sản phẩm mới.</string>
+  <string name="product_incomplete_message">Sản phẩm này chưa hoàn thiện. Theo kết quả, chúng tôi không thể kiểm tra chất gây dị ứng.</string>
   <string name="no_offline_data">Bạn đã xong</string>
   <string name="first_offline">Sản phẩm được thêm offline sẽ xuất hiện ở đây</string>
   <!-- Image Upload -->
@@ -28,8 +28,8 @@
   <string-array name="nav_drawer_items_product">
     <item>Tổng quan</item>
     <item>Thành phần</item>
-    <item>Nutrition</item>
-    <item>Nutrition Table</item>
+    <item>Dinh dưỡng</item>
+    <item>Bảng giá trị Dinh dưỡng</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
@@ -88,33 +88,33 @@
     <item>Cholesterol</item>
     <item>Crom</item>
     <item>Đồng</item>
-    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-    <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-    <item>Elaidic acid (18:1 n-9)</item>
-    <item>Erucic acid (22:1 n-9)</item>
+    <item>Axit Dihomo-gamma-linolenic / DGLA (20: 3 n-6)</item>
+    <item>Axit Docosahexaenoic / DHA (22: 6 n-3)</item>
+    <item>Axit Docosahexaenoic / DHA (20: 5 n-3)</item>
+    <item>Axit Elaidic (18: 1 n-9)</item>
+    <item>Axit Erucic (22: 1 n-9)</item>
     <item>Flo</item>
     <item>Fructose</item>
-    <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+    <item>Axit gamma-linolenic / GLA (18: 3 n-6)</item>
     <item>Glucose</item>
-    <item>Gondoic acid (20:1 n-9)</item>
+    <item>Axit Gondoic (20: 1 n-9)</item>
     <item>Iodine</item>
     <item>Iron</item>
     <item>Lactose</item>
-    <item>Lauric acid (12:0)</item>
-    <item>Lignoceric acid (24:0)</item>
-    <item>Linoleic acid / LA (18:2 n-6)</item>
+    <item>Axit lauric (12:0)</item>
+    <item>Axit Lignoceric (24: 0)</item>
+    <item>Axit linoleic / LA (18:2 n-6)</item>
     <item>Magnesium</item>
     <item>Maltodextrins</item>
     <item>Maltose</item>
     <item>Manganese</item>
-    <item>Mead acid (20:3 n-9)</item>
-    <item>Melissic acid (30:0)</item>
+    <item>Axit Mead (20: 3 n-9)</item>
+    <item>Axit Melissic (30: 0)</item>
     <item>Molybdenum</item>
-    <item>Monounsaturated fat</item>
-    <item>Montanic acid (28:0)</item>
-    <item>Myristic acid (14:0)</item>
-    <item>Nervonic acid (24:1 n-9)</item>
+    <item>Chất béo không bão hòa đơn</item>
+    <item>Axit Montanic (28: 0)</item>
+    <item>Axit Myristic (14:0)</item>
+    <item>Axit nervonic (24: 1 n-9)</item>
     <item>Nucleotides</item>
     <item>Oleic acid (18:1 n-9)</item>
     <item>Omega 3 fatty acids</item>
@@ -151,7 +151,7 @@
   <!-- Text units -->
   <string-array name="images_array">
     <item>Default</item>
-    <item>Nutrition</item>
+    <item>Dinh dưỡng</item>
     <item>Thành phần</item>
   </string-array>
   <!-- Content Description -->
@@ -315,7 +315,7 @@
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
   <string name="check_facts">Check</string>
-  <string name="nutrition">Nutrition</string>
+  <string name="nutrition">Dinh dưỡng</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>
   <string name="enter_weight">Enter the weight</string>
