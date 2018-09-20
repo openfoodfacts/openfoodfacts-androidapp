@@ -1,15 +1,15 @@
 Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+L'app consente di vedere gli oltre 600 alimenti per animali già contenuti nel database libero e aperto di Open Pet Food Facts e di aggiungere foto e dati per i prodotti mancanti.
 
 Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfacts.org
 
 ***Contribuire alla trasparenza del cibo per animali***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts è un database di alimenti per animali realizzato da tutti, per tutti.
+- Puoi usarlo per scegliere meglio tra gli alimenti per animali e, dato che sono dati aperti, chiunque può riutilizzarlo per qualsiasi scopo.
+- Open Pet Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
+- Puoi iniziare a contribuire oggi aggiungendo un prodotto dei tuoi alimenti per animali. 
 
 
 *** Prendi i fatti ***
