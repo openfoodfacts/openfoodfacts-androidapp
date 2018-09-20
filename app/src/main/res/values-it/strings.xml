@@ -272,13 +272,13 @@
   <string name="ring_off">Ring [OFF]</string>
   <string name="auto_focus_on">Auto Focus [ON]</string>
   <string name="auto_focus_off">Auto Focus [OFF]</string>
-  <string name="formats">Formats</string>
-  <string name="choose_formats">Choose Formats</string>
-  <string name="select_camera">Select a Camera</string>
+  <string name="formats">Formati</string>
+  <string name="choose_formats">Scegli formati</string>
+  <string name="select_camera">Seleziona una fotocamera</string>
   <string name="ok_button">Ok</string>
-  <string name="cancel_button">Cancel</string>
+  <string name="cancel_button">Annulla</string>
   <string name="login_button">Login</string>
-  <string name="create_account_button">Create Account</string>
+  <string name="create_account_button">Crea account</string>
   <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
   <string name="from_gallery">Dalla galleria</string>
   <string name="product_sent">Prodotto inviato con successo</string>
