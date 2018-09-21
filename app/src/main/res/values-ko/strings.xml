@@ -363,6 +363,7 @@
   <string name="number_of_products">제품 수: </string>
   <string name="txt_no_results">검색 결과가 없습니다</string>
   <string name="txt_extend_search">검색 범위를 넓히거나 제품을 추가하십시오.</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">일치하는 제품을 찾지 못했습니다. \n 시도해 볼 수 있습니다 :</string>
   <string name="txt_broaden_search">- 검색 범위를 넓힌후 \n 제품을 Open Food Facts에 추가하십시오</string>
   <string name="txt_cant_load_search_results">검색 결과를 불러올 수 없습니다</string>
