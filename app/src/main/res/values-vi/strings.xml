@@ -363,6 +363,7 @@
   <string name="number_of_products">Số lượng sản phẩm: </string>
   <string name="txt_no_results">Không có kết quả nào được tìm thấy</string>
   <string name="txt_extend_search">Thử mở rộng tìm kiếm của bạn hoặc thêm sản phẩm</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Chúng tôi không tìm thấy bất kỳ sản phẩm phù hợp nào. \ NBạn có thể thử:</string>
   <string name="txt_broaden_search">- mở rộng tìm kiếm của bạn \ n- quét và thêm nó vào Open Food Facts</string>
   <string name="txt_cant_load_search_results">Không thể tải tìm kiếm kết quả</string>

@@ -367,6 +367,7 @@
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">কোন ফলাফল খুঁজে পাওয়া যায়নি</string>
   <string name="txt_extend_search">আপনার অনুসন্ধান স্পষ্ট করুন বা পণ্য যোগ করুন</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">আমরা কোন পণ্য খুঁজে পাইনি ।\nআপনি আরো দেখতে পারেন :</string>
   <string name="txt_broaden_search">- আপনার অনুসন্ধান স্পষ্ট করুন \ n- স্ক্যান করুন এবং ওপেন ফুড ফ্যাক্টসে যোগ করুন </string>
   <string name="txt_cant_load_search_results">অনুসন্ধান ফলাফল লোড করা যায়নি</string>

@@ -367,6 +367,7 @@
   <string name="number_of_products">Produktantal: </string>
   <string name="txt_no_results">Ingen resultater fundet</string>
   <string name="txt_extend_search">Prøv at udvide din søgning eller tilføj produktet</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Der blev ikke fundet lignende produkter.\nDu kan prøve at :</string>
   <string name="txt_broaden_search">- lave en mindre snæver søgning \n- skanne og tilføje det til Open Food Facts</string>
   <string name="txt_cant_load_search_results">Kan ikke indlæse søgeresultater</string>

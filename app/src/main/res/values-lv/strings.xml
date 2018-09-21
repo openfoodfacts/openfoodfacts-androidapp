@@ -371,6 +371,7 @@
   <string name="number_of_products">Produktu skaits: </string>
   <string name="txt_no_results">Nekas nav atrasts</string>
   <string name="txt_extend_search">Paplašināt meklēšanu vai pievienot produktu</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Mēs neatradām nevienu atbilstošu produktu. \ Nvarat izmēģināt:</string>
   <string name="txt_broaden_search">- paplašināt meklēšanu \ n- skenēt un pievienot to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Nevar ielādēt meklēšanas rezultātus</string>

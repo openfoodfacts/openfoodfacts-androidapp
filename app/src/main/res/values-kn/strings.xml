@@ -367,6 +367,7 @@
   <string name="number_of_products">ಉತ್ಪನ್ನಗಳ ಸಂಖ್ಯೆ: </string>
   <string name="txt_no_results">ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬರಲಿಲ್ಲ</string>
   <string name="txt_extend_search">ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ವಿಶಾಲಗೊಳಿಸಲು ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಉತ್ಪನ್ನವನ್ನು ಸೇರಿಸಿ</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">ಯಾವುದೇ ಹೊಂದಿಕೆಯಾಗುವ ಉತ್ಪನ್ನಗಳನ್ನು ನಾವು ಕಂಡುಕೊಂಡಿಲ್ಲ. \ N ನೀವು ಪ್ರಯತ್ನಿಸಬಹುದು:</string>
   <string name="txt_broaden_search">- ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸುವುದು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಮತ್ತು ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಿರಿ</string>
   <string name="txt_cant_load_search_results">ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ</string>

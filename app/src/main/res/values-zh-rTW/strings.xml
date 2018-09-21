@@ -363,6 +363,7 @@
   <string name="number_of_products">產品編號: </string>
   <string name="txt_no_results">找不到相符的結果</string>
   <string name="txt_extend_search">請嘗試擴大搜尋範圍或新增產品</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">我們還沒有找到任何符合的產品。\n您可以嘗試：</string>
   <string name="txt_broaden_search">- 擴大您的搜尋\n - 掃描並將其新增到 Open Food Facts</string>
   <string name="txt_cant_load_search_results">無法載入搜尋結果</string>

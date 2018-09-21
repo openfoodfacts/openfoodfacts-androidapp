@@ -367,6 +367,7 @@
   <string name="number_of_products">Брой продукти: </string>
   <string name="txt_no_results">Няма намерени резултати</string>
   <string name="txt_extend_search">Опитайте да разширите търсенето си или да добавите продукта</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Не намерихме съвпадащи продукти.\n Можете да опитате :</string>
   <string name="txt_broaden_search">- разширяване на търсенето ви \n- сканиране и добавяне към Open Food Facts</string>
   <string name="txt_cant_load_search_results">Резултати от търсенето не могат да се заредят</string>

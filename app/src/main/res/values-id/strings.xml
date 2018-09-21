@@ -363,6 +363,7 @@
   <string name="number_of_products">Jumlah produk: </string>
   <string name="txt_no_results">tidak menemukan hasil</string>
   <string name="txt_extend_search">coba memperluas pencarian kamu </string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Kami belum menemukan produk yang cocok. \nAnda dapat mencoba:</string>
   <string name="txt_broaden_search">- memperluas pencarian anda \n- pindai dan tambahkan ke Open Food Facts</string>
   <string name="txt_cant_load_search_results">tidak dapat menemukan hasil pencarian</string>

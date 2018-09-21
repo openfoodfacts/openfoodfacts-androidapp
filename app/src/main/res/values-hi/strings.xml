@@ -367,6 +367,7 @@
   <string name="number_of_products">उत्पादों की संख्या: </string>
   <string name="txt_no_results">कोई परिणाम नहीं मिला</string>
   <string name="txt_extend_search">अपनी खोज को विस्तृत करें या उत्पाद ऐड करें</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">हमें कोई भी मिलते-जुलते उत्पाद नहीं मिले हैं। \n आप यह कोशिश कर सकते हैं:</string>
   <string name="txt_broaden_search">- अपनी खोज को विस्तृत करना \n- स्कैन करें और इसे ओपन फ़ूड फैक्ट्स में ऐड करें</string>
   <string name="txt_cant_load_search_results">खोज परिणामों का लोड करना नामुमकिन है</string>
