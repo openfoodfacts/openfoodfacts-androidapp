@@ -404,11 +404,11 @@
   <string name="vitamin_b9">Vitamin B9</string>
   <string name="vitamin_b12">Vitamin B12</string>
   <string name="biotin">Biotin</string>
-  <string name="pantothenic_acid">Pantothenic acid</string>
-  <string name="nutrition_minerals">Minerals</string>
-  <string name="silica">Silica</string>
+  <string name="pantothenic_acid">Axit pantothenic</string>
+  <string name="nutrition_minerals">Khoáng sản</string>
+  <string name="silica">Silic oxit</string>
   <string name="bicarbonate">Bicarbonate</string>
-  <string name="potassium">Potassium</string>
+  <string name="potassium">Kali</string>
   <string name="chloride">Chloride</string>
   <string name="calcium">Calcium</string>
   <string name="phosphorus">Phosphorus</string>
