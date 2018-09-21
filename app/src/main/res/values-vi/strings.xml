@@ -268,27 +268,27 @@
   <string name="ring_off">Ring [TẮT]</string>
   <string name="auto_focus_on">Tự động lấy nét [BẬT]</string>
   <string name="auto_focus_off">Tự động lấy nét [TẮT]</string>
-  <string name="formats">Formats</string>
-  <string name="choose_formats">Choose Formats</string>
-  <string name="select_camera">Select a Camera</string>
+  <string name="formats">Định dạng</string>
+  <string name="choose_formats">Chọn định dạng</string>
+  <string name="select_camera">Chọn camera</string>
   <string name="ok_button">OK</string>
-  <string name="cancel_button">Cancel</string>
-  <string name="login_button">Login</string>
-  <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-  <string name="from_gallery">From gallery</string>
-  <string name="product_sent">Product sent successfully</string>
-  <string name="action_edit_product">Edit product</string>
-  <string name="title_info_dialog">How does it work?</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-  <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
-  <string name="permission_title">Permission information</string>
-  <string name="permission_denied">Please activate permission in the settings</string>
-  <string name="permission_storage">Storage permission is needed to take or select pictures</string>
-  <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
-  <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
-  <string name="msg_input_empty">Please fill the fields first.</string>
-  <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
+  <string name="cancel_button">Huỷ</string>
+  <string name="login_button">Đăng nhập</string>
+  <string name="create_account_button">Tạo Tài Khoản</string>
+  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Thông tin bệnh dị ứng của bạn không bao giờ sẽ được gửi đến máy chủ Open Food Facts. Ngoài ra, hãy cẩn thận rằng dữ liệu sản phẩm có thể không chính xác, và việc phát hiện có thể không chính xác 100%, vì vậy xin vui lòng kiểm tra lần nữa! </string>
+  <string name="from_gallery">Từ bộ sưu tập Ảnh</string>
+  <string name="product_sent">Sản phẩm được gửi thành công</string>
+  <string name="action_edit_product">Chỉnh sửa sản phẩm</string>
+  <string name="title_info_dialog">Nó hoạt động như thế nào?</string>
+  <string name="text_offline_info_dialog">Bạn có thể quét các sản phẩm khi bạn đang ngoại tuyến để thêm chúng vào Open Food Facts sau. Tất cả các sản phẩm bạn quét sẽ xuất hiện ở đây, và bạn sẽ có thể gửi cho họ bằng cách sử dụng nút bên dưới.</string>
+  <string name="permission_camera">Cần có quyền đối với máy ảnh để quét mã vạch và chụp ảnh.</string>
+  <string name="permission_title">Thông tin quyền</string>
+  <string name="permission_denied">Vui lòng kích hoạt quyền trong cài đặt</string>
+  <string name="permission_storage">Cần có quyền lưu trữ để chụp hoặc chọn hình ảnh</string>
+  <string name="info_download_data">Bạn cần phải tải xuống một số dữ liệu để chức năng này hoạt động, vui lòng nhấn yes để tải xuống.</string>
+  <string name="info_download_data_connection">Bạn cần tải xuống một số dữ liệu để chức năng này hoạt động. Vui lòng kích hoạt kết nối internet.</string>
+  <string name="msg_input_empty">Vui lòng điền vào các trường trước tiên.</string>
+  <string name="new_offline_info">Vui lòng chụp ảnh sản phẩm, thành phần, bảng thông tin dinh dưỡng và bất kỳ thông tin nào khác trên nhãn. Cảm ơn bạn!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
   <string name="user">user</string>
