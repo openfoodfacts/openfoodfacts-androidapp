@@ -69,6 +69,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
     ProgressBar progressBar;
     @BindView(R.id.noResultsLayout)
     LinearLayout noResultsLayout;
+    @BindView(R.id.textNoResults)
+    TextView textNoResults;
+    @BindView(R.id.textExtendSearch)
+    TextView textExtendSearch;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
     String searchQuery;
@@ -374,6 +378,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     database for the query.
                      */
                         if (countProducts == -2) {
+                            textNoResults.setText(R.string.txt_no_matching_products);
+                            textExtendSearch.setText(R.string.txt_broaden_search);
                             noResultsLayout.setVisibility(View.VISIBLE);
                             noResultsLayout.bringToFront();
                             productsRecyclerView.setVisibility(View.INVISIBLE);
@@ -400,7 +406,22 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.CATEGORY:
                 String appLanguageCode = LocaleHelper.getLanguage(this);
                 CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.Name.eq(searchQuery), CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode)).unique();
-                api.getProductsByCategory(categoryName.getCategoryTag(), pageAddress, this::loadData);
+                String tag = categoryName != null ? categoryName.getCategoryTag() : searchQuery;
+                api.getProductsByCategory(tag, pageAddress, (value, category) -> {
+                    if (value && category != null && Integer.valueOf(category.getCount()) == 0) {
+                        textNoResults.setText(R.string.txt_no_matching__category_products);
+                        textExtendSearch.setText(null);
+                        noResultsLayout.setVisibility(View.VISIBLE);
+                        noResultsLayout.bringToFront();
+                        productsRecyclerView.setVisibility(View.INVISIBLE);
+                        progressBar.setVisibility(View.INVISIBLE);
+                        offlineCloudLayout.setVisibility(View.INVISIBLE);
+                        countProductsView.setVisibility(View.GONE);
+                        swipeRefreshLayout.setRefreshing(false);
+                    } else {
+                        loadData(value, category);
+                    }
+                });
                 break;
 
 
