@@ -371,6 +371,7 @@
   <string name="number_of_products">Număr de produse: </string>
   <string name="txt_no_results">Nici un rezultat</string>
   <string name="txt_extend_search">Încercați să lărgiți căutarea sau să adăugați produsul</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Nu am găsit niciun produs similar.\nPuteți încerca:</string>
   <string name="txt_broaden_search">- extinderea căutării dvs.\n- scanați și adăugați-l la Open Food Facts</string>
   <string name="txt_cant_load_search_results">Rezultatele căutării nu pot fi încărcate</string>
