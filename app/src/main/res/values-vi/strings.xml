@@ -134,7 +134,7 @@
     <item>Axít stearic (18: 0)</item>
     <item>Sucroza</item>
     <item>Taurine</item>
-    <item>Trans fat</item>
+    <item>Chất béo chuyển hóa</item>
     <item>Vitamin A</item>
     <item>Vitamin B1 (Thiamin)</item>
     <item>Vitamin B12 (Cobalamin)</item>
@@ -150,31 +150,31 @@
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
-    <item>Default</item>
+    <item>Mặc định</item>
     <item>Dinh dưỡng</item>
     <item>Thành phần</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
+  <string name="bookmark">Dấu trang</string>
+  <string name="edit">Chỉnh sửa</string>
   <string name="search_button">Tìm kiếm</string>
-  <string name="no_products">Products not found</string>
-  <string name="desc_list_item_icon">Item Icon</string>
-  <string name="alert_dialog_warning_title">Warning</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
+  <string name="no_products">Không tìm thấy sản phẩm</string>
+  <string name="desc_list_item_icon">Biểu tượng mục</string>
+  <string name="alert_dialog_warning_title">Khuyến cáo</string>
+  <string name="alert_dialog_warning_msg_user">Người dùng / mật khẩu đã thay đổi, vui lòng cập nhật thông tin</string>
+  <string name="alert_dialog_product_error_msg">Không tìm thấy sản phẩm, vui lòng thử lại</string>
   <string name="toast_retrieving">Loading...</string>
   <string name="txtGenericName">Tên thường gặp :</string>
-  <string name="txtBarcode">Barcode :</string>
+  <string name="txtBarcode">Mã vạch :</string>
   <string name="txtQuantity">Số lượng :</string>
   <string name="txtPackaging">Bao bì :</string>
   <string name="txtBrands">Thương hiệu :</string>
   <string name="txtCategories">Thể loại :</string>
-  <string name="txtLabels">Labels, certifications, awards :</string>
-  <string name="txtManufacturing">Manufacturing or processing places :</string>
+  <string name="txtLabels">Nhãn, chứng nhận, giải thưởng:</string>
+  <string name="txtManufacturing">Địa điểm sản xuất, chế biến:</string>
   <string name="txtIngredientsOrigins">Nguồn gốc của các thành phần :</string>
   <string name="txtCity">Thành phố, tiểu bang và quốc gia mua hàng :</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">Mã EMB:</string>
   <string name="txtManufactureUrl">Liên kết với các trang sản phẩm trên trang web chính thức của nhà sản xuất:</string>
   <string name="txtStores">Stores :</string>
   <string name="txtCountries">Các quốc gia bán :</string>
@@ -240,34 +240,34 @@
   <string name="txtAllsent">Products sent</string>
   <string name="txtPalm">The product does not contain any palm oil</string>
   <string name="txtBarcodeNotValid">Barcode not valid</string>
-  <string name="try_it_scan_now">Scan product</string>
-  <string name="share">Share</string>
-  <string name="translate">Translate</string>
-  <string name="msg_share">Look at this product on Open Food Facts :</string>
-  <string name="create_account">Sign up</string>
-  <string name="home_drawer">Home</string>
+  <string name="try_it_scan_now">Quét sản phẩm</string>
+  <string name="share">Chia sẻ</string>
+  <string name="translate">Dịch</string>
+  <string name="msg_share">Xem sản phẩm này trên Open Food Facts:</string>
+  <string name="create_account">Đăng ký</string>
+  <string name="home_drawer">Trang chủ</string>
   <string name="search_drawer">Tìm kiếm</string>
-  <string name="search_by_barcode_drawer">Type barcode</string>
+  <string name="search_by_barcode_drawer">Nhập mã vạch</string>
   <string name="category_drawer">Thể loại</string>
-  <string name="search_by_category">Category</string>
-  <string name="search_by_name_drawer">Search by name</string>
-  <string name="scan_search">Scan Barcode</string>
-  <string name="user_drawer">User</string>
-  <string name="offline_edit_drawer">Offline edit</string>
-  <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Products not found</string>
-  <string name="delete_txt">Delete</string>
+  <string name="search_by_category">Danh mục</string>
+  <string name="search_by_name_drawer">Tìm kiếm theo Tên</string>
+  <string name="scan_search">Quét mã vạch</string>
+  <string name="user_drawer">Người dùng</string>
+  <string name="offline_edit_drawer">Chỉnh sửa ngoại tuyến</string>
+  <string name="txt_anonymous">Ẩn danh</string>
+  <string name="txt_product_not_found">Không tìm thấy sản phẩm</string>
+  <string name="delete_txt">Xóa</string>
   <string name="sign_in_drawer">Đăng nhập</string>
-  <string name="alert_drawer">Allergen alert</string>
-  <string name="warning_allergens">Contains allergens</string>
-  <string name="title_dialog_alert">Add alert</string>
-  <string name="toggle_flash">Flash</string>
-  <string name="flash_on">Flash [ON]</string>
-  <string name="flash_off">Flash [OFF]</string>
-  <string name="ring_on">Ring [ON]</string>
-  <string name="ring_off">Ring [OFF]</string>
-  <string name="auto_focus_on">Auto Focus [ON]</string>
-  <string name="auto_focus_off">Auto Focus [OFF]</string>
+  <string name="alert_drawer">Cảnh báo dị ứng</string>
+  <string name="warning_allergens">Chứa chất gây dị ứng</string>
+  <string name="title_dialog_alert">Thêm thông báo</string>
+  <string name="toggle_flash">Đèn flash</string>
+  <string name="flash_on">Flash [BẬT]</string>
+  <string name="flash_off">Flash [TẮT]</string>
+  <string name="ring_on">Ring [BẬT]</string>
+  <string name="ring_off">Ring [TẮT]</string>
+  <string name="auto_focus_on">Tự động lấy nét [BẬT]</string>
+  <string name="auto_focus_off">Tự động lấy nét [TẮT]</string>
   <string name="formats">Formats</string>
   <string name="choose_formats">Choose Formats</string>
   <string name="select_camera">Select a Camera</string>
