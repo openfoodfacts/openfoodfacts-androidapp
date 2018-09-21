@@ -367,6 +367,7 @@
   <string name="number_of_products">Bilang ng mga produkto: </string>
   <string name="txt_no_results">Walang nahanap na resulta</string>
   <string name="txt_extend_search">Subukang palawakin ng iyong paghahanap o idagdag ang produkto</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Hindi pa namin nahanap ang katugmang produkto.\nMaari mong subukan:</string>
   <string name="txt_broaden_search">-Pagpapalawak ng iyong paghahanap \n- suriin at idagdag ito sa Buksan ang Mga katotohanan ng Pagkain</string>
   <string name="txt_cant_load_search_results">Hindi ma-load ang mga resulta ng paghahanap</string>
