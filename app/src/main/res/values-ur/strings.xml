@@ -37,9 +37,9 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
+    <item>جی</item>
+    <item>ایم جی</item>
+    <item>کے جی</item>
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
@@ -181,7 +181,7 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Country :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -317,7 +317,7 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
   <string name="check_facts">Check</string>
   <string name="nutrition">غذائیت</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -367,6 +367,7 @@
   <string name="number_of_products">Number of products: </string>
   <string name="txt_no_results">No results found</string>
   <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
   <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
   <string name="txt_cant_load_search_results">Can\'t load search results</string>
