@@ -367,6 +367,7 @@
   <string name="number_of_products">Ürün sayısı: </string>
   <string name="txt_no_results">Sonuç bulunamadı</string>
   <string name="txt_extend_search">Aramanızı genişletmeyi veya ürünü eklemeyi deneyin</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Eşleşen bir ürün bulamadık. \nŞunu deneyebilirsiniz:</string>
   <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Food Facts\'e ekle</string>
   <string name="txt_cant_load_search_results">Arama sonuçları yüklenemiyor</string>
