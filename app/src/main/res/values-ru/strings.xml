@@ -375,6 +375,7 @@
   <string name="number_of_products">Количество продуктов: </string>
   <string name="txt_no_results">Ничего не найдено</string>
   <string name="txt_extend_search">Попробуйте расширить свой поиск или добавить продукт</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Мы не нашли подходящих продуктов.\nВы можете попробовать:</string>
   <string name="txt_broaden_search">- расширение вашего поиска \n- отсканируйте и добавьте его в Open Food Facts</string>
   <string name="txt_cant_load_search_results">Не удается загрузить результаты поиска</string>
