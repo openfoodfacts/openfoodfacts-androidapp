@@ -395,6 +395,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="number_of_products">Liczba produktów: </string>
   <string name="txt_no_results">Brak wyników</string>
   <string name="txt_extend_search">Spróbuj poszerzyć zakres wyszukiwania lub dodać produkt</string>
+  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
   <string name="txt_no_matching_products">Nie znaleziono żadnych produktów spełniających kryteria. \n Możesz spróbować :</string>
   <string name="txt_broaden_search">rozszerzenie zakresu wyszukiwania \n - zeskanuj i dodaj do Open Food Facts</string>
   <string name="txt_cant_load_search_results">Nie można załadować wyników wyszukiwania</string>
