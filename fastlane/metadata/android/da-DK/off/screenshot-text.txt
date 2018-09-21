@@ -5,7 +5,7 @@ scan_en.png
 Skan produkter
 
 quickview_en.png
-Få næringssoren
+Få ernæringsinformation
 
 history_en.png
 Din fulde skanningshistorik, helt privat og eksporterbar
@@ -42,4 +42,4 @@ menu_en.png
 Kraftfuld
 
 product_view_nutrition_table_en.png
-Ernæringsindhold
+Ernæringsinnhold

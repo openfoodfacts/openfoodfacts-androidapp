@@ -21,7 +21,7 @@ product_view_nutrition_summary_en.png
 Odżywianie, uproszczone
 
 product_view_allergen_alert_en.png
-Ostrzeżenie o alergenach
+Ostrzeżenie o alergensch
 
 categories_en.png
 Znajdź alternatywę dla ulubionych potraw

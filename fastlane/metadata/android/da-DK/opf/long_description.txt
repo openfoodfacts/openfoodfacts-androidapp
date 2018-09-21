@@ -1,4 +1,4 @@
-Open Products Facts er en åben database over alle verdena produkter.
+Open Products Facts er en åben database over alle produkter i verden.
 
 *** Bidrag til produktgennemsigtighed ***
 
@@ -16,10 +16,10 @@ Open Products Facts er en åben database over alle verdena produkter.
 - Open Miniature Food Facts - Den største åbne database over miniaturefødevarer
 - Åben??? Fakta - Opret din egen åbne database :-)
 
-*** Fungerer godt i alle sammenhænge ***
-- Du kan tilføje nye produkter selv uden en tilgængelig Internetforbindelse.
+*** Fungerer godt i enhver tilstand ***
+- Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
 - App'en indlæser kun det strengt nødvendige for at reducere data- og batteriforbrug
-- Du behøver ikke et kamera for at slå et produkt op. Du kan også angive stregkoden, hvis du mangler et kamera eller har problemer med det.
+- Du behøver ikke et kamera til at slå et produkt op. Du kan også angive stregkoden, hvis du mangler et kamera eller har problemer med det.
 
 *** Dine produkterer, dine data ***
 - Dine personlige data er dine, og de lægges aldrig online

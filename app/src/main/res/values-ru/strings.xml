@@ -629,7 +629,7 @@
   <string name="photos">Фотографии</string>
   <string name="please_wait">Подождите</string>
   <string name="product_uploaded_successfully">Продукт успешно загружен</string>
-  <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
+  <string name="no_internet_connection">Отсутствует подключение к Интернету, изображения будут загружены, когда сеть будет доступна</string>
   <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
   <string name="percent">%1$d%%</string>
   <string name="overview">Общие сведения</string>
@@ -639,7 +639,7 @@
   <string name="ingredients_picture">Изображение ингредиентов</string>
   <string name="take_ingredients_picture_to_extract">(Сделайте снимок ингредиентов, чтобы извлечь их автоматически)</string>
   <string name="ingredients_list">Список ингредиентов</string>
-  <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+  <string name="ingredients_hint">Сохраняйте порядок, указывайте %, там где они указаны, разделяйте запятыми или -, используйте () для состава ингредиентов, окружайте аллергены _ например, _молоко_</string>
   <string name="extract_ingredients">Распознать ингредиенты</string>
   <string name="extracting_ingredients">Распознавание ингредиентов</string>
   <string name="looksGood">Выглядит хорошо</string>

@@ -1,4 +1,4 @@
-Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó összetevők, allergének, tápanyagok adataival együtt és egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.
+Az Open Products Facts a világ minden tájáról származó termékek nyílt adatbázisa.
 
 *** Hozzájárulás a Termék Átláthatósághoz ***
 

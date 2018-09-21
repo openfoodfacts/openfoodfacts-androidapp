@@ -58,14 +58,14 @@
   </string-array>
   <!-- nutrition weight units -->
   <string-array name="nutrition_weight_units">
-    <item>g</item>
     <item>mg</item>
+    <item>kg</item>
     <item>μg</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
-    <item>g</item>
     <item>mg</item>
+    <item>kg</item>
     <item>μg</item>
     <item>% DV</item>
     <item>IE</item>

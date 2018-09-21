@@ -1,4 +1,4 @@
-打开“Open Food Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原等所有信息。
+Open Products Facts 是一个开放的世界上所有产品的数据库。
 
 *** Contribute to Product Transparency ***
 

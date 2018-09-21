@@ -37,9 +37,9 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item>جی</item>
-    <item>ایم جی</item>
-    <item>کے جی</item>
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
