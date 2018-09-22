@@ -503,7 +503,7 @@
   <string name="pref_resolution_summary">Vælg en opløsning til billed-upload</string>
   <string name="image_upload_resolution">Upload-fotoopløsning</string>
   <string name="can_add_barcode">Problemer med at skanne?\nTræk opad for at angive stregkoden</string>
-  <string name="wikidata_information">Going further</string>
+  <string name="wikidata_information">Går videre</string>
   <string name="description">Beskrivelse: </string>
   <string name="title">Title: </string>
   <string name="Wikipedia">Se på Wikipedia</string>
@@ -675,5 +675,5 @@
   <string name="save_edits">Gem ændringer</string>
   <string name="contribution_by">Bidrag fra</string>
   <string name="title_activity_product">Title</string>
-  <string name="description_activity_product">description</string>
+  <string name="description_activity_product">beskrivelse</string>
 </resources>
