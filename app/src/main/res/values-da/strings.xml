@@ -68,7 +68,7 @@
     <item>mg</item>
     <item>µg</item>
     <item>% DV</item>
-    <item>IU</item>
+    <item>IE</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
@@ -656,7 +656,7 @@
   <string name="period_of_time_after_opening">Tidsperiode efter åbning</string>
   <string name="manufacturing_details">Produktionsoplysninger</string>
   <string name="origin_of_ingredients">Oprindelse af ingredienser</string>
-  <string name="manufacturing_place">Manufacturing place</string>
+  <string name="manufacturing_place">Produktionssted</string>
   <string name="emb_code">EMB-kode</string>
   <string name="purchasing_details">Indkøbsoplysninger</string>
   <string name="country_where_purchased">Land, hvori køb er sket</string>
@@ -667,13 +667,13 @@
   <string name="uploading_ingredients_image">Uploader ingrediensfoto</string>
   <string name="uploading_front_image">Uploader forsidefoto</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
-  <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
+  <string name="sign_in_to_edit">Log ind for at redigere et produkt.</string>
+  <string name="hint_quantity">Eksempler: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pund</string>
   <string name="edit_product_title">Rediger et produkt</string>
-  <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
-  <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
-  <string name="save_edits">Save edits</string>
-  <string name="contribution_by">Contribution By</string>
+  <string name="hint_serving_size">Ekseampler: 60 g, 12 oz, 20cl, 2 fl oz</string>
+  <string name="nutrient_already_added">%s er allerede til stede i næringsfakta</string>
+  <string name="save_edits">Gem ændringer</string>
+  <string name="contribution_by">Bidrag fra</string>
   <string name="title_activity_product">Title</string>
   <string name="description_activity_product">description</string>
 </resources>
