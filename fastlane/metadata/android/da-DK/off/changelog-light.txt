@@ -15,7 +15,7 @@ v2.8 ! Efter den massive V2 blev alle OFF-frivillige ved med at arbejdet hårdt 
 4. Husrengøring (af Rutvik & Salfai)
 5. 🌎 Koreansk og Indonesisk
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. dig 🙂
-1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+2.8.8 ! Troede, at vi ville stoppe ved produkttilføjelse? Alle OFF-frivillige blev ved med at arbejdede hårdt. 590k produkter, 182 lande, 10k+ bidragsydere, herunder dig 🙂
+1. Du kan nu redigere ethvert produkt med din OFF-konto. Klik ✏️ på en produktside for at redigere.
+2. 🌍 Arabisk, Hebraisk, Hollandsk, Slovakisk, Spansk, Ungarsk og Vietnamesisk (translate.openfoodfacts.org for at hjælpe)
+3. Open Food Facts er en fuldstændig frivilligbaseret indsats: Du kan donere tid (world.openfoodfacts.org/contribute) eller penge (donate.openfoodfacts.org)
