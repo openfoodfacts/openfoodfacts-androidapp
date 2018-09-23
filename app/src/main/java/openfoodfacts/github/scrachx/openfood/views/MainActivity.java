@@ -91,6 +91,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -994,7 +995,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             if (temp_barcode.length() > 0) {
                                 dialog.cancel();
                                 if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
-                                    image = new ProductImage(temp_barcode, OTHER, new File(selected.getPath()));
+                                    File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
+                                    image = new ProductImage(temp_barcode, OTHER, imageFile);
                                     api.postImg(MainActivity.this, image);
                                 } else {
                                     Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
