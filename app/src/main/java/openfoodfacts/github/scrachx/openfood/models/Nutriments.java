@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -13,6 +14,7 @@ import java.util.Map;
 import openfoodfacts.github.scrachx.openfood.R;
 
 import static android.text.TextUtils.isEmpty;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 /**
  * JSON representation of the product nutriments entry
@@ -226,8 +228,19 @@ public class Nutriments implements Serializable {
         return additionalProperties.get(nutrimentName + "_100g").toString();
     }
 
-    public Double getValue(String nutrimentName){
-        return ((Double) additionalProperties.get(nutrimentName + "_value"));
+    public String getValue(String nutrimentName) {
+        if (additionalProperties.get(nutrimentName + "_value") != null) {
+            return additionalProperties.get(nutrimentName + "_value").toString();
+        }
+        return null;
+    }
+
+    @Nullable
+    public String getModifier(String nutrimentName) {
+        if (additionalProperties.get(nutrimentName + "_modifier") != null) {
+            return additionalProperties.get(nutrimentName + "_modifier").toString();
+        }
+        return null;
     }
 
     public boolean contains(String nutrimentName){
@@ -287,6 +300,44 @@ public class Nutriments implements Serializable {
         public String getUnit() {
             return unit;
         }
+
+        public String getforanyvalue(float x,String spinnervalue){
+            String s = for100g;
+            if(s.isEmpty() || s.contains("%"))
+            {
+                return for100g;
+            }
+            else if(spinnervalue.equals("g"))
+            {
+                float value = Float.valueOf(s);
+                value = (x/100)*value;
+                String snew = Float.toString(value);
+                snew = getRoundNumber(snew);
+                return(snew);
+            }
+            else if(spinnervalue.equals("kg"))
+            {
+                float value = Float.valueOf(s);
+                value = (x*10)*value;
+                String snew = Float.toString(value);
+                snew = getRoundNumber(snew);
+                return(snew);
+            }
+            else if(spinnervalue.equals("mg"))
+            {
+                float value = Float.valueOf(s);
+                value = (x/10000)*value;
+                String snew = Float.toString(value);
+                snew = getRoundNumber(snew);
+                return(snew);
+            }
+            else
+            {
+                return s;
+            }
+        }
+
+
     }
 
 }

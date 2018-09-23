@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.chrisbanes.photoview.PhotoView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/photo_width"
+    android:layout_height="@dimen/photo_height"
+    android:layout_margin="@dimen/spacing_small">
+</com.github.chrisbanes.photoview.PhotoView>

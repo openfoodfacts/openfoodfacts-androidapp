@@ -1,42 +1,45 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+Oto slogany nad screenshotami w playstore. Niech będą krótkie i atrakcyjne.
+Nie zmieniaj nazwy pliku.
 ---
-scan_en.png
-Scan products
+scan-eng.png
+Skanuj produkty
 
 quickview_en.png
 Zdobądź skalę Nutriscore
 
 history_en.png
-Your full scan history, fully private & exportable
+Pełna historia skanowania, w pełni prywatna i eksportowalna
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Dalej z Wikipedią
 
 allergen_alert_en.png
-Set allergen alerts
+Ustawy ostrzeżenia o alergenach
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Odżywianie, uproszczone
 
 product_view_allergen_alert_en.png
 Ostrzeżenie o alergensch
 
 categories_en.png
-Get alternatives for your favorite foods
+Znajdź alternatywę dla ulubionych potraw
+
+foodtransparency_en.png
+Become an actor of food transparency
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Wikipedia dla żywności
+Wikipedia kosmetyków
+Wikipedia karmy dla zwierząt domowych
+Wikipedia produktów
 
 product_view_ingredients_en.png
 Składniki
 
 menu_en.png
-Powerful
+Mocny
 
 product_view_nutrition_table_en.png
 Wartości odżywcze

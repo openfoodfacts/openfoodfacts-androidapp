@@ -100,28 +100,46 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
             if (fat != null && fatNutriment != null) {
                 String fatNutrimentLevel = fat.getLocalize(context);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat), getRoundNumber(fatNutriment.getFor100g()) + " " + fatNutriment.getUnit(), fatNutrimentLevel, fat.getImageLevel()));
+                String modifier = nutriments.getModifier(Nutriments.FAT);
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtFat),
+                                                    (modifier == null ? "" : modifier)
+                                                            + getRoundNumber(fatNutriment.getFor100g())
+                                                            + " " + fatNutriment.getUnit(),
+                                                    fatNutrimentLevel,
+                                                    fat.getImageLevel()));
             }
 
             Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 String saturatedFatLocalize = saturatedFat.getLocalize(context);
                 String saturatedFatValue = getRoundNumber(saturatedFatNutriment.getFor100g()) + " " + saturatedFatNutriment.getUnit();
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatValue, saturatedFatLocalize, saturatedFat.getImageLevel()));
+                String modifier = nutriments.getModifier(Nutriments.SATURATED_FAT);
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat),
+                                                    (modifier == null ? "" : modifier) + saturatedFatValue,
+                                                    saturatedFatLocalize,
+                                                    saturatedFat.getImageLevel()));
             }
 
             Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
             if (sugars != null && sugarsNutriment  != null) {
                 String sugarsLocalize = sugars.getLocalize(context);
                 String sugarsValue = getRoundNumber(sugarsNutriment.getFor100g()) + " " + sugarsNutriment.getUnit();
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsValue, sugarsLocalize, sugars.getImageLevel()));
+                String modifier = nutriments.getModifier(Nutriments.SUGARS);
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars),
+                                                    (modifier == null ? "" : modifier) + sugarsValue,
+                                                    sugarsLocalize,
+                                                    sugars.getImageLevel()));
             }
 
             Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
             if (salt != null && saltNutriment != null) {
                 String saltLocalize = salt.getLocalize(context);
                 String saltValue = getRoundNumber(saltNutriment.getFor100g()) + " " + saltNutriment.getUnit();
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltValue, saltLocalize, salt.getImageLevel()));
+                String modifier = nutriments.getModifier(Nutriments.SALT);
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt),
+                                                    (modifier == null ? "" : modifier) + saltValue,
+                                                    saltLocalize,
+                                                    salt.getImageLevel()));
             }
 
             img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));

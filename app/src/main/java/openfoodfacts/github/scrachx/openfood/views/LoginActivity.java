@@ -17,6 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -62,8 +63,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     TextView infoLogin;
     @BindView(R.id.buttonSave)
     Button save;
-    @BindView(R.id.buttonCreateAccount)
-    Button signup;
+    @BindView(R.id.createaccount)
+    TextView createAccount;
     @BindView(R.id.login_linearlayout)
     LinearLayout linearLayout;
 
@@ -77,7 +78,16 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
 
-    
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        }
+        return false;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,8 +98,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
         resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
 
@@ -97,12 +108,11 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
-
-        signup.setEnabled(false);
+        createAccount.setEnabled(true);
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
-        String loginS = settings.getString("user", getResources().getString(R.string.txt_anonymous));
-        if (!loginS.equals(getResources().getString(R.string.txt_anonymous))) {
+        String loginS = settings.getString(getResources().getString(R.string.user), getResources().getString(R.string.txt_anonymous));
+        if (loginS.equals(getResources().getString(R.string.user))) {
             new MaterialDialog.Builder(this)
                     .title(R.string.log_in)
                     .content(R.string.login_true)
@@ -185,9 +195,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
                     Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
                     passwordView.setText("");
-                    editor.putString("user", "");
-                    editor.putString("pass", "");
-                    editor.apply();
+                    loginView.setText("");
                     infoLogin.setText(R.string.txtInfoLoginNo);
                     lt.hide();
                 } else {
@@ -232,7 +240,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         save.setClickable(true);
     }
 
-    @OnClick(R.id.buttonCreateAccount)
+    @OnClick(R.id.createaccount)
     protected void onCreateUser() {
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
 
@@ -247,12 +255,13 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @Override
     public void onCustomTabsConnected() {
-        signup.setEnabled(true);
+        createAccount.setEnabled(true);
     }
 
     @Override
     public void onCustomTabsDisconnected() {
-        signup.setEnabled(false);
+        //TODO find out what do do with it
+        createAccount.setEnabled(false);
     }
 
     @Override
@@ -265,7 +274,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void onStop() {
         super.onStop();
         customTabActivityHelper.unbindCustomTabsService(this);
-        signup.setEnabled(false);
+        createAccount.setEnabled(false);
     }
 
     @Override

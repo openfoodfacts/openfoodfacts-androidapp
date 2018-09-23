@@ -16,11 +16,10 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item> </item>
+    <item>g</item>    
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
-    <item>ml</item>
     <item>ml</item>
     <item>cl</item>
     <item>fl oz</item>
@@ -147,16 +146,16 @@
   <string name="txtSendAll">Pošaljite sve</string>
   <string name="txtNoData">Nema podataka</string>
   <string name="txtPictureNeeded">Molimo vas da pošaljete prvo sliku</string>
-  <string name="toastSending">Otpremanje...</string>
+  <string name="toastSending">Otpremanje…</string>
   <string name="dataSaved">Zapaćene lokalno na tvom uređaju</string>
   <string name="txtInfoAddUser">Molimo vas da unesete korisničko ime i lozinku</string>
   <string name="txtDataUpdated">Podaci su ažurirani</string>
-  <string name="txtLoading">Učitavam...</string>
+  <string name="txtLoading">Učitavam…</string>
   <string name="txtDialogsContentDelete">Da li želite da obrišete ovu stavku?</string>
   <string name="txtDialogsContentInfoSave">Ovaj proizvod je sačuvan lokalno, možete ga izmeniti u meniju \"Offline edit\"</string>
   <string name="txtBarcodeRequire">Barkod je neophodan</string>
   <string name="txtOk">ОК</string>
-  <string name="txtContentDialogUploading">Molimo vas da ne napuštate tokom ovog procesa...</string>
+  <string name="txtContentDialogUploading">Molimo vas da ne napuštate tokom ovog procesa…</string>
   <string name="txtAbout">Fotografije koje pošaljete su objavljene pod besplatnom licencom Creative Commons Attribution i ShareAlike.</string>
   <string name="txtAllsent">Proizvod poslat</string>
   <string name="txtPalm">Ovaj proizvod ne sadrži palmino ulje</string>
@@ -212,7 +211,7 @@
   <string name="title_clear_history_dialog">Obriši</string>
   <string name="text_clear_history_dialog">Da li želite da izbrišete svu istoriju skeniranja?</string>
   <string name="export_csv_history">Izvezi CSV</string>
-  <string name="txt_exporting_history">Izvoz istorije u toku...</string>
+  <string name="txt_exporting_history">Izvoz istorije u toku…</string>
   <string name="txt_history_exported">Istorija izvezena</string>
   <string name="permision_write_external_storage">Dozvola za upis na eksternu memorije je potrebna za izvoz istorije.</string>
   <string name="txt_nutrition_not_found">Nedostupno</string>

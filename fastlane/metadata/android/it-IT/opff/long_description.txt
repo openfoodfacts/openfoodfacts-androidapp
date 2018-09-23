@@ -1,34 +1,34 @@
 Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+L'app consente di vedere gli oltre 600 alimenti per animali già contenuti nel database libero e aperto di Open Pet Food Facts e di aggiungere foto e dati per i prodotti mancanti.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+***Contribuire alla trasparenza del cibo per animali***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts è un database di alimenti per animali realizzato da tutti, per tutti.
+- Puoi usarlo per scegliere meglio tra gli alimenti per animali e, dato che sono dati aperti, chiunque può riutilizzarlo per qualsiasi scopo.
+- Open Pet Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
+- Puoi iniziare a contribuire oggi aggiungendo un prodotto dei tuoi alimenti per animali. 
 
 
-*** Get the Facts ***
+*** Prendi i fatti ***
 
-You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
+Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
+- l'elenco degli ingredienti (compreso il contenuto di ceneri)
 - nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
+- marche, allergeni, etichette (biologico, vegano...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Funziona bene in qualsiasi condizione ***
+- Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
+- L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
+- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se non hai una fotocamera o non funziona.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Il tuo cibo per animali, i tuoi dati ***
+- I tuoi dati personali sono tuoi e non vengono mai inviati online
+- Puoi usare l'app in modo anonimo
+- Puoi esportare la cronologia di scansione
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Per il cibo puoi installare Open Food Facts, per i cosmetici Open Beauty Facts e per tutti gli altri prodotti Open Products Facts.

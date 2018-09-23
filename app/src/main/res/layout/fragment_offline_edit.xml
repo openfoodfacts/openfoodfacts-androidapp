@@ -34,7 +34,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_margin="@dimen/padding_short"
                 android:background="@color/white"
-                app:srcCompat="@drawable/ic_action_cross" />
+                app:srcCompat="@drawable/ic_action_cross"
+                android:contentDescription="TODO" />
 
 
             <LinearLayout
@@ -77,7 +78,8 @@
             android:paddingTop="@dimen/padding_large"
             android:layout_centerHorizontal="true"
             android:visibility="visible"
-            app:srcCompat="@drawable/ic_cloud_done" />
+            app:srcCompat="@drawable/ic_cloud_done"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/noDataText"

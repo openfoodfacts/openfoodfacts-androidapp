@@ -34,4 +34,5 @@
   <!-- OPF tagline in different languages -->
   <string name="tagline">Base de datos libre sobre productos</string>
   <string name="product_not_found">El producto %1$s que has escaneado aún no esta en el inventario de Open Products Facts, ¿puedes añadirlo?</string>
+  <string name="currently_on_version">Currently on Open Products Facts</string>
 </resources>

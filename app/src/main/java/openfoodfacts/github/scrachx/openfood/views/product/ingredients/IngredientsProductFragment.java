@@ -79,7 +79,7 @@ import static org.jsoup.helper.StringUtil.isBlank;
 public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View {
 
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
-    public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}]+");
+    public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}]+[\\p{L}\\p{Nd}\\p{Z}\\p{P}&&[^,]]*");
     @BindView(R.id.textIngredientProduct)
     TextView ingredientsProduct;
     @BindView(R.id.textSubstanceProduct)
@@ -443,9 +443,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
 
         List<String> list = new ArrayList<>();
-        Matcher m = ALLERGEN_PATTERN.matcher(mState.getProduct().getAllergens().replace(",", ""));
+        Matcher m = ALLERGEN_PATTERN.matcher(mState.getProduct().getAllergens());
         while (m.find()) {
-            final String tma = m.group();
+            final String tma = m.group().trim();
             boolean canAdd = true;
 
             for (String allergen : list) {
@@ -523,7 +523,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0))).setAllowFlipping(false).setOutputUri(Utils.getOutputPicUri(getContext()))
+                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
+                        .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                        .setAllowFlipping(false)
+                        .setOutputUri(Utils.getOutputPicUri(getContext()))
                         .start(getContext(), mFragment);
             }
 

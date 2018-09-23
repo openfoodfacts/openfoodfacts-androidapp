@@ -38,9 +38,12 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -66,6 +69,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
     ProgressBar progressBar;
     @BindView(R.id.noResultsLayout)
     LinearLayout noResultsLayout;
+    @BindView(R.id.textNoResults)
+    TextView textNoResults;
+    @BindView(R.id.textExtendSearch)
+    TextView textExtendSearch;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
     String searchQuery;
@@ -86,6 +93,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private int contributionType;
+    private CategoryNameDao mCategoryNameDao;
 
 
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
@@ -213,6 +221,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         Bundle extras = getIntent().getExtras();
         searchType = extras.getString(SEARCH_TYPE);
         searchQuery = extras.getString(SEARCH_QUERY);
+        mCategoryNameDao = Utils.getAppDaoSession(this).getCategoryNameDao();
         newSearchQuery();
 
 
@@ -369,6 +378,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     database for the query.
                      */
                         if (countProducts == -2) {
+                            textNoResults.setText(R.string.txt_no_matching_products);
+                            textExtendSearch.setText(R.string.txt_broaden_search);
                             noResultsLayout.setVisibility(View.VISIBLE);
                             noResultsLayout.bringToFront();
                             productsRecyclerView.setVisibility(View.INVISIBLE);
@@ -393,7 +404,24 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
                 break;
             case SearchType.CATEGORY:
-                api.getProductsByCategory(searchQuery, pageAddress, this::loadData);
+                String appLanguageCode = LocaleHelper.getLanguage(this);
+                CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.Name.eq(searchQuery), CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode)).unique();
+                String tag = categoryName != null ? categoryName.getCategoryTag() : searchQuery;
+                api.getProductsByCategory(tag, pageAddress, (value, category) -> {
+                    if (value && category != null && Integer.valueOf(category.getCount()) == 0) {
+                        textNoResults.setText(R.string.txt_no_matching__category_products);
+                        textExtendSearch.setText(null);
+                        noResultsLayout.setVisibility(View.VISIBLE);
+                        noResultsLayout.bringToFront();
+                        productsRecyclerView.setVisibility(View.INVISIBLE);
+                        progressBar.setVisibility(View.INVISIBLE);
+                        offlineCloudLayout.setVisibility(View.INVISIBLE);
+                        countProductsView.setVisibility(View.GONE);
+                        swipeRefreshLayout.setRefreshing(false);
+                    } else {
+                        loadData(value, category);
+                    }
+                });
                 break;
 
 

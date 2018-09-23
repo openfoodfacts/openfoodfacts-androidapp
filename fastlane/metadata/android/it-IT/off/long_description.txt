@@ -1,35 +1,36 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Fai una scansione dei prodotti alimentari o dei codici a barre per ottenere dati su ingredienti, additivi e valori nutrizionali.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+L'app consente di vedere i 547.000 prodotti (compresi i 175.000 negli Stati Uniti) già contenuti nel database libero e aperto di Open Food Facts, nonché di aggiungere foto e dati per i prodotti mancanti.
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+Per scoprire il progetto Open Food Facts, visita https://it.openfoodfacts.org
 
 
-***Contribute to Food Transparency***
+***Contribuisci alla trasparenza alimentare***
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your food cupboard. 
+- Open Food Facts è un database di prodotti alimentari realizzato da tutti, per tutti.
+- Puoi usarlo per fare scelte alimentari migliori e, dato che sono dati aperti, chiunque può riutilizzarlo per qualsiasi scopo.
+- Open Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
+- Puoi iniziare a contribuire oggi aggiungendo un prodotto dalla tua dispensa. 
 
-*** Get the Facts ***
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+*** Prendi i fatti ***
+- Open Food Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai in grado di trovare (secondo le indicazioni presenti sui prodotti):
+- l'impronta di carbonio (emissioni di CO2) e l'imballaggio (comprese le istruzioni per il riciclo),
+- il Nutriscore (punteggio nutrizionale), i nutrienti, il contenuto di grassi, gli acidi grassi saturi, i carboidrati, gli zuccheri, le fibre, le proteine, il sale e il sodio.
+- i marchi, gli allergeni, le etichette (bio, senza glutine, vegano, vegetariano, halal, kosher ...), informazioni sulla tracciabilità (codici di imballaggio, origine degli ingredienti)
+- Su vini e birre troverai la gradazione alcolica.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Funziona bene in qualsiasi condizione ***
+- Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
+- L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
+- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se non hai una fotocamera o non funziona.
 
-*** Your food, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Il tuo cibo, i tuoi dati ***
+- I tuoi dati personali sono tuoi e non vengono mai inviati online
+- Puoi usare l'app in modo anonimo
+- Puoi esportare la cronologia di scansione
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Food Facts è anche disponibile sul web all'indirizzo 
+https://world-it.openfoodfacts.org/
+Domande e feedback a: contact@openfoodfacts.org
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Per i cosmetici è possibile installare Open Beauty Facts, per alimenti per animali domestici Open Pet Food Facts e per tutti gli altri prodotti Open Products Facts.

@@ -11,12 +11,12 @@
   <string name="website_product">https://world-it.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-it.openfoodfacts.org/contributor/</string>
-  <string name="txtHome">Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni, dati nutrizionali e tutti i frammenti d\'informazione che si possono trovare sulle etichette dei prodotti.</string>
-  <string name="slide_1_title">Contribuire alla trasparenza del cibo</string>
+  <string name="txtHome">Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni, informazioni nutrizionali e tutti i dettagli d\'informazione che si possono trovare sulle etichette dei prodotti.</string>
+  <string name="slide_1_title">Contribuisci alla trasparenza alimentare</string>
   <string name="slide_1_desc">Scansiona i prodotti, fotografali, rendi la trasparenza alimentare una realtà</string>
   <string name="slide_2_title">Prendi i fatti</string>
   <string name="slide_2_desc">Informazioni dettagliate sul prodotto che hai scansionato, decifrate per te</string>
-  <string name="slide_3_title">Ottenere il Nutriscore</string>
+  <string name="slide_3_title">Ottieni il Nutriscore</string>
   <string name="slide_3_desc">Una visione sintetica delle proprietà nutrizionali dei tuoi prodotti alimentari preferiti</string>
   <string name="slide_4_title">Utilizzabile offline</string>
   <string name="slide_4_desc">Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento</string>
@@ -28,9 +28,10 @@
   <string name="Donation">Clicca qui per donare a Open Food Facts</string>
   <string name="translate_help_title">Aiuta a tradurre Open Food Facts</string>
   <string name="translate_help_summary">Porta il database di Open Food Facts nella tua lingua - non è richiesta alcuna conoscenza tecnica</string>
-  <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+  <string name="text_offline_info_dialog">Scansione i prodotti anche quando sei offline così che possano essere aggiunti a Open Food Facts successivamente. I prodotti scansionati appariranno qui e potrai inviarli utilizzando il pulsante sottostante.</string>
   <string name="warning_alert_data">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">Il database libero per i prodotti alimentari</string>
   <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Food Facts. Puoi aggiungerlo?</string>
+  <string name="currently_on_version">Attualmente su Open Food Facts</string>
 </resources>

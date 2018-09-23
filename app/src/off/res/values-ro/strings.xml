@@ -33,4 +33,5 @@
   <!-- OFF tagline in different languages -->
   <string name="tagline">baza de date gratuită a produselor alimentare</string>
   <string name="product_not_found">Produsul %1$s pe care l-ați scanat nu există încă în Open Food Facts. Puteți să îl adăugați?</string>
+  <string name="currently_on_version">Currently on Open Food Facts</string>
 </resources>

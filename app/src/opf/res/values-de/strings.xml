@@ -34,4 +34,5 @@
   <!-- OPF tagline in different languages -->
   <string name="tagline">die öffentlich zugängliche Produktdatenbank</string>
   <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Product Facts. Könnten Sie es bitte hinzufügen?</string>
+  <string name="currently_on_version">Aktuell auf Open Products Facts</string>
 </resources>

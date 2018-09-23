@@ -1,13 +1,13 @@
-***Contribute to Cosmetic Transparency***
+***Kozmetik Şeffaflığına Katkıda Bulunun***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+-Open Beauty Facts herkes tarafından herkes için oluşturulan bir kozmetik ürünleri veritabanıdır.
+-Daha iyi kozmetik tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
+-Open Beauty Facts dünyanın dört bir yanından, binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
+-Bugün kozmetik dolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz. 
 
-*** Get the Facts ***
+***Gerçekleri Öğrenin***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+-Kozmetik katkı maddeleri,F.I.L. kodları. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
 - Open Beauty Facts helps you to make sense of the fine print on products labels.
 - You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
 - You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…

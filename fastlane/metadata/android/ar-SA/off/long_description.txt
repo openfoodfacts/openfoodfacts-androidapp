@@ -5,9 +5,9 @@ The app allows to view the 547.000 products (including 175.000 in the US) alread
 To discover the Open Food Facts project, please visit https://openfoodfacts.org
 
 
-***Contribute to Food Transparency***
+***ساهم في شفافية المواد الغذائية***
 
-- Open Food Facts is a food products database made by everyone, for everyone.
+- Open Food Facts هي قاعدة بيانات مفتوحة للمنتجات الغذائية التي ساهم فيها الجميع ، للجميع.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your food cupboard. 

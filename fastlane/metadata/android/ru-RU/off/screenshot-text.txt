@@ -2,13 +2,13 @@ Those are the taglines shown above the screenshots in the playstore. Keep them s
 Don't change the filename.
 ---
 scan_en.png
-Scan products
+Сканирование продуктов
 
 quickview_en.png
 Получить Nutriscore
 
 history_en.png
-Your full scan history, fully private & exportable
+Полная история сканирования, полностью приватная и экспортируемая
 
 product_view_wikipedia_en.png
 Go further with Wikipedia
@@ -18,19 +18,22 @@ Set allergen alerts
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Питательность, кратко
 
 product_view_allergen_alert_en.png
 Предупреждение об аллергенах
 
 categories_en.png
-Get alternatives for your favorite foods
+Найдите альтернативу для ваших любимых блюд
+
+foodtransparency_en.png
+Become an actor of food transparency
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Википедия продуктов питания
+Википедия косметики
+Википедия корма для домашних животных
+Википедия продуктов
 
 product_view_ingredients_en.png
 Ингредиенты

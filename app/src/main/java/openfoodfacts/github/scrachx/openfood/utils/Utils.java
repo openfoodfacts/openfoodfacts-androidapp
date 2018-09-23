@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -132,9 +133,9 @@ public class Utils {
     }
 
     public static void hideKeyboard(Activity activity) {
-        if(activity == null)
+        if (activity == null)
             return;
-        
+
         View view = activity.getCurrentFocus();
 
         if (view != null) {
@@ -259,6 +260,33 @@ public class Utils {
                 break;
         }
 
+        return drawable;
+    }
+
+    public static int getNovaGroupDrawable(String novaGroup) {
+        int drawable;
+
+        if (novaGroup == null) {
+            return R.drawable.ic_help_outline_orange_24dp;
+        }
+
+        switch (novaGroup) {
+            case "1":
+                drawable = R.drawable.ic_nova_group_1;
+                break;
+            case "2":
+                drawable = R.drawable.ic_nova_group_2;
+                break;
+            case "3":
+                drawable = R.drawable.ic_nova_group_3;
+                break;
+            case "4":
+                drawable = R.drawable.ic_nova_group_4;
+                break;
+            default:
+                drawable = R.drawable.ic_help_outline_orange_24dp;
+                break;
+        }
         return drawable;
     }
 
@@ -606,6 +634,18 @@ public class Utils {
 
     }
 
-
+    /**
+     * @param context The context
+     * @return Returns the version name of the app
+     */
+    public static String getVersionName(Context context) {
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            return pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "(version unknown)";
+    }
 }
 

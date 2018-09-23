@@ -5,7 +5,7 @@ scan_en.png
 Scan products
 
 quickview_en.png
-Get the Nutriscore
+Krijg de Nutriscore
 
 history_en.png
 Your full scan history, fully private & exportable
@@ -25,6 +25,9 @@ Allergenen alert
 
 categories_en.png
 Get alternatives for your favorite foods
+
+foodtransparency_en.png
+Become an actor of food transparency
 
 product_view_summary_en.png
 Wikipedia for Food

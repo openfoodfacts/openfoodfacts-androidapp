@@ -43,7 +43,5 @@
     <string name="tagline">the free food products database</string>
     <string name="app_name_long" translatable="false">Open Food Facts</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="currently_on_version">Currently on Open Food Facts</string>
 </resources>

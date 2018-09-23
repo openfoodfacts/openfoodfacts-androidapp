@@ -33,4 +33,5 @@
   <!-- OFF tagline in different languages -->
   <string name="tagline">the free food products database</string>
   <string name="product_not_found">Eskaneatu duzun %1$s produktua ez dago Open Food Facts datu-basean oraindik. Gehitu dezakezu?</string>
+  <string name="currently_on_version">Currently on Open Food Facts</string>
 </resources>

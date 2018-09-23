@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 285
-        versionName "2.8.5"
+        versionCode 290
+        versionName "2.9.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -116,7 +116,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 7
+    schemaVersion 8
 }
 android {
     // Other settings
@@ -232,6 +232,9 @@ dependencies {
     implementation('com.theartofdev.edmodo:android-image-cropper:2.6.0') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
+
+    //UI Component : Chips Input
+    implementation "com.hootsuite.android:nachos:1.1.1"
 
     //Testing
     androidTestUtil 'com.android.support.test:orchestrator:1.0.2'

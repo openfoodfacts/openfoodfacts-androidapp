@@ -36,12 +36,6 @@
   <string name="no_offline_data">סיימת</string>
   <string name="first_offline">מוצרים שהוספת ללא חיבור לאינטרנט יופיעו כאן</string>
   <!-- Image Upload -->
-  <string-array name="upload_image">
-    <item>640 X 480</item>
-    <item>1024 X 768</item>
-    <item>1152 X 864</item>
-    <item>1600 X 1200</item>
-  </string-array>
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>תקציר</item>
@@ -51,11 +45,10 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item> </item>
     <item>מ״ג</item>
     <item>ק״ג</item>
     <item>ל׳</item>
-    <item>מ״ל</item>
+    <item>ל</item>
     <item>מ״ל</item>
     <item>ס״ל</item>
     <item>אונקיה</item>
@@ -66,6 +59,107 @@
     <item>ק״ג</item>
     <item>ל׳</item>
   </string-array>
+  <!-- nutrition energy units -->
+  <string-array name="energy_units">
+    <item>קק״ל</item>
+    <item>kj</item>
+  </string-array>
+  <!-- nutrition weight units -->
+  <string-array name="nutrition_weight_units">
+    <item>מ״ג</item>
+    <item>ק״ג</item>
+    <item>µg</item>
+  </string-array>
+  <!-- all weight units -->
+  <string-array name="weight_all_units">
+    <item>מ״ג</item>
+    <item>ק״ג</item>
+    <item>µg</item>
+    <item>% DV</item>
+    <item>IU</item>
+  </string-array>
+  <!-- nutrients list
+    do not change the order of the array as the items are paired with the String array
+    PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
+  <string-array name="nutrients_array">
+    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
+    <item>Arachidic acid (20:0)</item>
+    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
+    <item>Behenic acid (22:0)</item>
+    <item>ביקרבונט</item>
+    <item>ביוטין</item>
+    <item>Butyric acid (4:0)</item>
+    <item>קפאין</item>
+    <item>סידן</item>
+    <item>Capric acid (10:0)</item>
+    <item>Caproic acid (6:0)</item>
+    <item>Caprylic acid (8:0)</item>
+    <item>קזאין</item>
+    <item>Cerotic acid (26:0)</item>
+    <item>כלוריד</item>
+    <item>כולסטרול</item>
+    <item>כרומיום</item>
+    <item>נחושת</item>
+    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
+    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+    <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
+    <item>Elaidic acid (18:1 n-9)</item>
+    <item>חומצה ארוסית (22:1 n-9)</item>
+    <item>פלואוריד</item>
+    <item>פרוקטוז</item>
+    <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+    <item>גלוקוז</item>
+    <item>Gondoic acid (20:1 n-9)</item>
+    <item>יוד</item>
+    <item>ברזל</item>
+    <item>לקטוז</item>
+    <item>Lauric acid (12:0)</item>
+    <item>Lignoceric acid (24:0)</item>
+    <item>Linoleic acid / LA (18:2 n-6)</item>
+    <item>מגנזיום</item>
+    <item>מלטודקסטרין</item>
+    <item>מלטוז</item>
+    <item>מנגן</item>
+    <item>Mead acid (20:3 n-9)</item>
+    <item>Melissic acid (30:0)</item>
+    <item>מוליבדן</item>
+    <item>Monounsaturated fat</item>
+    <item>Montanic acid (28:0)</item>
+    <item>Myristic acid (14:0)</item>
+    <item>Nervonic acid (24:1 n-9)</item>
+    <item>נוקלאוטידים</item>
+    <item>Oleic acid (18:1 n-9)</item>
+    <item>חומצות שומן אומגה 3</item>
+    <item>חומצות שומן אומגה 6</item>
+    <item>חומצות שומן אומגה 9</item>
+    <item>Palmitic acid (16:0)</item>
+    <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+    <item>pH</item>
+    <item>זרחן</item>
+    <item>Sugar alcohols (Polyols)</item>
+    <item>Polyunsaturated fat</item>
+    <item>אשלגן</item>
+    <item>סלניום</item>
+    <item>Serum proteins</item>
+    <item>צורן דו חמצני</item>
+    <item>עמילן</item>
+    <item>Stearic acid (18:0)</item>
+    <item>סוכרוז</item>
+    <item>טאורין</item>
+    <item>שומן טרנס</item>
+    <item>ויטמין A</item>
+    <item>ויטמין B1 (תיאמין)</item>
+    <item>ויטמין B12 (קובלאמין)</item>
+    <item>ויטמין B2 (ריבופלבין)</item>
+    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
+    <item>ויטמין B6 (פירידוקסין)</item>
+    <item>ויטמין B9 (חומצה פולית)</item>
+    <item>ויטמין C (חומצה אסקורבית)</item>
+    <item>ויטמין D</item>
+    <item>ויטמין E</item>
+    <item>ויטמין K</item>
+    <item>אבץ</item>
+  </string-array>
   <!-- Text units -->
   <string-array name="images_array">
     <item>בררת מחדל</item>
@@ -75,8 +169,6 @@
   <!-- Content Description -->
   <string name="bookmark">סימניה</string>
   <string name="edit">עריכה</string>
-  <string name="fastscroller_track">רצועת גלילה מהירה</string>
-  <string name="fastscroller_handle">ידית גלילה מהירה</string>
   <string name="search_button">חיפוש</string>
   <string name="no_products">המוצרים לא נמצאו</string>
   <string name="desc_list_item_icon">סמל הפריט</string>
@@ -166,8 +258,6 @@
   <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
   <string name="create_account">הרשמה</string>
   <string name="home_drawer">ראשי</string>
-  <string name="open_beauty_drawer">Open Beauty Facts</string>
-  <string name="open_food_drawer">Open Food Facts</string>
   <string name="search_drawer">חיפוש</string>
   <string name="search_by_barcode_drawer">חיפוש לפי ברקוד</string>
   <string name="category_drawer">קטגוריות</string>
@@ -213,6 +303,7 @@
   <string name="new_offline_info">נא לצלם תמונות של המוצר, רכיביו, טבלת ערכיו התזונתיים וכל מידע נוסף שעל התווית. תודה!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">הססמה חייבת להיות באורך של 6 תווים לפחות.</string>
+  <string name="user">משתמש</string>
   <string name="error_field_required">זהו שדה חובה.</string>
   <string name="action_preferences">העדפות</string>
   <string name="prefs_scan_startup">סריקה עם ההפעלה</string>
@@ -221,6 +312,7 @@
   <string name="prefs_power_mode_summary">ניתן לסרוק מוצרים במהירות בסופר כדי לראות אילו מהם לא נמצאים במסד הנתונים.</string>
   <string name="prefs_language">שפה</string>
   <string name="prefs_language_summary">החלפת שפה</string>
+  <!-- Scan history -->
   <string name="scan_history_drawer">היסטוריה</string>
   <string name="clear_history">פינוי ההיסטוריה</string>
   <string name="title_clear_history_dialog">פינוי</string>
@@ -230,8 +322,15 @@
   <string name="txt_history_exported">ההיסטוריה יוצאה</string>
   <string name="permision_write_external_storage">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא היסטוריה.</string>
   <string name="txt_nutrition_not_found">לא זמין</string>
+  <string name="no_brand">אין מותג</string>
+  <string name="no_title">אין כותרת</string>
   <!-- Nutrition info tab -->
-  <string name="calculate_calories">חישוב קלוריות</string>
+    <string name="check_facts">בדיקה</string>
+  <string name="nutrition">תזונה</string>
+  <string name="calculated_nutrition">תזונה מחושבת</string>
+  <string name="please_enter_weight">נא להקליד את המשקל</string>
+  <string name="enter_weight">להקליד משקל</string>
+  <string name="calculate_nutrition_facts">חישוב עובדות תזונתיות</string>
   <string name="txt_calories_result">%1$s קילו קלוריות ב־%2$s %3$s</string>
   <string name="nutrition_carbohydrate">פחמימות</string>
   <string name="nutrition_carbohydrate_short_name">פחמימות (ג׳)</string>
@@ -265,7 +364,7 @@
   <string name="action_contributes">התרומות שלך</string>
   <string name="logout_drawer">יציאה</string>
   <string name="contribution_without_account">ניתן להיכנס או ליצור חשבון כדי לשמור על התרומות שלך</string>
-  <string name="textCarbonFootprint">"טביעה פחמנית / פליטת פחמן דו חמצני: "</string>
+  <string name="textCarbonFootprint">טביעה פחמנית / פליטת פחמן דו חמצני: </string>
   <string name="txtDialogPowerMode">תצוגה מהירה</string>
   <string name="txtSeeMore">מידע נוסף</string>
   <string name="action_search">חיפוש</string>
@@ -486,7 +585,7 @@
   <string name="txtDialogsTitle">פרטים</string>
   <string name="preference_show_all_product_photos_title">הצגת כל תמונות המוצר</string>
   <string name="preference_show_all_product_photos_summary">הצגת כל תמונות המוצר שהוגשו בלשונית נפרדת</string>
-  <string name="offline_product_addition_title">הוספת מוצר חדש</string>
+  <string name="offline_product_addition_title">Add a new product</string>
   <string name="productNameNull">שם לא ידוע</string>
   <string name="productBrandNull">מותג לא ידוע</string>
   <string name="productQuantityNull">כמות בלתי ידועה</string>
@@ -502,4 +601,76 @@
   <string name="preferences">העדפות</string>
   <string name="OFFlogo">הלוגו של Open Food Facts</string>
   <string name="loading_product">המוצר %s נטען</string>
+  <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
+  <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
+  <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
+  <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
+  <string name="choose_nutrient">Choose a nutrient</string>
+  <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
+  <string name="hint_product_URL">Link of the official page of the product</string>
+  <string name="product_language">Product language : </string>
+  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+  <string name="official_website">Official website</string>
+  <string name="scan_QR_code">Scan QR Code for product website</string>
+  <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
+  <string name="image_uploaded_successfully">Image uploaded successfully</string>
+  <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
+  <string name="ingredients_overwrite">Ingredients overwrite</string>
+  <string name="choose_mine">Choose mine</string>
+  <string name="keep_previous_version">Keep previous version</string>
+  <string name="product_name_overwrite">Product name overwrite</string>
+  <string name="yours">Yours: </string>
+  <string name="currently_on">Currently on %s: </string>
+  <string name="quantity_overwrite">Quantity overwrite</string>
+  <string name="link_overwrite">Link overwrite</string>
+  <string name="save_product">Do you want to save the product?</string>
+  <string name="error_adding_product">Something went wrong when adding product</string>
+  <string name="photos">Photos</string>
+  <string name="please_wait">Please wait</string>
+  <string name="product_uploaded_successfully">Product uploaded successfully</string>
+  <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
+  <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+  <string name="percent">%1$d%%</string>
+  <string name="overview">Overview</string>
+  <string name="ingredients">רכיבים</string>
+  <string name="nutrition_facts">Nutrition Facts</string>
+  <string name="your_version">Yours</string>
+  <string name="ingredients_picture">Ingredients Picture</string>
+  <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+  <string name="ingredients_list">Ingredients List</string>
+  <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+  <string name="extract_ingredients">Extract ingredients</string>
+  <string name="extracting_ingredients">הרכיבים מחולצים</string>
+  <string name="looksGood">Looks Good</string>
+  <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
+  <string name="traces">עקבות</string>
+  <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+  <string name="nutrition_facts_not_specified">המפרט התזונתי אינו מצוין על המוצר.</string>
+  <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+  <string name="for_100g_100ml">For 100g / 100ml</string>
+  <string name="per_serving">Per Serving</string>
+  <string name="serving_size">גודל ההגשה</string>
+  <string name="alcohol_unit" formatted="false">% vol / °</string>
+  <string name="add_a_nutrient">הוספת רכיב תזונתי</string>
+  <string name="add_this_product">Add this product</string>
+  <string name="product_picture">Product Picture</string>
+  <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
+  <string name="product_details">Product Details</string>
+  <string name="product_name">שם המוצר</string>
+  <string name="quantity">כמות</string>
+  <string name="labels">Labels</string>
+  <string name="period_of_time_after_opening">משך הזמן לאחר הפתיחה</string>
+  <string name="manufacturing_details">Manufacturing Details</string>
+  <string name="origin_of_ingredients">מקור הרכיבים</string>
+  <string name="manufacturing_place">Manufacturing place</string>
+  <string name="emb_code">EMB Code</string>
+  <string name="purchasing_details">Purchasing Details</string>
+  <string name="country_where_purchased">Country where purchased</string>
+  <string name="stores">חנויות</string>
+  <string name="additional_pictures">Additional Pictures</string>
+  <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+  <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
+  <string name="uploading_ingredients_image">Uploading ingredients image</string>
+  <string name="uploading_front_image">Uploading front image</string>
+  <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
 </resources>

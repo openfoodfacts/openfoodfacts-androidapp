@@ -56,10 +56,10 @@
     <dimen name="dots_margin_bottom">20dp</dimen>
     <dimen name="img_width_height">250dp</dimen>
     <dimen name="slide_desc">16sp</dimen>
-
+  
     <!--- AlertDialog ProductImage -->
     <dimen name="product_height">200dp</dimen>
     <dimen name="product_width">250dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="photo_height">180dp</dimen>
+    <dimen name="photo_width">180dp</dimen>
 </resources>

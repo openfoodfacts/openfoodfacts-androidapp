@@ -33,4 +33,5 @@
   <!-- OFF tagline in different languages -->
   <string name="tagline">खाद्य उत्पादों का डेटाबेस</string>
   <string name="product_not_found">आपके द्वारा स्कैन किआ गया उत्पाद %1$s ओपन फ़ूड फैक्ट्स में मौजूद नहीं हैं। क्या आप इसे ऐड सकते हैं?</string>
+  <string name="currently_on_version">Currently on Open Food Facts</string>
 </resources>

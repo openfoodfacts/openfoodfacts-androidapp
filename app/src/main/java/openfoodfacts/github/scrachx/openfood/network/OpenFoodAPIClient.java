@@ -44,7 +44,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.SaveProductOfflineActivity;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -132,18 +132,17 @@ public class OpenFoodAPIClient {
                             .positiveText(R.string.txtYes)
                             .negativeText(R.string.txtNo)
                             .onPositive((dialog, which) -> {
-                                Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                                State st = new State();
-                                Product pd = new Product();
-                                pd.setCode(barcode);
-                                st.setProduct(pd);
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("state", st);
-                                intent.putExtras(bundle);
-                                activity.startActivity(intent);
-                                activity.finish();
+                                if (!activity.isFinishing()) {
+                                    Intent intent = new Intent(activity, AddProductActivity.class);
+                                    State st = new State();
+                                    Product pd = new Product();
+                                    pd.setCode(barcode);
+                                    st.setProduct(pd);
+                                    intent.putExtra("state", st);
+                                    activity.startActivity(intent);
+                                    activity.finish();
+                                }
                             })
-                            .onNegative((dialog, which) -> activity.onBackPressed())
                             .show();
                 } else {
                     new HistoryTask().doInBackground(s.getProduct());
@@ -157,24 +156,28 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
+
+                if (activity == null || activity.isFinishing()) {
+                    return;
+                }
+
                 new MaterialDialog.Builder(activity)
                         .title(R.string.txtDialogsTitle)
                         .content(R.string.txtDialogsContent)
                         .positiveText(R.string.txtYes)
                         .negativeText(R.string.txtNo)
                         .onPositive((dialog, which) -> {
-                            Intent intent = new Intent(activity, SaveProductOfflineActivity.class);
-                            State st = new State();
-                            Product pd = new Product();
-                            pd.setCode(barcode);
-                            st.setProduct(pd);
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("state", st);
-                            intent.putExtras(bundle);
-                            activity.startActivity(intent);
-                            activity.finish();
+                            if (!activity.isFinishing()) {
+                                Intent intent = new Intent(activity, AddProductActivity.class);
+                                State st = new State();
+                                Product pd = new Product();
+                                pd.setCode(barcode);
+                                st.setProduct(pd);
+                                intent.putExtra("state", st);
+                                activity.startActivity(intent);
+                                activity.finish();
+                            }
                         })
-                        .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
             }
         });
@@ -805,12 +808,7 @@ public class OpenFoodAPIClient {
                 }
 
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onCategoryCallback.onCategoryResponse(false, null);
-                    } else {
-                        onCategoryCallback.onCategoryResponse(true, response.body());
-                    }
+                    onCategoryCallback.onCategoryResponse(true, response.body());
                 }
 
 

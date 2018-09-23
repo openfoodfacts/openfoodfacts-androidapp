@@ -34,4 +34,5 @@
   <!-- OPFF tagline in different languages -->
   <string name="tagline">gratis kæledyrsfoderproduktdatabase</string>
   <string name="product_not_found">Produktet %1$s, du har skannet, findes endnu ikke i Open Pet Food Facts. Kan du tilføje det?</string>
+  <string name="currently_on_version">I øjeblikket i Open Pet Food Facts</string>
 </resources>

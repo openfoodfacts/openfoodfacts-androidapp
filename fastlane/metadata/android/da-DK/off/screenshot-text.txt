@@ -5,7 +5,7 @@ scan_en.png
 Skan produkter
 
 quickview_en.png
-Få næringssoren
+Få ernæringsinformation
 
 history_en.png
 Din fulde skanningshistorik, helt privat og eksporterbar
@@ -26,6 +26,9 @@ Allergenadvarsel
 categories_en.png
 Få alternativer til dine yndlingsretter
 
+foodtransparency_en.png
+Bliv medspilleri fødevarergennemsigtighed
+
 product_view_summary_en.png
 Wikipedia for Mad
 Wikipedia for Kosmetik
@@ -39,4 +42,4 @@ menu_en.png
 Kraftfuld
 
 product_view_nutrition_table_en.png
-Ernæringsindhold
+Ernæringsinnhold

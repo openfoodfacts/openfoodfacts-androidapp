@@ -32,8 +32,7 @@
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/textCountProduct">
+            android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/products_recycler_view"
@@ -106,8 +105,9 @@
 
     <LinearLayout
         android:id="@+id/noResultsLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="invisible"
@@ -120,6 +120,8 @@
             android:id="@+id/textNoResults"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/padding_too_short"
+            android:paddingStart="@dimen/padding_too_short"
             android:text="@string/txt_no_matching_products"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/grey_500"
@@ -130,6 +132,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/materialize_typography_subheading"
+            android:paddingEnd="@dimen/padding_too_short"
+            android:paddingStart="@dimen/padding_too_short"
             android:text="@string/txt_broaden_search"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/grey_500"

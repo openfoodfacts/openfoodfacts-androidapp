@@ -1,25 +1,24 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import android.graphics.Bitmap;
-
 public class SaveItem {
 
     private String title;
-    private int icon;
+    private int fieldsCompleted;
     private String url;
     private String barcode;
     private String weight;
     private String brand;
 
-    public SaveItem(){}
+    public SaveItem() {
+    }
 
-    public SaveItem(String title, int icon, String url, String barcode , String weight ,String brand) {
+    public SaveItem(String title, int fieldsCompleted, String url, String barcode, String weight, String brand) {
         this.title = title;
-        this.icon = icon;
+        this.fieldsCompleted = fieldsCompleted;
         this.url = url;
         this.barcode = barcode;
         this.brand = brand;
-        this.weight =weight;
+        this.weight = weight;
     }
 
     public String getBarcode() {
@@ -30,20 +29,16 @@ public class SaveItem {
         this.barcode = barcode;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return this.title;
     }
 
-    public int getIcon(){
-        return this.icon;
-    }
-
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setIcon(int icon){
-        this.icon = icon;
+    public int getFieldsCompleted() {
+        return this.fieldsCompleted;
     }
 
     public String getUrl() {
@@ -54,19 +49,19 @@ public class SaveItem {
         this.url = url;
     }
 
-    public void setWeight(String weight){
-        this.weight = weight;
-    }
-
-    public String getWeight(){
+    public String getWeight() {
         return this.weight;
     }
 
-    public void setBrand(String brand){
-        this.brand = brand;
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 
-    public String getBrand(){
+    public String getBrand() {
         return this.brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }
