@@ -70,7 +70,9 @@ public class HomeFragment extends NavigationBaseFragment {
                 call.enqueue(new Callback<Search>() {
                     @Override
                     public void onResponse(Call<Search> call, Response<Search> response) {
-                        textHome.setText("Open Food Facts is an open database of more than "+response.body().getCount()+" food products (plus the ones you'll contribute) with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.");
+                        String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
+                        int totalProductCount = Integer.parseInt(response.body().getCount());
+                        textHome.setText(String.format(txtHomeOnline,totalProductCount));
                     }
 
                     @Override
