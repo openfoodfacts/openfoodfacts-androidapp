@@ -705,4 +705,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
   <string name="contribution_by">Kontrybucja</string>
   <string name="title_activity_product">Tytuł</string>
   <string name="description_activity_product">opis</string>
+  <string name="intent_filter_share_label">Add to Open Food Facts</string>
 </resources>

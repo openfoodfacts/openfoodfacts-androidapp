@@ -676,4 +676,5 @@
   <string name="contribution_by">Beitrag von</string>
   <string name="title_activity_product">Titel</string>
   <string name="description_activity_product">Beschreibung</string>
+  <string name="intent_filter_share_label">Zu Open Food Facts hinzufügen</string>
 </resources>
