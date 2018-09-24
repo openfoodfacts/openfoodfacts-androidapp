@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -24,6 +25,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
@@ -41,6 +43,9 @@ public class HomeFragment extends NavigationBaseFragment {
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
 
+    @BindView(R.id.textHome)
+    TextView textHome;
+
     private OpenFoodAPIService apiClient;
 
     @Override
@@ -53,6 +58,33 @@ public class HomeFragment extends NavigationBaseFragment {
         super.onViewCreated(view, savedInstanceState);
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if(getContext()!=null){
+            if(Utils.isNetworkConnected(getContext())){
+                Call<Search> call =  apiClient.getTotalProductCount();
+                call.enqueue(new Callback<Search>() {
+                    @Override
+                    public void onResponse(Call<Search> call, Response<Search> response) {
+                        String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
+                        int totalProductCount = Integer.parseInt(response.body().getCount());
+                        textHome.setText(String.format(txtHomeOnline,totalProductCount));
+                    }
+
+                    @Override
+                    public void onFailure(Call<Search> call, Throwable t) {
+                        textHome.setText(R.string.txtHome);
+                    }
+                });
+            }
+            else {
+                textHome.setText(R.string.txtHome);
+            }
+        }
     }
 
     @OnClick(R.id.buttonScan)
