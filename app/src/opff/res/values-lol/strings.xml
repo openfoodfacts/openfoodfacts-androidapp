@@ -12,6 +12,7 @@
   <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
   <string name="website_contributor">crwdns97646:0crwdne97646:0</string>
   <string name="terms_url">crwdns97647:0crwdne97647:0</string>
+  <string name="txtHomeOnline">crwdns97987:0%1$dcrwdne97987:0</string>
   <string name="txtHome">crwdns97650:0crwdne97650:0</string>
   <string name="slide_1_title">crwdns97651:0crwdne97651:0</string>
   <string name="slide_1_desc">crwdns97652:0crwdne97652:0</string>
