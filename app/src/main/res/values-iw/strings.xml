@@ -278,8 +278,8 @@
   <string name="flash_off">מבזק [כבוי]</string>
   <string name="ring_on">Ring [ON]</string>
   <string name="ring_off">Ring [OFF]</string>
-  <string name="auto_focus_on">Auto Focus [ON]</string>
-  <string name="auto_focus_off">Auto Focus [OFF]</string>
+  <string name="auto_focus_on">מיקוד אוטומטי [פעיל]</string>
+  <string name="auto_focus_off">מיקוד אוטומטי [כבוי]</string>
   <string name="formats">Formats</string>
   <string name="choose_formats">Choose Formats</string>
   <string name="select_camera">בחירת מצלמה</string>
