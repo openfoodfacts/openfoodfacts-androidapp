@@ -635,7 +635,7 @@
   <string name="percent">%1$d%%</string>
   <string name="overview">Общие сведения</string>
   <string name="ingredients">Ингредиенты</string>
-  <string name="nutrition_facts">Nutrition Facts</string>
+  <string name="nutrition_facts">Пищевая ценность</string>
   <string name="your_version">Ваши</string>
   <string name="ingredients_picture">Изображение ингредиентов</string>
   <string name="take_ingredients_picture_to_extract">(Сделайте снимок ингредиентов, чтобы извлечь их автоматически)</string>
