@@ -13,11 +13,11 @@
   <string name="website_contributor">https://world-da.openfoodfacts.org/contributor/</string>
   <string name="txtHomeOnline">Open Food Facts er en åben database med flere end %1$d fødevareprodukter (plus dem, du vil bidrage med) indeholdende oplysninger om ingredienser, allergener, indicier og alle de øvrige informationer, som fremgår af produktetiketterne.</string>
   <string name="txtHome">Open Food Facts er en åben database over fødevareprodukter indeholdende information om ingredienser, allergener, ernæringsfakta og alle de øvrige informationer, som fremgår af produktetiketterne.</string>
-  <string name="slide_1_title">Yd dit bidrag til gennemsigtighed i fødevarebranchen</string>
-  <string name="slide_1_desc">Skan produkter, tilføj billeder, få fødevaregennemsigtighed til at ske</string>
+  <string name="slide_1_title">Bidrag til fødevaregennemsigtighed</string>
+  <string name="slide_1_desc">Skan produkter, tag deres fotos, gør fødevaregennemsigtighed synlig</string>
   <string name="slide_2_title">Få styr på fakta</string>
-  <string name="slide_2_desc">Masser af informationer om produktet du lige har skannet, afkodet for dig</string>
-  <string name="slide_3_title">Få ernæringsinformation</string>
+  <string name="slide_2_desc">Masser af informationer om produktet du har skannet, dechifreret for dig</string>
+  <string name="slide_3_title">Få Nutriscoren</string>
   <string name="slide_3_desc">Et virtuelt billede af de ernæringsmæssige egenskaber for dine favoritfødevarer</string>
   <string name="slide_4_title">Fungerer uden netværksforbindelse</string>
   <string name="slide_4_desc">Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse</string>
