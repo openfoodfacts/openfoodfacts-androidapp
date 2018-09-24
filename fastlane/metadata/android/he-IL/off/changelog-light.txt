@@ -8,7 +8,7 @@
 7. לא נדרשת הרשמה
 8. נשאר קליל כשהיה :)
 
-v2.8 ! אחרי ההשקה העצמתית של V2, כל מתנדבי OFF המשיכו לעבוד קשה בהתאם להצעות שלך. כרגע אנו מונים 570 אלף מוצרים חופשיים מ־182 שנתרמו על ידי למעלה מעשרת אלפי תורמים כולל אותך 🙂
+גרסה 2.8! אחרי ההשקה העצמתית של V2, כל מתנדבי OFF המשיכו לעבוד קשה בהתאם להצעות שלך. כרגע אנו מונים 570 אלף מוצרים חופשיים מ־182 שנתרמו על ידי למעלה מעשרת אלפי תורמים כולל אותך 🙂
 1. בנינו מחדש את כל חוויית הוספת המוצר (עכשיו זה גם עובד ללא חיבור). (thanks Huzaifa)
 2. You can now get nutrition facts for the portion you're eating (Rutvik)
 3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
