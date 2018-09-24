@@ -11,6 +11,7 @@
   <string name="website_product">https://world-zh.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://world-zh.openfoodfacts.org/contributor/</string>
+  <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute) with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
   <string name="txtHome">Open Food Facts 是一个开放数据库，包含配料、过敏原、营养成分和我们可以在产品标签上找到的所有信息。</string>
   <string name="slide_1_title">贡献给食品透明化</string>
   <string name="slide_1_desc">扫描产品，拍摄它们的图像，让食品透明化成为可能</string>
