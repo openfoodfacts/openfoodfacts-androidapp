@@ -567,10 +567,10 @@
   <string name="notification_channel_name">Esporta notifiche</string>
   <string name="notify_channel_description">Notifica per mostrare la posizione del file esportato</string>
   <string name="products_to_be_completed">Prodotti da completare</string>
-  <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
+  <string name="modified_history">Prodotto aggiunto a %1$s a %2$s da %3$s.  Ultima modifica alla pagina del prodotto su %4$s a %5$s da %6$s. Pagina del prodotto modificata anche da %7$s</string>
   <string name="offline_notification_title">Contributi offline da inviare</string>
-  <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-  <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+  <string name="creator_history">Prodotto aggiunto a %1$s a %2$s CET da</string>
+  <string name="last_editor_history">Ultima modifica della pagina del prodotto a %1$s a %2$s CEST da </string>
   <string name="other_editors">Pagina del prodotto modificata anche da </string>
   <string name="contribution_tab">Contributi</string>
   <string name="contribution_tab_summary">Mostra la scheda dei contributi dell\'utente con i prodotti</string>
@@ -605,7 +605,7 @@
   <string name="product_language">Lingua del prodotto: </string>
   <string name="hint_emb_codes">Esempi: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
   <string name="official_website">Sito ufficiale</string>
-  <string name="scan_QR_code">Scan QR Code for product website</string>
+  <string name="scan_QR_code">Scansiona il codice QR per il sito web del prodotto</string>
   <string name="add_at_least_one_picture">Per favore aggiungi almeno una foto di questo prodotto prima di procedere</string>
   <string name="image_uploaded_successfully">Immagine caricata con successo</string>
   <string name="error_adding_product_photos">Qualcosa è andato storto durante il tentativo di aggiunta delle foto del prodotto</string>
@@ -613,7 +613,7 @@
   <string name="choose_mine">Scegli i miei</string>
   <string name="keep_previous_version">Tieni la versione precedente</string>
   <string name="product_name_overwrite">Sovrascrittura del nome del prodotto</string>
-  <string name="yours">Yours: </string>
+  <string name="yours">I tuoi: </string>
   <string name="currently_on">Attualmente su %s: </string>
   <string name="quantity_overwrite">Sovrascrittura della quantità</string>
   <string name="link_overwrite">Sovrascrittura del collegamento</string>
@@ -632,13 +632,13 @@
   <string name="ingredients_picture">Foto degli ingredienti</string>
   <string name="take_ingredients_picture_to_extract">(Fai una foto degli ingredienti per estrarli automaticamente)</string>
   <string name="ingredients_list">Lista degli ingredienti</string>
-  <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+  <string name="ingredients_hint">Mantenere l\'ordine, indicare la % quando specificata, separare con una virgola oppure -, utilizzare () per indicare gli ingredienti di un ingrediente, segnalare gli allergeni con _</string>
   <string name="extract_ingredients">Estrai ingredienti</string>
   <string name="extracting_ingredients">Estrazione degli ingredienti</string>
   <string name="looksGood">Va bene</string>
   <string name="skip_ingredients">Non va bene \n Salta ingredienti</string>
   <string name="traces">Tracce</string>
-  <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+  <string name="traces_hint">Indicare gli ingredienti dalla frasi tipo \"Può contenere tracce di\", \'Prodotto in una fabbrica che utilizza anche\', ecc. \nEsempi: Latte, glutine, frutta a guscio</string>
   <string name="nutrition_facts_not_specified">I valori nutrizionali non sono specificati sul prodotto.</string>
   <string name="nutrition_facts_picture">Foto delle informazioni nutrizionali</string>
   <string name="for_100g_100ml">Per 100g / 100ml</string>
