@@ -848,7 +848,7 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     public boolean areRequiredFieldsEmpty() {
         if (mImageUrl == null || mImageUrl.equals("")) {
-            Toast.makeText(activity, R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity.getApplicationContext(), R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
             scrollView.fullScroll(View.FOCUS_UP);
             return true;
         } else {
