@@ -455,7 +455,15 @@ public class ProductRepository implements IProductRepository {
                             CategoryNameDao.Properties.LanguageCode.eq(languageCode)
                     ).unique();
 
-            return categoryName != null ? categoryName : new CategoryName();
+            if (categoryName != null) {
+                return categoryName;
+            } else {
+                CategoryName emptyCategoryName = new CategoryName();
+                emptyCategoryName.setName(categoryTag);
+                emptyCategoryName.setCategoryTag(categoryTag);
+                emptyCategoryName.setIsWikiDataIdPresent(false);
+                return emptyCategoryName;
+            }
         });
     }
 
