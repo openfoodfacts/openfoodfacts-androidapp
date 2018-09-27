@@ -11,6 +11,7 @@
   <string name="website_product">crwdns97612:0crwdne97612:0</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">crwdns97613:0crwdne97613:0</string>
+  <string name="txtHomeOnline">crwdns97983:0%1$dcrwdne97983:0</string>
   <string name="txtHome">crwdns97614:0crwdne97614:0</string>
   <string name="slide_1_title">crwdns97615:0crwdne97615:0</string>
   <string name="slide_1_desc">crwdns97616:0crwdne97616:0</string>

@@ -8,14 +8,14 @@
 7. לא נדרשת הרשמה
 8. נשאר קליל כשהיה :)
 
-v2.8 ! אחרי ההשקה העצמתית של V2, כל מתנדבי OFF המשיכו לעבוד קשה בהתאם להצעות שלך. כרגע אנו מונים 570 אלף מוצרים חופשיים מ־182 שנתרמו על ידי למעלה מעשרת אלפי תורמים כולל אותך 🙂
+גרסה 2.8! אחרי ההשקה העצמתית של V2, כל מתנדבי OFF המשיכו לעבוד קשה בהתאם להצעות שלך. כרגע אנו מונים 570 אלף מוצרים חופשיים מ־182 שנתרמו על ידי למעלה מעשרת אלפי תורמים כולל אותך 🙂
 1. בנינו מחדש את כל חוויית הוספת המוצר (עכשיו זה גם עובד ללא חיבור). (thanks Huzaifa)
 2. You can now get nutrition facts for the portion you're eating (Rutvik)
 3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
 4. סדר וניקיון (על ידי Rutvik & Salfai)
 5. 🌎 קוריאנית ואינדונזית
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. אותך 🙂
+2.8.8! חשבת שנסתפק בהוספת מוצרים? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. אותך 🙂
 1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
 2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
 3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)

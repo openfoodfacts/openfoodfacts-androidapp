@@ -4,18 +4,18 @@ Nova groups
 
 Nova group:
 
-Group 1
+קבוצה 1
 Group 1 - Unprocessed or minimally processed foods
-Unprocessed or minimally processed foods
+מזון עם עיבוד מזערי או נטול
 
-Group 2
-Group 2 - Processed culinary ingredients
-Processed culinary ingredients
+קבוצה 2
+קבוצה 2 - רכיבים קולינריים מעובדים
+רכיבים קולינריים מעובדים
 
-Group 3
-Group 3 - Processed foods
-Processed foods
+קבוצה 3
+קבוצה 3 - מזון מעובד
+מזון מעובד
 
-Group 4
-Group 4 - Ultra-processed food and drink products
-Ultra-processed food and drink products
+קבוצה 4
+קבוצה 4 - מוצרי מזון ושתייה מעובדים ביותר
+מוצרי מזון ושתייה מעובדים ביותר

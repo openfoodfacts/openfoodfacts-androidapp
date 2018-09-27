@@ -11,6 +11,7 @@
   <string name="website_product">https://vn.openfoodfacts.org/product/</string>
   <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
   <string name="website_contributor">https://vn.openfoodfacts.org/contributor/</string>
+  <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute) with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
   <string name="txtHome">Open Food Facts là một cơ sở dữ liệu về thực phẩm cùng nguyên liệu, chất gây dị ứng, thành phần dinh dưỡng và những mẩu thông tin khác trên bao bì của sản phẩm.</string>
   <string name="slide_1_title">Đóng góp cho sự minh bạch của thực phẩm</string>
   <string name="slide_1_desc">Scan sản phẩm, chụp chúng, tạo dựng sự minh bạch cho sản phẩm</string>

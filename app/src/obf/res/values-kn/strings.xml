@@ -12,6 +12,7 @@
   <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
   <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
   <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
+  <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$d cosmetic products (plus the ones you will contribute) with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
   <string name="txtHome">ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ಎನ್ನುವುದು ಪದಾರ್ಥಗಳು, ಅಲರ್ಜಿನ್ಗಳು, ಸೂಚಕಗಳು ಮತ್ತು ಉತ್ಪನ್ನದ ಲೇಬಲ್ಗಳಲ್ಲಿ ನಾವು ಪಡೆಯಬಹುದಾದ ಮಾಹಿತಿಯ ಎಲ್ಲಾ ಸುಳಿವುಗಳೊಂದಿಗೆ ಕಾಸ್ಮೆಟಿಕ್ ಉತ್ಪನ್ನಗಳ ಡೇಟಾಬೇಸ್ ಆಗಿದೆ.</string>
   <string name="slide_1_title">ಕಾಸ್ಮೆಟಿಕ್ ಪಾರದರ್ಶಕತೆಗೆ ಕೊಡುಗೆ ನೀಡಿ</string>
   <string name="slide_1_desc">ಸ್ಕ್ಯಾನ್ ಉತ್ಪನ್ನಗಳು, ಅವುಗಳನ್ನು ಚಿತ್ರದಲ್ಲಿ ತೆಗೆದುಕೊಳ್ಳಿ, ಕಾಸ್ಮೆಟಿಕ್ ಪಾರದರ್ಶಕತೆ ಸಂಭವಿಸಿ</string>
