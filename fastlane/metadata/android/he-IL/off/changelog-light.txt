@@ -16,6 +16,6 @@
 5. 🌎 קוריאנית ואינדונזית
 
 2.8.8! חשבת שנסתפק בהוספת מוצרים? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. אותך 🙂
-1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
+1. You can now edit any product with your OFF account. יש ללחוץ על ✏️ בדף מוצר כדי לערוך אותו.
+2. 🌍 סלובקית, עברית, ספרדית, ערבית, הולנדית, הונגרית וגם וייטנאמית (translate.openfoodfacts.org כדי לסייע לנו)
 3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
