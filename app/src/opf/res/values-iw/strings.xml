@@ -35,5 +35,5 @@
   <!-- OPF tagline in different languages -->
   <string name="tagline">מסד נתוני המוצרים החופשי</string>
   <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Products Facts. נוכל לבקש ממך להוסיף אותו?</string>
-  <string name="currently_on_version">Currently on Open Products Facts</string>
+  <string name="currently_on_version">כרגע ב־Open Products Facts</string>
 </resources>
