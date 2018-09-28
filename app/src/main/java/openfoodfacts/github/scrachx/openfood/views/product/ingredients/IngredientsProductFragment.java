@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -26,6 +25,7 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -357,7 +357,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
                                 ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, additive.getWikiDataId(), 3, additive.getName());
+                                productActivity.showBottomScreen(result, additive);
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
                             }
@@ -372,22 +372,34 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         spannableStringBuilder.append( additive.getName() );
         spannableStringBuilder.setSpan( clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
 
-        // if the additive has an overexposure risk (high or moderate) then append the warning to it
-        if( !"en:no".equalsIgnoreCase( additive.getOverexposureRisk() ) )
+        // if the additive has an overexposure risk ("high" or "moderate") then append the warning message to it
+        if( additive.getOverexposureRisk() != null && !"no".equalsIgnoreCase( additive.getOverexposureRisk() ) )
         {
-            boolean isHighRisk = "en:high".equalsIgnoreCase( additive.getOverexposureRisk() );
-            Drawable riskIcon = ContextCompat.getDrawable( getContext(), isHighRisk ?
-                    R.drawable.ic_additive_high_risk : R.drawable.ic_additive_moderate_risk );
+            boolean isHighRisk = "high".equalsIgnoreCase( additive.getOverexposureRisk() );
+            Drawable riskIcon;
+            String riskWarningStr;
+            int riskWarningColor;
+            if( isHighRisk )
+            {
+                riskIcon = ContextCompat.getDrawable( getContext(), R.drawable.ic_additive_high_risk );
+                riskWarningStr = getString( R.string.overexposure_high );
+                riskWarningColor = getColor( getContext(), R.color.overexposure_high );
+            }
+            else
+            {
+                riskIcon = ContextCompat.getDrawable( getContext(), R.drawable.ic_additive_moderate_risk );
+                riskWarningStr = getString( R.string.overexposure_moderate );
+                riskWarningColor = getColor( getContext(), R.color.overexposure_moderate );
+            }
             riskIcon.setBounds( 0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight() );
-            String riskWarning = getString( isHighRisk ? R.string.overexposure_high : R.string.overexposure_moderate );
-            int riskColor = getColor( getContext(), isHighRisk ? R.color.overexposure_high : R.color.overexposure_moderate );
+
 
             SpannableStringBuilder riskWarningSpan = new SpannableStringBuilder();
-            riskWarningSpan.append( "   " ); // this will be replaced with the icon
-            riskWarningSpan.append( riskWarning );
+            riskWarningSpan.append( "   " ); // this will be replaced with the risk icon
+            riskWarningSpan.append( riskWarningStr );
             ImageSpan iconSpan = new ImageSpan( riskIcon, ImageSpan.ALIGN_BOTTOM );
             riskWarningSpan.setSpan( iconSpan, 1, 2, SPAN_EXCLUSIVE_EXCLUSIVE );
-            riskWarningSpan.setSpan( new ForegroundColorSpan( riskColor ), 0, riskWarningSpan.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
+            riskWarningSpan.setSpan( new ForegroundColorSpan( riskWarningColor ), 0, riskWarningSpan.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
 
             spannableStringBuilder.append( riskWarningSpan );
         }

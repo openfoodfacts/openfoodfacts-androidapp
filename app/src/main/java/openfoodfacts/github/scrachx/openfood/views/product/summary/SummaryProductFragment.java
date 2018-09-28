@@ -557,7 +557,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
                                 ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, category.getWikiDataId(), 1, category.getName());
+                                productActivity.showBottomScreen(result, category);
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), category.getName(), SearchType.CATEGORY);
                             }
@@ -586,7 +586,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
                                 ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, label.getWikiDataId(), 2, label.getName());
+                                productActivity.showBottomScreen(result, label);
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), label.getName(), SearchType.LABEL);
                             }
