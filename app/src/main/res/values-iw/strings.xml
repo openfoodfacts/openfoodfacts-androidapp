@@ -684,5 +684,5 @@
   <string name="contribution_by">תרומה מאת</string>
   <string name="title_activity_product">כותרת</string>
   <string name="description_activity_product">תיאור</string>
-  <string name="intent_filter_share_label">Add to Open Food Facts</string>
+  <string name="intent_filter_share_label">הוספה ל־Open Food Facts</string>
 </resources>
