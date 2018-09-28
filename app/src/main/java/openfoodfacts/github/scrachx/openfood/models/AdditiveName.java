@@ -24,27 +24,31 @@ public class AdditiveName {
 
     private String name;
 
+    private String overexposureRisk;
+
     private String wikiDataId;
 
     private Boolean isWikiDataIdPresent;
 
-    @Generated(hash = 1491450865)
-    public AdditiveName(Long id, String additiveTag, String languageCode,
-                        String name, String wikiDataId, Boolean isWikiDataIdPresent) {
+    @Generated(hash = 64692079)
+    public AdditiveName(Long id, String additiveTag, String languageCode, String name,
+            String overexposureRisk, String wikiDataId, Boolean isWikiDataIdPresent) {
         this.id = id;
         this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.overexposureRisk = overexposureRisk;
         this.wikiDataId = wikiDataId;
         this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
     @Keep
     public AdditiveName(String additiveTag, String languageCode,
-                        String name, String wikiDataId) {
+                        String name, String overexposureRisk, String wikiDataId) {
         this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.overexposureRisk = overexposureRisk;
         this.wikiDataId = wikiDataId;
         this.isWikiDataIdPresent = true;
     }
@@ -52,10 +56,11 @@ public class AdditiveName {
 
     @Keep
     public AdditiveName(String additiveTag, String languageCode,
-                        String name) {
+                        String name, String overexposureRisk) {
         this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.overexposureRisk = overexposureRisk;
         this.isWikiDataIdPresent = false;
     }
 
@@ -135,5 +140,13 @@ public class AdditiveName {
 
     public Boolean isNotNull() {
         return id != null && additiveTag != null && languageCode != null && name != null;
+    }
+
+    public String getOverexposureRisk() {
+        return this.overexposureRisk;
+    }
+
+    public void setOverexposureRisk(String overexposureRisk) {
+        this.overexposureRisk = overexposureRisk;
     }
 }

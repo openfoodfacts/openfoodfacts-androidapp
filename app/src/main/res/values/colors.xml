@@ -10,6 +10,9 @@
     <color name="white">#FFFFFF</color>
     <color name="gray">#808080	</color>
 
+    <color name="overexposure_high">#FF0000</color>
+    <color name="overexposure_moderate">#FF6600</color>
+
     <!-- Material colors -->
     <color name="red_50">#fde0dc</color>
     <color name="red_100">#f9bdbb</color>

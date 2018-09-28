@@ -17,32 +17,35 @@ public class AdditiveResponse {
 
     private String wikiDataCode;
     private Boolean isWikiDataIdPresent = false;
+    private String overexposureRisk;
 
-    public AdditiveResponse(String tag, Map<String, String> names, String wikiDataCode) {
+    public AdditiveResponse(String tag, Map<String, String> names, String overexposureRisk, String wikiDataCode) {
         this.tag = tag;
         this.names = names;
         this.wikiDataCode = wikiDataCode;
+        this.overexposureRisk = overexposureRisk;
         this.isWikiDataIdPresent = true;
     }
 
-    public AdditiveResponse(String tag, Map<String, String> names) {
+    public AdditiveResponse(String tag, Map<String, String> names, String overexposureRisk) {
         this.tag = tag;
         this.names = names;
+        this.overexposureRisk = overexposureRisk;
         this.isWikiDataIdPresent = false;
     }
 
     public Additive map() {
         Additive additive;
         if (isWikiDataIdPresent) {
-            additive = new Additive(tag, new ArrayList<>(), wikiDataCode);
+            additive = new Additive(tag, new ArrayList<>(), wikiDataCode, overexposureRisk);
             for (Map.Entry<String, String> name : names.entrySet()) {
-                additive.getNames().add(new AdditiveName(additive.getTag(), name.getKey(), name.getValue(), wikiDataCode));
+                additive.getNames().add(new AdditiveName(additive.getTag(), name.getKey(), name.getValue(), overexposureRisk, wikiDataCode));
             }
 
         } else {
-            additive = new Additive(tag, new ArrayList<>());
+            additive = new Additive(tag, new ArrayList<>(), overexposureRisk);
             for (Map.Entry<String, String> name : names.entrySet()) {
-                additive.getNames().add(new AdditiveName(additive.getTag(), name.getKey(), name.getValue()));
+                additive.getNames().add(new AdditiveName(additive.getTag(), name.getKey(), overexposureRisk, name.getValue()));
             }
 
         }

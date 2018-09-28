@@ -30,6 +30,8 @@ public class AdditivesWrapperDeserializer extends StdDeserializer<AdditivesWrapp
 
     private static final String NAMES_KEY = "name";
     private static final String WIKIDATA_KEY = "wikidata";
+    private static final String EN_KEY = "en";
+    private static final String EFSA_EVALUATION_OVEREXPOSURE_RISK_KEY = "efsa_evaluation_overexposure_risk";
 
 
     public AdditivesWrapperDeserializer() {
@@ -57,10 +59,17 @@ public class AdditivesWrapperDeserializer extends StdDeserializer<AdditivesWrapp
                     names.put(nameNode.getKey(), name);
 
                 }
+
+                // parse the "efsa_evaluation_overexposure_risk" value if present, the default value is "en:no"
+                String overexposureRisk = "en:no";
+                if(subNode.getValue().has( EFSA_EVALUATION_OVEREXPOSURE_RISK_KEY ))
+                {
+                    overexposureRisk = subNode.getValue().get( EFSA_EVALUATION_OVEREXPOSURE_RISK_KEY ).get( "en" ).toString();
+                }
                 if (isWikiNodePresent) {
-                    additives.add(new AdditiveResponse(subNode.getKey(), names, subNode.getValue().get(WIKIDATA_KEY).toString()));
+                    additives.add(new AdditiveResponse(subNode.getKey(), names, overexposureRisk, subNode.getValue().get(WIKIDATA_KEY).toString()));
                 } else {
-                    additives.add(new AdditiveResponse(subNode.getKey(), names));
+                    additives.add(new AdditiveResponse(subNode.getKey(), names, overexposureRisk));
                 }
             }
         }

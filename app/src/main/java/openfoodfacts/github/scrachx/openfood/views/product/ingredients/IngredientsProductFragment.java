@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,9 +19,12 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,6 +78,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.jsoup.helper.StringUtil.isBlank;
 
@@ -363,12 +369,30 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             }
         };
 
+        spannableStringBuilder.append( additive.getName() );
+        spannableStringBuilder.setSpan( clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
 
-        spannableStringBuilder.append(additive.getName());
+        // if the additive has an overexposure risk (high or moderate) then append the warning to it
+        if( !"en:no".equalsIgnoreCase( additive.getOverexposureRisk() ) )
+        {
+            boolean isHighRisk = "en:high".equalsIgnoreCase( additive.getOverexposureRisk() );
+            Drawable riskIcon = ContextCompat.getDrawable( getContext(), isHighRisk ?
+                    R.drawable.ic_additive_high_risk : R.drawable.ic_additive_moderate_risk );
+            riskIcon.setBounds( 0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight() );
+            String riskWarning = getString( isHighRisk ? R.string.overexposure_high : R.string.overexposure_moderate );
+            int riskColor = getColor( getContext(), isHighRisk ? R.color.overexposure_high : R.color.overexposure_moderate );
 
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+            SpannableStringBuilder riskWarningSpan = new SpannableStringBuilder();
+            riskWarningSpan.append( "   " ); // this will be replaced with the icon
+            riskWarningSpan.append( riskWarning );
+            ImageSpan iconSpan = new ImageSpan( riskIcon, ImageSpan.ALIGN_BOTTOM );
+            riskWarningSpan.setSpan( iconSpan, 1, 2, SPAN_EXCLUSIVE_EXCLUSIVE );
+            riskWarningSpan.setSpan( new ForegroundColorSpan( riskColor ), 0, riskWarningSpan.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
+
+            spannableStringBuilder.append( riskWarningSpan );
+        }
+
         return spannableStringBuilder;
-
     }
 
     /**
@@ -403,6 +427,24 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
         ssb.insert(0, Utils.bold(getString(R.string.txtIngredients) + ' '));
         return ssb;
+    }
+
+//    private String getOverexposureRiskWarning( String overexposureRisk )
+//    {
+//        if( "en:high".equalsIgnoreCase( overexposureRisk ) )
+//        {
+//            return getString( R.string.overexposure_high );
+//        }
+//        else if( "en:moderate".equalsIgnoreCase( overexposureRisk ) )
+//        {
+//            return getString( R.string.overexposure_moderate );
+//        }
+//
+//        return "";
+//    }
+
+    private SpannableString buildAdditivesList(List<AdditiveName> additives) {
+        return null;
     }
 
     @Override

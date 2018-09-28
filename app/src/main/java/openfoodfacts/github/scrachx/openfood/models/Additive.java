@@ -25,6 +25,8 @@ public class Additive {
     @Unique
     private String tag;
 
+    private String overexposureRisk;
+
     @Unique
     private String wikiDataId;
 
@@ -47,26 +49,30 @@ public class Additive {
     @Generated(hash = 1566396314)
     private transient AdditiveDao myDao;
 
-    @Generated(hash = 1235442037)
-    public Additive(Long id, String tag, String wikiDataId, Boolean isWikiDataIdPresent) {
+    @Generated(hash = 286908065)
+    public Additive(Long id, String tag, String overexposureRisk, String wikiDataId,
+            Boolean isWikiDataIdPresent) {
         this.id = id;
         this.tag = tag;
+        this.overexposureRisk = overexposureRisk;
         this.wikiDataId = wikiDataId;
         this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
     @Keep
-    public Additive(String tag, List<AdditiveName> names, String wikiDataId) {
+    public Additive(String tag, List<AdditiveName> names, String overexposureRisk, String wikiDataId) {
         this.names = names;
         this.tag = tag;
+        this.overexposureRisk = overexposureRisk;
         this.wikiDataId = wikiDataId;
         this.isWikiDataIdPresent = true;
     }
 
     @Keep
-    public Additive(String tag, List<AdditiveName> names) {
+    public Additive(String tag, List<AdditiveName> names, String overexposureRisk) {
         this.tag = tag;
         this.names = names;
+        this.overexposureRisk = overexposureRisk;
     }
 
     @Generated(hash = 55580656)
@@ -87,6 +93,16 @@ public class Additive {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public String getOverexposureRisk()
+    {
+        return overexposureRisk;
+    }
+
+    public void setOverexposureRisk( String overexposureRisk )
+    {
+        this.overexposureRisk = overexposureRisk;
     }
 
     /**
