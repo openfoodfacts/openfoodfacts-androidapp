@@ -13,9 +13,9 @@ v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your
 2. You can now get nutrition facts for the portion you're eating (Rutvik)
 3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
 4. Housecleaning (by Rutvik & Salfai)
-5. 🌎 Korean & Indonesian
+5. 🌎 Корейский & Индонезийский
 
 2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
 1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
+2. 🌍 Словацкий, иврит, испанский, арабский, голландский, венгерский и вьетнамский (translate.openfoodfacts.org помочь)
 3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
