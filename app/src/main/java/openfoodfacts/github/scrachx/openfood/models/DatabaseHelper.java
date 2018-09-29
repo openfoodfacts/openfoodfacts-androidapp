@@ -88,12 +88,48 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                         }
                     }
                 }
-
                 break;
             }
             case 8:
                 OfflineSavedProductDao.createTable(db, true);
                 break;
+        }
+    }
+
+    /**
+     * Helper method to prevent SQLite Exception for duplicate columns. {@Link https://stackoverflow.com/questions/18920136/check-if-a-column-exists-in-sqlite/45774056#45774056 }
+     *
+     * @param database     The database to check
+     * @param tableName    The name of the table
+     * @param columnToFind The column to check for
+     * @return false if the column is found in the table already.
+     */
+    private boolean columnIsNew(Database database,
+                                String tableName,
+                                String columnToFind) {
+        Cursor cursor = null;
+
+        try {
+            cursor = database.rawQuery(
+                    "PRAGMA table_info(" + tableName + ")",
+                    null
+            );
+
+            int nameColumnIndex = cursor.getColumnIndexOrThrow("name");
+
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(nameColumnIndex);
+
+                if (name.equals(columnToFind)) {
+                    return false;
+                }
+            }
+
+            return true;
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
     }
 

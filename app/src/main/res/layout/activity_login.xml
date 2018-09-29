@@ -29,13 +29,13 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/spacing_normal"
                 android:layout_marginRight="@dimen/spacing_normal"
-                app:drawableLeftCompat="@drawable/ic_person_grey_24dp"
                 android:drawablePadding="10dip"
                 android:ems="10"
                 android:hint="@string/hintLogin"
                 android:inputType="text"
                 android:maxLines="1"
-                android:paddingLeft="10dip" />
+                android:paddingLeft="10dip"
+                app:drawableLeftCompat="@drawable/ic_person" />
 
         </android.support.design.widget.TextInputLayout>
 
