@@ -142,7 +142,7 @@
     <item>비타민 B3(니아신)</item>
     <item>비타민 B6(파이리독신)</item>
     <item>비타민 B9(엽산)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>비타민 C(아스코르브산)</item>
     <item>Vitamin D</item>
     <item>Vitamin E</item>
     <item>Vitamin K</item>
@@ -234,15 +234,15 @@
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
-  <string name="txtOk">OK</string>
+  <string name="txtOk">확인</string>
   <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Products sent</string>
-  <string name="txtPalm">The product does not contain any palm oil</string>
+  <string name="txtPalm">팜유가 첨가되지 않은 식품입니다.</string>
   <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
   <string name="try_it_scan_now">제품 스캔</string>
   <string name="share">공유</string>
-  <string name="translate">Translate</string>
+  <string name="translate">번역해주세요.</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Sign up</string>
   <string name="home_drawer">홈</string>
@@ -271,7 +271,7 @@
   <string name="formats">Formats</string>
   <string name="choose_formats">Choose Formats</string>
   <string name="select_camera">Select a Camera</string>
-  <string name="ok_button">OK</string>
+  <string name="ok_button">확인</string>
   <string name="cancel_button">Cancel</string>
   <string name="login_button">로그인</string>
   <string name="create_account_button">Create Account</string>
