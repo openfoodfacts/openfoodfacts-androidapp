@@ -602,12 +602,12 @@
   <string name="choose_nutrient">Choose a nutrient</string>
   <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
   <string name="hint_product_URL">Link of the official page of the product</string>
-  <string name="product_language">Product language : </string>
-  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">Official website</string>
+  <string name="product_language">Produktspråk: </string>
+  <string name="hint_emb_codes">Exempel: EMB 53062, FR 62.448.034 CE, 84R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+  <string name="official_website">Officiell hemsida</string>
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
-  <string name="image_uploaded_successfully">Image uploaded successfully</string>
+  <string name="image_uploaded_successfully">Bilden har laddats upp</string>
   <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
   <string name="ingredients_overwrite">Ingredients overwrite</string>
   <string name="choose_mine">Välj min</string>
@@ -667,7 +667,7 @@
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
+  <string name="sign_in_to_edit">Logga in för att redigera en produkt.</string>
   <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
   <string name="edit_product_title">Redigera en produkt</string>
   <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
