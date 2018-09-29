@@ -70,7 +70,7 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
+    <item>알파 리놀렌산 / ALA (18: 3n-3)</item>
     <item>Arachidic acid (20:0)</item>
     <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
     <item>Behenic acid (22:0)</item>
@@ -136,12 +136,12 @@
     <item>타우린</item>
     <item>트랜스 지방</item>
     <item>비타민 A</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
+    <item>비타민 B1(티아민)</item>
+    <item>비타민 B12(코발라민)</item>
+    <item>비타민 B2(리보플라빈)</item>
+    <item>비타민 B3(니아신)</item>
+    <item>비타민 B6(파이리독신)</item>
+    <item>비타민 B9(엽산)</item>
     <item>Vitamin C (Ascorbic acid)</item>
     <item>Vitamin D</item>
     <item>Vitamin E</item>
