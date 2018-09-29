@@ -122,9 +122,9 @@
     <item>Nukleotider</item>
     <item>Oleic acid (18:1 n-9)</item>
     <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
-    <item>Palmitic acid (16:0)</item>
+    <item>Omega 6 fettsyror</item>
+    <item>Omega 9 fettsyror</item>
+    <item>Palmitinsyra (16: 0)</item>
     <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
     <item>pH</item>
     <item>Fosfor</item>
@@ -135,12 +135,12 @@
     <item>Serum proteins</item>
     <item>Kiseldioxid</item>
     <item>Starch</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Stearinsyra (18: 0)</item>
     <item>Sackaros</item>
     <item>Taurin</item>
     <item>Transfett</item>
     <item>Vitamin A</item>
-    <item>Vitamin B1 (Thiamin)</item>
+    <item>Vitamin B1 (tiamin)</item>
     <item>Vitamin B12 (Cobalamin)</item>
     <item>Vitamin B2 (Riboflavin)</item>
     <item>Vitamin B3 / Vitamin PP (Niacin)</item>
@@ -318,11 +318,11 @@
   <string name="no_title">Ingen rubrik</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">Kontrollera</string>
   <string name="nutrition">Näring</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
+  <string name="enter_weight">Ange vikten</string>
   <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
   <string name="txt_calories_result">%1$s kcal i %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Kolhydrat</string>
@@ -613,13 +613,13 @@
   <string name="choose_mine">Välj min</string>
   <string name="keep_previous_version">Keep previous version</string>
   <string name="product_name_overwrite">Product name overwrite</string>
-  <string name="yours">Yours: </string>
+  <string name="yours">Din: </string>
   <string name="currently_on">Currently on %s: </string>
   <string name="quantity_overwrite">Quantity overwrite</string>
   <string name="link_overwrite">Link overwrite</string>
-  <string name="save_product">Do you want to save the product?</string>
+  <string name="save_product">Vill du spara produkten?</string>
   <string name="error_adding_product">Something went wrong when adding product</string>
-  <string name="photos">Photos</string>
+  <string name="photos">Foton</string>
   <string name="please_wait">Vänta</string>
   <string name="product_uploaded_successfully">Product uploaded successfully</string>
   <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
@@ -652,13 +652,13 @@
   <string name="product_details">Product Details</string>
   <string name="product_name">Produktnamn</string>
   <string name="quantity">Kvantitet</string>
-  <string name="labels">Labels</string>
+  <string name="labels">Etiketter</string>
   <string name="period_of_time_after_opening">Tid efter öppnandet</string>
   <string name="manufacturing_details">Manufacturing Details</string>
   <string name="origin_of_ingredients">Origin of ingredients</string>
   <string name="manufacturing_place">Manufacturing place</string>
   <string name="emb_code">EMB-kod</string>
-  <string name="purchasing_details">Purchasing Details</string>
+  <string name="purchasing_details">Inköpsdetaljer</string>
   <string name="country_where_purchased">Country where purchased</string>
   <string name="stores">Butiker</string>
   <string name="additional_pictures">Additional Pictures</string>
