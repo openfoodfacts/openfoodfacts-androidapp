@@ -1,4 +1,4 @@
-version 2! TODOS los voluntarios han trabajado fuerte, según sus sugerencias. Somos un movimiento más global que nunca. 500k productos liberados, 182 países, 10K+ contribuyentes, incluido usted :-)
+v2! TODOS los voluntarios han trabajado fuerte, según sus sugerencias. Somos un movimiento más global que nunca. 500k productos liberados, 182 países, 10K+ contribuyentes, incluido usted :-)
 1. NutriScore para todos los productos en el mundo
 2. Historia exportable, solo para tus ojos
 3. Alerta de alérgenos
@@ -8,14 +8,14 @@ version 2! TODOS los voluntarios han trabajado fuerte, según sus sugerencias. S
 7. No requiere registro
 8. Tan ligero como antes :)
 
-version 2.8! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+v2.8! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
 1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
 2. You can now get nutrition facts for the portion you're eating (Rutvik)
 3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
 4. Housecleaning (by Rutvik & Salfai)
 5. 🌎 Korean & Indonesian
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
-1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
+v 2.8.8! Pensaron que nos detendríamos en la adición del producto? All OFF volunteers kept working hard. 590 mil productos liberados, 182 países, más de 10 mil contribuyentes, incluiso you 🙂
+1. Ahora puede editar cualquier producto con su cuenta OFF. Click on ✏️ on a product page to edit.
 2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
 3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
