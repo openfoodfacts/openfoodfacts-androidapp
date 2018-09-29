@@ -15,7 +15,7 @@ v2.8! After the massive V2, all OFF volunteers kept working hard, based on your 
 4. Housecleaning (by Rutvik & Salfai)
 5. 🌎 Korean & Indonesian
 
-v 2.8.8! Pensaron que nos detendríamos en la adición del producto? All OFF volunteers kept working hard. 590 mil productos liberados, 182 países, más de 10 mil contribuyentes, incluiso you 🙂
-1. Ahora puede editar cualquier producto con su cuenta OFF. Click on ✏️ on a product page to edit.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+v 2.8.8! Pensaron que nos detendríamos en la adición del producto? Todos los voluntarios OFF siguieron trabajando duro. 590 mil productos liberados, 182 países, más de 10 mil contribuyentes, incluiso you 🙂
+1. Ahora puede editar cualquier producto con su cuenta OFF. Haga clic en ✏️ en una página de producto para editarla.
+2. 🌍 Eslovaco, hebreo, español, árabe, holandés, húngaro y vietnamita (translate.openfoodfacts.org para ayudar)
+3. Open Food Facts es un esfuerzo totalmente realizado por voluntarios: puede donar tiempo (world.openfoodfacts.org/contribute) o dinero (donate.openfoodfacts.org)
