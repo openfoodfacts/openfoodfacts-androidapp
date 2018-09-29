@@ -21,7 +21,7 @@ product_view_nutrition_summary_en.png
 Nutrition, simplified
 
 product_view_allergen_alert_en.png
-Allergen alert
+알레르기 항원 경보
 
 categories_en.png
 Get alternatives for your favorite foods

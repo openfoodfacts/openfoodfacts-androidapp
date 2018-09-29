@@ -70,7 +70,7 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
+    <item>알파 리놀렌산 / ALA (18: 3n-3)</item>
     <item>Arachidic acid (20:0)</item>
     <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
     <item>Behenic acid (22:0)</item>
@@ -136,13 +136,13 @@
     <item>타우린</item>
     <item>트랜스 지방</item>
     <item>비타민 A</item>
-    <item>Vitamin B1 (Thiamin)</item>
-    <item>Vitamin B12 (Cobalamin)</item>
-    <item>Vitamin B2 (Riboflavin)</item>
-    <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-    <item>Vitamin B6 (Pyridoxin)</item>
-    <item>Vitamin B9 (Folic acid)</item>
-    <item>Vitamin C (Ascorbic acid)</item>
+    <item>비타민 B1(티아민)</item>
+    <item>비타민 B12(코발라민)</item>
+    <item>비타민 B2(리보플라빈)</item>
+    <item>비타민 B3(니아신)</item>
+    <item>비타민 B6(파이리독신)</item>
+    <item>비타민 B9(엽산)</item>
+    <item>비타민 C(아스코르브산)</item>
     <item>Vitamin D</item>
     <item>Vitamin E</item>
     <item>Vitamin K</item>
@@ -234,33 +234,33 @@
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
-  <string name="txtOk">OK</string>
+  <string name="txtOk">확인</string>
   <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Products sent</string>
-  <string name="txtPalm">The product does not contain any palm oil</string>
+  <string name="txtPalm">팜유가 첨가되지 않은 식품입니다.</string>
   <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
   <string name="try_it_scan_now">제품 스캔</string>
   <string name="share">공유</string>
-  <string name="translate">Translate</string>
-  <string name="msg_share">Look at this product on Open Food Facts :</string>
-  <string name="create_account">Sign up</string>
+  <string name="translate">번역해주세요.</string>
+  <string name="msg_share">오픈 푸드 팩트에서 이 상품을 검색해보세요.</string>
+  <string name="create_account">회원 가입</string>
   <string name="home_drawer">홈</string>
   <string name="search_drawer">수색</string>
-  <string name="search_by_barcode_drawer">Type barcode</string>
+  <string name="search_by_barcode_drawer">바코드를 입력해주세요.</string>
   <string name="category_drawer">카테고리</string>
   <string name="search_by_category">카테고리</string>
   <string name="search_by_name_drawer">이름으로 검색</string>
   <string name="scan_search">바코드 스캔</string>
   <string name="user_drawer">사용자</string>
-  <string name="offline_edit_drawer">Offline edit</string>
+  <string name="offline_edit_drawer">오프라인 편집</string>
   <string name="txt_anonymous">익명</string>
   <string name="txt_product_not_found">제품을 찾을 수 없습니다.</string>
   <string name="delete_txt">삭제</string>
   <string name="sign_in_drawer">로그인에</string>
-  <string name="alert_drawer">Allergen alert</string>
-  <string name="warning_allergens">Contains allergens</string>
-  <string name="title_dialog_alert">Add alert</string>
+  <string name="alert_drawer">알레르기 항원 경보</string>
+  <string name="warning_allergens">알레르기 항원이 포함되어있습니다.</string>
+  <string name="title_dialog_alert">경보 추가하기</string>
   <string name="toggle_flash">Flash</string>
   <string name="flash_on">Flash [ON]</string>
   <string name="flash_off">Flash [OFF]</string>
@@ -271,7 +271,7 @@
   <string name="formats">Formats</string>
   <string name="choose_formats">Choose Formats</string>
   <string name="select_camera">Select a Camera</string>
-  <string name="ok_button">OK</string>
+  <string name="ok_button">확인</string>
   <string name="cancel_button">Cancel</string>
   <string name="login_button">로그인</string>
   <string name="create_account_button">Create Account</string>

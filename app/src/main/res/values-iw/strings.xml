@@ -375,7 +375,7 @@
   <string name="number_of_products">מספר המוצרים: </string>
   <string name="txt_no_results">לא נמצאו תוצאות</string>
   <string name="txt_extend_search">כדאי להרחיב את החיפוש שלך או להוסיף את המוצר</string>
-  <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
+  <string name="txt_no_matching__category_products">שוד ושבר, אין לנו אף מוצר בקטגוריה הזו, נוכל לבקש ממך להוסיף מוצרים?</string>
   <string name="txt_no_matching_products">לא מצאנו מוצרים מתאימים.\nניתן לנסות:</string>
   <string name="txt_broaden_search">- להרחיב את החיפוש שלך \n- לסרוק ולהוסיף ל־Open Food Facts</string>
   <string name="txt_cant_load_search_results">לא ניתן לטעון את תוצאות החיפוש</string>
@@ -684,5 +684,5 @@
   <string name="contribution_by">תרומה מאת</string>
   <string name="title_activity_product">כותרת</string>
   <string name="description_activity_product">תיאור</string>
-  <string name="intent_filter_share_label">Add to Open Food Facts</string>
+  <string name="intent_filter_share_label">הוספה ל־Open Food Facts</string>
 </resources>

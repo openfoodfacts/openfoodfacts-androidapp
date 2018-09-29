@@ -9,17 +9,17 @@
   <plurals name="minutes">
     <item quantity="zero">%d minutes ago</item>
     <item quantity="one">1 minute ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="other">pirms %d minūtēm</item>
   </plurals>
   <plurals name="hours">
     <item quantity="zero">%d hours ago</item>
-    <item quantity="one">1 hour ago</item>
+    <item quantity="one">Pirms stundas</item>
     <item quantity="other">%d hours ago</item>
   </plurals>
   <plurals name="days">
     <item quantity="zero">%d days ago</item>
     <item quantity="one">1 day ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="other">pirms %d dienām</item>
   </plurals>
   <string name="action_settings">Iestatījumi</string>
   <string name="action_about">Par</string>
@@ -64,13 +64,13 @@
   <string-array name="nutrition_weight_units">
     <item>mg</item>
     <item>kg</item>
-    <item>µg</item>
+    <item>μg</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>mg</item>
     <item>kg</item>
-    <item>µg</item>
+    <item>μg</item>
     <item>% DV</item>
     <item>IU</item>
   </string-array>

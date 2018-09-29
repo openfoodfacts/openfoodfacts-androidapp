@@ -24,7 +24,7 @@
   <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-  <string name="msg_share">Look at this product on Open Food Facts :</string>
+  <string name="msg_share">오픈 푸드 팩트에서 이 상품을 검색해보세요.</string>
   <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
   <string name="txt_broaden_search">- 검색 범위를 넓힌후 \n 제품을 Open Food Facts에 추가하십시오</string>
   <string name="Donation">Open Food Facts에 기부하려면 여기를 클릭하십시오.</string>

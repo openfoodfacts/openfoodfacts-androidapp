@@ -5,7 +5,7 @@ Nova groups
 Nova group:
 
 קבוצה 1
-Group 1 - Unprocessed or minimally processed foods
+קבוצה 1 - מזון עם עיבוד מזערי או נטול
 מזון עם עיבוד מזערי או נטול
 
 קבוצה 2
