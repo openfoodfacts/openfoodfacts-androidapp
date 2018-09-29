@@ -834,7 +834,6 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
-
     <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Toddlers</string>
@@ -847,7 +846,6 @@
     <string name="adults_age">18 to 64</string>
     <string name="elderly">Elderly</string>
     <string name="elderly_age">65+</string>
-
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
     <!-- Used for additive exposure evaluation table -->
