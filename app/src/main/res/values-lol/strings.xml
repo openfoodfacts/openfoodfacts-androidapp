@@ -677,4 +677,22 @@
   <string name="title_activity_product">crwdns97571:0crwdne97571:0</string>
   <string name="description_activity_product">crwdns97572:0crwdne97572:0</string>
   <string name="intent_filter_share_label">crwdns97979:0crwdne97979:0</string>
+  <!-- Used for additive exposure evaluation table -->
+  <string name="overexposure_high">crwdns98071:0crwdne98071:0</string>
+  <string name="overexposure_moderate">crwdns98073:0crwdne98073:0</string>
+  <string name="infants">crwdns98075:0crwdne98075:0</string>
+  <string name="infants_age">crwdns98077:0crwdne98077:0</string>
+  <string name="toddlers">crwdns98079:0crwdne98079:0</string>
+  <string name="toddlers_age">crwdns98081:0crwdne98081:0</string>
+  <string name="children">crwdns98083:0crwdne98083:0</string>
+  <string name="children_age">crwdns98085:0crwdne98085:0</string>
+  <string name="adolescents">crwdns98087:0crwdne98087:0</string>
+  <string name="adolescents_age">crwdns98089:0crwdne98089:0</string>
+  <string name="adults">crwdns98091:0crwdne98091:0</string>
+  <string name="adults_age">crwdns98093:0crwdne98093:0</string>
+  <string name="elderly">crwdns98095:0crwdne98095:0</string>
+  <string name="elderly_age">crwdns98097:0crwdne98097:0</string>
+  <string name="most_people">crwdns98099:0crwdne98099:0</string>
+  <string name="some_people">crwdns98101:0crwdne98101:0</string>
+  <!-- Used for additive exposure evaluation table -->
 </resources>
