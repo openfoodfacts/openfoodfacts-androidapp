@@ -677,4 +677,22 @@
   <string name="title_activity_product">Titel</string>
   <string name="description_activity_product">Beschreibung</string>
   <string name="intent_filter_share_label">Zu Open Food Facts hinzufügen</string>
+  <!-- Used for additive exposure evaluation table -->
+  <string name="overexposure_high">Hohes Risiko einer Überversorgung</string>
+  <string name="overexposure_moderate">Mittleres Risiko einer Überversorgung</string>
+  <string name="infants">Säuglinge</string>
+  <string name="infants_age">&lt; 1</string>
+  <string name="toddlers">Kleinkinder</string>
+  <string name="toddlers_age">1 bis 2 Jahre</string>
+  <string name="children">Kinder</string>
+  <string name="children_age">3 bis 9 Jahre</string>
+  <string name="adolescents">Jugendliche</string>
+  <string name="adolescents_age">10 bis 17 Jahre</string>
+  <string name="adults">Erwachsene</string>
+  <string name="adults_age">18 bis 64 Jahre</string>
+  <string name="elderly">Senioren</string>
+  <string name="elderly_age">65+</string>
+  <string name="most_people">Die meisten Personen\n(über 50%)</string>
+  <string name="some_people">Einige PersonenSome people\n(über 5%)</string>
+  <!-- Used for additive exposure evaluation table -->
 </resources>

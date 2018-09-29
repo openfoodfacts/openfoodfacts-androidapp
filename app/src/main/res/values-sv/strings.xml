@@ -122,9 +122,9 @@
     <item>Nukleotider</item>
     <item>Oleic acid (18:1 n-9)</item>
     <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
-    <item>Palmitic acid (16:0)</item>
+    <item>Omega 6 fettsyror</item>
+    <item>Omega 9 fettsyror</item>
+    <item>Palmitinsyra (16: 0)</item>
     <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
     <item>pH</item>
     <item>Fosfor</item>
@@ -135,12 +135,12 @@
     <item>Serum proteins</item>
     <item>Kiseldioxid</item>
     <item>Starch</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Stearinsyra (18: 0)</item>
     <item>Sackaros</item>
     <item>Taurin</item>
     <item>Transfett</item>
     <item>Vitamin A</item>
-    <item>Vitamin B1 (Thiamin)</item>
+    <item>Vitamin B1 (tiamin)</item>
     <item>Vitamin B12 (Cobalamin)</item>
     <item>Vitamin B2 (Riboflavin)</item>
     <item>Vitamin B3 / Vitamin PP (Niacin)</item>
@@ -318,11 +318,11 @@
   <string name="no_title">Ingen rubrik</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">Kontrollera</string>
   <string name="nutrition">Näring</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
+  <string name="enter_weight">Ange vikten</string>
   <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
   <string name="txt_calories_result">%1$s kcal i %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Kolhydrat</string>
@@ -602,24 +602,24 @@
   <string name="choose_nutrient">Choose a nutrient</string>
   <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
   <string name="hint_product_URL">Link of the official page of the product</string>
-  <string name="product_language">Product language : </string>
-  <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-  <string name="official_website">Official website</string>
+  <string name="product_language">Produktspråk: </string>
+  <string name="hint_emb_codes">Exempel: EMB 53062, FR 62.448.034 CE, 84R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+  <string name="official_website">Officiell hemsida</string>
   <string name="scan_QR_code">Scan QR Code for product website</string>
   <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
-  <string name="image_uploaded_successfully">Image uploaded successfully</string>
+  <string name="image_uploaded_successfully">Bilden har laddats upp</string>
   <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
   <string name="ingredients_overwrite">Ingredients overwrite</string>
   <string name="choose_mine">Välj min</string>
   <string name="keep_previous_version">Keep previous version</string>
   <string name="product_name_overwrite">Product name overwrite</string>
-  <string name="yours">Yours: </string>
+  <string name="yours">Din: </string>
   <string name="currently_on">Currently on %s: </string>
   <string name="quantity_overwrite">Quantity overwrite</string>
   <string name="link_overwrite">Link overwrite</string>
-  <string name="save_product">Do you want to save the product?</string>
+  <string name="save_product">Vill du spara produkten?</string>
   <string name="error_adding_product">Something went wrong when adding product</string>
-  <string name="photos">Photos</string>
+  <string name="photos">Foton</string>
   <string name="please_wait">Vänta</string>
   <string name="product_uploaded_successfully">Product uploaded successfully</string>
   <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
@@ -652,13 +652,13 @@
   <string name="product_details">Product Details</string>
   <string name="product_name">Produktnamn</string>
   <string name="quantity">Kvantitet</string>
-  <string name="labels">Labels</string>
+  <string name="labels">Etiketter</string>
   <string name="period_of_time_after_opening">Tid efter öppnandet</string>
   <string name="manufacturing_details">Manufacturing Details</string>
   <string name="origin_of_ingredients">Origin of ingredients</string>
   <string name="manufacturing_place">Manufacturing place</string>
   <string name="emb_code">EMB-kod</string>
-  <string name="purchasing_details">Purchasing Details</string>
+  <string name="purchasing_details">Inköpsdetaljer</string>
   <string name="country_where_purchased">Country where purchased</string>
   <string name="stores">Butiker</string>
   <string name="additional_pictures">Additional Pictures</string>
@@ -667,7 +667,7 @@
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
+  <string name="sign_in_to_edit">Logga in för att redigera en produkt.</string>
   <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
   <string name="edit_product_title">Redigera en produkt</string>
   <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
@@ -677,4 +677,22 @@
   <string name="title_activity_product">Titel</string>
   <string name="description_activity_product">beskrivning</string>
   <string name="intent_filter_share_label">Add to Open Food Facts</string>
+  <!-- Used for additive exposure evaluation table -->
+  <string name="overexposure_high">High risk of over exposure</string>
+  <string name="overexposure_moderate">Moderate risk of over exposure</string>
+  <string name="infants">Infants</string>
+  <string name="infants_age">&lt; 1</string>
+  <string name="toddlers">Toddlers</string>
+  <string name="toddlers_age">1 to 2</string>
+  <string name="children">Children</string>
+  <string name="children_age">3 to 9</string>
+  <string name="adolescents">Adolescents</string>
+  <string name="adolescents_age">10 to 17</string>
+  <string name="adults">Adults</string>
+  <string name="adults_age">18 to 64</string>
+  <string name="elderly">Elderly</string>
+  <string name="elderly_age">65+</string>
+  <string name="most_people">Most people\n(over 50%)</string>
+  <string name="some_people">Some people\n(over 5%)</string>
+  <!-- Used for additive exposure evaluation table -->
 </resources>

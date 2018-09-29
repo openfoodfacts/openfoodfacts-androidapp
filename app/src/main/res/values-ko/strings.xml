@@ -107,7 +107,7 @@
     <item>마그네슘</item>
     <item>말토 덱스트린</item>
     <item>말토오스</item>
-    <item>Manganese</item>
+    <item>망간</item>
     <item>Mead acid (20:3 n-9)</item>
     <item>Melissic acid (30:0)</item>
     <item>Molybdenum</item>
@@ -229,7 +229,7 @@
   <string name="toastSending">Uploading...</string>
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
-  <string name="txtDataUpdated">Data updated</string>
+  <string name="txtDataUpdated">데이터가 업데이트되었습니다.</string>
   <string name="txtLoading">Loading...</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
@@ -276,50 +276,50 @@
   <string name="login_button">로그인</string>
   <string name="create_account_button">Create Account</string>
   <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-  <string name="from_gallery">From gallery</string>
-  <string name="product_sent">Product sent successfully</string>
-  <string name="action_edit_product">Edit product</string>
+  <string name="from_gallery">갤러리에서 선택</string>
+  <string name="product_sent">제품 정보가 성공적으로 전송되었습니다.</string>
+  <string name="action_edit_product">제품 정보 편집</string>
   <string name="title_info_dialog">How does it work?</string>
   <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
   <string name="permission_title">사용 권한 정보</string>
   <string name="permission_denied">Please activate permission in the settings</string>
   <string name="permission_storage">Storage permission is needed to take or select pictures</string>
-  <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
-  <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
+  <string name="info_download_data">이 기능을 사용하려면 일부 데이터를 다운로드 해야합니다. \'예\'를 눌러 다운로드하십시오.</string>
+  <string name="info_download_data_connection">이 기능을 작동 시키려면 일부 데이터를 다운로드 해야합니다. 인터넷 연결을 활성화하십시오.</string>
   <string name="msg_input_empty">Please fill the fields first.</string>
   <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-  <string name="user">user</string>
-  <string name="error_field_required">This field is required.</string>
-  <string name="action_preferences">Preferences</string>
-  <string name="prefs_scan_startup">Scan on startup</string>
+  <string name="user">사용자</string>
+  <string name="error_field_required">필수 기재 항목입니다.</string>
+  <string name="action_preferences">환경 설정</string>
+  <string name="prefs_scan_startup">시작할 때 실행</string>
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
   <string name="prefs_language">언어</string>
-  <string name="prefs_language_summary">Change language</string>
+  <string name="prefs_language_summary">언어 변경</string>
   <!-- Scan history -->
   <string name="scan_history_drawer">History</string>
-  <string name="clear_history">Clear history</string>
-  <string name="title_clear_history_dialog">Clear</string>
-  <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
-  <string name="export_csv_history">Export CSV</string>
+  <string name="clear_history">방문 기록 삭제</string>
+  <string name="title_clear_history_dialog">지우기</string>
+  <string name="text_clear_history_dialog">모든 스캔 기록을 삭제 하시겠습니까?</string>
+  <string name="export_csv_history">CSV로 내보내기</string>
   <string name="txt_exporting_history">Exporting history...</string>
   <string name="txt_history_exported">History exported</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
-  <string name="txt_nutrition_not_found">N/A</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="txt_nutrition_not_found">해당 없음</string>
+  <string name="no_brand">상표 없음</string>
+  <string name="no_title">제목 없음</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">확인</string>
   <string name="nutrition">영양</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+  <string name="enter_weight">무게를 입력하십시오.</string>
+  <string name="calculate_nutrition_facts">영양 정보 계산</string>
   <string name="txt_calories_result">%2$s %3$s 안에 %1$s 칼로리</string>
   <string name="nutrition_carbohydrate">탄수화물</string>
   <string name="nutrition_carbohydrate_short_name">탄수화물 (g)</string>
@@ -417,7 +417,7 @@
   <string name="magnesium">마그네슘</string>
   <string name="zinc">아연</string>
   <string name="copper">구리</string>
-  <string name="manganese">Manganese</string>
+  <string name="manganese">망간</string>
   <string name="fluoride">Fluoride</string>
   <string name="selenium">Selenium</string>
   <string name="chromium">Chromium</string>
@@ -467,7 +467,7 @@
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
   <string name="device_on_mobile_data_warning_title">정보</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
-  <string name="device_on_mobile_data_warning_positive">Preferences</string>
+  <string name="device_on_mobile_data_warning_positive">환경 설정</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
   <string name="preference_choose_language_dialog_title">언어 선택</string>
   <string name="FAQ">FAQ</string>
@@ -588,7 +588,7 @@
   <string name="switch_camera">Switch camera</string>
   <string name="autofocus">Autofocus</string>
   <string name="initial_loading">Initial loading</string>
-  <string name="preferences">Preferences</string>
+  <string name="preferences">환경 설정</string>
   <string name="OFFlogo">Open Food Facts logo</string>
   <string name="loading_product">Loading product %s</string>
   <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
@@ -673,4 +673,22 @@
   <string name="title_activity_product">Title</string>
   <string name="description_activity_product">description</string>
   <string name="intent_filter_share_label">Add to Open Food Facts</string>
+  <!-- Used for additive exposure evaluation table -->
+  <string name="overexposure_high">High risk of over exposure</string>
+  <string name="overexposure_moderate">Moderate risk of over exposure</string>
+  <string name="infants">Infants</string>
+  <string name="infants_age">&lt; 1</string>
+  <string name="toddlers">Toddlers</string>
+  <string name="toddlers_age">1 to 2</string>
+  <string name="children">Children</string>
+  <string name="children_age">3 to 9</string>
+  <string name="adolescents">Adolescents</string>
+  <string name="adolescents_age">10 to 17</string>
+  <string name="adults">Adults</string>
+  <string name="adults_age">18 to 64</string>
+  <string name="elderly">Elderly</string>
+  <string name="elderly_age">65+</string>
+  <string name="most_people">Most people\n(over 50%)</string>
+  <string name="some_people">Some people\n(over 5%)</string>
+  <!-- Used for additive exposure evaluation table -->
 </resources>
