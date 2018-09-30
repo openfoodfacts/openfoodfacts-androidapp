@@ -234,7 +234,7 @@
   <string name="dataSaved">Saved locally on your device</string>
   <string name="txtInfoAddUser">Please enter your login and password</string>
   <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Loading...</string>
+  <string name="txtLoading">Ŝarĝante…</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barcode required</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">Varomarko</string>
   <string name="additive_string">Aldonaĵo</string>
   <string name="search_string">Search</string>
-  <string name="country_string">Lando</string>
+  <string name="country_string">Landoj, kie ĝi vendiĝas</string>
   <string name="store_subtitle">Vendejo</string>
   <string name="packaging_subtitle">Pakaĵo</string>
   <string name="last_seen_string">%1$d %2$s ago</string>

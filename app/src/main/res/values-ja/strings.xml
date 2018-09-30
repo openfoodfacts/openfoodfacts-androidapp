@@ -341,7 +341,7 @@
   <string name="nutrition_satured_fat">飽和脂肪酸</string>
   <string name="nutrition_satured_fat_short_name">飽和脂肪酸 (g)</string>
   <string name="nutrition_serving">一食当たり</string>
-  <string name="nutrition_serving_size">一人前の分量 :</string>
+  <string name="nutrition_serving_size">分量 :</string>
   <string name="nutrition_sodium">ナトリウム</string>
   <string name="nutrition_sodium_short_name">ナトリウム (g)</string>
   <string name="nutrition_sugars">砂糖</string>
@@ -494,7 +494,7 @@
   <string name="login_true">既にログインしています!</string>
   <string name="confirm_logout">ログアウトの確認</string>
   <string name="logout_dialog_content">ログアウトしてもよろしいですか?</string>
-  <string name="dialog_cancel">キャンセル</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">解像度を選択</string>
   <string name="pref_resolution_summary">画像アップロードの解像度を選択します</string>
   <string name="image_upload_resolution">画像アップロードの解像度</string>
@@ -508,7 +508,7 @@
   <string name="brand_string">ブランド（会社名）</string>
   <string name="additive_string">添加物</string>
   <string name="search_string">検索</string>
-  <string name="country_string">国</string>
+  <string name="country_string">販売の国</string>
   <string name="store_subtitle">店舗</string>
   <string name="packaging_subtitle">パッケージング</string>
   <string name="last_seen_string">%1$d %2$s 前</string>

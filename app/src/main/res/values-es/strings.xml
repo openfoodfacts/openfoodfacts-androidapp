@@ -259,7 +259,7 @@
   <string name="user_drawer">Usuario</string>
   <string name="offline_edit_drawer">Edición offline</string>
   <string name="txt_anonymous">Anónimo</string>
-  <string name="txt_product_not_found">No se han encontrado productos</string>
+  <string name="txt_product_not_found">Productos no encontrados</string>
   <string name="delete_txt">Eliminar</string>
   <string name="sign_in_drawer">Acceder</string>
   <string name="alert_drawer">Alerta de alérgenos</string>
@@ -342,7 +342,7 @@
   <string name="nutrition_proteins_short_name">Proteínas (g)</string>
   <string name="nutrition_salt">Sal</string>
   <string name="nutrition_salt_short_name">Sal (g)</string>
-  <string name="nutrition_satured_fat">Grasas saturadas</string>
+  <string name="nutrition_satured_fat">Grasa saturada</string>
   <string name="nutrition_satured_fat_short_name">Grasas saturadas (g)</string>
   <string name="nutrition_serving">Por porción</string>
   <string name="nutrition_serving_size">Tamaño de la ración :</string>
@@ -498,7 +498,7 @@
   <string name="login_true">¡Ya habías iniciado sesión!</string>
   <string name="confirm_logout">Confirmar el cierre de sesión</string>
   <string name="logout_dialog_content">¿Estás seguro de cerrar la sesión?</string>
-  <string name="dialog_cancel">Cancelar</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Elegir resolución</string>
   <string name="pref_resolution_summary">Selecciona una resolución para la subida de imágenes</string>
   <string name="image_upload_resolution">Resolución de subida de la imagen</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">Marca</string>
   <string name="additive_string">Aditivo</string>
   <string name="search_string">Buscar</string>
-  <string name="country_string">País</string>
+  <string name="country_string">Países de venta</string>
   <string name="store_subtitle">Tienda</string>
   <string name="packaging_subtitle">Envases</string>
   <string name="last_seen_string">hace %1$d%2$s</string>

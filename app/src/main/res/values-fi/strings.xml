@@ -512,7 +512,7 @@
   <string name="brand_string">Brand</string>
   <string name="additive_string">Lisäaine</string>
   <string name="search_string">Etsi</string>
-  <string name="country_string">Maa</string>
+  <string name="country_string">Maat myyntiehdot</string>
   <string name="store_subtitle">Kauppa</string>
   <string name="packaging_subtitle">Pakkaus</string>
   <string name="last_seen_string">%1$d %2$s ago</string>

@@ -498,7 +498,7 @@
   <string name="login_true">Already logged in!</string>
   <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Weet u zeker dat u wilt uitloggen?</string>
-  <string name="dialog_cancel">Annuleren</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Kies resolutie</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image upload resolution</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">Merk</string>
   <string name="additive_string">Additief</string>
   <string name="search_string">Zoeken</string>
-  <string name="country_string">Land</string>
+  <string name="country_string">Verkooplanden</string>
   <string name="store_subtitle">Winkel</string>
   <string name="packaging_subtitle">Verpakking</string>
   <string name="last_seen_string">%1$d %2$s ago</string>

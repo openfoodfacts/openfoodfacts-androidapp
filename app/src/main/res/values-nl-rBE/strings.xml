@@ -155,7 +155,7 @@
   <!-- Text units -->
   <string-array name="images_array">
     <item>Standaard</item>
-    <item>Voedingsstof</item>
+    <item>Voedingswaarde</item>
     <item>Ingrediënten</item>
   </string-array>
   <!-- Content Description -->
@@ -250,7 +250,7 @@
   <string name="msg_share">Bekijk dit product op Open Food Facts</string>
   <string name="create_account">Inschrijven</string>
   <string name="home_drawer">Hoofdmenu</string>
-  <string name="search_drawer">Zoeken</string>
+  <string name="search_drawer">Zoek</string>
   <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
   <string name="category_drawer">Categorieën</string>
   <string name="search_by_category">Categorie</string>
@@ -259,7 +259,7 @@
   <string name="user_drawer">Gebruikersnaam</string>
   <string name="offline_edit_drawer">Offline bewerken</string>
   <string name="txt_anonymous">Anoniem</string>
-  <string name="txt_product_not_found">Artikelen niet gevonden</string>
+  <string name="txt_product_not_found">Geen product gevonden</string>
   <string name="delete_txt">Verwijder</string>
   <string name="sign_in_drawer">Aanmelden</string>
   <string name="alert_drawer">Allergenen alert</string>
@@ -345,7 +345,7 @@
   <string name="nutrition_satured_fat">Verzadigd vet</string>
   <string name="nutrition_satured_fat_short_name">Verzadigd vet (g)</string>
   <string name="nutrition_serving">Per portie</string>
-  <string name="nutrition_serving_size">Portiegrootte:</string>
+  <string name="nutrition_serving_size">Per portie</string>
   <string name="nutrition_sodium">Natrium</string>
   <string name="nutrition_sodium_short_name">Natrium (g)</string>
   <string name="nutrition_sugars">Suikers</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">Merk</string>
   <string name="additive_string">Additief</string>
   <string name="search_string">Zoek</string>
-  <string name="country_string">Land</string>
+  <string name="country_string">Landen van verkoop</string>
   <string name="store_subtitle">Winkel</string>
   <string name="packaging_subtitle">Verpakking</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
@@ -576,7 +576,7 @@
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Bewerken</string>
-  <string name="txtDialogsTitle">Melding</string>
+  <string name="txtDialogsTitle">Opmerking</string>
   <string name="preference_show_all_product_photos_title">Weergeef alle productfoto\'s</string>
   <string name="preference_show_all_product_photos_summary">Weergeef alle productfoto\'s in een apart tabblad</string>
   <string name="offline_product_addition_title">Voeg een nieuw product toe</string>
@@ -678,19 +678,19 @@
   <string name="description_activity_product">description</string>
   <string name="intent_filter_share_label">Add to Open Food Facts</string>
   <!-- Used for additive exposure evaluation table -->
-  <string name="overexposure_high">High risk of over exposure</string>
-  <string name="overexposure_moderate">Moderate risk of over exposure</string>
-  <string name="infants">Infants</string>
+  <string name="overexposure_high">Hoog risico van overmatig gebruik</string>
+  <string name="overexposure_moderate">Matig risico van overmatig gebruik</string>
+  <string name="infants">Zuigelingen</string>
   <string name="infants_age">&lt; 1</string>
-  <string name="toddlers">Toddlers</string>
-  <string name="toddlers_age">1 to 2</string>
-  <string name="children">Children</string>
-  <string name="children_age">3 to 9</string>
-  <string name="adolescents">Adolescents</string>
-  <string name="adolescents_age">10 to 17</string>
-  <string name="adults">Adults</string>
-  <string name="adults_age">18 to 64</string>
-  <string name="elderly">Elderly</string>
+  <string name="toddlers">Peuters</string>
+  <string name="toddlers_age">1 tot 2</string>
+  <string name="children">Kinderen</string>
+  <string name="children_age">3 tot 9</string>
+  <string name="adolescents">Adolescenten</string>
+  <string name="adolescents_age">10 tot 17</string>
+  <string name="adults">Volwassenen</string>
+  <string name="adults_age">18 tot 64</string>
+  <string name="elderly">Ouderen</string>
   <string name="elderly_age">65+</string>
   <string name="most_people">Most people\n(over 50%)</string>
   <string name="some_people">Some people\n(over 5%)</string>

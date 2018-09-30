@@ -53,9 +53,9 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item>ج</item>
-    <item>مج</item>
-    <item>كج</item>
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
     <item>لتر</item>
     <item>مل</item>
     <item>سنتيليتر</item>
@@ -63,9 +63,9 @@
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
-    <item>غ</item>
-    <item>مغ</item>
-    <item>كغ</item>
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
   </string-array>
   <!-- nutrition energy units -->
   <string-array name="energy_units">
@@ -74,15 +74,15 @@
   </string-array>
   <!-- nutrition weight units -->
   <string-array name="nutrition_weight_units">
-    <item>غ</item>
-    <item>مغ</item>
-    <item>ميكروجرام</item>
+    <item>g</item>
+    <item>mg</item>
+    <item>µg</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
-    <item>غ</item>
-    <item>مغ</item>
-    <item>ميكروجرام</item>
+    <item>g</item>
+    <item>mg</item>
+    <item>µg</item>
     <item>القيمة اليومية</item>
     <item>وحدة دولية</item>
   </string-array>
@@ -115,7 +115,7 @@
     <item>حمض الالايديك (١٨: ١ n ٩)</item>
     <item>حمض الأيروسيك (٢٢: ١ n-٩)</item>
     <item>الفلوريد</item>
-    <item>فركتوز</item>
+    <item>سكر الفاكهة</item>
     <item>حمض غاما-لينولينيك/GLA (n-٦ ١٨:٣)</item>
     <item>الجلوكوز</item>
     <item>حمض الغوندويك (٢٠: ١ n -٩)</item>
@@ -127,9 +127,9 @@
     <item>حمض الليغنوسيريك (٢٤:٠)</item>
     <item>حمض اللينولئيك / LA (١٨: ٢ n-٦)</item>
     <item>المغنيسيوم</item>
-    <item>مالتوديكسترين</item>
+    <item>مالتوديكسترينس</item>
     <item>مالتوس</item>
-    <item>المنجنيز</item>
+    <item>المنغنيز</item>
     <item>حمض ميد (n-٩ ٢٠:٣)</item>
     <item>حمض المليسيك (٣٠:٠)</item>
     <item>الموليبدينوم</item>
@@ -168,7 +168,7 @@
     <item>فيتامين د</item>
     <item>فيتامين هـ</item>
     <item>فيتامين ك</item>
-    <item>زنك</item>
+    <item>الزنك</item>
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
@@ -277,7 +277,7 @@
   <string name="user_drawer">المستخدم</string>
   <string name="offline_edit_drawer">تعديل دون اتصال</string>
   <string name="txt_anonymous">مجهول</string>
-  <string name="txt_product_not_found">منتجات غير موجودة</string>
+  <string name="txt_product_not_found">منتج غير موجود</string>
   <string name="delete_txt">حذف</string>
   <string name="sign_in_drawer">تسجيل الدخول</string>
   <string name="alert_drawer">تنبيه مسببات الحساسية</string>
@@ -335,7 +335,7 @@
   <string name="no_brand">لا علامة تجارية</string>
   <string name="no_title">لا يوجد عنوان</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">جدول الحقائق الغذائية الى %1$s له %2$s</string>
+  <string name="display_fact">جدول حقائق التغذية ل %1$s من هذا المنتج</string>
   <string name="check_facts">تحقق</string>
   <string name="nutrition">التغذية</string>
   <string name="calculated_nutrition">التغذية المحسوبة</string>
@@ -349,7 +349,7 @@
   <string name="nutrition_cholesterol_short_name">كوليسترول (غ)</string>
   <string name="nutrition_energy">الطاقة</string>
   <string name="nutrition_energy_short_name">الطاقة</string>
-  <string name="nutrition_fat">الدهن</string>
+  <string name="nutrition_fat">الدهون</string>
   <string name="nutrition_fat_short_name">الدهون (ج)</string>
   <string name="nutrition_fiber">الألياف الغذائية</string>
   <string name="nutrition_fiber_short_name">الألياف الغذائية (غ)</string>
@@ -363,10 +363,10 @@
   <string name="nutrition_satured_fat">الدهون المشبعة</string>
   <string name="nutrition_satured_fat_short_name">الدهون المشبعة (غ)</string>
   <string name="nutrition_serving">لكل وجبة</string>
-  <string name="nutrition_serving_size">حجم الحصة</string>
+  <string name="nutrition_serving_size">حجم الحصة:</string>
   <string name="nutrition_sodium">صوديوم</string>
   <string name="nutrition_sodium_short_name">صوديوم (غ)</string>
-  <string name="nutrition_sugars">سكريات</string>
+  <string name="nutrition_sugars">السكريات</string>
   <string name="nutrition_sugars_short_name">سكريات (غ)</string>
   <string name="nutrition_trans_fat">الدهون غير المشبعة</string>
   <string name="nutrition_trans_fat_short_name">الدهون المتحولة (g)</string>
@@ -516,7 +516,7 @@
   <string name="login_true">مسجل مسبقاً!</string>
   <string name="confirm_logout">تأكيد تسجيل الخروج</string>
   <string name="logout_dialog_content">هل أنت متأكد من تسجيل الخروج؟</string>
-  <string name="dialog_cancel">إلغاء</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">اختر دقة الوضوح</string>
   <string name="pref_resolution_summary">اختر الدقة لتحميل الصورة</string>
   <string name="image_upload_resolution">نقاء الصورة</string>
@@ -530,7 +530,7 @@
   <string name="brand_string">العلامة التجارية</string>
   <string name="additive_string">المواد المضافة</string>
   <string name="search_string">بحث</string>
-  <string name="country_string">بلد</string>
+  <string name="country_string">بلدان بيع</string>
   <string name="store_subtitle">المتجر</string>
   <string name="packaging_subtitle">التعبئة والتغليف</string>
   <string name="last_seen_string">%1$d %2$s مضت</string>
@@ -573,7 +573,7 @@
   <string name="do_you_want_to">هل تريد إضافة صور لهذا الباركود؟</string>
   <string name="bottomNav_history">السجل</string>
   <string name="bottomNav_search">بحث</string>
-  <string name="products_added">المنتجات التي قمت بإضافتها أو تعديلها</string>
+  <string name="products_added">Products you added or edited</string>
   <string name="products_incomplete">المنتجات التي أضفتها وتحتاج إلى إكمالها</string>
   <string name="product_pictures_contributed">المنتجات التي التقطت صور لها</string>
   <string name="picture_contributed_incomplete">المنتجات التي إلتقط صور لها تحتاج إلى إكمالها</string>
@@ -652,7 +652,7 @@
   <string name="ingredients_list">قائمة المكونات</string>
   <string name="ingredients_hint">حافظ على الترتيب ، أو حدد النسبة المئوية عند تحديدها ، أو افصلها باستخدام فاصلة أو استخدام \"-\" أو استخدم \"()\" لمكون أحد المكونات ، أو احاطة المواد المسببة للحساسية مع _</string>
   <string name="extract_ingredients">استخراج المكونات</string>
-  <string name="extracting_ingredients">يتم استخراج المكونات</string>
+  <string name="extracting_ingredients">Extracting ingredients</string>
   <string name="looksGood">يبدو جيداً</string>
   <string name="skip_ingredients">سيئ جدًا \n تخطي المكونات</string>
   <string name="traces">آثار</string>
@@ -663,7 +663,7 @@
   <string name="per_serving">لكل وجبة</string>
   <string name="serving_size">حجم الحصة</string>
   <string name="alcohol_unit" formatted="false">٪ الحجم / °</string>
-  <string name="add_a_nutrient">إضافة مادة غذائية</string>
+  <string name="add_a_nutrient">Add a nutrient</string>
   <string name="add_this_product">إضافة منتج</string>
   <string name="product_picture">صورة المنتج</string>
   <string name="one_photo_compulsory">(صورة واحدة فقط إلزامية لإضافة منتج جديد)</string>

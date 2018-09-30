@@ -155,7 +155,7 @@
   <!-- Text units -->
   <string-array name="images_array">
     <item>ডিফল্ট</item>
-    <item>পুষ্টি</item>
+    <item>পুষ্টি উপাদান</item>
     <item>উপকরণসমূহ</item>
   </string-array>
   <!-- Content Description -->
@@ -211,7 +211,7 @@
   <string name="errorLogin">লগইন বা পাসওয়ার্ড ত্রুটি</string>
   <string name="errorWeb">আমরা ইন্টারনেট সংযোগ করতে পারিনি। আপনার সংযোগে কি কোন সমস্যা আছে?</string>
   <string name="uploadLater">Image will be uploaded when network is available</string>
-  <string name="txtInfoLoginOk">ব্যবহারকারি সংরক্ষিত হয়েছে</string>
+  <string name="txtInfoLoginOk">ইউজার সেইভ করা হয়েছে</string>
   <string name="txtInfoLoginNo">ব্যবহারকারী সংরক্ষিত না</string>
   <string name="txtDialogsContent">আপনি যে পণ্য স্ক্যান করছেন তা Open Food Facts এ বিদ্যমান নাই। দয়া করে যোগ করুন।</string>
   <string name="txtDialogsContentPowerMode">আপনি স্ক্যানকৃত পণ্য Open Food Facts এ বিদ্যমান ।</string>
@@ -345,7 +345,7 @@
   <string name="nutrition_satured_fat">সম্পৃক্ত চর্বি</string>
   <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">প্রতি পরিবেশনে</string>
-  <string name="nutrition_serving_size">পরিবেশন পরিমাণ :</string>
+  <string name="nutrition_serving_size">পরিবেশন পরিমাপ :</string>
   <string name="nutrition_sodium">সোডিয়াম</string>
   <string name="nutrition_sodium_short_name">সোডিয়াম (গ্রাম)</string>
   <string name="nutrition_sugars">চিনি</string>
@@ -379,7 +379,7 @@
   <string name="nutrition_serum_proteins">সিরাম প্রোটিন</string>
   <string name="nutrition_nucleotides">নিউক্লিওটাইডস</string>
   <string name="for_100g">100 গ্রামের জন্য</string>
-  <string name="serving">পরিবেশন প্রতি</string>
+  <string name="serving">প্রতি পরিবেশনে</string>
   <string name="minerals">খনিজ পদার্থ</string>
   <string name="nutrition_calcium">ক্যালসিয়াম</string>
   <string name="nutrition_potassium">পটাসিয়াম</string>
@@ -429,7 +429,7 @@
   <string name="molybdenum">মলিবডেনাম</string>
   <string name="iodine">আয়োডিন</string>
   <string name="caffeine">ক্যাফেইন</string>
-  <string name="taurine">বৃষসদৃশ</string>
+  <string name="taurine">Taurine</string>
   <string name="ph">pH</string>
   <string name="fruits_vegetables_nuts">ফলমূল, শাকসবজি, বাদাম</string>
   <string name="collagen_meat_protein_ratio">কোলাজেন মাংস প্রোটিন অনুপাত</string>
@@ -513,7 +513,7 @@
   <string name="brand_string">ব্র্যান্ড</string>
   <string name="additive_string">সংযোজন দ্রব্য</string>
   <string name="search_string">অনুসন্ধান</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">যে দেশে বিক্রি হয়েছে</string>
   <string name="store_subtitle">দোকান</string>
   <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>

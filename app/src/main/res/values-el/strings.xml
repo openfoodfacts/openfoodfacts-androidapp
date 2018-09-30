@@ -512,7 +512,7 @@
   <string name="brand_string">Μάρκα</string>
   <string name="additive_string">Προσθετο</string>
   <string name="search_string">Αναζήτηση</string>
-  <string name="country_string">Χώρα</string>
+  <string name="country_string">Χώρες όπου πωλείται</string>
   <string name="store_subtitle">Κατάστημα</string>
   <string name="packaging_subtitle">Συσκευασία</string>
   <string name="last_seen_string">%1$d %2$s ago</string>

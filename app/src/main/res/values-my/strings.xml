@@ -151,7 +151,7 @@
   <!-- Text units -->
   <string-array name="images_array">
     <item>မူလအတိုင္း</item>
-    <item>အာဟာရ</item>
+    <item>အဟာရဓါတ်</item>
     <item>ပါဝင္မႈမ်ား</item>
   </string-array>
   <!-- Content Description -->
@@ -207,7 +207,7 @@
   <string name="errorLogin">ဝင္ေရာက္မႈ သို႔မဟုတ္ စကားဝွက္ခ်ိဳ႕ယြင္းခ်က္</string>
   <string name="errorWeb">ကၽြႏ္ုပ္တို႔မွ အင္တာနက္ႏွင့္မခ်ိတ္ဆက္ႏိုင္ဘူးျဖစ္ေနသည္။ သင့္တြင္ ခ်ိတ္ဆက္မႈခ်ိဳ႕ယြင္းေနပါသလား။</string>
   <string name="uploadLater">Image will be uploaded when network is available</string>
-  <string name="txtInfoLoginOk">အသံုးျပဳသူသိမ္းခဲ့ျပီးျပီ</string>
+  <string name="txtInfoLoginOk">အသံုးျပဳသူကိုသိမ္းခဲ့ျပီးျပီ</string>
   <string name="txtInfoLoginNo">အသံုးျပဳသူကိုမသိမ္းခဲ့ပါ</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
@@ -255,7 +255,7 @@
   <string name="user_drawer">အသံုးျပဳသူ</string>
   <string name="offline_edit_drawer">ေအာ့္ဖ္လိုင္းျပင္ဆင္မႈ</string>
   <string name="txt_anonymous">အမည္မသိ</string>
-  <string name="txt_product_not_found">ထုတ္ကုန္မေတြ႕ပါ</string>
+  <string name="txt_product_not_found">ထုတ္ကုန္ရွာမေတြ႕ပါ</string>
   <string name="delete_txt">ဖ်က္မည္</string>
   <string name="sign_in_drawer">ဝင္ေရာက္ပါ</string>
   <string name="alert_drawer">Allergen alert</string>
@@ -465,7 +465,7 @@
   <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
-  <string name="device_on_mobile_data_warning_title">အခ်က္အလက္</string>
+  <string name="device_on_mobile_data_warning_title">အချက်အလက်များ</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">Preferences</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
@@ -508,7 +508,7 @@
   <string name="brand_string">အမှတ်တံဆိပ်</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">ရွာေဖြမည္</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">Countries where sold</string>
   <string name="store_subtitle">စတိုး</string>
   <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>

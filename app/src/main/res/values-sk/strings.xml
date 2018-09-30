@@ -86,48 +86,48 @@
     <item>Kyselina arachidová (20: 0)</item>
     <item>Kyselina arachidónová / AA / ARA (20: 4 n-6)</item>
     <item>Kyselina behenová (22: 0)</item>
-    <item>Bikarbonát</item>
-    <item>Biotín</item>
+    <item>Bicarbonate</item>
+    <item>Biotin</item>
     <item>Kyselina maslová (4:0)</item>
-    <item>Kofeín</item>
-    <item>Vápnik</item>
+    <item>Caffeine</item>
+    <item>Calcium</item>
     <item>Kapsová kyselina (10: 0)</item>
     <item>Kapsová kyselina (6: 0)</item>
     <item>Kapsová kyselina (8: 0)</item>
-    <item>Kazeín</item>
+    <item>Casein</item>
     <item>Kyselina cerová (26: 0)</item>
-    <item>Chlór</item>
+    <item>Chloride</item>
     <item>Cholesterol</item>
-    <item>Chróm</item>
-    <item>Meď</item>
+    <item>Chromium</item>
+    <item>Copper</item>
     <item>Kyselina dihomo-gama-linolénová / DGLA (20: 3 n-6)</item>
     <item>Kyselina dokozahexaénová / DHA (22: 6 n-3)</item>
     <item>Kyselina eikozapentaénová / EPA (20: 5 n-3)</item>
     <item>Kyselina elaidová (18: 1 n-9)</item>
     <item>Kyselina eruková (22: 1 n-9)</item>
-    <item>Fluorid</item>
-    <item>Fruktóza</item>
+    <item>Fluoride</item>
+    <item>Fructose</item>
     <item>Kyselina gama-linolénová / GLA (18: 3 n-6)</item>
-    <item>Glukóza</item>
+    <item>Glucose</item>
     <item>Kyselina gondová (20: 1 n-9)</item>
-    <item>Jód</item>
-    <item>Železo</item>
-    <item>Laktóza</item>
+    <item>Iodine</item>
+    <item>Iron</item>
+    <item>Lactose</item>
     <item>Kyselina laurová (12: 0)</item>
     <item>Kyselina lignocerová (24: 0)</item>
     <item>Kyselina linolová / LA (18: 2 n-6)</item>
-    <item>Magnézium</item>
-    <item>Maltodextríny</item>
-    <item>Maltóza</item>
-    <item>Mangán</item>
+    <item>Magnesium</item>
+    <item>Maltodextrins</item>
+    <item>Maltose</item>
+    <item>Manganese</item>
     <item>Kyselina meďnatá (20: 3 n-9)</item>
     <item>Kyselina melíssová (30: 0)</item>
-    <item>Molybdén</item>
+    <item>Molybdenum</item>
     <item>Mononenasýtený tuk</item>
     <item>Kyselina montánová (28: 0)</item>
     <item>Kyselina myristová (14: 0)</item>
     <item>Kyselina nervónová (24: 1 n-9)</item>
-    <item>Nukleotidy</item>
+    <item>Nucleotides</item>
     <item>Kyselina olejová (18: 1 n-9)</item>
     <item>Omega 3 mastné kyseliny</item>
     <item>Omega 6 mastné kyseliny</item>
@@ -135,19 +135,19 @@
     <item>Kyselina palmitová (16: 0)</item>
     <item>Kyselina pantoténová / pantotenát (vitamín B5)</item>
     <item>pH</item>
-    <item>Fosfor</item>
+    <item>Phosphorus</item>
     <item>Cukrové alkoholy (polyoly)</item>
     <item>Polynenasýtený tuk</item>
-    <item>Draslík</item>
-    <item>Selén</item>
+    <item>Potassium</item>
+    <item>Selenium</item>
     <item>Sérové ​​proteíny</item>
-    <item>Kremeň</item>
+    <item>Silica</item>
     <item>Škrob</item>
     <item>Kyselina stearová (18: 0)</item>
-    <item>Sacharóza</item>
-    <item>Taurín</item>
-    <item>Trans-tuky</item>
-    <item>Vitamín A</item>
+    <item>Sucrose</item>
+    <item>Taurine</item>
+    <item>Trans fat</item>
+    <item>Vitamin A</item>
     <item>Vitamín B1 (tiamín)</item>
     <item>Vitamín B12 (kobalamín)</item>
     <item>Vitamín B2 (riboflavín)</item>
@@ -155,10 +155,10 @@
     <item>Vitamín B6 (pyridoxín)</item>
     <item>Vitamín B9 (kyselina listová)</item>
     <item>Vitamín C (kyselina askorbová)</item>
-    <item>Vitamín D</item>
-    <item>Vitamín E</item>
-    <item>Vitamín K</item>
-    <item>Zinok</item>
+    <item>Vitamin D</item>
+    <item>Vitamin E</item>
+    <item>Vitamin K</item>
+    <item>Zinc</item>
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
@@ -219,7 +219,7 @@
   <string name="errorLogin">Chyba prihlasovacieho mena alebo hesla</string>
   <string name="errorWeb">Nebolo možné pripojiť sa k internetu. Skontrolujte, prosím, pripojenie k sieti.</string>
   <string name="uploadLater">Obrázok bude nahratý, akonáhle bude dostupné internetové spojenie</string>
-  <string name="txtInfoLoginOk">Užívateľ uložený</string>
+  <string name="txtInfoLoginOk">Používateľ uložený</string>
   <string name="txtInfoLoginNo">Užívateľ nebol uložený</string>
   <string name="txtDialogsContent">Produkt, ktorý ste naskenovali ešte neexistuje v Open Food Facts. Prosím pridajte ho.</string>
   <string name="txtDialogsContentPowerMode">Produkt, ktorý ste naskenovali už existuje v Open Food Facts.</string>
@@ -520,7 +520,7 @@
   <string name="brand_string">Značka</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">Vyhľadať</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">Countries where sold</string>
   <string name="store_subtitle">Predajňa</string>
   <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>

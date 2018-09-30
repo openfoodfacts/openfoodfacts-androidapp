@@ -152,7 +152,7 @@
   <string-array name="images_array">
     <item>默认</item>
     <item>营养</item>
-    <item>成分</item>
+    <item>配料</item>
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">书签</string>
@@ -248,7 +248,7 @@
   <string name="home_drawer">主页</string>
   <string name="search_drawer">搜索</string>
   <string name="search_by_barcode_drawer">输入条形码</string>
-  <string name="category_drawer">分类</string>
+  <string name="category_drawer">类别</string>
   <string name="search_by_category">分类</string>
   <string name="search_by_name_drawer">按照名称搜索</string>
   <string name="scan_search">扫描条形码</string>
@@ -494,7 +494,7 @@
   <string name="login_true">已经登录！</string>
   <string name="confirm_logout">确认注销</string>
   <string name="logout_dialog_content">你确定要注销吗？</string>
-  <string name="dialog_cancel">取消</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">选择分辨率</string>
   <string name="pref_resolution_summary">为图片上传选择一个分辨率</string>
   <string name="image_upload_resolution">图像上传分辨率</string>
@@ -508,7 +508,7 @@
   <string name="brand_string">品牌</string>
   <string name="additive_string">添加剂</string>
   <string name="search_string">搜索</string>
-  <string name="country_string">销售的国家</string>
+  <string name="country_string">售卖此商品的国家</string>
   <string name="store_subtitle">商店</string>
   <string name="packaging_subtitle">包装</string>
   <string name="last_seen_string">%1$d %2$s 之前</string>

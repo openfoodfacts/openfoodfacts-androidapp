@@ -43,7 +43,7 @@
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
-    <item>fl. Unzen</item>
+    <item>fl.oz.</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
@@ -155,7 +155,7 @@
   <!-- Text units -->
   <string-array name="images_array">
     <item>Standard</item>
-    <item>Nährwerte</item>
+    <item>Nährwertangaben</item>
     <item>Inhaltsstoffe</item>
   </string-array>
   <!-- Content Description -->
@@ -265,20 +265,20 @@
   <string name="alert_drawer">Allergen-Warnung</string>
   <string name="warning_allergens">Enthält Allergene</string>
   <string name="title_dialog_alert">Alarm hinzufügen</string>
-  <string name="toggle_flash">Blitz</string>
-  <string name="flash_on">Blitz [ON]</string>
-  <string name="flash_off">Blitz [OFF]</string>
+  <string name="toggle_flash">Flash</string>
+  <string name="flash_on">Flash [ON]</string>
+  <string name="flash_off">Flash [OFF]</string>
   <string name="ring_on">Ton [ON]</string>
   <string name="ring_off">Ton [OFF]</string>
-  <string name="auto_focus_on">Autofokus [ON]</string>
-  <string name="auto_focus_off">Autofokus [OFF]</string>
-  <string name="formats">Formate</string>
-  <string name="choose_formats">Formate wählen</string>
-  <string name="select_camera">Kamera auswählen</string>
+  <string name="auto_focus_on">Auto Focus [ON]</string>
+  <string name="auto_focus_off">Auto Focus [OFF]</string>
+  <string name="formats">Formats</string>
+  <string name="choose_formats">Choose Formats</string>
+  <string name="select_camera">Select a Camera</string>
   <string name="ok_button">OK</string>
-  <string name="cancel_button">Abbrechen</string>
+  <string name="cancel_button">Cancel</string>
   <string name="login_button">Benutzername</string>
-  <string name="create_account_button">Konto erstellen</string>
+  <string name="create_account_button">Create Account</string>
   <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
   <string name="from_gallery">Aus Galerie</string>
   <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
@@ -441,7 +441,7 @@
   <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Verknüpfung ist nicht verfügbar</string>
-  <string name="scan_shortcut_short_label">Erfassen</string>
+  <string name="scan_shortcut_short_label">Einlesen</string>
   <string name="scan_shortcut_long_label">Produkt erfassen</string>
   <string name="barcode_shortcut_short_label">Suchen</string>
   <string name="barcode_shortcut_long_label">Suche mit Strichcode</string>
@@ -498,7 +498,7 @@
   <string name="login_true">Bereits angemeldet!</string>
   <string name="confirm_logout">Abmeldung bestätigen</string>
   <string name="logout_dialog_content">Möchten Sie sich wirklich abmelden?</string>
-  <string name="dialog_cancel">Abbrechen</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Auflösung wählen</string>
   <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
   <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>

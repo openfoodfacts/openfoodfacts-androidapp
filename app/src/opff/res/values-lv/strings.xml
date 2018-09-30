@@ -18,7 +18,7 @@
   <string name="slide_1_desc">Skenējiet produktus, uzņemiet attēlus, veiciet pārredzamību</string>
   <string name="slide_2_title">Iegūstiet faktus</string>
   <string name="slide_2_desc">Plaša informācija par skenēto produktu brīvi pieejama jums</string>
-  <string name="slide_3_title">Sekojiet līdzi produktiem kurus izmantojat</string>
+  <string name="slide_3_title">Sekojiet līdzi izmantotajam produktam</string>
   <string name="slide_3_desc">Visi kosmētikas izmantojat vienu parocīgiem sarakstu var eksportēt</string>
   <string name="slide_4_title">Darbojas bezsaistē</string>
   <string name="slide_4_desc">Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma</string>
@@ -33,7 +33,7 @@
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Jūsu alerģiju informācija nekad netiks nosūtīta uz Open Food Facts serveri. Uzmanieties jo pieejamie dati par produktu var būt neprecīzi tāpēc pārliecinieties, pirms pieņemiet lēmumus! </string>
   <!-- OPFF tagline in different languages -->
-  <string name="tagline">bezmaksas dzīvnieku barības produktu datu bāze</string>
+  <string name="tagline">free pet food products database</string>
   <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
   <string name="currently_on_version">Currently on Open Pet Food Facts</string>
 </resources>
