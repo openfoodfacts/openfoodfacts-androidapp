@@ -441,7 +441,7 @@
   <string name="txtSaturatedFat">Saturated na taba</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Hindi magagamit ang shortcut</string>
-  <string name="scan_shortcut_short_label">Suriin</string>
+  <string name="scan_shortcut_short_label">Scan</string>
   <string name="scan_shortcut_long_label">Suriin ang produkto</string>
   <string name="barcode_shortcut_short_label">Hanapin</string>
   <string name="barcode_shortcut_long_label">Hanapin sa pamamagitan ng barcode</string>
@@ -498,7 +498,7 @@
   <string name="login_true">Nakapasok na!</string>
   <string name="confirm_logout">Kumpirmahin ang pag-logout</string>
   <string name="logout_dialog_content">Sigurado ka bang mag-log out?</string>
-  <string name="dialog_cancel">Kanselahin</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Pumili ng Resolusyon</string>
   <string name="pref_resolution_summary">Pumili ng resolution para sa pag-upload ng imahe</string>
   <string name="image_upload_resolution">Resolusyon sa pag-upload ng larawan</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">Mga Tatak</string>
   <string name="additive_string">Sangkap</string>
   <string name="search_string">Hanapin</string>
-  <string name="country_string">Bansa</string>
+  <string name="country_string">Mga bansa kung saan ibinebenta</string>
   <string name="store_subtitle">Tindahan</string>
   <string name="packaging_subtitle">Balot</string>
   <string name="last_seen_string">%1$d %2$s ang nakalipas</string>
