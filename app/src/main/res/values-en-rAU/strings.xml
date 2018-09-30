@@ -512,7 +512,7 @@
   <string name="brand_string">Brand</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">Search</string>
-  <string name="country_string">Available in</string>
+  <string name="country_string">Countries where sold</string>
   <string name="store_subtitle">Store</string>
   <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
