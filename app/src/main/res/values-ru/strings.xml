@@ -339,7 +339,7 @@
   <string name="nutrition_cholesterol_short_name">Холестерин (г)</string>
   <string name="nutrition_energy">Энергетическая ценность</string>
   <string name="nutrition_energy_short_name">Энергетическая ценность</string>
-  <string name="nutrition_fat">Жиры</string>
+  <string name="nutrition_fat">Жир</string>
   <string name="nutrition_fat_short_name">Жиры (г)</string>
   <string name="nutrition_fiber">Пищевые волокна</string>
   <string name="nutrition_fiber_short_name">Пищевые волокна (г)</string>
@@ -368,7 +368,7 @@
   <string name="textCarbonFootprint">Углеродный след / выбросы CO2: </string>
   <string name="txtDialogPowerMode">Быстрый просмотр</string>
   <string name="txtSeeMore">Подробнее</string>
-  <string name="action_search">Найти</string>
+  <string name="action_search">Поиск</string>
   <string name="search_hint">Поиск продукта</string>
   <string name="number_of_results">Количество результатов: </string>
   <string name="brand">Марка :</string>
@@ -506,7 +506,7 @@
   <string name="login_true">Уже вошли!</string>
   <string name="confirm_logout">Подтвердить выход</string>
   <string name="logout_dialog_content">Вы уверены, что хотите выйти?</string>
-  <string name="dialog_cancel">Отмена</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Выберите разрешение</string>
   <string name="pref_resolution_summary">Выберите разрешение для загрузки изображения</string>
   <string name="image_upload_resolution">Разрешение загрузки изображения</string>
@@ -520,7 +520,7 @@
   <string name="brand_string">Марка</string>
   <string name="additive_string">Добавка</string>
   <string name="search_string">Поиск</string>
-  <string name="country_string">Страна</string>
+  <string name="country_string">Страны продажи</string>
   <string name="store_subtitle">Магазин</string>
   <string name="packaging_subtitle">Упаковка</string>
   <string name="last_seen_string">%1$d %2$s назад</string>
@@ -686,17 +686,17 @@
   <string name="description_activity_product">описание</string>
   <string name="intent_filter_share_label">Add to Open Food Facts</string>
   <!-- Used for additive exposure evaluation table -->
-  <string name="overexposure_high">Высокий риск чрезмерного воздействия</string>
+  <string name="overexposure_high">High risk of over exposure</string>
   <string name="overexposure_moderate">Moderate risk of over exposure</string>
   <string name="infants">Infants</string>
   <string name="infants_age">&lt; 1</string>
-  <string name="toddlers">Малыши</string>
+  <string name="toddlers">Toddlers</string>
   <string name="toddlers_age">1 to 2</string>
-  <string name="children">Дети</string>
+  <string name="children">Children</string>
   <string name="children_age">3 to 9</string>
   <string name="adolescents">Adolescents</string>
   <string name="adolescents_age">10 to 17</string>
-  <string name="adults">Взрослые</string>
+  <string name="adults">Adults</string>
   <string name="adults_age">18 to 64</string>
   <string name="elderly">Elderly</string>
   <string name="elderly_age">65+</string>
