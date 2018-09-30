@@ -459,11 +459,11 @@
   <string name="airplane_mode_active_dialog_title">Modo de avião activado</string>
   <string name="airplane_mode_active_dialog_message">O modo de avião está activo, por favor desactive para continuar.</string>
   <string name="airplane_mode_active_dialog_negative">Descartar</string>
-  <string name="airplane_mode_active_dialog_positive">Definições</string>
+  <string name="airplane_mode_active_dialog_positive">Configurações</string>
   <string name="device_offline_dialog_title">Rede indisponível</string>
   <string name="device_offline_dialog_message">É necessária uma ligação de rede para fazer isto, gostaria de alterar as definições?</string>
   <string name="device_offline_dialog_negative">Descartar</string>
-  <string name="device_offline_dialog_positive">Definições</string>
+  <string name="device_offline_dialog_positive">Configurações</string>
   <string name="saving">A guardar…</string>
   <string name="scan_first_product">Digitalizar primeiro produto</string>
   <string name="preference_enable_mobile_data_title">Carregamento por dados móveis</string>
@@ -498,7 +498,7 @@
   <string name="login_true">Já logado!</string>
   <string name="confirm_logout">Confirme o logout</string>
   <string name="logout_dialog_content">Você tem certeza de sair?</string>
-  <string name="dialog_cancel">Cancelar</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Escolha a resolução</string>
   <string name="pref_resolution_summary">Escolha uma resolução para o upload de imagens</string>
   <string name="image_upload_resolution">Resolução de upload de imagem</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">Marca</string>
   <string name="additive_string">Aditivo</string>
   <string name="search_string">Procurar</string>
-  <string name="country_string">País</string>
+  <string name="country_string">Países onde é vendido</string>
   <string name="store_subtitle">Loja</string>
   <string name="packaging_subtitle">Embalagem</string>
   <string name="last_seen_string">Há %1$d %2$s</string>
