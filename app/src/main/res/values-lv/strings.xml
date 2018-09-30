@@ -215,7 +215,7 @@
   <string name="errorLogin">Lietotāja vai paroles kļūda</string>
   <string name="errorWeb">Mēs nevarējām piekļūt internetam. Vai jums ir savienojuma problēmas?</string>
   <string name="uploadLater">Attēls tiks augšupielādēts, kad interneta savienojums būs pieejams</string>
-  <string name="txtInfoLoginOk">Lietotājs saglabāts</string>
+  <string name="txtInfoLoginOk">Lietotājs ir saglabāts</string>
   <string name="txtInfoLoginNo">Lietotājs nav saglabāts</string>
   <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
   <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Food Facts.</string>
@@ -502,7 +502,7 @@
   <string name="login_true">Jau esat ielogojies!</string>
   <string name="confirm_logout">Apstipriniet izlogošanos</string>
   <string name="logout_dialog_content">Vai tiešām vēlaties izrakstīties?</string>
-  <string name="dialog_cancel">Atcelt</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Izvēlieties rezolūciju</string>
   <string name="pref_resolution_summary">Izvēlieties izšķirtspēju attēla augšupielādei</string>
   <string name="image_upload_resolution">Attēla augšupielādes izšķirtspēja</string>
@@ -516,7 +516,7 @@
   <string name="brand_string">Zīmols</string>
   <string name="additive_string">Piedeva</string>
   <string name="search_string">Meklēt</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">Countries where sold</string>
   <string name="store_subtitle">Veikals</string>
   <string name="packaging_subtitle">Iepakojums</string>
   <string name="last_seen_string">%1$d %2$s atpakaļ</string>
@@ -560,7 +560,7 @@
   <string name="bottomNav_history">Vēsture</string>
   <string name="bottomNav_search">Meklēt</string>
   <string name="products_added">Produkti, kurus pievienojāt vai rediģējat</string>
-  <string name="products_incomplete">Produkti, kurus pievienojāt, ir jāpabeidz</string>
+  <string name="products_incomplete">Products you added that need to be completed</string>
   <string name="product_pictures_contributed">Produkti, par kuriem esat uzņēmis bildes</string>
   <string name="picture_contributed_incomplete">Produkti, kurus pievienojāt, ir jāpabeidz</string>
   <string name="product_info_added">Produkti, kuriem pievienojāt informāciju</string>
