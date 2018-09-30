@@ -234,7 +234,7 @@
   <string name="dataSaved">Guardado localmente no seu dispositivo</string>
   <string name="txtInfoAddUser">Por favor, digite o seu nome de utilizador e palavra-passe</string>
   <string name="txtDataUpdated">Dados actualizados</string>
-  <string name="txtLoading">A carregar…</string>
+  <string name="txtLoading">Carregando…</string>
   <string name="txtDialogsContentDelete">Tem a certeza que deseja eliminar este rascunho?</string>
   <string name="txtDialogsContentInfoSave">O produto é guardado localmente, poderá editá-lo no menu \"Editar Offline\"</string>
   <string name="txtBarcodeRequire">Código de barras necessário</string>
@@ -250,7 +250,7 @@
   <string name="msg_share">Veja este produto no Open Food Facts :</string>
   <string name="create_account">Inscrever</string>
   <string name="home_drawer">Início</string>
-  <string name="search_drawer">Pesquisar</string>
+  <string name="search_drawer">Procurar</string>
   <string name="search_by_barcode_drawer">Escreva o código de barras</string>
   <string name="category_drawer">Categorias</string>
   <string name="search_by_category">Categoria</string>
@@ -259,7 +259,7 @@
   <string name="user_drawer">Utilizador</string>
   <string name="offline_edit_drawer">Editar offline</string>
   <string name="txt_anonymous">Anónimo</string>
-  <string name="txt_product_not_found">Produtos não encontrados</string>
+  <string name="txt_product_not_found">Nenhum produto encontrado</string>
   <string name="delete_txt">Eliminar</string>
   <string name="sign_in_drawer">Iniciar sessão</string>
   <string name="alert_drawer">Alerta de alergénios</string>
@@ -348,7 +348,7 @@
   <string name="nutrition_serving_size">Porção :</string>
   <string name="nutrition_sodium">Sódio</string>
   <string name="nutrition_sodium_short_name">Sódio (g)</string>
-  <string name="nutrition_sugars">Açucares</string>
+  <string name="nutrition_sugars">Açúcares</string>
   <string name="nutrition_sugars_short_name">Açúcares (g)</string>
   <string name="nutrition_trans_fat">Gorduras trans</string>
   <string name="nutrition_trans_fat_short_name">Gorduras trans (g)</string>
@@ -498,7 +498,7 @@
   <string name="login_true">Já está logado!</string>
   <string name="confirm_logout">Confirmar o Logout</string>
   <string name="logout_dialog_content">Você quer mesmo sair?</string>
-  <string name="dialog_cancel">Cancelar</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Escolher Resolução</string>
   <string name="pref_resolution_summary">Escolha uma resolução para upload da imagem</string>
   <string name="image_upload_resolution">Resolução de upload de imagens</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">Marca</string>
   <string name="additive_string">Aditivo</string>
   <string name="search_string">Procurar</string>
-  <string name="country_string">País</string>
+  <string name="country_string">Países onde foram vendidos</string>
   <string name="store_subtitle">Loja</string>
   <string name="packaging_subtitle">Embalagem</string>
   <string name="last_seen_string">%1$d %2$s atrás</string>
