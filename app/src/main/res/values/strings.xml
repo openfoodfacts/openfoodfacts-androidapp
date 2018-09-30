@@ -853,7 +853,7 @@
     <string name="risk_of_exposure">Risk of exposure</string>
     <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-    <string name="legend_noael"> : above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi"> : above Acceptable Daily Intake (ADI)</string>
+    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
+    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
     <!-- Used for additive exposure evaluation table -->
 </resources>
