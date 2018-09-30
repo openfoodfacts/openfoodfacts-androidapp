@@ -33,7 +33,7 @@
   <string name="text_offline_info_dialog">يمكنك فحص المنتجات حتى عندما تكون في وضع عدم الاتصال لإضافتها إلى حقائق الجمال المفتوحة لاحقًا. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
   <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى حقائق الطعام المفتوح. أيضاً، احذر من أن فى بعض الاحيان بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً ٪١٠٠، لذا يرجى التحقق مرة أخرى بنفسك! </string>
   <!-- OBF tagline in different languages -->
-  <string name="tagline">قاعدة بيانات مستحضرات التجميل المجانية</string>
+  <string name="tagline">the free cosmetics database</string>
   <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته إن امكن.</string>
   <string name="currently_on_version">حاليا على Open Food Facts</string>
 </resources>
