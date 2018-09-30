@@ -234,7 +234,7 @@
   <string name="dataSaved">अपने डिवाइस पर स्थानीय रूप से सेव है</string>
   <string name="txtInfoAddUser">कृप्या अपना पासवर्ड और प्रवेश दर्ज करें</string>
   <string name="txtDataUpdated">डेटा अपडेट</string>
-  <string name="txtLoading">लोड हो रहा है...</string>
+  <string name="txtLoading">लोड किया जा रहा है…</string>
   <string name="txtDialogsContentDelete">क्या आप वाकई इस प्रारूप को हटाना चाहते हैं?</string>
   <string name="txtDialogsContentInfoSave">उत्पाद स्थानीय रूप से सेव है, आप ऑफलाइन संपादन मेनू में संपादित कर सकते हैं</string>
   <string name="txtBarcodeRequire">बारकोड अपेक्षित हैं</string>
@@ -345,7 +345,7 @@
   <string name="nutrition_satured_fat">संतृप्त वसा</string>
   <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">प्रत्येक हिस्सा</string>
-  <string name="nutrition_serving_size">सेवारत माप:</string>
+  <string name="nutrition_serving_size">सेवारत परिमाण:</string>
   <string name="nutrition_sodium">सोडियम</string>
   <string name="nutrition_sodium_short_name">सोडियम(g)</string>
   <string name="nutrition_sugars">शुगर्स</string>
@@ -498,7 +498,7 @@
   <string name="login_true">पहले से ही लॉगिन हैं!</string>
   <string name="confirm_logout">लॉगआउट करें?</string>
   <string name="logout_dialog_content">लॉग आउट करने के लिए निश्चित हैं?</string>
-  <string name="dialog_cancel">रद्द करें</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">संकल्प चुनें</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image upload resolution</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">ब्रांड</string>
   <string name="additive_string">योज्य</string>
   <string name="search_string">ढूंढें</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">जिन देशों में बिकता है</string>
   <string name="store_subtitle">दुकान</string>
   <string name="packaging_subtitle">पैकेजिंग</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
@@ -645,15 +645,15 @@
   <string name="per_serving">प्रत्येक हिस्सा</string>
   <string name="serving_size">सेवारत माप</string>
   <string name="alcohol_unit" formatted="false">% वॉल्यूम / °</string>
-  <string name="add_a_nutrient">पोषक तत्व ऐड करें</string>
+  <string name="add_a_nutrient">Add a nutrient</string>
   <string name="add_this_product">इस उत्पाद को ऐड करें</string>
   <string name="product_picture">उत्पाद की तस्वीर</string>
   <string name="one_photo_compulsory">(नया उत्पाद ऐड करने के लिए एक तस्वीर अनिवार्य है)</string>
   <string name="product_details">उत्पाद विवरण</string>
-  <string name="product_name">उत्पाद का नाम</string>
+  <string name="product_name">Product name</string>
   <string name="quantity">मात्रा</string>
   <string name="labels">लेबल</string>
-  <string name="period_of_time_after_opening">खोलने के बाद समय की अवधि</string>
+  <string name="period_of_time_after_opening">Period of time after opening</string>
   <string name="manufacturing_details">विनिर्माण विवरण</string>
   <string name="origin_of_ingredients">सामग्री की उत्पत्ति</string>
   <string name="manufacturing_place">विनिर्माण स्थान</string>
@@ -669,7 +669,7 @@
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
   <string name="sign_in_to_edit">किसी उत्पाद को संपादित करने के लिए कृपया साइन इन करें।</string>
   <string name="hint_quantity">उदाहरण: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-  <string name="edit_product_title">उत्पाद को संपादित करें</string>
+  <string name="edit_product_title">Edit a product</string>
   <string name="hint_serving_size">उदाहरण: 60 g, 12 oz, 20cl, 2 fl oz</string>
   <string name="nutrient_already_added">पोषण तथ्यों में %s पहले से मौजूद है</string>
   <string name="save_edits">संपादन सहेजें</string>
