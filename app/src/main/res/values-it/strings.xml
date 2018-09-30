@@ -138,7 +138,7 @@
     <item>Acido stearico (18:0)</item>
     <item>Saccarosio</item>
     <item>Taurina</item>
-    <item>Grassi trans</item>
+    <item>Grassi</item>
     <item>Vitamina A</item>
     <item>Vitamina B1 (tiamina)</item>
     <item>Vitamina B12 (cobalamina)</item>
@@ -272,13 +272,13 @@
   <string name="ring_off">Ring [OFF]</string>
   <string name="auto_focus_on">Auto Focus [ON]</string>
   <string name="auto_focus_off">Auto Focus [OFF]</string>
-  <string name="formats">Formati</string>
-  <string name="choose_formats">Scegli formati</string>
-  <string name="select_camera">Seleziona una fotocamera</string>
+  <string name="formats">Formats</string>
+  <string name="choose_formats">Choose Formats</string>
+  <string name="select_camera">Select a Camera</string>
   <string name="ok_button">Ok</string>
-  <string name="cancel_button">Annulla</string>
+  <string name="cancel_button">Cancel</string>
   <string name="login_button">Login</string>
-  <string name="create_account_button">Crea account</string>
+  <string name="create_account_button">Create Account</string>
   <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
   <string name="from_gallery">Dalla galleria</string>
   <string name="product_sent">Prodotto inviato con successo</string>
@@ -331,7 +331,7 @@
   <string name="nutrition_cholesterol_short_name">Colesterolo (g)</string>
   <string name="nutrition_energy">Energia</string>
   <string name="nutrition_energy_short_name">Energia</string>
-  <string name="nutrition_fat">Grasso</string>
+  <string name="nutrition_fat">Grassi</string>
   <string name="nutrition_fat_short_name">Grassi (g)</string>
   <string name="nutrition_fiber">Fibra dietetica</string>
   <string name="nutrition_fiber_short_name">Fibra alimentare (g)</string>
@@ -441,7 +441,7 @@
   <string name="txtSaturatedFat">Grassi saturi</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Scorciatoia non disponibile</string>
-  <string name="scan_shortcut_short_label">Analizza</string>
+  <string name="scan_shortcut_short_label">Scansiona</string>
   <string name="scan_shortcut_long_label">Scansione del prodotto</string>
   <string name="barcode_shortcut_short_label">Cerca</string>
   <string name="barcode_shortcut_long_label">Cerca per codice a barre</string>
@@ -498,7 +498,7 @@
   <string name="login_true">Ha già effettuato il login!</string>
   <string name="confirm_logout">Conferma il logout</string>
   <string name="logout_dialog_content">Sei sicuro di uscire?</string>
-  <string name="dialog_cancel">Annulla</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Scegli la risoluzione</string>
   <string name="pref_resolution_summary">Scegli una risoluzione per il caricamento delle immagini</string>
   <string name="image_upload_resolution">Risoluzione di caricamento immagini</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">Marche</string>
   <string name="additive_string">Additivo</string>
   <string name="search_string">Cerca</string>
-  <string name="country_string">Paese</string>
+  <string name="country_string">Paesi di vendita</string>
   <string name="store_subtitle">Negozio</string>
   <string name="packaging_subtitle">Confezionamento</string>
   <string name="last_seen_string">%1$d %2$s fa</string>
@@ -555,7 +555,7 @@
   <string name="do_you_want_to">Vuoi aggiungere foto a questo codice a barre?</string>
   <string name="bottomNav_history">Cronologia</string>
   <string name="bottomNav_search">Cerca</string>
-  <string name="products_added">Prodotti aggiunti o modificati</string>
+  <string name="products_added">Products you added or edited</string>
   <string name="products_incomplete">I prodotti aggiunti devono essere completati</string>
   <string name="product_pictures_contributed">Prodotti per i quali hai scattato foto</string>
   <string name="picture_contributed_incomplete">Prodotti per i quali hai scattato foto che devono essere completati</string>
@@ -575,7 +575,7 @@
   <string name="contribution_tab">Contributi</string>
   <string name="contribution_tab_summary">Mostra la scheda dei contributi dell\'utente con i prodotti</string>
   <string name="contribution_tab_title">Mostra scheda contributi</string>
-  <string name="product">Editare</string>
+  <string name="product">Modifica</string>
   <string name="txtDialogsTitle">Informazioni</string>
   <string name="preference_show_all_product_photos_title">Mostra tutte le foto del prodotto</string>
   <string name="preference_show_all_product_photos_summary">Mostra tutte le foto di prodotti inviati in una scheda separata</string>
@@ -634,7 +634,7 @@
   <string name="ingredients_list">Lista degli ingredienti</string>
   <string name="ingredients_hint">Mantenere l\'ordine, indicare la % quando specificata, separare con una virgola oppure -, utilizzare () per indicare gli ingredienti di un ingrediente, segnalare gli allergeni con _</string>
   <string name="extract_ingredients">Estrai ingredienti</string>
-  <string name="extracting_ingredients">Estrazione degli ingredienti</string>
+  <string name="extracting_ingredients">Extracting ingredients</string>
   <string name="looksGood">Va bene</string>
   <string name="skip_ingredients">Non va bene \n Salta ingredienti</string>
   <string name="traces">Tracce</string>
@@ -645,7 +645,7 @@
   <string name="per_serving">Per porzione</string>
   <string name="serving_size">Porzioni</string>
   <string name="alcohol_unit" formatted="false">% vol / °</string>
-  <string name="add_a_nutrient">Aggiungi un nutriente</string>
+  <string name="add_a_nutrient">Add a nutrient</string>
   <string name="add_this_product">Aggiungi questo prodotto</string>
   <string name="product_picture">Foto del prodotto</string>
   <string name="one_photo_compulsory">(una foto è obbligatoria per aggiungere un nuovo prodotto)</string>
@@ -653,7 +653,7 @@
   <string name="product_name">Nome del prodotto</string>
   <string name="quantity">Quantità</string>
   <string name="labels">Etichette</string>
-  <string name="period_of_time_after_opening">Periodo di tempo dopo l\'apertura</string>
+  <string name="period_of_time_after_opening">Period of time after opening</string>
   <string name="manufacturing_details">Dettagli di produzione</string>
   <string name="origin_of_ingredients">Origine degli ingredienti</string>
   <string name="manufacturing_place">Luogo di produzione</string>
