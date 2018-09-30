@@ -678,8 +678,8 @@
   <string name="description_activity_product">description</string>
   <string name="intent_filter_share_label">Add to Open Food Facts</string>
   <!-- Used for additive exposure evaluation table -->
-  <string name="overexposure_high">High risk of over exposure</string>
-  <string name="overexposure_moderate">Moderate risk of over exposure</string>
+  <string name="overexposure_high">Hoog risico van overmatig gebruik</string>
+  <string name="overexposure_moderate">Matig risico van overmatig gebruik</string>
   <string name="infants">Zuigelingen</string>
   <string name="infants_age">&lt; 1</string>
   <string name="toddlers">Peuters</string>
@@ -688,8 +688,8 @@
   <string name="children_age">3 tot 9</string>
   <string name="adolescents">Adolescenten</string>
   <string name="adolescents_age">10 tot 17</string>
-  <string name="adults">Adults</string>
-  <string name="adults_age">18 to 64</string>
+  <string name="adults">Volwassenen</string>
+  <string name="adults_age">18 tot 64</string>
   <string name="elderly">Ouderen</string>
   <string name="elderly_age">65+</string>
   <string name="most_people">Most people\n(over 50%)</string>
