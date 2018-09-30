@@ -414,12 +414,12 @@
   <string name="nutrition_minerals">Minerals</string>
   <string name="silica">Silika</string>
   <string name="bicarbonate">Bikarbunat</string>
-  <string name="potassium">Putasyum</string>
+  <string name="potassium">Apuṭasyum</string>
   <string name="chloride">Klurid</string>
-  <string name="calcium">Kalsyum</string>
+  <string name="calcium">Akalisyum</string>
   <string name="phosphorus">Fusfur</string>
   <string name="iron">Uzzel</string>
-  <string name="magnesium">Magnizyum</string>
+  <string name="magnesium">Amagnizyum</string>
   <string name="zinc">Zink</string>
   <string name="copper">Copper</string>
   <string name="manganese">Manganese</string>
@@ -513,7 +513,7 @@
   <string name="brand_string">Tacreḍt</string>
   <string name="additive_string">Amernu</string>
   <string name="search_string">Nadi</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">Timura anida yettnuzu</string>
   <string name="store_subtitle">Taḥanutt</string>
   <string name="packaging_subtitle">Asekrud</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
