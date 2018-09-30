@@ -238,7 +238,7 @@
   <string name="dataSaved">Zapaćene lokalno na tvom uređaju</string>
   <string name="txtInfoAddUser">Molimo vas da unesete korisničko ime i lozinku</string>
   <string name="txtDataUpdated">Podaci su ažurirani</string>
-  <string name="txtLoading">Učitavam...</string>
+  <string name="txtLoading">Učitavam</string>
   <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
   <string name="txtDialogsContentInfoSave">Ovaj proizvod je sačuvan lokalno, možete ga izmeniti u meniju \"Offline edit\"</string>
   <string name="txtBarcodeRequire">Barkod je neophodan</string>
@@ -254,7 +254,7 @@
   <string name="msg_share">Pogledaj ovaj proizvod na Open Food Facts :</string>
   <string name="create_account">Registruj se</string>
   <string name="home_drawer">Početna</string>
-  <string name="search_drawer">Pretraži</string>
+  <string name="search_drawer">Pretraživanje</string>
   <string name="search_by_barcode_drawer">Pretraži po barkodu</string>
   <string name="category_drawer">Kategorije</string>
   <string name="search_by_category">Kategorija</string>
@@ -486,7 +486,7 @@
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Napredna pretraga i grafikoni</string>
   <string name="connectivity_check">Please check your internet connection</string>
-  <string name="dismiss">Odbaci</string>
+  <string name="dismiss">Dismiss</string>
   <string name="Terms">Uslovi</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">Opšte</string>
@@ -502,7 +502,7 @@
   <string name="login_true">Already logged in!</string>
   <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Are you sure to log out ?</string>
-  <string name="dialog_cancel">Otkaži</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Odaberite rezoluciju</string>
   <string name="pref_resolution_summary">Odaberite rezoluciju slika koje šaljete</string>
   <string name="image_upload_resolution">Rezolucija slika</string>
@@ -516,7 +516,7 @@
   <string name="brand_string">Brend</string>
   <string name="additive_string">Адитив</string>
   <string name="search_string">Pretraživanje</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">Države u kojima se prodaje</string>
   <string name="store_subtitle">Prodavnica</string>
   <string name="packaging_subtitle">Ambalaža</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
