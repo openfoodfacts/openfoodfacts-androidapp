@@ -259,7 +259,7 @@
   <string name="user_drawer">Utilizaire</string>
   <string name="offline_edit_drawer">Offline edit</string>
   <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Produches pas trobats</string>
+  <string name="txt_product_not_found">Products not found</string>
   <string name="delete_txt">Suprimir</string>
   <string name="sign_in_drawer">Sign-in</string>
   <string name="alert_drawer">Allergen alert</string>
@@ -342,10 +342,10 @@
   <string name="nutrition_proteins_short_name">Proteïna (g)</string>
   <string name="nutrition_salt">Sal</string>
   <string name="nutrition_salt_short_name">Sal (g)</string>
-  <string name="nutrition_satured_fat">Grais saturat</string>
+  <string name="nutrition_satured_fat">Saturated fat</string>
   <string name="nutrition_satured_fat_short_name">Grais saturat (g)</string>
   <string name="nutrition_serving">Per racion</string>
-  <string name="nutrition_serving_size">Talha de la racion :</string>
+  <string name="nutrition_serving_size">Serving size :</string>
   <string name="nutrition_sodium">Sòdi</string>
   <string name="nutrition_sodium_short_name">Sòdi (g)</string>
   <string name="nutrition_sugars">Sucres</string>
@@ -441,12 +441,12 @@
   <string name="txtSaturatedFat">Saturated fat</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
-  <string name="scan_shortcut_short_label">Escanèr</string>
+  <string name="scan_shortcut_short_label">Scan</string>
   <string name="scan_shortcut_long_label">Scan Product</string>
   <string name="barcode_shortcut_short_label">Recercar</string>
   <string name="barcode_shortcut_long_label">Search By Barcode</string>
-  <string name="history_shortcut_short_label">Istoric</string>
-  <string name="history_shortcut_long_label">Istoric</string>
+  <string name="history_shortcut_short_label">History</string>
+  <string name="history_shortcut_long_label">History</string>
   <string name="contributions_shortcut_short_label">Contribucions</string>
   <string name="contributions_shortcut_long_label">Mas contribucions</string>
   <string name="forgot_password">Forgot Password</string>
@@ -462,7 +462,7 @@
   <string name="airplane_mode_active_dialog_positive">Paramètres</string>
   <string name="device_offline_dialog_title">Network unavailable</string>
   <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-  <string name="device_offline_dialog_negative">Amagar</string>
+  <string name="device_offline_dialog_negative">Dismiss</string>
   <string name="device_offline_dialog_positive">Paramètres</string>
   <string name="saving">Saving…</string>
   <string name="scan_first_product">Scan First Product</string>
@@ -498,7 +498,7 @@
   <string name="login_true">Already logged in!</string>
   <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Are you sure to log out ?</string>
-  <string name="dialog_cancel">Anullar</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Choose Resolution</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image upload resolution</string>
