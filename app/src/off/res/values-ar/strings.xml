@@ -24,7 +24,7 @@
   <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في Open Food Facts. الرجاء إضافته.</string>
   <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في Open Food Facts.</string>
   <string name="msg_share">انظر لهذا المنتج على Open Food Facts:</string>
-  <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل Open Food Facts</string>
+  <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل \"حقائق الغذاء المفتوحة\"</string>
   <string name="txt_broaden_search">-توسيع نطاق \n-البحث الخاص بك امسح و إضفه إلى Open Food Facts</string>
   <string name="Donation">انقر هنا للتبرع لـ Open Food Facts</string>
   <string name="translate_help_title">المساعدة في ترجمة Open Food Facts</string>
@@ -32,7 +32,7 @@
   <string name="text_offline_info_dialog">قم بمسح المنتجات حتى عندما تكون في وضع عدم الاتصال لإضافتها إلى Open Food Facts لاحقًا. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
   <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
   <!-- OFF tagline in different languages -->
-  <string name="tagline">قاعدة بيانات المنتجات الغذائية المجانية</string>
-  <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في Open Food Facts. هل يمكنك إضافته؟</string>
+  <string name="tagline">the free food products database</string>
+  <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. هل يمكنك إضافته؟</string>
   <string name="currently_on_version">حاليا على Open Food Facts</string>
 </resources>
