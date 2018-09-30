@@ -85,7 +85,7 @@
     <item>חומצה אלפא-לינולאית / ALA ‏(18:3 n-3)</item>
     <item>חומצה אראכידית (20:0)</item>
     <item>חומצה ארכידונית / AA / ARA ‏(20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>חומצה בהאיתית (22:0)</item>
     <item>ביקרבונט</item>
     <item>ביוטין</item>
     <item>חומצה בוטירית (4:0)</item>
@@ -100,7 +100,7 @@
     <item>כולסטרול</item>
     <item>כרומיום</item>
     <item>נחושת</item>
-    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
+    <item>חומצת דיהומו גמא לינולאית / DGLA ‏(20:3‎ n-6)</item>
     <item>חומצה דוקוסהקסנואית / DHA ‏(22:6 n-3)</item>
     <item>חומצה איקוסאפנטאנואית / EPA ‏(20:5 n-3)</item>
     <item>חוןמצה אלאידית (18:1 n-9)</item>
@@ -120,11 +120,11 @@
     <item>מלטודקסטרין</item>
     <item>מלטוז</item>
     <item>מנגן</item>
-    <item>Mead acid (20:3 n-9)</item>
-    <item>Melissic acid (30:0)</item>
+    <item>חומצה מידית (20:3 n-9)</item>
+    <item>חומצה מליסית (30:0)</item>
     <item>מוליבדן</item>
     <item>שומן חד בלתי רווי</item>
-    <item>Montanic acid (28:0)</item>
+    <item>חומצת מונטאניק (28:0)</item>
     <item>חומצה מיריסטית (14:0)</item>
     <item>חומצה נרוונית (24:1 n-9)</item>
     <item>נוקלאוטידים</item>
@@ -136,11 +136,11 @@
     <item>חומצה פנטוטנית (ויטמין B5)</item>
     <item>pH</item>
     <item>זרחן</item>
-    <item>Sugar alcohols (Polyols)</item>
+    <item>סוכר כהלי (פוליאולים)</item>
     <item>שומן רב בלתי רווי</item>
     <item>אשלגן</item>
     <item>סלניום</item>
-    <item>Serum proteins</item>
+    <item>חלבון בסרום</item>
     <item>צורן דו חמצני</item>
     <item>עמילן</item>
     <item>חומצה סטארית (18:0)</item>
@@ -186,7 +186,7 @@
   <string name="txtManufacturing">מקומות העיבוד או הייצור:</string>
   <string name="txtIngredientsOrigins">מקור הרכיבים:</string>
   <string name="txtCity">עיר, מדינה וארץ הקנייה :</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">קוד EMB:</string>
   <string name="txtManufactureUrl">קישור לעמוד המוצר באתר הרשמי של היצרן:</string>
   <string name="txtStores">חנויות:</string>
   <string name="txtCountries">מדינות בהן נמכר:</string>
@@ -665,7 +665,7 @@
   <string name="manufacturing_details">פרטי ייצור</string>
   <string name="origin_of_ingredients">מקור הרכיבים</string>
   <string name="manufacturing_place">מקום ייצור</string>
-  <string name="emb_code">EMB Code</string>
+  <string name="emb_code">קוד EMB</string>
   <string name="purchasing_details">פרטי רכישה</string>
   <string name="country_where_purchased">מדינת הרכישה</string>
   <string name="stores">חנויות</string>
@@ -686,10 +686,10 @@
   <string name="description_activity_product">תיאור</string>
   <string name="intent_filter_share_label">הוספה ל־Open Food Facts</string>
   <!-- Used for additive exposure evaluation table -->
-  <string name="overexposure_high">High risk of over exposure</string>
-  <string name="overexposure_moderate">Moderate risk of over exposure</string>
+  <string name="overexposure_high">סיכון גבוה לחשיפת יתר</string>
+  <string name="overexposure_moderate">סיכון בינוני לחשיפת יתר</string>
   <string name="infants">תינוקות</string>
-  <string name="infants_age">&lt; 1</string>
+  <string name="infants_age">‎&lt; 1</string>
   <string name="toddlers">פעוטות</string>
   <string name="toddlers_age">שנה עד שנתיים</string>
   <string name="children">ילדים</string>
@@ -700,7 +700,13 @@
   <string name="adults_age">18 עד 64</string>
   <string name="elderly">קשישים</string>
   <string name="elderly_age">65+</string>
-  <string name="most_people">Most people\n(over 50%)</string>
-  <string name="some_people">Some people\n(over 5%)</string>
+  <string name="most_people">רוב האנשים\n(מעל 50%)</string>
+  <string name="some_people">חלק מהאנשים\n(מעל 5%)</string>
+  <string name="safety_and_exposure_assessment">הערכת בטיחות וחשיפה</string>
+  <string name="risk_of_exposure">סכנת חשיפה</string>
+  <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
+  <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
+  <string name="legend_noael">מעל למינון עם יכולת להשפעה שלילית (NOAEL)</string>
+  <string name="legend_adi">מעל לכמות היומית המומלצת (ADI)</string>
   <!-- Used for additive exposure evaluation table -->
 </resources>

@@ -37,9 +37,9 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item>جی</item>
-    <item>ایم جی</item>
-    <item>کے جی</item>
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
     <item>l</item>
     <item>ml</item>
     <item>cl</item>
@@ -181,7 +181,7 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Country :</string>
+  <string name="txtCountries">Countries where sold :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -317,7 +317,7 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">Nutrition facts table for %1$s of this product</string>
   <string name="check_facts">Check</string>
   <string name="nutrition">غذائیت</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -694,5 +694,11 @@
   <string name="elderly_age">65+</string>
   <string name="most_people">Most people\n(over 50%)</string>
   <string name="some_people">Some people\n(over 5%)</string>
+  <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
+  <string name="risk_of_exposure">Risk of exposure</string>
+  <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
+  <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
+  <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
+  <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
   <!-- Used for additive exposure evaluation table -->
 </resources>

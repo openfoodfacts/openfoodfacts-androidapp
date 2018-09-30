@@ -27,7 +27,7 @@ categories_en.png
 קבלת חלופות למוצרי המזון האהובים עליך
 
 foodtransparency_en.png
-Become an actor of food transparency
+לקחת חלק בשקיפות המזון
 
 product_view_summary_en.png
 הוויקיפדיה של האוכל
