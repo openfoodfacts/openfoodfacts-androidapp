@@ -24,7 +24,7 @@
   <string name="slide_4_desc">即使您目前没有互联网连接，也可以添加新的产品。</string>
   <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-  <string name="msg_share">查看产品在“公开食品”</string>
+  <string name="msg_share">在 Open Food Facts 中查看这个产品：</string>
   <string name="not_support_books">图书目前未被 Open Food Facts 支持</string>
   <string name="txt_broaden_search">- 扩大您的搜索 \n- 扫描并将其添加到 Open Food Facts</string>
   <string name="Donation">点击此处捐助给 Open Food Facts</string>
