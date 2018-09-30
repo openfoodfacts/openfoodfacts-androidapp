@@ -268,8 +268,8 @@
   <string name="toggle_flash">Blitz</string>
   <string name="flash_on">Blitz [ON]</string>
   <string name="flash_off">Blitz [OFF]</string>
-  <string name="ring_on">Ring [ON]</string>
-  <string name="ring_off">Ring [OFF]</string>
+  <string name="ring_on">Ton [ON]</string>
+  <string name="ring_off">Ton [OFF]</string>
   <string name="auto_focus_on">Autofokus [ON]</string>
   <string name="auto_focus_off">Autofokus [OFF]</string>
   <string name="formats">Formate</string>
