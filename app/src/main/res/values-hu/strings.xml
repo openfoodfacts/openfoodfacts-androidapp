@@ -250,7 +250,7 @@
   <string name="msg_share">Nézze meg a terméket az Open Food Facts adatbázisában:</string>
   <string name="create_account">Regisztráció</string>
   <string name="home_drawer">Kezdőlap</string>
-  <string name="search_drawer">Keres</string>
+  <string name="search_drawer">Keresés</string>
   <string name="search_by_barcode_drawer">Keresés vonalkód alapján</string>
   <string name="category_drawer">Kategóriák</string>
   <string name="search_by_category">Kategória</string>
@@ -360,7 +360,7 @@
   <string name="textCarbonFootprint">Szénlábnyom / szén-dioxid-kibocsátás: </string>
   <string name="txtDialogPowerMode">Gyorsnézet</string>
   <string name="txtSeeMore">Továbbiak</string>
-  <string name="action_search">Keres</string>
+  <string name="action_search">Keresés</string>
   <string name="search_hint">Termék keresése</string>
   <string name="number_of_results">Találatok száma: </string>
   <string name="brand">Márkanév:</string>
@@ -443,7 +443,7 @@
   <string name="disabled_message">Parancsikon nem elérhető</string>
   <string name="scan_shortcut_short_label">Beolvasás</string>
   <string name="scan_shortcut_long_label">Termék beolvasása</string>
-  <string name="barcode_shortcut_short_label">Keres</string>
+  <string name="barcode_shortcut_short_label">Keresés</string>
   <string name="barcode_shortcut_long_label">Keresés vonalkód alapján</string>
   <string name="history_shortcut_short_label">Előzmények</string>
   <string name="history_shortcut_long_label">Előzmények</string>
@@ -498,7 +498,7 @@
   <string name="login_true">Már bejelentkezett!</string>
   <string name="confirm_logout">Kijelentkezés megerősítése</string>
   <string name="logout_dialog_content">Biztosan kijelentkezik?</string>
-  <string name="dialog_cancel">Mégse</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Válasszon felbontást</string>
   <string name="pref_resolution_summary">Válasszon felbontást kép feltöltéshez</string>
   <string name="image_upload_resolution">Képfeltöltés felbontása</string>
@@ -511,8 +511,8 @@
   <string name="swipe_down">Húzás lefelé</string>
   <string name="brand_string">Márkanév</string>
   <string name="additive_string">Adalékanyag</string>
-  <string name="search_string">Keres</string>
-  <string name="country_string">Országok, ahol árulják</string>
+  <string name="search_string">Keresés</string>
+  <string name="country_string">Országok, ahol kapható</string>
   <string name="store_subtitle">Bolt</string>
   <string name="packaging_subtitle">Csomagolás</string>
   <string name="last_seen_string">%1$d %2$s ezelőtt</string>
@@ -556,7 +556,7 @@
   <string name="bottomNav_history">Előzmények</string>
   <string name="bottomNav_search">Keresés</string>
   <string name="products_added">Termékek, amelyeket hozzáadott vagy szerkesztett</string>
-  <string name="products_incomplete">Termékek, amelyeket hozzáadott és ki kell egészíteni</string>
+  <string name="products_incomplete">Termékek, amiket hozzáadtál, és befejezésre várnak</string>
   <string name="product_pictures_contributed">Termékek, amelyekről képeket készített</string>
   <string name="picture_contributed_incomplete">Termékek, amelyekről képeket készített és ki kell egészíteni</string>
   <string name="product_info_added">Termékek, amelyekhez információt adott hozzá</string>
