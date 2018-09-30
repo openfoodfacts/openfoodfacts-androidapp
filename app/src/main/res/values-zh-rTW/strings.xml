@@ -494,7 +494,7 @@
   <string name="login_true">您已經登錄了！</string>
   <string name="confirm_logout">確認登出</string>
   <string name="logout_dialog_content">確定是否要登出？</string>
-  <string name="dialog_cancel">取消</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Choose Resolution</string>
   <string name="pref_resolution_summary">為上傳的圖片選擇一個解析度</string>
   <string name="image_upload_resolution">圖片上傳解析度</string>
@@ -508,7 +508,7 @@
   <string name="brand_string">品牌</string>
   <string name="additive_string">添加劑</string>
   <string name="search_string">搜尋</string>
-  <string name="country_string">國家</string>
+  <string name="country_string">販售國</string>
   <string name="store_subtitle">商店</string>
   <string name="packaging_subtitle">包裝套件</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
