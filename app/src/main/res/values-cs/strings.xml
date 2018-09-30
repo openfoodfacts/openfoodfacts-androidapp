@@ -678,14 +678,13 @@
   <string name="sign_in_to_edit">Please sign in to edit a product.</string>
   <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
   <string name="edit_product_title">Upravit produkt</string>
-  <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
-  <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
+  <string name="hint_serving_size">Příklady: 60 g, 12 oz, 20cl, 2 fl oz</string>
+  <string name="nutrient_already_added">%s je již ve výživových faktech</string>
   <string name="save_edits">Uložit úpravy</string>
   <string name="contribution_by">Contribution By</string>
   <string name="title_activity_product">Title</string>
   <string name="description_activity_product">popis</string>
   <string name="intent_filter_share_label">Add to Open Food Facts</string>
-  <!-- Used for additive exposure evaluation table -->
   <!-- Used for additive exposure evaluation table -->
   <string name="overexposure_high">High risk of over exposure</string>
   <string name="overexposure_moderate">Moderate risk of over exposure</string>
@@ -707,7 +706,7 @@
   <string name="risk_of_exposure">Risk of exposure</string>
   <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
   <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-  <string name="legend_noael"> : above dose with observed adverse effect (NOAEL)</string>
-  <string name="legend_adi"> : above Acceptable Daily Intake (ADI)</string>
+  <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
+  <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
   <!-- Used for additive exposure evaluation table -->
 </resources>
