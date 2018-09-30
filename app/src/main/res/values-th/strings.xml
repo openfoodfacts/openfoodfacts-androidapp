@@ -508,7 +508,7 @@
   <string name="brand_string">Brand</string>
   <string name="additive_string">Additive</string>
   <string name="search_string">ค้นหา</string>
-  <string name="country_string">ประเทศ</string>
+  <string name="country_string">ประเทศของการขาย</string>
   <string name="store_subtitle">Store</string>
   <string name="packaging_subtitle">บรรจุภัณฑ์</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
