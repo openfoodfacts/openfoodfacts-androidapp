@@ -279,7 +279,16 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 	public void expand()
 	{
 		bottomSheetBehavior.setState( BottomSheetBehavior.STATE_EXPANDED );
-		mButtonScan.setVisibility( View.INVISIBLE );
+		mButtonScan.setVisibility( View.GONE );
+	}
+
+	public void collapse()
+	{
+		bottomSheetBehavior.setState( BottomSheetBehavior.STATE_COLLAPSED );
+		if( Utils.isHardwareCameraInstalled( this ) )
+		{
+			mButtonScan.setVisibility( View.VISIBLE );
+		}
 	}
 
 	@Override
@@ -287,7 +296,7 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 	{
 		if( bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED )
 		{
-			bottomSheetBehavior.setState( BottomSheetBehavior.STATE_COLLAPSED );
+			collapse();
 		}
 		else
 		{
@@ -385,6 +394,27 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 		}
 
 		viewPager.setAdapter( adapterResult );
+
+		viewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener()
+		{
+			@Override
+			public void onPageScrolled( int position, float positionOffset, int positionOffsetPixels )
+			{
+
+			}
+
+			@Override
+			public void onPageSelected( int position )
+			{
+				collapse();
+			}
+
+			@Override
+			public void onPageScrollStateChanged( int state )
+			{
+
+			}
+		} );
 	}
 
 	/**
