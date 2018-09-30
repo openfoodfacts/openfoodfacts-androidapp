@@ -21,7 +21,7 @@
   <string name="slide_3_title">Guarda registro del producto o vídeo que uses o te guste</string>
   <string name="slide_3_desc">Toda la comida que escanees, la podrás exportar en una lista muy práctica</string>
   <string name="slide_4_title">Funciona sin conexión</string>
-  <string name="slide_4_desc">Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento</string>
+  <string name="slide_4_desc">Puede agregar nuevos productos, incluso si no tiene una conexión de Internet al momento</string>
   <string name="txtDialogsContent">El producto que has escaneado aún no existe en Open Pet Food Facts. por favor añádelo.</string>
   <string name="txtDialogsContentPowerMode">El producto que has escaneado ya existe en Open Pet Food Facts.</string>
   <string name="msg_share">Mira este producto en Open Food Facts :</string>
@@ -33,7 +33,7 @@
   <string name="text_offline_info_dialog">Escanea productos incluso cuando no hay conexión a internet, para añadirlos a Open Pet Food Facts later. Podrás enviar más tarde los productos escaneados usando el botón de abajo.</string>
   <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
   <!-- OPFF tagline in different languages -->
-  <string name="tagline">base de datos libre para comida para mascotas</string>
+  <string name="tagline">free pet food products database</string>
   <string name="product_not_found">El producto %1$s que has escaneado no existe en Open Pet Food Facts. ¿puedes añadirlo?</string>
   <string name="currently_on_version">Actualmente en Open Food Facts</string>
 </resources>
