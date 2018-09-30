@@ -353,7 +353,7 @@
   <string name="nutrition_satured_fat">Nasičena maščoba</string>
   <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
   <string name="nutrition_serving">Na porcijo</string>
-  <string name="nutrition_serving_size">Velikost obroks :</string>
+  <string name="nutrition_serving_size">Velikost serviranja :</string>
   <string name="nutrition_sodium">Natrij</string>
   <string name="nutrition_sodium_short_name">Natrij (g)</string>
   <string name="nutrition_sugars">Sladkorji</string>
@@ -477,7 +477,7 @@
   <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
   <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
-  <string name="device_on_mobile_data_warning_title">Imformacije</string>
+  <string name="device_on_mobile_data_warning_title">Informacije</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">Nastavitve</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
@@ -520,7 +520,7 @@
   <string name="brand_string">Blagovna znamka</string>
   <string name="additive_string">Aditiv</string>
   <string name="search_string">Iskanje</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">Države, kjer se prodaja</string>
   <string name="store_subtitle">Trgovina</string>
   <string name="packaging_subtitle">Pakiranje</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
