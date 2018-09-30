@@ -394,9 +394,9 @@
   <string name="nutrition_alcohol">알코올</string>
   <string name="nutrition_vitamins">비타민</string>
   <string name="vitamin_a">비타민 A</string>
-  <string name="vitamin_d">비타민 D</string>
-  <string name="vitamin_e">비타민 E</string>
-  <string name="vitamin_k">비타민 K</string>
+  <string name="vitamin_d">Vitamin D</string>
+  <string name="vitamin_e">Vitamin E</string>
+  <string name="vitamin_k">Vitamin K</string>
   <string name="vitamin_c">비타민 C</string>
   <string name="vitamin_b1">비타민 B1</string>
   <string name="vitamin_b2">비타민 B2</string>
@@ -494,7 +494,7 @@
   <string name="login_true">이미 로그인했습니다!</string>
   <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">로그아웃 하겠습니까?</string>
-  <string name="dialog_cancel">취소</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">해상도 선택</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image upload resolution</string>
@@ -508,7 +508,7 @@
   <string name="brand_string">브랜드</string>
   <string name="additive_string">첨가물</string>
   <string name="search_string">수색</string>
-  <string name="country_string">국가</string>
+  <string name="country_string">판매의 나라</string>
   <string name="store_subtitle">상점</string>
   <string name="packaging_subtitle">포장</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
