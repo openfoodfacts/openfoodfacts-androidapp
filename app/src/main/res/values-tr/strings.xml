@@ -498,7 +498,7 @@
   <string name="login_true">Zaten oturum açıldı!</string>
   <string name="confirm_logout">Çıkışı Onayla</string>
   <string name="logout_dialog_content">Çıkış yapmak istediğinize emin misiniz ?</string>
-  <string name="dialog_cancel">İptal</string>
+  <string name="dialog_cancel">Cancel</string>
   <string name="choose_resolution">Çözünürlük Seçin</string>
   <string name="pref_resolution_summary">Resim yükleme için bir çözünürlük seçin</string>
   <string name="image_upload_resolution">Resim yükleme çözünürlüğü</string>
@@ -512,7 +512,7 @@
   <string name="brand_string">Marka</string>
   <string name="additive_string">Katkı</string>
   <string name="search_string">Ara</string>
-  <string name="country_string">Ülke</string>
+  <string name="country_string">Satılan ülkeler</string>
   <string name="store_subtitle">Mağaza</string>
   <string name="packaging_subtitle">Paketleme</string>
   <string name="last_seen_string">%1$d%2$s önce</string>
