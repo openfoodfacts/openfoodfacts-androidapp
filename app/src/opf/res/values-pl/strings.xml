@@ -33,7 +33,7 @@
   <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
   <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
   <!-- OPF tagline in different languages -->
-  <string name="tagline">darmowa baza produktów</string>
+  <string name="tagline">the free product database</string>
   <string name="product_not_found">Zeskanowany produkt %1$s, który jeszcze nie figuruje w Open Food Facts. Dodać go?</string>
   <string name="currently_on_version">Aktualnie na Otwartych faktach o Produktach</string>
 </resources>
