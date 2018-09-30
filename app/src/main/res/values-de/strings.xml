@@ -694,7 +694,7 @@
   <string name="elderly_age">65+</string>
   <string name="most_people">Die meisten Personen\n(über 50%)</string>
   <string name="some_people">Einige PersonenSome people\n(über 5%)</string>
-  <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
+  <string name="safety_and_exposure_assessment">Sicherheits- und Gefährdungsbeurteilung</string>
   <string name="risk_of_exposure">Risk of exposure</string>
   <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
   <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
