@@ -33,7 +33,7 @@
   <string name="text_offline_info_dialog">Olvassa be a termékeket akkor is, amikor kapcsolat nélküli módban van, hogy később hozzáadja azokat az Open Products Facts-hez. A beolvasott termékek itt fognak megjelenni és az alábbi gomb használatával elküldheti őket.</string>
   <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Products Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <!-- OPF tagline in different languages -->
-  <string name="tagline">a szabad termék adatbázis</string>
+  <string name="tagline">the free product database</string>
   <string name="product_not_found">A beolvasott %1$s termék nem található az Open Products Facts adatbázisában. Hozzá tudná adni?</string>
   <string name="currently_on_version">Currently on Open Products Facts</string>
 </resources>
