@@ -678,7 +678,6 @@
   <string name="description_activity_product">description</string>
   <string name="intent_filter_share_label">Ajouter à Open Food Facts</string>
   <!-- Used for additive exposure evaluation table -->
-  <!-- Used for additive exposure evaluation table -->
   <string name="overexposure_high">Risque élevé de surexposition</string>
   <string name="overexposure_moderate">Risque modéré de surexposition</string>
   <string name="infants">Nourrissons</string>
@@ -699,7 +698,7 @@
   <string name="risk_of_exposure">Risk of exposure</string>
   <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
   <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-  <string name="legend_noael"> : above dose with observed adverse effect (NOAEL)</string>
-  <string name="legend_adi"> : above Acceptable Daily Intake (ADI)</string>
+  <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
+  <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
   <!-- Used for additive exposure evaluation table -->
 </resources>
