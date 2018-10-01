@@ -676,7 +676,7 @@
   <!-- Used for additive exposure evaluation table -->
   <string name="overexposure_high">High risk of over exposure</string>
   <string name="overexposure_moderate">Moderate risk of over exposure</string>
-  <string name="infants">Infants</string>
+  <string name="infants">乳児</string>
   <string name="infants_age">&lt; 1</string>
   <string name="toddlers">幼児</string>
   <string name="toddlers_age">1 〜 2</string>
