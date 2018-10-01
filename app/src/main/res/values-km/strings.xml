@@ -15,37 +15,37 @@
     <item quantity="other">%d ថ្ងៃមុន</item>
   </plurals>
   <string name="action_settings">ការកំណត់</string>
-  <string name="action_about">About</string>
-  <string name="action_discover">Discover</string>
-  <string name="contribute">How to contribute</string>
-  <string name="action_find">Find</string>
-  <string name="text_barcode">Type the barcode :</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="action_about">អំពី</string>
+  <string name="action_discover">ស្វែងរក</string>
+  <string name="contribute">របៀបក្នុងការបញ្ចូល</string>
+  <string name="action_find">ស្វែងរក</string>
+  <string name="text_barcode">វាយបញ្ចូលបាដកូដ:</string>
+  <string name="message_in_activity_save_product_offline">មានតែរូបថតមួយប៉ុណ្ណោះដែលមានកាតព្វកិច្ចត្រូវតែផ្ញើផលិតផលថ្មី។</string>
+  <string name="product_incomplete_message">ផលិតផលនេះមិនបានបញ្ចប់ទេ។ ជាលទ្ធផលយើងមិនអាចធ្វើការត្រួតពិនិត្យអាឡែរហ្សីបានទេ។</string>
+  <string name="no_offline_data">អ្នកធ្វើបានរួចរាល់ហើយ</string>
+  <string name="first_offline">ផលិតផលដែលបានបន្ថែមក្រៅបណ្តាញនឹងបង្ហាញនៅទីនេះ</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
-    <item>Summary</item>
-    <item>Ingredients</item>
-    <item>Nutrition</item>
-    <item>Nutrition Table</item>
+    <item>ពត៌មានសង្ខេប</item>
+    <item>គ្រឿងផ្សំ</item>
+    <item>អាហាររូបត្ថម្ភ</item>
+    <item>តារាងអាហារូបត្ថម្ភ</item>
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
+    <item>ក្រាម</item>
+    <item>មីលីក្រាម</item>
     <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
+    <item>លីត្រ</item>
+    <item>មីលីលីត្រ</item>
+    <item>សង់ទីលីត្រ</item>
+    <item>អោន រាវ</item>
   </string-array>
   <!-- weight units -->
   <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
+    <item>ក្រាម</item>
+    <item>មីលីក្រាម</item>
     <item>kg</item>
   </string-array>
   <!-- nutrition energy units -->
@@ -55,14 +55,14 @@
   </string-array>
   <!-- nutrition weight units -->
   <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
+    <item>ក្រាម</item>
+    <item>មីលីក្រាម</item>
     <item>µg</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
-    <item>g</item>
-    <item>mg</item>
+    <item>ក្រាម</item>
+    <item>មីលីក្រាម</item>
     <item>µg</item>
     <item>% DV</item>
     <item>IU</item>
@@ -152,8 +152,8 @@
   <!-- Text units -->
   <string-array name="images_array">
     <item>Default</item>
-    <item>Nutrition</item>
-    <item>Ingredients</item>
+    <item>អាហាររូបត្ថម្ភ</item>
+    <item>គ្រឿងផ្សំ</item>
   </string-array>
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
@@ -316,7 +316,7 @@
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
   <string name="check_facts">Check</string>
-  <string name="nutrition">Nutrition</string>
+  <string name="nutrition">អាហាររូបត្ថម្ភ</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
   <string name="please_enter_weight">Please enter the weight</string>
   <string name="enter_weight">Enter the weight</string>
@@ -623,7 +623,7 @@
   <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
   <string name="percent">%1$d%%</string>
   <string name="overview">Overview</string>
-  <string name="ingredients">Ingredients</string>
+  <string name="ingredients">គ្រឿងផ្សំ</string>
   <string name="nutrition_facts">Nutrition Facts</string>
   <string name="your_version">Yours</string>
   <string name="ingredients_picture">Ingredients Picture</string>
