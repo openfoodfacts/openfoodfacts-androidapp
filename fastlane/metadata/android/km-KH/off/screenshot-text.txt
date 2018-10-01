@@ -36,7 +36,7 @@ Wikipedia for Pet Food
 Wikipedia of Products
 
 product_view_ingredients_en.png
-Ingredients
+គ្រឿងផ្សំ
 
 menu_en.png
 Powerful
