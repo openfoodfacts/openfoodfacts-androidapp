@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 
+import android.support.annotation.Nullable;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -63,6 +65,7 @@ public class CategoryName {
     public CategoryName() {
     }
 
+    @Nullable
     public Long getId() {
         return this.id;
     }
@@ -71,6 +74,7 @@ public class CategoryName {
         this.id = id;
     }
 
+    @Nullable
     public String getCategoryTag() {
         return this.categoryTag;
     }
@@ -79,6 +83,7 @@ public class CategoryName {
         this.categoryTag = categoryTag;
     }
 
+    @Nullable
     public String getLanguageCode() {
         return this.languageCode;
     }
@@ -87,6 +92,7 @@ public class CategoryName {
         this.languageCode = languageCode;
     }
 
+    @Nullable
     public String getName() {
         return this.name;
     }
@@ -95,6 +101,7 @@ public class CategoryName {
         this.name = name;
     }
 
+    @Nullable
     public String getWikiDataId() {
         if(this.wikiDataId==null){
             return "null";
@@ -114,6 +121,7 @@ public class CategoryName {
         this.wikiDataId = wikiDataId;
     }
 
+    @Nullable
     public Boolean getIsWikiDataIdPresent() {
         return this.isWikiDataIdPresent;
     }

@@ -57,7 +57,6 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
                                             return Single.just(categoryName);
                                         }
                                     }))
-                            .filter(categoryName -> categoryName.isNotNull())
                             .toList()
                             .doOnSubscribe(d -> view.showCategoriesState(ProductInfoState.LOADING))
                             .subscribeOn(Schedulers.io())
