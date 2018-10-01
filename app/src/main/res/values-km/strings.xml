@@ -36,7 +36,7 @@
   <string-array name="units_array">
     <item>ក្រាម</item>
     <item>មីលីក្រាម</item>
-    <item>kg</item>
+    <item>គីទ្បូក្រាម</item>
     <item>លីត្រ</item>
     <item>មីលីលីត្រ</item>
     <item>សង់ទីលីត្រ</item>
@@ -46,26 +46,26 @@
   <string-array name="weights_array">
     <item>ក្រាម</item>
     <item>មីលីក្រាម</item>
-    <item>kg</item>
+    <item>គីទ្បូក្រាម</item>
   </string-array>
   <!-- nutrition energy units -->
   <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
+    <item>គីឡូការឡូរី</item>
+    <item>គីឡូស៊ូល</item>
   </string-array>
   <!-- nutrition weight units -->
   <string-array name="nutrition_weight_units">
     <item>ក្រាម</item>
     <item>មីលីក្រាម</item>
-    <item>µg</item>
+    <item>មីក្រូក្រាម</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>ក្រាម</item>
     <item>មីលីក្រាម</item>
-    <item>µg</item>
-    <item>% DV</item>
-    <item>IU</item>
+    <item>មីក្រូក្រាម</item>
+    <item>% របបអាហារប្រចាំថ្ងៃ</item>
+    <item>ខ្នាតអន្តរជាតិ</item>
   </string-array>
   <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
