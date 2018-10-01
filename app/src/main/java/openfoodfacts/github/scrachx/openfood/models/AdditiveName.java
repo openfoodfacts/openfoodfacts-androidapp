@@ -24,38 +24,54 @@ public class AdditiveName {
 
     private String name;
 
+    private String overexposureRisk;
+
+    private String exposureMeanGreaterThanAdi;
+    private String exposureMeanGreaterThanNoael;
+    private String exposure95ThGreaterThanAdi;
+    private String exposure95ThGreaterThanNoael;
+
     private String wikiDataId;
 
     private Boolean isWikiDataIdPresent;
 
-    @Generated(hash = 1491450865)
-    public AdditiveName(Long id, String additiveTag, String languageCode,
-                        String name, String wikiDataId, Boolean isWikiDataIdPresent) {
+    @Generated(hash = 1085820763)
+    public AdditiveName(Long id, String additiveTag, String languageCode, String name, String overexposureRisk,
+            String exposureMeanGreaterThanAdi, String exposureMeanGreaterThanNoael,
+            String exposure95ThGreaterThanAdi, String exposure95ThGreaterThanNoael, String wikiDataId,
+            Boolean isWikiDataIdPresent) {
         this.id = id;
         this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.overexposureRisk = overexposureRisk;
+        this.exposureMeanGreaterThanAdi = exposureMeanGreaterThanAdi;
+        this.exposureMeanGreaterThanNoael = exposureMeanGreaterThanNoael;
+        this.exposure95ThGreaterThanAdi = exposure95ThGreaterThanAdi;
+        this.exposure95ThGreaterThanNoael = exposure95ThGreaterThanNoael;
         this.wikiDataId = wikiDataId;
         this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
     @Keep
-    public AdditiveName(String additiveTag, String languageCode,
-                        String name, String wikiDataId) {
+    public AdditiveName( String additiveTag, String languageCode,
+                         String name, String overexposureRisk, String wikiDataId) {
         this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.overexposureRisk = overexposureRisk;
         this.wikiDataId = wikiDataId;
         this.isWikiDataIdPresent = true;
     }
 
 
     @Keep
-    public AdditiveName(String additiveTag, String languageCode,
-                        String name) {
+    public AdditiveName( String additiveTag, String languageCode,
+                         String name, String overexposureRisk ) {
         this.additiveTag = additiveTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.overexposureRisk = overexposureRisk;
         this.isWikiDataIdPresent = false;
     }
 
@@ -135,5 +151,53 @@ public class AdditiveName {
 
     public Boolean isNotNull() {
         return id != null && additiveTag != null && languageCode != null && name != null;
+    }
+
+    public String getOverexposureRisk() {
+        return this.overexposureRisk;
+    }
+
+    public void setOverexposureRisk( String overexposureRisk ) {
+        this.overexposureRisk = overexposureRisk;
+    }
+
+    public String getExposureMeanGreaterThanAdi() {
+        return this.exposureMeanGreaterThanAdi;
+    }
+
+    public void setExposureMeanGreaterThanAdi(String exposureMeanGreaterThanAdi) {
+        this.exposureMeanGreaterThanAdi = exposureMeanGreaterThanAdi;
+    }
+
+    public String getExposureMeanGreaterThanNoael() {
+        return this.exposureMeanGreaterThanNoael;
+    }
+
+    public void setExposureMeanGreaterThanNoael(String exposureMeanGreaterThanNoael) {
+        this.exposureMeanGreaterThanNoael = exposureMeanGreaterThanNoael;
+    }
+
+    public String getExposure95ThGreaterThanAdi() {
+        return this.exposure95ThGreaterThanAdi;
+    }
+
+    public void setExposure95ThGreaterThanAdi(String exposure95ThGreaterThanAdi) {
+        this.exposure95ThGreaterThanAdi = exposure95ThGreaterThanAdi;
+    }
+
+    public String getExposure95ThGreaterThanNoael() {
+        return this.exposure95ThGreaterThanNoael;
+    }
+
+    public void setExposure95ThGreaterThanNoael(String exposure95ThGreaterThanNoael) {
+        this.exposure95ThGreaterThanNoael = exposure95ThGreaterThanNoael;
+    }
+
+    public void setExposureEvalMap( String exposure95ThGreaterThanAdi, String exposure95ThGreaterThanNoael, String exposureMeanGreaterThanAdi, String exposureMeanGreaterThanNoael )
+    {
+        this.exposure95ThGreaterThanAdi = exposure95ThGreaterThanAdi;
+        this.exposure95ThGreaterThanNoael = exposure95ThGreaterThanNoael;
+        this.exposureMeanGreaterThanAdi = exposureMeanGreaterThanAdi;
+        this.exposureMeanGreaterThanNoael = exposureMeanGreaterThanNoael;
     }
 }

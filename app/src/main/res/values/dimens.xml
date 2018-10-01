@@ -62,4 +62,5 @@
     <dimen name="product_width">250dp</dimen>
     <dimen name="photo_height">180dp</dimen>
     <dimen name="photo_width">180dp</dimen>
+
 </resources>
