@@ -71,8 +71,8 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
+    <item>អាស៊ីតអាល់ហ្វាលីនូលេនិច/អាស៊ីតអាល់ហ្វាលីនូលេនិច(18:3 n-3)</item>
+    <item>អាស៊ីតអាចឈីឌិច (20: 0)</item>
     <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
     <item>Behenic acid (22:0)</item>
     <item>Bicarbonate</item>
@@ -80,8 +80,8 @@
     <item>Butyric acid (4:0)</item>
     <item>Caffeine</item>
     <item>Calcium</item>
-    <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
+    <item>អាស៊ីតខាបព្រីក(10: 0)</item>
+    <item>អាស៊ីតខាបព្រីក(6: 0)</item>
     <item>Caprylic acid (8:0)</item>
     <item>Casein</item>
     <item>Cerotic acid (26:0)</item>
