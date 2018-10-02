@@ -696,9 +696,9 @@
   <string name="some_people">Nogle personer\n(flere end 5%)</string>
   <string name="safety_and_exposure_assessment">Sikkerheds- og eksponeringsvurdering</string>
   <string name="risk_of_exposure">Risiko for eksponering</string>
-  <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
-  <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-  <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-  <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+  <string name="efsa_warning_moderate_risk">Den Europæiske Fødevaresikkerhedsautoritet (EFSA) har fastslået, at visse befolkningsgrupper har en moderat risiko for at indtage for meget %1$s.</string>
+  <string name="efsa_warning_high_risk">Den Europæiske Fødevaresikkerhedsautoritet (EFSA) har fastslået, at visse befolkningsgrupper har høj risiko for at indtage for meget %1$s.</string>
+  <string name="legend_noael">oven dosis med observeret bivirkning (NOAEL)</string>
+  <string name="legend_adi">over Acceptabelt Dagligt Indtag (ADI)</string>
   <!-- Used for additive exposure evaluation table -->
 </resources>
