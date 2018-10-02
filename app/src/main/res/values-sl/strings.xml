@@ -20,10 +20,10 @@
     <item quantity="other">Pred %d urami</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
-    <item quantity="two">%d days ago</item>
-    <item quantity="few">%d days ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="one">1 dan nazaj</item>
+    <item quantity="two">%d dani nazaj</item>
+    <item quantity="few">%d dani nazaj</item>
+    <item quantity="other">%d dani nazaj</item>
   </plurals>
   <string name="action_settings">Nastavitve</string>
   <string name="action_about">O programu</string>
@@ -34,7 +34,7 @@
   <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="first_offline">Tukaj bodo prikazani izdelki, ki so bili dodani brez povezave</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -68,13 +68,13 @@
   <string-array name="nutrition_weight_units">
     <item>g</item>
     <item>mg</item>
-    <item>µg</item>
+    <item>μg</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
     <item>mg</item>
-    <item>µg</item>
+    <item>μg</item>
     <item>% DV</item>
     <item>IU</item>
   </string-array>
@@ -82,7 +82,7 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
+    <item>Alfa-linolenska kislina / ALA (18:3 n-3)</item>
     <item>Arachidic acid (20:0)</item>
     <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
     <item>Behenic acid (22:0)</item>
