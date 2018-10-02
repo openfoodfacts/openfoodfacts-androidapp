@@ -8,8 +8,8 @@
 *** Pridobite dejstva***
 
 - Aditivi v kozmetiki, F.I.L. kode, številke CI, INCI (mednarodna nomenklatura kozmetičnih sestavin), seznam sestavin, alergeni, oznake embalaže... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- Open Beauty Facts vam pomagajo razumeti smisel drobnega tiska na nalepkah izdelkov.
+- Da bi razkrili seznam sestavin, vam ni potrebno biti kemik ali se učiti latinščino, :-)
 - You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
