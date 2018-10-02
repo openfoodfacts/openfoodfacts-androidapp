@@ -254,7 +254,7 @@
   <string name="txtBarcodeNotValid">Črtna koda ni veljavna</string>
   <string name="try_it_scan_now">Skeniraj izdelek</string>
   <string name="share">Deli</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Prevedi</string>
   <string name="msg_share">Poglej ta izdelek na dejstvih o odprtih živilih:</string>
   <string name="create_account">Prijava</string>
   <string name="home_drawer">Domov</string>
@@ -287,11 +287,11 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">Prijava</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Informacije o alergijah nikoli ne bodo poslane na strežnik Open Food Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% točno, zato vas prosimo, da dvakrat preverite sami! </string>
   <string name="from_gallery">Iz galerije</string>
   <string name="product_sent">Izdelek je uspešno poslan</string>
   <string name="action_edit_product">Uredi izdelek</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">Kako deluje?</string>
   <string name="text_offline_info_dialog">Kadarkoli lahko skenirate izdelke, jih lahko kasneje dodate v Open Food Facts. Tukaj bodo prikazani vsi izdelki, ki jih skenirate, in jih boste lahko poslali z uporabo spodnjega gumba.</string>
   <string name="permission_camera">Za pregledovanje črtnih kod in fotografiranje potrebujete dovoljenje kamere.</string>
   <string name="permission_title">Informacije o dovoljenju</string>
@@ -303,7 +303,7 @@
   <string name="new_offline_info">Prosimo, vzemite si sliko o izdelku, sestavinah, tabeli o prehrani in drugih informacijah na etiketi. Hvala vam!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Geslo mora biti dolgo najmanj 6 znakov.</string>
-  <string name="user">user</string>
+  <string name="user">uporabnik</string>
   <string name="error_field_required">To polje je obvezno.</string>
   <string name="action_preferences">Nastavitve</string>
   <string name="prefs_scan_startup">Skenirajte ob zagonu</string>
@@ -322,17 +322,17 @@
   <string name="txt_history_exported">Zgodovina se je izvažala</string>
   <string name="permision_write_external_storage">Za izvoz zgodovine potrebujete dovoljenje za zunanji pomnilnik.</string>
   <string name="txt_nutrition_not_found">N/A</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">Ni blagovne znamke</string>
+  <string name="no_title">Ni naslova</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">Preveri</string>
   <string name="nutrition">Prehrana</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculated_nutrition">Izračunana hranilna vrednost</string>
+  <string name="please_enter_weight">Prosim, vnesite težo</string>
+  <string name="enter_weight">Vnesi težo</string>
+  <string name="calculate_nutrition_facts">Izračunaj hranilno vrednost</string>
+  <string name="txt_calories_result">%1$s kcal v %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Ogljikovi hidrati</string>
   <string name="nutrition_carbohydrate_short_name">Ogljikovi hidrati (g)</string>
   <string name="nutrition_cholesterol">Holesterol</string>
@@ -351,7 +351,7 @@
   <string name="nutrition_salt">Sol</string>
   <string name="nutrition_salt_short_name">Sol (g)</string>
   <string name="nutrition_satured_fat">Nasičena maščoba</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Nasičene maščobe (g)</string>
   <string name="nutrition_serving">Na porcijo</string>
   <string name="nutrition_serving_size">Velikost serviranja :</string>
   <string name="nutrition_sodium">Natrij</string>
@@ -372,7 +372,7 @@
   <string name="search_hint">Poišči izdelek</string>
   <string name="number_of_results">Število rezulatov: </string>
   <string name="brand">Znamka :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_products">Število izdelkov: </string>
   <string name="txt_no_results">Ni zadetkov</string>
   <string name="txt_extend_search">Poskusite razširiti iskanje ali dodati izdelek</string>
   <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
