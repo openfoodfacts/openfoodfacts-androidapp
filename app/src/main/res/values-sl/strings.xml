@@ -129,9 +129,9 @@
     <item>Nervonic acid (24:1 n-9)</item>
     <item>Nukleotidi</item>
     <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
+    <item>Omega 3 maščobne kisline</item>
+    <item>Omega 6 maščobne kisline</item>
+    <item>Omega 9 maščobne kisline</item>
     <item>Palmitic acid (16:0)</item>
     <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
     <item>ph</item>
@@ -218,7 +218,7 @@
   <string name="hintPass">Geslo</string>
   <string name="errorLogin">Uporabniško ime ali geslo sta napačna</string>
   <string name="errorWeb">Nismo mogli dostopati do interneta. Imate težave s povezljivostjo?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">Slika bo naložena, ko bo omrežje na voljo</string>
   <string name="txtInfoLoginOk">Uporabnik je shranjen</string>
   <string name="txtInfoLoginNo">Uporabnik ni shranjen</string>
   <string name="txtDialogsContent">Izdelek, ki ste ga optično prebrali, še ne obstaja v podatkih o odprtih živilih. Prosimo, dodajte.</string>
@@ -237,13 +237,13 @@
   <string name="txtPictureNeeded">Wait…</string>
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeededDialogNo">Zavrzi</string>
   <string name="toastSending">Nalaganje…</string>
   <string name="dataSaved">Lokalno shranjeno v napravi</string>
   <string name="txtInfoAddUser">Vnesite svojo prijavo in geslo</string>
   <string name="txtDataUpdated">Podatki so posodobljeni</string>
   <string name="txtLoading">Nalaganje…</string>
-  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+  <string name="txtDialogsContentDelete">Ali ste prepričani, da želite odstraniti ta osnutek?</string>
   <string name="txtDialogsContentInfoSave">Izdelek je shranjen lokalno, lahko ga uredite v meniju »Brez povezave«</string>
   <string name="txtBarcodeRequire">Potrebna je črtna koda</string>
   <string name="txtOk">V redu</string>
