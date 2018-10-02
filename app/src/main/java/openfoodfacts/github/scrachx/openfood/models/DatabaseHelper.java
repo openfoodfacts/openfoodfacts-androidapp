@@ -8,6 +8,8 @@ import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
 
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+
 public class DatabaseHelper extends DaoMaster.OpenHelper {
 
     private SharedPreferences settings;
@@ -39,10 +41,10 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
             upgrade(db, migrateVersion);
         }
 
-		//db model has changed we need to reload taxonomies
+		//db model has changed we need to invalidate and reload taxonomies
 		if( settings != null )
 		{
-			settings.edit().putLong( "last_refresh_date_of_taxonomies", 0 ).apply();
+			settings.edit().putLong( Utils.LAST_REFRESH_DATE, 0 ).apply();
 		}
     }
 

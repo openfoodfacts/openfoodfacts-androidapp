@@ -74,7 +74,7 @@
                     android:visibility="invisible"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:gravity="center"
@@ -84,7 +84,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:gravity="center"
@@ -94,7 +94,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:gravity="center"
@@ -104,7 +104,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:gravity="center"
@@ -114,7 +114,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:gravity="center"
@@ -124,7 +124,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:gravity="center"
                     android:text="@string/elderly"
@@ -144,7 +144,7 @@
                     android:visibility="invisible"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
@@ -154,7 +154,7 @@
                     android:textSize="@dimen/font_small"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
@@ -164,7 +164,7 @@
                     android:textSize="@dimen/font_small"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
@@ -174,7 +174,7 @@
                     android:textSize="@dimen/font_small"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
@@ -184,7 +184,7 @@
                     android:textSize="@dimen/font_small"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
@@ -194,7 +194,7 @@
                     android:textSize="@dimen/font_small"/>
 
                 <TextView
-                    android:layout_width="72dp"
+                    android:layout_width="84dp"
                     android:layout_height="32dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
@@ -219,48 +219,48 @@
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/mpInfants"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/mpToddlers"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/mpChildren"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/mpAdolescents"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/mpAdults"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/mpElderly"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
@@ -282,48 +282,48 @@
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/spInfants"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/spToddlers"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/spChildren"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/spAdolescents"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/spAdults"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:layout_marginRight="1dp"
                     android:padding="16dp"
                     />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/spElderly"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
                     android:padding="16dp"
                     />
             </LinearLayout>
