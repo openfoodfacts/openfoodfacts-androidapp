@@ -67,6 +67,40 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
     }
 
     @Override
+    public void loadAllergens() {
+        List<String> allergenTags = product.getAllergensTags();
+        if (allergenTags != null && !allergenTags.isEmpty()) {
+            disposable.add(
+                    Observable.fromArray(allergenTags.toArray(new String[allergenTags.size()]))
+                              .flatMapSingle(tag -> repository.getAllergenByTagAndLanguageCode(tag, languageCode)
+                                                              .flatMap(categoryName -> {
+                                                                  if (categoryName.isNull()) {
+                                                                      return repository.getAllergenByTagAndDefaultLanguageCode(tag);
+                                                                  } else {
+                                                                      return Single.just(categoryName);
+                                                                  }
+                                                              }))
+                              .toList()
+                              .subscribeOn(Schedulers.io())
+                              .observeOn(AndroidSchedulers.mainThread())
+                              .doOnSubscribe(d -> view.showAllergensState(ProductInfoState.LOADING))
+                              .subscribe(allergens -> {
+                                  if (allergens.isEmpty()) {
+                                      view.showAllergensState(ProductInfoState.EMPTY);
+                                  } else {
+                                      view.showAllergens(allergens);
+                                  }
+                              }, e -> {
+                                  e.printStackTrace();
+                                  view.showAllergensState(ProductInfoState.EMPTY);
+                              })
+            );
+        } else {
+            view.showAllergensState(ProductInfoState.EMPTY);
+        }
+    }
+
+    @Override
     public void dispose() {
         if (!disposable.isDisposed()) {
             disposable.clear();

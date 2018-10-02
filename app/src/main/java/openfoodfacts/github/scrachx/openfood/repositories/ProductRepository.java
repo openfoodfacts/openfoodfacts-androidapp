@@ -534,6 +534,31 @@ public class ProductRepository implements IProductRepository {
                         .list());
     }
 
+    @Override
+    public Single<AllergenName> getAllergenByTagAndLanguageCode(String allergenTag, String languageCode) {
+        return Single.fromCallable(() -> {
+            AllergenName allergenName = allergenNameDao.queryBuilder()
+                                                       .where(
+                                                               AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
+                                                               AllergenNameDao.Properties.LanguageCode.eq(languageCode)
+                                                       ).unique();
+
+            if (allergenName != null) {
+                return allergenName;
+            } else {
+                AllergenName emptyAllergenName = new AllergenName();
+                emptyAllergenName.setName(allergenTag);
+                emptyAllergenName.setAllergenTag(allergenTag);
+                return emptyAllergenName;
+            }
+        });
+    }
+
+    @Override
+    public Single<AllergenName> getAllergenByTagAndDefaultLanguageCode(String allergenTag) {
+        return getAllergenByTagAndLanguageCode(allergenTag, DEFAULT_LANGUAGE);
+    }
+
     /**
      * Checks whether table is empty
      *

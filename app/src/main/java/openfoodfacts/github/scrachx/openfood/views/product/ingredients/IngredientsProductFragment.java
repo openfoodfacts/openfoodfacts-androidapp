@@ -39,7 +39,6 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -51,6 +50,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
@@ -288,23 +288,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 ingredientsProduct.setText(txtIngredients);
             }
         }
-
-        if (!allergens.isEmpty()) {
-            textSubstanceProductCardView.setVisibility(View.VISIBLE);
-            substanceProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            substanceProduct.setText(bold(getString(R.string.txtSubstances)));
-            substanceProduct.append(" ");
-
-            String allergen;
-            for (int i = 0; i < allergens.size() - 1; i++) {
-                allergen = allergens.get(i);
-                substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
-                substanceProduct.append(", ");
-            }
-
-            allergen = allergens.get(allergens.size() - 1);
-            substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
-        }
+        presenter.loadAllergens();
 
         if (!isBlank(product.getTraces())) {
             textTraceProductCardView.setVisibility(View.VISIBLE);
@@ -474,29 +458,47 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
     }
 
+    @Override
+    public void showAllergens(List<AllergenName> allergens) {
+        substanceProduct.setMovementMethod(LinkMovementMethod.getInstance());
+        substanceProduct.setText(bold(getString(R.string.txtSubstances)));
+        substanceProduct.append(" ");
+
+        for (int i = 0, lastIdx = allergens.size() - 1; i <= lastIdx; i++) {
+            String allergen = allergens.get(i).getName();
+            CharSequence allergenLink =
+                    Utils.getClickableText(allergen, allergen,
+                                           SearchType.ALLERGEN, getActivity(),
+                                           customTabsIntent);
+
+            substanceProduct.append(allergenLink);
+            // Add comma if not the last item
+            if (i != lastIdx) substanceProduct.append(", ");
+        }
+    }
+
+    @Override
+    public void showAllergensState(String state) {
+        switch (state) {
+            case LOADING: {
+                textSubstanceProductCardView.setVisibility(View.VISIBLE);
+                substanceProduct.append(getString(R.string.txtLoading));
+                break;
+            }
+            case EMPTY: {
+                textSubstanceProductCardView.setVisibility(View.GONE);
+                break;
+            }
+        }
+    }
+
     private List<String> getAllergens() {
-        if (mState.getProduct() == null || mState.getProduct().getAllergens() == null) {
+        List<String> allergens = mState.getProduct().getAllergensTags();
+        if (mState.getProduct() == null || allergens == null || allergens.isEmpty()) {
             return Collections.emptyList();
+        } else {
+            return allergens;
         }
-
-        List<String> list = new ArrayList<>();
-        Matcher m = ALLERGEN_PATTERN.matcher(mState.getProduct().getAllergens());
-        while (m.find()) {
-            final String tma = m.group().trim();
-            boolean canAdd = true;
-
-            for (String allergen : list) {
-                if (tma.equalsIgnoreCase(allergen)) {
-                    canAdd = false;
-                    break;
-                }
-            }
-
-            if (canAdd) {
-                list.add(tma);
-            }
-        }
-        return list;
     }
 
     @OnClick(R.id.imageViewIngredients)
