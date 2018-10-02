@@ -41,11 +41,11 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
             upgrade(db, migrateVersion);
         }
 
-		//db model has changed we need to invalidate and reload taxonomies
-		if( settings != null )
-		{
-			settings.edit().putLong( Utils.LAST_REFRESH_DATE, 0 ).apply();
-		}
+        //db model has changed we need to invalidate and reload taxonomies
+        if( settings != null && oldVersion != newVersion )
+        {
+            settings.edit().putLong( Utils.LAST_REFRESH_DATE, 0 ).apply();
+        }
     }
 
     /**
@@ -116,7 +116,10 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 {
                     for( String column : newColumns )
                     {
-                        db.execSQL( String.format( "ALTER TABLE %s ADD COLUMN '%s' TEXT;", table, column ) );
+                        if (!isFieldExist(db, table, column))
+                        {
+                            db.execSQL( String.format( "ALTER TABLE %s ADD COLUMN '%s' TEXT;", table, column ) );
+                        }
                     }
                 }
                 break;
