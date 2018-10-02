@@ -33,7 +33,7 @@
   <string name="text_offline_info_dialog">Digitalize os produtos mesmo quando estiver offline, para adicioná-los posteriormente ao Open Beauty Facts. Os produtos digitalizados aparecerão aqui e você poderá enviá-los usando o botão abaixo.</string>
   <string name="warning_alert_data">Suas alergias nunca serão enviadas ao servidor do Open Beauty Facts. Além disso, atenção ao fato que os dados dos produtos podem ser imprecisos, e a detecção não é 100% precisa, então por favor verifique! </string>
   <!-- OBF tagline in different languages -->
-  <string name="tagline">a base de dados cosméticos gratuita</string>
+  <string name="tagline">the free cosmetics database</string>
   <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
   <string name="currently_on_version">Atualmente no Open Beauty Facts</string>
 </resources>

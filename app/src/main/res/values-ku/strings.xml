@@ -512,7 +512,7 @@
   <string name="brand_string">Brand</string>
   <string name="additive_string">Beşdariyên</string>
   <string name="search_string">Lêgerîn</string>
-  <string name="country_string">Country</string>
+  <string name="country_string">Countries where sold</string>
   <string name="store_subtitle">Dikan</string>
   <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>
@@ -694,5 +694,11 @@
   <string name="elderly_age">65+</string>
   <string name="most_people">Most people\n(over 50%)</string>
   <string name="some_people">Some people\n(over 5%)</string>
+  <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
+  <string name="risk_of_exposure">Risk of exposure</string>
+  <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
+  <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
+  <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
+  <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
   <!-- Used for additive exposure evaluation table -->
 </resources>

@@ -21,9 +21,9 @@
   <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
   <string name="slide_4_title">Works offline</string>
   <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-  <string name="txtDialogsContent">produk anda scan belum ada pada daftar open food facts . mohon anda menambahkannya </string>
-  <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam daftar open foof facts</string>
-  <string name="msg_share">Lihatlah produk ini pada Open Food Facts:</string>
+  <string name="txtDialogsContent">Produk yang anda scan belum ada pada daftar Open Food Facts. Silahkan tambahkan</string>
+  <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam daftar Open Food Facts.</string>
+  <string name="msg_share">Lihat produk ini pada Open Food Facts:</string>
   <string name="not_support_books">Buku tidak didukung Open Food Facts saat ini</string>
   <string name="txt_broaden_search">- memperluas pencarian anda \n- pindai dan tambahkan ke Open Food Facts</string>
   <string name="Donation">Klik di sini untuk menyumbang pada Open Food Facts</string>

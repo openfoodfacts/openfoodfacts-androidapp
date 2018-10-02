@@ -16,12 +16,12 @@
   <string name="txtHome">Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
   <string name="slide_1_title">Contribuie la transparența productelor</string>
   <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
-  <string name="slide_2_title">Obțineți informații</string>
+  <string name="slide_2_title">Get the facts</string>
   <string name="slide_2_desc">Înformațiile detaliate pentru produsul pe care l-ai scanat, au fost descifrate pentru tine</string>
-  <string name="slide_3_title">Ține evidența produsului pe care îl folosești</string>
+  <string name="slide_3_title">Keep track of the product you use</string>
   <string name="slide_3_desc">Toate produsele pe care le-ai scanat, sunt într-o listă pe care o poți exporta</string>
-  <string name="slide_4_title">Lucrează offline</string>
-  <string name="slide_4_desc">Poți adăuga produse noi, chiar dacă nu ești conectat la internet momentan</string>
+  <string name="slide_4_title">Works offline</string>
+  <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
   <string name="txtDialogsContent">Produsul pe care l-ai sanat încă nu există în Open Products Facts. Te rog să îl adaugi tu.</string>
   <string name="txtDialogsContentPowerMode">Produsul pe care l-ai scanat există deja în Open Products Facts.</string>
   <string name="msg_share">Vizualizează acest produs în Open Products Facts :</string>
@@ -33,7 +33,7 @@
   <string name="text_offline_info_dialog">Scanează produsele chiar dacă ești deconectat și le poți adăuga mai târziu în baza de date Open Products Facts. Produsele scanate vor apărea aici și le vei putea trimite folosind butonul de mai jos.</string>
   <string name="warning_alert_data">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Products Facts. Totodată, fi atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% corectă, așa că te rog să verifici și tu personal acele produse! </string>
   <!-- OPF tagline in different languages -->
-  <string name="tagline">baza de date gratuită a produselor</string>
+  <string name="tagline">the free product database</string>
   <string name="product_not_found">Produsul %1$s pe care l-ai scanat nu există încă în Open Products Facts. Îl poți adăuga tu?</string>
   <string name="currently_on_version">Currently on Open Products Facts</string>
 </resources>
