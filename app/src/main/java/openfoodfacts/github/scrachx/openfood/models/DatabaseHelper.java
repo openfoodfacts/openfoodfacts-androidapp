@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -9,12 +10,18 @@ import org.greenrobot.greendao.database.Database;
 
 public class DatabaseHelper extends DaoMaster.OpenHelper {
 
+    private SharedPreferences settings;
+
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
         super(context, name, factory);
+
+        settings = context.getSharedPreferences("prefs", 0);
     }
 
     public DatabaseHelper(Context context, String name) {
         super(context, name);
+
+        settings = context.getSharedPreferences("prefs", 0);
     }
 
 
@@ -32,6 +39,11 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
             upgrade(db, migrateVersion);
         }
 
+		//db model has changed we need to reload taxonomies
+		if( settings != null )
+		{
+			settings.edit().putLong( "last_refresh_date_of_taxonomies", 0 ).apply();
+		}
     }
 
     /**
