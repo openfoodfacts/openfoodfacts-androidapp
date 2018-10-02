@@ -94,6 +94,18 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
             case 8:
                 OfflineSavedProductDao.createTable(db, true);
                 break;
+            case 9:
+                String newColumns[] = new String[]{ "overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
+                        "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael" };
+                String updatedTables[] = new String[]{ "additive_name", "additive" };
+                for( String table : updatedTables )
+                {
+                    for( String column : newColumns )
+                    {
+                        db.execSQL( String.format( "ALTER TABLE %s ADD COLUMN '%s' TEXT;", table, column ) );
+                    }
+                }
+                break;
         }
     }
 
