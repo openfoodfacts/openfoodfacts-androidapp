@@ -184,8 +184,6 @@
         app:itemIconTint="@drawable/nav_item_state"
         app:itemTextColor="@drawable/nav_item_state"
         app:menu="@menu/my_navigation_items"
-        tools:layout_editor_absoluteY="503dp">
-
-    </android.support.design.widget.BottomNavigationView>
+        tools:layout_editor_absoluteY="503dp"/>
 
 </android.support.design.widget.CoordinatorLayout>

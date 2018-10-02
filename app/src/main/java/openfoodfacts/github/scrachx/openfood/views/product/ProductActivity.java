@@ -126,6 +126,8 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 	AppCompatImageView spElderlyImage;
 	@BindView( R.id.efsaWarning )
 	TextView efsaWarning;
+	@BindView( R.id.bottom_navigation )
+	BottomNavigationView bottomNavigationView;
 
 	TextView bottomSheetDesciption;
 	TextView bottomSheetTitle;
@@ -208,7 +210,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 			}
 		} );
 
-		BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById( R.id.bottom_navigation );
 		bottomNavigationView.setOnNavigationItemSelectedListener( item -> {
 
 			switch( item.getItemId() )
@@ -280,6 +281,8 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 	{
 		bottomSheetBehavior.setState( BottomSheetBehavior.STATE_EXPANDED );
 		mButtonScan.setVisibility( View.GONE );
+		bottomNavigationView.clearAnimation();
+		bottomNavigationView.animate().translationY( bottomNavigationView.getHeight() ).setDuration( 200 );
 	}
 
 	public void collapse()
@@ -289,6 +292,8 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 		{
 			mButtonScan.setVisibility( View.VISIBLE );
 		}
+		bottomNavigationView.clearAnimation();
+		bottomNavigationView.animate().translationY( 0 ).setDuration( 200 );
 	}
 
 	@Override
