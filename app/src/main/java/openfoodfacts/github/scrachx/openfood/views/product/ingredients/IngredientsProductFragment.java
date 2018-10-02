@@ -438,20 +438,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         return ssb;
     }
 
-//    private String getOverexposureRiskWarning( String overexposureRisk )
-//    {
-//        if( "en:high".equalsIgnoreCase( overexposureRisk ) )
-//        {
-//            return getString( R.string.overexposure_high );
-//        }
-//        else if( "en:moderate".equalsIgnoreCase( overexposureRisk ) )
-//        {
-//            return getString( R.string.overexposure_moderate );
-//        }
-//
-//        return "";
-//    }
-
     private SpannableString buildAdditivesList(List<AdditiveName> additives) {
         return null;
     }
