@@ -97,7 +97,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 String updatedTables[] = new String[]{"additive_name", "additive", "category_name", "category", "label_name", "label"};
                 for (String table : updatedTables) {
                     for (String column : newColumns) {
-                        if (isFieldExist(db, table, column)) {
+                        if (!isFieldExist(db, table, column)) {
                             db.execSQL(String.format("ALTER TABLE %s ADD COLUMN '%s' TEXT NOT NULL DEFAULT '';", table, column));
                         }
                     }
