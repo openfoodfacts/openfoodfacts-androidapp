@@ -930,17 +930,37 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {
                         dialog.dismiss();
-                        if (!edit_product) {
-                            saveProductOffline();
-                        } else {
-                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
-                                    .title(R.string.device_offline_dialog_title)
-                                    .positiveText(R.string.txt_try_again)
-                                    .negativeText(R.string.dialog_cancel)
-                                    .onPositive((dialog, which) -> checkFrontImageUploadStatus())
-                                    .onNegative((dialog, which) -> dialog.dismiss());
-                            dialog = builder.build();
-                            dialog.show();
+                        Log.e(AddProductActivity.class.getSimpleName(), e.getMessage());
+                        // A network error happened
+                        if (e instanceof IOException) {
+                            if (!edit_product) {
+                                saveProductOffline();
+                            } else {
+                                MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                        .title(R.string.device_offline_dialog_title)
+                                        .positiveText(R.string.txt_try_again)
+                                        .negativeText(R.string.dialog_cancel)
+                                        .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                        .onNegative((dialog, which) -> dialog.dismiss());
+                                dialog = builder.build();
+                                dialog.show();
+                            }
+                        }
+                        // Not a network error
+                        else {
+                            if (!edit_product) {
+                                Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                saveProductOffline();
+                            } else {
+                                MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                        .title(R.string.error_adding_product)
+                                        .positiveText(R.string.txt_try_again)
+                                        .negativeText(R.string.dialog_cancel)
+                                        .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                        .onNegative((dialog, which) -> dialog.dismiss());
+                                dialog = builder.build();
+                                dialog.show();
+                            }
                         }
                     }
                 });
