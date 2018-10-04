@@ -20,7 +20,7 @@
   <string name="action_find">Wa</string>
   <string name="text_barcode">Tẹ aami-ọja naa :</string>
   <string name="message_in_activity_save_product_offline">Aworan kan nikan jẹ dandan lati fi ọja titun ranšẹ.</string>
-  <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+  <string name="product_incomplete_message">Ọja yi ko pe. Nitorina na, a ko le ṣe ayẹwo ara korira.</string>
   <string name="no_offline_data">You\'re all done</string>
   <string name="first_offline">Products added offline will appear here</string>
   <!-- Image Upload -->
