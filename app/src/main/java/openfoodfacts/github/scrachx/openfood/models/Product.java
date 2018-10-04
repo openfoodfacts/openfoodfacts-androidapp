@@ -19,7 +19,7 @@ import java.util.Map;
 
 class ProductStringConverter extends StdConverter<String, String> {
     public String convert(String value) {
-        return StringEscapeUtils.unescapeHtml4(value).replace("\\'", "'");
+        return StringEscapeUtils.unescapeHtml4(value).replace("\\'", "'").replace("&quot", "'");
     }
 }
 
@@ -142,7 +142,10 @@ public class Product implements Serializable {
 
     public String getProductName(String languageCode) {
         if (additionalProperties.get("product_name_" + languageCode) != null) {
-            return additionalProperties.get("product_name_" + languageCode).toString();
+            return additionalProperties.get("product_name_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
         }
         return null;
     }

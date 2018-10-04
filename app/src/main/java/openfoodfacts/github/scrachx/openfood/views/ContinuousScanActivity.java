@@ -544,12 +544,18 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 if (searchByBarcode.getText().toString().isEmpty()) {
                     Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                 } else {
-                    if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(searchByBarcode.getText().toString()) && (!searchByBarcode.getText().toString().substring(0, 3).contains("977") || !searchByBarcode.getText().toString().substring(0, 3).contains("978") || !searchByBarcode.getText().toString().substring(0, 3).contains("979"))) {
-                        lastText = searchByBarcode.getText().toString();
-                        findProduct(searchByBarcode.getText().toString(), false);
-                    } else {
-                        searchByBarcode.requestFocus();
+                    String barcodeText = searchByBarcode.getText().toString();
+                    if(barcodeText.length()<=2){
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") ||!barcodeText.substring(0, 3).contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
+                            lastText = barcodeText;
+                            findProduct(barcodeText, false);
+                        } else {
+                            searchByBarcode.requestFocus();
+                            Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
                 return true;

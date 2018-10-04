@@ -912,7 +912,7 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(State state) {
                         dialog.dismiss();
-                        Toast toast = Toast.makeText(getApplicationContext(), R.string.product_uploaded_successfully, Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(OFFApplication.getInstance(), R.string.product_uploaded_successfully, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         View view = toast.getView();
                         TextView textView = view.findViewById(android.R.id.message);
@@ -930,17 +930,37 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {
                         dialog.dismiss();
-                        if (!edit_product) {
-                            saveProductOffline();
-                        } else {
-                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
-                                    .title(R.string.device_offline_dialog_title)
-                                    .positiveText(R.string.txt_try_again)
-                                    .negativeText(R.string.dialog_cancel)
-                                    .onPositive((dialog, which) -> checkFrontImageUploadStatus())
-                                    .onNegative((dialog, which) -> dialog.dismiss());
-                            dialog = builder.build();
-                            dialog.show();
+                        Log.e(AddProductActivity.class.getSimpleName(), e.getMessage());
+                        // A network error happened
+                        if (e instanceof IOException) {
+                            if (!edit_product) {
+                                saveProductOffline();
+                            } else {
+                                MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                        .title(R.string.device_offline_dialog_title)
+                                        .positiveText(R.string.txt_try_again)
+                                        .negativeText(R.string.dialog_cancel)
+                                        .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                        .onNegative((dialog, which) -> dialog.dismiss());
+                                dialog = builder.build();
+                                dialog.show();
+                            }
+                        }
+                        // Not a network error
+                        else {
+                            if (!edit_product) {
+                                Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                saveProductOffline();
+                            } else {
+                                MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                                        .title(R.string.error_adding_product)
+                                        .positiveText(R.string.txt_try_again)
+                                        .negativeText(R.string.dialog_cancel)
+                                        .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                                        .onNegative((dialog, which) -> dialog.dismiss());
+                                dialog = builder.build();
+                                dialog.show();
+                            }
                         }
                     }
                 });
@@ -968,7 +988,7 @@ public class AddProductActivity extends AppCompatActivity {
         offlineSavedProduct.setBarcode(productDetails.get("code"));
         offlineSavedProduct.setProductDetailsMap(productDetails);
         mOfflineSavedProductDao.insertOrReplace(offlineSavedProduct);
-        Toast.makeText(AddProductActivity.this, R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
+        Toast.makeText(OFFApplication.getInstance(), R.string.txtDialogsContentInfoSave, Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
         intent.putExtra("uploadedToServer", false);
         setResult(RESULT_OK, intent);
@@ -1129,7 +1149,7 @@ public class AddProductActivity extends AppCompatActivity {
                         } else {
                             hideImageProgress(position, true, e.getMessage());
                             Log.i(this.getClass().getSimpleName(), e.getMessage());
-                            Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(OFFApplication.getInstance(), e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -1167,7 +1187,7 @@ public class AddProductActivity extends AppCompatActivity {
                             }
                         } else {
                             Log.i(this.getClass().getSimpleName(), e.getMessage());
-                            Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(OFFApplication.getInstance(), e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

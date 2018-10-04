@@ -452,12 +452,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (categories.isEmpty()) {
             categoryProduct.setVisibility(View.GONE);
         } else {
-            for (int i = 0; i < categories.size() - 1; i++) {
-                categoryProduct.append(getCategoriesTag(categories.get(i)));
-                categoryProduct.append(", ");
+            // Add all the categories to text view and link them to wikidata is possible
+            for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
+                CategoryName category = categories.get(i);
+                CharSequence categoryName = getCategoriesTag(category);
+                if (categoryName != null) {
+                    // Add category name to text view
+                    categoryProduct.append(categoryName);
+                    // Add a comma if not the last item
+                    if (i != lastIndex) {
+                        categoryProduct.append(", ");
+                    }
+                }
             }
-
-            categoryProduct.append(getCategoriesTag(categories.get(categories.size() - 1)));
         }
     }
 
@@ -557,7 +564,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
                                 ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, category.getWikiDataId(), 1, category.getName());
+                                productActivity.showBottomScreen(result, category);
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), category.getName(), SearchType.CATEGORY);
                             }
@@ -571,6 +578,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         };
         spannableStringBuilder.append(category.getName());
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        if (!category.isNotNull()) {
+            StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
+            spannableStringBuilder.setSpan(iss, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
         return spannableStringBuilder;
     }
 
@@ -586,7 +597,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
                                 ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, label.getWikiDataId(), 2, label.getName());
+                                productActivity.showBottomScreen(result, label);
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), label.getName(), SearchType.LABEL);
                             }

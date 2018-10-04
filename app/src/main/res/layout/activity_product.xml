@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinator_layout_product"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:id="@+id/coordinator_layout_product"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/Black_Back_Arrow" />
+            app:theme="@style/Black_Back_Arrow"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             app:tabGravity="fill"
-            app:tabMode="scrollable" />
+            app:tabMode="scrollable"/>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -35,9 +35,9 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:id="@+id/design_bottom_sheet_product_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,12 +59,11 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/font_large"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
             <LinearLayout
                 android:id="@+id/titleContainer"
@@ -73,19 +72,26 @@
                 android:layout_margin="@dimen/spacing_tiny"
                 android:background="@color/grey_50"
                 android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal"
                 android:padding="@dimen/spacing_small">
 
                 <TextView
                     android:id="@+id/titleBottomSheet"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/titleHeader"
                     android:layout_gravity="center_vertical"
-                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:text="@string/title_activity_product"
                     android:textAlignment="center"
-                    android:textSize="@dimen/font_large" />
+                    android:textSize="@dimen/font_large"
+                    android:textStyle="bold"/>
 
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/titleBottomSheetIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
             </LinearLayout>
 
 
@@ -104,19 +110,25 @@
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/descriptionHeader"
                     android:gravity="center"
                     android:text="@string/description_activity_product"
                     android:textAlignment="center"
-                    android:textSize="@dimen/font_normal" />
+                    android:textSize="@dimen/font_normal"/>
             </LinearLayout>
 
+            <include
+                android:id="@+id/exposureEvalTable"
+                layout="@layout/exposure_eval_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descriptionContainer"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/buttonsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/descriptionContainer"
+                android:layout_below="@id/exposureEvalTable"
                 android:layout_marginBottom="@dimen/spacing_small"
                 android:gravity="center_horizontal"
                 android:weightSum="100">
@@ -130,7 +142,7 @@
                     android:layout_margin="@dimen/spacing_normal"
                     android:layout_weight="50"
                     android:background="@color/blue"
-                    android:text="@string/Wikipedia" />
+                    android:text="@string/Wikipedia"/>
 
 
                 <Button
@@ -138,11 +150,10 @@
                     style="@style/ButtonToBrowseProducts"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/wikipediaButton"
                     android:layout_margin="@dimen/spacing_normal"
                     android:layout_weight="50"
                     android:background="@color/blue"
-                    android:text="@string/Browse_Products" />
+                    android:text="@string/Browse_Products"/>
             </LinearLayout>
 
 
@@ -161,7 +172,7 @@
         app:fabSize="normal"
         app:layout_anchor="@id/bottom_navigation"
         app:layout_anchorGravity="top|right"
-        app:srcCompat="@drawable/barcode_white_24dp" />
+        app:srcCompat="@drawable/barcode_white_24dp"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
