@@ -54,7 +54,6 @@ public class HomeFragment extends NavigationBaseFragment {
     TextView textHome;
 
     private OpenFoodAPIService apiClient;
-    private SharedPreferences.Editor editor;
     private SharedPreferences sp;
 
     @Override
@@ -167,6 +166,7 @@ public class HomeFragment extends NavigationBaseFragment {
 
                     @Override
                     public void onSuccess(Search search) {
+                        SharedPreferences.Editor editor;
                         int totalProductCount = Integer.parseInt(search.getCount());
                         textHome.setText(String.format(txtHomeOnline, totalProductCount));
                         editor = sp.edit();
