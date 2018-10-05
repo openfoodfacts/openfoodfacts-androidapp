@@ -54,7 +54,7 @@ public class AdditiveNameTest {
     public void constructorsWithoutWikiDataId_setIsWikiDataIdPresentFalse() {
         // TODO: update empty constructor to set isWikiDataIdPresent to false
         mAdditiveName = new AdditiveName("AdditiveTag", "Language",
-                "Name");
+                "Name", "no");
         assertFalse(mAdditiveName.getIsWikiDataIdPresent());
         mAdditiveName = new AdditiveName("Name");
         assertFalse(mAdditiveName.getIsWikiDataIdPresent());

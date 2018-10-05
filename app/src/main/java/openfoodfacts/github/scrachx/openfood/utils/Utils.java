@@ -84,6 +84,8 @@ public class Utils {
     public static boolean isUploadJobInitialised;
     public static boolean DISABLE_IMAGE_LOAD = false;
 
+    public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
+
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
      * objects and then applies a list of zero or more tags to the entire range.

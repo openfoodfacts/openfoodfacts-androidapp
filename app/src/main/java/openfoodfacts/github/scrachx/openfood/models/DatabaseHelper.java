@@ -1,20 +1,29 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
 
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+
 public class DatabaseHelper extends DaoMaster.OpenHelper {
+
+    private SharedPreferences settings;
 
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
         super(context, name, factory);
+
+        settings = context.getSharedPreferences("prefs", 0);
     }
 
     public DatabaseHelper(Context context, String name) {
         super(context, name);
+
+        settings = context.getSharedPreferences("prefs", 0);
     }
 
 
@@ -32,6 +41,11 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
             upgrade(db, migrateVersion);
         }
 
+        //db model has changed we need to invalidate and reload taxonomies
+        if( settings != null && oldVersion != newVersion )
+        {
+            settings.edit().putLong( Utils.LAST_REFRESH_DATE, 0 ).apply();
+        }
     }
 
     /**
@@ -83,7 +97,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 String updatedTables[] = new String[]{"additive_name", "additive", "category_name", "category", "label_name", "label"};
                 for (String table : updatedTables) {
                     for (String column : newColumns) {
-                        if (isFieldExist(db, table, column)) {
+                        if (!isFieldExist(db, table, column)) {
                             db.execSQL(String.format("ALTER TABLE %s ADD COLUMN '%s' TEXT NOT NULL DEFAULT '';", table, column));
                         }
                     }
@@ -93,6 +107,21 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
             }
             case 8:
                 OfflineSavedProductDao.createTable(db, true);
+                break;
+            case 9:
+                String newColumns[] = new String[]{ "overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
+                        "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael" };
+                String updatedTables[] = new String[]{ "additive_name", "additive" };
+                for( String table : updatedTables )
+                {
+                    for( String column : newColumns )
+                    {
+                        if (!isFieldExist(db, table, column))
+                        {
+                            db.execSQL( String.format( "ALTER TABLE %s ADD COLUMN '%s' TEXT;", table, column ) );
+                        }
+                    }
+                }
                 break;
         }
     }

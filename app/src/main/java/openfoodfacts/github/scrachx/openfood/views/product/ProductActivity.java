@@ -17,19 +17,16 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,15 +34,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,7 +64,6 @@ import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -85,7 +78,7 @@ import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProduc
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
-public class ProductActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, OnRefreshListener
+public class ProductActivity extends BaseActivity implements OnRefreshListener
 {
 
 	private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
@@ -97,50 +90,15 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 	TabLayout tabLayout;
 	@BindView( R.id.buttonScan )
 	FloatingActionButton mButtonScan;
-	@BindView( R.id.exposureEvalTable )
-	View exposureEvalTable;
+	@BindView( R.id.bottom_navigation )
+	BottomNavigationView bottomNavigationView;
 
-	@BindView( R.id.mpInfants )
-	AppCompatImageView mpInfantsImage;
-	@BindView( R.id.mpToddlers )
-	AppCompatImageView mpToddlersImage;
-	@BindView( R.id.mpChildren )
-	AppCompatImageView mpChildrenImage;
-	@BindView( R.id.mpAdolescents )
-	AppCompatImageView mpAdolescentsImage;
-	@BindView( R.id.mpAdults )
-	AppCompatImageView mpAdultsImage;
-	@BindView( R.id.mpElderly )
-	AppCompatImageView mpElderlyImage;
-	@BindView( R.id.spInfants )
-	AppCompatImageView spInfantsImage;
-	@BindView( R.id.spToddlers )
-	AppCompatImageView spToddlersImage;
-	@BindView( R.id.spChildren )
-	AppCompatImageView spChildrenImage;
-	@BindView( R.id.spAdolescents )
-	AppCompatImageView spAdolescentsImage;
-	@BindView( R.id.spAdults )
-	AppCompatImageView spAdultsImage;
-	@BindView( R.id.spElderly )
-	AppCompatImageView spElderlyImage;
-	@BindView( R.id.efsaWarning )
-	TextView efsaWarning;
-
-	TextView bottomSheetDesciption;
-	TextView bottomSheetTitle;
-	AppCompatImageView bottomSheetTitleIcon;
-	Button buttonToBrowseProducts;
-	Button wikipediaButton;
 	RecyclerView productBrowsingRecyclerView;
 	ProductFragmentPagerAdapter adapterResult;
 	ProductsRecyclerViewAdapter productsRecyclerViewAdapter;
 
 	private OpenFoodAPIClient api;
 	private ShareActionProvider mShareActionProvider;
-	private BottomSheetBehavior bottomSheetBehavior;
-	private CustomTabActivityHelper customTabActivityHelper;
-	private CustomTabsIntent customTabsIntent;
 	private State mState;
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
@@ -168,18 +126,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 		tabLayout.setupWithViewPager( viewPager );
 
 		api = new OpenFoodAPIClient( this );
-		customTabActivityHelper = new CustomTabActivityHelper();
-		customTabActivityHelper.setConnectionCallback( this );
-		customTabsIntent = CustomTabsHelper.getCustomTabsIntent( getApplicationContext(), customTabActivityHelper.getSession() );
-
-		View v = findViewById( R.id.design_bottom_sheet_product_activity );
-		bottomSheetTitle = v.findViewById( R.id.titleBottomSheet );
-		bottomSheetTitleIcon = v.findViewById( R.id.titleBottomSheetIcon );
-		bottomSheetDesciption = v.findViewById( R.id.description );
-		buttonToBrowseProducts = v.findViewById( R.id.buttonToBrowseProducts );
-		wikipediaButton = v.findViewById( R.id.wikipediaButton );
-
-		bottomSheetBehavior = BottomSheetBehavior.from( v );
 
 		mState = (State) getIntent().getExtras().getSerializable( "state" );
 		if( !Utils.isHardwareCameraInstalled( this ) )
@@ -208,7 +154,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 			}
 		} );
 
-		BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById( R.id.bottom_navigation );
 		bottomNavigationView.setOnNavigationItemSelectedListener( item -> {
 
 			switch( item.getItemId() )
@@ -274,34 +219,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 		} );
 		CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
 		layoutParams.setBehavior( new BottomNavigationBehavior() );
-	}
-
-	public void expand()
-	{
-		bottomSheetBehavior.setState( BottomSheetBehavior.STATE_EXPANDED );
-		mButtonScan.setVisibility( View.GONE );
-	}
-
-	public void collapse()
-	{
-		bottomSheetBehavior.setState( BottomSheetBehavior.STATE_COLLAPSED );
-		if( Utils.isHardwareCameraInstalled( this ) )
-		{
-			mButtonScan.setVisibility( View.VISIBLE );
-		}
-	}
-
-	@Override
-	public void onBackPressed()
-	{
-		if( bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED )
-		{
-			collapse();
-		}
-		else
-		{
-			super.onBackPressed();
-		}
 	}
 
 	@Override
@@ -394,27 +311,6 @@ public class ProductActivity extends BaseActivity implements CustomTabActivityHe
 		}
 
 		viewPager.setAdapter( adapterResult );
-
-		viewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener()
-		{
-			@Override
-			public void onPageScrolled( int position, float positionOffset, int positionOffsetPixels )
-			{
-
-			}
-
-			@Override
-			public void onPageSelected( int position )
-			{
-				collapse();
-			}
-
-			@Override
-			public void onPageScrollStateChanged( int state )
-			{
-
-			}
-		} );
 	}
 
 	/**
@@ -579,29 +475,15 @@ doesn't have calories information in nutrition facts.
 		}
 	}
 
-	private void showBottomScreen( JSONObject result, String code, String searchType, String title )
+	public void showBottomScreen( JSONObject result, AdditiveName additive )
 	{
 		try
 		{
-			result = result.getJSONObject( "entities" ).getJSONObject( code );
-			JSONObject description = result.getJSONObject( "descriptions" );
-			JSONObject siteLinks = result.getJSONObject( "sitelinks" );
-			String descriptionString = getDescription( description );
-			String wikiLink = getWikiLink( siteLinks );
-			bottomSheetTitle.setText( title );
-			bottomSheetDesciption.setText( descriptionString );
-			buttonToBrowseProducts.setOnClickListener( v -> {
-				Intent intent = new Intent( ProductActivity.this, ProductBrowsingListActivity.class );
-				intent.putExtra( "search_type", searchType );
-				intent.putExtra( "search_query", title );
-				startActivity( intent );
-			} );
-			wikipediaButton.setOnClickListener( v -> openInCustomTab( wikiLink ) );
-
-			bottomSheetTitleIcon.setVisibility( View.GONE );
-			exposureEvalTable.setVisibility( View.GONE );
-
-			expand();
+			String jsonObjectStr = result.getJSONObject( "entities" ).getJSONObject( additive.getWikiDataId() ).toString();
+			ProductAttributeDetailsFragment fragment =
+					ProductAttributeDetailsFragment.newInstance( jsonObjectStr, additive.getId(),
+							SearchType.ADDITIVE, additive.getName() );
+			fragment.show( getSupportFragmentManager(), "additive_details_fragment" );
 		}
 		catch( JSONException e )
 		{
@@ -609,198 +491,36 @@ doesn't have calories information in nutrition facts.
 		}
 	}
 
-	private void updateExposureTable( int row, String exposure, int drawableResId )
-	{
-		if( row == 0 )
-		{
-			if( exposure != null )
-			{
-				if( exposure.contains( "infants" ) )
-				{
-					mpInfantsImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "toddlers" ) )
-				{
-					mpToddlersImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "children" ) )
-				{
-					mpChildrenImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "adolescents" ) )
-				{
-					mpAdolescentsImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "adults" ) )
-				{
-					mpAdultsImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "elderly" ) )
-				{
-					mpElderlyImage.setImageResource( drawableResId );
-				}
-			}
-		}
-		else if( row == 1 )
-		{
-			if( exposure != null )
-			{
-				if( exposure.contains( "infants" ) )
-				{
-					spInfantsImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "toddlers" ) )
-				{
-					spToddlersImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "children" ) )
-				{
-					spChildrenImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "adolescents" ) )
-				{
-					spAdolescentsImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "adults" ) )
-				{
-					spAdultsImage.setImageResource( drawableResId );
-				}
-
-				if( exposure.contains( "elderly" ) )
-				{
-					spElderlyImage.setImageResource( drawableResId );
-				}
-			}
-		}
-	}
-
-	public void showBottomScreen( JSONObject result, AdditiveName additive )
-	{
-		showBottomScreen( result, additive.getWikiDataId(), SearchType.ADDITIVE, additive.getName() );
-
-		String overexposureRisk = additive.getOverexposureRisk();
-		if( overexposureRisk != null && !"no".equals( overexposureRisk ) )
-		{
-			boolean isHighRisk = "high".equalsIgnoreCase( overexposureRisk );
-			if( isHighRisk )
-			{
-				bottomSheetTitleIcon.setImageResource( R.drawable.ic_additive_high_risk );
-				efsaWarning.setText( getString( R.string.efsa_warning_high_risk, additive.getName() ) );
-			}
-			else
-			{
-				bottomSheetTitleIcon.setImageResource( R.drawable.ic_additive_moderate_risk );
-				efsaWarning.setText( getString( R.string.efsa_warning_high_risk, additive.getName() ) );
-			}
-			bottomSheetTitleIcon.setVisibility( View.VISIBLE );
-
-			// noel will override adi evaluation if present
-			updateExposureTable( 0, additive.getExposureMeanGreaterThanAdi(), R.drawable.yellow_circle );
-			updateExposureTable( 0, additive.getExposureMeanGreaterThanNoael(), R.drawable.red_circle );
-			updateExposureTable( 1, additive.getExposure95ThGreaterThanAdi(), R.drawable.yellow_circle );
-			updateExposureTable( 1, additive.getExposure95ThGreaterThanNoael(), R.drawable.red_circle );
-
-			exposureEvalTable.setVisibility( View.VISIBLE );
-
-			// recalling expand in order to recalculate the scrolling height
-			expand();
-		}
-	}
-
 	public void showBottomScreen( JSONObject result, LabelName label )
 	{
-		showBottomScreen( result, label.getWikiDataId(), SearchType.LABEL, label.getName() );
+		try
+		{
+			String jsonObjectStr = result.getJSONObject( "entities" ).getJSONObject( label.getWikiDataId() ).toString();
+			ProductAttributeDetailsFragment fragment =
+					ProductAttributeDetailsFragment.newInstance( jsonObjectStr, label.getId(),
+							SearchType.LABEL, label.getName() );
+			fragment.show( getSupportFragmentManager(), "label_details_fragment" );
+		}
+		catch( JSONException e )
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public void showBottomScreen( JSONObject result, CategoryName category )
 	{
-		showBottomScreen( result, category.getWikiDataId(), SearchType.CATEGORY, category.getName() );
-	}
-
-	private String getWikiLink( JSONObject sitelinks )
-	{
-		String link = "";
-		String languageCode = Locale.getDefault().getLanguage();
-		languageCode = languageCode + "wiki";
-		if( sitelinks.has( languageCode ) )
+		try
 		{
-			try
-			{
-				sitelinks = sitelinks.getJSONObject( languageCode );
-				link = sitelinks.getString( "url" );
-			}
-			catch( JSONException e )
-			{
-				e.printStackTrace();
-			}
+			String jsonObjectStr = result.getJSONObject( "entities" ).getJSONObject( category.getWikiDataId() ).toString();
+			ProductAttributeDetailsFragment fragment =
+					ProductAttributeDetailsFragment.newInstance( jsonObjectStr, category.getId(),
+							SearchType.CATEGORY, category.getName() );
+			fragment.show( getSupportFragmentManager(), "category_details_fragment" );
 		}
-		else if( sitelinks.has( "enwiki" ) )
+		catch( JSONException e )
 		{
-			try
-			{
-				sitelinks = sitelinks.getJSONObject( "enwiki" );
-				link = sitelinks.getString( "url" );
-			}
-			catch( JSONException e )
-			{
-				e.printStackTrace();
-			}
+			e.printStackTrace();
 		}
-		else
-		{
-			Log.i( "ProductActivity", "Result for wikilink is not found in native or english language." );
-		}
-		return link;
-	}
-
-	private String getDescription( JSONObject description )
-	{
-		String descriptionString = "";
-		String languageCode = Locale.getDefault().getLanguage();
-		if( description.has( languageCode ) )
-		{
-			try
-			{
-				description = description.getJSONObject( languageCode );
-				descriptionString = description.getString( "value" );
-			}
-			catch( JSONException e )
-			{
-				e.printStackTrace();
-			}
-		}
-		else if( description.has( "en" ) )
-		{
-			try
-			{
-				description = description.getJSONObject( "en" );
-				descriptionString = description.getString( "value" );
-			}
-			catch( JSONException e )
-			{
-				e.printStackTrace();
-			}
-		}
-		else
-		{
-			Log.i( "ProductActivity", "Result for description is not found in native or english language." );
-		}
-		return descriptionString;
-	}
-
-	private void openInCustomTab( String url )
-	{
-		Uri wikipediaUri = Uri.parse( url );
-		CustomTabActivityHelper.openCustomTab( ProductActivity.this, customTabsIntent, wikipediaUri, new WebViewFallback() );
 	}
 
 	@Override
@@ -815,18 +535,6 @@ doesn't have calories information in nutrition facts.
 		super.onNewIntent( intent );
 		setIntent( intent );
 		adapterResult.refresh( (State) intent.getExtras().getSerializable( "state" ) );
-	}
-
-	@Override
-	public void onCustomTabsConnected()
-	{
-
-	}
-
-	@Override
-	public void onCustomTabsDisconnected()
-	{
-
 	}
 
 	@Override

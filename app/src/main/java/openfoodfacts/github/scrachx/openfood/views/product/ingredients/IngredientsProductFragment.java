@@ -392,16 +392,13 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 riskWarningColor = getColor( getContext(), R.color.overexposure_moderate );
             }
             riskIcon.setBounds( 0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight() );
-
-
-            SpannableStringBuilder riskWarningSpan = new SpannableStringBuilder();
-            riskWarningSpan.append( "   " ); // this will be replaced with the risk icon
-            riskWarningSpan.append( riskWarningStr );
             ImageSpan iconSpan = new ImageSpan( riskIcon, ImageSpan.ALIGN_BOTTOM );
-            riskWarningSpan.setSpan( iconSpan, 1, 2, SPAN_EXCLUSIVE_EXCLUSIVE );
-            riskWarningSpan.setSpan( new ForegroundColorSpan( riskWarningColor ), 0, riskWarningSpan.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
 
-            spannableStringBuilder.append( riskWarningSpan );
+            spannableStringBuilder.append( " - " ); // this will be replaced with the risk icon
+            spannableStringBuilder.setSpan( iconSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
+
+            spannableStringBuilder.append( riskWarningStr );
+            spannableStringBuilder.setSpan( new ForegroundColorSpan( riskWarningColor ), spannableStringBuilder.length() - riskWarningStr.length(), spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
         }
 
         return spannableStringBuilder;
@@ -440,20 +437,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         ssb.insert(0, Utils.bold(getString(R.string.txtIngredients) + ' '));
         return ssb;
     }
-
-//    private String getOverexposureRiskWarning( String overexposureRisk )
-//    {
-//        if( "en:high".equalsIgnoreCase( overexposureRisk ) )
-//        {
-//            return getString( R.string.overexposure_high );
-//        }
-//        else if( "en:moderate".equalsIgnoreCase( overexposureRisk ) )
-//        {
-//            return getString( R.string.overexposure_moderate );
-//        }
-//
-//        return "";
-//    }
 
     private SpannableString buildAdditivesList(List<AdditiveName> additives) {
         return null;
