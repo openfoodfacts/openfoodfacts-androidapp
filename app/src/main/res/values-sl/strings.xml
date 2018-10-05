@@ -8,22 +8,22 @@
     <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
   </plurals>
   <plurals name="minutes">
-    <item quantity="one">1 minute ago</item>
-    <item quantity="two">%d minutes ago</item>
-    <item quantity="few">%d minutes ago</item>
-    <item quantity="other">%d minutes ago</item>
+    <item quantity="one">1 minuto nazaj</item>
+    <item quantity="two">%d minuti nazaj</item>
+    <item quantity="few">%d minute nazaj</item>
+    <item quantity="other">%d minut nazaj</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="one">1 hour ago</item>
-    <item quantity="two">%d hours ago</item>
-    <item quantity="few">%d hours ago</item>
-    <item quantity="other">%d hours ago</item>
+    <item quantity="one">Pred 1 uro</item>
+    <item quantity="two">Pred %d urama</item>
+    <item quantity="few">Pred %d urami</item>
+    <item quantity="other">Pred %d urami</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">1 day ago</item>
-    <item quantity="two">%d days ago</item>
-    <item quantity="few">%d days ago</item>
-    <item quantity="other">%d days ago</item>
+    <item quantity="one">1 dan nazaj</item>
+    <item quantity="two">%d dani nazaj</item>
+    <item quantity="few">%d dani nazaj</item>
+    <item quantity="other">%d dani nazaj</item>
   </plurals>
   <string name="action_settings">Nastavitve</string>
   <string name="action_about">O programu</string>
@@ -34,7 +34,7 @@
   <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
   <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
   <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="first_offline">Tukaj bodo prikazani izdelki, ki so bili dodani brez povezave</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -68,13 +68,13 @@
   <string-array name="nutrition_weight_units">
     <item>g</item>
     <item>mg</item>
-    <item>µg</item>
+    <item>μg</item>
   </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
     <item>mg</item>
-    <item>µg</item>
+    <item>μg</item>
     <item>% DV</item>
     <item>IU</item>
   </string-array>
@@ -82,7 +82,7 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
+    <item>Alfa-linolenska kislina / ALA (18:3 n-3)</item>
     <item>Arachidic acid (20:0)</item>
     <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
     <item>Behenic acid (22:0)</item>
@@ -129,9 +129,9 @@
     <item>Nervonic acid (24:1 n-9)</item>
     <item>Nukleotidi</item>
     <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
+    <item>Omega 3 maščobne kisline</item>
+    <item>Omega 6 maščobne kisline</item>
+    <item>Omega 9 maščobne kisline</item>
     <item>Palmitic acid (16:0)</item>
     <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
     <item>ph</item>
@@ -218,7 +218,7 @@
   <string name="hintPass">Geslo</string>
   <string name="errorLogin">Uporabniško ime ali geslo sta napačna</string>
   <string name="errorWeb">Nismo mogli dostopati do interneta. Imate težave s povezljivostjo?</string>
-  <string name="uploadLater">Image will be uploaded when network is available</string>
+  <string name="uploadLater">Slika bo naložena, ko bo omrežje na voljo</string>
   <string name="txtInfoLoginOk">Uporabnik je shranjen</string>
   <string name="txtInfoLoginNo">Uporabnik ni shranjen</string>
   <string name="txtDialogsContent">Izdelek, ki ste ga optično prebrali, še ne obstaja v podatkih o odprtih živilih. Prosimo, dodajte.</string>
@@ -237,13 +237,13 @@
   <string name="txtPictureNeeded">Wait…</string>
   <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
   <string name="txtPictureNeededDialogYes">Stay</string>
-  <string name="txtPictureNeededDialogNo">Discard</string>
+  <string name="txtPictureNeededDialogNo">Zavrzi</string>
   <string name="toastSending">Nalaganje…</string>
   <string name="dataSaved">Lokalno shranjeno v napravi</string>
   <string name="txtInfoAddUser">Vnesite svojo prijavo in geslo</string>
   <string name="txtDataUpdated">Podatki so posodobljeni</string>
   <string name="txtLoading">Nalaganje…</string>
-  <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+  <string name="txtDialogsContentDelete">Ali ste prepričani, da želite odstraniti ta osnutek?</string>
   <string name="txtDialogsContentInfoSave">Izdelek je shranjen lokalno, lahko ga uredite v meniju »Brez povezave«</string>
   <string name="txtBarcodeRequire">Potrebna je črtna koda</string>
   <string name="txtOk">V redu</string>
@@ -254,7 +254,7 @@
   <string name="txtBarcodeNotValid">Črtna koda ni veljavna</string>
   <string name="try_it_scan_now">Skeniraj izdelek</string>
   <string name="share">Deli</string>
-  <string name="translate">Translate</string>
+  <string name="translate">Prevedi</string>
   <string name="msg_share">Poglej ta izdelek na dejstvih o odprtih živilih:</string>
   <string name="create_account">Prijava</string>
   <string name="home_drawer">Domov</string>
@@ -287,11 +287,11 @@
   <string name="cancel_button">Cancel</string>
   <string name="login_button">Prijava</string>
   <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Informacije o alergijah nikoli ne bodo poslane na strežnik Open Food Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% točno, zato vas prosimo, da dvakrat preverite sami! </string>
   <string name="from_gallery">Iz galerije</string>
   <string name="product_sent">Izdelek je uspešno poslan</string>
   <string name="action_edit_product">Uredi izdelek</string>
-  <string name="title_info_dialog">How does it work?</string>
+  <string name="title_info_dialog">Kako deluje?</string>
   <string name="text_offline_info_dialog">Kadarkoli lahko skenirate izdelke, jih lahko kasneje dodate v Open Food Facts. Tukaj bodo prikazani vsi izdelki, ki jih skenirate, in jih boste lahko poslali z uporabo spodnjega gumba.</string>
   <string name="permission_camera">Za pregledovanje črtnih kod in fotografiranje potrebujete dovoljenje kamere.</string>
   <string name="permission_title">Informacije o dovoljenju</string>
@@ -303,7 +303,7 @@
   <string name="new_offline_info">Prosimo, vzemite si sliko o izdelku, sestavinah, tabeli o prehrani in drugih informacijah na etiketi. Hvala vam!</string>
   <!-- Strings related to login -->
   <string name="error_invalid_password">Geslo mora biti dolgo najmanj 6 znakov.</string>
-  <string name="user">user</string>
+  <string name="user">uporabnik</string>
   <string name="error_field_required">To polje je obvezno.</string>
   <string name="action_preferences">Nastavitve</string>
   <string name="prefs_scan_startup">Skenirajte ob zagonu</string>
@@ -322,17 +322,17 @@
   <string name="txt_history_exported">Zgodovina se je izvažala</string>
   <string name="permision_write_external_storage">Za izvoz zgodovine potrebujete dovoljenje za zunanji pomnilnik.</string>
   <string name="txt_nutrition_not_found">N/A</string>
-  <string name="no_brand">No Brand</string>
-  <string name="no_title">No Title</string>
+  <string name="no_brand">Ni blagovne znamke</string>
+  <string name="no_title">Ni naslova</string>
   <!-- Nutrition info tab -->
   <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
-  <string name="check_facts">Check</string>
+  <string name="check_facts">Preveri</string>
   <string name="nutrition">Prehrana</string>
-  <string name="calculated_nutrition">Calculated Nutrition</string>
-  <string name="please_enter_weight">Please enter the weight</string>
-  <string name="enter_weight">Enter the weight</string>
-  <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
-  <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+  <string name="calculated_nutrition">Izračunana hranilna vrednost</string>
+  <string name="please_enter_weight">Prosim, vnesite težo</string>
+  <string name="enter_weight">Vnesi težo</string>
+  <string name="calculate_nutrition_facts">Izračunaj hranilno vrednost</string>
+  <string name="txt_calories_result">%1$s kcal v %2$s %3$s</string>
   <string name="nutrition_carbohydrate">Ogljikovi hidrati</string>
   <string name="nutrition_carbohydrate_short_name">Ogljikovi hidrati (g)</string>
   <string name="nutrition_cholesterol">Holesterol</string>
@@ -351,7 +351,7 @@
   <string name="nutrition_salt">Sol</string>
   <string name="nutrition_salt_short_name">Sol (g)</string>
   <string name="nutrition_satured_fat">Nasičena maščoba</string>
-  <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+  <string name="nutrition_satured_fat_short_name">Nasičene maščobe (g)</string>
   <string name="nutrition_serving">Na porcijo</string>
   <string name="nutrition_serving_size">Velikost serviranja :</string>
   <string name="nutrition_sodium">Natrij</string>
@@ -372,7 +372,7 @@
   <string name="search_hint">Poišči izdelek</string>
   <string name="number_of_results">Število rezulatov: </string>
   <string name="brand">Znamka :</string>
-  <string name="number_of_products">Number of products: </string>
+  <string name="number_of_products">Število izdelkov: </string>
   <string name="txt_no_results">Ni zadetkov</string>
   <string name="txt_extend_search">Poskusite razširiti iskanje ali dodati izdelek</string>
   <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
@@ -450,27 +450,27 @@
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Scan</string>
-  <string name="scan_shortcut_long_label">Scan Product</string>
+  <string name="scan_shortcut_long_label">Preberi izdelek</string>
   <string name="barcode_shortcut_short_label">Iskanje</string>
-  <string name="barcode_shortcut_long_label">Search By Barcode</string>
+  <string name="barcode_shortcut_long_label">Iskanje s črtno kodo</string>
   <string name="history_shortcut_short_label">Zgodovina</string>
   <string name="history_shortcut_long_label">Zgodovina</string>
-  <string name="contributions_shortcut_short_label">Contributions</string>
-  <string name="contributions_shortcut_long_label">My Contributions</string>
-  <string name="forgot_password">Forgot Password</string>
-  <string name="next">NEXT</string>
-  <string name="skip">SKIP</string>
-  <string name="start">GOT IT</string>
-  <string name="contact">Contact</string>
-  <string name="contact_summary">Contact the team</string>
-  <string name="email_not_found">No email applications found</string>
-  <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
-  <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
-  <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+  <string name="contributions_shortcut_short_label">Prispevki</string>
+  <string name="contributions_shortcut_long_label">Moji prispevki</string>
+  <string name="forgot_password">Pozabljeno geslo</string>
+  <string name="next">NAPREJ</string>
+  <string name="skip">PRESKOČI</string>
+  <string name="start">RAZUMEM</string>
+  <string name="contact">Stik</string>
+  <string name="contact_summary">Obrnite se na ekipo</string>
+  <string name="email_not_found">Ni najdenih e-poštnih aplikacij</string>
+  <string name="airplane_mode_active_dialog_title">Način za letalo je omogočen</string>
+  <string name="airplane_mode_active_dialog_message">Način za letalo je omogočen. Onemogočite, da lako nadaljujete.</string>
+  <string name="airplane_mode_active_dialog_negative">Opusti</string>
   <string name="airplane_mode_active_dialog_positive">Nastavitve</string>
-  <string name="device_offline_dialog_title">Network unavailable</string>
-  <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-  <string name="device_offline_dialog_negative">Dismiss</string>
+  <string name="device_offline_dialog_title">Omrežje ni na voljo</string>
+  <string name="device_offline_dialog_message">Za to je potrebna omrežna povezava, bi želeli spremeniti to v nastavitvah?</string>
+  <string name="device_offline_dialog_negative">Opusti</string>
   <string name="device_offline_dialog_positive">Nastavitve</string>
   <string name="saving">Saving…</string>
   <string name="scan_first_product">Scan First Product</string>
@@ -481,7 +481,7 @@
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
   <string name="device_on_mobile_data_warning_positive">Nastavitve</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-  <string name="preference_choose_language_dialog_title">Choose language</string>
+  <string name="preference_choose_language_dialog_title">Izberi jezik</string>
   <string name="FAQ">FAQ</string>
   <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
   <string name="translate_help_title">Help translate Open Food Facts</string>
@@ -490,7 +490,7 @@
   <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
   <string name="advanced_search_title">Advanced Search &amp; Charts</string>
   <string name="connectivity_check">Please check your internet connection</string>
-  <string name="dismiss">Dismiss</string>
+  <string name="dismiss">Opusti</string>
   <string name="Terms">Terms</string>
   <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">General</string>
@@ -545,13 +545,13 @@
   <string name="txtCamera">Camera</string>
   <string name="txtGallery">Gallery</string>
   <string name="txtOptions">Options</string>
-  <string name="by_title">Title</string>
+  <string name="by_title">Naslovu</string>
   <string name="by_brand">Blagovna znamka</string>
   <string name="by_barcode">Črtna koda</string>
-  <string name="by_time">Recently Viewed</string>
+  <string name="by_time">Nazadnje prikazano</string>
   <string name="sort">Sort</string>
   <string name="by_nutrition_grade">Nutrition Grade</string>
-  <string name="sort_by">Sort By</string>
+  <string name="sort_by">Razvrsti po</string>
   <string name="shake_summary">Shake phone to scan products</string>
   <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
@@ -580,7 +580,7 @@
   <string name="creator_history">Product added on %1$s at %2$s CET by</string>
   <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
   <string name="other_editors">Product page also edited by </string>
-  <string name="contribution_tab">Contributions</string>
+  <string name="contribution_tab">Prispevki</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show contribution tab</string>
   <string name="product">Edit</string>
@@ -682,7 +682,7 @@
   <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
   <string name="save_edits">Save edits</string>
   <string name="contribution_by">Contribution By</string>
-  <string name="title_activity_product">Title</string>
+  <string name="title_activity_product">Naslovu</string>
   <string name="description_activity_product">description</string>
   <string name="intent_filter_share_label">Add to Open Food Facts</string>
   <!-- Used for additive exposure evaluation table -->

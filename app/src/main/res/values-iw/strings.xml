@@ -278,11 +278,11 @@
   <string name="flash_off">Flash [OFF]</string>
   <string name="ring_on">Ring [ON]</string>
   <string name="ring_off">Ring [OFF]</string>
-  <string name="auto_focus_on">Auto Focus [ON]</string>
-  <string name="auto_focus_off">Auto Focus [OFF]</string>
-  <string name="formats">Formats</string>
-  <string name="choose_formats">Choose Formats</string>
-  <string name="select_camera">Select a Camera</string>
+  <string name="auto_focus_on">מיקוד אוטומטי [פעיל]</string>
+  <string name="auto_focus_off">מיקוד אוטומטי [כבוי]</string>
+  <string name="formats">תבניות</string>
+  <string name="choose_formats">בחירת תבניות</string>
+  <string name="select_camera">בחירת מצלמה</string>
   <string name="ok_button">אישור</string>
   <string name="cancel_button">Cancel</string>
   <string name="login_button">שם משתמש</string>
