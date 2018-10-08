@@ -8,10 +8,10 @@
     <item quantity="other">%d分钟前</item>
   </plurals>
   <plurals name="hours">
-    <item quantity="other">%d hours ago</item>
+    <item quantity="other">%d 小时之前</item>
   </plurals>
   <plurals name="days">
-    <item quantity="other">%d days ago</item>
+    <item quantity="other">%d 天之前</item>
   </plurals>
   <string name="action_settings">设置</string>
   <string name="action_about">关于</string>
@@ -19,7 +19,7 @@
   <string name="contribute">如何贡献</string>
   <string name="action_find">查找</string>
   <string name="text_barcode">输入条形码：</string>
-  <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+  <string name="message_in_activity_save_product_offline">至少需要一张照片来创建新的产品。</string>
   <string name="product_incomplete_message">该产品还未完成。因此，我们无法做过敏原检查。</string>
   <string name="no_offline_data">你已经全部完成</string>
   <string name="first_offline">离线添加的产品将显示在此处</string>
@@ -70,8 +70,8 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
-    <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-    <item>Arachidic acid (20:0)</item>
+    <item>α-亚麻酸 / ALA (18:3 n-3)</item>
+    <item>花生四烯酸 (20:0)</item>
     <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
     <item>Behenic acid (22:0)</item>
     <item>碳酸氢钠</item>
