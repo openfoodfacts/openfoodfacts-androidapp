@@ -268,8 +268,8 @@
   <string name="toggle_flash">Flash</string>
   <string name="flash_on">Flash [ON]</string>
   <string name="flash_off">Flash [OFF]</string>
-  <string name="ring_on">Ring [ON]</string>
-  <string name="ring_off">Ring [OFF]</string>
+  <string name="ring_on">Sonnerie [ON]</string>
+  <string name="ring_off">Sonnerie [OFF]</string>
   <string name="auto_focus_on">Mise au point automatique [ON]</string>
   <string name="auto_focus_off">Mise au point automatique [OFF]</string>
   <string name="formats">Formats</string>
@@ -694,11 +694,11 @@
   <string name="elderly_age">65+</string>
   <string name="most_people">La plupart des gens\n(plus de 50%)</string>
   <string name="some_people">Certaines personnes\n(plus de 5%)</string>
-  <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-  <string name="risk_of_exposure">Risk of exposure</string>
-  <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
-  <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-  <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-  <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+  <string name="safety_and_exposure_assessment">Évaluation de sécurité et de surexposition</string>
+  <string name="risk_of_exposure">Risque de surexposition</string>
+  <string name="efsa_warning_moderate_risk">L\'Autorité européenne de sécurité des aliments (EFSA) a déterminé que certains groupes de population présentent un risque modéré de consommer trop de %1$s.</string>
+  <string name="efsa_warning_high_risk">L\'Autorité européenne de sécurité des aliments (EFSA) a déterminé que certains groupes de population courent un risque élevé de consommer trop de %1$s.</string>
+  <string name="legend_noael">au-dessus de la dose avec effet indésirable observé (DSENO)</string>
+  <string name="legend_adi">au-dessus de la dose journalière admissible (DJA)</string>
   <!-- Used for additive exposure evaluation table -->
 </resources>
