@@ -71,44 +71,44 @@
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
   <string-array name="nutrients_array">
     <item>α-亚麻酸 / ALA (18:3 n-3)</item>
-    <item>花生四烯酸 (20:0)</item>
-    <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-    <item>Behenic acid (22:0)</item>
+    <item>花生酸 (20:0)</item>
+    <item>花生四烯酸 / AA / ARA (20:4 n-6)</item>
+    <item>山嵛酸 (22:0)</item>
     <item>碳酸氢钠</item>
     <item>生物素</item>
-    <item>Butyric acid (4:0)</item>
+    <item>丁酸 (4:0)</item>
     <item>咖啡因</item>
     <item>钙</item>
-    <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
-    <item>Caprylic acid (8:0)</item>
+    <item>癸酸 (10:0)</item>
+    <item>己酸 (6:0)</item>
+    <item>辛酸 (8:0)</item>
     <item>酪蛋白</item>
-    <item>Cerotic acid (26:0)</item>
+    <item>蜡酸 (26:0)</item>
     <item>氯化物</item>
     <item>胆固醇</item>
     <item>铬</item>
     <item>铜</item>
-    <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-    <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-    <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-    <item>Elaidic acid (18:1 n-9)</item>
-    <item>Erucic acid (22:1 n-9)</item>
+    <item>二高-γ-亚麻酸 / DGLA (20:3 n-6)</item>
+    <item>二十二碳六烯酸 / DHA (22:6 n-3)</item>
+    <item>二十碳五烯酸 / EPA (20:5 n-3)</item>
+    <item>乙二酸 (18:1 n-9)</item>
+    <item>芥酸 (22:1 n-9)</item>
     <item>氟</item>
     <item>果糖</item>
-    <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+    <item>γ-亚麻酸 / GLA (18:3 n-6)</item>
     <item>葡萄糖</item>
-    <item>Gondoic acid (20:1 n-9)</item>
+    <item>贡多酸 (20:1 n-9)</item>
     <item>碘</item>
     <item>铁</item>
     <item>乳糖</item>
-    <item>Lauric acid (12:0)</item>
-    <item>Lignoceric acid (24:0)</item>
-    <item>Linoleic acid / LA (18:2 n-6)</item>
+    <item>月桂酸 (12:0)</item>
+    <item>木瓜酸 (24:0)</item>
+    <item>亚油酸 / LA (18:2 n-6)</item>
     <item>镁</item>
     <item>麦芽糖</item>
     <item>麦芽糖</item>
     <item>锰</item>
-    <item>Mead acid (20:3 n-9)</item>
+    <item>米德酸 (20:3 n-9)</item>
     <item>Melissic acid (30:0)</item>
     <item>钼</item>
     <item>Monounsaturated fat</item>
