@@ -25,7 +25,6 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -388,6 +387,20 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         return spannableStringBuilder;
     }
 
+    private CharSequence getAllergensTag(AllergenName allergen) {
+        SpannableStringBuilder ssb = new SpannableStringBuilder();
+        CharSequence allergenLink = Utils.getClickableText(allergen.getName(), allergen.getName(),
+                                                           SearchType.ALLERGEN, getActivity(),
+                                                           customTabsIntent);
+        ssb.append(allergenLink);
+        // If allergen is not in the taxonomy list then italicize it
+        if (!allergen.isNotNull()) {
+            StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
+            ssb.setSpan(iss, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return ssb;
+    }
+
     /**
      * @return the string after trimming the language code from the tags
      * like it returns folic-acid for en:folic-acid
@@ -465,13 +478,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         substanceProduct.append(" ");
 
         for (int i = 0, lastIdx = allergens.size() - 1; i <= lastIdx; i++) {
-            String allergen = allergens.get(i).getName();
-            CharSequence allergenLink =
-                    Utils.getClickableText(allergen, allergen,
-                                           SearchType.ALLERGEN, getActivity(),
-                                           customTabsIntent);
-
-            substanceProduct.append(allergenLink);
+            AllergenName allergen = allergens.get(i);
+            substanceProduct.append(getAllergensTag(allergen));
             // Add comma if not the last item
             if (i != lastIdx) substanceProduct.append(", ");
         }
