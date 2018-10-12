@@ -9,10 +9,10 @@ Para descobrir o projeto Open Food Facts, visite https://pt.openfoodfacts.org
 
 - Open Food Facts é um banco de dados de produtos alimentícios feito por todos, para todos.
 - Pode usá-lo para fazer melhores escolhas alimentares, e como são dados abertos, qualquer um pode reutilizá-lo para qualquer finalidade.
-- Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
 - Pode começar a contribuir hoje, adicionando um produto do seu armário de alimentos. 
 
-*** Get the Facts ***
+*** Conheça os fatos ***
 - Open Food Facts ajuda a entender as letras miúdas dos rótulos dos produtos. Poderá encontrar (de acordo com as indicações presentes nos produtos):
 - pegada de carbono (emissões de CO2) e embalagem (assim como instruções de reciclagem),
 - Nutriscore (escore nutricional), nutrientes, teor de gordura / gordura, ácidos graxos saturados, carboidratos, açúcares, fibras, proteínas e sal e sódio.
@@ -30,6 +30,6 @@ Para descobrir o projeto Open Food Facts, visite https://pt.openfoodfacts.org
 - You can export your scan history
 
 O Open Food Facts também está disponível na web em https://pt.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Perguntas, feedback: contact@openfoodfacts.org
 
 Para cosméticos pode instalar o Open Beauty Facts, para comida para animais Open Pet Food Facts, e para todos os outros produtos Open Products Facts.
