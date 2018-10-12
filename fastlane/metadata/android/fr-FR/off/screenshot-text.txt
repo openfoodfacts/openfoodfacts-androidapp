@@ -42,4 +42,4 @@ menu_fr.png
 Puissant
 
 product_view_nutrition_table_fr.png
-Informations nutritionnelles
+Composition nutritionnelle
