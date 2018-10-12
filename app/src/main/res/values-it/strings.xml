@@ -272,13 +272,13 @@
   <string name="ring_off">Ring [OFF]</string>
   <string name="auto_focus_on">Auto Focus [ON]</string>
   <string name="auto_focus_off">Auto Focus [OFF]</string>
-  <string name="formats">Formats</string>
-  <string name="choose_formats">Choose Formats</string>
-  <string name="select_camera">Select a Camera</string>
+  <string name="formats">Formati</string>
+  <string name="choose_formats">Scegli formati</string>
+  <string name="select_camera">Seleziona una fotocamera</string>
   <string name="ok_button">Ok</string>
-  <string name="cancel_button">Cancel</string>
+  <string name="cancel_button">Annulla</string>
   <string name="login_button">Login</string>
-  <string name="create_account_button">Create Account</string>
+  <string name="create_account_button">Crea account</string>
   <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
   <string name="from_gallery">Dalla galleria</string>
   <string name="product_sent">Prodotto inviato con successo</string>
@@ -498,7 +498,7 @@
   <string name="login_true">Ha già effettuato il login!</string>
   <string name="confirm_logout">Conferma il logout</string>
   <string name="logout_dialog_content">Sei sicuro di uscire?</string>
-  <string name="dialog_cancel">Cancel</string>
+  <string name="dialog_cancel">Annulla</string>
   <string name="choose_resolution">Scegli la risoluzione</string>
   <string name="pref_resolution_summary">Scegli una risoluzione per il caricamento delle immagini</string>
   <string name="image_upload_resolution">Risoluzione di caricamento immagini</string>
@@ -555,7 +555,7 @@
   <string name="do_you_want_to">Vuoi aggiungere foto a questo codice a barre?</string>
   <string name="bottomNav_history">Cronologia</string>
   <string name="bottomNav_search">Cerca</string>
-  <string name="products_added">Products you added or edited</string>
+  <string name="products_added">Prodotti aggiunti o modificati</string>
   <string name="products_incomplete">I prodotti aggiunti devono essere completati</string>
   <string name="product_pictures_contributed">Prodotti per i quali hai scattato foto</string>
   <string name="picture_contributed_incomplete">Prodotti per i quali hai scattato foto che devono essere completati</string>
@@ -634,7 +634,7 @@
   <string name="ingredients_list">Lista degli ingredienti</string>
   <string name="ingredients_hint">Mantenere l\'ordine, indicare la % quando specificata, separare con una virgola oppure -, utilizzare () per indicare gli ingredienti di un ingrediente, segnalare gli allergeni con _</string>
   <string name="extract_ingredients">Estrai ingredienti</string>
-  <string name="extracting_ingredients">Extracting ingredients</string>
+  <string name="extracting_ingredients">Estrazione degli ingredienti</string>
   <string name="looksGood">Va bene</string>
   <string name="skip_ingredients">Non va bene \n Salta ingredienti</string>
   <string name="traces">Tracce</string>
@@ -645,7 +645,7 @@
   <string name="per_serving">Per porzione</string>
   <string name="serving_size">Porzioni</string>
   <string name="alcohol_unit" formatted="false">% vol / °</string>
-  <string name="add_a_nutrient">Add a nutrient</string>
+  <string name="add_a_nutrient">Aggiungi un nutriente</string>
   <string name="add_this_product">Aggiungi questo prodotto</string>
   <string name="product_picture">Foto del prodotto</string>
   <string name="one_photo_compulsory">(una foto è obbligatoria per aggiungere un nuovo prodotto)</string>
