@@ -384,9 +384,9 @@
   <string name="nutrition_taurine">牛磺酸</string>
   <string name="nutrition_monounsaturatedFat">單不飽和脂肪</string>
   <string name="nutrition_polyunsaturatedFat">多不飽和脂肪</string>
-  <string name="nutrition_omega3">Omega 3</string>
-  <string name="nutrition_omega6">Omega 6</string>
-  <string name="nutrition_omega9">Omega 9</string>
+  <string name="nutrition_omega3">欧米伽 3</string>
+  <string name="nutrition_omega6">欧米伽 5</string>
+  <string name="nutrition_omega9">欧米伽 9</string>
   <string name="nutrition_sucrose">蔗糖</string>
   <string name="nutrition_glucose">葡萄糖</string>
   <string name="nutrition_fructose">果糖</string>
@@ -405,7 +405,7 @@
   <string name="vitamin_b9">維生素 B9</string>
   <string name="vitamin_b12">維生素 B12</string>
   <string name="biotin">生物素</string>
-  <string name="pantothenic_acid">Pantothenic acid</string>
+  <string name="pantothenic_acid">泛酸</string>
   <string name="nutrition_minerals">礦物質</string>
   <string name="silica">二氧化矽</string>
   <string name="bicarbonate">碳酸氫鹽</string>
