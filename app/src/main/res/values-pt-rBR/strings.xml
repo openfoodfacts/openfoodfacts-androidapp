@@ -272,13 +272,13 @@
   <string name="ring_off">Ring [OFF]</string>
   <string name="auto_focus_on">Auto Focus [ON]</string>
   <string name="auto_focus_off">Auto Focus [OFF]</string>
-  <string name="formats">Formats</string>
-  <string name="choose_formats">Choose Formats</string>
-  <string name="select_camera">Select a Camera</string>
+  <string name="formats">Formatos</string>
+  <string name="choose_formats">Escolha formatos</string>
+  <string name="select_camera">Selecione uma câmera</string>
   <string name="ok_button">OK</string>
-  <string name="cancel_button">Cancel</string>
+  <string name="cancel_button">Cancelar</string>
   <string name="login_button">Iniciar sessão</string>
-  <string name="create_account_button">Create Account</string>
+  <string name="create_account_button">Criar uma conta</string>
   <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa, por favor confirme sempre por si mesmo! </string>
   <string name="from_gallery">Galeria de imagens</string>
   <string name="product_sent">Produto enviado com sucesso</string>
@@ -498,7 +498,7 @@
   <string name="login_true">Já está logado!</string>
   <string name="confirm_logout">Confirmar o Logout</string>
   <string name="logout_dialog_content">Você quer mesmo sair?</string>
-  <string name="dialog_cancel">Cancel</string>
+  <string name="dialog_cancel">Cancelar</string>
   <string name="choose_resolution">Escolher Resolução</string>
   <string name="pref_resolution_summary">Escolha uma resolução para upload da imagem</string>
   <string name="image_upload_resolution">Resolução de upload de imagens</string>
