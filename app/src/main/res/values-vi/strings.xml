@@ -116,22 +116,22 @@
     <item>Axit Myristic (14:0)</item>
     <item>Axit nervonic (24: 1 n-9)</item>
     <item>Nucleotides</item>
-    <item>Oleic acid (18:1 n-9)</item>
-    <item>Omega 3 fatty acids</item>
-    <item>Omega 6 fatty acids</item>
-    <item>Omega 9 fatty acids</item>
-    <item>Palmitic acid (16:0)</item>
-    <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+    <item>Axít oleic (18: 1 n-9)</item>
+    <item>Axit béo omega-3</item>
+    <item>Axít béo Omega 6</item>
+    <item>Axit béo omega-9</item>
+    <item>Axit Palmitic (16: 0)</item>
+    <item>Axit Pantothenic / Pantothenate (Vitamin B5)</item>
     <item>pH</item>
     <item>Phosphorus</item>
-    <item>Sugar alcohols (Polyols)</item>
-    <item>Polyunsaturated fat</item>
+    <item>Đường rượu (Polyols)</item>
+    <item>Chất béo không bão hòa đa</item>
     <item>Potassium</item>
     <item>Selenium</item>
-    <item>Serum proteins</item>
+    <item>Protein huyết thanh</item>
     <item>Silica</item>
-    <item>Starch</item>
-    <item>Stearic acid (18:0)</item>
+    <item>Tinh bột</item>
+    <item>Axít stearic (18: 0)</item>
     <item>Sucrose</item>
     <item>Taurine</item>
     <item>Trans fat</item>
@@ -150,31 +150,31 @@
   </string-array>
   <!-- Text units -->
   <string-array name="images_array">
-    <item>Default</item>
+    <item>Mặc định</item>
     <item>Dinh dưỡng</item>
     <item>Thành phần</item>
   </string-array>
   <!-- Content Description -->
-  <string name="bookmark">Bookmark</string>
-  <string name="edit">Edit</string>
+  <string name="bookmark">Dấu trang</string>
+  <string name="edit">Chỉnh sửa</string>
   <string name="search_button">Tìm kiếm</string>
-  <string name="no_products">Products not found</string>
-  <string name="desc_list_item_icon">Item Icon</string>
+  <string name="no_products">Không tìm thấy sản phẩm</string>
+  <string name="desc_list_item_icon">Biểu tượng mục</string>
   <string name="alert_dialog_warning_title">Warning</string>
-  <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-  <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
+  <string name="alert_dialog_warning_msg_user">Người dùng / mật khẩu đã thay đổi, vui lòng cập nhật thông tin</string>
+  <string name="alert_dialog_product_error_msg">Không tìm thấy sản phẩm, vui lòng thử lại</string>
   <string name="toast_retrieving">Loading...</string>
   <string name="txtGenericName">Tên thường gặp :</string>
-  <string name="txtBarcode">Barcode :</string>
+  <string name="txtBarcode">Mã vạch :</string>
   <string name="txtQuantity">Số lượng :</string>
   <string name="txtPackaging">Bao bì :</string>
   <string name="txtBrands">Thương hiệu :</string>
   <string name="txtCategories">Thể loại :</string>
-  <string name="txtLabels">Labels, certifications, awards :</string>
-  <string name="txtManufacturing">Manufacturing or processing places :</string>
+  <string name="txtLabels">Nhãn, chứng nhận, giải thưởng:</string>
+  <string name="txtManufacturing">Địa điểm sản xuất, chế biến:</string>
   <string name="txtIngredientsOrigins">Nguồn gốc của các thành phần :</string>
   <string name="txtCity">Thành phố, tiểu bang và quốc gia mua hàng :</string>
-  <string name="txtEMB">EMB Code:</string>
+  <string name="txtEMB">Mã EMB:</string>
   <string name="txtManufactureUrl">Liên kết với các trang sản phẩm trên trang web chính thức của nhà sản xuất:</string>
   <string name="txtStores">Stores :</string>
   <string name="txtCountries">Các quốc gia bán :</string>
@@ -240,60 +240,60 @@
   <string name="txtAllsent">Products sent</string>
   <string name="txtPalm">The product does not contain any palm oil</string>
   <string name="txtBarcodeNotValid">Barcode not valid</string>
-  <string name="try_it_scan_now">Scan product</string>
+  <string name="try_it_scan_now">Quét sản phẩm</string>
   <string name="share">Share</string>
-  <string name="translate">Translate</string>
-  <string name="msg_share">Look at this product on Open Food Facts :</string>
-  <string name="create_account">Sign up</string>
-  <string name="home_drawer">Home</string>
+  <string name="translate">Dịch</string>
+  <string name="msg_share">Xem sản phẩm này trên Open Food Facts:</string>
+  <string name="create_account">Đăng ký</string>
+  <string name="home_drawer">Trang chủ</string>
   <string name="search_drawer">Tìm kiếm</string>
-  <string name="search_by_barcode_drawer">Type barcode</string>
+  <string name="search_by_barcode_drawer">Nhập mã vạch</string>
   <string name="category_drawer">Thể loại</string>
-  <string name="search_by_category">Category</string>
-  <string name="search_by_name_drawer">Search by name</string>
-  <string name="scan_search">Scan Barcode</string>
+  <string name="search_by_category">Danh mục</string>
+  <string name="search_by_name_drawer">Tìm kiếm theo Tên</string>
+  <string name="scan_search">Quét mã vạch</string>
   <string name="user_drawer">User</string>
-  <string name="offline_edit_drawer">Offline edit</string>
-  <string name="txt_anonymous">Anonymous</string>
-  <string name="txt_product_not_found">Products not found</string>
-  <string name="delete_txt">Delete</string>
+  <string name="offline_edit_drawer">Chỉnh sửa ngoại tuyến</string>
+  <string name="txt_anonymous">Ẩn danh</string>
+  <string name="txt_product_not_found">Không tìm thấy sản phẩm</string>
+  <string name="delete_txt">Xóa</string>
   <string name="sign_in_drawer">Đăng nhập</string>
   <string name="alert_drawer">Allergen alert</string>
-  <string name="warning_allergens">Contains allergens</string>
-  <string name="title_dialog_alert">Add alert</string>
-  <string name="toggle_flash">Flash</string>
-  <string name="flash_on">Flash [ON]</string>
-  <string name="flash_off">Flash [OFF]</string>
-  <string name="ring_on">Ring [ON]</string>
-  <string name="ring_off">Ring [OFF]</string>
-  <string name="auto_focus_on">Auto Focus [ON]</string>
-  <string name="auto_focus_off">Auto Focus [OFF]</string>
-  <string name="formats">Formats</string>
-  <string name="choose_formats">Choose Formats</string>
-  <string name="select_camera">Select a Camera</string>
+  <string name="warning_allergens">Chứa chất gây dị ứng</string>
+  <string name="title_dialog_alert">Thêm thông báo</string>
+  <string name="toggle_flash">Đèn flash</string>
+  <string name="flash_on">Flash [BẬT]</string>
+  <string name="flash_off">Flash [TẮT]</string>
+  <string name="ring_on">Ring [BẬT]</string>
+  <string name="ring_off">Ring [TẮT]</string>
+  <string name="auto_focus_on">Tự động lấy nét [BẬT]</string>
+  <string name="auto_focus_off">Tự động lấy nét [TẮT]</string>
+  <string name="formats">Định dạng</string>
+  <string name="choose_formats">Chọn định dạng</string>
+  <string name="select_camera">Chọn camera</string>
   <string name="ok_button">OK</string>
-  <string name="cancel_button">Cancel</string>
+  <string name="cancel_button">Huỷ</string>
   <string name="login_button">Login</string>
-  <string name="create_account_button">Create Account</string>
-  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-  <string name="from_gallery">From gallery</string>
-  <string name="product_sent">Product sent successfully</string>
-  <string name="action_edit_product">Edit product</string>
-  <string name="title_info_dialog">How does it work?</string>
-  <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-  <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
-  <string name="permission_title">Permission information</string>
-  <string name="permission_denied">Please activate permission in the settings</string>
-  <string name="permission_storage">Storage permission is needed to take or select pictures</string>
-  <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
-  <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
-  <string name="msg_input_empty">Please fill the fields first.</string>
-  <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
+  <string name="create_account_button">Tạo Tài Khoản</string>
+  <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Thông tin bệnh dị ứng của bạn không bao giờ sẽ được gửi đến máy chủ Open Food Facts. Ngoài ra, hãy cẩn thận rằng dữ liệu sản phẩm có thể không chính xác, và việc phát hiện có thể không chính xác 100%, vì vậy xin vui lòng kiểm tra lần nữa! </string>
+  <string name="from_gallery">Từ bộ sưu tập Ảnh</string>
+  <string name="product_sent">Sản phẩm được gửi thành công</string>
+  <string name="action_edit_product">Chỉnh sửa sản phẩm</string>
+  <string name="title_info_dialog">Nó hoạt động như thế nào?</string>
+  <string name="text_offline_info_dialog">Bạn có thể quét các sản phẩm khi bạn đang ngoại tuyến để thêm chúng vào Open Food Facts sau. Tất cả các sản phẩm bạn quét sẽ xuất hiện ở đây, và bạn sẽ có thể gửi cho họ bằng cách sử dụng nút bên dưới.</string>
+  <string name="permission_camera">Cần có quyền đối với máy ảnh để quét mã vạch và chụp ảnh.</string>
+  <string name="permission_title">Thông tin quyền</string>
+  <string name="permission_denied">Vui lòng kích hoạt quyền trong cài đặt</string>
+  <string name="permission_storage">Cần có quyền lưu trữ để chụp hoặc chọn hình ảnh</string>
+  <string name="info_download_data">Bạn cần phải tải xuống một số dữ liệu để chức năng này hoạt động, vui lòng nhấn yes để tải xuống.</string>
+  <string name="info_download_data_connection">Bạn cần tải xuống một số dữ liệu để chức năng này hoạt động. Vui lòng kích hoạt kết nối internet.</string>
+  <string name="msg_input_empty">Vui lòng điền vào các trường trước tiên.</string>
+  <string name="new_offline_info">Vui lòng chụp ảnh sản phẩm, thành phần, bảng thông tin dinh dưỡng và bất kỳ thông tin nào khác trên nhãn. Cảm ơn bạn!</string>
   <!-- Strings related to login -->
-  <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-  <string name="user">user</string>
-  <string name="error_field_required">This field is required.</string>
-  <string name="action_preferences">Preferences</string>
+  <string name="error_invalid_password">Mật khẩu phải dài ít nhất 6 ký tự.</string>
+  <string name="user">người dùng</string>
+  <string name="error_field_required">Trường này là bắt buộc.</string>
+  <string name="action_preferences">Tuỳ chỉnh</string>
   <string name="prefs_scan_startup">Scan on startup</string>
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
@@ -355,20 +355,20 @@
   <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
   <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
   <string name="txtDialogPowerMode">Quick view</string>
-  <string name="txtSeeMore">See more</string>
+  <string name="txtSeeMore">Xem thêm</string>
   <string name="action_search">Tìm kiếm</string>
   <string name="search_hint">Tìm kiếm một sản phẩm</string>
-  <string name="number_of_results">Number of results: </string>
-  <string name="brand">Brand :</string>
+  <string name="number_of_results">Số kết quả: </string>
+  <string name="brand">Thương hiệu :</string>
   <string name="number_of_products">Số lượng sản phẩm: </string>
-  <string name="txt_no_results">No results found</string>
-  <string name="txt_extend_search">Try broadening your search or add the product</string>
+  <string name="txt_no_results">Không có kết quả nào được tìm thấy</string>
+  <string name="txt_extend_search">Thử mở rộng tìm kiếm của bạn hoặc thêm sản phẩm</string>
   <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-  <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
-  <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-  <string name="txt_cant_load_search_results">Can\'t load search results</string>
-  <string name="something_went_wrong">Sorry, something went wrong…</string>
-  <string name="txt_try_again">Try again</string>
+  <string name="txt_no_matching_products">Chúng tôi không tìm thấy bất kỳ sản phẩm phù hợp nào. \ NBạn có thể thử:</string>
+  <string name="txt_broaden_search">- mở rộng tìm kiếm của bạn \ n- quét và thêm nó vào Open Food Facts</string>
+  <string name="txt_cant_load_search_results">Không thể tải tìm kiếm kết quả</string>
+  <string name="something_went_wrong">Xin lỗi, có lỗi xảy ra…</string>
+  <string name="txt_try_again">Thử lại</string>
   <string name="nutrition_lactose">Lactose</string>
   <string name="nutrition_casein">Casein</string>
   <string name="nutrition_maltodextrins">Maltodextrins</string>
@@ -379,7 +379,7 @@
   <string name="minerals">Minerals</string>
   <string name="nutrition_calcium">Calcium</string>
   <string name="nutrition_potassium">Potassium</string>
-  <string name="nutrition_chlore">Chlorine</string>
+  <string name="nutrition_chlore">Clo</string>
   <string name="nutrition_magnesium">Magnesium</string>
   <string name="nutrition_taurine">Taurine</string>
   <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
@@ -467,7 +467,7 @@
   <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
   <string name="device_on_mobile_data_warning_title">Information</string>
   <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
-  <string name="device_on_mobile_data_warning_positive">Preferences</string>
+  <string name="device_on_mobile_data_warning_positive">Tuỳ chỉnh</string>
   <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
   <string name="preference_choose_language_dialog_title">Choose language</string>
   <string name="FAQ">FAQ</string>
@@ -480,7 +480,7 @@
   <string name="connectivity_check">Please check your internet connection</string>
   <string name="dismiss">Dismiss</string>
   <string name="Terms">Terms</string>
-  <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+  <string name="terms_url">https://vn.openfoodfacts.org/terms-of-use</string>
   <string name="preference_header_general">General</string>
   <string name="preference_header_network">Network</string>
   <string name="preference_header_contributing">Contributing</string>
@@ -494,7 +494,7 @@
   <string name="login_true">Already logged in!</string>
   <string name="confirm_logout">Confirm Logout</string>
   <string name="logout_dialog_content">Are you sure to log out ?</string>
-  <string name="dialog_cancel">Cancel</string>
+  <string name="dialog_cancel">Huỷ</string>
   <string name="choose_resolution">Choose Resolution</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image upload resolution</string>
@@ -515,7 +515,7 @@
   <string name="store_string">Store</string>
   <string name="packaging_string">Bao bì</string>
   <string name="label_string">Label</string>
-  <string name="category_string">Category</string>
+  <string name="category_string">Danh mục</string>
   <string name="connection">Connected</string>
   <string name="contributor_string">Contributor</string>
   <string name="Rate_Us">Show Your Support</string>
@@ -571,7 +571,7 @@
   <string name="contribution_tab">Contributions</string>
   <string name="contribution_tab_summary">Show user contributions tab with products</string>
   <string name="contribution_tab_title">Show contribution tab</string>
-  <string name="product">Edit</string>
+  <string name="product">Chỉnh sửa</string>
   <string name="txtDialogsTitle">Information</string>
   <string name="preference_show_all_product_photos_title">Show all product photos</string>
   <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
@@ -588,7 +588,7 @@
   <string name="switch_camera">Switch camera</string>
   <string name="autofocus">Autofocus</string>
   <string name="initial_loading">Initial loading</string>
-  <string name="preferences">Preferences</string>
+  <string name="preferences">Tuỳ chỉnh</string>
   <string name="OFFlogo">Open Food Facts logo</string>
   <string name="loading_product">Loading product %s</string>
   <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
