@@ -29,7 +29,7 @@ Open Beauty Facts, içerdikleri maddeler, allerjenler, işaretler ve ürün etik
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Sorular, geri bildirim : contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
