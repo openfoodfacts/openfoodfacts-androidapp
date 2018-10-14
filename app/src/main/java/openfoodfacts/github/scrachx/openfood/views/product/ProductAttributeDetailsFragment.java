@@ -14,25 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Locale;
-
+import android.widget.Toast;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Locale;
 
 public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment implements CustomTabActivityHelper.ConnectionCallback
 {
@@ -364,8 +358,13 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 
 	private void openInCustomTab( String url )
 	{
-		Uri wikipediaUri = Uri.parse( url );
-		CustomTabActivityHelper.openCustomTab( getActivity(), customTabsIntent, wikipediaUri, new WebViewFallback() );
+		// Url might be empty string if there is no wiki link in english or the user'd language
+		if (!url.equals("")) {
+			Uri wikipediaUri = Uri.parse(url);
+			CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, wikipediaUri, new WebViewFallback());
+		} else {
+			Toast.makeText(getContext(), R.string.wikidata_unavailable, Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	@Override

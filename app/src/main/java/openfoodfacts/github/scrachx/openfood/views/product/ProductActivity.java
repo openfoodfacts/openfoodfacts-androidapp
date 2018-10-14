@@ -30,40 +30,20 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-import com.afollestad.materialdialogs.MaterialDialog;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import android.widget.*;
 import butterknife.BindView;
 import butterknife.OnClick;
+import com.afollestad.materialdialogs.MaterialDialog;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
-import openfoodfacts.github.scrachx.openfood.views.BottomNavigationBehavior;
-import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
+import openfoodfacts.github.scrachx.openfood.views.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -74,6 +54,8 @@ import openfoodfacts.github.scrachx.openfood.views.product.ingredients.Ingredien
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
@@ -475,50 +457,36 @@ doesn't have calories information in nutrition facts.
 		}
 	}
 
-	public void showBottomScreen( JSONObject result, AdditiveName additive )
-	{
-		try
-		{
-			String jsonObjectStr = result.getJSONObject( "entities" ).getJSONObject( additive.getWikiDataId() ).toString();
-			ProductAttributeDetailsFragment fragment =
-					ProductAttributeDetailsFragment.newInstance( jsonObjectStr, additive.getId(),
-							SearchType.ADDITIVE, additive.getName() );
-			fragment.show( getSupportFragmentManager(), "additive_details_fragment" );
-		}
-		catch( JSONException e )
-		{
-			e.printStackTrace();
-		}
+	public void showBottomScreen(JSONObject result, AdditiveName additive) {
+		showBottomSheet(result, additive.getId(), additive.getName(), additive.getWikiDataId(),
+						SearchType.ADDITIVE, "additive_details_fragment");
 	}
 
-	public void showBottomScreen( JSONObject result, LabelName label )
-	{
-		try
-		{
-			String jsonObjectStr = result.getJSONObject( "entities" ).getJSONObject( label.getWikiDataId() ).toString();
-			ProductAttributeDetailsFragment fragment =
-					ProductAttributeDetailsFragment.newInstance( jsonObjectStr, label.getId(),
-							SearchType.LABEL, label.getName() );
-			fragment.show( getSupportFragmentManager(), "label_details_fragment" );
-		}
-		catch( JSONException e )
-		{
-			e.printStackTrace();
-		}
+	public void showBottomScreen(JSONObject result, LabelName label) {
+		showBottomSheet(result, label.getId(), label.getName(), label.getWikiDataId(),
+						SearchType.LABEL, "label_details_fragment");
 	}
 
-	public void showBottomScreen( JSONObject result, CategoryName category )
-	{
-		try
-		{
-			String jsonObjectStr = result.getJSONObject( "entities" ).getJSONObject( category.getWikiDataId() ).toString();
+	public void showBottomScreen(JSONObject result, CategoryName category) {
+		showBottomSheet(result, category.getId(), category.getName(), category.getWikiDataId(),
+						SearchType.CATEGORY, "category_details_fragment");
+	}
+
+	public void showBottomScreen(JSONObject result, AllergenName allergen) {
+		showBottomSheet(result, allergen.getId(), allergen.getName(), allergen.getWikiDataId(),
+						SearchType.ALLERGEN, "allergen_details_fragment");
+	}
+
+	private void showBottomSheet(JSONObject result, Long id, String name,
+								 String wikidataId, String searchType, String fragmentTag) {
+		try {
+			String jsonObjectStr = result.getJSONObject("entities")
+										 .getJSONObject(wikidataId)
+										 .toString();
 			ProductAttributeDetailsFragment fragment =
-					ProductAttributeDetailsFragment.newInstance( jsonObjectStr, category.getId(),
-							SearchType.CATEGORY, category.getName() );
-			fragment.show( getSupportFragmentManager(), "category_details_fragment" );
-		}
-		catch( JSONException e )
-		{
+					ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
+			fragment.show(getSupportFragmentManager(), fragmentTag);
+		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 	}

@@ -24,7 +24,7 @@ public class AllergenName {
     private String languageCode;
     private String name;
     private String wikiDataId;
-    private Boolean isWikiDataIdPresent;
+    private Boolean isWikiDataIdPresent = false;
 
     @Generated(hash = 1566725667)
     public AllergenName(Long id, String allergenTag, String languageCode, String name,

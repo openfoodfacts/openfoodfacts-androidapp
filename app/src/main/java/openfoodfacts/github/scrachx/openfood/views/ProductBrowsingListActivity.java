@@ -13,11 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.*;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,15 +23,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.MaterialDialog;
-
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
+import com.afollestad.materialdialogs.MaterialDialog;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
@@ -50,6 +40,10 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductBrowsingListActivity extends BaseActivity {
 
@@ -281,6 +275,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.CONTRIBUTOR:
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
+            case SearchType.ALLERGEN:
+                getSupportActionBar().setSubtitle(getString(R.string.allergen_string));
+                break;
             case SearchType.INCOMPLETE_PRODUCT: {
                 getSupportActionBar().setTitle(getString(R.string.products_to_be_completed));
                 break;
@@ -458,6 +455,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
                 break;
             }
+
+            case SearchType.ALLERGEN:
+                api.getProductsByAllergen(searchQuery, pageAddress, this::loadData);
+                break;
 
 
             case SearchType.STATE:

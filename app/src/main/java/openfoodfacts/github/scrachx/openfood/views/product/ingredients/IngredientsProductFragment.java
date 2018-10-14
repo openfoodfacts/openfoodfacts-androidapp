@@ -30,30 +30,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-
-import org.json.JSONObject;
-
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
@@ -65,8 +49,15 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import org.json.JSONObject;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
+
+import java.io.File;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
@@ -75,9 +66,7 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.jsoup.helper.StringUtil.isBlank;
 
@@ -340,7 +329,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
                                 ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, additive);
+                                if (productActivity != null && !productActivity.isFinishing()) {
+                                    productActivity.showBottomScreen(result, additive);
+                                }
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
                             }
@@ -389,13 +380,35 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     private CharSequence getAllergensTag(AllergenName allergen) {
         SpannableStringBuilder ssb = new SpannableStringBuilder();
-        CharSequence allergenLink = Utils.getClickableText(allergen.getName(), allergen.getName(),
-                                                           SearchType.ALLERGEN, getActivity(),
-                                                           customTabsIntent);
-        ssb.append(allergenLink);
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                if (allergen.getIsWikiDataIdPresent()) {
+                    apiClientForWikiData.doSomeThing(
+                            allergen.getWikiDataId(),
+                            (value, result) -> {
+                                if (value) {
+                                    ProductActivity productActivity = (ProductActivity) getActivity();
+                                    if (productActivity != null && !productActivity.isFinishing()) {
+                                        productActivity.showBottomScreen(result, allergen);
+                                    }
+                                } else {
+                                    ProductBrowsingListActivity.startActivity(getContext(), allergen.getName(), SearchType.ALLERGEN);
+                                }
+                            });
+                } else {
+                    ProductBrowsingListActivity.startActivity(getContext(), allergen.getName(), SearchType.ALLERGEN);
+                }
+            }
+        };
+
+        ssb.append(allergen.getName());
+        ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         // If allergen is not in the taxonomy list then italicize it
         if (!allergen.isNotNull()) {
-            StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
+            StyleSpan iss =
+                    new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
             ssb.setSpan(iss, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return ssb;

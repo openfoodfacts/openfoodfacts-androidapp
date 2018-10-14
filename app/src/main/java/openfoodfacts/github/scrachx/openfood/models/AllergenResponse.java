@@ -42,6 +42,7 @@ public class AllergenResponse {
     public AllergenResponse(String uniqueAllergenId, Map<String, String> names) {
         this.uniqueAllergenID = uniqueAllergenId;
         this.names = names;
+        this.isWikiDataIdPresent = false;
     }
 
     /**

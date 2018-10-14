@@ -1,10 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import com.fasterxml.jackson.databind.JsonNode;
-
-import java.util.ArrayList;
-import java.util.Map;
-
 import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -13,17 +9,10 @@ import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.PartMap;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
+import retrofit2.http.*;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Define our Open Food Facts API endpoints.
@@ -212,6 +201,9 @@ public interface OpenFoodAPIService {
     @GET("additive/{additive}/{page}.json")
     Call<Search> getProductsByAdditive(@Path("additive") String additive, @Path("page") int page);
 
+    @GET("allergen/{allergen}/{page}.json")
+    Call<Search> getProductsByAllergen(@Path("allergen") String allergen, @Path("page") int page);
+
     @GET("country/{country}/{page}.json")
     Call<Search> getProductsByCountry(@Path("country") String country, @Path("page") int page);
 
@@ -223,7 +215,6 @@ public interface OpenFoodAPIService {
 
     @GET("label/{label}/{page}.json")
     Call<Search> getProductByLabel(@Path("label") String label, @Path("page") int page);
-
 
     @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
     Call<Search> getProductByCategory(@Path("category") String category, @Path("page") int page);
