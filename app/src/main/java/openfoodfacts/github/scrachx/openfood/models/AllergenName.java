@@ -20,20 +20,31 @@ public class AllergenName {
 
     @Id(autoincrement = true)
     Long id;
-
     private String allergenTag;
-
     private String languageCode;
-
     private String name;
+    private String wikiDataId;
+    private Boolean isWikiDataIdPresent;
 
-    @Generated(hash = 1400007293)
-    public AllergenName(Long id, String allergenTag, String languageCode,
-                        String name) {
+    @Generated(hash = 1566725667)
+    public AllergenName(Long id, String allergenTag, String languageCode, String name,
+            String wikiDataId, Boolean isWikiDataIdPresent) {
         this.id = id;
         this.allergenTag = allergenTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
+    }
+
+    @Keep
+    public AllergenName(String allergenTag, String languageCode,
+                        String name, String wikiDataId) {
+        this.allergenTag = allergenTag;
+        this.languageCode = languageCode;
+        this.name = name;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = true;
     }
 
     @Keep
@@ -42,6 +53,7 @@ public class AllergenName {
         this.allergenTag = allergenTag;
         this.languageCode = languageCode;
         this.name = name;
+        this.isWikiDataIdPresent = false;
     }
 
     @Generated(hash = 287009235)
@@ -86,5 +98,32 @@ public class AllergenName {
 
     public Boolean isNotNull() {
         return id != null && allergenTag != null && languageCode != null && name != null;
+    }
+
+    public String getWikiDataId() {
+        if(this.wikiDataId==null){
+            return "null";
+        }
+        String res = this.wikiDataId;
+        int startIndex = res.indexOf("en");
+        startIndex= startIndex + 5;
+        int lastIndex = res.lastIndexOf("\"");
+        if(startIndex<3 || lastIndex < 3 ){
+            return res;
+        }
+        res = res.substring(startIndex,lastIndex);
+        return res;
+    }
+
+    public void setWikiDataId(String wikiDataId) {
+        this.wikiDataId = wikiDataId;
+    }
+
+    public Boolean getIsWikiDataIdPresent() {
+        return this.isWikiDataIdPresent;
+    }
+
+    public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 }

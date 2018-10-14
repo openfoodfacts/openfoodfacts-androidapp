@@ -16,6 +16,23 @@ public class AllergenResponse {
 
     private Map<String, String> names;
 
+    private String wikiDataCode;
+    private Boolean isWikiDataIdPresent;
+
+    /**
+     * Constructor.
+     *
+     * @param uniqueAllergenId Unique ID of the allergen
+     * @param names            Map of key: Country code, value: Translated name of allergen.
+     * @param wikiDataCode     Code to look up allergen in wikidata
+     */
+    public AllergenResponse(String uniqueAllergenId, Map<String, String> names, String wikiDataCode) {
+        this.uniqueAllergenID = uniqueAllergenId;
+        this.names = names;
+        this.wikiDataCode = wikiDataCode;
+        this.isWikiDataIdPresent = true;
+    }
+
     /**
      * Constructor.
      *
@@ -33,9 +50,19 @@ public class AllergenResponse {
      * @return The newly constructed Allergen object.
      */
     public Allergen map() {
-        Allergen allergen = new Allergen(uniqueAllergenID, new ArrayList<>());
-        for (Map.Entry<String, String> name : names.entrySet()) {
-            allergen.getNames().add(new AllergenName(allergen.getTag(), name.getKey(), name.getValue()));
+        Allergen allergen;
+        if (isWikiDataIdPresent) {
+            allergen = new Allergen(uniqueAllergenID, new ArrayList<>(), wikiDataCode);
+            for (Map.Entry<String, String> name : names.entrySet()) {
+                allergen.getNames()
+                        .add(new AllergenName(allergen.getTag(), name.getKey(), name.getValue(), wikiDataCode));
+            }
+        } else {
+            allergen = new Allergen(uniqueAllergenID, new ArrayList<>());
+            for (Map.Entry<String, String> name : names.entrySet()) {
+                allergen.getNames()
+                        .add(new AllergenName(allergen.getTag(), name.getKey(), name.getValue()));
+            }
         }
 
         return allergen;
