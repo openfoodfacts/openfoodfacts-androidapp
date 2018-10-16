@@ -509,10 +509,9 @@ public class ProductRepository implements IProductRepository {
     public Single<AllergenName> getAllergenByTagAndLanguageCode(String allergenTag, String languageCode) {
         return Single.fromCallable(() -> {
             AllergenName allergenName = allergenNameDao.queryBuilder()
-                                                       .where(
-                                                               AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
-                                                               AllergenNameDao.Properties.LanguageCode.eq(languageCode)
-                                                       ).unique();
+                                                       .where(AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
+                                                              AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+                                                       .unique();
 
             if (allergenName != null) {
                 return allergenName;
