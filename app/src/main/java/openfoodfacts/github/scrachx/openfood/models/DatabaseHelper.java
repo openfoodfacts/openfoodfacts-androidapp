@@ -123,6 +123,12 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                     }
                 }
                 break;
+            case 10:
+                AllergenDao.dropTable(db, true);
+                AllergenDao.createTable(db, true);
+                AllergenNameDao.dropTable(db, true);
+                AllergenNameDao.createTable(db, true);
+                break;
         }
     }
 
