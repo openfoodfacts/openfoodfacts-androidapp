@@ -23,7 +23,7 @@
   </plurals>
   <string name="action_settings">Settings</string>
   <string name="action_about">About</string>
-  <string name="action_discover">Discover</string>
+  <string name="action_discover">Otkrij</string>
   <string name="contribute">How to contribute</string>
   <string name="action_find">Find</string>
   <string name="text_barcode">Type the barcode :</string>
@@ -165,7 +165,7 @@
   <!-- Content Description -->
   <string name="bookmark">Bookmark</string>
   <string name="edit">Edit</string>
-  <string name="search_button">Search</string>
+  <string name="search_button">Pretraživanje</string>
   <string name="no_products">Products not found</string>
   <string name="desc_list_item_icon">Item Icon</string>
   <string name="alert_dialog_warning_title">Warning</string>
@@ -202,7 +202,7 @@
   <string name="txtLogin">Login :</string>
   <string name="txtPass">Password :</string>
   <string name="txtTitleHome">Open your food and know what you eat</string>
-  <string name="txtSave">Save</string>
+  <string name="txtSave">Sačuvaj</string>
   <string name="txtSignIn">Sign in</string>
   <string name="txtUser">User panel</string>
   <string name="txtToastSaved">User saved</string>
@@ -211,7 +211,7 @@
   <string name="txtSugars">Sugars</string>
   <string name="hintBarcode">Barcode</string>
   <string name="hintLogin">Login</string>
-  <string name="hintPass">Password</string>
+  <string name="hintPass">Lozinka</string>
   <string name="errorLogin">Login or password error</string>
   <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
   <string name="uploadLater">Image will be uploaded when network is available</string>
@@ -221,7 +221,7 @@
   <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
   <string name="txtYes">Yes</string>
   <string name="txtNo">No</string>
-  <string name="hintNameProduct">Name</string>
+  <string name="hintNameProduct">Naziv</string>
   <string name="hintEnergy">Energy in kJ per serving</string>
   <string name="hintEnergyUnit">Energy unit</string>
   <string name="hintWeight">Weight</string>
@@ -249,12 +249,12 @@
   <string name="txtPalm">The product does not contain any palm oil</string>
   <string name="txtBarcodeNotValid">Barcode not valid</string>
   <string name="try_it_scan_now">Scan product</string>
-  <string name="share">Share</string>
+  <string name="share">Podeli</string>
   <string name="translate">Translate</string>
   <string name="msg_share">Look at this product on Open Food Facts :</string>
   <string name="create_account">Sign up</string>
   <string name="home_drawer">Home</string>
-  <string name="search_drawer">Search</string>
+  <string name="search_drawer">Pretraživanje</string>
   <string name="search_by_barcode_drawer">Type barcode</string>
   <string name="category_drawer">Категорије</string>
   <string name="search_by_category">Category</string>
@@ -265,7 +265,7 @@
   <string name="txt_anonymous">Anonymous</string>
   <string name="txt_product_not_found">Products not found</string>
   <string name="delete_txt">Delete</string>
-  <string name="sign_in_drawer">Sign-in</string>
+  <string name="sign_in_drawer">Prijavite se</string>
   <string name="alert_drawer">Allergen alert</string>
   <string name="warning_allergens">Contains allergens</string>
   <string name="title_dialog_alert">Add alert</string>
@@ -306,7 +306,7 @@
   <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
   <string name="prefs_power_mode">Power mode scan</string>
   <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-  <string name="prefs_language">Language</string>
+  <string name="prefs_language">Jezik</string>
   <string name="prefs_language_summary">Change language</string>
   <!-- Scan history -->
   <string name="scan_history_drawer">History</string>
@@ -364,8 +364,8 @@
   <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
   <string name="txtDialogPowerMode">Quick view</string>
   <string name="txtSeeMore">See more</string>
-  <string name="action_search">Search</string>
-  <string name="search_hint">Search a product</string>
+  <string name="action_search">Pretraživanje</string>
+  <string name="search_hint">Traži proizvod</string>
   <string name="number_of_results">Number of results: </string>
   <string name="brand">Brand :</string>
   <string name="number_of_products">Number of products: </string>
@@ -447,7 +447,7 @@
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Scan</string>
   <string name="scan_shortcut_long_label">Scan Product</string>
-  <string name="barcode_shortcut_short_label">Search</string>
+  <string name="barcode_shortcut_short_label">Pretraživanje</string>
   <string name="barcode_shortcut_long_label">Search By Barcode</string>
   <string name="history_shortcut_short_label">History</string>
   <string name="history_shortcut_long_label">History</string>
@@ -515,7 +515,7 @@
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">Brand</string>
   <string name="additive_string">Additive</string>
-  <string name="search_string">Search</string>
+  <string name="search_string">Pretraživanje</string>
   <string name="country_string">Countries where sold</string>
   <string name="store_subtitle">Store</string>
   <string name="packaging_subtitle">Packaging</string>
@@ -558,7 +558,7 @@
   <string name="code_detected">We have detected the barcode</string>
   <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
   <string name="bottomNav_history">History</string>
-  <string name="bottomNav_search">Search</string>
+  <string name="bottomNav_search">Pretraživanje</string>
   <string name="products_added">Products you added or edited</string>
   <string name="products_incomplete">Products you added that need to be completed</string>
   <string name="product_pictures_contributed">Products you took pictures for</string>

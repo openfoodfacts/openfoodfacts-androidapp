@@ -137,7 +137,7 @@
     <item>Starch</item>
     <item>Stearic acid (18:0)</item>
     <item>সুক্রোজ</item>
-    <item>Taurine</item>
+    <item>বৃষসদৃশ</item>
     <item>ট্রান্স ফ্যাট</item>
     <item>ভিটামিন এ</item>
     <item>Vitamin B1 (Thiamin)</item>
@@ -385,7 +385,7 @@
   <string name="nutrition_potassium">পটাসিয়াম</string>
   <string name="nutrition_chlore">ক্লোরিন</string>
   <string name="nutrition_magnesium">ম্যাগনেসিয়াম</string>
-  <string name="nutrition_taurine">Taurine</string>
+  <string name="nutrition_taurine">বৃষসদৃশ</string>
   <string name="nutrition_monounsaturatedFat">মণি অসম্পৃক্ত চর্বি</string>
   <string name="nutrition_polyunsaturatedFat">পল্লি অসম্পৃক্ত চর্বি</string>
   <string name="nutrition_omega3">ওমেগা 3</string>
@@ -429,7 +429,7 @@
   <string name="molybdenum">মলিবডেনাম</string>
   <string name="iodine">আয়োডিন</string>
   <string name="caffeine">ক্যাফেইন</string>
-  <string name="taurine">Taurine</string>
+  <string name="taurine">বৃষসদৃশ</string>
   <string name="ph">pH</string>
   <string name="fruits_vegetables_nuts">ফলমূল, শাকসবজি, বাদাম</string>
   <string name="collagen_meat_protein_ratio">কোলাজেন মাংস প্রোটিন অনুপাত</string>
