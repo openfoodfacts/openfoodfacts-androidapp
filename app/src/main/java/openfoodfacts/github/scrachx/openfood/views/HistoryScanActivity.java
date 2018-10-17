@@ -448,7 +448,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         if (Utils.isHardwareCameraInstalled(getBaseContext())) {
             if (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(HistoryScanActivity.this, Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(getBaseContext())
+                    new MaterialDialog.Builder(this)
                             .title(R.string.action_about)
                             .content(R.string.permission_camera)
                             .neutralText(R.string.txtOk)
