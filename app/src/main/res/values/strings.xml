@@ -645,7 +645,7 @@
 
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
     <string name="wikidata_information">Going further</string>
-    <string name="wikidata_unavailable">Result for wiki link is not found in your language.</string>
+    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="description">Description: </string>
     <string name="title">Title: </string>
     <string name="Wikipedia">View on Wikipedia</string>
