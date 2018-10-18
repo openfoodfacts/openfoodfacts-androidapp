@@ -697,7 +697,6 @@ public class OpenFoodAPIClient {
                 }
 
                 if (response.isSuccessful()) {
-
                     if (Integer.valueOf(response.body().getCount()) == 0) {
                         onCountryCallback.onCountryResponse(false, null);
                     } else {
@@ -761,7 +760,7 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(Call<Search> call, Throwable t) {
-
+                onAllergensCallback.onAllergensResponse(false, null);
             }
         });
     }
