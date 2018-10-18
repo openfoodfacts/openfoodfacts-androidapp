@@ -123,9 +123,9 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
             }
             case 10: {
                 String newColumns[] = new String[]{"WIKI_DATA_ID", "IS_WIKI_DATA_ID_PRESENT"};
-                String updatedTables[] = new String[]{"additive_name", "additive"};
+                String updatedTables[] = new String[]{"allergen_name", "allergen"};
                 for (String table : updatedTables) {
-                    for (String column: newColumns) {
+                    for (String column : newColumns) {
                         if (!isFieldExist(db, table, column)) {
                             db.execSQL(String.format("ALTER TABLE %s ADD COLUMN '%s' TEXT NOT NULL DEFAULT '';", table, column));
                         }
