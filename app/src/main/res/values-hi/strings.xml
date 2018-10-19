@@ -36,32 +36,9 @@
     <item>पोषण प्रबंधन/सूची</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>ग्राम</item>
-    <item>मिलीग्राम</item>
-    <item>किलोग्राम</item>
-    <item>लीटर</item>
-    <item>मिलीलीटर</item>
-    <item>सेंटीलीटर</item>
-    <item>फ्लूइड आउन्स</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>ग्राम</item>
-    <item>मिलीग्राम</item>
-    <item>किलोग्राम</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>किलो कैलोरी</item>
-    <item>किलोजूल</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>ग्राम</item>
-    <item>मिलीग्राम</item>
-    <item>माइक्रोग्राम</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>ग्राम</item>
