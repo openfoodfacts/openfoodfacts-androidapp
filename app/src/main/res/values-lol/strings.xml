@@ -36,32 +36,9 @@
     <item>crwdns98145:0crwdne98145:0</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>crwdns98147:0crwdne98147:0</item>
-    <item>crwdns98149:0crwdne98149:0</item>
-    <item>crwdns98151:0crwdne98151:0</item>
-    <item>crwdns98153:0crwdne98153:0</item>
-    <item>crwdns98155:0crwdne98155:0</item>
-    <item>crwdns98157:0crwdne98157:0</item>
-    <item>crwdns98159:0crwdne98159:0</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>crwdns98161:0crwdne98161:0</item>
-    <item>crwdns98163:0crwdne98163:0</item>
-    <item>crwdns98165:0crwdne98165:0</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>crwdns98167:0crwdne98167:0</item>
-    <item>crwdns98169:0crwdne98169:0</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>crwdns98171:0crwdne98171:0</item>
-    <item>crwdns98173:0crwdne98173:0</item>
-    <item>crwdns98175:0crwdne98175:0</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>crwdns98177:0crwdne98177:0</item>
