@@ -52,32 +52,9 @@
     <item>حقائق غذائية</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>ج</item>
-    <item>مج</item>
-    <item>كج</item>
-    <item>لتر</item>
-    <item>مل</item>
-    <item>سنتيليتر</item>
-    <item>أوقية</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>ج</item>
-    <item>مج</item>
-    <item>كج</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>سعرات حرارية</item>
-    <item>كيلوجول</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>ج</item>
-    <item>مج</item>
-    <item>ميكروجرام</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>ج</item>
