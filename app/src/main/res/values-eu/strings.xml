@@ -441,7 +441,7 @@
   <string name="txtSaturatedFat">Gantz saturatua</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
-  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_short_label">Eskaneatu</string>
   <string name="scan_shortcut_long_label">Eskaneatu produktua</string>
   <string name="barcode_shortcut_short_label">Bilatu</string>
   <string name="barcode_shortcut_long_label">Bilatu barra-kodearen bidez</string>
