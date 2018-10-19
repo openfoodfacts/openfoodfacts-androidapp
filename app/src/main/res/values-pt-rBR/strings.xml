@@ -268,10 +268,10 @@
   <string name="toggle_flash">Flash</string>
   <string name="flash_on">Flash [ON]</string>
   <string name="flash_off">Flash [OFF]</string>
-  <string name="ring_on">Ring [ON]</string>
-  <string name="ring_off">Ring [OFF]</string>
-  <string name="auto_focus_on">Auto Focus [ON]</string>
-  <string name="auto_focus_off">Auto Focus [OFF]</string>
+  <string name="ring_on">Toque [ON]</string>
+  <string name="ring_off">Toque [OFF]</string>
+  <string name="auto_focus_on">Foco Automático [ON]</string>
+  <string name="auto_focus_off">Foco Automático [OFF]</string>
   <string name="formats">Formatos</string>
   <string name="choose_formats">Escolha formatos</string>
   <string name="select_camera">Selecione uma câmera</string>
