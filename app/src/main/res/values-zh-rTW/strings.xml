@@ -32,32 +32,9 @@
     <item>營養成分表</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>公克</item>
-    <item>毫克</item>
-    <item>公斤</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>公克</item>
-    <item>毫克</item>
-    <item>公斤</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>公克</item>
-    <item>毫克</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>公克</item>
