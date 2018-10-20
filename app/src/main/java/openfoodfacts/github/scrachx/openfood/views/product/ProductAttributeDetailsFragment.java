@@ -358,7 +358,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 
 	private void openInCustomTab( String url )
 	{
-		// Url might be empty string if there is no wiki link in english or the user'd language
+		// Url might be empty string if there is no wiki link in english or the user's language
 		if (!url.equals("")) {
 			Uri wikipediaUri = Uri.parse(url);
 			CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, wikipediaUri, new WebViewFallback());
