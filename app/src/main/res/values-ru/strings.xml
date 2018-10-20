@@ -44,32 +44,9 @@
     <item>Состав</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>мг</item>
-    <item>кг</item>
-    <item>кг</item>
-    <item>л</item>
-    <item>мл</item>
-    <item>сл</item>
-    <item>жидкая унция</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>мг</item>
-    <item>кг</item>
-    <item>кг</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>ккал</item>
-    <item>кДж</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>мг</item>
-    <item>кг</item>
-    <item>мкг</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>мг</item>
