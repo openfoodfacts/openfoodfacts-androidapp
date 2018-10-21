@@ -477,6 +477,7 @@
   <string name="image_upload_resolution">图像上传分辨率</string>
   <string name="can_add_barcode">无法扫描？\n向上拖动输入条形码</string>
   <string name="wikidata_information">进一步</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">描述： </string>
   <string name="title">标题： </string>
   <string name="Wikipedia">在维基百科上查看</string>
@@ -484,6 +485,7 @@
   <string name="swipe_down">向下滑动</string>
   <string name="brand_string">品牌</string>
   <string name="additive_string">添加剂</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">搜索</string>
   <string name="country_string">售卖此商品的国家</string>
   <string name="store_subtitle">商店</string>
