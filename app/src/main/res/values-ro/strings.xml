@@ -485,6 +485,7 @@
   <string name="image_upload_resolution">Rezoluția pentru încărcarea imaginilor</string>
   <string name="can_add_barcode">Ai probleme cu scanarea?\nGlisează în sus pentru a introduce manual codul de bare</string>
   <string name="wikidata_information">Mergi mai departe</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Descriere: </string>
   <string name="title">Titlu: </string>
   <string name="Wikipedia">Vizualizează pe Wikipedia</string>
@@ -492,6 +493,7 @@
   <string name="swipe_down">Glisează în jos</string>
   <string name="brand_string">Marca</string>
   <string name="additive_string">Aditiv</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Caută</string>
   <string name="country_string">Țările unde se vinde</string>
   <string name="store_subtitle">Magazine</string>
