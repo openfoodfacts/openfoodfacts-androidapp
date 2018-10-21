@@ -481,6 +481,7 @@
   <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">अधिक जानकारी</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">विवरण: </string>
   <string name="title">शीर्षक: </string>
   <string name="Wikipedia">विकिपीडिया पर देखें</string>
@@ -488,6 +489,7 @@
   <string name="swipe_down">निचे स्वाइप करें</string>
   <string name="brand_string">ब्रांड</string>
   <string name="additive_string">योज्य</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">ढूंढें</string>
   <string name="country_string">जिन देशों में बिकता है</string>
   <string name="store_subtitle">दुकान</string>
