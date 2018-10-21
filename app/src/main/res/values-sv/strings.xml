@@ -481,6 +481,7 @@
   <string name="image_upload_resolution">Upplösning för bilduppladdning</string>
   <string name="can_add_barcode">Problem med skanning?\nSvep uppåt för att skriva in streckkoden</string>
   <string name="wikidata_information">Går längre</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Beskrivning: </string>
   <string name="title">Titel: </string>
   <string name="Wikipedia">Visa på Wikipedia</string>
@@ -488,6 +489,7 @@
   <string name="swipe_down">Svep nedåt</string>
   <string name="brand_string">Varumärke</string>
   <string name="additive_string">Tillsats</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Sök</string>
   <string name="country_string">Länder där såld</string>
   <string name="store_subtitle">Butik</string>
