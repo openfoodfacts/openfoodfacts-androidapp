@@ -489,6 +489,7 @@
   <string name="image_upload_resolution">רזולוציית התמונה להעלאה</string>
   <string name="can_add_barcode">התגלתה בעיה בסריקה?\nיש לגרור כלפי מעלה כדי להקליד את הברקוד</string>
   <string name="wikidata_information">להמשיך מעבר</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">תיאור: </string>
   <string name="title">כותרת: </string>
   <string name="Wikipedia">הצגה בוויקיפדיה</string>
@@ -496,6 +497,7 @@
   <string name="swipe_down">משיכה כלפי מטה</string>
   <string name="brand_string">מותג</string>
   <string name="additive_string">תוסף</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">חיפוש</string>
   <string name="country_string">ארצות בהן נמכר</string>
   <string name="store_subtitle">חנות</string>
