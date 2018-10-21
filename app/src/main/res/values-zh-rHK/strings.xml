@@ -477,6 +477,7 @@
   <string name="image_upload_resolution">圖片上傳解析度</string>
   <string name="can_add_barcode">無法掃描？\n向上拖曳來輸入條碼</string>
   <string name="wikidata_information">Going further</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Description: </string>
   <string name="title">Title: </string>
   <string name="Wikipedia">View on Wikipedia</string>
@@ -484,6 +485,7 @@
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">牌子</string>
   <string name="additive_string">添加劑</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">搜尋</string>
   <string name="country_string">販售國</string>
   <string name="store_subtitle">商店</string>
