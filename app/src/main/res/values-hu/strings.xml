@@ -481,6 +481,7 @@
   <string name="image_upload_resolution">Képfeltöltés felbontása</string>
   <string name="can_add_barcode">Gond adódott a beolvasással?\nGépelje be a vonalkódot</string>
   <string name="wikidata_information">Továbblép</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Leírás: </string>
   <string name="title">Cím: </string>
   <string name="Wikipedia">Megtekintés a Wikipedia-n</string>
@@ -488,6 +489,7 @@
   <string name="swipe_down">Húzás lefelé</string>
   <string name="brand_string">Márkanév</string>
   <string name="additive_string">Adalékanyag</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Keresés</string>
   <string name="country_string">Országok, ahol kapható</string>
   <string name="store_subtitle">Bolt</string>
