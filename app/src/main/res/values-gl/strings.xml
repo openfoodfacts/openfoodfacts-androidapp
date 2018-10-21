@@ -481,6 +481,7 @@
   <string name="image_upload_resolution">Resolución para subir imaxes</string>
   <string name="can_add_barcode">Problemas escaneando?\nArrastre arriba para escribir o código de barras</string>
   <string name="wikidata_information">Ir máis lonxe</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Descrición: </string>
   <string name="title">Título: </string>
   <string name="Wikipedia">Ver na Wikipedia</string>
@@ -488,6 +489,7 @@
   <string name="swipe_down">Deslice abaixo</string>
   <string name="brand_string">Marca</string>
   <string name="additive_string">Aditivo</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Buscar</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">Tenda</string>
