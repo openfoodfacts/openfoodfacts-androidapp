@@ -281,6 +281,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.CONTRIBUTOR:
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
+            case SearchType.ALLERGEN:
+                getSupportActionBar().setSubtitle(getString(R.string.allergen_string));
+                break;
             case SearchType.INCOMPLETE_PRODUCT: {
                 getSupportActionBar().setTitle(getString(R.string.products_to_be_completed));
                 break;
@@ -458,6 +461,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
                 break;
             }
+
+            case SearchType.ALLERGEN:
+                api.getProductsByAllergen(searchQuery, pageAddress, this::loadData);
+                break;
 
 
             case SearchType.STATE:

@@ -74,6 +74,8 @@ public class Product implements Serializable {
     private String servingSize;
     @JsonProperty("last_modified_by")
     private String lastModifiedBy;
+    @JsonProperty("allergens_tags")
+    private List<String> allergensTags;
     private String allergens;
     private String origins;
     private String stores;
@@ -375,6 +377,10 @@ public class Product implements Serializable {
 
     public String getServingSize() {
         return servingSize;
+    }
+
+    public List<String> getAllergensTags() {
+        return allergensTags;
     }
 
     /**

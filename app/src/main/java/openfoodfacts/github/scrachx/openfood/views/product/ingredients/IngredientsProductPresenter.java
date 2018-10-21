@@ -1,8 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients;
 
-import java.util.List;
-import java.util.Locale;
-
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -12,6 +9,9 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
+
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Lobster on 17.03.18.
@@ -63,6 +63,40 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
             );
         } else {
             view.showAdditivesState(ProductInfoState.EMPTY);
+        }
+    }
+
+    @Override
+    public void loadAllergens() {
+        List<String> allergenTags = product.getAllergensTags();
+        if (allergenTags != null && !allergenTags.isEmpty()) {
+            disposable.add(
+                    Observable.fromArray(allergenTags.toArray(new String[allergenTags.size()]))
+                              .flatMapSingle(tag -> repository.getAllergenByTagAndLanguageCode(tag, languageCode)
+                                                              .flatMap(allergenName -> {
+                                                                  if (allergenName.isNull()) {
+                                                                      return repository.getAllergenByTagAndDefaultLanguageCode(tag);
+                                                                  } else {
+                                                                      return Single.just(allergenName);
+                                                                  }
+                                                              }))
+                              .toList()
+                              .subscribeOn(Schedulers.io())
+                              .observeOn(AndroidSchedulers.mainThread())
+                              .doOnSubscribe(d -> view.showAllergensState(ProductInfoState.LOADING))
+                              .subscribe(allergens -> {
+                                  if (allergens.isEmpty()) {
+                                      view.showAllergensState(ProductInfoState.EMPTY);
+                                  } else {
+                                      view.showAllergens(allergens);
+                                  }
+                              }, e -> {
+                                  e.printStackTrace();
+                                  view.showAllergensState(ProductInfoState.EMPTY);
+                              })
+            );
+        } else {
+            view.showAllergensState(ProductInfoState.EMPTY);
         }
     }
 

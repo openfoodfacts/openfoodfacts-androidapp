@@ -35,14 +35,14 @@
     <item>غذائیت</item>
     <item>غذائیت ٹیبل</item>
   </string-array>
-  <!-- Text units -->
+  <!-- Text units --
   <!-- weight units -->
   <!-- nutrition energy units -->
   <!-- nutrition weight units -->
   <!-- all weight units -->
   <string-array name="weight_all_units">
-    <item>g</item>
-    <item>mg</item>
+    <item>جی</item>
+    <item>ایم جی</item>
     <item>µg</item>
     <item>% DV</item>
     <item>IU</item>
@@ -158,7 +158,7 @@
   <string name="txtEMB">EMB Code:</string>
   <string name="txtManufactureUrl">Link to the product page on the official site of the producer:</string>
   <string name="txtStores">Stores :</string>
-  <string name="txtCountries">Countries where sold :</string>
+  <string name="txtCountries">Country :</string>
   <string name="txtIngredients">Ingredients list :</string>
   <string name="Donate">Donate</string>
   <string name="Donation">Click here to donate to Open Food Facts</string>

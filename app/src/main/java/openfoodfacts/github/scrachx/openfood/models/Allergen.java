@@ -25,6 +25,11 @@ public class Allergen {
 
     private Boolean enabled; /*If the allergen is being checked for by the user.*/
 
+    @Unique
+    private String wikiDataId;
+
+    private Boolean isWikiDataIdPresent;
+
     @ToMany(joinProperties = {
             @JoinProperty(name = "tag", referencedName = "allergenTag")
     })
@@ -42,11 +47,23 @@ public class Allergen {
     @Generated(hash = 2043571450)
     private transient AllergenDao myDao;
 
-    @Generated(hash = 314039366)
-    public Allergen(Long id, String tag, Boolean enabled) {
+    @Generated(hash = 1589704680)
+    public Allergen(Long id, String tag, Boolean enabled, String wikiDataId,
+            Boolean isWikiDataIdPresent) {
         this.id = id;
         this.tag = tag;
         this.enabled = enabled;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
+    }
+
+    @Keep
+    public Allergen(String tag, List<AllergenName> names, String wikiDataId) {
+        this.enabled = false;
+        this.tag = tag;
+        this.names = names;
+        this.wikiDataId = wikiDataId;
+        this.isWikiDataIdPresent = true;
     }
 
     @Keep
@@ -54,6 +71,7 @@ public class Allergen {
         this.enabled = false;
         this.tag = tag;
         this.names = names;
+        this.isWikiDataIdPresent = false;
     }
 
     @Generated(hash = 1276564405)
@@ -151,6 +169,22 @@ public class Allergen {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getWikiDataId() {
+        return this.wikiDataId;
+    }
+
+    public void setWikiDataId(String wikiDataId) {
+        this.wikiDataId = wikiDataId;
+    }
+
+    public Boolean getIsWikiDataIdPresent() {
+        return this.isWikiDataIdPresent;
+    }
+
+    public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
+        this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
     /** called by internal mechanisms, do not call yourself. */
