@@ -481,6 +481,7 @@
   <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
   <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
   <string name="wikidata_information">Weitergehen</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Beschreibung: </string>
   <string name="title">Titel: </string>
   <string name="Wikipedia">Auf Wikipedia ansehen</string>
@@ -488,6 +489,7 @@
   <string name="swipe_down">Nach unten wischen</string>
   <string name="brand_string">Marke</string>
   <string name="additive_string">Zusatzstoff</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Suchen</string>
   <string name="country_string">Vertriebsländer</string>
   <string name="store_subtitle">Laden</string>
