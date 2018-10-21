@@ -477,6 +477,7 @@
   <string name="image_upload_resolution">Resolusi unggahan gambar</string>
   <string name="can_add_barcode">Bermasalah dalam memindai?\nDrag keatas untuk mengetik barkod</string>
   <string name="wikidata_information">Menuju selanjutnya</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Deskripsi: </string>
   <string name="title">Judul: </string>
   <string name="Wikipedia">Lihat di Wikipedia</string>
@@ -484,6 +485,7 @@
   <string name="swipe_down">Usap kebawah</string>
   <string name="brand_string">Merek</string>
   <string name="additive_string">Aditif</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">mencari </string>
   <string name="country_string">Negara tempat dijual</string>
   <string name="store_subtitle">Toko</string>
