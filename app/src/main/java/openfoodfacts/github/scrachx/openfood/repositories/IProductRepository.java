@@ -74,6 +74,10 @@ public interface IProductRepository {
 
     Single<List<AllergenName>> getAllergensByLanguageCode(String languageCode);
 
+    Single<AllergenName> getAllergenByTagAndLanguageCode(String allergenTag, String languageCode);
+
+    Single<AllergenName> getAllergenByTagAndDefaultLanguageCode(String allergenTag);
+
     Boolean additivesIsEmpty();
 
 }

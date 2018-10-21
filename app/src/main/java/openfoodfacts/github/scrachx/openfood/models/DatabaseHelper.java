@@ -108,21 +108,31 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
             case 8:
                 OfflineSavedProductDao.createTable(db, true);
                 break;
-            case 9:
-                String newColumns[] = new String[]{ "overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
-                        "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael" };
-                String updatedTables[] = new String[]{ "additive_name", "additive" };
-                for( String table : updatedTables )
-                {
-                    for( String column : newColumns )
-                    {
-                        if (!isFieldExist(db, table, column))
-                        {
-                            db.execSQL( String.format( "ALTER TABLE %s ADD COLUMN '%s' TEXT;", table, column ) );
+            case 9: {
+                String newColumns[] = new String[]{"overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
+                        "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael"};
+                String updatedTables[] = new String[]{"additive_name", "additive"};
+                for (String table : updatedTables) {
+                    for (String column : newColumns) {
+                        if (!isFieldExist(db, table, column)) {
+                            db.execSQL(String.format("ALTER TABLE %s ADD COLUMN '%s' TEXT;", table, column));
                         }
                     }
                 }
                 break;
+            }
+            case 10: {
+                String newColumns[] = new String[]{"WIKI_DATA_ID", "IS_WIKI_DATA_ID_PRESENT"};
+                String updatedTables[] = new String[]{"allergen_name", "allergen"};
+                for (String table : updatedTables) {
+                    for (String column : newColumns) {
+                        if (!isFieldExist(db, table, column)) {
+                            db.execSQL(String.format("ALTER TABLE %s ADD COLUMN '%s' TEXT NOT NULL DEFAULT '';", table, column));
+                        }
+                    }
+                }
+                break;
+            }
         }
     }
 

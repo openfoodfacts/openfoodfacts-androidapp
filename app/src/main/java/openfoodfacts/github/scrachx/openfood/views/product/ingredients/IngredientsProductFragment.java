@@ -25,36 +25,19 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-
-import org.json.JSONObject;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
@@ -66,8 +49,15 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import org.json.JSONObject;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
+
+import java.io.File;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
@@ -76,9 +66,7 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.jsoup.helper.StringUtil.isBlank;
 
@@ -288,23 +276,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 ingredientsProduct.setText(txtIngredients);
             }
         }
-
-        if (!allergens.isEmpty()) {
-            textSubstanceProductCardView.setVisibility(View.VISIBLE);
-            substanceProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            substanceProduct.setText(bold(getString(R.string.txtSubstances)));
-            substanceProduct.append(" ");
-
-            String allergen;
-            for (int i = 0; i < allergens.size() - 1; i++) {
-                allergen = allergens.get(i);
-                substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
-                substanceProduct.append(", ");
-            }
-
-            allergen = allergens.get(allergens.size() - 1);
-            substanceProduct.append(Utils.getClickableText(allergen, allergen, SearchType.ALLERGEN, getActivity(), customTabsIntent));
-        }
+        presenter.loadAllergens();
 
         if (!isBlank(product.getTraces())) {
             textTraceProductCardView.setVisibility(View.VISIBLE);
@@ -357,7 +329,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
                                 ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, additive);
+                                if (productActivity != null && !productActivity.isFinishing()) {
+                                    productActivity.showBottomScreen(result, additive);
+                                }
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
                             }
@@ -402,6 +376,42 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
 
         return spannableStringBuilder;
+    }
+
+    private CharSequence getAllergensTag(AllergenName allergen) {
+        SpannableStringBuilder ssb = new SpannableStringBuilder();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                if (allergen.getIsWikiDataIdPresent()) {
+                    apiClientForWikiData.doSomeThing(
+                            allergen.getWikiDataId(),
+                            (value, result) -> {
+                                if (value) {
+                                    ProductActivity productActivity = (ProductActivity) getActivity();
+                                    if (productActivity != null && !productActivity.isFinishing()) {
+                                        productActivity.showBottomScreen(result, allergen);
+                                    }
+                                } else {
+                                    ProductBrowsingListActivity.startActivity(getContext(), allergen.getName(), SearchType.ALLERGEN);
+                                }
+                            });
+                } else {
+                    ProductBrowsingListActivity.startActivity(getContext(), allergen.getName(), SearchType.ALLERGEN);
+                }
+            }
+        };
+
+        ssb.append(allergen.getName());
+        ssb.setSpan(clickableSpan, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        // If allergen is not in the taxonomy list then italicize it
+        if (!allergen.isNotNull()) {
+            StyleSpan iss =
+                    new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
+            ssb.setSpan(iss, 0, ssb.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return ssb;
     }
 
     /**
@@ -474,29 +484,42 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
     }
 
+    @Override
+    public void showAllergens(List<AllergenName> allergens) {
+        substanceProduct.setMovementMethod(LinkMovementMethod.getInstance());
+        substanceProduct.setText(bold(getString(R.string.txtSubstances)));
+        substanceProduct.append(" ");
+
+        for (int i = 0, lastIdx = allergens.size() - 1; i <= lastIdx; i++) {
+            AllergenName allergen = allergens.get(i);
+            substanceProduct.append(getAllergensTag(allergen));
+            // Add comma if not the last item
+            if (i != lastIdx) substanceProduct.append(", ");
+        }
+    }
+
+    @Override
+    public void showAllergensState(String state) {
+        switch (state) {
+            case LOADING: {
+                textSubstanceProductCardView.setVisibility(View.VISIBLE);
+                substanceProduct.append(getString(R.string.txtLoading));
+                break;
+            }
+            case EMPTY: {
+                textSubstanceProductCardView.setVisibility(View.GONE);
+                break;
+            }
+        }
+    }
+
     private List<String> getAllergens() {
-        if (mState.getProduct() == null || mState.getProduct().getAllergens() == null) {
+        List<String> allergens = mState.getProduct().getAllergensTags();
+        if (mState.getProduct() == null || allergens == null || allergens.isEmpty()) {
             return Collections.emptyList();
+        } else {
+            return allergens;
         }
-
-        List<String> list = new ArrayList<>();
-        Matcher m = ALLERGEN_PATTERN.matcher(mState.getProduct().getAllergens());
-        while (m.find()) {
-            final String tma = m.group().trim();
-            boolean canAdd = true;
-
-            for (String allergen : list) {
-                if (tma.equalsIgnoreCase(allergen)) {
-                    canAdd = false;
-                    break;
-                }
-            }
-
-            if (canAdd) {
-                list.add(tma);
-            }
-        }
-        return list;
     }
 
     @OnClick(R.id.imageViewIngredients)
