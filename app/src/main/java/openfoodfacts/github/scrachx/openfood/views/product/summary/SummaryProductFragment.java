@@ -566,12 +566,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 ProductActivity productActivity = (ProductActivity) getActivity();
                                 productActivity.showBottomScreen(result, category);
                             } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), category.getName(), SearchType.CATEGORY);
+                                ProductBrowsingListActivity.startActivity(getContext(),
+                                        category.getCategoryTag(),
+                                        category.getName(),
+                                        SearchType.CATEGORY);
                             }
                         }
                     });
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(), category.getName(), SearchType.CATEGORY);
+                    ProductBrowsingListActivity.startActivity(getContext(),
+                            category.getCategoryTag(),
+                            category.getName(),
+                            SearchType.CATEGORY);
                 }
 
             }
@@ -599,13 +605,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 ProductActivity productActivity = (ProductActivity) getActivity();
                                 productActivity.showBottomScreen(result, label);
                             } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), label.getName(), SearchType.LABEL);
+                                ProductBrowsingListActivity.startActivity(getContext(),
+                                        label.getLabelTag(),
+                                        label.getName(),
+                                        SearchType.LABEL);
                             }
                         }
                     });
 
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(), label.getName(), SearchType.LABEL);
+                    ProductBrowsingListActivity.startActivity(getContext(),
+                            label.getLabelTag(),
+                            label.getName(),
+                            SearchType.LABEL);
                 }
 
             }

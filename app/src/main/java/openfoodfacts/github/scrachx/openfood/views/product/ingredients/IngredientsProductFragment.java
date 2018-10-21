@@ -333,12 +333,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                                     productActivity.showBottomScreen(result, additive);
                                 }
                             } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
+                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                             }
                         }
                     });
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
+                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                 }
             }
         };
@@ -384,6 +384,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
+                String tag = allergen.getAllergenTag();
+                String title = allergen.getName();
                 if (allergen.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(
                             allergen.getWikiDataId(),
@@ -394,11 +396,17 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                                         productActivity.showBottomScreen(result, allergen);
                                     }
                                 } else {
-                                    ProductBrowsingListActivity.startActivity(getContext(), allergen.getName(), SearchType.ALLERGEN);
+                                    ProductBrowsingListActivity.startActivity(getContext(),
+                                            allergen.getAllergenTag(),
+                                            allergen.getName(),
+                                            SearchType.ALLERGEN);
                                 }
                             });
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(), allergen.getName(), SearchType.ALLERGEN);
+                    ProductBrowsingListActivity.startActivity(getContext(),
+                            allergen.getAllergenTag(),
+                            allergen.getName(),
+                            SearchType.ALLERGEN);
                 }
             }
         };

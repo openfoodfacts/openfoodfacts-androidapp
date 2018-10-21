@@ -102,12 +102,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 			bottomSheetTitle.setText( title );
 			String searchType = getArguments().getString( ARG_SEARCH_TYPE );
 			bottomSheetDesciption.setText( descriptionString );
-			buttonToBrowseProducts.setOnClickListener( v -> {
-				Intent intent = new Intent( getContext(), ProductBrowsingListActivity.class );
-				intent.putExtra( "search_type", searchType );
-				intent.putExtra( "search_query", title );
-				startActivity( intent );
-			} );
+			buttonToBrowseProducts.setOnClickListener( v -> ProductBrowsingListActivity.startActivity(getContext(), title, searchType));
 			wikipediaButton.setOnClickListener( v -> openInCustomTab( wikiLink ) );
 
 			long id = getArguments().getLong( ARG_ID );

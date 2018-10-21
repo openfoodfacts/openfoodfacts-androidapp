@@ -38,12 +38,10 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -53,9 +51,7 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickLi
 
 public class ProductBrowsingListActivity extends BaseActivity {
 
-    private static String SEARCH_TYPE = "search_type";
-
-    private static String SEARCH_QUERY = "search_query";
+    private static String SEARCH_INFO = "search_info";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -75,8 +71,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     TextView textExtendSearch;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
-    String searchQuery;
-    private String searchType;
+    private SearchInfo mSearchInfo;
     private EndlessRecyclerViewScrollListener scrollListener;
     private List<Product> mProducts;
     private OpenFoodAPIClient api;
@@ -93,13 +88,32 @@ public class ProductBrowsingListActivity extends BaseActivity {
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private int contributionType;
-    private CategoryNameDao mCategoryNameDao;
 
+    /**
+     * Start a new {@link ProductBrowsingListActivity} given a search information
+     *
+     * @param context       the context to use to start this activity
+     * @param searchQuery   the search query
+     * @param searchTitle   the title used in the activity for this search query
+     * @param type          the type of search
+     */
+    public static void startActivity(Context context, String searchQuery, String searchTitle, @SearchType String type) {
+        startActivity(context, new SearchInfo(searchQuery, searchTitle, type));
+    }
 
+    /**
+     * @see #startActivity(Context, String, String, String) )
+     */
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
+        startActivity(context, searchQuery, searchQuery, type);
+    }
+
+    /**
+     * @see #startActivity(Context, String, String, String)
+     */
+    private static void startActivity(Context context, SearchInfo searchInfo) {
         Intent intent = new Intent(context, ProductBrowsingListActivity.class);
-        intent.putExtra(SEARCH_QUERY, searchQuery);
-        intent.putExtra(SEARCH_TYPE, type);
+        intent.putExtra(SEARCH_INFO, searchInfo);
         context.startActivity(intent);
     }
 
@@ -112,10 +126,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
-                searchQuery = query;
+                mSearchInfo.setSearchQuery(query);
                 newSearchQuery();
-
                 return true;
             }
 
@@ -140,7 +152,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
         });
 
-        if (SearchType.CONTRIBUTOR.equals(searchType)) {
+        if (SearchType.CONTRIBUTOR.equals(mSearchInfo.getSearchType())) {
             MenuItem contributionItem = menu.findItem(R.id.action_set_type);
             contributionItem.setVisible(true);
         }
@@ -218,12 +230,13 @@ public class ProductBrowsingListActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         countProductsView.setVisibility(View.INVISIBLE);
 
+        // Get the search information (query, title, type) that we will use in this activity
         Bundle extras = getIntent().getExtras();
-        searchType = extras.getString(SEARCH_TYPE);
-        searchQuery = extras.getString(SEARCH_QUERY);
-        mCategoryNameDao = Utils.getAppDaoSession(this).getCategoryNameDao();
+        if (extras != null) {
+            SearchInfo searchInfo = extras.getParcelable(SEARCH_INFO);
+            mSearchInfo = searchInfo != null ? searchInfo : SearchInfo.emptySearchInfo();
+        }
         newSearchQuery();
-
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -252,8 +265,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     protected void newSearchQuery() {
-        getSupportActionBar().setTitle(searchQuery);
-        switch (searchType) {
+        getSupportActionBar().setTitle(mSearchInfo.getSearchTitle());
+        switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
                 toolbar.setSubtitle(R.string.brand_string);
                 break;
@@ -296,7 +309,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
             default:
 
-                Log.e("Products Browsing", "No math case found for " + searchType);
+                Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
 
 
         }
@@ -346,7 +359,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
     public void getDataFromAPI() {
 
-        switch (searchType) {
+        String searchQuery = mSearchInfo.getSearchQuery();
+        switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
                 apiClient.getProductsByBrand(searchQuery, pageAddress, this::loadData);
                 break;
@@ -357,60 +371,39 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 apiClient.getProductsByAdditive(searchQuery, pageAddress, this::loadData);
                 break;
             case SearchType.STORE:
-                apiClient.getProductsByStore(searchQuery, pageAddress, new OpenFoodAPIClient.OnStoreCallback() {
-                    @Override
-                    public void onStoreResponse(boolean value, Search storeObject) {
-                        loadData(value, storeObject);
-                    }
-                });
+                apiClient.getProductsByStore(searchQuery, pageAddress, this::loadData);
                 break;
             case SearchType.PACKAGING:
-                apiClient.getProductsByPackaging(searchQuery, pageAddress, new OpenFoodAPIClient.OnPackagingCallback() {
-                    @Override
-                    public void onPackagingResponse(boolean value, Search packagingObject) {
-                        loadData(value, packagingObject);
-                    }
-                });
+                apiClient.getProductsByPackaging(searchQuery, pageAddress, this::loadData);
                 break;
             case SearchType.SEARCH:
-                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, new OpenFoodAPIClient.OnProductsCallback() {
-                    @Override
-                    public void onProductsResponse(boolean isOk, Search searchResponse, int countProducts) {
-                    /*
-                    countProducts is checked, if it is -2 it means that there are no matching products in the
-                    database for the query.
-                     */
-                        if (countProducts == -2) {
-                            textNoResults.setText(R.string.txt_no_matching_products);
-                            textExtendSearch.setText(R.string.txt_broaden_search);
-                            noResultsLayout.setVisibility(View.VISIBLE);
-                            noResultsLayout.bringToFront();
-                            productsRecyclerView.setVisibility(View.INVISIBLE);
-                            progressBar.setVisibility(View.INVISIBLE);
-                            offlineCloudLayout.setVisibility(View.INVISIBLE);
-                            countProductsView.setVisibility(View.GONE);
-                            swipeRefreshLayout.setRefreshing(false);
-                        } else {
-                            loadData(isOk, searchResponse);
-                        }
+                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, (isOk, searchResponse, countProducts) -> {
+                /*
+                countProducts is checked, if it is -2 it means that there are no matching products in the
+                database for the query.
+                 */
+                    if (countProducts == -2) {
+                        textNoResults.setText(R.string.txt_no_matching_products);
+                        textExtendSearch.setText(R.string.txt_broaden_search);
+                        noResultsLayout.setVisibility(View.VISIBLE);
+                        noResultsLayout.bringToFront();
+                        productsRecyclerView.setVisibility(View.INVISIBLE);
+                        progressBar.setVisibility(View.INVISIBLE);
+                        offlineCloudLayout.setVisibility(View.INVISIBLE);
+                        countProductsView.setVisibility(View.GONE);
+                        swipeRefreshLayout.setRefreshing(false);
+                    } else {
+                        loadData(isOk, searchResponse);
                     }
                 });
                 break;
             case SearchType.LABEL:
-                api.getProductsByLabel(searchQuery, pageAddress, new OpenFoodAPIClient.onLabelCallback() {
-                    @Override
-                    public void onLabelResponse(boolean value, Search label) {
-                        loadData(value, label);
-                    }
-                });
+                api.getProductsByLabel(searchQuery, pageAddress, this::loadData);
 
 
                 break;
             case SearchType.CATEGORY:
-                String appLanguageCode = LocaleHelper.getLanguage(this);
-                CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.Name.eq(searchQuery), CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode)).unique();
-                String tag = categoryName != null ? categoryName.getCategoryTag() : searchQuery;
-                api.getProductsByCategory(tag, pageAddress, (value, category) -> {
+                api.getProductsByCategory(searchQuery, pageAddress, (value, category) -> {
                     if (value && category != null && Integer.valueOf(category.getCount()) == 0) {
                         textNoResults.setText(R.string.txt_no_matching__category_products);
                         textExtendSearch.setText(null);
@@ -473,17 +466,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
             case SearchType.INCOMPLETE_PRODUCT:
                 // Get Products to be completed data and input it to loadData function
-                api.getIncompleteProducts(pageAddress, new OpenFoodAPIClient.OnIncompleteCallback() {
-                    @Override
-                    public void onIncompleteResponse(boolean value, Search incompleteProducts) {
-                        loadData(value, incompleteProducts);
-                    }
-                });
+                api.getIncompleteProducts(pageAddress, this::loadData);
                 break;
 
 
             default:
-                Log.e("Products Browsing", "No math case found for " + searchType);
+                Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
 
 
         }
