@@ -481,6 +481,7 @@
   <string name="image_upload_resolution">Upload-fotoopløsning</string>
   <string name="can_add_barcode">Problemer med at skanne?\nTræk opad for at angive stregkoden</string>
   <string name="wikidata_information">Går videre</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Beskrivelse: </string>
   <string name="title">Title: </string>
   <string name="Wikipedia">Se på Wikipedia</string>
@@ -488,6 +489,7 @@
   <string name="swipe_down">Stryg nedad</string>
   <string name="brand_string">Mærke</string>
   <string name="additive_string">Tilsætningsstof</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Søg</string>
   <string name="country_string">Land hvor produktet selges</string>
   <string name="store_subtitle">Butik</string>
