@@ -499,6 +499,7 @@
   <string name="image_upload_resolution">نقاء الصورة</string>
   <string name="can_add_barcode">هل تواجه مشكلة في المسح؟ \n اسحب لأعلى لكتابة الرمز الشريطي</string>
   <string name="wikidata_information">الذهاب إلى أبعد من ذلك</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">الوصف: </string>
   <string name="title">العنوان: </string>
   <string name="Wikipedia">عرض على ويكيبيديا</string>
@@ -506,6 +507,7 @@
   <string name="swipe_down">السحب للأسفل</string>
   <string name="brand_string">العلامة التجارية</string>
   <string name="additive_string">المواد المضافة</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">بحث</string>
   <string name="country_string">بلدان بيع</string>
   <string name="store_subtitle">المتجر</string>
