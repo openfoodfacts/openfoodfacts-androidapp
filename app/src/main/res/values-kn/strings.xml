@@ -481,6 +481,7 @@
   <string name="image_upload_resolution">ಇಮೇಜ್ ಅಪ್ಲೋಡ್ ರೆಸಲ್ಯೂಶನ್</string>
   <string name="can_add_barcode">ತೊಂದರೆ ಸ್ಕ್ಯಾನಿಂಗ್ ಇದೆಯೇ? \ N ಬಾರ್ಕೋಡ್ ಅನ್ನು ಟೈಪ್ ಮಾಡಲು ಎಳೆಯಿರಿ</string>
   <string name="wikidata_information">ಮತ್ತಷ್ಟು ಹೋಗಿ</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">ವಿವರಣೆ: </string>
   <string name="title">ಶೀರ್ಷಿಕೆ: </string>
   <string name="Wikipedia">ವಿಕಿಪೀಡಿಯಾದಲ್ಲಿ ವೀಕ್ಷಿಸಿ</string>
@@ -488,6 +489,7 @@
   <string name="swipe_down">ಕೆಳಕ್ಕೆ ಸರಿಸಿ</string>
   <string name="brand_string">ಬ್ರ್ಯಾಂಡ್</string>
   <string name="additive_string">ಸೇರ್ಪಡೆ</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">ಹುಡುಕಿ</string>
   <string name="country_string">Country</string>
   <string name="store_subtitle">ಸಂಗ್ರಹಿಸಿ</string>
