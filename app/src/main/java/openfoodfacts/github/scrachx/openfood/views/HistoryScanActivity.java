@@ -28,6 +28,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -87,6 +88,9 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     TextView infoView;
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
+    @BindView(R.id.srRefreshHistoryScanList)
+    SwipeRefreshLayout swipeRefreshLayout;
+    private Context context;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     private static String SORT_TYPE = "none";
@@ -100,6 +104,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = HistoryScanActivity.this;
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -135,6 +140,17 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 if (scanOnShake) {
                     Utils.scan(HistoryScanActivity.this);
                 }
+            }
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mHistoryProductDao = Utils.getAppDaoSession(context).getHistoryProductDao();
+                productItems = new ArrayList<>();
+                setInfo(infoView);
+                new HistoryScanActivity.FillAdapter(HistoryScanActivity.this).execute(context);
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
 
@@ -392,7 +408,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         @Override
         protected void onPreExecute() {
-            historyProgressbar.setVisibility(View.VISIBLE);
+            if(swipeRefreshLayout.isRefreshing()){
+                historyProgressbar.setVisibility(View.GONE);
+            }
+            else {
+                historyProgressbar.setVisibility(View.VISIBLE);
+            }
             productItems.clear();
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             if (listHistoryProducts.size() == 0) {
