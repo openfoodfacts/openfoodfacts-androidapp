@@ -47,7 +47,6 @@ public @interface SearchType {
     String INCOMPLETE_PRODUCT = "incomplete_product";
     String STATE = "state";
 
-
     HashMap<String, String> URLS = new HashMap<String, String>() {{
         put(ALLERGEN, BuildConfig.OFWEBSITE + "allergens/");
         put(EMB, BuildConfig.OFWEBSITE + "packager-code/");

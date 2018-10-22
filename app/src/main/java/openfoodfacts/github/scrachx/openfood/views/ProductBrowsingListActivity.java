@@ -9,6 +9,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.StringRes;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -92,10 +93,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
     /**
      * Start a new {@link ProductBrowsingListActivity} given a search information
      *
-     * @param context       the context to use to start this activity
-     * @param searchQuery   the search query
-     * @param searchTitle   the title used in the activity for this search query
-     * @param type          the type of search
+     * @param context     the context to use to start this activity
+     * @param searchQuery the search query
+     * @param searchTitle the title used in the activity for this search query
+     * @param type        the type of search
      */
     public static void startActivity(Context context, String searchQuery, String searchTitle, @SearchType String type) {
         startActivity(context, new SearchInfo(searchQuery, searchTitle, type));
@@ -254,12 +255,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         mShakeDetector = new ShakeDetector();
 
         if (scanOnShake) {
-            mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
-                @Override
-                public void onShake(int count) {
-                    Utils.scan(ProductBrowsingListActivity.this);
-                }
-            });
+            mShakeDetector.setOnShakeListener(count -> Utils.scan(ProductBrowsingListActivity.this));
         }
 
     }
@@ -362,67 +358,51 @@ public class ProductBrowsingListActivity extends BaseActivity {
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
-                apiClient.getProductsByBrand(searchQuery, pageAddress, this::loadData);
+                apiClient.getProductsByBrand(searchQuery, pageAddress,  (value, country) ->
+                        loadSearchProducts(value, country, R.string.txt_no_matching_brand_products));
                 break;
             case SearchType.COUNTRY:
-                apiClient.getProductsByCountry(searchQuery, pageAddress, this::loadData);
-                break;
+                apiClient.getProductsByCountry(searchQuery, pageAddress,  (value, country) ->
+                        loadSearchProducts(value, country, R.string.txt_no_matching_country_products));
             case SearchType.ADDITIVE:
-                apiClient.getProductsByAdditive(searchQuery, pageAddress, this::loadData);
+                apiClient.getProductsByAdditive(searchQuery, pageAddress, (value, additive) ->
+                        loadSearchProducts(value, additive, R.string.txt_no_matching_additive_products));
                 break;
             case SearchType.STORE:
-                apiClient.getProductsByStore(searchQuery, pageAddress, this::loadData);
+                apiClient.getProductsByStore(searchQuery, pageAddress, (value, store) ->
+                        loadSearchProducts(value, store, R.string.txt_no_matching_store_products));
                 break;
             case SearchType.PACKAGING:
-                apiClient.getProductsByPackaging(searchQuery, pageAddress, this::loadData);
+                apiClient.getProductsByPackaging(searchQuery, pageAddress, (value, packaging) ->
+                        loadSearchProducts(value, packaging, R.string.txt_no_matching_packaging_products));
                 break;
             case SearchType.SEARCH:
                 api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, (isOk, searchResponse, countProducts) -> {
-                /*
-                countProducts is checked, if it is -2 it means that there are no matching products in the
-                database for the query.
-                 */
+                    /*
+                    countProducts is checked, if it is -2 it means that there are no matching products in the
+                    database for the query.
+                     */
                     if (countProducts == -2) {
-                        textNoResults.setText(R.string.txt_no_matching_products);
-                        textExtendSearch.setText(R.string.txt_broaden_search);
-                        noResultsLayout.setVisibility(View.VISIBLE);
-                        noResultsLayout.bringToFront();
-                        productsRecyclerView.setVisibility(View.INVISIBLE);
-                        progressBar.setVisibility(View.INVISIBLE);
-                        offlineCloudLayout.setVisibility(View.INVISIBLE);
-                        countProductsView.setVisibility(View.GONE);
-                        swipeRefreshLayout.setRefreshing(false);
+                        showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
+                                getResources().getString(R.string.txt_broaden_search));
                     } else {
-                        loadData(isOk, searchResponse);
+                        loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products);
                     }
                 });
                 break;
             case SearchType.LABEL:
-                api.getProductsByLabel(searchQuery, pageAddress, this::loadData);
-
-
+                api.getProductsByLabel(searchQuery, pageAddress, (value, label) ->
+                        loadSearchProducts(value, label, R.string.txt_no_matching_label_products));
                 break;
             case SearchType.CATEGORY:
-                api.getProductsByCategory(searchQuery, pageAddress, (value, category) -> {
-                    if (value && category != null && Integer.valueOf(category.getCount()) == 0) {
-                        textNoResults.setText(R.string.txt_no_matching__category_products);
-                        textExtendSearch.setText(null);
-                        noResultsLayout.setVisibility(View.VISIBLE);
-                        noResultsLayout.bringToFront();
-                        productsRecyclerView.setVisibility(View.INVISIBLE);
-                        progressBar.setVisibility(View.INVISIBLE);
-                        offlineCloudLayout.setVisibility(View.INVISIBLE);
-                        countProductsView.setVisibility(View.GONE);
-                        swipeRefreshLayout.setRefreshing(false);
-                    } else {
-                        loadData(value, category);
-                    }
-                });
+                api.getProductsByCategory(searchQuery, pageAddress, (value, category) ->
+                        loadSearchProducts(value, category, R.string.txt_no_matching__category_products));
                 break;
-
-
+            case SearchType.ALLERGEN:
+                api.getProductsByAllergen(searchQuery, pageAddress, (value, allergen) ->
+                        loadSearchProducts(value, allergen, R.string.txt_no_matching_allergen_products));
+                break;
             case SearchType.CONTRIBUTOR: {
-
                 switch (contributionType) {
                     case 0:
                         api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
@@ -454,22 +434,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
                 break;
             }
-
-            case SearchType.ALLERGEN:
-                api.getProductsByAllergen(searchQuery, pageAddress, this::loadData);
-                break;
-
-
             case SearchType.STATE:
-                api.getProductsByStates(searchQuery, pageAddress, this::loadData);
+                api.getProductsByStates(searchQuery, pageAddress, (value, state) ->
+                        loadSearchProducts(value, state, R.string.txt_no_matching_allergen_products));
                 break;
-
             case SearchType.INCOMPLETE_PRODUCT:
                 // Get Products to be completed data and input it to loadData function
-                api.getIncompleteProducts(pageAddress, this::loadData);
+                api.getIncompleteProducts(pageAddress, (value, state) ->
+                        loadSearchProducts(value, state, R.string.txt_no_matching_incomplete_products));
                 break;
-
-
             default:
                 Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
 
@@ -479,7 +452,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
 
     private void loadData(boolean isResponseOk, Search response) {
-
         if (isResponseOk) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
@@ -515,6 +487,55 @@ public class ProductBrowsingListActivity extends BaseActivity {
         }
 
 
+    }
+
+    /**
+     * Shows UI indicating that no matching products were found. Called by
+     * {@link #loadSearchProducts(boolean, Search, int)} and {@link #loadSearchProducts(boolean, Search, int, int)}
+     *
+     * @param msg               message to display when there are no results for given search
+     * @param extendedMsg       additional message to display, -1 if no message is displayed
+     */
+    private void showEmptySearch(String msg, String extendedMsg) {
+        textNoResults.setText(msg);
+        textExtendSearch.setText(extendedMsg);
+        noResultsLayout.setVisibility(View.VISIBLE);
+        noResultsLayout.bringToFront();
+        productsRecyclerView.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
+        offlineCloudLayout.setVisibility(View.INVISIBLE);
+        countProductsView.setVisibility(View.GONE);
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    /**
+     *  Loads the search results into the UI, otherwise shows UI indicating that no matching
+     *  products were found.
+     * @param isResponseSuccessful  true if the search response was successful
+     * @param response              the search results
+     * @param emptyMessage          message to display if there are no results
+     * @param extendedMessage       extended message to display if there are no results
+     */
+    private void loadSearchProducts(boolean isResponseSuccessful, Search response,
+            @StringRes int emptyMessage, @StringRes int extendedMessage) {
+        if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
+            showEmptySearch(getResources().getString(emptyMessage),
+                    getResources().getString(extendedMessage));
+        } else {
+            loadData(isResponseSuccessful, response);
+        }
+    }
+
+    /**
+     * @see #loadSearchProducts(boolean, Search, int, int)
+     */
+    private void loadSearchProducts(boolean isResponseSuccessful, Search response,
+            @StringRes int emptyMessage) {
+        if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
+            showEmptySearch(getResources().getString(emptyMessage), null);
+        } else {
+            loadData(isResponseSuccessful, response);
+        }
     }
 
     private void setUpRecyclerView() {
