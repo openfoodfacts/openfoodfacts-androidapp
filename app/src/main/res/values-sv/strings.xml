@@ -36,32 +36,9 @@
     <item>Näringstabell</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
@@ -504,6 +481,7 @@
   <string name="image_upload_resolution">Upplösning för bilduppladdning</string>
   <string name="can_add_barcode">Problem med skanning?\nSvep uppåt för att skriva in streckkoden</string>
   <string name="wikidata_information">Går längre</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Beskrivning: </string>
   <string name="title">Titel: </string>
   <string name="Wikipedia">Visa på Wikipedia</string>
@@ -511,6 +489,7 @@
   <string name="swipe_down">Svep nedåt</string>
   <string name="brand_string">Varumärke</string>
   <string name="additive_string">Tillsats</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Sök</string>
   <string name="country_string">Länder där såld</string>
   <string name="store_subtitle">Butik</string>

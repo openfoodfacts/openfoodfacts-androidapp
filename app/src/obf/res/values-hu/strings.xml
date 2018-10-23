@@ -16,7 +16,7 @@
   <string name="txtHome">Az Open Beauty Facts kozmetikai termékek adatbázisa, a termékekhez tartozó összetevők, allergének, jelölések adataival együtt és minden egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.</string>
   <string name="slide_1_title">Hozzájárulás a Kozmetikai szer átláthatósághoz</string>
   <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé a kozmetikai szer átláthatóságot</string>
-  <string name="slide_2_title">Kapja meg a tényeket</string>
+  <string name="slide_2_title">Kapja meg a Tényeket</string>
   <string name="slide_2_desc">Széleskörű információ az ön által beolvasott termékről, megfejtve az ön számára</string>
   <string name="slide_3_title">Kövesse nyomon a terméket amit használ</string>
   <string name="slide_3_desc">Az összes kozmetikai szer amit ön használ, egy könnyen kezelhető listán amit exportálni is tud</string>
@@ -33,7 +33,7 @@
   <string name="text_offline_info_dialog">Olvassa be a termékeket akkor is, amikor kapcsolat nélküli módban van, hogy később hozzáadja azokat az Open Beauty Facts-hez. A beolvasott termékek itt fognak megjelenni és az alábbi gomb használatával elküldheti őket.</string>
   <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Beauty Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
   <!-- OBF tagline in different languages -->
-  <string name="tagline">the free cosmetics database</string>
+  <string name="tagline">a szabad kozmetikai adatbázis</string>
   <string name="product_not_found">A beolvasott %1$s termék nem található az Open Beauty Facts adatbázisában. Hozzá tudná adni?</string>
   <string name="currently_on_version">Currently on Open Beauty Facts</string>
 </resources>

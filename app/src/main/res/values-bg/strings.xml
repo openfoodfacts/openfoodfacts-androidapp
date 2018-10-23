@@ -36,32 +36,9 @@
     <item>Хранителна таблица</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>л</item>
-    <item>мл</item>
-    <item>сантилитра</item>
-    <item>течна унция</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>ккал</item>
-    <item>килоджаули</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
@@ -504,6 +481,7 @@
   <string name="image_upload_resolution">Резолюция за качване на изображение</string>
   <string name="can_add_barcode">Имате проблем със сканирането?\n Дръпнете нагоре за въвеждане на баркода</string>
   <string name="wikidata_information">По-нататък</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Описание: </string>
   <string name="title">Заглавие: </string>
   <string name="Wikipedia">Преглед в Уикипедия</string>
@@ -511,8 +489,9 @@
   <string name="swipe_down">Плъзване надолу</string>
   <string name="brand_string">Марка</string>
   <string name="additive_string">Добавка</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Търсене</string>
-  <string name="country_string">Countries where sold</string>
+  <string name="country_string">Country</string>
   <string name="store_subtitle">Магазин</string>
   <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">Преди %1$d %2$s</string>

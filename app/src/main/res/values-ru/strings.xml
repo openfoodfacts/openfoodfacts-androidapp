@@ -44,32 +44,9 @@
     <item>Состав</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>мг</item>
-    <item>кг</item>
-    <item>кг</item>
-    <item>л</item>
-    <item>мл</item>
-    <item>сл</item>
-    <item>жидкая унция</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>мг</item>
-    <item>кг</item>
-    <item>кг</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>ккал</item>
-    <item>кДж</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>мг</item>
-    <item>кг</item>
-    <item>мкг</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>мг</item>
@@ -512,6 +489,7 @@
   <string name="image_upload_resolution">Разрешение загрузки изображения</string>
   <string name="can_add_barcode">Не удалось выполнить сканирование? \nПотяните вверх, чтобы ввести штрих-код</string>
   <string name="wikidata_information">Идем дальше</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Описание: </string>
   <string name="title">Название: </string>
   <string name="Wikipedia">Посмотреть в Википедии</string>
@@ -519,6 +497,7 @@
   <string name="swipe_down">Смахните вниз</string>
   <string name="brand_string">Марка</string>
   <string name="additive_string">Добавка</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Поиск</string>
   <string name="country_string">Страны продажи</string>
   <string name="store_subtitle">Магазин</string>

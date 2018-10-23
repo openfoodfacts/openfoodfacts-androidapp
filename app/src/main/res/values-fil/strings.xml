@@ -36,32 +36,9 @@
     <item>Talahanayan ng nutrisyon</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
@@ -504,6 +481,7 @@
   <string name="image_upload_resolution">Resolusyon sa pag-upload ng larawan</string>
   <string name="can_add_barcode">May problema sa pagsusuri? \n I-drag up upang i-type ang barcode</string>
   <string name="wikidata_information">Pagpunta nang higit pa</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Deskripsyon: </string>
   <string name="title">Pamagat: </string>
   <string name="Wikipedia">Tingnan sa Wikipedia</string>
@@ -511,6 +489,7 @@
   <string name="swipe_down">I swipe pababa</string>
   <string name="brand_string">Mga Tatak</string>
   <string name="additive_string">Sangkap</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Hanapin</string>
   <string name="country_string">Mga bansa kung saan ibinebenta</string>
   <string name="store_subtitle">Tindahan</string>
