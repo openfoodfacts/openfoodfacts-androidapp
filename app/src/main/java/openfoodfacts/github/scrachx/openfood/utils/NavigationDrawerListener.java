@@ -20,17 +20,17 @@ public interface NavigationDrawerListener {
     int ITEM_HISTORY = 5;
     int ITEM_LOGIN = 6;
     int ITEM_ALERT = 7;
-    int ITEM_PREFERENCES = 8;
-    int ITEM_OFFLINE = 9;
-    int ITEM_ABOUT = 10;
-    int ITEM_CONTRIBUTE = 11;
-    int ITEM_OBF = 12;
-    int ITEM_ADVANCED_SEARCH = 13;
-    int ITEM_MY_CONTRIBUTIONS = 14;
-    int ITEM_LOGOUT = 15;
-    int ITEM_MANAGE_ACCOUNT = 16;
-    int ITEM_INCOMPLETE_PRODUCTS = 17;
-
+    int ITEM_DIET = 8;
+    int ITEM_PREFERENCES = 9;
+    int ITEM_OFFLINE = 10;
+    int ITEM_ABOUT = 11;
+    int ITEM_CONTRIBUTE = 12;
+    int ITEM_OBF = 13;
+    int ITEM_ADVANCED_SEARCH = 14;
+    int ITEM_MY_CONTRIBUTIONS = 15;
+    int ITEM_LOGOUT = 16;
+    int ITEM_MANAGE_ACCOUNT = 17;
+    int ITEM_INCOMPLETE_PRODUCTS = 18;
     @Retention(SOURCE)
     @IntDef({
             ITEM_HOME,
@@ -40,6 +40,7 @@ public interface NavigationDrawerListener {
             ITEM_HISTORY,
             ITEM_LOGIN,
             ITEM_ALERT,
+            ITEM_DIET,
             ITEM_PREFERENCES,
             ITEM_OFFLINE,
             ITEM_ABOUT,

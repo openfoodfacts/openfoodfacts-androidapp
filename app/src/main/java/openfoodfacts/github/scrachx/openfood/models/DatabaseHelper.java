@@ -133,6 +133,15 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 }
                 break;
             }
+            case 11: {
+                //Log.i("INFO", "Upgrade to version 11 ! ");
+                DietDao.createTable(db,true);
+                DietNameDao.createTable(db,true);
+                DietIngredientsDao.createTable(db,true);
+                IngredientDao.createTable(db,true);
+                IngredientNameDao.createTable(db,true);
+                break;
+            }
         }
     }
 

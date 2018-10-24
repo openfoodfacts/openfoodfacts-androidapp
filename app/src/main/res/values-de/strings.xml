@@ -680,4 +680,19 @@
   <string name="legend_noael">über der Dosis mit beobachteter Nebenwirkung (NOAEL)</string>
   <string name="legend_adi">über der zulässigen täglichen Aufnahme (ADI)</string>
   <!-- Used for additive exposure evaluation table -->
+    <!-- Used for diets AddOn -->
+    <string name="your_diets">Your diet(s)</string>
+    <string name="diet_name">Diet name</string>
+    <string name="diets_dialog_warning_title">Warning</string>
+    <string name="warning_diets_data">Your diet(s) data stay on your device. Nothing will be upload anywhere.</string>
+    <string name="EditDiet_Name">Name</string>
+    <string name="EditDiet_Description">Description</string>
+    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
+    <string name="EditDiet_Authorised_Ingredients">Authorised ingredients</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorised ingredients that should appears in green. Example : Apple, Mushroom, Tomatoe... You can complete this list latter.</string>
+    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">List the so so ingredients that should appears in orange. Example : Egg, Fish... You can complete this list latter.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Unauthorised ingredients</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorised ingredients that should appears in red. Example : Gluten, Milk, Palm oil, Sugar... You can complete this list latter.</string>
+    <!-- Used for diets AddOn -->
 </resources>
