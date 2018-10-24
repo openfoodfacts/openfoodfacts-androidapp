@@ -42,7 +42,7 @@ public class EditDietFragment extends Fragment {
     EditText ingredientsUnauthorised;
     @BindView(R.id.save_edits)
     Button saveEdits;
-    //Récupération de la langue (théorique) de saisie :
+    // Fetching of the (theoretical) language of input:
     private String languageCode = Locale.getDefault().getLanguage();
     private IDietRepository dietRepository;
 
