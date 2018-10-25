@@ -294,7 +294,7 @@
   <string name="no_brand">Senza marca</string>
   <string name="no_title">Senza titolo</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+  <string name="display_fact">Tabella nutrizionale per %1$s di questo prodotto</string>
   <string name="check_facts">Verifica</string>
   <string name="nutrition">Nutrizione</string>
   <string name="calculated_nutrition">Valori nutrizionali calcolati</string>
