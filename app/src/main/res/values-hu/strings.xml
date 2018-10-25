@@ -294,7 +294,7 @@
   <string name="no_brand">Nincs márka</string>
   <string name="no_title">Nincs cím</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">%1$s %2$s tápértékadatainak táblázata</string>
+  <string name="display_fact">Táplálkozási ténytáblázat a %1$s termékhez</string>
   <string name="check_facts">Ellenőrzés</string>
   <string name="nutrition">Tápanyag</string>
   <string name="calculated_nutrition">Kiszámított tápanyag</string>
@@ -659,8 +659,8 @@
   <string name="description_activity_product">leírás</string>
   <string name="intent_filter_share_label">Hozzáadás az Open Food Facts-hez</string>
   <!-- Used for additive exposure evaluation table -->
-  <string name="overexposure_high">High risk of over exposure</string>
-  <string name="overexposure_moderate">Moderate risk of over exposure</string>
+  <string name="overexposure_high">Magas a kitettség veszélye</string>
+  <string name="overexposure_moderate">Közepes a kitettség veszélye</string>
   <string name="infants">Csecsemők</string>
   <string name="infants_age">&lt; 1</string>
   <string name="toddlers">Kisgyermekek</string>

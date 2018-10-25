@@ -294,7 +294,7 @@
   <string name="no_brand">ಯಾವುದೇ ಬ್ರ್ಯಾಂಡ್ ಇಲ್ಲ</string>
   <string name="no_title">ಶೀರ್ಷಿಕೆಯಿಲ್ಲ</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+  <string name="display_fact">ಈ ಉತ್ಪನ್ನದ %1$s ಗಾಗಿ ಪೌಷ್ಟಿಕಾಂಶ ಫ್ಯಾಕ್ಟ್ಸ್ ಟೇಬಲ್</string>
   <string name="check_facts">ಪರಿಶೀಲಿಸಿ</string>
   <string name="nutrition">ಪೋಷಣೆ</string>
   <string name="calculated_nutrition">ಲೆಕ್ಕಹಾಕಿದ ನ್ಯೂಟ್ರಿಷನ್</string>
