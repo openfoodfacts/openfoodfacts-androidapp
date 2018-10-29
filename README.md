@@ -1,4 +1,4 @@
-Open Food Facts - The Android application
+Open Food Facts - the Android application
 ===================================
 
 Status
@@ -14,23 +14,6 @@ Status
 <img src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png">
 ## What is Open Food Facts?
 
-Open Food Facts on Google Play
-------------------
-
-<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"></a>
-
-Open Food Facts on [F-Droid](https://f-droid.org/)
-------------------
-
-<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://f-droid.org/badge/get-it-on.png" height="80"></a>
-
-
-Screenshots
-------------------
-
-<img src="https://lh3.googleusercontent.com/PYEw9fMLJ5ETPqB2mxeekfVTTNOkJHscs4MRHo546GJzwgIoj3SiJFsZDx4_D-EAUA=w720-h310" height="300"><img src="https://lh3.googleusercontent.com/q7NWz-hc4x39q8N7EW0cz5GZDHN5-F0ttZPHFPvf8-cTG2RImWi_C2J7zCY1Wtc_qZw=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/HXGodB99lZDp3lusX4ZdnkKJxcKiFv5ohfvaiMB7iX-i_QrcvWzUXPxmlSp8nq8SkBc=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/t_AWYLEzr2O4n7KVli8GV_gpT_N1FKhq5EwReUvJjXdJNoPTBTwD-3cKTfZUrkyQAMM=w1280-h636" height="300">
-
-
 ### A food products database
 
 Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
@@ -45,6 +28,22 @@ Open Food Facts is a non-profit association of volunteers.
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
 - <https://world.openfoodfacts.org>
 
+### Open Food Facts on Google Play
+------------------
+
+<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"></a>
+
+### Open Food Facts on [F-Droid](https://f-droid.org/)
+------------------
+
+<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://f-droid.org/badge/get-it-on.png" height="80"></a>
+
+
+### Screenshots
+------------------
+
+<img src="https://lh3.googleusercontent.com/PYEw9fMLJ5ETPqB2mxeekfVTTNOkJHscs4MRHo546GJzwgIoj3SiJFsZDx4_D-EAUA=w720-h310" height="300"><img src="https://lh3.googleusercontent.com/q7NWz-hc4x39q8N7EW0cz5GZDHN5-F0ttZPHFPvf8-cTG2RImWi_C2J7zCY1Wtc_qZw=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/HXGodB99lZDp3lusX4ZdnkKJxcKiFv5ohfvaiMB7iX-i_QrcvWzUXPxmlSp8nq8SkBc=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/t_AWYLEzr2O4n7KVli8GV_gpT_N1FKhq5EwReUvJjXdJNoPTBTwD-3cKTfZUrkyQAMM=w1280-h636" height="300">
+
 ## Translations
 
 ### Translate Open Food Facts in your language
@@ -58,14 +57,19 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 ## Installation
 
-* Android Studio should be the latest stable build. You can get it from [Here](https://developer.android.com/studio/index.html)
-* If you're running the app for the first time android-studio will ask you to install the Gradle dependencies if you haven't already, Just click install.
-* If you're a new contributor to open-source, We recommend you to read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
+* [Android Studio](https://developer.android.com/studio/index.html) should be the latest stable build.
+* If you're running the app for the first time, Android Studio will ask you to install the Gradle dependencies.
+* If you're a new contributor to open-source, we recommend you read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
 
-* Select OFF as the flavor <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
+* Select 'OFF' as the flavor (OBF is Open Beauty Facts, OPF: Open Products Facts, OPFF: Open Pet Food Facts)
+<img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
+
+## Waffle Throughput Graph
+ [![Throughput Graph](https://graphs.waffle.io/openfoodfacts/openfoodfacts-androidapp/throughput.svg)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp/metrics/throughput)
 
 ## Libraries used
 We use the following libraries, and we're not closed to changes where relevant :-) 
+
 [android-async-http](https://loopj.com/android-async-http/),
 [Jackson](http://jackson.codehaus.org),
 [code-mc/loadtoast](https://github.com/code-mc/loadtoast),
@@ -87,13 +91,13 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
 
-If you're new to open-source, we recommend you to checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send us a pull request.
+If you're new to open-source, we recommend to checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send a pull request.
 
 Here's a few list of bugs:
 - Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
 - Priority: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority
 
-If you don't have time to contribute code, you're welcome to scan new products, or make a donation to [_help pay for the hosting and general costs_](https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en) 
+If you don't have time to contribute code, you're very welcome to scan new products, or make a donation to [_help pay for the hosting and general costs_](https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en) 
 
 ## Copyright and License
 
