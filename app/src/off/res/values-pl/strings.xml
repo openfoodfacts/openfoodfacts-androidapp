@@ -17,7 +17,7 @@
   <string name="slide_1_desc">Skanuj produkty, fotografuj je, niech się dzieje transparentność jedzenia</string>
   <string name="slide_2_title">Poznaj fakty</string>
   <string name="slide_2_desc">Obszerna informacja o zeskanowanym produkcie odcyfrowana dla ciebie</string>
-  <string name="slide_3_title">Zdobądź skalę Nutriscore</string>
+  <string name="slide_3_title">Get the Nutri-Score</string>
   <string name="slide_3_desc">Wirtualny podgląd właściwości odżywczych twoich ulubionych produktów</string>
   <string name="slide_4_title">Działa offline</string>
   <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
@@ -30,7 +30,7 @@
   <string name="translate_help_title">Wspomóż tłumaczenie Open Food Facts</string>
   <string name="translate_help_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
   <string name="text_offline_info_dialog">Skanuj nawet w trybie offline by dodać produkty później. Zeskanowane produkty pojawią się tutaj i wyślesz je poniższym przyciskiem.</string>
-  <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie mogą nie być dokładne, a wykrycie ich też nie może być pewne. Zatem, sprawdzaj dwa razy! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">the free food products database</string>
   <string name="product_not_found">Zeskanowany produkt %1$s jeszcze nie figuruje w Open Food Facts. Możesz go dodać?</string>
