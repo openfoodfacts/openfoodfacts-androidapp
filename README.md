@@ -1,4 +1,4 @@
-Open Food Facts Android Application
+Open Food Facts - The Android application
 ===================================
 
 Status
@@ -64,30 +64,24 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 * Select OFF as the flavor <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 
-
-## Waffle Throughput Graph
-
-[![Throughput Graph](https://graphs.waffle.io/openfoodfacts/openfoodfacts-androidapp/throughput.svg)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp/metrics/throughput)
-
 ## Libraries used
-
-- https://loopj.com/android-async-http/
-- http://jackson.codehaus.org
-- https://github.com/code-mc/loadtoast
-- https://github.com/dm77/barcodescanner
-- https://github.com/koush/ion
-- https://jsoup.org/
-- https://github.com/satyan/sugar
-- https://github.com/afollestad/material-dialogs
-- https://github.com/jjhesk/LoyalNativeSlider
-- https://github.com/mikepenz/MaterialDrawer
-- and others (see gradle)
+We use the following libraries, and we're not closed to changes where relevant :-) 
+[android-async-http](https://loopj.com/android-async-http/),
+[Jackson](http://jackson.codehaus.org),
+[code-mc/loadtoast](https://github.com/code-mc/loadtoast),
+[dm77/barcodescanner](https://github.com/dm77/barcodescanner),
+[koush/ion](https://github.com/koush/ion),
+[jsoup](https://jsoup.org/),
+[satyan/sugar](https://github.com/satyan/sugar),
+[afollestad/material-dialogs](https://github.com/afollestad/material-dialogs),
+[jjhesk/LoyalNativeSlider](https://github.com/jjhesk/LoyalNativeSlider),
+[mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer), and others (see Gradle)
 
 Big thanks to them!
 
 ## Contributing
 
-The project is initially started by [Scot Scriven](https://github.com/itchix), other contributors include:
+The project was initially started by [Scot Scriven](https://github.com/itchix), other contributors include:
 - [Aurélien Leboulanger](https://github.com/herau)
 - [Pierre Slamich](https://github.com/teolemon)
 - [Friedger Müffke](https://github.com/friedger)
