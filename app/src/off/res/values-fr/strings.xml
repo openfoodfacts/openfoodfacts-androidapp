@@ -17,7 +17,7 @@
   <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez un acteur de la transparence alimentaire</string>
   <string name="slide_2_title">Obtenez les faits</string>
   <string name="slide_2_desc">Des informations détaillées sur le produit que vous avez scanné, déchiffrées pour vous</string>
-  <string name="slide_3_title">Obtenez le Nutriscore</string>
+  <string name="slide_3_title">Get the Nutri-Score</string>
   <string name="slide_3_desc">Une vue synthétique des propriétés nutritionnelles de vos produits alimentaires préférés</string>
   <string name="slide_4_title">Fonctionne hors connexion</string>
   <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
@@ -30,7 +30,7 @@
   <string name="translate_help_title">Aidez à traduire Open Food Facts</string>
   <string name="translate_help_summary">Rendez la base de données Open Food Facts disponible dans votre langue - aucune connaissance technique requise</string>
   <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
-  <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez à vérifier également par vous-même ! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">l\'information alimentaire ouverte</string>
   <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>
