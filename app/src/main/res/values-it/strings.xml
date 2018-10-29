@@ -632,7 +632,7 @@
   <string name="product_name">Nome del prodotto</string>
   <string name="quantity">Quantità</string>
   <string name="labels">Etichette</string>
-  <string name="period_of_time_after_opening">Period of time after opening</string>
+  <string name="period_of_time_after_opening">Periodo di tempo dopo l\'apertura</string>
   <string name="manufacturing_details">Dettagli di produzione</string>
   <string name="origin_of_ingredients">Origine degli ingredienti</string>
   <string name="manufacturing_place">Luogo di produzione</string>
@@ -659,9 +659,9 @@
   <!-- Used for additive exposure evaluation table -->
   <string name="overexposure_high">Alto rischio di sovraesposizione</string>
   <string name="overexposure_moderate">Moderato rischio di sovraesposizione</string>
-  <string name="infants">Infants</string>
+  <string name="infants">I neonati</string>
   <string name="infants_age">&lt; 1</string>
-  <string name="toddlers">Toddlers</string>
+  <string name="toddlers">Bambini piccoli</string>
   <string name="toddlers_age">da 1 a 2</string>
   <string name="children">Bambini</string>
   <string name="children_age">da 3 a 9</string>
