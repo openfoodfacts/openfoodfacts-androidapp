@@ -17,7 +17,7 @@
   <string name="slide_1_desc">製品をスキャンし、写真に写して、食品の透明性を実現します</string>
   <string name="slide_2_title">事実を入手します</string>
   <string name="slide_2_desc">あなたがスキャンした製品に関する広範な情報。あなたのために解読されました</string>
-  <string name="slide_3_title">栄養スコアを入手します</string>
+  <string name="slide_3_title">Get the Nutri-Score</string>
   <string name="slide_3_desc">あなたの好きな食品の栄養特性の合成表示</string>
   <string name="slide_4_title">オフラインで作業する</string>
   <string name="slide_4_desc">今インターネットに接続していなくても、新製品を追加できます</string>
@@ -30,7 +30,7 @@
   <string name="translate_help_title">Open Food Factsの翻訳を手伝う</string>
   <string name="translate_help_summary">Open Food Factsデータベースをあなたの言語に対応させます - 技術的な知識は必要ありません</string>
   <string name="text_offline_info_dialog">オフラインのときも、Open Food Facts に後で追加するために製品をスキャンしてください。スキャンした製品がここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
-  <string name="warning_alert_data">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
+  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">the free food products database</string>
   <string name="product_not_found">スキャンした製品 %1$s はまだ Open Food Facts に存在しません。追加できますか?</string>
