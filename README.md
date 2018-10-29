@@ -90,6 +90,8 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Pierre Slamich](https://github.com/teolemon)
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
+- [Full list of the Open Food Facts Android developpers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
+
 
 If you're new to open-source, we recommend to checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send a pull request.
 
