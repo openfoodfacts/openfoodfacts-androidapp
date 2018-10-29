@@ -14,7 +14,7 @@ Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://
 
 *** Kapja meg a Tényeket ***
 - Az Open Food Facts segít önnek a termékek cimkéin található apróbetűs rész értelmezésében. Megtudhatja még (a termékeken feltüntetett jelölések szerint):
-- szénlábnyom (szén-dioxid-kibocsátás) és csomagolás (valamint újrahasznosítási utasítások),
+- Ökológiai lábnyom (szén-dioxid-kibocsátás) és csomagolás (valamint újrahasznosítási utasítások),
 - Nutriscore (táplálkozási pontszám), tápanyagok, zsír / zsírtartalom, telített zsírsavak, szénhidrátok, cukrok, rost, fehérje, só és nátrium.
 - márkanevek, allergének, címkék (bio, gluténmentes, vegán, vegetáriánus, halal, kóser ...), nyomon követhetőségi információk (csomagolási kódok, összetevők eredete)
 - A borok és sörök esetén az alkoholtartalom megtalálható.

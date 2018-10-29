@@ -334,7 +334,7 @@
   <string name="action_contributes">Az ön hozzájárulásai</string>
   <string name="logout_drawer">Kijelentkezés</string>
   <string name="contribution_without_account">Jelentkezzen be vagy hozzon létre egy fiókot a hozzájárulásainak megtartásához</string>
-  <string name="textCarbonFootprint">Szénlábnyom / szén-dioxid-kibocsátás: </string>
+  <string name="textCarbonFootprint">Ökológiai lábnyom / szén-dioxid-kibocsátás: </string>
   <string name="txtDialogPowerMode">Gyorsnézet</string>
   <string name="txtSeeMore">Továbbiak</string>
   <string name="action_search">Keresés</string>
