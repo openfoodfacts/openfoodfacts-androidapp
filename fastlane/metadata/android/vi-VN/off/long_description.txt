@@ -1,19 +1,19 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Quét các sản phẩm thực phẩm hoặc mã vạch của chúng để lấy dữ liệu về thành phần, chất phụ gia và sự kiện dinh dưỡng.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+Ứng dụng này cho phép xem 547.000 sản phẩm (bao gồm 175.000 sản phẩm tại Mỹ) đã có trong cơ sở dữ liệu mở và miễn phí, và cũng để thêm hình ảnh và dữ liệu cho các sản phẩm bị thiếu.
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+Để khám phá dự án Sự Open Food Facts, vui lòng truy cập https://openfoodfacts.org
 
 
-***Contribute to Food Transparency***
+*** Đóng góp vào tính minh bạch trong thực phẩm ***
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your food cupboard. 
+- Open Food Facts là một cơ sở dữ liệu sản phẩm thực phẩm được thực hiện bởi tất cả mọi người, cho tất cả mọi người.
+- Bạn có thể sử dụng nó để thực hiện lựa chọn thực phẩm tốt hơn, và vì nó là dữ liệu mở, bất cứ ai cũng có thể tái sử dụng nó cho bất kỳ mục đích nào.
+- Open Facts Facts là một dự án phi lợi nhuận được phát triển bởi hàng ngàn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
+- Bạn có thể bắt đầu đóng góp ngay hôm nay bằng cách thêm sản phẩm từ tủ thực phẩm của bạn. 
 
-*** Get the Facts ***
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
+*** Nhận được sự thật ***
+- Open Food Facts giúp bạn hiểu thêm về những thứ hào nhoáng được in trên bao bì. You will be able to find (according to the indications present on the products):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
@@ -24,12 +24,12 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your food, your data ***
+*** Thức ăn của bạn, dữ liệu của bạn ***
 - Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Food Facts cũng có sẵn trên trang web tại https://world-vi.openfoodfacts.org
+Câu hỏi, phản hồi: contact@openfoodfacts.org
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
