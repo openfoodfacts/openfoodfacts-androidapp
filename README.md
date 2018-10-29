@@ -78,7 +78,7 @@ We use the following libraries, and we're not closed to changes where relevant :
 [jjhesk/LoyalNativeSlider](https://github.com/jjhesk/LoyalNativeSlider),
 [mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer), and others (see Gradle)
 
-Big thanks to them!
+Big thanks to their contributors!
 
 ## Contributing
 
@@ -89,6 +89,7 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Qian Jin](https://github.com/jinqian)
 - [Full list of the Open Food Facts Android developpers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
 
+Will you join us ?
 
 If you're new to open-source, we recommend to checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send a pull request.
 
