@@ -113,8 +113,8 @@
     <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
     <item>ph</item>
     <item>Fosfor</item>
-    <item>Sugar alcohols (Polyols)</item>
-    <item>Polyunsaturated fat</item>
+    <item>Sladkorni alkoholi (polioli)</item>
+    <item>Polinenasičene maščobe</item>
     <item>Kalij</item>
     <item>Selen</item>
     <item>Serum proteins</item>
@@ -261,9 +261,9 @@
   <string name="choose_formats">Choose Formats</string>
   <string name="select_camera">Select a Camera</string>
   <string name="ok_button">V redu</string>
-  <string name="cancel_button">Cancel</string>
+  <string name="cancel_button">Prekliči</string>
   <string name="login_button">Prijava</string>
-  <string name="create_account_button">Create Account</string>
+  <string name="create_account_button">Ustvari račun</string>
   <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Informacije o alergijah nikoli ne bodo poslane na strežnik Open Food Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% točno, zato vas prosimo, da dvakrat preverite sami! </string>
   <string name="from_gallery">Iz galerije</string>
   <string name="product_sent">Izdelek je uspešno poslan</string>
@@ -481,10 +481,10 @@
   <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
   <string name="log_in">Prijava</string>
   <string name="login_true">Already logged in!</string>
-  <string name="confirm_logout">Confirm Logout</string>
-  <string name="logout_dialog_content">Are you sure to log out ?</string>
-  <string name="dialog_cancel">Cancel</string>
-  <string name="choose_resolution">Choose Resolution</string>
+  <string name="confirm_logout">Potrdi odjavo</string>
+  <string name="logout_dialog_content">Ali ste prepričani, da se želite odjaviti?</string>
+  <string name="dialog_cancel">Prekliči</string>
+  <string name="choose_resolution">Izberite ločljivost</string>
   <string name="pref_resolution_summary">Pick a resolution for image upload</string>
   <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
