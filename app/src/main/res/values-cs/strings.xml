@@ -33,8 +33,8 @@
   <string name="text_barcode">Zadejte čárový kód:</string>
   <string name="message_in_activity_save_product_offline">K odeslání nového produktu je povinná jedna fotografie.</string>
   <string name="product_incomplete_message">Tento produkt není kompletní. V důsledku toho jsme nemohli provést kontrolu alergenů.</string>
-  <string name="no_offline_data">You\'re all done</string>
-  <string name="first_offline">Products added offline will appear here</string>
+  <string name="no_offline_data">Hotovo</string>
+  <string name="first_offline">Zde se zobrazí produkty přidané offline</string>
   <!-- Image Upload -->
   <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
@@ -51,7 +51,7 @@
   <string-array name="weight_all_units">
     <item>mg</item>
     <item>kg</item>
-    <item>µg</item>
+    <item>μg</item>
     <item>% DV</item>
     <item>IU</item>
   </string-array>
@@ -69,7 +69,7 @@
     <item>Kofein</item>
     <item>Vápník</item>
     <item>Capric acid (10:0)</item>
-    <item>Caproic acid (6:0)</item>
+    <item>Kyselina kapronová (6:0)</item>
     <item>Caprylic acid (8:0)</item>
     <item>Kasein</item>
     <item>Cerotic acid (26:0)</item>
