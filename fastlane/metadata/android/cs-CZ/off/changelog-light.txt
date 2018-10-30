@@ -6,7 +6,7 @@ v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a mor
 5. Take photos, be part of food transparency
 6. Mnohem rychlejší, dokonce i na 2G. Můžete dokonce přispívat i bez připojení k internetu
 7. Nevyžaduje registraci
-8. As light as before :)
+8. Lehká verze stejně jako předtím :)
 
 v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
 1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
