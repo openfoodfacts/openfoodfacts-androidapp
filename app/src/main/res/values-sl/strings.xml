@@ -535,11 +535,11 @@
   <string name="shake_title">Shake to scan</string>
   <!-- strings related to share images -->
   <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-  <string name="no_barcode">We have not detected any barcode</string>
-  <string name="enter_barcode">Please type the barcode below</string>
-  <string name="format_error">Wrong Barcode/QR format</string>
-  <string name="code_detected">We have detected the barcode</string>
-  <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+  <string name="no_barcode">Nismo zaznali nobene črtne kode</string>
+  <string name="enter_barcode">Prosimo, vnesite črtno kodo spodaj</string>
+  <string name="format_error">Napačna oblika črtne kode / QR</string>
+  <string name="code_detected">Črtna koda je zaznana</string>
+  <string name="do_you_want_to">Želite dodati fotografije tej črtni kodi?</string>
   <string name="bottomNav_history">Zgodovina</string>
   <string name="bottomNav_search">Iskanje</string>
   <string name="products_added">Products you added or edited</string>
@@ -577,13 +577,13 @@
   <string name="trouble_scanning">Trouble Scanning?</string>
   <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
   <string name="switch_camera">Switch camera</string>
-  <string name="autofocus">Autofocus</string>
+  <string name="autofocus">Samodejno ostrenje</string>
   <string name="initial_loading">Initial loading</string>
   <string name="preferences">Nastavitve</string>
-  <string name="OFFlogo">Open Food Facts logo</string>
-  <string name="loading_product">Loading product %s</string>
-  <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
-  <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
+  <string name="OFFlogo">Logotip odprta dejstva o hrani</string>
+  <string name="loading_product">Nalaganje izdelka %s</string>
+  <string name="error_adding_ingredients">Nekaj je šlo narobe med poskusom dodajanja sestavin izdelka</string>
+  <string name="unable_to_extract_ingredients">Iz slike ne morem razbrati sestavin</string>
   <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
   <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
   <string name="choose_nutrient">Choose a nutrient</string>
