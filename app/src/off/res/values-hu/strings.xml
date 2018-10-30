@@ -17,7 +17,7 @@
   <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé az élelmiszer átláthatóságot</string>
   <string name="slide_2_title">Kapja meg a tényeket</string>
   <string name="slide_2_desc">Széleskörű információ az ön által beolvasott termékről, megfejtve az ön számára</string>
-  <string name="slide_3_title">Get the Nutri-Score</string>
+  <string name="slide_3_title">Kapja meg a Nutri-Score-t</string>
   <string name="slide_3_desc">A kedvenc élelmiszereinek táplálkozási tulajdonságai összefoglaló nézetben</string>
   <string name="slide_4_title">Kapcsolat nélküli módban is működik</string>
   <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
@@ -30,7 +30,7 @@
   <string name="translate_help_title">Segítse az Open Food Facts fordítását</string>
   <string name="translate_help_summary">Hozza az Open Food Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
   <string name="text_offline_info_dialog">Olvassa be a termékeket akkor is, amikor kapcsolat nélküli módban van, hogy később hozzáadja azokat az Open Food Facts-hez. A beolvasott termékek itt fognak megjelenni és az alábbi gomb használatával elküldheti őket.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+  <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">a szabad élelmiszer adatbázis</string>
   <string name="product_not_found">A beolvasott %1$s termék nem található az Open Food Facts adatbázisában. Hozzá tudná adni?</string>
