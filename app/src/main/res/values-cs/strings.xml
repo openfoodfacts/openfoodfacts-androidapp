@@ -646,22 +646,22 @@
   <string name="manufacturing_place">Manufacturing place</string>
   <string name="emb_code">EMB Code</string>
   <string name="purchasing_details">Purchasing Details</string>
-  <string name="country_where_purchased">Country where purchased</string>
+  <string name="country_where_purchased">Země, kde byly zakoupeny</string>
   <string name="stores">Prodejny</string>
-  <string name="additional_pictures">Additional Pictures</string>
+  <string name="additional_pictures">Další obrázky</string>
   <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
   <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-  <string name="sign_in_to_edit">Please sign in to edit a product.</string>
-  <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
+  <string name="sign_in_to_edit">Pro úpravu produktu se musíte přihlásit.</string>
+  <string name="hint_quantity">Příklady: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 libra</string>
   <string name="edit_product_title">Upravit produkt</string>
   <string name="hint_serving_size">Příklady: 60 g, 12 oz, 20cl, 2 fl oz</string>
   <string name="nutrient_already_added">%s je již ve výživových faktech</string>
   <string name="save_edits">Uložit úpravy</string>
   <string name="contribution_by">Contribution By</string>
-  <string name="title_activity_product">Title</string>
+  <string name="title_activity_product">Nadpis</string>
   <string name="description_activity_product">popis</string>
   <string name="intent_filter_share_label">Add to Open Food Facts</string>
   <!-- Used for additive exposure evaluation table -->
@@ -677,7 +677,7 @@
   <string name="adolescents_age">10 to 17</string>
   <string name="adults">Adults</string>
   <string name="adults_age">18 to 64</string>
-  <string name="elderly">Elderly</string>
+  <string name="elderly">Starší</string>
   <string name="elderly_age">65+</string>
   <string name="most_people">Most people\n(over 50%)</string>
   <string name="some_people">Some people\n(over 5%)</string>
