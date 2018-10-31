@@ -17,7 +17,7 @@
   <string name="slide_1_desc">Produkte erfassen und Fotos hinzufügen, ermöglichen das Verständnis über Lebensmittelprodukte</string>
   <string name="slide_2_title">Holen Sie sich die Fakten</string>
   <string name="slide_2_desc">Umfassende Informationen über das erfasste Produkt wurden für Sie entschlüsselt</string>
-  <string name="slide_3_title">Get the Nutri-Score</string>
+  <string name="slide_3_title">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
   <string name="slide_3_desc">Eine zusammenfassende Darstellung der ernährungsphysiologischen Eigenschaften Ihrer bevorzugten Lebensmittelprodukte</string>
   <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
   <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
@@ -30,7 +30,7 @@
   <string name="translate_help_title">Mithelfen bei der Übersetzung von Open Food Facts</string>
   <string name="translate_help_summary">Übersetzen Sie die „Open Food Facts”-Datenbank in Ihre Sprache – technischen Kenntnisse sind nicht erforderlich</string>
   <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Food Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche gesendet werden.</string>
-  <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+  <string name="warning_alert_data">Ihre Allergieinformationen werden niemals an den Open Food Facts Server gesendet. Achten Sie auch darauf, dass die Produktdaten möglicherweise nicht korrekt und die Erkennung nicht 100%ig genau sein könnten. Deshalb überprüfen Sie diese Angaben bitte eigenverantwortlich!</string>
   <!-- OFF tagline in different languages -->
   <string name="tagline">Freie Datenbank für Produkte</string>
   <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Food Facts. Könnten Sie es bitte hinzufügen?</string>
