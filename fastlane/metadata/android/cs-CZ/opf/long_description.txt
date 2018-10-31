@@ -24,7 +24,7 @@ Open Food Facts je otevřená databáze potravinářských produktů s přísada
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
 - Aplikaci můžete používat anonymně
-- You can export your scan history
+- Můžete exportovat vlastní historii skenování
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
