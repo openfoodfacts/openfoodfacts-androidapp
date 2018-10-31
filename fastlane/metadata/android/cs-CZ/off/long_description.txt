@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Naskenujte potravinářské výrobky nebo jejich čárové kódy abyste získali informace o složkách, přísadách a výživových hodnotách.
 
 Aplikace umožňuje zobrazit 547 000 produktů (včetně 175 000 v USA), které jsou již obsaženy ve volné a otevřené databázi Open Food Facts, a také přidávat obrázky a údaje o chybějících produktech.
 
@@ -13,8 +13,8 @@ Chcete-li zjistit více o projektu Open Food Facts, navštivte prosím https://o
 - Můžete začít přispívat dnes přidáním produktu ze spíže. 
 
 *** Získejte fakta ***
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Open Food Facts helps you to make sense of the fine print on products labels. Budete schopni najít (podle toho, jestli jsou produkty těmito značkami označeny):
+-uhlíkové stopy (emise CO2) a balení (jakož i pokyny k recyklaci),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - On wines and beers, you will find the alcohol content.
@@ -26,7 +26,7 @@ Chcete-li zjistit více o projektu Open Food Facts, navštivte prosím https://o
 
 *** Your food, your data ***
 - Your data is yours, and is never sent online
-- You can use the app anonymously
+- Aplikaci můžete používat anonymně
 - You can export your scan history
 
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
