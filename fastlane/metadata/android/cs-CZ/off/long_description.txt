@@ -1,8 +1,8 @@
 Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+Aplikace umožňuje zobrazit 547 000 produktů (včetně 175 000 v USA), které jsou již obsaženy ve volné a otevřené databázi Open Food Facts, a také přidávat obrázky a údaje o chybějících produktech.
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+Chcete-li zjistit více o projektu Open Food Facts, navštivte prosím https://openfoodfacts.org
 
 
 ***Contribute to Food Transparency***
