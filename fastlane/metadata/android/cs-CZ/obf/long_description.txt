@@ -21,7 +21,7 @@
 *** Your cosmetics, your data ***
 - Your data is yours, and is never sent online
 - Aplikaci můžete používat anonymně
-- You can export your scan history
+- Můžete exportovat vlastní historii skenování
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
