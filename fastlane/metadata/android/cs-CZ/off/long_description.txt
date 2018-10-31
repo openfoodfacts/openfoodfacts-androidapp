@@ -9,10 +9,10 @@ Chcete-li zjistit více o projektu Open Food Facts, navštivte prosím https://o
 
 - Open Food Facts je databáze s potravinářskými produkty vytvořena všemi pro každého.
 - Můžete ji použít k lepšímu výběru potravin a vzhledem k tomu, že jde o otevřená data, může ji kdokoliv znovu použít pro jakýkoli účel.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your food cupboard. 
+- Open Food Facts je neziskový projekt, který vytvořili tisíce dobrovolníků z celého světa. Máme spoustu zajímavých projektů, můžete přispět mnoha různými způsoby. 
+- Můžete začít přispívat dnes přidáním produktu ze spíže. 
 
-*** Get the Facts ***
+*** Získejte fakta ***
 - Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
