@@ -27,9 +27,9 @@ Chcete-li zjistit více o projektu Open Food Facts, navštivte prosím https://o
 *** Your food, your data ***
 - Your data is yours, and is never sent online
 - Aplikaci můžete používat anonymně
-- You can export your scan history
+- Můžete exportovat vlastní historii skenování
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts je také k dispozici na webu na adrese https://world.openfoodfacts.org
 Questions, feedback : contact@openfoodfacts.org
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
