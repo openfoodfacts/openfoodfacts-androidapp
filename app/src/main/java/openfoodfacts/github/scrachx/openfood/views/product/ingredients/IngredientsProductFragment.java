@@ -336,7 +336,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                             }
                         } else {
                             if (additive.hasOverexposureData()) {
-                                productActivity.showBottomScreen(null, additive);
+                                if (productActivity != null && !productActivity.isFinishing()) {
+                                    productActivity.showBottomScreen(null, additive);
+                                }
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
                             }
@@ -345,7 +347,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 } else {
                     ProductActivity productActivity = (ProductActivity) getActivity();
                     if (additive.hasOverexposureData()) {
-                        productActivity.showBottomScreen(null, additive);
+                        if (productActivity != null && !productActivity.isFinishing()) {
+                            productActivity.showBottomScreen(null, additive);
+                        }
                     } else {
                         ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
                     }
