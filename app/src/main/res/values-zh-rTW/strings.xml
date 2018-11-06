@@ -32,32 +32,9 @@
     <item>營養成分表</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>公克</item>
-    <item>毫克</item>
-    <item>公斤</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>公克</item>
-    <item>毫克</item>
-    <item>公斤</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>公克</item>
-    <item>毫克</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>公克</item>
@@ -313,7 +290,7 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">此產品的營養成分錶 %1$s</string>
   <string name="check_facts">Check</string>
   <string name="nutrition">營養成分</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -500,6 +477,7 @@
   <string name="image_upload_resolution">圖片上傳解析度</string>
   <string name="can_add_barcode">無法掃描？\n向上拖曳來輸入條碼</string>
   <string name="wikidata_information">Going further</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Description: </string>
   <string name="title">Title: </string>
   <string name="Wikipedia">View on Wikipedia</string>
@@ -507,6 +485,7 @@
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">品牌</string>
   <string name="additive_string">添加劑</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">搜尋</string>
   <string name="country_string">販售國</string>
   <string name="store_subtitle">商店</string>

@@ -1,23 +1,23 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+İçerikler, katkı maddeleri ve beslenme gerçekleriyle ilgili bilgi almak için gıda ürünlerini veya barkodlarını okutun.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+Uygulama, hali hazırda ücretsiz ve açık veritabanı olan Open Food Facts'teki 547.000 ürünü (175.000 ABD ürünü dahil) görüntülemeyi ve eksik olan ürünler için fotoğraf ve bilgi eklemeyi sağlıyor.
 
 To discover the Open Food Facts project, please visit https://openfoodfacts.org
 
 
-***Contribute to Food Transparency***
+Gıda Şeffaflığına Katkıda Bulunun
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
-- You can start contributing today by adding a product from your food cupboard. 
+-Open Food Facts, herkes tarafından herkes için oluşturulan bir gıda ürünleri veritabanıdır.
+-Daha iyi gıda tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
+-Open Food Facts dünyanın dört bir yanından, binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
+-Bugün gıda dolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz. 
 
 ***Gerçekleri Öğrenin***
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+-Open Food Facts size, ürün etiketlerindeki satır aralarını daha iyi anlayabilmenizde yardımcı olur. Bulabilecekleriniz (ürünlerin üzerinde belirtilenlere göre) şunlardır:
+-karbon ayakizi (CO2 salınımı) ve paketleme (geri dönüşüm talimatları vb.),
+-Nutriscore (besleyicilik değeri), besinler, yağ/yağ içeriği, doymuş yağ asitleri, karbonhidratlar, şekerler, lif, protein ve tuz ve sodyum.
+- markalar, alerjenler, etiketler (biyo, glutensiz, vegan, vejetaryen, helal, koşer...), izlenebilirlik bilgileri (ambalaj kodları, malzemelerin kaynağı)
+-Şaraplarda ve biralarda alkol içeriğini bulacaksınız.
 
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
@@ -29,7 +29,7 @@ To discover the Open Food Facts project, please visit https://openfoodfacts.org
 - You can use the app anonymously
 - You can export your scan history
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Food Facts aynı zamanda https://world.openfoodfacts.org internet adresinde mevcuttur.
+Sorular, geri bildirim : contact@openfoodfacts.org
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Kozmetik için Open Beauty Facts, evcil hayvan gıdaları için Open Pet Food Facts yüklenebilir. Geri kalan her şey için, Open Products Facts.

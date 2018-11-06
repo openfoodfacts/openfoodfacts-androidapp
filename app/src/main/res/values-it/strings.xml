@@ -36,32 +36,9 @@
     <item>Tabella nutrizionale</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
@@ -272,13 +249,13 @@
   <string name="ring_off">Ring [OFF]</string>
   <string name="auto_focus_on">Auto Focus [ON]</string>
   <string name="auto_focus_off">Auto Focus [OFF]</string>
-  <string name="formats">Formats</string>
-  <string name="choose_formats">Choose Formats</string>
-  <string name="select_camera">Select a Camera</string>
+  <string name="formats">Formati</string>
+  <string name="choose_formats">Scegli formati</string>
+  <string name="select_camera">Seleziona una fotocamera</string>
   <string name="ok_button">Ok</string>
-  <string name="cancel_button">Cancel</string>
+  <string name="cancel_button">Annulla</string>
   <string name="login_button">Login</string>
-  <string name="create_account_button">Create Account</string>
+  <string name="create_account_button">Crea account</string>
   <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
   <string name="from_gallery">Dalla galleria</string>
   <string name="product_sent">Prodotto inviato con successo</string>
@@ -317,7 +294,7 @@
   <string name="no_brand">Senza marca</string>
   <string name="no_title">Senza titolo</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">Tabella nutrizionale per %1$s di questo prodotto</string>
   <string name="check_facts">Verifica</string>
   <string name="nutrition">Nutrizione</string>
   <string name="calculated_nutrition">Valori nutrizionali calcolati</string>
@@ -498,12 +475,13 @@
   <string name="login_true">Ha già effettuato il login!</string>
   <string name="confirm_logout">Conferma il logout</string>
   <string name="logout_dialog_content">Sei sicuro di uscire?</string>
-  <string name="dialog_cancel">Cancel</string>
+  <string name="dialog_cancel">Annulla</string>
   <string name="choose_resolution">Scegli la risoluzione</string>
   <string name="pref_resolution_summary">Scegli una risoluzione per il caricamento delle immagini</string>
   <string name="image_upload_resolution">Risoluzione di caricamento immagini</string>
   <string name="can_add_barcode">Problemi con la scansione?\nTrascina fino a digitare il codice a barre</string>
   <string name="wikidata_information">Andare avanti</string>
+  <string name="wikidata_unavailable">Non c\'è ancora una pagina di Wikipedia nella tua lingua.</string>
   <string name="description">Descrizione: </string>
   <string name="title">Titolo: </string>
   <string name="Wikipedia">Visualizza su Wikipedia</string>
@@ -511,6 +489,7 @@
   <string name="swipe_down">Scorri verso il basso</string>
   <string name="brand_string">Marche</string>
   <string name="additive_string">Additivo</string>
+  <string name="allergen_string">Allergene</string>
   <string name="search_string">Cerca</string>
   <string name="country_string">Paesi di vendita</string>
   <string name="store_subtitle">Negozio</string>
@@ -555,7 +534,7 @@
   <string name="do_you_want_to">Vuoi aggiungere foto a questo codice a barre?</string>
   <string name="bottomNav_history">Cronologia</string>
   <string name="bottomNav_search">Cerca</string>
-  <string name="products_added">Products you added or edited</string>
+  <string name="products_added">Prodotti aggiunti o modificati</string>
   <string name="products_incomplete">I prodotti aggiunti devono essere completati</string>
   <string name="product_pictures_contributed">Prodotti per i quali hai scattato foto</string>
   <string name="picture_contributed_incomplete">Prodotti per i quali hai scattato foto che devono essere completati</string>
@@ -634,7 +613,7 @@
   <string name="ingredients_list">Lista degli ingredienti</string>
   <string name="ingredients_hint">Mantenere l\'ordine, indicare la % quando specificata, separare con una virgola oppure -, utilizzare () per indicare gli ingredienti di un ingrediente, segnalare gli allergeni con _</string>
   <string name="extract_ingredients">Estrai ingredienti</string>
-  <string name="extracting_ingredients">Extracting ingredients</string>
+  <string name="extracting_ingredients">Estrazione degli ingredienti</string>
   <string name="looksGood">Va bene</string>
   <string name="skip_ingredients">Non va bene \n Salta ingredienti</string>
   <string name="traces">Tracce</string>
@@ -645,7 +624,7 @@
   <string name="per_serving">Per porzione</string>
   <string name="serving_size">Porzioni</string>
   <string name="alcohol_unit" formatted="false">% vol / °</string>
-  <string name="add_a_nutrient">Add a nutrient</string>
+  <string name="add_a_nutrient">Aggiungi un nutriente</string>
   <string name="add_this_product">Aggiungi questo prodotto</string>
   <string name="product_picture">Foto del prodotto</string>
   <string name="one_photo_compulsory">(una foto è obbligatoria per aggiungere un nuovo prodotto)</string>
@@ -653,7 +632,7 @@
   <string name="product_name">Nome del prodotto</string>
   <string name="quantity">Quantità</string>
   <string name="labels">Etichette</string>
-  <string name="period_of_time_after_opening">Period of time after opening</string>
+  <string name="period_of_time_after_opening">Periodo di tempo dopo l\'apertura</string>
   <string name="manufacturing_details">Dettagli di produzione</string>
   <string name="origin_of_ingredients">Origine degli ingredienti</string>
   <string name="manufacturing_place">Luogo di produzione</string>
@@ -676,26 +655,26 @@
   <string name="contribution_by">Contributori</string>
   <string name="title_activity_product">Titolo</string>
   <string name="description_activity_product">descrizione</string>
-  <string name="intent_filter_share_label">Add to Open Food Facts</string>
+  <string name="intent_filter_share_label">Aggiungi a Open Food Facts</string>
   <!-- Used for additive exposure evaluation table -->
-  <string name="overexposure_high">High risk of over exposure</string>
-  <string name="overexposure_moderate">Moderate risk of over exposure</string>
-  <string name="infants">Infants</string>
+  <string name="overexposure_high">Alto rischio di sovraesposizione</string>
+  <string name="overexposure_moderate">Moderato rischio di sovraesposizione</string>
+  <string name="infants">I neonati</string>
   <string name="infants_age">&lt; 1</string>
-  <string name="toddlers">Toddlers</string>
-  <string name="toddlers_age">1 to 2</string>
-  <string name="children">Children</string>
-  <string name="children_age">3 to 9</string>
-  <string name="adolescents">Adolescents</string>
-  <string name="adolescents_age">10 to 17</string>
-  <string name="adults">Adults</string>
-  <string name="adults_age">18 to 64</string>
-  <string name="elderly">Elderly</string>
+  <string name="toddlers">Bambini piccoli</string>
+  <string name="toddlers_age">da 1 a 2</string>
+  <string name="children">Bambini</string>
+  <string name="children_age">da 3 a 9</string>
+  <string name="adolescents">Adolescenti</string>
+  <string name="adolescents_age">da 10 a 17</string>
+  <string name="adults">Adulti</string>
+  <string name="adults_age">da 18 a 64</string>
+  <string name="elderly">Anziani</string>
   <string name="elderly_age">65+</string>
-  <string name="most_people">Most people\n(over 50%)</string>
-  <string name="some_people">Some people\n(over 5%)</string>
-  <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-  <string name="risk_of_exposure">Risk of exposure</string>
+  <string name="most_people">La maggior parte delle persone\n(oltre il 50%)</string>
+  <string name="some_people">Alcune persone\n(oltre il 5%)</string>
+  <string name="safety_and_exposure_assessment">Valutazione della sicurezza e dell\'esposizione</string>
+  <string name="risk_of_exposure">Rischio di esposizione</string>
   <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
   <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
   <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>

@@ -32,32 +32,9 @@
     <item>meja nutrisi</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mili gram</item>
-    <item>kilo gram</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mili gram</item>
-    <item>kilo gram</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mili gram</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
@@ -313,7 +290,7 @@
   <string name="no_brand">Tanpa merek</string>
   <string name="no_title">Tanpa judul</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">Tabel fakta nutrisi untuk %1$s produk ini</string>
   <string name="check_facts">Memeriksa</string>
   <string name="nutrition">kandungan nutrisi</string>
   <string name="calculated_nutrition">Nutrisi terhitung</string>
@@ -500,6 +477,7 @@
   <string name="image_upload_resolution">Resolusi unggahan gambar</string>
   <string name="can_add_barcode">Bermasalah dalam memindai?\nDrag keatas untuk mengetik barkod</string>
   <string name="wikidata_information">Menuju selanjutnya</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Deskripsi: </string>
   <string name="title">Judul: </string>
   <string name="Wikipedia">Lihat di Wikipedia</string>
@@ -507,6 +485,7 @@
   <string name="swipe_down">Usap kebawah</string>
   <string name="brand_string">Merek</string>
   <string name="additive_string">Aditif</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">mencari </string>
   <string name="country_string">Negara tempat dijual</string>
   <string name="store_subtitle">Toko</string>

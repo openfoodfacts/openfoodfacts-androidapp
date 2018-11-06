@@ -36,32 +36,9 @@
     <item>Tabela Nutricional</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl. Unzen</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kJ</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
@@ -268,17 +245,17 @@
   <string name="toggle_flash">Flash</string>
   <string name="flash_on">Flash [ON]</string>
   <string name="flash_off">Flash [OFF]</string>
-  <string name="ring_on">Ring [ON]</string>
-  <string name="ring_off">Ring [OFF]</string>
-  <string name="auto_focus_on">Auto Focus [ON]</string>
-  <string name="auto_focus_off">Auto Focus [OFF]</string>
-  <string name="formats">Formats</string>
-  <string name="choose_formats">Choose Formats</string>
-  <string name="select_camera">Select a Camera</string>
+  <string name="ring_on">Toque [ON]</string>
+  <string name="ring_off">Toque [OFF]</string>
+  <string name="auto_focus_on">Foco Automático [ON]</string>
+  <string name="auto_focus_off">Foco Automático [OFF]</string>
+  <string name="formats">Formatos</string>
+  <string name="choose_formats">Escolha formatos</string>
+  <string name="select_camera">Selecione uma câmera</string>
   <string name="ok_button">OK</string>
-  <string name="cancel_button">Cancel</string>
+  <string name="cancel_button">Cancelar</string>
   <string name="login_button">Iniciar sessão</string>
-  <string name="create_account_button">Create Account</string>
+  <string name="create_account_button">Criar uma conta</string>
   <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa, por favor confirme sempre por si mesmo! </string>
   <string name="from_gallery">Galeria de imagens</string>
   <string name="product_sent">Produto enviado com sucesso</string>
@@ -317,7 +294,7 @@
   <string name="no_brand">Sem Marca</string>
   <string name="no_title">Sem Título</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Tabela para fatos de nutrição de %1$s de %2$s</string>
+  <string name="display_fact">Tabela de fatos nutricionais para %1$s deste produto</string>
   <string name="check_facts">Verifique</string>
   <string name="nutrition">Nutrição</string>
   <string name="calculated_nutrition">Nutrição Calculada</string>
@@ -498,12 +475,13 @@
   <string name="login_true">Já está logado!</string>
   <string name="confirm_logout">Confirmar o Logout</string>
   <string name="logout_dialog_content">Você quer mesmo sair?</string>
-  <string name="dialog_cancel">Cancel</string>
+  <string name="dialog_cancel">Cancelar</string>
   <string name="choose_resolution">Escolher Resolução</string>
   <string name="pref_resolution_summary">Escolha uma resolução para upload da imagem</string>
   <string name="image_upload_resolution">Resolução de upload de imagens</string>
   <string name="can_add_barcode">Problemas com o scanner?\nArraste para cima para digitar o código de barras</string>
   <string name="wikidata_information">Indo além</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Descrição: </string>
   <string name="title">Título: </string>
   <string name="Wikipedia">Ver na Wikipédia</string>
@@ -511,6 +489,7 @@
   <string name="swipe_down">Deslizar para baixo</string>
   <string name="brand_string">Marca</string>
   <string name="additive_string">Aditivo</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Procurar</string>
   <string name="country_string">Países onde foram vendidos</string>
   <string name="store_subtitle">Loja</string>
@@ -691,7 +670,7 @@
   <string name="adults">Adultos</string>
   <string name="adults_age">18 a 64</string>
   <string name="elderly">Idosos</string>
-  <string name="elderly_age">>65</string>
+  <string name="elderly_age">&gt;65</string>
   <string name="most_people">A maioria das pessoas\n(mais de 50%)</string>
   <string name="some_people">Algumas pessoas\n(mais de 5%)</string>
   <string name="safety_and_exposure_assessment">Avaliação de segurança e exposição</string>

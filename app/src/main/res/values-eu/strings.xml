@@ -36,32 +36,9 @@
     <item>Elikadura taula</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>gg</item>
-    <item>mgmg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>gg</item>
-    <item>mgmg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>gg</item>
-    <item>mgmg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>gg</item>
@@ -317,7 +294,7 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">Produktu honen %1$s elikadura-gertaeren taula</string>
   <string name="check_facts">Check</string>
   <string name="nutrition">Elikadura</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -441,7 +418,7 @@
   <string name="txtSaturatedFat">Gantz saturatua</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
-  <string name="scan_shortcut_short_label">Scan</string>
+  <string name="scan_shortcut_short_label">Eskaneatu</string>
   <string name="scan_shortcut_long_label">Eskaneatu produktua</string>
   <string name="barcode_shortcut_short_label">Bilatu</string>
   <string name="barcode_shortcut_long_label">Bilatu barra-kodearen bidez</string>
@@ -504,6 +481,7 @@
   <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Description: </string>
   <string name="title">Izenburua: </string>
   <string name="Wikipedia">Ikusi Wikipedian</string>
@@ -511,8 +489,9 @@
   <string name="swipe_down">Pasatu hatza behera</string>
   <string name="brand_string">Marka</string>
   <string name="additive_string">Additive</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Bilatu</string>
-  <string name="country_string">Countries where sold</string>
+  <string name="country_string">Country</string>
   <string name="store_subtitle">Denda</string>
   <string name="packaging_subtitle">Packaging</string>
   <string name="last_seen_string">%1$d %2$s ago</string>

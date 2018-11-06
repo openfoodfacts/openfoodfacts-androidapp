@@ -14,7 +14,7 @@ product_view_wikipedia_en.png
 Go further with Wikipedia
 
 allergen_alert_en.png
-Set allergen alerts
+Установите оповещения о аллергенах
 
 home_en.png
 product_view_nutrition_summary_en.png
@@ -27,7 +27,7 @@ categories_en.png
 Найдите альтернативу для ваших любимых блюд
 
 foodtransparency_en.png
-Become an actor of food transparency
+Станьте участником пищевой прозрачности
 
 product_view_summary_en.png
 Википедия продуктов питания
@@ -39,7 +39,7 @@ product_view_ingredients_en.png
 Ингредиенты
 
 menu_en.png
-Powerful
+Мощное
 
 product_view_nutrition_table_en.png
 Пищевая и энергетическая ценность

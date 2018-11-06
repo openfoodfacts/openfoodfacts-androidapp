@@ -1,4 +1,4 @@
-Scannez les produits alimentaires pour animaux de compagnie ou leur code à barres pour obtenir des données sur les ingrédients, les additifs et les données nutritionnelles.
+Scannez les produits alimentaires ou leur code-barres pour obtenir des données sur les ingrédients, les additifs et les données nutritionnelles.
 
 L'application permet de voir plus de 600 produits alimentaires pour animaux de compagnie déjà contenus dans la base de données libre et gratuite Open Pet Food Facts, et aussi d'ajouter des images et des données pour les produits manquants.
 

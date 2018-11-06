@@ -32,32 +32,9 @@
     <item>营养表</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
@@ -313,7 +290,7 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">此产品的营养成分表 %1$s</string>
   <string name="check_facts">Check</string>
   <string name="nutrition">营养</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -500,6 +477,7 @@
   <string name="image_upload_resolution">图像上传分辨率</string>
   <string name="can_add_barcode">无法扫描？\n向上拖动输入条形码</string>
   <string name="wikidata_information">进一步</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">描述： </string>
   <string name="title">标题： </string>
   <string name="Wikipedia">在维基百科上查看</string>
@@ -507,6 +485,7 @@
   <string name="swipe_down">向下滑动</string>
   <string name="brand_string">品牌</string>
   <string name="additive_string">添加剂</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">搜索</string>
   <string name="country_string">售卖此商品的国家</string>
   <string name="store_subtitle">商店</string>

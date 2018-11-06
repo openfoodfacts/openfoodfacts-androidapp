@@ -36,32 +36,9 @@
     <item>Näringstabell</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
@@ -317,7 +294,7 @@
   <string name="no_brand">Inget märke</string>
   <string name="no_title">Ingen rubrik</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">Nutrition fakta tabell för %1$s av denna produkt</string>
   <string name="check_facts">Kontrollera</string>
   <string name="nutrition">Näring</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -504,6 +481,7 @@
   <string name="image_upload_resolution">Upplösning för bilduppladdning</string>
   <string name="can_add_barcode">Problem med skanning?\nSvep uppåt för att skriva in streckkoden</string>
   <string name="wikidata_information">Går längre</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Beskrivning: </string>
   <string name="title">Titel: </string>
   <string name="Wikipedia">Visa på Wikipedia</string>
@@ -511,6 +489,7 @@
   <string name="swipe_down">Svep nedåt</string>
   <string name="brand_string">Varumärke</string>
   <string name="additive_string">Tillsats</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Sök</string>
   <string name="country_string">Länder där såld</string>
   <string name="store_subtitle">Butik</string>
@@ -655,7 +634,7 @@
   <string name="labels">Etiketter</string>
   <string name="period_of_time_after_opening">Tid efter öppnandet</string>
   <string name="manufacturing_details">Manufacturing Details</string>
-  <string name="origin_of_ingredients">Origin of ingredients</string>
+  <string name="origin_of_ingredients">Ingredients ursprung</string>
   <string name="manufacturing_place">Manufacturing place</string>
   <string name="emb_code">EMB-kod</string>
   <string name="purchasing_details">Inköpsdetaljer</string>

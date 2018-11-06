@@ -384,8 +384,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                String tag = allergen.getAllergenTag();
-                String title = allergen.getName();
                 if (allergen.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(
                             allergen.getWikiDataId(),

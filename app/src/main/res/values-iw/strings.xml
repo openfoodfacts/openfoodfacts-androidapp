@@ -44,32 +44,9 @@
     <item>טבלת ערכים תזונתיים</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>מ״ג</item>
-    <item>ק״ג</item>
-    <item>ל׳</item>
-    <item>ל</item>
-    <item>מ״ל</item>
-    <item>ס״ל</item>
-    <item>אונקיה</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>מ״ג</item>
-    <item>ק״ג</item>
-    <item>ל׳</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>קק״ל</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>מ״ג</item>
-    <item>ק״ג</item>
-    <item>מיקרוגרם</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>מ״ג</item>
@@ -325,7 +302,7 @@
   <string name="no_brand">אין מותג</string>
   <string name="no_title">אין כותרת</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">טבלת הערכים התזונתיים של %1$s מתוך %2$s</string>
+  <string name="display_fact">טבלת העובדות תזונה עבור %1$s של מוצר זה</string>
   <string name="check_facts">בדיקה</string>
   <string name="nutrition">תזונה</string>
   <string name="calculated_nutrition">תזונה מחושבת</string>
@@ -512,6 +489,7 @@
   <string name="image_upload_resolution">רזולוציית התמונה להעלאה</string>
   <string name="can_add_barcode">התגלתה בעיה בסריקה?\nיש לגרור כלפי מעלה כדי להקליד את הברקוד</string>
   <string name="wikidata_information">להמשיך מעבר</string>
+  <string name="wikidata_unavailable">אין ערך ויקיפדי בשפה שלך עדיין.</string>
   <string name="description">תיאור: </string>
   <string name="title">כותרת: </string>
   <string name="Wikipedia">הצגה בוויקיפדיה</string>
@@ -519,6 +497,7 @@
   <string name="swipe_down">משיכה כלפי מטה</string>
   <string name="brand_string">מותג</string>
   <string name="additive_string">תוסף</string>
+  <string name="allergen_string">אלרגן</string>
   <string name="search_string">חיפוש</string>
   <string name="country_string">ארצות בהן נמכר</string>
   <string name="store_subtitle">חנות</string>

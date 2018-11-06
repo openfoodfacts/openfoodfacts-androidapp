@@ -36,32 +36,9 @@
     <item>পুষ্টি তালিকা</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>mg</item>
-    <item>kg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>mg</item>
@@ -137,7 +114,7 @@
     <item>Starch</item>
     <item>Stearic acid (18:0)</item>
     <item>সুক্রোজ</item>
-    <item>Taurine</item>
+    <item>বৃষসদৃশ</item>
     <item>ট্রান্স ফ্যাট</item>
     <item>ভিটামিন এ</item>
     <item>Vitamin B1 (Thiamin)</item>
@@ -317,7 +294,7 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">এই পণ্যের %1$s জন্য পুষ্টি ঘটনা টেবিল</string>
   <string name="check_facts">Check</string>
   <string name="nutrition">পুষ্টি উপাদান</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -385,7 +362,7 @@
   <string name="nutrition_potassium">পটাসিয়াম</string>
   <string name="nutrition_chlore">ক্লোরিন</string>
   <string name="nutrition_magnesium">ম্যাগনেসিয়াম</string>
-  <string name="nutrition_taurine">Taurine</string>
+  <string name="nutrition_taurine">বৃষসদৃশ</string>
   <string name="nutrition_monounsaturatedFat">মণি অসম্পৃক্ত চর্বি</string>
   <string name="nutrition_polyunsaturatedFat">পল্লি অসম্পৃক্ত চর্বি</string>
   <string name="nutrition_omega3">ওমেগা 3</string>
@@ -429,7 +406,7 @@
   <string name="molybdenum">মলিবডেনাম</string>
   <string name="iodine">আয়োডিন</string>
   <string name="caffeine">ক্যাফেইন</string>
-  <string name="taurine">Taurine</string>
+  <string name="taurine">বৃষসদৃশ</string>
   <string name="ph">pH</string>
   <string name="fruits_vegetables_nuts">ফলমূল, শাকসবজি, বাদাম</string>
   <string name="collagen_meat_protein_ratio">কোলাজেন মাংস প্রোটিন অনুপাত</string>
@@ -505,6 +482,7 @@
   <string name="image_upload_resolution">Image upload resolution</string>
   <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
   <string name="wikidata_information">Going further</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Description: </string>
   <string name="title">Title: </string>
   <string name="Wikipedia">View on Wikipedia</string>
@@ -512,6 +490,7 @@
   <string name="swipe_down">Swipe down</string>
   <string name="brand_string">ব্র্যান্ড</string>
   <string name="additive_string">সংযোজন দ্রব্য</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">অনুসন্ধান</string>
   <string name="country_string">যে দেশে বিক্রি হয়েছে</string>
   <string name="store_subtitle">দোকান</string>

@@ -36,32 +36,9 @@
     <item>Nährwerttabelle</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl.oz.</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kJ</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>μg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>g</item>
@@ -504,6 +481,7 @@
   <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
   <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
   <string name="wikidata_information">Weitergehen</string>
+  <string name="wikidata_unavailable">Es gibt noch keine Wikipedia-Seite in Ihrer Sprache.</string>
   <string name="description">Beschreibung: </string>
   <string name="title">Titel: </string>
   <string name="Wikipedia">Auf Wikipedia ansehen</string>
@@ -511,6 +489,7 @@
   <string name="swipe_down">Nach unten wischen</string>
   <string name="brand_string">Marke</string>
   <string name="additive_string">Zusatzstoff</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Suchen</string>
   <string name="country_string">Vertriebsländer</string>
   <string name="store_subtitle">Laden</string>

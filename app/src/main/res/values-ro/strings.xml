@@ -40,32 +40,9 @@
     <item>Tabel nutrițional</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-    <item>l</item>
-    <item>ml</item>
-    <item>cl</item>
-    <item>fl oz</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>mg</item>
-    <item>kg</item>
-    <item>l</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>kcal</item>
-    <item>kj</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>mg</item>
-    <item>kg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
     <item>mg</item>
@@ -321,7 +298,7 @@
   <string name="no_brand">No Brand</string>
   <string name="no_title">No Title</string>
   <!-- Nutrition info tab -->
-  <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+  <string name="display_fact">Tabel cu fapte nutriționale pentru %1$s din acest produs</string>
   <string name="check_facts">Check</string>
   <string name="nutrition">Informații nutriționale</string>
   <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -508,6 +485,7 @@
   <string name="image_upload_resolution">Rezoluția pentru încărcarea imaginilor</string>
   <string name="can_add_barcode">Ai probleme cu scanarea?\nGlisează în sus pentru a introduce manual codul de bare</string>
   <string name="wikidata_information">Mergi mai departe</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">Descriere: </string>
   <string name="title">Titlu: </string>
   <string name="Wikipedia">Vizualizează pe Wikipedia</string>
@@ -515,6 +493,7 @@
   <string name="swipe_down">Glisează în jos</string>
   <string name="brand_string">Marca</string>
   <string name="additive_string">Aditiv</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">Caută</string>
   <string name="country_string">Țările unde se vinde</string>
   <string name="store_subtitle">Magazine</string>
@@ -657,7 +636,7 @@
   <string name="product_name">Numele produsului</string>
   <string name="quantity">Cantitate</string>
   <string name="labels">Labels</string>
-  <string name="period_of_time_after_opening">Period of time after opening</string>
+  <string name="period_of_time_after_opening">Perioadă de timp după deschidere</string>
   <string name="manufacturing_details">Manufacturing Details</string>
   <string name="origin_of_ingredients">Originea ingredientelor</string>
   <string name="manufacturing_place">Manufacturing place</string>

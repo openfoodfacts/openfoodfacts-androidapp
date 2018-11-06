@@ -52,37 +52,14 @@
     <item>حقائق غذائية</item>
   </string-array>
   <!-- Text units -->
-  <string-array name="units_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-    <item>لتر</item>
-    <item>مل</item>
-    <item>سنتيليتر</item>
-    <item>أوقية</item>
-  </string-array>
   <!-- weight units -->
-  <string-array name="weights_array">
-    <item>g</item>
-    <item>mg</item>
-    <item>kg</item>
-  </string-array>
   <!-- nutrition energy units -->
-  <string-array name="energy_units">
-    <item>سعرات حرارية</item>
-    <item>كيلوجول</item>
-  </string-array>
   <!-- nutrition weight units -->
-  <string-array name="nutrition_weight_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>µg</item>
-  </string-array>
   <!-- all weight units -->
   <string-array name="weight_all_units">
-    <item>g</item>
-    <item>mg</item>
-    <item>µg</item>
+    <item>ج</item>
+    <item>مج</item>
+    <item>ميكروجرام</item>
     <item>القيمة اليومية</item>
     <item>وحدة دولية</item>
   </string-array>
@@ -522,6 +499,7 @@
   <string name="image_upload_resolution">نقاء الصورة</string>
   <string name="can_add_barcode">هل تواجه مشكلة في المسح؟ \n اسحب لأعلى لكتابة الرمز الشريطي</string>
   <string name="wikidata_information">الذهاب إلى أبعد من ذلك</string>
+  <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
   <string name="description">الوصف: </string>
   <string name="title">العنوان: </string>
   <string name="Wikipedia">عرض على ويكيبيديا</string>
@@ -529,6 +507,7 @@
   <string name="swipe_down">السحب للأسفل</string>
   <string name="brand_string">العلامة التجارية</string>
   <string name="additive_string">المواد المضافة</string>
+  <string name="allergen_string">Allergen</string>
   <string name="search_string">بحث</string>
   <string name="country_string">بلدان بيع</string>
   <string name="store_subtitle">المتجر</string>
