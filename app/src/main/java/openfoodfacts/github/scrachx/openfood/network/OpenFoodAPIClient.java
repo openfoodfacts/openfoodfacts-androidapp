@@ -733,9 +733,7 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onLabelCallback.onLabelResponse(false, null);
-
             }
         });
     }
@@ -745,7 +743,7 @@ public class OpenFoodAPIClient {
         apiService.getProductByCategory(category, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (!response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     onCategoryCallback.onCategoryResponse(true, response.body());
                 } else {
                     onCategoryCallback.onCategoryResponse(false, null);
@@ -754,9 +752,7 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onCategoryCallback.onCategoryResponse(false, null);
-
             }
         });
     }
@@ -766,31 +762,16 @@ public class OpenFoodAPIClient {
         apiService.searchProductsByContributor(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onContributorCallback.onContributorResponse(false, null);
-
             }
         });
     }
@@ -839,31 +820,16 @@ public class OpenFoodAPIClient {
         apiService.getPicturesContributedProducts(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onContributorCallback.onContributorResponse(false, null);
-
             }
         });
     }
@@ -872,31 +838,16 @@ public class OpenFoodAPIClient {
         apiService.getPicturesContributedIncompleteProducts(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onContributorCallback.onContributorResponse(false, null);
-
             }
         });
     }
@@ -905,21 +856,10 @@ public class OpenFoodAPIClient {
         apiService.getInfoAddedProducts(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
             }
 
@@ -934,21 +874,10 @@ public class OpenFoodAPIClient {
         apiService.getInfoAddedIncompleteProducts(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
             }
 

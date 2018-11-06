@@ -386,7 +386,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
                                 getResources().getString(R.string.txt_broaden_search));
                     } else {
-                        loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products);
+                        loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products, R.string.txt_broaden_search);
                     }
                 });
                 break;
@@ -405,31 +405,38 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.CONTRIBUTOR: {
                 switch (contributionType) {
                     case 0:
-                        api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
+                        api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
+                                loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                         break;
 
                     case 1:
-                        api.getToBeCompletedProductsByContributor(searchQuery, pageAddress, this::loadData);
+                        api.getToBeCompletedProductsByContributor(searchQuery, pageAddress, (value, category) ->
+                                loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                         break;
 
                     case 2:
-                        api.getPicturesContributedProducts(searchQuery, pageAddress, this::loadData);
+                        api.getPicturesContributedProducts(searchQuery, pageAddress, (value, category) ->
+                                loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                         break;
 
                     case 3:
-                        api.getPicturesContributedIncompleteProducts(searchQuery, pageAddress, this::loadData);
+                        api.getPicturesContributedIncompleteProducts(searchQuery, pageAddress, (value, category) ->
+                                loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                         break;
 
                     case 4:
-                        api.getInfoAddedProducts(searchQuery, pageAddress, this::loadData);
+                        api.getInfoAddedProducts(searchQuery, pageAddress, (value, category) ->
+                                loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                         break;
 
                     case 5:
-                        api.getInfoAddedIncompleteProducts(searchQuery, pageAddress, this::loadData);
+                        api.getInfoAddedIncompleteProducts(searchQuery, pageAddress, (value, category) ->
+                                loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                         break;
 
                     default:
-                        api.getProductsByContributor(searchQuery, pageAddress, this::loadData);
+                        api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
+                                loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                         break;
                 }
                 break;
@@ -529,8 +536,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     /**
      * @see #loadSearchProducts(boolean, Search, int, int)
      */
-    private void loadSearchProducts(boolean isResponseSuccessful, Search response,
-            @StringRes int emptyMessage) {
+    private void loadSearchProducts(boolean isResponseSuccessful, Search response, @StringRes int emptyMessage) {
         if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
             showEmptySearch(getResources().getString(emptyMessage), null);
         } else {
