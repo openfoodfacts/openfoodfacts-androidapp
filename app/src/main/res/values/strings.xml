@@ -695,7 +695,8 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Sort By</string>
-    <string name="nutriscore_uri" translatable="false">https://fr.openfoodfacts.org/score-nutritionnel-france</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
 
     <string name="shake_summary">Shake phone to scan products</string>
     <string name="shake_title">Shake to scan</string>
