@@ -245,8 +245,8 @@
     <string name="toggle_flash">Flash</string>
     <string name="flash_on">Flash [ON]</string>
     <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
+    <string name="ring_on">Squillo [ON]</string>
+    <string name="ring_off">Squillo [OFF]</string>
     <string name="auto_focus_on">Auto Focus [ON]</string>
     <string name="auto_focus_off">Auto Focus [OFF]</string>
     <string name="formats">Formati</string>
@@ -344,7 +344,7 @@
     <string name="number_of_products">Numero di prodotti: </string>
     <string name="txt_no_results">Nessun risultato trovato</string>
     <string name="txt_extend_search">Prova ad ampliare la tua ricerca o ad aggiungere il prodotto</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
+    <string name="txt_no_matching__category_products">Oh no, non abbiamo alcun prodotto in questa categoria, puoi aggiungerne uno?</string>
     <string name="txt_no_matching_products">Non abbiamo trovato prodotti corrispondenti. \nPuoi provare:</string>
     <string name="txt_broaden_search">- ampliare la tua ricerca \n- scan e aggiungerla a Open Food Facts</string>
     <string name="txt_cant_load_search_results">Impossibile caricare i risultati di ricerca</string>
@@ -677,9 +677,9 @@
     <string name="some_people">Alcune persone\n(oltre il 5%)</string>
     <string name="safety_and_exposure_assessment">Valutazione della sicurezza e dell\'esposizione</string>
     <string name="risk_of_exposure">Rischio di esposizione</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
-    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="efsa_warning_moderate_risk">L\'Autorità Europea di Sicurezza Alimentare (EFSA) ha determinato che alcuni gruppi di popolazione hanno un rischio moderato di consumare troppk%1$s.</string>
+    <string name="efsa_warning_high_risk">L\'Autorità europea per la sicurezza alimentare (EFSA) ha determinato che alcuni gruppi di popolazione hanno un rischio elevato di consumare troppo %1$s.</string>
+    <string name="legend_noael">dose sopra con effetti avversi osservsti (NOAEL)</string>
+    <string name="legend_adi">sopra Dose Giornaliera Accettabile (ADI)</string>
     <!-- Used for additive exposure evaluation table -->
 </resources>
