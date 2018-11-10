@@ -293,47 +293,67 @@ public class Nutriments implements Serializable {
             return for100g;
         }
 
+        /**
+         * Returns the amount of nutriment per 100g
+         * of product in the units stored in {@link Nutriment#unit}
+         */
+        public String getFor100gInUnits() {
+            return getValueInUnits(for100g, unit);
+        }
+
         public String getForServing() {
             return forServing;
+        }
+
+        /**
+         * Returns the amount of nutriment per serving
+         * of product in the units stored in {@link Nutriment#unit}
+         */
+        public String getForServingInUnits() {
+            return getValueInUnits(forServing, unit);
         }
 
         public String getUnit() {
             return unit;
         }
 
-        public String getforanyvalue(float x,String spinnervalue){
-            String s = for100g;
-            if(s.isEmpty() || s.contains("%"))
-            {
-                return for100g;
+        private static String getValueInUnits(String stringValue, String unit) {
+            if (stringValue.isEmpty() || stringValue.contains("%") || unit.equals("g")) {
+                return stringValue;
+            } else if (unit.equals("g")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value);
+            } else if (unit.equals("kg")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value / 1000);
+            } else if (unit.equals("mg")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value * 1000);
+            } else if (unit.equals("µg")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value * 1000000);
+            } else {
+                return stringValue;
             }
-            else if(spinnervalue.equals("g"))
-            {
-                float value = Float.valueOf(s);
-                value = (x/100)*value;
-                String snew = Float.toString(value);
-                snew = getRoundNumber(snew);
-                return(snew);
-            }
-            else if(spinnervalue.equals("kg"))
-            {
-                float value = Float.valueOf(s);
-                value = (x*10)*value;
-                String snew = Float.toString(value);
-                snew = getRoundNumber(snew);
-                return(snew);
-            }
-            else if(spinnervalue.equals("mg"))
-            {
-                float value = Float.valueOf(s);
-                value = (x/10000)*value;
-                String snew = Float.toString(value);
-                snew = getRoundNumber(snew);
-                return(snew);
-            }
-            else
-            {
-                return s;
+        }
+
+        public String getForAnyValue(String stringValue, float userSetAmount, String spinnerUnit) {
+            if (stringValue.isEmpty() || stringValue.contains("%")) {
+                return stringValue;
+            } else if (spinnerUnit.equals("g")) {
+                float value = Float.valueOf(stringValue);
+                value = (userSetAmount / 100) * value;
+                return getRoundNumber(value);
+            } else if (spinnerUnit.equals("kg")) {
+                float value = Float.valueOf(stringValue);
+                value = (userSetAmount * 10) * value;
+                return getRoundNumber(value);
+            } else if (spinnerUnit.equals("mg")) {
+                float value = Float.valueOf(stringValue);
+                value = (userSetAmount / 100000) * value;
+                return getRoundNumber(value);
+            } else {
+                return stringValue;
             }
         }
 

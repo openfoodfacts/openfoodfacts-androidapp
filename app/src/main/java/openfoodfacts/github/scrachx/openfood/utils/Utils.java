@@ -362,6 +362,13 @@ public class Utils {
         return String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
     }
 
+    /**
+     * @see Utils#getRoundNumber(String)
+     */
+    public static String getRoundNumber(float value) {
+        return getRoundNumber(Float.toString(value));
+    }
+
     public static DaoSession getAppDaoSession(Context context) {
         return ((OFFApplication) context.getApplicationContext()).getDaoSession();
     }
