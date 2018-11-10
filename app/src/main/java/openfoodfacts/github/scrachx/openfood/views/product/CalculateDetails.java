@@ -101,7 +101,7 @@ public class CalculateDetails extends BaseActivity {
         if (fat != null) {
             String modifier = nutriments.getModifier(FAT);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat),
-                                                       fat.getForAnyValue(fat.getFor100gInUnits(), value, spinnervalue),
+                                                       fat.getForAnyValue(value, spinnervalue),
                                                        fat.getForServingInUnits(),
                                                        fat.getUnit(),
                                                        modifier == null ? "" : modifier));
@@ -114,7 +114,7 @@ public class CalculateDetails extends BaseActivity {
         if (carbohydrates != null) {
             String modifier = nutriments.getModifier(CARBOHYDRATES);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_carbohydrate),
-                                                       carbohydrates.getForAnyValue(carbohydrates.getFor100gInUnits(), value, spinnervalue),
+                                                       carbohydrates.getForAnyValue(value, spinnervalue),
                                                        carbohydrates.getForServingInUnits(),
                                                        carbohydrates.getUnit(),
                                                        modifier == null ? "" : modifier));
@@ -131,7 +131,7 @@ public class CalculateDetails extends BaseActivity {
             String modifier = nutriments.getModifier(PROTEINS);
             nutrimentItems.add(
                     new HeaderNutrimentItem(getString(R.string.nutrition_proteins),
-                                            proteins.getForAnyValue(proteins.getFor100gInUnits(), value, spinnervalue),
+                                            proteins.getForAnyValue(value, spinnervalue),
                                             proteins.getForServingInUnits(),
                                             proteins.getUnit(),
                                             modifier == null ? "" : modifier));
@@ -171,7 +171,7 @@ public class CalculateDetails extends BaseActivity {
             Nutriments.Nutriment nutriment = nutriments.get(entry.getKey());
             if (nutriment != null) {
                 items.add(new NutrimentItem(getString(entry.getValue()),
-                                            nutriment.getForAnyValue(nutriment.getFor100gInUnits(), value, spinnervalue),
+                                            nutriment.getForAnyValue(value, spinnervalue),
                                             nutriment.getForServingInUnits(),
                                             nutriment.getUnit(),
                                             nutriments.getModifier(entry.getKey())));
