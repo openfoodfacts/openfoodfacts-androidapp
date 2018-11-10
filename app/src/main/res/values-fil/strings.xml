@@ -466,8 +466,6 @@
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Tumulong</string>
     <string name="not_support_books">Ang mga aklat ay kasalukuyang hindi suportado ng mga Buksan ang Mga Katotohanan sa Pagkain</string>
-    <string name="seconds_ago">segundo ang nakararaan</string>
-    <string name="minutes_ago">minuto ang nakalilipas</string>
     <string name="hours_ago">oras ang nakalilipas</string>
     <string name="days_ago">araw ang nakalilipas</string>
     <string name="scan_first_string">Makikita ang iyong kasaysayan ng produkto na tiningnan ng produkto. \n Nang kasaysayan na ito ay para lamang sa iyong mga mata at nakaimbak nang lokal.</string>

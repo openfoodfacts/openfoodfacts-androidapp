@@ -466,8 +466,6 @@
     <string name="preference_header_network">Red</string>
     <string name="preference_header_contributing">Contribuir</string>
     <string name="not_support_books">Actualmente los libros no son soportados por Open Food Facts</string>
-    <string name="seconds_ago">segundo atrás</string>
-    <string name="minutes_ago">minutos atrás</string>
     <string name="hours_ago">horas atrás</string>
     <string name="days_ago">días atrás</string>
     <string name="scan_first_string">El historial de productos vistos será listado aquí.\nEste historial solo lo puede ver usted y es almacenado localmente.</string>

@@ -474,8 +474,6 @@
     <string name="preference_header_network">Omrežje</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-    <string name="seconds_ago">pred nekaj sekundami</string>
-    <string name="minutes_ago">minutes ago</string>
     <string name="hours_ago">hours ago</string>
     <string name="days_ago">days ago</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>

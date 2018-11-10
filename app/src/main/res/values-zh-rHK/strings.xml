@@ -462,8 +462,6 @@
     <string name="preference_header_network">網路</string>
     <string name="preference_header_contributing">貢獻</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-    <string name="seconds_ago">秒前</string>
-    <string name="minutes_ago">分鐘前</string>
     <string name="hours_ago">小時前</string>
     <string name="days_ago">天前</string>
     <string name="scan_first_string">您之前的產品觀看記錄將會在此列出。\n這個記錄僅供您使用，並儲存在本地。</string>

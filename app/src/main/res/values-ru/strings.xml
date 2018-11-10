@@ -474,8 +474,6 @@
     <string name="preference_header_network">Сеть</string>
     <string name="preference_header_contributing">Помощь проекту</string>
     <string name="not_support_books">В настоящее время книги не поддерживаются в Open Food Facts</string>
-    <string name="seconds_ago">сек. назад</string>
-    <string name="minutes_ago">мин. назад</string>
     <string name="hours_ago">часа (-ов) назад</string>
     <string name="days_ago">дн. назад</string>
     <string name="scan_first_string">Просмотренные вами продукты будут перечислены здесь.\nЭта история предназначена только для ваших глаз и хранится локально.</string>

@@ -466,8 +466,6 @@
     <string name="preference_header_network">Ağ</string>
     <string name="preference_header_contributing">Katılım</string>
     <string name="not_support_books">Kitaplar şu anda Open Food Facts tarafından desteklenmemektedir</string>
-    <string name="seconds_ago">saniyeler önce</string>
-    <string name="minutes_ago">dakikalar önce</string>
     <string name="hours_ago">saatler önce</string>
     <string name="days_ago">günler önce</string>
     <string name="scan_first_string">Görüntülenen ürün geçmişiniz burada listelenecektir.\nBu geçmiş sadece sizin içindir ve yerel olarak depolanır.</string>
