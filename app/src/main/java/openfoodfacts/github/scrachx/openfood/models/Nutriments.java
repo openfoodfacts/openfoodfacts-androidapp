@@ -337,23 +337,33 @@ public class Nutriments implements Serializable {
             }
         }
 
-        public String getForAnyValue(String stringValue, float userSetAmount, String spinnerUnit) {
-            if (stringValue.isEmpty() || stringValue.contains("%")) {
-                return stringValue;
-            } else if (spinnerUnit.equals("g")) {
-                float value = Float.valueOf(stringValue);
-                value = (userSetAmount / 100) * value;
+        /**
+         * Calculates the nutriment value for a given amount of this product. For example,
+         * calling getForAnyValue(1, "kg") will give you the amount of this nutriment
+         * given 1 kg of the product.
+         *
+         * @param userSetServing amount of this product used to calculate nutriment value
+         * @param unit units in either "g", "kg", or "mg" to define userSetServing
+         * @return nutriment value for a given amount of this product
+         */
+        public String getForAnyValue(float userSetServing, String unit) {
+            String strValue = getFor100gInUnits();
+            if (strValue.isEmpty() || strValue.contains("%")) {
+                return strValue;
+            } else if (unit.equals("g")) {
+                float value = Float.valueOf(strValue);
+                value = (userSetServing / 100) * value;
                 return getRoundNumber(value);
-            } else if (spinnerUnit.equals("kg")) {
-                float value = Float.valueOf(stringValue);
-                value = (userSetAmount * 10) * value;
+            } else if (unit.equals("kg")) {
+                float value = Float.valueOf(strValue);
+                value = (userSetServing * 10) * value;
                 return getRoundNumber(value);
-            } else if (spinnerUnit.equals("mg")) {
-                float value = Float.valueOf(stringValue);
-                value = (userSetAmount / 100000) * value;
+            } else if (unit.equals("mg")) {
+                float value = Float.valueOf(strValue);
+                value = (userSetServing / 100000) * value;
                 return getRoundNumber(value);
             } else {
-                return stringValue;
+                return strValue;
             }
         }
 
