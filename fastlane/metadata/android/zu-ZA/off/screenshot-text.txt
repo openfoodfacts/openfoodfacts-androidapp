@@ -23,11 +23,11 @@ Nutrition, simplified
 product_view_allergen_alert_en.png
 Allergen alert
 
-categories_en.png
-Get alternatives for your favorite foods
+izigaba_en.png
+Thola ezinye izindlela zokudla okuthandayo
 
-foodtransparency_en.png
-Become an actor of food transparency
+ukudlatransparency_en.png
+Yiba umlingisi wokukhanya kokudla
 
 product_view_summary_en.png
 Wikipedia for Food

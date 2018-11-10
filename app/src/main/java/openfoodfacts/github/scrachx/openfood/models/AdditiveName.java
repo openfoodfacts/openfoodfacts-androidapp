@@ -200,4 +200,9 @@ public class AdditiveName {
         this.exposureMeanGreaterThanAdi = exposureMeanGreaterThanAdi;
         this.exposureMeanGreaterThanNoael = exposureMeanGreaterThanNoael;
     }
+
+    @Keep
+    public boolean hasOverexposureData() {
+        return overexposureRisk != null && !"no".equalsIgnoreCase(overexposureRisk);
+    }
 }

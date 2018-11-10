@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -23,6 +24,7 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,13 +37,8 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 	private static final String ARG_SEARCH_TYPE = "search_type";
 	private static final String ARG_TITLE = "title";
 
-	private TextView bottomSheetDesciption;
-	private TextView bottomSheetTitle;
 	private AppCompatImageView bottomSheetTitleIcon;
-	private Button buttonToBrowseProducts;
-	private Button wikipediaButton;
 
-	private View exposureEvalTable;
 	private AppCompatImageView mpInfantsImage;
 	private AppCompatImageView mpToddlersImage;
 	private AppCompatImageView mpChildrenImage;
@@ -55,18 +52,17 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 	private AppCompatImageView spAdultsImage;
 	private AppCompatImageView spElderlyImage;
 
-	private CustomTabActivityHelper customTabActivityHelper;
 	private CustomTabsIntent customTabsIntent;
 
-	public static ProductAttributeDetailsFragment newInstance( String jsonObjectStr, long id, String searchType, String title )
-	{
+	public static ProductAttributeDetailsFragment newInstance(String jsonObjectStr, long id, String searchType, String title) {
 		ProductAttributeDetailsFragment fragment = new ProductAttributeDetailsFragment();
 		Bundle args = new Bundle();
-		args.putString( ARG_OBJECT, jsonObjectStr );
-		args.putLong( ARG_ID, id );
-		args.putString( ARG_SEARCH_TYPE, searchType );
-		args.putString( ARG_TITLE, title );
-		fragment.setArguments( args );
+		args.putString(ARG_OBJECT, jsonObjectStr);
+		args.putLong(ARG_ID, id);
+		args.putString(ARG_SEARCH_TYPE, searchType);
+		args.putString(ARG_TITLE, title);
+
+		fragment.setArguments(args);
 
 		return fragment;
 	}
@@ -77,33 +73,53 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 							  @Nullable ViewGroup container,
 							  @Nullable Bundle savedInstanceState )
 	{
-		customTabActivityHelper = new CustomTabActivityHelper();
+		CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
 		customTabActivityHelper.setConnectionCallback( this );
 		customTabsIntent = CustomTabsHelper.getCustomTabsIntent( getContext().getApplicationContext(), customTabActivityHelper.getSession() );
 
 		View view = inflater.inflate( R.layout.fragment_product_attribute_details, container,
 				false );
 
-		bottomSheetDesciption = view.findViewById( R.id.description );
-		bottomSheetTitle = view.findViewById( R.id.titleBottomSheet );
+		TextView bottomSheetDescription = view.findViewById(R.id.description);
+		TextView bottomSheetTitle = view.findViewById(R.id.titleBottomSheet);
 		bottomSheetTitleIcon = view.findViewById( R.id.titleBottomSheetIcon );
-		buttonToBrowseProducts = view.findViewById( R.id.buttonToBrowseProducts );
-		wikipediaButton = view.findViewById( R.id.wikipediaButton );
+		Button buttonToBrowseProducts = view.findViewById(R.id.buttonToBrowseProducts);
+		Button wikipediaButton = view.findViewById(R.id.wikipediaButton);
 
 		try
 		{
-			JSONObject result = new JSONObject( getArguments().getString( ARG_OBJECT ) );
-			JSONObject description = result.getJSONObject( "descriptions" );
-			JSONObject siteLinks = result.getJSONObject( "sitelinks" );
-			String descriptionString = getDescription( description );
-			String wikiLink = getWikiLink( siteLinks );
+			final String descriptionString;
+			final String wikiLink;
+			String str = getArguments().getString(ARG_OBJECT);
+			if (str != null) {
+				JSONObject result = new JSONObject(str);
+				JSONObject description = result.getJSONObject("descriptions");
+				JSONObject siteLinks = result.getJSONObject("sitelinks");
 
-			String title = getArguments().getString( ARG_TITLE );
-			bottomSheetTitle.setText( title );
-			String searchType = getArguments().getString( ARG_SEARCH_TYPE );
-			bottomSheetDesciption.setText( descriptionString );
+				descriptionString = getDescription(description);
+				wikiLink = getWikiLink(siteLinks);
+			} else {
+				descriptionString = null;
+				wikiLink = null;
+			}
+
+			String title = getArguments().getString(ARG_TITLE);
+			bottomSheetTitle.setText(title);
+			String searchType = getArguments().getString(ARG_SEARCH_TYPE);
+			if (descriptionString != null) {
+				bottomSheetDescription.setText(descriptionString);
+				bottomSheetDescription.setVisibility(View.VISIBLE);
+			} else {
+				bottomSheetDescription.setVisibility(View.GONE);
+			}
+
 			buttonToBrowseProducts.setOnClickListener( v -> ProductBrowsingListActivity.startActivity(getContext(), title, searchType));
-			wikipediaButton.setOnClickListener( v -> openInCustomTab( wikiLink ) );
+			if (wikiLink != null) {
+				wikipediaButton.setOnClickListener(v -> openInCustomTab(wikiLink));
+				wikipediaButton.setVisibility(View.VISIBLE);
+			} else {
+				wikipediaButton.setVisibility(View.GONE);
+			}
 
 			long id = getArguments().getLong( ARG_ID );
 			switch( searchType )
@@ -156,7 +172,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 
 	private void updateContent( View view, AdditiveName additive )
 	{
-		exposureEvalTable = view.findViewById( R.id.exposureEvalTable );
+		View exposureEvalTable = view.findViewById(R.id.exposureEvalTable);
 		mpInfantsImage = view.findViewById( R.id.mpInfants );
 		mpToddlersImage = view.findViewById( R.id.mpToddlers );
 		mpChildrenImage = view.findViewById( R.id.mpChildren );
@@ -173,7 +189,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 		TextView efsaWarning = view.findViewById( R.id.efsaWarning );
 
 		String overexposureRisk = additive.getOverexposureRisk();
-		if( overexposureRisk != null && !"no".equals( overexposureRisk ) )
+		if( additive.hasOverexposureData() )
 		{
 			boolean isHighRisk = "high".equalsIgnoreCase( overexposureRisk );
 			if( isHighRisk )
@@ -354,11 +370,14 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 	private void openInCustomTab( String url )
 	{
 		// Url might be empty string if there is no wiki link in english or the user's language
-		if (!url.equals("")) {
-			Uri wikipediaUri = Uri.parse(url);
-			CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, wikipediaUri, new WebViewFallback());
-		} else {
-			Toast.makeText(getContext(), R.string.wikidata_unavailable, Toast.LENGTH_SHORT).show();
+		if( !url.equals( "" ) )
+		{
+			Uri wikipediaUri = Uri.parse( url );
+			CustomTabActivityHelper.openCustomTab( getActivity(), customTabsIntent, wikipediaUri, new WebViewFallback() );
+		}
+		else
+		{
+			Toast.makeText( getContext(), R.string.wikidata_unavailable, Toast.LENGTH_SHORT ).show();
 		}
 	}
 

@@ -16,15 +16,15 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Isebenza kahle nganoma yisiphi isimo ***
+- Ungangeza imikhiqizo emisha, noma ngabe awunawo uxhumano lwe-inthanethi okwamanje.
+- Uhlelo lokusebenza luthwala kuphela okudingekayo okunciphisa ukunciphisa idatha kanye nokusetshenziswa kwebhethri
+- Awudingi ikhamera ukuze ubuke umkhiqizo. Ungaphinda uthayiphe ibhakhodi uma ungenayo ikhamera noma unenkinga nayo.
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Ungasebenzisa uhlelo lokusebenza ngokungaziwa
+- Ungathumela umlando wakho wokuskena
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
@@ -51,4 +51,4 @@ Tomorrow, we will select the 3 most sucessful databases, and we will start colle
 
 Will it be trash cans, télécartes, or mobile phones database ? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Ngakho uma uthanda ama-t-shirts, ukupheka izincwadi, iphepha le-origami noma i-snow globe, qala ukukhipha ukuskena usebenzisa uhlelo lokusebenza lwe-Open Products Facts Android ku-Google Play
