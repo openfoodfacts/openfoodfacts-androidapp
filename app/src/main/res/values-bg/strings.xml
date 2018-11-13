@@ -466,10 +466,6 @@
     <string name="preference_header_network">Мрежа</string>
     <string name="preference_header_contributing">Допринасяне</string>
     <string name="not_support_books">Книгите понастоящем не се поддържат от Open Food Facts</string>
-    <string name="seconds_ago">seconds ago</string>
-    <string name="minutes_ago">minutes ago</string>
-    <string name="hours_ago">hours ago</string>
-    <string name="days_ago">days ago</string>
     <string name="scan_first_string">Историята на продукта ви ще бъде показана тук. \n Тази история е само за вас и се съхранява локално.</string>
     <string name="log_in">Вход</string>
     <string name="login_true">Вече сте влезли!</string>

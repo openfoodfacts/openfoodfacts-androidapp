@@ -466,10 +466,6 @@
     <string name="preference_header_network">Nätverk</string>
     <string name="preference_header_contributing">Bidrar</string>
     <string name="not_support_books">Böcker stöds inte för tillfället av Open Food Facts</string>
-    <string name="seconds_ago">sekunder sedan</string>
-    <string name="minutes_ago">minuter sedan</string>
-    <string name="hours_ago">timmar sedan</string>
-    <string name="days_ago">dagar sedan</string>
     <string name="scan_first_string">Din produkthistorik visas här.\nDen här historiken är ses bara av dig och lagras lokalt.</string>
     <string name="log_in">Användarnamn</string>
     <string name="login_true">Redan inloggad!</string>

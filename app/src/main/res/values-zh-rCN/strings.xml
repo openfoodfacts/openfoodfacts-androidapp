@@ -462,10 +462,6 @@
     <string name="preference_header_network">网络</string>
     <string name="preference_header_contributing">贡献</string>
     <string name="not_support_books">图书目前未被 Open Food Facts 支持</string>
-    <string name="seconds_ago">秒之前</string>
-    <string name="minutes_ago">分种之前</string>
-    <string name="hours_ago">小时之前</string>
-    <string name="days_ago">天之前</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">登录</string>
     <string name="login_true">已经登录！</string>

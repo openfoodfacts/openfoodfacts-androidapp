@@ -466,10 +466,6 @@
     <string name="preference_header_network">नेटवर्क</string>
     <string name="preference_header_contributing">योगदान</string>
     <string name="not_support_books">ओपन फ़ूड फैक्ट्स पर पुस्तकें उपलब्ध नहीं है</string>
-    <string name="seconds_ago">सेकण्ड्स पहले</string>
-    <string name="minutes_ago">मिनट्स पहले</string>
-    <string name="hours_ago">घंटे पहले</string>
-    <string name="days_ago">दिन पहले</string>
     <string name="scan_first_string">आपके द्वारा देखे गए उत्पाद यहाँ सूचीबद्ध हैं \n यह केवल आपके लिए है और फ़ोन में संग्रहीत है</string>
     <string name="log_in">लॉगिन</string>
     <string name="login_true">पहले से ही लॉगिन हैं!</string>

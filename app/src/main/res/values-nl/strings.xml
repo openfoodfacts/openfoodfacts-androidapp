@@ -466,10 +466,6 @@
     <string name="preference_header_network">Netwerk</string>
     <string name="preference_header_contributing">Bijdragen</string>
     <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Food Facts</string>
-    <string name="seconds_ago">seconden geleden</string>
-    <string name="minutes_ago">minuten geleden</string>
-    <string name="hours_ago">uur geleden</string>
-    <string name="days_ago">dagen geleden</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Inloggen</string>
     <string name="login_true">Already logged in!</string>

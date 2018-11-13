@@ -462,10 +462,6 @@
     <string name="preference_header_network">Jaringan</string>
     <string name="preference_header_contributing">Berkontribusi</string>
     <string name="not_support_books">Buku tidak didukung Open Food Facts saat ini</string>
-    <string name="seconds_ago">detik yang lalu</string>
-    <string name="minutes_ago">menit yang lalu</string>
-    <string name="hours_ago">jam yang lalu</string>
-    <string name="days_ago">hari yang lalu</string>
     <string name="scan_first_string">Riwayat produk Anda yang dilihat akan dicantumkan di sini. \ Nriwayat ini hanya dapat dilihat oleh Anda dan disimpan secara lokal.</string>
     <string name="log_in">Masuk</string>
     <string name="login_true">Sudah masuk!</string>

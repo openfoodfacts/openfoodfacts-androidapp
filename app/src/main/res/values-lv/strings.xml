@@ -470,10 +470,6 @@
     <string name="preference_header_network">Tīkls</string>
     <string name="preference_header_contributing">Ieguldījums</string>
     <string name="not_support_books">Open Food Facts pašlaik neatbalsta grāmatas</string>
-    <string name="seconds_ago">sekundes atpakaļ</string>
-    <string name="minutes_ago">pirms minūtēm</string>
-    <string name="hours_ago">stundas atpakaļ</string>
-    <string name="days_ago">dienas atpakaļ</string>
     <string name="scan_first_string">Šeit tiks parādīta jūsu skatīto produktu vēsture. Šī vēsture ir paredzēta tikai jūsu apskatei un tiek saglabāta lokāli.</string>
     <string name="log_in">Lietotājvārds</string>
     <string name="login_true">Jau esat ielogojies!</string>

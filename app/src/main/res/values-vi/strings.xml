@@ -462,10 +462,6 @@
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="not_support_books">Sách hiện không được hỗ trợ bởi Sự kiện Open Food Facts</string>
-    <string name="seconds_ago">giây trước</string>
-    <string name="minutes_ago">phút trước</string>
-    <string name="hours_ago">hours ago</string>
-    <string name="days_ago">days ago</string>
     <string name="scan_first_string">Lịch sử sản phẩm đã xem của bạn sẽ được liệt kê tại đây. \nLịch sử này chỉ dành cho mắt bạn và được lưu trữ cục bộ.</string>
     <string name="log_in">Login</string>
     <string name="login_true">Already logged in!</string>

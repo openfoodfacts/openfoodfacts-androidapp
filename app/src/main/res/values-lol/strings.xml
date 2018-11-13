@@ -466,10 +466,6 @@
     <string name="preference_header_network">crwdns99189:0crwdne99189:0</string>
     <string name="preference_header_contributing">crwdns99193:0crwdne99193:0</string>
     <string name="not_support_books">crwdns99195:0crwdne99195:0</string>
-    <string name="seconds_ago">crwdns99197:0crwdne99197:0</string>
-    <string name="minutes_ago">crwdns99199:0crwdne99199:0</string>
-    <string name="hours_ago">crwdns99201:0crwdne99201:0</string>
-    <string name="days_ago">crwdns99203:0crwdne99203:0</string>
     <string name="scan_first_string">crwdns99205:0crwdne99205:0</string>
     <string name="log_in">crwdns99207:0crwdne99207:0</string>
     <string name="login_true">crwdns99209:0crwdne99209:0</string>
