@@ -484,8 +484,6 @@
     <string name="preference_header_network">شبكة</string>
     <string name="preference_header_contributing">المساهمة</string>
     <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل \"حقائق الغذاء المفتوحة\"</string>
-    <string name="hours_ago">منذ ساعات مضت</string>
-    <string name="days_ago">منذ %d أيام</string>
     <string name="scan_first_string">سيتم سرد سجل المنتجات الذي تم عرضه سابقاً هنا. \n هذا السجل مخصص لك فقط ويتم تخزينه محليًا فى هاتفك الجوال.</string>
     <string name="log_in">تسجيل الدخول</string>
     <string name="login_true">مسجل مسبقاً!</string>

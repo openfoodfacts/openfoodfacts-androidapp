@@ -466,8 +466,6 @@
     <string name="preference_header_network">Netværk</string>
     <string name="preference_header_contributing">Bidrag</string>
     <string name="not_support_books">Bøger understøttes ikke pt. af Open Food Facts</string>
-    <string name="hours_ago">timer siden</string>
-    <string name="days_ago">dage siden</string>
     <string name="scan_first_string">Historik for viste produkter vil fremgå her.\nDet er din private historik, og den lagres kun lokalt.</string>
     <string name="log_in">Brugernavn</string>
     <string name="login_true">Allerede logget ind!</string>

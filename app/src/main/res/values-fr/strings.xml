@@ -466,8 +466,6 @@
     <string name="preference_header_network">Réseau</string>
     <string name="preference_header_contributing">Contribuer</string>
     <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Food Facts</string>
-    <string name="hours_ago">il y a %d heures</string>
-    <string name="days_ago">Il y a %d jours</string>
     <string name="scan_first_string">L\'historique des produits que vous avez consultés sera répertorié ici.\nCet historique est réservé à vos yeux et est stocké localement.</string>
     <string name="log_in">Connexion</string>
     <string name="login_true">Déjà connecté!</string>

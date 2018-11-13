@@ -466,8 +466,6 @@
     <string name="preference_header_network">Sarea</string>
     <string name="preference_header_contributing">Parte hartzea</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-    <string name="hours_ago">ordu duela</string>
-    <string name="days_ago">egun duela</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Erabiltzaile-izena</string>
     <string name="login_true">Saioa aurretik hasita dago!</string>

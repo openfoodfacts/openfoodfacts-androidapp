@@ -494,8 +494,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="preference_header_network">Połączenie</string>
     <string name="preference_header_contributing">Współpraca</string>
     <string name="not_support_books">Open Food Facts obecnie nie obsługuje książek</string>
-    <string name="hours_ago">godzin temu</string>
-    <string name="days_ago">dni temu</string>
     <string name="scan_first_string">Historia produktów, które przeglądałeś zostanie podana tutaj.\n Jest przechowywana lokalnie, tylko dla ciebie.</string>
     <string name="log_in">Logowanie</string>
     <string name="login_true">Już zalogowany!</string>

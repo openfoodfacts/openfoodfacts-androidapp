@@ -470,8 +470,6 @@
     <string name="preference_header_network">Rețea</string>
     <string name="preference_header_contributing">Contribuire</string>
     <string name="not_support_books">Cărțile momentan nu sunt suportate de către Open Food Facts</string>
-    <string name="hours_ago">ore în urmă</string>
-    <string name="days_ago">zile în urmă</string>
     <string name="scan_first_string">Istoricul produselor vizualizate va fi afișat aici.\nAcest istoric este doar pentru tine și este stocat doar local.</string>
     <string name="log_in">Conectați-vă</string>
     <string name="login_true">Ești deja conectat!</string>

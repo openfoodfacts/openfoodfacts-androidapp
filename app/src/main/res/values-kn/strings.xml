@@ -466,8 +466,6 @@
     <string name="preference_header_network">ನೆಟ್ವರ್ಕ್</string>
     <string name="preference_header_contributing">ಕೊಡುಗೆಗಳು</string>
     <string name="not_support_books">ಪುಸ್ತಕಗಳನ್ನು ಪ್ರಸ್ತುತ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ</string>
-    <string name="hours_ago">ಗಂಟೆಗಳ ಹಿಂದೆ</string>
-    <string name="days_ago">ದಿನಗಳ ಹಿಂದೆ</string>
     <string name="scan_first_string">ನಿಮ್ಮ ವೀಕ್ಷಿಸಿದ ಉತ್ಪನ್ನ ಇತಿಹಾಸವನ್ನು ಇಲ್ಲಿ ಪಟ್ಟಿ ಮಾಡಲಾಗುವುದು. \ N ಈ ಇತಿಹಾಸವು ನಿಮ್ಮ ಕಣ್ಣುಗಳಿಗೆ ಮಾತ್ರ ಮತ್ತು ಸ್ಥಳೀಯವಾಗಿ ಸಂಗ್ರಹಿಸಲ್ಪಡುತ್ತದೆ.</string>
     <string name="log_in">ಲಾಗಿನ್</string>
     <string name="login_true">ಈಗಾಗಲೇ ಲಾಗ್ ಇನ್ ಮಾಡಲಾಗಿದೆ!</string>

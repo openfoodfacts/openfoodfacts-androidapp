@@ -462,8 +462,6 @@
     <string name="preference_header_network">네트워크</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-    <string name="hours_ago">시간 전</string>
-    <string name="days_ago">일 전</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">로그인</string>
     <string name="login_true">이미 로그인했습니다!</string>
