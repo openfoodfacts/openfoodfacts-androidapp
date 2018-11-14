@@ -9,13 +9,13 @@ Coport 1 - Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
 Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
 
 Csoport 2
-2. csoport - feldolgozott összetevők
+Csoport 2 - Feldolgozott összetevők
 Feldolgozott összetevők
 
 Csoport 3
-3. csoport - Feldolgozott élelmiszerek
+Csoport 3 - Feldolgozott élelmiszerek
 Feldolgozott élelmiszerek
 
 Csoport 4
-4. csoport - Többszörössen-feldolgozott élelmiszer- és italtermékek
+Csoport 4 - Teljesen feldolgozott élelmiszer- és italtermékek
 Többszörösen feldolgozott élelmiszerek és italok
