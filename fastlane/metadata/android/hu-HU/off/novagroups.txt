@@ -5,7 +5,7 @@ Nova csoportok
 Nova csoport:
 
 1. csoport
-1. csoport - feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
+Coport 1 - Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
 Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
 
 Csoport 2
