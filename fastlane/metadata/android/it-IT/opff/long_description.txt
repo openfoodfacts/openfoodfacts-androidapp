@@ -1,4 +1,4 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Scansiona prodotti alimentari per animali o i loro codici a barre per ottenere dati su ingredienti, additivi e valori nutrizionali.
 
 L'app consente di vedere gli oltre 600 alimenti per animali già contenuti nel database libero e aperto di Open Pet Food Facts e di aggiungere foto e dati per i prodotti mancanti.
 
@@ -16,9 +16,9 @@ Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfac
 
 Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
 - l'elenco degli ingredienti (compreso il contenuto di ceneri)
-- nutritional info, nutrition traffic lights…
+- informazioni nutrizionali, semafori nutrizionali…
 - marche, allergeni, etichette (biologico, vegano...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- Funziona con cibo per cani (cibo per cani secco ed umido), cibo per gatti, cibo per conigli, cibo per serpenti, cibo per pesci, cibo per uccelli, cibo per cavalli o ogni alimento per il tuo animale preferito.
 
 *** Funziona bene in qualsiasi condizione ***
 - Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
