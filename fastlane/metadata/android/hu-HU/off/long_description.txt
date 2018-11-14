@@ -7,14 +7,14 @@ Az Open Food Facts program felfedezéséhez, kérjük, látogasson el a https://
 
 ***Hozzájárulás az Élelmiszer Átláthatósághoz***
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your food cupboard. 
+- Az Open Food Facts egy élelmiszeripari adatbázis, bárki szerkesztheti, mindenki használhatja.
+- Használhatja azt, hogy jobb élelmiszer-választásokat tegyen, és mivel nyílt adatok, bárki újra felhasználhatja bármilyen célra.
+- Az Open Beauty Facts egy nonprofit projekt, amelyet több ezer önkéntes fejlesztett ki a világ minden tájáról. Rengeteg izgalmas projektünk van, amelyekkel sokféleképpen járulhat hozzá. 
+- Elkezdheti hozzájárulni ma, ha hozzáad egy terméket a kamrából 
 
 *** Kapja meg a Tényeket ***
 - Az Open Food Facts segít önnek a termékek cimkéin található apróbetűs rész értelmezésében. Megtudhatja még (a termékeken feltüntetett jelölések szerint):
-- szénlábnyom (szén-dioxid-kibocsátás) és csomagolás (valamint újrahasznosítási utasítások),
+- Ökológiai lábnyom (szén-dioxid-kibocsátás) és csomagolás (valamint újrahasznosítási utasítások),
 - Nutriscore (táplálkozási pontszám), tápanyagok, zsír / zsírtartalom, telített zsírsavak, szénhidrátok, cukrok, rost, fehérje, só és nátrium.
 - márkanevek, allergének, címkék (bio, gluténmentes, vegán, vegetáriánus, halal, kóser ...), nyomon követhetőségi információk (csomagolási kódok, összetevők eredete)
 - A borok és sörök esetén az alkoholtartalom megtalálható.
