@@ -16,11 +16,11 @@
     <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
     <string name="slide_1_title">Sustatu maskoten elikagaien gardentasuna</string>
     <string name="slide_1_desc">Eskaneatu produktuak, atera argazkiak, lortu maskota janarien gardentasuna</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Keep track of the product you use</string>
+    <string name="slide_2_title">Lortu datuak</string>
+    <string name="slide_2_desc">Eskaneatu duzun produktuari buruzko informazio zabala, zuretzat deszifratuta</string>
+    <string name="slide_3_title">Jarraitu erabiltzen duzun produktua</string>
     <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
-    <string name="slide_4_title">Works offline</string>
+    <string name="slide_4_title">Lineaz kanpo funtzionatzen du</string>
     <string name="slide_4_desc">Produktu berriak gehi ditzakezu, momentuan Interneterako konexioa ez baduzu ere</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
