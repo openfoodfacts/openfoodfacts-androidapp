@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -339,12 +340,20 @@ public class OpenFoodAPIClient {
     public void postImg(final Context context, final ProductImage image) {
      /**  final LoadToast lt = new LoadToast(context);
         lt.show();**/
-
+        Dialog dialog;
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
+                .title(R.string.toastSending)
+                .content(R.string.please_wait)
+                .cancelable(false)
+                .progress(true, 0);
+        dialog = builder.build();
+        dialog.show();
         apiService.saveImage(getUploadableMap(image, context))
                 .enqueue(new Callback<JsonNode>() {
                     @Override
                     public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
                         Log.d("onResponse", response.toString());
+                        dialog.dismiss();
                         if (!response.isSuccessful()) {
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);
@@ -368,6 +377,7 @@ public class OpenFoodAPIClient {
                     @Override
                     public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
                         Log.d("onResponse", t.toString());
+                        dialog.dismiss();
                         ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                         mToUploadProductDao.insertOrReplace(product);
                         Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
