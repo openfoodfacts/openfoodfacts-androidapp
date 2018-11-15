@@ -554,17 +554,10 @@ public class OpenFoodAPIClient {
         apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onBrandCallback.onBrandResponse(false, null);
-                    return;
-                }
-
-                if (Integer.valueOf(response.body().getCount()) == 0) {
-                    onBrandCallback.onBrandResponse(false, null);
-                } else {
+                if (response.isSuccessful()) {
                     onBrandCallback.onBrandResponse(true, response.body());
+                } else {
+                    onBrandCallback.onBrandResponse(false, null);
                 }
             }
 
@@ -576,23 +569,15 @@ public class OpenFoodAPIClient {
 
     }
 
-
     public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
 
         apiService.getProductByPackaging(packaging, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onPackagingCallback.onPackagingResponse(false, null);
-                    return;
-                }
-
-                if (Integer.valueOf(response.body().getCount()) == 0) {
-                    onPackagingCallback.onPackagingResponse(false, null);
-                } else {
+                if (response.isSuccessful()) {
                     onPackagingCallback.onPackagingResponse(true, response.body());
+                } else {
+                    onPackagingCallback.onPackagingResponse(false, null);
                 }
             }
 
@@ -604,9 +589,7 @@ public class OpenFoodAPIClient {
 
     }
 
-
     public void syncOldHistory() {
-//        Log.d("syncOldHistory", "task ");
         new SyncOldHistoryTask().execute();
     }
 
@@ -661,17 +644,10 @@ public class OpenFoodAPIClient {
         apiService.getProductByStores(store, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onStoreCallback.onStoreResponse(false, null);
-                    return;
-                }
-
-                if (Integer.valueOf(response.body().getCount()) == 0) {
-                    onStoreCallback.onStoreResponse(false, null);
-                } else {
+                if (response.isSuccessful()) {
                     onStoreCallback.onStoreResponse(true, response.body());
+                } else {
+                    onStoreCallback.onStoreResponse(false, null);
                 }
             }
 
@@ -689,22 +665,11 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onCountryCallback.onCountryResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onCountryCallback.onCountryResponse(false, null);
-                    } else {
-                        onCountryCallback.onCountryResponse(true, response.body());
-                    }
+                    onCountryCallback.onCountryResponse(true, response.body());
+                } else {
+                    onCountryCallback.onCountryResponse(false, null);
                 }
-
-
             }
 
             @Override
@@ -722,15 +687,10 @@ public class OpenFoodAPIClient {
         apiService.getProductsByAdditive(additive, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (!response.isSuccessful()) {
-                    onAdditiveCallback.onAdditiveResponse(false, null);
-                    return;
-                }
-
-                if (Integer.valueOf(response.body().getCount()) == 0) {
-                    onAdditiveCallback.onAdditiveResponse(false, null);
-                } else {
+                if (response.isSuccessful()) {
                     onAdditiveCallback.onAdditiveResponse(true, response.body());
+                } else {
+                    onAdditiveCallback.onAdditiveResponse(false, null);
                 }
             }
 
@@ -746,15 +706,10 @@ public class OpenFoodAPIClient {
         apiService.getProductsByAllergen(allergen, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
-                if (!response.isSuccessful()) {
-                    onAllergensCallback.onAllergensResponse(false, null);
-                    return;
-                }
-
-                if (Integer.valueOf(response.body().getCount()) == 0) {
-                    onAllergensCallback.onAllergensResponse(false, null);
-                } else {
+                if (response.isSuccessful()) {
                     onAllergensCallback.onAllergensResponse(true, response.body());
+                } else {
+                    onAllergensCallback.onAllergensResponse(false, null);
                 }
             }
 
@@ -769,29 +724,16 @@ public class OpenFoodAPIClient {
         apiService.getProductByLabel(label, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-                if (!response.isSuccessful()) {
-                    onLabelCallback.onLabelResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onLabelCallback.onLabelResponse(false, null);
-                    } else {
-                        onLabelCallback.onLabelResponse(true, response.body());
-                    }
+                    onLabelCallback.onLabelResponse(true, response.body());
+                } else {
+                    onLabelCallback.onLabelResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onLabelCallback.onLabelResponse(false, null);
-
             }
         });
     }
@@ -801,25 +743,16 @@ public class OpenFoodAPIClient {
         apiService.getProductByCategory(category, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onCategoryCallback.onCategoryResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
                     onCategoryCallback.onCategoryResponse(true, response.body());
+                } else {
+                    onCategoryCallback.onCategoryResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onCategoryCallback.onCategoryResponse(false, null);
-
             }
         });
     }
@@ -829,31 +762,16 @@ public class OpenFoodAPIClient {
         apiService.searchProductsByContributor(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onContributorCallback.onContributorResponse(false, null);
-
             }
         });
     }
@@ -866,25 +784,15 @@ public class OpenFoodAPIClient {
         apiService.getIncompleteProducts(page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
-                if (!response.isSuccessful()) {
-                    onIncompleteCallback.onIncompleteResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onIncompleteCallback.onIncompleteResponse(false, null);
-                        return;
-                    } else {
-                        onIncompleteCallback.onIncompleteResponse(true, response.body());
-                    }
+                    onIncompleteCallback.onIncompleteResponse(true, response.body());
+                } else {
+                    onIncompleteCallback.onIncompleteResponse(false, null);
                 }
             }
 
             @Override
             public void onFailure(Call<Search> call, Throwable t) {
-
                 onIncompleteCallback.onIncompleteResponse(false, null);
             }
         });
@@ -894,31 +802,16 @@ public class OpenFoodAPIClient {
         apiService.getToBeCompletedProductsByContributor(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onContributorCallback.onContributorResponse(false, null);
-
             }
         });
     }
@@ -927,31 +820,16 @@ public class OpenFoodAPIClient {
         apiService.getPicturesContributedProducts(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onContributorCallback.onContributorResponse(false, null);
-
             }
         });
     }
@@ -960,31 +838,16 @@ public class OpenFoodAPIClient {
         apiService.getPicturesContributedIncompleteProducts(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onContributorCallback.onContributorResponse(false, null);
-
             }
         });
     }
@@ -993,31 +856,16 @@ public class OpenFoodAPIClient {
         apiService.getInfoAddedProducts(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onContributorCallback.onContributorResponse(false, null);
-
             }
         });
     }
@@ -1026,31 +874,16 @@ public class OpenFoodAPIClient {
         apiService.getInfoAddedIncompleteProducts(contributor, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onContributorCallback.onContributorResponse(false, null);
-                        return;
-                    } else {
-                        onContributorCallback.onContributorResponse(true, response.body());
-                    }
+                    onContributorCallback.onContributorResponse(true, response.body());
+                } else {
+                    onContributorCallback.onContributorResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onContributorCallback.onContributorResponse(false, null);
-
             }
         });
     }
@@ -1064,31 +897,16 @@ public class OpenFoodAPIClient {
         apiService.getProductsByState(state, page).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-
-
-                if (!response.isSuccessful()) {
-                    onStateCallback.onStateResponse(false, null);
-                    return;
-                }
-
                 if (response.isSuccessful()) {
-
-                    if (Integer.valueOf(response.body().getCount()) == 0) {
-                        onStateCallback.onStateResponse(false, null);
-                        return;
-                    } else {
-                        onStateCallback.onStateResponse(true, response.body());
-                    }
+                    onStateCallback.onStateResponse(true, response.body());
+                } else {
+                    onStateCallback.onStateResponse(false, null);
                 }
-
-
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
                 onStateCallback.onStateResponse(false, null);
-
             }
         });
     }
