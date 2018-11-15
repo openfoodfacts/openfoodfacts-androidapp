@@ -345,6 +345,16 @@
     <string name="txt_no_results">No s\'han trobat resultats</string>
     <string name="txt_extend_search">Intenteu ampliar la cerca o afegir el producte</string>
     <string name="txt_no_matching__category_products">Oh no! No tenim cap producte d\'aquesta categoria, podeu afegir-ne un?</string>
+    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
+    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
+    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
+    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
+    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
+    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
+    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
+    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
+    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">No hem trobat cap producte que coincideixi. \nPodeu provar:</string>
     <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-lo i afegiu-lo a Open Food Facts</string>
     <string name="txt_cant_load_search_results">No es poden carregar els resultats de cerca</string>
