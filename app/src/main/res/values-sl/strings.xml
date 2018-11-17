@@ -31,8 +31,8 @@
     <string name="contribute">Kako prispevati</string>
     <string name="action_find">Poišči</string>
     <string name="text_barcode">Vnesite črtno kodo :</string>
-    <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
-    <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+    <string name="message_in_activity_save_product_offline">Za pošiljanje novega izdelka je obvezno le ena fotografija.</string>
+    <string name="product_incomplete_message">Ta izdelek ni popoln. Zaradi tega ni moče preveriti vsebnost alergenov.</string>
     <string name="no_offline_data">Pripravljeni ste</string>
     <string name="first_offline">Tukaj bodo prikazani izdelki, ki so bili dodani brez povezave</string>
     <!-- Image Upload -->
@@ -119,7 +119,7 @@
         <item>Selen</item>
         <item>Serum proteins</item>
         <item>Silikat</item>
-        <item>Starch</item>
+        <item>Škrob</item>
         <item>Stearic acid (18:0)</item>
         <item>Saharoza</item>
         <item>Tavrin</item>
@@ -212,7 +212,7 @@
     <string name="txtSendAll">Naložite vse</string>
     <string name="txtNoData">Ni podatkov</string>
     <string name="txtPictureNeeded">Wait…</string>
-    <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+    <string name="txtPictureNeededDialogContent">Preden pošljete ta izdelek, morate dodati vsaj eno sliko</string>
     <string name="txtPictureNeededDialogYes">Stay</string>
     <string name="txtPictureNeededDialogNo">Zavrzi</string>
     <string name="toastSending">Nalaganje…</string>
@@ -259,7 +259,7 @@
     <string name="auto_focus_off">Samodejno ostrenje [OFF]</string>
     <string name="formats">Formats</string>
     <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">Izbira kamere</string>
     <string name="ok_button">V redu</string>
     <string name="cancel_button">Prekliči</string>
     <string name="login_button">Prijava</string>
@@ -352,9 +352,19 @@
     <string name="number_of_products">Število izdelkov: </string>
     <string name="txt_no_results">Ni zadetkov</string>
     <string name="txt_extend_search">Poskusite razširiti iskanje ali dodati izdelek</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="txt_no_matching__category_products">Oh ne, v tej kategoriji ni nobenega izdelka, ali ga lahko dodate?</string>
+    <string name="txt_no_matching_allergen_products">Oh ne, ni izdelkov s tem alergenom, ali lahko dodate enega?</string>
+    <string name="txt_no_matching_label_products">Oh, ne, ni izdelkov s to oznako, ali lahko dodate enega?</string>
+    <string name="txt_no_matching_additive_products">Oh ne, ni izdelkov s tem dodatkom, ali lahko dodate enega?</string>
+    <string name="txt_no_matching_country_products">Oh ne, ni izdelkov iz te države, ali lahko dodate enega?</string>
+    <string name="txt_no_matching_store_products">Oh, ne, ni izdelkov iz te trgovine, ali lahko dodate enega?</string>
+    <string name="txt_no_matching_packaging_products">Oh, ne, ni nobenega izdelka s to embalažo, ali lahko dodate enega?</string>
+    <string name="txt_no_matching_brand_products">Oh ne, ni nobenih izdelkov s to blagovno znamko, ali lahko dodate enega?</string>
+    <string name="txt_no_matching_state_products">Oh ne, ni izdelkov iz te države, ali lahko dodate enega?</string>
+    <string name="txt_no_matching_incomplete_products">Ni nepopolnih izdelkov! Dodam nov izdelek?</string>
+    <string name="txt_no_matching_contributor_products">Oh, ne, ni izdelkov tega sodelavca, ali ga lahko dodate?</string>
+    <string name="txt_no_matching_products">Nismo našli ustreznih izdelkov. \nLahko poizkusite :</string>
+    <string name="txt_broaden_search">- razširitev iskanja \n- optično preberi in jo dodaj v Open Food Facts</string>
     <string name="txt_cant_load_search_results">Rezultatov iskanja ni mogoče naložiti</string>
     <string name="something_went_wrong">Sorry, something went wrong…</string>
     <string name="txt_try_again">Poskusi znova</string>
@@ -540,37 +550,37 @@
     <string name="do_you_want_to">Želite dodati fotografije tej črtni kodi?</string>
     <string name="bottomNav_history">Zgodovina</string>
     <string name="bottomNav_search">Iskanje</string>
-    <string name="products_added">Products you added or edited</string>
-    <string name="products_incomplete">Products you added that need to be completed</string>
-    <string name="product_pictures_contributed">Products you took pictures for</string>
-    <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-    <string name="product_info_added">Products you added information for</string>
-    <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+    <string name="products_added">Izdelki, ki ste jih dodali ali uredili</string>
+    <string name="products_incomplete">Izdelki, ki ste jih dodali in jih je potrebno dokončati</string>
+    <string name="product_pictures_contributed">Izdelki, za katere ste posneli slike</string>
+    <string name="picture_contributed_incomplete">Izdelki, za katere ste posneli slike in jih je potrebno dokončati</string>
+    <string name="product_info_added">Izdelki, za katere ste prispevali informacije</string>
+    <string name="product_info_tocomplete">Izdelki, za katere ste prispevali informacije in jih je potrebno dokončati</string>
     <string name="show_by">Pokaži</string>
-    <string name="notify_title">Export complete</string>
-    <string name="notify_content">Click to view exported products</string>
-    <string name="notification_channel_name">Export Notifications</string>
-    <string name="notify_channel_description">Notification to show exported file\'s location</string>
-    <string name="products_to_be_completed">Products to be completed</string>
-    <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
-    <string name="offline_notification_title">Offline contributions you need to send</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
-    <string name="other_editors">Product page also edited by </string>
+    <string name="notify_title">Izvoz končan</string>
+    <string name="notify_content">Kliknite, če si želite ogledati izvožene izdelke</string>
+    <string name="notification_channel_name">Obvestilo pri izvozu</string>
+    <string name="notify_channel_description">Obvestilo, da prikažete lokacijo izvožene datoteke</string>
+    <string name="products_to_be_completed">Izdelki, ki jih je potrebno dokončati</string>
+    <string name="modified_history">Izdelek je dodan %1$s ob %2$s od %3$s. Zadnja sprememba strani izdelka je %4$s ob %5$s od %6$s. Stran izdelka je urejal tudi %7$s</string>
+    <string name="offline_notification_title">Prispevki brez povezave, ki jih morate poslati</string>
+    <string name="creator_history">Izdelek je dodan %1$s ob %2$s od</string>
+    <string name="last_editor_history">Zadnja sprememba strani izdelka %1$s ob %2$s CEST od </string>
+    <string name="other_editors">Stran izdelka, je urejal tudi </string>
     <string name="contribution_tab">Prispevki</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
     <string name="product">Uredi</string>
     <string name="txtDialogsTitle">Informacije</string>
-    <string name="preference_show_all_product_photos_title">Show all product photos</string>
-    <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
-    <string name="offline_product_addition_title">Add a new product</string>
-    <string name="productNameNull">Name unknown</string>
-    <string name="productBrandNull">Brand unknown</string>
-    <string name="productQuantityNull">Quantity unknown</string>
-    <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
-    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="preference_show_all_product_photos_title">Prikaži vse fotografije izdelka</string>
+    <string name="preference_show_all_product_photos_summary">Pokaže vse poslane fotografije izdelka v ločenem zavihku</string>
+    <string name="offline_product_addition_title">Dodaj nov izdelek</string>
+    <string name="productNameNull">Neznano ime</string>
+    <string name="productBrandNull">Neznana blagovna znamka</string>
+    <string name="productQuantityNull">Količina ni znana</string>
+    <string name="product_not_complete">Ta izdelek še ni dokončan. \nLahko dodate nekaj podrobnosti?</string>
+    <string name="addProductOffline">Zdi se, da ste brez povezave. Dodam izdelek %s v načinu brez povezave?</string>
+    <string name="product_not_found">Skeniran izdelek %1$s še ne obstaja v Open Food Facts. Ga lahko dodate?</string>
     <string name="scan_sound">Zvok pri skeniranju</string>
     <string name="trouble_scanning">Težave pri skeniranju?</string>
     <string name="barcode_hint">Težave pri skeniranju? Vnesite črtno kodo</string>
