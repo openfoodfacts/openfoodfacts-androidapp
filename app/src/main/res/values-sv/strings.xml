@@ -345,6 +345,16 @@
     <string name="txt_no_results">Inga resultat hittades</string>
     <string name="txt_extend_search">Prova att bredda din sökning eller lägga till produkten</string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
+    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
+    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
+    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
+    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
+    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
+    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
+    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
+    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
+    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">Vi har inte hittat några matchande produkter.\nDu kan pröva:</string>
     <string name="txt_broaden_search">- att bredda din sökning \n- att skanna och lägga till den i Open Food Facts</string>
     <string name="txt_cant_load_search_results">Kan inte ladda sökresultat</string>
