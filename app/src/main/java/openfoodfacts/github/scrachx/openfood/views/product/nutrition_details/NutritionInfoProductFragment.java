@@ -183,8 +183,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
         if (energy != null) {
             nutrimentItems.add(
                     new NutrimentItem(getString(R.string.nutrition_energy_short_name),
-                            Utils.getEnergy(energy.getFor100g()),
-                            Utils.getEnergy(energy.getForServing()),
+                            Utils.getEnergy(energy.getFor100gInUnits()),
+                            Utils.getEnergy(energy.getForServingInUnits()),
                             "kcal",
                             nutriments.getModifier(ENERGY)));
         }
@@ -194,8 +194,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
         if (fat != null) {
             String modifier = nutriments.getModifier(FAT);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat),
-                    fat.getFor100g(),
-                    fat.getForServing(),
+                    fat.getFor100gInUnits(),
+                    fat.getForServingInUnits(),
                     fat.getUnit(),
                     modifier == null ? "" : modifier));
 
@@ -207,8 +207,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
         if (carbohydrates != null) {
             String modifier = nutriments.getModifier(CARBOHYDRATES);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_carbohydrate),
-                    carbohydrates.getFor100g(),
-                    carbohydrates.getForServing(),
+                    carbohydrates.getFor100gInUnits(),
+                    carbohydrates.getForServingInUnits(),
                     carbohydrates.getUnit(),
                     modifier == null ? "" : modifier));
 
@@ -223,8 +223,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
         if (proteins != null) {
             String modifier = nutriments.getModifier(PROTEINS);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_proteins),
-                    proteins.getFor100g(),
-                    proteins.getForServing(),
+                    proteins.getFor100gInUnits(),
+                    proteins.getForServingInUnits(),
                     proteins.getUnit(),
                     modifier == null ? "" : modifier));
 
@@ -262,8 +262,8 @@ public class NutritionInfoProductFragment extends BaseFragment {
             Nutriment nutriment = nutriments.get(entry.getKey());
             if (nutriment != null) {
                 items.add(new NutrimentItem(getString(entry.getValue()),
-                        nutriment.getFor100g(),
-                        nutriment.getForServing(),
+                        nutriment.getFor100gInUnits(),
+                        nutriment.getForServingInUnits(),
                         entry.getValue().equals(R.string.ph) ? "" : nutriment.getUnit(),
                         nutriments.getModifier(entry.getKey())));
             }
