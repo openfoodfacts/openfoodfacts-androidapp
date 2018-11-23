@@ -1,45 +1,45 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+Aquestes són les etiquetes que es mostren a sobre de les captures de pantalla a la playstore. Manteniu-les curtes i atractives.
+No canvieu el nom del fitxer.
 ---
 scan_en.png
-Scan products
+Escanegeu productes
 
 quickview_en.png
-Get the Nutriscore
+Obteniu la Puntuació Nutricional
 
 history_en.png
-Your full scan history, fully private & exportable
+El vostre historial complet d'escaneig, totalment privat i exportable
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Aneu més enllà amb Viquipèdia
 
 allergen_alert_en.png
-Set allergen alerts
+Establiu alertes sobre al·lèrgens
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Nutrició simplificada
 
 product_view_allergen_alert_en.png
-Allergen alert
+Alerta d'al·lèrgens
 
 categories_en.png
-Get alternatives for your favorite foods
+Obteniu alternatives per als vostres aliments preferits
 
 foodtransparency_en.png
-Become an actor of food transparency
+Convertiu-vos en actor de la transparència alimentària
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Viquipèdia per als aliments
+Viquipèdia per a cosmètics
+Viquipèdia per al menjar per a mascotes
+Viquipèdia de Productes
 
 product_view_ingredients_en.png
 Ingredients
 
 menu_en.png
-Powerful
+Potent
 
 product_view_nutrition_table_en.png
 Informació nutricional
