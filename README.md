@@ -1,6 +1,6 @@
 Open Food Facts - the Android application
 ===================================
-[![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
+[![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp)
 [![Stories in Ready](https://badge.waffle.io/openfoodfacts/openfoodfacts-androidapp.svg?label=ready&title=Ready)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Average time to resolve an issue")
@@ -18,7 +18,7 @@ Open Food Facts is a database of food products with ingredients, allergens, nutr
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-8000+ contributors like you have added 500 000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+8000+ contributors like you have added 700 000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
@@ -97,7 +97,7 @@ Here's a few list of bugs:
 - Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
 - Priority: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority
 
-If you don't have time to contribute code, you're very welcome to scan new products, or make a donation to [_help pay for the hosting and general costs_](https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en) 
+If you don't have time to contribute code, you're very welcome to scan new products, or make a donation to [_help pay for the hosting and general costs_](https://donate.openfoodfacts.org) 
 
 ## Copyright and License
 
