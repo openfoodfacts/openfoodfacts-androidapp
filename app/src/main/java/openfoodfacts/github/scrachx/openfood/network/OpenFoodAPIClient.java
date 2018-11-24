@@ -22,6 +22,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
@@ -202,17 +203,17 @@ public class OpenFoodAPIClient {
         String imguploadFront = product.getImgupload_front();
         if (StringUtils.isNotEmpty(imguploadFront)) {
             ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-            postImg(activity, image);
+            postImg(activity, image,null);
         }
 
         String imguploadIngredients = product.getImgupload_ingredients();
         if (StringUtils.isNotEmpty(imguploadIngredients)) {
-            postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
+            postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)),null);
         }
 
         String imguploadNutrition = product.getImgupload_nutrition();
         if (StringUtils.isNotBlank(imguploadNutrition)) {
-            postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
+            postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)),null);
         }
 
         //lt.success();
@@ -337,33 +338,30 @@ public class OpenFoodAPIClient {
 
     }
 
-    public void postImg(final Context context, final ProductImage image) {
+    public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
      /**  final LoadToast lt = new LoadToast(context);
         lt.show();**/
-        Dialog dialog;
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
-                .title(R.string.toastSending)
-                .content(R.string.please_wait)
-                .cancelable(false)
-                .progress(true, 0);
-        dialog = builder.build();
-        dialog.show();
         apiService.saveImage(getUploadableMap(image, context))
                 .enqueue(new Callback<JsonNode>() {
                     @Override
                     public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
                         Log.d("onResponse", response.toString());
-                        dialog.dismiss();
                         if (!response.isSuccessful()) {
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);
                             Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                            if(imageUploadListener !=null){
+                                imageUploadListener.onFailure(response.toString());
+                            }
                             //lt.error();
                             return;
                         }
 
                         JsonNode body = response.body();
                         Log.d("onResponse", body.toString());
+                        if(imageUploadListener !=null){
+                            imageUploadListener.onSuccess();
+                        }
                         if (!body.isObject()) {
                             //lt.error();
                         } else if (body.get("status").asText().contains("status not ok")) {
@@ -377,7 +375,9 @@ public class OpenFoodAPIClient {
                     @Override
                     public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
                         Log.d("onResponse", t.toString());
-                        dialog.dismiss();
+                        if(imageUploadListener !=null){
+                            imageUploadListener.onFailure(context.getString(R.string.uploadLater));
+                        }
                         ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                         mToUploadProductDao.insertOrReplace(product);
                         Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
@@ -1116,17 +1116,17 @@ public class OpenFoodAPIClient {
         String imguploadFront = product.getImgupload_front();
         if (StringUtils.isNotEmpty(imguploadFront)) {
             ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-            postImg(context, image);
+            postImg(context, image,null);
         }
 
         String imguploadIngredients = product.getImgupload_ingredients();
         if (StringUtils.isNotEmpty(imguploadIngredients)) {
-            postImg(context, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
+            postImg(context, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)),null);
         }
 
         String imguploadNutrition = product.getImgupload_nutrition();
         if (StringUtils.isNotBlank(imguploadNutrition)) {
-            postImg(context, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
+            postImg(context, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)),null);
         }
 
 

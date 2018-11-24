@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,7 +30,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -45,6 +48,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -63,6 +67,7 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -89,7 +94,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View {
+public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
 
     @BindView(R.id.product_incomplete_warning_view_container)
     CardView productIncompleteView;
@@ -125,6 +130,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView mImageFront;
     @BindView(R.id.addPhotoLabel)
     TextView addPhotoLabel;
+    @BindView(R.id.uploading_image_progress)
+    ProgressBar uploading_image_progress;
+    @BindView(R.id.uploading_image_progress_text)
+    TextView uploading_image_progress_text;
     @BindView(R.id.buttonMorePictures)
     Button addMorePicture;
     @BindView(R.id.imageGrade)
@@ -149,6 +158,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
+    private Activity activity;
 
     @Override
     public void onAttach(Context context) {
@@ -708,7 +718,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        api.postImg(getContext(), image);
+        api.postImg(getContext(), image,this);
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
@@ -731,7 +741,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 } else {
                     ProductImage image = new ProductImage(barcode, OTHER, new File(resultUri.getPath()));
                     image.setFilePath(resultUri.getPath());
-                    api.postImg(getContext(), image);
+                    showOtherImageProgress();
+                    api.postImg(getContext(), image,this);
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
@@ -793,5 +804,25 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onDestroyView() {
         presenter.dispose();
         super.onDestroyView();
+    }
+
+    public void showOtherImageProgress() {
+        uploading_image_progress.setVisibility(View.VISIBLE);
+        uploading_image_progress_text.setVisibility(View.VISIBLE);
+        uploading_image_progress_text.setText(R.string.toastSending);
+    }
+
+    @Override
+    public void onSuccess() {
+        uploading_image_progress.setVisibility(View.GONE);
+        uploading_image_progress_text.setText(R.string.image_uploaded_successfully);
+
+    }
+
+    @Override
+    public void onFailure(String message) {
+        uploading_image_progress.setVisibility(View.GONE);
+        uploading_image_progress_text.setVisibility(View.GONE);
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 }
