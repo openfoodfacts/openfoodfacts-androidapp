@@ -60,33 +60,25 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/descriptionContainer"
+            <TextView
+                android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/titleContainer"
                 android:layout_margin="@dimen/spacing_tiny"
                 android:background="@color/grey_50"
-                android:gravity="center_vertical"
-                android:padding="@dimen/spacing_small">
-
-
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/description_activity_product"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/font_normal"/>
-            </LinearLayout>
+                android:gravity="center"
+                android:padding="@dimen/spacing_small"
+                android:text="@string/description_activity_product"
+                android:textAlignment="center"
+                android:textSize="@dimen/font_normal"/>
 
             <include
                 android:id="@+id/exposureEvalTable"
                 layout="@layout/exposure_eval_table"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/descriptionContainer"
+                android:layout_below="@+id/description"
                 android:visibility="gone"/>
 
             <LinearLayout

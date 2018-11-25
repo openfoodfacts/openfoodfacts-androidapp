@@ -478,11 +478,10 @@ doesn't have calories information in nutrition facts.
 	}
 
 	private void showBottomSheet(JSONObject result, Long id, String name,
-			String wikidataId, String searchType, String fragmentTag) {
+								 String wikidataId, String searchType, String fragmentTag) {
 		try {
-			String jsonObjectStr = result.getJSONObject("entities")
-					.getJSONObject(wikidataId)
-					.toString();
+			String jsonObjectStr = (result != null) ? result.getJSONObject("entities")
+					.getJSONObject(wikidataId).toString() : null;
 			ProductAttributeDetailsFragment fragment =
 					ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
 			fragment.show(getSupportFragmentManager(), fragmentTag);

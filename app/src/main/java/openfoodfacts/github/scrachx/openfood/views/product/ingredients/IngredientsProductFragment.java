@@ -32,11 +32,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.DietIngredientsProductFragment;
@@ -54,7 +57,9 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+
 import org.json.JSONObject;
+
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -175,7 +180,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         super.refreshView(state);
         mState = state;
 
-        if(getArguments()!=null){
+        if (getArguments() != null) {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         }
 
@@ -325,7 +330,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
     }
 
-
     private CharSequence getAdditiveTag(AdditiveName additive) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
 
@@ -333,13 +337,16 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             @Override
             public void onClick(View view) {
                 if (additive.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), new WikidataApiClient.OnWikiResponse() {
-                        @Override
-                        public void onresponse(boolean value, JSONObject result) {
-                            if (value) {
-                                ProductActivity productActivity = (ProductActivity) getActivity();
+                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
+                        ProductActivity productActivity = (ProductActivity) getActivity();
+                        if (value) {
+                            if (productActivity != null && !productActivity.isFinishing()) {
+                                productActivity.showBottomScreen(result, additive);
+                            }
+                        } else {
+                            if (additive.hasOverexposureData()) {
                                 if (productActivity != null && !productActivity.isFinishing()) {
-                                    productActivity.showBottomScreen(result, additive);
+                                    productActivity.showBottomScreen(null, additive);
                                 }
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
@@ -347,41 +354,44 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                         }
                     });
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
+                    ProductActivity productActivity = (ProductActivity) getActivity();
+                    if (additive.hasOverexposureData()) {
+                        if (productActivity != null && !productActivity.isFinishing()) {
+                            productActivity.showBottomScreen(null, additive);
+                        }
+                    } else {
+                        ProductBrowsingListActivity.startActivity(getContext(), additive.getName(), SearchType.ADDITIVE);
+                    }
                 }
             }
         };
 
-        spannableStringBuilder.append( additive.getName() );
-        spannableStringBuilder.setSpan( clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
+        spannableStringBuilder.append(additive.getName());
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
 
         // if the additive has an overexposure risk ("high" or "moderate") then append the warning message to it
-        if( additive.getOverexposureRisk() != null && !"no".equalsIgnoreCase( additive.getOverexposureRisk() ) )
-        {
-            boolean isHighRisk = "high".equalsIgnoreCase( additive.getOverexposureRisk() );
+        if (additive.hasOverexposureData()) {
+            boolean isHighRisk = "high".equalsIgnoreCase(additive.getOverexposureRisk());
             Drawable riskIcon;
             String riskWarningStr;
             int riskWarningColor;
-            if( isHighRisk )
-            {
-                riskIcon = ContextCompat.getDrawable( getContext(), R.drawable.ic_additive_high_risk );
-                riskWarningStr = getString( R.string.overexposure_high );
-                riskWarningColor = getColor( getContext(), R.color.overexposure_high );
+            if (isHighRisk) {
+                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_high_risk);
+                riskWarningStr = getString(R.string.overexposure_high);
+                riskWarningColor = getColor(getContext(), R.color.overexposure_high);
+            } else {
+                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_moderate_risk);
+                riskWarningStr = getString(R.string.overexposure_moderate);
+                riskWarningColor = getColor(getContext(), R.color.overexposure_moderate);
             }
-            else
-            {
-                riskIcon = ContextCompat.getDrawable( getContext(), R.drawable.ic_additive_moderate_risk );
-                riskWarningStr = getString( R.string.overexposure_moderate );
-                riskWarningColor = getColor( getContext(), R.color.overexposure_moderate );
-            }
-            riskIcon.setBounds( 0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight() );
-            ImageSpan iconSpan = new ImageSpan( riskIcon, ImageSpan.ALIGN_BOTTOM );
+            riskIcon.setBounds(0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight());
+            ImageSpan iconSpan = new ImageSpan(riskIcon, ImageSpan.ALIGN_BOTTOM);
 
-            spannableStringBuilder.append( " - " ); // this will be replaced with the risk icon
-            spannableStringBuilder.setSpan( iconSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
+            spannableStringBuilder.append(" - "); // this will be replaced with the risk icon
+            spannableStringBuilder.setSpan(iconSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            spannableStringBuilder.append( riskWarningStr );
-            spannableStringBuilder.setSpan( new ForegroundColorSpan( riskWarningColor ), spannableStringBuilder.length() - riskWarningStr.length(), spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE );
+            spannableStringBuilder.append(riskWarningStr);
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(riskWarningColor), spannableStringBuilder.length() - riskWarningStr.length(), spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
         return spannableStringBuilder;
@@ -503,7 +513,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             AllergenName allergen = allergens.get(i);
             substanceProduct.append(getAllergensTag(allergen));
             // Add comma if not the last item
-            if (i != lastIdx) substanceProduct.append(", ");
+            if (i != lastIdx) {
+                substanceProduct.append(", ");
+            }
         }
     }
 
@@ -546,7 +558,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             } else {
                 startActivity(intent);
             }
-
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
@@ -604,7 +615,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 //Cancel handling, you might wanna remove taken photo if it was canceled
                 if (source == EasyImage.ImageSource.CAMERA) {
                     File photoFile = EasyImage.lastlyTakenButCanceledPhoto(getContext());
-                    if (photoFile != null) photoFile.delete();
+                    if (photoFile != null) {
+                        photoFile.delete();
+                    }
                 }
             }
         });
