@@ -39,6 +39,7 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.DietIngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
@@ -277,7 +278,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
-            txtIngredients = dietRepository.getColoredSpannableStringBuilderFromSpannableIngredients(INGREDIENT_PATTERN, txtIngredients);
+            //txtIngredients = dietRepository.getColoredSpannableStringBuilderFromSpannableIngredients(INGREDIENT_PATTERN, txtIngredients);
+            txtIngredients = dietRepository.getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(txtIngredients);
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
             if (!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
@@ -635,6 +637,17 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     public String getIngredients() {
         return mUrlImage;
+    }
+
+    @OnClick(R.id.textIngredientProduct)
+    public void openFragmentDietIngredientsProcuct(View v) {
+        //Log.i("INFO", "Click on IngredientProduct");
+        //Prepare a new dietIngredientsProductFragment and show it
+        Bundle parameters = new Bundle();
+        parameters.putString("INGREDIENTS", product.getIngredientsText());
+        DietIngredientsProductFragment dietIngredientsProductFragment = new DietIngredientsProductFragment();
+        dietIngredientsProductFragment.setArguments(parameters);
+        this.getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) this.getView().getParent().getParent().getParent()).getId(), dietIngredientsProductFragment, "").addToBackStack("ReturntoProduct").commit();
     }
 
     @Override

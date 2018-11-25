@@ -71,6 +71,7 @@ public class DietsFragment extends NavigationBaseFragment {
         DietDao dietDao = daoSession.getDietDao();
         List dietList = dietDao.loadAll();
         //Pour le test.
+/*
         if (dietList.isEmpty()) {
             Diet diet1 = new Diet();
             diet1.setTag("en:Vegetarian");
@@ -81,6 +82,7 @@ public class DietsFragment extends NavigationBaseFragment {
             diet2.setEnabled(false);
             dietList.add(diet2);
         }
+*/
 
         //Activation du recycler avec l'adapter qui va bien
         mRvDiet.setLayoutManager(new LinearLayoutManager(this.getContext()));

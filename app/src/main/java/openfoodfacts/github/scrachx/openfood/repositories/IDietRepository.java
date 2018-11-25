@@ -98,7 +98,15 @@ public interface IDietRepository {
 
     List<String> getIngredientNameLinkedToEnabledDietsByLanguageCode(long state, String languageCode);
 
+    long stateFromIngredientTagDietTag(String ingredientTag, String dietTag);
+
+    List<SpannableStringBuilder> getColoredSpannableStringBuilderFromIngredientsDiet(List<String> ingredients, String dietTag, String languageCode);
+
     SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableIngredients(Pattern INGREDIENT_PATTERN, SpannableStringBuilder txtIngredients);
 
-    SpannableString getSpannableStringFromDietIngredientsAndLanguageCode(List<DietIngredients> dietIngredientsList, String languageCode);
+    SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(SpannableStringBuilder ssbIngredients);
+
+    List<String> getIngredientsListFromIngredientsText (String ingredientsText, boolean preserveAllSign);
+
+    SpannableStringBuilder getSpannableStringBuilderFromDietIngredientsAndLanguageCode(List<DietIngredients> dietIngredientsList, String languageCode);
 }

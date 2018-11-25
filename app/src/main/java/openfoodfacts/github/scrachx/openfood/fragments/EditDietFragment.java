@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -19,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Diet;
+import openfoodfacts.github.scrachx.openfood.models.DietIngredients;
 import openfoodfacts.github.scrachx.openfood.models.DietName;
 import openfoodfacts.github.scrachx.openfood.repositories.DietRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.IDietRepository;
@@ -53,7 +55,7 @@ public class EditDietFragment extends Fragment {
     //private OnFragmentInteractionListener mListener;
 
     public EditDietFragment() {
-        Log.i("INFO", "Début de EditDietFragment() de FragmentEditDiet");
+        //Log.i("INFO", "Début de EditDietFragment() de FragmentEditDiet");
         // Required empty public constructor
     }
 
@@ -66,7 +68,7 @@ public class EditDietFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static EditDietFragment newInstance(String dietName) {
-        Log.i("INFO", "Début de EditDietFragment(" + dietName + ") de FragmentEditDiet");
+        //Log.i("INFO", "Début de EditDietFragment(" + dietName + ") de FragmentEditDiet");
         EditDietFragment fragment = new EditDietFragment();
         Bundle args = new Bundle();
         args.putString(ARG_DIET_NAME, dietName);
@@ -76,7 +78,7 @@ public class EditDietFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.i("INFO", "Début de OnCreate de FragmentEditDiet");
+        //Log.i("INFO", "Début de OnCreate de FragmentEditDiet");
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mDietName = getArguments().getString(ARG_DIET_NAME);
@@ -86,7 +88,7 @@ public class EditDietFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.i("INFO", "Début de OnCreateView de FragmentEditDiet");
+        //Log.i("INFO", "Début de OnCreateView de FragmentEditDiet");
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_edit_diet, container, false);
         ButterKnife.bind(this, view);
@@ -106,47 +108,47 @@ public class EditDietFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        Log.i("INFO", "Début de OnActivityCreated de FragmentEditDiet");
+        //Log.i("INFO", "Début de OnActivityCreated de FragmentEditDiet");
         super.onActivityCreated(savedInstanceState);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i("INFO", "Début de OnViewCreated de FragmentEditDiet");
+        //Log.i("INFO", "Début de OnViewCreated de FragmentEditDiet");
         super.onViewCreated(view, savedInstanceState);
-        Log.i("INFO", "Fin de OnViewCreated de FragmentEditDiet");
+        //Log.i("INFO", "Fin de OnViewCreated de FragmentEditDiet");
     }
 
     @OnClick(R.id.save_edits)
     void saveEdits() {
-        Log.i("INFO", "Début de saveEdits de FragmentEditDiet");
-        Log.i("INFO", "dietName : " + dietName.getText() + " dietDescription : " + dietDescription.getText() + " dietEnabled : " + dietEnabled.isChecked() + " ingredientsAuthorised : " + ingredientsAuthorised.getText() + " ingredientsSoSo : " + ingredientsSoSo.getText() + " ingredientsUnauthorised : " + ingredientsUnauthorised.getText());
+        //Log.i("INFO", "Début de saveEdits de FragmentEditDiet");
+        //Log.i("INFO", "dietName : " + dietName.getText() + " dietDescription : " + dietDescription.getText() + " dietEnabled : " + dietEnabled.isChecked() + " ingredientsAuthorised : " + ingredientsAuthorised.getText() + " ingredientsSoSo : " + ingredientsSoSo.getText() + " ingredientsUnauthorised : " + ingredientsUnauthorised.getText());
         dietRepository = DietRepository.getInstance();
-        Log.i("TODO", "Créer un enregistrement de Diet avec Tag : " + languageCode + ":" + dietName.getText() + " et Enabled : " + dietEnabled.isChecked());
-        Log.i("TODO", "Créer un enregistrement de DietName avec Tag et Name : " + languageCode + ":" + dietName.getText() + " et Description : " + dietDescription.getText());
+        //Add or replace a diet row with the form's informations.
         dietRepository.addDiet(dietName.getText().toString(), dietDescription.getText().toString(), dietEnabled.isChecked(), languageCode);
+        //Get the diet
+        Diet diet = dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode);
+        //Set the state at 2 (no impact) for all ingredients associated with the diet. Sort of reset before the nexts steps
+        List<DietIngredients> dietIngredientsList = dietRepository.getDietIngredientsListByDietTag(diet.getTag());
+        for (int i = 0; i < dietIngredientsList.size(); i++) {
+            DietIngredients dietIngredients =  dietIngredientsList.get(i);
+            dietIngredients.setState(2);
+            dietRepository.saveDietIngredients(dietIngredients);
+        }
+        //Set the goods state for each ingredients in the 3 lists
         for (String ingredient : ingredientsAuthorised.getText().toString().split(",")) {
-            Log.i("TODO", "Créer un enregistrement de Ingredient avec Tag : " + languageCode + ":" + ingredient);
-            Log.i("TODO", "Créer un enregistrement de IngredientName avec Tag : " + languageCode + ":" + ingredient + " et Name : " + ingredient + " et languageCode : " + languageCode);
             dietRepository.addIngredient(ingredient, languageCode);
-            Log.i("TODO", "Créer un enregistrement de DietIngredient avec dietTag : " + languageCode + ":" + dietName.getText() + " et dietIngredient : " + languageCode + ":" + ingredient + " et State : 1");
             dietRepository.addDietIngredients(dietName.getText().toString(), ingredient, languageCode,1);
         }
         for (String ingredient : ingredientsSoSo.getText().toString().split(",")) {
-            Log.i("TODO", "Créer un enregistrement de Ingredient avec Tag : " + languageCode + ":" + ingredient);
-            Log.i("TODO", "Créer un enregistrement de IngredientName avec Tag : " + languageCode + ":" + ingredient + " et Name : " + ingredient + " et languageCode : " + languageCode);
             dietRepository.addIngredient(ingredient, languageCode);
-            Log.i("TODO", "Créer un enregistrement de DietIngredient avec dietTag : " + languageCode + ":" + dietName.getText() + " et dietIngredient : " + languageCode + ":" + ingredient + " et State : 0");
             dietRepository.addDietIngredients(dietName.getText().toString(), ingredient, languageCode,0);
         }
         for (String ingredient : ingredientsUnauthorised.getText().toString().split(",")) {
-            Log.i("TODO", "Créer un enregistrement de Ingredient avec Tag : " + languageCode + ":" + ingredient);
-            Log.i("TODO", "Créer un enregistrement de IngredientName avec Tag : " + languageCode + ":" + ingredient + " et Name : " + ingredient + " et languageCode : " + languageCode);
             dietRepository.addIngredient(ingredient, languageCode);
-            Log.i("TODO", "Créer un enregistrement de DietIngredient avec dietTag : " + languageCode + ":" + dietName.getText() + " et dietIngredient : " + languageCode + ":" + ingredient + " et State : -1");
             dietRepository.addDietIngredients(dietName.getText().toString(), ingredient, languageCode,-1);
         }
-        Log.i("TODO", "Râfraîchir la database DAO et revenir au Fragment précédent");
+        //Back to the DietsFragment.
         Fragment fragment = new DietsFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment );
@@ -158,6 +160,6 @@ public class EditDietFragment extends Fragment {
     //TODO Internationalisation made easy : en:Vegetarian, fr:Végétarien
     //TODO Export Diet and associated DietName, DietIngredients, Ingredients and IngredientName for sharing with friends and family (very usefull when you go and eat at a friend's house).
     //Others todos without direct link with this Class.
-    //TODO Open the edit on a click on the ingredients to choose there state from concrete ingredients (and internationalised them ?)
-    //TODO Add a Reg or Orange traffic Light on the first resume that appear when you scan a product if at list one ingredient is forbidden or at list one ingredient is so-so
+    //TODO Internationalised ingredients.
+    //TODO Add a Red or Orange traffic Light on the first resume that appear when you scan a product if at list one ingredient is forbidden or at list one ingredient is so-so
 }

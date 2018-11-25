@@ -1,15 +1,16 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.graphics.Color;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 
 import org.greenrobot.greendao.database.Database;
+import org.greenrobot.greendao.query.WhereCondition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -582,7 +583,7 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie un nouvel IngredientName ou le premier d'une liste (ménage si plusieurs.
+     * Renvoie un nouvel IngredientName ou le premier d'une liste (ménage si plusieurs).
      *
      * @param ingredientNames la liste d'ingrédient
      */
@@ -624,10 +625,10 @@ public class DietRepository implements IDietRepository {
         //Log.i("INFO", "Début de getIngredientNameByNameAndLanguageCode avec " + name + ", " + languageCode);
         //Recherche d'un IngredientName ayant name et languageCode
         List<IngredientName> ingredientNames = ingredientNameDao.queryBuilder().where(
-                IngredientNameDao.Properties.Name.eq(name),
+                new WhereCondition.StringCondition("lower(NAME) = lower('" + name.replaceAll("'", "''") + "')"),
                 IngredientNameDao.Properties.LanguageCode.eq(languageCode)
         ).list();
-        //Log.i("INFO", "Fin de getIngredientNameByNameAndLanguageCode via getIngredientNameFromDoublon");
+        //Log.i("INFO", "Fin de getIngredientNameByNameAndLanguageCode, trouvé " + (ingredientNames.size() > 0 ? ingredientNames.get(0).getName() : "aucun"));
         return getIngredientNameFromDoublon(ingredientNames);
     }
 
@@ -650,7 +651,7 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Ajoute une nouvelle ingredient à partir des informations name... d'un de ses ingredientName(s) après avoir vérifier qu'elle n'existait pas.
+     * Add a new ingredient from the information name of one off his ingredientName(s) if it doesn't already exists.
      *
      * @param name         le nom souhaité
      * @param languageCode Le code language utilisé par l'utilisateur
@@ -681,12 +682,12 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Ajoute une nouvelle liaison Diet/Ingredient à partir des informations dietName, IngredientName et languageCode après avoir vérifier qu'elle n'existait pas.
+     * Add a new link Diet/Ingredient from informations dietName, IngredientName and languageCode if it doesn't already exists .
      *
-     * @param dietName       le nom du régime
-     * @param ingredientName l'ingrédient que l'on souhaite lui lier
-     * @param languageCode   Le code language utilisé par l'utilisateur
-     * @param state          Le code de l'état (-1, interdit, 0 couci couça, 1 autorisé, 2 pas d'avis)
+     * @param dietName       Diet is name
+     * @param ingredientName Ingrédient we wan't to link to the diet
+     * @param languageCode   User's language code
+     * @param state          State code (-1, forbidden, 0 so-so, 1 authorised, 2 no impact)
      */
     @Override
     public void addDietIngredients(String dietName, String ingredientName, String languageCode, long state) {
@@ -705,6 +706,10 @@ public class DietRepository implements IDietRepository {
                     dietIngredients.setIngredientTag(ingredient.getTag());
                     dietIngredients.setState(state);
                     saveDietIngredients(dietIngredients);
+                } else {
+                    //No ingredient found, create it and then create the link
+                    addIngredient(ingredientName, languageCode);
+                    addDietIngredients(dietName, ingredientName, languageCode, state);
                 }
             }
             //Log.i("INFO", "Fin de addDietIngredients avec " + dietName + ", " + ingredientName + ", " + languageCode + ", " + state);
@@ -913,11 +918,77 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie un statetment des ingrédient dont la couleur dépend du state à partir d'une liste de DietIngredients et d'un languageCode
+     * Renvoie le state d'un ingrédient par rapport à une diet
      *
-     * @param INGREDIENT_PATTERN    Pattern de séparation des ingrédients.
-     * @param txtIngredients        SpannableStringBuilder contenant la liste des ingrédients.
-     * //@param languageCode Le code language utilisé par l'utilisateur
+     * @param ingredientTag     Tag de l'ingrédient
+     * @param dietTag           Tag de la diet
+     */
+    @Override
+    public long stateFromIngredientTagDietTag(String ingredientTag, String dietTag){
+        long state = 2;
+        DietIngredients dietIngredients = dietIngredientsDao.queryBuilder()
+                .where(
+                        DietIngredientsDao.Properties.DietTag.eq(dietTag),
+                        DietIngredientsDao.Properties.IngredientTag.eq(ingredientTag)
+                )
+                .unique();
+
+        if (dietIngredients != null) {
+            state = dietIngredients.getState();
+        }
+        return state;
+    }
+
+    public long minStateForEnabledDietFromIngredientTag(String ingredientTag){
+        long state = 2;
+        List<DietIngredients> dietIngredients = dietIngredientsDao.queryBuilder()
+                .where(
+                        new WhereCondition.StringCondition("DIET_TAG in (SELECT DIET_TAG FROM DIET WHERE ENABLED)"),
+                        DietIngredientsDao.Properties.IngredientTag.eq(ingredientTag)
+                )
+                .list();
+
+        if (dietIngredients.size() > 0) {
+            for (int i = 0; i < dietIngredients.size(); i++) {
+                DietIngredients dietIngredient =  dietIngredients.get(i);
+                state = dietIngredient.getState() < state ? dietIngredient.getState() : state;
+            }
+        }
+        return state;
+    }
+
+    private long stateFromIngredientDietTag(String ingredientxt, String dietTag, String languageCode){
+        long state = 2;
+        Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientxt, languageCode);
+        if (ingredient.getTag() != null) {
+            state = stateFromIngredientTagDietTag(ingredient.getTag(), dietTag);
+        }
+        return state;
+    }
+
+    private long minStateForEnabledDietFromIngredient(String ingredientxt, String languageCode){
+        long state = 2;
+        Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientxt, languageCode);
+        if (ingredient.getTag() != null) {
+            state = minStateForEnabledDietFromIngredientTag(ingredient.getTag());
+        }
+        return state;
+    }
+
+    private long stateFromIngredientDiet(String ingredientxt, String dietxt, String languageCode){
+        long state = 2;
+        Diet diet = getDietByNameAndLanguageCode(dietxt, languageCode);
+        if (diet != null) {
+            state = stateFromIngredientDietTag(ingredientxt, diet.getTag(), languageCode);
+        }
+        return state;
+    }
+
+    /**
+     * Return a SpannableStringBuilder of the ingredients colored when associate with a Diet. Parameters : list Pattern ingredient splitter, ingredients text.
+     *
+     * @param INGREDIENT_PATTERN    Pattern splitter.
+     * @param txtIngredients        SpannableStringBuilder composed with the list of ingrédients.
      */
     @Override
     public SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableIngredients(Pattern INGREDIENT_PATTERN, SpannableStringBuilder txtIngredients) {
@@ -930,6 +1001,30 @@ public class DietRepository implements IDietRepository {
         if (ingredientsToBeColoredInRed.size() > 0) txtIngredients = setSpanColorBetweenTokens(INGREDIENT_PATTERN, txtIngredients, ingredientsToBeColoredInRed, -1);
         //Log.i("INFO", "Fin de getColoredSpannableStringBuilderFromSpannableIngredients : " + ingredientsToBeColoredInGreen.size() + " vert, " + ingredientsToBeColoredInOrange.size() + " Orange, " + ingredientsToBeColoredInRed.size() + " rouge dans " + txtIngredients.toString());
         return txtIngredients;
+    }
+
+    /**
+     * Return a SpannableStringBuilder of the ingredients colored when associate with an active Diet. Parameters : ingredients on a SpannableStringBuilder form.
+     *
+     * @param ssbIngredients        SpannableStringBuilder composed with the ingrédients.
+     */
+    @Override
+    public SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(SpannableStringBuilder ssbIngredients) {
+        //Log.i("INFO", "Début de getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients avec " + ssbIngredients.toString());
+        String ingredientsText = ssbIngredients.toString();
+        List<String> ingredientsList = getIngredientsListFromIngredientsText(ingredientsText, true);
+        List<SpannableStringBuilder> ssbIngredientsList = getColoredSpannableStringBuilderFromIngredientsDiet(ingredientsList, "enabled", "en");
+        int start = 0;
+        int end = 0;
+        for (int i = 0; i < ssbIngredientsList.size(); i++) {
+            SpannableStringBuilder ssbIngredient =  ssbIngredientsList.get(i);
+            start = ingredientsText.indexOf(ssbIngredient.toString());
+            if (start >= 0) {
+                end = start + ssbIngredient.length();
+                ssbIngredients.replace(start, end, ssbIngredient);
+            }
+        }
+        return ssbIngredients;
     }
 
     private SpannableStringBuilder setSpanColorBetweenTokens(Pattern INGREDIENT_PATTERN, CharSequence text, List<String> ingredientsToBeColored, long state) {
@@ -948,7 +1043,7 @@ public class DietRepository implements IDietRepository {
                     } else if (tm.contains(")")) {
                         end -= 1;
                     }
-                    Log.i("INFO", "Ajout d'un Span de " + start + " à " + end + " de state " + state + " sur " + ingredientValue + ".");
+                    //Log.i("INFO", "Ajout d'un Span de " + start + " à " + end + " de state " + state + " sur " + ingredientValue + ".");
                     ssb.setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))), start, end, SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
             }
@@ -958,14 +1053,84 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
+     * Return a list of SpannableStringBuilder of ingredients witch color depend of state from a list of ingredients, a dietTag and a languageCode
+     *
+     * @param ingredients    List of ingrédients to be colored.
+     * @param dietTag        dietTag of the diet or "enabled" for all diets that are enabled.
+     * @param languageCode   Language code of the user.
+     */
+    @Override
+    public List<SpannableStringBuilder> getColoredSpannableStringBuilderFromIngredientsDiet(List<String> ingredients, String dietTag, String languageCode) {
+        //Log.i("INFO", "Début de getColoredSpannableStringBuilderFromIngredientsDiet avec " + ingredients.toString() + " et " + dietTag);
+        List<SpannableStringBuilder> ingredientsSp = new ArrayList<>();
+        long state;
+        for (int i = 0; i < ingredients.size(); i++) {
+            String ingredient =  ingredients.get(i);
+            state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredient(ingredient, languageCode) : stateFromIngredientDietTag(ingredient, dietTag, languageCode);
+            if (state == 2 && ingredient.indexOf(" ") > 0) {
+                //Ingredient is composed from at least 2 words, test each one.
+                SpannableStringBuilder ingredientSp = new SpannableStringBuilder(ingredient);
+                String[] ingredientWords = ingredient.split(" ");
+                for (int j = 0; j < ingredientWords.length; j++) {
+                    String ingredientWord = ingredientWords[j];
+                    state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredient(ingredientWord, languageCode) : stateFromIngredientDietTag(ingredientWord, dietTag, languageCode);
+                    if (state != 2) {
+                        int start = j == 0 ? 0 : ingredient.indexOf(" ",j);
+                        int end = start + ingredientWord.length();
+                        ingredientSp = coloredSpannableStringBuilderFromState(ingredientSp, start, end, state);
+                    }
+                }
+                ingredientsSp.add(ingredientSp);
+            } else {
+                ingredientsSp.add(coloredSpannableStringBuilderFromState(new SpannableStringBuilder(ingredient), 0, ingredient.length(), state));
+            }
+        }
+        return ingredientsSp;
+    }
+
+    private SpannableStringBuilder coloredSpannableStringBuilderFromState(SpannableStringBuilder ss, int start, int end, long state) {
+        ss.setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))), start, end, SPAN_EXCLUSIVE_EXCLUSIVE);
+        return ss;
+    }
+
+
+    /**
+     * Return a String list ingredients from a text of ingredients
+     *
+     * @param ingredientsText    Ingrédients in a text form.
+     * @param preserveAllSign    true : preserve oll Sign except _; false just preserve ingredient
+     */
+    @Override
+    public List<String> getIngredientsListFromIngredientsText(String ingredientsText, boolean preserveAllSign){
+        //Remove underscore "_".
+        ingredientsText = ingredientsText.replaceAll("_","");
+        List<String> ingredientsList = new ArrayList<String>();
+        if (preserveAllSign) {
+            ingredientsList.addAll(Arrays.asList(ingredientsText.replaceAll("([\\*\\n]|[ (]+\\p{Nd}.[\\.,]*\\p{Nd}*+[ %]*|\\s*[,():.]+\\s*)","_$1_").split("_")));
+        } else {
+            //Remove percent, underscore, asterisk, then split on coma",", point".", parentheses"()", colon":".
+            ingredientsList.addAll(Arrays.asList(ingredientsText.replaceAll("[_\\*]|[ (]+\\p{Nd}.[\\.,]*\\p{Nd}*+[ %]*", "").split("\\s*[,():.]+\\s*")));
+            //Remove blank (or so) lines
+            for (int i = ingredientsList.size()-1; i >= 0; i--) {
+                String s =  ingredientsList.get(i);
+                //Log.i("SUPPRBLANK", "D"+s+"F");
+                if (s.matches("^\\s*$")) {
+                    ingredientsList.remove(i);
+                }
+            }
+        }
+        return ingredientsList;
+    }
+
+    /**
      * Renvoie un statetment des ingrédient dont la couleur dépend du state à partir d'une liste de DietIngredients et d'un languageCode
      *
      * @param dietIngredientsList    La liste à transformée.
      * @param languageCode Le code language utilisé par l'utilisateur
      */
     @Override
-    public SpannableString getSpannableStringFromDietIngredientsAndLanguageCode(List<DietIngredients> dietIngredientsList, String languageCode) {
-        //Log.i("INFO", "Début de getSpannableStringFromDietIngredientsAndLanguageCode avec " + dietIngredientsList + " " + languageCode);
+    public SpannableStringBuilder getSpannableStringBuilderFromDietIngredientsAndLanguageCode(List<DietIngredients> dietIngredientsList, String languageCode) {
+        //Log.i("INFO", "Début de getSpannableStringBuilderFromDietIngredientsAndLanguageCode avec " + dietIngredientsList + " " + languageCode);
         if (dietIngredientsList != null) {
 //        List<IngredientName> ingredientNames = new ArrayList<>();
             //La String qui contiendra les ingrédients
@@ -991,8 +1156,8 @@ public class DietRepository implements IDietRepository {
                 sep = ", ";
 //            ingredientNames.add(getIngredientNameByIngredientTagAndLanguageCode(dietIngredients.getIngredientTag(), languageCode));
             }
-            //Création d'un SpannableString à partir de la liste précédente
-            SpannableString ingredientsSS = new SpannableString(ingredients);
+            //Création d'un SpannableStringBuilder à partir de la liste précédente
+            SpannableStringBuilder ingredientsSS = new SpannableStringBuilder(ingredients);
             //Pour chaque couple du HashMap
             for (String ingredient : ingredientColors.keySet()) {
                 //Récupération de la color
@@ -1015,10 +1180,10 @@ public class DietRepository implements IDietRepository {
             }
         });
 */
-            //Renvoie de la SpannableString
-            //Log.i("INFO", "Fin de getSpannableStringFromDietIngredientsAndLanguageCode : " + ingredientsSS.toString());
+            //Renvoie de la SpannableStringBuilder
+            //Log.i("INFO", "Fin de getSpannableStringBuilderFromDietIngredientsAndLanguageCode : " + ingredientsSS.toString());
             return ingredientsSS;
         }
-        return new SpannableString("");
+        return new SpannableStringBuilder("");
     }
 }
