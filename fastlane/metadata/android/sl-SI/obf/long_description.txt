@@ -13,15 +13,15 @@
 - Skenirajte: vodice po britju, losjone za telo, kreme, deodorante, črtala, pudre, dišave, šminke, ličila, maske, parfume, šampone, mila, gele za prhanje, lake za nohte in še veliko več…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Dobro deluje v vseh pogojih ***
+- lahko dodate nove izdelke, tudi če trenutno nimate internetne povezave.
+- Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije
+- Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
 
 *** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Vaši podatki so vaši in se nikoli ne pošljejo na splet
+- Aplikacijo lahko uporabljate anonimno
+- Zgodovino optičnega branja lahko izvozite
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 

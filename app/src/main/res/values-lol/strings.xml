@@ -345,6 +345,16 @@
     <string name="txt_no_results">crwdns98939:0crwdne98939:0</string>
     <string name="txt_extend_search">crwdns98941:0crwdne98941:0</string>
     <string name="txt_no_matching__category_products">crwdns98943:0crwdne98943:0</string>
+    <string name="txt_no_matching_allergen_products">crwdns111712:0crwdne111712:0</string>
+    <string name="txt_no_matching_label_products">crwdns111714:0crwdne111714:0</string>
+    <string name="txt_no_matching_additive_products">crwdns111716:0crwdne111716:0</string>
+    <string name="txt_no_matching_country_products">crwdns111718:0crwdne111718:0</string>
+    <string name="txt_no_matching_store_products">crwdns111720:0crwdne111720:0</string>
+    <string name="txt_no_matching_packaging_products">crwdns111722:0crwdne111722:0</string>
+    <string name="txt_no_matching_brand_products">crwdns111724:0crwdne111724:0</string>
+    <string name="txt_no_matching_state_products">crwdns111726:0crwdne111726:0</string>
+    <string name="txt_no_matching_incomplete_products">crwdns111728:0crwdne111728:0</string>
+    <string name="txt_no_matching_contributor_products">crwdns111730:0crwdne111730:0</string>
     <string name="txt_no_matching_products">crwdns98945:0crwdne98945:0</string>
     <string name="txt_broaden_search">crwdns98947:0crwdne98947:0</string>
     <string name="txt_cant_load_search_results">crwdns98949:0crwdne98949:0</string>
@@ -643,7 +653,7 @@
     <string name="uploading_nutrition_image">crwdns99543:0crwdne99543:0</string>
     <string name="uploading_ingredients_image">crwdns99545:0crwdne99545:0</string>
     <string name="uploading_front_image">crwdns99547:0crwdne99547:0</string>
-    <string name="url_nova_groups">crwdns99549:0crwdne99549:0</string>
+    <string name="url_nova_groups">crwdns111710:0crwdne111710:0</string>
     <string name="sign_in_to_edit">crwdns99551:0crwdne99551:0</string>
     <string name="hint_quantity">crwdns99553:0crwdne99553:0</string>
     <string name="edit_product_title">crwdns99555:0crwdne99555:0</string>
