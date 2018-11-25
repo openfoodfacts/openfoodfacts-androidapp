@@ -680,19 +680,4 @@
   <string name="legend_noael">au-dessus de la dose avec effet indésirable observé (DSENO)</string>
   <string name="legend_adi">au-dessus de la dose journalière admissible (DJA)</string>
   <!-- Used for additive exposure evaluation table -->
-  <!-- Used for diets AddOn -->
-  <string name="your_diets">Vos régime(s)</string>
-  <string name="diet_name">Diet name</string>
-  <string name="diets_dialog_warning_title">Attention</string>
-  <string name="warning_diets_data">Vos données régime(s) reste sur votre appareil. Rien ne sera envoyer nulle part.</string>
-  <string name="EditDiet_Name">Nom</string>
-  <string name="EditDiet_Description">Description</string>
-  <string name="EditDiet_Enabled_Disabled">Utilisé/Inutilisé</string>
-  <string name="EditDiet_Authorised_Ingredients">Ingredients autorisés</string>
-  <string name="EditDiet_Hint_Ingredient_Authorised">Liste les ingrédients autorisés qui doivent apparaître en vert. Exemple : Pomme, Champignon, Tomate... Vous pourrez compléter cette liste plus tard.</string>
-  <string name="EditDiet_So_So_Ingredients">Ingredients couci/couça</string>
-  <string name="EditDiet_Hint_So_So_Ingredient">Liste les ingrédients plus ou moins acceptables qui doivent apparaître en orange. Exemple : Oeufs, Poisson... Vous pourrez compléter cette liste plus tard.</string>
-  <string name="EditDiet_Unauthorised_Ingredients">Ingredients interdits</string>
-  <string name="EditDiet_Hint_Unauthorised_Ingredient">Liste les ingrédients interdits qui doivent apparaître en rouge. Exemple : Gluten, Lait, Huile de palme, Sucre... Vous pourrez compléter cette liste plus tard.</string>
-  <!-- Used for diets AddOn -->
 </resources>
