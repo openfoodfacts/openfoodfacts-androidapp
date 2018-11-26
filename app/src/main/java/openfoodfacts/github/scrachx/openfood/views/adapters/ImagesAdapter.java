@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -36,13 +38,14 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
     private HashMap<String, String> imgMap;
     private Product product;
     private OpenFoodAPIClient openFoodAPIClient;
+    private boolean isLoggedIn;
 
 
     public interface OnImageClickInterface {
         void onImageClick(int position);
     }
 
-    public ImagesAdapter(Context context, ArrayList<String> images, String barcode, OnImageClickInterface onImageClick, Product product) {
+    public ImagesAdapter(Context context, ArrayList<String> images, String barcode, OnImageClickInterface onImageClick, Product product, boolean isLoggedin) {
         this.context = context;
         this.images = images;
         this.barcode = barcode;
@@ -50,6 +53,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
         this.product = product;
         openFoodAPIClient = new OpenFoodAPIClient(context);
         imgMap = new HashMap<>();
+        this.isLoggedIn = isLoggedin;
     }
 
 
@@ -74,12 +78,18 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
                 .insert(7, "/")
                 .insert(11, "/")
                 .toString();
+
+
         String finalUrlString = baseUrlString + barcodePattern + "/" + imageName + ".400" + ".jpg";
         //String finalUrlString = baseUrlString + barcodePattern + "/" + imageName +".jpg";
 
         Picasso.with(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView);
+        Log.i("URL", finalUrlString);
 
 
+        if (!isLoggedIn) {
+            menuButton.setVisibility(View.INVISIBLE);
+        }
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

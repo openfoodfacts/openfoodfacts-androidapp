@@ -113,6 +113,16 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
                     for (int i = 0; i < images.names().length(); i++) {
 
                         try {
+                            // do not include images with contain nutrients,ingredients or other in their names
+                            // as they are duplicate and do not load as well
+                            if (images.names().getString(i).contains("n") ||
+                                    images.names().getString(i).contains("f") ||
+                                    images.names().getString(i).contains("i") ||
+                                    images.names().getString(i).contains("o")) {
+
+                                continue;
+
+                            }
                             imageNames.add(images.names().getString(i));
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -121,7 +131,14 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
                     }
 
-                    adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick,product);
+                    //Check if user is logged in
+                    SharedPreferences preferences = getActivity().getSharedPreferences("login", 0);
+                    String login = preferences.getString("user", null);
+                    if (login != null) {
+                        adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick, product, true);
+                    } else {
+                        adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick, product, false);
+                    }
                     imagesRecycler.setAdapter(adapter);
                     imagesRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
