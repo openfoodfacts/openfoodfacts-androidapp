@@ -84,7 +84,7 @@ public class DietsFragment extends NavigationBaseFragment {
         }
 */
 
-        //Activation du recycler avec l'adapter qui va bien
+        // Enabling the recycler with the proper adapter
         mRvDiet.setLayoutManager(new LinearLayoutManager(this.getContext()));
         //DietsAdapter adapter = new DietsAdapter(dietList);
         //mRvDiet.setAdapter(adapter);
