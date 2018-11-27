@@ -29,7 +29,7 @@ public class EditDietFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DIET_NAME = "dietName";
-    //Récupération des éléments du fragment de saisie d'une Diet
+    // Retrieving elements of the input fragment of a Diet
     @BindView(R.id.diet_name)
     EditText dietName;
     @BindView(R.id.diet_description)
