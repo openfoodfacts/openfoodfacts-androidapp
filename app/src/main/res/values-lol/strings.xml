@@ -688,4 +688,19 @@
     <string name="legend_noael">crwdns99905:0crwdne99905:0</string>
     <string name="legend_adi">crwdns99907:0crwdne99907:0</string>
     <!-- Used for additive exposure evaluation table -->
+    <!-- Used for diets AddOn -->
+    <string name="your_diets">crwdns111834:0crwdne111834:0</string>
+    <string name="diet_name">crwdns111836:0crwdne111836:0</string>
+    <string name="diets_dialog_warning_title">crwdns111838:0crwdne111838:0</string>
+    <string name="warning_diets_data">crwdns111840:0crwdne111840:0</string>
+    <string name="EditDiet_Name">crwdns111842:0crwdne111842:0</string>
+    <string name="EditDiet_Description">crwdns111844:0crwdne111844:0</string>
+    <string name="EditDiet_Enabled_Disabled">crwdns111846:0crwdne111846:0</string>
+    <string name="EditDiet_Authorised_Ingredients">crwdns111848:0crwdne111848:0</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">crwdns111850:0crwdne111850:0</string>
+    <string name="EditDiet_So_So_Ingredients">crwdns111852:0crwdne111852:0</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">crwdns111854:0crwdne111854:0</string>
+    <string name="EditDiet_Unauthorised_Ingredients">crwdns111856:0crwdne111856:0</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">crwdns111858:0crwdne111858:0</string>
+    <!-- Used for diets AddOn -->
 </resources>
