@@ -51,7 +51,7 @@ public class DietsFragment extends NavigationBaseFragment {
 
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //Gestion du message d'avertissement, les données restent sur l'appareil.
+        // Management of the warning message, the data remains on the device.
         mSettings = getActivity().getSharedPreferences("prefs", 0);
         boolean firstRunDiets = mSettings.getBoolean("firstRunDiets", true);
         if (firstRunDiets) {
