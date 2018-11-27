@@ -23,9 +23,9 @@
 - Aplikacijo lahko uporabljate anonimno
 - Zgodovino optičnega branja lahko izvozite
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Opomba: Open Beauty Facts spletno mesto in aplikacija temeljita na Open Food Facts, pri čemer se upoštevajo posebnosti kozmetike.
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Informacije o Open Beauty Facts so na voljo tudi na spletnem mestu https://world.openbeautyfacts.org
+Vprašanja, povratne informacije: contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Za človeško hrano lahko namestite Open Food Facts, za hrano za hišne ljubljenčke, Open Pet Food Facts in za vse ostale izdelke, Open Products Facts.
