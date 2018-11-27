@@ -65,7 +65,7 @@ public class DietsFragment extends NavigationBaseFragment {
             editor.apply();
         }
 
-        //Recherche des données à afficher dans le Recycler
+        // Search for data to display in the Recycler
         mRvDiet = (RecyclerView) view.findViewById(R.id.diets_recycler);
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         DietDao dietDao = daoSession.getDietDao();
