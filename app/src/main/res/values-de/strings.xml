@@ -644,7 +644,7 @@
     <string name="manufacturing_details">Herstellungsdetails</string>
     <string name="origin_of_ingredients">Herkunft der Inhaltsstoffe</string>
     <string name="manufacturing_place">Herstellungsort</string>
-    <string name="emb_code">Produzenten-Schlüssel</string>
+    <string name="emb_code">Zulassungsnummer</string>
     <string name="purchasing_details">Bezahlinformationen</string>
     <string name="country_where_purchased">Vertriebsland</string>
     <string name="stores">Läden</string>
