@@ -495,7 +495,7 @@
     <string name="image_upload_resolution">Разрешение загрузки изображения</string>
     <string name="can_add_barcode">Не удалось выполнить сканирование? \nПотяните вверх, чтобы ввести штрих-код</string>
     <string name="wikidata_information">Идем дальше</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
+    <string name="wikidata_unavailable">На вашем языке еще нет страницы в Википедии.</string>
     <string name="description">Описание: </string>
     <string name="title">Название: </string>
     <string name="Wikipedia">Посмотреть в Википедии</string>
@@ -503,7 +503,7 @@
     <string name="swipe_down">Смахните вниз</string>
     <string name="brand_string">Марка</string>
     <string name="additive_string">Добавка</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">Аллерген</string>
     <string name="search_string">Поиск</string>
     <string name="country_string">Страны продажи</string>
     <string name="store_subtitle">Магазин</string>
@@ -618,7 +618,7 @@
     <string name="please_wait">Подождите</string>
     <string name="product_uploaded_successfully">Продукт успешно загружен</string>
     <string name="no_internet_connection">Отсутствует подключение к Интернету, изображения будут загружены, когда сеть будет доступна</string>
-    <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+    <string name="no_internet_unable_to_extract_ingredients">Нет подключение к Интернету. Не удалось извлечь ингредиенты</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Общие сведения</string>
     <string name="ingredients">Ингредиенты</string>
@@ -671,10 +671,10 @@
     <string name="contribution_by">Contribution By</string>
     <string name="title_activity_product">Название</string>
     <string name="description_activity_product">описание</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="intent_filter_share_label">Добавить в Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="overexposure_high">Высокий риск чрезмерного воздействия</string>
+    <string name="overexposure_moderate">Умеренный риск чрезмерного воздействия</string>
     <string name="infants">Младенцы</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Малыши</string>
