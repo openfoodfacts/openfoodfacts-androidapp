@@ -112,12 +112,8 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 			} else {
 				bottomSheetDescription.setVisibility(View.GONE);
 			}
-			buttonToBrowseProducts.setOnClickListener(v -> {
-				Intent intent = new Intent(getContext(), ProductBrowsingListActivity.class);
-				intent.putExtra("search_type", searchType);
-				intent.putExtra("search_query", title);
-				startActivity(intent);
-			});
+
+			buttonToBrowseProducts.setOnClickListener( v -> ProductBrowsingListActivity.startActivity(getContext(), title, searchType));
 			if (wikiLink != null) {
 				wikipediaButton.setOnClickListener(v -> openInCustomTab(wikiLink));
 				wikipediaButton.setVisibility(View.VISIBLE);

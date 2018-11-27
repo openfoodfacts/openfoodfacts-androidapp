@@ -384,10 +384,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             /**
                              * Search and display the products to be completed by moving to ProductBrowsingListActivity
                              */
-                            Intent incompleteIntent = new Intent(this, ProductBrowsingListActivity.class);
-                            incompleteIntent.putExtra("search_query", "");
-                            incompleteIntent.putExtra("search_type", SearchType.INCOMPLETE_PRODUCT);
-                            this.startActivity(incompleteIntent);
+                            ProductBrowsingListActivity.startActivity(this, "", SearchType.INCOMPLETE_PRODUCT);
                             break;
 
                         case ITEM_OBF:

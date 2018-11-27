@@ -246,9 +246,9 @@
     <string name="flash_on">Flash [ON]</string>
     <string name="flash_off">Flash [OFF]</string>
     <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
+    <string name="ring_off">Bip [OFF]</string>
+    <string name="auto_focus_on">Enfoque automático [ON]</string>
+    <string name="auto_focus_off">Enfoque automático [OFF]</string>
     <string name="formats">Formatos</string>
     <string name="choose_formats">Elegir formatos</string>
     <string name="select_camera">Selecciona una cámara</string>
@@ -345,6 +345,16 @@
     <string name="txt_no_results">No se encontraron resultados</string>
     <string name="txt_extend_search">Intente ampliar su búsqueda o agregue el producto</string>
     <string name="txt_no_matching__category_products">Oh no, no tenemos ningún producto en esta categoría, ¿puede añadir uno?</string>
+    <string name="txt_no_matching_allergen_products">Oh no, no tenemos ningún producto con este alérgeno, ¿puedes agregar uno?</string>
+    <string name="txt_no_matching_label_products">Oh no, no tenemos ningún producto con esta etiqueta. ¿puedes agregar uno?</string>
+    <string name="txt_no_matching_additive_products">Oh no, no tenemos ningún producto con este aditivo. ¿puedes agregar uno?</string>
+    <string name="txt_no_matching_country_products">Oh no, no tenemos ningún producto de este país. ¿puedes agregar uno?</string>
+    <string name="txt_no_matching_store_products">Oh no, no tenemos ningún producto de esta tienda ¿puedes agregar uno?</string>
+    <string name="txt_no_matching_packaging_products">Oh no, no tenemos ningún producto con este empaque ¿puedes agregar uno?</string>
+    <string name="txt_no_matching_brand_products">Oh no, no tenemos ningún producto con esta marca ¿puedes agregar uno?</string>
+    <string name="txt_no_matching_state_products">Oh no, no tenemos ningún producto de este estado ¿puedes agregar uno?</string>
+    <string name="txt_no_matching_incomplete_products">¡No tenemos productos incompletos! Añadir un nuevo producto?</string>
+    <string name="txt_no_matching_contributor_products">Oh no, no tenemos ningún producto de este colaborador ¿puedes agregar uno?</string>
     <string name="txt_no_matching_products">No hemos encontrado ningún producto que coincida.\nPuede probar:</string>
     <string name="txt_broaden_search">- ampliando su búsqueda \n- escanear el producto y añadirlo a Open Food Facts</string>
     <string name="txt_cant_load_search_results">No se puede cargar los resultados de búsqueda</string>
@@ -520,7 +530,7 @@
     <string name="by_nutrition_grade">Grado nutricional</string>
     <string name="sort_by">Ordenar por</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://es.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Agitar el teléfono para escanear productos</string>
     <string name="shake_title">Agitar para escanear</string>
     <!-- strings related to share images -->
@@ -675,7 +685,7 @@
     <string name="risk_of_exposure">Riesgo de exposición</string>
     <string name="efsa_warning_moderate_risk">La Autoridad Europea de Seguridad Alimentaria (EFSA) ha determinado que algunos grupos de la población tienen un riesgo moderado de consumir demasiado %1$s.</string>
     <string name="efsa_warning_high_risk">La Autoridad Europea para la Seguridad Alimentaria (EFSA) ha determinado que algunos grupos de la población tienen un riesgo alto de consumir demasiado %1$s.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="legend_noael">por encima del nivel sin efecto adverso observado (NOAEL)</string>
+    <string name="legend_adi">por encima de la ingesta diaria aceptable (IDA)</string>
     <!-- Used for additive exposure evaluation table -->
 </resources>

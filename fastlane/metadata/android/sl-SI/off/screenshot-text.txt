@@ -1,45 +1,45 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+To so slogani, ki so prikazani nad posnetki zaslona v trgovini Google Play. Naj bodo kratki in privlačni.
+Ne spreminjajte imena datoteke.
 ---
 scan_en.png
-Scan products
+Skeniraj izdelke
 
 quickview_en.png
-Get the Nutriscore
+Pridobi Nutriscore
 
 history_en.png
-Your full scan history, fully private & exportable
+Vaša celotna zgodovina skeniranja, popolnoma zasebna in izvozna
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Pojdi naprej z Wikipedijo
 
 allergen_alert_en.png
-Set allergen alerts
+Nastavi opozorila za alergene
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Prehrana, poenostavljena
 
 product_view_allergen_alert_en.png
-Opozorilo alergena
+Opozorilo na alergene
 
 categories_en.png
-Get alternatives for your favorite foods
+Poišči nadomestila za vaša najljubša živila
 
 foodtransparency_en.png
-Become an actor of food transparency
+Postanite udeleženec preglednosti hrane
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Wikipedia za hrano
+Wikipedia za kozmetiko
+Wikipedia za hrano za hišne živali
+Wikipedija izdelkov
 
 product_view_ingredients_en.png
 Sestavine
 
 menu_en.png
-Powerful
+Zmogljiva
 
 product_view_nutrition_table_en.png
 Dejstva o hranilni vrednosti
