@@ -118,7 +118,7 @@ public class DietsFragment extends NavigationBaseFragment {
      */
     @OnClick(R.id.fab)
     void openFragmentAddDiet () {
-        Log.i("INFO", "Début de onClick sur fab de FragmentDiets");
+        Log.i("INFO", "Starting onClick on fab from FragmentDiets");
         Fragment fragment = new EditDietFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment );
