@@ -867,7 +867,7 @@
     <string name="EditDiet_Description">Description</string>
     <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
     <string name="EditDiet_Authorised_Ingredients">Authorised ingredients</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorised ingredients that should appear in green. Example : Apple, Mushroom, Tomatoe... You can complete this list latter.</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : Egg, Fish... You can complete this list latter.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorised ingredients</string>
