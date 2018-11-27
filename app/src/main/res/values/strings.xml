@@ -486,6 +486,16 @@
     <string name="txt_no_results">No results found</string>
     <string name="txt_extend_search">Try broadening your search or add the product</string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
+    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
+    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
+    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
+    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
+    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
+    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
+    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
+    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
+    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="txt_cant_load_search_results">Can\'t load search results</string>
@@ -627,10 +637,6 @@
     <string name="preference_header_contributing">Contributing</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
 
-    <string name="seconds_ago">seconds ago</string>
-    <string name="minutes_ago">minutes ago</string>
-    <string name="hours_ago">hours ago</string>
-    <string name="days_ago">days ago</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Login</string>
     <string name="login_true">Already logged in!</string>
@@ -695,7 +701,8 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Sort By</string>
-    <string name="nutriscore_uri" translatable="false">https://fr.openfoodfacts.org/score-nutritionnel-france</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
 
     <string name="shake_summary">Shake phone to scan products</string>
     <string name="shake_title">Shake to scan</string>
@@ -821,7 +828,7 @@
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
