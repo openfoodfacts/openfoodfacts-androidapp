@@ -997,7 +997,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
                                     File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
                                     image = new ProductImage(temp_barcode, OTHER, imageFile);
-                                    api.postImg(MainActivity.this, image,null);
+                                    api.postImg(MainActivity.this, image);
                                 } else {
                                     Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                                     State st = new State();

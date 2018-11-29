@@ -386,6 +386,46 @@ public class OpenFoodAPIClient {
                 });
     }
 
+    public void postImg(final Context context, final ProductImage image) {
+        /**  final LoadToast lt = new LoadToast(context);
+         lt.show();**/
+
+        apiService.saveImage(getUploadableMap(image, context))
+                .enqueue(new Callback<JsonNode>() {
+                    @Override
+                    public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
+                        Log.d("onResponse", response.toString());
+                        if (!response.isSuccessful()) {
+                            ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
+                            mToUploadProductDao.insertOrReplace(product);
+                            Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                            //lt.error();
+                            return;
+                        }
+
+                        JsonNode body = response.body();
+                        Log.d("onResponse", body.toString());
+                        if (!body.isObject()) {
+                            //lt.error();
+                        } else if (body.get("status").asText().contains("status not ok")) {
+                            Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
+                            // lt.error();
+                        } else {
+                            //lt.success();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
+                        Log.d("onResponse", t.toString());
+                        ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
+                        mToUploadProductDao.insertOrReplace(product);
+                        Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
+                        // lt.error();
+                    }
+                });
+    }
+
     private Map<String, RequestBody> getUploadableMap(ProductImage image, Context context) {
         String lang = Locale.getDefault().getLanguage();
 
