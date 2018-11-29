@@ -1,19 +1,19 @@
 
 ==================
-New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
+Новая версия Open Food Facts. Все Open Food Facts волонтеры упорно трудились над этим, это результат ваших предложений и обратной связи :)
 ==================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
+Open Food Facts теперь является куда более значимым, чем раньше. Более 500 000 продуктов описаны, больше 10 000 участников из 182 стран. Присоединитесь?
 ==================
 Что нового?
 ==================
-1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
-2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
-3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
-4. You can set allergens alerts (always double check the actual label yourself though!)
-5. You now get a scan history you can export and that never leaves your phone
-6. You can shake your phone at any time in the app to start scanning
-7. You can now add new products even when you're offline
-8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
-9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
-10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
-Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
+1. Полный обзор на 360: питание, ингредиенты и все-все факты о еде аккуратны и корректны.
+2. Получите информацию о питании «NutriScore» для всех продуктов в мире. Сравнивайте продукты без усилия. Куда проще чем расшифровывать таблицы питания.
+3. Получите дополнительную информацию из Википедии. Нажмите на категорию продуктов, добавку... , чтобы узнать больше и просмотреть похожие продукты.
+4. Вы можете установить оповещения об аллергенах (убедитесь, что вы проверили важные для вас этикетки!)
+5. Теперь вы получаете историю сканов, которую вы можете экспортировать, и она остается с вами на телефоне
+6. Вы можете встряхнуть свой телефон в любое время в приложении, чтобы сделать скан этикетки
+7. Теперь вы можете добавлять новые продукты, даже если вы без сети
+8. Теперь вы можете помочь заполнить список своих любимых продуктов непосредственно из приложения: делать фотографии, заполнять информацию, делать все, чтобы помнить что вы едите
+9. Все также работает намного быстрее. Продукты загружаются невероятно быстро, даже при плохой мобильной связи.
+10. Мы по-прежнему не интересуемся вашими личными данными. Вам не нужно регистрироваться, чтобы сделать скан и внести свой вклад.
+Extra! Несмотря на все новшества, приложение выглядит так же понятно, как раньше. Место, оставшееся на вашем телефоне, неприкосновенно.
