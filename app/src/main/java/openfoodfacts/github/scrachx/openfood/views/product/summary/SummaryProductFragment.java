@@ -823,6 +823,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onFailure(String message) {
         uploading_image_progress.setVisibility(View.GONE);
         uploading_image_progress_text.setVisibility(View.GONE);
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
