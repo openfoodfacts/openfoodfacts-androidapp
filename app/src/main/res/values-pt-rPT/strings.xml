@@ -699,8 +699,8 @@
     <string name="EditDiet_Authorised_Ingredients">Ingredientes autorizados</string>
     <string name="EditDiet_Hint_Ingredient_Authorised">Liste os ingredientes autorizados que devem aparecer em verde. Exemplo: maçã, cogumelo, tomate… Você pode completar esta lista mais tarde.</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Liste os ingredientes problemáticos que devem aparecer em laranja. Exemplo: ovo, peixe… Você pode completar esta lista mais tarde.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Ingredientes não autorizados</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Liste os ingredientes não autorizados que devem aparecer em vermelho. Exemplo: glúten, leite, óleo de palma, açúcar ... Você pode completar esta lista mais tarde.</string>
     <!-- Used for diets AddOn -->
 </resources>
