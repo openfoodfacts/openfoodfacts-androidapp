@@ -345,11 +345,11 @@
     <string name="txt_no_results">Ingen resultater fundet</string>
     <string name="txt_extend_search">Prøv at udvide din søgning eller tilføj produktet</string>
     <string name="txt_no_matching__category_products">Åh nej, vi har ikke noget produkt i denne kategori, kan du tilføje et?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching_allergen_products">Ups, vi har ikke ingen produkter med dette allergen, kan du tilføje ét?</string>
+    <string name="txt_no_matching_label_products">Ups, vi har ikke ingen produkter med denne etiket, kan du tilføje ét?</string>
+    <string name="txt_no_matching_additive_products">Ups, vi har ikke ingen produkter med dette tilsætningsstof, kan du tilføje ét?</string>
+    <string name="txt_no_matching_country_products">Ups, vi har ikke ingen produkter fra dette land, kan du tilføje et?</string>
+    <string name="txt_no_matching_store_products">Ups, vi har ikke intet produkt fra denne butik, kan du tilføje et?</string>
     <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
     <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
     <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
