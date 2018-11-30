@@ -697,10 +697,10 @@
     <string name="EditDiet_Description">Beskrivelse</string>
     <string name="EditDiet_Enabled_Disabled">Aktivér/Deaktivér</string>
     <string name="EditDiet_Authorised_Ingredients">Godkendte ingredienser</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Angiv de godkendte ingredienser, som skal vises med grønt. Eksempel: Æble, champignon, tomat... Du kan færdiggøre denne liste senere.</string>
-    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">Angiv de godkendte ingredienser, som skal vises med grønt. Eksempel: Æble, champignon, tomat... Du kan færdiggøre listen senere.</string>
+    <string name="EditDiet_So_So_Ingredients">-</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de ikke-godkendte ingredienser, som skal vises med rødt. Eksempel: Gluten, mælk, plameolie, sukker... Du kan færdiggøre listen senere.</string>
     <!-- Used for diets AddOn -->
 </resources>
