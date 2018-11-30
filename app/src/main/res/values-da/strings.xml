@@ -349,11 +349,11 @@
     <string name="txt_no_matching_label_products">Ups, vi har ikke ingen produkter med denne etiket, kan du tilføje ét?</string>
     <string name="txt_no_matching_additive_products">Ups, vi har ikke ingen produkter med dette tilsætningsstof, kan du tilføje ét?</string>
     <string name="txt_no_matching_country_products">Ups, vi har ikke ingen produkter fra dette land, kan du tilføje et?</string>
-    <string name="txt_no_matching_store_products">Ups, vi har ikke intet produkt fra denne butik, kan du tilføje et?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
+    <string name="txt_no_matching_store_products">Ups, vi har ikke ingen produkter fra denne butik, kan du tilføje et?</string>
+    <string name="txt_no_matching_packaging_products">Ups, vi har ikke ingen produkter med denne emballage, kan du tilføje ét?</string>
+    <string name="txt_no_matching_brand_products">Ups, vi har ikke ingen produkter af dette mærke, kan du tilføje ét?</string>
+    <string name="txt_no_matching_state_products">Ups, vi har ikke ingen produkter fra denne stat, kan du tilføje et?</string>
+    <string name="txt_no_matching_incomplete_products">Vi har ikke ingen ufærdige produkter! Tilføj et nyt produkt?</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">Der blev ikke fundet lignende produkter.\nDu kan prøve at :</string>
     <string name="txt_broaden_search">- lave en mindre snæver søgning \n- skanne og tilføje det til Open Food Facts</string>
