@@ -354,7 +354,7 @@
     <string name="txt_no_matching_brand_products">Ups, vi har ikke ingen produkter af dette mærke, kan du tilføje ét?</string>
     <string name="txt_no_matching_state_products">Ups, vi har ikke ingen produkter fra denne stat, kan du tilføje et?</string>
     <string name="txt_no_matching_incomplete_products">Vi har ikke ingen ufærdige produkter! Tilføj et nyt produkt?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
+    <string name="txt_no_matching_contributor_products">Ups, vi har ikke ingen produkter fra denne lbidragsyder, kan du tilføje et?</string>
     <string name="txt_no_matching_products">Der blev ikke fundet lignende produkter.\nDu kan prøve at :</string>
     <string name="txt_broaden_search">- lave en mindre snæver søgning \n- skanne og tilføje det til Open Food Facts</string>
     <string name="txt_cant_load_search_results">Kan ikke indlæse søgeresultater</string>
@@ -689,15 +689,15 @@
     <string name="legend_adi">over Acceptabelt Dagligt Indtag (ADI)</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="your_diets">Din(-e) diæt(-er)</string>
+    <string name="diet_name">Diætnavn</string>
     <string name="diets_dialog_warning_title">Advarsel</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Dine diætdata forbliver på din enhed. Intet uploades nogetsteds.</string>
     <string name="EditDiet_Name">Navn</string>
-    <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
-    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
+    <string name="EditDiet_Description">Beskrivelse</string>
+    <string name="EditDiet_Enabled_Disabled">Aktivér/Deaktivér</string>
+    <string name="EditDiet_Authorised_Ingredients">Godkendte ingredienser</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">Angiv de godkendte ingredienser, som skal vises med grønt. Eksempel: Æble, champignon, tomat... Du kan færdiggøre denne liste senere.</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
