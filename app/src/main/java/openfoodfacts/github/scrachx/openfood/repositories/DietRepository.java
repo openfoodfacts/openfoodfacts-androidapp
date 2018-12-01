@@ -943,7 +943,7 @@ public class DietRepository implements IDietRepository {
         long state = 2;
         List<DietIngredients> dietIngredients = dietIngredientsDao.queryBuilder()
                 .where(
-                        new WhereCondition.StringCondition("DIET_TAG in (SELECT DIET_TAG FROM DIET WHERE ENABLED)"),
+                        new WhereCondition.StringCondition("DIET_TAG in (SELECT TAG FROM DIET WHERE ENABLED)"),
                         DietIngredientsDao.Properties.IngredientTag.eq(ingredientTag)
                 )
                 .list();
