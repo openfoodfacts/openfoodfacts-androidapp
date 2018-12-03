@@ -203,17 +203,17 @@ public class OpenFoodAPIClient {
         String imguploadFront = product.getImgupload_front();
         if (StringUtils.isNotEmpty(imguploadFront)) {
             ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-            postImg(activity, image,null);
+            postImg(activity, image);
         }
 
         String imguploadIngredients = product.getImgupload_ingredients();
         if (StringUtils.isNotEmpty(imguploadIngredients)) {
-            postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)),null);
+            postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
         }
 
         String imguploadNutrition = product.getImgupload_nutrition();
         if (StringUtils.isNotBlank(imguploadNutrition)) {
-            postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)),null);
+            postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
         }
 
         //lt.success();
@@ -350,7 +350,7 @@ public class OpenFoodAPIClient {
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);
                             Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
-                            if(imageUploadListener !=null){
+                            if(imageUploadListener != null){
                                 imageUploadListener.onFailure(response.toString());
                             }
                             //lt.error();
@@ -359,7 +359,7 @@ public class OpenFoodAPIClient {
 
                         JsonNode body = response.body();
                         Log.d("onResponse", body.toString());
-                        if(imageUploadListener !=null){
+                        if(imageUploadListener != null){
                             imageUploadListener.onSuccess();
                         }
                         if (!body.isObject()) {
@@ -375,7 +375,7 @@ public class OpenFoodAPIClient {
                     @Override
                     public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
                         Log.d("onResponse", t.toString());
-                        if(imageUploadListener !=null){
+                        if(imageUploadListener != null){
                             imageUploadListener.onFailure(context.getString(R.string.uploadLater));
                         }
                         ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
@@ -1156,17 +1156,17 @@ public class OpenFoodAPIClient {
         String imguploadFront = product.getImgupload_front();
         if (StringUtils.isNotEmpty(imguploadFront)) {
             ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-            postImg(context, image,null);
+            postImg(context, image);
         }
 
         String imguploadIngredients = product.getImgupload_ingredients();
         if (StringUtils.isNotEmpty(imguploadIngredients)) {
-            postImg(context, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)),null);
+            postImg(context, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
         }
 
         String imguploadNutrition = product.getImgupload_nutrition();
         if (StringUtils.isNotBlank(imguploadNutrition)) {
-            postImg(context, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)),null);
+            postImg(context, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
         }
 
 

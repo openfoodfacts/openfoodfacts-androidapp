@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -48,7 +47,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -130,10 +128,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView mImageFront;
     @BindView(R.id.addPhotoLabel)
     TextView addPhotoLabel;
-    @BindView(R.id.uploading_image_progress)
-    ProgressBar uploading_image_progress;
-    @BindView(R.id.uploading_image_progress_text)
-    TextView uploading_image_progress_text;
+    @BindView(R.id.uploadingImageProgress)
+    ProgressBar uploadingImageProgress;
+    @BindView(R.id.uploadingImageProgressText)
+    TextView uploadingImageProgressText;
     @BindView(R.id.buttonMorePictures)
     Button addMorePicture;
     @BindView(R.id.imageGrade)
@@ -158,7 +156,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
-    private Activity activity;
 
     @Override
     public void onAttach(Context context) {
@@ -718,7 +715,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        api.postImg(getContext(), image,this);
+        api.postImg(getContext(), image, this);
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
@@ -742,7 +739,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     ProductImage image = new ProductImage(barcode, OTHER, new File(resultUri.getPath()));
                     image.setFilePath(resultUri.getPath());
                     showOtherImageProgress();
-                    api.postImg(getContext(), image,this);
+                    api.postImg(getContext(), image, this);
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
@@ -807,22 +804,22 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     public void showOtherImageProgress() {
-        uploading_image_progress.setVisibility(View.VISIBLE);
-        uploading_image_progress_text.setVisibility(View.VISIBLE);
-        uploading_image_progress_text.setText(R.string.toastSending);
+        uploadingImageProgress.setVisibility(View.VISIBLE);
+        uploadingImageProgressText.setVisibility(View.VISIBLE);
+        uploadingImageProgressText.setText(R.string.toastSending);
     }
 
     @Override
     public void onSuccess() {
-        uploading_image_progress.setVisibility(View.GONE);
-        uploading_image_progress_text.setText(R.string.image_uploaded_successfully);
+        uploadingImageProgress.setVisibility(View.GONE);
+        uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
 
     }
 
     @Override
     public void onFailure(String message) {
-        uploading_image_progress.setVisibility(View.GONE);
-        uploading_image_progress_text.setVisibility(View.GONE);
+        uploadingImageProgress.setVisibility(View.GONE);
+        uploadingImageProgressText.setVisibility(View.GONE);
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
