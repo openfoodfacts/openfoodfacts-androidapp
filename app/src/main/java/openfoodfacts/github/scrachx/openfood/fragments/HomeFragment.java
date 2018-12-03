@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -49,6 +50,9 @@ public class HomeFragment extends NavigationBaseFragment {
 
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
+
+    @BindView(R.id.tvDailyFoodFact)
+    TextView tvDailyfoodFact;
 
     @BindView(R.id.textHome)
     TextView textHome;
@@ -98,6 +102,11 @@ public class HomeFragment extends NavigationBaseFragment {
                 ((MainActivity) getContext()).moveToBarcodeEntry();
             }
         }
+    }
+
+    @OnClick(R.id.tvDailyFoodFact)
+    protected void setDailyFoodFact(){
+        Toast.makeText(getContext(),"Yet to be implemented", Toast.LENGTH_SHORT).show();
     }
 
     @Override
