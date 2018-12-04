@@ -689,11 +689,11 @@
     <string name="elderly_age">65+</string>
     <string name="most_people">Большинство людей\n(более 50%)</string>
     <string name="some_people">Некоторые люди\n(более 5%)</string>
-    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
+    <string name="safety_and_exposure_assessment">Оценка безопасности и воздействия</string>
     <string name="risk_of_exposure">Риск воздействия</string>
     <string name="efsa_warning_moderate_risk">Европейское агентство по безопасности продуктов питания (EFSA) определило, что некоторые группы населения имеют повышенный риск чрезмерного потребления %1$s.</string>
     <string name="efsa_warning_high_risk">Европейское агентство по безопасности продуктов питания (EFSA) определило, что некоторые группы населения имеют высокий риск чрезмерного потребления %1$s.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
+    <string name="legend_noael">выше дозы с наблюдаемым неблагоприятным эффектом (NOAEL)</string>
     <string name="legend_adi">выше допустимой дневной нормы (ADI)</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
