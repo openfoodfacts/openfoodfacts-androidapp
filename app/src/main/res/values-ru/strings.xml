@@ -700,7 +700,7 @@
     <string name="your_diets">Ваши диеты</string>
     <string name="diet_name">Название диеты</string>
     <string name="diets_dialog_warning_title">Предупреждение</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Данные о вашей диете остаются на вашем устройстве. Ничего не будет загружено куда-либо.</string>
     <string name="EditDiet_Name">Название</string>
     <string name="EditDiet_Description">Описание</string>
     <string name="EditDiet_Enabled_Disabled">Включить/Выключить</string>
