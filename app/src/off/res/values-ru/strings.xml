@@ -11,7 +11,7 @@
     <string name="website_product">https://world-ru.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ru.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Pet Food Facts - это база данных, содержащая более %1$d пищевых продуктов (плюс те, о которых напишете вы) с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках.</string>
+    <string name="txtHomeOnline">Open Food Facts - это база данных, содержащая более %1$d пищевых продуктов (плюс те, о которых напишете вы) с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках.</string>
     <string name="txtHome">Open Food Facts - открытая база данных продуктов питания с ингредиентами, аллергенами, питательной ценностью и всей информацией, которую мы можем найти на этикетках продуктов.</string>
     <string name="slide_1_title">Способствовать продовольственной прозрачности</string>
     <string name="slide_1_desc">Сканируйте продукты, фотографируйте их, способствуйте продовольственной прозрачности</string>
