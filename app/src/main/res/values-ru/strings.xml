@@ -702,13 +702,13 @@
     <string name="diets_dialog_warning_title">Предупреждение</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
     <string name="EditDiet_Name">Название</string>
-    <string name="EditDiet_Description">Description</string>
+    <string name="EditDiet_Description">Описание</string>
     <string name="EditDiet_Enabled_Disabled">Включить/Выключить</string>
-    <string name="EditDiet_Authorised_Ingredients">Разрешённые ингридиенты</string>
+    <string name="EditDiet_Authorised_Ingredients">Разрешённые ингредиенты</string>
     <string name="EditDiet_Hint_Ingredient_Authorised">Перечислите разрешенные ингредиенты, которые будут отображаться зеленым цветом. Наример: яблоки, грибы, помидоры... Вы можете дополнить список позже.</string>
-    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_So_So_Ingredients">Нежелательные ингредиенты</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Запрещенные ингредиенты</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Перечислите запрещенные ингредиенты, которые будут отображаться красным цветом. Наример: глютен, молоко, пальмовое масло, сахар... Вы можете дополнить список позже.</string>
     <!-- Used for diets AddOn -->
 </resources>
