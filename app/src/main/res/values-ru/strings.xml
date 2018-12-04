@@ -358,7 +358,7 @@
     <string name="txt_no_matching_additive_products">У нас нет каких-либо продуктов с этой добавкой, добавить новый?</string>
     <string name="txt_no_matching_country_products">У нас нет каких-либо продуктов из этой страны, добавить новый?</string>
     <string name="txt_no_matching_store_products">У нас нет каких-либо продуктов из этого магазина, добавить новый?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
+    <string name="txt_no_matching_packaging_products">У нас нет каких-либо продуктов с такой упаковкой, добавить новый?</string>
     <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
     <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
     <string name="txt_no_matching_incomplete_products">У нас нет каких-либо незаполненных продуктов! Добавить новый продукт?</string>
