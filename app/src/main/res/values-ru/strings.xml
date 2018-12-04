@@ -253,8 +253,8 @@
     <string name="toggle_flash">Вспышка</string>
     <string name="flash_on">Вспышка [ВКЛ]</string>
     <string name="flash_off">Вспышка [ВЫКЛ]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
+    <string name="ring_on">Звонок [ON]</string>
+    <string name="ring_off">Звонок [OFF]</string>
     <string name="auto_focus_on">Автофокус [ВКЛ]</string>
     <string name="auto_focus_off">Автофокус [ВЫКЛ]</string>
     <string name="formats">Форматы</string>
@@ -668,7 +668,7 @@
     <string name="hint_serving_size">Примеры: 60 г, 12 унций, 20 мл, 2 л</string>
     <string name="nutrient_already_added">%s уже присутствует в фактах питания</string>
     <string name="save_edits">Сохранить изменения</string>
-    <string name="contribution_by">Contribution By</string>
+    <string name="contribution_by">Вклад от</string>
     <string name="title_activity_product">Название</string>
     <string name="description_activity_product">описание</string>
     <string name="intent_filter_share_label">Добавить в Open Food Facts</string>
@@ -690,15 +690,15 @@
     <string name="most_people">Большинство людей\n(более 50%)</string>
     <string name="some_people">Некоторые люди\n(более 5%)</string>
     <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-    <string name="risk_of_exposure">Risk of exposure</string>
+    <string name="risk_of_exposure">Риск воздействия</string>
     <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="legend_adi">выше допустимой дневной нормы (ADI)</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="diet_name">Название диеты</string>
     <string name="diets_dialog_warning_title">Предупреждение</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
     <string name="EditDiet_Name">Название</string>
