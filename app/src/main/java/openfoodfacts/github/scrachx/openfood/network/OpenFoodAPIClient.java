@@ -203,17 +203,17 @@ public class OpenFoodAPIClient {
         String imguploadFront = product.getImgupload_front();
         if (StringUtils.isNotEmpty(imguploadFront)) {
             ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-            postImg(activity, image);
+            postImg(activity, image, null);
         }
 
         String imguploadIngredients = product.getImgupload_ingredients();
         if (StringUtils.isNotEmpty(imguploadIngredients)) {
-            postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
+            postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)), null);
         }
 
         String imguploadNutrition = product.getImgupload_nutrition();
         if (StringUtils.isNotBlank(imguploadNutrition)) {
-            postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
+            postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)), null);
         }
 
         //lt.success();
@@ -382,46 +382,6 @@ public class OpenFoodAPIClient {
                         mToUploadProductDao.insertOrReplace(product);
                         Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
                        // lt.error();
-                    }
-                });
-    }
-
-    public void postImg(final Context context, final ProductImage image) {
-        /**  final LoadToast lt = new LoadToast(context);
-         lt.show();**/
-
-        apiService.saveImage(getUploadableMap(image, context))
-                .enqueue(new Callback<JsonNode>() {
-                    @Override
-                    public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
-                        Log.d("onResponse", response.toString());
-                        if (!response.isSuccessful()) {
-                            ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
-                            mToUploadProductDao.insertOrReplace(product);
-                            Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
-                            //lt.error();
-                            return;
-                        }
-
-                        JsonNode body = response.body();
-                        Log.d("onResponse", body.toString());
-                        if (!body.isObject()) {
-                            //lt.error();
-                        } else if (body.get("status").asText().contains("status not ok")) {
-                            Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
-                            // lt.error();
-                        } else {
-                            //lt.success();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
-                        Log.d("onResponse", t.toString());
-                        ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
-                        mToUploadProductDao.insertOrReplace(product);
-                        Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
-                        // lt.error();
                     }
                 });
     }
@@ -1156,17 +1116,17 @@ public class OpenFoodAPIClient {
         String imguploadFront = product.getImgupload_front();
         if (StringUtils.isNotEmpty(imguploadFront)) {
             ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-            postImg(context, image);
+            postImg(context, image, null);
         }
 
         String imguploadIngredients = product.getImgupload_ingredients();
         if (StringUtils.isNotEmpty(imguploadIngredients)) {
-            postImg(context, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)));
+            postImg(context, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)), null);
         }
 
         String imguploadNutrition = product.getImgupload_nutrition();
         if (StringUtils.isNotBlank(imguploadNutrition)) {
-            postImg(context, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)));
+            postImg(context, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)), null);
         }
 
 
