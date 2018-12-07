@@ -644,7 +644,7 @@
     <string name="manufacturing_details">Herstellungsdetails</string>
     <string name="origin_of_ingredients">Herkunft der Inhaltsstoffe</string>
     <string name="manufacturing_place">Herstellungsort</string>
-    <string name="emb_code">Produzenten-Schlüssel</string>
+    <string name="emb_code">Zulassungsnummer</string>
     <string name="purchasing_details">Bezahlinformationen</string>
     <string name="country_where_purchased">Vertriebsland</string>
     <string name="stores">Läden</string>
@@ -688,4 +688,19 @@
     <string name="legend_noael">über der Dosis mit beobachteter Nebenwirkung (NOAEL)</string>
     <string name="legend_adi">über der zulässigen täglichen Aufnahme (ADI)</string>
     <!-- Used for additive exposure evaluation table -->
+    <!-- Used for diets AddOn -->
+    <string name="your_diets">Ihre Ernährung(en)</string>
+    <string name="diet_name">Name der Ernährung</string>
+    <string name="diets_dialog_warning_title">Warnhinweis</string>
+    <string name="warning_diets_data">Ihre Ernährungsdaten bleiben auf Ihrem Gerät gespeichert. Es wird nirgendwo etwas hochgeladen.</string>
+    <string name="EditDiet_Name">Name</string>
+    <string name="EditDiet_Description">Beschreibung</string>
+    <string name="EditDiet_Enabled_Disabled">Aktiviert/Deaktiviert</string>
+    <string name="EditDiet_Authorised_Ingredients">Zugelassene Inhaltsstoffe</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">Listet die zugelassenen Inhaltsstoffe auf, die grün dargestellt werden sollen. Beispiel: Apfel, Pilze, Tomate … Sie können diese Liste später ergänzen.</string>
+    <string name="EditDiet_So_So_Ingredients">So auch die Inhaltsstoffe</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Listet die problematischen Inhaltsstoffe auf, die in Orange angezeigt werden sollen. Beispiel: Ei, Fisch … Sie können diese Liste später ergänzen.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Nicht zugelassene Inhaltsstoffe</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Listet die nicht zugelassenen Zutaten auf, die rot angezeigt werden sollen. Beispiel: Gluten, Milch, Palmöl, Zucker … Sie können diese Liste später ergänzen.</string>
+    <!-- Used for diets AddOn -->
 </resources>
