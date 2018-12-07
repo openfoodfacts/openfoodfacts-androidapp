@@ -300,7 +300,7 @@ public class NutritionInfoProductFragment extends BaseFragment {
     private void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        api.postImg(getContext(), image);
+        api.postImg(getContext(), image, null);
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 

@@ -90,6 +90,7 @@
             </android.support.constraint.ConstraintLayout>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/cvProductDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -337,6 +338,36 @@
                         android:textSize="@dimen/font_normal" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                >
+
+                <ProgressBar
+                    android:id="@+id/uploadingImageProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/uploadingImageProgressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:text="@string/toastSending"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/buttonMorePictures"
