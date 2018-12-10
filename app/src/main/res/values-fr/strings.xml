@@ -692,7 +692,7 @@
     <string name="your_diets">Your diet(s)</string>
     <string name="diet_name">Diet name</string>
     <string name="diets_dialog_warning_title">Attention</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
     <string name="EditDiet_Name">Nom</string>
     <string name="EditDiet_Description">Description</string>
     <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
