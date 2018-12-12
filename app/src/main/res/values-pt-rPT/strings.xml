@@ -67,7 +67,7 @@
         <item>Ácido Cerótico (26:0)</item>
         <item>Cloreto</item>
         <item>Colesterol</item>
-        <item>Crómio</item>
+        <item>Cromo</item>
         <item>Cobre</item>
         <item>Ácido dihomo-gama-linolênico / DGLA (20:3 n-6)</item>
         <item>Ácido docosahexaenóico / DHA (22:6 n-3)</item>
@@ -345,16 +345,16 @@
     <string name="txt_no_results">Sem resultados</string>
     <string name="txt_extend_search">Tente alargar a pesquisa ou adicione o produto</string>
     <string name="txt_no_matching__category_products">Infelizmente não temos nenhum produto nesta categoria, você pode adicionar um?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
+    <string name="txt_no_matching_allergen_products">Não, não temos produtos com esse alérgeno, você pode adicionar um?</string>
+    <string name="txt_no_matching_label_products">Não, não temos produtos com este rótulo, você pode adicionar um?</string>
+    <string name="txt_no_matching_additive_products">Não, não temos nenhum produto com esse aditivo, você pode adicionar um?</string>
+    <string name="txt_no_matching_country_products">Não, não temos produtos deste país, você pode adicionar um?</string>
+    <string name="txt_no_matching_store_products">Não, não temos produtos desta loja, você pode adicionar um?</string>
+    <string name="txt_no_matching_packaging_products">Não, não temos produtos com essa embalagem, você pode adicionar um?</string>
+    <string name="txt_no_matching_brand_products">Não, não temos produtos com essa marca, você pode adicionar um?</string>
+    <string name="txt_no_matching_state_products">Não, não temos nenhum produto desse estado, você pode adicionar um?</string>
+    <string name="txt_no_matching_incomplete_products">Nós não temos produtos incompletos! Adicionar um novo produto?</string>
+    <string name="txt_no_matching_contributor_products">Não, não temos produtos desse contribuidor, você pode adicionar um?</string>
     <string name="txt_no_matching_products">Não encontrámos nenhum produto correspondente.\nPoderá tentar:</string>
     <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Food Facts</string>
     <string name="txt_cant_load_search_results">Não foi possível carregar os resultados da pesquisa</string>
@@ -487,7 +487,7 @@
     <string name="image_upload_resolution">Resolução de upload de imagem</string>
     <string name="can_add_barcode">Está com problemas ao digitalizar?\nArraste para cima para digitar o código de barras</string>
     <string name="wikidata_information">Mais…</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
+    <string name="wikidata_unavailable">Ainda não há página da Wikipédia no seu idioma.</string>
     <string name="description">Descrição: </string>
     <string name="title">Título: </string>
     <string name="Wikipedia">Ver na Wikipedia</string>
@@ -495,7 +495,7 @@
     <string name="swipe_down">Deslize para baixo</string>
     <string name="brand_string">Marca</string>
     <string name="additive_string">Aditivo</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">Alérgeno</string>
     <string name="search_string">Procurar</string>
     <string name="country_string">Países onde é vendido</string>
     <string name="store_subtitle">Loja</string>
@@ -689,18 +689,18 @@
     <string name="legend_adi">acima de ingestão diária aceitável (ADI)</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="your_diets">Sua(s) dieta(s)</string>
+    <string name="diet_name">Nome da dieta</string>
     <string name="diets_dialog_warning_title">Aviso</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">Seus dados de dieta(s) permanecem no seu dispositivo. Nada será carregado a qualquer lugar.</string>
     <string name="EditDiet_Name">Nome</string>
-    <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
-    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
+    <string name="EditDiet_Description">Descrição</string>
+    <string name="EditDiet_Enabled_Disabled">Activado/Desactivado</string>
+    <string name="EditDiet_Authorised_Ingredients">Ingredientes autorizados</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">Liste os ingredientes autorizados que devem aparecer em verde. Exemplo: maçã, cogumelo, tomate… Você pode completar esta lista mais tarde.</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Liste os ingredientes problemáticos que devem aparecer em laranja. Exemplo: ovo, peixe… Você pode completar esta lista mais tarde.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Ingredientes não autorizados</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Liste os ingredientes não autorizados que devem aparecer em vermelho. Exemplo: glúten, leite, óleo de palma, açúcar ... Você pode completar esta lista mais tarde.</string>
     <!-- Used for diets AddOn -->
 </resources>
