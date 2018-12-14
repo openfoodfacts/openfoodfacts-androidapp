@@ -254,14 +254,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		adapterResult = new ProductFragmentPagerAdapter( getSupportFragmentManager() );
 		adapterResult.addFragment( new SummaryProductFragment(), menuTitles[0] );
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences( this );
-		if( preferences.getBoolean( "contributionTab", false ) )
-		{
-			adapterResult.addFragment( new ContributorsFragment(), getString( R.string.contribution_tab ) );
-		}
-		if( BuildConfig.FLAVOR.equals( "off" ) || BuildConfig.FLAVOR.equals( "obf" ) || BuildConfig.FLAVOR.equals( "opff" ) )
-		{
-			adapterResult.addFragment( new IngredientsProductFragment(), menuTitles[1] );
-		}
+        if( BuildConfig.FLAVOR.equals( "off" ) || BuildConfig.FLAVOR.equals( "obf" ) || BuildConfig.FLAVOR.equals( "opff" ) )
+        {
+            adapterResult.addFragment( new IngredientsProductFragment(), menuTitles[1] );
+        }
 		if( BuildConfig.FLAVOR.equals( "off" ) )
 		{
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
@@ -295,6 +291,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		{
 			adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
 		}
+        if( preferences.getBoolean( "contributionTab", false ) )
+        {
+            adapterResult.addFragment( new ContributorsFragment(), getString( R.string.contribution_tab ) );
+        }
 
 		viewPager.setAdapter( adapterResult );
 	}

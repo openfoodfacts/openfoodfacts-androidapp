@@ -14,6 +14,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,6 +93,8 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
                 if (value && response != null) {
 
+                    Log.i("response", response);
+
                     // a json object referring to base json object
                     JSONObject jsonObject = null;
                     try {
@@ -108,27 +111,28 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
                         e.printStackTrace();
                     }
 
+                    if (images != null) {
+                        // loop through all the image names and store them in a array list
+                        for (int i = 0; i < images.names().length(); i++) {
 
-                    // loop through all the image names and store them in a array list
-                    for (int i = 0; i < images.names().length(); i++) {
+                            try {
+                                // do not include images with contain nutrients,ingredients or other in their names
+                                // as they are duplicate and do not load as well
+                                if (images.names().getString(i).contains("n") ||
+                                        images.names().getString(i).contains("f") ||
+                                        images.names().getString(i).contains("i") ||
+                                        images.names().getString(i).contains("o")) {
 
-                        try {
-                            // do not include images with contain nutrients,ingredients or other in their names
-                            // as they are duplicate and do not load as well
-                            if (images.names().getString(i).contains("n") ||
-                                    images.names().getString(i).contains("f") ||
-                                    images.names().getString(i).contains("i") ||
-                                    images.names().getString(i).contains("o")) {
+                                    continue;
 
-                                continue;
-
+                                }
+                                imageNames.add(images.names().getString(i));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            imageNames.add(images.names().getString(i));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
+
                         }
-
-
                     }
 
                     //Check if user is logged in

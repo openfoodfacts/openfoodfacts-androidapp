@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +16,9 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.text.SpannableString;
@@ -28,6 +31,7 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,8 +42,10 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
@@ -49,6 +55,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
@@ -121,6 +128,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     CardView mineralTagsTextCardView;
     @BindView(R.id.cvOtherNutritionTags)
     CardView otherNutritionTagsCardView;
+    @BindView(R.id.change_ing_img)
+    Button updateImageBtn;
+
 
     private Product product;
     private OpenFoodAPIClient api;
@@ -135,6 +145,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     private IIngredientsProductPresenter.Actions presenter;
+    private ProductFragmentPagerAdapter pagerAdapter;
+
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
 
@@ -150,6 +162,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         product = mState.getProduct();
 
         presenter = new IngredientsProductPresenter(product, this);
+
     }
 
     @Override
@@ -158,6 +171,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         apiClientForWikiData = new WikidataApiClient();
         mFragment = this;
         return createView(inflater, container, R.layout.fragment_ingredients_product);
+
     }
 
     @Override
@@ -514,6 +528,26 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 substanceProduct.append(", ");
             }
         }
+    }
+
+    @OnClick(R.id.change_ing_img)
+    public void change_ing_image(View v) {
+
+
+        ViewPager viewPager = (ViewPager) getActivity().findViewById(
+                R.id.pager);
+        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) {
+            viewPager.setCurrentItem(4);
+        }
+
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            viewPager.setCurrentItem(1);
+        }
+
+        if (BuildConfig.FLAVOR.equals("opf")) {
+            viewPager.setCurrentItem(0);
+        }
+
     }
 
     @Override
