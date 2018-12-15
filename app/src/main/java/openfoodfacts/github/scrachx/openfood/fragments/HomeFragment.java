@@ -4,10 +4,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -40,19 +42,22 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
-public class HomeFragment extends NavigationBaseFragment {
+public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
 
     @BindView(R.id.tvDailyFoodFact)
-    TextView tvDailyfoodFact;
+    TextView tvDailyFoodFact;
 
     @BindView(R.id.textHome)
     TextView textHome;
@@ -106,7 +111,17 @@ public class HomeFragment extends NavigationBaseFragment {
 
     @OnClick(R.id.tvDailyFoodFact)
     protected void setDailyFoodFact(){
-        Toast.makeText(getContext(),"Yet to be implemented", Toast.LENGTH_SHORT).show();
+        // chrome custom tab init
+        CustomTabsIntent customTabsIntent;
+        CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
+        customTabActivityHelper.setConnectionCallback(this);
+        Uri dailyFoodFactUri = Uri.parse("https://world.openfoodfacts.org/");
+        customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null);
+
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(),
+                customTabActivityHelper.getSession());
+        CustomTabActivityHelper.openCustomTab(getActivity(),
+                customTabsIntent, dailyFoodFactUri, new WebViewFallback());
     }
 
     @Override
@@ -199,6 +214,16 @@ public class HomeFragment extends NavigationBaseFragment {
                 actionBar.setTitle(R.string.home_drawer);
             }
         }
+
+    }
+
+    @Override
+    public void onCustomTabsConnected() {
+
+    }
+
+    @Override
+    public void onCustomTabsDisconnected() {
 
     }
 }
