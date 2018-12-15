@@ -89,6 +89,13 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Qian Jin](https://github.com/jinqian)
 - [Full list of the Open Food Facts Android developpers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
 
+### Who do I talk to?
+
+* Repo owner or admin
+* contact@openfoodfacts.org
+* Join our discussion room at <https://slack.openfoodfacts.org/>
+
+
 Will you join us ?
 
 If you're new to open-source, we recommend to checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send a pull request.
