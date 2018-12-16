@@ -366,7 +366,7 @@
     <string name="txt_no_matching_products">Nismo našli ustreznih izdelkov. \nLahko poizkusite :</string>
     <string name="txt_broaden_search">- razširitev iskanja \n- optično preberi in jo dodaj v Open Food Facts</string>
     <string name="txt_cant_load_search_results">Rezultatov iskanja ni mogoče naložiti</string>
-    <string name="something_went_wrong">Sorry, something went wrong…</string>
+    <string name="something_went_wrong">Oprostite, nekaj je šlo narobe…</string>
     <string name="txt_try_again">Poskusi znova</string>
     <string name="nutrition_lactose">Laktoza</string>
     <string name="nutrition_casein">Kazein</string>
@@ -435,7 +435,7 @@
     <string name="take_more_pictures">Naredite več slik</string>
     <string name="txtSaturatedFat">Nasičena maščoba</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Shortcut Not Available</string>
+    <string name="disabled_message">Bližnjica ni na voljo</string>
     <string name="scan_shortcut_short_label">Preberi</string>
     <string name="scan_shortcut_long_label">Preberi izdelek</string>
     <string name="barcode_shortcut_short_label">Iskanje</string>
@@ -460,14 +460,14 @@
     <string name="device_offline_dialog_negative">Opusti</string>
     <string name="device_offline_dialog_positive">Nastavitve</string>
     <string name="saving">Shranjevanje…</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Skenirajte prvi izdelek</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">Informacije</string>
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Nastavitve</string>
-    <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+    <string name="device_on_mobile_data_warning_negative">Vseeno naloži</string>
     <string name="preference_choose_language_dialog_title">Izberi jezik</string>
     <string name="FAQ">Pogosta vprašanja</string>
     <string name="FrequentlyAskedQuestions">Pogosto zastavljena vprašanja</string>
@@ -596,7 +596,7 @@
     <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Izberite hranilo</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
-    <string name="hint_product_URL">Link of the official page of the product</string>
+    <string name="hint_product_URL">Povezava na uradno stran izdelka</string>
     <string name="product_language">Jezik izdelka: </string>
     <string name="hint_emb_codes">Primeri: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Uradna spletna stran</string>
@@ -604,7 +604,7 @@
     <string name="add_at_least_one_picture">Pred nadaljevanjem dodajte vsaj eno sliko tega izdelka</string>
     <string name="image_uploaded_successfully">Slika uspešno naložena</string>
     <string name="error_adding_product_photos">Nekaj je šlo narobe med poskusom dodajanja fotografije izdelka</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
+    <string name="ingredients_overwrite">Prepiši sestavine</string>
     <string name="choose_mine">Izberi mojo</string>
     <string name="keep_previous_version">Keep previous version</string>
     <string name="product_name_overwrite">Prepiši ime izdelka</string>
