@@ -36,24 +36,28 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
 /**
- * Created by dobriseb on 2018.10.17.
+ * <b>DietRepository is the class to manage the database tables for diet.</b>
+ *
+ * @author dobriseb
+ * @version 0.2
  */
 
 public class DietRepository implements IDietRepository {
 
     private static final String DEFAULT_LANGUAGE = "en";
-
     private static IDietRepository instance;
-
     private Database db;
     private DietDao dietDao;
     private DietNameDao dietNameDao;
     private IngredientDao ingredientDao;
     private IngredientNameDao ingredientNameDao;
     private DietIngredientsDao dietIngredientsDao;
-
     private HashMap<Integer, String> colors = new HashMap<Integer, String>();
 
+    /**
+     *
+     * @return instance of dietRepository
+     */
     public static IDietRepository getInstance() {
         if (instance == null) {
             instance = new DietRepository();
