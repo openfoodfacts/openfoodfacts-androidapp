@@ -688,35 +688,30 @@ public class DietRepository implements IDietRepository {
     /**
      * Add a new link Diet/Ingredient from informations dietName, IngredientName and languageCode if it doesn't already exists .
      *
-     * @param dietName       Diet is name
+     * @param dietTag        Tag of the diet
      * @param ingredientName Ingrédient we wan't to link to the diet
-     * @param languageCode   User's language code
+     * @param languageCode   Language code of the ingredientName
      * @param state          State code (-1, forbidden, 0 so-so, 1 authorised, 2 no impact)
      */
     @Override
-    public void addDietIngredients(String dietName, String ingredientName, String languageCode, long state) {
-        dietName = dietName.trim();
+    public void addDietIngredients(String dietTag, String ingredientName, String languageCode, long state) {
         ingredientName = ingredientName.trim();
-        if (dietName != "" && ingredientName != "") {
-            //Log.i("INFO", "Début de addDietIngredients avec " + dietName + ", " + ingredientName + ", " + languageCode + ", " + state);
-            Diet diet = getDietByNameAndLanguageCode(dietName, languageCode);
-            if (diet.getTag() != null) {
-                //Diet trouvée.
-                Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientName, languageCode);
-                if (ingredient.getTag() != null) {
-                    //Ingredient trouvé. Association des deux.
-                    DietIngredients dietIngredients = new DietIngredients();
-                    dietIngredients.setDietTag(diet.getTag());
-                    dietIngredients.setIngredientTag(ingredient.getTag());
-                    dietIngredients.setState(state);
-                    saveDietIngredients(dietIngredients);
-                } else {
-                    //No ingredient found, create it and then create the link
-                    addIngredient(ingredientName, languageCode);
-                    addDietIngredients(dietName, ingredientName, languageCode, state);
-                }
+        if (ingredientName != "") {
+            //Log.i("INFO", "Début de addDietIngredients avec " + dietTag + ", " + ingredientName + ", " + languageCode + ", " + state);
+            Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientName, languageCode);
+            if (ingredient.getTag() != null) {
+                //Ingredient trouvé. Association des deux.
+                DietIngredients dietIngredients = new DietIngredients();
+                dietIngredients.setDietTag(dietTag);
+                dietIngredients.setIngredientTag(ingredient.getTag());
+                dietIngredients.setState(state);
+                saveDietIngredients(dietIngredients);
+            } else {
+                //No ingredient found, create it and then create the link
+                addIngredient(ingredientName, languageCode);
+                addDietIngredients(dietTag, ingredientName, languageCode, state);
             }
-            //Log.i("INFO", "Fin de addDietIngredients avec " + dietName + ", " + ingredientName + ", " + languageCode + ", " + state);
+            //Log.i("INFO", "Fin de addDietIngredients avec " + dietTag + ", " + ingredientName + ", " + languageCode + ", " + state);
         }
     }
 
@@ -1011,13 +1006,14 @@ public class DietRepository implements IDietRepository {
      * Return a SpannableStringBuilder of the ingredients colored when associate with an active Diet. Parameters : ingredients on a SpannableStringBuilder form.
      *
      * @param ssbIngredients        SpannableStringBuilder composed with the ingrédients.
+     * @param languageCode          LanguageCode of the product for search in the same languageCode.
      */
     @Override
-    public SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(SpannableStringBuilder ssbIngredients) {
+    public SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(SpannableStringBuilder ssbIngredients, String languageCode) {
         //Log.i("INFO", "Début de getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients avec " + ssbIngredients.toString());
         String ingredientsText = ssbIngredients.toString();
         List<String> ingredientsList = getIngredientsListFromIngredientsText(ingredientsText, true);
-        List<SpannableStringBuilder> ssbIngredientsList = getColoredSpannableStringBuilderFromIngredientsDiet(ingredientsList, "enabled", "en");
+        List<SpannableStringBuilder> ssbIngredientsList = getColoredSpannableStringBuilderFromIngredientsDiet(ingredientsList, "enabled", languageCode);
         int start = 0;
         int end = 0;
         for (int i = 0; i < ssbIngredientsList.size(); i++) {

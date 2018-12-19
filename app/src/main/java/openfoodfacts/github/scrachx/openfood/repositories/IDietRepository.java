@@ -78,7 +78,7 @@ public interface IDietRepository {
 
     void addIngredient(String name, String languageCode);
 
-    void addDietIngredients(String dietName, String ingredientName, String languageCode, long state);
+    void addDietIngredients(String dietTag, String ingredientName, String languageCode, long state);
 
     List<DietIngredients> getDietIngredientsListByDietTagAndState(String dietTag, long state);
 
@@ -104,7 +104,7 @@ public interface IDietRepository {
 
     SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableIngredients(Pattern INGREDIENT_PATTERN, SpannableStringBuilder txtIngredients);
 
-    SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(SpannableStringBuilder ssbIngredients);
+    SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(SpannableStringBuilder ssbIngredients, String languageCode);
 
     List<String> getIngredientsListFromIngredientsText (String ingredientsText, boolean preserveAllSign);
 

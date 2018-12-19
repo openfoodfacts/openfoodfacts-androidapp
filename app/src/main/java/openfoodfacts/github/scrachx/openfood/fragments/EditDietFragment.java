@@ -138,15 +138,15 @@ public class EditDietFragment extends Fragment {
         //Set the goods state for each ingredients in the 3 lists
         for (String ingredient : ingredientsAuthorised.getText().toString().split(",")) {
             dietRepository.addIngredient(ingredient, languageCode);
-            dietRepository.addDietIngredients(dietName.getText().toString(), ingredient, languageCode,1);
+            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode,1);
         }
         for (String ingredient : ingredientsSoSo.getText().toString().split(",")) {
             dietRepository.addIngredient(ingredient, languageCode);
-            dietRepository.addDietIngredients(dietName.getText().toString(), ingredient, languageCode,0);
+            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode,0);
         }
         for (String ingredient : ingredientsUnauthorised.getText().toString().split(",")) {
             dietRepository.addIngredient(ingredient, languageCode);
-            dietRepository.addDietIngredients(dietName.getText().toString(), ingredient, languageCode,-1);
+            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode,-1);
         }
         //Back to the DietsFragment.
         Fragment fragment = new DietsFragment();

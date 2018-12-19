@@ -58,6 +58,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     // Fetching of the (theoretical) language of input:
+    //To be replaced with the product.getLang() !!!
     private String languageCode = Locale.getDefault().getLanguage();
 
 
@@ -170,6 +171,9 @@ public class DietIngredientsProductFragment extends BaseFragment {
 
         if (getArguments() != null) {
             Bundle args = getArguments();
+            if (args.containsKey("LANGUAGECODE")) {
+                languageCode = args.getString("LANGUAGECODE");
+            }
             if (args.containsKey("DIET")) {
                 Log.i("INFO", "Argument DIET : " + args.getString("DIET"));
                 //dietRV.scrollToPosition(diets.indexOf(args.getString("DIET")));
@@ -179,7 +183,6 @@ public class DietIngredientsProductFragment extends BaseFragment {
                 mIngredientsTxt = dietRepository.getIngredientsListFromIngredientsText(args.getString("INGREDIENTS"), false);
                 fillIngredients(coloredIngredientsFromDiet(mIngredientsTxt));
             }
-        } else {
             //dietRV.setText("Tous");
             if (mState != null && product.getIngredientsText() != null) {
                 //Log.i("INFO", "Ingrédients : " + product.getIngredientsText());
@@ -208,7 +211,8 @@ public class DietIngredientsProductFragment extends BaseFragment {
             @Override
             public void onPositionClicked(int position, View v) {
                 //Log.i("INFO", "Click sur le bouton " + v.getId() + ":" + stateFromView(v) + " de l'enregistrement n°" + position + " : " + mIngredients.get(position) + " pour la diet : " + mDiet.getTag());
-                dietRepository.addDietIngredients(mDiet.getNames().get(0).getName(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
+                //addDietTagIngredients because languageCode of the product is not necessary languageCode of the Diet !
+                dietRepository.addDietIngredients(mDiet.getTag(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
                 changeMDiet(mDiet);
             }
             @Override
@@ -217,7 +221,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
                 List<Diet> dietsEnabled = dietRepository.getEnabledDiets();
                 for (int i = 0; i < dietsEnabled.size(); i++) {
                     Diet diet =  dietsEnabled.get(i);
-                    dietRepository.addDietIngredients(diet.getNames().get(0).getName(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
+                    dietRepository.addDietIngredients(diet.getTag(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
                 }
                 changeMDiet(mDiet);
             }

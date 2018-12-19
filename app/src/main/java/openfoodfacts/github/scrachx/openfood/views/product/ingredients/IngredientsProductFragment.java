@@ -284,7 +284,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
             //txtIngredients = dietRepository.getColoredSpannableStringBuilderFromSpannableIngredients(INGREDIENT_PATTERN, txtIngredients);
-            txtIngredients = dietRepository.getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(txtIngredients);
+            txtIngredients = dietRepository.getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(txtIngredients, product.getLang());
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
             if (!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
@@ -664,6 +664,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         //Prepare a new dietIngredientsProductFragment and show it
         Bundle parameters = new Bundle();
         parameters.putString("INGREDIENTS", product.getIngredientsText());
+        parameters.putString("LANGUAGECODE", product.getLang());
         DietIngredientsProductFragment dietIngredientsProductFragment = new DietIngredientsProductFragment();
         dietIngredientsProductFragment.setArguments(parameters);
         this.getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) this.getView().getParent().getParent().getParent()).getId(), dietIngredientsProductFragment, "").addToBackStack("ReturntoProduct").commit();
