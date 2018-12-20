@@ -57,6 +57,7 @@ public class DietRepository implements IDietRepository {
     /**
      *
      * @return instance of dietRepository
+     * @author dobriseb
      */
     public static IDietRepository getInstance() {
         if (instance == null) {
@@ -82,11 +83,12 @@ public class DietRepository implements IDietRepository {
 
     /**
      * Load diets from (the server or) local database
-     *
+     * Inspired by ProductRepository but not used
      * @param refresh defines the source of data.
      *                If refresh is true (or local database is empty) than load it from the server,
      *                else from the local database.
      *                Pour le moment, pas de question a se poser, les données ne sont que locales.
+     * @author dobriseb
      */
     @Override
     public Single<List<Diet>> getDiets(Boolean refresh) {
@@ -395,144 +397,159 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Trouve la diet correspondante à un Tag.
+     * Return a Diet from its Tag.
+     * In case of doubloons suppress the outnumbers rows.
      *
-     * @param tag le nom
+     * @param tag       The Tag
+     * @return Diet     Diet object
+     *
+     * @author dobriseb
      */
     @Override
     public Diet getDietByTag(String tag) {
         //Log.i("INFO", "Début de getDietByTag avec " + tag);
-        //On recherche la Diet associée.
+        //Looking for the Diet.
         List<Diet> diets = dietDao.queryBuilder().where(DietDao.Properties.Tag.eq(tag)).list();
         if (diets.size() == 0) {
-            //Pas de Diet, on en renvoie une nouvelle
+            //Not found, return a new one
             return new Diet();
         } else if (diets.size() > 1) {
-            //Trop de diets pour un seul Tag. Ceci ne devrait jamais arriver, mais au cas où, on ne conserve que le premier
-            //Log.i("INFO", "Trop (" + diets.size() + ") de régimes liés au Tag de " + tag + "... Suppression.");
+            //Too many diet objects with the same Tag. This will never happened, but, well just in case, suppress doubloons and return the survivor
             for (int i = 1; i < diets.size(); i++) {
                 Diet diet = diets.get(i);
                 diet.delete();
             }
         }
+        //return the first (and only) Diet object
         //Log.i("INFO", "fin de getDietByTag : " + diets.get(0).getTag());
         return diets.get(0);
     }
 
     /**
-     * Trouve la diet correspondante à un nom dans un Code langage.
+     * Return the Diet object from a Name and a languageCode
      *
-     * @param name         le nom
-     * @param languageCode is a 2-digit language code
+     * @param name          The Name of the Diet
+     * @param languageCode  is a 2-digit language code
+     * @return Diet         Diet object
+     *
+     * @author dobriseb
      */
     @Override
     public Diet getDietByNameAndLanguageCode(String name, String languageCode) {
         name = name.trim();
         //Log.i("INFO", "Début de getDietByNameAndLanguageCode avec " + name + ", " + languageCode);
-        //Recherche d'un DietName ayant name et languageCode
+        //Looking for a DietName with name and languageCode
         DietName dietName = getDietNameByNameAndLanguageCode(name, languageCode);
         if (dietName.getDietTag() == null) {
-            //Pas de DietName, retour d'une nouvelle Diet
-            //Log.i("INFO", "Fin de getDietByNameAndLanguageCode : New Diet");
+            //Not found, return a new Diet object
             return new Diet();
         }
-        //On recherche la Diet associée au premier nom.
+        //Return the Diet with the Tag of the DietName found.
         //Log.i("INFO", "Fin de getDietByNameAndLanguageCode : " + dietName.getDietTag());
         return getDietByTag(dietName.getDietTag());
     }
 
     /**
-     * Trouve le DietName correspondant à un nom dans un Code langage.
+     * Return the DietName object from a Name and langageCode.
+     * In case of doubloons suppress the outnumbers rows.
      *
-     * @param name         le nom
-     * @param languageCode is a 2-digit language code
+     * @param name          The Name
+     * @param languageCode  is a 2-digit language code
+     * @return DietName     DietName object
+     *
+     * @author dobriseb
      */
     @Override
     public DietName getDietNameByNameAndLanguageCode(String name, String languageCode) {
         name = name.trim();
         //Log.i("INFO", "Début de getDietNameByNameAndLanguageCode avec " + name + ", " + languageCode);
-        //Recherche d'un DietName ayant name et languageCode
+        //Looking for the DietName with name and languageCode
         List<DietName> dietNames = dietNameDao.queryBuilder().where(
                 DietNameDao.Properties.Name.eq(name),
                 DietNameDao.Properties.LanguageCode.eq(languageCode)
         ).list();
         if (dietNames.size() == 0) {
-            //Pas de DietName, retour d'un nouvel DietName
-            //Log.i("INFO", "Fin de getDietNameByNameAndLanguageCode : New DietName");
+            //Not fount, return a new one
             return new DietName();
         } else if (dietNames.size() > 1) {
-            //Trop de DietName, On ne conserve que le premier.
+            //Too many DietName objects found, suppress doubloons
             for (int i = 1; i < dietNames.size(); i++) {
                 DietName dietName = dietNames.get(i);
                 dietNameDao.delete(dietName);
             }
         }
-        //On renvoie le premier DietName.
+        //Return the first (and only) DietName.
         //Log.i("INFO", "Fin de getDietNameByNameAndLanguageCode : " + dietNames.get(0).getDietTag());
         return dietNames.get(0);
     }
 
     /**
-     * Trouve le DietName correspondant à un dietTag dans un Code langage.
+     * Return the DietName from a Tag and LanguageCode
+     * In case of doubloons suppress the outnumbers rows.
      *
-     * @param dietTag      le dietTag
-     * @param languageCode is a 2-digit language code
+     * @param dietTag       dietTag
+     * @param languageCode  is a 2-digit language code
+     * @return DietName     DietName object
+     *
+     * @author dobriseb
      */
     @Override
     public DietName getDietNameByDietTagAndLanguageCode(String dietTag, String languageCode) {
         //Log.i("INFO", "Début de getDietNameByDietTagAndLanguageCode avec " + dietTag + ", " + languageCode);
-        //Recherche d'un DietName ayant dietTag et languageCode
+        //Looking for a DietName with the dietTag and LanguageCode passed
         List<DietName> dietNames = dietNameDao.queryBuilder().where(
                 DietNameDao.Properties.DietTag.eq(dietTag),
                 DietNameDao.Properties.LanguageCode.eq(languageCode)
         ).list();
         if (dietNames.size() == 0) {
-            //Pas de DietName, retour d'une nouvelle DietName
-            //Log.i("INFO", "Fin de getDietNameByDietTagAndLanguageCode : New DietName");
+            //Not fount, return a new one
             return new DietName();
         } else if (dietNames.size() > 1) {
-            //Trop de DietName, On ne conserve que le premier.
+            //Too many DietName, suppress doubloons
             for (int i = 1; i < dietNames.size(); i++) {
                 DietName dietName = dietNames.get(i);
                 dietNameDao.delete(dietName);
             }
         }
-        //On renvoie le premier DietName.
+        //return the first (and only) DietName object.
         //Log.i("INFO", "Fin de getDietNameByDietTagAndLanguageCode : " + dietNames.get(0).getDietTag());
         return dietNames.get(0);
     }
 
     /**
-     * Ajoute une nouvelle diet à partir des informations name... d'un de ses dietName(s) après avoir vérifier qu'elle n'existait pas.
+     * Add a new diet with Name, Description...
+     * A test of non existance is done before insertion.
      *
-     * @param name         le nom souhaité
-     * @param description  la description du régime
-     * @param isEnabled    depends on whether user selected or unselected the diet
-     * @param languageCode Le code language utilisé par l'utilisateur
+     * @param name         Name of the diet
+     * @param description  Description of the diet
+     * @param isEnabled    depends on whether user enabled or disabled the diet
+     * @param languageCode User's LanguageCode
+     *
+     * @author dobriseb
      */
     @Override
     public void addDiet(String name, String description, boolean isEnabled, String languageCode) {
         name = name.trim();
         if (name != "") {
             //Log.i("INFO", "Début de addDiet avec " + name + ", " + description + ", " + isEnabled + ", " + languageCode);
-            //Recherche du DietName correspondant au name et language code
+            //Looking for a DietName object with this Name and LanguageCode
             DietName dietName = getDietNameByNameAndLanguageCode(name, languageCode);
             if (dietName.getDietTag() == null) {
-                //Le DietName retourné est vide, on lui ajoute les infos name, description, languageCode et dietTag
+                //Not found, so a new one has just be created, complete it.
                 dietName.setName(name);
                 dietName.setLanguageCode(languageCode);
                 dietName.setDietTag(languageCode + ":" + name);
             }
-            //Dans tous les cas, mise à jour de la description
+            //In all the case update description and save the IngredientName object
             dietName.setDescription(description);
             dietNameDao.getSession().insertOrReplace(dietName);
-            //Recherche de la Diet correspondante au name et languageCode
+            //Looking for an existing diet with this name and languageCode
             Diet diet = getDietByNameAndLanguageCode(name, languageCode);
             if (diet.getTag() == null) {
-                //La Diet retournée est vide, on lui ajoute sont tag
+                //The returned Diet object is a new one, set its Tag
                 diet.setTag(languageCode + ":" + name);
             }
-            //Dans tous les cas, mise à jour du Enabled
+            //In all the case, update its Enabled field and save the Diet object
             diet.setEnabled(isEnabled);
             dietDao.getSession().insertOrReplace(diet);
             //Log.i("INFO", "Fin de addDiet avec " + name + ", " + description + ", " + isEnabled + ", " + languageCode);
@@ -540,9 +557,13 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Trouve la ingredient correspondante à un Tag.
+     * Return an Ingredient object from its Tag
+     * In case of doubloons suppress the outnumbers rows.
      *
-     * @param tag le nom
+     * @param tag   The Tag
+     * @return Ingredient  Ingredient object
+     *
+     * @author dobriseb
      */
     @Override
     public Ingredient getIngredientByTag(String tag) {
@@ -550,10 +571,10 @@ public class DietRepository implements IDietRepository {
         //On recherche la Ingredient associée.
         List<Ingredient> ingredients = ingredientDao.queryBuilder().where(IngredientDao.Properties.Tag.eq(tag)).list();
         if (ingredients.size() == 0) {
-            //Pas de Ingredient, on en renvoie une nouvelle
+            //Not found, return a new Ingredient
             return new Ingredient();
         } else if (ingredients.size() > 1) {
-            //Trop de ingredients pour un seul Tag. Ceci ne devrait jamais arriver, mais au cas où, on ne conserve que le premier
+            //Too many ingredient objects with the same Tag. This will never happened, but, well just in case, suppress doubloons and return the survivor
             //Log.i("INFO", "Trop (" + ingredients.size() + ") de régimes liés au Tag de " + tag + "... Suppression");
             for (int i = 1; i < ingredients.size(); i++) {
                 Ingredient ingredient = ingredients.get(i);
@@ -565,41 +586,48 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Trouve l'ingredient correspondante à un nom dans un Code langage.
+     * Return the ingredient object search by a name and a languageCode
      *
-     * @param name         le nom
+     * @param name         The Name
      * @param languageCode is a 2-digit language code
+     * @return Ingredient  Ingredient object
+     *
+     * @author dobriseb
      */
     @Override
     public Ingredient getIngredientByNameAndLanguageCode(String name, String languageCode) {
         name = name.trim();
         //Log.i("INFO", "Début de getIngredientByNameAndLanguageCode avec " + name + ", " + languageCode);
-        //Recherche d'un IngredientName ayant name et languageCode
+        //Looking for an IngredientName object with name and languageCode
         IngredientName ingredientName = getIngredientNameByNameAndLanguageCode(name, languageCode);
         if (ingredientName.getIngredientTag() == null) {
-            //Pas de IngredientName, retour d'un nouvel Ingredient
+            //Not found, return a new Ingredient
             //Log.i("INFO", "Fin de getIngredientByNameAndLanguageCode : New Ingredient.");
             return new Ingredient();
         }
-        //On recherche l'Ingredient associée au premier nom.
+        //Return the ingredient that has this ingredientName.
         //Log.i("INFO", "Fin de getIngredientByNameAndLanguageCode via getIngredientByTag.");
         return getIngredientByTag(ingredientName.getIngredientTag());
     }
 
     /**
-     * Renvoie un nouvel IngredientName ou le premier d'une liste (ménage si plusieurs).
+     * Return a new IngredientName object or the first one of a list
+     * In case of doubloons suppress the outnumbers rows.
      *
-     * @param ingredientNames la liste d'ingrédient
+     * @param ingredientNames   Liste of IngredientName objects
+     * @return IngredientName   IngredientName object
+     *
+     * @author dobriseb
      */
     private IngredientName getIngredientNameFromDoublon(List<IngredientName> ingredientNames) {
         //Log.i("INFO", "Début de getIngredientNameFromDoublon avec " + ingredientNames.toString());
         if (ingredientNames != null) {
             if (ingredientNames.size() == 0) {
-                //Pas de IngredientName, retour d'un nouvel IngredientName
+                //No IngredientName, return a new one
                 //Log.i("INFO", "Fin de getIngredientNameFromDoublon : New IngredientName.");
                 return new IngredientName();
             } else if (ingredientNames.size() > 1) {
-                //Trop de IngredientName, suppression après vérification pui renvoie du premier.
+                //Doubloon, suppress after test.
                 String mLanguageCode = ingredientNames.get(0).getLanguageCode();
                 String mName = ingredientNames.get(0).getName();
                 String mIngredientTag = ingredientNames.get(0).getIngredientTag();
@@ -610,7 +638,7 @@ public class DietRepository implements IDietRepository {
                     }
                 }
             }
-            //On renvoie le premier IngredientName.
+            //Return the first IngredientName.
             //Log.i("INFO", "Fin de getIngredientNameFromDoublon : " + ingredientNames.get(0).getLanguageCode() + ":" + ingredientNames.get(0).getName());
             return ingredientNames.get(0);
         }
@@ -618,10 +646,13 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Trouve le IngredientName correspondant à un nom dans un Code langage.
+     * Return the IngredientName object from a name and a LanguageCode
      *
-     * @param name         le nom
-     * @param languageCode is a 2-digit language code
+     * @param name              le nom
+     * @param languageCode      is a 2-digit language code
+     * @return IngredientName   IngredientName object
+     *
+     * @author dobriseb
      */
     @Override
     public IngredientName getIngredientNameByNameAndLanguageCode(String name, String languageCode) {
@@ -637,15 +668,17 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Trouve le IngredientName correspondant à un ingredientTag dans un Code langage.
+     * Return the IngredientName object from an ingredientTag and a LanguageCode
      *
-     * @param ingredientTag le ingredientTag
-     * @param languageCode  is a 2-digit language code
+     * @param ingredientTag     The searched ingredientTag
+     * @param languageCode      is a 2-digit language code
+     * @return IngredientName   IngredientName object
+     *
+     * @author dobriseb
      */
     @Override
     public IngredientName getIngredientNameByIngredientTagAndLanguageCode(String ingredientTag, String languageCode) {
         //Log.i("INFO", "Début de getIngredientNameByIngredientTagAndLanguageCode avec " + ingredientTag + ", " + languageCode);
-        //Recherche d'un IngredientName ayant ingredientTag et languageCode
         List<IngredientName> ingredientNames = ingredientNameDao.queryBuilder().where(
                 IngredientNameDao.Properties.IngredientTag.eq(ingredientTag),
                 IngredientNameDao.Properties.LanguageCode.eq(languageCode)
@@ -655,10 +688,12 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Add a new ingredient from the information name of one off his ingredientName(s) if it doesn't already exists.
+     * Add a new ingredient from the information languageCode and name of one of its ingredientName(s) if it doesn't already exists.
      *
-     * @param name         le nom souhaité
-     * @param languageCode Le code language utilisé par l'utilisateur
+     * @param name         Name of the ingredient
+     * @param languageCode LanguageCode used
+     *
+     * @author dobriseb
      */
     @Override
     public void addIngredient(String name, String languageCode) {
@@ -686,12 +721,14 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Add a new link Diet/Ingredient from informations dietName, IngredientName and languageCode if it doesn't already exists .
+     * Add a new link Diet/Ingredient from dietName, IngredientName and languageCode if it doesn't already exists.
      *
      * @param dietTag        Tag of the diet
      * @param ingredientName Ingrédient we wan't to link to the diet
      * @param languageCode   Language code of the ingredientName
-     * @param state          State code (-1, forbidden, 0 so-so, 1 authorised, 2 no impact)
+     * @param state          State code (-1: forbidden, 0: so-so, 1: authorised, 2: no impact)
+     *
+     * @author dobriseb
      */
     @Override
     public void addDietIngredients(String dietTag, String ingredientName, String languageCode, long state) {
@@ -716,10 +753,13 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie les dietIngrédients liés à une diet à partir de sont dietTag et du state attendu
+     * Return the DietIngredients objects linked to a diet with a certain state from a dietTag
      *
-     * @param dietTag le Tag du régime
-     * @param state   Le code de l'état (-2, tous, -1, interdit, 0 couci couça, 1 autorisé, 2 pas d'avis)
+     * @param dietTag               Tag of the diet
+     * @param state                 The searched state (-2 : all, -1 : forbidden, 0 : problematic, 1 authorised, 2 no impact)
+     * @return List<DietIngredients>   List of DietIngredients objects.
+     *
+     * @author dobriseb
      */
     @Override
     public List<DietIngredients> getDietIngredientsListByDietTagAndState(String dietTag, long state) {
@@ -741,9 +781,12 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie les dietIngrédients liés à une diet à partir de sont dietTag
+     * Return the DietIngredients objects linked to a diet from a dietTag
      *
-     * @param dietTag le Tag du régime
+     * @param dietTag                  Tag of the diet
+     * @return List<DietIngredients>   List of DietIngredients objects.
+     *
+     * @author dobriseb
      */
     @Override
     public List<DietIngredients> getDietIngredientsListByDietTag(String dietTag) {
@@ -751,10 +794,13 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie les ingrédients liés à une diet à partir des informations dietTag et state
+     * Return a list of ingredient objects linked to a diet with a certain state from a dietTag
      *
-     * @param dietTag     le Tag du régime
-     * @param state        Le code de l'état (-2, tous, -1, interdit, 0 couci couça, 1 autorisé, 2 pas d'avis)
+     * @param dietTag               Tag of the diet
+     * @param state                 The searched state (-2 : all, -1 : forbidden, 0 : problematic, 1 authorised, 2 no impact)
+     * @return List<Ingredient>     List of ingredient objects.
+     *
+     * @author dobriseb
      */
     @Override
     public List<Ingredient> getIngredientsLinkedToDietByDietTagAndState(String dietTag, long state) {
@@ -774,9 +820,12 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie les ingrédients liés à une diet à partir de l'information dietTag
+     * Return a list of ingredient objects linked to a diet from its dietTag
      *
-     * @param dietTag     le Tag du régime
+     * @param dietTag               Tag of the diet
+     * @return List<Ingredient>     List of ingredient objects.
+     *
+     * @author dobriseb
      */
     @Override
     public List<Ingredient> getIngredientsLinkedToDietByDietTag(String dietTag) {
@@ -784,11 +833,14 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie les ingrédients liés à une diet à partir des informations dietName, languageCode et state
+     * Return a list of ingredient objects linked to a diet with a certain state from a dietName and its languageCode
      *
-     * @param dietName     le nom du régime
-     * @param languageCode Le code language utilisé par l'utilisateur
-     * @param state        Le code de l'état (-2, tous, -1, interdit, 0 couci couça, 1 autorisé, 2 pas d'avis)
+     * @param dietName              Name of the diet
+     * @param languageCode          LanguageCode of the dietName
+     * @param state                 The searched state (-2 : all, -1 : forbidden, 0 : problematic, 1 authorised, 2 no impact)
+     * @return List<Ingredient>     List of ingredient objects.
+     *
+     * @author dobriseb
      */
     @Override
     public List<Ingredient> getIngredientsLinkedToDietByDietNameLanguageCodeAndState(String dietName, String languageCode, long state) {
@@ -799,10 +851,13 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie les ingrédients liés à une diet à partir des informations dietName et languageCode
+     * Return a list of ingredient objects linked to a diet from a dietName and his languageCode
      *
-     * @param dietName     le nom du régime
-     * @param languageCode Le code language utilisé par l'utilisateur
+     * @param dietName          Name of the diet
+     * @param languageCode      LanguageCode of the dietName
+     * @return List<Ingredient>     List of ingredient objects.
+     *
+     * @author dobriseb
      */
     @Override
     public List<Ingredient> getIngredientsLinkedToDietByDietNameAndLanguageCode(String dietName, String languageCode) {
@@ -810,10 +865,13 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie les ingrédientNames d'une liste d'ingrédients à partir des informations List<Ingredient>ingredients et languageCode
+     * Return a list of names of ingredients in a languageCode from a list of ingredient (objects)
      *
-     * @param ingredients     la liste d'ingrédient
-     * @param languageCode Le code language utilisé par l'utilisateur
+     * @param ingredients               List of ingrédient objects
+     * @param languageCode              LanguageCode to be used
+     * @return List<IngredientName>     List of ingredientName objects.
+     *
+     * @author dobriseb
      */
     @Override
     public List<IngredientName> getIngredientNamesByIngredientsAndLanguageCode(List<Ingredient> ingredients, String languageCode) {
@@ -830,11 +888,14 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie les ingrédientNames d'une liste d'ingrédients à partir des informations List<Ingredient>ingredients et languageCode
+     * Return a sorted list of name of ingredients that have a relation with a diet with a certain state and i a languageCode
      *
-     * @param dietTag      Le tag du régime
-     * @param state        Le code de l'état (-2, tous, -1, interdit, 0 couci couça, 1 autorisé, 2 pas d'avis)
-     * @param languageCode Le code language souhaité pour le nom des ingrédients
+     * @param dietTag           The tag of the diet
+     * @param state             The searched state (-2 : all, -1 : forbidden, 0 : problematic, 1 authorised, 2 no impact)
+     * @param languageCode      languageCode for the names of ingredients
+     * @return List<String>     Sorted list of ingredients.
+     *
+     * @author dobriseb
      */
     @Override
     public String getSortedIngredientNameStringByDietTagStateAndLanguageCode(String dietTag, long state, String languageCode) {
@@ -862,10 +923,13 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie une châine d'ingrédients dont la couleur dépend du state dans toutes les Diets Enabled et d'un languageCode
+     * Return a list of ingredient that match a state for all enabled diets in a languageCode
      *
-     * @param state        Le code de l'état (-2, tous, -1, interdit, 0 couci couça, 1 autorisé, 2 pas d'avis)
-     * @param languageCode Le code language souhaité pour le nom des ingrédients
+     * @param state             The searched state (-2 : all, -1 : forbidden, 0 : problematic, 1 authorised, 2 no impact)
+     * @param languageCode      languageCode for the names of ingredients
+     * @return List<String>     list of ingredients.
+     *
+     * @author dobriseb
      */
     @Override
     public List<String> getIngredientNameLinkedToEnabledDietsByLanguageCode(long state, String languageCode) {
@@ -917,10 +981,13 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Renvoie le state d'un ingrédient par rapport à une diet
+     * Return the state value for a ingretient/diet relation
      *
      * @param ingredientTag     Tag de l'ingrédient
      * @param dietTag           Tag de la diet
+     * @return long             State value.
+     *
+     * @author dobriseb
      */
     @Override
     public long stateFromIngredientTagDietTag(String ingredientTag, String dietTag){
@@ -938,6 +1005,14 @@ public class DietRepository implements IDietRepository {
         return state;
     }
 
+    /**
+     * Return the minimal value of ths states that has an ingredient in its relation with enabled diets
+     *
+     * @param ingredientTag    the ingredient Tag
+     * @return long             min State of the ingredient for enabled diets
+     *
+     * @author dobriseb
+     */
     public long minStateForEnabledDietFromIngredientTag(String ingredientTag){
         long state = 2;
         List<DietIngredients> dietIngredients = dietIngredientsDao.queryBuilder()
@@ -988,6 +1063,9 @@ public class DietRepository implements IDietRepository {
      *
      * @param INGREDIENT_PATTERN    Pattern splitter.
      * @param txtIngredients        SpannableStringBuilder composed with the list of ingrédients.
+     * @return SpannableStringBuilder   A SpannableStringBuilder with coloured text.
+     *
+     * @author dobriseb
      */
     @Override
     public SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableIngredients(Pattern INGREDIENT_PATTERN, SpannableStringBuilder txtIngredients) {
@@ -1007,6 +1085,9 @@ public class DietRepository implements IDietRepository {
      *
      * @param ssbIngredients        SpannableStringBuilder composed with the ingrédients.
      * @param languageCode          LanguageCode of the product for search in the same languageCode.
+     * @return SpannableStringBuilder   A SpannableStringBuilder with coloured text.
+     *
+     * @author dobriseb
      */
     @Override
     public SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients(SpannableStringBuilder ssbIngredients, String languageCode) {
@@ -1058,6 +1139,9 @@ public class DietRepository implements IDietRepository {
      * @param ingredients    List of ingrédients to be colored.
      * @param dietTag        dietTag of the diet or "enabled" for all diets that are enabled.
      * @param languageCode   Language code of the user.
+     * @return List<SpannableStringBuilder>   List of SpannableStringBuilder with coloured text.
+     *
+     * @author dobriseb
      */
     @Override
     public List<SpannableStringBuilder> getColoredSpannableStringBuilderFromIngredientsDiet(List<String> ingredients, String dietTag, String languageCode) {
@@ -1099,6 +1183,9 @@ public class DietRepository implements IDietRepository {
      *
      * @param ingredientsText    Ingrédients in a text form.
      * @param preserveAllSign    true : preserve oll Sign except _; false just preserve ingredient
+     * @return List<String>      List of ingredients.
+     *
+     * @author dobriseb
      */
     @Override
     public List<String> getIngredientsListFromIngredientsText(String ingredientsText, boolean preserveAllSign){
@@ -1122,68 +1209,64 @@ public class DietRepository implements IDietRepository {
         return ingredientsList;
     }
 
-    /**
-     * Renvoie un statetment des ingrédient dont la couleur dépend du state à partir d'une liste de DietIngredients et d'un languageCode
-     *
-     * @param dietIngredientsList    La liste à transformée.
-     * @param languageCode Le code language utilisé par l'utilisateur
-     */
+   /**
+    * Return an highlighted SpannableStringBuilder from a list of dietIngredients and a languageCode.
+    * Ingredients text is coloured according to their state in their relation to the diet.
+    *
+    * @param dietIngredientsList      The list of dietIngredient to be coloured
+    * @param languageCode              The languageCode to be used
+    * @return SpannableStringBuilder   A SpannableStringBuilder with coloured text.
+    *
+    * @author dobriseb
+    */
     @Override
     public SpannableStringBuilder getSpannableStringBuilderFromDietIngredientsAndLanguageCode(List<DietIngredients> dietIngredientsList, String languageCode) {
         //Log.i("INFO", "Début de getSpannableStringBuilderFromDietIngredientsAndLanguageCode avec " + dietIngredientsList + " " + languageCode);
         if (dietIngredientsList != null) {
 //        List<IngredientName> ingredientNames = new ArrayList<>();
-            //La String qui contiendra les ingrédients
+            //The String that will contains the ingredients
             String ingredients = "";
-            //La chaîne de séparation, nulle au début puis ", "
+            //Separated characters, first null then ", "
             String sep = "";
-            //La couleur à appliquer
+            //Color to be used
             ForegroundColorSpan color;
-            //Le HashMap d'association ingrédient/color
+            //HashMap tha associate ingrédient/color
             HashMap<String, ForegroundColorSpan> ingredientColors = new HashMap<String, ForegroundColorSpan>();
             for (int i = 0; i < dietIngredientsList.size(); i++) {
-                //Pour chaque DietIngredients
+                //For each dietIngredients
                 DietIngredients dietIngredients =  dietIngredientsList.get(i);
-                //Color en fonction du state
+                //Color is function of the state
                 color = new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) dietIngredients.getState())));
-                //Recherche du nom de l'ingrédient dans languageCode
+                //Looking for the name of the ingredient in the languageCode
                 IngredientName ingredientName = getIngredientNameByIngredientTagAndLanguageCode(dietIngredients.getIngredientTag(), languageCode);
-                //Ajout dans le HashMap
+                //Add to the HashMap
                 ingredientColors.put(ingredientName.getName(), color);
-                //Ajout à la String ingredients
+                //Add to the String ingredients
                 ingredients = sep + ingredientName.getName();
-                //Changement de séparateur pour les ingrédient 2 et suivants
+                //Change sep for the next ingredients
                 sep = ", ";
 //            ingredientNames.add(getIngredientNameByIngredientTagAndLanguageCode(dietIngredients.getIngredientTag(), languageCode));
             }
-            //Création d'un SpannableStringBuilder à partir de la liste précédente
+            //Create a SpannableStringBuilder from the String ingredients
             SpannableStringBuilder ingredientsSS = new SpannableStringBuilder(ingredients);
-            //Pour chaque couple du HashMap
+            //For each couple in the HashMap
             for (String ingredient : ingredientColors.keySet()) {
-                //Récupération de la color
+                //Get the color
                 color = ingredientColors.get(ingredient);
-                //Recherche de la position de l'ingrédient dans la liste
+                //looking for the position of the ingredient in the string
                 int start = (", " + ingredients).toLowerCase().indexOf(", " + ingredient.toLowerCase() + ",");
-                //Longueur de l'ingredient
+                //Lenght of the ingredient
                 int length = ingredient.length();
                 if (start >= 0) {
-                    //Mise en couleur de l'ingrédient
+                    //Colorisation
                     ingredientsSS.setSpan(color, start, start + length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
             }
-/*
-        Collections.sort(ingredientNames, new Comparator<IngredientName>() {
-            @Override
-            public int compare(IngredientName iN2, IngredientName iN1)
-            {
-                return iN1.getName().compareTo(iN2.getName());
-            }
-        });
-*/
-            //Renvoie de la SpannableStringBuilder
+            //Return the SpannableStringBuilder
             //Log.i("INFO", "Fin de getSpannableStringBuilderFromDietIngredientsAndLanguageCode : " + ingredientsSS.toString());
             return ingredientsSS;
         }
+        //return an empty SpannableStringBuilder
         return new SpannableStringBuilder("");
     }
 }
