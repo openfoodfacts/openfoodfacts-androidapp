@@ -65,6 +65,7 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerVi
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -142,7 +143,11 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        refreshView((State) intent.getExtras().getSerializable("state"));
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null){
+            refreshView((State) intent.getExtras().getSerializable("state"));
+        }else{
+            refreshView(ProductFragment.mState);
+        }
     }
 
     @Override

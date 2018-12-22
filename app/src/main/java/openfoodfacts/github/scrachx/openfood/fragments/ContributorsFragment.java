@@ -32,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -62,7 +63,11 @@ public class ContributorsFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        mState = (State) intent.getExtras().getSerializable("state");
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null) {
+            mState = (State) intent.getExtras().getSerializable("state");
+        }else{
+            mState = ProductFragment.mState;
+        }
         refreshView(mState);
     }
 

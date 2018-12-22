@@ -65,6 +65,7 @@ import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 import org.json.JSONObject;
 
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -165,7 +166,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
         Intent intent = getActivity().getIntent();
-        mState = (State) intent.getExtras().getSerializable("state");
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null)
+            mState = (State) intent.getExtras().getSerializable("state");
+        else
+            mState = ProductFragment.mState;
         product = mState.getProduct();
 
         presenter = new IngredientsProductPresenter(product, this);
@@ -185,7 +189,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        mState = (State) intent.getExtras().getSerializable("state");
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null)
+            mState = (State) intent.getExtras().getSerializable("state");
+        else
+            mState = ProductFragment.mState;
         refreshView(mState);
     }
 

@@ -84,6 +84,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -217,7 +218,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
         Intent intent = getActivity().getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
+        State state;
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null){
+            state = (State) intent.getExtras().getSerializable("state");
+        }else{
+            state = ProductFragment.mState;
+        }
+
         product = state.getProduct();
 
         presenter = new SummaryProductPresenter(product, this);
@@ -235,7 +242,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        refreshView((State) intent.getExtras().getSerializable("state"));
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null) {
+            refreshView((State) intent.getExtras().getSerializable("state"));
+        }else{
+            refreshView(ProductFragment.mState);
+        }
     }
 
     @Override
