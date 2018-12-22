@@ -68,6 +68,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;

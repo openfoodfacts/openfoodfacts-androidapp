@@ -78,6 +78,7 @@
             tools:visibility="visible"
             tools:ignore="MissingPrefix">
 
+
             <View
                 android:id="@+id/quickView_slideUpIndicator"
                 android:layout_width="20dp"
