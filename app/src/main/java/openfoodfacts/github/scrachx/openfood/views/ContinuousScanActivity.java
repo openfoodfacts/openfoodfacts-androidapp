@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -97,22 +98,24 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     TextView progressText;
     @BindView(R.id.quickView_productNotFound)
     TextView productNotFound;
-//    @BindView(R.id.quickView_image)
-//    ImageView productImage;
-//    @BindView(R.id.quickView_brand)
-//    TextView brand;
+    @BindView(R.id.quickView_image)
+    ImageView productImage;
+    @BindView(R.id.quickView_brand)
+    TextView brand;
     @BindView(R.id.quickView_name)
     TextView name;
-//    @BindView(R.id.quickView_quantity)
-//    TextView quantity;
-//    @BindView(R.id.quickView_nutriScore)
-//    ImageView nutriScore;
-//    @BindView(R.id.quickView_novaGroup)
-//    ImageView novaGroup;
-//    @BindView(R.id.quickView_imageProgress)
-//    ProgressBar imageProgress;
+    @BindView(R.id.quickView_quantity)
+    TextView quantity;
+    @BindView(R.id.quickView_nutriScore)
+    ImageView nutriScore;
+    @BindView(R.id.quickView_novaGroup)
+    ImageView novaGroup;
+    @BindView(R.id.quickView_imageProgress)
+    ProgressBar imageProgress;
     @BindView(R.id.quickView_searchByBarcode)
     EditText searchByBarcode;
+    @BindView(R.id.quickView_details)
+    RelativeLayout details;
     @Inject
     OpenFoodAPIService client;
 
@@ -239,47 +242,47 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             } else {
                                 name.setText(product.getProductName());
                             }
-//                            if (product.getBrands() == null || product.getBrands().equals("")) {
-//                                brand.setText(R.string.productBrandNull);
-//                            } else {
-//                                brand.setText(product.getBrands());
-//                            }
-//                            if (product.getQuantity() == null || product.getQuantity().equals("")) {
-//                                quantity.setText(R.string.productQuantityNull);
-//                            } else {
-//                                quantity.setText(product.getQuantity());
-//                            }
-//                            if (product.getImageUrl() != null) {
-//                                Picasso.with(ContinuousScanActivity.this)
-//                                        .load(product.getImageUrl())
-//                                        .error(R.drawable.placeholder_thumb)
-//                                        .into(productImage, new Callback() {
-//                                            @Override
-//                                            public void onSuccess() {
-//                                                imageProgress.setVisibility(View.GONE);
-//                                            }
-//
-//                                            @Override
-//                                            public void onError() {
-//                                                imageProgress.setVisibility(View.GONE);
-//                                            }
-//                                        });
-//                            } else {
-//                                productImage.setImageResource(R.drawable.placeholder_thumb);
-//                                imageProgress.setVisibility(View.GONE);
-//                            }
-//                            // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
-//                            if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
-//                                nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
-//                            } else {
-//                                nutriScore.setVisibility(View.GONE);
-//                            }
-//                            // Hide nova group from quickView if app flavour is not OFF or there is no nova group
-//                            if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
-//                                novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
-//                            } else {
-//                                novaGroup.setVisibility(View.GONE);
-//                            }
+                            if (product.getBrands() == null || product.getBrands().equals("")) {
+                                brand.setText(R.string.productBrandNull);
+                            } else {
+                                brand.setText(product.getBrands());
+                            }
+                            if (product.getQuantity() == null || product.getQuantity().equals("")) {
+                                quantity.setText(R.string.productQuantityNull);
+                            } else {
+                                quantity.setText(product.getQuantity());
+                            }
+                            if (product.getImageUrl() != null) {
+                                Picasso.with(ContinuousScanActivity.this)
+                                        .load(product.getImageUrl())
+                                        .error(R.drawable.placeholder_thumb)
+                                        .into(productImage, new Callback() {
+                                            @Override
+                                            public void onSuccess() {
+                                                imageProgress.setVisibility(View.GONE);
+                                            }
+
+                                            @Override
+                                            public void onError() {
+                                                imageProgress.setVisibility(View.GONE);
+                                            }
+                                        });
+                            } else {
+                                productImage.setImageResource(R.drawable.placeholder_thumb);
+                                imageProgress.setVisibility(View.GONE);
+                            }
+                            // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
+                            if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
+                                nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
+                            } else {
+                                nutriScore.setVisibility(View.GONE);
+                            }
+                            // Hide nova group from quickView if app flavour is not OFF or there is no nova group
+                            if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
+                                novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                            } else {
+                                novaGroup.setVisibility(View.GONE);
+                            }
 //                            quickView.setOnClickListener(v -> {
 //                                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_DRAGGING);
                             FragmentManager fm = getSupportFragmentManager();
@@ -338,35 +341,35 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         } else {
             name.setText(R.string.productNameNull);
         }
-//        if (productDetails.get("add_brands") == null || productDetails.get("add_brands").equals("")) {
-//            brand.setText(R.string.productBrandNull);
-//        } else {
-//            brand.setText(productDetails.get("add_brands"));
-//        }
-//        if (productDetails.get("quantity") == null || productDetails.get("quantity").equals("")) {
-//            quantity.setText(R.string.productQuantityNull);
-//        } else {
-//            quantity.setText(productDetails.get("quantity"));
-//        }
-//        if (productDetails.get("image_front") != null) {
-//            Picasso.with(ContinuousScanActivity.this)
-//                    .load("file://" + productDetails.get("image_front"))
-//                    .error(R.drawable.placeholder_thumb)
-//                    .into(productImage, new Callback() {
-//                        @Override
-//                        public void onSuccess() {
-//                            imageProgress.setVisibility(View.GONE);
-//                        }
-//
-//                        @Override
-//                        public void onError() {
-//                            imageProgress.setVisibility(View.GONE);
-//                        }
-//                    });
-//        } else {
-//            productImage.setImageResource(R.drawable.placeholder_thumb);
-//            imageProgress.setVisibility(View.GONE);
-//        }
+        if (productDetails.get("add_brands") == null || productDetails.get("add_brands").equals("")) {
+            brand.setText(R.string.productBrandNull);
+        } else {
+            brand.setText(productDetails.get("add_brands"));
+        }
+        if (productDetails.get("quantity") == null || productDetails.get("quantity").equals("")) {
+            quantity.setText(R.string.productQuantityNull);
+        } else {
+            quantity.setText(productDetails.get("quantity"));
+        }
+        if (productDetails.get("image_front") != null) {
+            Picasso.with(ContinuousScanActivity.this)
+                    .load("file://" + productDetails.get("image_front"))
+                    .error(R.drawable.placeholder_thumb)
+                    .into(productImage, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+                    });
+        } else {
+            productImage.setImageResource(R.drawable.placeholder_thumb);
+            imageProgress.setVisibility(View.GONE);
+        }
     }
 
     private void navigateToProductAddition(String lastText) {
@@ -381,14 +384,14 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
     private void showAllViews() {
         slideUpIndicator.setVisibility(View.VISIBLE);
-//        productImage.setVisibility(View.VISIBLE);
+        productImage.setVisibility(View.VISIBLE);
         name.setVisibility(View.VISIBLE);
         frameLayout.setVisibility(View.VISIBLE);
-//        brand.setVisibility(View.VISIBLE);
-//        quantity.setVisibility(View.VISIBLE);
-//        nutriScore.setVisibility(View.VISIBLE);
-//        novaGroup.setVisibility(View.VISIBLE);
-//        imageProgress.setVisibility(View.VISIBLE);
+        brand.setVisibility(View.VISIBLE);
+        quantity.setVisibility(View.VISIBLE);
+        nutriScore.setVisibility(View.VISIBLE);
+        novaGroup.setVisibility(View.VISIBLE);
+        imageProgress.setVisibility(View.VISIBLE);
         fab_status.setVisibility(View.VISIBLE);
     }
 
@@ -397,16 +400,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         progressBar.setVisibility(View.GONE);
         progressText.setVisibility(View.GONE);
         slideUpIndicator.setVisibility(View.GONE);
-//        productImage.setVisibility(View.GONE);
+        productImage.setVisibility(View.GONE);
         name.setVisibility(View.GONE);
         frameLayout.setVisibility(View.GONE);
-//        brand.setVisibility(View.GONE);
-//        quantity.setVisibility(View.GONE);
-//        nutriScore.setVisibility(View.GONE);
-//        novaGroup.setVisibility(View.GONE);
+        brand.setVisibility(View.GONE);
+        quantity.setVisibility(View.GONE);
+        nutriScore.setVisibility(View.GONE);
+        novaGroup.setVisibility(View.GONE);
         productNotFound.setVisibility(View.GONE);
         fab_status.setVisibility(View.GONE);
-//        imageProgress.setVisibility(View.GONE);
+        imageProgress.setVisibility(View.GONE);
         txtProductIncomplete.setVisibility(View.GONE);
     }
 
@@ -506,10 +509,18 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                if(slideOffset>0.01f || slideOffset<-0.01f)
+                if(slideOffset>0.01f || slideOffset<-0.01f) {
                     fab_status.setVisibility(View.GONE);
-                else
+                    details.setVisibility(View.GONE);
+                }else {
+                    details.setVisibility(View.VISIBLE);
                     fab_status.setVisibility(View.VISIBLE);
+                }
+                if(slideOffset>0.01f) {
+                    details.setVisibility(View.GONE);
+                }else {
+                    details.setVisibility(View.VISIBLE);
+                }
                 if (slideOffset < -0.01f) {
 //                    fab_status.setVisibility(View.GONE);
                     txtProductIncomplete.setVisibility(View.GONE);

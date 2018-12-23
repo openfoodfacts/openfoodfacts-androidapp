@@ -529,15 +529,15 @@ doesn't have calories information in nutrition facts.
 	}
 
 
-
-//	@Override
-//	protected void onNewIntent( Intent intent )
-//	{
-//		super.onNewIntent( intent );
-//		setIntent( intent );
-//		adapterResult.refresh( (State) intent.getExtras().getSerializable( "state" ) );
-//	}
-
+/*
+	@Override
+	protected void onNewIntent( Intent intent )
+	{
+		super.onNewIntent( intent );
+		setIntent( intent );
+		adapterResult.refresh( (State) intent.getExtras().getSerializable( "state" ) );
+	}
+*/
 	@Override
 	public void onPause()
 	{
