@@ -7,6 +7,7 @@ import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.TaglineModel;
 import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -329,5 +330,8 @@ public interface OpenFoodAPIService {
 
     @GET("/1.json?fields=null")
     Single<Search> getTotalProductCount();
+
+    @GET("/files/tagline/tagline-en.json")
+    Call<TaglineModel> getTagline();
 }
 

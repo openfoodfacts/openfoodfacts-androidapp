@@ -20,7 +20,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -35,6 +34,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Search;
+import openfoodfacts.github.scrachx.openfood.models.TaglineModel;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
@@ -64,6 +64,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     private OpenFoodAPIService apiClient;
     private SharedPreferences sp;
+    private String taglineURL;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -115,7 +116,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         CustomTabsIntent customTabsIntent;
         CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
-        Uri dailyFoodFactUri = Uri.parse("https://world.openfoodfacts.org/");
+        Uri dailyFoodFactUri = Uri.parse(taglineURL);
         customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null);
 
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(),
@@ -208,6 +209,8 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                     }
                 });
 
+        getTagline();
+
         if (getActivity() instanceof AppCompatActivity) {
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
             if (actionBar != null) {
@@ -225,5 +228,23 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     @Override
     public void onCustomTabsDisconnected() {
 
+    }
+
+    private void getTagline(){
+        Call<TaglineModel> call = apiClient.getTagline();
+        call.enqueue(new Callback<TaglineModel>() {
+                    @Override
+                    public void onResponse(Call<TaglineModel> call, Response<TaglineModel> response) {
+                        tvDailyFoodFact.setVisibility(View.VISIBLE);
+                        TaglineModel taglineModel = response.body();
+                        taglineURL = taglineModel.getUrl();
+                        tvDailyFoodFact.setText(taglineModel.getTagline());
+                    }
+
+                    @Override
+                    public void onFailure(Call<TaglineModel> call, Throwable t) {
+
+                    }
+                });
     }
 }
