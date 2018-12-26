@@ -9,6 +9,8 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.repositories.DietRepository;
+import openfoodfacts.github.scrachx.openfood.repositories.IDietRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -27,11 +29,13 @@ public class SplashPresenter implements ISplashPresenter.Actions {
     private ISplashPresenter.View view;
     private SharedPreferences settings;
     private IProductRepository productRepository;
+    private IDietRepository dietRepository;
 
     public SplashPresenter(SharedPreferences settings, ISplashPresenter.View view) {
         this.view = view;
         this.settings = settings;
         productRepository = ProductRepository.getInstance();
+        dietRepository = DietRepository.getInstance();
     }
 
     @Override
@@ -49,14 +53,16 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                         productRepository.getLabels(true),
                         productRepository.getTags(true),
                         productRepository.getAllergens(true),
+                        dietRepository.getIngredients(false),
                         productRepository.getCountries(true),
                         productRepository.getAdditives(true),
-                        productRepository.getCategories(true), (labels, tags, allergens, countries, additives, categories) -> {
+                        productRepository.getCategories(true), (labels, tags, allergens, ingredients, countries, additives, categories) -> {
                             Completable.merge(
                                     Arrays.asList(
                                             Completable.fromAction(() -> productRepository.saveLabels(labels)),
                                             Completable.fromAction(() -> productRepository.saveTags(tags)),
                                             Completable.fromAction(() -> productRepository.saveAllergens(allergens)),
+                                            Completable.fromAction(() -> dietRepository.saveIngredients(ingredients)),
                                             Completable.fromAction(() -> productRepository.saveCountries(countries)),
                                             Completable.fromAction(() -> productRepository.saveAdditives(additives)),
                                             Completable.fromAction(() -> productRepository.saveCategories(categories))

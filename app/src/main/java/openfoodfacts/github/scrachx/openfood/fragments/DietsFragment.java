@@ -21,7 +21,6 @@ import java.util.List;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.Diet;
 import openfoodfacts.github.scrachx.openfood.models.DietDao;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DietsAdapter;

@@ -4,6 +4,7 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Keep;
 
 /**
  * Created by dobriseb on 2018.10.15.
@@ -22,6 +23,12 @@ public class IngredientName {
 public IngredientName(Long id, String ingredientTag, String languageCode,
         String name) {
     this.id = id;
+    this.ingredientTag = ingredientTag;
+    this.languageCode = languageCode;
+    this.name = name;
+}
+@Keep
+public IngredientName(String ingredientTag, String languageCode, String name) {
     this.ingredientTag = ingredientTag;
     this.languageCode = languageCode;
     this.name = name;
