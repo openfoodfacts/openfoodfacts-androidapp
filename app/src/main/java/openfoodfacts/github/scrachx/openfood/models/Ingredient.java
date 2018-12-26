@@ -6,6 +6,7 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.JoinProperty;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.ToMany;
 import org.greenrobot.greendao.annotation.Unique;
 
@@ -25,10 +26,25 @@ public class Ingredient {
     @Unique
     private String tag;
 
+    @Unique
+    private String wikiDataId;
+
+    private Boolean isWikiDataIdPresent;
+
     @ToMany(joinProperties = {
         @JoinProperty(name = "tag", referencedName = "ingredientTag")
     })
     private List<IngredientName> names;
+
+    @ToMany(joinProperties = {
+        @JoinProperty(name = "tag", referencedName = "parentTag")
+    })
+    private List<IngredientsRelation> parents;
+
+    @ToMany(joinProperties = {
+        @JoinProperty(name = "tag", referencedName = "childTag")
+    })
+    private List<IngredientsRelation> children;
 /** Used to resolve relations */
 @Generated(hash = 2040040024)
 private transient DaoSession daoSession;
@@ -36,10 +52,29 @@ private transient DaoSession daoSession;
 @Generated(hash = 942581853)
 private transient IngredientDao myDao;
 
-@Generated(hash = 719810036)
-public Ingredient(Long id, String tag) {
+@Generated(hash = 357329675)
+public Ingredient(Long id, String tag, String wikiDataId, Boolean isWikiDataIdPresent) {
     this.id = id;
     this.tag = tag;
+    this.wikiDataId = wikiDataId;
+    this.isWikiDataIdPresent = isWikiDataIdPresent;
+}
+@Keep
+public Ingredient(String tag, List<IngredientName> names, List<IngredientsRelation> parents, List<IngredientsRelation> children, String wikiDataId) {
+    this.tag = tag;
+    this.names = names;
+    this.parents = parents;
+    this.children = children;
+    this.wikiDataId = wikiDataId;
+    this.isWikiDataIdPresent = true;
+}
+@Keep
+public Ingredient(String tag, List<IngredientName> names, List<IngredientsRelation> parents, List<IngredientsRelation> children) {
+    this.tag = tag;
+    this.names = names;
+    this.parents = parents;
+    this.children = children;
+    this.isWikiDataIdPresent = false;
 }
 
 @Generated(hash = 1584798654)
@@ -126,6 +161,74 @@ public void update() {
     myDao.update(this);
 }
 
+public String getWikiDataId() {
+    return this.wikiDataId;
+}
+
+public void setWikiDataId(String wikiDataId) {
+    this.wikiDataId = wikiDataId;
+}
+
+public Boolean getIsWikiDataIdPresent() {
+    return this.isWikiDataIdPresent;
+}
+
+public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
+    this.isWikiDataIdPresent = isWikiDataIdPresent;
+}
+
+/**
+ * To-many relationship, resolved on first access (and after reset).
+ * Changes to to-many relations are not persisted, make changes to the target entity.
+ */
+@Generated(hash = 1272953349)
+public List<IngredientsRelation> getParents() {
+    if (parents == null) {
+        final DaoSession daoSession = this.daoSession;
+        if (daoSession == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        IngredientsRelationDao targetDao = daoSession.getIngredientsRelationDao();
+        List<IngredientsRelation> parentsNew = targetDao._queryIngredient_Parents(tag);
+        synchronized (this) {
+            if (parents == null) {
+                parents = parentsNew;
+            }
+        }
+    }
+    return parents;
+}
+/** Resets a to-many relationship, making the next get call to query for a fresh result. */
+@Generated(hash = 51086427)
+public synchronized void resetParents() {
+    parents = null;
+}
+/**
+ * To-many relationship, resolved on first access (and after reset).
+ * Changes to to-many relations are not persisted, make changes to the target entity.
+ */
+@Generated(hash = 1430180030)
+public List<IngredientsRelation> getChildren() {
+    if (children == null) {
+        final DaoSession daoSession = this.daoSession;
+        if (daoSession == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        IngredientsRelationDao targetDao = daoSession.getIngredientsRelationDao();
+        List<IngredientsRelation> childrenNew = targetDao._queryIngredient_Children(tag);
+        synchronized (this) {
+            if (children == null) {
+                children = childrenNew;
+            }
+        }
+    }
+    return children;
+}
+/** Resets a to-many relationship, making the next get call to query for a fresh result. */
+@Generated(hash = 1590975152)
+public synchronized void resetChildren() {
+    children = null;
+}
 /** called by internal mechanisms, do not call yourself. */
 @Generated(hash = 1386056592)
 public void __setDaoSession(DaoSession daoSession) {

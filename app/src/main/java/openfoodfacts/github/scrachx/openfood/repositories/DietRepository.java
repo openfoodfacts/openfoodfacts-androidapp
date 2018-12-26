@@ -6,6 +6,7 @@ import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 
+import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.WhereCondition;
 
@@ -31,6 +32,11 @@ import openfoodfacts.github.scrachx.openfood.models.IngredientName;
 import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DietIngredients;
 import openfoodfacts.github.scrachx.openfood.models.DietIngredientsDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
+import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
@@ -44,6 +50,7 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
 public class DietRepository implements IDietRepository {
 
+    private ProductApiService productApi;
     private static final String DEFAULT_LANGUAGE = "en";
     private static IDietRepository instance;
     private Database db;
@@ -51,6 +58,7 @@ public class DietRepository implements IDietRepository {
     private DietNameDao dietNameDao;
     private IngredientDao ingredientDao;
     private IngredientNameDao ingredientNameDao;
+    private IngredientsRelationDao ingredientsRelationDao;
     private DietIngredientsDao dietIngredientsDao;
     private HashMap<Integer, String> colors = new HashMap<Integer, String>();
 
@@ -66,18 +74,29 @@ public class DietRepository implements IDietRepository {
     }
 
     private DietRepository() {
+        productApi = CommonApiManager.getInstance().getProductApiService();
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         db = daoSession.getDatabase();
         dietDao = daoSession.getDietDao();
         dietNameDao = daoSession.getDietNameDao();
         ingredientDao = daoSession.getIngredientDao();
         ingredientNameDao = daoSession.getIngredientNameDao();
+        ingredientsRelationDao = daoSession.getIngredientsRelationDao();
         dietIngredientsDao = daoSession.getDietIngredientsDao();
 
         colors.put(-1, "#ff0000");
         colors.put(0, "#ff9900");
         colors.put(1, "#00b400");
         colors.put(2, "#393939");
+    }
+
+    /**
+     * Checks whether table is empty
+     *
+     * @param dao checks records count of any table
+     */
+    private Boolean tableIsEmpty(AbstractDao dao) {
+        return dao.count() == 0;
     }
 
     /**
@@ -109,12 +128,13 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public Single<List<Ingredient>> getIngredients(Boolean refresh) {
-        /*if (refresh || tableIsEmpty(ingredientDao)) {
+        Log.i("INFO", "getIngredients("+ refresh +")");
+        if (refresh || tableIsEmpty(ingredientDao)) {
             return productApi.getIngredients()
                     .map(IngredientsWrapper::map);
-        } else {*/
-        return Single.fromCallable(() -> ingredientDao.loadAll());
-        /*}*/
+        } else {
+            return Single.fromCallable(() -> ingredientDao.loadAll());
+        }
     }
 
     /**
@@ -180,13 +200,19 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public void saveIngredients(List<Ingredient> ingredients) {
-        //Log.i("INFO", "Début de saveIngredients");
+        Log.i("INFO", "Début de saveIngredients");
         db.beginTransaction();
         try {
             for (Ingredient ingredient : ingredients) {
                 ingredientDao.insertOrReplace(ingredient);
                 for (IngredientName ingredientName : ingredient.getNames()) {
                     ingredientNameDao.insertOrReplace(ingredientName);
+                }
+                for (IngredientsRelation ingredientsRelation : ingredient.getParents()) {
+                    ingredientsRelationDao.insertOrReplace(ingredientsRelation);
+                }
+                for (IngredientsRelation ingredientsRelation : ingredient.getChildren()) {
+                    ingredientsRelationDao.insertOrReplace(ingredientsRelation);
                 }
             }
 
@@ -196,7 +222,7 @@ public class DietRepository implements IDietRepository {
         } finally {
             db.endTransaction();
         }
-        //Log.i("INFO", "Fin de saveIngredients");
+        Log.i("INFO", "Fin de saveIngredients");
     }
 
     /**
