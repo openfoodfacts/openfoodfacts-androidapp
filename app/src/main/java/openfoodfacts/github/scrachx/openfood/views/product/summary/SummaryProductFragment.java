@@ -66,6 +66,7 @@ import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -226,8 +227,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
-        if (isNotBlank(product.getProductName())) {
-            nameProduct.setText(product.getProductName());
+        if (isNotBlank(product.getProductName(LocaleHelper.getLanguage(getContext())))) {
+            nameProduct.setText(product.getProductName(LocaleHelper.getLanguage(getContext())));
+        } else if (isNotBlank(product.getProductName("en"))) {
+            nameProduct.setText(product.getProductName("en"));
+        } else if (isNotBlank(product.getProductName())) {
+            nameProduct.setText(product.getProductName("en"));
         } else {
             nameProduct.setVisibility(View.GONE);
         }
