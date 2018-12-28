@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -19,6 +20,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -76,6 +78,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
     private static HistoryProductDao mHistoryProductDao;
+    private static final int PEEK_SMALL = 120;
+    private static final int PEEK_LARGE = 150;
+
     @BindView(R.id.fab_status)
     FloatingActionButton fab_status;
     @BindView(R.id.quick_view)
@@ -459,6 +464,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         }
     }
 
+    //Helper Function
+    private int dpsToPixel(int dps, Context context) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dps * scale + 0.5f);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         OFFApplication.getAppComponent().inject(this);
@@ -505,31 +516,48 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 if (newState == BottomSheetBehavior.STATE_HIDDEN) {
                     lastText = null;
                 }
+                if (searchByBarcode.getVisibility() == View.VISIBLE) {
+                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_SMALL, ContinuousScanActivity.this));
+                    bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
+                    bottomSheet.requestLayout();
+                } else {
+                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_LARGE, ContinuousScanActivity.this));
+                    bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+                    bottomSheet.requestLayout();
+                }
+                if (productNotFound.getVisibility() == View.VISIBLE) {
+//                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_SMALL,ContinuousScanActivity.this));
+                    bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
+                    bottomSheet.requestLayout();
+                } else {
+//                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_LARGE,ContinuousScanActivity.this));
+                    bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+                    bottomSheet.requestLayout();
+                }
             }
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                if(slideOffset>0.01f || slideOffset<-0.01f) {
-                    fab_status.setVisibility(View.GONE);
-                    details.setVisibility(View.GONE);
-                }else {
-                    details.setVisibility(View.VISIBLE);
-                    fab_status.setVisibility(View.VISIBLE);
-                }
-                if(slideOffset>0.01f) {
-                    details.setVisibility(View.GONE);
-                }else {
-                    details.setVisibility(View.VISIBLE);
-                }
-                if (slideOffset < -0.01f) {
-//                    fab_status.setVisibility(View.GONE);
-                    txtProductIncomplete.setVisibility(View.GONE);
-                } else {
-                    if (searchByBarcode.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
+
+                if (searchByBarcode.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
+                    if (slideOffset > 0.01f || slideOffset < -0.01f) {
+                        fab_status.setVisibility(View.GONE);
+                        txtProductIncomplete.setVisibility(View.GONE);
+                    } else {
+                        fab_status.setVisibility(View.VISIBLE);
+                        if (searchByBarcode.getVisibility() != View.VISIBLE && productNotFound.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
 //                        fab_status.setVisibility(View.VISIBLE);
-                        if (isProductIncomplete()) {
-                            txtProductIncomplete.setVisibility(View.VISIBLE);
+                            if (isProductIncomplete()) {
+                                txtProductIncomplete.setVisibility(View.VISIBLE);
+                            }
                         }
+                    }
+                    if (slideOffset > 0.01f) {
+                        details.setVisibility(View.GONE);
+                        barcodeView.pause();
+                    } else {
+                        barcodeView.resume();
+                        details.setVisibility(View.VISIBLE);
                     }
                 }
             }

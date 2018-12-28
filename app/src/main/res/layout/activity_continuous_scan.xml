@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="125dp"
+            android:layout_marginBottom="152dp"
             android:gravity="center_horizontal"
             android:text="@string/product_not_complete"
             android:textColor="@color/white"
@@ -216,7 +216,7 @@
                 android:text="@string/txtDialogsContent"
                 android:textSize="16sp"
                 android:visibility="gone"
-                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

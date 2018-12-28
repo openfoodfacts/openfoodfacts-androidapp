@@ -18,6 +18,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -33,6 +34,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -47,6 +49,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -80,6 +83,7 @@ import openfoodfacts.github.scrachx.openfood.views.product.ingredients.Ingredien
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
+import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 
 import static android.app.Activity.RESULT_OK;
@@ -123,14 +127,13 @@ public class ProductFragment extends Fragment implements OnRefreshListener
 		{
 			getActivity().setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
 		}
-        viewPager  = (ViewPager)view.findViewById(R.id.pager);
-		toolbar=(Toolbar)view.findViewById(R.id.toolbar);
+        ButterKnife.bind(this, view);
 		toolbar.setVisibility(View.GONE);
-		tabLayout=(TabLayout)view.findViewById(R.id.tabs);
-		mButtonScan=(FloatingActionButton)view.findViewById(R.id.buttonScan);
-		bottomNavigationView=(BottomNavigationView)view.findViewById(R.id.bottom_navigation);
+        mButtonScan.setVisibility(View.GONE);
 
 		setupViewPager( viewPager );
+
+        viewPager.setNestedScrollingEnabled(true);
 
 		tabLayout.setupWithViewPager( viewPager );
 
@@ -226,8 +229,8 @@ public class ProductFragment extends Fragment implements OnRefreshListener
 			}
 			return true;
 		} );
-		CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
-		layoutParams.setBehavior( new BottomNavigationBehavior() );
+//		CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
+//		layoutParams.setBehavior( new BottomNavigationBehavior() );
 
 		return view;
 	}
@@ -279,7 +282,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener
 	{
 		String[] menuTitles = getResources().getStringArray( R.array.nav_drawer_items_product );
 
-		adapterResult = new ProductFragmentPagerAdapter( getActivity().getSupportFragmentManager() );
+        adapterResult = new ProductFragmentPagerAdapter(getChildFragmentManager());
 		adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
 
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences( getActivity() );
@@ -516,7 +519,7 @@ doesn't have calories information in nutrition facts.
 					.getJSONObject(wikidataId).toString() : null;
 			ProductAttributeDetailsFragment fragment =
 					ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
-			fragment.show(getActivity().getSupportFragmentManager(), fragmentTag);
+            fragment.show(getChildFragmentManager(), fragmentTag);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
