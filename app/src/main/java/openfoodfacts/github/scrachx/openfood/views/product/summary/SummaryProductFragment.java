@@ -210,6 +210,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
+        product = state.getProduct();
+        presenter = new SummaryProductPresenter(product, this);
         categoryProduct.setText(bold(getString(R.string.txtCategories)));
         labelProduct.setText(bold(getString(R.string.txtLabels)));
         countryProduct.setText(bold(getString(R.string.txtCountries)));

@@ -922,6 +922,8 @@ public class AddProductActivity extends AppCompatActivity {
                         toast.show();
                         mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(code)).list());
                         Intent intent = new Intent();
+                        state.setProduct(mProduct);
+                        intent.putExtra("state", state);
                         intent.putExtra("uploadedToServer", true);
                         setResult(RESULT_OK, intent);
                         finish();
