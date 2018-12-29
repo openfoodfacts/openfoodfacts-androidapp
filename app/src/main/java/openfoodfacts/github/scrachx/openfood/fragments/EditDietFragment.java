@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,10 +9,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import com.hootsuite.nachos.NachoTextView;
+import com.hootsuite.nachos.chip.Chip;
+import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
+
+import org.greenrobot.greendao.async.AsyncSession;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -19,12 +29,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Diet;
 import openfoodfacts.github.scrachx.openfood.models.DietIngredients;
 import openfoodfacts.github.scrachx.openfood.models.DietName;
+import openfoodfacts.github.scrachx.openfood.models.IngredientName;
+import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
 import openfoodfacts.github.scrachx.openfood.repositories.DietRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.IDietRepository;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
+import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 public class EditDietFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,18 +53,20 @@ public class EditDietFragment extends Fragment {
     @BindView(R.id.diet_enabled)
     Switch dietEnabled;
     @BindView(R.id.ingredients_authorised)
-    EditText ingredientsAuthorised;
+    NachoTextView ingredientsAuthorised;
     @BindView(R.id.ingredients_soso)
-    EditText ingredientsSoSo;
+    NachoTextView ingredientsSoSo;
     @BindView(R.id.ingredients_unauthorised)
-    EditText ingredientsUnauthorised;
+    NachoTextView ingredientsUnauthorised;
     @BindView(R.id.save_edits)
     Button saveEdits;
     // Fetching of the (theoretical) language of input:
     private String languageCode = Locale.getDefault().getLanguage();
+    private String appLanguageCode;
+    private Activity activity;
     private IDietRepository dietRepository;
-
-
+    private IngredientNameDao mIngredientNameDao;
+    private List<String> ingredients = new ArrayList<>();
     // TODO: Rename and change types of parameters
     private String mDietName;
 
@@ -99,9 +117,18 @@ public class EditDietFragment extends Fragment {
             DietName dietName = dietRepository.getDietNameByDietTagAndLanguageCode(diet.getTag(), languageCode);
             dietDescription.setText(dietName.getDescription());
             dietEnabled.setChecked(diet.getEnabled());
-            ingredientsAuthorised.setText(dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), 1, languageCode));
-            ingredientsSoSo.setText(dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), 0, languageCode));
-            ingredientsUnauthorised.setText(dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), -1, languageCode));
+            String ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), 1, languageCode);
+            if (!ingredientNames.equals("")){
+                ingredientsAuthorised.setText(Arrays.asList(ingredientNames.split("\\s*,\\s*")));
+            }
+            ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), 0, languageCode);
+            if (!ingredientNames.equals("")){
+                ingredientsSoSo.setText(Arrays.asList(ingredientNames.split("\\s*,\\s*")));
+            }
+            ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), -1, languageCode);
+            if (!ingredientNames.equals("")) {
+                ingredientsUnauthorised.setText(Arrays.asList(ingredientNames.split("\\s*,\\s*")));
+            }
         }
         return view;
     }
@@ -116,6 +143,10 @@ public class EditDietFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         //Log.i("INFO", "Début de OnViewCreated de FragmentEditDiet");
         super.onViewCreated(view, savedInstanceState);
+        appLanguageCode = LocaleHelper.getLanguage(getActivity());
+        Log.i("INFO", "Valeur de appLanguageCode : " + appLanguageCode);
+        initializeChips();
+        loadAutoSuggestions();
         //Log.i("INFO", "Fin de OnViewCreated de FragmentEditDiet");
     }
 
@@ -128,7 +159,7 @@ public class EditDietFragment extends Fragment {
         dietRepository.addDiet(dietName.getText().toString(), dietDescription.getText().toString(), dietEnabled.isChecked(), languageCode);
         //Get the diet
         Diet diet = dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode);
-        //Set the state at 2 (no impact) for all ingredients associated with the diet. Sort of reset before the nexts steps
+        //Set the state at 2 (no impact) for all ingredients associated with the diet. Sort of reset before the next steps
         List<DietIngredients> dietIngredientsList = dietRepository.getDietIngredientsListByDietTag(diet.getTag());
         for (int i = 0; i < dietIngredientsList.size(); i++) {
             DietIngredients dietIngredients =  dietIngredientsList.get(i);
@@ -136,15 +167,18 @@ public class EditDietFragment extends Fragment {
             dietRepository.saveDietIngredients(dietIngredients);
         }
         //Set the goods state for each ingredients in the 3 lists
-        for (String ingredient : ingredientsAuthorised.getText().toString().split(",")) {
+        for (Chip chip : ingredientsAuthorised.getAllChips()) {
+            String ingredient = (String) chip.getText();
             dietRepository.addIngredient(ingredient, languageCode);
             dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode,1);
         }
-        for (String ingredient : ingredientsSoSo.getText().toString().split(",")) {
+        for (Chip chip : ingredientsSoSo.getAllChips()) {
+            String ingredient = (String) chip.getText();
             dietRepository.addIngredient(ingredient, languageCode);
             dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode,0);
         }
-        for (String ingredient : ingredientsUnauthorised.getText().toString().split(",")) {
+        for (Chip chip : ingredientsUnauthorised.getAllChips()) {
+            String ingredient = (String) chip.getText();
             dietRepository.addIngredient(ingredient, languageCode);
             dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode,-1);
         }
@@ -155,6 +189,40 @@ public class EditDietFragment extends Fragment {
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }
+
+    private void initializeChips() {
+        NachoTextView nachoTextViews[] = {ingredientsAuthorised, ingredientsSoSo, ingredientsUnauthorised};
+        for (NachoTextView nachoTextView : nachoTextViews) {
+            nachoTextView.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
+            nachoTextView.setNachoValidator(new ChipifyingNachoValidator());
+            nachoTextView.enableEditChipOnTouch(false, true);
+        }
+    }
+
+    private void loadAutoSuggestions() {
+        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        AsyncSession asyncSessionIngredients = daoSession.startAsyncSession();
+        IngredientNameDao ingredientNameDao = daoSession.getIngredientNameDao();
+
+        asyncSessionIngredients.queryList(ingredientNameDao.queryBuilder()
+                .where(IngredientNameDao.Properties.LanguageCode.eq(appLanguageCode))
+                .orderAsc(IngredientNameDao.Properties.Name).build());
+
+        asyncSessionIngredients.setListenerMainThread(operation -> {
+            @SuppressWarnings("unchecked")
+            List<IngredientName> ingredientNames = (List<IngredientName>) operation.getResult();
+            ingredients.clear();
+            for (int i = 0; i < ingredientNames.size(); i++) {
+                ingredients.add(ingredientNames.get(i).getName());
+                Log.i("INFO", "Ajout de l'ingrédient : " + ingredientNames.get(i).getName());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, ingredients);
+            ingredientsAuthorised.setAdapter(adapter);
+            ingredientsSoSo.setAdapter(adapter);
+            ingredientsUnauthorised.setAdapter(adapter);
+        });
+    }
+
     //TODO Add a delete button witch suppress rows of DietIngredients, DietName and Diet
     //TODO Change name only change row and don't create a new one.
     //TODO Internationalisation made easy : en:Vegetarian, fr:Végétarien

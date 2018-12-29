@@ -108,7 +108,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
-        <EditText
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/ingredients_authorised"
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -116,12 +116,16 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
             android:gravity="center_vertical"
             android:minHeight="150dp"
             android:nextFocusDown="@id/ingredients_soso"
             android:padding="@dimen/spacing_tiny"
             android:hint="@string/EditDiet_Hint_Ingredient_Authorised"
             android:textSize="12sp"
+            app:chipBackground="#00b400"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_800"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/section_ingredients_authorised" />
@@ -137,7 +141,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ingredients_authorised" />
 
-        <EditText
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/ingredients_soso"
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -145,12 +149,16 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
             android:gravity="center_vertical"
             android:minHeight="150dp"
             android:nextFocusDown="@id/ingredients_unauthorised"
             android:padding="@dimen/spacing_tiny"
             android:hint="@string/EditDiet_Hint_So_So_Ingredient"
             android:textSize="12sp"
+            app:chipBackground="#ff9900"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_800"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/section_ingredients_soso" />
@@ -166,7 +174,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ingredients_soso" />
 
-        <EditText
+        <com.hootsuite.nachos.NachoTextView
             android:id="@+id/ingredients_unauthorised"
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -174,12 +182,16 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
             android:gravity="center_vertical"
             android:minHeight="150dp"
             android:nextFocusDown="@id/diet_name"
             android:padding="@dimen/spacing_tiny"
             android:hint="@string/EditDiet_Hint_Unauthorised_Ingredient"
             android:textSize="12sp"
+            app:chipBackground="#ff0000"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_800"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/section_ingredients_unauthorised" />
