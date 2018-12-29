@@ -37,6 +37,8 @@ public class Product implements Serializable {
     private String imageFrontUrl;
     @JsonProperty("image_ingredients_url")
     private String imageIngredientsUrl;
+    @JsonProperty("image_barcode_url")
+    private String imageBarcodeUrl;
     @JsonProperty("link")
     private String manufactureUrl;
     private String url;
@@ -245,6 +247,13 @@ public class Product implements Serializable {
      */
     public String getImageNutritionUrl() {
         return imageNutritionUrl;
+    }
+
+    /**
+     * @return The imageBarcodeUrl
+     */
+    public String getImageBarcodeUrl() {
+        return imageBarcodeUrl;
     }
 
     /**

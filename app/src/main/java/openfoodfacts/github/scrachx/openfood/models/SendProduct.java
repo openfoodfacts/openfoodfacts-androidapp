@@ -8,6 +8,7 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.Transient;
 
 import java.io.Serializable;
@@ -41,6 +42,8 @@ public class SendProduct implements Serializable {
     private String imgupload_ingredients;
     @JsonIgnore
     private String imgupload_nutrition;
+    @JsonIgnore
+    private String imgupload_barcode;
     @JsonProperty("user_id")
     @Transient
     private String userId;
@@ -50,8 +53,8 @@ public class SendProduct implements Serializable {
     public SendProduct() {
     }
 
-    @Generated(hash = 994048396)
-    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String weight_unit, String imgupload_front, String imgupload_ingredients, String imgupload_nutrition) {
+    @Keep
+    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String weight_unit, String imgupload_front, String imgupload_ingredients, String imgupload_nutrition, String imgupload_barcode) {
         this.id = id;
         this.barcode = barcode;
         this.lang = lang;
@@ -62,6 +65,7 @@ public class SendProduct implements Serializable {
         this.imgupload_front = imgupload_front;
         this.imgupload_ingredients = imgupload_ingredients;
         this.imgupload_nutrition = imgupload_nutrition;
+        this.imgupload_barcode = imgupload_barcode;
     }
 
     public String getUserId() {
@@ -152,6 +156,14 @@ public class SendProduct implements Serializable {
         this.imgupload_nutrition = imgupload_nutrition;
     }
 
+    public String getImgupload_barcode(){
+        return imgupload_barcode;
+    }
+
+    public void setImgupload_barcode(String imgupload_barcode){
+        this.imgupload_barcode = imgupload_barcode;
+    }
+
     /**
      * Compress the image according to the {@link ProductImageField}.
      * Add a "_small" prefix in the image name after the compression
@@ -168,6 +180,9 @@ public class SendProduct implements Serializable {
                 break;
             case FRONT:
                 this.imgupload_front = Utils.compressImage(this.imgupload_front);
+                break;
+            case BARCODE:
+                this.imgupload_barcode = Utils.compressImage(this.imgupload_barcode);
                 break;
             default:
                 //nothing to do
@@ -200,6 +215,7 @@ public class SendProduct implements Serializable {
         this.imgupload_front = sp.getImgupload_front();
         this.imgupload_ingredients = sp.getImgupload_ingredients();
         this.imgupload_nutrition = sp.getImgupload_nutrition();
+        this.imgupload_barcode = sp.getImgupload_barcode();
         this.lang = sp.getLang();
     }
 
@@ -208,7 +224,7 @@ public class SendProduct implements Serializable {
                 .getBrands()) && equalityOfString(this.weight, sp.getWeight()) && equalityOfString(this.weight_unit, sp.getWeight_unit()) &&
                 equalityOfString(this.imgupload_front, sp.getImgupload_front()) && equalityOfString(this.imgupload_nutrition, sp
                 .getImgupload_nutrition
-                ()) && equalityOfString(this.imgupload_ingredients, sp.getImgupload_ingredients()));
+                ()) && equalityOfString(this.imgupload_ingredients, sp.getImgupload_ingredients()) && equalityOfString(this.imgupload_barcode, sp.getImgupload_barcode()));
     }
 
     private boolean equalityOfString(String a, String b) {

@@ -18,6 +18,8 @@ public class ProductImage {
 
     private final RequestBody imguploadNutrition;
 
+    private final RequestBody imguploadBarcode;
+
     private final RequestBody imguploadOther;
 
     private String filePath;
@@ -36,17 +38,27 @@ public class ProductImage {
                 this.imguploadIngredients = null;
                 this.imguploadNutrition = null;
                 this.imguploadOther = null;
+                this.imguploadBarcode = null;
                 break;
             case INGREDIENTS:
                 this.imguploadIngredients = RequestBody.create(MediaType.parse("image/*"), image);
                 this.imguploadFront = null;
                 this.imguploadNutrition = null;
                 this.imguploadOther = null;
+                this.imguploadBarcode = null;
                 break;
             case NUTRITION:
                 this.imguploadNutrition = RequestBody.create(MediaType.parse("image/*"), image);
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;
+                this.imguploadOther = null;
+                this.imguploadBarcode = null;
+                break;
+            case BARCODE:
+                this.imguploadBarcode = RequestBody.create(MediaType.parse("image/*"), image);
+                this.imguploadFront = null;
+                this.imguploadIngredients = null;
+                this.imguploadNutrition = null;
                 this.imguploadOther = null;
                 break;
             case OTHER:
@@ -54,12 +66,14 @@ public class ProductImage {
                 this.imguploadNutrition = null;
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;
+                this.imguploadBarcode = null;
                 break;
             default:
                 this.imguploadNutrition = null;
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;
                 this.imguploadOther = null;
+                this.imguploadBarcode = null;
                 break;
         }
 
@@ -85,6 +99,10 @@ public class ProductImage {
 
     public RequestBody getImguploadNutrition() {
         return imguploadNutrition;
+    }
+
+    public RequestBody getImguploadBarcode(){
+        return imguploadBarcode;
     }
 
     public RequestBody getImguploadOther() {

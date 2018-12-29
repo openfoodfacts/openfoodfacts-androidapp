@@ -4,10 +4,13 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -25,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.BeepManager;
@@ -32,18 +36,25 @@ import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.journeyapps.barcodescanner.DefaultDecoderFactory;
+import com.journeyapps.barcodescanner.SourceData;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
+import com.journeyapps.barcodescanner.camera.PreviewCallback;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -53,6 +64,9 @@ import butterknife.OnClick;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
@@ -60,6 +74,7 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
@@ -120,6 +135,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private boolean mRing;
     private boolean mAutofocus;
     private Disposable disposable;
+    private String barcodeImageFilePath;
+    private Boolean barcode_image_uploaded;
     private PopupMenu popup;
     private Handler handler;
     private Runnable runnable;
@@ -138,6 +155,30 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
             lastText = result.getText();
             findProduct(lastText, false);
+
+            barcodeView.getBarcodeView().getCameraInstance().requestPreview(new PreviewCallback() {
+                @Override
+                public void onPreview(SourceData sourceData) {
+                    sourceData.setCropRect(new Rect(0,0,sourceData.getDataHeight(),sourceData.getDataWidth()));
+                    Bitmap bmp = sourceData.getBitmap();
+                    try {
+                        File dir = new File(Environment.getExternalStorageDirectory().getPath().concat("/MyCaptureDirectory"));
+                        dir.mkdirs();
+
+                        String filepath = dir.getPath().concat(String.format("/%d.jpg", System.currentTimeMillis()));
+                        OutputStream stream = new FileOutputStream(filepath);
+                        bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+
+                        barcodeImageFilePath=filepath;
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                @Override
+                public void onPreviewError(Exception e) {
+                    e.printStackTrace();
+                }
+            });
         }
 
         @Override
@@ -185,6 +226,76 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                             fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
                             fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
+                            File photoFile = new File(barcodeImageFilePath);
+                            Map<String, RequestBody> imgMap = new HashMap<>();
+                            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), lastText);
+                            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.BARCODE.toString() + '_' + "en");
+                            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
+                            imgMap.put("code", barcode);
+                            imgMap.put("imagefield", imageField);
+                            imgMap.put("imgupload_barcode\"; filename=\"barcode_" + "en" + ".png\"", image);
+
+                            // Attribute the upload to the connected user
+                            final SharedPreferences settings = getSharedPreferences("login", 0);
+                            final String login = settings.getString("user", "");
+                            final String password = settings.getString("pass", "");
+                            if (!login.isEmpty() && !password.isEmpty()) {
+                                imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+                                imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+                            }
+
+                            client.saveImageSingle(imgMap)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new SingleObserver<JsonNode>() {
+                                        @Override
+                                        public void onSubscribe(Disposable d) {
+
+                                        }
+
+                                        @Override
+                                        public void onSuccess(JsonNode jsonNode) {
+                                            String status = jsonNode.get("status").asText();
+                                            if (status.equals("status not ok")) {
+                                                String error = jsonNode.get("error").asText();
+                                                if (error.equals("This picture has already been sent.")) {
+                                                    barcode_image_uploaded = true;
+                                                }
+                                            } else {
+                                                barcode_image_uploaded = true;
+                                                String imagefield = jsonNode.get("imagefield").asText();
+                                                String imgid = jsonNode.get("image").get("imgid").asText();
+                                                Map<String, String> queryMap = new HashMap<>();
+                                                queryMap.put("imgid", imgid);
+                                                queryMap.put("id", imagefield);
+                                                client.editImageSingle(lastText, queryMap)
+                                                        .subscribeOn(Schedulers.io())
+                                                        .observeOn(AndroidSchedulers.mainThread())
+                                                        .subscribe(new SingleObserver<JsonNode>() {
+                                                            @Override
+                                                            public void onSubscribe(Disposable d) {
+
+                                                            }
+
+                                                            @Override
+                                                            public void onSuccess(JsonNode jsonNode) {
+
+                                                            }
+
+                                                            @Override
+                                                            public void onError(Throwable e) {
+
+                                                            }
+                                                        });
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onError(Throwable e) {
+
+                                        }
+                                    });
+
                         } else {
                             product = state.getProduct();
                             new HistoryTask().doInBackground(product);

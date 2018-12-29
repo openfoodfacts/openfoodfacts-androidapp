@@ -97,10 +97,10 @@ public class ToUploadProduct {
                 return ProductImageField.INGREDIENTS;
             case "nutrients":
                 return ProductImageField.NUTRITION;
+            case "barcode":
+                return ProductImageField.BARCODE;
             default:
                 return ProductImageField.OTHER;
         }
     }
-
-
 }
