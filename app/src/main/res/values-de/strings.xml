@@ -702,6 +702,6 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Listet die problematischen Inhaltsstoffe auf, die in Orange angezeigt werden sollen. Beispiel: Ei, Fisch … Sie können diese Liste später ergänzen.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Nicht zugelassene Inhaltsstoffe</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Listet die nicht zugelassenen Zutaten auf, die rot angezeigt werden sollen. Beispiel: Gluten, Milch, Palmöl, Zucker … Sie können diese Liste später ergänzen.</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
     <!-- Used for diets AddOn -->
 </resources>
