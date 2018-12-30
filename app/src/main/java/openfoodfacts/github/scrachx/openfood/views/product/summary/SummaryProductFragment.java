@@ -397,6 +397,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         if (BuildConfig.FLAVOR.equals("off")) {
+            scoresLayout.setVisibility(View.VISIBLE);
             List<NutrientLevelItem> levelItem = new ArrayList<>();
 
             NutrientLevels nutrientLevels = product.getNutrientLevels();
@@ -431,9 +432,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                     CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
                 });
+            } else {
+                novaGroup.setImageResource(0);
             }
             if (product.getNovaGroups() == null && product.getNutritionGradeFr() == null) {
                 scoresLayout.setVisibility(View.GONE);
+            } else {
+                scoresLayout.setVisibility(View.VISIBLE);
             }
 
         } else {
@@ -491,6 +496,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (categories.isEmpty()) {
             categoryProduct.setVisibility(View.GONE);
         } else {
+            categoryProduct.setVisibility(View.VISIBLE);
             // Add all the categories to text view and link them to wikidata is possible
             for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
                 CategoryName category = categories.get(i);

@@ -27,31 +27,44 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-
-import butterknife.BindView;
-import butterknife.OnClick;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import io.reactivex.SingleObserver;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.*;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
+import openfoodfacts.github.scrachx.openfood.views.BottomNavigationBehavior;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -63,11 +76,6 @@ import openfoodfacts.github.scrachx.openfood.views.product.ingredients.Ingredien
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsAnalysisProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import javax.inject.Inject;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
@@ -489,7 +497,8 @@ doesn't have calories information in nutrition facts.
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        adapterResult.refresh((State) intent.getExtras().getSerializable("state"));
+        mState = (State) intent.getExtras().getSerializable("state");
+        adapterResult.refresh(mState);
     }
 
     @Override
