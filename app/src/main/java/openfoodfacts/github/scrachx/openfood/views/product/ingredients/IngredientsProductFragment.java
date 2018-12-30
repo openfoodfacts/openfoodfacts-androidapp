@@ -550,6 +550,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void extractIngredients() {
         Intent intent = new Intent( getActivity(), AddProductActivity.class );
         intent.putExtra( "edit_product", product);
+        intent.putExtra("perform_ocr",true);
         startActivity(intent);
     }
     @OnClick(R.id.imageViewIngredients)

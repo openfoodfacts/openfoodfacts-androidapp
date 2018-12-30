@@ -243,6 +243,12 @@ public class AddProductActivity extends AppCompatActivity {
         final State state = (State) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
         Product mEditProduct = (Product) getIntent().getSerializableExtra("edit_product");
+
+        if(getIntent().getBooleanExtra("perform_ocr",false)) {
+            this.onPageSelected(1);
+            this.performOCR(mEditProduct.getCode(), "ingredients_" + mEditProduct.getLang());
+        }
+
         if (state != null) {
             mProduct = state.getProduct();
             // Search if the barcode already exists in the OfflineSavedProducts db
