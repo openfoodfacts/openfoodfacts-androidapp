@@ -266,4 +266,6 @@
   <string name="take_picture_front">Tirar foto frontal</string>
   <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
   <string name="take_more_pictures">Tirar mais fotos</string>
+    <string name="take_ingredient_photo">Take Ingredient Photo</string>
+    <string name="take_nutrition_photo">Take Nutrition Photo</string>
 </resources>

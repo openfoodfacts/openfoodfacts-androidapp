@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="take_ingredient_photo">Take Ingredient Photo</string>
+    <string name="take_nutrition_photo">Take Nutrition Photo</string>
+</resources>

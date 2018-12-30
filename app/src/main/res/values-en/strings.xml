@@ -269,4 +269,6 @@
   <string name="take_picture_front">Take a picture of the front</string>
   <string name="take_picture_nutrition_table">Take a picture of the nutrition facts</string>
   <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_ingredient_photo">Take Ingredient Photo</string>
+    <string name="take_nutrition_photo">Take Nutrition Photo</string>
 </resources>

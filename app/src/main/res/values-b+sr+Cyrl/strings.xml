@@ -339,4 +339,6 @@
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
   <string name="forgot_password">Forgot Password</string>
+    <string name="take_ingredient_photo">Take Ingredient Photo</string>
+    <string name="take_nutrition_photo">Take Nutrition Photo</string>
 </resources>

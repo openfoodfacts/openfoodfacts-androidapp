@@ -20,4 +20,6 @@
     <item>Nutrition</item>
     <item>Ingredients</item>
   </string-array>
+    <string name="take_ingredient_photo">Take Ingredient Photo</string>
+    <string name="take_nutrition_photo">Take Nutrition Photo</string>
 </resources>

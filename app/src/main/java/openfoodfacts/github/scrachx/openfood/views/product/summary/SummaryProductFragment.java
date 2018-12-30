@@ -84,6 +84,8 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
@@ -140,12 +142,25 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView novaGroup;
     @BindView(R.id.scores_layout)
     ConstraintLayout scoresLayout;
+    @BindView(R.id.addIngredientImage)
+    ImageView addIngredientImage;
+    @BindView(R.id.addNutritionImage)
+    ImageView addNutritionImage;
+    @BindView(R.id.addIngredientLabel)
+    TextView addIngredientLabel;
+    @BindView(R.id.addNutritionLabel)
+    TextView addNutritionLabel;
+
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
     private String mUrlImage;
+    private String mUrlNutritionImage;
+    private String mUrlIngredientImage;
     private String barcode;
     private boolean sendOther = false;
+    private boolean sendNutrients = false;
+    private boolean sendIngredients = false;
     private CustomTabsIntent customTabsIntent;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
@@ -222,6 +237,24 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
 
             mUrlImage = product.getImageUrl();
+        }
+
+        if (isBlank(product.getImageIngredientsUrl())) {
+            addIngredientImage.setVisibility(View.VISIBLE);
+            addIngredientLabel.setVisibility(View.VISIBLE);
+        } else {
+            addIngredientImage.setVisibility(View.GONE);
+            addIngredientLabel.setVisibility(View.GONE);
+            mUrlIngredientImage = product.getImageIngredientsUrl();
+        }
+
+        if (isBlank(product.getImageNutritionUrl()) && !product.getNoNutritionData().equalsIgnoreCase("on")) {
+            addNutritionImage.setVisibility(View.VISIBLE);
+            addNutritionLabel.setVisibility(View.VISIBLE);
+        } else {
+            addNutritionImage.setVisibility(View.GONE);
+            addNutritionLabel.setVisibility(View.GONE);
+            mUrlNutritionImage = product.getImageNutritionUrl();
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
@@ -662,7 +695,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
                 } else {
+                    sendIngredients = false;
                     sendOther = true;
+                    sendNutrients = false;
                     EasyImage.openCamera(this, 0);
                 }
             } else {
@@ -670,7 +705,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
                 } else {
+                    sendIngredients = false;
                     sendOther = true;
+                    sendNutrients = false;
                     EasyImage.openGallery(this, 0, false);
                 }
             }
@@ -714,7 +751,47 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
             } else {
+                sendIngredients = false;
                 sendOther = false;
+                sendNutrients = false;
+                if (Utils.isHardwareCameraInstalled(getContext())) {
+                    EasyImage.openCamera(this, 0);
+                } else {
+                    EasyImage.openGallery(getActivity(), 0, false);
+                }
+            }
+        }
+    }
+
+    @OnClick(R.id.addIngredientImage)
+    public void openIngredientImage(View v) {
+        if (mUrlIngredientImage == null) {
+            // take a picture
+            if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+            } else {
+                sendIngredients = true;
+                sendOther = false;
+                sendNutrients = false;
+                if (Utils.isHardwareCameraInstalled(getContext())) {
+                    EasyImage.openCamera(this, 0);
+                } else {
+                    EasyImage.openGallery(getActivity(), 0, false);
+                }
+            }
+        }
+    }
+
+    @OnClick(R.id.addNutritionImage)
+    public void openNutritionImage(View v) {
+        if (mUrlNutritionImage == null) {
+            // take a picture
+            if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+            } else {
+                sendIngredients = false;
+                sendOther = false;
+                sendNutrients = true;
                 if (Utils.isHardwareCameraInstalled(getContext())) {
                     EasyImage.openCamera(this, 0);
                 } else {
@@ -745,13 +822,23 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
-                if (!sendOther) {
-                    onPhotoReturned(new File(resultUri.getPath()));
-                } else {
+                if (sendOther) {
                     ProductImage image = new ProductImage(barcode, OTHER, new File(resultUri.getPath()));
                     image.setFilePath(resultUri.getPath());
                     showOtherImageProgress();
                     api.postImg(getContext(), image, this);
+                } else if (sendNutrients) {
+                    ProductImage image = new ProductImage(barcode, NUTRITION, new File(resultUri.getPath()));
+                    image.setFilePath(resultUri.getPath());
+                    showOtherImageProgress();
+                    api.postImg(getContext(), image, this);
+                } else if (sendIngredients) {
+                    ProductImage image = new ProductImage(barcode, INGREDIENTS, new File(resultUri.getPath()));
+                    image.setFilePath(resultUri.getPath());
+                    showOtherImageProgress();
+                    api.postImg(getContext(), image, this);
+                } else {
+                    onPhotoReturned(new File(resultUri.getPath()));
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
@@ -802,7 +889,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                             })
                             .show();
                 } else {
+                    sendIngredients = false;
                     sendOther = false;
+                    sendNutrients = false;
                     EasyImage.openCamera(this, 0);
                 }
             }
@@ -825,6 +914,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onSuccess() {
         uploadingImageProgress.setVisibility(View.GONE);
         uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
+        if (sendIngredients) {
+            addIngredientImage.setVisibility(View.GONE);
+            addIngredientLabel.setVisibility(View.GONE);
+        }
+        if (sendNutrients) {
+            addNutritionImage.setVisibility(View.GONE);
+            addNutritionLabel.setVisibility(View.GONE);
+        }
 
     }
 
