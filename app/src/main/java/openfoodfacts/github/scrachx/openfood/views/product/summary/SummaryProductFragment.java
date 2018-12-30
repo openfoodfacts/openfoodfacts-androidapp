@@ -68,6 +68,7 @@ import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -134,6 +135,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView uploadingImageProgressText;
     @BindView(R.id.buttonMorePictures)
     Button addMorePicture;
+    @BindView(R.id.add_nutrition_prompt)
+    Button addNutritionPrompt;
     @BindView(R.id.imageGrade)
     ImageView img;
     @BindView(R.id.nova_group)
@@ -156,6 +159,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
+    //boolean to determine if prompt to add nutrition data is shown
+    private boolean showNutritionPrompt = false;
 
     @Override
     public void onAttach(Context context) {
@@ -353,6 +358,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             manufactureUlrProduct.setMovementMethod(LinkMovementMethod.getInstance());
         } else {
             manufactureUlrProduct.setVisibility(View.GONE);
+        }
+        if(!(product.getNoNutritionData() != null && product.getNoNutritionData().equalsIgnoreCase("on"))){
+            showNutritionPrompt = true;
+            addNutritionPrompt.setVisibility(View.VISIBLE);
+        }else{
+            addNutritionPrompt.setVisibility(View.GONE);
         }
 
         // if the device does not have a camera, hide the button
@@ -641,6 +652,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @OnClick(R.id.product_incomplete_message_dismiss_icon)
     public void onDismissProductIncompleteMsgClicked() {
         productIncompleteView.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.add_nutrition_prompt)
+    public void onAddNutritionPromptClick(){
+        Intent intent = new Intent(getActivity(), AddProductActivity.class );
+        intent.putExtra( "edit_product", product);
+        startActivity( intent );
     }
 
     // Implements CustomTabActivityHelper.ConnectionCallback
