@@ -364,6 +364,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.COUNTRY:
                 apiClient.getProductsByCountry(searchQuery, pageAddress,  (value, country) ->
                         loadSearchProducts(value, country, R.string.txt_no_matching_country_products));
+                break;
             case SearchType.ADDITIVE:
                 apiClient.getProductsByAdditive(searchQuery, pageAddress, (value, additive) ->
                         loadSearchProducts(value, additive, R.string.txt_no_matching_additive_products));
