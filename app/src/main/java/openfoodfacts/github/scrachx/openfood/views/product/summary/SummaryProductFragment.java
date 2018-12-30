@@ -135,8 +135,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView uploadingImageProgressText;
     @BindView(R.id.buttonMorePictures)
     Button addMorePicture;
-    @BindView(R.id.add_nutrition_prompt)
-    Button addNutritionPrompt;
+    @BindView(R.id.add_nutriscore_prompt)
+    Button addNutriScorePrompt;
     @BindView(R.id.imageGrade)
     ImageView img;
     @BindView(R.id.nova_group)
@@ -159,8 +159,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
-    //boolean to determine if prompt to add nutrition data is shown
-    private boolean showNutritionPrompt = false;
+    //boolean to determine if nutrient prompt should be shown
+    private boolean showNutrientPrompt;
+    //boolean to determine if category prompt should be shown
+    private boolean showCategoryPrompt;
 
     @Override
     public void onAttach(Context context) {
@@ -359,12 +361,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         } else {
             manufactureUlrProduct.setVisibility(View.GONE);
         }
-        if(!(product.getNoNutritionData() != null && product.getNoNutritionData().equalsIgnoreCase("on"))){
-            showNutritionPrompt = true;
-            addNutritionPrompt.setVisibility(View.VISIBLE);
-        }else{
-            addNutritionPrompt.setVisibility(View.GONE);
-        }
 
         // if the device does not have a camera, hide the button
         try {
@@ -412,14 +408,26 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 });
             }
             if (product.getNovaGroups() == null && product.getNutritionGradeFr() == null) {
-                scoresLayout.setVisibility(View.GONE);
+                img.setVisibility(View.GONE);
+                novaGroup.setVisibility(View.GONE);
+                showNutrientPrompt=true;
             }
 
         } else {
             scoresLayout.setVisibility(View.GONE);
         }
-
-
+        if (showNutrientPrompt || showCategoryPrompt){
+            addNutriScorePrompt.setVisibility(View.VISIBLE);
+            if (showNutrientPrompt && showCategoryPrompt){
+                addNutriScorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+            }
+            if (showNutrientPrompt){
+                addNutriScorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+            }
+            if(showCategoryPrompt){
+                addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
+            }
+        }
     }
 
     @Override
@@ -469,6 +477,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         if (categories.isEmpty()) {
             categoryProduct.setVisibility(View.GONE);
+            showCategoryPrompt=true;
         } else {
             // Add all the categories to text view and link them to wikidata is possible
             for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
@@ -654,11 +663,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         productIncompleteView.setVisibility(View.GONE);
     }
 
-    @OnClick(R.id.add_nutrition_prompt)
-    public void onAddNutritionPromptClick(){
-        Intent intent = new Intent(getActivity(), AddProductActivity.class );
-        intent.putExtra( "edit_product", product);
-        startActivity( intent );
+    @OnClick(R.id.add_nutriscore_prompt)
+    public void onAddNutriScorePromptClick() {
+        Intent intent = new Intent(getActivity(), AddProductActivity.class);
+        intent.putExtra("edit_product", product);
+        startActivity(intent);
     }
 
     // Implements CustomTabActivityHelper.ConnectionCallback
