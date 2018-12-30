@@ -6,9 +6,14 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.customtabs.CustomTabsIntent;
 import android.view.View;
+import android.widget.Button;
+
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -20,6 +25,7 @@ public class CategoryActivity extends BaseActivity {
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
     private boolean scanOnShake;
+    private Button game_button;
 
     public static Intent getIntent(Context context) {
         return new Intent(context, CategoryActivity.class);
@@ -36,6 +42,8 @@ public class CategoryActivity extends BaseActivity {
         setTitle(R.string.category_drawer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        game_button = (Button) findViewById(R.id.game_button);
+
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -50,7 +58,24 @@ public class CategoryActivity extends BaseActivity {
                 }
             }
         });
+
+        // chrome custom tab for category hunger game
+        game_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String url = "http://hunger-game-off.herokuapp.com";
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(getBaseContext(), Uri.parse(url));
+
+
+            }
+        });
+
+
     }
+
 
     @Override
     public void onPause() {
