@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -70,7 +69,6 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
@@ -288,8 +286,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             } else {
                                 novaGroup.setVisibility(View.GONE);
                             }
-//                            quickView.setOnClickListener(v -> {
-//                                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_DRAGGING);
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fm.beginTransaction();
                             ProductFragment productFragment = new ProductFragment();
@@ -300,10 +296,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             fragmentTransaction.replace(R.id.frame_layout, productFragment);
                             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                             fragmentTransaction.commit();
-//                                Intent intent = new Intent(ContinuousScanActivity.this, ProductActivity.class);
-
-//                                startActivity(intent);
-//                            });
                         }
                     }
 
@@ -465,8 +457,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     }
 
     //Helper Function
-    private int dpsToPixel(int dps, Context context) {
-        final float scale = context.getResources().getDisplayMetrics().density;
+    private int dpsToPixel(int dps) {
+        final float scale = getResources().getDisplayMetrics().density;
         return (int) (dps * scale + 0.5f);
     }
 
@@ -517,20 +509,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     lastText = null;
                 }
                 if (searchByBarcode.getVisibility() == View.VISIBLE) {
-                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_SMALL, ContinuousScanActivity.this));
+                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_SMALL));
                     bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
                     bottomSheet.requestLayout();
                 } else {
-                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_LARGE, ContinuousScanActivity.this));
-                    bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
-                    bottomSheet.requestLayout();
-                }
-                if (productNotFound.getVisibility() == View.VISIBLE) {
-//                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_SMALL,ContinuousScanActivity.this));
-                    bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
-                    bottomSheet.requestLayout();
-                } else {
-//                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_LARGE,ContinuousScanActivity.this));
+                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_LARGE));
                     bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
                     bottomSheet.requestLayout();
                 }
@@ -538,7 +521,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
                 if (searchByBarcode.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
                     if (slideOffset > 0.01f || slideOffset < -0.01f) {
                         fab_status.setVisibility(View.GONE);
@@ -546,7 +528,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     } else {
                         fab_status.setVisibility(View.VISIBLE);
                         if (searchByBarcode.getVisibility() != View.VISIBLE && productNotFound.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
-//                        fab_status.setVisibility(View.VISIBLE);
                             if (isProductIncomplete()) {
                                 txtProductIncomplete.setVisibility(View.VISIBLE);
                             }
@@ -612,6 +593,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     } else {
                         if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") || !barcodeText.substring(0, 3).contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
                             lastText = barcodeText;
+                            searchByBarcode.setVisibility(View.GONE);
                             findProduct(barcodeText, false);
                         } else {
                             searchByBarcode.requestFocus();
@@ -709,10 +691,22 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 case R.id.troubleScanning:
                     hideAllViews();
                     handler.removeCallbacks(runnable);
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                     quickView.setOnClickListener(null);
                     searchByBarcode.setText(null);
                     searchByBarcode.setVisibility(View.VISIBLE);
+                    quickView.setVisibility(View.INVISIBLE);
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    quickView.setVisibility(View.VISIBLE);
+                                }
+                            });
+                        }
+                    }, 500);
                     searchByBarcode.requestFocus();
                     break;
                 case R.id.toggleCamera:
