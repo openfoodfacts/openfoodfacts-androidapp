@@ -702,5 +702,6 @@
     <string name="EditDiet_Hint_So_So_Ingredient">crwdns111854:0crwdne111854:0</string>
     <string name="EditDiet_Unauthorised_Ingredients">crwdns111856:0crwdne111856:0</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">crwdns111858:0crwdne111858:0</string>
+    <string name="category_game_btn">crwdns111976:0crwdne111976:0</string>
     <!-- Used for diets AddOn -->
 </resources>

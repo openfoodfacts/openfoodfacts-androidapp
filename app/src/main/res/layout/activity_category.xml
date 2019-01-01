@@ -16,6 +16,15 @@
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/category_game_btn"
+        android:id="@+id/game_button"
+        android:textSize="@dimen/font_small"
+        android:textColor="@color/white"
+        android:background="@color/orange_400"/>
 
     <fragment
         android:id="@+id/fragment"
