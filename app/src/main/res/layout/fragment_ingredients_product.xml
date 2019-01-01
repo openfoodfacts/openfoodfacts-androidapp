@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="16dp"
-                android:text="Extract Ingredients"
+                android:text="@string/extract_ingredients_prompt"
                 android:visibility="gone"/>
 
             <android.support.v7.widget.CardView

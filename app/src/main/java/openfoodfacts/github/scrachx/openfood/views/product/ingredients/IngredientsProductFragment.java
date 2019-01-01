@@ -284,7 +284,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             if (!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
             }
-        }else if (isNotBlank(product.getImageIngredientsUrl())) {
+        } else if (isNotBlank(product.getImageIngredientsUrl())) {
             extractIngredientsPrompt.setVisibility(View.VISIBLE);
         }
         presenter.loadAllergens();
