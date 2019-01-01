@@ -3,6 +3,7 @@
 
     <PreferenceCategory android:title="@string/preference_header_general">
 
+
         <ListPreference
             android:defaultValue="en"
             android:dialogTitle="@string/preference_choose_language_dialog_title"
@@ -104,6 +105,10 @@
             android:key="Terms"
             android:summary="@string/TermsOfUse"
             android:title="@string/Terms" />
+
+        <Preference
+            android:key="Version"
+            android:title="@string/version" />
 
     </PreferenceCategory>
 </PreferenceScreen>
