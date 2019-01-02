@@ -216,6 +216,21 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         labelProduct.setText(bold(getString(R.string.txtLabels)));
         countryProduct.setText(bold(getString(R.string.txtCountries)));
 
+        //refresh visibilty of UI components
+        labelProduct.setVisibility(View.VISIBLE);
+        brandProduct.setVisibility(View.VISIBLE);
+        quantityProduct.setVisibility(View.VISIBLE);
+        packagingProduct.setVisibility(View.VISIBLE);
+        countryProduct.setVisibility(View.VISIBLE);
+        storeProduct.setVisibility(View.VISIBLE);
+        embCode.setVisibility(View.VISIBLE);
+        manufactureUlrProduct.setVisibility(View.VISIBLE);
+        manufacturingProduct.setVisibility(View.VISIBLE);
+        ingredientsOrigin.setVisibility(View.VISIBLE);
+        barCodeProduct.setVisibility(View.VISIBLE);
+        nameProduct.setVisibility(View.VISIBLE);
+        genericNameProduct.setVisibility(View.VISIBLE);
+
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
