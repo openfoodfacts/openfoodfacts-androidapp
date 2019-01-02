@@ -883,5 +883,6 @@
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <!-- Used for diets AddOn -->
 </resources>
