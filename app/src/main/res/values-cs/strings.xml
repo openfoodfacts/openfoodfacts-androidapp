@@ -212,7 +212,7 @@
     <string name="txtSendAll">Nahrát vše</string>
     <string name="txtNoData">Žádná data</string>
     <string name="txtPictureNeeded">Čekejte…</string>
-    <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+    <string name="txtPictureNeededDialogContent">Musíte přidat alespoň jeden obrázek než informace o produktu odešlete</string>
     <string name="txtPictureNeededDialogYes">Zůstat</string>
     <string name="txtPictureNeededDialogNo">Zahodit</string>
     <string name="toastSending">Nahrávám…</string>
@@ -250,21 +250,21 @@
     <string name="alert_drawer">Hlídání alergenů</string>
     <string name="warning_allergens">Obsahuje alergeny</string>
     <string name="title_dialog_alert">Přidat upozornění</string>
-    <string name="toggle_flash">Flash</string>
+    <string name="toggle_flash">Blesk</string>
     <string name="flash_on">Flash [ON]</string>
     <string name="flash_off">Flash [OFF]</string>
     <string name="ring_on">Ring [ON]</string>
     <string name="ring_off">Ring [OFF]</string>
     <string name="auto_focus_on">Auto Focus [ON]</string>
     <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="formats">Formáty</string>
+    <string name="choose_formats">Zvolte formát</string>
+    <string name="select_camera">Vyberte kameru</string>
     <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Zrušit</string>
     <string name="login_button">Přihlašovací jméno</string>
-    <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="create_account_button">Vytvořit účet</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % přesné, vše prosím sami dvakrát zkontrolujte! </string>
     <string name="from_gallery">Z galerie</string>
     <string name="product_sent">Produkt byl úspěšně odeslán</string>
     <string name="action_edit_product">Upravit produkt</string>
@@ -366,7 +366,7 @@
     <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="txt_cant_load_search_results">Nelze načíst výsledky vyhledávání</string>
-    <string name="something_went_wrong">Sorry, something went wrong…</string>
+    <string name="something_went_wrong">Omlouváme se, něco se pokazilo…</string>
     <string name="txt_try_again">Zkusit znovu</string>
     <string name="nutrition_lactose">Laktóza</string>
     <string name="nutrition_casein">Kasein</string>
@@ -472,7 +472,7 @@
     <string name="FAQ">FAQ - často kladené dotazy</string>
     <string name="FrequentlyAskedQuestions">Často Kladené Otázky</string>
     <string name="translate_help_title">Pomozte přeložit Open Food Facts</string>
-    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Přineste databázi Open Food Facts do vašeho jazyka - nejsou na to třeba žádné technické znalosti</string>
     <string name="please_check_your_connection">Zkontrolujte připojení k Internetu.</string>
     <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
@@ -486,7 +486,7 @@
     <string name="not_support_books">Knihy nejsou aktuálně podporovány Open Food Facts</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Přihlašovací jméno</string>
-    <string name="login_true">Already logged in!</string>
+    <string name="login_true">Již přihlášeno!</string>
     <string name="confirm_logout">Potvrdit odhlášení</string>
     <string name="logout_dialog_content">Opravdu se chcete odhlásit?</string>
     <string name="dialog_cancel">Zrušit</string>
@@ -494,7 +494,7 @@
     <string name="pref_resolution_summary">Vyberte rozlišení pro nahrání obrázků</string>
     <string name="image_upload_resolution">Rozlišení snímku</string>
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
-    <string name="wikidata_information">Going further</string>
+    <string name="wikidata_information">Další</string>
     <string name="wikidata_unavailable">Stránka ve Wikipedii zatím není ve vašem jazyce.</string>
     <string name="description">Popis: </string>
     <string name="title">Nadpis: </string>
@@ -515,16 +515,16 @@
     <string name="category_string">Kategorie</string>
     <string name="connection">Propojeno</string>
     <string name="contributor_string">Přispěvatel</string>
-    <string name="Rate_Us">Show Your Support</string>
-    <string name="Rate_Us_title">Rate our App</string>
-    <string name="app_disabled_text">Application is disabled</string>
+    <string name="Rate_Us">Projevte nám svou podporu</string>
+    <string name="Rate_Us_title">Ohodnoťte naši aplikaci</string>
+    <string name="app_disabled_text">Aplikace je zakázána</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">Vitamíny:</string>
-    <string name="amino_acid_tags_text">Amino Acids:</string>
+    <string name="amino_acid_tags_text">Aminokyseliny:</string>
     <string name="mineral_tags_text">Minerály:</string>
-    <string name="other_tags_text">Other Substances:</string>
+    <string name="other_tags_text">Ostatní látky:</string>
     <!--shared element transition key-->
-    <string name="wikidata">Wikidata data</string>
+    <string name="wikidata">Data z Wikidat</string>
     <string name="disable_image_loading">Disable image loading when battery is low</string>
     <string name="DisableLoadTitle">Disable image loading</string>
     <string name="txtCamera">Camera</string>
