@@ -201,6 +201,9 @@ public class AddProductOverviewFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
+            if(b.getBoolean("perform_ocr")) {
+                ((AddProductActivity) activity).proceed();
+            }
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             edit_product = b.getBoolean("edit_product");

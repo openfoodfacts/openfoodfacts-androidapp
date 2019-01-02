@@ -245,8 +245,7 @@ public class AddProductActivity extends AppCompatActivity {
         Product mEditProduct = (Product) getIntent().getSerializableExtra("edit_product");
 
         if(getIntent().getBooleanExtra("perform_ocr",false)) {
-            this.onPageSelected(1);
-            this.performOCR(mEditProduct.getCode(), "ingredients_" + mEditProduct.getLang());
+            bundle.putBoolean("perform_ocr",true);
         }
 
         if (state != null) {

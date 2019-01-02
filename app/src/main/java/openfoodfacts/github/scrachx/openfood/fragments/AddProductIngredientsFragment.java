@@ -123,6 +123,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
+            if(b.getBoolean("perform_ocr")) {
+                ((AddProductActivity) activity).performOCR(code, "ingredients_" + ((AddProductActivity) activity).getProductLanguage());
+            }
             mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
             appLanguageCode = Locale.getDefault().getLanguage();
             product = (Product) b.getSerializable("product");
