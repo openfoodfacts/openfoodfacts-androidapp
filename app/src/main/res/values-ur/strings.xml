@@ -45,16 +45,16 @@
         <item>جی</item>
         <item>ایم جی</item>
         <item>مائکرگرام</item>
-        <item>% DV</item>
+        <item>DV %</item>
         <item>IU</item>
     </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
+        <item>ایلفا-لینولینک ایسڈ/اے ایل اے (18:3 n-3)</item>
+        <item>اریکی ڈونک ایسڈ (20:0)</item>
+        <item>اریکی ڈونک ایسڈ/اے اے/اے آراے (20:4 6-n)</item>
         <item>Behenic acid (22:0)</item>
         <item>Bicarbonate</item>
         <item>Biotin</item>
