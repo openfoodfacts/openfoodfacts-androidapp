@@ -99,7 +99,7 @@ public class OpenFoodAPIClient {
      */
     public void getProduct(final String barcode, final Activity activity) {
 
-        apiService.getFullProductByBarcode(barcode).enqueue(new Callback<State>() {
+        apiService.getFullProductByBarcode(barcode, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
 
@@ -613,7 +613,7 @@ public class OpenFoodAPIClient {
             int size = historyProducts.size();
             for (int i = 0; i < size; i++) {
                 HistoryProduct historyProduct = historyProducts.get(i);
-                apiService.getShortProductByBarcode(historyProduct.getBarcode()).enqueue(new Callback<State>() {
+                apiService.getShortProductByBarcode(historyProduct.getBarcode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
 
                     @Override
                     public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
