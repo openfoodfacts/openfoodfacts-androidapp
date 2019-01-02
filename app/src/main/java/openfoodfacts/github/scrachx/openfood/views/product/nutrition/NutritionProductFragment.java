@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
@@ -30,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -50,8 +53,14 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView carbonFootprint;
     @BindView(R.id.textNutrientTxt)
     TextView textNutrientTxt;
+    @BindView(R.id.get_nutriscore_prompt)
+    Button nutriscorePrompt;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
+    //the following booleans indicate whether the prompts are to be made visible
+    private boolean showNutritionPrompt=false;
+    private boolean showCategoryPrompt=false;
+    private Product product;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,7 +77,11 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-        final Product product = state.getProduct();
+        product = state.getProduct();
+        //this checks if the categories for the product have been entered
+        if(product.getCategoriesTags() == null || product.getCategoriesTags().isEmpty()) {
+            showCategoryPrompt = true;
+        }
         List<NutrientLevelItem> levelItem = new ArrayList<>();
 
         Nutriments nutriments = product.getNutriments();
@@ -88,6 +101,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
             textNutrientTxt.setText(" " + getString(R.string.txtNoData));
             levelItem.add(new NutrientLevelItem("", "", "", 0));
+            //if no nutrition information is entered for the product, the prompt is shown
+            img.setVisibility(View.GONE);
+            showNutritionPrompt=true;
         } else {
             // prefetch the uri
             customTabActivityHelper = new CustomTabActivityHelper();
@@ -150,6 +166,18 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             });
         }
 
+        //checks the flags and accordingly sets the text of the prompt
+        if (showNutritionPrompt || showCategoryPrompt) {
+            nutriscorePrompt.setVisibility(View.VISIBLE);
+            if (showNutritionPrompt && showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+            } else if (showNutritionPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+            } else if (showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
+            }
+        }
+
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
@@ -180,5 +208,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onCustomTabsDisconnected() {
         img.setClickable(false);
+    }
+
+    @OnClick (R.id.get_nutriscore_prompt)
+    public void onNutriscoreButtonClick() {
+        Intent intent = new Intent(getActivity(), AddProductActivity.class);
+        intent.putExtra("edit_product", product);
+        //adds the information about the prompt when navigating the user to the edit the product
+        intent.putExtra("modify_category_prompt", showCategoryPrompt);
+        intent.putExtra("modify_nutrition_prompt", showNutritionPrompt);
+        startActivity(intent);
     }
 }

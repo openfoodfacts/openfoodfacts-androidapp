@@ -207,6 +207,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             isLowBatteryMode = true;
         }
 
+        //checks if no category information has been entered for the product
+        if(product.getCategoriesTags()==null || product.getCategoriesTags().isEmpty()) {
+            showCategoryPrompt=true;
+        }
+
         presenter.loadAllergens();
         presenter.loadCategories();
         presenter.loadLabels();
@@ -416,15 +421,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         } else {
             scoresLayout.setVisibility(View.GONE);
         }
-        if (showNutrientPrompt || showCategoryPrompt){
+        //checks the flags and sets the text for the prompt accordingly
+        if (showNutrientPrompt || showCategoryPrompt) {
             addNutriScorePrompt.setVisibility(View.VISIBLE);
-            if (showNutrientPrompt && showCategoryPrompt){
+            if (showNutrientPrompt && showCategoryPrompt) {
                 addNutriScorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
-            }
-            if (showNutrientPrompt){
+            } else if (showNutrientPrompt) {
                 addNutriScorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
-            }
-            if(showCategoryPrompt){
+            } else if (showCategoryPrompt) {
                 addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
             }
         }
@@ -477,7 +481,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         if (categories.isEmpty()) {
             categoryProduct.setVisibility(View.GONE);
-            showCategoryPrompt=true;
         } else {
             // Add all the categories to text view and link them to wikidata is possible
             for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
@@ -667,6 +670,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onAddNutriScorePromptClick() {
         Intent intent = new Intent(getActivity(), AddProductActivity.class);
         intent.putExtra("edit_product", product);
+        //adds the information about the prompt when navigating the user to the edit the product
+        intent.putExtra("modify_category_prompt", showCategoryPrompt);
+        intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
         startActivity(intent);
     }
 
