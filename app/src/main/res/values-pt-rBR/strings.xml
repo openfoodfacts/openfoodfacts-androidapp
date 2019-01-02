@@ -703,5 +703,7 @@
     <string name="EditDiet_Unauthorised_Ingredients">Ingredientes não autorizados</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Liste os ingredientes não autorizados que devem aparecer em vermelho. Exemplo: glúten, leite, óleo de palma, açúcar ... Você pode completar esta lista mais tarde.</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
     <!-- Used for diets AddOn -->
 </resources>

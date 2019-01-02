@@ -317,6 +317,8 @@ public class AddProductActivity extends AppCompatActivity {
         if (!login.isEmpty() && !password.isEmpty()) {
             productDetails.put("user_id", login);
             productDetails.put("password", password);
+        } else {
+            productDetails.put("comment", Installation.id(this));
         }
         String code = productDetails.get("code");
         String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguage() + ",product_name_" + getProductLanguage();
