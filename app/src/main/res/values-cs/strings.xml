@@ -246,7 +246,7 @@
     <string name="txt_anonymous">Anonymní uživatel</string>
     <string name="txt_product_not_found">Produkty nebyly nalezeny</string>
     <string name="delete_txt">Odstranit</string>
-    <string name="sign_in_drawer">Podepiš</string>
+    <string name="sign_in_drawer">Přihlásit se</string>
     <string name="alert_drawer">Hlídání alergenů</string>
     <string name="warning_allergens">Obsahuje alergeny</string>
     <string name="title_dialog_alert">Přidat upozornění</string>
