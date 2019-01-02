@@ -18,7 +18,7 @@
 - Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije
 - Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
 
-*** Your cosmetics, your data ***
+*** Vaša kozmetika, vaši podatki ***
 - Vaši podatki so vaši in se nikoli ne pošljejo na splet
 - Aplikacijo lahko uporabljate anonimno
 - Zgodovino optičnega branja lahko izvozite
