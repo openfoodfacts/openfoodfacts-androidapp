@@ -703,5 +703,7 @@
     <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de ikke-godkendte ingredienser, som skal vises med rødt. Eksempel: Gluten, mælk, plameolie, sukker... Du kan færdiggøre listen senere.</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
     <!-- Used for diets AddOn -->
 </resources>

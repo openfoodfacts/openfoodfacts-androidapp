@@ -153,7 +153,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
      * @param newlyAdded true if the product is added using the product addition just now
      */
     private void findProduct(String lastText, boolean newlyAdded) {
-        client.getFullProductByBarcodeSingle(lastText)
+        client.getFullProductByBarcodeSingle(lastText, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SCAN))
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(a -> {
                     hideAllViews();
