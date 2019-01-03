@@ -130,7 +130,7 @@
         <item>Vitamin B2 (Riboflavin)</item>
         <item>Vitamin B3 / Vitamin PP (Niacin)</item>
         <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
+        <item>Вітамін B9 (Фолієва кислота)</item>
         <item>Vitamin C (Ascorbic acid)</item>
         <item>Vitamin D</item>
         <item>Vitamin E</item>
@@ -710,5 +710,8 @@
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
     <!-- Used for diets AddOn -->
 </resources>
