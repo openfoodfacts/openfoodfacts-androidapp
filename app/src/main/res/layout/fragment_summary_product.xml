@@ -21,6 +21,10 @@
             android:orientation="vertical"
             android:paddingBottom="65dp">
 
+            <!--The linear layout of the prompt for the front image has been replicated and
+            all three have been placed in a parent RelativeLayout and the sizes of the prompts have
+            been adjusted accordingly-->
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Take a picture of the ingredients"
+                        android:text="@string/ingredient_image_prompt_text"
                         android:textStyle="bold"
                         android:id="@+id/add_ingredient_photo_label"/>
 
@@ -124,7 +128,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Take a picture of the nutrient facts"
+                        android:text="@string/nutrition_image_prompt_text"
                         android:textStyle="bold"
                         android:id="@+id/add_nutrition_photo_label"/>
 

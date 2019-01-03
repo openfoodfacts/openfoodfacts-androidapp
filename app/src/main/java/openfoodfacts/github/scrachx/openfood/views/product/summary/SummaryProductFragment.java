@@ -245,6 +245,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             mUrlImage = product.getImageUrl();
         }
 
+        //the following checks whether the ingredient and nutrition images are already uploaded for the product
         if(isBlank(product.getImageIngredientsUrl())) {
             ingredientImagePromptLayout.setVisibility(View.VISIBLE);
         }
@@ -723,6 +724,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
+    //when the prompt for the images are selected, the camera is initialized and corresponding booleans flipped
     @OnClick(R.id.imageViewIngredients)
     public void addIngredientImage() {
         addingIngredientsImage=true;
@@ -803,6 +805,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
 
+                //the booleans are checked to determine if the picture uploaded was due to a prompt click
+                //the pictures are uploaded with the correct path
                 if(addingIngredientsImage) {
                     ProductImage image = new ProductImage(barcode, INGREDIENTS, new File(resultUri.getPath()));
                     image.setFilePath(resultUri.getPath());
