@@ -29,8 +29,6 @@ public class Ingredient {
     @Unique
     private String wikiDataId;
 
-    private Boolean isWikiDataIdPresent;
-
     @ToMany(joinProperties = {
         @JoinProperty(name = "tag", referencedName = "ingredientTag")
     })
@@ -52,12 +50,11 @@ private transient DaoSession daoSession;
 @Generated(hash = 942581853)
 private transient IngredientDao myDao;
 
-@Generated(hash = 357329675)
-public Ingredient(Long id, String tag, String wikiDataId, Boolean isWikiDataIdPresent) {
+@Generated(hash = 332885183)
+public Ingredient(Long id, String tag, String wikiDataId) {
     this.id = id;
     this.tag = tag;
     this.wikiDataId = wikiDataId;
-    this.isWikiDataIdPresent = isWikiDataIdPresent;
 }
 @Keep
 public Ingredient(String tag, List<IngredientName> names, List<IngredientsRelation> parents, List<IngredientsRelation> children, String wikiDataId) {
@@ -66,7 +63,6 @@ public Ingredient(String tag, List<IngredientName> names, List<IngredientsRelati
     this.parents = parents;
     this.children = children;
     this.wikiDataId = wikiDataId;
-    this.isWikiDataIdPresent = true;
 }
 @Keep
 public Ingredient(String tag, List<IngredientName> names, List<IngredientsRelation> parents, List<IngredientsRelation> children) {
@@ -74,7 +70,6 @@ public Ingredient(String tag, List<IngredientName> names, List<IngredientsRelati
     this.names = names;
     this.parents = parents;
     this.children = children;
-    this.isWikiDataIdPresent = false;
 }
 
 @Generated(hash = 1584798654)
@@ -167,14 +162,6 @@ public String getWikiDataId() {
 
 public void setWikiDataId(String wikiDataId) {
     this.wikiDataId = wikiDataId;
-}
-
-public Boolean getIsWikiDataIdPresent() {
-    return this.isWikiDataIdPresent;
-}
-
-public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
-    this.isWikiDataIdPresent = isWikiDataIdPresent;
 }
 
 /**
