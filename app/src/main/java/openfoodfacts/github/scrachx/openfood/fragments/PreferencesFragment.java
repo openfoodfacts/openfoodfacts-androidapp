@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -181,6 +183,19 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         CheckBoxPreference photoPreference = (CheckBoxPreference) findPreference("photoMode");
         if (BuildConfig.FLAVOR.equals("opf")) {
             photoPreference.setVisible(false);
+        }
+
+        /*
+            Preference to show version name
+         */
+        Preference versionPref = (Preference) findPreference("Version");
+        versionPref.setEnabled(false);
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            String version = pInfo.versionName;
+            versionPref.setSummary(getString(R.string.version_string) + " " + version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
 
     }

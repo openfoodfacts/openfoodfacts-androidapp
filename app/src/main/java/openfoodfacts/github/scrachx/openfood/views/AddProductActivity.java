@@ -320,7 +320,7 @@ public class AddProductActivity extends AppCompatActivity {
         }
         String code = productDetails.get("code");
         String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguage() + ",product_name_" + getProductLanguage();
-        client.getExistingProductDetails(code, fields)
+        client.getExistingProductDetails(code, fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
