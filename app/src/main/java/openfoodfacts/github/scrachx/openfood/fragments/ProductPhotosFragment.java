@@ -184,6 +184,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
     }
 
+
 }
 
 

@@ -4,18 +4,23 @@
 
     <item
         android:id="@+id/set_ingredient_image"
-        android:title="Set image as Ingredient"
+        android:title="@string/set_ingredient_img"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/set_nutrition_image"
-        android:title="Set Image as Nutrition"
+        android:title="@string/set_img_nutrients"
         app:showAsAction="ifRoom" />
 
     <item
 
         android:id="@+id/set_front_image"
-        android:title="Set Image as Front"
+        android:title="@string/set_img_front"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/report_image"
+        android:title="@string/report_img"
         app:showAsAction="ifRoom" />
 
 
