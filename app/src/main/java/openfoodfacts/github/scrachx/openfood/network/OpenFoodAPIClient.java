@@ -98,7 +98,6 @@ public class OpenFoodAPIClient {
      * @param activity
      */
     public void getProduct(final String barcode, final Activity activity) {
-
         apiService.getFullProductByBarcode(barcode, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
@@ -165,6 +164,32 @@ public class OpenFoodAPIClient {
             }
         });
 
+    }
+
+    public void getIngredients(String barcode,final OnIngredientListCallback ingredientListCallback)
+    {
+        ArrayList<Ingredient> ingredients=new ArrayList<>();
+        apiService.getIngredientsByBarcode(barcode).enqueue(new Callback<JsonNode>() {
+            @Override
+            public void onResponse(@NonNull Call<JsonNode> call, Response<JsonNode> response) {
+                final JsonNode node=response.body();
+                final JsonNode ingredientsJsonNode=node.findValue("ingredients");
+                for(int i=0;i<ingredientsJsonNode.size();i++)
+                {
+                    Ingredient ingredient=new Ingredient();
+                    ingredient.setId(ingredientsJsonNode.get(i).findValue("id").toString());
+                    ingredient.setText(ingredientsJsonNode.get(i).findValue("text").toString());
+                    ingredient.setRank(Long.valueOf(ingredientsJsonNode.get(i).findValue("rank").toString()));
+                    ingredients.add(ingredient);
+                }
+                ingredientListCallback.onIngredientListResponse(true,ingredients);
+
+            }
+            @Override
+            public void onFailure(@NonNull Call<JsonNode> call, Throwable t) {
+                ingredientListCallback.onIngredientListResponse(false,null);
+            }
+        });
     }
 
     public void searchProduct(final String name, final int page, final Activity activity, final OnProductsCallback productsCallback) {
@@ -463,6 +488,9 @@ public class OpenFoodAPIClient {
         void onContributorResponse(boolean value, Search contributor);
     }
 
+    public interface OnIngredientListCallback {
+        void onIngredientListResponse(boolean value, ArrayList<Ingredient> ingredients);
+    }
 
     /**
      * Create an history product asynchronously

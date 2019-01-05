@@ -144,6 +144,7 @@ dependencies {
     implementation "com.android.support:multidex:$rootProject.multidexVersion"
 
     //DI
+    implementation 'com.android.support:support-v4:27.1.1'
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     compileOnly 'javax.annotation:jsr250-api:1.0'
