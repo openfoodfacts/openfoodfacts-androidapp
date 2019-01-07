@@ -528,6 +528,58 @@
                         android:textSize="@dimen/font_normal" />
 
                     <TextView
+                        android:id="@+id/textOtherInfo"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/light_blue_A700"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
+
+                    <TextView
+                        android:id="@+id/textConservationCond"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/light_blue_A700"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
+
+                    <TextView
+                        android:id="@+id/textRecyclingInstructionToRecycle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/light_blue_A700"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
+
+                    <TextView
+                        android:id="@+id/textRecyclingInstructionToDiscard"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/light_blue_A700"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
+
+                    <TextView
                         android:id="@+id/textWarning"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"

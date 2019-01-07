@@ -113,6 +113,10 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
+    private static final String PARAM_OTHER_INFO = "other_information_fr";
+    private static final String PARAM_CONSERVATION_COND = "conservation_conditions_fr";
+    private static final String PARAM_RECYCLING_INSTRUCTION_TO_DISCARD = "recycling_instructions_to_discard_fr";
+    private static final String PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE = "recycling_instructions_to_recycle_fr";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
 
     @BindView(R.id.scrollView)
@@ -151,6 +155,14 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText manufacturingPlace;
     @BindView(R.id.emb_code)
     NachoTextView embCode;
+    @BindView(R.id.other_info)
+    EditText otherInfo;
+    @BindView(R.id.conservationCond)
+    EditText conservationCond;
+    @BindView(R.id.recyclingInstructionToDiscard)
+    EditText recyclingInstructionToDiscard;
+    @BindView(R.id.recyclingInstructionToRecycle)
+    EditText recyclingInstructionToRecycle;
     @BindView(R.id.link)
     EditText link;
     @BindView(R.id.country_where_purchased)
@@ -398,6 +410,18 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             countriesWhereSold.setText(chipValues);
         }
+        if (product.getOtherInformation() != null && !product.getOtherInformation().isEmpty()) {
+            otherInfo.setText(product.getOtherInformation());
+        }
+        if (product.getConservationConditions() != null && !product.getConservationConditions().isEmpty()) {
+            conservationCond.setText(product.getConservationConditions());
+        }
+        if (product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
+            recyclingInstructionToDiscard.setText(product.getRecyclingInstructionsToDiscard());
+        }
+        if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
+            recyclingInstructionToRecycle.setText(product.getRecyclingInstructionsToRecycle());
+        }
     }
 
     /**
@@ -517,6 +541,18 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (productDetails.get(PARAM_COUNTRIES) != null) {
                 List<String> chipValues = Arrays.asList(productDetails.get(PARAM_COUNTRIES).split("\\s*,\\s*"));
                 countriesWhereSold.setText(chipValues);
+            }
+            if (productDetails.get(PARAM_OTHER_INFO) != null) {
+                otherInfo.setText(productDetails.get(PARAM_OTHER_INFO));
+            }
+            if (productDetails.get(PARAM_CONSERVATION_COND) != null) {
+                conservationCond.setText(productDetails.get(PARAM_CONSERVATION_COND));
+            }
+            if (productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD) != null) {
+                recyclingInstructionToDiscard.setText(productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD));
+            }
+            if (productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE) != null) {
+                recyclingInstructionToRecycle.setText(productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE));
             }
         }
     }
@@ -737,6 +773,10 @@ public class AddProductOverviewFragment extends BaseFragment {
             ((AddProductActivity) activity).addToMap(PARAM_PURCHASE.substring(4), getValues(countryWherePurchased));
             ((AddProductActivity) activity).addToMap(PARAM_STORE.substring(4), getValues(stores));
             ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES.substring(4), getValues(countriesWhereSold));
+            ((AddProductActivity) activity).addToMap(PARAM_OTHER_INFO, otherInfo.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_CONSERVATION_COND, conservationCond.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD, recyclingInstructionToDiscard.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE, recyclingInstructionToRecycle.getText().toString());
         }
 
     }
@@ -798,6 +838,18 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             if (!countriesWhereSold.getChipValues().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES, getValues(countriesWhereSold));
+            }
+            if (!otherInfo.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_OTHER_INFO, otherInfo.getText().toString());
+            }
+            if (!conservationCond.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_CONSERVATION_COND, conservationCond.getText().toString());
+            }
+            if (!recyclingInstructionToRecycle.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE, recyclingInstructionToRecycle.getText().toString());
+            }
+            if (!recyclingInstructionToDiscard.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD, recyclingInstructionToDiscard.getText().toString());
             }
         }
     }
