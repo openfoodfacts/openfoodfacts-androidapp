@@ -204,7 +204,7 @@
 
         <Button
             android:id="@+id/save_edits"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="@dimen/spacing_small"
             android:background="#4389FA"
@@ -212,21 +212,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@id/right_guideline"
             app:layout_constraintStart_toStartOf="@id/left_guideline"
-            app:layout_constraintTop_toBottomOf="@id/ingredients_unauthorised" />
-
-        <ImageButton
-            android:id="@+id/shareButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/ic_share_black_24dp"
-            app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-            app:layout_constraintStart_toEndOf="@+id/save_edits"
-            app:layout_constraintTop_toBottomOf="@+id/ingredients_unauthorised" />
+            app:layout_constraintTop_toBottomOf="@id/ingredients_unauthorised"/>
 
     </android.support.constraint.ConstraintLayout>
 

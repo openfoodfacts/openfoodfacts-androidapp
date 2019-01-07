@@ -10,9 +10,9 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.network.deserializers.IngredientsWrapperDeserializer;
 
 /**
- * JSON from URL https://ssl-api.openfoodfacts.org/data/taxonomies/ingredients.json (top 14 ingredients and substances)
+ * JSON from URL https://ssl-api.openfoodfacts.org/data/taxonomies/ingredients.json
  *
- * @author dobriseb 2018-12-21 inspired by IngredientsWrapper
+ * @author dobriseb 2018-12-21 inspired by AllergensWrapper
  */
 
 @JsonDeserialize(using = IngredientsWrapperDeserializer.class)

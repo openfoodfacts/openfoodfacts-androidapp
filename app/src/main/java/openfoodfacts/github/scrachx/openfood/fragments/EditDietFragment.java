@@ -8,6 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -43,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
+
 public class EditDietFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,8 +66,6 @@ public class EditDietFragment extends Fragment {
     NachoTextView ingredientsUnauthorised;
     @BindView(R.id.save_edits)
     Button saveEdits;
-    @BindView(R.id.shareButton)
-    ImageButton shareButton;
     // Fetching of the (theoretical) language of input:
     private String languageCode = Locale.getDefault().getLanguage();
     private String appLanguageCode;
@@ -102,6 +104,7 @@ public class EditDietFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         //Log.i("INFO", "Début de OnCreate de FragmentEditDiet");
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mDietName = getArguments().getString(ARG_DIET_NAME);
         }
@@ -122,11 +125,11 @@ public class EditDietFragment extends Fragment {
             dietDescription.setText(dietName.getDescription());
             dietEnabled.setChecked(diet.getEnabled());
             String ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), 1, languageCode);
-            if (!ingredientNames.equals("")){
+            if (!ingredientNames.equals("")) {
                 ingredientsAuthorised.setText(Arrays.asList(ingredientNames.split("\\s*,\\s*")));
             }
             ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), 0, languageCode);
-            if (!ingredientNames.equals("")){
+            if (!ingredientNames.equals("")) {
                 ingredientsSoSo.setText(Arrays.asList(ingredientNames.split("\\s*,\\s*")));
             }
             ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), -1, languageCode);
@@ -135,6 +138,29 @@ public class EditDietFragment extends Fragment {
             }
         }
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_diet_edit, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_share) {
+            Log.i("INFO", "Début de shareButton de FragmentEditDiet");
+            dietRepository = DietRepository.getInstance();
+            String jsonDiet = dietRepository.exportDietToJson(dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode));
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, jsonDiet);
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -166,7 +192,7 @@ public class EditDietFragment extends Fragment {
         //Set the state at 2 (no impact) for all ingredients associated with the diet. Sort of reset before the next steps
         List<DietIngredients> dietIngredientsList = dietRepository.getDietIngredientsListByDietTag(diet.getTag());
         for (int i = 0; i < dietIngredientsList.size(); i++) {
-            DietIngredients dietIngredients =  dietIngredientsList.get(i);
+            DietIngredients dietIngredients = dietIngredientsList.get(i);
             dietIngredients.setState(2);
             dietRepository.saveDietIngredients(dietIngredients);
         }
@@ -174,36 +200,24 @@ public class EditDietFragment extends Fragment {
         for (Chip chip : ingredientsAuthorised.getAllChips()) {
             String ingredient = (String) chip.getText();
             dietRepository.addIngredient(ingredient, languageCode);
-            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode,1);
+            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, 1);
         }
         for (Chip chip : ingredientsSoSo.getAllChips()) {
             String ingredient = (String) chip.getText();
             dietRepository.addIngredient(ingredient, languageCode);
-            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode,0);
+            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, 0);
         }
         for (Chip chip : ingredientsUnauthorised.getAllChips()) {
             String ingredient = (String) chip.getText();
             dietRepository.addIngredient(ingredient, languageCode);
-            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode,-1);
+            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, -1);
         }
         //Back to the DietsFragment.
         Fragment fragment = new DietsFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment );
+        transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
-    }
-
-    @OnClick(R.id.shareButton)
-    void shareButton() {
-        Log.i("INFO", "Début de shareButton de FragmentEditDiet");
-        dietRepository = DietRepository.getInstance();
-        String jsonDiet = dietRepository.exportDietToJson(dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode));
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, jsonDiet);
-        sendIntent.setType("text/plain");
-        startActivity(sendIntent);
     }
 
     private void initializeChips() {
