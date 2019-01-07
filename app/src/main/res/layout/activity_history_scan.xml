@@ -23,6 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/history_list_item"
+                android:clipToPadding="false"
+                android:paddingBottom="56dp"
                 android:layout_margin="@dimen/spacing_normal" />
 
         </android.support.v4.widget.SwipeRefreshLayout>
