@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Switch;
 
 import com.hootsuite.nachos.NachoTextView;
@@ -60,6 +62,8 @@ public class EditDietFragment extends Fragment {
     NachoTextView ingredientsUnauthorised;
     @BindView(R.id.save_edits)
     Button saveEdits;
+    @BindView(R.id.shareButton)
+    ImageButton shareButton;
     // Fetching of the (theoretical) language of input:
     private String languageCode = Locale.getDefault().getLanguage();
     private String appLanguageCode;
@@ -188,6 +192,18 @@ public class EditDietFragment extends Fragment {
         transaction.replace(R.id.fragment_container, fragment );
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
+    }
+
+    @OnClick(R.id.shareButton)
+    void shareButton() {
+        Log.i("INFO", "Début de shareButton de FragmentEditDiet");
+        dietRepository = DietRepository.getInstance();
+        String jsonDiet = dietRepository.exportDietToJson(dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode));
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, jsonDiet);
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
     private void initializeChips() {

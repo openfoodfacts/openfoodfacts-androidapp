@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -9,6 +10,9 @@ import android.util.Log;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.WhereCondition;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1294,5 +1298,95 @@ public class DietRepository implements IDietRepository {
         }
         //return an empty SpannableStringBuilder
         return new SpannableStringBuilder("");
+    }
+
+    /**
+     * Export diet informations as JSON objetc
+     *
+     * @param diet          The diet to be exported
+     * @return JSONObject
+     */
+    static JSONObject dietToJson(Diet diet) {
+        JSONObject retVal = new JSONObject();
+        try {
+            retVal.put("Tag", diet.getTag());
+            retVal.put("Enabled", diet.getEnabled() ? "1" : "0");
+        } catch(Exception ex) {
+                Log.e("dietToJson", "Exception converting cursor column to json field: " + diet.getTag());
+        }
+        return retVal;
+    }
+
+    /**
+     * Export DietName informations as JSON objetc
+     * @param dietName      The dietName to be exported
+     * @return JSONObject
+     */
+    static JSONObject dietNameToJson(DietName dietName) {
+        JSONObject retVal = new JSONObject();
+        try {
+            retVal.put("DietTag", dietName.getDietTag());
+            retVal.put("LanguageCode", dietName.getLanguageCode());
+            retVal.put("Name", dietName.getName());
+            retVal.put("Description", dietName.getDescription());
+        } catch(Exception ex) {
+                Log.e("dietNameToJson", "Exception converting cursor column to json field: " + dietName.getDietTag());
+        }
+        return retVal;
+    }
+
+    /**
+     * Export dietIngredients information as JSON objetc
+     *
+     * @param dietIngredients   The dietIngredients to be exported
+     * @return JSONObject
+     */
+    static JSONObject dietIngredientsToJson(DietIngredients dietIngredients) {
+        JSONObject retVal = new JSONObject();
+        try {
+            retVal.put("dietTag", dietIngredients.getDietTag());
+            retVal.put("ingredientTag", dietIngredients.getIngredientTag());
+            retVal.put("state", dietIngredients.getState());
+        } catch(Exception ex) {
+                Log.e("dietIngredientsToJson", "Exception converting cursor column to json field: " + dietIngredients.getDietTag() + "/" + dietIngredients.getIngredientTag());
+        }
+        return retVal;
+    }
+
+    /**
+     * Export Diet and it's dietNames and dietIngredients information in a json string
+     * @param diet      The diet to be exported
+     * @return String   json string format.
+     */
+    @Override
+    public String exportDietToJson(Diet diet){
+        JSONObject dietExport = dietToJson(diet);
+        JSONArray namesJson = new JSONArray();
+        List<DietName> dietNames = dietNameDao.queryBuilder()
+                .where(DietNameDao.Properties.DietTag.eq(diet.getTag()))
+                .list();
+        for (int i = 0; i < dietNames.size(); i++) {
+            DietName dietName =  dietNames.get(i);
+            namesJson.put(dietNameToJson(dietName));
+        }
+        try {
+            dietExport.put("Names", namesJson);
+        } catch (JSONException e) {
+            Log.e("exportDietToJson", "unexpected JSON exception", e);
+        }
+        JSONArray dietIngredientsListJson = new JSONArray();
+        List<DietIngredients> dietIngredientsList = dietIngredientsDao.queryBuilder()
+                .where(DietIngredientsDao.Properties.DietTag.eq(diet.getTag()))
+                .list();
+        for (int i = 0; i < dietIngredientsList.size(); i++) {
+            DietIngredients dietIngredients =  dietIngredientsList.get(i);
+            dietIngredientsListJson.put(dietIngredientsToJson(dietIngredients));
+        }
+        try {
+            dietExport.put("DietIngredients", dietIngredientsListJson);
+        } catch (JSONException e) {
+            Log.e("exportDietToJson", "unexpected JSON exception", e);
+        }
+        return dietExport.toString();
     }
 }

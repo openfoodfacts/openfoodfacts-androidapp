@@ -53,7 +53,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                         productRepository.getLabels(true),
                         productRepository.getTags(true),
                         productRepository.getAllergens(true),
-                        dietRepository.getIngredients(false),
+                        dietRepository.getIngredients(true),
                         productRepository.getCountries(true),
                         productRepository.getAdditives(true),
                         productRepository.getCategories(true), (labels, tags, allergens, ingredients, countries, additives, categories) -> {

@@ -109,4 +109,6 @@ public interface IDietRepository {
     List<String> getIngredientsListFromIngredientsText (String ingredientsText, boolean preserveAllSign);
 
     SpannableStringBuilder getSpannableStringBuilderFromDietIngredientsAndLanguageCode(List<DietIngredients> dietIngredientsList, String languageCode);
+
+    String exportDietToJson(Diet diet);
 }
