@@ -50,6 +50,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
+import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
@@ -264,6 +265,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		{
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
 			adapterResult.addFragment( new NutritionInfoProductFragment(), menuTitles[3] );
+			adapterResult.addFragment( new EnvironmentProductFragment(), "Environment" );
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
 				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
