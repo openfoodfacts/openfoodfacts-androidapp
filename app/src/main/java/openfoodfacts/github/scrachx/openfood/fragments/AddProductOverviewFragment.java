@@ -113,10 +113,10 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
-    private static final String PARAM_OTHER_INFO = "other_information_fr";
-    private static final String PARAM_CONSERVATION_COND = "conservation_conditions_fr";
-    private static final String PARAM_RECYCLING_INSTRUCTION_TO_DISCARD = "recycling_instructions_to_discard_fr";
-    private static final String PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE = "recycling_instructions_to_recycle_fr";
+    private static final String PARAM_OTHER_INFO = "other_information";
+    private static final String PARAM_CONSERVATION_COND = "conservation_conditions";
+    private static final String PARAM_RECYCLING_INSTRUCTION_TO_DISCARD = "recycling_instructions_to_discard";
+    private static final String PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE = "recycling_instructions_to_recycle";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
 
     @BindView(R.id.scrollView)
