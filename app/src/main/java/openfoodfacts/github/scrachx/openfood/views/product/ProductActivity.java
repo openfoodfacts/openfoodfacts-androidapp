@@ -269,7 +269,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 			adapterResult.addFragment( new NutritionInfoProductFragment(), menuTitles[3] );
 			if( mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT) )
 			{
-				adapterResult.addFragment( new EnvironmentProductFragment(), "Environment" );
+				adapterResult.addFragment( new EnvironmentProductFragment(), menuTitles[4] );
 			}
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
