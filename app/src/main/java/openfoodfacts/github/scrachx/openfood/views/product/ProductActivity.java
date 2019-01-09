@@ -178,7 +178,8 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 								.build().show();
 					}
 					else
-					{	mState = (State) getIntent().getExtras().getSerializable( "state" );
+					{
+						mState = (State) getIntent().getExtras().getSerializable( "state" );
 						Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
 						intent.putExtra( "edit_product", mState.getProduct() );
 						startActivityForResult( intent, EDIT_REQUEST_CODE );
