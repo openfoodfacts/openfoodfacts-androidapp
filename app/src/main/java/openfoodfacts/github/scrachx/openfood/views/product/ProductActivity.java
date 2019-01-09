@@ -27,6 +27,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +51,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
+import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
@@ -103,13 +105,14 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		setSupportActionBar( toolbar );
 		getSupportActionBar().setDisplayHomeAsUpEnabled( true );
 
+		api = new OpenFoodAPIClient( this );
+
+		mState = (State) getIntent().getExtras().getSerializable( "state" );
+
 		setupViewPager( viewPager );
 
 		tabLayout.setupWithViewPager( viewPager );
 
-		api = new OpenFoodAPIClient( this );
-
-		mState = (State) getIntent().getExtras().getSerializable( "state" );
 		if( !Utils.isHardwareCameraInstalled( this ) )
 		{
 			mButtonScan.setVisibility( View.GONE );
@@ -264,6 +267,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		{
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
 			adapterResult.addFragment( new NutritionInfoProductFragment(), menuTitles[3] );
+			if( mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT) )
+			{
+				adapterResult.addFragment( new EnvironmentProductFragment(), menuTitles[4] );
+			}
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
 				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );

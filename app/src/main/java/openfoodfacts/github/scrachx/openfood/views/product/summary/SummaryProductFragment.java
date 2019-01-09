@@ -29,6 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,6 +85,8 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
@@ -124,6 +127,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView categoryProduct;
     @BindView(R.id.textLabelProduct)
     TextView labelProduct;
+    @BindView(R.id.front_picture_layout)
+    LinearLayout frontPictureLayout;
     @BindView(R.id.imageViewFront)
     ImageView mImageFront;
     @BindView(R.id.addPhotoLabel)
@@ -140,6 +145,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView novaGroup;
     @BindView(R.id.scores_layout)
     ConstraintLayout scoresLayout;
+    @BindView(R.id.ingredient_image_prompt_layout)
+    LinearLayout ingredientImagePromptLayout;
+    @BindView(R.id.imageViewIngredients)
+    ImageView imageViewIngredients;
+    @BindView(R.id.add_ingredient_photo_label)
+    TextView ingredientPhotoLabel;
+    @BindView(R.id.nutrition_image_prompt_layout)
+    LinearLayout nutritionImagePromptLayout;
+    @BindView(R.id.imageViewNutrition)
+    ImageView imageViewNutrition;
+    @BindView(R.id.add_nutrition_photo_label)
+    TextView nutritionPhotoLabel;
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
@@ -156,6 +173,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
+    //boolean to indicate if the image clicked was that of ingredients
+    private boolean addingIngredientsImage = false;
+    //boolean to indicate if the image clicked was that of nutrition
+    private boolean addingNutritionImage = false;
 
     @Override
     public void onAttach(Context context) {
@@ -222,6 +243,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
 
             mUrlImage = product.getImageUrl();
+        }
+
+        //the following checks whether the ingredient and nutrition images are already uploaded for the product
+        if(isBlank(product.getImageIngredientsUrl())) {
+            ingredientImagePromptLayout.setVisibility(View.VISIBLE);
+        }
+
+        if(isBlank(product.getImageNutritionUrl())) {
+            nutritionImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
@@ -694,6 +724,35 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
+    //when the prompt for the images are selected, the camera is initialized and corresponding booleans flipped
+    @OnClick(R.id.imageViewIngredients)
+    public void addIngredientImage() {
+        addingIngredientsImage=true;
+        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            if (Utils.isHardwareCameraInstalled(getContext())) {
+                EasyImage.openCamera(this, 0);
+            } else {
+                EasyImage.openGallery(getActivity(), 0, false);
+            }
+        }
+    }
+
+    @OnClick(R.id.imageViewNutrition)
+    public void addNutritionImage() {
+        addingNutritionImage=true;
+        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            if (Utils.isHardwareCameraInstalled(getContext())) {
+                EasyImage.openCamera(this, 0);
+            } else {
+                EasyImage.openGallery(getActivity(), 0, false);
+            }
+        }
+    }
+
     @OnClick(R.id.imageViewFront)
     public void openFullScreen(View v) {
         if (mUrlImage != null) {
@@ -745,6 +804,27 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
+
+                //the booleans are checked to determine if the picture uploaded was due to a prompt click
+                //the pictures are uploaded with the correct path
+                if(addingIngredientsImage) {
+                    ProductImage image = new ProductImage(barcode, INGREDIENTS, new File(resultUri.getPath()));
+                    image.setFilePath(resultUri.getPath());
+                    showOtherImageProgress();
+                    api.postImg(getContext(), image, this);
+                    ingredientImagePromptLayout.setVisibility(View.GONE);
+                    addingIngredientsImage = false;
+                }
+
+                if(addingNutritionImage){
+                    ProductImage image = new ProductImage(barcode, NUTRITION, new File(resultUri.getPath()));
+                    image.setFilePath(resultUri.getPath());
+                    showOtherImageProgress();
+                    api.postImg(getContext(), image, this);
+                    nutritionImagePromptLayout.setVisibility(View.GONE);
+                    addingNutritionImage = false;
+                }
+
                 if (!sendOther) {
                     onPhotoReturned(new File(resultUri.getPath()));
                 } else {
