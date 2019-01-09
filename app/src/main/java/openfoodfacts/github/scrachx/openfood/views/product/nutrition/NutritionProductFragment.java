@@ -46,8 +46,6 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     RecyclerView rv;
     @BindView(R.id.textServingSize)
     TextView serving;
-    @BindView(R.id.textCarbonFootprint)
-    TextView carbonFootprint;
     @BindView(R.id.textNutrientTxt)
     TextView textNutrientTxt;
     private CustomTabActivityHelper customTabActivityHelper;
@@ -159,16 +157,6 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             serving.setText(bold(getString(R.string.txtServingSize)));
             serving.append(" ");
             serving.append(product.getServingSize());
-        }
-        if (nutriments != null) {
-            if (!nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
-                carbonFootprint.setVisibility(View.GONE);
-            } else {
-                Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
-                carbonFootprint.append(bold(getString(R.string.textCarbonFootprint)));
-                carbonFootprint.append(carbonFootprintNutriment.getFor100g());
-                carbonFootprint.append(carbonFootprintNutriment.getUnit());
-            }
         }
     }
 
