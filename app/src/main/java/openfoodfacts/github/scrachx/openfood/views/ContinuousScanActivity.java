@@ -510,7 +510,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         mRing = sp.getBoolean("ring", false);
         mFlash = sp.getBoolean("flash", false);
         mAutofocus = sp.getBoolean("focus", true);
-        cameraState = sp.getInt("cameraState",0);
+        cameraState = sp.getInt("cameraState", 0);
 
         popup = new PopupMenu(this, moreOptions);
         popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
@@ -580,7 +580,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         if (barcodeView.getBarcodeView().isPreviewActive()) {
             barcodeView.pause();
         }
-        if (cameraState == Camera.CameraInfo.CAMERA_FACING_BACK) {
+        if (settings.getRequestedCameraId() == Camera.CameraInfo.CAMERA_FACING_BACK) {
             cameraState = Camera.CameraInfo.CAMERA_FACING_FRONT;
         } else {
             cameraState = Camera.CameraInfo.CAMERA_FACING_BACK;
