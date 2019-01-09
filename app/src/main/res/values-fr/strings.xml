@@ -706,7 +706,7 @@
     <string name="dietExport_2">Cliquer sur le bouton + \nEt copier/coller ces informations dans les champs correspondants :</string>
     <string name="dietExport_3">Cliquer sur</string>
     <!-- Used for diets AddOn -->
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
     <string name="version_string">Application Android Open Food Facts</string>
     <string name="version">Version</string>
 </resources>
