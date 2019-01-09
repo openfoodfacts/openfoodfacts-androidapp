@@ -151,10 +151,18 @@ public class EditDietFragment extends Fragment {
         if (item.getItemId() == R.id.action_share) {
             Log.i("INFO", "Début de shareButton de FragmentEditDiet");
             dietRepository = DietRepository.getInstance();
-            String jsonDiet = dietRepository.exportDietToJson(dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode));
+            String extraText = getString(R.string.dietExport_1) + " \"" + getString(R.string.your_diets) + "\"\n" + getString(R.string.dietExport_2) + "\n";
+            extraText += getString(R.string.EditDiet_Name) + " : " + dietName.getText().toString() + "\n";
+            extraText += getString(R.string.EditDiet_Description) + " : " + dietDescription.getText().toString() + "\n";
+            extraText += getString(R.string.EditDiet_Authorised_Ingredients) + "  : " + ingredientsAuthorised.getAllChips().toString().replace("[","").replace("]","") + "\n";
+            extraText += getString(R.string.EditDiet_So_So_Ingredients) + "  : " + ingredientsSoSo.getAllChips().toString().replace("[","").replace("]","") + "\n";
+            extraText += getString(R.string.EditDiet_Unauthorised_Ingredients) + "  : " + ingredientsUnauthorised.getAllChips().toString().replace("[","").replace("]","") + "\n";
+            extraText += getString(R.string.dietExport_3) + " \"" + getString(R.string.save_edits) + "\"";
+            //String jsonDiet = dietRepository.exportDietToJson(dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode));
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, jsonDiet);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, extraText);
+            //sendIntent.putExtra(Intent.EXTRA_TEXT, jsonDiet);
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
             return true;

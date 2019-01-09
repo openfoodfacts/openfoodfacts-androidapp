@@ -702,8 +702,11 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ingrédients non autorisés</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Énumérez les ingrédients non autorisés qui devraient être en rouge. Exemple : gluten, lait, huile de palme, sucre... Vous pourrez remplir cette liste plus tard.</string>
+    <string name="dietExport_1">Pour avoir ce nouveau régime dans Open Food Facts, merci d\'ouvrir l\'application OFF, d\'aller dans le menu</string>
+    <string name="dietExport_2">Cliquer sur le bouton + \nEt copier/coller ces informations dans les champs correspondants :</string>
+    <string name="dietExport_3">Cliquer sur</string>
+    <!-- Used for diets AddOn -->
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Application Android Open Food Facts</string>
     <string name="version">Version</string>
-    <!-- Used for diets AddOn -->
 </resources>

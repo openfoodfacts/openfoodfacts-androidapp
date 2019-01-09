@@ -212,7 +212,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@id/right_guideline"
             app:layout_constraintStart_toStartOf="@id/left_guideline"
-            app:layout_constraintTop_toBottomOf="@id/ingredients_unauthorised"/>
+            app:layout_constraintTop_toBottomOf="@id/ingredients_unauthorised" />
 
     </android.support.constraint.ConstraintLayout>
 
