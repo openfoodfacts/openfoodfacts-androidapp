@@ -25,6 +25,7 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -187,6 +188,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
 
         final Product product = mState.getProduct();
+        presenter = new IngredientsProductPresenter(product, this);
         barcode = product.getCode();
         List<String> vitaminTagsList = product.getVitaminTags();
         List<String> aminoAcidTagsList = product.getAminoAcidTags();
@@ -280,6 +282,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             if (!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
             }
+        } else {
+            textIngredientProductCardView.setVisibility(View.GONE);
         }
         presenter.loadAllergens();
 
@@ -299,6 +303,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
             trace = traces[traces.length - 1];
             traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
+        } else {
+            textTraceProductCardView.setVisibility(View.GONE);
         }
 
         if (!(product.getIngredientsFromPalmOilN() == 0 && product.getIngredientsFromOrThatMayBeFromPalmOilN() == 0)) {
