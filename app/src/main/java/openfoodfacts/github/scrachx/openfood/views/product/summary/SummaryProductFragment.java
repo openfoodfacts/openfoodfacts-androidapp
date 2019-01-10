@@ -302,12 +302,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
             for (int i = 0; i < embTags.length - 1; i++) {
                 embTag = embTags[i];
-                embCode.append(Utils.getClickableText(getEmbCode(embTag), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
+                embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
                 embCode.append(", ");
             }
 
             embTag = embTags[embTags.length - 1];
-            embCode.append(Utils.getClickableText(getEmbCode(embTag), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
+            embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
         } else {
             embCode.setVisibility(View.GONE);
         }
@@ -321,12 +321,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             String stores[] = product.getStores().split(",");
             for (int i = 0; i < stores.length - 1; i++) {
                 store = stores[i];
-                storeProduct.append(Utils.getClickableText(store, store, SearchType.STORE, getActivity(), customTabsIntent));
+                storeProduct.append(Utils.getClickableText(store.trim(), store, SearchType.STORE, getActivity(), customTabsIntent));
                 storeProduct.append(", ");
             }
 
             store = stores[stores.length - 1];
-            storeProduct.append(Utils.getClickableText(store, store, SearchType.STORE, getActivity(), customTabsIntent));
+            storeProduct.append(Utils.getClickableText(store.trim(), store.trim(), SearchType.STORE, getActivity(), customTabsIntent));
         } else {
             storeProduct.setVisibility(View.GONE);
         }
@@ -498,11 +498,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         countryProduct.append(" ");
 
         for (int i = 0; i < countries.size() - 1; i++) {
-            countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(i).getName()), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
+            countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(i).getName()).trim(), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
             countryProduct.append(", ");
         }
 
-        countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(countries.size() - 1).getName()), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
+        countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(countries.size() - 1).getName()).trim(), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
 
     }
 
