@@ -21,120 +21,29 @@
             android:orientation="vertical"
             android:paddingBottom="65dp">
 
-            <!--The linear layout of the prompt for the front image has been replicated and
-            all three have been placed in a parent RelativeLayout and the sizes of the prompts have
-            been adjusted accordingly-->
-
-            <RelativeLayout
+            <ImageButton
+                android:id="@+id/imageViewFront"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:adjustViewBounds="true"
+                android:background="?android:selectableItemBackground"
+                android:maxHeight="120dp"
+                android:scaleType="fitCenter"
+                android:transitionName="@string/product_transition"
+                app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_toLeftOf="@id/front_picture_layout"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/ingredient_image_prompt_layout"
-                    android:visibility="gone">
-
-                    <ImageButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:adjustViewBounds="true"
-                        android:background="?android:selectableItemBackground"
-                        android:maxHeight="120dp"
-                        android:scaleType="fitCenter"
-                        android:transitionName="@string/product_transition"
-                        app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
-                        android:id="@+id/imageViewIngredients"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/ingredient_image_prompt_text"
-                        android:textStyle="bold"
-                        android:id="@+id/add_ingredient_photo_label"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/front_picture_layout">
-
-                    <ImageButton
-                        android:id="@+id/imageViewFront"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:adjustViewBounds="true"
-                        android:background="?android:selectableItemBackground"
-                        android:maxHeight="120dp"
-                        android:scaleType="fitCenter"
-                        android:transitionName="@string/product_transition"
-                        app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
-
-                    <TextView
-                        android:id="@+id/addPhotoLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/take_picture_front"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_toRightOf="@id/front_picture_layout"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/nutrition_image_prompt_layout"
-                    android:visibility="gone">
-
-                    <ImageButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:adjustViewBounds="true"
-                        android:background="?android:selectableItemBackground"
-                        android:maxHeight="120dp"
-                        android:scaleType="fitCenter"
-                        android:transitionName="@string/product_transition"
-                        app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
-                        android:id="@+id/imageViewNutrition"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/nutrition_image_prompt_text"
-                        android:textStyle="bold"
-                        android:id="@+id/add_nutrition_photo_label"/>
-
-                </LinearLayout>
-
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/addPhotoLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/take_picture_front"
+                android:textStyle="bold" />
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/scores_layout"
