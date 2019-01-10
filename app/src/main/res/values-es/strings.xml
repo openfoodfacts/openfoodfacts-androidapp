@@ -34,6 +34,7 @@
         <item>Ingredientes</item>
         <item>Nutrición</item>
         <item>Tabla Nutricional</item>
+        <item>Environment</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -702,6 +703,8 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Haz una lista de los ingredientes problemáticos que deberían aparecer en naranja. Ejemplo: huevo, pescado ... Puedes completar esta lista más adelante.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ingredientes no autorizados</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Listar los ingredientes no autorizados que deben aparecer en rojo. Ejemplo: gluten, leche, aceite de palma, azúcar ... Puede completar esta lista más adelante.</string>
+    <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
+    <string name="ingredient_image_prompt_text">Haz una foto de los ingredientes</string>
     <string name="category_game_btn">Ayuda a categorizar productos para calcular el NutriScore</string>
     <string name="version_string">Aplicación de Android Open Food Facts</string>
     <string name="version">Versión</string>
