@@ -64,7 +64,7 @@ public class CategoryActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                String url = "https://fr.openfoodfacts.org/hunger-game";
+                String url = "https://world.openfoodfacts.org/hunger-game";
                 CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
                 CustomTabsIntent customTabsIntent = builder.build();
                 customTabsIntent.launchUrl(getBaseContext(), Uri.parse(url));
