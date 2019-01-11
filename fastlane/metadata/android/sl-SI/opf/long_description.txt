@@ -22,7 +22,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
 
 *** Your products, your data ***
-- Your personal data is yours, and is never sent online
+- Vaši podatki so vaši in se nikoli ne pošljejo na splet
 - Aplikacijo lahko uporabljate anonimno
 - Zgodovino optičnega branja lahko izvozite
 

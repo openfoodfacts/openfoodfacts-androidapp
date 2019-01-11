@@ -537,7 +537,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (edit_product) {
             OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
-            client.getExistingProductDetails(product.getCode(), fields)
+            client.getExistingProductDetails(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new SingleObserver<State>() {
