@@ -123,9 +123,6 @@ public class AddProductIngredientsFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
-            if(b.getBoolean("perform_ocr")) {
-                ((AddProductActivity) activity).performOCR(code, "ingredients_" + ((AddProductActivity) activity).getProductLanguage());
-            }
             mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
             appLanguageCode = Locale.getDefault().getLanguage();
             product = (Product) b.getSerializable("product");
@@ -140,6 +137,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValues();
+            }
+            if(b.getBoolean("perform_ocr")) {
+                extractIngredients();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show();

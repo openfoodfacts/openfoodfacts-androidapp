@@ -201,9 +201,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
         if (b != null) {
-            if(b.getBoolean("perform_ocr")) {
-                ((AddProductActivity) activity).proceed();
-            }
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             edit_product = b.getBoolean("edit_product");
@@ -226,6 +223,9 @@ public class AddProductOverviewFragment extends BaseFragment {
             barcode.append(" " + code);
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
                 otherImage.setVisibility(View.GONE);
+            }
+            if(b.getBoolean("perform_ocr")) {
+                ((AddProductActivity) activity).proceed();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();
