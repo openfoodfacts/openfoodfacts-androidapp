@@ -119,6 +119,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private boolean mFlash;
     private boolean mRing;
     private boolean mAutofocus;
+    private int cameraState;
     private Disposable disposable;
     private PopupMenu popup;
     private Handler handler;
@@ -153,7 +154,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
      * @param newlyAdded true if the product is added using the product addition just now
      */
     private void findProduct(String lastText, boolean newlyAdded) {
-        client.getFullProductByBarcodeSingle(lastText)
+        client.getFullProductByBarcodeSingle(lastText, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SCAN))
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(a -> {
                     hideAllViews();
@@ -509,6 +510,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         mRing = sp.getBoolean("ring", false);
         mFlash = sp.getBoolean("flash", false);
         mAutofocus = sp.getBoolean("focus", true);
+        cameraState = sp.getInt("cameraState", 0);
 
         popup = new PopupMenu(this, moreOptions);
         popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
@@ -520,7 +522,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         barcodeView.getBarcodeView().setDecoderFactory(new DefaultDecoderFactory(formats));
         barcodeView.setStatusText(null);
         CameraSettings settings = barcodeView.getBarcodeView().getCameraSettings();
-        settings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
+        settings.setRequestedCameraId(cameraState);
         if (mFlash) {
             barcodeView.setTorchOn();
             toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
@@ -573,16 +575,20 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     }
 
     void toggleCamera() {
+        editor = sp.edit();
         CameraSettings settings = barcodeView.getBarcodeView().getCameraSettings();
         if (barcodeView.getBarcodeView().isPreviewActive()) {
             barcodeView.pause();
         }
         if (settings.getRequestedCameraId() == Camera.CameraInfo.CAMERA_FACING_BACK) {
-            settings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_FRONT);
+            cameraState = Camera.CameraInfo.CAMERA_FACING_FRONT;
         } else {
-            settings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
+            cameraState = Camera.CameraInfo.CAMERA_FACING_BACK;
         }
+        settings.setRequestedCameraId(cameraState);
         barcodeView.getBarcodeView().setCameraSettings(settings);
+        editor.putInt("cameraState",cameraState);
+        editor.apply();
         barcodeView.resume();
     }
 
