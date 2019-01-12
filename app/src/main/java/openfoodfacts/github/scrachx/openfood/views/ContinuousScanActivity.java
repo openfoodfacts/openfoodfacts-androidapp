@@ -119,6 +119,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private boolean mFlash;
     private boolean mRing;
     private boolean mAutofocus;
+    private int cameraState;
     private Disposable disposable;
     private PopupMenu popup;
     private Handler handler;
@@ -153,7 +154,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
      * @param newlyAdded true if the product is added using the product addition just now
      */
     private void findProduct(String lastText, boolean newlyAdded) {
-        client.getFullProductByBarcodeSingle(lastText)
+        client.getFullProductByBarcodeSingle(lastText, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SCAN))
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(a -> {
                     hideAllViews();
@@ -314,10 +315,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
         showAllViews();
         HashMap<String, String> productDetails = offlineSavedProduct.getProductDetailsMap();
-        if (productDetails.get("product_name") == null || productDetails.get("product_name").equals("")) {
-            name.setText(R.string.productNameNull);
+        String lc = productDetails.get("lang") != null ? productDetails.get("lang") : "en";
+        if (productDetails.get("product_name_" + lc) != null) {
+            name.setText(productDetails.get("product_name_" + lc));
+        } else if (productDetails.get("product_name_en") != null) {
+            name.setText(productDetails.get("product_name_en"));
         } else {
-            name.setText(productDetails.get("product_name"));
+            name.setText(R.string.productNameNull);
         }
         if (productDetails.get("add_brands") == null || productDetails.get("add_brands").equals("")) {
             brand.setText(R.string.productBrandNull);
@@ -506,6 +510,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         mRing = sp.getBoolean("ring", false);
         mFlash = sp.getBoolean("flash", false);
         mAutofocus = sp.getBoolean("focus", true);
+        cameraState = sp.getInt("cameraState", 0);
 
         popup = new PopupMenu(this, moreOptions);
         popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
@@ -517,7 +522,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         barcodeView.getBarcodeView().setDecoderFactory(new DefaultDecoderFactory(formats));
         barcodeView.setStatusText(null);
         CameraSettings settings = barcodeView.getBarcodeView().getCameraSettings();
-        settings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
+        settings.setRequestedCameraId(cameraState);
         if (mFlash) {
             barcodeView.setTorchOn();
             toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
@@ -541,12 +546,18 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 if (searchByBarcode.getText().toString().isEmpty()) {
                     Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                 } else {
-                    if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(searchByBarcode.getText().toString()) && (!searchByBarcode.getText().toString().substring(0, 3).contains("977") || !searchByBarcode.getText().toString().substring(0, 3).contains("978") || !searchByBarcode.getText().toString().substring(0, 3).contains("979"))) {
-                        lastText = searchByBarcode.getText().toString();
-                        findProduct(searchByBarcode.getText().toString(), false);
-                    } else {
-                        searchByBarcode.requestFocus();
+                    String barcodeText = searchByBarcode.getText().toString();
+                    if(barcodeText.length()<=2){
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") ||!barcodeText.substring(0, 3).contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
+                            lastText = barcodeText;
+                            findProduct(barcodeText, false);
+                        } else {
+                            searchByBarcode.requestFocus();
+                            Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
                 return true;
@@ -564,16 +575,20 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     }
 
     void toggleCamera() {
+        editor = sp.edit();
         CameraSettings settings = barcodeView.getBarcodeView().getCameraSettings();
         if (barcodeView.getBarcodeView().isPreviewActive()) {
             barcodeView.pause();
         }
         if (settings.getRequestedCameraId() == Camera.CameraInfo.CAMERA_FACING_BACK) {
-            settings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_FRONT);
+            cameraState = Camera.CameraInfo.CAMERA_FACING_FRONT;
         } else {
-            settings.setRequestedCameraId(Camera.CameraInfo.CAMERA_FACING_BACK);
+            cameraState = Camera.CameraInfo.CAMERA_FACING_BACK;
         }
+        settings.setRequestedCameraId(cameraState);
         barcodeView.getBarcodeView().setCameraSettings(settings);
+        editor.putInt("cameraState",cameraState);
+        editor.apply();
         barcodeView.resume();
     }
 

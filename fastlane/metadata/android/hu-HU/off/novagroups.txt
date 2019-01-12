@@ -1,21 +1,21 @@
-Nova group
+Nova csoport
 
-Nova groups
+Nova csoportok
 
-Nova group:
+Nova csoport:
 
-Group 1
-Group 1 - Unprocessed or minimally processed foods
-Unprocessed or minimally processed foods
+1. csoport
+Coport 1 - Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
+Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
 
-Group 2
-Group 2 - Processed culinary ingredients
-Processed culinary ingredients
+Csoport 2
+Csoport 2 - Feldolgozott összetevők
+Feldolgozott összetevők
 
-Group 3
-Group 3 - Processed foods
-Processed foods
+Csoport 3
+Csoport 3 - Feldolgozott élelmiszerek
+Feldolgozott élelmiszerek
 
-Group 4
-Group 4 - Ultra-processed food and drink products
-Ultra-processed food and drink products
+Csoport 4
+4. csoport - Többszörösen feldolgozott élelmiszer- és italtermékek
+Többszörösen feldolgozott élelmiszer- és italtermékek

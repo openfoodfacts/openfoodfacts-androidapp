@@ -48,10 +48,16 @@ public class FindProductFragment extends NavigationBaseFragment {
         if (mBarCodeText.getText().toString().isEmpty()) {
             displayToast(getResources().getString(R.string.txtBarcodeRequire));
         } else {
-            if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(mBarCodeText.getText().toString()) && (!mBarCodeText.getText().toString().substring(0, 3).contains("977") || !mBarCodeText.getText().toString().substring(0, 3).contains("978") || !mBarCodeText.getText().toString().substring(0, 3).contains("979"))) {
-                api.getProduct(mBarCodeText.getText().toString(), getActivity());
-            } else {
+            String barcodeText = mBarCodeText.getText().toString();
+            if(barcodeText.length()<=2){
                 displayToast(getResources().getString(R.string.txtBarcodeNotValid));
+            }
+            else {
+                if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") ||!barcodeText.substring(0, 3).contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
+                    api.getProduct(mBarCodeText.getText().toString(), getActivity());
+                } else {
+                    displayToast(getResources().getString(R.string.txtBarcodeNotValid));
+                }
             }
         }
     }

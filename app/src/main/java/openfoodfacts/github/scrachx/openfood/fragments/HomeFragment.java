@@ -5,16 +5,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -22,14 +25,20 @@ import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,7 +50,11 @@ public class HomeFragment extends NavigationBaseFragment {
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
 
+    @BindView(R.id.textHome)
+    TextView textHome;
+
     private OpenFoodAPIService apiClient;
+    private SharedPreferences sp;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,6 +66,12 @@ public class HomeFragment extends NavigationBaseFragment {
         super.onViewCreated(view, savedInstanceState);
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
+        sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @OnClick(R.id.buttonScan)
@@ -75,7 +94,9 @@ public class HomeFragment extends NavigationBaseFragment {
                 startActivity(intent);
             }
         } else {
-            ((MainActivity) getContext()).moveToBarcodeEntry();
+            if (getContext() instanceof MainActivity) {
+                ((MainActivity) getContext()).moveToBarcodeEntry();
+            }
         }
     }
 
@@ -86,7 +107,7 @@ public class HomeFragment extends NavigationBaseFragment {
     }
 
     private void checkUserCredentials() {
-        final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
+        final SharedPreferences settings = OFFApplication.getInstance().getSharedPreferences("login", 0);
         String login = settings.getString("user", "");
         String password = settings.getString("pass", "");
 
@@ -128,10 +149,46 @@ public class HomeFragment extends NavigationBaseFragment {
 
         super.onResume();
 
-        try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.home_drawer));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        String txtHomeOnline = OFFApplication.getInstance().getResources().getString(R.string.txtHomeOnline);
+        int productCount = sp.getInt("productCount", 0);
+        apiClient.getTotalProductCount()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Search>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        if (productCount != 0) {
+                            textHome.setText(String.format(txtHomeOnline, productCount));
+                        } else {
+                            textHome.setText(R.string.txtHome);
+                        }
+                    }
+
+                    @Override
+                    public void onSuccess(Search search) {
+                        SharedPreferences.Editor editor;
+                        int totalProductCount = Integer.parseInt(search.getCount());
+                        textHome.setText(String.format(txtHomeOnline, totalProductCount));
+                        editor = sp.edit();
+                        editor.putInt("productCount", totalProductCount);
+                        editor.apply();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (productCount != 0) {
+                            textHome.setText(String.format(txtHomeOnline, productCount));
+                        } else {
+                            textHome.setText(R.string.txtHome);
+                        }
+                    }
+                });
+
+        if (getActivity() instanceof AppCompatActivity) {
+            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setTitle(R.string.home_drawer);
+            }
         }
 
     }

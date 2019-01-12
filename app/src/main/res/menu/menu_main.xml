@@ -12,7 +12,7 @@
     <item
         android:id="@+id/action_set_type"
         android:icon="@drawable/ic_filter_list_black_24dp"
-        android:title="Contribution By"
+        android:title="@string/contribution_by"
         android:visible="false"
         app:showAsAction="always" />
 </menu>

@@ -36,6 +36,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.Driver;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -51,7 +54,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.CipherSuite;
@@ -78,6 +83,10 @@ public class Utils {
     public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
     public static boolean isUploadJobInitialised;
     public static boolean DISABLE_IMAGE_LOAD = false;
+
+    public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
+    public static final String HEADER_USER_AGENT_SCAN = "Scan";
+    public static final String HEADER_USER_AGENT_SEARCH = "Search";
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
@@ -353,6 +362,13 @@ public class Utils {
         }
 
         return String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
+    }
+
+    /**
+     * @see Utils#getRoundNumber(String)
+     */
+    public static String getRoundNumber(float value) {
+        return getRoundNumber(Float.toString(value));
     }
 
     public static DaoSession getAppDaoSession(Context context) {
@@ -646,6 +662,18 @@ public class Utils {
             e.printStackTrace();
         }
         return "(version unknown)";
+    }
+    /**
+     * @param type Type of call (Search or Scan)
+     * @return Returns the header to be put in network call
+     */
+    public static String getUserAgent(String type) {
+        if(type.equals(HEADER_USER_AGENT_SCAN)) {
+            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
+        } else if(type.equals(HEADER_USER_AGENT_SEARCH)) {
+            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
+        }
+        return "Official Android App "+BuildConfig.VERSION_NAME;
     }
 }
 

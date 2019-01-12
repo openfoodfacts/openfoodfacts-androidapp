@@ -1,21 +1,21 @@
-Nova group
+Группа NOVA
 
-Nova groups
+Группы NOVA
 
-Nova group:
+Группа NOVA:
 
-Group 1
-Group 1 - Unprocessed or minimally processed foods
-Unprocessed or minimally processed foods
+Группа %1
+Группа 1 - Необработанные или минимально обработанные пищевые продукты
+Необработанные или минимально обработанные пищевые продукты
 
-Group 2
-Group 2 - Processed culinary ingredients
+Группа %2
+Группа 2 - Обработанные кулинарные ингредиенты
 Processed culinary ingredients
 
-Group 3
+Группа %3
 Group 3 - Processed foods
 Processed foods
 
-Group 4
+Группа %4
 Group 4 - Ultra-processed food and drink products
 Ultra-processed food and drink products

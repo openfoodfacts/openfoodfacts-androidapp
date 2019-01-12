@@ -11,7 +11,8 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_barcode" />
+        app:srcCompat="@drawable/ic_barcode"
+        android:contentDescription="Barcode" />
 
     <TextView
         android:id="@+id/slide_1_title"

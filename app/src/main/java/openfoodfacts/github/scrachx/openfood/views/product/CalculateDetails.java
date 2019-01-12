@@ -2,25 +2,14 @@ package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,10 +25,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.CalculateAdapter;
-import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
@@ -98,18 +83,28 @@ public class CalculateDetails extends BaseActivity {
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Header hack
-        nutrimentItems.add(new NutrimentItem(null, null, null, null));
+        nutrimentItems.add(new NutrimentItem(null, null, null,
+                                             null, null));
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
         if (energy != null) {
-            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name), calculateCalories(value, spinnervalue), Utils.getEnergy(energy.getForServing()), "kcal"));
+            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name),
+                                                 calculateCalories(value, spinnervalue),
+                                                 Utils.getEnergy(energy.getForServingInUnits()),
+                                                 "kcal",
+                                                 nutriments.getModifier(ENERGY)));
         }
 
         // Fat
         Nutriments.Nutriment fat = nutriments.get(FAT);
         if (fat != null) {
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat), fat.getforanyvalue(value, spinnervalue), fat.getForServing(), fat.getUnit()));
+            String modifier = nutriments.getModifier(FAT);
+            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat),
+                                                       fat.getForAnyValue(value, spinnervalue),
+                                                       fat.getForServingInUnits(),
+                                                       fat.getUnit(),
+                                                       modifier == null ? "" : modifier));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
         }
@@ -117,10 +112,12 @@ public class CalculateDetails extends BaseActivity {
         // Carbohydrates
         Nutriments.Nutriment carbohydrates = nutriments.get(CARBOHYDRATES);
         if (carbohydrates != null) {
+            String modifier = nutriments.getModifier(CARBOHYDRATES);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_carbohydrate),
-                    carbohydrates.getforanyvalue(value, spinnervalue),
-                    carbohydrates.getForServing(),
-                    carbohydrates.getUnit()));
+                                                       carbohydrates.getForAnyValue(value, spinnervalue),
+                                                       carbohydrates.getForServingInUnits(),
+                                                       carbohydrates.getUnit(),
+                                                       modifier == null ? "" : modifier));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
         }
@@ -131,10 +128,13 @@ public class CalculateDetails extends BaseActivity {
         // Proteins
         Nutriments.Nutriment proteins = nutriments.get(PROTEINS);
         if (proteins != null) {
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_proteins),
-                    proteins.getforanyvalue(value, spinnervalue),
-                    proteins.getForServing(),
-                    proteins.getUnit()));
+            String modifier = nutriments.getModifier(PROTEINS);
+            nutrimentItems.add(
+                    new HeaderNutrimentItem(getString(R.string.nutrition_proteins),
+                                            proteins.getForAnyValue(value, spinnervalue),
+                                            proteins.getForServingInUnits(),
+                                            proteins.getUnit(),
+                                            modifier == null ? "" : modifier));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
         }
@@ -171,7 +171,10 @@ public class CalculateDetails extends BaseActivity {
             Nutriments.Nutriment nutriment = nutriments.get(entry.getKey());
             if (nutriment != null) {
                 items.add(new NutrimentItem(getString(entry.getValue()),
-                        nutriment.getforanyvalue(value, spinnervalue), nutriment.getForServing(), nutriment.getUnit()));
+                                            nutriment.getForAnyValue(value, spinnervalue),
+                                            nutriment.getForServingInUnits(),
+                                            nutriment.getUnit(),
+                                            nutriments.getModifier(entry.getKey())));
             }
         }
 
@@ -180,7 +183,7 @@ public class CalculateDetails extends BaseActivity {
 
     private String calculateCalories(float weight, String unit) {
         float caloriePer100g, weightInG;
-        caloriePer100g = Float.valueOf(Utils.getEnergy(p.getNutriments().get(Nutriments.ENERGY).getFor100g()));
+        caloriePer100g = Float.valueOf(Utils.getEnergy(p.getNutriments().get(Nutriments.ENERGY).getFor100gInUnits()));
         switch (unit) {
             case "mg":
                 weightInG = weight / 1000;

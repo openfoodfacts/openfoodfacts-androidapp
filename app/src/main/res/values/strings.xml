@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <plurals name="offline_notification_count">
         <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
@@ -42,10 +42,11 @@
         <item>Ingredients</item>
         <item>Nutrition</item>
         <item>Nutrition Table</item>
+        <item>Environment</item>
     </string-array>
 
     <!-- Text units -->
-    <string-array name="units_array">
+    <string-array name="units_array" translatable="false">
         <item>g</item>
         <item>mg</item>
         <item>kg</item>
@@ -56,20 +57,20 @@
     </string-array>
 
     <!-- weight units -->
-    <string-array name="weights_array">
+    <string-array name="weights_array" translatable="false">
         <item>g</item>
         <item>mg</item>
         <item>kg</item>
     </string-array>
 
     <!-- nutrition energy units -->
-    <string-array name="energy_units">
+    <string-array name="energy_units" translatable="false">
         <item>kcal</item>
         <item>kj</item>
     </string-array>
 
     <!-- nutrition weight units -->
-    <string-array name="nutrition_weight_units">
+    <string-array name="nutrition_weight_units" translatable="false">
         <item>g</item>
         <item>mg</item>
         <item>µg</item>
@@ -182,6 +183,7 @@
         <item>b+sr+Latn</item>
         <item>be</item>
         <item>bn</item>
+        <item>bg</item>
         <item>ca</item>
         <item>cs</item>
         <item>da</item>
@@ -190,6 +192,8 @@
         <item>en</item>
         <item>eo</item>
         <item>es</item>
+        <item>et</item>
+        <item>eu</item>
         <item>fa</item>
         <item>fi</item>
         <item>fil</item>
@@ -204,13 +208,23 @@
         <item>hy</item>
         <item>id</item>
         <item>it</item>
+        <item>is</item>
         <item>ja</item>
         <item>kab</item>
         <item>kk</item>
+        <item>km</item>
         <item>ko</item>
         <item>ku</item>
+        <item>lo</item>
+        <item>lt</item>
         <item>lv</item>
+        <item>mg</item>
+        <item>ml</item>
+        <item>mn</item>
+        <item>ms</item>
+        <item>mt</item>
         <item>my</item>
+        <item>ne</item>
         <item>no</item>
         <item>nb</item>
         <item>nl-BE</item>
@@ -220,15 +234,20 @@
         <item>pt</item>
         <item>ro</item>
         <item>ru</item>
+        <item>si</item>
         <item>sl</item>
+        <item>sk</item>
         <item>sv</item>
+        <item>ta</item>
         <item>te</item>
         <item>tg</item>
         <item>th</item>
         <item>ti</item>
         <item>tl</item>
         <item>tr</item>
+        <item>ug</item>
         <item>uk</item>
+        <item>uz</item>
         <item>vi</item>
         <item>wa</item>
         <item>wo</item>
@@ -375,7 +394,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="from_gallery">From gallery</string>
     <string name="product_sent">Product sent successfully</string>
     <string name="action_edit_product">Edit product</string>
@@ -467,6 +486,17 @@
     <string name="number_of_products">Number of products: </string>
     <string name="txt_no_results">No results found</string>
     <string name="txt_extend_search">Try broadening your search or add the product</string>
+    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
+    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
+    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
+    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
+    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
+    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
+    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
+    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
+    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
+    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="txt_cant_load_search_results">Can\'t load search results</string>
@@ -608,10 +638,6 @@
     <string name="preference_header_contributing">Contributing</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
 
-    <string name="seconds_ago">seconds ago</string>
-    <string name="minutes_ago">minutes ago</string>
-    <string name="hours_ago">hours ago</string>
-    <string name="days_ago">days ago</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Login</string>
     <string name="login_true">Already logged in!</string>
@@ -626,13 +652,15 @@
 
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
     <string name="wikidata_information">Going further</string>
+    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="description">Description: </string>
     <string name="title">Title: </string>
-    <string name="Wikipedia">View on Wikipedia</string>Browse Products
+    <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
     <string name="swipe_down">Swipe down</string>
     <string name="brand_string">Brand</string>
     <string name="additive_string">Additive</string>
+    <string name="allergen_string">Allergen</string>
     <string name="search_string">Search</string>
     <string name="country_string">Countries where sold</string>
     <string name="store_subtitle">Store</string>
@@ -674,7 +702,8 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Sort By</string>
-    <string name="nutriscore_uri" translatable="false">https://fr.openfoodfacts.org/score-nutritionnel-france</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
 
     <string name="shake_summary">Shake phone to scan products</string>
     <string name="shake_title">Shake to scan</string>
@@ -800,12 +829,61 @@
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
     <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
+    <string name="contribution_by">Contribution By</string>
+    <string name="title_activity_product">Title</string>
+    <string name="description_activity_product">description</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
 
+    <!-- Used for additive exposure evaluation table -->
+    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+
+    <string name="infants">Infants</string>
+    <string name="infants_age">&lt; 1</string>
+    <string name="toddlers">Toddlers</string>
+    <string name="toddlers_age">1 to 2</string>
+    <string name="children">Children</string>
+    <string name="children_age">3 to 9</string>
+    <string name="adolescents">Adolescents</string>
+    <string name="adolescents_age">10 to 17</string>
+    <string name="adults">Adults</string>
+    <string name="adults_age">18 to 64</string>
+    <string name="elderly">Elderly</string>
+    <string name="elderly_age">65+</string>
+    <string name="most_people">Most people\n(over 50%)</string>
+    <string name="some_people">Some people\n(over 5%)</string>
+    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
+    <string name="risk_of_exposure">Risk of exposure</string>
+    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
+    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
+    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
+    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <!-- Used for additive exposure evaluation table -->
+    <!-- Used for diets AddOn -->
+    <string name="your_diets">Your diet(s)</string>
+    <string name="diet_name">Diet name</string>
+    <string name="diets_dialog_warning_title">Warning</string>
+    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="EditDiet_Name">Name</string>
+    <string name="EditDiet_Description">Description</string>
+    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
+    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
+    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
+    <string name="ingredient_image_prompt_text">Take a picture of the ingredients</string>
+    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
+    <!-- Used for diets AddOn -->
 </resources>

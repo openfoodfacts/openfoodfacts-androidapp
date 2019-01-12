@@ -9,7 +9,7 @@ Para descobrir o projeto Open Food Facts, por favor visite https://openfoodfacts
 
 - Open Food Facts é uma base de dados de produtos alimentares feita por todos, para todos.
 - Você pode usá-la para melhor escolher seus alimentos, e como os dados são abertos, todo mundo pode reutilizá-la para quaisquer fins.
-- Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários do mundo inteiro. Temos vários projetos interessantes com os quais você pode contribuir, de várias maneiras. 
+- Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários do mundo inteiro. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
 - Você pode começar a contribuir hoje, adicionando um produto da sua despensa. 
 
 *** Conheça os fatos ***
@@ -19,17 +19,17 @@ Para descobrir o projeto Open Food Facts, por favor visite https://openfoodfacts
 - marcas, alérgenos, rótulos (bio, sem glúten, vegan, vegetariano, halal, kosher ...), informações de rastreabilidade (códigos de embalagem, origem dos ingredientes)
 - Em vinhos e cervejas encontrará o teor alcoólico.
 
-*** Works well in any condition ***
+*** Funciona bem em qualquer condição ***
 - Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
+- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
 
 *** Sua comida, seus dados ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Seus dados são seus e nunca são enviados on-line
+- Pode usar o aplicativo anonimamente
+- Pode exportar seu histórico de digitalizações
 
 O Open Food Facts também está disponível na web em https://pt.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Perguntas, feedback: contact@openfoodfacts.org
 
 Para cosméticos pode instalar o Open Beauty Facts, para comida para animais Open Pet Food Facts, e para todos os outros produtos Open Products Facts.

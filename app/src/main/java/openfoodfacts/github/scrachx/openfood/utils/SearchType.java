@@ -1,27 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.support.annotation.StringDef;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 
 import java.lang.annotation.Retention;
 import java.util.HashMap;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-
 import static java.lang.annotation.RetentionPolicy.SOURCE;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.ADDITIVE;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.ALLERGEN;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.BRAND;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CATEGORY;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CONTRIBUTOR;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.COUNTRY;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.EMB;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.INCOMPLETE_PRODUCT;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.LABEL;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.PACKAGING;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.STATE;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.STORE;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE;
+import static openfoodfacts.github.scrachx.openfood.utils.SearchType.*;
 
 /**
  * Created by Lobster on 10.03.18.
@@ -61,9 +47,8 @@ public @interface SearchType {
     String INCOMPLETE_PRODUCT = "incomplete_product";
     String STATE = "state";
 
-
     HashMap<String, String> URLS = new HashMap<String, String>() {{
-        put(ALLERGEN, BuildConfig.OFWEBSITE + "allergen/");
+        put(ALLERGEN, BuildConfig.OFWEBSITE + "allergens/");
         put(EMB, BuildConfig.OFWEBSITE + "packager-code/");
         put(TRACE, BuildConfig.OFWEBSITE + "trace/");
     }};

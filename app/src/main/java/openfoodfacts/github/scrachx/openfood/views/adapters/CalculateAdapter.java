@@ -51,10 +51,12 @@ public class CalculateAdapter extends RecyclerView.Adapter {
         NutrimentViewHolder nutrimentViewHolder = (NutrimentViewHolder) holder;
 
         nutrimentViewHolder.vNutrimentName.setText(item.getTitle());
+        nutrimentViewHolder.vNutrimentValue.append(item.getModifier());
         nutrimentViewHolder.vNutrimentValue.append(item.getValue());
         nutrimentViewHolder.vNutrimentValue.append(" ");
         nutrimentViewHolder.vNutrimentValue.append(item.getUnit());
 
+        nutrimentViewHolder.vNutrimentServingValue.append(item.getModifier());
         nutrimentViewHolder.vNutrimentServingValue.append(item.getServingValue());
         nutrimentViewHolder.vNutrimentServingValue.append(" ");
         nutrimentViewHolder.vNutrimentServingValue.append(item.getUnit());

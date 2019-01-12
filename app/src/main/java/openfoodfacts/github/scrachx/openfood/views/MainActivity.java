@@ -28,6 +28,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -36,7 +38,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -90,9 +91,11 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -271,7 +274,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // Add Manage Account profile if the user is connected
         SharedPreferences preferences = getSharedPreferences("login", 0);
-        String userLogin = preferences.getString(getResources().getString(R.string.user), null);
+        String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
         isConnected = userLogin != null;
@@ -376,10 +379,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             /**
                              * Search and display the products to be completed by moving to ProductBrowsingListActivity
                              */
-                            Intent incompleteIntent = new Intent(this, ProductBrowsingListActivity.class);
-                            incompleteIntent.putExtra("search_query", "");
-                            incompleteIntent.putExtra("search_type", SearchType.INCOMPLETE_PRODUCT);
-                            this.startActivity(incompleteIntent);
+                            ProductBrowsingListActivity.startActivity(this, "", SearchType.INCOMPLETE_PRODUCT);
                             break;
 
                         case ITEM_OBF:
@@ -535,6 +535,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             apiClient.syncOldHistory();
         }
 
+        handleIntent(getIntent());
     }
 
     private void scan() {
@@ -767,6 +768,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
         String type = intent.getType();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             Log.e("INTENT", "start activity");
@@ -950,12 +955,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         alertDialogBuilder.setView(dialogView);
 
         final EditText barcode_edittext = dialogView.findViewById(R.id.barcode);
-        final ImageView product_image = dialogView.findViewById(R.id.product_image);
+        final RecyclerView product_images = dialogView.findViewById(R.id.product_image);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        product_images.setLayoutManager(layoutManager);
+        product_images.setAdapter(new PhotosAdapter( uri));
 
-        product_image.setImageURI(uri.get(0));
         if (hasEditText) {
             barcode_edittext.setVisibility(View.VISIBLE);
-            product_image.setVisibility(View.VISIBLE);
             alertDialogBuilder.setTitle(getString(R.string.no_barcode));
             alertDialogBuilder.setMessage(getString(R.string.enter_barcode));
         } else {
@@ -985,8 +992,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             if (temp_barcode.length() > 0) {
                                 dialog.cancel();
                                 if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
-                                    image = new ProductImage(temp_barcode, OTHER, new File(selected.getPath()));
-                                    api.postImg(MainActivity.this, image);
+                                    File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
+                                    image = new ProductImage(temp_barcode, OTHER, imageFile);
+                                    api.postImg(MainActivity.this, image, null);
                                 } else {
                                     Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                                     State st = new State();

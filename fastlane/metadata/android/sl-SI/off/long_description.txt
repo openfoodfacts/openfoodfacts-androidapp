@@ -1,35 +1,35 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Skenirajte prehrambene izdelke ali črtno kodo, da pridobite podatke o sestavinah, dodatkih in podatkih o hranilni vrednosti.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+Aplikacija omogoča ogled 547.000 izdelkov (vključno s 175.000 v ZDA), ki so že vsebovane v brezplačni in odprti zbirki podatkov dejstva o hrani, lahko pa tudi dodate slike in podatke za manjkajoče izdelke.
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+Če želite raziskati projekt odprta dejstva o hrani, obiščite https://openfoodfacts.org
 
 
-***Contribute to Food Transparency***
+*** Prispevajte k preglednosti hrane ***
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your food cupboard. 
+- Odprta dejstva o hrani je zbirka podatkov o živilskih izdelkih, ki so jo pripravili vsi, za vse.
+-Uporabite jo lahko za boljšo izbiro hrane in ker je to odprta zbirka podatkov, jo lahko kdorkoli ponovno uporabiti za kateri koli namen.
+- Odprta dejstva o hrani je neprofitni projekt, ki ga je razvilo na tisoče prostovoljcev iz vsega sveta. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
+- Sodelujete lahko že danes, tako da dodate izdelek iz vaše omare za hrano. 
 
-*** Get the Facts ***
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+*** Pridobite dejstva***
+- Odprta dejstva o hrani vam pomagajo razumeti smisel drobnega tiska na nalepkah izdelkov. Našli boste lahko (glede na navedbe na izdelkih):
+- ogljični odtis (emisije CO2) in embalažo (kot tudi navodila za recikliranje),
+- Nutriscore (hranilna vrednost), hranila, vsebnost maščobe, nasičene maščobne kisline, ogljikovi hidrati, sladkorji, vlaknine, beljakovine in sol in natrij.
+- blagovne znamke, alergene, nalepke (bio, brez glutena, veganska, vegetarijanska, halal, kosher ...), informacije o sledljivosti (oznake embalaže, izvor sestavin)
+- na vinih in pivih boste našli vsebnost alkohola.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Dobro deluje v vseh pogojih ***
+- lahko dodate nove izdelke, tudi če trenutno nimate internetne povezave.
+- Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije
+- Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
 
-*** Your food, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Vaša hrana, vaši podatki ***
+- Vaši podatki so vaši in se nikoli ne pošljejo na splet
+- Aplikacijo lahko uporabljate anonimno
+- Zgodovino optičnega branja lahko izvozite
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Informacije o odprtih dejstvih o hrani, so na voljo tudi na spletnem mestu https://world.openfoodfacts.org
+Vprašanja, povratne informacije: contact@openfoodfacts.org
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Za kozmetiko lahko namestite Open Beauty Facts, za hrano za hišne ljubljenčke, Open Pet Food Facts in za vse ostale izdelke, Open Products Facts.

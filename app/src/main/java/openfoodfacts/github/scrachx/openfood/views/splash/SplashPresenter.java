@@ -11,6 +11,7 @@ import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -18,10 +19,9 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 
 public class SplashPresenter implements ISplashPresenter.Actions {
 
-    private final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
     /**
- * Mutiplied by 6*30* to reduce the issue. TODO: fix https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1616
-  */
+     * Mutiplied by 6*30* to reduce the issue. TODO: fix https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1616
+     */
     private final Long REFRESH_PERIOD = 6 * 30 * 24 * 60 * 60 * 1000L;
 
     private ISplashPresenter.View view;
@@ -63,7 +63,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                                     )
                             ).subscribeOn(Schedulers.computation())
                                     .subscribe(() -> {
-                                        settings.edit().putLong(LAST_REFRESH_DATE, System.currentTimeMillis()).apply();
+                                        settings.edit().putLong(Utils.LAST_REFRESH_DATE, System.currentTimeMillis()).apply();
                                     }, Throwable::printStackTrace);
 
                             return true;
@@ -92,6 +92,6 @@ public class SplashPresenter implements ISplashPresenter.Actions {
     * This method checks if data was refreshed more than 1 day ago
      */
     private Boolean isNeedToRefresh() {
-        return System.currentTimeMillis() - settings.getLong(LAST_REFRESH_DATE, 0) > REFRESH_PERIOD;
+        return System.currentTimeMillis() - settings.getLong(Utils.LAST_REFRESH_DATE, 0) > REFRESH_PERIOD;
     }
 }

@@ -161,7 +161,7 @@ public class ProductPhotosFragment extends BaseFragment {
 
                 ProductImage imageOne = new ProductImage(product.getCode(), FRONT, photoFile);
                 imageOne.setFilePath(photoFile.getAbsolutePath());
-                openFoodAPIClient.postImg(getContext(), imageOne);
+                openFoodAPIClient.postImg(getContext(), imageOne, null);
                 mUrlImageFront = photoFile.getAbsolutePath();
                 Picasso.with(getContext())
                         .load(photoFile)
@@ -173,7 +173,7 @@ public class ProductPhotosFragment extends BaseFragment {
 
                 ProductImage imageIngredients = new ProductImage(product.getCode(), INGREDIENTS, photoFile);
                 imageIngredients.setFilePath(photoFile.getAbsolutePath());
-                openFoodAPIClient.postImg(getContext(), imageIngredients);
+                openFoodAPIClient.postImg(getContext(), imageIngredients, null);
                 mUrlImageTwo = photoFile.getAbsolutePath();
                 Picasso.with(getContext())
                         .load(photoFile)
@@ -186,7 +186,7 @@ public class ProductPhotosFragment extends BaseFragment {
 
                 ProductImage imageNutrients = new ProductImage(product.getCode(), NUTRITION, photoFile);
                 imageNutrients.setFilePath(photoFile.getAbsolutePath());
-                openFoodAPIClient.postImg(getContext(), imageNutrients);
+                openFoodAPIClient.postImg(getContext(), imageNutrients, null);
                 mUrlImageThree = photoFile.getAbsolutePath();
                 Picasso.with(getContext())
                         .load(photoFile)

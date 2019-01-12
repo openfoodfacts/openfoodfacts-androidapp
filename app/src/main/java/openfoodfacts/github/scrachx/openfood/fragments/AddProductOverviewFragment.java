@@ -534,7 +534,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (edit_product) {
             OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
-            client.getExistingProductDetails(product.getCode(), fields)
+            client.getExistingProductDetails(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new SingleObserver<State>() {
@@ -792,8 +792,9 @@ public class AddProductOverviewFragment extends BaseFragment {
     @OnClick(R.id.hint_link)
     void searchProductLink() {
         String url = "https://www.google.com/search?q=" + code;
-        if (!brand.getText().toString().isEmpty()) {
-            url = url + " " + brand.getText().toString();
+        if (!brand.getChipAndTokenValues().isEmpty()) {
+            List<String> brandNames = brand.getChipAndTokenValues();
+            url = url + " " + StringUtils.join(brandNames, ' ');
         }
         if (!name.getText().toString().isEmpty()) {
             url = url + " " + name.getText().toString();
@@ -847,7 +848,7 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     public boolean areRequiredFieldsEmpty() {
         if (mImageUrl == null || mImageUrl.equals("")) {
-            Toast.makeText(activity, R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
+            Toast.makeText(OFFApplication.getInstance(), R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
             scrollView.fullScroll(View.FOCUS_UP);
             return true;
         } else {

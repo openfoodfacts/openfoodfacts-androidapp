@@ -5,16 +5,11 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import openfoodfacts.github.scrachx.openfood.models.AllergenResponse;
 import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Custom deserializer for {@link openfoodfacts.github.scrachx.openfood.models.AllergensWrapper AllergensWrapper}
@@ -27,6 +22,7 @@ public class AllergensWrapperDeserializer extends StdDeserializer<AllergensWrapp
 
 
     private static final String NAMES_KEY = "name";
+    private static final String WIKIDATA_KEY = "wikidata";
 
     public AllergensWrapperDeserializer() {
         super(AllergensWrapper.class);
@@ -42,8 +38,11 @@ public class AllergensWrapperDeserializer extends StdDeserializer<AllergensWrapp
         while (mainNodeIterator.hasNext()) {
             Map.Entry<String, JsonNode> subNode = mainNodeIterator.next();
             JsonNode namesNode = subNode.getValue().get(NAMES_KEY);
+            Boolean isWikiNodePresent = subNode.getValue().has(WIKIDATA_KEY);
+
             if (namesNode != null) {
-                Map<String, String> names = new HashMap<>();  /* Entry<Language Code, Product Name> */
+                Map<String, String> names =
+                        new HashMap<>();  /* Entry<Language Code, Product Name> */
                 Iterator<Map.Entry<String, JsonNode>> nameNodeIterator = namesNode.fields();
                 while (nameNodeIterator.hasNext()) {
                     Map.Entry<String, JsonNode> nameNode = nameNodeIterator.next();
@@ -52,7 +51,11 @@ public class AllergensWrapperDeserializer extends StdDeserializer<AllergensWrapp
 
                 }
 
-                allergens.add(new AllergenResponse(subNode.getKey(), names));
+                if (isWikiNodePresent) {
+                    allergens.add(new AllergenResponse(subNode.getKey(), names, subNode.getValue().get(WIKIDATA_KEY).toString()));
+                } else {
+                    allergens.add(new AllergenResponse(subNode.getKey(), names));
+                }
             }
         }
 

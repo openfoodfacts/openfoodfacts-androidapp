@@ -29,7 +29,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -63,6 +66,7 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -81,6 +85,8 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
@@ -89,7 +95,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View {
+public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
 
     @BindView(R.id.product_incomplete_warning_view_container)
     CardView productIncompleteView;
@@ -121,10 +127,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView categoryProduct;
     @BindView(R.id.textLabelProduct)
     TextView labelProduct;
+    @BindView(R.id.front_picture_layout)
+    LinearLayout frontPictureLayout;
     @BindView(R.id.imageViewFront)
     ImageView mImageFront;
     @BindView(R.id.addPhotoLabel)
     TextView addPhotoLabel;
+    @BindView(R.id.uploadingImageProgress)
+    ProgressBar uploadingImageProgress;
+    @BindView(R.id.uploadingImageProgressText)
+    TextView uploadingImageProgressText;
     @BindView(R.id.buttonMorePictures)
     Button addMorePicture;
     @BindView(R.id.imageGrade)
@@ -133,6 +145,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView novaGroup;
     @BindView(R.id.scores_layout)
     ConstraintLayout scoresLayout;
+    @BindView(R.id.ingredient_image_prompt_layout)
+    LinearLayout ingredientImagePromptLayout;
+    @BindView(R.id.imageViewIngredients)
+    ImageView imageViewIngredients;
+    @BindView(R.id.add_ingredient_photo_label)
+    TextView ingredientPhotoLabel;
+    @BindView(R.id.nutrition_image_prompt_layout)
+    LinearLayout nutritionImagePromptLayout;
+    @BindView(R.id.imageViewNutrition)
+    ImageView imageViewNutrition;
+    @BindView(R.id.add_nutrition_photo_label)
+    TextView nutritionPhotoLabel;
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
@@ -149,6 +173,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
+    //boolean to indicate if the image clicked was that of ingredients
+    private boolean addingIngredientsImage = false;
+    //boolean to indicate if the image clicked was that of nutrition
+    private boolean addingNutritionImage = false;
 
     @Override
     public void onAttach(Context context) {
@@ -215,6 +243,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
 
             mUrlImage = product.getImageUrl();
+        }
+
+        //the following checks whether the ingredient and nutrition images are already uploaded for the product
+        if(isBlank(product.getImageIngredientsUrl())) {
+            ingredientImagePromptLayout.setVisibility(View.VISIBLE);
+        }
+
+        if(isBlank(product.getImageNutritionUrl())) {
+            nutritionImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
@@ -295,12 +332,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
             for (int i = 0; i < embTags.length - 1; i++) {
                 embTag = embTags[i];
-                embCode.append(Utils.getClickableText(getEmbCode(embTag), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
+                embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
                 embCode.append(", ");
             }
 
             embTag = embTags[embTags.length - 1];
-            embCode.append(Utils.getClickableText(getEmbCode(embTag), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
+            embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
         } else {
             embCode.setVisibility(View.GONE);
         }
@@ -314,12 +351,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             String stores[] = product.getStores().split(",");
             for (int i = 0; i < stores.length - 1; i++) {
                 store = stores[i];
-                storeProduct.append(Utils.getClickableText(store, store, SearchType.STORE, getActivity(), customTabsIntent));
+                storeProduct.append(Utils.getClickableText(store.trim(), store, SearchType.STORE, getActivity(), customTabsIntent));
                 storeProduct.append(", ");
             }
 
             store = stores[stores.length - 1];
-            storeProduct.append(Utils.getClickableText(store, store, SearchType.STORE, getActivity(), customTabsIntent));
+            storeProduct.append(Utils.getClickableText(store.trim(), store, SearchType.STORE, getActivity(), customTabsIntent));
         } else {
             storeProduct.setVisibility(View.GONE);
         }
@@ -452,12 +489,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (categories.isEmpty()) {
             categoryProduct.setVisibility(View.GONE);
         } else {
-            for (int i = 0; i < categories.size() - 1; i++) {
-                categoryProduct.append(getCategoriesTag(categories.get(i)));
-                categoryProduct.append(", ");
+            // Add all the categories to text view and link them to wikidata is possible
+            for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
+                CategoryName category = categories.get(i);
+                CharSequence categoryName = getCategoriesTag(category);
+                if (categoryName != null) {
+                    // Add category name to text view
+                    categoryProduct.append(categoryName);
+                    // Add a comma if not the last item
+                    if (i != lastIndex) {
+                        categoryProduct.append(", ");
+                    }
+                }
             }
-
-            categoryProduct.append(getCategoriesTag(categories.get(categories.size() - 1)));
         }
     }
 
@@ -484,11 +528,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         countryProduct.append(" ");
 
         for (int i = 0; i < countries.size() - 1; i++) {
-            countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(i).getName()), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
+            countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(i).getName()).trim(), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
             countryProduct.append(", ");
         }
 
-        countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(countries.size() - 1).getName()), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
+        countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(countries.size() - 1).getName()).trim(), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
 
     }
 
@@ -557,20 +601,30 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
                                 ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, category.getWikiDataId(), 1, category.getName());
+                                productActivity.showBottomScreen(result, category);
                             } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), category.getName(), SearchType.CATEGORY);
+                                ProductBrowsingListActivity.startActivity(getContext(),
+                                        category.getCategoryTag(),
+                                        category.getName(),
+                                        SearchType.CATEGORY);
                             }
                         }
                     });
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(), category.getName(), SearchType.CATEGORY);
+                    ProductBrowsingListActivity.startActivity(getContext(),
+                            category.getCategoryTag(),
+                            category.getName(),
+                            SearchType.CATEGORY);
                 }
 
             }
         };
         spannableStringBuilder.append(category.getName());
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        if (!category.isNotNull()) {
+            StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
+            spannableStringBuilder.setSpan(iss, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
         return spannableStringBuilder;
     }
 
@@ -586,15 +640,21 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
                                 ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, label.getWikiDataId(), 2, label.getName());
+                                productActivity.showBottomScreen(result, label);
                             } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), label.getName(), SearchType.LABEL);
+                                ProductBrowsingListActivity.startActivity(getContext(),
+                                        label.getLabelTag(),
+                                        label.getName(),
+                                        SearchType.LABEL);
                             }
                         }
                     });
 
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(), label.getName(), SearchType.LABEL);
+                    ProductBrowsingListActivity.startActivity(getContext(),
+                            label.getLabelTag(),
+                            label.getName(),
+                            SearchType.LABEL);
                 }
 
             }
@@ -664,6 +724,35 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
+    //when the prompt for the images are selected, the camera is initialized and corresponding booleans flipped
+    @OnClick(R.id.imageViewIngredients)
+    public void addIngredientImage() {
+        addingIngredientsImage=true;
+        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            if (Utils.isHardwareCameraInstalled(getContext())) {
+                EasyImage.openCamera(this, 0);
+            } else {
+                EasyImage.openGallery(getActivity(), 0, false);
+            }
+        }
+    }
+
+    @OnClick(R.id.imageViewNutrition)
+    public void addNutritionImage() {
+        addingNutritionImage=true;
+        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            if (Utils.isHardwareCameraInstalled(getContext())) {
+                EasyImage.openCamera(this, 0);
+            } else {
+                EasyImage.openGallery(getActivity(), 0, false);
+            }
+        }
+    }
+
     @OnClick(R.id.imageViewFront)
     public void openFullScreen(View v) {
         if (mUrlImage != null) {
@@ -697,7 +786,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        api.postImg(getContext(), image);
+        api.postImg(getContext(), image, this);
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
@@ -715,12 +804,34 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
+
+                //the booleans are checked to determine if the picture uploaded was due to a prompt click
+                //the pictures are uploaded with the correct path
+                if(addingIngredientsImage) {
+                    ProductImage image = new ProductImage(barcode, INGREDIENTS, new File(resultUri.getPath()));
+                    image.setFilePath(resultUri.getPath());
+                    showOtherImageProgress();
+                    api.postImg(getContext(), image, this);
+                    ingredientImagePromptLayout.setVisibility(View.GONE);
+                    addingIngredientsImage = false;
+                }
+
+                if(addingNutritionImage){
+                    ProductImage image = new ProductImage(barcode, NUTRITION, new File(resultUri.getPath()));
+                    image.setFilePath(resultUri.getPath());
+                    showOtherImageProgress();
+                    api.postImg(getContext(), image, this);
+                    nutritionImagePromptLayout.setVisibility(View.GONE);
+                    addingNutritionImage = false;
+                }
+
                 if (!sendOther) {
                     onPhotoReturned(new File(resultUri.getPath()));
                 } else {
                     ProductImage image = new ProductImage(barcode, OTHER, new File(resultUri.getPath()));
                     image.setFilePath(resultUri.getPath());
-                    api.postImg(getContext(), image);
+                    showOtherImageProgress();
+                    api.postImg(getContext(), image, this);
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
@@ -782,5 +893,25 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onDestroyView() {
         presenter.dispose();
         super.onDestroyView();
+    }
+
+    public void showOtherImageProgress() {
+        uploadingImageProgress.setVisibility(View.VISIBLE);
+        uploadingImageProgressText.setVisibility(View.VISIBLE);
+        uploadingImageProgressText.setText(R.string.toastSending);
+    }
+
+    @Override
+    public void onSuccess() {
+        uploadingImageProgress.setVisibility(View.GONE);
+        uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
+
+    }
+
+    @Override
+    public void onFailure(String message) {
+        uploadingImageProgress.setVisibility(View.GONE);
+        uploadingImageProgressText.setVisibility(View.GONE);
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

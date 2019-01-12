@@ -23,8 +23,8 @@ Open Products Facts es una base de datos abierta de todos los productos en el mu
 
 *** Sus productos, sus datos ***
 - Tus datos son tuyos y nunca se envían en línea
-- Puede usar la aplicación de forma anónima
-- Puede exportar su historial de escaneo
+- Puedes usar la aplicación de forma anónima
+- Puedes exportar tu historial de escaneo
 
 Para alimentos, puede instalar Open Food Facts, para cosméticos, Open Beauty Facts, y para alimentos para mascotas, Open Pet Food Facts.
 

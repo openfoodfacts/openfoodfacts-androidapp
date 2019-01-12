@@ -62,14 +62,16 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <intent-filter>
+            <intent-filter
+                android:label="@string/intent_filter_share_label">
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:mimeType="image/*" />
             </intent-filter>
-            <intent-filter>
+            <intent-filter
+                android:label="@string/intent_filter_share_label">
                 <action android:name="android.intent.action.SEND" />
 
                 <category android:name="android.intent.category.DEFAULT" />
