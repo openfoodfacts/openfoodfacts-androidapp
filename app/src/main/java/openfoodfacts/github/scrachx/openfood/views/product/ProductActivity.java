@@ -54,7 +54,6 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -266,7 +265,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		if( BuildConfig.FLAVOR.equals( "off" ) )
 		{
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
-			adapterResult.addFragment( new NutritionInfoProductFragment(), menuTitles[3] );
 			if( mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT) )
 			{
 				adapterResult.addFragment( new EnvironmentProductFragment(), menuTitles[4] );
@@ -279,7 +277,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		if( BuildConfig.FLAVOR.equals( "opff" ) )
 		{
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
-			adapterResult.addFragment( new NutritionInfoProductFragment(), menuTitles[3] );
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
 				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );

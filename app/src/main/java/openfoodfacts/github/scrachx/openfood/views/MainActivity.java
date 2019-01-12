@@ -275,7 +275,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // Add Manage Account profile if the user is connected
         SharedPreferences preferences = getSharedPreferences("login", 0);
-        String userLogin = preferences.getString(getResources().getString(R.string.user), null);
+        String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
         isConnected = userLogin != null;

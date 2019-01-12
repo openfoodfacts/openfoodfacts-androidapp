@@ -34,6 +34,7 @@
         <item>Ingrédients</item>
         <item>Nutrition</item>
         <item>Tableau nutritionnel</item>
+        <item>Environment</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -706,6 +707,8 @@
     <string name="dietExport_2">Cliquer sur le bouton + \nEt copier/coller ces informations dans les champs correspondants :</string>
     <string name="dietExport_3">Cliquer sur</string>
     <!-- Used for diets AddOn -->
+    <string name="nutrition_image_prompt_text">Prendre une photo du tableau nutritionnel</string>
+    <string name="ingredient_image_prompt_text">Prendre une photo des ingrédients</string>
     <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
     <string name="version_string">Application Android Open Food Facts</string>
     <string name="version">Version</string>
