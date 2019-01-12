@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +15,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -182,7 +184,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     @Test
     public void getProduct_notFound() throws Exception {
         String barcode = "457457457";
-        Response<State> response = serviceRead.getFullProductByBarcode(barcode).execute();
+        Response<State> response = serviceRead.getFullProductByBarcode(barcode,Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
 
         assertTrue(response.isSuccessful());
 
@@ -233,7 +235,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
         assertEquals(body.getStatus(), 1);
         assertEquals(body.getStatusVerbose(), "fields saved");
 
-        Response<State> response = serviceWrite.getFullProductByBarcode(product.getBarcode()).execute();
+        Response<State> response = serviceWrite.getFullProductByBarcode(product.getBarcode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
         Product savedProduct = response.body().getProduct();
         assertEquals(product.getName(), savedProduct.getProductName());
         assertEquals(product.getBrands(), savedProduct.getBrands());

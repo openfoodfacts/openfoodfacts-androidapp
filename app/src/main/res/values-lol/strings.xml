@@ -34,6 +34,7 @@
         <item>crwdns98141:0crwdne98141:0</item>
         <item>crwdns98143:0crwdne98143:0</item>
         <item>crwdns98145:0crwdne98145:0</item>
+        <item>crwdns111998:0crwdne111998:0</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -702,5 +703,10 @@
     <string name="EditDiet_Hint_So_So_Ingredient">crwdns111854:0crwdne111854:0</string>
     <string name="EditDiet_Unauthorised_Ingredients">crwdns111856:0crwdne111856:0</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">crwdns111858:0crwdne111858:0</string>
+    <string name="nutrition_image_prompt_text">crwdns112000:0crwdne112000:0</string>
+    <string name="ingredient_image_prompt_text">crwdns112002:0crwdne112002:0</string>
+    <string name="category_game_btn">crwdns111976:0crwdne111976:0</string>
+    <string name="version_string">crwdns111978:0crwdne111978:0</string>
+    <string name="version">crwdns111980:0crwdne111980:0</string>
     <!-- Used for diets AddOn -->
 </resources>

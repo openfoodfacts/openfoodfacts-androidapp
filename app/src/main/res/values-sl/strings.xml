@@ -42,6 +42,7 @@
         <item>Sestavine</item>
         <item>Prehrana</item>
         <item>Prehranska tabela</item>
+        <item>Environment</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -77,9 +78,9 @@
         <item>Holesterol</item>
         <item>Krom</item>
         <item>Baker</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
+        <item>Dihomo-gama-linolenska kislina / DGLA (20: 3 n-6)</item>
+        <item>Dokozaheksaenska kislina / DHA (22: 6 n-3)</item>
+        <item>Eikosapentaenojska kislina / EPA (20: 5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
         <item>Flurid</item>
@@ -702,7 +703,7 @@
     <string name="diets_dialog_warning_title">Opozorilo</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
     <string name="EditDiet_Name">Ime</string>
-    <string name="EditDiet_Description">Description</string>
+    <string name="EditDiet_Description">Opis</string>
     <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
     <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
     <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
@@ -710,5 +711,10 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Seznam problematičnih sestavin, ki naj se prikaže v oranžni barvi. Primer: jajce, ribe ... Ta seznam lahko dokončate kasneje.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Neodobrene sestavine</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Seznam neodobrenih sestavin, ki naj se prikaže v rdeči barvi. Primer: brez glutena, mleka, palmovo olje, sladkor... Ta seznam lahko dokončate pozneje.</string>
+    <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
+    <string name="ingredient_image_prompt_text">Fotografiraj sestavine</string>
+    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
     <!-- Used for diets AddOn -->
 </resources>
