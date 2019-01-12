@@ -75,7 +75,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAutoCompleteAdapter;
@@ -182,6 +182,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private List<String> labels = new ArrayList<>();
     private List<String> category = new ArrayList<>();
     private boolean newImageSelected;
+    private int ROTATE_RESULT = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -592,7 +593,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     void addFrontImage() {
         if (mImageUrl != null) {
             // front image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImage.class);
+            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
             Bundle bundle = new Bundle();
             if (edit_product && !newImageSelected) {
                 bundle.putString("imageurl", mImageUrl);
@@ -604,9 +605,9 @@ public class AddProductOverviewFragment extends BaseFragment {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation(activity, imageFront,
                                 activity.getString(R.string.product_transition));
-                startActivity(intent, options.toBundle());
+                startActivityForResult(intent,ROTATE_RESULT , options.toBundle());
             } else {
-                startActivity(intent);
+                startActivityForResult(intent, ROTATE_RESULT);
             }
         } else {
             // add front image.
@@ -888,6 +889,17 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (result.getContents() != null) {
                 link.setText(result.getContents());
                 link.requestFocus();
+            }
+        } else if (requestCode == ROTATE_RESULT && resultCode == RESULT_OK) {//when image is rotated
+            Uri resultUri = data.getData();
+            photoFile = new File(resultUri.getPath());
+            int position = 0;
+            ProductImage image = new ProductImage(code, FRONT, photoFile);
+            mImageUrl = photoFile.getAbsolutePath();
+            newImageSelected = true;
+            image.setFilePath(resultUri.getPath());
+            if (activity instanceof AddProductActivity) {
+                ((AddProductActivity)activity).addToPhotoMap(image, position);
             }
         }
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {

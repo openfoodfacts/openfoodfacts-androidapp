@@ -53,7 +53,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -104,6 +104,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     private Product product;
     private boolean newImageSelected;
     private String appLanguageCode;
+    private final int ROTATE_RESULT = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -270,7 +271,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     void addIngredientsImage() {
         if (imagePath != null) {
             // ingredients image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImage.class);
+            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
             Bundle bundle = new Bundle();
             if (edit_product && !newImageSelected) {
                 bundle.putString("imageurl", imagePath);
@@ -282,9 +283,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation(activity, imageIngredients,
                                 activity.getString(R.string.product_transition));
-                startActivity(intent, options.toBundle());
+                startActivityForResult(intent,ROTATE_RESULT, options.toBundle());
             } else {
-                startActivity(intent);
+                startActivityForResult(intent, ROTATE_RESULT);
             }
         } else {
             // add ingredients image.
@@ -404,6 +405,15 @@ public class AddProductIngredientsFragment extends BaseFragment {
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Log.e("Crop image error", result.getError().toString());
+            }
+        } else if (requestCode == ROTATE_RESULT && resultCode == RESULT_OK) {//when image is rotated
+            Uri resultUri = data.getData();
+            photoFile = new File(resultUri.getPath());
+            newImageSelected = true;
+            ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
+            image.setFilePath(resultUri.getPath());
+            if (activity instanceof AddProductActivity) {
+                ((AddProductActivity)activity).addToPhotoMap(image, 2);
             }
         }
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
