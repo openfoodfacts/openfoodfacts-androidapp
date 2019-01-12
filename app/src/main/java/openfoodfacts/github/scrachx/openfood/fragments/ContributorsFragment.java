@@ -52,12 +52,6 @@ public class ContributorsFragment extends BaseFragment {
     TextView otherEditorsText;
     @BindView(R.id.states)
     TextView statesText;
-    @BindView(R.id.contribute_image_front)
-    ImageView imgFront;
-    @BindView(R.id.contribute_image_ingredients)
-    ImageView imgIngredients;
-    @BindView(R.id.contribute_image_nutrients)
-    ImageView imgNutrients;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -122,17 +116,6 @@ public class ContributorsFragment extends BaseFragment {
             }
         }
 
-        if (isNotBlank(product.getImageFrontUrl())) {
-            Picasso.with(getContext()).load(product.getImageFrontUrl()).into(imgFront);
-        }
-
-        if (isNotBlank(product.getImageIngredientsUrl())) {
-            Picasso.with(getContext()).load(product.getImageIngredientsUrl()).into(imgIngredients);
-        }
-
-        if (isNotBlank(product.getImageNutritionUrl())) {
-            Picasso.with(getContext()).load(product.getImageNutritionUrl()).into(imgNutrients);
-        }
     }
 
     private String[] getDateTime(String dateTime) {
