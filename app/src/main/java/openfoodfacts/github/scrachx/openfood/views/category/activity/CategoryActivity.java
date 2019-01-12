@@ -8,15 +8,16 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.customtabs.CustomTabsIntent;
 import android.view.View;
-
+import android.widget.Button;
 import com.afollestad.materialdialogs.MaterialDialog;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -31,6 +32,7 @@ public class CategoryActivity extends BaseActivity {
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
     private boolean scanOnShake;
+    private Button game_button;
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
 
@@ -49,6 +51,8 @@ public class CategoryActivity extends BaseActivity {
         setTitle(R.string.category_drawer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        game_button = (Button) findViewById(R.id.game_button);
+
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -63,7 +67,24 @@ public class CategoryActivity extends BaseActivity {
                 }
             }
         });
+
+        // chrome custom tab for category hunger game
+        game_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String url = "https://world.openfoodfacts.org/hunger-game";
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(getBaseContext(), Uri.parse(url));
+
+
+            }
+        });
+
+
     }
+
 
     @OnClick (R.id.buttonScan)
     protected void onButtonScanClick() {
