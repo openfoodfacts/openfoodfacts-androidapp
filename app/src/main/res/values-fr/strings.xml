@@ -34,6 +34,7 @@
         <item>Ingrédients</item>
         <item>Nutrition</item>
         <item>Tableau nutritionnel</item>
+        <item>Environment</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -702,7 +703,9 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ingrédients non autorisés</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Énumérez les ingrédients non autorisés qui devraient être en rouge. Exemple : gluten, lait, huile de palme, sucre... Vous pourrez remplir cette liste plus tard.</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="nutrition_image_prompt_text">Prendre une photo du tableau nutritionnel</string>
+    <string name="ingredient_image_prompt_text">Prendre une photo des ingrédients</string>
+    <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
     <string name="version_string">Application Android Open Food Facts</string>
     <string name="version">Version</string>
     <!-- Used for diets AddOn -->
