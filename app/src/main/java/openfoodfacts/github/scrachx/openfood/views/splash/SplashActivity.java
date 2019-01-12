@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -49,7 +50,6 @@ import retrofit2.Response;
 public class SplashActivity extends BaseActivity implements ISplashPresenter.View {
 
     private static final String TAG = "SplashActivity";
-    private static final int BUFFER_SIZE = 4096;
     @BindView(R.id.tagline)
     TextView tagline;
     @BindView(R.id.text_loading)
@@ -97,6 +97,8 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
                     .onPositive((dialog, which) -> doDownload())
                     .onNegative((dialog, which) -> presenter.refreshData())
                     .show();
+        } else {
+            presenter.refreshData();
         }
     }
 
@@ -328,6 +330,7 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
             //parsing csv file
             try (CSVReader reader = new CSVReader(new FileReader(file.getAbsolutePath()), '\t')) {
                 List<String[]> records = reader.readAll();
+                List<OfflineProduct> list = new ArrayList<>();
                 Iterator<String[]> iterator = records.iterator();
                 // To skip header in the csv file
                 iterator.hasNext();
@@ -336,8 +339,12 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
                 while (iterator.hasNext()) {
                     String[] record = iterator.next();
                     OfflineProduct offlineProduct = new OfflineProduct(record[1], record[3], record[0], record[2], record[4]);
-                    //saving to db
-                    mOfflineProductDao.insertOrReplace(offlineProduct);
+                    list.add(offlineProduct);
+                    if (count % 15000 == 0) {
+                        // saving to db
+                        mOfflineProductDao.insertOrReplaceInTx(list);
+                        list.clear();
+                    }
                     count++;
                     Log.d(TAG, "completed " + count + " / " + size);
                     long finalCount = count;
@@ -349,6 +356,8 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
                     });
                     Log.d(TAG, "progress " + ((float) count / (float) size) * 100 + "% ");
                 }
+                Log.d(TAG, "done progress " + ((float) count / (float) size) * 100 + "% ");
+                mOfflineProductDao.insertOrReplaceInTx(list);
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;

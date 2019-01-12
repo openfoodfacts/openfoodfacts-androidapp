@@ -968,7 +968,7 @@
     <string name="download_offline_product">Do you want to download data to search product offline?</string>
     <string name="txtDownload">Download</string>
     <string name="txtProcessing">Processing Data...</string>
-    <string name="txtSaving">Saving to database (Progress</string>
+    <string name="txtSaving">Saving to database (Progress </string>
     <string name="txtConnectionFailed">Connection failed!</string>
     <string name="retry">Retry</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
