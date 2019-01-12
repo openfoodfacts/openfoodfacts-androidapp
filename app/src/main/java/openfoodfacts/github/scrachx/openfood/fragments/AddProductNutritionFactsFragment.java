@@ -258,6 +258,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private boolean edit_product;
     private Product product;
     private boolean newImageSelected;
+    private EditText lastEditText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -295,6 +296,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             Toast.makeText(activity, R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
+        alcohol.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        lastEditText = alcohol;
     }
 
     /**
@@ -1071,6 +1074,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         editText.setHint(text);
         editText.setId(position);
         editText.setKeyListener(keyListener);
+        lastEditText.setNextFocusDownId(editText.getId());
+        lastEditText.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        lastEditText = editText;
         editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         editText.setSingleLine();
         editText.setPadding(dpsToPixels(10), 0, dpsToPixels(10), 0);
