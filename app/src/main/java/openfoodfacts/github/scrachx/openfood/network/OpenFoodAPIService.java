@@ -375,4 +375,13 @@ public interface OpenFoodAPIService {
     Call<String> editImages(@Query("code") String code,
                             @QueryMap Map<String, String> fields);
 
+
+    /**
+     * This method downloads the file with a dynamic downloadable url
+     *
+     * @param fileUrl
+     * @return
+     */
+    @GET
+    Call<ResponseBody> downloadFileWithDynamicUrlSync(@Url String fileUrl);
 }
