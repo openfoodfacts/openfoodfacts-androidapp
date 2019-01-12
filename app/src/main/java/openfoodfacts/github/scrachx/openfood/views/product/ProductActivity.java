@@ -65,6 +65,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 {
 
 	private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
+	private static final int EDIT_REQUEST_CODE = 2;
 	@BindView( R.id.pager )
 	ViewPager viewPager;
 	@BindView( R.id.toolbar )
@@ -180,9 +181,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 					}
 					else
 					{
+						mState = (State) getIntent().getExtras().getSerializable( "state" );
 						Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
 						intent.putExtra( "edit_product", mState.getProduct() );
-						startActivity( intent );
+						startActivityForResult( intent, EDIT_REQUEST_CODE );
 					}
 					break;
 
@@ -203,6 +205,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		} );
 		CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
 		layoutParams.setBehavior( new BottomNavigationBehavior() );
+
+		//To update the product details
+		onRefresh();
 	}
 
 	@Override
@@ -214,6 +219,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 			Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
 			intent.putExtra( "edit_product", mState.getProduct() );
 			startActivity( intent );
+		}
+		if( requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK)
+		{
+			onRefresh();
 		}
 	}
 
