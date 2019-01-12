@@ -226,7 +226,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brand);
+        setContentView(R.layout.activity_product_browsing_list);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         countProductsView.setVisibility(View.INVISIBLE);
