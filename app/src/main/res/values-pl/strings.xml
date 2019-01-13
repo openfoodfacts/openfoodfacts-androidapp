@@ -107,22 +107,22 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Fruktoza</item>
         <item>Kwas gamma-linolenowy / GLA (18: 3 n-6)</item>
         <item>Glukoza</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>Kwas gantoinowy (20: 1 n-9)</item>
         <item>Jod</item>
         <item>Żelazo</item>
         <item>Laktoza</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>Kwas laurynowy (12: 0)</item>
+        <item>Kwas lignocerowy (24: 0)</item>
+        <item>Kwas linolowy / LA (18: 2 n-6)</item>
         <item>Magnez</item>
         <item>Maltodekstryny</item>
         <item>Maltoza</item>
         <item>Mangan</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>Kwas miodowy (20: 3 n-9)</item>
+        <item>Kwas melisowy (30: 0)</item>
         <item>Molibden</item>
-        <item>Monounsaturated fat</item>
-        <item>Montanic acid (28:0)</item>
+        <item>Tłuszcz jednonienasycony</item>
+        <item>Kwas montanowy (28:0)</item>
         <item>Kwas mirystynowy (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
         <item>Nukleotydy</item>
@@ -271,9 +271,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="alert_drawer">Ostrzeżenie o alergensch</string>
     <string name="warning_allergens">Zawiera alergeny</string>
     <string name="title_dialog_alert">Dodaj powiadomienie</string>
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
+    <string name="toggle_flash">Lampa błyskowa</string>
+    <string name="flash_on">Lampa błyskowa [ON]</string>
+    <string name="flash_off">Lampa błyskowa [OFF]</string>
     <string name="ring_on">Ring [ON]</string>
     <string name="ring_off">Ring [OFF]</string>
     <string name="auto_focus_on">Auto Focus [ON]</string>
