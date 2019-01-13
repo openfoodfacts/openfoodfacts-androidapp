@@ -274,17 +274,17 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="toggle_flash">Lampa błyskowa</string>
     <string name="flash_on">Lampa błyskowa [ON]</string>
     <string name="flash_off">Lampa błyskowa [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
+    <string name="ring_on">Dźwięk [ON]</string>
+    <string name="ring_off">Dźwięk [OFF]</string>
     <string name="auto_focus_on">Auto Focus [ON]</string>
     <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="formats">Formaty</string>
+    <string name="choose_formats">Wybierz formaty</string>
+    <string name="select_camera">Wybierz aparat fotograficzny</string>
     <string name="ok_button">Dobrze</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Anuluj</string>
     <string name="login_button">Logowanie</string>
-    <string name="create_account_button">Create Account</string>
+    <string name="create_account_button">Załóż konto</string>
     <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie mogą nie być dokładne, a wykrycie ich też nie może być pewne. Zatem, sprawdzaj dwa razy! </string>
     <string name="from_gallery">Z galerii</string>
     <string name="product_sent">Produkt wysłany z powodzeniem</string>
@@ -510,7 +510,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="login_true">Już zalogowany!</string>
     <string name="confirm_logout">Potwierdź wylogowanie się</string>
     <string name="logout_dialog_content">Czy na pewno chcesz wylogować się?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">Anuluj</string>
     <string name="choose_resolution">Wybierz rozdzielczość</string>
     <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
     <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
