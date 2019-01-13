@@ -73,7 +73,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>g</item>
         <item>mg</item>
         <item>μg</item>
-        <item>% DV</item>
+        <item>% Zalecane dzienne spożycie</item>
         <item>IU</item>
     </string-array>
     <!-- nutrients list
@@ -98,14 +98,14 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Cholesterol</item>
         <item>Chrom</item>
         <item>Miedź</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>Kwas dihomo-γ-linolenowy / DGLA (20:3 n-6)</item>
+        <item>Kwas dokozaheksaenowy / DHA (22: 6 n-3)</item>
+        <item>Kwas eikozapentaenowy / EPA (20: 5 n-3)</item>
+        <item>Kwas elaidowy (18: 1 n-9)</item>
+        <item>Kwas erukowy (22: 1 n-9)</item>
         <item>Fluorek</item>
         <item>Fruktoza</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>Kwas gamma-linolenowy / GLA (18: 3 n-6)</item>
         <item>Glukoza</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>Jod</item>
