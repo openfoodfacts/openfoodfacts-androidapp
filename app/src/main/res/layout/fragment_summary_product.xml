@@ -181,7 +181,7 @@
             </android.support.constraint.ConstraintLayout>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/cvProductDetails"
+                android:id="@+id/cvProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -199,7 +199,6 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:gravity="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textIsSelectable="true"
                         android:textStyle="bold" />
@@ -215,12 +214,95 @@
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/blue_grey_100">
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
 
-                    </View>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cvNutritionLights"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="4dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textNutrientTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:background="@drawable/textview_full"
+                        android:padding="@dimen/spacing_small"
+                        android:text="@string/txtNutrientLevel100g"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/listNutrientLevels"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:background="@drawable/textview_full"
+                        android:divider="@color/white"
+                        tools:listitem="@layout/nutrient_lvl_list_item"
+                        android:dividerHeight="0dp"
+                        android:padding="@dimen/spacing_small"
+                        android:paddingBottom="60dp"
+                        android:scrollbars="vertical" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvTextAdditiveProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:cardElevation="4dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textAdditiveProduct"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:background="@drawable/textview_full"
+                android:padding="@dimen/spacing_small"
+                android:textColorLink="@color/light_blue_A700"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/font_normal" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvProductDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                     <android.support.v7.widget.CardView
                         android:id="@+id/product_incomplete_warning_view_container"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,10 +19,14 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -52,6 +57,7 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
@@ -59,6 +65,7 @@ import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -71,6 +78,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -92,6 +100,8 @@ import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -157,6 +167,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView imageViewNutrition;
     @BindView(R.id.add_nutrition_photo_label)
     TextView nutritionPhotoLabel;
+    @BindView(R.id.listNutrientLevels)
+    RecyclerView rv;
+    @BindView(R.id.textNutrientTxt)
+    TextView textNutrientTxt;
+    @BindView(R.id.cvNutritionLights)
+    CardView nutritionLightsCardView;
+    @BindView(R.id.textAdditiveProduct)
+    TextView additiveProduct;
+    @BindView(R.id.cvTextAdditiveProduct)
+    CardView textAdditiveProductCardView;
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
@@ -242,6 +262,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter.loadCategories();
         presenter.loadLabels();
         presenter.loadCountries();
+        additiveProduct.setText(bold(getString(R.string.txtAdditives)));
+        presenter.loadAdditives();
 
         mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
         barcode = product.getCode();
@@ -414,6 +436,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (BuildConfig.FLAVOR.equals("off")) {
             scoresLayout.setVisibility(View.VISIBLE);
             List<NutrientLevelItem> levelItem = new ArrayList<>();
+            Nutriments nutriments = product.getNutriments();
 
             NutrientLevels nutrientLevels = product.getNutrientLevels();
             NutrimentLevel fat = null;
@@ -438,7 +461,63 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                     CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
                 });
+
+                if(nutriments!=null)
+                {
+                    nutritionLightsCardView.setVisibility(View.VISIBLE);
+                    Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
+                    if (fat != null && fatNutriment != null) {
+                        String fatNutrimentLevel = fat.getLocalize(context);
+                        String modifier = nutriments.getModifier(Nutriments.FAT);
+                        levelItem.add(new NutrientLevelItem(getString(R.string.txtFat),
+                                (modifier == null ? "" : modifier)
+                                        + getRoundNumber(fatNutriment.getFor100g())
+                                        + " " + fatNutriment.getUnit(),
+                                fatNutrimentLevel,
+                                fat.getImageLevel()));
+                    }
+
+                    Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
+                    if (saturatedFat != null && saturatedFatNutriment != null) {
+                        String saturatedFatLocalize = saturatedFat.getLocalize(context);
+                        String saturatedFatValue = getRoundNumber(saturatedFatNutriment.getFor100g()) + " " + saturatedFatNutriment.getUnit();
+                        String modifier = nutriments.getModifier(Nutriments.SATURATED_FAT);
+                        levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat),
+                                (modifier == null ? "" : modifier) + saturatedFatValue,
+                                saturatedFatLocalize,
+                                saturatedFat.getImageLevel()));
+                    }
+
+                    Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
+                    if (sugars != null && sugarsNutriment  != null) {
+                        String sugarsLocalize = sugars.getLocalize(context);
+                        String sugarsValue = getRoundNumber(sugarsNutriment.getFor100g()) + " " + sugarsNutriment.getUnit();
+                        String modifier = nutriments.getModifier(Nutriments.SUGARS);
+                        levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars),
+                                (modifier == null ? "" : modifier) + sugarsValue,
+                                sugarsLocalize,
+                                sugars.getImageLevel()));
+                    }
+
+                    Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
+                    if (salt != null && saltNutriment != null) {
+                        String saltLocalize = salt.getLocalize(context);
+                        String saltValue = getRoundNumber(saltNutriment.getFor100g()) + " " + saltNutriment.getUnit();
+                        String modifier = nutriments.getModifier(Nutriments.SALT);
+                        levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt),
+                                (modifier == null ? "" : modifier) + saltValue,
+                                saltLocalize,
+                                salt.getImageLevel()));
+                    }
+                }
+
+            } else {
+                nutritionLightsCardView.setVisibility(View.GONE);
             }
+
+            rv.setLayoutManager(new LinearLayoutManager(getContext()));
+            rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
+
 
             if (product.getNovaGroups() != null) {
                 novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
@@ -461,6 +540,104 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
 
+    }
+    private CharSequence getAdditiveTag(AdditiveName additive) {
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                if (additive.getIsWikiDataIdPresent()) {
+                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
+                        ProductActivity productActivity = (ProductActivity) getActivity();
+                        if (value) {
+                            if (productActivity != null && !productActivity.isFinishing()) {
+                                productActivity.showBottomScreen(result, additive);
+                            }
+                        } else {
+                            if (additive.hasOverexposureData()) {
+                                if (productActivity != null && !productActivity.isFinishing()) {
+                                    productActivity.showBottomScreen(null, additive);
+                                }
+                            } else {
+                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                            }
+                        }
+                    });
+                } else {
+                    ProductActivity productActivity = (ProductActivity) getActivity();
+                    if (additive.hasOverexposureData()) {
+                        if (productActivity != null && !productActivity.isFinishing()) {
+                            productActivity.showBottomScreen(null, additive);
+                        }
+                    } else {
+                        ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                    }
+                }
+            }
+        };
+
+        spannableStringBuilder.append(additive.getName());
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        // if the additive has an overexposure risk ("high" or "moderate") then append the warning message to it
+        if (additive.hasOverexposureData()) {
+            boolean isHighRisk = "high".equalsIgnoreCase(additive.getOverexposureRisk());
+            Drawable riskIcon;
+            String riskWarningStr;
+            int riskWarningColor;
+            if (isHighRisk) {
+                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_high_risk);
+                riskWarningStr = getString(R.string.overexposure_high);
+                riskWarningColor = getColor(getContext(), R.color.overexposure_high);
+            } else {
+                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_moderate_risk);
+                riskWarningStr = getString(R.string.overexposure_moderate);
+                riskWarningColor = getColor(getContext(), R.color.overexposure_moderate);
+            }
+            riskIcon.setBounds(0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight());
+            ImageSpan iconSpan = new ImageSpan(riskIcon, ImageSpan.ALIGN_BOTTOM);
+
+            spannableStringBuilder.append(" - "); // this will be replaced with the risk icon
+            spannableStringBuilder.setSpan(iconSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            spannableStringBuilder.append(riskWarningStr);
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(riskWarningColor), spannableStringBuilder.length() - riskWarningStr.length(), spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        return spannableStringBuilder;
+    }
+
+    @Override
+    public void showAdditives(List<AdditiveName> additives) {
+        additiveProduct.setText(bold(getString(R.string.txtAdditives)));
+        additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
+        additiveProduct.append(" ");
+        additiveProduct.append("\n");
+        additiveProduct.setClickable(true);
+        additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
+
+        for (int i = 0; i < additives.size() - 1; i++) {
+            additiveProduct.append(getAdditiveTag(additives.get(i)));
+            additiveProduct.append("\n");
+        }
+
+        additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
+    }
+
+    @Override
+    public void showAdditivesState(String state) {
+        switch (state) {
+            case LOADING: {
+                textAdditiveProductCardView.setVisibility(View.VISIBLE);
+                additiveProduct.append(getString(R.string.txtLoading));
+                break;
+            }
+            case EMPTY: {
+                textAdditiveProductCardView.setVisibility(View.GONE);
+                break;
+            }
+        }
     }
 
     @Override
