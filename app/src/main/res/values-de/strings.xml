@@ -38,8 +38,8 @@
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Produktfotos</item>
+        <item>Zutatenanalyse</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -713,6 +713,6 @@
     <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="detected_ingredients">Erkannte Zutaten</string>
     <!-- Used for diets AddOn -->
 </resources>
