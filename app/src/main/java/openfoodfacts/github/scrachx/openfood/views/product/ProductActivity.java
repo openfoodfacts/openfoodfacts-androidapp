@@ -27,6 +27,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,9 +51,10 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
+import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsAnalysisProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,6 +66,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 {
 
 	private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
+	private static final int EDIT_REQUEST_CODE = 2;
 	@BindView( R.id.pager )
 	ViewPager viewPager;
 	@BindView( R.id.toolbar )
@@ -103,13 +106,14 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		setSupportActionBar( toolbar );
 		getSupportActionBar().setDisplayHomeAsUpEnabled( true );
 
+		api = new OpenFoodAPIClient( this );
+
+		mState = (State) getIntent().getExtras().getSerializable( "state" );
+
 		setupViewPager( viewPager );
 
 		tabLayout.setupWithViewPager( viewPager );
 
-		api = new OpenFoodAPIClient( this );
-
-		mState = (State) getIntent().getExtras().getSerializable( "state" );
 		if( !Utils.isHardwareCameraInstalled( this ) )
 		{
 			mButtonScan.setVisibility( View.GONE );
@@ -178,9 +182,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 					}
 					else
 					{
+						mState = (State) getIntent().getExtras().getSerializable( "state" );
 						Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
 						intent.putExtra( "edit_product", mState.getProduct() );
-						startActivity( intent );
+						startActivityForResult( intent, EDIT_REQUEST_CODE );
 					}
 					break;
 
@@ -201,6 +206,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		} );
 		CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
 		layoutParams.setBehavior( new BottomNavigationBehavior() );
+
+		//To update the product details
+		onRefresh();
 	}
 
 	@Override
@@ -212,6 +220,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 			Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
 			intent.putExtra( "edit_product", mState.getProduct() );
 			startActivity( intent );
+		}
+		if( requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK)
+		{
+			onRefresh();
 		}
 	}
 
@@ -248,6 +260,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 	private void setupViewPager( ViewPager viewPager )
 	{
 		String[] menuTitles = getResources().getStringArray( R.array.nav_drawer_items_product );
+		String[] newMenuTitles=getResources().getStringArray(R.array.nav_drawer_new_items_product);
 
 		adapterResult = new ProductFragmentPagerAdapter( getSupportFragmentManager() );
 		adapterResult.addFragment( new SummaryProductFragment(), menuTitles[0] );
@@ -263,19 +276,21 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		if( BuildConfig.FLAVOR.equals( "off" ) )
 		{
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
-			adapterResult.addFragment( new NutritionInfoProductFragment(), menuTitles[3] );
+			if( mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT) )
+			{
+				adapterResult.addFragment( new EnvironmentProductFragment(), menuTitles[4] );
+			}
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
-				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 			}
 		}
 		if( BuildConfig.FLAVOR.equals( "opff" ) )
 		{
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
-			adapterResult.addFragment( new NutritionInfoProductFragment(), menuTitles[3] );
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
-				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 			}
 		}
 
@@ -283,13 +298,14 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		{
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
-				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 			}
+			adapterResult.addFragment( new IngredientsAnalysisProductFragment(), newMenuTitles[1] );
 		}
 
 		if( BuildConfig.FLAVOR.equals( "opf" ) )
 		{
-			adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+			adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 		}
 
 		viewPager.setAdapter( adapterResult );

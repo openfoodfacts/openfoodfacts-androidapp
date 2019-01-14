@@ -34,6 +34,7 @@
         <item>Ingrédients</item>
         <item>Nutrition</item>
         <item>Tableau nutritionnel</item>
+        <item>Environment</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -689,18 +690,23 @@
     <string name="legend_adi">au-dessus de la dose journalière admissible (DJA)</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="your_diets">Vos régimes</string>
+    <string name="diet_name">Nom du régime</string>
     <string name="diets_dialog_warning_title">Attention</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Les données de votre(s) régime(s) restent sur votre appareil. Rien ne sera téléchargé nulle part.</string>
     <string name="EditDiet_Name">Nom</string>
     <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
-    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
-    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Enabled_Disabled">Activé/Désactivé</string>
+    <string name="EditDiet_Authorised_Ingredients">Ingrédients autorisés</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">Énumérez les ingrédients autorisés qui devraient être en vert. Exemple : pomme, champignon, tomate… Vous pourrez remplir cette liste plus tard.</string>
+    <string name="EditDiet_So_So_Ingredients">Ingrédients peu recommandés</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Ingrédients non autorisés</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Énumérez les ingrédients non autorisés qui devraient être en rouge. Exemple : gluten, lait, huile de palme, sucre... Vous pourrez remplir cette liste plus tard.</string>
+    <string name="nutrition_image_prompt_text">Prendre une photo du tableau nutritionnel</string>
+    <string name="ingredient_image_prompt_text">Prendre une photo des ingrédients</string>
+    <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
+    <string name="version_string">Application Android Open Food Facts</string>
+    <string name="version">Version</string>
     <!-- Used for diets AddOn -->
 </resources>

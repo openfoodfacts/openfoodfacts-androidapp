@@ -26,7 +26,7 @@
     <string name="message_in_activity_save_product_offline">Solo se necesita una foto para poder enviar un nuevo producto.</string>
     <string name="product_incomplete_message">Este producto no está completo. Como resultado, no pudimos hacer la comprobación de los alérgenos.</string>
     <string name="no_offline_data">Ya has terminado</string>
-    <string name="first_offline">Los productos añadidos sin conexion a internet aparecerán aquí</string>
+    <string name="first_offline">Los productos añadidos sin conexión a internet aparecerán aquí</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -34,6 +34,7 @@
         <item>Ingredientes</item>
         <item>Nutrición</item>
         <item>Tabla Nutricional</item>
+        <item>Medio ambiente</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -689,18 +690,23 @@
     <string name="legend_adi">por encima de la ingesta diaria aceptable (IDA)</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="your_diets">Su dieta(s)</string>
+    <string name="diet_name">Nombre de la dieta</string>
     <string name="diets_dialog_warning_title">Aviso</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Los datos de su dieta (s) permanecen en su dispositivo. Nada será subido a ningún lado.</string>
     <string name="EditDiet_Name">Nombre</string>
-    <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
-    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
+    <string name="EditDiet_Description">Descripción</string>
+    <string name="EditDiet_Enabled_Disabled">Activado/Desactivado</string>
+    <string name="EditDiet_Authorised_Ingredients">Ingredientes autorizados</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">Listar los ingredientes autorizados que deben aparecer en verde. Ejemplo: manzana, champiñones, tomate ... Puede completar esta lista más adelante.</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Haz una lista de los ingredientes problemáticos que deberían aparecer en naranja. Ejemplo: huevo, pescado ... Puedes completar esta lista más adelante.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Ingredientes no autorizados</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Listar los ingredientes no autorizados que deben aparecer en rojo. Ejemplo: gluten, leche, aceite de palma, azúcar ... Puede completar esta lista más adelante.</string>
+    <string name="nutrition_image_prompt_text">Haz una foto de la tabla nutricional</string>
+    <string name="ingredient_image_prompt_text">Haz una foto de los ingredientes</string>
+    <string name="category_game_btn">Ayuda a categorizar productos para calcular el NutriScore</string>
+    <string name="version_string">Aplicación de Android Open Food Facts</string>
+    <string name="version">Versión</string>
     <!-- Used for diets AddOn -->
 </resources>

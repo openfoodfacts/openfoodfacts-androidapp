@@ -23,14 +23,17 @@ public interface OpenFoodAPIService {
     String PRODUCT_API_COMMENT = "Official Android app";
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens_tags,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups,lang,purchase_places,nutrition_data_per,no_nutrition_data")
-    Call<State> getFullProductByBarcode(@Path("barcode") String barcode);
+    Call<State> getFullProductByBarcode(@Path("barcode") String barcode,
+                                        @Header("User-Agent") String header);
 
     @GET("api/v0/product/{barcode}.json")
     Single<State> getExistingProductDetails(@Path("barcode") String barcode,
-                                            @Query("fields") String fields);
+                                            @Query("fields") String fields,
+                                            @Header("User-Agent") String header);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens_tags,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups,lang,purchase_places,nutrition_data_per,no_nutrition_data")
-    Single<State> getFullProductByBarcodeSingle(@Path("barcode") String barcode);
+    Single<State> getFullProductByBarcodeSingle(@Path("barcode") String barcode,
+                                                @Header("User-Agent") String header);
 
     @FormUrlEncoded
     @POST("cgi/product_jqm2.pl")
@@ -39,7 +42,8 @@ public interface OpenFoodAPIService {
                                     @Field("comment") String comment);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
-    Call<State> getShortProductByBarcode(@Path("barcode") String barcode);
+    Call<State> getShortProductByBarcode(@Path("barcode") String barcode,
+                                         @Header("User-Agent") String header);
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process&fields=image_small_url,product_name,brands,quantity,code,nutrition_grade_fr")
     Call<Search> searchProductByName(@Query("search_terms") String name, @Query("page") int page);
@@ -50,6 +54,10 @@ public interface OpenFoodAPIService {
 
     @POST("/cgi/product_jqm2.pl")
     Call<State> saveProduct(@Body SendProduct product);
+
+
+    @GET("api/v0/product/{barcode}.json?fields=ingredients")
+    Call<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
 
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)
