@@ -704,9 +704,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="overexposure_moderate">Średnie ryzyko przedawkowania</string>
     <string name="infants">Niemowlęta</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
+    <string name="toddlers">Dziecko 1-3 lat</string>
+    <string name="toddlers_age">1 do 2 lat</string>
+    <string name="children">Dzieci</string>
     <string name="children_age">3 to 9</string>
     <string name="adolescents">Adolescents</string>
     <string name="adolescents_age">10 to 17</string>
