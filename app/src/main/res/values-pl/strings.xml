@@ -700,9 +700,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="description_activity_product">opis</string>
     <string name="intent_filter_share_label">Dodaj do Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Wysokie ryzyko nadmiernego narażenia</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="overexposure_high">Wysokie ryzyko przedawkowania</string>
+    <string name="overexposure_moderate">Średnie ryzyko przedawkowania</string>
+    <string name="infants">Niemowlęta</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Toddlers</string>
     <string name="toddlers_age">1 to 2</string>
