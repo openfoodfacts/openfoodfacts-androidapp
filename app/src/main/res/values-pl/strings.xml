@@ -66,8 +66,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Zdjęcia produktów</item>
+        <item>Analiza składników</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -129,14 +129,14 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Tłuszcz jednonienasycony</item>
         <item>Kwas montanowy (28:0)</item>
         <item>Kwas mirystynowy (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>Kwas nerwonowy (24:1 n-9)</item>
         <item>Nukleotydy</item>
-        <item>Oleic acid (18:1 n-9)</item>
+        <item>Kwas oleinowy (18:1 n-9)</item>
         <item>Kwas Omega 3</item>
         <item>Kwas Omega 6</item>
         <item>Kwas Omega 9</item>
         <item>Kwas palmitynowy (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>Kwas pantotenowy / Pantofenian (witamina B5)</item>
         <item>ph</item>
         <item>Fosfor</item>
         <item>Alkohole cukrowe (poliole)</item>
@@ -529,7 +529,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="swipe_down">Przesuń na dół</string>
     <string name="brand_string">Marka</string>
     <string name="additive_string">Dodatek</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">Alergeny</string>
     <string name="search_string">Szukaj</string>
     <string name="country_string">Kraje sprzedaży</string>
     <string name="store_subtitle">Sklep</string>
