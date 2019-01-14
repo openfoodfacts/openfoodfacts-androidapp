@@ -122,7 +122,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
-            ((AddProductActivity) getActivity()).proceed();
+            if (!getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
+                ((AddProductActivity) getActivity()).proceed();
+            }
         }
         Bundle b = getArguments();
         if (b != null) {

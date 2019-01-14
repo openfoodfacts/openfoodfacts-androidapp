@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -49,6 +50,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     RecyclerView rv;
     @BindView(R.id.textServingSize)
     TextView serving;
+    @BindView(R.id.serving_size_card_view)
+    CardView servingSizeCardView;
     @BindView(R.id.textCarbonFootprint)
     TextView carbonFootprint;
     @BindView(R.id.textNutrientTxt)
@@ -58,8 +61,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
     //the following booleans indicate whether the prompts are to be made visible
-    private boolean showNutritionPrompt=false;
-    private boolean showCategoryPrompt=false;
+    private boolean showNutritionPrompt = false;
+    private boolean showCategoryPrompt = false;
     private Product product;
 
     @Override
@@ -78,10 +81,30 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     public void refreshView(State state) {
         super.refreshView(state);
         product = state.getProduct();
-        //this checks if the categories for the product have been entered
-        if(product.getCategoriesTags() == null || product.getCategoriesTags().isEmpty()) {
+        //checks the product states_tags to determine which prompt to be shown
+        List<String> statesTags = product.getStatesTags();
+        if (statesTags.contains(product.getLang()+":categories-to-be-completed")) {
             showCategoryPrompt = true;
         }
+        if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
+            showNutritionPrompt = false;
+        } else {
+            if (statesTags.contains(product.getLang()+":nutrition-facts-to-be-completed")) {
+                showNutritionPrompt = true;
+            }
+        }
+
+        if (showNutritionPrompt || showCategoryPrompt) {
+            nutriscorePrompt.setVisibility(View.VISIBLE);
+            if (showNutritionPrompt && showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+            } else if (showNutritionPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+            } else if (showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
+            }
+        }
+
         List<NutrientLevelItem> levelItem = new ArrayList<>();
 
         Nutriments nutriments = product.getNutriments();
@@ -101,9 +124,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
             textNutrientTxt.setText(" " + getString(R.string.txtNoData));
             levelItem.add(new NutrientLevelItem("", "", "", 0));
-            //if no nutrition information is entered for the product, the prompt is shown
             img.setVisibility(View.GONE);
-            showNutritionPrompt=true;
         } else {
             // prefetch the uri
             customTabActivityHelper = new CustomTabActivityHelper();
@@ -183,6 +204,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         if (TextUtils.isEmpty(product.getServingSize())) {
             serving.setVisibility(View.GONE);
+            servingSizeCardView.setVisibility(View.GONE);
         } else {
             serving.setText(bold(getString(R.string.txtServingSize)));
             serving.append(" ");

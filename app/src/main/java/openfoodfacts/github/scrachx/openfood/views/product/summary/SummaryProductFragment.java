@@ -160,9 +160,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     //boolean to determine if nutrient prompt should be shown
-    private boolean showNutrientPrompt;
+    private boolean showNutrientPrompt = false;
     //boolean to determine if category prompt should be shown
-    private boolean showCategoryPrompt;
+    private boolean showCategoryPrompt = false;
 
     @Override
     public void onAttach(Context context) {
@@ -207,9 +207,28 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             isLowBatteryMode = true;
         }
 
-        //checks if no category information has been entered for the product
-        if(product.getCategoriesTags()==null || product.getCategoriesTags().isEmpty()) {
-            showCategoryPrompt=true;
+        //checks the product states_tags to determine which prompt to be shown
+        List<String> statesTags = product.getStatesTags();
+        if (statesTags.contains(product.getLang()+":categories-to-be-completed")) {
+            showCategoryPrompt = true;
+        }
+        if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
+            showNutrientPrompt = false;
+        } else {
+            if (statesTags.contains(product.getLang()+":nutrition-facts-to-be-completed")) {
+                showNutrientPrompt = true;
+            }
+        }
+
+        if (showNutrientPrompt || showCategoryPrompt) {
+            addNutriScorePrompt.setVisibility(View.VISIBLE);
+            if (showNutrientPrompt && showCategoryPrompt) {
+                addNutriScorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+            } else if (showNutrientPrompt) {
+                addNutriScorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+            } else if (showCategoryPrompt) {
+                addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
+            }
         }
 
         presenter.loadAllergens();
@@ -420,17 +439,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         } else {
             scoresLayout.setVisibility(View.GONE);
-        }
-        //checks the flags and sets the text for the prompt accordingly
-        if (showNutrientPrompt || showCategoryPrompt) {
-            addNutriScorePrompt.setVisibility(View.VISIBLE);
-            if (showNutrientPrompt && showCategoryPrompt) {
-                addNutriScorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
-            } else if (showNutrientPrompt) {
-                addNutriScorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
-            } else if (showCategoryPrompt) {
-                addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
-            }
         }
     }
 
