@@ -1,44 +1,43 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class FullScreenImageRotate extends BaseActivity {
 
     Bitmap imageBitmap;
+    int rotationAngle = 0;
+    String productCode, productId;
+    private OpenFoodAPIClient api;
 
     @BindView(R.id.rotate_image_left_icon)
     ImageView rotateLeft;
@@ -51,12 +50,13 @@ public class FullScreenImageRotate extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_full_screen_image_rotate);
         ButterKnife.bind(this);
-
+        api = new OpenFoodAPIClient( this );
         Intent intent = getIntent();
         String imageurl = intent.getExtras().getString("imageurl");
+        productCode = intent.getExtras().getString("code");
+        productId = intent.getExtras().getString("id");
 
         mAttacher = new PhotoViewAttacher(mPhotoView);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -91,12 +91,12 @@ public class FullScreenImageRotate extends BaseActivity {
 
     }
 
-    private void rotateImage(float angle) {
+    private void rotateImage(int angle) {//rotate the image
 
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
-        imageBitmap = Bitmap.createBitmap(imageBitmap, 0, 0, imageBitmap.getWidth(), imageBitmap.getHeight(), matrix, true);
-        mPhotoView.setImageBitmap(imageBitmap);
+        Bitmap bitmap = Bitmap.createBitmap(imageBitmap, 0, 0, imageBitmap.getWidth(), imageBitmap.getHeight(), matrix, true);
+        mPhotoView.setImageBitmap(bitmap);
 
     }
 
@@ -118,93 +118,19 @@ public class FullScreenImageRotate extends BaseActivity {
 
     @OnClick(R.id.rotate_image_right_icon)
     void rotateRight(){
-        rotateImage(90.0f);
+        rotationAngle+=90;
+        rotateImage(rotationAngle);
     }
 
     @OnClick(R.id.rotate_image_left_icon)
     void rotateLeft(){
-        rotateImage(-90.0f);
+        rotationAngle-=90;
+        rotateImage(rotationAngle);
     }
 
     @OnClick(R.id.check_upload_icon)
-    void saveImageAndUpload() {
-        if (isStoragePermissionGranted()) {
-            File file = storeImage(imageBitmap);
-            Intent data = new Intent();
-            String path = file.getAbsolutePath();
-            data.setData(Uri.parse(path));
-            setResult(RESULT_OK, data);
-            finish();
-        }
+    void uploadRotation(){
+        api.rotImg(productCode, productId, rotationAngle, this);
     }
-
-    private File storeImage(Bitmap image) {
-
-        File pictureFile = getOutputMediaFile();
-        if (pictureFile == null) {
-            Log.d("Error", "Error creating media file, check storage permissions.");
-            return null;
-        }
-        try {
-            FileOutputStream fos = new FileOutputStream(pictureFile);
-            image.compress(Bitmap.CompressFormat.PNG, 100, fos);
-            fos.close();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                final Intent scanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                final Uri contentUri = Uri.fromFile(pictureFile);
-                scanIntent.setData(contentUri);
-                sendBroadcast(scanIntent);
-            } else {
-                final Intent intent = new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory()));
-                sendBroadcast(intent);
-            }
-        } catch (FileNotFoundException e) {
-            Log.d("Error", "File not found: " + e.getMessage());
-        } catch (IOException e) {
-            Log.d("Error", "Unable to access file: " + e.getMessage());
-        }
-        return pictureFile;
-    }
-
-    private File getOutputMediaFile() {
-
-        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data"
-                + getApplicationContext().getPackageName()
-                + "/Files");
-
-        if (!mediaStorageDir.exists()) {
-            if (!mediaStorageDir.mkdirs()) {
-                return null;
-            }
-        }
-
-        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
-        File mediaFile;
-        String mImageName = "RI_" + timeStamp + ".png";
-        mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
-        return mediaFile;
-
-    }
-
-    public  boolean isStoragePermissionGranted() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                Log.v("Error","Permission is granted");
-                return true;
-            } else {
-
-                Log.v("Error","Permission is revoked");
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                return false;
-            }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v("Error","Permission is granted");
-            return true;
-        }
-    }
-
 
 }

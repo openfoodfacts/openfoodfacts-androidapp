@@ -182,7 +182,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     private List<String> labels = new ArrayList<>();
     private List<String> category = new ArrayList<>();
     private boolean newImageSelected;
-    private int ROTATE_RESULT = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -597,17 +596,21 @@ public class AddProductOverviewFragment extends BaseFragment {
             Bundle bundle = new Bundle();
             if (edit_product && !newImageSelected) {
                 bundle.putString("imageurl", mImageUrl);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "front_en");
             } else {
                 bundle.putString("imageurl", "file://" + mImageUrl);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "front_en");
             }
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation(activity, imageFront,
                                 activity.getString(R.string.product_transition));
-                startActivityForResult(intent,ROTATE_RESULT , options.toBundle());
+                startActivity(intent, options.toBundle());
             } else {
-                startActivityForResult(intent, ROTATE_RESULT);
+                startActivity(intent);
             }
         } else {
             // add front image.
@@ -890,18 +893,8 @@ public class AddProductOverviewFragment extends BaseFragment {
                 link.setText(result.getContents());
                 link.requestFocus();
             }
-        } else if (requestCode == ROTATE_RESULT && resultCode == RESULT_OK) {//when image is rotated
-            Uri resultUri = data.getData();
-            photoFile = new File(resultUri.getPath());
-            int position = 0;
-            ProductImage image = new ProductImage(code, FRONT, photoFile);
-            mImageUrl = photoFile.getAbsolutePath();
-            newImageSelected = true;
-            image.setFilePath(resultUri.getPath());
-            if (activity instanceof AddProductActivity) {
-                ((AddProductActivity)activity).addToPhotoMap(image, position);
-            }
         }
+
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {

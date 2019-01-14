@@ -275,8 +275,12 @@ public class AddProductIngredientsFragment extends BaseFragment {
             Bundle bundle = new Bundle();
             if (edit_product && !newImageSelected) {
                 bundle.putString("imageurl", imagePath);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "ingredients_en");
             } else {
                 bundle.putString("imageurl", "file://" + imagePath);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "ingredients_en");
             }
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -406,16 +410,8 @@ public class AddProductIngredientsFragment extends BaseFragment {
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Log.e("Crop image error", result.getError().toString());
             }
-        } else if (requestCode == ROTATE_RESULT && resultCode == RESULT_OK) {//when image is rotated
-            Uri resultUri = data.getData();
-            photoFile = new File(resultUri.getPath());
-            newImageSelected = true;
-            ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
-            image.setFilePath(resultUri.getPath());
-            if (activity instanceof AddProductActivity) {
-                ((AddProductActivity)activity).addToPhotoMap(image, 2);
-            }
         }
+
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {

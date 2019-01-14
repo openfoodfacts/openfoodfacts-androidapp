@@ -173,7 +173,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private static final String PARAM_SODIUM = "nutriment_sodium";
     private static final String PARAM_SODIUM_UNIT = "nutriment_sodium_unit";
     private static final String PARAM_ALCOHOL = "nutriment_alcohol";
-    private final int ROTATE_RESULT = 100;
 
     NumberKeyListener keyListener = new NumberKeyListener() {
 
@@ -627,17 +626,21 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             Bundle bundle = new Bundle();
             if (edit_product && !newImageSelected) {
                 bundle.putString("imageurl", imagePath);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "nutrition_en");
             } else {
                 bundle.putString("imageurl", "file://" + imagePath);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "nutrition_en");
             }
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation(activity, imageNutritionFacts,
                                 activity.getString(R.string.product_transition));
-                startActivityForResult(intent, ROTATE_RESULT, options.toBundle());
+                startActivity(intent, options.toBundle());
             } else {
-                startActivityForResult(intent, ROTATE_RESULT);
+                startActivity(intent);
             }
         } else {
             // add nutrition facts image.
@@ -1228,15 +1231,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Log.e("Crop image error", result.getError().toString());
-            }
-        } else if (requestCode == ROTATE_RESULT && resultCode == RESULT_OK) {//when image is rotated
-            Uri resultUri = data.getData();
-            photoFile = new File(resultUri.getPath());
-            newImageSelected = true;
-            ProductImage image = new ProductImage(code, NUTRITION, photoFile);
-            image.setFilePath(resultUri.getPath());
-            if (activity instanceof AddProductActivity) {
-                ((AddProductActivity)activity).addToPhotoMap(image, 2);
             }
         }
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
