@@ -53,6 +53,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsAnalysisProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import org.json.JSONException;
@@ -65,6 +66,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 {
 
 	private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
+	private static final int EDIT_REQUEST_CODE = 2;
 	@BindView( R.id.pager )
 	ViewPager viewPager;
 	@BindView( R.id.toolbar )
@@ -180,9 +182,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 					}
 					else
 					{
+						mState = (State) getIntent().getExtras().getSerializable( "state" );
 						Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
 						intent.putExtra( "edit_product", mState.getProduct() );
-						startActivity( intent );
+						startActivityForResult( intent, EDIT_REQUEST_CODE );
 					}
 					break;
 
@@ -203,6 +206,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		} );
 		CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
 		layoutParams.setBehavior( new BottomNavigationBehavior() );
+
+		//To update the product details
+		onRefresh();
 	}
 
 	@Override
@@ -214,6 +220,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 			Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
 			intent.putExtra( "edit_product", mState.getProduct() );
 			startActivity( intent );
+		}
+		if( requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK)
+		{
+			onRefresh();
 		}
 	}
 
@@ -250,6 +260,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 	private void setupViewPager( ViewPager viewPager )
 	{
 		String[] menuTitles = getResources().getStringArray( R.array.nav_drawer_items_product );
+		String[] newMenuTitles=getResources().getStringArray(R.array.nav_drawer_new_items_product);
 
 		adapterResult = new ProductFragmentPagerAdapter( getSupportFragmentManager() );
 		adapterResult.addFragment( new SummaryProductFragment(), menuTitles[0] );
@@ -271,7 +282,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 			}
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
-				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 			}
 		}
 		if( BuildConfig.FLAVOR.equals( "opff" ) )
@@ -279,7 +290,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
-				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 			}
 		}
 
@@ -287,13 +298,14 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		{
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
-				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 			}
+			adapterResult.addFragment( new IngredientsAnalysisProductFragment(), newMenuTitles[1] );
 		}
 
 		if( BuildConfig.FLAVOR.equals( "opf" ) )
 		{
-			adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+			adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 		}
 
 		viewPager.setAdapter( adapterResult );
