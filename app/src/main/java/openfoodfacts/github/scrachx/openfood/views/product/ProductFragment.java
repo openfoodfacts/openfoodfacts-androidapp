@@ -76,7 +76,6 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.nutrition_details.NutritionInfoProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -265,14 +264,12 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
         if (BuildConfig.FLAVOR.equals("off")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
-            adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
             if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("photoMode", false)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
             }
         }
         if (BuildConfig.FLAVOR.equals("opff")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
-            adapterResult.addFragment(new NutritionInfoProductFragment(), menuTitles[3]);
 
             if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("photoMode", false)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
@@ -468,7 +465,7 @@ doesn't have calories information in nutrition facts.
 
     @Override
     public void onRefresh() {
-        api.getAPIService().getFullProductByBarcode(mState.getProduct().getCode()).enqueue(new Callback<State>() {
+        api.getAPIService().getFullProductByBarcode(mState.getProduct().getCode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
                 final State s = response.body();
