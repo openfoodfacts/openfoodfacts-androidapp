@@ -1,6 +1,6 @@
 Skanuj produkty lub ich kody kreskowe, by uzyskać dane o składzie, dodatkach i wartościach odżywczych.
 
-Aplikacja pozwala przeglądać ponad 547.000 produktów (w tym 175.000 w USA) dostępnych już w bazie danych Open Food Facts i dodawać zdjęcia oraz dane brakujących produktów.
+Aplikacja pozwala przeglądać ponad 547.000 produktów (w tym 175.000 w USA) dostępnych już w bazie danych Open Food Facts, i dodawać zdjęcia oraz dane brakujących produktów.
 
 Aby poznać projekt Open Food Facta, odwiedź https://openfoodfacts.org
 
