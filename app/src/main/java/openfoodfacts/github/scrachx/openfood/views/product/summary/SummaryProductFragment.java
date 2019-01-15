@@ -176,7 +176,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
-<<<<<<<<< Temporary merge branch 1
     //boolean to determine if nutrient prompt should be shown
     private boolean showNutrientPrompt = false;
     //boolean to determine if category prompt should be shown
@@ -185,7 +184,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean addingIngredientsImage = false;
     //boolean to indicate if the image clicked was that of nutrition
     private boolean addingNutritionImage = false;
->>>>>>>>> Temporary merge branch 2
 
     @Override
     public void onAttach(Context context) {
