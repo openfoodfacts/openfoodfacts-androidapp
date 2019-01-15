@@ -36,6 +36,11 @@
         <item>crwdns98145:0crwdne98145:0</item>
         <item>crwdns111998:0crwdne111998:0</item>
     </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>crwdns112004:0crwdne112004:0</item>
+        <item>crwdns112006:0crwdne112006:0</item>
+    </string-array>
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
@@ -708,5 +713,6 @@
     <string name="category_game_btn">crwdns111976:0crwdne111976:0</string>
     <string name="version_string">crwdns111978:0crwdne111978:0</string>
     <string name="version">crwdns111980:0crwdne111980:0</string>
+    <string name="detected_ingredients">crwdns112008:0crwdne112008:0</string>
     <!-- Used for diets AddOn -->
 </resources>
