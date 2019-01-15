@@ -564,7 +564,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="by_nutrition_grade">Stopień odżywienia</string>
     <string name="sort_by">Ułóż według</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://pl.openfoodfacts.org</string>
+    <string name="nutriscore_uri">https://pl.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Potrząśnij telefonem, by zeskanować produkt</string>
     <string name="shake_title">Potrząśnij aby zeskanować</string>
     <!-- strings related to share images -->
