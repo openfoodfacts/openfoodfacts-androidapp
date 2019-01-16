@@ -28,4 +28,4 @@ Uwaga: Open Beauty Facts jest w trakcie tworzenia. Jej strona internetowa jak i 
 Open Beauty Facts jest również dostępny w sieci: https://world.openbeautyfacts.org
 Pytania, opinie: contact@openfoodfacts.org
 
-Dla jedzenia możesz zainstalować Open Food Facts, dla jedzenia dla zwierząt, Open Pet Food Facts, a dla wszystkich produktów razem, Open Products Facts.
+W przypadku żywności dla ludzi możesz zainstalować Open Food Facts, w kwestii karmy dla zwierząt Open Pet Food Facts, a dla wszystkich pozostałych produktów, Open Products Facts.
