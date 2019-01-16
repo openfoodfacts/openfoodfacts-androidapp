@@ -381,7 +381,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txt_no_matching__category_products">O nie, nie mamy żadnego produktu w tej kategorii, czy możesz go dodać?</string>
     <string name="txt_no_matching_allergen_products">O nie, nie mamy żadnego produktu z tym alergenem, czy możesz go dodać?</string>
     <string name="txt_no_matching_label_products">O nie, nie mamy żadnych produktów z tą etykietą, czy możesz ją dodać?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
+    <string name="txt_no_matching_additive_products">O nie, nie mamy żadnych produktów z tym dodatkiem, czy można go dodać?</string>
     <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
     <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
     <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
@@ -722,6 +722,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Twoje diety</string>
@@ -742,6 +743,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
+    <string name="set_ingredient_img">Set image as Ingredient</string>
+    <string name="set_img_nutrients">Set Image as Nutrition</string>
+    <string name="set_img_front">Set Image as Front</string>
+    <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <!-- Used for diets AddOn -->
 </resources>
