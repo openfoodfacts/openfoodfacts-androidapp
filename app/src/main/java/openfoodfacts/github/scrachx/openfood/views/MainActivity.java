@@ -618,8 +618,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             case LOGIN_REQUEST:
                 if (resultCode == RESULT_OK) {
                     result.removeItem(ITEM_LOGIN);
-                    result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS),
-                            getLogoutDrawerItem());
                     headerResult.updateProfile(getUserProfile());
                     headerResult.addProfiles(getProfileSettingDrawerItem());
                 }

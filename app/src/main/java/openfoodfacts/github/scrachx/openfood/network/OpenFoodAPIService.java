@@ -56,6 +56,10 @@ public interface OpenFoodAPIService {
     @POST("/cgi/product_jqm2.pl")
     Call<State> saveProduct(@Body SendProduct product);
 
+
+    @GET("api/v0/product/{barcode}.json?fields=ingredients")
+    Call<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
+
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)
      */
