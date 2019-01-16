@@ -381,13 +381,13 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txt_no_matching__category_products">O nie, nie mamy żadnego produktu w tej kategorii, czy możesz go dodać?</string>
     <string name="txt_no_matching_allergen_products">O nie, nie mamy żadnego produktu z tym alergenem, czy możesz go dodać?</string>
     <string name="txt_no_matching_label_products">O nie, nie mamy żadnych produktów z tą etykietą, czy możesz ją dodać?</string>
-    <string name="txt_no_matching_additive_products">O nie, nie mamy żadnych produktów z tym dodatkiem, czy można go dodać?</string>
+    <string name="txt_no_matching_additive_products">O nie, nie mamy żadnego produktu z tym dodatkiem, czy możesz go dodać?</string>
     <string name="txt_no_matching_country_products">O nie, nie mamy żadnego produktu z tego kraju, czy możesz go dodać?</string>
     <string name="txt_no_matching_store_products">O nie, nie mamy żadnego produktu z tego sklepu, czy możesz go dodać?</string>
     <string name="txt_no_matching_packaging_products">O nie, nie mamy żadnego produktu z tym opakowaniem, czy możesz go dodać?</string>
     <string name="txt_no_matching_brand_products">O nie, nie mamy żadnego produktu tej marki, czy możesz go dodać?</string>
     <string name="txt_no_matching_state_products">O nie, nie mamy żadnego produktu z tego państwa, czy możesz go dodać?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
+    <string name="txt_no_matching_incomplete_products">Nie mamy żadnych niekompletnych produktów! Czy dodać nowy produkt?</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">Nie znaleziono żadnych produktów spełniających kryteria. \n Możesz spróbować :</string>
     <string name="txt_broaden_search">rozszerzenie zakresu wyszukiwania \n - zeskanuj i dodaj do Open Food Facts</string>
