@@ -15,13 +15,13 @@ Uważamy, że może być przydatna dla osób z chorobami skóry m. in. trądzik,
 
 ***Działa dobrze w każdej sytuacji***
 - Możesz dodawać nowe produkty, nawet jeśli w danej chwili nie masz połączenia z Internetem.
--Aplikacja ładuje tylko ściśle potrzebne elementy, aby zaoszczędzić pamięć i baterię
+-W celu ograniczenia zużycia danych, jak i lepszego zarządzania energią aplikacja ładuje tylko absolutnie niezbędne elementy
 -Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
 
 ***Twoje kosmetyki, twoje dane***
 Twoje dany nigdy nie są wysyłane online
-Możesz korzystać anonimowo z aplikacji
-Możesz eksportować historię skanowania
+-Możesz korzystać z aplikacji anonimowo
+- Możesz wyeksportować swoją historię skanowania
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
