@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/set_ingredient_image"
+        android:title="@string/set_ingredient_img"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/set_nutrition_image"
+        android:title="@string/set_img_nutrients"
+        app:showAsAction="ifRoom" />
+
+    <item
+
+        android:id="@+id/set_front_image"
+        android:title="@string/set_img_front"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/report_image"
+        android:title="@string/report_img"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.network;
 import com.fasterxml.jackson.databind.JsonNode;
 import io.reactivex.Single;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
@@ -54,6 +55,10 @@ public interface OpenFoodAPIService {
 
     @POST("/cgi/product_jqm2.pl")
     Call<State> saveProduct(@Body SendProduct product);
+
+
+    @GET("api/v0/product/{barcode}.json?fields=ingredients")
+    Call<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
 
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)
@@ -333,5 +338,14 @@ public interface OpenFoodAPIService {
 
     @GET("/1.json?fields=null")
     Single<Search> getTotalProductCount();
-}
 
+
+    @GET("api/v0/product/{barcode}.json?fields=images")
+    Call<String> getProductImages(@Path("barcode") String barcode);
+
+
+    @GET("/cgi/product_image_crop.pl")
+    Call<String> editImages(@Query("code") String code,
+                            @QueryMap Map<String, String> fields);
+
+}

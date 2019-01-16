@@ -53,6 +53,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsAnalysisProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import org.json.JSONException;
@@ -259,18 +260,15 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 	private void setupViewPager( ViewPager viewPager )
 	{
 		String[] menuTitles = getResources().getStringArray( R.array.nav_drawer_items_product );
+		String[] newMenuTitles=getResources().getStringArray(R.array.nav_drawer_new_items_product);
 
 		adapterResult = new ProductFragmentPagerAdapter( getSupportFragmentManager() );
 		adapterResult.addFragment( new SummaryProductFragment(), menuTitles[0] );
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences( this );
-		if( preferences.getBoolean( "contributionTab", false ) )
-		{
-			adapterResult.addFragment( new ContributorsFragment(), getString( R.string.contribution_tab ) );
-		}
-		if( BuildConfig.FLAVOR.equals( "off" ) || BuildConfig.FLAVOR.equals( "obf" ) || BuildConfig.FLAVOR.equals( "opff" ) )
-		{
-			adapterResult.addFragment( new IngredientsProductFragment(), menuTitles[1] );
-		}
+        if( BuildConfig.FLAVOR.equals( "off" ) || BuildConfig.FLAVOR.equals( "obf" ) || BuildConfig.FLAVOR.equals( "opff" ) )
+        {
+            adapterResult.addFragment( new IngredientsProductFragment(), menuTitles[1] );
+        }
 		if( BuildConfig.FLAVOR.equals( "off" ) )
 		{
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
@@ -280,7 +278,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 			}
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
-				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 			}
 		}
 		if( BuildConfig.FLAVOR.equals( "opff" ) )
@@ -288,7 +286,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
-				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 			}
 		}
 
@@ -296,14 +294,19 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener
 		{
 			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
 			{
-				adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 			}
+			adapterResult.addFragment( new IngredientsAnalysisProductFragment(), newMenuTitles[1] );
 		}
 
 		if( BuildConfig.FLAVOR.equals( "opf" ) )
 		{
-			adapterResult.addFragment( new ProductPhotosFragment(), "Product Photos" );
+			adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
 		}
+        if( preferences.getBoolean( "contributionTab", false ) )
+        {
+            adapterResult.addFragment( new ContributorsFragment(), getString( R.string.contribution_tab ) );
+        }
 
 		viewPager.setAdapter( adapterResult );
 	}
