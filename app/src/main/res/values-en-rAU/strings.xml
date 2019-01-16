@@ -36,6 +36,11 @@
         <item>Nutrition Facts</item>
         <item>Environment</item>
     </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>Product Photos</item>
+        <item>Ingredient Analysis</item>
+    </string-array>
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
@@ -708,5 +713,6 @@
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
+    <string name="detected_ingredients">Detected Ingredients</string>
     <!-- Used for diets AddOn -->
 </resources>
