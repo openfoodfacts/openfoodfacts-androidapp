@@ -25,9 +25,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
@@ -65,10 +70,10 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerVi
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
@@ -483,6 +488,52 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             } else {
                 EasyImage.openCamera(this, 0);
             }
+        }
+    }
+
+    @OnClick(R.id.calculateNutritionFacts)
+    public void calculateNutritionFacts(View v) {
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(getActivity())
+                .title(R.string.calculate_nutrition_facts)
+                .customView(R.layout.dialog_calculate_calories, false)
+                .dismissListener(dialogInterface -> Utils.hideKeyboard(getActivity()));
+        MaterialDialog dialog = builder.build();
+        dialog.show();
+        View view = dialog.getCustomView();
+        if (view != null) {
+            EditText etWeight = view.findViewById(R.id.edit_text_weight);
+            Spinner spinner = view.findViewById(R.id.spinner_weight);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
+                    btn.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            if (!TextUtils.isEmpty(etWeight.getText().toString())) {
+
+                                String SpinnerValue = (String) spinner.getSelectedItem();
+                                String weight = etWeight.getText().toString();
+                                Product p = mState.getProduct();
+                                Intent intent = new Intent(getContext(), CalculateDetails.class);
+                                intent.putExtra("sampleObject", p);
+                                intent.putExtra("spinnervalue", SpinnerValue);
+                                intent.putExtra("weight", weight);
+                                startActivity(intent);
+                                dialog.dismiss();
+                            } else {
+                                Toast.makeText(getContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
         }
     }
 
