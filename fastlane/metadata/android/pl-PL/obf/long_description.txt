@@ -8,9 +8,9 @@ Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z ca
 ***Poznaj fakty***
 
 Dodatki do kosmetyków, F.I.L. kody, numery CI, INCI (Międzynarodowe Nazewnictwo Składników Kosmetyków), lista składników, alergeny, kody opakowań... 
-Open Beauty Facts pomaga zrozumieć drobny tekst na etykietach.
+Open Beauty Facts pomagają zrozumieć drobny tekst na etykietach.
 Nie trzeba już być chemikiem i znać łacinę aby odszyfrować skład :-)
-Możesz zeskanować: wody po goleniu, balsamy do ciała, dezodoranty, eyelinery, podkłady, perfumy, szminki, produkty do makijażu, maseczki, szampony, mydła, żele pod prysznic, lakiery do paznokci i wiele innych…
+Możesz skanować: wody po goleniu, balsamy do ciała, dezodoranty, eyelinery, podkłady, perfumy, szminki, produkty do makijażu, maseczki, szampony, mydła, żele pod prysznic, lakiery do paznokci i wiele innych…
 Uważamy, że przyda się dla osób z chorobami skóry: trądzik, łuszczyca, egzema... by wybierały lepsze kosmetyki.
 
 ***Działa dobrze w każdej sytuacji***
