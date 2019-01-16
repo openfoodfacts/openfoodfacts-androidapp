@@ -722,7 +722,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="efsa_warning_high_risk">Europejski Urząd ds. Bezpieczeństwa Żywności (EFSA) ustalił, że niektóre grupy ludności są narażone na wysokie ryzyko nadmiernego spożycia %1$s.</string>
     <string name="legend_noael">dawka powyżej której obserwuje się działanie nie pożądane (NOAEL)</string>
     <string name="legend_adi">dopuszczalne dzienna spożycie (ADI)</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="update_image">Wyślij zaktualizowany obraz</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Twoje diety</string>
