@@ -130,6 +130,7 @@ public class Product implements Serializable {
     @JsonProperty("no_nutrition_data")
     private String noNutritionData;
 
+
     private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonAnyGetter
@@ -207,6 +208,7 @@ public class Product implements Serializable {
         this.aminoAcidTags = aminoAcidTags;
     }
 
+
     /**
      * @return The otherNutritionTags
      */
@@ -239,6 +241,7 @@ public class Product implements Serializable {
     public String getImageIngredientsUrl() {
         return imageIngredientsUrl;
     }
+
 
     /**
      * @return The imageNutritionUrl

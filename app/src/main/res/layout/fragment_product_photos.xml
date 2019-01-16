@@ -6,42 +6,13 @@
     android:orientation="vertical"
     tools:context="openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment">
 
-    <ImageButton
-        android:id="@+id/imageProductViewFront"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/images_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:background="?android:selectableItemBackground"
-        android:maxHeight="120dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
-        android:padding="10dp"/>
+        tools:listitem="@layout/images_item">
 
-    <ImageButton
-        android:id="@+id/imageProductTwo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:background="?android:selectableItemBackground"
-        android:maxHeight="120dp"
-        android:scaleType="fitCenter"
-        android:layout_below="@+id/imageProductViewFront"
-        app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
-        android:padding="10dp"/>
-
-    <ImageButton
-        android:id="@+id/imageProductThree"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="?android:selectableItemBackground"
-        android:maxHeight="120dp"
-        android:scaleType="fitCenter"
-        android:layout_below="@+id/imageProductTwo"
-        app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
-        android:padding="10dp"/>
+    </android.support.v7.widget.RecyclerView>
 
 
 </RelativeLayout>
