@@ -23,7 +23,7 @@ Twoje dany nigdy nie są wysyłane online
 -Możesz korzystać z aplikacji anonimowo
 - Możesz wyeksportować swoją historię skanowania
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Uwaga: Open Beauty Facts jest w trakcie tworzenia. Jej strona internetowa jak i aplikacja opierają się obecnie na danych danych Open Food Facts, tam też zmiany są zapisywane.
 
 Open Beauty Facts jest również dostępny w sieci: https://world.openbeautyfacts.org
 Pytania, opinie: contact@openfoodfacts.org
