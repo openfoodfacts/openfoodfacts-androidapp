@@ -737,11 +737,11 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="EditDiet_So_So_Ingredients">Takie składniki jak</string>
     <string name="EditDiet_Hint_So_So_Ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Niezatwierdzone składniki</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Lista nieautoryzowanych składników, które powinny zostać wyświetlone w kolorze czerwonym. Przykład: gluten, mleko, olej palmowy, cukier ... Listę można uzupełnić później.</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Zrób zdjęcie składników</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version_string">Aplikacja na Androida Open Food Facts</string>
     <string name="version">Wersja</string>
     <string name="set_ingredient_img">Set image as Ingredient</string>
     <string name="set_img_nutrients">Set Image as Nutrition</string>
