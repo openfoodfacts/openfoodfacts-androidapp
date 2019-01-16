@@ -718,8 +718,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="some_people">Część populacji\n(ponad 5%)</string>
     <string name="safety_and_exposure_assessment">Ocena bezpieczeństwa i ryzyka</string>
     <string name="risk_of_exposure">Ryzyko ekspozycji</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
-    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
+    <string name="efsa_warning_moderate_risk">Europejski Urząd ds. Bezpieczeństwa Żywności (EFSA) ustalił, że niektóre grupy ludności są umiarkowanie zagrożone spożyciem zbyt dużej ilości %1$s.</string>
+    <string name="efsa_warning_high_risk">Europejski Urząd ds. Bezpieczeństwa Żywności (EFSA) ustalił, że niektóre grupy ludności są narażone na wysokie ryzyko nadmiernego spożycia %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
     <string name="update_image">Send an Updated Image</string>
