@@ -31,7 +31,7 @@
     <string name="translate_help_title">Pomóż w tłumaczeniu Open Food Facts</string>
     <string name="translate_help_summary">Wnieś swój język do bazy Open Food Facts - nie wymagamy wiedzy technicznej</string>
     <string name="text_offline_info_dialog">Możesz skanować produkty w trybie offline, aby później dodać je do Open Products Facts. Zeskanowane produkty pojawią się tutaj i będziesz mógł je wysłać za pomocą przycisku poniżej.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data">Twoje informacje o alergiach nigdy nie zostaną wysłane na serwer Open Products Facts. Należy być ostrożnym ponieważ informacje o produktach mogą nie być wystarczająco precyzyjne, a ich identyfikacja może nie być w 100% dokładna, dlatego proszę o sprawdzenie ich samemu! </string>
     <!-- OPF tagline in different languages -->
     <string name="tagline">the free product database</string>
     <string name="product_not_found">Zeskanowany produkt %1$s, który jeszcze nie figuruje w Open Food Facts. Dodać go?</string>
