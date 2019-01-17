@@ -33,7 +33,7 @@
     <string name="text_barcode">Введите штрихкод:</string>
     <string name="message_in_activity_save_product_offline">Для отправки продукта обязательна только одна фотография.</string>
     <string name="product_incomplete_message">Этот продукт не является полным. В результате мы не смогли выполнить проверку аллергена.</string>
-    <string name="no_offline_data">Вы закончили</string>
+    <string name="no_offline_data">Всё готово</string>
     <string name="first_offline">Продукты, добавленные в автономном режиме, появятся здесь</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
@@ -42,6 +42,12 @@
         <item>Ингредиенты</item>
         <item>Пищевая ценность</item>
         <item>Состав</item>
+        <item>Environment</item>
+    </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>Product Photos</item>
+        <item>Ingredient Analysis</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -49,8 +55,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>г</item>
         <item>мг</item>
-        <item>кг</item>
         <item>мкг</item>
         <item>% РСНП</item>
         <item>МЕ</item>
@@ -87,7 +93,7 @@
         <item>Гамма-линоленовая кислота (18: 3 n-6)</item>
         <item>Глюкоза</item>
         <item>Гондоиновая кислота (20:1 n-9)</item>
-        <item>Иод</item>
+        <item>Йод</item>
         <item>Железо</item>
         <item>Лактоза</item>
         <item>Лауриновая кислота (12:0)</item>
@@ -253,8 +259,8 @@
     <string name="toggle_flash">Вспышка</string>
     <string name="flash_on">Вспышка [ВКЛ]</string>
     <string name="flash_off">Вспышка [ВЫКЛ]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
+    <string name="ring_on">Звонок [ON]</string>
+    <string name="ring_off">Звонок [OFF]</string>
     <string name="auto_focus_on">Автофокус [ВКЛ]</string>
     <string name="auto_focus_off">Автофокус [ВЫКЛ]</string>
     <string name="formats">Форматы</string>
@@ -305,10 +311,10 @@
     <string name="display_fact">Таблица фактов питания для %1$s данного продукта</string>
     <string name="check_facts">Проверить</string>
     <string name="nutrition">Пищевая ценность</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
+    <string name="calculated_nutrition">Расчитанная пищевая ценность</string>
     <string name="please_enter_weight">Пожалуйста, введите вес</string>
     <string name="enter_weight">Введите вес</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculate_nutrition_facts">Расчитать пищевую ценность</string>
     <string name="txt_calories_result">%1$s ккал в %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Углеводы</string>
     <string name="nutrition_carbohydrate_short_name">Углеводы (г)</string>
@@ -352,17 +358,17 @@
     <string name="number_of_products">Количество продуктов: </string>
     <string name="txt_no_results">Ничего не найдено</string>
     <string name="txt_extend_search">Попробуйте расширить свой поиск или добавить продукт</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
+    <string name="txt_no_matching__category_products">У нас нет каких-либо продуктов в этой категории, добавить новый?</string>
+    <string name="txt_no_matching_allergen_products">У нас нет каких-либо продуктов с этим аллергеном, добавить новый?</string>
+    <string name="txt_no_matching_label_products">У нас нет каких-либо продуктов с таким названием, добавить новый?</string>
+    <string name="txt_no_matching_additive_products">У нас нет каких-либо продуктов с этой добавкой, добавить новый?</string>
+    <string name="txt_no_matching_country_products">У нас нет каких-либо продуктов из этой страны, добавить новый?</string>
+    <string name="txt_no_matching_store_products">У нас нет каких-либо продуктов из этого магазина, добавить новый?</string>
+    <string name="txt_no_matching_packaging_products">У нас нет каких-либо продуктов с такой упаковкой, добавить новый?</string>
+    <string name="txt_no_matching_brand_products">У нас нет каких-либо продуктов с таким брендом, добавить новый?</string>
+    <string name="txt_no_matching_state_products">У нас нет каких-либо продуктов c таким статусом, добавить новый?</string>
+    <string name="txt_no_matching_incomplete_products">У нас нет каких-либо незаполненных продуктов! Добавить новый продукт?</string>
+    <string name="txt_no_matching_contributor_products">У нас нет каких-либо продуктов от этого участника, добавить новый?</string>
     <string name="txt_no_matching_products">Мы не нашли подходящих продуктов.\nВы можете попробовать:</string>
     <string name="txt_broaden_search">- расширение вашего поиска \n- отсканируйте и добавьте его в Open Food Facts</string>
     <string name="txt_cant_load_search_results">Не удается загрузить результаты поиска</string>
@@ -592,7 +598,7 @@
     <string name="loading_product">Загрузка продукта %s</string>
     <string name="error_adding_ingredients">Что-то пошло не так при попытке добавления ингредиентов продукта</string>
     <string name="unable_to_extract_ingredients">Не удалось извлечь ингредиенты из изображения</string>
-    <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
+    <string name="error_adding_nutrition_facts">Что-то пошло не так при попытке добавить пищевую ценность продукта</string>
     <string name="error_in_carbohydrate_value">Количество углеводов не может быть меньше суммы сахара и крахмала</string>
     <string name="choose_nutrient">Выберите питательное вещество</string>
     <string name="error_adding_product_details">Что-то пошло не так, когда вы пытались добавить сведения о продукте</string>
@@ -658,9 +664,9 @@
     <string name="stores">Магазины</string>
     <string name="additional_pictures">Дополнительные фотографии</string>
     <string name="hint_product_pictures">(Добавьте дополнительные фото продукта, например, инструкции по утилизации, этикетки и т. д.)</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
+    <string name="uploading_nutrition_image">Загрузка изображения пищевой ценности</string>
+    <string name="uploading_ingredients_image">Загрузка изображения состава</string>
+    <string name="uploading_front_image">Загрузка изображения лицевой стороны</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="sign_in_to_edit">Войдите, чтобы отредактировать продукт.</string>
     <string name="hint_quantity">Например: 2 л, 250 г, 1 кг, 250 мл, 1 фунт</string>
@@ -668,7 +674,7 @@
     <string name="hint_serving_size">Примеры: 60 г, 12 унций, 20 мл, 2 л</string>
     <string name="nutrient_already_added">%s уже присутствует в фактах питания</string>
     <string name="save_edits">Сохранить изменения</string>
-    <string name="contribution_by">Contribution By</string>
+    <string name="contribution_by">Вклад от</string>
     <string name="title_activity_product">Название</string>
     <string name="description_activity_product">описание</string>
     <string name="intent_filter_share_label">Добавить в Open Food Facts</string>
@@ -689,26 +695,37 @@
     <string name="elderly_age">65+</string>
     <string name="most_people">Большинство людей\n(более 50%)</string>
     <string name="some_people">Некоторые люди\n(более 5%)</string>
-    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-    <string name="risk_of_exposure">Risk of exposure</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
-    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="safety_and_exposure_assessment">Оценка безопасности и воздействия</string>
+    <string name="risk_of_exposure">Риск воздействия</string>
+    <string name="efsa_warning_moderate_risk">Европейское агентство по безопасности продуктов питания (EFSA) определило, что некоторые группы населения имеют повышенный риск чрезмерного потребления %1$s.</string>
+    <string name="efsa_warning_high_risk">Европейское агентство по безопасности продуктов питания (EFSA) определило, что некоторые группы населения имеют высокий риск чрезмерного потребления %1$s.</string>
+    <string name="legend_noael">выше дозы с наблюдаемым неблагоприятным эффектом (NOAEL)</string>
+    <string name="legend_adi">выше допустимой дневной нормы (ADI)</string>
+    <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="your_diets">Ваши диеты</string>
+    <string name="diet_name">Название диеты</string>
     <string name="diets_dialog_warning_title">Предупреждение</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Данные о вашей диете остаются на вашем устройстве. Ничего не будет загружено куда-либо.</string>
     <string name="EditDiet_Name">Название</string>
-    <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
-    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
-    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Description">Описание</string>
+    <string name="EditDiet_Enabled_Disabled">Включить/Выключить</string>
+    <string name="EditDiet_Authorised_Ingredients">Разрешённые ингредиенты</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">Перечислите разрешенные ингредиенты, которые будут отображаться зеленым цветом. Наример: яблоки, грибы, помидоры... Вы можете дополнить список позже.</string>
+    <string name="EditDiet_So_So_Ingredients">Нежелательные ингредиенты</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Запрещенные ингредиенты</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Перечислите запрещенные ингредиенты, которые будут отображаться красным цветом. Наример: глютен, молоко, пальмовое масло, сахар... Вы можете дополнить список позже.</string>
+    <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
+    <string name="ingredient_image_prompt_text">Сделайте фото состава</string>
+    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
+    <string name="set_ingredient_img">Set image as Ingredient</string>
+    <string name="set_img_nutrients">Set Image as Nutrition</string>
+    <string name="set_img_front">Set Image as Front</string>
+    <string name="report_img">Report Image</string>
+    <string name="detected_ingredients">Detected Ingredients</string>
     <!-- Used for diets AddOn -->
 </resources>

@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -53,7 +54,8 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     private SharedPreferences mSettings;
     private IProductRepository productRepository;
     private View mView;
-
+    private LinearLayout mEmptyMessageView;                                         // Empty View containing the message that will be shown if the list is empty
+    private DataObserver mDataObserver;
     public static Integer getKey(HashMap<Integer, String> map, String value) {
         Integer key = null;
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
@@ -81,8 +83,9 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRvAllergens = (RecyclerView) view.findViewById(R.id.allergens_recycle);
-
+        mEmptyMessageView = (LinearLayout) view.findViewById(R.id.emptyAllergensView);
         productRepository = ProductRepository.getInstance();
+        mDataObserver = new DataObserver();
         productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -92,6 +95,8 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                     mRvAllergens.setAdapter(mAdapter);
                     mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
                     mRvAllergens.setHasFixedSize(true);
+                    mAdapter.registerAdapterDataObserver(mDataObserver);
+                    mDataObserver.onChanged();
                 }, Throwable::printStackTrace);
 
         productRepository.getAllergensByLanguageCode(Locale.getDefault().getLanguage())
@@ -104,23 +109,6 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
 
         mView = view;
         mSettings = getActivity().getSharedPreferences("prefs", 0);
-        boolean firstRunAlert = mSettings.getBoolean("firstRunAlert", true);
-        if (firstRunAlert) {
-            new MaterialDialog.Builder(view.getContext())
-                    .title(R.string.alert_dialog_warning_title)
-                    .content(R.string.warning_alert_data)
-                    .positiveText(R.string.ok_button)
-                    .show();
-            SharedPreferences.Editor editor = mSettings.edit();
-            editor.putBoolean("firstRunAlert", false);
-            editor.apply();
-        }
-
-        mRvAllergens = mView.findViewById(R.id.allergens_recycle);
-        mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled, getActivity());
-        mRvAllergens.setAdapter(mAdapter);
-        mRvAllergens.setLayoutManager(new LinearLayoutManager(mView.getContext()));
-        mRvAllergens.setHasFixedSize(true);
     }
 
     /**
@@ -222,4 +210,42 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         }
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if(mRvAllergens != null){
+            mRvAllergens.getAdapter().unregisterAdapterDataObserver(mDataObserver);
+        }
+    }
+
+    class DataObserver extends RecyclerView.AdapterDataObserver{
+        DataObserver() {
+            super();
+        }
+
+        private void setAppropriateView() {
+            if (mEmptyMessageView != null && mAdapter != null) {
+                boolean isListEmpty = mAdapter.getItemCount() == 0;
+                mEmptyMessageView.setVisibility(isListEmpty ? View.VISIBLE : View.GONE);
+                mRvAllergens.setVisibility(isListEmpty ? View.GONE : View.VISIBLE);
+            }
+        }
+        @Override
+        public void onChanged() {
+            super.onChanged();
+            setAppropriateView();
+        }
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            super.onItemRangeInserted(positionStart, itemCount);
+            setAppropriateView();
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            super.onItemRangeRemoved(positionStart, itemCount);
+            setAppropriateView();
+        }
+    }
 }

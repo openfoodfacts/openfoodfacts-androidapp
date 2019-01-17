@@ -34,6 +34,12 @@
         <item>Inhaltsstoffe</item>
         <item>Nährwertangaben</item>
         <item>Nährwerttabelle</item>
+        <item>Umweltauswirkungen</item>
+    </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>Produktfotos</item>
+        <item>Zutatenanalyse</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -687,6 +693,7 @@
     <string name="efsa_warning_high_risk">Die Europäische Behörde für Lebensmittelsicherheit (EFSA) hat festgestellt, dass einige Bevölkerungsgruppen ein hohes Risiko haben, zu viel %1$s zu verzehren.</string>
     <string name="legend_noael">über der Dosis mit beobachteter Nebenwirkung (NOAEL)</string>
     <string name="legend_adi">über der zulässigen täglichen Aufnahme (ADI)</string>
+    <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Ihre Ernährung(en)</string>
@@ -702,5 +709,15 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Listet die problematischen Inhaltsstoffe auf, die in Orange angezeigt werden sollen. Beispiel: Ei, Fisch … Sie können diese Liste später ergänzen.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Nicht zugelassene Inhaltsstoffe</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Listet die nicht zugelassenen Zutaten auf, die rot angezeigt werden sollen. Beispiel: Gluten, Milch, Palmöl, Zucker … Sie können diese Liste später ergänzen.</string>
+    <string name="nutrition_image_prompt_text">Foto der Nährwertangaben aufnehmen</string>
+    <string name="ingredient_image_prompt_text">Foto der Inhaltsstoffe aufnehmen</string>
+    <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
+    <string name="set_ingredient_img">Set image as Ingredient</string>
+    <string name="set_img_nutrients">Set Image as Nutrition</string>
+    <string name="set_img_front">Set Image as Front</string>
+    <string name="report_img">Report Image</string>
+    <string name="detected_ingredients">Erkannte Zutaten</string>
     <!-- Used for diets AddOn -->
 </resources>

@@ -274,7 +274,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // Add Manage Account profile if the user is connected
         SharedPreferences preferences = getSharedPreferences("login", 0);
-        String userLogin = preferences.getString(getResources().getString(R.string.user), null);
+        String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
         isConnected = userLogin != null;
@@ -618,8 +618,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             case LOGIN_REQUEST:
                 if (resultCode == RESULT_OK) {
                     result.removeItem(ITEM_LOGIN);
-                    result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS),
-                            getLogoutDrawerItem());
                     headerResult.updateProfile(getUserProfile());
                     headerResult.addProfiles(getProfileSettingDrawerItem());
                 }
@@ -994,7 +992,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
                                     File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
                                     image = new ProductImage(temp_barcode, OTHER, imageFile);
-                                    api.postImg(MainActivity.this, image);
+                                    api.postImg(MainActivity.this, image, null);
                                 } else {
                                     Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                                     State st = new State();
