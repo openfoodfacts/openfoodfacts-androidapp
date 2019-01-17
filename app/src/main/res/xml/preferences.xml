@@ -11,6 +11,12 @@
             android:summary="@string/prefs_language_summary"
             android:title="@string/prefs_language" />
 
+        <ListPreference
+            android:dialogTitle="Select your country"
+            android:key="user_country"
+            android:summary="Change your selected country"
+            android:title="Country" />
+
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="startScan"
