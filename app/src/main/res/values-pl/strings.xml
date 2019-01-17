@@ -381,14 +381,14 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txt_no_matching__category_products">O nie, nie mamy żadnego produktu w tej kategorii, czy możesz go dodać?</string>
     <string name="txt_no_matching_allergen_products">O nie, nie mamy żadnego produktu z tym alergenem, czy możesz go dodać?</string>
     <string name="txt_no_matching_label_products">O nie, nie mamy żadnych produktów z tą etykietą, czy możesz ją dodać?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
+    <string name="txt_no_matching_additive_products">O nie, nie mamy żadnego produktu z tym dodatkiem, czy możesz go dodać?</string>
+    <string name="txt_no_matching_country_products">O nie, nie mamy żadnego produktu z tego kraju, czy możesz go dodać?</string>
+    <string name="txt_no_matching_store_products">O nie, nie mamy żadnego produktu z tego sklepu, czy możesz go dodać?</string>
+    <string name="txt_no_matching_packaging_products">O nie, nie mamy żadnego produktu z tym opakowaniem, czy możesz go dodać?</string>
+    <string name="txt_no_matching_brand_products">O nie, nie mamy żadnego produktu tej marki, czy możesz go dodać?</string>
+    <string name="txt_no_matching_state_products">O nie, nie mamy żadnego produktu z tego państwa, czy możesz go dodać?</string>
+    <string name="txt_no_matching_incomplete_products">Nie mamy żadnych niekompletnych produktów! Czy dodać nowy produkt?</string>
+    <string name="txt_no_matching_contributor_products">O nie, nie mamy żadnego produktu od tego dostawcy, czy możesz go dodać?</string>
     <string name="txt_no_matching_products">Nie znaleziono żadnych produktów spełniających kryteria. \n Możesz spróbować :</string>
     <string name="txt_broaden_search">rozszerzenie zakresu wyszukiwania \n - zeskanuj i dodaj do Open Food Facts</string>
     <string name="txt_cant_load_search_results">Nie można załadować wyników wyszukiwania</string>
@@ -521,7 +521,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
     <string name="can_add_barcode">Problem ze skanowaniem? \nPrzeciągnij, by wpisać kod kreskowy</string>
     <string name="wikidata_information">Idź dalej</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
+    <string name="wikidata_unavailable">Nie ma jeszcze strony Wikipedii w twoim języku.</string>
     <string name="description">Opis: </string>
     <string name="title">Tytuł: </string>
     <string name="Wikipedia">Zobacz na Wikipedii</string>
@@ -718,10 +718,11 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="some_people">Część populacji\n(ponad 5%)</string>
     <string name="safety_and_exposure_assessment">Ocena bezpieczeństwa i ryzyka</string>
     <string name="risk_of_exposure">Ryzyko ekspozycji</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
-    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="efsa_warning_moderate_risk">Europejski Urząd ds. Bezpieczeństwa Żywności (EFSA) ustalił, że niektóre grupy ludności są narażone na umiarkowanie ryzyko nadmiernego spożycia %1$s.</string>
+    <string name="efsa_warning_high_risk">Europejski Urząd ds. Bezpieczeństwa Żywności (EFSA) ustalił, że niektóre grupy ludności są narażone na wysokie ryzyko nadmiernego spożycia %1$s.</string>
+    <string name="legend_noael">dawka powyżej której obserwuje się działanie nie pożądane (NOAEL)</string>
+    <string name="legend_adi">dopuszczalne dzienna spożycie (ADI)</string>
+    <string name="update_image">Wyślij zaktualizowany obraz</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Twoje diety</string>
@@ -736,12 +737,16 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="EditDiet_So_So_Ingredients">Takie składniki jak</string>
     <string name="EditDiet_Hint_So_So_Ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Niezatwierdzone składniki</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Lista nieautoryzowanych składników, które powinny zostać wyświetlone w kolorze czerwonym. Przykład: gluten, mleko, olej palmowy, cukier ... Listę można uzupełnić później.</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Zrób zdjęcie składników</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Version</string>
-    <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="version_string">Aplikacja na Androida Open Food Facts</string>
+    <string name="version">Wersja</string>
+    <string name="set_ingredient_img">Set image as Ingredient</string>
+    <string name="set_img_nutrients">Set Image as Nutrition</string>
+    <string name="set_img_front">Set Image as Front</string>
+    <string name="report_img">Report Image</string>
+    <string name="detected_ingredients">Wykryte składniki</string>
     <!-- Used for diets AddOn -->
 </resources>
