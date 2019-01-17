@@ -36,6 +36,11 @@
         <item>Tabla Nutricional</item>
         <item>Medio ambiente</item>
     </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>Product Photos</item>
+        <item>Ingredient Analysis</item>
+    </string-array>
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
@@ -708,5 +713,6 @@
     <string name="category_game_btn">Ayuda a categorizar productos para calcular el NutriScore</string>
     <string name="version_string">Aplicación de Android Open Food Facts</string>
     <string name="version">Versión</string>
+    <string name="detected_ingredients">Detected Ingredients</string>
     <!-- Used for diets AddOn -->
 </resources>

@@ -30,6 +30,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
@@ -55,6 +56,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
@@ -72,7 +74,6 @@ public class OpenFoodAPIClient {
     private DaoSession daoSession;
 
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
-
 
 
     private final OpenFoodAPIService apiService;
@@ -104,6 +105,7 @@ public class OpenFoodAPIClient {
         apiService = new Retrofit.Builder()
                 .baseUrl(apiUrl)
                 .client(httpClient)
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(jacksonConverterFactory)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
@@ -145,6 +147,7 @@ public class OpenFoodAPIClient {
                                     activity.finish();
                                 }
                             })
+                            .onNegative((dialog, which) -> activity.onBackPressed())
                             .show();
                 } else {
                     new HistoryTask().doInBackground(s.getProduct());
@@ -290,6 +293,34 @@ public class OpenFoodAPIClient {
 
     }
 
+    public interface OnImagesCallback {
+        void onImageResponse(boolean value, String response);
+    }
+
+    public void getImages(String barcode, OnImagesCallback onImagesCallback) {
+
+
+        apiService.getProductImages(barcode).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+
+                onImagesCallback.onImageResponse(true, response.body());
+
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+                onImagesCallback.onImageResponse(false, null);
+            }
+        });
+
+
+    }
+
+
     /**
      * This method is used to upload products.
      * Conditional statements in this method ensures that data which is being sent on server is correct
@@ -313,7 +344,7 @@ public class OpenFoodAPIClient {
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                   // lt.error();
+                    // lt.error();
                     productSentCallback.onProductSentResponse(false);
                     dialog.dismiss();
                 }
@@ -328,7 +359,7 @@ public class OpenFoodAPIClient {
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                   // lt.error();
+                    // lt.error();
                     productSentCallback.onProductSentResponse(false);
                     dialog.dismiss();
                 }
@@ -358,7 +389,7 @@ public class OpenFoodAPIClient {
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                   // lt.error();
+                    // lt.error();
                     productSentCallback.onProductSentResponse(false);
                     dialog.dismiss();
                 }
@@ -374,7 +405,7 @@ public class OpenFoodAPIClient {
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                   // lt.error();
+                    // lt.error();
                     productSentCallback.onProductSentResponse(false);
                     dialog.dismiss();
                 }
@@ -421,6 +452,7 @@ public class OpenFoodAPIClient {
     public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
      /**  final LoadToast lt = new LoadToast(context);
         lt.show();**/
+
         apiService.saveImage(getUploadableMap(image, context))
                 .enqueue(new Callback<JsonNode>() {
                     @Override
@@ -446,7 +478,7 @@ public class OpenFoodAPIClient {
                             //lt.error();
                         } else if (body.get("status").asText().contains("status not ok")) {
                             Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
-                           // lt.error();
+                            // lt.error();
                         } else {
                             //lt.success();
                         }
@@ -461,7 +493,7 @@ public class OpenFoodAPIClient {
                         ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                         mToUploadProductDao.insertOrReplace(product);
                         Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
-                       // lt.error();
+                        // lt.error();
                     }
                 });
     }
@@ -507,6 +539,7 @@ public class OpenFoodAPIClient {
 
         void onBrandResponse(boolean value, Search brand);
     }
+
 
     public interface OnStoreCallback {
         void onStoreResponse(boolean value, Search store);
@@ -661,6 +694,27 @@ public class OpenFoodAPIClient {
         });
 
     }
+
+    public interface OnEditImageCallback {
+        void onEditResponse(boolean value, String response);
+    }
+
+    public void editImage(String code, Map<String, String> imgMap, OnEditImageCallback onEditImageCallback) {
+        apiService.editImages(code, imgMap).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                onEditImageCallback.onEditResponse(true, response.body());
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                onEditImageCallback.onEditResponse(false, null);
+            }
+        });
+    }
+
 
     public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
 
@@ -886,6 +940,7 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(Call<Search> call, Throwable t) {
+
                 onIncompleteCallback.onIncompleteResponse(false, null);
             }
         });
@@ -1119,4 +1174,6 @@ public class OpenFoodAPIClient {
         }
 
     }
+
+
 }
