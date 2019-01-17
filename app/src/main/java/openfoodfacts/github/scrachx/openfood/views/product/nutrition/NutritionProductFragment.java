@@ -145,13 +145,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         product = state.getProduct();
         //checks the product states_tags to determine which prompt to be shown
         List<String> statesTags = product.getStatesTags();
-        if (statesTags.contains(product.getLang()+":categories-to-be-completed")) {
+        if (statesTags.contains("en:categories-to-be-completed")) {
             showCategoryPrompt = true;
         }
         if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
             showNutritionPrompt = false;
         } else {
-            if (statesTags.contains(product.getLang()+":nutrition-facts-to-be-completed")) {
+            if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
                 showNutritionPrompt = true;
             }
         }
