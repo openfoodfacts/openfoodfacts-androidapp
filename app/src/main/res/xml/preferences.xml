@@ -12,10 +12,10 @@
             android:title="@string/prefs_language" />
 
         <ListPreference
-            android:dialogTitle="Select your country"
+            android:dialogTitle="@string/settings_country_dialog_title"
             android:key="user_country"
-            android:summary="Change your selected country"
-            android:title="Country" />
+            android:summary="@string/settings_country_summary"
+            android:title="@string/settings_country_title" />
 
         <CheckBoxPreference
             android:defaultValue="false"
