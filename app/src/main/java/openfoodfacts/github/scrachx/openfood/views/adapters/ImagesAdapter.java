@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Logger;
@@ -27,6 +30,8 @@ import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+
+import static openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment.createJsonObject;
 
 /**
  * Created by prajwalm on 10/09/18.
@@ -112,7 +117,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
                                 openFoodAPIClient.editImage(product.getCode(), imgMap, new OpenFoodAPIClient.OnEditImageCallback() {
                                     @Override
                                     public void onEditResponse(boolean value, String response) {
-                                        Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+                                        displaySetImageName(response);
                                     }
 
                                 });
@@ -126,7 +131,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
                                 openFoodAPIClient.editImage(product.getCode(), imgMap, new OpenFoodAPIClient.OnEditImageCallback() {
                                     @Override
                                     public void onEditResponse(boolean value, String response) {
-                                        Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+                                        displaySetImageName(response);
                                     }
 
                                 });
@@ -140,7 +145,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
                                 openFoodAPIClient.editImage(product.getCode(), imgMap, new OpenFoodAPIClient.OnEditImageCallback() {
                                     @Override
                                     public void onEditResponse(boolean value, String response) {
-                                        Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+                                        displaySetImageName(response);
                                     }
 
                                 });
@@ -171,6 +176,18 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
 
     }
 
+    public void displaySetImageName(String response) {
+
+        JSONObject jsonObject = createJsonObject(response);
+        String imageName = null;
+        try {
+            imageName = jsonObject.getString("imagefield");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Toast.makeText(context, context.getString(R.string.set_image_name) + imageName, Toast.LENGTH_LONG).show();
+
+    }
 
     @Override
     public int getItemCount() {

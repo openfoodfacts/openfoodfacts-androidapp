@@ -93,15 +93,8 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
                 if (value && response != null) {
 
-                    Log.i("response", response);
-
                     // a json object referring to base json object
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    JSONObject jsonObject = createJsonObject(response);
 
                     // a json object referring to images
                     JSONObject images = null;
@@ -182,6 +175,16 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
         openFullScreen(finalUrlString);
 
+    }
+
+    public static JSONObject createJsonObject(String response){
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
     }
 
 
