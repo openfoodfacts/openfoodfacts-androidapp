@@ -133,6 +133,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
+        // use VERTICAL divider
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
+        nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
         refreshView((State) intent.getExtras().getSerializable("state"));
     }
 
@@ -331,10 +334,6 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         nutrimentsRecyclerView.setLayoutManager(mLayoutManager);
 
         nutrimentsRecyclerView.setNestedScrollingEnabled(false);
-
-        // use VERTICAL divider
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
-        nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Header hack
         nutrimentItems.add(new NutrimentItem(null, null, null, null, null));
