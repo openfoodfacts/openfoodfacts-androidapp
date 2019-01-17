@@ -169,11 +169,15 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     public void onImageClick(int position) {
 
         String baseUrlString = "https://static.openfoodfacts.org/images/products/";
-        String barcodePattern = new StringBuilder(product.getCode())
-                .insert(3, "/")
-                .insert(7, "/")
-                .insert(11, "/")
-                .toString();
+        String barcodePattern = product.getCode();
+        if (barcodePattern.length() > 8) {
+            barcodePattern = new StringBuilder(product.getCode())
+                    .insert(3, "/")
+                    .insert(7, "/")
+                    .insert(11, "/")
+                    .toString();
+        }
+
         String finalUrlString = baseUrlString + barcodePattern + "/" + imageNames.get(position) + ".jpg";
 
         imgMap.put("imgid", imageNames.get(position));
