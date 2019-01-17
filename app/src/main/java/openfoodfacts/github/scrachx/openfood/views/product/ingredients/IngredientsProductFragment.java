@@ -129,10 +129,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     CardView mineralTagsTextCardView;
     @BindView(R.id.cvOtherNutritionTags)
     CardView otherNutritionTagsCardView;
-    @BindView(R.id.change_ing_img)
-    Button updateImageBtn;
     @BindView(R.id.extract_ingredients_prompt)
     Button extractIngredientsPrompt;
+    @BindView(R.id.change_ing_img)
+    Button updateImageBtn;
 
     private Product product;
     private OpenFoodAPIClient api;
