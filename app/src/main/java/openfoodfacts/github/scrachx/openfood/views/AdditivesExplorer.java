@@ -22,8 +22,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.FastScroller;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
@@ -60,14 +62,22 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
         List<AdditiveName> additivesNames = additiveNameDao.loadAll();
         String languageCode = Locale.getDefault().getLanguage();
         additives = new ArrayList<>();
-        Set<AdditiveName> hs = new HashSet<>();
+        Set<Single<AdditiveName>> hs = new HashSet<>();
         for (int i = 0; i < additivesNames.size(); i++) {
             if (additivesNames.get(i).getName().startsWith("E")) {
                 String tag = additivesNames.get(i).getAdditiveTag();
                 hs.add(productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode));
             }
         }
-        additives.addAll(hs);
+
+        Set<AdditiveName> additiveSet = new HashSet<>();
+        for (Single<AdditiveName> additiveNameSingle : hs) {
+            additiveNameSingle.subscribe(
+                    additiveSet::add
+            );
+        }
+
+        additives.addAll(additiveSet);
 
         Collections.sort(additives, new Comparator<AdditiveName>() {
             @Override
@@ -77,7 +87,6 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
                 return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
             }
         });
-
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(AdditivesExplorer.this));
