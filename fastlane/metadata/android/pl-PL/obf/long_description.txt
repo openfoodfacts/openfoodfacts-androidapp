@@ -1,31 +1,31 @@
-***Contribute to Cosmetic Transparency***
+***Przyczyń się do przejrzystości informacji o Kosmetykach***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+Open Beauty Facts to baza produktów kosmetycznych tworzona przez każdego dla wszystkich.
+- Możesz wykorzystać ją, aby dokonać lepszych wyborów kosmetycznych, a ponieważ jest to baza zawierająca otwarte dane, każdy może spożytkować je w dowolnym celu.
+Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z całego świata. Mamy wiele ekscytujących projektów, w których możesz być na wiele różnych sposobów zaangażowany. 
+- Możesz zaangażować się już dzisiaj, dodając produkt z twojej półki z kosmetykami. 
 
-*** Get the Facts ***
+***Poznaj fakty***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+Dodatki do kosmetyków, F.I.L. kody, numery CI, INCI (Międzynarodowe Nazewnictwo Składników Kosmetyków), lista składników, alergeny, kody opakowań... 
+Open Beauty Facts pomagają zrozumieć drobny tekst na etykietach.
+Nie trzeba już być chemikiem i znać łacinę aby odszyfrować skład :-)
+Możesz skanować: wody po goleniu, balsamy do ciała, dezodoranty, eyelinery, podkłady, perfumy, szminki, produkty do makijażu, maseczki, szampony, mydła, żele pod prysznic, lakiery do paznokci i wiele innych…
+Uważamy, że może być przydatna dla osób z chorobami skóry m. in. trądzik, łuszczyca, egzema... pomagając przy wyborze lepszych kosmetyków.
 
-*** Works well in any condition ***
-- Możesz dodać nowe produkty, nawet nie mając teraz połączenia.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+***Działa dobrze w każdej sytuacji***
+- Możesz dodawać nowe produkty, nawet jeśli w danej chwili nie masz połączenia z Internetem.
+-W celu ograniczenia zużycia danych, jak i lepszego zarządzania energią aplikacja ładuje tylko absolutnie niezbędne elementy
+-Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+***Twoje kosmetyki, twoje dane***
+Twoje dany nigdy nie są wysyłane online
+-Możesz korzystać z aplikacji anonimowo
+- Możesz wyeksportować swoją historię skanowania
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Uwaga: Open Beauty Facts jest w trakcie tworzenia. Jej strona internetowa jak i aplikacja opierają się obecnie na danych danych Open Food Facts, tam też zmiany są zapisywane.
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Beauty Facts jest również dostępny w sieci: https://world.openbeautyfacts.org
+Pytania, opinie: contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+W przypadku żywności dla ludzi możesz zainstalować Open Food Facts, w kwestii karmy dla zwierząt Open Pet Food Facts, a dla wszystkich pozostałych produktów, Open Products Facts.

@@ -29,7 +29,8 @@ public interface NavigationDrawerListener {
     int ITEM_MY_CONTRIBUTIONS = 14;
     int ITEM_LOGOUT = 15;
     int ITEM_MANAGE_ACCOUNT = 16;
-    int ITEM_ADDITIVES =17;
+    int ITEM_INCOMPLETE_PRODUCTS = 17;
+    int ITEM_ADDITIVES =18;
 
     @Retention(SOURCE)
     @IntDef({
@@ -48,6 +49,7 @@ public interface NavigationDrawerListener {
             ITEM_ADVANCED_SEARCH,
             ITEM_MY_CONTRIBUTIONS,
             ITEM_LOGOUT,
+            ITEM_INCOMPLETE_PRODUCTS,
             ITEM_ADDITIVES
     })
     @interface NavigationDrawerType {

@@ -9,8 +9,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 46
-        versionName "0.8.9"
+        versionCode 298
+        versionName "2.9.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -28,7 +28,7 @@ android {
     productFlavors {
         off {
             applicationId "openfoodfacts.github.scrachx.openfood"
-            resValue "string", "app_name", "Open Food Facts"
+            resValue "string", "app_name", "OpenFoodFacts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
@@ -37,7 +37,7 @@ android {
 
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
-            resValue "string", "app_name", "Open Beauty Facts"
+            resValue "string", "app_name", "OpenBeautyFacts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openbeautyfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
@@ -46,7 +46,7 @@ android {
 
         opff {
             applicationId "org.openpetfoodfacts.scanner"
-            resValue "string", "app_name", "Open Pet Food Facts"
+            resValue "string", "app_name", "OpenPetFoodFacts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openpetfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
@@ -55,7 +55,7 @@ android {
 
         opf {
             applicationId "org.openproductsfacts.scanner"
-            resValue "string", "app_name", "Open Products Facts"
+            resValue "string", "app_name", "OpenProductsFacts"
             buildConfigField 'String', 'HOST', '"https://ssl-api.openproductsfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
@@ -116,7 +116,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 7
+    schemaVersion 10
 }
 android {
     // Other settings
@@ -140,14 +140,14 @@ dependencies {
     implementation "com.android.support:preference-v14:$rootProject.supportLibraryVersion"
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile "com.android.support:multidex:$rootProject.multidexVersion"
-    compile "com.android.support:design:27.1.0"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "com.android.support:multidex:$rootProject.multidexVersion"
 
     //DI
+    implementation 'com.android.support:support-v4:27.1.1'
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    provided 'javax.annotation:jsr250-api:1.0'
+    compileOnly 'javax.annotation:jsr250-api:1.0'
 
     //Rx
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxVersion"
@@ -186,7 +186,10 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
 
     //Barcode and QR Scanner
-    implementation "me.dm7.barcodescanner:zxing:$rootProject.qrScannerVersion"
+    implementation("com.journeyapps:zxing-android-embedded:$rootProject.journeyappsZxingScannerVersion") {
+        transitive = false
+    }
+    implementation "com.google.zxing:core:$rootProject.zxingCoreVersion"
 
     //HTML Dom
     implementation "org.jsoup:jsoup:$rootProject.htmlDomVersion"
@@ -207,7 +210,7 @@ dependencies {
     }
 
     //UI Component : Material Drawer
-    implementation('com.mikepenz:materialdrawer:6.0.2@aar') {
+    implementation('com.mikepenz:materialdrawer:6.0.3@aar') {
         transitive = true
     }
 
@@ -215,6 +218,9 @@ dependencies {
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation 'com.mikepenz:fastadapter-commons:2.1.0@aar'
+
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+
 
     //UI Component : Fab
     implementation "com.github.clans:fab:$rootProject.fabVersion"
@@ -228,17 +234,20 @@ dependencies {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
+    //UI Component : Chips Input
+    implementation "com.hootsuite.android:nachos:1.1.1"
+
     //Testing
-    androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
+    androidTestUtil 'com.android.support.test:orchestrator:1.0.2'
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
 
     // Required for instrumented tests
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.2'
     androidTestImplementation('com.android.support.test.espresso:espresso-contrib:3.0.1') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'

@@ -23,7 +23,6 @@
             android:layout_height="wrap_content"
             android:text="@{category.name}"
             android:textColor="@android:color/black"
-            android:textIsSelectable="true"
             android:textSize="@dimen/font_normal"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"

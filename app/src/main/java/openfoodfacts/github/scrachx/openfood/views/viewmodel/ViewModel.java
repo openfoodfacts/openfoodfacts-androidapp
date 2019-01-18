@@ -10,7 +10,7 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public abstract class ViewModel {
 
-    private CompositeDisposable subscriptions;
+    protected CompositeDisposable subscriptions;
 
     public ViewModel() {
     }

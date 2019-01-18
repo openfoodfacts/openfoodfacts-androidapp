@@ -7,10 +7,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.models.State;
+
 public class ProductFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private List<String> navMenuTitles;
-    private List<Fragment> fragments;
+    private List<BaseFragment> fragments;
 
     public ProductFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -18,7 +21,7 @@ public class ProductFragmentPagerAdapter extends FragmentPagerAdapter {
         this.navMenuTitles = new ArrayList<>();
     }
 
-    public void addFragment(Fragment fragment, String title) {
+    public void addFragment(BaseFragment fragment, String title) {
         this.fragments.add(fragment);
         this.navMenuTitles.add(title);
     }
@@ -36,5 +39,13 @@ public class ProductFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return navMenuTitles.get(position);
+    }
+
+    public void refresh(State state) {
+        for (BaseFragment f : fragments) {
+            if (f.isAdded()) {
+                f.refreshView(state);
+            }
+        }
     }
 }

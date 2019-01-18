@@ -145,7 +145,7 @@ public class WelcomeActivity extends AppCompatActivity {
         @Override
         public void onPageScrolled(int arg0, float positionOffset, int positionOffsetPixels) {
             if (lastPage && positionOffset == 0f && currentState == ViewPager.SCROLL_STATE_DRAGGING) {
-                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+                launchHomeScreen();
             }
         }
 

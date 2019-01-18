@@ -1,34 +1,34 @@
 Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó összetevők, allergének, tápanyagok adataival együtt és egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.
 
-*** Contribute to Product Transparency ***
+*** Hozzájárulás a Termék Átláthatósághoz ***
 
-- Open Food Facts is a products database made by everyone, for everyone.
+- Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Rengeteg izgalmas projektünk van, amelyekkel sokféleképpen járulhat hozzá. 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+*** Kapja meg a Tényeket ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
-*** Collect AAAALL the things ***
+*** Gyűjtse össze az ÖSSZES dolgot ***
 - You can add all the items from your collections
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+- Open ??? Facts - Hozza létre a saját nyílt adatbázisát :-)
 
-*** Works well in any condition ***
+*** Minden körülmény között jól működik ***
 - Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Az alkalmazás csak a legszükségesebb dolgokat tölti be, hogy csökkentse az adat és akkumulátorhasználatot
+- Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Az ön termékei, az ön adatai ***
+- Az ön személyes adatainak tulajdonosa ön és soha nem lesznek elküldve online
+- Az alkalmazást névtelenül használhatja
+- Exportálni tudja a beolvasási előzményeket
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Élelmiszerekhez telepítheti az Open Food Facts-ot, kozmetikai termékekhez az Open Beauty Facts-ot és az állateledelekhez az Open Pet Food Facts-ot.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Az Open Products Facts elérhető az interneten is a következő címen: https://world.openproductsfacts.org
 Kérdések, visszajelzés: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
@@ -45,7 +45,7 @@ Open Crayons Facts - The largest open database of coloring crayons
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-Open ??? Facts - The largest open database of ???
+Open ??? Facts - A ??? legnagyobb nyílt adatbázisa
 
 Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 

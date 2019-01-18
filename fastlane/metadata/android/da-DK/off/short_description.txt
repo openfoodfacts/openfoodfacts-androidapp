@@ -1,1 +1,1 @@
-Skan fødevareprodukter for at afkode etiketten: ingredienser, tilsætnings- og ernæringsdata
+Skan fødevareprodukter for at afkode etiketten: Ingredienser, tilsætnings- og ernæringsdata

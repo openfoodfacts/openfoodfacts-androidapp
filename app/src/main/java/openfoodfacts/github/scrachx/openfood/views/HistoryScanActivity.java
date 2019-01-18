@@ -6,13 +6,11 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
@@ -23,15 +21,18 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,7 +54,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -67,7 +67,6 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
-import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
 
 public class HistoryScanActivity extends BaseActivity implements SwipeControllerActions {
 
@@ -86,6 +85,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     TextView infoView;
     @BindView(R.id.history_progressbar)
     ProgressBar historyProgressbar;
+    @BindView(R.id.srRefreshHistoryScanList)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.buttonScan)
+    FloatingActionButton mButtonScan;
+
+    private Context context;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     private static String SORT_TYPE = "none";
@@ -99,6 +104,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = HistoryScanActivity.this;
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -120,7 +126,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         setInfo(infoView);
         new HistoryScanActivity.FillAdapter(this).execute(this);
 
-        // Get the user preference for scan on shake feature and open ScannerFragmentActivity if the user has enabled the feature
+        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -134,6 +140,17 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 if (scanOnShake) {
                     Utils.scan(HistoryScanActivity.this);
                 }
+            }
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mHistoryProductDao = Utils.getAppDaoSession(context).getHistoryProductDao();
+                productItems = new ArrayList<>();
+                setInfo(infoView);
+                new HistoryScanActivity.FillAdapter(HistoryScanActivity.this).execute(context);
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
 
@@ -153,6 +170,28 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             infoView.setVisibility(View.VISIBLE);
             scanFirst.setVisibility(View.VISIBLE);
 
+        }
+    }
+
+    @OnClick(R.id.buttonScan)
+    protected void OnScan() {
+        if (Utils.isHardwareCameraInstalled(this)) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                    new MaterialDialog.Builder(this)
+                            .title(R.string.action_about)
+                            .content(R.string.permission_camera)
+                            .neutralText(R.string.txtOk)
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .show();
+                } else {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                }
+            } else {
+                Intent intent = new Intent(this, ContinuousScanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
         }
     }
 
@@ -293,7 +332,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             case R.id.sort_history:
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
                 builder.title(R.string.sort_by);
-                String[] sortTypes = {getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(R.string.by_barcode), getString(R.string.by_time)};
+                String[] sortTypes;
+                if (BuildConfig.FLAVOR.equals("off")) {
+                    sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(R.string.by_barcode), getString(R.string.by_time)};
+                } else {
+                    sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_time), getString(R.string.by_barcode)};
+                }
                 builder.items(sortTypes);
                 builder.itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
@@ -313,7 +357,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
 
                             case 2:
-                                SORT_TYPE = "grade";
+
+                                if (BuildConfig.FLAVOR.equals("off")) {
+                                    SORT_TYPE = "grade";
+                                } else {
+                                    SORT_TYPE = "time";
+                                }
                                 callTask();
                                 break;
 
@@ -367,6 +416,15 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 }
                 break;
             }
+            case Utils.MY_PERMISSIONS_REQUEST_CAMERA: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager
+                        .PERMISSION_GRANTED) {
+                    Intent intent = new Intent(HistoryScanActivity.this, ContinuousScanActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            }
+            break;
         }
     }
 
@@ -381,7 +439,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         @Override
         protected void onPreExecute() {
-            historyProgressbar.setVisibility(View.VISIBLE);
+            if(swipeRefreshLayout.isRefreshing()){
+                historyProgressbar.setVisibility(View.GONE);
+            }
+            else {
+                historyProgressbar.setVisibility(View.VISIBLE);
+            }
             productItems.clear();
             List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
             if (listHistoryProducts.size() == 0) {
@@ -437,7 +500,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         if (Utils.isHardwareCameraInstalled(getBaseContext())) {
             if (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(HistoryScanActivity.this, Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(getBaseContext())
+                    new MaterialDialog.Builder(this)
                             .title(R.string.action_about)
                             .content(R.string.permission_camera)
                             .neutralText(R.string.txtOk)
@@ -449,7 +512,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                             .MY_PERMISSIONS_REQUEST_CAMERA);
                 }
             } else {
-                Intent intent = new Intent(HistoryScanActivity.this, ScannerFragmentActivity.class);
+                Intent intent = new Intent(HistoryScanActivity.this, ContinuousScanActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -482,6 +545,14 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 Collections.sort(productItems, new Comparator<HistoryItem>() {
                     @Override
                     public int compare(HistoryItem historyItem, HistoryItem t1) {
+                        if(TextUtils.isEmpty(historyItem.getTitle()))
+                        {
+                            historyItem.setTitle(getResources().getString(R.string.no_title));
+                        }
+                        if(TextUtils.isEmpty(t1.getTitle()))
+                        {
+                            t1.setTitle(getResources().getString(R.string.no_title));
+                        }
                         return historyItem.getTitle().compareToIgnoreCase(t1.getTitle());
                     }
                 });
@@ -494,6 +565,14 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                 Collections.sort(productItems, new Comparator<HistoryItem>() {
                     @Override
                     public int compare(HistoryItem historyItem, HistoryItem t1) {
+                        if(TextUtils.isEmpty(historyItem.getBrands()))
+                        {
+                            historyItem.setBrands(getResources().getString(R.string.no_brand));
+                        }
+                        if(TextUtils.isEmpty(t1.getBrands()))
+                        {
+                            t1.setBrands(getResources().getString(R.string.no_brand));
+                        }
                         return historyItem.getBrands().compareToIgnoreCase(t1.getBrands());
                     }
                 });

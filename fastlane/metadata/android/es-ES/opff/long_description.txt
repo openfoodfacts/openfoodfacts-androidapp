@@ -26,9 +26,9 @@ You will also be able to find (according to the indications present on the produ
 - No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
-- Puede usar la aplicación de forma anónima
-- Puede exportar su historial de escaneo
+- Tus datos son tuyos y nunca se envían en línea
+- Puedes usar la aplicación de forma anónima
+- Puedes exportar tu historial de escaneo
 
 
 For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.

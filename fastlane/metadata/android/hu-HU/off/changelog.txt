@@ -1,0 +1,19 @@
+
+==================
+Az Open Food Facts új natív változata. Minden Open Food Facts önkéntes keményen dolgozott rajta, az ön javaslatai és visszajelzése alapján :)
+==================
+* Az Open Food Facts most már még inkább globális mozgalom, mint valaha. 500 000 szabad termék, 10 000 regisztrált hozzájáruló, 182 ország. Csatlakozik hozzánk ?
+==================
+Mik az újdonságok ?
+==================
+1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
+2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
+3. További információ a Wikipédiából. Kattintson egy élelmiszerkategóriára, vagy adalékanyagra ... hogy többet megtudjon vagy hasonló termékeket láthasson.
+4. Beállíthatja az allergén figyelmeztetéseket (mindig ellenőrizze a termék címkéjét is!)
+5. You now get a scan history you can export and that never leaves your phone
+6. You can shake your phone at any time in the app to start scanning
+7. You can now add new products even when you're offline
+8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
+9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
+10. We're still not interested in your personal data. Nem kell bejelentkeznie az ellenőrzéshez és a hozzájáruláshoz.
+Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.

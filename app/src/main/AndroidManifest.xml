@@ -62,14 +62,16 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <intent-filter>
+            <intent-filter
+                android:label="@string/intent_filter_share_label">
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:mimeType="image/*" />
             </intent-filter>
-            <intent-filter>
+            <intent-filter
+                android:label="@string/intent_filter_share_label">
                 <action android:name="android.intent.action.SEND" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -81,9 +83,9 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".views.ScannerFragmentActivity" />
         <activity
             android:name=".views.product.ProductActivity"
+            android:launchMode="singleTop"
             android:parentActivityName=".views.MainActivity"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <meta-data
@@ -93,15 +95,7 @@
         <activity
             android:name=".views.LoginActivity"
             android:parentActivityName=".views.MainActivity"
-
             android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.MainActivity" />
-        </activity>
-        <activity
-            android:name=".views.SaveProductOfflineActivity"
-            android:parentActivityName=".views.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
@@ -182,6 +176,18 @@
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name=".views.ContinuousScanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".views.AddProductActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity android:name=".views.product.CalculateDetails" />
     </application>
 
 </manifest>

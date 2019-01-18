@@ -1,0 +1,45 @@
+Aquestes són les etiquetes que es mostren a sobre de les captures de pantalla a la playstore. Manteniu-les curtes i atractives.
+No canvieu el nom del fitxer.
+---
+scan_en.png
+Escanegeu productes
+
+quickview_en.png
+Obteniu la Puntuació Nutricional
+
+history_en.png
+El vostre historial complet d'escaneig, totalment privat i exportable
+
+product_view_wikipedia_en.png
+Aneu més enllà amb Viquipèdia
+
+allergen_alert_en.png
+Establiu alertes sobre al·lèrgens
+
+home_en.png
+product_view_nutrition_summary_en.png
+Nutrició simplificada
+
+product_view_allergen_alert_en.png
+Alerta d'al·lèrgens
+
+categories_en.png
+Obteniu alternatives per als vostres aliments preferits
+
+foodtransparency_en.png
+Convertiu-vos en actor de la transparència alimentària
+
+product_view_summary_en.png
+Viquipèdia per als aliments
+Viquipèdia per a cosmètics
+Viquipèdia per al menjar per a mascotes
+Viquipèdia de Productes
+
+product_view_ingredients_en.png
+Ingredients
+
+menu_en.png
+Potent
+
+product_view_nutrition_table_en.png
+Informació nutricional

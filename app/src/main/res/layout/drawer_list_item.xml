@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
-    >
+    android:layout_height="48dp">
 
     <ImageView
         android:id="@+id/icon"
@@ -11,8 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:layout_centerVertical="true"
-        />
+        android:layout_centerVertical="true" />
 
     <TextView
         android:id="@+id/title"
@@ -23,8 +21,6 @@
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:gravity="center_vertical"
         android:textColor="@color/grey_50"
-        android:paddingRight="40dp"
-        />
-
+        android:paddingRight="40dp" />
 
 </RelativeLayout>

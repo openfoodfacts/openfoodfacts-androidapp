@@ -1,0 +1,45 @@
+To so slogani, ki so prikazani nad posnetki zaslona v trgovini Google Play. Naj bodo kratki in privlačni.
+Ne spreminjajte imena datoteke.
+---
+scan_en.png
+Skeniraj izdelke
+
+quickview_en.png
+Pridobi Nutriscore
+
+history_en.png
+Vaša celotna zgodovina skeniranja, popolnoma zasebna in izvozna
+
+product_view_wikipedia_en.png
+Pojdi naprej z Wikipedijo
+
+allergen_alert_en.png
+Nastavi opozorila za alergene
+
+home_en.png
+product_view_nutrition_summary_en.png
+Prehrana, poenostavljena
+
+product_view_allergen_alert_en.png
+Opozorilo na alergene
+
+categories_en.png
+Poišči nadomestila za vaša najljubša živila
+
+foodtransparency_en.png
+Postanite udeleženec preglednosti hrane
+
+product_view_summary_en.png
+Wikipedia za hrano
+Wikipedia za kozmetiko
+Wikipedia za hrano za hišne živali
+Wikipedija izdelkov
+
+product_view_ingredients_en.png
+Sestavine
+
+menu_en.png
+Zmogljiva
+
+product_view_nutrition_table_en.png
+Dejstva o hranilni vrednosti

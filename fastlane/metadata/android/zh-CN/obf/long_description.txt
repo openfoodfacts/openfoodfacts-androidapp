@@ -1,31 +1,31 @@
-***Contribute to Cosmetic Transparency***
+致力于化妆品透明化
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+Open Beauty Facts 是为每个人准备的，采集于大众的化妆产品信息
+你可以通过它作出更好的化妆产品的选择，同时因为它是开放数据，任何人都可以使用它。
+Open Beauty Facts 是一个非盈利项目，由来自于全世界上千志愿者发行。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
+现在你可以开始这个项目通过添加你的化妆产品 
 
-*** Get the Facts ***
+***获取信息***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+- 化妆品添加剂，Fil 代码，CI编号，INCI（国际化妆品成分命名法），成分列表，过敏原，包装代码...... 
+- Open Food Facts 可帮助您了解产品标签上的各个细节。
+- 你不需要成为化学家，也不需要学习拉丁文，就可以开发一份配方清单:-)
+- 您可以扫描：须后水，润肤露，面霜，除臭剂，眼线，粉底，香水，唇膏，化妆，面膜，香水，洗发水，香皂，沐浴露，指甲油等等。
+- 我们认为它能帮助有皮肤问题的人作出更好的化妆品选择，比如，粉刺，牛皮癣，湿疹等。
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+在任何情况下都有效
+- 即使没有连接互联网，你也可以添加新的产品。
+- 应用程序仅加载严格必要以减少数据及电量消耗
+- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+你的化妆品，你的数据
+- 你的数据只属于你，并永远不会被上传。
+- 您可以匿名使用该应用
+- 您可以导出历史记录
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+注意：Open Beauty Facts 正在建立中，网站和应用程序基于Open Food Facts，并且修改部分会被考虑在特殊化妆品中。
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
+Open Food Facts 也可以在网站 https://world.openbeautyfacts.org 上找到
 Questions, feedback : contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+关于化妆品，你可以安装 Open Beauty Facts；关于宠物食品，你可以安装 Open Pet Food Facts；关于其他所有其他产品，你可以安装 Open Products Facts。

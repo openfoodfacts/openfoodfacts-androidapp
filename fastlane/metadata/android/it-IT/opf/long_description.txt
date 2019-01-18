@@ -1,54 +1,54 @@
 Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni, dati nutrizionali e tutti i frammenti d'informazione che si possono trovare sulle etichette dei prodotti.
 
-*** Contribute to Product Transparency ***
+*** Contribuire alla trasparenza dei prodotti ***
 
-- Open Food Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding your first product. 
+- Open Products Facts è un database di prodotti fatto da tutti per tutti.
+- Puoi usarlo per fare migliori scelte e dato che sono dati aperti, chiunque può riutilizzarli per ogni scopo.
+- Open Products Facts è un progetto no-profit sviluppato da migliaia di volontari da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
+- Puoi iniziare a contribuire oggi aggiungendo il tuo primo prodotto. 
 
-*** Get the Facts ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+*** Prendi i fatti ***
+- Open Products Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
-- Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+*** Raccogli TUUUUTTE le cose ***
+- Puoi aggiungere tutti gli articoli dalle tue raccolte
+- Open Crayons Facts - Il più grande database aperto di pastelli colorati
+- Open Miniature Facts - Il più grande database aperto di miniature di prodotti alimentari
+- Open ??? Facts - Crea il tuo database aperto :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Funziona bene in qualsiasi condizione ***
+- Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
+- L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
+- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se non hai una fotocamera o non funziona.
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** I tuoi prodotti, i tuoi dati ***
+- I tuoi dati personali sono tuoi e non vengono mai inviati online
+- Puoi usare l'app in modo anonimo
+- Puoi esportare la cronologia di scansione
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Per il cibo, è possibile installare Open Food Facts, per i cosmetici, Open Beauty Facts e per alimenti per animali domestici, Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Produts Facts è anche disponibile sul web ad https://world.openproductsfacts.org
+Domande e feedback a: contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** Elenco Originale Pesci D'Aprile ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Ieri mattina, il team di Open Food Facts si è svegliato con una rivelazione sbalorditiva. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+La raccolta di alimenti del mondo, cosmetici ed alimenti per animali domestici era così passé. Con il folle progresso dell'ultimo anno, dobbiamo veramente essere vicini al completare la nostra missione di raccolta di tutti i prodotti alimentari e cosmetici nel mondo, giusto ?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Così abbiamo deciso di creare non 1, ma altri 77000 nuovi database separati ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts sarà un progetto estremamente ambizioso. Eccone alcuni: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - Il più grande database aperto di pastelli colorati
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - Il più grande database di miniature di prodotti alimentari
 
-Open ??? Facts - The largest open database of ???
+Aperto ??? Facts - Il più grande database di ???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Domani selezioneremo i 3 database più utili e inizieremo a raccogliere tutti i prodotti corrispondenti nel mondo.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+Saranno database di bidoni della spazzatura, télécartes, o telefoni cellulari ? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Quindi se ti piacciono le magliette, i libri di cucina, gli origami di carta o i globi di neve, inizia a scansionare usando l'app Open Products Facts Android su Google Play

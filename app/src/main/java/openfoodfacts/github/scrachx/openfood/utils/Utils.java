@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,6 +36,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.Driver;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -51,7 +54,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.CipherSuite;
@@ -63,9 +68,9 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.ScannerFragmentActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
@@ -78,6 +83,10 @@ public class Utils {
     public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
     public static boolean isUploadJobInitialised;
     public static boolean DISABLE_IMAGE_LOAD = false;
+
+    public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
+    public static final String HEADER_USER_AGENT_SCAN = "Scan";
+    public static final String HEADER_USER_AGENT_SEARCH = "Search";
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
@@ -133,6 +142,9 @@ public class Utils {
     }
 
     public static void hideKeyboard(Activity activity) {
+        if (activity == null)
+            return;
+
         View view = activity.getCurrentFocus();
 
         if (view != null) {
@@ -233,7 +245,7 @@ public class Utils {
         int drawable;
 
         if (grade == null) {
-            return R.drawable.ic_error;
+            return R.drawable.ic_help_outline_orange_24dp;
         }
 
         switch (grade.toLowerCase(Locale.getDefault())) {
@@ -253,10 +265,37 @@ public class Utils {
                 drawable = R.drawable.nnc_e;
                 break;
             default:
-                drawable = R.drawable.ic_error;
+                drawable = R.drawable.ic_help_outline_orange_24dp;
                 break;
         }
 
+        return drawable;
+    }
+
+    public static int getNovaGroupDrawable(String novaGroup) {
+        int drawable;
+
+        if (novaGroup == null) {
+            return R.drawable.ic_help_outline_orange_24dp;
+        }
+
+        switch (novaGroup) {
+            case "1":
+                drawable = R.drawable.ic_nova_group_1;
+                break;
+            case "2":
+                drawable = R.drawable.ic_nova_group_2;
+                break;
+            case "3":
+                drawable = R.drawable.ic_nova_group_3;
+                break;
+            case "4":
+                drawable = R.drawable.ic_nova_group_4;
+                break;
+            default:
+                drawable = R.drawable.ic_help_outline_orange_24dp;
+                break;
+        }
         return drawable;
     }
 
@@ -323,6 +362,13 @@ public class Utils {
         }
 
         return String.format(Locale.getDefault(), "%.2f", Double.valueOf(value));
+    }
+
+    /**
+     * @see Utils#getRoundNumber(String)
+     */
+    public static String getRoundNumber(float value) {
+        return getRoundNumber(Float.toString(value));
     }
 
     public static DaoSession getAppDaoSession(Context context) {
@@ -426,7 +472,10 @@ public class Utils {
      */
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        NetworkInfo activeNetwork = null;
+        if (cm != null) {
+            activeNetwork = cm.getActiveNetworkInfo();
+        }
 
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
@@ -552,12 +601,12 @@ public class Utils {
         return kj != 0 ? Double.valueOf(((double) kj) / 4.1868d).intValue() : -1;
     }
 
-   /**
+    /**
      * Function which returns true if the battery level is low
      *
      * @param context
      * @return true if battery is low or false if battery in not low
-      */
+     */
     public static boolean getBatteryLevel(Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
@@ -571,9 +620,9 @@ public class Utils {
     }
 
     /*
-    * Function to open ScannerFragmentActivity to facilitate scanning
-    * @param activity
-    */
+     * Function to open ContinuousScanActivity to facilitate scanning
+     * @param activity
+     */
     public static void scan(Activity activity) {
 
 
@@ -594,13 +643,37 @@ public class Utils {
                         .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
             }
         } else {
-            Intent intent = new Intent(activity, ScannerFragmentActivity.class);
+            Intent intent = new Intent(activity, ContinuousScanActivity.class);
             activity.startActivity(intent);
         }
 
 
     }
 
-
+    /**
+     * @param context The context
+     * @return Returns the version name of the app
+     */
+    public static String getVersionName(Context context) {
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            return pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "(version unknown)";
+    }
+    /**
+     * @param type Type of call (Search or Scan)
+     * @return Returns the header to be put in network call
+     */
+    public static String getUserAgent(String type) {
+        if(type.equals(HEADER_USER_AGENT_SCAN)) {
+            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
+        } else if(type.equals(HEADER_USER_AGENT_SEARCH)) {
+            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
+        }
+        return "Official Android App "+BuildConfig.VERSION_NAME;
+    }
 }
 

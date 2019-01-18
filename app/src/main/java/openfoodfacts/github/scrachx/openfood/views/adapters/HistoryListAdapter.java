@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -66,6 +67,9 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.txtTitle.setText(item.getTitle());
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtProductDetails.setText(stringBuilder.toString());
+        if(BuildConfig.FLAVOR.equals("opf")||BuildConfig.FLAVOR.equals("opff")||BuildConfig.FLAVOR.equals("obf")){
+            holder.imgNutritionGrade.setVisibility(View.GONE);
+        }
         holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getSmallImageGrade(item.getNutritionGrade())));
         if (item.getUrl() == null) {
             holder.historyImageProgressbar.setVisibility(View.GONE);
@@ -136,9 +140,9 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         long days = TimeUnit.MILLISECONDS.toDays(now.getTime() - date.getTime());
 
         String secText = String.valueOf(seconds) + " seconds ago";
-        String hourText = res.getString(R.string.last_seen_string, hours, res.getQuantityString(R.plurals.hours, (int) hours));
-        String minText = res.getString(R.string.last_seen_string, minutes, res.getQuantityString(R.plurals.minutes, (int) minutes));
-        String dayText = res.getString(R.string.last_seen_string, days, res.getQuantityString(R.plurals.days, (int) days));
+        String hourText = res.getQuantityString(R.plurals.hours, (int) hours, (int) hours);
+        String minText = res.getQuantityString(R.plurals.minutes, (int) minutes,(int) minutes);
+        String dayText = res.getQuantityString(R.plurals.days, (int) days, (int) days);
         if (seconds < 60) {
             holder.txtDate.setText(secText);
         } else if (minutes < 60) {

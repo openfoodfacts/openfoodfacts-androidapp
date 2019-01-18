@@ -14,8 +14,9 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_calculate_calories"
-        android:title="@string/calculate_calories"
+        android:id="@+id/action_facts"
+        android:title="@string/calculate_nutrition_facts"
         app:showAsAction="never" />
 
 </menu>
+

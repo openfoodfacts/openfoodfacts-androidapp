@@ -1,0 +1,45 @@
+Esas son as informacións mostradas nas capturas de pantalla na tenda playstore. Manteñaas curtas e atraíntes.
+Non cambie o nome do ficheiro.
+---
+scan_en.png
+Escanear productos
+
+quickview_en.png
+Obteña o Nutriscore
+
+history_en.png
+O seu historial completo de escaneos, completamente privado e exportable
+
+product_view_wikipedia_en.png
+Máis info na Wikipedia
+
+allergen_alert_en.png
+Establecer alertas de alérxenos
+
+home_en.png
+product_view_nutrition_summary_en.png
+Nutrición, simplificada
+
+product_view_allergen_alert_en.png
+Alerta de alérxenos
+
+categories_en.png
+Obteña alternativas aos seus alimentos favoritos
+
+foodtransparency_en.png
+Become an actor of food transparency
+
+product_view_summary_en.png
+Wikipedia para Alimentos
+Wikipedia para Cosméticos
+Wikipedia para Alimento de mascotas
+Wikipedia para Produtos
+
+product_view_ingredients_en.png
+Ingredientes
+
+menu_en.png
+Potente
+
+product_view_nutrition_table_en.png
+Información nutricional

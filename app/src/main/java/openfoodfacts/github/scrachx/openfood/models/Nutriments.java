@@ -1,5 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.support.annotation.Nullable;
+import android.util.Log;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -11,6 +14,7 @@ import java.util.Map;
 import openfoodfacts.github.scrachx.openfood.R;
 
 import static android.text.TextUtils.isEmpty;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 /**
  * JSON representation of the product nutriments entry
@@ -197,11 +201,18 @@ public class Nutriments implements Serializable {
     private boolean containsMinerals;
 
     public Nutriment get(String nutrimentName){
-        if (!additionalProperties.containsKey(nutrimentName)) {
+        if (nutrimentName.isEmpty() || !additionalProperties.containsKey(nutrimentName)) {
             return null;
         }
 
-        return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
+        try{
+            return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
+        }catch (NullPointerException e){
+            // In case one of the getters was unable to get data as string
+            String stacktrace = Log.getStackTraceString(e);
+            Log.e("NUTRIMENTS-MODEL",stacktrace);
+        }
+        return null;
     }
 
     public String getUnit(String nutrimentName){
@@ -217,8 +228,19 @@ public class Nutriments implements Serializable {
         return additionalProperties.get(nutrimentName + "_100g").toString();
     }
 
-    public Double getValue(String nutrimentName){
-        return ((Double) additionalProperties.get(nutrimentName + "_value"));
+    public String getValue(String nutrimentName) {
+        if (additionalProperties.get(nutrimentName + "_value") != null) {
+            return additionalProperties.get(nutrimentName + "_value").toString();
+        }
+        return null;
+    }
+
+    @Nullable
+    public String getModifier(String nutrimentName) {
+        if (additionalProperties.get(nutrimentName + "_modifier") != null) {
+            return additionalProperties.get(nutrimentName + "_modifier").toString();
+        }
+        return null;
     }
 
     public boolean contains(String nutrimentName){
@@ -271,13 +293,81 @@ public class Nutriments implements Serializable {
             return for100g;
         }
 
+        /**
+         * Returns the amount of nutriment per 100g
+         * of product in the units stored in {@link Nutriment#unit}
+         */
+        public String getFor100gInUnits() {
+            return getValueInUnits(for100g, unit);
+        }
+
         public String getForServing() {
             return forServing;
+        }
+
+        /**
+         * Returns the amount of nutriment per serving
+         * of product in the units stored in {@link Nutriment#unit}
+         */
+        public String getForServingInUnits() {
+            return getValueInUnits(forServing, unit);
         }
 
         public String getUnit() {
             return unit;
         }
+
+        private static String getValueInUnits(String stringValue, String unit) {
+            if (stringValue.isEmpty() || stringValue.contains("%") || unit.equals("g")) {
+                return stringValue;
+            } else if (unit.equals("g")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value);
+            } else if (unit.equals("kg")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value / 1000);
+            } else if (unit.equals("mg")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value * 1000);
+            } else if (unit.equals("µg")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value * 1000000);
+            } else {
+                return stringValue;
+            }
+        }
+
+        /**
+         * Calculates the nutriment value for a given amount of this product. For example,
+         * calling getForAnyValue(1, "kg") will give you the amount of this nutriment
+         * given 1 kg of the product.
+         *
+         * @param userSetServing amount of this product used to calculate nutriment value
+         * @param unit units in either "g", "kg", or "mg" to define userSetServing
+         * @return nutriment value for a given amount of this product
+         */
+        public String getForAnyValue(float userSetServing, String unit) {
+            String strValue = getFor100gInUnits();
+            if (strValue.isEmpty() || strValue.contains("%")) {
+                return strValue;
+            } else if (unit.equals("g")) {
+                float value = Float.valueOf(strValue);
+                value = (userSetServing / 100) * value;
+                return getRoundNumber(value);
+            } else if (unit.equals("kg")) {
+                float value = Float.valueOf(strValue);
+                value = (userSetServing * 10) * value;
+                return getRoundNumber(value);
+            } else if (unit.equals("mg")) {
+                float value = Float.valueOf(strValue);
+                value = (userSetServing / 100000) * value;
+                return getRoundNumber(value);
+            } else {
+                return strValue;
+            }
+        }
+
+
     }
 
 }

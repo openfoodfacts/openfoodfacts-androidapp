@@ -6,7 +6,7 @@ Issue Tracker:https://github.com/openfoodfacts/openfoodfacts-androidapp/issues
 Changelog:https://github.com/openfoodfacts/openfoodfacts-androidapp/releases
 
 Name:Open Pet Food Facts
-Auto Name:Open PetFood Facts
+Auto Name:Open Pet Food Facts
 Summary:Look up pet food ingredients, allergens, nutrition facts
 Description:
 Scan pet food products or their barcode to obtain data on ingredients, additives

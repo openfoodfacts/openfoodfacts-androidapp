@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/safety_and_exposure_assessment"
+        android:textSize="@dimen/font_large"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/risk_of_exposure"
+        android:textSize="@dimen/font_normal"/>
+
+    <TextView
+        android:id="@+id/efsaWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="@dimen/font_small"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:drawableLeft="@drawable/yellow_circle_24dp"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/legend_adi"
+            android:textSize="@dimen/font_small"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/red_circle_24dp"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/legend_noael"
+            android:textSize="@dimen/font_small"/>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="96dp"
+                    android:layout_height="32dp"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:gravity="center"
+                    android:text="@string/infants"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/font_small"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:gravity="center"
+                    android:text="@string/toddlers"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/font_small"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:gravity="center"
+                    android:text="@string/children"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/font_small"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:gravity="center"
+                    android:text="@string/adolescents"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/font_small"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:gravity="center"
+                    android:text="@string/adults"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/font_small"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:text="@string/elderly"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/font_small"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="96dp"
+                    android:layout_height="32dp"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@color/md_black_1000"
+                    android:gravity="center"
+                    android:text="@string/infants_age"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/font_small"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@color/md_black_1000"
+                    android:gravity="center"
+                    android:text="@string/toddlers_age"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/font_small"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@color/md_black_1000"
+                    android:gravity="center"
+                    android:text="@string/children_age"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/font_small"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@color/md_black_1000"
+                    android:gravity="center"
+                    android:text="@string/adolescents_age"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/font_small"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@color/md_black_1000"
+                    android:gravity="center"
+                    android:text="@string/adults_age"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/font_small"/>
+
+                <TextView
+                    android:layout_width="84dp"
+                    android:layout_height="32dp"
+                    android:background="@color/md_black_1000"
+                    android:gravity="center"
+                    android:text="@string/elderly_age"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/font_small"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="64dp"
+                    android:gravity="center"
+                    android:text="@string/most_people"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/font_small"
+                    android:textStyle="bold"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/mpInfants"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/mpToddlers"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/mpChildren"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/mpAdolescents"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/mpAdults"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/mpElderly"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="64dp"
+                    android:gravity="center"
+                    android:text="@string/some_people"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/font_small"
+                    android:textStyle="bold"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/spInfants"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/spToddlers"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/spChildren"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/spAdolescents"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/spAdults"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="16dp"
+                    />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/spElderly"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:padding="16dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

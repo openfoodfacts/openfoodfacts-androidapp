@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/grey_400"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_400"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_server" />
+
+    <TextView
+        android:id="@+id/title_local"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:gravity="center"
+        android:text="@string/your_version"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/line2"
+        app:layout_constraintEnd_toStartOf="@id/line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Yours" />
+
+    <ImageView
+        android:id="@+id/image_ingredients_local"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@id/title_local"
+        app:layout_constraintStart_toStartOf="@id/title_local"
+        app:layout_constraintTop_toBottomOf="@id/line2"
+        tools:src="@drawable/img_scan" />
+
+    <ProgressBar
+        android:id="@+id/image_progress_local"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:padding="@dimen/padding_large"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@id/title_local"
+        app:layout_constraintStart_toStartOf="@id/title_local"
+        app:layout_constraintTop_toBottomOf="@id/line2" />
+
+    <TextView
+        android:id="@+id/txt_ingredients_local"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@id/title_local"
+        app:layout_constraintStart_toStartOf="@id/title_local"
+        app:layout_constraintTop_toBottomOf="@id/image_ingredients_local"
+        tools:text="Eau, grains de praliné 18% (sucre, AMANDES, NOISETTES), LAIT écrémé en poudre réhydraté,sucre, grains de nougatine 7% (sucre, NOISETTES torréfiées), LACTOSE et protéines de LAIT, graisse de coprah, sirop de glucose-fructose, meringue 4% (blanc d'OEUF, sucre), arôme naturel de vanille, émulsifiant : mono- et diglycérides d'acides gras, épaississants" />
+
+    <TextView
+        android:id="@+id/title_server"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:gravity="center"
+        android:text="@string/currently_on_version"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/line2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/line"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Currently on Open Food Facts" />
+
+    <ImageView
+        android:id="@+id/image_ingredients_server"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@id/title_server"
+        app:layout_constraintStart_toStartOf="@id/title_server"
+        app:layout_constraintTop_toBottomOf="@id/line2"
+        tools:src="@drawable/img_home" />
+
+    <ProgressBar
+        android:id="@+id/image_progress_server"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:padding="@dimen/padding_large"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@id/title_server"
+        app:layout_constraintStart_toStartOf="@id/title_server"
+        app:layout_constraintTop_toBottomOf="@id/line2" />
+
+    <TextView
+        android:id="@+id/txt_ingredients_server"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@id/title_server"
+        app:layout_constraintStart_toStartOf="@id/title_server"
+        app:layout_constraintTop_toBottomOf="@id/image_ingredients_local"
+        tools:text="Eau, grains de praliné 18% (sucre, AMANDES, NOISETTES), LAIT écrémé en poudre réhydraté,sucre, grains de nougatine 7% (sucre, NOISETTES torréfiées)" />
+
+</android.support.constraint.ConstraintLayout>

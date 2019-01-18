@@ -13,17 +13,17 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.SendProductDao;
 
 /**
- * Created by prajwalm on 04/04/18.
+ * @author Prajwalm
+ * @author Ross-holloway94
+ *
+ * @since 18 June 2018
  */
 
 
@@ -34,12 +34,18 @@ public class WifiUploadReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         int wifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, -1);
-        if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction()) && WifiManager.WIFI_STATE_ENABLED == wifiState) {
+     /*   if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction()) && WifiManager.WIFI_STATE_ENABLED == wifiState) {
 
-            context.startService(new Intent(context, WifiService.class));
-
-        }
-
+            //context.startService(new Intent(context, WifiService.class));
+            // Quick fix. TODO: Fix it the right way: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1583
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { 
+                context.startForegroundService(new Intent(context, WifiService.class)); 
+            } else {
+                context.startService(new Intent(context, WifiService.class));
+            }
+            
+        }*/
+        //Above code commented out by ross-holloway94 18 June 2018. Refer to issue #1583
 
     }
 
@@ -49,14 +55,19 @@ public class WifiUploadReceiver extends BroadcastReceiver {
         private List<SendProduct> listSaveProduct;
 
         @Override
+        public void onCreate() {
+            super.onCreate();
+            startForeground(1, new Notification());
+        }
+
+
+        @Override
         public int onStartCommand(Intent intent, int flags, int startId) {
+            if (intent != null) {
+                mSendProductDao = Utils.getAppDaoSession(getApplicationContext()).getSendProductDao();
+                listSaveProduct = mSendProductDao.loadAll();
 
-            mSendProductDao = Utils.getAppDaoSession(getApplicationContext()).getSendProductDao();
-            listSaveProduct = mSendProductDao.loadAll();
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+                new Handler().postDelayed(() -> {
 
 
                     if (listSaveProduct.size() > 0) {
@@ -64,8 +75,9 @@ public class WifiUploadReceiver extends BroadcastReceiver {
                     }
 
 
-                }
-            }, 10000);
+                }, 10000);
+            }
+
 
             return START_NOT_STICKY;
         }
@@ -81,22 +93,18 @@ public class WifiUploadReceiver extends BroadcastReceiver {
 
             Intent intent = new Intent(this, UploadService.class);
             intent.setAction("UploadJob");
-
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+            String contentText = this.getResources().getQuantityString(R.plurals.offline_notification_count, listSaveProduct.size(), listSaveProduct.size());
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, contentText)
                     .setContentTitle(this.getString(R.string.offline_notification_title))
-                    .setContentText(this.getString(R.string.offline_notification_context, listSaveProduct.size()))
+                    /*.setContentText(contentText)*/
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .addAction(R.drawable.ic_cloud_upload, "Upload", PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
 
-
             NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-            mNotificationManager.notify(9, builder.build());
-
-
+            if (mNotificationManager != null) {
+                mNotificationManager.notify(9, builder.build());
+            }
         }
-
     }
-
-
 }

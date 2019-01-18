@@ -13,6 +13,7 @@ import openfoodfacts.github.scrachx.openfood.category.CategoryRepository;
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
 import openfoodfacts.github.scrachx.openfood.dagger.Qualifiers;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import retrofit2.Retrofit;
@@ -21,6 +22,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 @Module
 public class AppModule {
+    private final static OkHttpClient httpClient = Utils.HttpClientBuilder();
     private OFFApplication application;
 
     public AppModule(OFFApplication application) {
@@ -39,8 +41,6 @@ public class AppModule {
     Context provideApplicationContext() {
         return application;
     }
-
-    private final static OkHttpClient httpClient = Utils.HttpClientBuilder();
 
     @Provides
     @Singleton
@@ -62,5 +62,17 @@ public class AppModule {
     @Singleton
     CategoryRepository provideCategoryRepository(CategoryNetworkService networkService, CategoryMapper mapper) {
         return new CategoryRepository(networkService, mapper);
+    }
+
+    @Provides
+    @Singleton
+    OpenFoodAPIService provideOpenFactsApiClient() {
+        return new Retrofit.Builder()
+                .baseUrl(BuildConfig.HOST)
+                .client(httpClient)
+                .addConverterFactory(JacksonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .build()
+                .create(OpenFoodAPIService.class);
     }
 }

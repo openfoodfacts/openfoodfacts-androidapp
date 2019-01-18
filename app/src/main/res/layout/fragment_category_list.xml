@@ -12,7 +12,6 @@
     </data>
 
     <FrameLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment">
@@ -23,14 +22,16 @@
             android:layout_height="match_parent"
             app:categories="@{viewModel.filteredCategories}" />
 
-
         <openfoodfacts.github.scrachx.openfood.FastScroller
             android:id="@+id/fast_scroller"
-            android:layout_width="wrap_content"
+            android:layout_width="24dp"
             android:layout_height="match_parent"
-           android:layout_gravity="end">
+            android:layout_gravity="end" />
 
-        </openfoodfacts.github.scrachx.openfood.FastScroller>
+        <include
+            android:id="@+id/offline_view"
+            layout="@layout/offline_cloud_layout"
+            android:visibility="@{viewModel.showOffline}" />
 
         <LinearLayout
             android:layout_width="match_parent"

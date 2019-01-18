@@ -2,7 +2,7 @@ Open Food Facts は、食品の原材料、アレルゲン、栄養成分表、�
 
 *** Contribute to Product Transparency ***
 
-- Open Food Facts is a products database made by everyone, for everyone.
+- Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding your first product. 

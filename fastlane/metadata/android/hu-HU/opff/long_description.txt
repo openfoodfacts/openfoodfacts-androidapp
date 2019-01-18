@@ -1,18 +1,18 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Olvassa be az állateledeleket vagy a vonalkódjukat, hogy megszerezze az adatokat azok összetevőiről, adalékanyagairól és tápértékadatairól.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
 Az Open Pet Food Facts program felfedezéséhez, kérjük, látogasson el a https://world.openpetfoodfacts.org weboldalra
 
-***Contribute to Pet Food Transparency***
+***Hozzájárulás az Állateledel Átláthatósághoz***
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Rengeteg izgalmas projektünk van, amelyekkel sokféleképpen járulhat hozzá. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** Get the Facts ***
+*** Kapja meg a Tényeket ***
 
 Megtudhatja még (a termékeken feltüntetett jelölések szerint):
 - list of ingredients (including ash content)
@@ -20,15 +20,15 @@ Megtudhatja még (a termékeken feltüntetett jelölések szerint):
 - brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Works well in any condition ***
+*** Minden körülmény között jól működik ***
 - Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Az alkalmazás csak a legszükségesebb dolgokat tölti be, hogy csökkentse az adat és akkumulátorhasználatot
+- Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Az ön állateledele, az ön adatai ***
+- Az ön személyes adatainak tulajdonosa ön és soha nem lesznek elküldve online
+- Az alkalmazást névtelenül használhatja
+- Exportálni tudja a beolvasási előzményeket
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Emberi élelmiszerekhez telepítheti az Open Food Facts-ot, kozmetikai termékekhez az Open Beauty Facts-ot és a többi termékhez az Open Products Facts-ot.

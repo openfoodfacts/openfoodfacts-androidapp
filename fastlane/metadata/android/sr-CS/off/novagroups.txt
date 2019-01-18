@@ -1,0 +1,21 @@
+Nova grupa
+
+Nova grupe
+
+Nova grupa:
+
+Grupa 1
+Grupa 1 - Neprerađena ili minimalno prerađena hrana
+Neprerađena ili minimalno prerađena hrana
+
+Grupa 2
+Grupa 2 - Prerađeni kulinarski sastojci
+Prerađeni kulinarski sastojci
+
+Grupa 3
+Grupa 3 - Prerađena hrana
+Prerađena hrana
+
+Grupa 4
+Grupa 4 - Visoko prerađena hrana i pića
+Visoko prerađena hrana i pića

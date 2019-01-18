@@ -1,0 +1,19 @@
+
+==================
+Versi baru Open Food Facts. Semua relawan Open Food Facts sedang bekerja keras mengembangkannya berdasarkan saran dan masukan dari anda. :-)
+==================
+* Open Food Facts menjadi gerakan yang lebih global dari sebelumnya. 500K produk, 10K kontributor, 182 negara. Mau bergabung dengan kami?
+==================
+Apa yang baru?
+==================
+1. Gambaran jelas tentang nutrisi, komposisi, dan semua fakta makanan.
+2. Dapatkan nilai gizi "NutriScore" untuk semua produk di dunia. Mudah membandingkan produk. Lebih mudah daripada mengartikan tabel nutrisi.
+3. Dapatkan informasi tambahan dari wikipedia. Untuk mempelajari lebih lanjut dan melihat produk serupa lainnya klik pada kategori makanan, aditif.
+4. Tambahkan peringatan alergen (selalu periksa kembali labelnya sendiri!)
+5. Riwayat pemidaian dapat diekspor dan tidak pernah meninggalkan ponsel anda
+6. Goyang ponsel kapan saja untuk memulai pemindaian
+7. Tambahkan produk bahkan tanpa koneksi internet
+8. Ambil foto, isi informasi, dan buat transparansi makanan kesukaan anda terjadi
+9. Semuanya jauh lebih cepat. Produk dimuat lebih cepat, bahkan dengan koneksi internet yang buruk.
+10. Kami tidak tertarik dengan data pribadi anda. Tidak perlu daftar untuk memindai dan berkontribusi.
+Lebihnya! Meskipun banyak yang baru, aplikasi masih sama ringannya dengan sebelumnya. Ruang yang tersisa di ponsel anda adalah suci.

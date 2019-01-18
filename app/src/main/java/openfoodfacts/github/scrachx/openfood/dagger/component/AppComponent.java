@@ -15,6 +15,10 @@ public interface AppComponent {
 
     void inject(OFFApplication application);
 
+    void inject(openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity activity);
+
+    void inject(openfoodfacts.github.scrachx.openfood.views.AddProductActivity activity);
+
     final class Initializer {
 
         private Initializer() {

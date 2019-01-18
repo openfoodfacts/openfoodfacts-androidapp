@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -26,18 +25,15 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
 
-        <android.support.v7.widget.AppCompatTextView
+        <TextView
             android:id="@+id/taglineHome"
             android:layout_width="184dp"
-            android:layout_height="30dp"
+            android:layout_height="32dp"
             android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/OFFlogo"
             android:gravity="center_horizontal"
-            android:textStyle="bold"
-            app:autoSizeMaxTextSize="28sp"
             android:text="@string/tagline"
-            app:autoSizeMinTextSize="12sp"
-            app:autoSizeStepGranularity="0.1sp"
-            app:autoSizeTextType="uniform" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textHome"
@@ -50,7 +46,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/md_black_1000"
             android:textSize="@dimen/font_normal" />
-
 
     </LinearLayout>
 

@@ -1,0 +1,23 @@
+Nova Score
+
+Nova group
+
+Nova groups
+
+Nova group:
+
+Group 1
+Group 1 - Unprocessed or minimally processed foods
+Unprocessed or minimally processed foods
+
+Group 2
+Group 2 - Processed culinary ingredients
+Processed culinary ingredients
+
+Group 3
+Group 3 - Processed foods
+Processed foods
+
+Group 4
+Group 4 - Ultra-processed food and drink products
+Ultra-processed food and drink products

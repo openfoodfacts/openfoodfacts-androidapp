@@ -1,26 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import com.fasterxml.jackson.databind.JsonNode;
-
-import java.util.Map;
-
 import io.reactivex.Single;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.PartMap;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Define our Open Food Facts API endpoints.
@@ -28,13 +21,30 @@ import retrofit2.http.Query;
  */
 public interface OpenFoodAPIService {
 
-    String PRODUCT_API_COMMENT = "new android app";
+    String PRODUCT_API_COMMENT = "Official Android app";
 
-    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags")
-    Call<State> getFullProductByBarcode(@Path("barcode") String barcode);
+    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens_tags,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups,lang,purchase_places,nutrition_data_per,no_nutrition_data")
+    Call<State> getFullProductByBarcode(@Path("barcode") String barcode,
+                                        @Header("User-Agent") String header);
+
+    @GET("api/v0/product/{barcode}.json")
+    Single<State> getExistingProductDetails(@Path("barcode") String barcode,
+                                            @Query("fields") String fields,
+                                            @Header("User-Agent") String header);
+
+    @GET("api/v0/product/{barcode}.json?fields=image_small_url,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens_tags,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups,lang,purchase_places,nutrition_data_per,no_nutrition_data")
+    Single<State> getFullProductByBarcodeSingle(@Path("barcode") String barcode,
+                                                @Header("User-Agent") String header);
+
+    @FormUrlEncoded
+    @POST("cgi/product_jqm2.pl")
+    Single<State> saveProductSingle(@Field("code") String code,
+                                    @FieldMap Map<String, String> parameters,
+                                    @Field("comment") String comment);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
-    Call<State> getShortProductByBarcode(@Path("barcode") String barcode);
+    Call<State> getShortProductByBarcode(@Path("barcode") String barcode,
+                                         @Header("User-Agent") String header);
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process&fields=image_small_url,product_name,brands,quantity,code,nutrition_grade_fr")
     Call<Search> searchProductByName(@Query("search_terms") String name, @Query("page") int page);
@@ -45,6 +55,10 @@ public interface OpenFoodAPIService {
 
     @POST("/cgi/product_jqm2.pl")
     Call<State> saveProduct(@Body SendProduct product);
+
+
+    @GET("api/v0/product/{barcode}.json?fields=ingredients")
+    Call<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
 
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)
@@ -172,11 +186,32 @@ public interface OpenFoodAPIService {
     @POST("/cgi/product_image_upload.pl")
     Call<JsonNode> saveImage(@PartMap Map<String, RequestBody> fields);
 
+    @Multipart
+    @POST("/cgi/product_image_upload.pl")
+    Single<JsonNode> saveImageSingle(@PartMap Map<String, RequestBody> fields);
+
+    @GET("/cgi/product_image_crop.pl")
+    Single<JsonNode> editImageSingle(@Query("code") String code,
+                                     @QueryMap Map<String, String> fields);
+
+    @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
+    Single<JsonNode> getIngredients(@Query("code") String code,
+                                    @Query("id") String id);
+
+    @GET("cgi/suggest.pl?tagtype=emb_codes")
+    Single<ArrayList<String>> getEMBCodeSuggestions(@Query("term") String term);
+
+    @GET("/cgi/suggest.pl?tagtype=periods_after_opening")
+    Single<ArrayList<String>> getPeriodAfterOpeningSuggestions(@Query("term") String term);
+
     @GET("brand/{brand}/{page}.json")
     Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page);
 
     @GET("additive/{additive}/{page}.json")
     Call<Search> getProductsByAdditive(@Path("additive") String additive, @Path("page") int page);
+
+    @GET("allergen/{allergen}/{page}.json")
+    Call<Search> getProductsByAllergen(@Path("allergen") String allergen, @Path("page") int page);
 
     @GET("country/{country}/{page}.json")
     Call<Search> getProductsByCountry(@Path("country") String country, @Path("page") int page);
@@ -189,7 +224,6 @@ public interface OpenFoodAPIService {
 
     @GET("label/{label}/{page}.json")
     Call<Search> getProductByLabel(@Path("label") String label, @Path("page") int page);
-
 
     @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
     Call<Search> getProductByCategory(@Path("category") String category, @Path("page") int page);
@@ -242,14 +276,31 @@ public interface OpenFoodAPIService {
     @GET("contributor/{Contributor}.json")
     Call<Search> byContributor(@Path("Contributor") String Contributor);
 
+    @GET("contributor/{Contributor}/state/to-be-completed/{page}.json")
+    Call<Search> getToBeCompletedProductsByContributor(@Path("Contributor") String Contributor, @Path("page") int page);
+
+    @GET("/photographer/{Contributor}/{page}.json")
+    Call<Search> getPicturesContributedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
+
     @GET("photographer/{Photographer}.json")
     Call<Search> byPhotographer(@Path("Photographer") String Photographer);
+
+    @GET("photographer/{Contributor}/state/to-be-completed/{page}.json")
+    Call<Search> getPicturesContributedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
     @GET("informer/{Informer}.json")
     Call<Search> byInformer(@Path("Informer") String Informer);
 
+    @GET("informer/{Contributor}/{page}.json")
+    Call<Search> getInfoAddedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
+
+    @GET("informer/{Contributor}/state/to-be-completed/{page}.json")
+    Call<Search> getInfoAddedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
+
+
     @GET("last-edit-date/{LastEditDate}.json")
     Call<Search> byLastEditDate(@Path("LastEditDate") String LastEditDate);
+
 
     @GET("entry-dates/{EntryDates}.json")
     Call<Search> byEntryDates(@Path("EntryDates") String EntryDates);
@@ -278,4 +329,23 @@ public interface OpenFoodAPIService {
 
     @GET("ingredient/{ingredient}.json")
     Call<Search> byIngredient(@Path("ingredient") String ingredient);
+
+    /**
+     * This method gives a list of incomplete products
+     */
+    @GET("state/to-be-completed/{page}.json")
+    Call<Search> getIncompleteProducts(@Path("page") int page);
+
+    @GET("/1.json?fields=null")
+    Single<Search> getTotalProductCount();
+
+
+    @GET("api/v0/product/{barcode}.json?fields=images")
+    Call<String> getProductImages(@Path("barcode") String barcode);
+
+
+    @GET("/cgi/product_image_crop.pl")
+    Call<String> editImages(@Query("code") String code,
+                            @QueryMap Map<String, String> fields);
+
 }

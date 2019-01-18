@@ -1,0 +1,45 @@
+To jsou štítky zobrazené nad snímky obrazovky v playstore. Uchovávejte je krátké a atraktivní.
+Neměňte název souboru.
+---
+scan_en.png
+Snímání zboží
+
+quickview_en.png
+Získejte Nutriční skóre
+
+history_en.png
+Vaše úplná historie snímání, zcela soukromá & exportovatelná
+
+product_view_wikipedia_en.png
+Zjistěte více s Wikipedií
+
+allergen_alert_en.png
+Nastavte si upozornění na alergeny
+
+home_en.png
+product_view_nutrition_summary_en.png
+Výživa jednoduše
+
+product_view_allergen_alert_en.png
+Hlídání alergenů
+
+categories_en.png
+Získejte alternativy pro vaše oblíbené potraviny
+
+foodtransparency_en.png
+Staňte se hybatelem férovosti potravin
+
+product_view_summary_en.png
+Wikipedia for Food
+Wikipedia for Cosmetics
+Wikipedia for Pet Food
+Wikipedia of Products
+
+product_view_ingredients_en.png
+Složení
+
+menu_en.png
+Powerful
+
+product_view_nutrition_table_en.png
+Nutriční hodnoty

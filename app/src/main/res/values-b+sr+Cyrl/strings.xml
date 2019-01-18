@@ -17,7 +17,6 @@
   </string-array>
   <!-- Text units -->
   <string-array name="units_array">
-    <item> </item>
     <item>mg</item>
     <item>kg</item>
     <item>l</item>
@@ -149,16 +148,16 @@
   <string name="txtSendAll">Upload all</string>
   <string name="txtNoData">Nema podataka</string>
   <string name="txtPictureNeeded">Molimo vas da pošaljete prvo sliku</string>
-  <string name="toastSending">Otpremanje...</string>
+  <string name="toastSending">Otpremanje…</string>
   <string name="dataSaved">Zapaćene lokalno na tvom uređaju</string>
   <string name="txtInfoAddUser">Molimo vas da unesete korisničko ime i lozinku</string>
   <string name="txtDataUpdated">Data updated</string>
-  <string name="txtLoading">Učitavam...</string>
+  <string name="txtLoading">Učitavam…</string>
   <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
   <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
   <string name="txtBarcodeRequire">Barkod je neophodan</string>
   <string name="txtOk">ОК</string>
-  <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+  <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
   <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
   <string name="txtAllsent">Proizvod poslat</string>
   <string name="txtPalm">Ovaj proizvod ne sadrži palmino ulje</string>
@@ -214,7 +213,7 @@
   <string name="title_clear_history_dialog">Clear</string>
   <string name="text_clear_history_dialog">Do you want to clear all scan history?</string>
   <string name="export_csv_history">Izvezi CSV</string>
-  <string name="txt_exporting_history">Izvoz istorije u toku...</string>
+  <string name="txt_exporting_history">Izvoz istorije u toku…</string>
   <string name="txt_history_exported">Istorija izvezena</string>
   <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
   <string name="txt_nutrition_not_found">Nedostupno</string>

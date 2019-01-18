@@ -1,0 +1,45 @@
+אלו שורות התיאור שמופיעות מעל צילומי המסך בחנות Play. יש להשאיר את המונחים האלה קצרים ומעוררי עניין.
+לא לשנות את שם הקובץ.
+---
+scan_en.png
+סריקת מוצרים
+
+quickview_en.png
+מה ה־Nutriscore
+
+history_en.png
+היסטוריית הסריקה שלך, פרטית לחלוטין וניתנת לייצוא
+
+product_view_wikipedia_en.png
+להתקדם הלאה עם ויקיפדיה
+
+allergen_alert_en.png
+הגדרת התראות לרגישויות
+
+home_en.png
+product_view_nutrition_summary_en.png
+רכיב תזונתי, מפושט
+
+product_view_allergen_alert_en.png
+אזהרת אלרגן
+
+categories_en.png
+קבלת חלופות למוצרי המזון האהובים עליך
+
+foodtransparency_en.png
+לקחת חלק בשקיפות המזון
+
+product_view_summary_en.png
+הוויקיפדיה של האוכל
+הוויקיפדיה של מוצרי הטיפוח
+הוויקיפדיה של מוצרי מזון לחיות מחמד
+ויקיפדיה של מוצרים
+
+product_view_ingredients_en.png
+רכיבים
+
+menu_en.png
+רב עצמה
+
+product_view_nutrition_table_en.png
+מפרט תזונתי
