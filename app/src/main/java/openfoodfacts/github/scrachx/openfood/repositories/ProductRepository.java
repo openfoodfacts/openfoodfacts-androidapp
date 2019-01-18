@@ -37,6 +37,9 @@ public class ProductRepository implements IProductRepository {
     private CountryNameDao countryNameDao;
     private CategoryDao categoryDao;
     private CategoryNameDao categoryNameDao;
+    private IngredientDao ingredientDao;
+    private IngredientNameDao ingredientNameDao;
+    private IngredientsRelationDao ingredientsRelationDao;
 
     public static IProductRepository getInstance() {
         if (instance == null) {
@@ -63,6 +66,9 @@ public class ProductRepository implements IProductRepository {
         countryNameDao = daoSession.getCountryNameDao();
         categoryDao = daoSession.getCategoryDao();
         categoryNameDao = daoSession.getCategoryNameDao();
+        ingredientDao = daoSession.getIngredientDao();
+        ingredientNameDao = daoSession.getIngredientNameDao();
+        ingredientsRelationDao = daoSession.getIngredientsRelationDao();
     }
 
     /**
@@ -173,6 +179,25 @@ public class ProductRepository implements IProductRepository {
                     .map(AdditivesWrapper::map);
         } else {
             return Single.fromCallable(() -> additiveDao.loadAll());
+        }
+    }
+
+    /**
+     * Load ingredients from (the server or) local database
+     *
+     * @param refresh defines the source of data.
+     *                If refresh is true (or local database is empty) than load it from the server,
+     *                else from the local database.
+     * @return The ingredients in the product.
+     * Pour le moment, pas de question a se poser, les données ne sont que locales.
+     */
+    @Override
+    public Single<List<Ingredient>> getIngredients(Boolean refresh) {
+        if (refresh || tableIsEmpty(ingredientDao)) {
+            return productApi.getIngredients()
+                    .map(IngredientsWrapper::map);
+        } else {
+            return Single.fromCallable(() -> ingredientDao.loadAll());
         }
     }
 
@@ -303,6 +328,48 @@ public class ProductRepository implements IProductRepository {
         } finally {
             db.endTransaction();
         }
+    }
+
+    /**
+     * Ingredients saving to local database
+     * <p>
+     * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
+     */
+    @Override
+    public void saveIngredients(List<Ingredient> ingredients) {
+        db.beginTransaction();
+        try {
+            for (Ingredient ingredient : ingredients) {
+                ingredientDao.insertOrReplace(ingredient);
+                for (IngredientName ingredientName : ingredient.getNames()) {
+                    ingredientNameDao.insertOrReplace(ingredientName);
+                }
+                for (IngredientsRelation ingredientsRelation : ingredient.getParents()) {
+                    ingredientsRelationDao.insertOrReplace(ingredientsRelation);
+                }
+                for (IngredientsRelation ingredientsRelation : ingredient.getChildren()) {
+                    ingredientsRelationDao.insertOrReplace(ingredientsRelation);
+                }
+            }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    /**
+     * Ingredient saving to local database
+     */
+    @Override
+    public void saveIngredient(Ingredient ingredient) {
+        //Log.i("INFO", "Début de saveIngredient");
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(ingredient);
+        saveIngredients(ingredients);
+        //Log.i("INFO", "Début de saveIngredient");
     }
 
     /**
