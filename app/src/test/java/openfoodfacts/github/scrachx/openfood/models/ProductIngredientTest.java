@@ -10,7 +10,7 @@ import static junit.framework.Assert.assertEquals;
 /**
  * Tests for {@link ProductIngredient}
  */
-public class IngredientTest {
+public class ProductIngredientTest {
 
     @Test
     public void toString_returnsCorrectFormat() {
