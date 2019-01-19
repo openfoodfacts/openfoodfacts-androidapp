@@ -1,4 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <plurals name="offline_notification_count">
+        <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+    </plurals>
 
     <plurals name="minutes">
         <item quantity="one">1 minute ago</item>
