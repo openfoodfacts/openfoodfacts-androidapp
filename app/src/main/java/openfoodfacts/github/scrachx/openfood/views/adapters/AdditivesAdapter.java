@@ -22,7 +22,7 @@ public class AdditivesAdapter extends RecyclerView.Adapter<AdditivesAdapter.View
     private ClickListener clickListener;
 
     public interface ClickListener {
-        void onclick(int position ,String name);
+        void onClick(int position ,String name);
     }
 
     public AdditivesAdapter(List<AdditiveName> additives ,ClickListener clickListener) {
@@ -43,6 +43,13 @@ public class AdditivesAdapter extends RecyclerView.Adapter<AdditivesAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.additiveName.setText(additives.get(position).getName());
+        holder.itemView.setOnClickListener(view -> {
+            if (clickListener != null) {
+                int pos = holder.getAdapterPosition();
+                clickListener.onClick(pos, additives.get(pos).getName());
+            }
+        });
+
     }
 
     @Override
@@ -50,18 +57,13 @@ public class AdditivesAdapter extends RecyclerView.Adapter<AdditivesAdapter.View
         return additives.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder{
         TextView additiveName;
 
         public ViewHolder(View itemView) {
             super(itemView);
             additiveName = itemView.findViewById(R.id.additiveName);
-            itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View view) {
-            clickListener.onclick(getAdapterPosition(),additives.get(getAdapterPosition()).getName());
-        }
     }
 }
