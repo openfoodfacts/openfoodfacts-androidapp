@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 public class TaglineModel implements Serializable {
 
-    String tagline;
+    String message;
     String url;
 
-    public String getTagline() {
-        return tagline;
+    public String getMessage() {
+        return message;
     }
 
-    public void setTagline(String tagline) {
-        this.tagline = tagline;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getUrl() {

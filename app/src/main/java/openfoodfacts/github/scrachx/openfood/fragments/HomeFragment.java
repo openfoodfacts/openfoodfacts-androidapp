@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,10 +21,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -34,6 +43,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Search;
+import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
 import openfoodfacts.github.scrachx.openfood.models.TaglineModel;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
@@ -231,20 +241,43 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     }
 
     private void getTagline(){
-        Call<TaglineModel> call = apiClient.getTagline();
-        call.enqueue(new Callback<TaglineModel>() {
-                    @Override
-                    public void onResponse(Call<TaglineModel> call, Response<TaglineModel> response) {
-                        tvDailyFoodFact.setVisibility(View.VISIBLE);
-                        TaglineModel taglineModel = response.body();
-                        taglineURL = taglineModel.getUrl();
-                        tvDailyFoodFact.setText(taglineModel.getTagline());
-                    }
 
-                    @Override
-                    public void onFailure(Call<TaglineModel> call, Throwable t) {
+       Call<ArrayList<TaglineLanguageModel>> call = apiClient.getTagline();
+       call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
+           @Override
+           public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
+               String locale = String.valueOf(Resources.getSystem().getConfiguration().locale);
+               for (int i = 0; i < response.body().size(); i++){
+                   if (response.body().get(i).getLanguage().equals(locale)){
+                       taglineURL = response.body().get(i).getTaglineModel().getUrl();
+                       tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
+                       tvDailyFoodFact.setVisibility(View.VISIBLE);
+                   }
+               }
+           }
 
-                    }
-                });
+           @Override
+           public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) {
+               String s = t.toString();
+                Toast.makeText(getContext(),"Failed",Toast.LENGTH_SHORT).show();
+           }
+       });
+
+//       Call<TaglineModel> call = apiClient.getTagline();
+//        call.enqueue(new Callback<TaglineModel>() {
+//                    @Override
+//                    public void onResponse(Call<TaglineModel> call, Response<TaglineModel> response) {
+//                        List<TaglineModel> list = response.body();
+//                        tvDailyFoodFact.setVisibility(View.VISIBLE);
+//                        TaglineModel taglineModel = response.body();
+//                        taglineURL = taglineModel.getUrl();
+//                        tvDailyFoodFact.setText(taglineModel.getTagline());
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<TaglineModel> call, Throwable t) {
+//
+//                    }
+//                });
     }
 }
