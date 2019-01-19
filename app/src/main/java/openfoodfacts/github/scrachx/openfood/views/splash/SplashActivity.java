@@ -50,7 +50,7 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
 
         toast = new LoadToast(this);
 
-        presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this);
+        presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this, this);
         presenter.refreshData();
     }
 
