@@ -899,5 +899,7 @@
     <string name="set_img_front">Set Image as Front</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="warning">Warning :</string>
+    <string name="customer_service">Customer Service :</string>
     <!-- Used for diets AddOn -->
 </resources>
