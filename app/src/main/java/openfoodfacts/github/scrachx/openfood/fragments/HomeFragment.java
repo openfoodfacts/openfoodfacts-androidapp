@@ -247,8 +247,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
            @Override
            public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) {
-               String s = t.toString();
-                Toast.makeText(getContext(),"Failed",Toast.LENGTH_SHORT).show();
+
            }
        });
     }

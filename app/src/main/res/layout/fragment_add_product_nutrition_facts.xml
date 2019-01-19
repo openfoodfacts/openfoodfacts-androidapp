@@ -35,8 +35,8 @@
                 android:id="@+id/section_nutrition_facts_picture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/nutrition_facts_picture"
                 android:textColor="#dd0b16"
@@ -81,8 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_small"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnAddImageNutritionFacts" />
@@ -117,8 +117,8 @@
                     android:id="@+id/per_serving"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:text="@string/per_serving" />
             </RadioGroup>
 
@@ -126,11 +126,11 @@
                 android:id="@+id/serving_size"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:gravity="center_vertical"
                 android:hint="@string/serving_size"
@@ -146,10 +146,10 @@
                 android:id="@+id/spinner_serving_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/nutrition_weight_units"
                 android:spinnerMode="dropdown"
@@ -158,15 +158,31 @@
                 app:layout_constraintStart_toEndOf="@id/serving_size"
                 app:layout_constraintTop_toTopOf="@id/serving_size" />
 
+            <TextView
+                android:id="@+id/energy_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/max_energy_val_msg"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/serving_size" />
+
             <EditText
                 android:id="@+id/energy"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -178,16 +194,16 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/serving_size" />
+                app:layout_constraintTop_toBottomOf="@id/energy_msg" />
 
             <Spinner
                 android:id="@+id/spinner_energy_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/energy_units"
                 android:spinnerMode="dropdown"
@@ -196,15 +212,31 @@
                 app:layout_constraintStart_toEndOf="@id/energy"
                 app:layout_constraintTop_toTopOf="@id/energy" />
 
+            <TextView
+                android:id="@+id/fat_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/max_nutrient_val_msg"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/energy" />
+
             <EditText
                 android:id="@+id/fat"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -216,16 +248,16 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/energy" />
+                app:layout_constraintTop_toBottomOf="@id/fat_msg" />
 
             <Spinner
                 android:id="@+id/spinner_fat_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/nutrition_weight_units"
                 android:spinnerMode="dropdown"
@@ -234,15 +266,31 @@
                 app:layout_constraintStart_toEndOf="@id/fat"
                 app:layout_constraintTop_toTopOf="@id/fat" />
 
+            <TextView
+                android:id="@+id/saturated_fat_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/max_nutrient_val_msg"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fat" />
+
             <EditText
                 android:id="@+id/saturated_fat"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -254,16 +302,16 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fat" />
+                app:layout_constraintTop_toBottomOf="@id/saturated_fat_msg" />
 
             <Spinner
                 android:id="@+id/spinner_saturated_fat_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/nutrition_weight_units"
                 android:spinnerMode="dropdown"
@@ -272,15 +320,31 @@
                 app:layout_constraintStart_toEndOf="@id/saturated_fat"
                 app:layout_constraintTop_toTopOf="@id/saturated_fat" />
 
+            <TextView
+                android:id="@+id/carbohydrate_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/max_nutrient_val_msg"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/saturated_fat" />
+
             <EditText
                 android:id="@+id/carbohydrate"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -292,16 +356,16 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/saturated_fat" />
+                app:layout_constraintTop_toBottomOf="@id/carbohydrate_msg" />
 
             <Spinner
                 android:id="@+id/spinner_carbohydrate_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/nutrition_weight_units"
                 android:spinnerMode="dropdown"
@@ -310,15 +374,31 @@
                 app:layout_constraintStart_toEndOf="@id/carbohydrate"
                 app:layout_constraintTop_toTopOf="@id/carbohydrate" />
 
+            <TextView
+                android:id="@+id/sugar_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/max_nutrient_val_msg"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/carbohydrate" />
+
             <EditText
                 android:id="@+id/sugar"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -330,16 +410,16 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/carbohydrate" />
+                app:layout_constraintTop_toBottomOf="@id/sugar_msg" />
 
             <Spinner
                 android:id="@+id/spinner_sugar_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/nutrition_weight_units"
                 android:spinnerMode="dropdown"
@@ -348,15 +428,31 @@
                 app:layout_constraintStart_toEndOf="@id/sugar"
                 app:layout_constraintTop_toTopOf="@id/sugar" />
 
+            <TextView
+                android:id="@+id/dietary_fibre_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/max_nutrient_val_msg"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sugar" />
+
             <EditText
                 android:id="@+id/dietary_fibre"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -368,16 +464,16 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sugar" />
+                app:layout_constraintTop_toBottomOf="@id/dietary_fibre_msg" />
 
             <Spinner
                 android:id="@+id/spinner_dietary_fiber_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/nutrition_weight_units"
                 android:spinnerMode="dropdown"
@@ -386,15 +482,31 @@
                 app:layout_constraintStart_toEndOf="@id/dietary_fibre"
                 app:layout_constraintTop_toTopOf="@id/dietary_fibre" />
 
+            <TextView
+                android:id="@+id/proteins_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/max_nutrient_val_msg"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dietary_fibre" />
+
             <EditText
                 android:id="@+id/proteins"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -406,16 +518,16 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dietary_fibre" />
+                app:layout_constraintTop_toBottomOf="@id/proteins_msg" />
 
             <Spinner
                 android:id="@+id/spinner_proteins_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/nutrition_weight_units"
                 android:spinnerMode="dropdown"
@@ -424,15 +536,31 @@
                 app:layout_constraintStart_toEndOf="@id/proteins"
                 app:layout_constraintTop_toTopOf="@id/proteins" />
 
+            <TextView
+                android:id="@+id/salt_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/max_nutrient_val_msg"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/proteins" />
+
             <EditText
                 android:id="@+id/salt"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -444,16 +572,16 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/proteins" />
+                app:layout_constraintTop_toBottomOf="@id/salt_msg" />
 
             <Spinner
                 android:id="@+id/spinner_salt_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/nutrition_weight_units"
                 android:spinnerMode="dropdown"
@@ -462,15 +590,31 @@
                 app:layout_constraintStart_toEndOf="@id/salt"
                 app:layout_constraintTop_toTopOf="@id/salt" />
 
+            <TextView
+                android:id="@+id/sodium_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/max_nutrient_val_msg"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/salt" />
+
             <EditText
                 android:id="@+id/sodium"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -482,16 +626,16 @@
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/salt" />
+                app:layout_constraintTop_toBottomOf="@id/sodium_msg" />
 
             <Spinner
                 android:id="@+id/spinner_sodium_unit"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/spinner_weights_grey"
                 android:entries="@array/nutrition_weight_units"
                 android:spinnerMode="dropdown"
@@ -504,11 +648,11 @@
                 android:id="@+id/alcohol"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="85dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="85dp"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
                 android:background="@drawable/bg_edittext"
                 android:digits="0123456789.~&gt;&lt;"
                 android:gravity="center_vertical"
@@ -525,10 +669,10 @@
                 android:id="@+id/text_alcohol_unit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/padding_short"
+                android:layout_marginLeft="@dimen/padding_short"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:text="@string/alcohol_unit"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/alcohol"

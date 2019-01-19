@@ -34,6 +34,12 @@
         <item>crwdns98141:0crwdne98141:0</item>
         <item>crwdns98143:0crwdne98143:0</item>
         <item>crwdns98145:0crwdne98145:0</item>
+        <item>crwdns111998:0crwdne111998:0</item>
+    </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>crwdns112004:0crwdne112004:0</item>
+        <item>crwdns112006:0crwdne112006:0</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -687,6 +693,7 @@
     <string name="efsa_warning_high_risk">crwdns99609:0%1$scrwdne99609:0</string>
     <string name="legend_noael">crwdns99905:0crwdne99905:0</string>
     <string name="legend_adi">crwdns99907:0crwdne99907:0</string>
+    <string name="update_image">crwdns112010:0crwdne112010:0</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">crwdns111834:0crwdne111834:0</string>
@@ -702,5 +709,15 @@
     <string name="EditDiet_Hint_So_So_Ingredient">crwdns111854:0crwdne111854:0</string>
     <string name="EditDiet_Unauthorised_Ingredients">crwdns111856:0crwdne111856:0</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">crwdns111858:0crwdne111858:0</string>
+    <string name="nutrition_image_prompt_text">crwdns112000:0crwdne112000:0</string>
+    <string name="ingredient_image_prompt_text">crwdns112002:0crwdne112002:0</string>
+    <string name="category_game_btn">crwdns111976:0crwdne111976:0</string>
+    <string name="version_string">crwdns111978:0crwdne111978:0</string>
+    <string name="version">crwdns111980:0crwdne111980:0</string>
+    <string name="set_ingredient_img">crwdns112012:0crwdne112012:0</string>
+    <string name="set_img_nutrients">crwdns112014:0crwdne112014:0</string>
+    <string name="set_img_front">crwdns112016:0crwdne112016:0</string>
+    <string name="report_img">crwdns112018:0crwdne112018:0</string>
+    <string name="detected_ingredients">crwdns112008:0crwdne112008:0</string>
     <!-- Used for diets AddOn -->
 </resources>

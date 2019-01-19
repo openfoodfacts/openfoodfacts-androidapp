@@ -17,7 +17,7 @@ import java.util.Map;
         "rank",
         "percent"
 })
-public class Ingredient implements Serializable {
+public class ProductIngredient implements Serializable {
     private static final long serialVersionUID = 1L;
     private String text;
     private String id;
@@ -44,7 +44,7 @@ public class Ingredient implements Serializable {
         this.text = text;
     }
 
-    public Ingredient withText(String text) {
+    public ProductIngredient withText(String text) {
         this.text = text;
         return this;
     }
@@ -67,7 +67,7 @@ public class Ingredient implements Serializable {
         this.id = id;
     }
 
-    public Ingredient withId(String id) {
+    public ProductIngredient withId(String id) {
         this.id = id;
         return this;
     }
@@ -90,7 +90,7 @@ public class Ingredient implements Serializable {
         this.rank = rank;
     }
 
-    public Ingredient withRank(long rank) {
+    public ProductIngredient withRank(long rank) {
         this.rank = rank;
         return this;
     }
@@ -113,7 +113,7 @@ public class Ingredient implements Serializable {
         this.percent = percent;
     }
 
-    public Ingredient withPercent(String percent) {
+    public ProductIngredient withPercent(String percent) {
         this.percent = percent;
         return this;
     }
@@ -128,7 +128,7 @@ public class Ingredient implements Serializable {
         this.additionalProperties.put(name, value);
     }
 
-    public Ingredient withAdditionalProperty(String name, Object value) {
+    public ProductIngredient withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
