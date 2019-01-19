@@ -241,6 +241,9 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                        taglineURL = response.body().get(i).getTaglineModel().getUrl();
                        tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
                        tvDailyFoodFact.setVisibility(View.VISIBLE);
+                   } else {
+                       taglineURL = response.body().get(response.body().size()-1).getTaglineModel().getUrl();
+                       tvDailyFoodFact.setText(response.body().get(response.body().size()-1).getTaglineModel().getMessage());
                    }
                }
            }
