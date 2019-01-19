@@ -22,18 +22,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.afollestad.materialdialogs.MaterialDialog;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.SingleObserver;
@@ -44,7 +35,6 @@ import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
-import openfoodfacts.github.scrachx.openfood.models.TaglineModel;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
@@ -58,7 +48,6 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
@@ -262,22 +251,5 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                 Toast.makeText(getContext(),"Failed",Toast.LENGTH_SHORT).show();
            }
        });
-
-//       Call<TaglineModel> call = apiClient.getTagline();
-//        call.enqueue(new Callback<TaglineModel>() {
-//                    @Override
-//                    public void onResponse(Call<TaglineModel> call, Response<TaglineModel> response) {
-//                        List<TaglineModel> list = response.body();
-//                        tvDailyFoodFact.setVisibility(View.VISIBLE);
-//                        TaglineModel taglineModel = response.body();
-//                        taglineURL = taglineModel.getUrl();
-//                        tvDailyFoodFact.setText(taglineModel.getTagline());
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<TaglineModel> call, Throwable t) {
-//
-//                    }
-//                });
     }
 }

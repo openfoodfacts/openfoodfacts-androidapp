@@ -8,13 +8,11 @@ import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
-import openfoodfacts.github.scrachx.openfood.models.TaglineModel;
 import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import retrofit2.Call;
 import retrofit2.http.*;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
