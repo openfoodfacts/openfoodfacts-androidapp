@@ -210,10 +210,10 @@ public class AddProductIngredientsFragment extends BaseFragment {
     /**
      * To enable fast addition mode
      *
-     * @param is
+     * @param isEnabled
      */
-    private void enableFastAdditionMode(boolean is) {
-        if (is) {
+    private void enableFastAdditionMode(boolean isEnabled) {
+        if (isEnabled) {
             traces.setVisibility(View.GONE);
             tracesHeader.setVisibility(View.GONE);
             tracesHint.setVisibility(View.GONE);
