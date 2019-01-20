@@ -170,6 +170,24 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
+        ListPreference energyUnitPreference = (ListPreference) findPreference("energyUnitPreference");
+        String energyUnits[] = {"kcal", "kj"};
+        energyUnitPreference.setEntries(energyUnits);
+        energyUnitPreference.setEntryValues(energyUnits);
+        energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            settings.edit().putString("energyUnitPreference", (String) newValue).apply();
+            return true;
+        });
+
+        ListPreference volumeUnitPreference = (ListPreference) findPreference("volumeUnitPreference");
+        String volumeUnits[] = {"l", "oz"};
+        volumeUnitPreference.setEntries(volumeUnits);
+        volumeUnitPreference.setEntryValues(volumeUnits);
+        volumeUnitPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
+            settings.edit().putString("volumeUnitPreference", (String) newValue).apply();
+            return true;
+        }));
+
         ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
         String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
         imageUploadPref.setEntries(values);
