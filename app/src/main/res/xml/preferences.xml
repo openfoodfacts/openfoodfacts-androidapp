@@ -12,16 +12,16 @@
             android:title="@string/prefs_language" />
 
         <ListPreference
-            android:dialogTitle="Choose your preferred units for energy for the nutrition table"
+            android:dialogTitle="@string/energy_pref_title"
             android:key="energyUnitPreference"
             android:summary="Choose your preferred units for energy for the nutrition table"
-            android:title="Preferred unit for energy" />
+            android:title="@string/energy_pref_title" />
 
         <ListPreference
-            android:dialogTitle="Choose your preferred units for volume for the nutrition table"
+            android:dialogTitle="@string/volume_pref_title"
             android:key="volumeUnitPreference"
-            android:summary="Choose your preferred units for volume for the nutrition table"
-            android:title="Preferred unit for volume" />
+            android:summary="@string/choose_volume_unit"
+            android:title="@string/volume_pref_title" />
 
         <CheckBoxPreference
             android:defaultValue="false"

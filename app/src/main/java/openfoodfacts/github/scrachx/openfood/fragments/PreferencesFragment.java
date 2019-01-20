@@ -171,7 +171,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
 
         ListPreference energyUnitPreference = (ListPreference) findPreference("energyUnitPreference");
-        String energyUnits[] = {"kcal", "kj"};
+        String energyUnits[] = getActivity().getResources().getStringArray(R.array.energy_units);;
         energyUnitPreference.setEntries(energyUnits);
         energyUnitPreference.setEntryValues(energyUnits);
         energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -180,7 +180,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
 
         ListPreference volumeUnitPreference = (ListPreference) findPreference("volumeUnitPreference");
-        String volumeUnits[] = {"l", "oz"};
+        String volumeUnits[] = getActivity().getResources().getStringArray(R.array.volume_units);
         volumeUnitPreference.setEntries(volumeUnits);
         volumeUnitPreference.setEntryValues(volumeUnits);
         volumeUnitPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
