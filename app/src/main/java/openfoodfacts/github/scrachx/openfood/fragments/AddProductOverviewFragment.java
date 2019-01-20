@@ -252,10 +252,10 @@ public class AddProductOverviewFragment extends BaseFragment {
     /**
      * To enable fast addition mode
      *
-     * @param is
+     * @param isEnabled
      */
-    private void enableFastAdditionMode(boolean is) {
-        if (is) {
+    private void enableFastAdditionMode(boolean isEnabled) {
+        if (isEnabled) {
             sectionManufacturingDetails.setVisibility(View.GONE);
             sectionPurchasingDetails.setVisibility(View.GONE);
             packaging.setVisibility(View.GONE);
