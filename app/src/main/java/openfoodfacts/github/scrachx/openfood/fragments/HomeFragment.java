@@ -32,6 +32,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
@@ -208,7 +209,9 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                     }
                 });
 
-        getTagline();
+        if (BuildConfig.FLAVOR.equals("off")){
+            getTagline();
+        }
 
         if (getActivity() instanceof AppCompatActivity) {
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
@@ -235,23 +238,28 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
        call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
            @Override
            public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
-               String locale = String.valueOf(Resources.getSystem().getConfiguration().locale);
-               for (int i = 0; i < response.body().size(); i++){
-                   if (response.body().get(i).getLanguage().equals(locale)){
-                       taglineURL = response.body().get(i).getTaglineModel().getUrl();
-                       tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
+               if(response != null){
+                   String locale = String.valueOf(Resources.getSystem().getConfiguration().locale);
+                   boolean isLanguageFound = false;
+                   for (int i = 0; i < response.body().size(); i++){
+                       if (response.body().get(i).getLanguage().equals(locale)){
+                           taglineURL = response.body().get(i).getTaglineModel().getUrl();
+                           tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
+                           tvDailyFoodFact.setVisibility(View.VISIBLE);
+                           isLanguageFound = true;
+                       }
+                   }
+
+                   if (!isLanguageFound){
+                       taglineURL = response.body().get(response.body().size() -1).getTaglineModel().getUrl();
+                       tvDailyFoodFact.setText(response.body().get(response.body().size() -1).getTaglineModel().getMessage());
                        tvDailyFoodFact.setVisibility(View.VISIBLE);
-                   } else {
-                       taglineURL = response.body().get(response.body().size()-1).getTaglineModel().getUrl();
-                       tvDailyFoodFact.setText(response.body().get(response.body().size()-1).getTaglineModel().getMessage());
                    }
                }
            }
 
            @Override
-           public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) {
-
-           }
+           public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) { }
        });
     }
 }
