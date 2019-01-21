@@ -76,11 +76,14 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
         Button menuButton = holder.menuButton;
 
         String baseUrlString = "https://static.openfoodfacts.org/images/products/";
-        String barcodePattern = new StringBuilder(barcode)
-                .insert(3, "/")
-                .insert(7, "/")
-                .insert(11, "/")
-                .toString();
+        String barcodePattern = barcode;
+        if (barcodePattern.length() > 8) {
+            barcodePattern = new StringBuilder(barcode)
+                    .insert(3, "/")
+                    .insert(7, "/")
+                    .insert(11, "/")
+                    .toString();
+        }
 
 
         String finalUrlString = baseUrlString + barcodePattern + "/" + imageName + ".400" + ".jpg";

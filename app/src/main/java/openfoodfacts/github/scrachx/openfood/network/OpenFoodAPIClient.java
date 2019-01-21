@@ -26,6 +26,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -191,7 +194,7 @@ public class OpenFoodAPIClient {
 
     public void getIngredients(String barcode,final OnIngredientListCallback ingredientListCallback)
     {
-        ArrayList<Ingredient> ingredients=new ArrayList<>();
+        ArrayList<ProductIngredient> ProductIngredients=new ArrayList<>();
         apiService.getIngredientsByBarcode(barcode).enqueue(new Callback<JsonNode>() {
             @Override
             public void onResponse(@NonNull Call<JsonNode> call, Response<JsonNode> response) {
@@ -199,13 +202,13 @@ public class OpenFoodAPIClient {
                 final JsonNode ingredientsJsonNode=node.findValue("ingredients");
                 for(int i=0;i<ingredientsJsonNode.size();i++)
                 {
-                    Ingredient ingredient=new Ingredient();
-                    ingredient.setId(ingredientsJsonNode.get(i).findValue("id").toString());
-                    ingredient.setText(ingredientsJsonNode.get(i).findValue("text").toString());
-                    ingredient.setRank(Long.valueOf(ingredientsJsonNode.get(i).findValue("rank").toString()));
-                    ingredients.add(ingredient);
+                    ProductIngredient ProductIngredient=new ProductIngredient();
+                    ProductIngredient.setId(ingredientsJsonNode.get(i).findValue("id").toString());
+                    ProductIngredient.setText(ingredientsJsonNode.get(i).findValue("text").toString());
+                    ProductIngredient.setRank(Long.valueOf(ingredientsJsonNode.get(i).findValue("rank").toString()));
+                    ProductIngredients.add(ProductIngredient);
                 }
-                ingredientListCallback.onIngredientListResponse(true,ingredients);
+                ingredientListCallback.onIngredientListResponse(true,ProductIngredients);
 
             }
             @Override
@@ -577,7 +580,7 @@ public class OpenFoodAPIClient {
     }
 
     public interface OnIngredientListCallback {
-        void onIngredientListResponse(boolean value, ArrayList<Ingredient> ingredients);
+        void onIngredientListResponse(boolean value, ArrayList<ProductIngredient> productIngredients);
     }
 
     /**

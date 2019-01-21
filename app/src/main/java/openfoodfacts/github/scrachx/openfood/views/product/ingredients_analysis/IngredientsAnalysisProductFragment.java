@@ -12,24 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-
-import com.fasterxml.jackson.databind.JsonNode;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-
-import java.util.ArrayList;
-
-
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.Ingredient;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.adapter.IngredientAnalysisRecyclerAdapter;
-import retrofit2.Response;
 
 public class IngredientsAnalysisProductFragment extends BaseFragment {
     @BindView(R.id.ingredient_analysis_recycler_view)
