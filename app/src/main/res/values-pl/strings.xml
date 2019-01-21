@@ -45,10 +45,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item quantity="other">Wiele dni temu
 %d dni temu</item>
     </plurals>
-    <string name="action_settings">Opcje</string>
-    <string name="action_about">Na temat</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="action_about">O Aplikacji</string>
     <string name="action_discover">Odkryj</string>
-    <string name="contribute">Jak wnieść swój wkład</string>
+    <string name="contribute">Jak mogę pomóc</string>
     <string name="action_find">Znajdź</string>
     <string name="text_barcode">Wprowadź kod kreskowy:</string>
     <string name="message_in_activity_save_product_offline">Tylko jedno zdjęcie jest obowiązkowe, by wysłać nowy produkt.</string>
@@ -61,7 +61,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Streszczenie</item>
         <item>Składniki</item>
         <item>Odżywianie</item>
-        <item>Tabela wartości odżywczych</item>
+        <item>Wartości odżywcze</item>
         <item>Oddziaływanie na środowisko</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
@@ -722,6 +722,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="efsa_warning_high_risk">Europejski Urząd ds. Bezpieczeństwa Żywności (EFSA) ustalił, że niektóre grupy ludności są narażone na wysokie ryzyko nadmiernego spożycia %1$s.</string>
     <string name="legend_noael">dawka powyżej której obserwuje się działanie nie pożądane (NOAEL)</string>
     <string name="legend_adi">dopuszczalne dzienna spożycie (ADI)</string>
+    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Wyślij zaktualizowany obraz</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
@@ -738,15 +740,18 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="EditDiet_Hint_So_So_Ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Niezatwierdzone składniki</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Lista nieautoryzowanych składników, które powinny zostać wyświetlone w kolorze czerwonym. Przykład: gluten, mleko, olej palmowy, cukier ... Listę można uzupełnić później.</string>
+    <string name="extract_ingredients_prompt">Extract Ingredients</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Zrób zdjęcie składników</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="category_game_btn">Pomóż obliczyć Nutri-Score. przez właściwe kategoryzowanie produktów</string>
     <string name="version_string">Aplikacja na Androida Open Food Facts</string>
     <string name="version">Wersja</string>
-    <string name="set_ingredient_img">Set image as Ingredient</string>
-    <string name="set_img_nutrients">Set Image as Nutrition</string>
-    <string name="set_img_front">Set Image as Front</string>
-    <string name="report_img">Report Image</string>
+    <string name="set_ingredient_img">Ustaw obraz dla składników</string>
+    <string name="set_img_nutrients">Ustaw obraz dla wartości odżywczych</string>
+    <string name="set_img_front">Ustaw jako główny obraz</string>
+    <string name="report_img">Zgłoś zdjęcie</string>
     <string name="detected_ingredients">Wykryte składniki</string>
+    <string name="fast_addition_mode_title">Fast Addition Mode</string>
+    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
     <!-- Used for diets AddOn -->
 </resources>
