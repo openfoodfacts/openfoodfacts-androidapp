@@ -8,9 +8,9 @@ import java.util.Map;
 import static junit.framework.Assert.assertEquals;
 
 /**
- * Tests for {@link Ingredient}
+ * Tests for {@link ProductIngredient}
  */
-public class IngredientTest {
+public class ProductIngredientTest {
 
     @Test
     public void toString_returnsCorrectFormat() {
@@ -23,12 +23,12 @@ public class IngredientTest {
         Map<String, Object> additionalProperties = new HashMap<>();
         additionalProperties.put(additionalPropertyName, additionalPropertyValue);
 
-        Ingredient ingredient = new Ingredient();
-        ingredient.setText(text);
-        ingredient.setId(id);
-        ingredient.setRank(rank);
-        ingredient.setPercent(percent);
-        ingredient.setAdditionalProperty(additionalPropertyName, additionalPropertyValue);
+        ProductIngredient productIngredient = new ProductIngredient();
+        productIngredient.setText(text);
+        productIngredient.setId(id);
+        productIngredient.setRank(rank);
+        productIngredient.setPercent(percent);
+        productIngredient.setAdditionalProperty(additionalPropertyName, additionalPropertyValue);
 
         String expectedString = "Ingredient{" +
                 "text='" + text + '\'' +
@@ -38,6 +38,6 @@ public class IngredientTest {
                 ", additionalProperties=" + additionalProperties +
                 '}';
 
-        assertEquals(expectedString, ingredient.toString());
+        assertEquals(expectedString, productIngredient.toString());
     }
 }

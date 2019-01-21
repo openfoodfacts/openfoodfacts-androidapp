@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
@@ -182,6 +183,13 @@ public class AddProductOverviewFragment extends BaseFragment {
     private List<String> labels = new ArrayList<>();
     private List<String> category = new ArrayList<>();
     private boolean newImageSelected;
+    @BindView(R.id.grey_line2)
+    View greyLine2;
+    @BindView(R.id.grey_line3)
+    View greyLine3;
+    @BindView(R.id.grey_line4)
+    View greyLine4;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -225,6 +233,13 @@ public class AddProductOverviewFragment extends BaseFragment {
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValues();
+            } else {
+                //adittion
+                if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false)) {
+                    enableFastAdditionMode(true);
+                } else {
+                    enableFastAdditionMode(false);
+                }
             }
             barcode.append(" " + code);
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
@@ -238,6 +253,49 @@ public class AddProductOverviewFragment extends BaseFragment {
                 getString(R.string.hint_product_URL) + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
+    }
+
+    /**
+     * To enable fast addition mode
+     *
+     * @param isEnabled
+     */
+    private void enableFastAdditionMode(boolean isEnabled) {
+        if (isEnabled) {
+            sectionManufacturingDetails.setVisibility(View.GONE);
+            sectionPurchasingDetails.setVisibility(View.GONE);
+            packaging.setVisibility(View.GONE);
+            label.setVisibility(View.GONE);
+            periodsAfterOpening.setVisibility(View.GONE);
+            originOfIngredients.setVisibility(View.GONE);
+            manufacturingPlace.setVisibility(View.GONE);
+            embCode.setVisibility(View.GONE);
+            link.setVisibility(View.GONE);
+            countryWherePurchased.setVisibility(View.GONE);
+            stores.setVisibility(View.GONE);
+            countriesWhereSold.setVisibility(View.GONE);
+            otherImage.setVisibility(View.GONE);
+            greyLine2.setVisibility(View.GONE);
+            greyLine3.setVisibility(View.GONE);
+            greyLine4.setVisibility(View.GONE);
+        } else {
+            sectionManufacturingDetails.setVisibility(View.VISIBLE);
+            sectionPurchasingDetails.setVisibility(View.VISIBLE);
+            packaging.setVisibility(View.VISIBLE);
+            label.setVisibility(View.VISIBLE);
+            periodsAfterOpening.setVisibility(View.VISIBLE);
+            originOfIngredients.setVisibility(View.VISIBLE);
+            manufacturingPlace.setVisibility(View.VISIBLE);
+            embCode.setVisibility(View.VISIBLE);
+            link.setVisibility(View.VISIBLE);
+            countryWherePurchased.setVisibility(View.VISIBLE);
+            stores.setVisibility(View.VISIBLE);
+            countriesWhereSold.setVisibility(View.VISIBLE);
+            otherImage.setVisibility(View.VISIBLE);
+            greyLine2.setVisibility(View.VISIBLE);
+            greyLine3.setVisibility(View.VISIBLE);
+            greyLine4.setVisibility(View.VISIBLE);
+        }
     }
 
     /**
