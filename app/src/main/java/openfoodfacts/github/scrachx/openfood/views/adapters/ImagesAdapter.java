@@ -30,6 +30,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 import static openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment.createJsonObject;
 
@@ -181,7 +182,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
 
     public void displaySetImageName(String response) {
 
-        JSONObject jsonObject = createJsonObject(response);
+        JSONObject jsonObject = Utils.createJsonObject(response);
         String imageName = null;
         try {
             imageName = jsonObject.getString("imagefield");
