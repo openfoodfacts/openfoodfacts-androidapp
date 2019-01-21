@@ -152,6 +152,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
                     enableFastAdditionMode(false);
                 }
             }
+            if(b.getBoolean("perform_ocr")) {
+                extractIngredients();
+            }
         } else {
             Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show();
             activity.finish();
