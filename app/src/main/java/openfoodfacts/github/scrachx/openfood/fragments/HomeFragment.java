@@ -238,7 +238,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
        call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
            @Override
            public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
-               if(response != null){
+               if(response.isSuccessful()){
                    String locale = String.valueOf(Resources.getSystem().getConfiguration().locale);
                    boolean isLanguageFound = false;
                    for (int i = 0; i < response.body().size(); i++){
@@ -249,7 +249,6 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                            isLanguageFound = true;
                        }
                    }
-
                    if (!isLanguageFound){
                        taglineURL = response.body().get(response.body().size() -1).getTaglineModel().getUrl();
                        tvDailyFoodFact.setText(response.body().get(response.body().size() -1).getTaglineModel().getMessage());
