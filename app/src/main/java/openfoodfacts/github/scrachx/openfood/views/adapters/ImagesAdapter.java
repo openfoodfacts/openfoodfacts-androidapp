@@ -32,7 +32,6 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
-import static openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment.createJsonObject;
 
 /**
  * Created by prajwalm on 10/09/18.
