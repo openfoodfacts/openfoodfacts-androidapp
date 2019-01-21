@@ -275,13 +275,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
             Bundle bundle = new Bundle();
             if (edit_product && !newImageSelected) {
                 bundle.putString("imageurl", imagePath);
-                bundle.putString("code", product.getCode());
-                bundle.putString("id", "ingredients_en");
             } else {
                 bundle.putString("imageurl", "file://" + imagePath);
-                bundle.putString("code", product.getCode());
-                bundle.putString("id", "ingredients_en");
             }
+            bundle.putString("code", product.getCode());
+            bundle.putString("id", "ingredients_en");
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
