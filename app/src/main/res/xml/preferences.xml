@@ -85,6 +85,12 @@
 
         <CheckBoxPreference
             android:defaultValue="false"
+            android:key="fastAdditionMode"
+            android:summary="@string/fast_addition_mode"
+            android:title="@string/fast_addition_mode_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
             android:key="photoMode"
             android:title="@string/preference_show_all_product_photos_title"
             android:summary="@string/preference_show_all_product_photos_summary" />
