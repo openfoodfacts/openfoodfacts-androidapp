@@ -549,7 +549,7 @@
     <string name="bottomNav_history">History</string>
     <string name="bottomNav_search">Search</string>
     <string name="products_added">Products you added or edited</string>
-    <string name="products_incomplete">Products you added that need to be completed</string>
+    <string name="products_incomplete">Produkter déi Dir bäigefügt huet, déi awer nach hannerloss  sinn an der Datenbank</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
