@@ -239,7 +239,7 @@
     <string name="search_by_category">Category</string>
     <string name="search_by_name_drawer">Search by name</string>
     <string name="scan_search">Scan Barcode</string>
-    <string name="user_drawer">User</string>
+    <string name="user_drawer">Benotzer</string>
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
     <string name="txt_product_not_found">Products not found</string>
