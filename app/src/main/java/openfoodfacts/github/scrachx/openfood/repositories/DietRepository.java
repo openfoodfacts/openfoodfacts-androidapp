@@ -1360,7 +1360,7 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public String exportDietToJson(Diet diet){
-        JSONObject dietExport = dietToJson(diet);
+        JSONObject diet_export = dietToJson(diet);
         JSONArray namesJson = new JSONArray();
         List<DietName> dietNames = dietNameDao.queryBuilder()
                 .where(DietNameDao.Properties.DietTag.eq(diet.getTag()))
@@ -1370,7 +1370,7 @@ public class DietRepository implements IDietRepository {
             namesJson.put(dietNameToJson(dietName));
         }
         try {
-            dietExport.put("Names", namesJson);
+            diet_export.put("Names", namesJson);
         } catch (JSONException e) {
             Log.e("exportDietToJson", "unexpected JSON exception", e);
         }
@@ -1383,10 +1383,10 @@ public class DietRepository implements IDietRepository {
             dietIngredientsListJson.put(dietIngredientsToJson(dietIngredients));
         }
         try {
-            dietExport.put("DietIngredients", dietIngredientsListJson);
+            diet_export.put("DietIngredients", dietIngredientsListJson);
         } catch (JSONException e) {
             Log.e("exportDietToJson", "unexpected JSON exception", e);
         }
-        return dietExport.toString();
+        return diet_export.toString();
     }
 }

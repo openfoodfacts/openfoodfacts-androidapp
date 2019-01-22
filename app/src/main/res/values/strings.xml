@@ -889,9 +889,9 @@
     <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
-    <string name="dietExport_1">To have this new diet in Open Food Facts, thanks to open OFF App, goto to menu</string>
-    <string name="dietExport_2">Click on the + button\nThen copy/paste this informations in the corresponding fields :</string>
-    <string name="dietExport_3">Click on</string>
+    <string name="diet_export_1">To have this new diet in Open Food Facts, thanks to open OFF App, goto to menu</string>
+    <string name="diet_export_2">Click on the + button\nThen copy/paste this informations in the corresponding fields :</string>
+    <string name="diet_export_3">Click on</string>
     <!-- Used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
     <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
