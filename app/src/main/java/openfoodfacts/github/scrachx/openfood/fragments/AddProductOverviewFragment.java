@@ -245,6 +245,9 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
                 otherImage.setVisibility(View.GONE);
             }
+            if(b.getBoolean("perform_ocr")) {
+                ((AddProductActivity) activity).proceed();
+            }
         } else {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();
             activity.finish();
