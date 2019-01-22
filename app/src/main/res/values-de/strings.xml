@@ -693,8 +693,8 @@
     <string name="efsa_warning_high_risk">Die Europäische Behörde für Lebensmittelsicherheit (EFSA) hat festgestellt, dass einige Bevölkerungsgruppen ein hohes Risiko haben, zu viel %1$s zu verzehren.</string>
     <string name="legend_noael">über der Dosis mit beobachteter Nebenwirkung (NOAEL)</string>
     <string name="legend_adi">über der zulässigen täglichen Aufnahme (ADI)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="max_energy_val_msg">Dieser Wert liegt über 2.000 kcal pro 100g. Können Sie dies berichtigen?</string>
+    <string name="max_nutrient_val_msg">Der eingegebene Wert ist höher als pro Portionsgröße angegeben.</string>
     <string name="update_image">Senden Sie ein aktualisiertes Bild</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
@@ -711,7 +711,7 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Listet die problematischen Inhaltsstoffe auf, die in Orange angezeigt werden sollen. Beispiel: Ei, Fisch … Sie können diese Liste später ergänzen.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Nicht zugelassene Inhaltsstoffe</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Listet die nicht zugelassenen Zutaten auf, die rot angezeigt werden sollen. Beispiel: Gluten, Milch, Palmöl, Zucker … Sie können diese Liste später ergänzen.</string>
-    <string name="extract_ingredients_prompt">Extract Ingredients</string>
+    <string name="extract_ingredients_prompt">Inhaltsstoffe extrahieren</string>
     <string name="nutrition_image_prompt_text">Foto der Nährwertangaben aufnehmen</string>
     <string name="ingredient_image_prompt_text">Foto der Inhaltsstoffe aufnehmen</string>
     <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
@@ -722,7 +722,7 @@
     <string name="set_img_front">Als Titelbild festlegen</string>
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
+    <string name="fast_addition_mode">Wenn diese Option gewählt wurde, können Produkte mit wenigen Attributen schnell hinzugefügt werden.</string>
     <!-- Used for diets AddOn -->
 </resources>

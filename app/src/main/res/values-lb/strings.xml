@@ -31,8 +31,8 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Iwwersiicht</item>
-        <item>Ingredients</item>
-        <item>Nutrition</item>
+        <item>Inhaltstoffer</item>
+        <item>Ernährung</item>
         <item>Nutrition Table</item>
         <item>Environment</item>
     </string-array>
@@ -102,7 +102,7 @@
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nukleotiden</item>
         <item>Oleic acid (18:1 n-9)</item>
         <item>Omega 3 fatty acids</item>
         <item>Omega 6 fatty acids</item>
@@ -113,14 +113,14 @@
         <item>Phosphor</item>
         <item>Sugar alcohols (Polyols)</item>
         <item>Polyunsaturated fat</item>
-        <item>Potassium</item>
-        <item>Selenium</item>
+        <item>Potasium/Kalium</item>
+        <item>Selen</item>
         <item>Serum proteins</item>
         <item>Silica</item>
         <item>Starch</item>
         <item>Stearic acid (18:0)</item>
         <item>Saccharose</item>
-        <item>Taurine</item>
+        <item>Taurin</item>
         <item>Transfetter</item>
         <item>Vitamin A</item>
         <item>Vitamin B1 (Thiamin)</item>
@@ -133,13 +133,13 @@
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
-        <item>Zinc</item>
+        <item>Zënk</item>
     </string-array>
     <!-- Text units -->
     <string-array name="images_array">
         <item>Default</item>
-        <item>Nutrition</item>
-        <item>Ingredients</item>
+        <item>Ernährung</item>
+        <item>Inhaltstoffer</item>
     </string-array>
     <!-- Content Description -->
     <string name="bookmark">Bookmark</string>
@@ -185,7 +185,7 @@
     <string name="txtSignIn">Sign in</string>
     <string name="txtUser">User panel</string>
     <string name="txtToastSaved">User saved</string>
-    <string name="txtSalt">Salt</string>
+    <string name="txtSalt">Salz</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Zocker</string>
     <string name="hintBarcode">Barcode</string>
@@ -239,7 +239,7 @@
     <string name="search_by_category">Category</string>
     <string name="search_by_name_drawer">Search by name</string>
     <string name="scan_search">Scan Barcode</string>
-    <string name="user_drawer">User</string>
+    <string name="user_drawer">Benotzer</string>
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
     <string name="txt_product_not_found">Products not found</string>
@@ -302,7 +302,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">Ernährungs-Fakten Dësch fir %1$s vun dësem Produkt</string>
     <string name="check_facts">Check</string>
-    <string name="nutrition">Nutrition</string>
+    <string name="nutrition">Ernährung</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please enter the weight</string>
     <string name="enter_weight">Enter the weight</string>
@@ -318,16 +318,16 @@
     <string name="nutrition_fat_short_name">Fat (g)</string>
     <string name="nutrition_fiber">Fiberen</string>
     <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
-    <string name="nutrition_header">Nutrition facts</string>
+    <string name="nutrition_header">Ernährungangaben</string>
     <string name="nutrition_no_data_message">No data is available for this product</string>
     <string name="nutrition_per_quantity">For 100g/100ml</string>
-    <string name="nutrition_proteins">Proteins</string>
+    <string name="nutrition_proteins">Protéinen/Ëiweisser</string>
     <string name="nutrition_proteins_short_name">Proteins (g)</string>
-    <string name="nutrition_salt">Salt</string>
+    <string name="nutrition_salt">Salz</string>
     <string name="nutrition_salt_short_name">Salt (g)</string>
     <string name="nutrition_satured_fat">Gesättescht Fetter</string>
     <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
-    <string name="nutrition_serving">Per serving</string>
+    <string name="nutrition_serving">pro Portioun</string>
     <string name="nutrition_serving_size">Serving size :</string>
     <string name="nutrition_sodium">Sodium</string>
     <string name="nutrition_sodium_short_name">Sodium (g)</string>
@@ -369,16 +369,16 @@
     <string name="nutrition_lactose">Laktos</string>
     <string name="nutrition_casein">Casein</string>
     <string name="nutrition_maltodextrins">Maltodextrinen</string>
-    <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
-    <string name="for_100g">For 100 g</string>
-    <string name="serving">Per serving</string>
+    <string name="nutrition_serum_proteins">Serum Proteinen</string>
+    <string name="nutrition_nucleotides">Nukleotiden</string>
+    <string name="for_100g">Fir 100 g</string>
+    <string name="serving">pro Portioun</string>
     <string name="minerals">Mineralien</string>
     <string name="nutrition_calcium">Kalzium</string>
-    <string name="nutrition_potassium">Potassium</string>
+    <string name="nutrition_potassium">Potasium/Kalium</string>
     <string name="nutrition_chlore">Chlorine</string>
     <string name="nutrition_magnesium">Magnesium</string>
-    <string name="nutrition_taurine">Taurine</string>
+    <string name="nutrition_taurine">Taurin</string>
     <string name="nutrition_monounsaturatedFat">Mono ongesättescht Fetter</string>
     <string name="nutrition_polyunsaturatedFat">Polyongesättescht Fetter</string>
     <string name="nutrition_omega3">Omega 3 Fetter</string>
@@ -389,7 +389,7 @@
     <string name="nutrition_fructose">Fructos</string>
     <string name="nutrition_maltose">Maltos</string>
     <string name="nutrition_alcohol">Alkohol</string>
-    <string name="nutrition_vitamins">Vitamins</string>
+    <string name="nutrition_vitamins">Vitaminen</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
     <string name="vitamin_e">Vitamin E</string>
@@ -402,26 +402,26 @@
     <string name="vitamin_b9">Vitamin B9</string>
     <string name="vitamin_b12">Vitamin B12</string>
     <string name="biotin">Biotin</string>
-    <string name="pantothenic_acid">Pantothenic acid</string>
+    <string name="pantothenic_acid">Pantotheninséier</string>
     <string name="nutrition_minerals">Mineralien</string>
     <string name="silica">Silica</string>
     <string name="bicarbonate">Bikarbonat</string>
-    <string name="potassium">Potassium</string>
+    <string name="potassium">Potasium/Kalium</string>
     <string name="chloride">Chlorid</string>
     <string name="calcium">Kalzium</string>
     <string name="phosphorus">Phosphor</string>
     <string name="iron">Eisen</string>
     <string name="magnesium">Magnesium</string>
-    <string name="zinc">Zinc</string>
+    <string name="zinc">Zënk</string>
     <string name="copper">Koffer</string>
     <string name="manganese">Mangan</string>
     <string name="fluoride">Fluorid</string>
-    <string name="selenium">Selenium</string>
+    <string name="selenium">Selen</string>
     <string name="chromium">Chrom</string>
     <string name="molybdenum">Molybdän</string>
     <string name="iodine">Jod</string>
     <string name="caffeine">Koffein</string>
-    <string name="taurine">Taurine</string>
+    <string name="taurine">Taurin</string>
     <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">Fruucht, Geméis, Nëss</string>
     <string name="collagen_meat_protein_ratio">Verhältnis zwëschen Kollagener/Flëschprotéiner</string>
@@ -549,7 +549,7 @@
     <string name="bottomNav_history">History</string>
     <string name="bottomNav_search">Search</string>
     <string name="products_added">Products you added or edited</string>
-    <string name="products_incomplete">Products you added that need to be completed</string>
+    <string name="products_incomplete">Produkter déi Dir bäigefügt huet, déi awer nach hannerloss  sinn an der Datenbank</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
@@ -619,7 +619,7 @@
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Overview</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="ingredients">Inhaltstoffer</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
@@ -630,13 +630,13 @@
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Spuren</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per Serving</string>
-    <string name="serving_size">Serving size</string>
+    <string name="serving_size">Gréisst vun der Portioun</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
     <string name="add_this_product">Add this product</string>
@@ -662,7 +662,7 @@
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-    <string name="edit_product_title">Edit a product</string>
+    <string name="edit_product_title">Äert Produkt beaarbechten</string>
     <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
@@ -712,7 +712,7 @@
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
-    <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
+    <string name="nutrition_image_prompt_text">Maacht w.e.g eng Foto vun der Ernährungstabell</string>
     <string name="ingredient_image_prompt_text">Maacht w.e.g. eng Photo vun den Inhaltsstoffer</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
