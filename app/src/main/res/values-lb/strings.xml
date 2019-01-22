@@ -81,19 +81,19 @@
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
         <item>Fluoride</item>
-        <item>Fructose</item>
+        <item>Fructos</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
-        <item>Glucose</item>
+        <item>Glukos</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>Iodine</item>
         <item>Iron</item>
-        <item>Lactose</item>
+        <item>Laktos</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
         <item>Magnesium</item>
-        <item>Maltodextrins</item>
-        <item>Maltose</item>
+        <item>Maltodextrinen</item>
+        <item>Maltos</item>
         <item>Manganese</item>
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
@@ -119,7 +119,7 @@
         <item>Silica</item>
         <item>Starch</item>
         <item>Stearic acid (18:0)</item>
-        <item>Sucrose</item>
+        <item>Saccharose</item>
         <item>Taurine</item>
         <item>Trans fat</item>
         <item>Vitamin A</item>
@@ -175,9 +175,9 @@
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
-    <string name="txtNutritionLevelLow">in low quantity</string>
-    <string name="txtNutritionLevelModerate">in moderate quantity</string>
-    <string name="txtNutritionLevelHigh">in high quantity</string>
+    <string name="txtNutritionLevelLow">déif Quantitéit</string>
+    <string name="txtNutritionLevelModerate">an moderater Quantitéit</string>
+    <string name="txtNutritionLevelHigh">Héigh Quantitéit</string>
     <string name="txtLogin">Login :</string>
     <string name="txtPass">Password :</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
@@ -187,7 +187,7 @@
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
-    <string name="txtSugars">Sugars</string>
+    <string name="txtSugars">Zocker</string>
     <string name="hintBarcode">Barcode</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
@@ -308,12 +308,12 @@
     <string name="enter_weight">Enter the weight</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
-    <string name="nutrition_carbohydrate">Carbohydrate</string>
+    <string name="nutrition_carbohydrate">Kuehlenhydrater</string>
     <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
-    <string name="nutrition_energy">Energy</string>
-    <string name="nutrition_energy_short_name">Energy</string>
+    <string name="nutrition_energy">Energie</string>
+    <string name="nutrition_energy_short_name">Energie</string>
     <string name="nutrition_fat">Fat</string>
     <string name="nutrition_fat_short_name">Fat (g)</string>
     <string name="nutrition_fiber">Dietary fiber</string>
@@ -325,13 +325,13 @@
     <string name="nutrition_proteins_short_name">Proteins (g)</string>
     <string name="nutrition_salt">Salt</string>
     <string name="nutrition_salt_short_name">Salt (g)</string>
-    <string name="nutrition_satured_fat">Saturated fat</string>
+    <string name="nutrition_satured_fat">Gesättescht Fetter</string>
     <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
     <string name="nutrition_serving">Per serving</string>
     <string name="nutrition_serving_size">Serving size :</string>
     <string name="nutrition_sodium">Sodium</string>
     <string name="nutrition_sodium_short_name">Sodium (g)</string>
-    <string name="nutrition_sugars">Sugars</string>
+    <string name="nutrition_sugars">Zocker</string>
     <string name="nutrition_sugars_short_name">Sugars (g)</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
@@ -366,9 +366,9 @@
     <string name="txt_cant_load_search_results">Can\'t load search results</string>
     <string name="something_went_wrong">Sorry, something went wrong…</string>
     <string name="txt_try_again">Try again</string>
-    <string name="nutrition_lactose">Lactose</string>
+    <string name="nutrition_lactose">Laktos</string>
     <string name="nutrition_casein">Casein</string>
-    <string name="nutrition_maltodextrins">Maltodextrins</string>
+    <string name="nutrition_maltodextrins">Maltodextrinen</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">For 100 g</string>
@@ -379,16 +379,16 @@
     <string name="nutrition_chlore">Chlorine</string>
     <string name="nutrition_magnesium">Magnesium</string>
     <string name="nutrition_taurine">Taurine</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
-    <string name="nutrition_omega3">Omega 3</string>
-    <string name="nutrition_omega6">Omega 6</string>
-    <string name="nutrition_omega9">Omega 9</string>
-    <string name="nutrition_sucrose">Sucrose</string>
-    <string name="nutrition_glucose">Glucose</string>
-    <string name="nutrition_fructose">Fructose</string>
-    <string name="nutrition_maltose">Maltose</string>
-    <string name="nutrition_alcohol">Alcohol</string>
+    <string name="nutrition_monounsaturatedFat">Mono ongesättescht Fetter</string>
+    <string name="nutrition_polyunsaturatedFat">Polyongesättescht Fetter</string>
+    <string name="nutrition_omega3">Omega 3 Fetter</string>
+    <string name="nutrition_omega6">Omega 6 Fetter</string>
+    <string name="nutrition_omega9">Omega 9 Fetter</string>
+    <string name="nutrition_sucrose">Saccharose</string>
+    <string name="nutrition_glucose">Glukos</string>
+    <string name="nutrition_fructose">Fructos</string>
+    <string name="nutrition_maltose">Maltos</string>
+    <string name="nutrition_alcohol">Alkohol</string>
     <string name="nutrition_vitamins">Vitamins</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
@@ -427,11 +427,11 @@
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Cocoa</string>
     <string name="chlorophyl">Chlorophyl</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-    <string name="take_picture_front">Take a picture of the front</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
+    <string name="take_picture_ingredients">Maacht w.e.g. eng Photo vun den Inhaltsstoffer</string>
+    <string name="take_picture_front">Maacht w.e.g. eng Foto vum Produktbild</string>
+    <string name="take_picture_nutrition_table">Maacht w.e.g eng Foto vun der Ernährungstabell</string>
     <string name="take_more_pictures">Take more pictures</string>
-    <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="txtSaturatedFat">Gesättescht Fetter</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Scan</string>
@@ -713,7 +713,7 @@
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
     <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
-    <string name="ingredient_image_prompt_text">Take a picture of the ingredients</string>
+    <string name="ingredient_image_prompt_text">Maacht w.e.g. eng Photo vun den Inhaltsstoffer</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
