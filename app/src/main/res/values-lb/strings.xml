@@ -712,7 +712,7 @@
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
-    <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
+    <string name="nutrition_image_prompt_text">Maacht w.e.g eng Foto vun der Ernährungstabell</string>
     <string name="ingredient_image_prompt_text">Maacht w.e.g. eng Photo vun den Inhaltsstoffer</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
