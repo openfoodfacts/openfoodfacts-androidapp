@@ -102,7 +102,7 @@
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nukleotiden</item>
         <item>Oleic acid (18:1 n-9)</item>
         <item>Omega 3 fatty acids</item>
         <item>Omega 6 fatty acids</item>
@@ -113,14 +113,14 @@
         <item>Phosphor</item>
         <item>Sugar alcohols (Polyols)</item>
         <item>Polyunsaturated fat</item>
-        <item>Potassium</item>
-        <item>Selenium</item>
+        <item>Potasium/Kalium</item>
+        <item>Selen</item>
         <item>Serum proteins</item>
         <item>Silica</item>
         <item>Starch</item>
         <item>Stearic acid (18:0)</item>
         <item>Saccharose</item>
-        <item>Taurine</item>
+        <item>Taurin</item>
         <item>Transfetter</item>
         <item>Vitamin A</item>
         <item>Vitamin B1 (Thiamin)</item>
@@ -133,7 +133,7 @@
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
-        <item>Zinc</item>
+        <item>Zënk</item>
     </string-array>
     <!-- Text units -->
     <string-array name="images_array">
@@ -185,7 +185,7 @@
     <string name="txtSignIn">Sign in</string>
     <string name="txtUser">User panel</string>
     <string name="txtToastSaved">User saved</string>
-    <string name="txtSalt">Salt</string>
+    <string name="txtSalt">Salz</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Zocker</string>
     <string name="hintBarcode">Barcode</string>
@@ -321,9 +321,9 @@
     <string name="nutrition_header">Nutrition facts</string>
     <string name="nutrition_no_data_message">No data is available for this product</string>
     <string name="nutrition_per_quantity">For 100g/100ml</string>
-    <string name="nutrition_proteins">Proteins</string>
+    <string name="nutrition_proteins">Protéinen/Ëiweisser</string>
     <string name="nutrition_proteins_short_name">Proteins (g)</string>
-    <string name="nutrition_salt">Salt</string>
+    <string name="nutrition_salt">Salz</string>
     <string name="nutrition_salt_short_name">Salt (g)</string>
     <string name="nutrition_satured_fat">Gesättescht Fetter</string>
     <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
@@ -369,16 +369,16 @@
     <string name="nutrition_lactose">Laktos</string>
     <string name="nutrition_casein">Casein</string>
     <string name="nutrition_maltodextrins">Maltodextrinen</string>
-    <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="nutrition_serum_proteins">Serum Proteinen</string>
+    <string name="nutrition_nucleotides">Nukleotiden</string>
     <string name="for_100g">For 100 g</string>
     <string name="serving">Per serving</string>
     <string name="minerals">Mineralien</string>
     <string name="nutrition_calcium">Kalzium</string>
-    <string name="nutrition_potassium">Potassium</string>
+    <string name="nutrition_potassium">Potasium/Kalium</string>
     <string name="nutrition_chlore">Chlorine</string>
     <string name="nutrition_magnesium">Magnesium</string>
-    <string name="nutrition_taurine">Taurine</string>
+    <string name="nutrition_taurine">Taurin</string>
     <string name="nutrition_monounsaturatedFat">Mono ongesättescht Fetter</string>
     <string name="nutrition_polyunsaturatedFat">Polyongesättescht Fetter</string>
     <string name="nutrition_omega3">Omega 3 Fetter</string>
@@ -389,7 +389,7 @@
     <string name="nutrition_fructose">Fructos</string>
     <string name="nutrition_maltose">Maltos</string>
     <string name="nutrition_alcohol">Alkohol</string>
-    <string name="nutrition_vitamins">Vitamins</string>
+    <string name="nutrition_vitamins">Vitaminen</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
     <string name="vitamin_e">Vitamin E</string>
@@ -402,26 +402,26 @@
     <string name="vitamin_b9">Vitamin B9</string>
     <string name="vitamin_b12">Vitamin B12</string>
     <string name="biotin">Biotin</string>
-    <string name="pantothenic_acid">Pantothenic acid</string>
+    <string name="pantothenic_acid">Pantotheninséier</string>
     <string name="nutrition_minerals">Mineralien</string>
     <string name="silica">Silica</string>
     <string name="bicarbonate">Bikarbonat</string>
-    <string name="potassium">Potassium</string>
+    <string name="potassium">Potasium/Kalium</string>
     <string name="chloride">Chlorid</string>
     <string name="calcium">Kalzium</string>
     <string name="phosphorus">Phosphor</string>
     <string name="iron">Eisen</string>
     <string name="magnesium">Magnesium</string>
-    <string name="zinc">Zinc</string>
+    <string name="zinc">Zënk</string>
     <string name="copper">Koffer</string>
     <string name="manganese">Mangan</string>
     <string name="fluoride">Fluorid</string>
-    <string name="selenium">Selenium</string>
+    <string name="selenium">Selen</string>
     <string name="chromium">Chrom</string>
     <string name="molybdenum">Molybdän</string>
     <string name="iodine">Jod</string>
     <string name="caffeine">Koffein</string>
-    <string name="taurine">Taurine</string>
+    <string name="taurine">Taurin</string>
     <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">Fruucht, Geméis, Nëss</string>
     <string name="collagen_meat_protein_ratio">Verhältnis zwëschen Kollagener/Flëschprotéiner</string>
