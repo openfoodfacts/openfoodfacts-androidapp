@@ -30,7 +30,7 @@
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>Summary</item>
+        <item>Iwwersiicht</item>
         <item>Ingredients</item>
         <item>Nutrition</item>
         <item>Nutrition Table</item>
@@ -61,32 +61,32 @@
         <item>Arachidic acid (20:0)</item>
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
-        <item>Bicarbonate</item>
+        <item>Bikarbonat</item>
         <item>Biotin</item>
         <item>Butyric acid (4:0)</item>
-        <item>Caffeine</item>
-        <item>Calcium</item>
+        <item>Koffein</item>
+        <item>Kalzium</item>
         <item>Capric acid (10:0)</item>
         <item>Caproic acid (6:0)</item>
         <item>Caprylic acid (8:0)</item>
         <item>Casein</item>
         <item>Cerotic acid (26:0)</item>
-        <item>Chloride</item>
+        <item>Chlorid</item>
         <item>Cholesterol</item>
-        <item>Chromium</item>
-        <item>Copper</item>
+        <item>Chrom</item>
+        <item>Koffer</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
         <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
-        <item>Fluoride</item>
+        <item>Fluorid</item>
         <item>Fructos</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
         <item>Glukos</item>
         <item>Gondoic acid (20:1 n-9)</item>
-        <item>Iodine</item>
-        <item>Iron</item>
+        <item>Jod</item>
+        <item>Eisen</item>
         <item>Laktos</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
@@ -94,10 +94,10 @@
         <item>Magnesium</item>
         <item>Maltodextrinen</item>
         <item>Maltos</item>
-        <item>Manganese</item>
+        <item>Mangan</item>
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
-        <item>Molybdenum</item>
+        <item>Molybdän</item>
         <item>Monounsaturated fat</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
@@ -110,7 +110,7 @@
         <item>Palmitic acid (16:0)</item>
         <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
         <item>pH</item>
-        <item>Phosphorus</item>
+        <item>Phosphor</item>
         <item>Sugar alcohols (Polyols)</item>
         <item>Polyunsaturated fat</item>
         <item>Potassium</item>
@@ -121,7 +121,7 @@
         <item>Stearic acid (18:0)</item>
         <item>Saccharose</item>
         <item>Taurine</item>
-        <item>Trans fat</item>
+        <item>Transfetter</item>
         <item>Vitamin A</item>
         <item>Vitamin B1 (Thiamin)</item>
         <item>Vitamin B12 (Cobalamin)</item>
@@ -235,7 +235,7 @@
     <string name="home_drawer">Home</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">Kategorien</string>
     <string name="search_by_category">Category</string>
     <string name="search_by_name_drawer">Search by name</string>
     <string name="scan_search">Scan Barcode</string>
@@ -316,7 +316,7 @@
     <string name="nutrition_energy_short_name">Energie</string>
     <string name="nutrition_fat">Fat</string>
     <string name="nutrition_fat_short_name">Fat (g)</string>
-    <string name="nutrition_fiber">Dietary fiber</string>
+    <string name="nutrition_fiber">Fiberen</string>
     <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
     <string name="nutrition_header">Nutrition facts</string>
     <string name="nutrition_no_data_message">No data is available for this product</string>
@@ -333,7 +333,7 @@
     <string name="nutrition_sodium_short_name">Sodium (g)</string>
     <string name="nutrition_sugars">Zocker</string>
     <string name="nutrition_sugars_short_name">Sugars (g)</string>
-    <string name="nutrition_trans_fat">Trans fat</string>
+    <string name="nutrition_trans_fat">Transfetter</string>
     <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
@@ -373,8 +373,8 @@
     <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">For 100 g</string>
     <string name="serving">Per serving</string>
-    <string name="minerals">Minerals</string>
-    <string name="nutrition_calcium">Calcium</string>
+    <string name="minerals">Mineralien</string>
+    <string name="nutrition_calcium">Kalzium</string>
     <string name="nutrition_potassium">Potassium</string>
     <string name="nutrition_chlore">Chlorine</string>
     <string name="nutrition_magnesium">Magnesium</string>
@@ -403,29 +403,29 @@
     <string name="vitamin_b12">Vitamin B12</string>
     <string name="biotin">Biotin</string>
     <string name="pantothenic_acid">Pantothenic acid</string>
-    <string name="nutrition_minerals">Minerals</string>
+    <string name="nutrition_minerals">Mineralien</string>
     <string name="silica">Silica</string>
-    <string name="bicarbonate">Bicarbonate</string>
+    <string name="bicarbonate">Bikarbonat</string>
     <string name="potassium">Potassium</string>
-    <string name="chloride">Chloride</string>
-    <string name="calcium">Calcium</string>
-    <string name="phosphorus">Phosphorus</string>
-    <string name="iron">Iron</string>
+    <string name="chloride">Chlorid</string>
+    <string name="calcium">Kalzium</string>
+    <string name="phosphorus">Phosphor</string>
+    <string name="iron">Eisen</string>
     <string name="magnesium">Magnesium</string>
     <string name="zinc">Zinc</string>
-    <string name="copper">Copper</string>
-    <string name="manganese">Manganese</string>
-    <string name="fluoride">Fluoride</string>
+    <string name="copper">Koffer</string>
+    <string name="manganese">Mangan</string>
+    <string name="fluoride">Fluorid</string>
     <string name="selenium">Selenium</string>
-    <string name="chromium">Chromium</string>
-    <string name="molybdenum">Molybdenum</string>
-    <string name="iodine">Iodine</string>
-    <string name="caffeine">Caffeine</string>
+    <string name="chromium">Chrom</string>
+    <string name="molybdenum">Molybdän</string>
+    <string name="iodine">Jod</string>
+    <string name="caffeine">Koffein</string>
     <string name="taurine">Taurine</string>
     <string name="ph">pH</string>
-    <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
-    <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
-    <string name="cocoa">Cocoa</string>
+    <string name="fruits_vegetables_nuts">Fruucht, Geméis, Nëss</string>
+    <string name="collagen_meat_protein_ratio">Verhältnis zwëschen Kollagener/Flëschprotéiner</string>
+    <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Chlorophyl</string>
     <string name="take_picture_ingredients">Maacht w.e.g. eng Photo vun den Inhaltsstoffer</string>
     <string name="take_picture_front">Maacht w.e.g. eng Foto vum Produktbild</string>
