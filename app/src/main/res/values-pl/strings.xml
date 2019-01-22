@@ -740,7 +740,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="EditDiet_Hint_So_So_Ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Niezatwierdzone składniki</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Lista nieautoryzowanych składników, które powinny zostać wyświetlone w kolorze czerwonym. Przykład: gluten, mleko, olej palmowy, cukier ... Listę można uzupełnić później.</string>
-    <string name="extract_ingredients_prompt">Extract Ingredients</string>
+    <string name="extract_ingredients_prompt">Wyodrębnij składniki</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Zrób zdjęcie składników</string>
     <string name="category_game_btn">Pomóż obliczyć Nutri-Score. przez właściwe kategoryzowanie produktów</string>
@@ -751,7 +751,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="set_img_front">Ustaw jako główny obraz</string>
     <string name="report_img">Zgłoś zdjęcie</string>
     <string name="detected_ingredients">Wykryte składniki</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
+    <string name="fast_addition_mode">Wybór tej opcji umożliwi szybkie dodawanie produktów o mniejszej liczbie atrybutów</string>
     <!-- Used for diets AddOn -->
 </resources>
