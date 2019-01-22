@@ -693,6 +693,8 @@
     <string name="efsa_warning_high_risk">crwdns99609:0%1$scrwdne99609:0</string>
     <string name="legend_noael">crwdns99905:0crwdne99905:0</string>
     <string name="legend_adi">crwdns99907:0crwdne99907:0</string>
+    <string name="max_energy_val_msg">crwdns112678:0crwdne112678:0</string>
+    <string name="max_nutrient_val_msg">crwdns112680:0crwdne112680:0</string>
     <string name="update_image">crwdns112010:0crwdne112010:0</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
@@ -709,6 +711,8 @@
     <string name="edit_diet_hint_so_so_ingredient">crwdns111854:0crwdne111854:0</string>
     <string name="edit_diet_unauthorised_ingredients">crwdns111856:0crwdne111856:0</string>
     <string name="edit_diet_hint_unauthorised_ingredient">crwdns111858:0crwdne111858:0</string>
+    <!-- Used for diets AddOn -->
+    <string name="extract_ingredients_prompt">crwdns112682:0crwdne112682:0</string>
     <string name="nutrition_image_prompt_text">crwdns112000:0crwdne112000:0</string>
     <string name="ingredient_image_prompt_text">crwdns112002:0crwdne112002:0</string>
     <string name="category_game_btn">crwdns111976:0crwdne111976:0</string>
@@ -719,5 +723,6 @@
     <string name="set_img_front">crwdns112016:0crwdne112016:0</string>
     <string name="report_img">crwdns112018:0crwdne112018:0</string>
     <string name="detected_ingredients">crwdns112008:0crwdne112008:0</string>
-    <!-- Used for diets AddOn -->
+    <string name="fast_addition_mode_title">crwdns112684:0crwdne112684:0</string>
+    <string name="fast_addition_mode">crwdns112686:0crwdne112686:0</string>
 </resources>

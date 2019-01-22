@@ -693,6 +693,8 @@
     <string name="efsa_warning_high_risk">Den Europæiske Fødevaresikkerhedsautoritet (EFSA) har fastslået, at visse befolkningsgrupper har høj risiko for at indtage for meget %1$s.</string>
     <string name="legend_noael">oven dosis med observeret bivirkning (NOAEL)</string>
     <string name="legend_adi">over Acceptabelt Dagligt Indtag (ADI)</string>
+    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Send et opdateret billede</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
@@ -709,6 +711,8 @@
     <string name="edit_diet_hint_so_so_ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
     <string name="edit_diet_unauthorised_ingredients">Ikke-godkendte ingredienser</string>
     <string name="edit_diet_hint_unauthorised_ingredient">Angiv de ikke-godkendte ingredienser, som skal vises med rødt. Eksempel: Gluten, mælk, plameolie, sukker... Du kan færdiggøre listen senere.</string>
+    <!-- Used for diets AddOn -->
+    <string name="extract_ingredients_prompt">Extract Ingredients</string>
     <string name="nutrition_image_prompt_text">Tag et foto af ernæringsoversigten</string>
     <string name="ingredient_image_prompt_text">Tag et foto af ingredienserne</string>
     <string name="category_game_btn">Hjælp med at kategorisere produkter for at beregne Nutri-Score</string>
@@ -719,5 +723,6 @@
     <string name="set_img_front">Angiv billede som Forside</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
-    <!-- Used for diets AddOn -->
+    <string name="fast_addition_mode_title">Fast Addition Mode</string>
+    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
 </resources>
