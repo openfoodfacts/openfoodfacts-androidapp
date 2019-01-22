@@ -24,13 +24,13 @@ product_view_allergen_alert_en.png
 Ostrzeżenie o alergenach
 
 categories_en.png
-Znajdź alternatywę dla ulubionych potraw
+Znajdź alternatywę dla swoich ulubionych potraw
 
 foodtransparency_en.png
-Become an actor of food transparency
+Zostań uczestnikiem działań mających na celu popularyzację wiedzy na temat żywności
 
 product_view_summary_en.png
-Wikipedia dla żywności
+Wikipedia żywności
 Wikipedia kosmetyków
 Wikipedia karmy dla zwierząt domowych
 Wikipedia produktów
@@ -39,7 +39,7 @@ product_view_ingredients_en.png
 Składniki
 
 menu_en.png
-Mocny
+Potężny
 
 product_view_nutrition_table_en.png
 Wartości odżywcze
