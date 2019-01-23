@@ -30,7 +30,7 @@
         <item>配料</item>
         <item>营养</item>
         <item>营养表</item>
-        <item>Environment</item>
+        <item>环境影响</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -708,7 +708,7 @@
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
-    <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
+    <string name="nutrition_image_prompt_text">拍摄营养成分表</string>
     <string name="ingredient_image_prompt_text">拍摄营养成分</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
