@@ -108,6 +108,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
             if (isNotEmpty(product.getNutritionGradeFr())) {
                 productHolder.vProductGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getSmallImageGrade(product
                         .getNutritionGradeFr())));
+            } else {
+                productHolder.vProductGrade.setVisibility(View.INVISIBLE);
             }
 
             productHolder.vProductDetails.setText(stringBuilder.toString());
