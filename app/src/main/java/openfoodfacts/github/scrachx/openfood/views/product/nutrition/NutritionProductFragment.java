@@ -18,7 +18,11 @@ import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,6 +102,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView addPhotoLabel;
     @BindView(R.id.nutriments_recycler_view)
     RecyclerView nutrimentsRecyclerView;
+    @BindView(R.id.textNutriScoreInfo)
+    TextView textNutriScoreInfo;
 
     private String mUrlImage;
     private String barcode;
@@ -213,6 +219,22 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
+
+        textNutriScoreInfo.setClickable(true);
+        textNutriScoreInfo.setMovementMethod(LinkMovementMethod.getInstance());
+        SpannableStringBuilder spannableStringBuilder=new SpannableStringBuilder();
+        ClickableSpan clickableSpan=new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View view) {
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getActivity().getPackageName()));
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse("http://world.openfoodfacts.org/nutrient-levels"), new WebViewFallback());
+
+            }
+        };
+        spannableStringBuilder.append(getString(R.string.txtClickToKnowMore));
+        spannableStringBuilder.setSpan(clickableSpan,0,spannableStringBuilder.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textNutriScoreInfo.setText(spannableStringBuilder);
 
         if (TextUtils.isEmpty(product.getServingSize())) {
             serving.setVisibility(View.GONE);

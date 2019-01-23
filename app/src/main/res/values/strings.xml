@@ -324,6 +324,7 @@
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Barcode</string>
+    <string name="txtClickToKnowMore"> Click to know more </string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
