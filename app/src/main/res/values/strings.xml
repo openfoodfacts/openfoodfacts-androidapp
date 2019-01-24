@@ -72,7 +72,7 @@
     <!-- nutrition energy units -->
     <string-array name="energy_units" translatable="false">
         <item>kcal</item>
-        <item>kj</item>
+        <item>kJ</item>
     </string-array>
 
     <!-- volume units -->

@@ -309,12 +309,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                             "kcal",
                             nutriments.getModifier(ENERGY)));
         }
-        else if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kj")) {
+        else if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kJ")) {
             nutrimentItems.add(
                     new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                             energy.getFor100gInUnits(),
                             energy.getForServingInUnits(),
-                            "kj",
+                            "kJ",
                             nutriments.getModifier(ENERGY)));
         }
 
