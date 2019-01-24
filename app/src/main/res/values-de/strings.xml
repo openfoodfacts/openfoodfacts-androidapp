@@ -722,6 +722,8 @@
     <string name="set_img_front">Als Titelbild festlegen</string>
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
+    <string name="warning">Warning :</string>
+    <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
     <string name="fast_addition_mode">Wenn diese Option gewählt wurde, können Produkte mit wenigen Attributen schnell hinzugefügt werden.</string>
     <!-- Used for diets AddOn -->
