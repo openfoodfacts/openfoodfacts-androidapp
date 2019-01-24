@@ -300,11 +300,7 @@ public class Utils {
     }
 
     public static int getSmallImageGrade(String grade) {
-        int drawable;
-
-        if (grade == null) {
-            return R.drawable.ic_error;
-        }
+        int drawable = 0;
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
@@ -321,9 +317,6 @@ public class Utils {
                 break;
             case "e":
                 drawable = R.drawable.nnc_small_e;
-                break;
-            default:
-                drawable = R.drawable.ic_error;
                 break;
         }
 
