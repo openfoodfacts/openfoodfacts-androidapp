@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,13 +15,13 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
@@ -33,21 +32,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.text.TextUtils;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.File;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
@@ -60,18 +69,10 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
-
-import org.json.JSONObject;
-
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
-
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
@@ -80,7 +81,9 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.jsoup.helper.StringUtil.isBlank;
 
@@ -100,6 +103,14 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     TextView palmOilProduct;
     @BindView(R.id.textMayBeFromPalmOilProduct)
     TextView mayBeFromPalmOilProduct;
+    @BindView(R.id.novaLayout)
+    LinearLayout novaLayout;
+    @BindView(R.id.nova_group)
+    ImageView novaGroup;
+    @BindView(R.id.novaExplanation)
+    TextView novaExplanation;
+    @BindView(R.id.novaMethodLink)
+    TextView novaMethodLink;
     @BindView(R.id.imageViewIngredients)
     ImageView mImageIngredients;
     @BindView(R.id.addPhotoLabel)
@@ -347,6 +358,19 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 mayBeFromPalmOilProduct.setVisibility(View.GONE);
             }
         }
+
+        if (product.getNovaGroups() != null) {
+            novaLayout.setVisibility(View.VISIBLE);
+            novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups()));
+            novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+            novaGroup.setOnClickListener((View v) -> {
+                Uri uri = Uri.parse(getString(R.string.url_nova_groups));
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
+            });
+        } else {
+            novaLayout.setVisibility(View.GONE);
+        }
     }
 
     private CharSequence getAdditiveTag(AdditiveName additive) {
@@ -585,6 +609,15 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             return Collections.emptyList();
         } else {
             return allergens;
+        }
+    }
+
+    @OnClick(R.id.novaMethodLink)
+    void novaMethodLinkDisplay() {
+        if (product.getNovaGroups() != null) {
+            Uri uri = Uri.parse(getString(R.string.url_nova_groups));
+            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
         }
     }
 

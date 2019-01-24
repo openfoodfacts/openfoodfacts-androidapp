@@ -574,6 +574,8 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
 
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>

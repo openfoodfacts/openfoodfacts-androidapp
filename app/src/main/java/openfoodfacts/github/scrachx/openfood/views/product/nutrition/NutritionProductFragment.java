@@ -19,10 +19,12 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -84,6 +86,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
     @BindView(R.id.imageGrade)
     ImageView img;
+    @BindView(R.id.imageGradeLayout)
+    LinearLayout imageGradeLayout;
+    @BindView(R.id.nutriscoreLink)
+    TextView nutriscoreLink;
     @BindView(R.id.listNutrientLevels)
     RecyclerView rv;
     @BindView(R.id.textServingSize)
@@ -108,6 +114,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     private SendProduct mSendProduct;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
+    private Product product;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -129,7 +136,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-        final Product product = state.getProduct();
+        product = state.getProduct();
         List<NutrientLevelItem> levelItem = new ArrayList<>();
 
         Nutriments nutriments = product.getNutriments();
@@ -203,12 +210,18 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                                                     salt.getImageLevel()));
             }
 
-            img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
-            img.setOnClickListener(view1 -> {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            if (product.getNutritionGradeFr() != null && !product.getNutritionGradeFr().isEmpty()) {
+                imageGradeLayout.setVisibility(View.VISIBLE);
+                img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                img.setOnClickListener(view1 -> {
+                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
-            });
+                    CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+                });
+            } else {
+                imageGradeLayout.setVisibility(View.GONE);
+            }
+
         }
 
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -379,6 +392,14 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         return items;
+    }
+
+    @OnClick(R.id.nutriscoreLink)
+    void nutriscoreLinkDisplay() {
+        if (product.getNutritionGradeFr() != null) {
+            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+        }
     }
 
     @OnClick(R.id.imageViewNutrition)
