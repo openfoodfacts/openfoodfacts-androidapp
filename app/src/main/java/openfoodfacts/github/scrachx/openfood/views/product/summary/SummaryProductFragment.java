@@ -177,6 +177,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView additiveProduct;
     @BindView(R.id.cvTextAdditiveProduct)
     CardView textAdditiveProductCardView;
+    @BindView(R.id.textWarning)
+    TextView warning;
+    @BindView(R.id.textCustomerService)
+    TextView customerService;
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
@@ -285,11 +289,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         //the following checks whether the ingredient and nutrition images are already uploaded for the product
-        if(isBlank(product.getImageIngredientsUrl())) {
+        if (isBlank(product.getImageIngredientsUrl())) {
             ingredientImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
-        if(isBlank(product.getImageNutritionUrl())) {
+        if (isBlank(product.getImageNutritionUrl())) {
             nutritionImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
@@ -422,6 +426,21 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             manufactureUlrProduct.setMovementMethod(LinkMovementMethod.getInstance());
         } else {
             manufactureUlrProduct.setVisibility(View.GONE);
+        }
+
+
+        if (isNotBlank(product.getWarning())) {
+            warning.setText(bold(getString(R.string.warning)));
+            warning.append(product.getWarning());
+        } else {
+            warning.setVisibility(View.GONE);
+        }
+
+        if (isNotBlank(product.getCustomerService())) {
+            customerService.setText(bold(getString(R.string.customer_service)));
+            customerService.append(product.getCustomerService());
+        } else {
+            customerService.setVisibility(View.GONE);
         }
 
         // if the device does not have a camera, hide the button
@@ -927,7 +946,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     //when the prompt for the images are selected, the camera is initialized and corresponding booleans flipped
     @OnClick(R.id.imageViewIngredients)
     public void addIngredientImage() {
-        addingIngredientsImage=true;
+        addingIngredientsImage = true;
         if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
@@ -941,7 +960,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.imageViewNutrition)
     public void addNutritionImage() {
-        addingNutritionImage=true;
+        addingNutritionImage = true;
         if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
@@ -1007,7 +1026,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
                 //the booleans are checked to determine if the picture uploaded was due to a prompt click
                 //the pictures are uploaded with the correct path
-                if(addingIngredientsImage) {
+                if (addingIngredientsImage) {
                     ProductImage image = new ProductImage(barcode, INGREDIENTS, new File(resultUri.getPath()));
                     image.setFilePath(resultUri.getPath());
                     showOtherImageProgress();
@@ -1016,7 +1035,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     addingIngredientsImage = false;
                 }
 
-                if(addingNutritionImage){
+                if (addingNutritionImage) {
                     ProductImage image = new ProductImage(barcode, NUTRITION, new File(resultUri.getPath()));
                     image.setFilePath(resultUri.getPath());
                     showOtherImageProgress();

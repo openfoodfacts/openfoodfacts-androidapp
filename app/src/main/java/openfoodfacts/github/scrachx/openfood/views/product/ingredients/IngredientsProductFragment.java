@@ -34,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.text.TextUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -53,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
@@ -128,9 +130,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     CardView mineralTagsTextCardView;
     @BindView(R.id.cvOtherNutritionTags)
     CardView otherNutritionTagsCardView;
+    @BindView(R.id.extract_ingredients_prompt)
+    Button extractIngredientsPrompt;
     @BindView(R.id.change_ing_img)
     Button updateImageBtn;
-
 
     private Product product;
     private OpenFoodAPIClient api;
@@ -291,12 +294,18 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
+            if (TextUtils.isEmpty(product.getIngredientsText())) {
+               extractIngredientsPrompt.setVisibility(View.VISIBLE);
+            }
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
             if (!txtIngredients.toString().substring(ingredientsListAt).trim().isEmpty()) {
                 ingredientsProduct.setText(txtIngredients);
             }
         } else {
             textIngredientProductCardView.setVisibility(View.GONE);
+            if (isNotBlank(product.getImageIngredientsUrl())) {
+                extractIngredientsPrompt.setVisibility(View.VISIBLE);
+            }
         }
         presenter.loadAllergens();
 
@@ -579,6 +588,13 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
     }
 
+    @OnClick(R.id.extract_ingredients_prompt)
+    public void extractIngredients() {
+        Intent intent = new Intent( getActivity(), AddProductActivity.class );
+        intent.putExtra( "edit_product", product);
+        intent.putExtra("perform_ocr",true);
+        startActivity(intent);
+    }
     @OnClick(R.id.imageViewIngredients)
     public void openFullScreen(View v) {
         if (mUrlImage != null) {
