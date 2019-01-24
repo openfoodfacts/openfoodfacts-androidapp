@@ -722,6 +722,8 @@
     <string name="set_img_front">crwdns112016:0crwdne112016:0</string>
     <string name="report_img">crwdns112018:0crwdne112018:0</string>
     <string name="detected_ingredients">crwdns112008:0crwdne112008:0</string>
+    <string name="warning">crwdns112688:0crwdne112688:0</string>
+    <string name="customer_service">crwdns112690:0crwdne112690:0</string>
     <string name="fast_addition_mode_title">crwdns112684:0crwdne112684:0</string>
     <string name="fast_addition_mode">crwdns112686:0crwdne112686:0</string>
     <!-- Used for diets AddOn -->
