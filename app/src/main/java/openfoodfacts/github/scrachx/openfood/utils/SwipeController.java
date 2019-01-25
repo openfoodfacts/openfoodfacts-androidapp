@@ -14,6 +14,7 @@ import android.view.View;
 
 import openfoodfacts.github.scrachx.openfood.R;
 
+import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_IDLE;
 import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_SWIPE;
 import static android.support.v7.widget.helper.ItemTouchHelper.LEFT;
 import static android.support.v7.widget.helper.ItemTouchHelper.RIGHT;
@@ -81,6 +82,11 @@ public class SwipeController extends Callback {
                         isCurrentlyActive);
             } else {
                 setTouchListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        }
+        if(actionState == ACTION_STATE_IDLE){
+            if (buttonShowedState == ButtonsState.GONE) {
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         }
 
