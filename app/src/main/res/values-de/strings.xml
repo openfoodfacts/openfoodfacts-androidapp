@@ -693,8 +693,8 @@
     <string name="efsa_warning_high_risk">Die Europäische Behörde für Lebensmittelsicherheit (EFSA) hat festgestellt, dass einige Bevölkerungsgruppen ein hohes Risiko haben, zu viel %1$s zu verzehren.</string>
     <string name="legend_noael">über der Dosis mit beobachteter Nebenwirkung (NOAEL)</string>
     <string name="legend_adi">über der zulässigen täglichen Aufnahme (ADI)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="max_energy_val_msg">Dieser Wert liegt über 2.000 kcal pro 100g. Können Sie dies berichtigen?</string>
+    <string name="max_nutrient_val_msg">Der eingegebene Wert ist höher als pro Portionsgröße angegeben.</string>
     <string name="update_image">Senden Sie ein aktualisiertes Bild</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
@@ -723,6 +723,9 @@
     <string name="set_img_front">Als Titelbild festlegen</string>
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="warning">Warning :</string>
+    <string name="customer_service">Customer Service :</string>
+    <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
+    <string name="fast_addition_mode">Wenn diese Option gewählt wurde, können Produkte mit wenigen Attributen schnell hinzugefügt werden.</string>
+    <!-- Used for diets AddOn -->
 </resources>

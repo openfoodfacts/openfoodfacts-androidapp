@@ -731,6 +731,8 @@
     <string name="set_img_front">Установить как основное изображение</string>
     <string name="report_img">Сообщить об изображении</string>
     <string name="detected_ingredients">Обнаруженные ингредиенты</string>
+    <string name="warning">Предупреждение :</string>
+    <string name="customer_service">Центр поддержки:</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
 </resources>

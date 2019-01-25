@@ -723,6 +723,8 @@
     <string name="set_img_front">Angiv billede som Forside</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
+    <string name="warning">Warning :</string>
+    <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
 </resources>
