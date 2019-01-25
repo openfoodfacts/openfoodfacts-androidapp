@@ -395,10 +395,10 @@
     <string name="vitamin_e">Vitamin E</string>
     <string name="vitamin_k">Vitamin K</string>
     <string name="vitamin_c">Vitamin C</string>
-    <string name="vitamin_b1">Vitamin B1</string>
-    <string name="vitamin_b2">Vitamin B2</string>
+    <string name="vitamin_b1">B1-vitamiini</string>
+    <string name="vitamin_b2">B2-vitamiini</string>
     <string name="vitamin_pp">Vitamin PP</string>
-    <string name="vitamin_b6">Vitamin B6</string>
+    <string name="vitamin_b6">B6-vitamiini</string>
     <string name="vitamin_b9">Vitamin B9</string>
     <string name="vitamin_b12">Vitamin B12</string>
     <string name="biotin">Biotin</string>
@@ -429,7 +429,7 @@
     <string name="chlorophyl">Chlorophyl</string>
     <string name="take_picture_ingredients">Take a picture of the ingredients</string>
     <string name="take_picture_front">Take a picture of the front</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
+    <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <!-- String related to App Shortcuts -->
