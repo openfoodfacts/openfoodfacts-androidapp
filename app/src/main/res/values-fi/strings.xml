@@ -62,7 +62,7 @@
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
         <item>Bicarbonate</item>
-        <item>Biotin</item>
+        <item>Biotiini</item>
         <item>Butyric acid (4:0)</item>
         <item>Kofeiini</item>
         <item>Kalsium</item>
@@ -130,9 +130,9 @@
         <item>Vitamin B6 (Pyridoxin)</item>
         <item>Vitamin B9 (Folic acid)</item>
         <item>Vitamin C (Ascorbic acid)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
+        <item>D-vitamiini</item>
+        <item>E-vitamiini</item>
+        <item>K-vitamiini</item>
         <item>Sinkki</item>
     </string-array>
     <!-- Text units -->
@@ -371,7 +371,7 @@
     <string name="nutrition_maltodextrins">Maltodekstriinit</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
-    <string name="for_100g">For 100 g</string>
+    <string name="for_100g">100 g:ssa</string>
     <string name="serving">Annosta kohti</string>
     <string name="minerals">Minerals</string>
     <string name="nutrition_calcium">Kalsium</string>
@@ -391,18 +391,18 @@
     <string name="nutrition_alcohol">Alkoholi</string>
     <string name="nutrition_vitamins">Vitamiinit</string>
     <string name="vitamin_a">A-vitamiini</string>
-    <string name="vitamin_d">Vitamin D</string>
-    <string name="vitamin_e">Vitamin E</string>
-    <string name="vitamin_k">Vitamin K</string>
-    <string name="vitamin_c">Vitamin C</string>
+    <string name="vitamin_d">D-vitamiini</string>
+    <string name="vitamin_e">E-vitamiini</string>
+    <string name="vitamin_k">K-vitamiini</string>
+    <string name="vitamin_c">C-vitamiini</string>
     <string name="vitamin_b1">B1-vitamiini</string>
     <string name="vitamin_b2">B2-vitamiini</string>
     <string name="vitamin_pp">Vitamin PP</string>
     <string name="vitamin_b6">B6-vitamiini</string>
-    <string name="vitamin_b9">Vitamin B9</string>
-    <string name="vitamin_b12">Vitamin B12</string>
-    <string name="biotin">Biotin</string>
-    <string name="pantothenic_acid">Pantothenic acid</string>
+    <string name="vitamin_b9">B9-vitamiini</string>
+    <string name="vitamin_b12">B12-vitamiini</string>
+    <string name="biotin">Biotiini</string>
+    <string name="pantothenic_acid">Pantoteenihappo</string>
     <string name="nutrition_minerals">Minerals</string>
     <string name="silica">Silica</string>
     <string name="bicarbonate">Bicarbonate</string>
@@ -653,7 +653,7 @@
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
+    <string name="stores">Myymälät</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
