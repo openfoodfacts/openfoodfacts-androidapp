@@ -693,7 +693,7 @@
     <string name="efsa_warning_high_risk">Den Europæiske Fødevaresikkerhedsautoritet (EFSA) har fastslået, at visse befolkningsgrupper har høj risiko for at indtage for meget %1$s.</string>
     <string name="legend_noael">oven dosis med observeret bivirkning (NOAEL)</string>
     <string name="legend_adi">over Acceptabelt Dagligt Indtag (ADI)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_energy_val_msg">Denne værdi er over 2000 kcal pr. 100 g. Kan du rette det?</string>
     <string name="max_nutrient_val_msg">Indtastet værdi er mere end angivet pr. serveringsstørrelse</string>
     <string name="update_image">Send et opdateret billede</string>
     <!-- Used for additive exposure evaluation table -->
