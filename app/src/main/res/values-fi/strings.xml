@@ -162,7 +162,7 @@
     <string name="txtIngredientsOrigins">Ainesosien alkuperä :</string>
     <string name="txtCity">Kaupungin, valtion ja ostomaassa :</string>
     <string name="txtEMB">EMB Code:</string>
-    <string name="txtManufactureUrl">Linkki tuotesivulle virallisella sivustolla tuottajan:</string>
+    <string name="txtManufactureUrl">Linkki tuottajan viralliselle tuotesivulle:</string>
     <string name="txtStores">Stores :</string>
     <string name="txtCountries">Maat joissa myynnissä:</string>
     <string name="txtIngredients">Ainesosaluettelo:</string>
@@ -222,7 +222,7 @@
     <string name="txtDialogsContentInfoSave">Tuote tallennetaan paikallisesti. Voit muokata sitä Offline-muokkaus -valikossa</string>
     <string name="txtBarcodeRequire">Viivakoodi vaaditaan</string>
     <string name="txtOk">OK</string>
-    <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+    <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
     <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
     <string name="txtAllsent">Tuotteet lähetetty</string>
     <string name="txtPalm">Tuote ei sisällä palmuöljyä</string>
@@ -503,7 +503,7 @@
     <string name="additive_string">Lisäaine</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Etsi</string>
-    <string name="country_string">Maat myyntiehdot</string>
+    <string name="country_string">Maat joissa myynnissä</string>
     <string name="store_subtitle">Kauppa</string>
     <string name="packaging_subtitle">Pakkaus</string>
     <string name="last_seen_string">%1$d %2$s ago</string>
@@ -636,7 +636,7 @@
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per Serving</string>
-    <string name="serving_size">Palvelevat koko</string>
+    <string name="serving_size">Annoskoko</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Lisää ravintoaine</string>
     <string name="add_this_product">Add this product</string>
@@ -648,7 +648,7 @@
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">Alkuperä ainesosien</string>
+    <string name="origin_of_ingredients">Ainesosien alkuperä</string>
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
