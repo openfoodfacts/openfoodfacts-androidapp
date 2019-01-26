@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -98,6 +99,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView addPhotoLabel;
     @BindView(R.id.nutriments_recycler_view)
     RecyclerView nutrimentsRecyclerView;
+    @BindView(R.id.nutrient_levels_card_view)
+    CardView nutrientLevelsCardView;
 
     private String mUrlImage;
     private String barcode;
@@ -147,7 +150,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-            textNutrientTxt.setText(" " + getString(R.string.txtNoData));
+            nutrientLevelsCardView.setVisibility(View.GONE);
             levelItem.add(new NutrientLevelItem("", "", "", 0));
         } else {
             // prefetch the uri
