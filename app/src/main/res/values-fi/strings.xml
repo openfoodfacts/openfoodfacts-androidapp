@@ -32,8 +32,8 @@
     <string-array name="nav_drawer_items_product">
         <item>Yhteenveto</item>
         <item>Ainekset</item>
-        <item>Nutrition</item>
-        <item>Nutrition Table</item>
+        <item>Nutri-Score</item>
+        <item>Ravintosisältö</item>
         <item>Environment</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
