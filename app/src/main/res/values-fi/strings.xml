@@ -171,7 +171,7 @@
     <string name="txtSubstances">Allergioita tai intoleransseja aiheuttavat aineet ja tuotteet :</string>
     <string name="txtAdditives">Lisäaineet:</string>
     <string name="txtTraces">Jäämät:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
+    <string name="txtMayBeFromPalmOilProduct">Ainesosat, jotka voivat olla peräisin palmuöljystä:</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Tarjoilukoko:</string>
     <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
@@ -216,10 +216,10 @@
     <string name="toastSending">Lähetetään…</string>
     <string name="dataSaved">Tallennettu paikallisesti laitteellesi</string>
     <string name="txtInfoAddUser">Anna käyttäjätunnuksesi ja salasanasi</string>
-    <string name="txtDataUpdated">Data updated</string>
+    <string name="txtDataUpdated">Tiedot päivitetty</string>
     <string name="txtLoading">Ladataan…</string>
     <string name="txtDialogsContentDelete">Haluatko varmasti poistaa tämän luonnoksen?</string>
-    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
+    <string name="txtDialogsContentInfoSave">Tuote tallennetaan paikallisesti. Voit muokata sitä Offline-muokkaus -valikossa</string>
     <string name="txtBarcodeRequire">Viivakoodi vaaditaan</string>
     <string name="txtOk">OK</string>
     <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
@@ -248,7 +248,7 @@
     <string name="alert_drawer">Allergeenivaroitus</string>
     <string name="warning_allergens">Sisältää allergeeneja</string>
     <string name="title_dialog_alert">Lisää ilmoitus</string>
-    <string name="toggle_flash">Flash</string>
+    <string name="toggle_flash">Salamavalo</string>
     <string name="flash_on">Flash [ON]</string>
     <string name="flash_off">Flash [OFF]</string>
     <string name="ring_on">Ring [ON]</string>
