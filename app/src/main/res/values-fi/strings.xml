@@ -156,7 +156,7 @@
     <string name="txtQuantity">Määrä:</string>
     <string name="txtPackaging">Paketointi:</string>
     <string name="txtBrands">Tuotemerkit :</string>
-    <string name="txtCategories">Luokat :</string>
+    <string name="txtCategories">Tuotekategoriat:</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtManufacturing">Manufacturing or processing places :</string>
     <string name="txtIngredientsOrigins">Ainesosien alkuperä :</string>
