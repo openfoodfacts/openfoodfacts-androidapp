@@ -102,7 +102,7 @@
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nukleotidit</item>
         <item>Oleic acid (18:1 n-9)</item>
         <item>Omega-3-rasvahapot</item>
         <item>Omega-6-rasvahapot</item>
@@ -116,7 +116,7 @@
         <item>Kalium</item>
         <item>Seleeni</item>
         <item>Serum proteins</item>
-        <item>Silica</item>
+        <item>Piidioksidi</item>
         <item>Tärkkelys</item>
         <item>Stearic acid (18:0)</item>
         <item>Sakkaroosi</item>
@@ -370,7 +370,7 @@
     <string name="nutrition_casein">Kaseiini</string>
     <string name="nutrition_maltodextrins">Maltodekstriinit</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="nutrition_nucleotides">Nukleotidit</string>
     <string name="for_100g">100 g:ssa</string>
     <string name="serving">Annosta kohti</string>
     <string name="minerals">Kivennäis- ja hivenaineet</string>
@@ -404,7 +404,7 @@
     <string name="biotin">Biotiini</string>
     <string name="pantothenic_acid">Pantoteenihappo</string>
     <string name="nutrition_minerals">Kivennäis- ja hivenaineet</string>
-    <string name="silica">Silica</string>
+    <string name="silica">Piidioksidi</string>
     <string name="bicarbonate">Bikarbonaatti</string>
     <string name="potassium">Kalium</string>
     <string name="chloride">Kloridi</string>
@@ -426,7 +426,7 @@
     <string name="fruits_vegetables_nuts">Hedelmät, vihannekset, pähkinät</string>
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Kaakao</string>
-    <string name="chlorophyl">Chlorophyl</string>
+    <string name="chlorophyl">Lehtivihreä</string>
     <string name="take_picture_ingredients">Ota kuva aineksista</string>
     <string name="take_picture_front">Ota tuotekuva edestä</string>
     <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
@@ -462,7 +462,7 @@
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
-    <string name="device_on_mobile_data_warning_title">Information</string>
+    <string name="device_on_mobile_data_warning_title">Tietoja</string>
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Asetukset</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
@@ -569,7 +569,7 @@
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
     <string name="product">Muokkaa</string>
-    <string name="txtDialogsTitle">Information</string>
+    <string name="txtDialogsTitle">Tietoja</string>
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Add a new product</string>
@@ -712,7 +712,11 @@
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
-    <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
+    <string name="add_nutrient_prompt_text">Lisää ravintosisältö Nutri-Score -arvon laskemiseksi</string>
+    <string name="add_category_prompt_text">Lisää kategoria Nutri-Score -arvon laskemiseksi</string>
+    <string name="add_nutrient_category_prompt_text">Lisää ravintosisältö ja kategoria Nutri-Score -arvon laskemiseksi</string>
+    <string name="no_nutrition_data_prompt">Tällä tuotteella ei ole ravitsemustietoja</string>
+    <string name="nutrition_image_prompt_text">Ota kuva ravintosisällöstä</string>
     <string name="ingredient_image_prompt_text">Ota kuva aineksista</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
