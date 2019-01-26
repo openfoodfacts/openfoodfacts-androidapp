@@ -175,9 +175,9 @@
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Annoskoko:</string>
     <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
-    <string name="txtNutritionLevelLow">in low quantity</string>
-    <string name="txtNutritionLevelModerate">in moderate quantity</string>
-    <string name="txtNutritionLevelHigh">in high quantity</string>
+    <string name="txtNutritionLevelLow">pieni määrä</string>
+    <string name="txtNutritionLevelModerate">kohtalainen määrä</string>
+    <string name="txtNutritionLevelHigh">suuri määrä</string>
     <string name="txtLogin">Tunnus:</string>
     <string name="txtPass">Salasana:</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
@@ -325,7 +325,7 @@
     <string name="nutrition_proteins_short_name">Proteiinit (g)</string>
     <string name="nutrition_salt">Suola</string>
     <string name="nutrition_salt_short_name">Suola (g)</string>
-    <string name="nutrition_satured_fat">Saturated fat</string>
+    <string name="nutrition_satured_fat">Tyydyttynyt rasva</string>
     <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
     <string name="nutrition_serving">Annosta kohti</string>
     <string name="nutrition_serving_size">Annoskoko:</string>
@@ -333,7 +333,7 @@
     <string name="nutrition_sodium_short_name">Sodium (g)</string>
     <string name="nutrition_sugars">Sokerit</string>
     <string name="nutrition_sugars_short_name">Sokerit (g)</string>
-    <string name="nutrition_trans_fat">Trans fat</string>
+    <string name="nutrition_trans_fat">Transrasva</string>
     <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Tilin asetukset</string>
@@ -379,8 +379,8 @@
     <string name="nutrition_chlore">Chlorine</string>
     <string name="nutrition_magnesium">Magnesium</string>
     <string name="nutrition_taurine">Tauriini</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Kertatyydyttämätön rasva</string>
+    <string name="nutrition_polyunsaturatedFat">Monityydyttämätön rasva</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -427,11 +427,11 @@
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Kaakao</string>
     <string name="chlorophyl">Chlorophyl</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-    <string name="take_picture_front">Take a picture of the front</string>
+    <string name="take_picture_ingredients">Ota kuva aineksista</string>
+    <string name="take_picture_front">Ota tuotekuva edestä</string>
     <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
     <string name="take_more_pictures">Take more pictures</string>
-    <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="txtSaturatedFat">Tyydyttynyt rasva</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Skannaa</string>
@@ -713,7 +713,7 @@
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
     <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
-    <string name="ingredient_image_prompt_text">Take a picture of the ingredients</string>
+    <string name="ingredient_image_prompt_text">Ota kuva aineksista</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
