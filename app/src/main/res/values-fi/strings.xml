@@ -116,7 +116,7 @@
         <item>Kalium</item>
         <item>Seleeni</item>
         <item>Serum proteins</item>
-        <item>Silica</item>
+        <item>Piidioksidi</item>
         <item>Tärkkelys</item>
         <item>Stearic acid (18:0)</item>
         <item>Sakkaroosi</item>
@@ -404,7 +404,7 @@
     <string name="biotin">Biotiini</string>
     <string name="pantothenic_acid">Pantoteenihappo</string>
     <string name="nutrition_minerals">Kivennäis- ja hivenaineet</string>
-    <string name="silica">Silica</string>
+    <string name="silica">Piidioksidi</string>
     <string name="bicarbonate">Bikarbonaatti</string>
     <string name="potassium">Kalium</string>
     <string name="chloride">Kloridi</string>
@@ -426,7 +426,7 @@
     <string name="fruits_vegetables_nuts">Hedelmät, vihannekset, pähkinät</string>
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Kaakao</string>
-    <string name="chlorophyl">Chlorophyl</string>
+    <string name="chlorophyl">Lehtivihreä</string>
     <string name="take_picture_ingredients">Ota kuva aineksista</string>
     <string name="take_picture_front">Ota tuotekuva edestä</string>
     <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
