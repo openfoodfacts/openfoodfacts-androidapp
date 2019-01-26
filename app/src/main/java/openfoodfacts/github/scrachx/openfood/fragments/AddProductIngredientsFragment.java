@@ -128,6 +128,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if(getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
+            if (!getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
+                ((AddProductActivity) getActivity()).proceed();
+            }
+        }
         Bundle b = getArguments();
         if (b != null) {
             mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();

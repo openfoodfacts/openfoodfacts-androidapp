@@ -76,6 +76,7 @@ import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
@@ -149,6 +150,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView uploadingImageProgressText;
     @BindView(R.id.buttonMorePictures)
     Button addMorePicture;
+    @BindView(R.id.add_nutriscore_prompt)
+    Button addNutriScorePrompt;
     @BindView(R.id.imageGrade)
     ImageView img;
     @BindView(R.id.nova_group)
@@ -197,6 +200,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
+    //boolean to determine if nutrient prompt should be shown
+    private boolean showNutrientPrompt = false;
+    //boolean to determine if category prompt should be shown
+    private boolean showCategoryPrompt = false;
     //boolean to indicate if the image clicked was that of ingredients
     private boolean addingIngredientsImage = false;
     //boolean to indicate if the image clicked was that of nutrition
@@ -260,6 +267,30 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
             isLowBatteryMode = true;
+        }
+
+        //checks the product states_tags to determine which prompt to be shown
+        List<String> statesTags = product.getStatesTags();
+        if (statesTags.contains("en:categories-to-be-completed")) {
+            showCategoryPrompt = true;
+        }
+        if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
+            showNutrientPrompt = false;
+        } else {
+            if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
+                showNutrientPrompt = true;
+            }
+        }
+
+        if (showNutrientPrompt || showCategoryPrompt) {
+            addNutriScorePrompt.setVisibility(View.VISIBLE);
+            if (showNutrientPrompt && showCategoryPrompt) {
+                addNutriScorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+            } else if (showNutrientPrompt) {
+                addNutriScorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+            } else if (showCategoryPrompt) {
+                addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
+            }
         }
 
         presenter.loadAllergens();
@@ -549,16 +580,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 novaGroup.setImageResource(0);
             }
             if (product.getNovaGroups() == null && product.getNutritionGradeFr() == null) {
-                scoresLayout.setVisibility(View.GONE);
-            } else {
-                scoresLayout.setVisibility(View.VISIBLE);
+                img.setVisibility(View.GONE);
+                novaGroup.setVisibility(View.GONE);
             }
 
         } else {
             scoresLayout.setVisibility(View.GONE);
         }
-
-
     }
     private CharSequence getAdditiveTag(AdditiveName additive) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -890,6 +918,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @OnClick(R.id.product_incomplete_message_dismiss_icon)
     public void onDismissProductIncompleteMsgClicked() {
         productIncompleteView.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.add_nutriscore_prompt)
+    public void onAddNutriScorePromptClick() {
+        Intent intent = new Intent(getActivity(), AddProductActivity.class);
+        intent.putExtra("edit_product", product);
+        //adds the information about the prompt when navigating the user to the edit the product
+        intent.putExtra("modify_category_prompt", showCategoryPrompt);
+        intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
+        startActivity(intent);
     }
 
     // Implements CustomTabActivityHelper.ConnectionCallback

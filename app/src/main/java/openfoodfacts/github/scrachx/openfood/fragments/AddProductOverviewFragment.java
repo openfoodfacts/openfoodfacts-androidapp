@@ -207,6 +207,12 @@ public class AddProductOverviewFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //checks the information about the prompt clicked and takes action accordingly
+        if(getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
+            categories.requestFocus();
+        }else if(getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
+            ((AddProductActivity) getActivity()).proceed();
+        }
         Bundle b = getArguments();
         if (b != null) {
             product = (Product) b.getSerializable("product");
