@@ -213,7 +213,7 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginBottom="@dimen/spacing_small"
+                        android:paddingBottom="@dimen/spacing_small"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textIsSelectable="true"
                         android:textStyle="bold" />
