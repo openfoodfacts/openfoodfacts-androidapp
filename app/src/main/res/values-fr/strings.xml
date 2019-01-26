@@ -712,6 +712,10 @@
     <string name="EditDiet_Unauthorised_Ingredients">Ingrédients non autorisés</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Énumérez les ingrédients non autorisés qui devraient être en rouge. Exemple : gluten, lait, huile de palme, sucre... Vous pourrez remplir cette liste plus tard.</string>
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
     <string name="nutrition_image_prompt_text">Prendre une photo du tableau nutritionnel</string>
     <string name="ingredient_image_prompt_text">Prendre une photo des ingrédients</string>
     <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
