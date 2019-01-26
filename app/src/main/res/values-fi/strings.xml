@@ -102,7 +102,7 @@
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nukleotidit</item>
         <item>Oleic acid (18:1 n-9)</item>
         <item>Omega-3-rasvahapot</item>
         <item>Omega-6-rasvahapot</item>
@@ -370,7 +370,7 @@
     <string name="nutrition_casein">Kaseiini</string>
     <string name="nutrition_maltodextrins">Maltodekstriinit</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="nutrition_nucleotides">Nukleotidit</string>
     <string name="for_100g">100 g:ssa</string>
     <string name="serving">Annosta kohti</string>
     <string name="minerals">Kivennäis- ja hivenaineet</string>
