@@ -166,11 +166,11 @@
     <string name="txtStores">Stores :</string>
     <string name="txtCountries">Maat joissa myynnissä:</string>
     <string name="txtIngredients">Ainesosaluettelo:</string>
-    <string name="Donate">Donate</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="Donate">Tee lahjoitus</string>
+    <string name="Donation">Klikkaa tästä lahjoittaaksesi Open Food Facts:lle</string>
     <string name="txtSubstances">Allergioita tai intoleransseja aiheuttavat aineet ja tuotteet :</string>
-    <string name="txtAdditives">Additives :</string>
-    <string name="txtTraces">Traces :</string>
+    <string name="txtAdditives">Lisäaineet:</string>
+    <string name="txtTraces">Jäämät:</string>
     <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Tarjoilukoko:</string>
