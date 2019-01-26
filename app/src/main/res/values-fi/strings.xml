@@ -159,7 +159,7 @@
     <string name="txtCategories">Luokat :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtManufacturing">Manufacturing or processing places :</string>
-    <string name="txtIngredientsOrigins">Alkuperä ainesosien :</string>
+    <string name="txtIngredientsOrigins">Ainesosien alkuperä :</string>
     <string name="txtCity">Kaupungin, valtion ja ostomaassa :</string>
     <string name="txtEMB">EMB Code:</string>
     <string name="txtManufactureUrl">Linkki tuotesivulle virallisella sivustolla tuottajan:</string>
