@@ -47,8 +47,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
