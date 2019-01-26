@@ -42,6 +42,10 @@ public interface OpenFoodAPIService {
                                         @Header("User-Agent") String header);
 
     @GET("api/v0/product/{barcode}.json")
+    Call<JsonNode> getProductNameByLangCode(@Path("barcode") String barcode,
+                                          @Query("fields") String productNameQuery);
+
+    @GET("api/v0/product/{barcode}.json")
     Single<State> getExistingProductDetails(@Path("barcode") String barcode,
                                             @Query("fields") String fields,
                                             @Header("User-Agent") String header);

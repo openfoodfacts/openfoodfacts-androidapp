@@ -172,6 +172,32 @@ public class OpenFoodAPIClient {
         });
 
     }
+    public void getProductNameByLanguage(String barcode,String langCode,final OnProductByLanguageCallback productByLanguageCallback)
+    {
+        apiService.getProductNameByLangCode(barcode,"product_name_"+langCode).enqueue(new Callback<JsonNode>() {
+            @Override
+            public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                JsonNode responseNode=response.body();
+                if(responseNode.findValue("product").findValue("product_name_"+langCode)!=null) {
+                    String productName=responseNode.findValue("product").findValue("product_name_"+langCode).toString();
+                    productByLanguageCallback.onProductByLanguageResponse(true,productName);
+                }
+                else if(responseNode.findValue("product").findValue("product_name_en")!=null){
+                    String productName=responseNode.findValue("product").findValue("product_name_en").toString();
+                    productByLanguageCallback.onProductByLanguageResponse(true,productName);
+                }
+                else {
+                    productByLanguageCallback.onProductByLanguageResponse(true,null);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonNode> call, Throwable t) {
+                productByLanguageCallback.onProductByLanguageResponse(false,null);
+            }
+        });
+    }
 
     public void getIngredients(String barcode,final OnIngredientListCallback ingredientListCallback)
     {
@@ -527,6 +553,10 @@ public class OpenFoodAPIClient {
 
     public interface OnIngredientListCallback {
         void onIngredientListResponse(boolean value, ArrayList<ProductIngredient> productIngredients);
+    }
+
+    public interface OnProductByLanguageCallback {
+        void onProductByLanguageResponse(boolean value, String productName);
     }
 
     /**
