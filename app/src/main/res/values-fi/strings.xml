@@ -193,11 +193,11 @@
     <string name="hintPass">Salasana</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-    <string name="uploadLater">Image will be uploaded when network is available</string>
+    <string name="uploadLater">Kuva lähetetään, kun verkko on käytettävissä</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
+    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Facts:ssa. Ole hyvä ja lisää se.</string>
+    <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Food Factsissa.</string>
     <string name="txtYes">Kyllä</string>
     <string name="txtNo">Ei</string>
     <string name="hintNameProduct">Nimi</string>
@@ -205,9 +205,9 @@
     <string name="hintEnergyUnit">Energiayksikkö</string>
     <string name="hintWeight">Paino</string>
     <string name="hintStores">Kauppa</string>
-    <string name="hintBrand">Brand</string>
+    <string name="hintBrand">Tuotemerkki</string>
     <string name="txtTakePicture">Ota kuva</string>
-    <string name="txtSendAll">Upload all</string>
+    <string name="txtSendAll">Lähetä kaikki</string>
     <string name="txtNoData">No data</string>
     <string name="txtPictureNeeded">Odota…</string>
     <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
@@ -499,7 +499,7 @@
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
     <string name="swipe_down">Swipe down</string>
-    <string name="brand_string">Brand</string>
+    <string name="brand_string">Tuotemerkki</string>
     <string name="additive_string">Lisäaine</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Etsi</string>
@@ -529,7 +529,7 @@
     <string name="txtGallery">Gallery</string>
     <string name="txtOptions">Options</string>
     <string name="by_title">Title</string>
-    <string name="by_brand">Brand</string>
+    <string name="by_brand">Tuotemerkki</string>
     <string name="by_barcode">Viivakoodi</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
