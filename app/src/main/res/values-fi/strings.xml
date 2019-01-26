@@ -238,7 +238,7 @@
     <string name="category_drawer">Luokat</string>
     <string name="search_by_category">Category</string>
     <string name="search_by_name_drawer">Etsi nimellä</string>
-    <string name="scan_search">Skannaa</string>
+    <string name="scan_search">Lue viivakoodi</string>
     <string name="user_drawer">Käyttäjä</string>
     <string name="offline_edit_drawer">Offline-muokkaus</string>
     <string name="txt_anonymous">Anonyymi</string>
@@ -328,7 +328,7 @@
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
     <string name="nutrition_serving">Annosta kohti</string>
-    <string name="nutrition_serving_size">Tarjoilukoko:</string>
+    <string name="nutrition_serving_size">Annoskoko:</string>
     <string name="nutrition_sodium">Natrium</string>
     <string name="nutrition_sodium_short_name">Sodium (g)</string>
     <string name="nutrition_sugars">Sokerit</string>
