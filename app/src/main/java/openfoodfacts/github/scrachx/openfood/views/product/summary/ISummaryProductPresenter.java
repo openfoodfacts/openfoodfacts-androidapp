@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
@@ -25,6 +26,8 @@ public interface ISummaryProductPresenter {
         void loadCountries();
 
         void dispose();
+
+        void loadAdditives();
     }
 
     interface View {
@@ -41,6 +44,10 @@ public interface ISummaryProductPresenter {
         void showLabelsState(@ProductInfoState String state);
 
         void showCountriesState(@ProductInfoState String state);
+
+        void showAdditives(List<AdditiveName> additives);
+
+        void showAdditivesState(@ProductInfoState String state);
     }
 
 }

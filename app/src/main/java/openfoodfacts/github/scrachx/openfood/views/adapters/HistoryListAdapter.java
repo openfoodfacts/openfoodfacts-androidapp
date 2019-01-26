@@ -70,7 +70,11 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         if(BuildConfig.FLAVOR.equals("opf")||BuildConfig.FLAVOR.equals("opff")||BuildConfig.FLAVOR.equals("obf")){
             holder.imgNutritionGrade.setVisibility(View.GONE);
         }
-        holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getSmallImageGrade(item.getNutritionGrade())));
+        if (Utils.getSmallImageGrade(item.getNutritionGrade()) != 0) {
+            holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(mActivity, Utils.getSmallImageGrade(item.getNutritionGrade())));
+        } else {
+            holder.imgNutritionGrade.setVisibility(View.INVISIBLE);
+        }
         if (item.getUrl() == null) {
             holder.historyImageProgressbar.setVisibility(View.GONE);
         }

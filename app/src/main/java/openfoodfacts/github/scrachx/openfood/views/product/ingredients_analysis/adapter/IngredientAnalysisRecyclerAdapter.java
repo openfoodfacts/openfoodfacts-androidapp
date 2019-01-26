@@ -14,18 +14,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 public class IngredientAnalysisRecyclerAdapter extends RecyclerView.Adapter<IngredientAnalysisRecyclerAdapter.IngredientAnalysisViewHolder> implements CustomTabActivityHelper.ConnectionCallback{
 
     private Context mContext;
-    private ArrayList<Ingredient> ingredients;
+    private ArrayList<ProductIngredient> productIngredients;
     private Activity activity;
-    public IngredientAnalysisRecyclerAdapter(Context context, ArrayList<Ingredient> ingredients, Activity activity)
+    public IngredientAnalysisRecyclerAdapter(Context context, ArrayList<ProductIngredient> productIngredients, Activity activity)
     {
-        this.ingredients=ingredients;
+        this.productIngredients=productIngredients;
         this.mContext=context;
         this.activity=activity;
     }
@@ -50,8 +50,8 @@ public class IngredientAnalysisRecyclerAdapter extends RecyclerView.Adapter<Ingr
 
     @Override
     public void onBindViewHolder(@NonNull IngredientAnalysisViewHolder holder, int position) {
-        String text=ingredients.get(position).getText();
-        String id=ingredients.get(position).getId().replace("\"","");
+        String text=productIngredients.get(position).getText();
+        String id=productIngredients.get(position).getId().replace("\"","");
         String name=text.replace("\"","");  //removes quotations
         holder.tvIngredientName.setText(name);
         holder.tvIngredientName.setOnClickListener(view -> {
@@ -64,7 +64,7 @@ public class IngredientAnalysisRecyclerAdapter extends RecyclerView.Adapter<Ingr
 
     @Override
     public int getItemCount() {
-        return ingredients.size();
+        return productIngredients.size();
     }
 
     @Override
