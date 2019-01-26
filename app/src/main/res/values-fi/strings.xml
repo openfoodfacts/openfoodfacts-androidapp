@@ -61,7 +61,7 @@
         <item>Arachidic acid (20:0)</item>
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
-        <item>Bicarbonate</item>
+        <item>Bikarbonaatti</item>
         <item>Biotiini</item>
         <item>Butyric acid (4:0)</item>
         <item>Kofeiini</item>
@@ -138,7 +138,7 @@
     <!-- Text units -->
     <string-array name="images_array">
         <item>Oletus</item>
-        <item>Nutrition</item>
+        <item>Nutri-Score</item>
         <item>Ainekset</item>
     </string-array>
     <!-- Content Description -->
@@ -302,7 +302,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">Nutrition facts table for %1$s tuotteesta</string>
     <string name="check_facts">Check</string>
-    <string name="nutrition">Nutrition</string>
+    <string name="nutrition">Nutri-Score</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please enter the weight</string>
     <string name="enter_weight">Enter the weight</string>
@@ -373,7 +373,7 @@
     <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">100 g:ssa</string>
     <string name="serving">Annosta kohti</string>
-    <string name="minerals">Minerals</string>
+    <string name="minerals">Kivennäis- ja hivenaineet</string>
     <string name="nutrition_calcium">Kalsium</string>
     <string name="nutrition_potassium">Kalium</string>
     <string name="nutrition_chlore">Chlorine</string>
@@ -397,15 +397,15 @@
     <string name="vitamin_c">C-vitamiini</string>
     <string name="vitamin_b1">B1-vitamiini</string>
     <string name="vitamin_b2">B2-vitamiini</string>
-    <string name="vitamin_pp">Vitamin PP</string>
+    <string name="vitamin_pp">Niasiini (B3-vitamiini)</string>
     <string name="vitamin_b6">B6-vitamiini</string>
     <string name="vitamin_b9">B9-vitamiini</string>
     <string name="vitamin_b12">B12-vitamiini</string>
     <string name="biotin">Biotiini</string>
     <string name="pantothenic_acid">Pantoteenihappo</string>
-    <string name="nutrition_minerals">Minerals</string>
+    <string name="nutrition_minerals">Kivennäis- ja hivenaineet</string>
     <string name="silica">Silica</string>
-    <string name="bicarbonate">Bicarbonate</string>
+    <string name="bicarbonate">Bikarbonaatti</string>
     <string name="potassium">Kalium</string>
     <string name="chloride">Kloridi</string>
     <string name="calcium">Kalsium</string>
@@ -630,7 +630,7 @@
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Jäämät</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
