@@ -173,7 +173,7 @@
     <string name="txtTraces">Jäämät:</string>
     <string name="txtMayBeFromPalmOilProduct">Ainesosat, jotka voivat olla peräisin palmuöljystä:</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
-    <string name="txtServingSize">Tarjoilukoko:</string>
+    <string name="txtServingSize">Annoskoko:</string>
     <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
