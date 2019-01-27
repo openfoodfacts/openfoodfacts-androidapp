@@ -361,17 +361,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         if(LocaleHelper.getLanguage(getContext())!=null) {
             String langCode=LocaleHelper.getLanguage(getContext());
-            api.getProductNameByLanguage(product.getCode(),langCode,(((value, productName) -> {
-                if(value) {
-                    if(productName!=null){
-                        nameProduct.setText(productName.replace("\"",""));
-                    } else {
-                        nameProduct.setText(product.getProductName());
-                    }
-                } else{
-                    nameProduct.setVisibility(View.GONE);
-                }
-            })));
+            if(product.getProductName(langCode)!=null){
+                nameProduct.setText(product.getProductName(langCode));
+            }
+            else if(product.getProductName("en")!=null) {
+                nameProduct.setText(product.getProductName("en"));
+            } else if(product.getProductName()!=null){
+                nameProduct.setText(product.getProductName());
+            } else {
+                nameProduct.setVisibility(View.GONE);
+            }
         }
         if (isNotBlank(product.getGenericName())) {
             genericNameProduct.setText(product.getGenericName());
