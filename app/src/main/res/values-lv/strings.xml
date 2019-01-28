@@ -48,6 +48,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -342,6 +343,10 @@
     <string name="nutriment_serving_size">Par porciju: </string>
     <string name="action_manage_account">Pārvaldīt kontu</string>
     <string name="action_contributes">Jūsu ieguldījums</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">Izlogoties</string>
     <string name="contribution_without_account">Varat ielogoties vai izveidot kontu, lai saglabātu savu ieguldījumu</string>
     <string name="textCarbonFootprint">Oglekļa dioksīda emisijas / CO2 emisijas: </string>
