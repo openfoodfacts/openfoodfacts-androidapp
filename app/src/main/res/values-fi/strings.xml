@@ -7,38 +7,38 @@
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minute ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d minuuttia sitten</item>
     </plurals>
     <plurals name="hours">
         <item quantity="one">1 hour ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d tuntia sitten</item>
     </plurals>
     <plurals name="days">
         <item quantity="one">1 day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d päivää sitten</item>
     </plurals>
     <string name="action_settings">Asetukset</string>
     <string name="action_about">Tietoja</string>
     <string name="action_discover">Löydä</string>
-    <string name="contribute">How to contribute</string>
+    <string name="contribute">Miten voit auttaa</string>
     <string name="action_find">Etsi</string>
-    <string name="text_barcode">Type the barcode :</string>
-    <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+    <string name="text_barcode">Kirjoita viivakoodi:</string>
+    <string name="message_in_activity_save_product_offline">Vain yksi kuva on pakollinen uuden tuotteen lähettämiseksi.</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-    <string name="no_offline_data">You\'re all done</string>
-    <string name="first_offline">Products added offline will appear here</string>
+    <string name="no_offline_data">Valmis</string>
+    <string name="first_offline">Täällä näkyvät offline-tilassa lisätyt tuotteet</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Yhteenveto</item>
         <item>Ainekset</item>
-        <item>Nutrition</item>
-        <item>Nutrition Table</item>
-        <item>Environment</item>
+        <item>Nutri-Score</item>
+        <item>Ravintosisältö</item>
+        <item>Ympäristö</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
+        <item>Tuotekuvat</item>
         <item>Ingredient Analysis</item>
     </string-array>
     <!-- Text units -->
@@ -47,8 +47,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
@@ -61,84 +61,84 @@
         <item>Arachidic acid (20:0)</item>
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
-        <item>Bicarbonate</item>
-        <item>Biotin</item>
+        <item>Bikarbonaatti</item>
+        <item>Biotiini</item>
         <item>Butyric acid (4:0)</item>
-        <item>Caffeine</item>
-        <item>Calcium</item>
+        <item>Kofeiini</item>
+        <item>Kalsium</item>
         <item>Capric acid (10:0)</item>
         <item>Caproic acid (6:0)</item>
         <item>Caprylic acid (8:0)</item>
-        <item>Casein</item>
+        <item>Kaseiini</item>
         <item>Cerotic acid (26:0)</item>
-        <item>Chloride</item>
+        <item>Kloridi</item>
         <item>Kolesteroli</item>
         <item>Kromi</item>
-        <item>Copper</item>
+        <item>Kupari</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
         <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
         <item>Fluoridi</item>
-        <item>Fructose</item>
+        <item>Fruktoosi</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
-        <item>Glucose</item>
+        <item>Glukoosi</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>Jodi</item>
-        <item>Iron</item>
-        <item>Lactose</item>
+        <item>Rauta</item>
+        <item>Laktoosi</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
         <item>Magnesium</item>
-        <item>Maltodextrins</item>
-        <item>Maltose</item>
+        <item>Maltodekstriinit</item>
+        <item>Maltoosi</item>
         <item>Mangaani</item>
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molybdeeni</item>
-        <item>Monounsaturated fat</item>
+        <item>Kertatyydyttämätön rasva</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nukleotidit</item>
         <item>Oleic acid (18:1 n-9)</item>
-        <item>Omega 3 fatty acids</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
+        <item>Omega-3-rasvahapot</item>
+        <item>Omega-6-rasvahapot</item>
+        <item>Omega-9-rasvahapot</item>
         <item>Palmitic acid (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>Pantoteenihappo (B5-vitamiini)</item>
         <item>pH</item>
-        <item>Phosphorus</item>
-        <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
-        <item>Potassium</item>
+        <item>Fosfori</item>
+        <item>Sokerialkoholit (polyolit)</item>
+        <item>Monityydyttämätön rasva</item>
+        <item>Kalium</item>
         <item>Seleeni</item>
         <item>Serum proteins</item>
-        <item>Silica</item>
-        <item>Starch</item>
+        <item>Piidioksidi</item>
+        <item>Tärkkelys</item>
         <item>Stearic acid (18:0)</item>
-        <item>Sucrose</item>
+        <item>Sakkaroosi</item>
         <item>Tauriini</item>
-        <item>Trans fat</item>
-        <item>Vitamin A</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
+        <item>Transrasva</item>
+        <item>A-vitamiini</item>
+        <item>B1-vitamiini (tiamiini)</item>
+        <item>B12-vitamiini (kobalamiini)</item>
+        <item>B2-vitamiini (riboflaviini)</item>
+        <item>B3-vitamiini (niasiini)</item>
+        <item>B6-vitamiini (pyridoksiini)</item>
+        <item>B9-vitamiini (foolihappo)</item>
         <item>Vitamin C (Ascorbic acid)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
-        <item>Zinc</item>
+        <item>D-vitamiini</item>
+        <item>E-vitamiini</item>
+        <item>K-vitamiini</item>
+        <item>Sinkki</item>
     </string-array>
     <!-- Text units -->
     <string-array name="images_array">
         <item>Oletus</item>
-        <item>Nutrition</item>
+        <item>Nutri-Score</item>
         <item>Ainekset</item>
     </string-array>
     <!-- Content Description -->
@@ -156,28 +156,28 @@
     <string name="txtQuantity">Määrä:</string>
     <string name="txtPackaging">Paketointi:</string>
     <string name="txtBrands">Tuotemerkit :</string>
-    <string name="txtCategories">Luokat :</string>
+    <string name="txtCategories">Tuotekategoriat:</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtManufacturing">Manufacturing or processing places :</string>
-    <string name="txtIngredientsOrigins">Alkuperä ainesosien :</string>
-    <string name="txtCity">Kaupungin, valtion ja ostomaassa :</string>
+    <string name="txtIngredientsOrigins">Ainesosien alkuperä :</string>
+    <string name="txtCity">Kaupunki, valtio ja maa, josta ostettu:</string>
     <string name="txtEMB">EMB Code:</string>
-    <string name="txtManufactureUrl">Linkki tuotesivulle virallisella sivustolla tuottajan:</string>
+    <string name="txtManufactureUrl">Linkki tuottajan viralliselle tuotesivulle:</string>
     <string name="txtStores">Stores :</string>
     <string name="txtCountries">Maat joissa myynnissä:</string>
     <string name="txtIngredients">Ainesosaluettelo:</string>
-    <string name="Donate">Donate</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="Donate">Tee lahjoitus</string>
+    <string name="Donation">Klikkaa tästä lahjoittaaksesi Open Food Facts:lle</string>
     <string name="txtSubstances">Allergioita tai intoleransseja aiheuttavat aineet ja tuotteet :</string>
-    <string name="txtAdditives">Additives :</string>
-    <string name="txtTraces">Traces :</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
+    <string name="txtAdditives">Lisäaineet:</string>
+    <string name="txtTraces">Jäämät:</string>
+    <string name="txtMayBeFromPalmOilProduct">Ainesosat, jotka voivat olla peräisin palmuöljystä:</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
-    <string name="txtServingSize">Tarjoilukoko:</string>
+    <string name="txtServingSize">Annoskoko:</string>
     <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
-    <string name="txtNutritionLevelLow">in low quantity</string>
-    <string name="txtNutritionLevelModerate">in moderate quantity</string>
-    <string name="txtNutritionLevelHigh">in high quantity</string>
+    <string name="txtNutritionLevelLow">pieni määrä</string>
+    <string name="txtNutritionLevelModerate">kohtalainen määrä</string>
+    <string name="txtNutritionLevelHigh">suuri määrä</string>
     <string name="txtLogin">Tunnus:</string>
     <string name="txtPass">Salasana:</string>
     <string name="txtTitleHome">Open your food and know what you eat</string>
@@ -193,11 +193,11 @@
     <string name="hintPass">Salasana</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-    <string name="uploadLater">Image will be uploaded when network is available</string>
+    <string name="uploadLater">Kuva lähetetään, kun verkko on käytettävissä</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
+    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Facts:ssa. Ole hyvä ja lisää se.</string>
+    <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Food Factsissa.</string>
     <string name="txtYes">Kyllä</string>
     <string name="txtNo">Ei</string>
     <string name="hintNameProduct">Nimi</string>
@@ -205,27 +205,27 @@
     <string name="hintEnergyUnit">Energiayksikkö</string>
     <string name="hintWeight">Paino</string>
     <string name="hintStores">Kauppa</string>
-    <string name="hintBrand">Brand</string>
+    <string name="hintBrand">Tuotemerkki</string>
     <string name="txtTakePicture">Ota kuva</string>
-    <string name="txtSendAll">Upload all</string>
+    <string name="txtSendAll">Lähetä kaikki</string>
     <string name="txtNoData">No data</string>
     <string name="txtPictureNeeded">Odota…</string>
-    <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+    <string name="txtPictureNeededDialogContent">Lisää ainakin yksi kuva ennen tuotteen lähettämistä</string>
     <string name="txtPictureNeededDialogYes">Stay</string>
-    <string name="txtPictureNeededDialogNo">Discard</string>
+    <string name="txtPictureNeededDialogNo">Hävitä</string>
     <string name="toastSending">Lähetetään…</string>
     <string name="dataSaved">Tallennettu paikallisesti laitteellesi</string>
     <string name="txtInfoAddUser">Anna käyttäjätunnuksesi ja salasanasi</string>
-    <string name="txtDataUpdated">Data updated</string>
+    <string name="txtDataUpdated">Tiedot päivitetty</string>
     <string name="txtLoading">Ladataan…</string>
-    <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
-    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
+    <string name="txtDialogsContentDelete">Haluatko varmasti poistaa tämän luonnoksen?</string>
+    <string name="txtDialogsContentInfoSave">Tuote tallennetaan paikallisesti. Voit muokata sitä Offline-muokkaus -valikossa</string>
     <string name="txtBarcodeRequire">Viivakoodi vaaditaan</string>
     <string name="txtOk">OK</string>
-    <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+    <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
     <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
     <string name="txtAllsent">Tuotteet lähetetty</string>
-    <string name="txtPalm">The product does not contain any palm oil</string>
+    <string name="txtPalm">Tuote ei sisällä palmuöljyä</string>
     <string name="txtBarcodeNotValid">Viivakoodi on virheellinen</string>
     <string name="try_it_scan_now">Skannaa tuote</string>
     <string name="share">Jaa</string>
@@ -238,17 +238,17 @@
     <string name="category_drawer">Luokat</string>
     <string name="search_by_category">Category</string>
     <string name="search_by_name_drawer">Etsi nimellä</string>
-    <string name="scan_search">Skannaa</string>
+    <string name="scan_search">Lue viivakoodi</string>
     <string name="user_drawer">Käyttäjä</string>
-    <string name="offline_edit_drawer">Offline edit</string>
+    <string name="offline_edit_drawer">Offline-muokkaus</string>
     <string name="txt_anonymous">Anonyymi</string>
     <string name="txt_product_not_found">Tuotteita ei löytynyt</string>
     <string name="delete_txt">Poista</string>
     <string name="sign_in_drawer">Kirjaudu sisään</string>
-    <string name="alert_drawer">Allergen alert</string>
-    <string name="warning_allergens">Contains allergens</string>
-    <string name="title_dialog_alert">Add alert</string>
-    <string name="toggle_flash">Flash</string>
+    <string name="alert_drawer">Allergeenivaroitus</string>
+    <string name="warning_allergens">Sisältää allergeeneja</string>
+    <string name="title_dialog_alert">Lisää ilmoitus</string>
+    <string name="toggle_flash">Salamavalo</string>
     <string name="flash_on">Flash [ON]</string>
     <string name="flash_off">Flash [OFF]</string>
     <string name="ring_on">Ring [ON]</string>
@@ -302,7 +302,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">Nutrition facts table for %1$s tuotteesta</string>
     <string name="check_facts">Check</string>
-    <string name="nutrition">Nutrition</string>
+    <string name="nutrition">Nutri-Score</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please enter the weight</string>
     <string name="enter_weight">Enter the weight</string>
@@ -316,7 +316,7 @@
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Rasva</string>
     <string name="nutrition_fat_short_name">Rasva (g)</string>
-    <string name="nutrition_fiber">Dietary fiber</string>
+    <string name="nutrition_fiber">Ravintokuitu</string>
     <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
     <string name="nutrition_header">Ravintosisältö</string>
     <string name="nutrition_no_data_message">No data is available for this product</string>
@@ -325,15 +325,15 @@
     <string name="nutrition_proteins_short_name">Proteiinit (g)</string>
     <string name="nutrition_salt">Suola</string>
     <string name="nutrition_salt_short_name">Suola (g)</string>
-    <string name="nutrition_satured_fat">Saturated fat</string>
+    <string name="nutrition_satured_fat">Tyydyttynyt rasva</string>
     <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
     <string name="nutrition_serving">Annosta kohti</string>
-    <string name="nutrition_serving_size">Tarjoilukoko:</string>
-    <string name="nutrition_sodium">Sodium</string>
+    <string name="nutrition_serving_size">Annoskoko:</string>
+    <string name="nutrition_sodium">Natrium</string>
     <string name="nutrition_sodium_short_name">Sodium (g)</string>
     <string name="nutrition_sugars">Sokerit</string>
     <string name="nutrition_sugars_short_name">Sokerit (g)</string>
-    <string name="nutrition_trans_fat">Trans fat</string>
+    <string name="nutrition_trans_fat">Transrasva</string>
     <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Tilin asetukset</string>
@@ -366,72 +366,72 @@
     <string name="txt_cant_load_search_results">Can\'t load search results</string>
     <string name="something_went_wrong">Sorry, something went wrong…</string>
     <string name="txt_try_again">Try again</string>
-    <string name="nutrition_lactose">Lactose</string>
-    <string name="nutrition_casein">Casein</string>
-    <string name="nutrition_maltodextrins">Maltodextrins</string>
+    <string name="nutrition_lactose">Laktoosi</string>
+    <string name="nutrition_casein">Kaseiini</string>
+    <string name="nutrition_maltodextrins">Maltodekstriinit</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
-    <string name="for_100g">For 100 g</string>
+    <string name="nutrition_nucleotides">Nukleotidit</string>
+    <string name="for_100g">100 g:ssa</string>
     <string name="serving">Annosta kohti</string>
-    <string name="minerals">Minerals</string>
-    <string name="nutrition_calcium">Calcium</string>
-    <string name="nutrition_potassium">Potassium</string>
+    <string name="minerals">Kivennäis- ja hivenaineet</string>
+    <string name="nutrition_calcium">Kalsium</string>
+    <string name="nutrition_potassium">Kalium</string>
     <string name="nutrition_chlore">Chlorine</string>
     <string name="nutrition_magnesium">Magnesium</string>
     <string name="nutrition_taurine">Tauriini</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Kertatyydyttämätön rasva</string>
+    <string name="nutrition_polyunsaturatedFat">Monityydyttämätön rasva</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
-    <string name="nutrition_sucrose">Sucrose</string>
-    <string name="nutrition_glucose">Glucose</string>
-    <string name="nutrition_fructose">Fructose</string>
-    <string name="nutrition_maltose">Maltose</string>
-    <string name="nutrition_alcohol">Alcohol</string>
-    <string name="nutrition_vitamins">Vitamins</string>
-    <string name="vitamin_a">Vitamin A</string>
-    <string name="vitamin_d">Vitamin D</string>
-    <string name="vitamin_e">Vitamin E</string>
-    <string name="vitamin_k">Vitamin K</string>
-    <string name="vitamin_c">Vitamin C</string>
-    <string name="vitamin_b1">Vitamin B1</string>
-    <string name="vitamin_b2">Vitamin B2</string>
-    <string name="vitamin_pp">Vitamin PP</string>
-    <string name="vitamin_b6">Vitamin B6</string>
-    <string name="vitamin_b9">Vitamin B9</string>
-    <string name="vitamin_b12">Vitamin B12</string>
-    <string name="biotin">Biotin</string>
-    <string name="pantothenic_acid">Pantothenic acid</string>
-    <string name="nutrition_minerals">Minerals</string>
-    <string name="silica">Silica</string>
-    <string name="bicarbonate">Bicarbonate</string>
-    <string name="potassium">Potassium</string>
-    <string name="chloride">Chloride</string>
-    <string name="calcium">Calcium</string>
-    <string name="phosphorus">Phosphorus</string>
-    <string name="iron">Iron</string>
+    <string name="nutrition_sucrose">Sakkaroosi</string>
+    <string name="nutrition_glucose">Glukoosi</string>
+    <string name="nutrition_fructose">Fruktoosi</string>
+    <string name="nutrition_maltose">Maltoosi</string>
+    <string name="nutrition_alcohol">Alkoholi</string>
+    <string name="nutrition_vitamins">Vitamiinit</string>
+    <string name="vitamin_a">A-vitamiini</string>
+    <string name="vitamin_d">D-vitamiini</string>
+    <string name="vitamin_e">E-vitamiini</string>
+    <string name="vitamin_k">K-vitamiini</string>
+    <string name="vitamin_c">C-vitamiini</string>
+    <string name="vitamin_b1">B1-vitamiini</string>
+    <string name="vitamin_b2">B2-vitamiini</string>
+    <string name="vitamin_pp">Niasiini (B3-vitamiini)</string>
+    <string name="vitamin_b6">B6-vitamiini</string>
+    <string name="vitamin_b9">B9-vitamiini</string>
+    <string name="vitamin_b12">B12-vitamiini</string>
+    <string name="biotin">Biotiini</string>
+    <string name="pantothenic_acid">Pantoteenihappo</string>
+    <string name="nutrition_minerals">Kivennäis- ja hivenaineet</string>
+    <string name="silica">Piidioksidi</string>
+    <string name="bicarbonate">Bikarbonaatti</string>
+    <string name="potassium">Kalium</string>
+    <string name="chloride">Kloridi</string>
+    <string name="calcium">Kalsium</string>
+    <string name="phosphorus">Fosfori</string>
+    <string name="iron">Rauta</string>
     <string name="magnesium">Magnesium</string>
-    <string name="zinc">Zinc</string>
-    <string name="copper">Copper</string>
+    <string name="zinc">Sinkki</string>
+    <string name="copper">Kupari</string>
     <string name="manganese">Mangaani</string>
     <string name="fluoride">Fluoridi</string>
     <string name="selenium">Seleeni</string>
     <string name="chromium">Kromi</string>
     <string name="molybdenum">Molybdeeni</string>
     <string name="iodine">Jodi</string>
-    <string name="caffeine">Caffeine</string>
+    <string name="caffeine">Kofeiini</string>
     <string name="taurine">Tauriini</string>
     <string name="ph">pH</string>
-    <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
+    <string name="fruits_vegetables_nuts">Hedelmät, vihannekset, pähkinät</string>
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
-    <string name="cocoa">Cocoa</string>
-    <string name="chlorophyl">Chlorophyl</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-    <string name="take_picture_front">Take a picture of the front</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
+    <string name="cocoa">Kaakao</string>
+    <string name="chlorophyl">Lehtivihreä</string>
+    <string name="take_picture_ingredients">Ota kuva aineksista</string>
+    <string name="take_picture_front">Ota tuotekuva edestä</string>
+    <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
     <string name="take_more_pictures">Take more pictures</string>
-    <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="txtSaturatedFat">Tyydyttynyt rasva</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Skannaa</string>
@@ -462,7 +462,7 @@
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
-    <string name="device_on_mobile_data_warning_title">Information</string>
+    <string name="device_on_mobile_data_warning_title">Tietoja</string>
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Asetukset</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
@@ -499,11 +499,11 @@
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
     <string name="swipe_down">Swipe down</string>
-    <string name="brand_string">Brand</string>
+    <string name="brand_string">Tuotemerkki</string>
     <string name="additive_string">Lisäaine</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Etsi</string>
-    <string name="country_string">Maat myyntiehdot</string>
+    <string name="country_string">Maat joissa myynnissä</string>
     <string name="store_subtitle">Kauppa</string>
     <string name="packaging_subtitle">Pakkaus</string>
     <string name="last_seen_string">%1$d %2$s ago</string>
@@ -529,7 +529,7 @@
     <string name="txtGallery">Gallery</string>
     <string name="txtOptions">Options</string>
     <string name="by_title">Title</string>
-    <string name="by_brand">Brand</string>
+    <string name="by_brand">Tuotemerkki</string>
     <string name="by_barcode">Viivakoodi</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
@@ -569,7 +569,7 @@
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
     <string name="product">Muokkaa</string>
-    <string name="txtDialogsTitle">Information</string>
+    <string name="txtDialogsTitle">Tietoja</string>
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Add a new product</string>
@@ -630,13 +630,13 @@
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Jäämät</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per Serving</string>
-    <string name="serving_size">Palvelevat koko</string>
+    <string name="serving_size">Annoskoko</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Lisää ravintoaine</string>
     <string name="add_this_product">Add this product</string>
@@ -648,12 +648,12 @@
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">Alkuperä ainesosien</string>
+    <string name="origin_of_ingredients">Ainesosien alkuperä</string>
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
+    <string name="stores">Myymälät</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
@@ -662,7 +662,7 @@
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-    <string name="edit_product_title">Muokkaa tuote</string>
+    <string name="edit_product_title">Muokkaa tuotetta</string>
     <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
@@ -712,8 +712,12 @@
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
-    <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
-    <string name="ingredient_image_prompt_text">Take a picture of the ingredients</string>
+    <string name="add_nutrient_prompt_text">Lisää ravintosisältö Nutri-Score -arvon laskemiseksi</string>
+    <string name="add_category_prompt_text">Lisää kategoria Nutri-Score -arvon laskemiseksi</string>
+    <string name="add_nutrient_category_prompt_text">Lisää ravintosisältö ja kategoria Nutri-Score -arvon laskemiseksi</string>
+    <string name="no_nutrition_data_prompt">Tällä tuotteella ei ole ravitsemustietoja</string>
+    <string name="nutrition_image_prompt_text">Ota kuva ravintosisällöstä</string>
+    <string name="ingredient_image_prompt_text">Ota kuva aineksista</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>

@@ -297,6 +297,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
+        lastEditText = alcohol;
         if (b != null) {
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
@@ -317,7 +318,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             activity.finish();
         }
         alcohol.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        lastEditText = alcohol;
     }
 
     /**

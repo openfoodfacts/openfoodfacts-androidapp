@@ -741,6 +741,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="EditDiet_Unauthorised_Ingredients">Niezatwierdzone składniki</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Lista nieautoryzowanych składników, które powinny zostać wyświetlone w kolorze czerwonym. Przykład: gluten, mleko, olej palmowy, cukier ... Listę można uzupełnić później.</string>
     <string name="extract_ingredients_prompt">Wyodrębnij składniki</string>
+    <string name="add_nutrient_prompt_text">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
+    <string name="add_category_prompt_text">W celu obliczenia Nutri-Score wpisz kategorię produktu</string>
+    <string name="add_nutrient_category_prompt_text">Aby obliczyć Nutri-Score uzupełnij informacje o wartości odżywczej oraz kategorię produktu</string>
+    <string name="no_nutrition_data_prompt">Nie ma informacji o wartości odżywczej tego produktu</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Zrób zdjęcie składników</string>
     <string name="category_game_btn">Pomóż obliczyć Nutri-Score. przez właściwe kategoryzowanie produktów</string>
