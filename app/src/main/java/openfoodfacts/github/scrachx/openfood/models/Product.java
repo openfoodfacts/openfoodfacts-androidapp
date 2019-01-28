@@ -129,13 +129,13 @@ public class Product implements Serializable {
     private String nutritionDataPer;
     @JsonProperty("no_nutrition_data")
     private String noNutritionData;
-    @JsonProperty("other_information_fr")
+    @JsonProperty("other_information")
     private String otherInformation;
-    @JsonProperty("conservation_conditions_fr")
+    @JsonProperty("conservation_conditions")
     private String conservationConditions;
-    @JsonProperty("recycling_instructions_to_discard_fr")
+    @JsonProperty("recycling_instructions_to_discard")
     private String recyclingInstructionsToDiscard;
-    @JsonProperty("recycling_instructions_to_recycle_fr")
+    @JsonProperty("recycling_instructions_to_recycle")
     private String recyclingInstructionsToRecycle;
     @JsonProperty("warning")
     private String warning;
