@@ -188,7 +188,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Toast.makeText(context, context.getString(R.string.set_image_name) + imageName, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, context.getString(R.string.set_image_name) + " " + imageName, Toast.LENGTH_LONG).show();
 
     }
 
