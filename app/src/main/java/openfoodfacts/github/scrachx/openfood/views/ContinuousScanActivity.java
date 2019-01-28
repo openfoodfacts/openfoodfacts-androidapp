@@ -699,12 +699,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    quickView.setVisibility(View.VISIBLE);
-                                }
-                            });
+                            quickView.setVisibility(View.VISIBLE);
                         }
                     }, 500);
                     searchByBarcode.requestFocus();
