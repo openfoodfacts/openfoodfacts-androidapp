@@ -25,6 +25,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -178,6 +181,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         List<NutrientLevelItem> levelItem = new ArrayList<>();
 
+        SharedPreferences settingsPreference = getActivity().getSharedPreferences("prefs", 0);
+
         Nutriments nutriments = product.getNutriments();
 
         NutrientLevels nutrientLevels = product.getNutrientLevels();
@@ -293,9 +298,16 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             serving.setVisibility(View.GONE);
             servingSizeCardView.setVisibility(View.GONE);
         } else {
+            String servingSize = product.getServingSize();
+            if(settingsPreference.getString("volumeUnitPreference", "l").equals("oz")) {
+                servingSize = Utils.getServingInOz(servingSize);
+            } else if (servingSize.toLowerCase().contains("oz") && settingsPreference.getString("volumeUnitPreference", "l").equals("l")) {
+                servingSize = Utils.getServingInL(servingSize);
+            }
+
             serving.setText(bold(getString(R.string.txtServingSize)));
             serving.append(" ");
-            serving.append(product.getServingSize());
+            serving.append(servingSize);
         }
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -365,12 +377,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
-        if (energy != null) {
+        if (energy != null  && settingsPreference.getString("energyUnitPreference", "kcal").equals("kcal")) {
             nutrimentItems.add(
                     new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                             Utils.getEnergy(energy.getFor100gInUnits()),
                             Utils.getEnergy(energy.getForServingInUnits()),
                             "kcal",
+                            nutriments.getModifier(ENERGY)));
+        }
+        else if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kJ")) {
+            nutrimentItems.add(
+                    new NutrimentItem(getString(R.string.nutrition_energy_short_name),
+                            energy.getFor100gInUnits(),
+                            energy.getForServingInUnits(),
+                            "kJ",
                             nutriments.getModifier(ENERGY)));
         }
 
