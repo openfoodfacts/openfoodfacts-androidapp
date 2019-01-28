@@ -40,6 +40,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -334,6 +335,10 @@
     <string name="nutriment_serving_size">每部分：</string>
     <string name="action_manage_account">管理账户</string>
     <string name="action_contributes">您的贡献</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">注销</string>
     <string name="contribution_without_account">尽可以登录或者创建一个账号来保存您的贡献</string>
     <string name="textCarbonFootprint">碳足迹 / CO2 排放：</string>
