@@ -381,7 +381,7 @@ public class ProductRepository implements IProductRepository {
         ingredientNameDao.deleteAll();
         ingredientsRelationDao.deleteAll();
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
-        daoSession.getDatabase().rawQuery("update sqlite_sequence set seq=0 where name in ('" + ingredientDao.getTablename() + "', '" + ingredientNameDao.getTablename() + "', '" + ingredientsRelationDao.getTablename() + "')",null);
+        daoSession.getDatabase().execSQL("update sqlite_sequence set seq=0 where name in ('" + ingredientDao.getTablename() + "', '" + ingredientNameDao.getTablename() + "', '" + ingredientsRelationDao.getTablename() + "')");
     }
 
     /**
