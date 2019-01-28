@@ -49,7 +49,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                         productRepository.getLabels(true),
                         productRepository.getTags(true),
                         productRepository.getAllergens(true),
-                        productRepository.getIngredients(false),
+                        productRepository.getIngredients(false), //TODO : have a test on last-modified-date of ingredients.json before download it. Then pass the parameter to true
                         productRepository.getCountries(true),
                         productRepository.getAdditives(true),
                         productRepository.getCategories(true), (labels, tags, allergens, ingredients, countries, additives, categories) -> {
