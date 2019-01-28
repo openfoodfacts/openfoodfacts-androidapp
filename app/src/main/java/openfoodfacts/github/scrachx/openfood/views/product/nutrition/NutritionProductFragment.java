@@ -232,7 +232,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
             }
         };
-        spannableStringBuilder.append(getString(R.string.txtClickToKnowMore));
+        spannableStringBuilder.append(getString(R.string.txtNutriScoreInfo));
         spannableStringBuilder.setSpan(clickableSpan,0,spannableStringBuilder.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textNutriScoreInfo.setText(spannableStringBuilder);
 
