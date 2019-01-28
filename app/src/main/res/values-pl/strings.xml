@@ -731,15 +731,16 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="diet_name">Nazwa diety</string>
     <string name="diets_dialog_warning_title">Ostrzeżenie</string>
     <string name="warning_diets_data">Dane dotyczące twoich diet pozostaną na twoim urządzeniu. Nic nie zostanie przesłane nigdzie indziej.</string>
-    <string name="EditDiet_Name">Nazwa</string>
-    <string name="EditDiet_Description">Opis</string>
-    <string name="EditDiet_Enabled_Disabled">Aktywne i nieaktywne</string>
-    <string name="EditDiet_Authorised_Ingredients">Zatwierdzone składniki</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Lista dopuszczonych składników, które powinny zostać wyświetlone w kolorze zielonym. Przykład: jabłka, pieczarki, pomidory... Tę listę można uzupełnić później.</string>
-    <string name="EditDiet_So_So_Ingredients">Takie składniki jak</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Niezatwierdzone składniki</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Lista nieautoryzowanych składników, które powinny zostać wyświetlone w kolorze czerwonym. Przykład: gluten, mleko, olej palmowy, cukier ... Listę można uzupełnić później.</string>
+    <string name="edit_diet_name">Nazwa</string>
+    <string name="edit_diet_description">Opis</string>
+    <string name="edit_diet_enabled_disabled">Aktywne i nieaktywne</string>
+    <string name="edit_diet_authorised_ingredients">Zatwierdzone składniki</string>
+    <string name="edit_diet_hint_ingredient_authorised">Lista dopuszczonych składników, które powinny zostać wyświetlone w kolorze zielonym. Przykład: jabłka, pieczarki, pomidory... Tę listę można uzupełnić później.</string>
+    <string name="edit_diet_so_so_ingredients">Takie składniki jak</string>
+    <string name="edit_diet_hint_so_so_ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
+    <string name="edit_diet_unauthorised_ingredients">Niezatwierdzone składniki</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Lista nieautoryzowanych składników, które powinny zostać wyświetlone w kolorze czerwonym. Przykład: gluten, mleko, olej palmowy, cukier ... Listę można uzupełnić później.</string>
+    <!-- Used for diets AddOn -->
     <string name="extract_ingredients_prompt">Wyodrębnij składniki</string>
     <string name="add_nutrient_prompt_text">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
     <string name="add_category_prompt_text">W celu obliczenia Nutri-Score wpisz kategorię produktu</string>
@@ -759,5 +760,4 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="customer_service">Obsługa klienta :</string>
     <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
     <string name="fast_addition_mode">Wybór tej opcji umożliwi szybkie dodawanie produktów o mniejszej liczbie atrybutów</string>
-    <!-- Used for diets AddOn -->
 </resources>

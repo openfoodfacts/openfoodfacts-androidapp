@@ -702,15 +702,16 @@
     <string name="diet_name">crwdns111836:0crwdne111836:0</string>
     <string name="diets_dialog_warning_title">crwdns111838:0crwdne111838:0</string>
     <string name="warning_diets_data">crwdns111840:0crwdne111840:0</string>
-    <string name="EditDiet_Name">crwdns111842:0crwdne111842:0</string>
-    <string name="EditDiet_Description">crwdns111844:0crwdne111844:0</string>
-    <string name="EditDiet_Enabled_Disabled">crwdns111846:0crwdne111846:0</string>
-    <string name="EditDiet_Authorised_Ingredients">crwdns111848:0crwdne111848:0</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">crwdns111850:0crwdne111850:0</string>
-    <string name="EditDiet_So_So_Ingredients">crwdns111852:0crwdne111852:0</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">crwdns111854:0crwdne111854:0</string>
-    <string name="EditDiet_Unauthorised_Ingredients">crwdns111856:0crwdne111856:0</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">crwdns111858:0crwdne111858:0</string>
+    <string name="edit_diet_name">crwdns111842:0crwdne111842:0</string>
+    <string name="edit_diet_description">crwdns111844:0crwdne111844:0</string>
+    <string name="edit_diet_enabled_disabled">crwdns111846:0crwdne111846:0</string>
+    <string name="edit_diet_authorised_ingredients">crwdns111848:0crwdne111848:0</string>
+    <string name="edit_diet_hint_ingredient_authorised">crwdns111850:0crwdne111850:0</string>
+    <string name="edit_diet_so_so_ingredients">crwdns111852:0crwdne111852:0</string>
+    <string name="edit_diet_hint_so_so_ingredient">crwdns111854:0crwdne111854:0</string>
+    <string name="edit_diet_unauthorised_ingredients">crwdns111856:0crwdne111856:0</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">crwdns111858:0crwdne111858:0</string>
+    <!-- Used for diets AddOn -->
     <string name="extract_ingredients_prompt">crwdns112682:0crwdne112682:0</string>
     <string name="add_nutrient_prompt_text">crwdns112714:0crwdne112714:0</string>
     <string name="add_category_prompt_text">crwdns112716:0crwdne112716:0</string>
@@ -730,5 +731,4 @@
     <string name="customer_service">crwdns112690:0crwdne112690:0</string>
     <string name="fast_addition_mode_title">crwdns112684:0crwdne112684:0</string>
     <string name="fast_addition_mode">crwdns112686:0crwdne112686:0</string>
-    <!-- Used for diets AddOn -->
 </resources>
