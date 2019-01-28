@@ -40,6 +40,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -334,6 +335,10 @@
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
