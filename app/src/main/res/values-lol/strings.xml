@@ -44,6 +44,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -338,6 +339,10 @@
     <string name="nutriment_serving_size">crwdns98913:0crwdne98913:0</string>
     <string name="action_manage_account">crwdns98915:0crwdne98915:0</string>
     <string name="action_contributes">crwdns98917:0crwdne98917:0</string>
+    <string name="choose_energy_unit">crwdns112728:0crwdne112728:0</string>
+    <string name="energy_pref_title">crwdns112730:0crwdne112730:0</string>
+    <string name="choose_volume_unit">crwdns112732:0crwdne112732:0</string>
+    <string name="volume_pref_title">crwdns112734:0crwdne112734:0</string>
     <string name="logout_drawer">crwdns98919:0crwdne98919:0</string>
     <string name="contribution_without_account">crwdns98921:0crwdne98921:0</string>
     <string name="textCarbonFootprint">crwdns98923:0crwdne98923:0</string>
