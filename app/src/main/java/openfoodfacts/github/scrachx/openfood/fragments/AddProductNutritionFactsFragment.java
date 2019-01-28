@@ -21,6 +21,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -277,6 +278,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private boolean edit_product;
     private Product product;
     private boolean newImageSelected;
+    private EditText lastEditText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -295,6 +297,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
+        lastEditText = alcohol;
         if (b != null) {
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
@@ -314,6 +317,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             Toast.makeText(activity, R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
+        alcohol.setImeOptions(EditorInfo.IME_ACTION_DONE);
     }
 
     /**
@@ -1314,6 +1318,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         editText.setHint(text);
         editText.setId(position);
         editText.setKeyListener(keyListener);
+        lastEditText.setNextFocusDownId(editText.getId());
+        lastEditText.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        lastEditText = editText;
+        editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         editText.setSingleLine();
         editText.setPadding(dpsToPixels(10), 0, dpsToPixels(10), 0);
         editText.setGravity(Gravity.CENTER_VERTICAL);
