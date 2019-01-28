@@ -14,6 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import org.greenrobot.greendao.async.AsyncSession;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,6 +30,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -38,8 +41,6 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
 
 
     private RecyclerView recyclerView;
-    private AdditiveNameDao additiveNameDao;
-    private IProductRepository productRepository;
     private List<AdditiveName> additives;
     private Toolbar toolbar;
 
@@ -50,48 +51,37 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
         setContentView(R.layout.activity_additives_explorer);
 
         recyclerView = findViewById(R.id.additiveRecyclerView);
-        productRepository = ProductRepository.getInstance();
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Additives");
 
+        DaoSession daoSession = Utils.getAppDaoSession(this);
+        AsyncSession asyncSessionAdditives = daoSession.startAsyncSession();
+        AdditiveNameDao additiveNameDao = daoSession.getAdditiveNameDao();
 
-        additiveNameDao = Utils.getAppDaoSession(this).getAdditiveNameDao();
-        List<AdditiveName> additivesNames = additiveNameDao.loadAll();
         String languageCode = Locale.getDefault().getLanguage();
+        asyncSessionAdditives.queryList(additiveNameDao.queryBuilder()
+                .where(AdditiveNameDao.Properties.LanguageCode.eq(languageCode))
+                .where(AdditiveNameDao.Properties.Name.like("E%")).build());
+
         additives = new ArrayList<>();
-        Set<Single<AdditiveName>> hs = new HashSet<>();
-        for (int i = 0; i < additivesNames.size(); i++) {
-            if (additivesNames.get(i).getName().startsWith("E")) {
-                String tag = additivesNames.get(i).getAdditiveTag();
-                hs.add(productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode));
-            }
-        }
+        asyncSessionAdditives.setListenerMainThread(operation -> {
+            additives = (List<AdditiveName>) operation.getResult();
 
-        Set<AdditiveName> additiveSet = new HashSet<>();
-        for (Single<AdditiveName> additiveNameSingle : hs) {
-            additiveNameSingle.subscribe(
-                    additiveSet::add
-            );
-        }
-
-        additives.addAll(additiveSet);
-
-        Collections.sort(additives, new Comparator<AdditiveName>() {
-            @Override
-            public int compare(AdditiveName additiveName, AdditiveName t1) {
+            Collections.sort(additives, (additiveName, t1) -> {
                 String s1 = additiveName.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
                 String s2 = t1.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
                 return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
-            }
+            });
+
+
+            recyclerView.setLayoutManager(new LinearLayoutManager(AdditivesExplorer.this));
+            recyclerView.setAdapter(new AdditivesAdapter(additives, AdditivesExplorer.this));
+            recyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
+
         });
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(AdditivesExplorer.this));
-        recyclerView.setAdapter(new AdditivesAdapter(additives, AdditivesExplorer.this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
 
 
     }
