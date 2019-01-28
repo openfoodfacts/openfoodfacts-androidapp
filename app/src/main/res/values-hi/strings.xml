@@ -44,6 +44,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -338,6 +339,10 @@
     <string name="nutriment_serving_size">प्रति हिस्से:</string>
     <string name="action_manage_account">खाते का प्रबंधन</string>
     <string name="action_contributes">आपका योगदान</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">लॉग आउट करें</string>
     <string name="contribution_without_account">आप साइन-इन कर सकते हैं या अपने योगदान रखने के लिए एक खाता बनाने\nप्रसंग:</string>
     <string name="textCarbonFootprint">कार्बन पदचिह्न / CO2 उत्सर्जन: </string>
