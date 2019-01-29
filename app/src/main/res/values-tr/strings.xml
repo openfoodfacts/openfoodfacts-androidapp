@@ -263,7 +263,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Giriş</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
+    <string name="warning_alert_data">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
     <string name="from_gallery">Galeriden</string>
     <string name="product_sent">Ürün başarıyla gönderildi</string>
     <string name="action_edit_product">Ürünü Düzenle</string>
@@ -564,6 +564,7 @@
     <string name="notify_content">Dışa aktarılan ürünleri görüntülemek için tıklayın</string>
     <string name="notification_channel_name">Aktarma Bildirimleri</string>
     <string name="notify_channel_description">Dışa aktarılan dosyanın konumunu gösteren bildirim</string>
+    <string name="additives">Katkı maddeleri</string>
     <string name="products_to_be_completed">Tamamlanacak ürünler</string>
     <string name="modified_history">%1$s e %2$s de %3$s ile eklenen ürün. %4$s e %5$s de %6$s ile ürün sayfasının son düzenlenmesi. Ürün sayfası ayrıca %7$starafından düzenlenmiştir</string>
     <string name="offline_notification_title">Göndermeniz gereken çevrimdışı katkılar</string>
@@ -731,6 +732,7 @@
     <string name="set_img_front">Set Image as Front</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
