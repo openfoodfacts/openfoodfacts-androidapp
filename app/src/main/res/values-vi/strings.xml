@@ -259,7 +259,7 @@
     <string name="cancel_button">Huỷ</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Tạo Tài Khoản</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Thông tin bệnh dị ứng của bạn không bao giờ sẽ được gửi đến máy chủ Open Food Facts. Ngoài ra, hãy cẩn thận rằng dữ liệu sản phẩm có thể không chính xác, và việc phát hiện có thể không chính xác 100%, vì vậy xin vui lòng kiểm tra lần nữa! </string>
+    <string name="warning_alert_data">Thông tin bệnh dị ứng của bạn không bao giờ sẽ được gửi đến máy chủ Open Food Facts. Ngoài ra, hãy cẩn thận rằng dữ liệu sản phẩm có thể không chính xác, và việc phát hiện có thể không chính xác 100%, vì vậy xin vui lòng kiểm tra lần nữa! </string>
     <string name="from_gallery">Từ bộ sưu tập Ảnh</string>
     <string name="product_sent">Sản phẩm được gửi thành công</string>
     <string name="action_edit_product">Chỉnh sửa sản phẩm</string>
@@ -560,6 +560,7 @@
     <string name="notify_content">Nhấp để xem các sản phẩm đã xuất</string>
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Thông báo để hiển thị vị trí của tệp đã xuất</string>
+    <string name="additives">Additives</string>
     <string name="products_to_be_completed">Các sản phẩm cần được hoàn thành</string>
     <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
     <string name="offline_notification_title">Chỉnh sửa ngoại tuyến bạn cần gửi</string>
@@ -727,6 +728,7 @@
     <string name="set_img_front">Set Image as Front</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
