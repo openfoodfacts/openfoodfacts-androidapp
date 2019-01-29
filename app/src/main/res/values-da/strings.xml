@@ -263,7 +263,7 @@
     <string name="cancel_button">Annullér</string>
     <string name="login_button">Brugernavn</string>
     <string name="create_account_button">Opret konto</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
+    <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
     <string name="from_gallery">Fra galleri</string>
     <string name="product_sent">Produkt sendt med succes</string>
     <string name="action_edit_product">Rediger produkt</string>
@@ -564,6 +564,7 @@
     <string name="notify_content">Tryk for at se eksporterede produkter</string>
     <string name="notification_channel_name">Eksportnotifikationer</string>
     <string name="notify_channel_description">Notifikation for at vise eksporterede fils placering</string>
+    <string name="additives">Tilsætningsstoffer</string>
     <string name="products_to_be_completed">Produkter, som skal færdiggøres</string>
     <string name="modified_history">Produkt tilføjet d. %1$s kl. %2$s af %3$s. Senest redigering af produktside d. %4$s kl. %5$s af %6$s. Produktside også redigeret også af %7$s</string>
     <string name="offline_notification_title">Offline-bidrag, du skal sende</string>
@@ -731,6 +732,7 @@
     <string name="set_img_front">Angiv billede som Forside</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Advarsel:</string>
     <string name="customer_service">Kundeservice:</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
