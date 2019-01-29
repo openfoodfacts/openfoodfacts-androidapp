@@ -283,7 +283,7 @@
     <string name="error_field_required">Tämä kenttä on pakollinen.</string>
     <string name="action_preferences">Asetukset</string>
     <string name="prefs_scan_startup">Viivakoodinluku käynnistäessä</string>
-    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
+    <string name="prefs_scan_startup_summary">Tämän asetuksen ollessa päällä viivakoodinluku aloitetaan kun sovellus avataan.</string>
     <string name="prefs_power_mode">Power mode scan</string>
     <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">Kieli</string>
