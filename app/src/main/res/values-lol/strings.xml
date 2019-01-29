@@ -263,7 +263,7 @@
     <string name="cancel_button">crwdns98767:0crwdne98767:0</string>
     <string name="login_button">crwdns98769:0crwdne98769:0</string>
     <string name="create_account_button">crwdns98771:0crwdne98771:0</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">crwdns98773:0crwdne98773:0</string>
+    <string name="warning_alert_data">crwdns98773:0crwdne98773:0</string>
     <string name="from_gallery">crwdns98775:0crwdne98775:0</string>
     <string name="product_sent">crwdns98777:0crwdne98777:0</string>
     <string name="action_edit_product">crwdns98779:0crwdne98779:0</string>
@@ -564,6 +564,7 @@
     <string name="notify_content">crwdns99343:0crwdne99343:0</string>
     <string name="notification_channel_name">crwdns99345:0crwdne99345:0</string>
     <string name="notify_channel_description">crwdns99347:0crwdne99347:0</string>
+    <string name="additives">crwdns112736:0crwdne112736:0</string>
     <string name="products_to_be_completed">crwdns99349:0crwdne99349:0</string>
     <string name="modified_history">crwdns99351:0%1$scrwdnd99351:0%2$scrwdnd99351:0%3$scrwdnd99351:0%4$scrwdnd99351:0%5$scrwdnd99351:0%6$scrwdnd99351:0%7$scrwdne99351:0</string>
     <string name="offline_notification_title">crwdns99353:0crwdne99353:0</string>
@@ -731,6 +732,7 @@
     <string name="set_img_front">crwdns112016:0crwdne112016:0</string>
     <string name="report_img">crwdns112018:0crwdne112018:0</string>
     <string name="detected_ingredients">crwdns112008:0crwdne112008:0</string>
+    <string name="set_image_name">crwdns112738:0crwdne112738:0</string>
     <string name="warning">crwdns112688:0crwdne112688:0</string>
     <string name="customer_service">crwdns112690:0crwdne112690:0</string>
     <string name="fast_addition_mode_title">crwdns112684:0crwdne112684:0</string>
