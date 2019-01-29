@@ -765,6 +765,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="warning">Uwaga :</string>
     <string name="customer_service">Obsługa klienta :</string>
     <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
     <!-- Used for diets AddOn -->
 </resources>
