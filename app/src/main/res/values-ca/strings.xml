@@ -263,7 +263,7 @@
     <string name="cancel_button">Cancel·la</string>
     <string name="login_button">Identificador</string>
     <string name="create_account_button">Crea un compte</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades! </string>
+    <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades! </string>
     <string name="from_gallery">Des de la galeria</string>
     <string name="product_sent">Producte enviat correctament</string>
     <string name="action_edit_product">Edita el producte</string>
@@ -564,6 +564,7 @@
     <string name="notify_content">Feu clic per veure els productes exportats</string>
     <string name="notification_channel_name">Notificacions d\'exportació</string>
     <string name="notify_channel_description">Notificació per mostrar la ubicació de l\'arxiu exportat</string>
+    <string name="additives">Additius</string>
     <string name="products_to_be_completed">Productes que s\'han de completar</string>
     <string name="modified_history">Producte afegit el %1$s a les %2$s per %3$s.  La darrera edició de la pàgina del producte va ser el %4$s a les %5$s per %6$s.  La pàgina del producte, també ha estat editada per %7$s</string>
     <string name="offline_notification_title">Aportacions fora de línia que cal enviar</string>
@@ -731,6 +732,7 @@
     <string name="set_img_front">Set Image as Front</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
