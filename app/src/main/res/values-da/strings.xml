@@ -717,7 +717,7 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de ikke-godkendte ingredienser, som skal vises med rødt. Eksempel: Gluten, mælk, plameolie, sukker... Du kan færdiggøre listen senere.</string>
-    <string name="extract_ingredients_prompt">Extract Ingredients</string>
+    <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Tilføj næringsfakta og en kategori til beregning af Nutri-Score</string>
@@ -727,15 +727,15 @@
     <string name="category_game_btn">Hjælp med at kategorisere produkter for at beregne Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Angiv billede som ingrediens</string>
-    <string name="set_img_nutrients">Angiv billede som ernæring</string>
-    <string name="set_img_front">Angiv billede som Forside</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
     <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Advarsel:</string>
     <string name="customer_service">Kundeservice:</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <!-- Used for diets AddOn -->
 </resources>
