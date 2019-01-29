@@ -707,7 +707,7 @@
     <string name="your_diets">La/e tua/e dieta/e</string>
     <string name="diet_name">Nome della dieta</string>
     <string name="diets_dialog_warning_title">Attenzione</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">I tuoi dati sulla dieta rimangono sul tuo dispositivo. Nulla verrà caricato da qualche parte.</string>
     <string name="edit_diet_name">Nome</string>
     <string name="edit_diet_description">Descrizione</string>
     <string name="edit_diet_enabled_disabled">Attivato/Disattivato</string>
@@ -718,7 +718,6 @@
     <string name="edit_diet_unauthorised_ingredients">Ingredienti non autorizzati</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
     <!-- Used for diets AddOn -->
-    <string name="warning_diets_data">I tuoi dati sulla dieta rimangono sul tuo dispositivo. Nulla verrà caricato da qualche parte.</string>
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
