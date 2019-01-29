@@ -44,6 +44,9 @@ import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -717,6 +720,21 @@ public class Utils {
             return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
         }
         return "Official Android App "+BuildConfig.VERSION_NAME;
+    }
+
+     /*
+     @param Takes a string
+     @return Returns a Json object
+      */
+
+    public static JSONObject createJsonObject(String response){
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
     }
 }
 
