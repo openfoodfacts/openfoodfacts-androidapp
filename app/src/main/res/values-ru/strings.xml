@@ -52,6 +52,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -270,7 +271,7 @@
     <string name="cancel_button">Отмена</string>
     <string name="login_button">Логин</string>
     <string name="create_account_button">Создать учетную запись</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
+    <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
     <string name="from_gallery">Из галереи</string>
     <string name="product_sent">Данные о продукте успешно отправлены</string>
     <string name="action_edit_product">Редактировать продукт</string>
@@ -346,6 +347,10 @@
     <string name="nutriment_serving_size">На порцию:</string>
     <string name="action_manage_account">Управление учётной записью</string>
     <string name="action_contributes">Ваш вклад</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">Выйти</string>
     <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
     <string name="textCarbonFootprint">Углеродный след / выбросы CO2: </string>
@@ -567,6 +572,7 @@
     <string name="notify_content">Нажмите, чтобы просмотреть экспортированные продукты</string>
     <string name="notification_channel_name">Экспорт уведомлений</string>
     <string name="notify_channel_description">Уведомление о местоположении экспортируемого файла</string>
+    <string name="additives">Добавки</string>
     <string name="products_to_be_completed">Незавершенные продукты</string>
     <string name="modified_history">Продукт добавлен %1$s в %2$s %3$s. Последнее редактирование страницы продукта %4$s в %5$s %6$s. Страница продукта также отредактирована %7$s</string>
     <string name="offline_notification_title">Оффлайн-вклады, которые необходимо отправить</string>
@@ -734,6 +740,7 @@
     <string name="set_img_front">Установить как основное изображение</string>
     <string name="report_img">Сообщить об изображении</string>
     <string name="detected_ingredients">Обнаруженные ингредиенты</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Предупреждение :</string>
     <string name="customer_service">Центр поддержки:</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
