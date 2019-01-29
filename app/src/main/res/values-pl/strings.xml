@@ -761,7 +761,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="set_img_front">Ustaw jako główny obraz</string>
     <string name="report_img">Zgłoś zdjęcie</string>
     <string name="detected_ingredients">Wykryte składniki</string>
-    <string name="set_image_name">Successfully set the image as</string>
+    <string name="set_image_name">Pomyślnie ustawiono obraz jako</string>
     <string name="warning">Uwaga :</string>
     <string name="customer_service">Obsługa klienta :</string>
     <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
