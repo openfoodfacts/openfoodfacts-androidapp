@@ -717,7 +717,7 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Listet die problematischen Inhaltsstoffe auf, die in Orange angezeigt werden sollen. Beispiel: Ei, Fisch … Sie können diese Liste später ergänzen.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Nicht zugelassene Inhaltsstoffe</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Listet die nicht zugelassenen Zutaten auf, die rot angezeigt werden sollen. Beispiel: Gluten, Milch, Palmöl, Zucker … Sie können diese Liste später ergänzen.</string>
-    <string name="extract_ingredients_prompt">Inhaltsstoffe extrahieren</string>
+    <string name="extract_ingredients_prompt">Zutaten extrahieren</string>
     <string name="add_nutrient_prompt_text">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
     <string name="add_category_prompt_text">Kategorie hinzufügen, um den Nutri-Wert zu berechnen</string>
     <string name="add_nutrient_category_prompt_text">Nährwertangaben und Kategorie hinzufügen, um den Nutri-Wert zu berechnen</string>
@@ -727,15 +727,15 @@
     <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Als Bild für die Inhaltsstoffe festlegen</string>
-    <string name="set_img_nutrients">Als Bild für die Nährwertangaben festlegen</string>
-    <string name="set_img_front">Als Titelbild festlegen</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
     <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Warnhinweis:</string>
     <string name="customer_service">Kundendienst:</string>
     <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
-    <string name="fast_addition_mode">Wenn diese Option gewählt wurde, können Produkte mit wenigen Attributen schnell hinzugefügt werden.</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <!-- Used for diets AddOn -->
 </resources>
