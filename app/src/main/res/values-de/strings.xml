@@ -263,7 +263,7 @@
     <string name="cancel_button">Abbrechen</string>
     <string name="login_button">Benutzername</string>
     <string name="create_account_button">Konto erstellen</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
+    <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <string name="from_gallery">Aus Galerie</string>
     <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
     <string name="action_edit_product">Produkt bearbeiten</string>
@@ -564,6 +564,7 @@
     <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
     <string name="notification_channel_name">Benachrichtigungen exportieren</string>
     <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
+    <string name="additives">Zusatzstoffe</string>
     <string name="products_to_be_completed">Noch abzuschließende Produkte</string>
     <string name="modified_history">Produkt hinzugefügt am %1$s um %2$s durch %3$s. Letzte Änderung der Produktseite am %4$s um %5$s von %6$s. Produktseite auch von %7$s bearbeitet</string>
     <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
@@ -731,6 +732,7 @@
     <string name="set_img_front">Als Titelbild festlegen</string>
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Warnhinweis:</string>
     <string name="customer_service">Kundendienst:</string>
     <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
