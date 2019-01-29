@@ -130,7 +130,7 @@
         <item>B3-vitamiini (niasiini)</item>
         <item>B6-vitamiini (pyridoksiini)</item>
         <item>B9-vitamiini (foolihappo)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>C-vitamiini (askorbiinihappo)</item>
         <item>D-vitamiini</item>
         <item>E-vitamiini</item>
         <item>K-vitamiini</item>
@@ -147,9 +147,9 @@
     <string name="edit">Muokkaa</string>
     <string name="search_button">Etsi</string>
     <string name="no_products">Tuotteita ei löytynyt</string>
-    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="desc_list_item_icon">Kohteen kuvake</string>
     <string name="alert_dialog_warning_title">Varoitus</string>
-    <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
+    <string name="alert_dialog_warning_msg_user">Käyttäjä / salasana on muuttunut, päivitä tiedot</string>
     <string name="alert_dialog_product_error_msg">Tuotetta ei löytynyt, yritä uudelleen</string>
     <string name="toast_retrieving">Ladataan…</string>
     <string name="txtGenericName">Yleisnimi :</string>
@@ -158,13 +158,13 @@
     <string name="txtPackaging">Paketointi:</string>
     <string name="txtBrands">Tuotemerkit :</string>
     <string name="txtCategories">Tuotekategoriat:</string>
-    <string name="txtLabels">Labels, certifications, awards :</string>
-    <string name="txtManufacturing">Manufacturing or processing places :</string>
+    <string name="txtLabels">Etiketit, sertifikaatit, palkinnot :</string>
+    <string name="txtManufacturing">Valmistus- tai käsittelypaikat :</string>
     <string name="txtIngredientsOrigins">Ainesosien alkuperä :</string>
     <string name="txtCity">Kaupunki, valtio ja maa, josta ostettu:</string>
-    <string name="txtEMB">EMB Code:</string>
+    <string name="txtEMB">EMB-koodi:</string>
     <string name="txtManufactureUrl">Linkki tuottajan viralliselle tuotesivulle:</string>
-    <string name="txtStores">Stores :</string>
+    <string name="txtStores">Myymälät :</string>
     <string name="txtCountries">Maat joissa myynnissä:</string>
     <string name="txtIngredients">Ainesosaluettelo:</string>
     <string name="Donate">Tee lahjoitus</string>
@@ -173,7 +173,7 @@
     <string name="txtAdditives">Lisäaineet:</string>
     <string name="txtTraces">Jäämät:</string>
     <string name="txtMayBeFromPalmOilProduct">Ainesosat, jotka voivat olla peräisin palmuöljystä:</string>
-    <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
+    <string name="txtPalmOilProduct">Palmuöljyperäiset ainesosat :</string>
     <string name="txtServingSize">Annoskoko:</string>
     <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
     <string name="txtNutritionLevelLow">pieni määrä</string>
@@ -185,17 +185,17 @@
     <string name="txtSave">Tallenna</string>
     <string name="txtSignIn">Kirjaudu sisään</string>
     <string name="txtUser">Käyttäjäpaneeli</string>
-    <string name="txtToastSaved">User saved</string>
+    <string name="txtToastSaved">Käyttäjä tallennettu</string>
     <string name="txtSalt">Suola</string>
     <string name="txtFat">Rasva</string>
     <string name="txtSugars">Sokerit</string>
     <string name="hintBarcode">Viivakoodi</string>
     <string name="hintLogin">Käyttäjätunnus</string>
     <string name="hintPass">Salasana</string>
-    <string name="errorLogin">Login or password error</string>
+    <string name="errorLogin">Käyttäjätunnus tai salasana virheellinen</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
     <string name="uploadLater">Kuva lähetetään, kun verkko on käytettävissä</string>
-    <string name="txtInfoLoginOk">User saved</string>
+    <string name="txtInfoLoginOk">Käyttäjä tallennettu</string>
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Facts:ssa. Ole hyvä ja lisää se.</string>
     <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Food Factsissa.</string>
