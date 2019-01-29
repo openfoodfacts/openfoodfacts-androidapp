@@ -271,7 +271,7 @@
     <string name="cancel_button">ביטול</string>
     <string name="login_button">שם משתמש</string>
     <string name="create_account_button">יצירת חשבון</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
+    <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <string name="from_gallery">מהגלריה</string>
     <string name="product_sent">המוצר נשלח בהצלחה</string>
     <string name="action_edit_product">עריכת מוצר</string>
@@ -572,6 +572,7 @@
     <string name="notify_content">יש ללחוץ כדי לצפות במוצרים שייוצאו</string>
     <string name="notification_channel_name">התרעות ייצוא</string>
     <string name="notify_channel_description">התרעה להצגת מיקום הקובץ שייוצא</string>
+    <string name="additives">תוספים</string>
     <string name="products_to_be_completed">מוצרים שדורשים השלמה</string>
     <string name="modified_history">המוצר נוסף ב־%1$s בשעה %2$s על ידי %3$s. עריכת העמוד האחרונה התבצעה ב־%4$s בשעה %5$s על ידי %6$s. דף המוצר נערך גם על ידי %7$s</string>
     <string name="offline_notification_title">תרומות בלתי מקוונות שעליך לשלוח</string>
@@ -739,6 +740,7 @@
     <string name="set_img_front">Set Image as Front</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
