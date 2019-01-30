@@ -728,14 +728,15 @@
     <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
+    <string name="set_ingredient_img">Als Zutatenbild verwenden</string>
+    <string name="set_img_nutrients">Als Nährwertbild verwenden</string>
+    <string name="set_img_front">Als Vorderansicht verwenden</string>
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
-    <string name="set_image_name">Successfully set the image as</string>
+    <string name="set_image_name">Foto erfolgreich festgelegt als</string>
     <string name="warning">Warnhinweis:</string>
     <string name="customer_service">Kundendienst:</string>
     <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
+    <!-- Used for diets AddOn -->
 </resources>
