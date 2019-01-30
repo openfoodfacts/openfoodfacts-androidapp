@@ -384,8 +384,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             brandProduct.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getManufacturingPlaces())) {
+            manufacturingProduct.setClickable(true);
+            manufacturingProduct.setMovementMethod(LinkMovementMethod.getInstance());
             manufacturingProduct.setText(bold(getString(R.string.txtManufacturing)));
-            manufacturingProduct.append(' ' + product.getManufacturingPlaces());
+            manufacturingProduct.append(" ");
+
+            String[] origins = product.getManufacturingPlaces().split(",");
+            for (int i = 0; i < origins.length - 1; i++) {
+                manufacturingProduct.append(Utils.getClickableText(origins[i].trim(), "", SearchType.MANUFACTURING_PLACE, getActivity(), customTabsIntent));
+                manufacturingProduct.append(", ");
+            }
+            manufacturingProduct.append(Utils.getClickableText(origins[origins.length - 1].trim(), "", SearchType.MANUFACTURING_PLACE, getActivity(), customTabsIntent));
         } else {
             manufacturingProduct.setVisibility(View.GONE);
         }
@@ -393,8 +402,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (isBlank(product.getOrigins())) {
             ingredientsOrigin.setVisibility(View.GONE);
         } else {
+            ingredientsOrigin.setClickable(true);
+            ingredientsOrigin.setMovementMethod(LinkMovementMethod.getInstance());
             ingredientsOrigin.setText(bold(getString(R.string.txtIngredientsOrigins)));
-            ingredientsOrigin.append(' ' + product.getOrigins());
+            ingredientsOrigin.append(" ");
+
+            String[] origins = product.getOrigins().split(",");
+            for (int i = 0; i < origins.length - 1; i++) {
+                ingredientsOrigin.append(Utils.getClickableText(origins[i].trim(), "", SearchType.ORIGIN, getActivity(), customTabsIntent));
+                ingredientsOrigin.append(", ");
+            }
+            ingredientsOrigin.append(Utils.getClickableText(origins[origins.length - 1].trim(), "", SearchType.ORIGIN, getActivity(), customTabsIntent));
         }
 
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
