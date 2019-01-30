@@ -756,15 +756,15 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="category_game_btn">Pomóż obliczyć Nutri-Score. przez właściwe kategoryzowanie produktów</string>
     <string name="version_string">Aplikacja na Androida Open Food Facts</string>
     <string name="version">Wersja</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
+    <string name="set_ingredient_img">Zdjęcie zawierające składniki produktu</string>
+    <string name="set_img_nutrients">Zdjęcie zawierające tabelę z wartością odżywczą</string>
+    <string name="set_img_front">Głownie zdjęcie produktu</string>
     <string name="report_img">Zgłoś zdjęcie</string>
     <string name="detected_ingredients">Wykryte składniki</string>
     <string name="set_image_name">Pomyślnie ustawiono obraz jako</string>
     <string name="warning">Uwaga :</string>
     <string name="customer_service">Obsługa klienta :</string>
     <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
     <!-- Used for diets AddOn -->
 </resources>
