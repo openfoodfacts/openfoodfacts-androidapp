@@ -743,7 +743,7 @@
     <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Предупреждение :</string>
     <string name="customer_service">Центр поддержки:</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode_title">Режим быстрого добавления</string>
+    <string name="fast_addition_mode">Позволяет быстро добавлять продукты с меньшим количеством атрибутов</string>
     <!-- Used for diets AddOn -->
 </resources>
