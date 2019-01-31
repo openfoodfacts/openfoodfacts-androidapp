@@ -230,10 +230,46 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Single<List<Ingredient>> getIngredients(Boolean refresh) {
         if (refresh) {
-            deleteIngredientCascade();
+//            deleteIngredientCascade();
             return productApi.getIngredients()
                     .map(IngredientsWrapper::map);
+            /**
+             * How may I execute the code below after indredients.json has been imported ?
             //Check ingredient from other tables
+            DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+            //Query this
+            String SQL = "select ITTF.INGREDIENT_TAG TAGTF, INGREDIENT_NAME.INGREDIENT_TAG TAGTR from (select DIET_INGREDIENTS.INGREDIENT_TAG from DIET_INGREDIENTS left join INGREDIENT on DIET_INGREDIENTS.INGREDIENT_TAG=INGREDIENT.TAG where INGREDIENT.TAG is null) ITTF left join INGREDIENT_NAME on ITTF.INGREDIENT_TAG=INGREDIENT_NAME.LANGUAGE_CODE||':'||INGREDIENT_NAME.NAME";
+            ArrayList<String> result = new ArrayList<String>();
+            Cursor c = daoSession.getDatabase().rawQuery(SQL, null);
+            try {
+                if (c.moveToFirst()) {
+                    do {
+                        if (c.getString(1) == null) {
+                            //TAGTR is null create a new ingredient
+                            String tag = c.getString(0);
+                            Log.i("INFO"," Création de l'ingrédient : " + tag);
+                            String[] tagSplit = tag.split(":");
+                            IngredientName ingredientName = new IngredientName(tag, tagSplit[0], tagSplit[1]);
+                            List<IngredientName> ingredientNames = new ArrayList<>();
+                            ingredientNames.add(ingredientName);
+                            Ingredient ingredient = new Ingredient(tag, ingredientNames, null, null);
+                            saveIngredient(ingredient);
+                        } else {
+                            //TAGTF else replace TAGTF by TAGTR in Table
+                            Log.i("INFO","update de la relation diet/ingrédient : " + c.getString(0) + "->" + c.getString(1) );
+                            daoSession.getDatabase().execSQL("update DIET_INGREDIENT set INGREDIENT_TAG='" + c.getString(1) + "' where INGREDIENT_TAG='" + c.getString(0) + "'");
+                        }
+                        ;
+                    } while (c.moveToNext());
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                c.close();
+            }
+            return Single.fromCallable(() -> ingredientDao.loadAll());
+             **/
         } else if (tableIsEmpty(ingredientDao)) {
             return productApi.getIngredients()
                     .map(IngredientsWrapper::map);

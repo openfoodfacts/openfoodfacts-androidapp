@@ -154,9 +154,9 @@ public class EditDietFragment extends Fragment {
             extraText.append(getString(R.string.diet_export_1) + " \"" + getString(R.string.your_diets) + "\"\n" + getString(R.string.diet_export_2) + "\n");
             extraText.append(getString(R.string.edit_diet_name) + " : " + dietName.getText().toString() + "\n");
             extraText.append(getString(R.string.edit_diet_description) + " : " + dietDescription.getText().toString() + "\n");
-            extraText.append(getString(R.string.edit_diet_authorised_ingredients) + "  : " + ingredientsAuthorised.getAllChips().toString().replace("[","").replace("]","") + "\n");
-            extraText.append(getString(R.string.edit_diet_so_so_ingredients) + "  : " + ingredientsSoSo.getAllChips().toString().replace("[","").replace("]","") + "\n");
-            extraText.append(getString(R.string.edit_diet_unauthorised_ingredients) + "  : " + ingredientsUnauthorised.getAllChips().toString().replace("[","").replace("]","") + "\n");
+            extraText.append(getString(R.string.edit_diet_authorised_ingredients) + "  : " + ingredientsAuthorised.getAllChips().toString().replace("[","").replace("]",",") + "\n");
+            extraText.append(getString(R.string.edit_diet_so_so_ingredients) + "  : " + ingredientsSoSo.getAllChips().toString().replace("[","").replace("]",",") + "\n");
+            extraText.append(getString(R.string.edit_diet_unauthorised_ingredients) + "  : " + ingredientsUnauthorised.getAllChips().toString().replace("[","").replace("]",",") + "\n");
             extraText.append(getString(R.string.diet_export_3) + " \"" + getString(R.string.save_edits) + "\"");
             //String jsonDiet = dietRepository.exportDietToJson(dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode));
             Intent sendIntent = new Intent();

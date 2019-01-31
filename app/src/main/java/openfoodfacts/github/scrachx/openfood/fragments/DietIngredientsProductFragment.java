@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
@@ -15,8 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -201,7 +198,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
     }
 
     private List<SpannableStringBuilder> coloredIngredientsFromDiet(List<String> ingredients) {
-        return dietRepository.getColoredSpannableStringBuilderFromIngredientsDiet(ingredients, mDiet.getTag(),languageCode);
+        return dietRepository.getColoredSSBFromIngredientsDiet(ingredients, mDiet.getTag(),languageCode);
     }
 
     public void fillIngredients(List<SpannableStringBuilder> ingredients) {
