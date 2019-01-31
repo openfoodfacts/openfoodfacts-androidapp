@@ -153,8 +153,9 @@
         <activity android:name=".views.ProductBrowsingListActivity" />
         <activity
             android:name=".views.AdditivesExplorer"
+            android:launchMode="singleTop"
             android:parentActivityName=".views.MainActivity"
-            android:windowSoftInputMode="stateUnchanged|adjustResize">
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
