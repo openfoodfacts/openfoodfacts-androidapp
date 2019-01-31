@@ -273,12 +273,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         conservationCond.setVisibility(View.VISIBLE);
         recyclingInstructionToDiscard.setVisibility(View.VISIBLE);
         recyclingInstructionToRecycle.setVisibility(View.VISIBLE);
-        
-        //disabling fields in edit/add mode
-        otherInfo.setEnabled(false);
-        conservationCond.setEnabled(false);
-        recyclingInstructionToRecycle.setEnabled(false);
-        recyclingInstructionToDiscard.setEnabled(false);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());

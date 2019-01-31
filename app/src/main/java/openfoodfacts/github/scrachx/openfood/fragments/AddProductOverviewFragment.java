@@ -271,6 +271,12 @@ public class AddProductOverviewFragment extends BaseFragment {
                 getString(R.string.hint_product_URL) + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
+
+        //disabling fields in edit/add mode
+        otherInfo.setEnabled(false);
+        conservationCond.setEnabled(false);
+        recyclingInstructionToRecycle.setEnabled(false);
+        recyclingInstructionToDiscard.setEnabled(false);
     }
 
     /**
