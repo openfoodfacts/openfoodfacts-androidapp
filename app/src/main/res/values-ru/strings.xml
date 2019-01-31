@@ -347,10 +347,10 @@
     <string name="nutriment_serving_size">На порцию:</string>
     <string name="action_manage_account">Управление учётной записью</string>
     <string name="action_contributes">Ваш вклад</string>
-    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
-    <string name="energy_pref_title">Preferred unit for energy</string>
-    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
-    <string name="volume_pref_title">Preferred unit for volume</string>
+    <string name="choose_energy_unit">Выберите предпочтительные единицы калорийности для таблицы питательной ценности</string>
+    <string name="energy_pref_title">Предпочтительная единица калорийности</string>
+    <string name="choose_volume_unit">Выберите предпочтительные единицы объёма для таблицы питательной ценности</string>
+    <string name="volume_pref_title">Предпочтительная единица объема</string>
     <string name="logout_drawer">Выйти</string>
     <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
     <string name="textCarbonFootprint">Углеродный след / выбросы CO2: </string>
@@ -708,7 +708,7 @@
     <string name="legend_noael">выше дозы с наблюдаемым неблагоприятным эффектом (NOAEL)</string>
     <string name="legend_adi">выше допустимой дневной нормы (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="max_nutrient_val_msg">Введенное значение больше указанного на порцию</string>
     <string name="update_image">Отправить обновленное изображение</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
@@ -728,7 +728,7 @@
     <!-- Used for diets AddOn -->
     <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Добавьте категорию для вычисления Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
@@ -744,5 +744,6 @@
     <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Предупреждение :</string>
     <string name="customer_service">Центр поддержки:</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string></resources>
+    <string name="fast_addition_mode_title">Режим быстрого добавления</string>
+    <string name="fast_addition_mode">Позволяет быстро добавлять продукты с меньшим количеством атрибутов</string>
+</resources>
