@@ -205,8 +205,10 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                     startActivity(new Intent(getActivity(), MainActivity.class));
                     break;
 
-                case R.id.empty:
+                case R.id.home:
+                    getActivity().onBackPressed();
                     break;
+
                 default:
                     return true;
             }
@@ -214,7 +216,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         });
         return view;
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

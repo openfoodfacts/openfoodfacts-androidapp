@@ -208,8 +208,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                     startActivity(new Intent(this, MainActivity.class));
                     break;
 
-				case R.id.empty:
-					break;
 				default:
 					return true;
 			}
