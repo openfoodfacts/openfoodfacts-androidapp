@@ -36,4 +36,5 @@
     <string name="tagline">Freie Datenbank für Kosmetika</string>
     <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Beauty Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="currently_on_version">Aktuell auf Open Beauty Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>
