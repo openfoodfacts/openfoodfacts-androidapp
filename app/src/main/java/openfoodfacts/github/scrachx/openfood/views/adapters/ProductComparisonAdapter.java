@@ -19,6 +19,7 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View;
@@ -66,24 +67,25 @@ import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProduc
 public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder>{
 
     private ArrayList<Product> productsToCompare;
+    private Context context;
+    private boolean isLowBatteryMode = false;
     private IProductRepository repository = ProductRepository.getInstance();
     private CompositeDisposable disposable = new CompositeDisposable();
     private String languageCode = Locale.getDefault().getLanguage();
-    private WikidataApiClient apiClientForWikiData;
-    private Context context;
-    private boolean isLowBatteryMode = false;
 
     public static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
         public NestedScrollView listItemLayout;
         public TextView productNameTextView;
         public TextView productQuantityTextView;
         public TextView productBrandTextView;
-        public TextView productCategoriesTextView;
-        public TextView productCountriesTextView;
         public RecyclerView nutrientsRecyclerView;
         public CardView productComparisonNutrientCv;
         public ImageButton productComparisonImage;
         public TextView productComparisonLabel;
+        public ImageView productComparisonImageGrade;
+        public ImageView productComparisonNovaGroup;
+        public CardView productComparisonAdditiveCv;
+        public TextView productComparisonAdditiveText;
 
         public ProductComparisonViewHolder(View view) {
             super(view);
@@ -91,12 +93,14 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             productNameTextView = (TextView) view.findViewById(R.id.product_comparison_name);
             productQuantityTextView = (TextView) view.findViewById(R.id.product_comparison_quantity);
             productBrandTextView = (TextView) view.findViewById(R.id.product_comparison_brand);
-            productCategoriesTextView = (TextView) view.findViewById(R.id.product_comparison_categories);
-            productCountriesTextView = (TextView) view.findViewById(R.id.product_comparison_countries_sold);
             nutrientsRecyclerView = (RecyclerView) view.findViewById(R.id.product_comparison_listNutrientLevels);
             productComparisonNutrientCv = (CardView) view.findViewById(R.id.product_comparison_nutrient_cv);
             productComparisonImage = (ImageButton) view.findViewById(R.id.product_comparison_image);
             productComparisonLabel = (TextView) view.findViewById(R.id.product_comparison_label);
+            productComparisonImageGrade = (ImageView) view.findViewById(R.id.product_comparison_imageGrade);
+            productComparisonNovaGroup = (ImageView) view.findViewById(R.id.product_comparison_nova_group);
+            productComparisonAdditiveCv = (CardView) view.findViewById(R.id.product_comparison_additive);
+            productComparisonAdditiveText = (TextView) view.findViewById(R.id.product_comparison_additive_text);
         }
     }
 
@@ -122,7 +126,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             holder.productNameTextView.setVisibility(View.VISIBLE);
             holder.productQuantityTextView.setVisibility(View.VISIBLE);
             holder.productBrandTextView.setVisibility(View.VISIBLE);
-            holder.productCountriesTextView.setVisibility(View.VISIBLE);
 
             if (isNotBlank(product.getImageUrl())) {
                 holder.productComparisonLabel.setVisibility(View.GONE);
@@ -170,27 +173,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 holder.productBrandTextView.setVisibility(View.GONE);
             }
 
-            String categoriesText = loadCategories(product);
-            if (isNotBlank(categoriesText)) {
-                holder.productCategoriesTextView.setText(bold("Categories :"));
-                holder.productCategoriesTextView.setMovementMethod(LinkMovementMethod.getInstance());
-                holder.productCategoriesTextView.append(" ");
-                holder.productCategoriesTextView.setClickable(true);
-
-                holder.productCategoriesTextView.setVisibility(View.VISIBLE);
-                holder.productCategoriesTextView.append(categoriesText);
-            } else {
-                holder.productCategoriesTextView.setVisibility(View.GONE);
-            }
-
-            String countriesText = loadCountries(product);
-            if (isNotBlank(countriesText)) {
-                holder.productCountriesTextView.setText(bold("Countries where sold :"));
-                holder.productCountriesTextView.append(" ");
-                holder.productCountriesTextView.append(countriesText);
-            } else {
-                holder.productCountriesTextView.setVisibility(View.GONE);
-            }
             Nutriments nutriments = product.getNutriments();
 
             NutrientLevels nutrientLevels = product.getNutrientLevels();
@@ -204,11 +186,36 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 sugars = nutrientLevels.getSugars();
                 salt = nutrientLevels.getSalt();
             }
-            if (!(fat == null && salt == null && saturatedFat == null && sugars == null) && nutriments!=null) {
-                holder.productComparisonNutrientCv.setVisibility(View.VISIBLE);
-                holder.nutrientsRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-                holder.nutrientsRecyclerView.setAdapter(new NutrientLevelListAdapter(context, loadLevelItems(product)));
+            if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
+
+                holder.productComparisonImageGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+
+                if (nutriments!=null) {
+                    holder.productComparisonNutrientCv.setVisibility(View.VISIBLE);
+                    holder.nutrientsRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+                    holder.nutrientsRecyclerView.setAdapter(new NutrientLevelListAdapter(context, loadLevelItems(product)));
+                }
             }
+
+            if (product.getNovaGroups() != null) {
+                holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+            } else {
+                holder.productComparisonNovaGroup.setImageResource(0);
+            }
+            if (product.getNovaGroups() == null && product.getNutritionGradeFr() == null) {
+                holder.productComparisonImageGrade.setVisibility(View.GONE);
+                holder.productComparisonNovaGroup.setVisibility(View.GONE);
+            }
+
+            String additiveText = loadAdditives(product);
+            if (isNotBlank(additiveText)) {
+                holder.productComparisonAdditiveCv.setVisibility(View.VISIBLE);
+                holder.productComparisonAdditiveText.setVisibility(View.VISIBLE);
+                holder.productComparisonAdditiveText.append(additiveText);
+            } else {
+                holder.productComparisonAdditiveCv.setVisibility(View.GONE);
+            }
+
         } else {
             holder.listItemLayout.setVisibility(View.GONE);
         }
@@ -219,124 +226,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         return productsToCompare.size();
     }
 
-    public String loadCategories(Product product) {
-        StringBuilder categoriesBuilder = new StringBuilder();
-        List<String> categoriesTags = product.getCategoriesTags();
-        if (categoriesTags != null && !categoriesTags.isEmpty()) {
-            disposable.add(
-                    Observable.fromArray(categoriesTags.toArray(new String[categoriesTags.size()]))
-                            .flatMapSingle(tag -> repository.getCategoryByTagAndLanguageCode(tag, languageCode)
-                                    .flatMap(categoryName -> {
-                                        if (categoryName.isNull()) {
-                                            return repository.getCategoryByTagAndDefaultLanguageCode(tag);
-                                        } else {
-                                            return Single.just(categoryName);
-                                        }
-                                    }))
-                            .toList()
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(categories -> {
-                                if (categories.isEmpty()) {
-
-                                } else {
-                                    // Add all the categories to categoriesBuilder and link them to wikidata is possible
-                                    for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
-                                        CategoryName category = categories.get(i);
-                                        CharSequence categoryName = getCategoriesTag(category);
-                                        if (categoryName != null) {
-                                            // Add category name to categoriesBuilder
-                                            categoriesBuilder.append(categoryName);
-                                            // Add a comma if not the last item
-                                            if (i != lastIndex) {
-                                                categoriesBuilder.append(", ");
-                                            }
-                                        }
-                                    }
-                                }
-                            }, e -> {
-                                e.printStackTrace();
-                            })
-            );
-        }
-        return categoriesBuilder.toString();
-    }
-
-    private CharSequence getCategoriesTag(CategoryName category) {
-        apiClientForWikiData = new WikidataApiClient();
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                if (category.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(category.getWikiDataId(), new WikidataApiClient.OnWikiResponse() {
-                        @Override
-                        public void onresponse(boolean value, JSONObject result) {
-                            if (value) {
-                                ProductActivity productActivity = (ProductActivity) context;
-                                productActivity.showBottomScreen(result, category);
-                            } else {
-                                ProductBrowsingListActivity.startActivity(context,
-                                        category.getCategoryTag(),
-                                        category.getName(),
-                                        SearchType.CATEGORY);
-                            }
-                        }
-                    });
-                } else {
-                    ProductBrowsingListActivity.startActivity(context,
-                            category.getCategoryTag(),
-                            category.getName(),
-                            SearchType.CATEGORY);
-                }
-
-            }
-        };
-        spannableStringBuilder.append(category.getName());
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        if (!category.isNotNull()) {
-            StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
-            spannableStringBuilder.setSpan(iss, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-        return spannableStringBuilder;
-    }
-
-    private String loadCountries(Product product) {
-        List<String> countriesTags = product.getCountriesTags();
-        StringBuilder countriesBuilder = new StringBuilder();
-        if (countriesTags != null && !countriesTags.isEmpty()) {
-            disposable.add(
-                    Observable.fromArray(countriesTags.toArray(new String[countriesTags.size()]))
-                            .flatMapSingle(tag -> repository.getCountryByTagAndLanguageCode(tag, languageCode)
-                                    .flatMap(countryName -> {
-                                        if (countryName.isNull()) {
-                                            return repository.getCountryByTagAndDefaultLanguageCode(tag);
-                                        } else {
-                                            return Single.just(countryName);
-                                        }
-                                    }))
-                            .filter(countryName -> countryName.isNotNull())
-                            .toList()
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(countries -> {
-                                if (countries.isEmpty()) {
-
-                                } else {
-                                    for (int i = 0; i < countries.size() - 1; i++) {
-                                        countriesBuilder.append(StringUtils.capitalize(countries.get(i).getName()).trim());
-                                        countriesBuilder.append(", ");
-                                    }
-
-                                    countriesBuilder.append(StringUtils.capitalize(countries.get(countries.size() - 1).getName()).trim());
-                                }
-                            }, e -> {
-                                e.printStackTrace();
-                            })
-            );
-        }
-        return countriesBuilder.toString();
-    }
 
     private List<NutrientLevelItem> loadLevelItems(Product product) {
         List<NutrientLevelItem> levelItem = new ArrayList<>();
@@ -407,5 +296,45 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
 
         }
         return levelItem;
+    }
+
+    private String loadAdditives(Product product) {
+        StringBuilder additivesBuilder = new StringBuilder();
+        List<String> additivesTags = product.getAdditivesTags();
+        if (additivesTags != null && !additivesTags.isEmpty()) {
+            disposable.add(
+                    Observable.fromArray(additivesTags.toArray(new String[additivesTags.size()]))
+                            .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
+                                    .flatMap(categoryName -> {
+                                        if (categoryName.isNull()) {
+                                            return repository.getAdditiveByTagAndDefaultLanguageCode(tag);
+                                        } else {
+                                            return Single.just(categoryName);
+                                        }
+                                    }))
+                            .filter(additiveName -> additiveName.isNotNull())
+                            .toList()
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .doOnSubscribe(d -> {})
+                            .subscribe(additives -> {
+                                if (!additives.isEmpty()) {
+                                    additivesBuilder.append(bold("Additives :"));
+                                    additivesBuilder.append(" ");
+                                    additivesBuilder.append("\n");
+
+                                    for (int i = 0; i < additives.size() - 1; i++) {
+                                        additivesBuilder.append(additives.get(i).getName());
+                                        additivesBuilder.append("\n");
+                                    }
+
+                                    additivesBuilder.append(additives.get(additives.size() - 1).getName());
+                                }
+                            }, e -> {
+                                e.printStackTrace();
+                            })
+            );
+        }
+        return additivesBuilder.toString();
     }
 }

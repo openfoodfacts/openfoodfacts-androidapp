@@ -46,6 +46,141 @@
         </LinearLayout>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/product_comparison_details_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_below="@id/product_comparison_picture_layout"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/product_comparison_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:padding="@dimen/padding_too_short"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+                <TextView
+                    android:id="@+id/product_comparison_brand"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:padding="@dimen/padding_too_short"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+                <TextView
+                    android:id="@+id/product_comparison_quantity"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:padding="@dimen/padding_too_short"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/product_comparison_scores_layout"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_below="@id/product_comparison_details_cv">
+
+            <ImageView
+                android:id="@+id/product_comparison_imageGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:adjustViewBounds="true"
+                android:maxWidth="180dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.303"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:src="@drawable/nnc_a" />
+
+            <ImageView
+                android:id="@+id/product_comparison_nova_group"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/horizontal_margin"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginRight="@dimen/horizontal_margin"
+                android:layout_marginBottom="@dimen/horizontal_margin"
+                android:maxWidth="20dp"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="@dimen/spacing_small"
+                android:paddingEnd="@dimen/spacing_small"
+                android:paddingRight="@dimen/spacing_small"
+                android:paddingBottom="@dimen/spacing_small"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/product_comparison_imageGrade"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_nova_group_1" />
+
+            <Button
+                android:id="@+id/add_nutriscore_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Add nutrition facts to compute the Nutri-Score" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/product_comparison_additive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:cardElevation="4dp"
+            android:visibility="gone"
+            android:layout_below="@id/product_comparison_scores_layout">
+
+            <TextView
+                android:id="@+id/product_comparison_additive_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:background="@drawable/textview_full"
+                android:padding="@dimen/spacing_small"
+                android:textColorLink="@color/light_blue_A700"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/font_normal" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/product_comparison_nutrient_cv"
@@ -54,7 +189,7 @@
             android:layout_marginBottom="16dp"
             app:cardElevation="4dp"
             android:visibility="gone"
-            android:layout_below="@id/product_comparison_picture_layout">
+            android:layout_below="@id/product_comparison_details_cv">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,76 +227,6 @@
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/product_comparison_details_cv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_below="@id/product_comparison_nutrient_cv"
-            app:cardElevation="4dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/product_comparison_name"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:padding="@dimen/padding_too_short"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
-                <TextView
-                    android:id="@+id/product_comparison_quantity"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:padding="@dimen/padding_too_short"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
-                <TextView
-                    android:id="@+id/product_comparison_brand"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:padding="@dimen/padding_too_short"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
-                <TextView
-                    android:id="@+id/product_comparison_categories"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:padding="@dimen/padding_too_short"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
-                <TextView
-                    android:id="@+id/product_comparison_countries_sold"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:padding="@dimen/padding_too_short"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
         </android.support.v7.widget.CardView>
 
     </RelativeLayout>
