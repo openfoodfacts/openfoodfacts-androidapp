@@ -113,8 +113,8 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
-    private static final String PARAM_OTHER_INFO = "other_information";
-    private static final String PARAM_CONSERVATION_COND = "conservation_conditions";
+    private static final String PARAM_OTHER_INFORMATION = "other_information";
+    private static final String PARAM_CONSERVATION_CONDITIONS = "conservation_conditions";
     private static final String PARAM_RECYCLING_INSTRUCTION_TO_DISCARD = "recycling_instructions_to_discard";
     private static final String PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE = "recycling_instructions_to_recycle";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
@@ -548,11 +548,11 @@ public class AddProductOverviewFragment extends BaseFragment {
                 List<String> chipValues = Arrays.asList(productDetails.get(PARAM_COUNTRIES).split("\\s*,\\s*"));
                 countriesWhereSold.setText(chipValues);
             }
-            if (productDetails.get(PARAM_OTHER_INFO) != null) {
-                otherInfo.setText(productDetails.get(PARAM_OTHER_INFO));
+            if (productDetails.get(PARAM_OTHER_INFORMATION) != null) {
+                otherInfo.setText(productDetails.get(PARAM_OTHER_INFORMATION));
             }
-            if (productDetails.get(PARAM_CONSERVATION_COND) != null) {
-                conservationCond.setText(productDetails.get(PARAM_CONSERVATION_COND));
+            if (productDetails.get(PARAM_CONSERVATION_CONDITIONS) != null) {
+                conservationCond.setText(productDetails.get(PARAM_CONSERVATION_CONDITIONS));
             }
             if (productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD) != null) {
                 recyclingInstructionToDiscard.setText(productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD));
@@ -779,8 +779,8 @@ public class AddProductOverviewFragment extends BaseFragment {
             ((AddProductActivity) activity).addToMap(PARAM_PURCHASE.substring(4), getValues(countryWherePurchased));
             ((AddProductActivity) activity).addToMap(PARAM_STORE.substring(4), getValues(stores));
             ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES.substring(4), getValues(countriesWhereSold));
-            ((AddProductActivity) activity).addToMap(PARAM_OTHER_INFO, otherInfo.getText().toString());
-            ((AddProductActivity) activity).addToMap(PARAM_CONSERVATION_COND, conservationCond.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_OTHER_INFORMATION, otherInfo.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_CONSERVATION_CONDITIONS, conservationCond.getText().toString());
             ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD, recyclingInstructionToDiscard.getText().toString());
             ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE, recyclingInstructionToRecycle.getText().toString());
         }
@@ -846,10 +846,10 @@ public class AddProductOverviewFragment extends BaseFragment {
                 ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES, getValues(countriesWhereSold));
             }
             if (!otherInfo.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_OTHER_INFO, otherInfo.getText().toString());
+                ((AddProductActivity) activity).addToMap(PARAM_OTHER_INFORMATION, otherInfo.getText().toString());
             }
             if (!conservationCond.getText().toString().isEmpty()) {
-                ((AddProductActivity) activity).addToMap(PARAM_CONSERVATION_COND, conservationCond.getText().toString());
+                ((AddProductActivity) activity).addToMap(PARAM_CONSERVATION_CONDITIONS, conservationCond.getText().toString());
             }
             if (!recyclingInstructionToRecycle.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE, recyclingInstructionToRecycle.getText().toString());
