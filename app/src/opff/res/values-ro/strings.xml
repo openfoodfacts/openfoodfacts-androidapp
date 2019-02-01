@@ -36,4 +36,5 @@
     <string name="tagline">baza de date gratuită a produselor alimentare veterinare</string>
     <string name="product_not_found">Produsul %1$s pe care l-ai scanat încă nu există în Open Pet Food Facts. Îl poți adăuga tu?</string>
     <string name="currently_on_version">Currently on Open Pet Food Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>
