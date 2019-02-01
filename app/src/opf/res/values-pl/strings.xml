@@ -36,5 +36,5 @@
     <string name="tagline">bezpłatna baza produktów</string>
     <string name="product_not_found">Zeskanowany produkt %1$s, który jeszcze nie figuruje w Open Food Facts. Dodać go?</string>
     <string name="currently_on_version">Aktualnie na Otwartych faktach o Produktach</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Pomóż kategoryzować produkty</string>
 </resources>
