@@ -36,4 +36,5 @@
     <string name="tagline">the free product database</string>
     <string name="product_not_found">ಉತ್ಪನ್ನದ %1$s ನೀವು ಸ್ಕ್ಯಾನ್ ಓಪನ್ ಉತ್ಪನ್ನಗಳು ಫ್ಯಾಕ್ಟ್ಸ್ ಇನ್ನೂ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ನೀವು ಅದನ್ನು ಸೇರಿಸಬಹುದೇ?</string>
     <string name="currently_on_version">ಪ್ರಸ್ತುತ ಓಪನ್ ಪ್ರಾಡಕ್ಟ್ಸ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>
