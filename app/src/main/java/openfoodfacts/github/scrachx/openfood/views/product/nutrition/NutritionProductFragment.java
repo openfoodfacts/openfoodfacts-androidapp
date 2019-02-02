@@ -179,6 +179,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         Nutriments nutriments = product.getNutriments();
 
+        if (nutriments != null && !nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
+            carbonFootprint.setVisibility(View.GONE);
+        }
+
         NutrientLevels nutrientLevels = product.getNutrientLevels();
         NutrimentLevel fat = null;
         NutrimentLevel saturatedFat = null;
