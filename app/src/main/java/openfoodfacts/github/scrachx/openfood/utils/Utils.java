@@ -568,7 +568,7 @@ public class Utils {
             } else {
 
                 Log.v(TAG, "Permission is revoked");
-                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_STORAGE);
                 return false;
             }
         } else { //permission is automatically granted on sdk<23 upon installation

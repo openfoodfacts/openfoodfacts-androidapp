@@ -84,6 +84,8 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.jobs.DownloadOfflineProductService;
+import openfoodfacts.github.scrachx.openfood.jobs.ExtractOfflineProductService;
 import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -141,7 +143,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
-
+    SharedPreferences settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,12 +154,50 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         setContentView(R.layout.activity_main);
 
         shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-
+        settings = getSharedPreferences("prefs", Context.MODE_PRIVATE);
         /*
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
         */
 
         Utils.hideKeyboard(this);
+
+        // to handle Extract and Save button from DownloadOfflineProductService
+        if (getIntent() != null && getIntent().getStringExtra("from_download_service") != null && getIntent().getStringExtra("from_download_service").equals("start_extraction")) {
+            if (Utils.isStoragePermissionGranted(this)) {
+                if (ExtractOfflineProductService.isExtractOfflineProductServiceRunning) {
+                    Toast.makeText(this, getString(R.string.toast_already_running), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.toast_extracting_data), Toast.LENGTH_SHORT).show();
+                    Intent serviceIntent = new Intent(this, ExtractOfflineProductService.class);
+                    startService(serviceIntent);
+                }
+            }
+        }
+
+        // to handle retry from DownloadOfflineProductService
+        if (getIntent() != null && getIntent().getStringExtra("from_download_service") != null && getIntent().getStringExtra("from_download_service").equals("retry")) {
+            if (Utils.isStoragePermissionGranted(this)) {
+                if (DownloadOfflineProductService.isDownloadOfflineProductServiceRunning) {
+                    Toast.makeText(this, getString(R.string.toast_already_running), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.toast_starting_download), Toast.LENGTH_SHORT).show();
+                    Intent serviceIntent = new Intent(this, DownloadOfflineProductService.class);
+                    startService(serviceIntent);
+                }
+            }
+        }
+        // to handle retry from ExtractOfflineProductService
+        if (getIntent() != null && getIntent().getStringExtra("from_extract_service") != null && getIntent().getStringExtra("from_extract_service").equals("retry")) {
+            if (Utils.isStoragePermissionGranted(this)) {
+                if (ExtractOfflineProductService.isExtractOfflineProductServiceRunning) {
+                    Toast.makeText(this, getString(R.string.toast_already_running), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.toast_extracting_data), Toast.LENGTH_SHORT).show();
+                    Intent serviceIntent = new Intent(this, ExtractOfflineProductService.class);
+                    startService(serviceIntent);
+                }
+            }
+        }
 
         final IProfile<ProfileDrawerItem> profile = getUserProfile();
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
@@ -325,6 +365,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.your_lists).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(ITEM_YOUR_LISTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
+                        new PrimaryDrawerItem().withName(R.string.offline_download).withIdentifier(ITEM_OFFLINE_DOWNLOAD).withIcon(GoogleMaterial.Icon.gmd_offline_pin),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                         new DividerDrawerItem(),
                         primaryDrawerItem,
@@ -446,6 +487,35 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                      .onNegative((dialog, which) -> Toast.makeText(getApplicationContext(), "Cancelled",
                                              Toast.LENGTH_SHORT).show()).show();
                              break;
+
+                        case ITEM_OFFLINE_DOWNLOAD:
+                            if (!settings.getBoolean("is_data_downloaded", false)) {
+                                //starting service
+                                if (Utils.isStoragePermissionGranted(this)) {
+                                    if (DownloadOfflineProductService.isDownloadOfflineProductServiceRunning) {
+                                        Toast.makeText(this, getString(R.string.toast_already_running), Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(this, getString(R.string.toast_starting_download), Toast.LENGTH_SHORT).show();
+                                        Intent serviceIntent = new Intent(this, DownloadOfflineProductService.class);
+                                        startService(serviceIntent);
+                                    }
+                                }
+                            } else if (!settings.getBoolean("is_data_saved", false)) {
+                                if (Utils.isStoragePermissionGranted(this)) {
+                                    if (ExtractOfflineProductService.isExtractOfflineProductServiceRunning) {
+                                        Toast.makeText(this, getString(R.string.toast_already_running), Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(this, getString(R.string.toast_extracting_data), Toast.LENGTH_SHORT).show();
+                                        Intent serviceIntent = new Intent(this, ExtractOfflineProductService.class);
+                                        startService(serviceIntent);
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(this, getString(R.string.toast_no_pending), Toast.LENGTH_SHORT).show();
+                            }
+                            break;
+
+
                         default:
                             // nothing to do
                             break;
@@ -724,6 +794,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 }
             }
             break;
+            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager
+                        .PERMISSION_GRANTED) {
+                    Intent serviceIntent = new Intent(this, DownloadOfflineProductService.class);
+                    startService(serviceIntent);
+                }
+            }
         }
     }
 
@@ -788,6 +865,43 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
+        // to handle Extract and Save button from DownloadOfflineProductService
+        if (intent.getStringExtra("from_download_service") != null && intent.getStringExtra("from_download_service").equals("start_extraction")) {
+            if (Utils.isStoragePermissionGranted(this)) {
+                if (ExtractOfflineProductService.isExtractOfflineProductServiceRunning) {
+                    Toast.makeText(this, getString(R.string.toast_already_running), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.toast_extracting_data), Toast.LENGTH_SHORT).show();
+                    Intent serviceIntent = new Intent(this, ExtractOfflineProductService.class);
+                    startService(serviceIntent);
+                }
+            }
+        }
+
+        // to handle retry from DownloadOfflineProductService
+        if (intent.getStringExtra("from_download_service") != null && intent.getStringExtra("from_download_service").equals("retry")) {
+            if (Utils.isStoragePermissionGranted(this)) {
+                if (DownloadOfflineProductService.isDownloadOfflineProductServiceRunning) {
+                    Toast.makeText(this, getString(R.string.toast_already_running), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.toast_starting_download), Toast.LENGTH_SHORT).show();
+                    Intent serviceIntent = new Intent(this, DownloadOfflineProductService.class);
+                    startService(serviceIntent);
+                }
+            }
+        }
+        // to handle retry from ExtractOfflineProductService
+        if (intent.getStringExtra("from_extract_service") != null && intent.getStringExtra("from_extract_service").equals("retry")) {
+            if (Utils.isStoragePermissionGranted(this)) {
+                if (ExtractOfflineProductService.isExtractOfflineProductServiceRunning) {
+                    Toast.makeText(this, getString(R.string.toast_already_running), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.toast_extracting_data), Toast.LENGTH_SHORT).show();
+                    Intent serviceIntent = new Intent(this, ExtractOfflineProductService.class);
+                    startService(serviceIntent);
+                }
+            }
+        }
         handleIntent(intent);
     }
 
