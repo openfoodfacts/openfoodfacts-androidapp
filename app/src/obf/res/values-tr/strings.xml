@@ -36,4 +36,5 @@
     <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Beauty Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
     <string name="currently_on_version">Currently on Open Beauty Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>

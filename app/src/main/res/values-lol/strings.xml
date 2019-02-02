@@ -44,6 +44,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -262,7 +263,7 @@
     <string name="cancel_button">crwdns98767:0crwdne98767:0</string>
     <string name="login_button">crwdns98769:0crwdne98769:0</string>
     <string name="create_account_button">crwdns98771:0crwdne98771:0</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">crwdns98773:0crwdne98773:0</string>
+    <string name="warning_alert_data">crwdns98773:0crwdne98773:0</string>
     <string name="from_gallery">crwdns98775:0crwdne98775:0</string>
     <string name="product_sent">crwdns98777:0crwdne98777:0</string>
     <string name="action_edit_product">crwdns98779:0crwdne98779:0</string>
@@ -338,6 +339,10 @@
     <string name="nutriment_serving_size">crwdns98913:0crwdne98913:0</string>
     <string name="action_manage_account">crwdns98915:0crwdne98915:0</string>
     <string name="action_contributes">crwdns98917:0crwdne98917:0</string>
+    <string name="choose_energy_unit">crwdns112728:0crwdne112728:0</string>
+    <string name="energy_pref_title">crwdns112730:0crwdne112730:0</string>
+    <string name="choose_volume_unit">crwdns112732:0crwdne112732:0</string>
+    <string name="volume_pref_title">crwdns112734:0crwdne112734:0</string>
     <string name="logout_drawer">crwdns98919:0crwdne98919:0</string>
     <string name="contribution_without_account">crwdns98921:0crwdne98921:0</string>
     <string name="textCarbonFootprint">crwdns98923:0crwdne98923:0</string>
@@ -559,6 +564,7 @@
     <string name="notify_content">crwdns99343:0crwdne99343:0</string>
     <string name="notification_channel_name">crwdns99345:0crwdne99345:0</string>
     <string name="notify_channel_description">crwdns99347:0crwdne99347:0</string>
+    <string name="additives">crwdns112736:0crwdne112736:0</string>
     <string name="products_to_be_completed">crwdns99349:0crwdne99349:0</string>
     <string name="modified_history">crwdns99351:0%1$scrwdnd99351:0%2$scrwdnd99351:0%3$scrwdnd99351:0%4$scrwdnd99351:0%5$scrwdnd99351:0%6$scrwdnd99351:0%7$scrwdne99351:0</string>
     <string name="offline_notification_title">crwdns99353:0crwdne99353:0</string>
@@ -711,20 +717,25 @@
     <string name="EditDiet_Hint_So_So_Ingredient">crwdns111854:0crwdne111854:0</string>
     <string name="EditDiet_Unauthorised_Ingredients">crwdns111856:0crwdne111856:0</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">crwdns111858:0crwdne111858:0</string>
-    <string name="extract_ingredients_prompt">crwdns112682:0crwdne112682:0</string>
+    <string name="extract_ingredients_prompt">crwdns112740:0crwdne112740:0</string>
+    <string name="add_nutrient_prompt_text">crwdns112714:0crwdne112714:0</string>
+    <string name="add_category_prompt_text">crwdns112716:0crwdne112716:0</string>
+    <string name="add_nutrient_category_prompt_text">crwdns112718:0crwdne112718:0</string>
+    <string name="no_nutrition_data_prompt">crwdns112720:0crwdne112720:0</string>
     <string name="nutrition_image_prompt_text">crwdns112000:0crwdne112000:0</string>
     <string name="ingredient_image_prompt_text">crwdns112002:0crwdne112002:0</string>
     <string name="category_game_btn">crwdns111976:0crwdne111976:0</string>
     <string name="version_string">crwdns111978:0crwdne111978:0</string>
     <string name="version">crwdns111980:0crwdne111980:0</string>
-    <string name="set_ingredient_img">crwdns112012:0crwdne112012:0</string>
-    <string name="set_img_nutrients">crwdns112014:0crwdne112014:0</string>
-    <string name="set_img_front">crwdns112016:0crwdne112016:0</string>
+    <string name="set_ingredient_img">crwdns112742:0crwdne112742:0</string>
+    <string name="set_img_nutrients">crwdns112744:0crwdne112744:0</string>
+    <string name="set_img_front">crwdns112746:0crwdne112746:0</string>
     <string name="report_img">crwdns112018:0crwdne112018:0</string>
     <string name="detected_ingredients">crwdns112008:0crwdne112008:0</string>
+    <string name="set_image_name">crwdns112738:0crwdne112738:0</string>
     <string name="warning">crwdns112688:0crwdne112688:0</string>
     <string name="customer_service">crwdns112690:0crwdne112690:0</string>
     <string name="fast_addition_mode_title">crwdns112684:0crwdne112684:0</string>
-    <string name="fast_addition_mode">crwdns112686:0crwdne112686:0</string>
+    <string name="fast_addition_mode">crwdns112748:0crwdne112748:0</string>
     <!-- Used for diets AddOn -->
 </resources>

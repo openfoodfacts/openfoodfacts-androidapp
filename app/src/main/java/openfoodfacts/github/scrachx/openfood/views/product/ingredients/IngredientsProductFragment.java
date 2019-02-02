@@ -153,6 +153,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private IIngredientsProductPresenter.Actions presenter;
     private ProductFragmentPagerAdapter pagerAdapter;
     private boolean extractIngredients = false;
+    private boolean sendUpdatedIngredientsImage = false;
 
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
@@ -550,11 +551,38 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @OnClick(R.id.change_ing_img)
     public void change_ing_image(View v) {
+        sendUpdatedIngredientsImage = true;
 
 
         ViewPager viewPager = (ViewPager) getActivity().findViewById(
                 R.id.pager);
-        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) {
+        if (BuildConfig.FLAVOR.equals("off")) {
+            final SharedPreferences settings = getActivity().getSharedPreferences( "login", 0 );
+            final String login = settings.getString( "user", "" );
+            if( login.isEmpty() )
+            {
+                new MaterialDialog.Builder( getContext() )
+                        .title( R.string.sign_in_to_edit )
+                        .positiveText( R.string.txtSignIn )
+                        .negativeText( R.string.dialog_cancel )
+                        .onPositive( ( dialog, which ) -> {
+                            Intent intent = new Intent( getContext(), LoginActivity.class );
+                            startActivityForResult( intent, LOGIN_ACTIVITY_REQUEST_CODE );
+                            dialog.dismiss();
+                        } )
+                        .onNegative( ( dialog, which ) -> dialog.dismiss() )
+                        .build().show();
+            }
+            else
+            {
+                mState = (State) getActivity().getIntent().getExtras().getSerializable( "state" );
+                Intent intent = new Intent( getContext(), AddProductActivity.class );
+                intent.putExtra("send_updated", sendUpdatedIngredientsImage);
+                intent.putExtra( "edit_product", mState.getProduct() );
+                startActivityForResult( intent, EDIT_REQUEST_CODE );
+            }
+        }
+        if (BuildConfig.FLAVOR.equals("opff")) {
             viewPager.setCurrentItem(4);
         }
 
@@ -664,18 +692,19 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //added case for sending updated ingredients image
         if( requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK )
         {
             Intent intent = new Intent( getContext(), AddProductActivity.class );
-            intent.putExtra( "edit_product", mState.getProduct() );
+            intent.putExtra("send_updated", sendUpdatedIngredientsImage);
             intent.putExtra("perform_ocr", extractIngredients);
+            intent.putExtra( "edit_product", mState.getProduct() );
             startActivity( intent );
         }
         if( requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK)
         {
             onRefresh();
         }
-
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);

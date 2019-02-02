@@ -44,6 +44,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -262,7 +263,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="login_button">Iniciar sesión</string>
     <string name="create_account_button">Crear cuenta</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
+    <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
     <string name="from_gallery">Desde la galería</string>
     <string name="product_sent">Producto enviado correctamente</string>
     <string name="action_edit_product">Editar producto</string>
@@ -338,6 +339,10 @@
     <string name="nutriment_serving_size">Por porción: </string>
     <string name="action_manage_account">Gestionar cuenta</string>
     <string name="action_contributes">Sus contribuciones</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">Cerrar sesión</string>
     <string name="contribution_without_account">Puede iniciar sesión o crear una cuenta para guardar sus contribuciones</string>
     <string name="textCarbonFootprint">Huella de carbón / Emisiones de CO2: </string>
@@ -559,6 +564,7 @@
     <string name="notify_content">Haga clic para ver los productos exportados</string>
     <string name="notification_channel_name">Exportar notificaciones</string>
     <string name="notify_channel_description">Notificación para mostrar la ubicación del archivo exportado</string>
+    <string name="additives">Aditivos</string>
     <string name="products_to_be_completed">Productos por completar</string>
     <string name="modified_history">Producto añadido en %1$s a %2$s por %3$s. Última edición de la página del producto en %4$s a %5$s por %6$s. Página del producto también editada por %7$s</string>
     <string name="offline_notification_title">Necesita enviar contribuciones realizadas sin conexión</string>
@@ -711,20 +717,25 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Haz una lista de los ingredientes problemáticos que deberían aparecer en naranja. Ejemplo: huevo, pescado ... Puedes completar esta lista más adelante.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ingredientes no autorizados</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Listar los ingredientes no autorizados que deben aparecer en rojo. Ejemplo: gluten, leche, aceite de palma, azúcar ... Puede completar esta lista más adelante.</string>
-    <string name="extract_ingredients_prompt">Extract Ingredients</string>
+    <string name="extract_ingredients_prompt">Extraer ingredientes</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
     <string name="nutrition_image_prompt_text">Haz una foto de la tabla nutricional</string>
     <string name="ingredient_image_prompt_text">Haz una foto de los ingredientes</string>
     <string name="category_game_btn">Ayuda a categorizar productos para calcular el NutriScore</string>
     <string name="version_string">Aplicación de Android Open Food Facts</string>
     <string name="version">Versión</string>
-    <string name="set_ingredient_img">Set image as Ingredient</string>
-    <string name="set_img_nutrients">Set Image as Nutrition</string>
-    <string name="set_img_front">Set Image as Front</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <!-- Used for diets AddOn -->
 </resources>
