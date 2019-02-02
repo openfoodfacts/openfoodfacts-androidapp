@@ -15,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -152,8 +153,10 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
                     List<AdditiveName> additiveNames = new ArrayList<>();
 
                     for (int i = 0; i < additives.size(); i++) {
-                        if (additives.get(i).getName().toLowerCase().split("- ")[1].startsWith(newText.toLowerCase())) {
-                            additiveNames.add(additives.get(i));
+                        if (additives.get(i).getName().toLowerCase().split("- ").length > 1) {
+                            if (additives.get(i).getName().toLowerCase().split("- ")[1].startsWith(newText.toLowerCase())) {
+                                additiveNames.add(additives.get(i));
+                            }
                         }
                     }
 
