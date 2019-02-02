@@ -93,7 +93,7 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.constraint.ConstraintLayout
+        <RelativeLayout
             android:id="@+id/product_comparison_scores_layout"
             android:layout_width="match_parent"
             android:layout_height="85dp"
@@ -102,24 +102,20 @@
             <ImageView
                 android:id="@+id/product_comparison_imageGrade"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:adjustViewBounds="true"
                 android:maxWidth="180dp"
                 android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.303"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="16dp"
                 tools:src="@drawable/nnc_a" />
 
             <ImageView
                 android:id="@+id/product_comparison_nova_group"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/horizontal_margin"
                 android:layout_marginEnd="@dimen/horizontal_margin"
                 android:layout_marginRight="@dimen/horizontal_margin"
@@ -132,9 +128,7 @@
                 android:paddingRight="@dimen/spacing_small"
                 android:paddingBottom="@dimen/spacing_small"
                 android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/product_comparison_imageGrade"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_toRightOf="@id/product_comparison_imageGrade"
                 tools:src="@drawable/ic_nova_group_1" />
 
             <Button
@@ -150,7 +144,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Add nutrition facts to compute the Nutri-Score" />
 
-        </android.support.constraint.ConstraintLayout>
+        </RelativeLayout>
 
         <android.support.v7.widget.CardView
             android:id="@+id/product_comparison_additive"
@@ -189,7 +183,7 @@
             android:layout_marginBottom="16dp"
             app:cardElevation="4dp"
             android:visibility="gone"
-            android:layout_below="@id/product_comparison_details_cv">
+            android:layout_below="@id/product_comparison_additive">
 
             <LinearLayout
                 android:layout_width="match_parent"

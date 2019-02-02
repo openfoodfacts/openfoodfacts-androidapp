@@ -16,6 +16,7 @@ import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -207,15 +208,12 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 holder.productComparisonNovaGroup.setVisibility(View.GONE);
             }
 
-            String additiveText = loadAdditives(product);
-            if (isNotBlank(additiveText)) {
+            List<String> additivesTags = product.getAdditivesTags();
+            if (additivesTags != null && !additivesTags.isEmpty()) {
                 holder.productComparisonAdditiveCv.setVisibility(View.VISIBLE);
                 holder.productComparisonAdditiveText.setVisibility(View.VISIBLE);
-                holder.productComparisonAdditiveText.append(additiveText);
-            } else {
-                holder.productComparisonAdditiveCv.setVisibility(View.GONE);
+                loadAdditives(product, holder.productComparisonAdditiveText);
             }
-
         } else {
             holder.listItemLayout.setVisibility(View.GONE);
         }
@@ -298,7 +296,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         return levelItem;
     }
 
-    private String loadAdditives(Product product) {
+    private void loadAdditives(Product product, View v) {
         StringBuilder additivesBuilder = new StringBuilder();
         List<String> additivesTags = product.getAdditivesTags();
         if (additivesTags != null && !additivesTags.isEmpty()) {
@@ -329,12 +327,12 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                                     }
 
                                     additivesBuilder.append(additives.get(additives.size() - 1).getName());
+                                    ((TextView) v).setText(additivesBuilder.toString());
                                 }
                             }, e -> {
                                 e.printStackTrace();
                             })
             );
         }
-        return additivesBuilder.toString();
     }
 }
