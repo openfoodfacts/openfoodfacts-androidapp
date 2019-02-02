@@ -28,7 +28,9 @@ import static openfoodfacts.github.scrachx.openfood.utils.SearchType.*;
         TRACE,
         CONTRIBUTOR,
         STATE,
-        INCOMPLETE_PRODUCT
+        INCOMPLETE_PRODUCT,
+        ORIGIN,
+        MANUFACTURING_PLACE
 })
 public @interface SearchType {
 
@@ -46,6 +48,8 @@ public @interface SearchType {
     String CONTRIBUTOR = "contributor";
     String INCOMPLETE_PRODUCT = "incomplete_product";
     String STATE = "state";
+    String ORIGIN = "origin";
+    String MANUFACTURING_PLACE = "manufacturing-place";
 
     HashMap<String, String> URLS = new HashMap<String, String>() {{
         put(ALLERGEN, BuildConfig.OFWEBSITE + "allergens/");

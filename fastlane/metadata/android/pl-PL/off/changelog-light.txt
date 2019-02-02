@@ -1,8 +1,8 @@
-v2 ! Wszyscy wolontariusze ciężko pracowali, opierając się na waszych sugestiach. Jesteśmy ruchem bardziej globalnym niż kiedykolwiek. Wypuszczono 500 tysięcy produktów, 182 kraje, ponad 10 tysięcy uczestników. ty :-)
+v2 ! Wszyscy wolontariusze ciężko pracowali, opierając się na waszych sugestiach. Jesteśmy ruchem bardziej globalnym niż kiedykolwiek. Wypuszczono 500 tysięcy produktów, 182 kraje, ponad 10 tysięcy uczestników. możesz :-)
 1. Skala NutriScore dla produktów z całego świata
 2. Możliwość eksportowania historii tylko dla siebie
 3. Ostrzeżenia o alergenach
-4. Dotknij dodatków, by odkrywać z Wikipedią.
+4. Kliknij w dodatek, by go poznać dzięki Wikipedii.
 5. Rób zdjęcia, przyczyń się do przejrzystości żywności
 6. O wiele szybciej, nawet przez 2G. Możesz wnieść wkład nawet bez połączenia
 7. Nie wymagamy logowania

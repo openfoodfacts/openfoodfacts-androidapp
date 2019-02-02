@@ -36,10 +36,10 @@ Wikipedia for Pet Food
 Wikipedia of Products
 
 product_view_ingredients_en.png
-Ingredients
+Inhaltstoffer
 
 menu_en.png
 Powerful
 
 product_view_nutrition_table_en.png
-Nutrition facts
+Ernährungangaben

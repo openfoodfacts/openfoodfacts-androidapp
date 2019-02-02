@@ -36,4 +36,5 @@
     <string name="tagline">a base de dados de alimentos para animais de estimação gratuita</string>
     <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Pet Food Facts. Você pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente no Open Pet Food Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>

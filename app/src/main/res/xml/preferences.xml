@@ -12,6 +12,18 @@
             android:title="@string/prefs_language" />
 
         <ListPreference
+            android:dialogTitle="@string/energy_pref_title"
+            android:key="energyUnitPreference"
+            android:summary="Choose your preferred units for energy for the nutrition table"
+            android:title="@string/energy_pref_title" />
+
+        <ListPreference
+            android:dialogTitle="@string/volume_pref_title"
+            android:key="volumeUnitPreference"
+            android:summary="@string/choose_volume_unit"
+            android:title="@string/volume_pref_title" />
+
+        <ListPreference
             android:dialogTitle="@string/settings_country_dialog_title"
             android:key="user_country"
             android:summary="@string/settings_country_summary"
@@ -58,7 +70,7 @@
             android:defaultValue="false"
             android:key="disableImageLoad"
             android:summary="@string/disable_image_loading"
-            android:title="@string/DisableLoadTitle"/>
+            android:title="@string/DisableLoadTitle" />
 
     </PreferenceCategory>
 
@@ -81,7 +93,7 @@
             android:defaultValue="false"
             android:key="contributionTab"
             android:summary="@string/contribution_tab_summary"
-            android:title="@string/contribution_tab_title"/>
+            android:title="@string/contribution_tab_title" />
 
         <CheckBoxPreference
             android:defaultValue="false"
@@ -92,8 +104,8 @@
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="photoMode"
-            android:title="@string/preference_show_all_product_photos_title"
-            android:summary="@string/preference_show_all_product_photos_summary" />
+            android:summary="@string/preference_show_all_product_photos_summary"
+            android:title="@string/preference_show_all_product_photos_title" />
 
     </PreferenceCategory>
 

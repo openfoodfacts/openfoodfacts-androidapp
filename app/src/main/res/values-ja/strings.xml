@@ -40,6 +40,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -258,7 +259,7 @@
     <string name="cancel_button">取消</string>
     <string name="login_button">ログイン</string>
     <string name="create_account_button">アカウントを作成する</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
+    <string name="warning_alert_data">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
     <string name="from_gallery">ギャラリーから</string>
     <string name="product_sent">製品を送信しました</string>
     <string name="action_edit_product">製品を編集</string>
@@ -334,6 +335,10 @@
     <string name="nutriment_serving_size">品目当たり :</string>
     <string name="action_manage_account">アカウントの管理</string>
     <string name="action_contributes">あなたの貢献</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">ログアウト</string>
     <string name="contribution_without_account">サインイン、またはアカウントを作成して、貢献を続けることができます</string>
     <string name="textCarbonFootprint">カーボンフットプリント / CO2 排出量: </string>
@@ -555,6 +560,7 @@
     <string name="notify_content">クリックするとエクスポートした製品を表示します</string>
     <string name="notification_channel_name">エクスポートの通知</string>
     <string name="notify_channel_description">エクスポートされたファイルの場所を示す通知</string>
+    <string name="additives">添加物</string>
     <string name="products_to_be_completed">完了が必要な製品</string>
     <string name="modified_history">製品は %1$s %2$s に %3$s によって追加されました。 製品ページは %4$s %5$s に %6$s が最後に編集しました。  製品ページは %7$s も編集しました</string>
     <string name="offline_notification_title">オフラインの貢献を送信する必要があります</string>
@@ -689,6 +695,8 @@
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
@@ -705,15 +713,25 @@
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="extract_ingredients_prompt">Extract ingredients</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">原材料の写真を撮ります</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Set image as Ingredient</string>
-    <string name="set_img_nutrients">Set Image as Nutrition</string>
-    <string name="set_img_front">Set Image as Front</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="set_image_name">Successfully set the image as</string>
+    <string name="warning">Warning :</string>
+    <string name="customer_service">Customer Service :</string>
+    <string name="fast_addition_mode_title">Fast Addition Mode</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <!-- Used for diets AddOn -->
 </resources>

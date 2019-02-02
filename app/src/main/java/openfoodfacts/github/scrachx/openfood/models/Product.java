@@ -129,6 +129,10 @@ public class Product implements Serializable {
     private String nutritionDataPer;
     @JsonProperty("no_nutrition_data")
     private String noNutritionData;
+    @JsonProperty("warning")
+    private String warning;
+    @JsonProperty("customer_service")
+    private String customerService;
 
 
     private Map<String, Object> additionalProperties = new HashMap<>();
@@ -169,6 +173,14 @@ public class Product implements Serializable {
 
     public String getLastModifiedBy() {
         return lastModifiedBy;
+    }
+
+
+    public String getCustomerService() {
+        return customerService;
+    }
+    public String getWarning() {
+        return warning;
     }
 
 

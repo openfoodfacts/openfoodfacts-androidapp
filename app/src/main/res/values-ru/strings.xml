@@ -42,16 +42,17 @@
         <item>Ингредиенты</item>
         <item>Пищевая ценность</item>
         <item>Состав</item>
-        <item>Environment</item>
+        <item>Окружающая среда</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Фотографии продукта</item>
+        <item>Анализ ингредиентов</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -270,7 +271,7 @@
     <string name="cancel_button">Отмена</string>
     <string name="login_button">Логин</string>
     <string name="create_account_button">Создать учетную запись</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
+    <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
     <string name="from_gallery">Из галереи</string>
     <string name="product_sent">Данные о продукте успешно отправлены</string>
     <string name="action_edit_product">Редактировать продукт</string>
@@ -346,6 +347,10 @@
     <string name="nutriment_serving_size">На порцию:</string>
     <string name="action_manage_account">Управление учётной записью</string>
     <string name="action_contributes">Ваш вклад</string>
+    <string name="choose_energy_unit">Выберите предпочтительные единицы калорийности для таблицы питательной ценности</string>
+    <string name="energy_pref_title">Предпочтительная единица калорийности</string>
+    <string name="choose_volume_unit">Выберите предпочтительные единицы объёма для таблицы питательной ценности</string>
+    <string name="volume_pref_title">Предпочтительная единица объема</string>
     <string name="logout_drawer">Выйти</string>
     <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
     <string name="textCarbonFootprint">Углеродный след / выбросы CO2: </string>
@@ -567,6 +572,7 @@
     <string name="notify_content">Нажмите, чтобы просмотреть экспортированные продукты</string>
     <string name="notification_channel_name">Экспорт уведомлений</string>
     <string name="notify_channel_description">Уведомление о местоположении экспортируемого файла</string>
+    <string name="additives">Добавки</string>
     <string name="products_to_be_completed">Незавершенные продукты</string>
     <string name="modified_history">Продукт добавлен %1$s в %2$s %3$s. Последнее редактирование страницы продукта %4$s в %5$s %6$s. Страница продукта также отредактирована %7$s</string>
     <string name="offline_notification_title">Оффлайн-вклады, которые необходимо отправить</string>
@@ -701,7 +707,9 @@
     <string name="efsa_warning_high_risk">Европейское агентство по безопасности продуктов питания (EFSA) определило, что некоторые группы населения имеют высокий риск чрезмерного потребления %1$s.</string>
     <string name="legend_noael">выше дозы с наблюдаемым неблагоприятным эффектом (NOAEL)</string>
     <string name="legend_adi">выше допустимой дневной нормы (ADI)</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_nutrient_val_msg">Введенное значение больше указанного на порцию</string>
+    <string name="update_image">Отправить обновленное изображение</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Ваши диеты</string>
@@ -717,15 +725,25 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Запрещенные ингредиенты</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Перечислите запрещенные ингредиенты, которые будут отображаться красным цветом. Наример: глютен, молоко, пальмовое масло, сахар... Вы можете дополнить список позже.</string>
+    <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Добавьте категорию для вычисления Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Сделайте фото состава</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Version</string>
-    <string name="set_ingredient_img">Set image as Ingredient</string>
-    <string name="set_img_nutrients">Set Image as Nutrition</string>
-    <string name="set_img_front">Set Image as Front</string>
-    <string name="report_img">Report Image</string>
-    <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="category_game_btn">Помогите классифицировать продукты для вычисления Nutri-Score</string>
+    <string name="version_string">Приложение Open Food Facts для Android</string>
+    <string name="version">Версия</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
+    <string name="report_img">Сообщить об изображении</string>
+    <string name="detected_ingredients">Обнаруженные ингредиенты</string>
+    <string name="set_image_name">Successfully set the image as</string>
+    <string name="warning">Предупреждение :</string>
+    <string name="customer_service">Центр поддержки:</string>
+    <string name="fast_addition_mode_title">Режим быстрого добавления</string>
+    <string name="fast_addition_mode">Позволяет быстро добавлять продукты с меньшим количеством атрибутов</string>
     <!-- Used for diets AddOn -->
 </resources>

@@ -208,6 +208,12 @@ public class AddProductOverviewFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //checks the information about the prompt clicked and takes action accordingly
+        if(getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
+            categories.requestFocus();
+        }else if(getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
+            ((AddProductActivity) getActivity()).proceed();
+        }
         Bundle b = getArguments();
         if (b != null) {
             product = (Product) b.getSerializable("product");
@@ -239,6 +245,12 @@ public class AddProductOverviewFragment extends BaseFragment {
             barcode.append(" " + code);
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
                 otherImage.setVisibility(View.GONE);
+            }
+            if(b.getBoolean("perform_ocr")) {
+                ((AddProductActivity) activity).proceed();
+            }
+            if (b.getBoolean("send_updated")) {
+                ((AddProductActivity) activity).proceed();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();

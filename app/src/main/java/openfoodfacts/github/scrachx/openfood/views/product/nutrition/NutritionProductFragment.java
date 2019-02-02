@@ -14,14 +14,18 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.preference.PreferenceManager;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,6 +39,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -52,6 +58,7 @@ import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
@@ -88,8 +95,14 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     RecyclerView rv;
     @BindView(R.id.textServingSize)
     TextView serving;
+    @BindView(R.id.serving_size_card_view)
+    CardView servingSizeCardView;
+    @BindView(R.id.textCarbonFootprint)
+    TextView carbonFootprint;
     @BindView(R.id.textNutrientTxt)
     TextView textNutrientTxt;
+    @BindView(R.id.get_nutriscore_prompt)
+    Button nutriscorePrompt;
     @BindView(R.id.textPerPortion)
     TextView mTextPerPortion;
     @BindView(R.id.imageViewNutrition)
@@ -98,6 +111,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView addPhotoLabel;
     @BindView(R.id.nutriments_recycler_view)
     RecyclerView nutrimentsRecyclerView;
+    @BindView(R.id.nutrient_levels_card_view)
+    CardView nutrientLevelsCardView;
 
     private String mUrlImage;
     private String barcode;
@@ -108,6 +123,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     private SendProduct mSendProduct;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
+    //the following booleans indicate whether the prompts are to be made visible
+    private boolean showNutritionPrompt = false;
+    private boolean showCategoryPrompt = false;
+    private Product product;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -129,10 +148,40 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-        final Product product = state.getProduct();
+        product = state.getProduct();
+        //checks the product states_tags to determine which prompt to be shown
+        List<String> statesTags = product.getStatesTags();
+        if (statesTags.contains("en:categories-to-be-completed")) {
+            showCategoryPrompt = true;
+        }
+        if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
+            showNutritionPrompt = false;
+        } else {
+            if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
+                showNutritionPrompt = true;
+            }
+        }
+
+        if (showNutritionPrompt || showCategoryPrompt) {
+            nutriscorePrompt.setVisibility(View.VISIBLE);
+            if (showNutritionPrompt && showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+            } else if (showNutritionPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+            } else if (showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
+            }
+        }
+
         List<NutrientLevelItem> levelItem = new ArrayList<>();
 
+        SharedPreferences settingsPreference = getActivity().getSharedPreferences("prefs", 0);
+
         Nutriments nutriments = product.getNutriments();
+
+        if (nutriments != null && !nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
+            carbonFootprint.setVisibility(View.GONE);
+        }
 
         NutrientLevels nutrientLevels = product.getNutrientLevels();
         NutrimentLevel fat = null;
@@ -147,8 +196,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-            textNutrientTxt.setText(" " + getString(R.string.txtNoData));
+            nutrientLevelsCardView.setVisibility(View.GONE);
             levelItem.add(new NutrientLevelItem("", "", "", 0));
+            img.setVisibility(View.GONE);
         } else {
             // prefetch the uri
             customTabActivityHelper = new CustomTabActivityHelper();
@@ -211,15 +261,35 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             });
         }
 
+        //checks the flags and accordingly sets the text of the prompt
+        if (showNutritionPrompt || showCategoryPrompt) {
+            nutriscorePrompt.setVisibility(View.VISIBLE);
+            if (showNutritionPrompt && showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+            } else if (showNutritionPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+            } else if (showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
+            }
+        }
+
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
         if (TextUtils.isEmpty(product.getServingSize())) {
             serving.setVisibility(View.GONE);
+            servingSizeCardView.setVisibility(View.GONE);
         } else {
+            String servingSize = product.getServingSize();
+            if(settingsPreference.getString("volumeUnitPreference", "l").equals("oz")) {
+                servingSize = Utils.getServingInOz(servingSize);
+            } else if (servingSize.toLowerCase().contains("oz") && settingsPreference.getString("volumeUnitPreference", "l").equals("l")) {
+                servingSize = Utils.getServingInL(servingSize);
+            }
+
             serving.setText(bold(getString(R.string.txtServingSize)));
             serving.append(" ");
-            serving.append(product.getServingSize());
+            serving.append(servingSize);
         }
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -289,12 +359,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
-        if (energy != null) {
+        if (energy != null  && settingsPreference.getString("energyUnitPreference", "kcal").equals("kcal")) {
             nutrimentItems.add(
                     new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                             Utils.getEnergy(energy.getFor100gInUnits()),
                             Utils.getEnergy(energy.getForServingInUnits()),
                             "kcal",
+                            nutriments.getModifier(ENERGY)));
+        }
+        else if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kJ")) {
+            nutrimentItems.add(
+                    new NutrimentItem(getString(R.string.nutrition_energy_short_name),
+                            energy.getFor100gInUnits(),
+                            energy.getForServingInUnits(),
+                            "kJ",
                             nutriments.getModifier(ENERGY)));
         }
 
@@ -496,5 +574,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onCustomTabsDisconnected() {
         img.setClickable(false);
+    }
+
+    @OnClick (R.id.get_nutriscore_prompt)
+    public void onNutriscoreButtonClick() {
+        Intent intent = new Intent(getActivity(), AddProductActivity.class);
+        intent.putExtra("edit_product", product);
+        //adds the information about the prompt when navigating the user to the edit the product
+        intent.putExtra("modify_category_prompt", showCategoryPrompt);
+        intent.putExtra("modify_nutrition_prompt", showNutritionPrompt);
+        startActivity(intent);
     }
 }

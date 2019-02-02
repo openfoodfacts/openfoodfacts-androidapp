@@ -45,6 +45,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
 
@@ -93,15 +94,8 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
                 if (value && response != null) {
 
-                    Log.i("response", response);
-
                     // a json object referring to base json object
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    JSONObject jsonObject = Utils.createJsonObject(response);
 
                     // a json object referring to images
                     JSONObject images = null;

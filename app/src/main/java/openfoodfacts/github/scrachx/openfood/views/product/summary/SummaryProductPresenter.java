@@ -32,6 +32,42 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     }
 
     @Override
+    public void loadAdditives() {
+        List<String> additivesTags = product.getAdditivesTags();
+        if (additivesTags != null && !additivesTags.isEmpty()) {
+            disposable.add(
+                    Observable.fromArray(additivesTags.toArray(new String[additivesTags.size()]))
+                            .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
+                                    .flatMap(categoryName -> {
+                                        if (categoryName.isNull()) {
+                                            return repository.getAdditiveByTagAndDefaultLanguageCode(tag);
+                                        } else {
+                                            return Single.just(categoryName);
+                                        }
+                                    }))
+                            .filter(additiveName -> additiveName.isNotNull())
+                            .toList()
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .doOnSubscribe(d -> view.showAdditivesState(ProductInfoState.LOADING))
+                            .subscribe(additives -> {
+                                if (additives.isEmpty()) {
+                                    view.showAdditivesState(ProductInfoState.EMPTY);
+                                } else {
+                                    view.showAdditives(additives);
+                                }
+                            }, e -> {
+                                e.printStackTrace();
+                                view.showAdditivesState(ProductInfoState.EMPTY);
+                            })
+            );
+        } else {
+            view.showAdditivesState(ProductInfoState.EMPTY);
+        }
+    }
+
+
+    @Override
     public void loadAllergens() {
         disposable.add(
                 repository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage())
