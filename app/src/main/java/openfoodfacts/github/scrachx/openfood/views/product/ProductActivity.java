@@ -275,7 +275,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 		if( BuildConfig.FLAVOR.equals( "off" ) )
 		{
 			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
-			if( mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT) )
+			if( mState.getProduct().getNutriments() != null && mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT) )
 			{
 				adapterResult.addFragment( new EnvironmentProductFragment(), menuTitles[4] );
 			}
