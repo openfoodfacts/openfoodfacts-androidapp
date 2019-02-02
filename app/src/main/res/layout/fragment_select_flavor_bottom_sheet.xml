@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select the best category."
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/md_black_1000"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rlFoodFact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvInfo"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        >
+
+        <ImageView
+            android:id="@+id/ivFoodFact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ivFoodFact"
+            android:layout_toRightOf="@id/ivFoodFact"
+            android:text="Food"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlBeautyFact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlFoodFact"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        >
+
+        <ImageView
+            android:id="@+id/ivBeautyFact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ivBeautyFact"
+            android:layout_toRightOf="@id/ivBeautyFact"
+            android:text="Cosmetic &amp; hygine"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlPetFact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlBeautyFact"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        >
+
+        <ImageView
+            android:id="@+id/ivPetFact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ivPetFact"
+            android:layout_toRightOf="@id/ivPetFact"
+            android:text="Pet Food"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlOpenProductsFact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlPetFact"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        >
+
+        <ImageView
+            android:id="@+id/ivOpenProductsFact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ivOpenProductsFact"
+            android:layout_toRightOf="@id/ivOpenProductsFact"
+            android:text="Others"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

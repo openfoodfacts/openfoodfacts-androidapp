@@ -65,6 +65,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.viewmodel.SelectFlavorBottomSheet;
 
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
 
@@ -355,13 +356,17 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     }
 
     private void navigateToProductAddition(String lastText) {
-        Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
-        State st = new State();
-        Product pd = new Product();
-        pd.setCode(lastText);
-        st.setProduct(pd);
-        intent.putExtra("state", st);
-        startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
+//        Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
+//        State st = new State();
+//        Product pd = new Product();
+//        pd.setCode(lastText);
+//        st.setProduct(pd);
+//        intent.putExtra("state", st);
+//        startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
+
+        SelectFlavorBottomSheet bottomSheetFragment = new SelectFlavorBottomSheet();
+        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
+        bottomSheetFragment
     }
 
     private void showAllViews() {
