@@ -13,9 +13,9 @@ Quét các sản phẩm thực phẩm hoặc mã vạch của chúng để lấy
 - Bạn có thể bắt đầu đóng góp ngay hôm nay bằng cách thêm sản phẩm từ tủ thực phẩm của bạn. 
 
 *** Nhận được sự thật ***
-- Open Food Facts giúp bạn hiểu thêm về những thứ hào nhoáng được in trên bao bì. You will be able to find (according to the indications present on the products):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- Open Food Facts giúp bạn hiểu những thứ hào nhoáng được in trên bao bì. Bạn có thể tìm được (dựa theo những chỉ số trên bao bì):
+Hàm lượng carbon (phơi nhiễm CO2) và việc đóng gói (cũng như hướng dẫn tái chế),
+- Chỉ số dinh dưỡng, chất bổ, chất béo, a-xít béo bão hòa, Cacbohydrat, đường, chất sơ, protein, muối và natri.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - On wines and beers, you will find the alcohol content.
 
