@@ -30,12 +30,12 @@
         <item>原材料</item>
         <item>栄養</item>
         <item>栄養成分表</item>
-        <item>Environment</item>
+        <item>環境</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>製品の写真</item>
+        <item>原材料分析</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -73,48 +73,48 @@
         <item>クロム</item>
         <item>銅</item>
         <item>ジホモ-ガンマ-リノレン酸/DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+        <item>ドコサヘキサエン酸 / DHA (22:6 n-3)</item>
         <item>エイコサペンタエン酸/EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>エライジン酸 (18:1 n-9)</item>
+        <item>エルカ酸 (22:1 n-9)</item>
         <item>フッ化物</item>
         <item>果糖</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>ガンマリノレン酸 / GLA (18:3 n-6)</item>
         <item>グルコース</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>ゴンドイン酸 (20:1 n-9)</item>
         <item>ヨウ素</item>
         <item>鉄</item>
         <item>乳糖</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>ラウリン酸 (12:0)</item>
+        <item>リグノセリン酸 (24:0)</item>
+        <item>リノール酸 / LA (18:2 n-6)</item>
         <item>マグネシウム</item>
         <item>マルトデキストリン</item>
         <item>麦芽糖</item>
         <item>マンガン</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>ミード酸 (20:3 n-9)</item>
+        <item>メリシン酸 (30:0)</item>
         <item>モリブデン</item>
-        <item>Monounsaturated fat</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>一価不飽和脂肪</item>
+        <item>モンタン酸 (28:0)</item>
+        <item>ミリスチン酸 (14:0)</item>
+        <item>ネルボン酸 (24:1 n-9)</item>
         <item>ヌクレオチド</item>
-        <item>Oleic acid (18:1 n-9)</item>
+        <item>オレイン酸 (18:1 n-9)</item>
         <item>オメガ3脂肪酸</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
+        <item>オメガ 6 脂肪酸</item>
+        <item>オメガ 9 脂肪酸</item>
         <item>パルミチン酸 (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>パントテン酸 (ビタミン B5)</item>
         <item>pH</item>
         <item>リン</item>
-        <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>糖アルコール (ポリオール)</item>
+        <item>多価不飽和脂肪</item>
         <item>カリウム</item>
         <item>セレン</item>
-        <item>Serum proteins</item>
+        <item>血清タンパク質</item>
         <item>シリカ</item>
-        <item>Starch</item>
+        <item>デンプン</item>
         <item>Stearic acid (18:0)</item>
         <item>スクロース</item>
         <item>タウリン</item>
