@@ -467,7 +467,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtSaturatedFat">Tłuszcz nasycony</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Skrót niedostępny</string>
-    <string name="scan_shortcut_short_label">Skan</string>
+    <string name="scan_shortcut_short_label">Skanuj</string>
     <string name="scan_shortcut_long_label">Zeskanuj produkt</string>
     <string name="barcode_shortcut_short_label">Szukaj</string>
     <string name="barcode_shortcut_long_label">Szukaj po kodzie kreskowym</string>
@@ -765,7 +765,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="customer_service">Obsługa klienta :</string>
     <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
     <string name="fast_addition_mode">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
-    <string name="addtive_search">Search for a additive</string>
+    <string name="addtive_search">Wyszukaj dodatek</string>
     <string name="additives">Dodatki</string>
     <!-- Used for diets AddOn -->
 </resources>
