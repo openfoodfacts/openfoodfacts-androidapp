@@ -260,7 +260,7 @@
     <string name="choose_formats">Choose Formats</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Peruuta</string>
     <string name="login_button">Käyttäjätunnus</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
@@ -343,7 +343,7 @@
     <string name="energy_pref_title">Energian yksikkö</string>
     <string name="choose_volume_unit">Valitse haluamasi tilavuusyksikkö ravintosisältötaulukkoon</string>
     <string name="volume_pref_title">Tilavuusyksikkö</string>
-    <string name="logout_drawer">Logout</string>
+    <string name="logout_drawer">Kirjaudu ulos</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="txtDialogPowerMode">Quick view</string>
@@ -450,7 +450,7 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="next">SEURAAVA</string>
     <string name="skip">OHITA</string>
-    <string name="start">GOT IT</string>
+    <string name="start">SELVÄ</string>
     <string name="contact">Contact</string>
     <string name="contact_summary">Contact the team</string>
     <string name="email_not_found">No email applications found</string>
@@ -481,7 +481,7 @@
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="connectivity_check">Please check your internet connection</string>
     <string name="dismiss">Dismiss</string>
-    <string name="Terms">Terms</string>
+    <string name="Terms">Ehdot</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
@@ -492,7 +492,7 @@
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">Peruuta</string>
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
@@ -530,14 +530,14 @@
     <string name="wikidata">Wikidata data</string>
     <string name="disable_image_loading">Disable image loading when battery is low</string>
     <string name="DisableLoadTitle">Disable image loading</string>
-    <string name="txtCamera">Camera</string>
+    <string name="txtCamera">Kamera</string>
     <string name="txtGallery">Gallery</string>
     <string name="txtOptions">Options</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Tuotemerkki</string>
     <string name="by_barcode">Viivakoodi</string>
     <string name="by_time">Recently Viewed</string>
-    <string name="sort">Sort</string>
+    <string name="sort">Järjestä</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Sort By</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
@@ -559,7 +559,7 @@
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
     <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-    <string name="show_by">Show</string>
+    <string name="show_by">Näytä</string>
     <string name="notify_title">Export complete</string>
     <string name="notify_content">Click to view exported products</string>
     <string name="notification_channel_name">Export Notifications</string>
@@ -618,7 +618,7 @@
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding product</string>
-    <string name="photos">Photos</string>
+    <string name="photos">Kuvat</string>
     <string name="please_wait">Please wait</string>
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
@@ -627,7 +627,7 @@
     <string name="overview">Overview</string>
     <string name="ingredients">Ainekset</string>
     <string name="nutrition_facts">Nutrition Facts</string>
-    <string name="your_version">Yours</string>
+    <string name="your_version">Sinun</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
@@ -682,12 +682,12 @@
     <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
+    <string name="toddlers_age">1 - 2</string>
     <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
+    <string name="children_age">3 - 9</string>
     <string name="adolescents">Adolescents</string>
     <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
+    <string name="adults">Aikuiset</string>
     <string name="adults_age">18 to 64</string>
     <string name="elderly">Elderly</string>
     <string name="elderly_age">65+</string>
