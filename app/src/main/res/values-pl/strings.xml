@@ -467,7 +467,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtSaturatedFat">Tłuszcz nasycony</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Skrót niedostępny</string>
-    <string name="scan_shortcut_short_label">Skan</string>
+    <string name="scan_shortcut_short_label">Skanuj</string>
     <string name="scan_shortcut_long_label">Zeskanuj produkt</string>
     <string name="barcode_shortcut_short_label">Szukaj</string>
     <string name="barcode_shortcut_long_label">Szukaj po kodzie kreskowym</string>
@@ -592,7 +592,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="notify_content">Naciśnij by zobaczyć wyeksportowane produkty</string>
     <string name="notification_channel_name">Ekspotruj powiadomienia</string>
     <string name="notify_channel_description">Powiadomienie wskazujące lokalizację wyeksportowanego pliku</string>
-    <string name="additives">Dodatki</string>
     <string name="products_to_be_completed">Produkty do uzupełnienia</string>
     <string name="modified_history">Produkty dodane dnia %1$s o godzinie %2$s przez %3$s.  Ostatnia zmiana strony produktu w dniu %4$s o %5$s przez %6$s.  Także zmieniona przez %7$s</string>
     <string name="offline_notification_title">Do wysłania z trybu offline</string>
@@ -766,5 +765,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="customer_service">Obsługa klienta :</string>
     <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
     <string name="fast_addition_mode">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
+    <string name="addtive_search">Wyszukaj dodatek</string>
+    <string name="additives">Dodatki</string>
     <!-- Used for diets AddOn -->
 </resources>

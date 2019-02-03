@@ -564,7 +564,6 @@
     <string name="notify_content">Kattintson az exportált termékek megtekintéséhez</string>
     <string name="notification_channel_name">Export Értesítések</string>
     <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
-    <string name="additives">Adalékanyagok</string>
     <string name="products_to_be_completed">Kiegészítendő termékek</string>
     <string name="modified_history">A terméket hozzáadta %3$s a következő időpontban: %1$s, %2$s. A termékoldalt legutóbb szerkesztette %6$s a következő időpontban: %4$s, %5$s. A termékoldalt szerkesztette még %7$s</string>
     <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
@@ -739,5 +738,7 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Adalékanyagok</string>
     <!-- Used for diets AddOn -->
 </resources>

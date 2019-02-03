@@ -564,7 +564,6 @@
     <string name="notify_content">Cliquez pour afficher les produits exportés</string>
     <string name="notification_channel_name">Notifications d\'exportation</string>
     <string name="notify_channel_description">Notification pour afficher l\'emplacement du fichier exporté</string>
-    <string name="additives">Additifs</string>
     <string name="products_to_be_completed">Produits à compléter</string>
     <string name="modified_history">Produit ajouté le %1$s à %2$s par %3$s. Dernière modification de la page du produit le %4$s à %5$s par %6$s. La fiche produit a également été modifiée par %7$s</string>
     <string name="offline_notification_title">Contributions hors ligne à envoyer</string>
@@ -737,5 +736,7 @@
     <string name="customer_service">Service Clients :</string>
     <string name="fast_addition_mode_title">Mode d\'ajout rapide</string>
     <string name="fast_addition_mode">Active l\'ajout rapide de produits avec moins d\'attributs</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Additifs</string>
     <!-- Used for diets AddOn -->
 </resources>

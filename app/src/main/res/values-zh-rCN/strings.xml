@@ -560,7 +560,6 @@
     <string name="notify_content">点击查看导出的产品</string>
     <string name="notification_channel_name">导出通知</string>
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
-    <string name="additives">添加</string>
     <string name="products_to_be_completed">待完成的产品</string>
     <string name="modified_history">产品由 %3$s 加添于 %1$s %2$s。产品页面最后由 %6$s 编辑于 %4$s %5$s。产品页面也被以下人员修改 %7$s</string>
     <string name="offline_notification_title">你需要发送的离线贡献</string>
@@ -733,5 +732,7 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">添加</string>
     <!-- Used for diets AddOn -->
 </resources>
