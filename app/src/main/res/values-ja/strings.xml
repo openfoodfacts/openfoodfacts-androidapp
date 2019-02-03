@@ -351,7 +351,7 @@
     <string name="number_of_products">製品の数: </string>
     <string name="txt_no_results">見つかりませんでした</string>
     <string name="txt_extend_search">検索条件を広げてみるか、製品を追加してください</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
+    <string name="txt_no_matching__category_products">このカテゴリーには製品がありません。追加できますか?</string>
     <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
     <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
     <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
