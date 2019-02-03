@@ -560,7 +560,6 @@
     <string name="notify_content">Nhấp để xem các sản phẩm đã xuất</string>
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Thông báo để hiển thị vị trí của tệp đã xuất</string>
-    <string name="additives">Additives</string>
     <string name="products_to_be_completed">Các sản phẩm cần được hoàn thành</string>
     <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
     <string name="offline_notification_title">Chỉnh sửa ngoại tuyến bạn cần gửi</string>
@@ -733,5 +732,7 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Additives</string>
     <!-- Used for diets AddOn -->
 </resources>
