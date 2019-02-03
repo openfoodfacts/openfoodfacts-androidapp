@@ -290,7 +290,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         List<String> allergens = getAllergens();
 
-        if (mState != null && product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
+        if (mState != null && !product.getIngredientsText().isEmpty()) {
             textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
