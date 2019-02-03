@@ -30,12 +30,12 @@
         <item>原材料</item>
         <item>栄養</item>
         <item>栄養成分表</item>
-        <item>Environment</item>
+        <item>環境</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>製品の写真</item>
+        <item>原材料分析</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -73,60 +73,60 @@
         <item>クロム</item>
         <item>銅</item>
         <item>ジホモ-ガンマ-リノレン酸/DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+        <item>ドコサヘキサエン酸 / DHA (22:6 n-3)</item>
         <item>エイコサペンタエン酸/EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>エライジン酸 (18:1 n-9)</item>
+        <item>エルカ酸 (22:1 n-9)</item>
         <item>フッ化物</item>
         <item>果糖</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>ガンマリノレン酸 / GLA (18:3 n-6)</item>
         <item>グルコース</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>ゴンドイン酸 (20:1 n-9)</item>
         <item>ヨウ素</item>
         <item>鉄</item>
         <item>乳糖</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>ラウリン酸 (12:0)</item>
+        <item>リグノセリン酸 (24:0)</item>
+        <item>リノール酸 / LA (18:2 n-6)</item>
         <item>マグネシウム</item>
         <item>マルトデキストリン</item>
         <item>麦芽糖</item>
         <item>マンガン</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>ミード酸 (20:3 n-9)</item>
+        <item>メリシン酸 (30:0)</item>
         <item>モリブデン</item>
-        <item>Monounsaturated fat</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>一価不飽和脂肪</item>
+        <item>モンタン酸 (28:0)</item>
+        <item>ミリスチン酸 (14:0)</item>
+        <item>ネルボン酸 (24:1 n-9)</item>
         <item>ヌクレオチド</item>
-        <item>Oleic acid (18:1 n-9)</item>
+        <item>オレイン酸 (18:1 n-9)</item>
         <item>オメガ3脂肪酸</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
+        <item>オメガ 6 脂肪酸</item>
+        <item>オメガ 9 脂肪酸</item>
         <item>パルミチン酸 (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>パントテン酸 (ビタミン B5)</item>
         <item>pH</item>
         <item>リン</item>
-        <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>糖アルコール (ポリオール)</item>
+        <item>多価不飽和脂肪</item>
         <item>カリウム</item>
         <item>セレン</item>
-        <item>Serum proteins</item>
+        <item>血清タンパク質</item>
         <item>シリカ</item>
-        <item>Starch</item>
-        <item>Stearic acid (18:0)</item>
+        <item>デンプン</item>
+        <item>ステアリン酸 (18:0)</item>
         <item>スクロース</item>
         <item>タウリン</item>
         <item>トランス脂肪酸</item>
         <item>ビタミン A</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>ビタミン B1 (チアミン)</item>
+        <item>ビタミン B12 (コバラミン)</item>
+        <item>ビタミン B2 (リボフラビン)</item>
+        <item>ビタミン B3 / ビタミン PP (ナイアシン)</item>
+        <item>ビタミン B6 (ピリドキシン)</item>
+        <item>ビタミン B9 (葉酸)</item>
+        <item>ビタミン C (アスコルビン酸)</item>
         <item>ビタミン D</item>
         <item>ビタミン E</item>
         <item>ビタミン K</item>
@@ -245,16 +245,16 @@
     <string name="alert_drawer">アレルゲン警告</string>
     <string name="warning_allergens">アレルゲンを含んでいます</string>
     <string name="title_dialog_alert">警告を追加</string>
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="toggle_flash">フラッシュ</string>
+    <string name="flash_on">フラッシュ [ON]</string>
+    <string name="flash_off">フラッシュ [OFF]</string>
+    <string name="ring_on">着信時 [ON]</string>
+    <string name="ring_off">着信時 [OFF]</string>
+    <string name="auto_focus_on">オートフォーカス [ON]</string>
+    <string name="auto_focus_off">オートフォーカス [OFF]</string>
+    <string name="formats">形式</string>
+    <string name="choose_formats">形式を選択</string>
+    <string name="select_camera">カメラを選択</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">取消</string>
     <string name="login_button">ログイン</string>
@@ -295,15 +295,15 @@
     <string name="permision_write_external_storage">履歴をエクスポートするために、外部ストレージの書き込みアクセス許可が必要です。</string>
     <string name="txt_nutrition_not_found">適用外</string>
     <string name="no_brand">ノーブランド</string>
-    <string name="no_title">No Title</string>
+    <string name="no_title">タイトルなし</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">この商品の %1$s 栄養成分表</string>
-    <string name="check_facts">Check</string>
+    <string name="check_facts">確認</string>
     <string name="nutrition">栄養</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please enter the weight</string>
-    <string name="enter_weight">Enter the weight</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculated_nutrition">計算された栄養</string>
+    <string name="please_enter_weight">体重を入力してください</string>
+    <string name="enter_weight">体重を入力</string>
+    <string name="calculate_nutrition_facts">栄養成分を計算</string>
     <string name="txt_calories_result">%2$s %3$s の %1$s kcal</string>
     <string name="nutrition_carbohydrate">炭水化物</string>
     <string name="nutrition_carbohydrate_short_name">炭水化物 (g)</string>
@@ -335,10 +335,10 @@
     <string name="nutriment_serving_size">品目当たり :</string>
     <string name="action_manage_account">アカウントの管理</string>
     <string name="action_contributes">あなたの貢献</string>
-    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
-    <string name="energy_pref_title">Preferred unit for energy</string>
-    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
-    <string name="volume_pref_title">Preferred unit for volume</string>
+    <string name="choose_energy_unit">栄養成分表のエネルギーに使用するお好みの単位を選択してください</string>
+    <string name="energy_pref_title">エネルギーの単位</string>
+    <string name="choose_volume_unit">栄養成分表の分量に使用するお好みの単位を選択してください</string>
+    <string name="volume_pref_title">分量の単位</string>
     <string name="logout_drawer">ログアウト</string>
     <string name="contribution_without_account">サインイン、またはアカウントを作成して、貢献を続けることができます</string>
     <string name="textCarbonFootprint">カーボンフットプリント / CO2 排出量: </string>
@@ -351,7 +351,7 @@
     <string name="number_of_products">製品の数: </string>
     <string name="txt_no_results">見つかりませんでした</string>
     <string name="txt_extend_search">検索条件を広げてみるか、製品を追加してください</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
+    <string name="txt_no_matching__category_products">このカテゴリーには製品がありません。追加できますか?</string>
     <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
     <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
     <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
