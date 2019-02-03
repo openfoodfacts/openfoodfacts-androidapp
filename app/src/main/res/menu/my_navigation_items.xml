@@ -23,6 +23,12 @@
         android:title="@string/product" />
 
     <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/baseline_home_black_36dp"
+        android:title="@string/home_drawer" />
+
+    <item
         android:id="@+id/search_product"
         android:enabled="true"
         android:icon="@drawable/ic_search_black"
@@ -34,8 +40,4 @@
         android:icon="@drawable/ic_history_grey_24dp"
         android:title="@string/bottomNav_history" />
 
-    <item
-        android:id="@+id/empty"
-        android:enabled="true"
-        android:title="" />
 </menu>

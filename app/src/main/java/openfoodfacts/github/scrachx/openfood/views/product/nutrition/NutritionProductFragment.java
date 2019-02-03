@@ -14,20 +14,22 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.CardView;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
@@ -39,8 +41,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -65,6 +65,8 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerVi
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -127,6 +129,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     private boolean showNutritionPrompt = false;
     private boolean showCategoryPrompt = false;
     private Product product;
+    private State mState;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -142,12 +145,17 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        refreshView((State) intent.getExtras().getSerializable("state"));
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null){
+            refreshView((State) intent.getExtras().getSerializable("state"));
+        }else{
+            refreshView(ProductFragment.mState);
+        }
     }
 
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
+        mState = state;
         product = state.getProduct();
         //checks the product states_tags to determine which prompt to be shown
         List<String> statesTags = product.getStatesTags();
@@ -481,6 +489,52 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             } else {
                 EasyImage.openCamera(this, 0);
             }
+        }
+    }
+
+    @OnClick(R.id.calculateNutritionFacts)
+    public void calculateNutritionFacts(View v) {
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(getActivity())
+                .title(R.string.calculate_nutrition_facts)
+                .customView(R.layout.dialog_calculate_calories, false)
+                .dismissListener(dialogInterface -> Utils.hideKeyboard(getActivity()));
+        MaterialDialog dialog = builder.build();
+        dialog.show();
+        View view = dialog.getCustomView();
+        if (view != null) {
+            EditText etWeight = view.findViewById(R.id.edit_text_weight);
+            Spinner spinner = view.findViewById(R.id.spinner_weight);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
+                    btn.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            if (!TextUtils.isEmpty(etWeight.getText().toString())) {
+
+                                String SpinnerValue = (String) spinner.getSelectedItem();
+                                String weight = etWeight.getText().toString();
+                                Product p = mState.getProduct();
+                                Intent intent = new Intent(getContext(), CalculateDetails.class);
+                                intent.putExtra("sampleObject", p);
+                                intent.putExtra("spinnervalue", SpinnerValue);
+                                intent.putExtra("weight", weight);
+                                startActivity(intent);
+                                dialog.dismiss();
+                            } else {
+                                Toast.makeText(getContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
         }
     }
 

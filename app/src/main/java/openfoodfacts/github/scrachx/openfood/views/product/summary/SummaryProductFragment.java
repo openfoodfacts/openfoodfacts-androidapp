@@ -84,6 +84,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -217,7 +218,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
         Intent intent = getActivity().getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
+        State state;
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null){
+            state = (State) intent.getExtras().getSerializable("state");
+        }else{
+            state = ProductFragment.mState;
+        }
+
         product = state.getProduct();
 
         presenter = new SummaryProductPresenter(product, this);
@@ -235,7 +242,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        refreshView((State) intent.getExtras().getSerializable("state"));
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null) {
+            refreshView((State) intent.getExtras().getSerializable("state"));
+        }else{
+            refreshView(ProductFragment.mState);
+        }
     }
 
     @Override
@@ -614,29 +625,55 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             public void onClick(View view) {
                 if (additive.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        ProductActivity productActivity = (ProductActivity) getActivity();
-                        if (value) {
-                            if (productActivity != null && !productActivity.isFinishing()) {
-                                productActivity.showBottomScreen(result, additive);
-                            }
-                        } else {
-                            if (additive.hasOverexposureData()) {
+                        if (getActivity() instanceof ProductActivity) {
+                            ProductActivity productActivity = (ProductActivity) getActivity();
+                            if (value) {
                                 if (productActivity != null && !productActivity.isFinishing()) {
-                                    productActivity.showBottomScreen(null, additive);
+                                    productActivity.showBottomScreen(result, additive);
                                 }
                             } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                                if (additive.hasOverexposureData()) {
+                                    if (productActivity != null && !productActivity.isFinishing()) {
+                                        productActivity.showBottomScreen(null, additive);
+                                    }
+                                } else {
+                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                                }
+                            }
+                        } else {
+                            if (value) {
+                                if (getParentFragment() != null) {
+                                    ((ProductFragment) getParentFragment()).showBottomScreen(result, additive);
+                                }
+                            } else {
+                                if (additive.hasOverexposureData()) {
+                                    if (getParentFragment() != null) {
+                                        ((ProductFragment) getParentFragment()).showBottomScreen(null, additive);
+                                    }
+                                } else {
+                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                                }
                             }
                         }
                     });
                 } else {
-                    ProductActivity productActivity = (ProductActivity) getActivity();
-                    if (additive.hasOverexposureData()) {
-                        if (productActivity != null && !productActivity.isFinishing()) {
-                            productActivity.showBottomScreen(null, additive);
+                    if (getActivity() instanceof ProductActivity) {
+                        ProductActivity productActivity = (ProductActivity) getActivity();
+                        if (additive.hasOverexposureData()) {
+                            if (productActivity != null && !productActivity.isFinishing()) {
+                                productActivity.showBottomScreen(null, additive);
+                            }
+                        } else {
+                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                         }
                     } else {
-                        ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                        if (additive.hasOverexposureData()) {
+                            if (getParentFragment() != null) {
+                                ((ProductFragment) getParentFragment()).showBottomScreen(null, additive);
+                            }
+                        } else {
+                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                        }
                     }
                 }
             }
@@ -865,8 +902,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         @Override
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
-                                ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, category);
+                                if (getActivity() instanceof ProductActivity) {
+                                    ProductActivity productActivity = (ProductActivity) getActivity();
+                                    productActivity.showBottomScreen(result, category);
+                                } else {
+                                    if (getParentFragment() != null) {
+                                        ((ProductFragment) getParentFragment()).showBottomScreen(result, category);
+                                    }
+                                }
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(),
                                         category.getCategoryTag(),
@@ -904,8 +947,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         @Override
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
-                                ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, label);
+                                if (getActivity() instanceof ProductActivity) {
+                                    ProductActivity productActivity = (ProductActivity) getActivity();
+                                    productActivity.showBottomScreen(result, label);
+                                } else {
+                                    if (getParentFragment() != null) {
+                                        ((ProductFragment) getParentFragment()).showBottomScreen(result, label);
+                                    }
+                                }
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(),
                                         label.getLabelTag(),
