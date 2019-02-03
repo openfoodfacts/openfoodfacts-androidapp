@@ -16,8 +16,8 @@ Quét các sản phẩm thực phẩm hoặc mã vạch của chúng để lấy
 - Open Food Facts giúp bạn hiểu những thứ hào nhoáng được in trên bao bì. Bạn có thể tìm được (dựa theo những chỉ số trên bao bì):
 Hàm lượng carbon (phơi nhiễm CO2) và việc đóng gói (cũng như hướng dẫn tái chế),
 - Chỉ số dinh dưỡng, chất bổ, chất béo, a-xít béo bão hòa, Cacbohydrat, đường, chất sơ, protein, muối và natri.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+- thương hiệu, chất gây dị ứng. nhãn (tiểu sử, không gluten, người ăn chay trường, người ăn chay, thực phẩm của Hồi giáo, thực phẩm của người Do Thái...) khả năng truy xuất nguồn gốc (mã đóng gói, nguyên liệu gốc)
+- Với rượu và bia, bạn sẽ có chỉ số cồn.
 
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
@@ -32,4 +32,4 @@ Hàm lượng carbon (phơi nhiễm CO2) và việc đóng gói (cũng như hư�
 Open Food Facts cũng có sẵn trên trang web tại https://world-vi.openfoodfacts.org
 Câu hỏi, phản hồi: contact@openfoodfacts.org
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Với mỹ phẩm, hãy cài đặt Open Beauty Facts, với thực phẩm cho thú cưng và với mọi hàng hóa khác, hãy dùng Open Beauty Facts.
