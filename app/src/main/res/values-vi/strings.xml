@@ -236,7 +236,7 @@
     <string name="search_by_category">Danh mục</string>
     <string name="search_by_name_drawer">Tìm kiếm theo Tên</string>
     <string name="scan_search">Quét mã vạch</string>
-    <string name="user_drawer">User</string>
+    <string name="user_drawer">Người dùng</string>
     <string name="offline_edit_drawer">Chỉnh sửa ngoại tuyến</string>
     <string name="txt_anonymous">Ẩn danh</string>
     <string name="txt_product_not_found">Không tìm thấy sản phẩm</string>
@@ -463,7 +463,7 @@
     <string name="preference_enable_mobile_data_title">Tải lên dữ liệu di động</string>
     <string name="preference_enable_mobile_data_summary_on">Tải lên các sản phẩm mới sử dụng dữ liệu di động &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Tải lên các sản phẩm mới chỉ sử dụng WiFi</string>
-    <string name="device_on_mobile_data_warning_title">Information</string>
+    <string name="device_on_mobile_data_warning_title">Thông tin</string>
     <string name="device_on_mobile_data_warning_message">Tải lên dữ liệu di động bị tắt, vui lòng kết nối với WiFi hoặc thay đổi tùy chọn này trong tùy chọn</string>
     <string name="device_on_mobile_data_warning_positive">Tuỳ chỉnh</string>
     <string name="device_on_mobile_data_warning_negative">Vẫn tải lên</string>
@@ -571,7 +571,7 @@
     <string name="contribution_tab_summary">Hiển thị tab đóng góp của người dùng với các sản phẩm</string>
     <string name="contribution_tab_title">Hiển thị tab đóng góp</string>
     <string name="product">Chỉnh sửa</string>
-    <string name="txtDialogsTitle">Information</string>
+    <string name="txtDialogsTitle">Thông tin</string>
     <string name="preference_show_all_product_photos_title">Hiển thị tất cả ảnh sản phẩm</string>
     <string name="preference_show_all_product_photos_summary">Hiển thị tất cả ảnh sản phẩm được gửi trong một tab riêng</string>
     <string name="offline_product_addition_title">Thêm sản phẩm mới</string>
@@ -718,7 +718,7 @@
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
-    <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
+    <string name="nutrition_image_prompt_text">Hãy chụp lại các gợi ý về dinh dưỡng</string>
     <string name="ingredient_image_prompt_text">Hãy chụp các thành phần nguyên liệu</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
