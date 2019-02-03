@@ -301,9 +301,9 @@
     <string name="check_facts">確認</string>
     <string name="nutrition">栄養</string>
     <string name="calculated_nutrition">計算された栄養</string>
-    <string name="please_enter_weight">Please enter the weight</string>
-    <string name="enter_weight">Enter the weight</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="please_enter_weight">体重を入力してください</string>
+    <string name="enter_weight">体重を入力</string>
+    <string name="calculate_nutrition_facts">栄養成分を計算</string>
     <string name="txt_calories_result">%2$s %3$s の %1$s kcal</string>
     <string name="nutrition_carbohydrate">炭水化物</string>
     <string name="nutrition_carbohydrate_short_name">炭水化物 (g)</string>
@@ -335,10 +335,10 @@
     <string name="nutriment_serving_size">品目当たり :</string>
     <string name="action_manage_account">アカウントの管理</string>
     <string name="action_contributes">あなたの貢献</string>
-    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
-    <string name="energy_pref_title">Preferred unit for energy</string>
-    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
-    <string name="volume_pref_title">Preferred unit for volume</string>
+    <string name="choose_energy_unit">栄養成分表のエネルギーに使用するお好みの単位を選択してください</string>
+    <string name="energy_pref_title">エネルギーの単位</string>
+    <string name="choose_volume_unit">栄養成分表の分量に使用するお好みの単位を選択してください</string>
+    <string name="volume_pref_title">分量の単位</string>
     <string name="logout_drawer">ログアウト</string>
     <string name="contribution_without_account">サインイン、またはアカウントを作成して、貢献を続けることができます</string>
     <string name="textCarbonFootprint">カーボンフットプリント / CO2 排出量: </string>
