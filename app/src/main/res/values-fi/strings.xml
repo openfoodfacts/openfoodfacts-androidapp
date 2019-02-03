@@ -6,15 +6,15 @@
         <item quantity="other"> %d offline-tilassa muokattua tuotetta odottaa lähettämistä Open Food Facts:iin</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minute ago</item>
+        <item quantity="one">1 minuutti sitten</item>
         <item quantity="other">%d minuuttia sitten</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
+        <item quantity="one">1 tunti sitten</item>
         <item quantity="other">%d tuntia sitten</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 day ago</item>
+        <item quantity="one">1 päivä sitten</item>
         <item quantity="other">%d päivää sitten</item>
     </plurals>
     <string name="action_settings">Asetukset</string>
@@ -733,8 +733,8 @@
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="set_image_name">Successfully set the image as</string>
-    <string name="warning">Warning :</string>
-    <string name="customer_service">Customer Service :</string>
+    <string name="warning">Varoitus :</string>
+    <string name="customer_service">Asiakaspalvelu :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <!-- Used for diets AddOn -->
