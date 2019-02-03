@@ -448,8 +448,8 @@
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My Contributions</string>
     <string name="forgot_password">Forgot Password</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
+    <string name="next">SEURAAVA</string>
+    <string name="skip">OHITA</string>
     <string name="start">GOT IT</string>
     <string name="contact">Contact</string>
     <string name="contact_summary">Contact the team</string>
@@ -472,7 +472,7 @@
     <string name="device_on_mobile_data_warning_positive">Asetukset</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
-    <string name="FAQ">FAQ</string>
+    <string name="FAQ">UKK</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
