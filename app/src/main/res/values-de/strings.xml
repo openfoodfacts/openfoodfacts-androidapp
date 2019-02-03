@@ -712,6 +712,10 @@
     <string name="EditDiet_Unauthorised_Ingredients">Nicht zugelassene Inhaltsstoffe</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Listet die nicht zugelassenen Zutaten auf, die rot angezeigt werden sollen. Beispiel: Gluten, Milch, Palmöl, Zucker … Sie können diese Liste später ergänzen.</string>
     <string name="extract_ingredients_prompt">Inhaltsstoffe extrahieren</string>
+    <string name="add_nutrient_prompt_text">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
+    <string name="add_category_prompt_text">Kategorie hinzufügen, um den Nutri-Wert zu berechnen</string>
+    <string name="add_nutrient_category_prompt_text">Nährwertangaben und Kategorie hinzufügen, um den Nutri-Wert zu berechnen</string>
+    <string name="no_nutrition_data_prompt">Dieses Produkt enthält keine Nährwertangaben</string>
     <string name="nutrition_image_prompt_text">Foto der Nährwertangaben aufnehmen</string>
     <string name="ingredient_image_prompt_text">Foto der Inhaltsstoffe aufnehmen</string>
     <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
@@ -722,8 +726,8 @@
     <string name="set_img_front">Als Titelbild festlegen</string>
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
-    <string name="warning">Warning :</string>
-    <string name="customer_service">Customer Service :</string>
+    <string name="warning">Warnhinweis:</string>
+    <string name="customer_service">Kundendienst:</string>
     <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
     <string name="fast_addition_mode">Wenn diese Option gewählt wurde, können Produkte mit wenigen Attributen schnell hinzugefügt werden.</string>
     <!-- Used for diets AddOn -->

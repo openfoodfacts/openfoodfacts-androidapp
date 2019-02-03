@@ -693,8 +693,8 @@
     <string name="efsa_warning_high_risk">Den Europæiske Fødevaresikkerhedsautoritet (EFSA) har fastslået, at visse befolkningsgrupper har høj risiko for at indtage for meget %1$s.</string>
     <string name="legend_noael">oven dosis med observeret bivirkning (NOAEL)</string>
     <string name="legend_adi">over Acceptabelt Dagligt Indtag (ADI)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="max_energy_val_msg">Denne værdi er over 2000 kcal pr. 100 g. Kan du rette det?</string>
+    <string name="max_nutrient_val_msg">Indtastet værdi er mere end angivet pr. serveringsstørrelse</string>
     <string name="update_image">Send et opdateret billede</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
@@ -712,6 +712,10 @@
     <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de ikke-godkendte ingredienser, som skal vises med rødt. Eksempel: Gluten, mælk, plameolie, sukker... Du kan færdiggøre listen senere.</string>
     <string name="extract_ingredients_prompt">Extract Ingredients</string>
+    <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
+    <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Tilføj næringsfakta og en kategori til beregning af Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">Dette produkt har ikke næringsfakta</string>
     <string name="nutrition_image_prompt_text">Tag et foto af ernæringsoversigten</string>
     <string name="ingredient_image_prompt_text">Tag et foto af ingredienserne</string>
     <string name="category_game_btn">Hjælp med at kategorisere produkter for at beregne Nutri-Score</string>
@@ -722,8 +726,8 @@
     <string name="set_img_front">Angiv billede som Forside</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
-    <string name="warning">Warning :</string>
-    <string name="customer_service">Customer Service :</string>
+    <string name="warning">Advarsel:</string>
+    <string name="customer_service">Kundeservice:</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
     <!-- Used for diets AddOn -->

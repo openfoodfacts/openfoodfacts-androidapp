@@ -318,6 +318,10 @@ public class Utils {
     public static int getSmallImageGrade(String grade) {
         int drawable = 0;
 
+        if (grade == null) {
+            return drawable;
+        }
+
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
                 drawable = R.drawable.nnc_small_a;

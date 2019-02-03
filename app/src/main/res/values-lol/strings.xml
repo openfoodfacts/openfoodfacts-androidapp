@@ -712,6 +712,10 @@
     <string name="EditDiet_Unauthorised_Ingredients">crwdns111856:0crwdne111856:0</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">crwdns111858:0crwdne111858:0</string>
     <string name="extract_ingredients_prompt">crwdns112682:0crwdne112682:0</string>
+    <string name="add_nutrient_prompt_text">crwdns112714:0crwdne112714:0</string>
+    <string name="add_category_prompt_text">crwdns112716:0crwdne112716:0</string>
+    <string name="add_nutrient_category_prompt_text">crwdns112718:0crwdne112718:0</string>
+    <string name="no_nutrition_data_prompt">crwdns112720:0crwdne112720:0</string>
     <string name="nutrition_image_prompt_text">crwdns112000:0crwdne112000:0</string>
     <string name="ingredient_image_prompt_text">crwdns112002:0crwdne112002:0</string>
     <string name="category_game_btn">crwdns111976:0crwdne111976:0</string>
