@@ -78,19 +78,19 @@
         <item>Axit Elaidic (18: 1 n-9)</item>
         <item>Axit Erucic (22: 1 n-9)</item>
         <item>Fluoride</item>
-        <item>Fructose</item>
+        <item>Đường đôi</item>
         <item>Axit gamma-linolenic / GLA (18: 3 n-6)</item>
-        <item>Glucose</item>
+        <item>Đường đơn</item>
         <item>Axit Gondoic (20: 1 n-9)</item>
         <item>Iodine</item>
         <item>Iron</item>
-        <item>Lactose</item>
+        <item>Đường sữa</item>
         <item>Axit lauric (12:0)</item>
         <item>Axit Lignoceric (24: 0)</item>
         <item>Axit linoleic / LA (18:2 n-6)</item>
         <item>Magnesium</item>
-        <item>Maltodextrins</item>
-        <item>Maltose</item>
+        <item>Bột tinh</item>
+        <item>Mạch nha</item>
         <item>Manganese</item>
         <item>Axit Mead (20: 3 n-9)</item>
         <item>Axit Melissic (30: 0)</item>
@@ -116,7 +116,7 @@
         <item>Silica</item>
         <item>Tinh bột</item>
         <item>Axít stearic (18: 0)</item>
-        <item>Sucrose</item>
+        <item>Đường mìa</item>
         <item>Taurine</item>
         <item>Chất béo chuyển hóa</item>
         <item>Vitamin A</item>
@@ -305,7 +305,7 @@
     <string name="enter_weight">Nhập trọng lượng</string>
     <string name="calculate_nutrition_facts">Tính toán dinh dưỡng</string>
     <string name="txt_calories_result">%1$s kcal trong %2$s %3$s</string>
-    <string name="nutrition_carbohydrate">Carbohydrate</string>
+    <string name="nutrition_carbohydrate">Cacbohydrat</string>
     <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
@@ -367,9 +367,9 @@
     <string name="txt_cant_load_search_results">Không thể tải tìm kiếm kết quả</string>
     <string name="something_went_wrong">Xin lỗi, có lỗi xảy ra…</string>
     <string name="txt_try_again">Thử lại</string>
-    <string name="nutrition_lactose">Lactose</string>
+    <string name="nutrition_lactose">Đường sữa</string>
     <string name="nutrition_casein">Casein</string>
-    <string name="nutrition_maltodextrins">Maltodextrins</string>
+    <string name="nutrition_maltodextrins">Bột tinh</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">Cho 100 g</string>
@@ -385,11 +385,11 @@
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
-    <string name="nutrition_sucrose">Sucrose</string>
-    <string name="nutrition_glucose">Glucose</string>
-    <string name="nutrition_fructose">Fructose</string>
-    <string name="nutrition_maltose">Maltose</string>
-    <string name="nutrition_alcohol">Alcohol</string>
+    <string name="nutrition_sucrose">Đường mìa</string>
+    <string name="nutrition_glucose">Đường đơn</string>
+    <string name="nutrition_fructose">Đường đôi</string>
+    <string name="nutrition_maltose">Mạch nha</string>
+    <string name="nutrition_alcohol">Cồn</string>
     <string name="nutrition_vitamins">Vitamins</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
