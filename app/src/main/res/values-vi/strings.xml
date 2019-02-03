@@ -58,7 +58,7 @@
         <item>Axit arachidic (20:0)</item>
         <item>Axit arachidonic / AA / ARA (20:4 n-6)</item>
         <item>Axit behenic (22:0)</item>
-        <item>Bicarbonate</item>
+        <item>Muối cacbonat</item>
         <item>Biotin</item>
         <item>Axit butyric (4:0)</item>
         <item>Caffeine</item>
@@ -70,31 +70,31 @@
         <item>Axit cerotic (26:0)</item>
         <item>Clorid</item>
         <item>Cholesterol</item>
-        <item>Chromium</item>
-        <item>Copper</item>
+        <item>Crom</item>
+        <item>Đồng</item>
         <item>Axit Dihomo-gamma-linolenic / DGLA (20: 3 n-6)</item>
         <item>Axit Docosahexaenoic / DHA (22: 6 n-3)</item>
         <item>Axit Docosahexaenoic / DHA (20: 5 n-3)</item>
         <item>Axit Elaidic (18: 1 n-9)</item>
         <item>Axit Erucic (22: 1 n-9)</item>
-        <item>Fluoride</item>
+        <item>Flo</item>
         <item>Đường đôi</item>
         <item>Axit gamma-linolenic / GLA (18: 3 n-6)</item>
         <item>Đường đơn</item>
         <item>Axit Gondoic (20: 1 n-9)</item>
-        <item>Iodine</item>
-        <item>Iron</item>
+        <item>I-ốt</item>
+        <item>Sắt</item>
         <item>Đường sữa</item>
         <item>Axit lauric (12:0)</item>
         <item>Axit Lignoceric (24: 0)</item>
         <item>Axit linoleic / LA (18:2 n-6)</item>
-        <item>Magnesium</item>
+        <item>Magiê</item>
         <item>Bột tinh</item>
         <item>Mạch nha</item>
-        <item>Manganese</item>
+        <item>Mangan</item>
         <item>Axit Mead (20: 3 n-9)</item>
         <item>Axit Melissic (30: 0)</item>
-        <item>Molybdenum</item>
+        <item>Molypden</item>
         <item>Chất béo không bão hòa đơn</item>
         <item>Axit Montanic (28: 0)</item>
         <item>Axit Myristic (14:0)</item>
@@ -106,18 +106,18 @@
         <item>Axit béo omega-9</item>
         <item>Axit Palmitic (16: 0)</item>
         <item>Axit Pantothenic / Pantothenate (Vitamin B5)</item>
-        <item>pH</item>
+        <item>độ kiềm</item>
         <item>Phospho</item>
         <item>Đường rượu (Polyols)</item>
         <item>Chất béo không bão hòa đa</item>
         <item>Kali</item>
-        <item>Selenium</item>
+        <item>Selen</item>
         <item>Protein huyết thanh</item>
-        <item>Silica</item>
+        <item>Silic dioxit</item>
         <item>Tinh bột</item>
         <item>Axít stearic (18: 0)</item>
         <item>Đường mìa</item>
-        <item>Taurine</item>
+        <item>Taurin</item>
         <item>Chất béo chuyển hóa</item>
         <item>Vitamin A</item>
         <item>Vitamin B1 (Thiamin)</item>
@@ -330,7 +330,7 @@
     <string name="nutrition_sodium_short_name">Natri (g)</string>
     <string name="nutrition_sugars">Đường</string>
     <string name="nutrition_sugars_short_name">Đường (g)</string>
-    <string name="nutrition_trans_fat">Trans fat</string>
+    <string name="nutrition_trans_fat">Chất béo chuyển hóa</string>
     <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Quản lý tài khoản</string>
@@ -374,7 +374,7 @@
     <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">Cho 100 g</string>
     <string name="serving">Mỗi khẩu</string>
-    <string name="minerals">Minerals</string>
+    <string name="minerals">Khoáng chất</string>
     <string name="nutrition_calcium">Calci</string>
     <string name="nutrition_potassium">Kali</string>
     <string name="nutrition_chlore">Clo</string>
@@ -405,7 +405,7 @@
     <string name="biotin">Biotin</string>
     <string name="pantothenic_acid">Axit pantothenic</string>
     <string name="nutrition_minerals">Khoáng sản</string>
-    <string name="silica">Silica</string>
+    <string name="silica">Silic dioxit</string>
     <string name="bicarbonate">Bicacbonat</string>
     <string name="potassium">Kali</string>
     <string name="chloride">Clorid</string>
@@ -416,18 +416,18 @@
     <string name="zinc">Kẽm</string>
     <string name="copper">Đồng</string>
     <string name="manganese">Mangan</string>
-    <string name="fluoride">Fluoride</string>
+    <string name="fluoride">Flo</string>
     <string name="selenium">Selen</string>
-    <string name="chromium">Chromium</string>
+    <string name="chromium">Crom</string>
     <string name="molybdenum">Molypden</string>
     <string name="iodine">Iốt</string>
     <string name="caffeine">Caffeine</string>
     <string name="taurine">Taurin</string>
-    <string name="ph">pH</string>
+    <string name="ph">độ kiềm</string>
     <string name="fruits_vegetables_nuts">Trái cây, rau, quả hạch</string>
-    <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
-    <string name="cocoa">Cocoa</string>
-    <string name="chlorophyl">Chlorophyl</string>
+    <string name="collagen_meat_protein_ratio">Tỷ lệ đạm trong thịt Collagen</string>
+    <string name="cocoa">Ca cao</string>
+    <string name="chlorophyl">Diệp lục</string>
     <string name="take_picture_ingredients">Chụp ảnh các thành phần</string>
     <string name="take_picture_front">Chụp ảnh mặt trước</string>
     <string name="take_picture_nutrition_table">Chụp ảnh bảng dinh dưỡng</string>
