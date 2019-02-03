@@ -361,7 +361,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         if (product.getNovaGroups() != null) {
             novaLayout.setVisibility(View.VISIBLE);
-            novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups()));
+            novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups(), getContext()));
             novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
             novaGroup.setOnClickListener((View v) -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));

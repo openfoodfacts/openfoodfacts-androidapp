@@ -267,7 +267,7 @@ public class Utils {
         return drawable;
     }
 
-    public static String getNovaGroupExplanation(String novaGroup) {
+    public static String getNovaGroupExplanation(String novaGroup, Context context) {
 
         if (novaGroup == null) {
             return "";
@@ -275,13 +275,13 @@ public class Utils {
 
         switch (novaGroup) {
             case "1":
-                return "Group 1 - Unprocessed or minimally processed foods";
+                return context.getResources().getString(R.string.nova_grp1_msg);
             case "2":
-                return "Group 2 - Processed culinary ingredients";
+                return context.getResources().getString(R.string.nova_grp2_msg);
             case "3":
-                return "Group 3 - Processed foods";
+                return context.getResources().getString(R.string.nova_grp3_msg);
             case "4":
-                return "Group 4 - Ultra-processed food and drink products";
+                return context.getResources().getString(R.string.nova_grp4_msg);
             default:
                 return "";
         }
