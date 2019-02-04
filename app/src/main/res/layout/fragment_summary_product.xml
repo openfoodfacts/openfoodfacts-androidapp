@@ -589,6 +589,14 @@
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:text="@string/take_more_pictures" />
 
+            <Button
+                android:id="@+id/compare_product_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:text="Compare this product"/>
+
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

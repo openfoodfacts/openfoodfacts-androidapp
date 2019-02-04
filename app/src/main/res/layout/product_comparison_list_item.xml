@@ -155,7 +155,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:cardElevation="4dp"
-            android:visibility="gone"
             android:layout_below="@id/product_comparison_scores_layout">
 
             <TextView
@@ -170,7 +169,8 @@
                 android:padding="@dimen/spacing_small"
                 android:textColorLink="@color/light_blue_A700"
                 android:textIsSelectable="true"
-                android:textSize="@dimen/font_normal" />
+                android:textSize="@dimen/font_normal"
+                android:text="No additive data available for this product"/>
 
         </android.support.v7.widget.CardView>
 
@@ -222,6 +222,16 @@
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/full_product_button"
+            android:layout_below="@id/product_comparison_nutrient_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_tiny"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:text="Go to full product page"/>
 
     </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>
