@@ -36,4 +36,5 @@
     <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته إن امكن.</string>
     <string name="currently_on_version">حاليا على Open Food Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>

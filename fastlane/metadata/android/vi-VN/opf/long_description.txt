@@ -7,7 +7,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
 - You can start contributing today by adding your first product. 
 
-*** Nhận được sự thật ***
+*** Sự thật là ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -29,7 +29,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Câu hỏi, phản hồi: contact@openfoodfacts.org
+Câu hỏi và phản hồi: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 

@@ -34,16 +34,17 @@
         <item>Ingrédients</item>
         <item>Nutrition</item>
         <item>Tableau nutritionnel</item>
-        <item>Environment</item>
+        <item>Environnement</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Photos des produits</item>
+        <item>Analyse des ingrédients</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -262,7 +263,7 @@
     <string name="cancel_button">Annuler</string>
     <string name="login_button">Connexion</string>
     <string name="create_account_button">Créer un Compte</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez à vérifier également par vous-même ! </string>
+    <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez à vérifier également par vous-même ! </string>
     <string name="from_gallery">Galerie photo</string>
     <string name="product_sent">Produit envoyé avec succès</string>
     <string name="action_edit_product">Modifier le produit</string>
@@ -338,6 +339,10 @@
     <string name="nutriment_serving_size">Par portion :</string>
     <string name="action_manage_account">Gérer votre compte</string>
     <string name="action_contributes">Vos contributions</string>
+    <string name="choose_energy_unit">Choisissez vos valeurs d\'énergie préférées pour le tableau de nutrition</string>
+    <string name="energy_pref_title">Valeur d\' énergie préférée</string>
+    <string name="choose_volume_unit">Choisissez vos valeurs préférées pour le tableau de nutrition</string>
+    <string name="volume_pref_title">Unité préférée pour le volume</string>
     <string name="logout_drawer">Se déconnecter</string>
     <string name="contribution_without_account">Vous pouvez vous connecter ou créer un compte pour conserver vos contributions</string>
     <string name="textCarbonFootprint">Empreinte carbone / émissions de CO2: </string>
@@ -693,9 +698,9 @@
     <string name="efsa_warning_high_risk">L\'Autorité européenne de sécurité des aliments (EFSA) a déterminé que certains groupes de population courent un risque élevé de consommer trop de %1$s.</string>
     <string name="legend_noael">au-dessus de la dose avec effet indésirable observé (DSENO)</string>
     <string name="legend_adi">au-dessus de la dose journalière admissible (DJA)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="max_energy_val_msg">Cette valeur est supérieure à 2000 kcal pour 100g. Pouvez-vous corriger cela?</string>
+    <string name="max_nutrient_val_msg">La valeur entrée est plus que donnée par portion</string>
+    <string name="update_image">Envoyer une image mise à jour</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Vos régimes</string>
@@ -711,24 +716,27 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ingrédients non autorisés</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Énumérez les ingrédients non autorisés qui devraient être en rouge. Exemple : gluten, lait, huile de palme, sucre... Vous pourrez remplir cette liste plus tard.</string>
-    <string name="extract_ingredients_prompt">Extract Ingredients</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
+    <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
+    <string name="add_category_prompt_text">Ajouter la catégorie pour calculer le Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Ajouter les informations nutritionnelles et la catégorie pour calculer le Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">Ce produit n\'a pas de valeurs nutritionnelles</string>
     <string name="nutrition_image_prompt_text">Prendre une photo du tableau nutritionnel</string>
     <string name="ingredient_image_prompt_text">Prendre une photo des ingrédients</string>
     <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
     <string name="version_string">Application Android Open Food Facts</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Set image as Ingredient</string>
-    <string name="set_img_nutrients">Set Image as Nutrition</string>
-    <string name="set_img_front">Set Image as Front</string>
-    <string name="report_img">Report Image</string>
-    <string name="detected_ingredients">Detected Ingredients</string>
-    <string name="warning">Warning :</string>
-    <string name="customer_service">Customer Service :</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="set_ingredient_img">Définir comme image d\'ingrédient</string>
+    <string name="set_img_nutrients">Définir comme image nutritionelle</string>
+    <string name="set_img_front">Définir comme image de profil</string>
+    <string name="report_img">Signaler l\'image</string>
+    <string name="detected_ingredients">Ingrédients détectés</string>
+    <string name="set_image_name">Image sélectionnée en tant que</string>
+    <string name="warning">Avertissement :</string>
+    <string name="customer_service">Service Clients :</string>
+    <string name="fast_addition_mode_title">Mode d\'ajout rapide</string>
+    <string name="fast_addition_mode">Active l\'ajout rapide de produits avec moins d\'attributs</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Additifs</string>
     <!-- Used for diets AddOn -->
 </resources>
