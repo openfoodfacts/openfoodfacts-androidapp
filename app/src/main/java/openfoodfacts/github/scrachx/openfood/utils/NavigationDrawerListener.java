@@ -30,6 +30,7 @@ public interface NavigationDrawerListener {
     int ITEM_LOGOUT = 15;
     int ITEM_MANAGE_ACCOUNT = 16;
     int ITEM_INCOMPLETE_PRODUCTS = 17;
+    int ITEM_YOUR_LISTS = 18;
 
     @Retention(SOURCE)
     @IntDef({

@@ -23,6 +23,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +35,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -41,6 +43,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -53,6 +56,8 @@ import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -65,6 +70,8 @@ import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
+import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -79,6 +86,8 @@ import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProduc
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static org.apache.commons.lang3.StringUtils.capitalize;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
@@ -356,6 +365,46 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
 
                 CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
+                return true;
+
+            case R.id.action_addToList:
+                Product p = mState.getProduct();
+                String barcode=p.getCode();
+                String productName=p.getProductName();
+                String imageUrl=p.getImageSmallUrl();
+                StringBuilder stringBuilder = new StringBuilder();
+                if (isNotEmpty(p.getBrands())) {
+                    stringBuilder.append(capitalize(p.getBrands().split(",")[0].trim()));
+                }
+                if (isNotEmpty(p.getQuantity())) {
+                    stringBuilder.append(" - ").append(p.getQuantity());
+                }
+                String productDetails=stringBuilder.toString();
+
+                MaterialDialog.Builder addToListBuilder=new MaterialDialog.Builder(this)
+                        .title(R.string.add_to_product_lists)
+                        .customView(R.layout.dialog_add_to_list,true);
+                MaterialDialog addToListDialog=addToListBuilder.build();
+                addToListDialog.show();
+                View addToListView=addToListDialog.getCustomView();
+                if(addToListView!=null){
+                    ProductListsDao productListsDao=Utils.getDaoSession(this).getProductListsDao();
+                    List<ProductLists> productLists=productListsDao.loadAll();
+
+                    RecyclerView addToListRecyclerView=
+                            addToListView.findViewById(R.id.rv_dialogAddToList);
+                    DialogAddToListAdapter addToListAdapter=
+                            new DialogAddToListAdapter(this,productLists, barcode,productName,productDetails,imageUrl);
+                    addToListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+                    addToListRecyclerView.setAdapter(addToListAdapter);
+                    TextView tvAddToList=addToListView.findViewById(R.id.tvAddToNewList);
+                    tvAddToList.setOnClickListener(view -> {
+                        Intent intent=new Intent(this,ProductListsActivity.class);
+                        intent.putExtra("product",p);
+                        startActivity(intent);
+                    });
+
+                }
                 return true;
 
             case R.id.action_facts:

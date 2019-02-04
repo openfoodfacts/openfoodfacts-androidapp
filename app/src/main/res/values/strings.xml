@@ -383,6 +383,7 @@
     <string name="delete_txt">Delete</string>
     <string name="sign_in_drawer">Sign-in</string>
     <string name="alert_drawer">Allergen alert</string>
+    <string name="your_lists">Your lists</string>
     <string name="warning_allergens">Contains allergens</string>
     <string name="title_dialog_alert">Add alert</string>
 
@@ -908,5 +909,10 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="add_to_product_lists">Add to Your Lists</string>
+    <string name="txt_create_new_list">Create new list</string>
+    <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="txt_eaten_products">Eaten Products</string>
+    <string name="txt_products_to_buy">Products to buy</string>
     <!-- Used for diets AddOn -->
 </resources>
