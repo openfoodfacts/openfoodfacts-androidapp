@@ -564,7 +564,6 @@
     <string name="notify_content">ರಫ್ತು ಮಾಡಲಾದ ಉತ್ಪನ್ನಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ</string>
     <string name="notification_channel_name">ರಫ್ತು ಸೂಚನೆಗಳು</string>
     <string name="notify_channel_description">ರಫ್ತು ಮಾಡಿದ ಕಡತದ ಸ್ಥಳವನ್ನು ತೋರಿಸಲು ಅಧಿಸೂಚನೆ</string>
-    <string name="additives">ಸೇರ್ಪಡೆ</string>
     <string name="products_to_be_completed">ಉತ್ಪನ್ನಗಳು ಪೂರ್ಣಗೊಳ್ಳಬೇಕು</string>
     <string name="modified_history">ಉತ್ಪನ್ನ ಸೇರಿಸಲಾಗಿದೆ %1$s ನಲ್ಲಿ %2$s ಮೂಲಕ %3$s. ಉತ್ಪನ್ನ ಪುಟದ ಕೊನೆಯ ಸಂಪಾದನೆ %4$s ರಿಂದ %5$s %6$s. ಉತ್ಪನ್ನ ಪುಟವನ್ನು %7$sಸಂಪಾದಿಸಲಾಗಿದೆ</string>
     <string name="offline_notification_title">ಆಫ್ಲೈನ್ ​​ಕೊಡುಗೆಗಳನ್ನು ನೀವು ಕಳುಹಿಸಬೇಕು</string>
@@ -737,4 +736,7 @@
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string></resources>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">ಸೇರ್ಪಡೆ</string>
+</resources>

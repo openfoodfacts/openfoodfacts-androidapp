@@ -572,7 +572,6 @@
     <string name="notify_content">Нажмите, чтобы просмотреть экспортированные продукты</string>
     <string name="notification_channel_name">Экспорт уведомлений</string>
     <string name="notify_channel_description">Уведомление о местоположении экспортируемого файла</string>
-    <string name="additives">Добавки</string>
     <string name="products_to_be_completed">Незавершенные продукты</string>
     <string name="modified_history">Продукт добавлен %1$s в %2$s %3$s. Последнее редактирование страницы продукта %4$s в %5$s %6$s. Страница продукта также отредактирована %7$s</string>
     <string name="offline_notification_title">Оффлайн-вклады, которые необходимо отправить</string>
@@ -746,4 +745,6 @@
     <string name="customer_service">Центр поддержки:</string>
     <string name="fast_addition_mode_title">Режим быстрого добавления</string>
     <string name="fast_addition_mode">Позволяет быстро добавлять продукты с меньшим количеством атрибутов</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Добавки</string>
 </resources>

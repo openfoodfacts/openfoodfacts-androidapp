@@ -564,7 +564,6 @@
     <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
     <string name="notification_channel_name">Benachrichtigungen exportieren</string>
     <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
-    <string name="additives">Zusatzstoffe</string>
     <string name="products_to_be_completed">Noch abzuschließende Produkte</string>
     <string name="modified_history">Produkt hinzugefügt am %1$s um %2$s durch %3$s. Letzte Änderung der Produktseite am %4$s um %5$s von %6$s. Produktseite auch von %7$s bearbeitet</string>
     <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
@@ -738,5 +737,7 @@
     <string name="customer_service">Kundendienst:</string>
     <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
     <string name="fast_addition_mode">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
+    <string name="addtive_search">Nach Zusatzstoff suchen</string>
+    <string name="additives">Zusatzstoffe</string>
     <!-- Used for diets AddOn -->
 </resources>

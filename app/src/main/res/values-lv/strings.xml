@@ -568,7 +568,6 @@
     <string name="notify_content">Noklikšķiniet, lai skatītu eksportētos produktus</string>
     <string name="notification_channel_name">Eksportēt paziņojumus</string>
     <string name="notify_channel_description">Paziņojums, lai parādītu eksportēto failu atrašanās vietu</string>
-    <string name="additives">Piedevas</string>
     <string name="products_to_be_completed">Produkta nosaukums jāpabeidz</string>
     <string name="modified_history">Produkts pievienots %1$s no %2$s līdz %3$s. Pēdējais produkta lapas rediģējums %4$s no %5$s uz %6$s. Produkta lapu rediģēja arī %7$s</string>
     <string name="offline_notification_title">Nepieciešamie sūtījumi bezsaistē</string>
@@ -741,4 +740,7 @@
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string></resources>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Piedevas</string>
+</resources>

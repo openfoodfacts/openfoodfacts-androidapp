@@ -36,4 +36,5 @@
     <string name="tagline">bezpłatna baza kosmetyków</string>
     <string name="product_not_found">Zeskanowany produkt %1$s, jeszcze nie figuruje w Open Beauty Facts. Dodać go?</string>
     <string name="currently_on_version">Aktualnie na Otwartych faktach o piękności</string>
+    <string name="category_game_btn">Pomóż kategoryzować produkty</string>
 </resources>

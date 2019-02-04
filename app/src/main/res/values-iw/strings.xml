@@ -572,7 +572,6 @@
     <string name="notify_content">יש ללחוץ כדי לצפות במוצרים שייוצאו</string>
     <string name="notification_channel_name">התרעות ייצוא</string>
     <string name="notify_channel_description">התרעה להצגת מיקום הקובץ שייוצא</string>
-    <string name="additives">תוספים</string>
     <string name="products_to_be_completed">מוצרים שדורשים השלמה</string>
     <string name="modified_history">המוצר נוסף ב־%1$s בשעה %2$s על ידי %3$s. עריכת העמוד האחרונה התבצעה ב־%4$s בשעה %5$s על ידי %6$s. דף המוצר נערך גם על ידי %7$s</string>
     <string name="offline_notification_title">תרומות בלתי מקוונות שעליך לשלוח</string>
@@ -745,4 +744,7 @@
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string></resources>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">תוספים</string>
+</resources>

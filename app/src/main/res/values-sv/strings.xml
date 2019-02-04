@@ -564,7 +564,6 @@
     <string name="notify_content">Klicka för att visa exporterade produkter</string>
     <string name="notification_channel_name">Exportera meddelanden</string>
     <string name="notify_channel_description">Meddelande för att visa den exporterade filens plats</string>
-    <string name="additives">Tillsatser</string>
     <string name="products_to_be_completed">Produkter att slutföra</string>
     <string name="modified_history">Produkten lades till på %1$s vid %2$s av %3$s. Senaste ändring av produktsidan på %4$s vid %5$s av %6$s. Produktsida redigerades också av %7$s</string>
     <string name="offline_notification_title">Offlinebidrag du ännu inte skickat</string>
@@ -737,4 +736,7 @@
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string></resources>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Tillsatser</string>
+</resources>

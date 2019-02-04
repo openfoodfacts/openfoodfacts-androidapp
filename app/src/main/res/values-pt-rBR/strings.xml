@@ -564,7 +564,6 @@
     <string name="notify_content">Clique para ver os produtos exportados</string>
     <string name="notification_channel_name">Exportar Notificações</string>
     <string name="notify_channel_description">Notificação para mostrar a localização do arquivo exportado</string>
-    <string name="additives">Aditivos</string>
     <string name="products_to_be_completed">Produtos a completar</string>
     <string name="modified_history">Produto adicionado dia %1$s às %2$s por %3$s. Última edição da página do produto dia %4$s às %5$s por %6$s. Página do produto editada também por %7$s</string>
     <string name="offline_notification_title">Contribuições offline que precisam ser enviadas</string>
@@ -737,4 +736,7 @@
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string></resources>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Aditivos</string>
+</resources>

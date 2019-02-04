@@ -564,7 +564,6 @@
     <string name="notify_content">Tryk for at se eksporterede produkter</string>
     <string name="notification_channel_name">Eksportnotifikationer</string>
     <string name="notify_channel_description">Notifikation for at vise eksporterede fils placering</string>
-    <string name="additives">Tilsætningsstoffer</string>
     <string name="products_to_be_completed">Produkter, som skal færdiggøres</string>
     <string name="modified_history">Produkt tilføjet d. %1$s kl. %2$s af %3$s. Senest redigering af produktside d. %4$s kl. %5$s af %6$s. Produktside også redigeret også af %7$s</string>
     <string name="offline_notification_title">Offline-bidrag, du skal sende</string>
@@ -737,4 +736,7 @@
     <string name="warning">Advarsel:</string>
     <string name="customer_service">Kundeservice:</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string></resources>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Tilsætningsstoffer</string>
+</resources>

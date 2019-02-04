@@ -572,7 +572,6 @@
     <string name="notify_content">Kliknite, če si želite ogledati izvožene izdelke</string>
     <string name="notification_channel_name">Obvestilo pri izvozu</string>
     <string name="notify_channel_description">Obvestilo, da prikažete lokacijo izvožene datoteke</string>
-    <string name="additives">Aditivi</string>
     <string name="products_to_be_completed">Izdelki, ki jih je potrebno dokončati</string>
     <string name="modified_history">Izdelek je dodan %1$s ob %2$s od %3$s. Zadnja sprememba strani izdelka je %4$s ob %5$s od %6$s. Stran izdelka je urejal tudi %7$s</string>
     <string name="offline_notification_title">Prispevki brez povezave, ki jih morate poslati</string>
@@ -745,4 +744,7 @@
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string></resources>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Aditivi</string>
+</resources>
