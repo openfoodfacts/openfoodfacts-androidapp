@@ -30,12 +30,12 @@
         <item>原材料</item>
         <item>栄養</item>
         <item>栄養成分表</item>
-        <item>Environment</item>
+        <item>環境</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>製品の写真</item>
+        <item>原材料分析</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -73,60 +73,60 @@
         <item>クロム</item>
         <item>銅</item>
         <item>ジホモ-ガンマ-リノレン酸/DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+        <item>ドコサヘキサエン酸 / DHA (22:6 n-3)</item>
         <item>エイコサペンタエン酸/EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>エライジン酸 (18:1 n-9)</item>
+        <item>エルカ酸 (22:1 n-9)</item>
         <item>フッ化物</item>
         <item>果糖</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>ガンマリノレン酸 / GLA (18:3 n-6)</item>
         <item>グルコース</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>ゴンドイン酸 (20:1 n-9)</item>
         <item>ヨウ素</item>
         <item>鉄</item>
         <item>乳糖</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>ラウリン酸 (12:0)</item>
+        <item>リグノセリン酸 (24:0)</item>
+        <item>リノール酸 / LA (18:2 n-6)</item>
         <item>マグネシウム</item>
         <item>マルトデキストリン</item>
         <item>麦芽糖</item>
         <item>マンガン</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>ミード酸 (20:3 n-9)</item>
+        <item>メリシン酸 (30:0)</item>
         <item>モリブデン</item>
-        <item>Monounsaturated fat</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>一価不飽和脂肪</item>
+        <item>モンタン酸 (28:0)</item>
+        <item>ミリスチン酸 (14:0)</item>
+        <item>ネルボン酸 (24:1 n-9)</item>
         <item>ヌクレオチド</item>
-        <item>Oleic acid (18:1 n-9)</item>
+        <item>オレイン酸 (18:1 n-9)</item>
         <item>オメガ3脂肪酸</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
+        <item>オメガ 6 脂肪酸</item>
+        <item>オメガ 9 脂肪酸</item>
         <item>パルミチン酸 (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>パントテン酸 (ビタミン B5)</item>
         <item>pH</item>
         <item>リン</item>
-        <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>糖アルコール (ポリオール)</item>
+        <item>多価不飽和脂肪</item>
         <item>カリウム</item>
         <item>セレン</item>
-        <item>Serum proteins</item>
+        <item>血清タンパク質</item>
         <item>シリカ</item>
-        <item>Starch</item>
-        <item>Stearic acid (18:0)</item>
+        <item>デンプン</item>
+        <item>ステアリン酸 (18:0)</item>
         <item>スクロース</item>
         <item>タウリン</item>
         <item>トランス脂肪酸</item>
         <item>ビタミン A</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>ビタミン B1 (チアミン)</item>
+        <item>ビタミン B12 (コバラミン)</item>
+        <item>ビタミン B2 (リボフラビン)</item>
+        <item>ビタミン B3 / ビタミン PP (ナイアシン)</item>
+        <item>ビタミン B6 (ピリドキシン)</item>
+        <item>ビタミン B9 (葉酸)</item>
+        <item>ビタミン C (アスコルビン酸)</item>
         <item>ビタミン D</item>
         <item>ビタミン E</item>
         <item>ビタミン K</item>
@@ -245,16 +245,16 @@
     <string name="alert_drawer">アレルゲン警告</string>
     <string name="warning_allergens">アレルゲンを含んでいます</string>
     <string name="title_dialog_alert">警告を追加</string>
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="toggle_flash">フラッシュ</string>
+    <string name="flash_on">フラッシュ [ON]</string>
+    <string name="flash_off">フラッシュ [OFF]</string>
+    <string name="ring_on">着信時 [ON]</string>
+    <string name="ring_off">着信時 [OFF]</string>
+    <string name="auto_focus_on">オートフォーカス [ON]</string>
+    <string name="auto_focus_off">オートフォーカス [OFF]</string>
+    <string name="formats">形式</string>
+    <string name="choose_formats">形式を選択</string>
+    <string name="select_camera">カメラを選択</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">取消</string>
     <string name="login_button">ログイン</string>
@@ -295,15 +295,15 @@
     <string name="permision_write_external_storage">履歴をエクスポートするために、外部ストレージの書き込みアクセス許可が必要です。</string>
     <string name="txt_nutrition_not_found">適用外</string>
     <string name="no_brand">ノーブランド</string>
-    <string name="no_title">No Title</string>
+    <string name="no_title">タイトルなし</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">この商品の %1$s 栄養成分表</string>
-    <string name="check_facts">Check</string>
+    <string name="check_facts">確認</string>
     <string name="nutrition">栄養</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please enter the weight</string>
-    <string name="enter_weight">Enter the weight</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculated_nutrition">計算された栄養</string>
+    <string name="please_enter_weight">体重を入力してください</string>
+    <string name="enter_weight">体重を入力</string>
+    <string name="calculate_nutrition_facts">栄養成分を計算</string>
     <string name="txt_calories_result">%2$s %3$s の %1$s kcal</string>
     <string name="nutrition_carbohydrate">炭水化物</string>
     <string name="nutrition_carbohydrate_short_name">炭水化物 (g)</string>
@@ -335,10 +335,10 @@
     <string name="nutriment_serving_size">品目当たり :</string>
     <string name="action_manage_account">アカウントの管理</string>
     <string name="action_contributes">あなたの貢献</string>
-    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
-    <string name="energy_pref_title">Preferred unit for energy</string>
-    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
-    <string name="volume_pref_title">Preferred unit for volume</string>
+    <string name="choose_energy_unit">栄養成分表のエネルギーに使用するお好みの単位を選択してください</string>
+    <string name="energy_pref_title">エネルギーの単位</string>
+    <string name="choose_volume_unit">栄養成分表の分量に使用するお好みの単位を選択してください</string>
+    <string name="volume_pref_title">分量の単位</string>
     <string name="logout_drawer">ログアウト</string>
     <string name="contribution_without_account">サインイン、またはアカウントを作成して、貢献を続けることができます</string>
     <string name="textCarbonFootprint">カーボンフットプリント / CO2 排出量: </string>
@@ -351,17 +351,17 @@
     <string name="number_of_products">製品の数: </string>
     <string name="txt_no_results">見つかりませんでした</string>
     <string name="txt_extend_search">検索条件を広げてみるか、製品を追加してください</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
+    <string name="txt_no_matching__category_products">このカテゴリーには製品がありません。追加できますか?</string>
+    <string name="txt_no_matching_allergen_products">このアレルゲンを含む製品はありません。追加できますか?</string>
+    <string name="txt_no_matching_label_products">このラベルの製品はありません。追加できますか?</string>
+    <string name="txt_no_matching_additive_products">この添加物を含む製品はありません。追加できますか?</string>
+    <string name="txt_no_matching_country_products">この国からの製品はありません。追加できますか?</string>
+    <string name="txt_no_matching_store_products">この店からの製品はありません。追加できますか?</string>
+    <string name="txt_no_matching_packaging_products">このパッケージの製品はありません。追加できますか?</string>
+    <string name="txt_no_matching_brand_products">このブランドの製品はありません。追加できますか?</string>
+    <string name="txt_no_matching_state_products">この市区町村、都道府県の製品はありません。追加できますか?</string>
+    <string name="txt_no_matching_incomplete_products">未完了の製品はありません! 新しい製品を追加しますか?</string>
+    <string name="txt_no_matching_contributor_products">この貢献者からの製品はありません。追加できますか?</string>
     <string name="txt_no_matching_products">一致する商品が見つかりませんでした。\nお試しください :</string>
     <string name="txt_broaden_search">- 検索範囲を広げる\n- スキャンしてOpen Food Factsに追加する</string>
     <string name="txt_cant_load_search_results">検索結果を読み込むことができません</string>
@@ -494,7 +494,7 @@
     <string name="image_upload_resolution">画像アップロードの解像度</string>
     <string name="can_add_barcode">スキャンがうまくいきませんか?\n上にドラッグしてバーコードを入力してください</string>
     <string name="wikidata_information">もっと遠くへ</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
+    <string name="wikidata_unavailable">あなたの言語のWikipediaページはまだありません。</string>
     <string name="description">説明: </string>
     <string name="title">タイトル: </string>
     <string name="Wikipedia">ウィキペディアで見る</string>
@@ -502,7 +502,7 @@
     <string name="swipe_down">下にスワイプ</string>
     <string name="brand_string">ブランド（会社名）</string>
     <string name="additive_string">添加物</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">アレルゲン</string>
     <string name="search_string">検索</string>
     <string name="country_string">販売の国</string>
     <string name="store_subtitle">店舗</string>
@@ -560,7 +560,6 @@
     <string name="notify_content">クリックするとエクスポートした製品を表示します</string>
     <string name="notification_channel_name">エクスポートの通知</string>
     <string name="notify_channel_description">エクスポートされたファイルの場所を示す通知</string>
-    <string name="additives">添加物</string>
     <string name="products_to_be_completed">完了が必要な製品</string>
     <string name="modified_history">製品は %1$s %2$s に %3$s によって追加されました。 製品ページは %4$s %5$s に %6$s が最後に編集しました。  製品ページは %7$s も編集しました</string>
     <string name="offline_notification_title">オフラインの貢献を送信する必要があります</string>
@@ -574,7 +573,7 @@
     <string name="txtDialogsTitle">情報</string>
     <string name="preference_show_all_product_photos_title">すべての製品の写真を表示</string>
     <string name="preference_show_all_product_photos_summary">個別のタブに、送信済のすべての製品の写真を表示します</string>
-    <string name="offline_product_addition_title">Add a new product</string>
+    <string name="offline_product_addition_title">新しい製品を追加</string>
     <string name="productNameNull">名前不明</string>
     <string name="productBrandNull">ブランド不明</string>
     <string name="productQuantityNull">数量不明</string>
@@ -590,91 +589,91 @@
     <string name="preferences">プリファレンス</string>
     <string name="OFFlogo">Open Food Facts ロゴ</string>
     <string name="loading_product">製品の読み込み中 %s</string>
-    <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
+    <string name="error_adding_ingredients">製品の原材料を追加中に問題が発生しました</string>
     <string name="unable_to_extract_ingredients">画像から成分を抽出することができません。</string>
     <string name="error_adding_nutrition_facts">製品の栄養成分を追加中に問題が発生しました。</string>
-    <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
+    <string name="error_in_carbohydrate_value">炭水化物は、砂糖とでんぷんの合計より少なくできません</string>
     <string name="choose_nutrient">栄養素を選ぶ</string>
-    <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
-    <string name="hint_product_URL">Link of the official page of the product</string>
-    <string name="product_language">Product language : </string>
-    <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+    <string name="error_adding_product_details">製品の詳細を追加中に問題が発生しました</string>
+    <string name="hint_product_URL">製品の公式ページへのリンク</string>
+    <string name="product_language">製品の言語 : </string>
+    <string name="hint_emb_codes">例: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">公式サイト</string>
     <string name="scan_QR_code">製品ウェブサイトのQRコードをスキャンする</string>
     <string name="add_at_least_one_picture">続行する前に、この製品の写真を少なくとも1枚追加してください</string>
-    <string name="image_uploaded_successfully">Image uploaded successfully</string>
-    <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
+    <string name="image_uploaded_successfully">画像がアップロードされました</string>
+    <string name="error_adding_product_photos">製品の写真を追加中に問題が発生しました</string>
     <string name="ingredients_overwrite">成分を上書きする</string>
     <string name="choose_mine">選択する</string>
-    <string name="keep_previous_version">Keep previous version</string>
-    <string name="product_name_overwrite">Product name overwrite</string>
-    <string name="yours">Yours: </string>
-    <string name="currently_on">Currently on %s: </string>
-    <string name="quantity_overwrite">Quantity overwrite</string>
-    <string name="link_overwrite">Link overwrite</string>
-    <string name="save_product">Do you want to save the product?</string>
-    <string name="error_adding_product">Something went wrong when adding product</string>
-    <string name="photos">Photos</string>
-    <string name="please_wait">Please wait</string>
-    <string name="product_uploaded_successfully">Product uploaded successfully</string>
-    <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
-    <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+    <string name="keep_previous_version">以前のバージョンのままにする</string>
+    <string name="product_name_overwrite">製品名の上書き</string>
+    <string name="yours">あなたのもの: </string>
+    <string name="currently_on">現在 %s: </string>
+    <string name="quantity_overwrite">数量の上書き</string>
+    <string name="link_overwrite">リンクの上書き</string>
+    <string name="save_product">製品を保存しますか?</string>
+    <string name="error_adding_product">製品を追加するときに問題が発生しました</string>
+    <string name="photos">写真</string>
+    <string name="please_wait">しばらくお待ちください</string>
+    <string name="product_uploaded_successfully">製品をアップロードしました</string>
+    <string name="no_internet_connection">インターネットに接続していないようです、ネットワークが利用可能なときに画像がアップロードされます</string>
+    <string name="no_internet_unable_to_extract_ingredients">インターネットに接続できません。原材料を抽出できません</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">概要</string>
     <string name="ingredients">原材料</string>
     <string name="nutrition_facts">栄養成分表</string>
-    <string name="your_version">Yours</string>
-    <string name="ingredients_picture">Ingredients Picture</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
-    <string name="ingredients_list">Ingredients List</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
-    <string name="extract_ingredients">Extract ingredients</string>
+    <string name="your_version">あなたのもの</string>
+    <string name="ingredients_picture">原材料の写真</string>
+    <string name="take_ingredients_picture_to_extract">(自動的に抽出するために原材料の写真を撮ってください)</string>
+    <string name="ingredients_list">原材料一覧</string>
+    <string name="ingredients_hint">順序を守り、指定されたときは % を示し、カンマまたは - で区切り、原材料中の原材料は () を使用し、アレルゲンは _ で囲みます</string>
+    <string name="extract_ingredients">原材料を抽出</string>
     <string name="extracting_ingredients">原材料を抽出しています</string>
-    <string name="looksGood">Looks Good</string>
-    <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
+    <string name="looksGood">いいですね</string>
+    <string name="skip_ingredients">悪すぎです \n 原材料をスキップ</string>
     <string name="traces">形跡</string>
-    <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+    <string name="traces_hint">「微量含まれている可能性がある」「使用する工場で製造されている」などの言及から原材料を示します。\n例: 牛乳、グルテン、ナッツ</string>
     <string name="nutrition_facts_not_specified">栄養成分表が製品に指定されていません。</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
-    <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="nutrition_facts_picture">栄養成分表の画像</string>
+    <string name="for_100g_100ml">100g / 100ml 当たり</string>
+    <string name="per_serving">一食当たり</string>
     <string name="serving_size">一人前の分量</string>
-    <string name="alcohol_unit" formatted="false">% vol / °</string>
+    <string name="alcohol_unit" formatted="false">% 体積 / °</string>
     <string name="add_a_nutrient">栄養成分を追加</string>
-    <string name="add_this_product">Add this product</string>
-    <string name="product_picture">Product Picture</string>
-    <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
-    <string name="product_details">Product Details</string>
+    <string name="add_this_product">この製品を追加</string>
+    <string name="product_picture">製品の写真</string>
+    <string name="one_photo_compulsory">(新しい製品を送るには、1枚の写真が義務付けられています)</string>
+    <string name="product_details">製品の詳細</string>
     <string name="product_name">製品名</string>
     <string name="quantity">数量</string>
     <string name="labels">ラベル</string>
     <string name="period_of_time_after_opening">開封後の期限</string>
-    <string name="manufacturing_details">Manufacturing Details</string>
+    <string name="manufacturing_details">製造の詳細</string>
     <string name="origin_of_ingredients">成分の起源</string>
-    <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
-    <string name="purchasing_details">Purchasing Details</string>
-    <string name="country_where_purchased">Country where purchased</string>
+    <string name="manufacturing_place">製造場所</string>
+    <string name="emb_code">EMB コード</string>
+    <string name="purchasing_details">購入の詳細</string>
+    <string name="country_where_purchased">購入した国</string>
     <string name="stores">店舗</string>
-    <string name="additional_pictures">Additional Pictures</string>
-    <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
+    <string name="additional_pictures">追加の写真</string>
+    <string name="hint_product_pictures">(製品の写真をさらに追加してください。例: リサイクルの指示、ラベル、など)</string>
+    <string name="uploading_nutrition_image">栄養成分表をアップロードしています</string>
+    <string name="uploading_ingredients_image">原材料画像をアップロードしています</string>
+    <string name="uploading_front_image">正面画像をアップロードしています</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="sign_in_to_edit">商品を編集するにはログインしてください。</string>
     <string name="hint_quantity">例：2リットル、250リットル、1リットル、25リットル、6リットル、1ポンド</string>
     <string name="edit_product_title">製品を編集</string>
-    <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
+    <string name="hint_serving_size">例: 60 g, 12 オンス, 20 cl, 2 液量オンス</string>
+    <string name="nutrient_already_added">%s はすでに栄養成分表に含まれています</string>
     <string name="save_edits">編集内容を保存</string>
     <string name="contribution_by">投稿者</string>
     <string name="title_activity_product">タイトル</string>
     <string name="description_activity_product">説明</string>
     <string name="intent_filter_share_label">Open Food Facts に寄付する</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="overexposure_high">過剰暴露のリスクが高</string>
+    <string name="overexposure_moderate">過剰暴露のリスクが中</string>
     <string name="infants">乳児</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">幼児</string>
@@ -687,51 +686,53 @@
     <string name="adults_age">18 〜 64</string>
     <string name="elderly">高齢者</string>
     <string name="elderly_age">65～</string>
-    <string name="most_people">Most people\n(over 50%)</string>
-    <string name="some_people">Some people\n(over 5%)</string>
-    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-    <string name="risk_of_exposure">Risk of exposure</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
-    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="most_people">ほとんどの人\n(50% 以上)</string>
+    <string name="some_people">一部の人\n(5% 以上)</string>
+    <string name="safety_and_exposure_assessment">安全性と曝露評価</string>
+    <string name="risk_of_exposure">暴露のリスク</string>
+    <string name="efsa_warning_moderate_risk">欧州食品安全局 (EFSA) は、一部の人口グループは %1$s を過剰に摂取するという中程度のリスクがあると判断しました。</string>
+    <string name="efsa_warning_high_risk">欧州食品安全局 (EFSA) は、一部の人口グループは %1$s を過剰に摂取するという高いリスクがあると判断しました。</string>
+    <string name="legend_noael">無有害作用量 (NOAEL) を超える</string>
+    <string name="legend_adi">一日の摂取許容量 (ADI) を超える</string>
+    <string name="max_energy_val_msg">この値は 100g 当たり 2000 kcal を超えています。修正できますか?</string>
+    <string name="max_nutrient_val_msg">入力された値が一食分量あたりの値を超えています</string>
+    <string name="update_image">更新された画像を送信</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="your_diets">あなたの規定食</string>
+    <string name="diet_name">既定食名</string>
     <string name="diets_dialog_warning_title">警告</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">あなたの食事データはあなたのデバイスに残ります。何もアップロードされません。</string>
     <string name="EditDiet_Name">名前</string>
-    <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
-    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
+    <string name="EditDiet_Description">説明</string>
+    <string name="EditDiet_Enabled_Disabled">有効/無効</string>
+    <string name="EditDiet_Authorised_Ingredients">承認された原材料</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">緑色で表示すべき承認された原材料を一覧表示します。例 : りんご、きのこ、トマト… 後でこの一覧を完成させることができます。</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
-    <string name="extract_ingredients_prompt">Extract ingredients</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">オレンジ色で表示すべき問題のある原材料を一覧表示します。例 : 卵、魚… この一覧は後で完成させることができます。</string>
+    <string name="EditDiet_Unauthorised_Ingredients">未承認の原材料</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">赤で表示すべき未承認の原材料を一覧表示します。例 : グルテン、牛乳、パーム油、砂糖... 後でこの一覧を完成させることができます。</string>
+    <string name="extract_ingredients_prompt">原材料を抽出</string>
+    <string name="add_nutrient_prompt_text">栄養成分を追加してニュートリスコアを計算する</string>
+    <string name="add_category_prompt_text">カテゴリーを追加してニュートリスコアを計算する</string>
+    <string name="add_nutrient_category_prompt_text">栄養成分とカテゴリーを追加してニュートリスコアを計算する</string>
+    <string name="no_nutrition_data_prompt">この製品には栄養成分表がありません</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">原材料の写真を撮ります</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Version</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
-    <string name="report_img">Report Image</string>
-    <string name="detected_ingredients">Detected Ingredients</string>
-    <string name="set_image_name">Successfully set the image as</string>
-    <string name="warning">Warning :</string>
-    <string name="customer_service">Customer Service :</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="category_game_btn">ニュートリスコアを計算するため、製品を分類するのを手伝う</string>
+    <string name="version_string">Open Food Facts Android アプリ</string>
+    <string name="version">バージョン</string>
+    <string name="set_ingredient_img">原材料画像として設定</string>
+    <string name="set_img_nutrients">栄養成分画像として設定</string>
+    <string name="set_img_front">正面画像として設定</string>
+    <string name="report_img">レポート画像</string>
+    <string name="detected_ingredients">検出された原材料</string>
+    <string name="set_image_name">画像に設定しました</string>
+    <string name="warning">警告 :</string>
+    <string name="customer_service">カスタマーサービス :</string>
+    <string name="fast_addition_mode_title">高速追加モード</string>
+    <string name="fast_addition_mode">少ない属性で製品をすばやく追加できます</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">添加物</string>
     <!-- Used for diets AddOn -->
 </resources>

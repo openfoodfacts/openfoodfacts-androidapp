@@ -568,7 +568,6 @@
     <string name="notify_content">Apasă să vezi produsele exportate</string>
     <string name="notification_channel_name">Notificări pentru exportare</string>
     <string name="notify_channel_description">Notificare pentru a arăta locația fișierului exportat</string>
-    <string name="additives">Aditivi</string>
     <string name="products_to_be_completed">Produse ce trebuie să fie finalizate</string>
     <string name="modified_history">Produs adăugat pe %1$s la %2$s de %3$s. Ultima editare a paginii produsului pe %4$s la %5$s de %6$s.  Pagina produsului a fost totodată editată de %7$s</string>
     <string name="offline_notification_title">Contribuțiile offline pe care trebuie să le trimiți</string>
@@ -741,5 +740,7 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Aditivi</string>
     <!-- Used for diets AddOn -->
 </resources>

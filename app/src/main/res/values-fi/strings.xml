@@ -6,15 +6,15 @@
         <item quantity="other"> %d offline-tilassa muokattua tuotetta odottaa lähettämistä Open Food Facts:iin</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minute ago</item>
+        <item quantity="one">1 minuutti sitten</item>
         <item quantity="other">%d minuuttia sitten</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
+        <item quantity="one">1 tunti sitten</item>
         <item quantity="other">%d tuntia sitten</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 day ago</item>
+        <item quantity="one">1 päivä sitten</item>
         <item quantity="other">%d päivää sitten</item>
     </plurals>
     <string name="action_settings">Asetukset</string>
@@ -143,7 +143,7 @@
         <item>Ainekset</item>
     </string-array>
     <!-- Content Description -->
-    <string name="bookmark">Bookmark</string>
+    <string name="bookmark">Kirjanmerkki</string>
     <string name="edit">Muokkaa</string>
     <string name="search_button">Etsi</string>
     <string name="no_products">Tuotteita ei löytynyt</string>
@@ -256,11 +256,11 @@
     <string name="ring_off">Ring [OFF]</string>
     <string name="auto_focus_on">Auto Focus [ON]</string>
     <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
+    <string name="formats">Formaatit</string>
     <string name="choose_formats">Choose Formats</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Peruuta</string>
     <string name="login_button">Käyttäjätunnus</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
@@ -343,15 +343,15 @@
     <string name="energy_pref_title">Energian yksikkö</string>
     <string name="choose_volume_unit">Valitse haluamasi tilavuusyksikkö ravintosisältötaulukkoon</string>
     <string name="volume_pref_title">Tilavuusyksikkö</string>
-    <string name="logout_drawer">Logout</string>
+    <string name="logout_drawer">Kirjaudu ulos</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="txtDialogPowerMode">Quick view</string>
-    <string name="txtSeeMore">See more</string>
+    <string name="txtSeeMore">Katso lisää</string>
     <string name="action_search">Etsi</string>
     <string name="search_hint">Etsi tuote</string>
     <string name="number_of_results">Number of results: </string>
-    <string name="brand">Brand :</string>
+    <string name="brand">Tuotemerkki :</string>
     <string name="number_of_products">Tuotteiden määrä: </string>
     <string name="txt_no_results">No results found</string>
     <string name="txt_extend_search">Try broadening your search or add the product</string>
@@ -381,7 +381,7 @@
     <string name="minerals">Kivennäis- ja hivenaineet</string>
     <string name="nutrition_calcium">Kalsium</string>
     <string name="nutrition_potassium">Kalium</string>
-    <string name="nutrition_chlore">Chlorine</string>
+    <string name="nutrition_chlore">Kloori</string>
     <string name="nutrition_magnesium">Magnesium</string>
     <string name="nutrition_taurine">Tauriini</string>
     <string name="nutrition_monounsaturatedFat">Kertatyydyttämätön rasva</string>
@@ -448,21 +448,21 @@
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My Contributions</string>
     <string name="forgot_password">Forgot Password</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
-    <string name="contact">Contact</string>
+    <string name="next">SEURAAVA</string>
+    <string name="skip">OHITA</string>
+    <string name="start">SELVÄ</string>
+    <string name="contact">Yhteystiedot</string>
     <string name="contact_summary">Contact the team</string>
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
     <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
-    <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+    <string name="airplane_mode_active_dialog_negative">Hylkää</string>
     <string name="airplane_mode_active_dialog_positive">Asetukset</string>
     <string name="device_offline_dialog_title">Network unavailable</string>
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-    <string name="device_offline_dialog_negative">Dismiss</string>
+    <string name="device_offline_dialog_negative">Hylkää</string>
     <string name="device_offline_dialog_positive">Asetukset</string>
-    <string name="saving">Saving…</string>
+    <string name="saving">Tallennetaan…</string>
     <string name="scan_first_product">Scan First Product</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
@@ -472,7 +472,7 @@
     <string name="device_on_mobile_data_warning_positive">Asetukset</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
-    <string name="FAQ">FAQ</string>
+    <string name="FAQ">UKK</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
@@ -480,11 +480,11 @@
     <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="connectivity_check">Please check your internet connection</string>
-    <string name="dismiss">Dismiss</string>
-    <string name="Terms">Terms</string>
+    <string name="dismiss">Hylkää</string>
+    <string name="Terms">Ehdot</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-    <string name="preference_header_general">General</string>
-    <string name="preference_header_network">Network</string>
+    <string name="preference_header_general">Yleiset</string>
+    <string name="preference_header_network">Verkko</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
@@ -492,7 +492,7 @@
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">Peruuta</string>
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
@@ -506,7 +506,7 @@
     <string name="swipe_down">Swipe down</string>
     <string name="brand_string">Tuotemerkki</string>
     <string name="additive_string">Lisäaine</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">Allergeeni</string>
     <string name="search_string">Etsi</string>
     <string name="country_string">Maat joissa myynnissä</string>
     <string name="store_subtitle">Kauppa</string>
@@ -530,16 +530,16 @@
     <string name="wikidata">Wikidata data</string>
     <string name="disable_image_loading">Disable image loading when battery is low</string>
     <string name="DisableLoadTitle">Disable image loading</string>
-    <string name="txtCamera">Camera</string>
-    <string name="txtGallery">Gallery</string>
-    <string name="txtOptions">Options</string>
+    <string name="txtCamera">Kamera</string>
+    <string name="txtGallery">Galleria</string>
+    <string name="txtOptions">Asetukset</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Tuotemerkki</string>
     <string name="by_barcode">Viivakoodi</string>
     <string name="by_time">Recently Viewed</string>
-    <string name="sort">Sort</string>
+    <string name="sort">Järjestä</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Sort By</string>
+    <string name="sort_by">Lajittelujärjestys</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Shake phone to scan products</string>
@@ -559,12 +559,11 @@
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
     <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-    <string name="show_by">Show</string>
+    <string name="show_by">Näytä</string>
     <string name="notify_title">Export complete</string>
     <string name="notify_content">Click to view exported products</string>
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
-    <string name="additives">Lisäaineet</string>
     <string name="products_to_be_completed">Products to be completed</string>
     <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
     <string name="offline_notification_title">Offline contributions you need to send</string>
@@ -612,22 +611,22 @@
     <string name="choose_mine">Choose mine</string>
     <string name="keep_previous_version">Keep previous version</string>
     <string name="product_name_overwrite">Product name overwrite</string>
-    <string name="yours">Yours: </string>
+    <string name="yours">Sinun: </string>
     <string name="currently_on">Currently on %s: </string>
     <string name="quantity_overwrite">Quantity overwrite</string>
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding product</string>
-    <string name="photos">Photos</string>
+    <string name="photos">Kuvat</string>
     <string name="please_wait">Please wait</string>
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">Yleiskatsaus</string>
     <string name="ingredients">Ainekset</string>
     <string name="nutrition_facts">Nutrition Facts</string>
-    <string name="your_version">Yours</string>
+    <string name="your_version">Sinun</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
@@ -656,7 +655,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Ainesosien alkuperä</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">EMB-koodi</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Myymälät</string>
@@ -679,17 +678,17 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="infants">Pikkulapset</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
+    <string name="toddlers">Taaperot</string>
+    <string name="toddlers_age">1 - 2</string>
+    <string name="children">Lapset</string>
+    <string name="children_age">3 - 9</string>
     <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="adolescents_age">10 - 17</string>
+    <string name="adults">Aikuiset</string>
+    <string name="adults_age">18 - 64</string>
+    <string name="elderly">Vanhukset</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
@@ -726,16 +725,18 @@
     <string name="ingredient_image_prompt_text">Ota kuva aineksista</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Version</string>
+    <string name="version">Versio</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="set_image_name">Successfully set the image as</string>
-    <string name="warning">Warning :</string>
-    <string name="customer_service">Customer Service :</string>
+    <string name="warning">Varoitus :</string>
+    <string name="customer_service">Asiakaspalvelu :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Lisäaineet</string>
     <!-- Used for diets AddOn -->
 </resources>
