@@ -152,6 +152,23 @@
         </provider>
 
         <activity android:name=".views.ProductBrowsingListActivity" />
+        <activity
+            android:name=".views.AdditivesExplorer"
+            android:launchMode="singleTop"
+            android:parentActivityName=".views.MainActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.MainActivity" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+        </activity>
 
         <receiver
             android:name=".utils.WifiUploadReceiver"

@@ -248,6 +248,9 @@ public class AddProductOverviewFragment extends BaseFragment {
             if(b.getBoolean("perform_ocr")) {
                 ((AddProductActivity) activity).proceed();
             }
+            if (b.getBoolean("send_updated")) {
+                ((AddProductActivity) activity).proceed();
+            }
         } else {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();
             activity.finish();

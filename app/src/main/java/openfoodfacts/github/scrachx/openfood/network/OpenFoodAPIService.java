@@ -225,6 +225,12 @@ public interface OpenFoodAPIService {
     @GET("country/{country}/{page}.json")
     Call<Search> getProductsByCountry(@Path("country") String country, @Path("page") int page);
 
+    @GET("origin/{origin}/{page}.json")
+    Call<Search> getProductsByOrigin(@Path("origin") String origin, @Path("page") int page);
+
+    @GET("manufacturing-place/{manufacturing-place}/{page}.json")
+    Call<Search> getProductsByManufacturingPlace(@Path("manufacturing-place") String manufacturingPlace, @Path("page") int page);
+
     @GET("store/{store}/{page}.json")
     Call<Search> getProductByStores(@Path("store") String store, @Path("page") int page);
 

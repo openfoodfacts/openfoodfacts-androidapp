@@ -2,10 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -16,16 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,11 +31,11 @@ import okhttp3.ResponseBody;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -59,6 +50,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUT
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 
 /**
@@ -90,7 +82,12 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        final State state = (State) intent.getExtras().getSerializable("state");
+        State state;
+        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
+            state = (State) intent.getExtras().getSerializable("state");
+        } else {
+            state = ProductFragment.mState;
+        }
         product = state.getProduct();
         mFragment = this;
         // initialize the arraylist
@@ -105,15 +102,8 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
                 if (value && response != null) {
 
-                    Log.i("response", response);
-
                     // a json object referring to base json object
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    JSONObject jsonObject = Utils.createJsonObject(response);
 
                     // a json object referring to images
                     JSONObject images = null;

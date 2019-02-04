@@ -332,7 +332,8 @@ public class Nutriments implements Serializable {
             } else if (unit.equals("µg")) {
                 float value = Float.valueOf(stringValue);
                 return getRoundNumber(value * 1000000);
-            } else {
+            }
+            else {
                 return stringValue;
             }
         }

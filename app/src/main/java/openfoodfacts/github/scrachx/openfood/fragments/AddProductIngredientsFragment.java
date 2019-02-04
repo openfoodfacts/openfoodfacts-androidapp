@@ -161,6 +161,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
             if(b.getBoolean("perform_ocr")) {
                 extractIngredients();
             }
+            if (b.getBoolean("send_updated")) {
+                newIngredientsImage();
+            }
         } else {
             Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show();
             activity.finish();

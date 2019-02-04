@@ -36,4 +36,5 @@
     <string name="tagline">свободная база данных кормов для домашних животных</string>
     <string name="product_not_found">Отсканированного продукта %1$s ещё нет в базе Open Pet Food Facts. Вы можете добавить его?</string>
     <string name="currently_on_version">В настоящее время на Open Pet Food Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>
