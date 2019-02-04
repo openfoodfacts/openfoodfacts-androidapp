@@ -44,6 +44,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -262,7 +263,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Mag-login</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Ang impormasyon ng iyong alerdyi ay hindi ipapadala sa server ng Mga Buksan na Mga Katotohanan sa Pagkain. Gayundin, mag-ingat na ang data ng produkto ay maaaring hindi tumpak, at ang pagtuklas ay maaaring hindi tumpak na 100%, kaya\'t mangyaring mag-doblwng ingat sa iyong sarili! </string>
+    <string name="warning_alert_data">Ang impormasyon ng iyong alerdyi ay hindi ipapadala sa server ng Mga Buksan na Mga Katotohanan sa Pagkain. Gayundin, mag-ingat na ang data ng produkto ay maaaring hindi tumpak, at ang pagtuklas ay maaaring hindi tumpak na 100%, kaya\'t mangyaring mag-doblwng ingat sa iyong sarili! </string>
     <string name="from_gallery">Mula sa gallery</string>
     <string name="product_sent">Matagumpay na naipadala ang produkto</string>
     <string name="action_edit_product">I-edit ang produkto</string>
@@ -338,6 +339,10 @@
     <string name="nutriment_serving_size">Bawat bahagi : </string>
     <string name="action_manage_account">Pamahalaan ang account</string>
     <string name="action_contributes">Ang iyong mga kontribusyon</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">Mag-logout</string>
     <string name="contribution_without_account">Maaari kang mag-sign-in o lumikha ng isang account upang mapanatili ang iyong mga kontribusyon</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
@@ -711,7 +716,7 @@
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
-    <string name="extract_ingredients_prompt">Extract Ingredients</string>
+    <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
@@ -721,14 +726,17 @@
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Set image as Ingredient</string>
-    <string name="set_img_nutrients">Set Image as Nutrition</string>
-    <string name="set_img_front">Set Image as Front</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Mga additibo</string>
     <!-- Used for diets AddOn -->
 </resources>
