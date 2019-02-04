@@ -44,6 +44,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -262,7 +263,7 @@
     <string name="cancel_button">Abbrechen</string>
     <string name="login_button">Benutzername</string>
     <string name="create_account_button">Konto erstellen</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
+    <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <string name="from_gallery">Aus Galerie</string>
     <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
     <string name="action_edit_product">Produkt bearbeiten</string>
@@ -338,6 +339,10 @@
     <string name="nutriment_serving_size">Pro Portion:</string>
     <string name="action_manage_account">Konto verwalten</string>
     <string name="action_contributes">Ihre Beiträge</string>
+    <string name="choose_energy_unit">Wählen Sie Ihre bevorzugten Energieeinheiten für die Nährwerttabelle aus</string>
+    <string name="energy_pref_title">Bevorzugte Energieeinheit</string>
+    <string name="choose_volume_unit">Wählen Sie Ihre bevorzugten Volumeneinheiten für die Nährwerttabelle</string>
+    <string name="volume_pref_title">Bevorzugte Volumeneinheit</string>
     <string name="logout_drawer">Abmelden</string>
     <string name="contribution_without_account">Sie können sich anmelden oder ein Konto erstellen, um Ihre Beiträge zu speichern</string>
     <string name="textCarbonFootprint">Ökologischer Fußabdruck / CO₂-Emissionen: </string>
@@ -711,24 +716,27 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Listet die problematischen Inhaltsstoffe auf, die in Orange angezeigt werden sollen. Beispiel: Ei, Fisch … Sie können diese Liste später ergänzen.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Nicht zugelassene Inhaltsstoffe</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Listet die nicht zugelassenen Zutaten auf, die rot angezeigt werden sollen. Beispiel: Gluten, Milch, Palmöl, Zucker … Sie können diese Liste später ergänzen.</string>
-    <string name="extract_ingredients_prompt">Inhaltsstoffe extrahieren</string>
-    <string name="add_nutrient_prompt_text">Füge Nährwertangaben hinzu, um den Nutri-Wert zu berechnen</string>
-    <string name="add_category_prompt_text">Füge eine Kategorie hinzu, um den Nutri-Wert zu berechnen</string>
-    <string name="add_nutrient_category_prompt_text">Füge Nährwertangaben und eine Kategorie hinzu, um den Nutri-Wert zu berechnen</string>
-    <string name="no_nutrition_data_prompt">Dieses Produkt hat keine Nährwertangaben</string>
+    <string name="extract_ingredients_prompt">Zutaten extrahieren</string>
+    <string name="add_nutrient_prompt_text">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
+    <string name="add_category_prompt_text">Kategorie hinzufügen, um den Nutri-Wert zu berechnen</string>
+    <string name="add_nutrient_category_prompt_text">Nährwertangaben und Kategorie hinzufügen, um den Nutri-Wert zu berechnen</string>
+    <string name="no_nutrition_data_prompt">Dieses Produkt enthält keine Nährwertangaben</string>
     <string name="nutrition_image_prompt_text">Foto der Nährwertangaben aufnehmen</string>
     <string name="ingredient_image_prompt_text">Foto der Inhaltsstoffe aufnehmen</string>
     <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Als Bild für die Inhaltsstoffe festlegen</string>
-    <string name="set_img_nutrients">Als Bild für die Nährwertangaben festlegen</string>
-    <string name="set_img_front">Als Titelbild festlegen</string>
+    <string name="set_ingredient_img">Als Zutatenbild verwenden</string>
+    <string name="set_img_nutrients">Als Nährwertbild verwenden</string>
+    <string name="set_img_front">Als Vorderansicht verwenden</string>
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
+    <string name="set_image_name">Foto erfolgreich festgelegt als</string>
     <string name="warning">Warnhinweis:</string>
     <string name="customer_service">Kundendienst:</string>
     <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
-    <string name="fast_addition_mode">Wenn diese Option gewählt wurde, können Produkte mit wenigen Attributen schnell hinzugefügt werden.</string>
+    <string name="fast_addition_mode">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
+    <string name="addtive_search">Nach Zusatzstoff suchen</string>
+    <string name="additives">Zusatzstoffe</string>
     <!-- Used for diets AddOn -->
 </resources>

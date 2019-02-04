@@ -248,6 +248,10 @@ public class AddProductActivity extends AppCompatActivity {
             bundle.putBoolean("perform_ocr",true);
         }
 
+        if (getIntent().getBooleanExtra("send_updated", false)) {
+            bundle.putBoolean("send_updated", true);
+        }
+
         if (state != null) {
             mProduct = state.getProduct();
             // Search if the barcode already exists in the OfflineSavedProducts db

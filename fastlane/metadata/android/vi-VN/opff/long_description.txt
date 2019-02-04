@@ -12,7 +12,7 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** Nhận được sự thật ***
+*** Sự thật là ***
 
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
