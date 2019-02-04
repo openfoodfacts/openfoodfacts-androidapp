@@ -44,6 +44,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -262,7 +263,7 @@
     <string name="cancel_button">Annullér</string>
     <string name="login_button">Brugernavn</string>
     <string name="create_account_button">Opret konto</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
+    <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
     <string name="from_gallery">Fra galleri</string>
     <string name="product_sent">Produkt sendt med succes</string>
     <string name="action_edit_product">Rediger produkt</string>
@@ -338,6 +339,10 @@
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Administrer konto</string>
     <string name="action_contributes">Dine bidrag</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">Log ud</string>
     <string name="contribution_without_account">Du kan logge ind eller oprette en konto for at gemme bidrag</string>
     <string name="textCarbonFootprint">CO2-regnskab / emissioner: </string>
@@ -711,7 +716,7 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de ikke-godkendte ingredienser, som skal vises med rødt. Eksempel: Gluten, mælk, plameolie, sukker... Du kan færdiggøre listen senere.</string>
-    <string name="extract_ingredients_prompt">Extract Ingredients</string>
+    <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Tilføj næringsfakta og en kategori til beregning af Nutri-Score</string>
@@ -721,14 +726,17 @@
     <string name="category_game_btn">Hjælp med at kategorisere produkter for at beregne Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Angiv billede som ingrediens</string>
-    <string name="set_img_nutrients">Angiv billede som ernæring</string>
-    <string name="set_img_front">Angiv billede som Forside</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Advarsel:</string>
     <string name="customer_service">Kundeservice:</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Tilsætningsstoffer</string>
     <!-- Used for diets AddOn -->
 </resources>
