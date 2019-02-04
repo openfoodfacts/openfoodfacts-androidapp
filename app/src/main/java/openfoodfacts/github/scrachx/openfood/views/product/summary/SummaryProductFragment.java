@@ -335,8 +335,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ingredientImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
-        if (isBlank(product.getImageNutritionUrl())) {
-            nutritionImagePromptLayout.setVisibility(View.VISIBLE);
+        if(!BuildConfig.FLAVOR.equals( "obf" )) {
+            if (isBlank(product.getImageNutritionUrl())) {
+                nutritionImagePromptLayout.setVisibility(View.VISIBLE);
+            }
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
