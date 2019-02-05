@@ -34,7 +34,7 @@
         <item>Összetevők</item>
         <item>Tápanyag</item>
         <item>Tápanyagtáblázat</item>
-        <item>Environment</item>
+        <item>Környezet</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -722,7 +722,7 @@
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="no_nutrition_data_prompt">Ez a termék nem rendelkezik tápérték adatokkal</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Kép készítése az összetevőkről</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
