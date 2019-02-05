@@ -726,7 +726,7 @@
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Kép készítése az összetevőkről</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version_string">Nyissa meg az Open Food Factcs Android-alkalmazását</string>
     <string name="version">Verzió</string>
     <string name="set_ingredient_img">Kép feltöltése az összetevőkről</string>
     <string name="set_img_nutrients">Kép feltöltése a tápértéktáblázatról</string>
