@@ -147,6 +147,55 @@
         </RelativeLayout>
 
         <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_comparison_nutrient_cv"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/product_comparison_scores_layout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/product_comparison_textNutrientTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:background="@drawable/textview_full"
+                    android:padding="@dimen/spacing_small"
+                    android:text="No nutrient information available for this product"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/product_comparison_listNutrientLevels"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:visibility="gone"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:background="@drawable/textview_full"
+                    android:divider="@color/white"
+                    tools:listitem="@layout/nutrient_lvl_list_item"
+                    android:dividerHeight="0dp"
+                    android:padding="@dimen/spacing_small"
+                    android:paddingBottom="60dp"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:id="@+id/product_comparison_additive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -155,7 +204,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:cardElevation="4dp"
-            android:layout_below="@id/product_comparison_scores_layout">
+            android:layout_below="@id/product_comparison_nutrient_cv">
 
             <TextView
                 android:id="@+id/product_comparison_additive_text"
@@ -174,58 +223,9 @@
 
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/product_comparison_nutrient_cv"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardElevation="4dp"
-            android:visibility="gone"
-            android:layout_below="@id/product_comparison_additive">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/product_comparison_textNutrientTxt"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
-                    android:padding="@dimen/spacing_small"
-                    android:text="@string/txtNutrientLevel100g"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal"
-                    android:textStyle="bold" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/product_comparison_listNutrientLevels"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:background="@drawable/textview_full"
-                    android:divider="@color/white"
-                    tools:listitem="@layout/nutrient_lvl_list_item"
-                    android:dividerHeight="0dp"
-                    android:padding="@dimen/spacing_small"
-                    android:paddingBottom="60dp"
-                    android:scrollbars="vertical" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
         <Button
             android:id="@+id/full_product_button"
-            android:layout_below="@id/product_comparison_nutrient_cv"
+            android:layout_below="@id/product_comparison_additive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_tiny"

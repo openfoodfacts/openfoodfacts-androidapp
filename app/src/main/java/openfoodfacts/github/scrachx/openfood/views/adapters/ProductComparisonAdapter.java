@@ -43,6 +43,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -89,9 +90,11 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
 
     public static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
         public NestedScrollView listItemLayout;
+        public CardView productComparisonDetailsCv;
         public TextView productNameTextView;
         public TextView productQuantityTextView;
         public TextView productBrandTextView;
+        public TextView productComparisonNutrientText;
         public RecyclerView nutrientsRecyclerView;
         public CardView productComparisonNutrientCv;
         public ImageButton productComparisonImage;
@@ -105,9 +108,11 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         public ProductComparisonViewHolder(View view) {
             super(view);
             listItemLayout = (NestedScrollView) view.findViewById(R.id.product_comparison_list_item_layout);
+            productComparisonDetailsCv = (CardView) view.findViewById(R.id.product_comparison_details_cv);
             productNameTextView = (TextView) view.findViewById(R.id.product_comparison_name);
             productQuantityTextView = (TextView) view.findViewById(R.id.product_comparison_quantity);
             productBrandTextView = (TextView) view.findViewById(R.id.product_comparison_brand);
+            productComparisonNutrientText = (TextView) view.findViewById(R.id.product_comparison_textNutrientTxt);
             nutrientsRecyclerView = (RecyclerView) view.findViewById(R.id.product_comparison_listNutrientLevels);
             productComparisonNutrientCv = (CardView) view.findViewById(R.id.product_comparison_nutrient_cv);
             productComparisonImage = (ImageButton) view.findViewById(R.id.product_comparison_image);
@@ -141,6 +146,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     public void onBindViewHolder(@NonNull ProductComparisonViewHolder holder, int position) {
         if (!productsToCompare.isEmpty()) {
 
+            //support synchronous scrolling
             holder.listItemLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
                 @Override
                 public void onScrollChange(View view, int i, int i1, int i2, int i3) {
@@ -150,6 +156,8 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                     }
                 }
             });
+
+            setMaxCardHeight();
 
             Product product = productsToCompare.get(position);
 
@@ -226,7 +234,8 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 holder.productComparisonImageGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
 
                 if (nutriments!=null) {
-                    holder.productComparisonNutrientCv.setVisibility(View.VISIBLE);
+                    holder.nutrientsRecyclerView.setVisibility(View.VISIBLE);
+                    holder.productComparisonNutrientText.setText(context.getString(R.string.txtNutrientLevel100g));
                     holder.nutrientsRecyclerView.setLayoutManager(new LinearLayoutManager(context));
                     holder.nutrientsRecyclerView.setAdapter(new NutrientLevelListAdapter(context, loadLevelItems(product)));
                 }
@@ -398,6 +407,25 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                                 e.printStackTrace();
                             })
             );
+        }
+    }
+
+    private void setMaxCardHeight() {
+        //getting all the heights of CardViews
+        ArrayList<Integer> productDetailsHeight = new ArrayList<>();
+        ArrayList<Integer> productNutrientsHeight = new ArrayList<>();
+        ArrayList<Integer> productAdditivesHeight = new ArrayList<>();
+        for (ProductComparisonViewHolder current : viewHolders) {
+            productDetailsHeight.add(current.productComparisonDetailsCv.getHeight());
+            productNutrientsHeight.add(current.productComparisonNutrientCv.getHeight());
+            productAdditivesHeight.add(current.productComparisonAdditiveCv.getHeight());
+        }
+
+        //setting all the heights to be the maximum
+        for (ProductComparisonViewHolder current: viewHolders) {
+            current.productComparisonDetailsCv.setMinimumHeight(Collections.max(productDetailsHeight));
+            current.productComparisonNutrientCv.setMinimumHeight(Collections.max(productNutrientsHeight));
+            current.productComparisonAdditiveCv.setMinimumHeight(Collections.max(productAdditivesHeight));
         }
     }
 }
