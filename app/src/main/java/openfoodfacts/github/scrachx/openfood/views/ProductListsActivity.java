@@ -76,8 +76,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                                 startActivityForResult(intent,1);
                             }
                     )
-                    .positiveText(R.string.txtYes)
-                    .negativeText(R.string.txtNo)
+                    .positiveText(R.string.txt_discard)
+                    .negativeText(R.string.txtSave)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         adapter.notifyDataSetChanged();

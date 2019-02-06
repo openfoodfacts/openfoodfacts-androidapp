@@ -922,10 +922,22 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
+
+    <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add to Your Lists</string>
-    <string name="txt_create_new_list">Create new list</string>
+    <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
     <string name="txt_eaten_products">Eaten Products</string>
     <string name="txt_products_to_buy">Products to buy</string>
+    <string name="export_csv_your_listed_products">Export CSV</string>
+    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
+    <string name="txt_your_listed_products_exported">Your Products exported</string>
+    <string name="txt_discard">Discard</string>
+    <string name="txt_save">Save</string>
+    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on "I'm eating this".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_i_m_eating_this">I\'m eating this</string>
     <!-- Used for diets AddOn -->
 </resources>
