@@ -551,6 +551,10 @@ public class Product implements Serializable {
         return noNutritionData;
     }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)

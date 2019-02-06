@@ -2,12 +2,16 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.preference.PreferenceManager;
@@ -37,11 +41,17 @@ import com.squareup.picasso.Picasso;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
+import static android.Manifest.permission.CAMERA;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,14 +69,18 @@ import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import com.mikepenz.materialize.util.UIUtils;
+
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -75,8 +89,9 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
-public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder>{
+public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder> implements ImageUploadListener {
 
     private ArrayList<Product> productsToCompare;
     private Context context;
@@ -87,6 +102,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     private Button addProductButton = null;
     private OpenFoodAPIClient api;
     private ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
+    public static Integer ON_PHOTO_RETURN_POSITION;
 
     public static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
         public NestedScrollView listItemLayout;
@@ -170,6 +186,38 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             if (this.addProductButton != null) {
                 addProductButton.setText("Add another product");
             }
+
+            holder.productComparisonImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (product.getImageUrl() != null) {
+                        Intent intent = new Intent(context, FullScreenImage.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("imageurl", product.getImageUrl());
+                        intent.putExtras(bundle);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            ActivityOptionsCompat options = ActivityOptionsCompat.
+                                    makeSceneTransitionAnimation((Activity) context, (View) holder.productComparisonImage,
+                                            ((Activity) context).getString(R.string.product_transition));
+                            context.startActivity(intent, options.toBundle());
+                        } else {
+                            context.startActivity(intent);
+                        }
+                    } else {
+                        // take a picture
+                        if (ContextCompat.checkSelfPermission((Activity) context, CAMERA) != PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+                        } else {
+                            ON_PHOTO_RETURN_POSITION = position;
+                            if (Utils.isHardwareCameraInstalled(context)) {
+                                EasyImage.openCamera(((Activity) context), 0);
+                            } else {
+                                EasyImage.openGallery(((Activity) context), 0, false);
+                            }
+                        }
+                    }
+                }
+            });
 
             if (isNotBlank(product.getImageUrl())) {
                 holder.productComparisonLabel.setVisibility(View.GONE);
@@ -427,5 +475,27 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             current.productComparisonNutrientCv.setMinimumHeight(Collections.max(productNutrientsHeight));
             current.productComparisonAdditiveCv.setMinimumHeight(Collections.max(productAdditivesHeight));
         }
+    }
+
+    public void setImageOnPhotoReturn(File file) {
+        ProductComparisonViewHolder holder = viewHolders.get(ON_PHOTO_RETURN_POSITION);
+        Product product = productsToCompare.get(ON_PHOTO_RETURN_POSITION);
+        ProductImage image = new ProductImage(product.getCode(), FRONT, file);
+        image.setFilePath(file.getAbsolutePath());
+        api.postImg(context, image, this);
+        String mUrlImage = file.getAbsolutePath();
+        product.setImageUrl(mUrlImage);
+        ON_PHOTO_RETURN_POSITION = null;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void onSuccess() {
+
+    }
+
+    @Override
+    public void onFailure(String message) {
+
     }
 }

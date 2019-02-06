@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,9 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.apache.commons.collections.BagUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,13 +32,20 @@ import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductComparisonAdapter;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.ISummaryProductPresenter;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
-public class ProductComparisonActivity extends AppCompatActivity implements ISummaryProductPresenter.View{
+import static java.security.AccessController.getContext;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 
-    TextView productTextView;
+public class ProductComparisonActivity extends AppCompatActivity {
+
     Button productComparisonButton;
 
     private RecyclerView productComparisonRv;
@@ -88,47 +98,42 @@ public class ProductComparisonActivity extends AppCompatActivity implements ISum
     }
 
     @Override
-    public void showAllergens(List<AllergenName> allergens) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-    }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
 
-    @Override
-    public void showCategories(List<CategoryName> categories) {
+                ((ProductComparisonAdapter) productComparisonAdapter).setImageOnPhotoReturn(new File(resultUri.getPath()));
 
-    }
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+        EasyImage.handleActivityResult(requestCode, resultCode, data, this, new DefaultCallback() {
+            @Override
+            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
+                //Some error handling
+            }
 
-    @Override
-    public void showLabels(List<LabelName> labels) {
+            @Override
+            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
+                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
+                        .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                        .setAllowFlipping(false)
+                        .start(ProductComparisonActivity.this);
+            }
 
-    }
-
-    @Override
-    public void showCountries(List<CountryName> countries) {
-
-    }
-
-    @Override
-    public void showCategoriesState(String state) {
-
-    }
-
-    @Override
-    public void showLabelsState(String state) {
-
-    }
-
-    @Override
-    public void showCountriesState(String state) {
-
-    }
-
-    @Override
-    public void showAdditives(List<AdditiveName> additives) {
-
-    }
-
-    @Override
-    public void showAdditivesState(String state) {
-
+            @Override
+            public void onCanceled(EasyImage.ImageSource source, int type) {
+                //Cancel handling, you might wanna remove taken photo if it was canceled
+                if (source == EasyImage.ImageSource.CAMERA) {
+                    File photoFile = EasyImage.lastlyTakenButCanceledPhoto(ProductComparisonActivity.this);
+                    if (photoFile != null) photoFile.delete();
+                }
+            }
+        });
     }
 }
