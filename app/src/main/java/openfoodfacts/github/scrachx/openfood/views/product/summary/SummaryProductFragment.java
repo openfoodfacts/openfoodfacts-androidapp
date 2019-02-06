@@ -335,7 +335,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ingredientImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
-        if(!BuildConfig.FLAVOR.equals( "obf" )) {
+        if(!BuildConfig.FLAVOR.equals( "obf" ) && !BuildConfig.FLAVOR.equals( "opf" )) {
             if (isBlank(product.getImageNutritionUrl())) {
                 nutritionImagePromptLayout.setVisibility(View.VISIBLE);
             }
