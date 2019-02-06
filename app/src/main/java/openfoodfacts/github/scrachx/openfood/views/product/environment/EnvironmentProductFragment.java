@@ -1,9 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.views.product.environment;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,8 @@ public class EnvironmentProductFragment extends BaseFragment {
 
     @BindView(R.id.textCarbonFootprint)
     TextView carbonFootprint;
+    @BindView(R.id.environment_info_text)
+    TextView environmentInfoText;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,12 +46,22 @@ public class EnvironmentProductFragment extends BaseFragment {
         final Product product = state.getProduct();
         Nutriments nutriments = product.getNutriments();
 
-        if(nutriments != null) {
+        if(nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
             Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
             carbonFootprint.setText(bold(getString(R.string.textCarbonFootprint)));
             carbonFootprint.append(carbonFootprintNutriment.getFor100g());
             carbonFootprint.append(carbonFootprintNutriment.getUnit());
         }
+
+        if (product.getEnvironmentInfocard() != null && !product.getEnvironmentInfocard().isEmpty()) {
+            environmentInfoText.setText(bold("Carbon Impact: "));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard(), Html.FROM_HTML_MODE_COMPACT));
+            } else {
+                environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard()));
+            }
+        }
+
     }
 
 }

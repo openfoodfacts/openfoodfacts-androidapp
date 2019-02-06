@@ -133,6 +133,8 @@ public class Product implements Serializable {
     private String warning;
     @JsonProperty("customer_service")
     private String customerService;
+    @JsonProperty("environment_infocard")
+    private String environmentInfocard;
 
 
     private Map<String, Object> additionalProperties = new HashMap<>();
@@ -550,6 +552,8 @@ public class Product implements Serializable {
     public String getNoNutritionData() {
         return noNutritionData;
     }
+
+    public String getEnvironmentInfocard() {return environmentInfocard;}
 
     @Override
     public String toString() {

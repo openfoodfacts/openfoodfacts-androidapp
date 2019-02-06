@@ -44,6 +44,19 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
+                <TextView
+                    android:id="@+id/environment_info_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:background="@drawable/textview_full"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+
             </android.support.v7.widget.CardView>
 
         </LinearLayout>
