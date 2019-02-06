@@ -33,6 +33,8 @@ import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
 import openfoodfacts.github.scrachx.openfood.models.IngredientName;
 import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
 import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
@@ -492,7 +494,23 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
-     * Add a new link Diet/Ingredient from dietName, IngredientName and languageCode if it doesn't already exists.
+     * Add a new link Diet/Ingredient from dietName, IngredientTag and state if it doesn't already exists.
+     *
+     * @param dietTag           Tag of the diet
+     * @param ingredientTag     Tag of the ingredient
+     * @param state             State code (-1: forbidden, 0: so-so, 1: authorised, 2: no impact)
+     */
+    @Override
+    public void addDietIngredientsByTags(String dietTag, String ingredientTag, long state) {
+        DietIngredients dietIngredients = new DietIngredients();
+        dietIngredients.setDietTag(dietTag);
+        dietIngredients.setIngredientTag(ingredientTag);
+        dietIngredients.setState(state);
+        saveDietIngredients(dietIngredients);
+    }
+
+    /**
+     * Add a new link Diet/Ingredient from dietName, IngredientName and languageCode and state if it doesn't already exists.
      *
      * @param dietTag        Tag of the diet
      * @param ingredientName Ingrédient we wan't to link to the diet
@@ -509,11 +527,7 @@ public class DietRepository implements IDietRepository {
             Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientName, languageCode);
             if (ingredient.getTag() != null) {
                 //Ingredient trouvé. Association des deux.
-                DietIngredients dietIngredients = new DietIngredients();
-                dietIngredients.setDietTag(dietTag);
-                dietIngredients.setIngredientTag(ingredient.getTag());
-                dietIngredients.setState(state);
-                saveDietIngredients(dietIngredients);
+                addDietIngredientsByTags(dietTag, ingredient.getTag(), state);
             } else {
                 //No ingredient found, create it and then create the link
                 addIngredient(ingredientName, languageCode);
@@ -713,6 +727,7 @@ public class DietRepository implements IDietRepository {
             for (int j = 0; j < ingredients.size(); j++) {
                 Ingredient ingredient = ingredients.get(j);
                 if (ingredient.getTag().equals("en:")) {
+                    //In earlyer test, some dietIngredient where create without name. Here is the cleanup. Is it still usefull ?
                     List<DietIngredients> dietIngredientsList = dietIngredientsDao.queryBuilder()
                             .where(DietIngredientsDao.Properties.IngredientTag.eq(ingredient.getTag()))
                             .list();
@@ -886,6 +901,95 @@ public class DietRepository implements IDietRepository {
 
     /**
      * Return a SpannableStringBuilder of the ingredients colored when associate with an active Diet.
+     * Parameters : ingredients on a SpannableStringBuilder form and the product.
+     *
+     * @param ssbIngredients        SpannableStringBuilder composed with the ingrédients already spanned by allergen...
+     * @param product               product itself.
+     * @return SpannableStringBuilder   A SpannableStringBuilder with coloured text.
+     *
+     * @author dobriseb
+     */
+    @Override
+    public SpannableStringBuilder getColoredSSBFromSSBAndProduct(SpannableStringBuilder ssbIngredients, Product product) {
+        //Log.i("INFO", "getColoredSSBFromSSBAndProduct : Begin : " + ssbIngredients.toString());
+        long state;
+        int start = 0;
+        int end = 0;
+        int fromIndex = 0;
+        String ingredient = "";
+        String languageCode = "";
+        //List of the ingredients of the product in text
+        String ingredients = ssbIngredients.toString();
+        //List of productIngredient of the product
+        List<ProductIngredient> productIngredients = product.getIngredients();
+        for (int i = 0; i < productIngredients.size(); i++) {
+            //For each productIngredient
+            ProductIngredient productIngredient = productIngredients.get(i);
+            //Looking for the state of the tag
+            state = minStateForEnabledDietFromIngredientTag(productIngredient.getId());
+            //Suppress underscore from the getText string cause there is no underscore in ssbIngredients
+            ingredient = productIngredient.getText().replaceAll("_","");
+            if (productIngredient.getRank() == 0) {
+                //This ingredient is part of another, for example "sucre" in "..., chocolat noir 6.1% [pâte de cacao, sucre, cacao maigre en poudre, émulsifiant (lécithine de soja), arôme]..."
+                //We already have treated the other which have a rank>1, so we have to get back to the beginning to treat this ingredient.
+                fromIndex=0;
+            }
+            start = ingredients.indexOf(ingredient, fromIndex);
+            if (start >= 0) {
+                //found ingredient in ingredients from fromIndex
+                end = start + ingredient.length();
+                fromIndex = start;
+                //Replace ingredient by white spaces in ingredients.
+                //The goal is to treat only once the ingredients that are write more than one time, for example "sucre" in "..., sucre, oeufs 11.4%, chocolat noir 6.1% [pâte de cacao, sucre,..."
+                //The problem is that the first "sucre" is given with a rank>1 and the second, which is a component of "chocolat noir" came later with a rank=0.
+                //When we will treat "sucre" with rank>1, the example above will become "...,      , oeufs 11.4%, chocolat noir 6.1% [pâte de cacao, sucre,..."
+                //In this example : "..., oeufs 11.4%, chocolat noir 6.1% [pâte de cacao, sucre, cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
+                //"oeufs" then "chocolat noir" will transform ingredients in "...,       11.4%,               6.1% [pâte de cacao, sucre, cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
+                //then came "sucre" with rank>0 : "...,       11.4%,               6.1% [pâte de cacao,      , cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
+                //The erased "sucre" is not the good one, but it doesn't matter cause the second (and "good") "sucre" will be treated when the "sucre" of rank=0 will come.
+                //So we split the ingredients in two (before start and after) and replace the ingredient from the second one by spaces (as many as the length of ingredient).
+                ingredients = ingredients.substring(0,start) + ingredients.substring(start).replaceFirst(ingredient, new String(new char[ingredient.length()]).replace('\0', ' '));
+                if (state == 2) {
+                    //The ingredientTag doesn't seems to have a relation with a diet, looking for the sentence.
+                    //Theoretically this will never append. But this is theory.
+                    languageCode = product.getLang();
+                    state = minStateForEnabledDietFromIngredient(ingredient, languageCode);
+                }
+                if (state == 2) {
+                    //The sentence doesn't seems to have a relation with a diet, looking for each word.
+                    if (ingredient.indexOf(" ") > 0) {
+                        //Ingredient is composed from at least 2 words, test each one.
+                        String[] ingredientWords = ingredient.split(" ");
+                        for (int j = 0; j < ingredientWords.length; j++) {
+                            String ingredientWord = ingredientWords[j];
+                            state = minStateForEnabledDietFromIngredient(ingredientWord, languageCode);
+                            if (state != 2) {
+                                //This word must be colored
+                                start = ssbIngredients.toString().indexOf(ingredientWord, fromIndex);
+                                end = start + ingredientWord.length();
+                                fromIndex = end;
+                                ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state);
+                            }
+                        }
+                    }
+                } else {
+                    //The Tag or the complete sentence has been found and must be colored
+                    fromIndex = end;
+                    ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state); // .setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))),0,24,SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
+            } else {
+                //The ingredient is not in the list. Theoretically, this is not possible !!!
+                Log.i("INFO", "The ingredient '"+ ingredient + "' is not in '" + ingredients + "'" );
+            }
+        }
+        return  ssbIngredients;
+    }
+
+    /**
+     * search
+     */
+    /**
+     * Return a SpannableStringBuilder of the ingredients colored when associate with an active Diet.
      *
      * @param INGREDIENT_PATTERN        Pattern to separate each ingredient from
      * @param text                      String of ingredients
@@ -919,6 +1023,61 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
+     * Return a list of colored SpannableStringBuilder from a product and a diet
+     *
+     * @param product                           The product
+     * @param dietTag        dietTag of the diet or "enabled" for all diets that are enabled.
+     * @return List<SpannableStringBuilder>   List of SpannableStringBuilder with coloured text.
+     */
+    @Override
+    public List<SpannableStringBuilder> getColoredSSBFromProductAndDiet(Product product, String dietTag) {
+        List<SpannableStringBuilder> ingredientsSp = new ArrayList<>();
+        SpannableStringBuilder ingredientSp;
+        long state;
+        int start = 0;
+        int end = 0;
+        String ingredient = "";
+        String languageCode = "";
+        //Iterate the list of ingredient of the product
+        List<ProductIngredient> productIngredients = product.getIngredients();
+        for (int i = 0; i < productIngredients.size(); i++) {
+            ProductIngredient productIngredient =  productIngredients.get(i);
+            //Suppress underscore
+            ingredient = productIngredient.getText().replaceAll("_","");
+            ingredientSp = new SpannableStringBuilder(ingredient);
+            //Search for state by ingredientTag (and dietTag)
+            state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredientTag(productIngredient.getId()) : stateFromIngredientTagDietTag(productIngredient.getId(), dietTag);
+            if (state == 2) {
+                //Search for state by ingredient text, languageCode (and dietTag)
+                languageCode = product.getLang();
+                state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredient(ingredient, languageCode) : stateFromIngredientDietTag(ingredient, dietTag, languageCode);
+            }
+            if (state == 2) {
+                //Search state for each words of ingredients text
+                if (ingredient.indexOf(" ") > 0) {
+                    //Ingredient is composed from at least 2 words, test each one.
+                    String[] ingredientWords = ingredient.split(" ");
+                    for (int j = 0; j < ingredientWords.length; j++) {
+                        String ingredientWord = ingredientWords[j];
+                        state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredient(ingredientWord, languageCode) : stateFromIngredientDietTag(ingredientWord, dietTag, languageCode);
+                        if (state != 2) {
+                            //This word must be colored
+                            start = ingredient.indexOf(ingredientWord);
+                            end = start + ingredientWord.length();
+                            ingredientSp = coloredSSBFromState(ingredientSp, start, end, state);
+                        }
+                    }
+                }
+            } else {
+                //The whole text has to be colored
+                ingredientSp = coloredSSBFromState(ingredientSp,0,ingredient.length(), state);
+           }
+            ingredientsSp.add(ingredientSp);
+        }
+        return ingredientsSp;
+    }
+
+    /**
      * Return a list of SpannableStringBuilder of ingredients witch color depend of state from a list of ingredients, a dietTag and a languageCode
      *
      * @param ingredients    List of ingrédients to be colored.
@@ -946,22 +1105,21 @@ public class DietRepository implements IDietRepository {
                     if (state != 2) {
                         int start = ingredient.indexOf(ingredientWord);
                         int end = start + ingredientWord.length();
-                        ingredientSp = coloredSpannableStringBuilderFromState(ingredientSp, start, end, state);
+                        ingredientSp = coloredSSBFromState(ingredientSp, start, end, state);
                     }
                 }
                 ingredientsSp.add(ingredientSp);
             } else {
-                ingredientsSp.add(coloredSpannableStringBuilderFromState(new SpannableStringBuilder(ingredient), 0, ingredient.length(), state));
+                ingredientsSp.add(coloredSSBFromState(new SpannableStringBuilder(ingredient), 0, ingredient.length(), state));
             }
         }
         return ingredientsSp;
     }
 
-    private SpannableStringBuilder coloredSpannableStringBuilderFromState(SpannableStringBuilder ss, int start, int end, long state) {
+    private SpannableStringBuilder coloredSSBFromState(SpannableStringBuilder ss, int start, int end, long state) {
         ss.setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))), start, end, SPAN_EXCLUSIVE_EXCLUSIVE);
         return ss;
     }
-
 
     /**
      * Return a String list ingredients from a text of ingredients

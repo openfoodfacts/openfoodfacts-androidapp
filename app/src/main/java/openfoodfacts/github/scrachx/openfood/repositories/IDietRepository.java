@@ -11,6 +11,7 @@ import openfoodfacts.github.scrachx.openfood.models.DietIngredients;
 import openfoodfacts.github.scrachx.openfood.models.DietName;
 import openfoodfacts.github.scrachx.openfood.models.Ingredient;
 import openfoodfacts.github.scrachx.openfood.models.IngredientName;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 
 /**
  * Created by dobriseb on 1018.10.17.
@@ -48,6 +49,8 @@ public interface IDietRepository {
 
     void addIngredient(String name, String languageCode);
 
+    void addDietIngredientsByTags(String dietTag, String ingredientTag, long state);
+
     void addDietIngredients(String dietTag, String ingredientName, String languageCode, long state);
 
     List<DietIngredients> getDietIngredientsListByDietTagAndState(String dietTag, long state);
@@ -70,11 +73,15 @@ public interface IDietRepository {
 
     long stateFromIngredientTagDietTag(String ingredientTag, String dietTag);
 
+    List<SpannableStringBuilder> getColoredSSBFromProductAndDiet(Product product, String dietTag);
+
     List<SpannableStringBuilder> getColoredSSBFromIngredientsDiet(List<String> ingredients, String dietTag, String languageCode);
 
     SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableIngredients(Pattern INGREDIENT_PATTERN, SpannableStringBuilder txtIngredients);
 
     SpannableStringBuilder getColoredSSBFromSSBIngredients(SpannableStringBuilder ssbIngredients, String languageCode);
+
+    SpannableStringBuilder getColoredSSBFromSSBAndProduct(SpannableStringBuilder ssbIngredients, Product product);
 
     List<String> getIngredientsListFromIngredientsText (String ingredientsText, boolean preserveAllSign);
 

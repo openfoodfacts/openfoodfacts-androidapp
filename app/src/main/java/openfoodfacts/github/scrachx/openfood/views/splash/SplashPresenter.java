@@ -62,7 +62,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                                             Completable.fromAction(() -> productRepository.saveLabels(labels)),
                                             Completable.fromAction(() -> productRepository.saveTags(tags)),
                                             Completable.fromAction(() -> productRepository.saveAllergens(allergens)),
-                                            Completable.fromAction(() -> productRepository.saveIngredients(ingredients)),
+                                            Completable.fromAction(() -> productRepository.saveIngredients(ingredients, true)),
                                             Completable.fromAction(() -> productRepository.saveCountries(countries)),
                                             Completable.fromAction(() -> productRepository.saveAdditives(additives)),
                                             Completable.fromAction(() -> productRepository.saveCategories(categories))

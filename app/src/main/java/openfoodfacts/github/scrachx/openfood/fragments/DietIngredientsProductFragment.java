@@ -24,6 +24,7 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Diet;
 import openfoodfacts.github.scrachx.openfood.models.DietDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.DietRepository;
@@ -176,16 +177,24 @@ public class DietIngredientsProductFragment extends BaseFragment {
                 //dietRV.scrollToPosition(diets.indexOf(args.getString("DIET")));
                 //lastDietDisplayed = diets.indexOf(args.getString("DIET"));
             }
+            if (args.containsKey("INGREDIENTS_TEXT")) {
+                mIngredientsTxt = dietRepository.getIngredientsListFromIngredientsText(args.getString("INGREDIENTS_TEXT"), false);
+                //fillIngredients(coloredIngredientsFromingredients(mIngredientsTxt));
+            }
             if (args.containsKey("INGREDIENTS")) {
-                mIngredientsTxt = dietRepository.getIngredientsListFromIngredientsText(args.getString("INGREDIENTS"), false);
-                fillIngredients(coloredIngredientsFromDiet(mIngredientsTxt));
+                Log.i("INFO", "Argument INGREDIENTS : "); // + args.getStringArrayList("INGREDIENTS").toString());
             }
             //dietRV.setText("Tous");
+            if (mState != null && product.getIngredients() != null) {
+                fillIngredients(coloredIngredientsFromProduct());
+            }
+            /*
             if (mState != null && product.getIngredientsText() != null) {
                 //Log.i("INFO", "Ingrédients : " + product.getIngredientsText());
                 mIngredientsTxt = dietRepository.getIngredientsListFromIngredientsText(product.getIngredientsText(), false);
-                fillIngredients(coloredIngredientsFromDiet(mIngredientsTxt));
+                fillIngredients(coloredIngredientsFromingredients(mIngredientsTxt));
             }
+            */
         }
         Log.i("INFO", "Fin de OnViewCreated de DietIngredientsProductFragment");
     }
@@ -193,11 +202,15 @@ public class DietIngredientsProductFragment extends BaseFragment {
     private void changeMDiet(Diet diet) {
         mDiet = diet;
         mIngredients.clear();
-        mIngredients.addAll(coloredIngredientsFromDiet(mIngredientsTxt));
+        mIngredients.addAll(coloredIngredientsFromingredients(mIngredientsTxt));
         ingredientsRVAdapter.notifyDataSetChanged();
     }
 
-    private List<SpannableStringBuilder> coloredIngredientsFromDiet(List<String> ingredients) {
+    private List<SpannableStringBuilder> coloredIngredientsFromProduct() {
+        return dietRepository.getColoredSSBFromProductAndDiet(product, mDiet.getTag());
+    }
+
+    private List<SpannableStringBuilder> coloredIngredientsFromingredients(List<String> ingredients) {
         return dietRepository.getColoredSSBFromIngredientsDiet(ingredients, mDiet.getTag(),languageCode);
     }
 
@@ -209,16 +222,42 @@ public class DietIngredientsProductFragment extends BaseFragment {
             public void onPositionClicked(int position, View v) {
                 //Log.i("INFO", "Click sur le bouton " + v.getId() + ":" + stateFromView(v) + " de l'enregistrement n°" + position + " : " + mIngredients.get(position) + " pour la diet : " + mDiet.getTag());
                 //addDietTagIngredients because languageCode of the product is not necessary languageCode of the Diet !
-                dietRepository.addDietIngredients(mDiet.getTag(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
+                String ingredientTag = "";
+                List<ProductIngredient> productIngredients = product.getIngredients();
+                for (int i = 0; i < productIngredients.size(); i++) {
+                    ProductIngredient productIngredient =  productIngredients.get(i);
+                    if (productIngredient.getText().replace("_","").equals(mIngredients.get(position).toString())) {
+                        ingredientTag = productIngredient.getId();
+                        break;
+                    }
+                }
+                if (ingredientTag.equals("")) {
+                    dietRepository.addDietIngredients(mDiet.getTag(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
+                } else {
+                    dietRepository.addDietIngredientsByTags(mDiet.getTag(),ingredientTag, stateFromView(v));
+                }
                 changeMDiet(mDiet);
             }
             @Override
             public void onLongClicked(int position, View v) {
                 //Log.i("INFO", "LongClick sur le bouton " + v.getId() + ":" + stateFromView(v)  + " de l'enregistrement n°" + position + " : " + mIngredients.get(position));
+                String ingredientTag = "";
+                List<ProductIngredient> productIngredients = product.getIngredients();
+                for (int i = 0; i < productIngredients.size(); i++) {
+                    ProductIngredient productIngredient =  productIngredients.get(i);
+                    if (productIngredient.getText().replace("_","").equals(mIngredients.get(position).toString())) {
+                        ingredientTag = productIngredient.getId();
+                        break;
+                    }
+                }
                 List<Diet> dietsEnabled = dietRepository.getEnabledDiets();
                 for (int i = 0; i < dietsEnabled.size(); i++) {
                     Diet diet =  dietsEnabled.get(i);
-                    dietRepository.addDietIngredients(diet.getTag(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
+                    if (ingredientTag.equals("")) {
+                        dietRepository.addDietIngredients(diet.getTag(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
+                    } else {
+                        dietRepository.addDietIngredientsByTags(diet.getTag(),ingredientTag, stateFromView(v));
+                    }
                 }
                 changeMDiet(mDiet);
             }

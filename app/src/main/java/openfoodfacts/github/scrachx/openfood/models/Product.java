@@ -62,6 +62,8 @@ public class Product implements Serializable {
     @JsonProperty("ingredients_text")
     @JsonDeserialize(converter = ProductStringConverter.class)
     private String ingredientsText;
+    @JsonProperty("ingredients")
+    private List<ProductIngredient> ingredients = new ArrayList<>();
     @JsonProperty("product_name")
     @JsonDeserialize(converter = ProductStringConverter.class)
     private String productName;
@@ -362,6 +364,13 @@ public class Product implements Serializable {
      */
     public String getIngredientsText() {
         return ingredientsText;
+    }
+
+    /**
+     * @return The ingredients
+     */
+    public List<ProductIngredient> getIngredients() {
+        return ingredients;
     }
 
     /**
