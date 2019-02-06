@@ -36,5 +36,5 @@
     <string name="tagline">the free product database</string>
     <string name="product_not_found">A beolvasott %1$s termék nem található az Open Products Facts adatbázisában. Hozzá tudná adni?</string>
     <string name="currently_on_version">Currently on Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Segítsen kategorizálni a termékeket</string>
 </resources>
