@@ -202,7 +202,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                     break;
 
                 case R.id.search_product:
-                    startActivity(new Intent(getActivity(), MainActivity.class));
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.putExtra("product_search", true);
+                    startActivity(intent);
                     break;
 
                 case R.id.home:
