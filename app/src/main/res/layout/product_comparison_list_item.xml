@@ -49,7 +49,9 @@
             android:id="@+id/product_comparison_details_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
             android:layout_below="@id/product_comparison_picture_layout"
             app:cardElevation="4dp">
 
@@ -150,9 +152,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/product_comparison_nutrient_cv"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
             app:cardElevation="4dp"
             android:layout_below="@id/product_comparison_scores_layout">
 
@@ -199,10 +201,9 @@
             android:id="@+id/product_comparison_additive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
             app:cardElevation="4dp"
             android:layout_below="@id/product_comparison_nutrient_cv">
 
@@ -216,8 +217,6 @@
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:background="@drawable/textview_full"
                 android:padding="@dimen/spacing_small"
-                android:textColorLink="@color/light_blue_A700"
-                android:textIsSelectable="true"
                 android:textSize="@dimen/font_normal"
                 android:text="No additive data available for this product"/>
 

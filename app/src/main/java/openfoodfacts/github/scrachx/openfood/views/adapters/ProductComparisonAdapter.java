@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,10 +25,12 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -173,8 +176,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 }
             });
 
-            setMaxCardHeight();
-
             Product product = productsToCompare.get(position);
 
             //set the visibility of UI components
@@ -220,7 +221,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             });
 
             if (isNotBlank(product.getImageUrl())) {
-                holder.productComparisonLabel.setVisibility(View.GONE);
+                holder.productComparisonLabel.setVisibility(View.INVISIBLE);
 
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
                 Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
@@ -450,6 +451,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
 
                                     additivesBuilder.append(additives.get(additives.size() - 1).getName());
                                     ((TextView) v).setText(additivesBuilder.toString());
+                                    setMaxCardHeight();
                                 }
                             }, e -> {
                                 e.printStackTrace();
@@ -466,14 +468,14 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         for (ProductComparisonViewHolder current : viewHolders) {
             productDetailsHeight.add(current.productComparisonDetailsCv.getHeight());
             productNutrientsHeight.add(current.productComparisonNutrientCv.getHeight());
-            productAdditivesHeight.add(current.productComparisonAdditiveCv.getHeight());
+            productAdditivesHeight.add(current.productComparisonAdditiveText.getHeight());
         }
 
         //setting all the heights to be the maximum
         for (ProductComparisonViewHolder current: viewHolders) {
             current.productComparisonDetailsCv.setMinimumHeight(Collections.max(productDetailsHeight));
             current.productComparisonNutrientCv.setMinimumHeight(Collections.max(productNutrientsHeight));
-            current.productComparisonAdditiveCv.setMinimumHeight(Collections.max(productAdditivesHeight));
+            current.productComparisonAdditiveText.setHeight(dpsToPixel(Collections.max(productAdditivesHeight)));
         }
     }
 
@@ -497,5 +499,16 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     @Override
     public void onFailure(String message) {
 
+    }
+
+    //helper method
+    private int dpsToPixel(int dps) {
+        Resources r = context.getResources();
+        float px = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dps+100,
+                r.getDisplayMetrics()
+        );
+        return (int) px;
     }
 }
