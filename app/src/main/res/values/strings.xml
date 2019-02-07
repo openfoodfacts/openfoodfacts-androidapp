@@ -67,6 +67,8 @@
         <item>g</item>
         <item>mg</item>
         <item>kg</item>
+        <item>l</item>
+        <item>cl</item>
     </string-array>
 
     <!-- nutrition energy units -->
