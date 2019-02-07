@@ -17,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 
@@ -27,6 +28,8 @@ public class EnvironmentProductFragment extends BaseFragment {
     @BindView(R.id.environment_info_text)
     TextView environmentInfoText;
 
+    private State mState;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return createView(inflater, container, R.layout.fragment_environment_product);
@@ -36,14 +39,12 @@ public class EnvironmentProductFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        refreshView((State) intent.getExtras().getSerializable("state"));
-    }
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null)
+            mState = (State) intent.getExtras().getSerializable("state");
+        else
+            mState = ProductFragment.mState;
 
-    @Override
-    public void refreshView(State state) {
-        super.refreshView(state);
-
-        final Product product = state.getProduct();
+        final Product product = mState.getProduct();
         Nutriments nutriments = product.getNutriments();
 
         if(nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
@@ -54,13 +55,19 @@ public class EnvironmentProductFragment extends BaseFragment {
         }
 
         if (product.getEnvironmentInfocard() != null && !product.getEnvironmentInfocard().isEmpty()) {
-            environmentInfoText.setText(bold("Carbon Impact: "));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard(), Html.FROM_HTML_MODE_COMPACT));
             } else {
                 environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard()));
             }
         }
+
+        refreshView(mState);
+    }
+
+    @Override
+    public void refreshView(State state) {
+        super.refreshView(state);
 
     }
 
