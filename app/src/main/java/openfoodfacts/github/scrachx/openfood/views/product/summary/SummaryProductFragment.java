@@ -139,6 +139,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView categoryProduct;
     @BindView(R.id.textLabelProduct)
     TextView labelProduct;
+    @BindView(R.id.textOtherInfo)
+    TextView otherInfo;
+    @BindView(R.id.textConservationCond)
+    TextView conservationCond;
+    @BindView(R.id.textRecyclingInstructionToRecycle)
+    TextView recyclingInstructionToRecycle;
+    @BindView(R.id.textRecyclingInstructionToDiscard)
+    TextView recyclingInstructionToDiscard;
     @BindView(R.id.front_picture_layout)
     LinearLayout frontPictureLayout;
     @BindView(R.id.imageViewFront)
@@ -272,6 +280,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         barCodeProduct.setVisibility(View.VISIBLE);
         nameProduct.setVisibility(View.VISIBLE);
         genericNameProduct.setVisibility(View.VISIBLE);
+        otherInfo.setVisibility(View.VISIBLE);
+        conservationCond.setVisibility(View.VISIBLE);
+        recyclingInstructionToDiscard.setVisibility(View.VISIBLE);
+        recyclingInstructionToRecycle.setVisibility(View.VISIBLE);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -341,6 +353,30 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
+        if (isNotBlank(product.getOtherInformation())) {
+            otherInfo.setText(bold(getString(R.string.txtOtherInfo)));
+            otherInfo.append(' ' + product.getOtherInformation());
+        } else {
+            otherInfo.setVisibility(View.GONE);
+        }
+        if (isNotBlank(product.getConservationConditions())) {
+            conservationCond.setText(bold(getString(R.string.txtConservationCond)));
+            conservationCond.append(' ' + product.getConservationConditions());
+        } else {
+            conservationCond.setVisibility(View.GONE);
+        }
+        if (isNotBlank(product.getRecyclingInstructionsToDiscard())) {
+            recyclingInstructionToDiscard.setText(bold(getString(R.string.txtRecyclingInstructionToDiscard)));
+            recyclingInstructionToDiscard.append(' ' + product.getRecyclingInstructionsToDiscard());
+        } else {
+            recyclingInstructionToDiscard.setVisibility(View.GONE);
+        }
+        if (isNotBlank(product.getRecyclingInstructionsToRecycle())) {
+            recyclingInstructionToRecycle.setText(bold(getString(R.string.txtRecyclingInstructionToRecycle)));
+            recyclingInstructionToRecycle.append(' ' + product.getRecyclingInstructionsToRecycle());
+        } else {
+            recyclingInstructionToRecycle.setVisibility(View.GONE);
+        }
         if (isNotBlank(product.getProductName())) {
             nameProduct.setText(product.getProductName());
         } else {
