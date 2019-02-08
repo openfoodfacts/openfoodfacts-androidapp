@@ -582,7 +582,6 @@
     <string name="notify_content">إضغط لعرض المنتجات التى تم إخراجها</string>
     <string name="notification_channel_name">إخراج الإشعارات</string>
     <string name="notify_channel_description">إشعار لإظهار موقع الملف المستخرج</string>
-    <string name="additives">إضافات</string>
     <string name="products_to_be_completed">مُنتجات مراد إكمالها</string>
     <string name="modified_history">تمت إضافة المنتج على %1$s في %2$s من %3$s. آخر تعديل لصفحة المنتج في %4$s في %5$s من قبل %6$s. صفحة المنتج أيضا تم تعديلها من قبل %7$s</string>
     <string name="offline_notification_title">المساهمات دون اتصال التي تحتاج إلى إرسالها</string>
@@ -755,5 +754,7 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">إضافات</string>
     <!-- Used for diets AddOn -->
 </resources>

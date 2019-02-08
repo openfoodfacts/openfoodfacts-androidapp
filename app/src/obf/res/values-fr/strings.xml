@@ -36,4 +36,5 @@
     <string name="tagline">l\'information cosmétique ouverte</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Beauty Facts. Pouvez-vous l\'ajouter ?</string>
     <string name="currently_on_version">Actuellement sur Open Beauty Facts</string>
+    <string name="category_game_btn">Aidez à classer les produits</string>
 </resources>

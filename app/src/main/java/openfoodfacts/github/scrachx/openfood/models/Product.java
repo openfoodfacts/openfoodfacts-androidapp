@@ -129,6 +129,14 @@ public class Product implements Serializable {
     private String nutritionDataPer;
     @JsonProperty("no_nutrition_data")
     private String noNutritionData;
+    @JsonProperty("other_information")
+    private String otherInformation;
+    @JsonProperty("conservation_conditions")
+    private String conservationConditions;
+    @JsonProperty("recycling_instructions_to_discard")
+    private String recyclingInstructionsToDiscard;
+    @JsonProperty("recycling_instructions_to_recycle")
+    private String recyclingInstructionsToRecycle;
     @JsonProperty("warning")
     private String warning;
     @JsonProperty("customer_service")
@@ -553,6 +561,32 @@ public class Product implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    /**
+     * @return Other information
+     */
+    public String getOtherInformation() {
+        return otherInformation;
+    }
+
+    /**
+     * @return Conservation conditions
+     */
+    public String getConservationConditions() {
+        return conservationConditions;
+    }
+
+    /**
+     * @return Recycling instructions to discard
+     */
+    public String getRecyclingInstructionsToDiscard() {
+        return recyclingInstructionsToDiscard;
+    }
+
+    /**
+     * @return Recycling instructions to recycle
+     */
+    public String getRecyclingInstructionsToRecycle() {
+        return recyclingInstructionsToRecycle;
     }
 
     @Override
