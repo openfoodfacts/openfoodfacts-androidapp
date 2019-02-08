@@ -561,6 +561,7 @@ public class Product implements Serializable {
         return noNutritionData;
     }
 
+    public String getEnvironmentInfocard() {return environmentInfocard;}
     /**
      * @return Other information
      */
@@ -588,8 +589,6 @@ public class Product implements Serializable {
     public String getRecyclingInstructionsToRecycle() {
         return recyclingInstructionsToRecycle;
     }
-
-    public String getEnvironmentInfocard() {return environmentInfocard;}
 
     @Override
     public String toString() {
