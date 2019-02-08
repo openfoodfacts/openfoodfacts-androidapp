@@ -35,16 +35,21 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 
+
 public class ExtractOfflineProductService extends IntentService {
 
     private static final String TAG = "EOPService";
+    public static final String IDENTIFIER_ = "INTENT_IDENTIFIER__FOR_BRAODCASTING";
+    public static final String EXTRACT_PROGRESS_UPDATE_KEY = "PROGRESS_UPDATE_FOR_EXTRACTING";
     public static boolean isExtractOfflineProductServiceRunning = false;
     NotificationManager notificationManager;
     NotificationCompat.Builder builder;
     SharedPreferences settings;
+    Intent broadcastIntent;
 
     public ExtractOfflineProductService() {
         super("ExtractOfflineProductService");
+        broadcastIntent = new Intent(IDENTIFIER_);
     }
 
     @Override
@@ -52,13 +57,6 @@ public class ExtractOfflineProductService extends IntentService {
         isExtractOfflineProductServiceRunning = true;
         settings = getSharedPreferences("prefs", Context.MODE_PRIVATE);
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        builder = new NotificationCompat.Builder(this, "export_channel");
-
-        builder.setContentTitle(getString(R.string.app_name))
-                .setContentText(getString(R.string.txtDownloading))
-                .setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_launcher);
-
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             String channelId = "channel";
             CharSequence channelName = getString(R.string.notification_channel_name);
@@ -66,6 +64,12 @@ public class ExtractOfflineProductService extends IntentService {
             NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
             notificationManager.createNotificationChannel(notificationChannel);
         }
+        builder = new NotificationCompat.Builder(this, "channel");
+        builder.setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.txtDownloading))
+                .setAutoCancel(true)
+                .setSmallIcon(R.mipmap.ic_launcher);
+
         unzip(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + "fr.openfoodfacts.org.products.small.zip"), Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
     }
 
@@ -118,6 +122,8 @@ public class ExtractOfflineProductService extends IntentService {
                     .addAction(R.mipmap.ic_launcher, getString(R.string.txtRetry), pendingIntent)
                     .setOngoing(false);
             notificationManager.notify(7, builder.build());
+            broadcastIntent.putExtra(EXTRACT_PROGRESS_UPDATE_KEY, -1);
+            sendBroadcast(broadcastIntent);
         }
 
     }
@@ -175,6 +181,8 @@ public class ExtractOfflineProductService extends IntentService {
                         .setProgress(0, 0, false)
                         .setOngoing(false);
                 notificationManager.notify(7, builder.build());
+                broadcastIntent.putExtra(EXTRACT_PROGRESS_UPDATE_KEY, 100);
+                sendBroadcast(broadcastIntent);
             } else {
                 Intent intent = new Intent(ExtractOfflineProductService.this, MainActivity.class);
                 intent.putExtra("from_extract_service", "retry");
@@ -184,6 +192,8 @@ public class ExtractOfflineProductService extends IntentService {
                         .addAction(R.mipmap.ic_launcher, getString(R.string.txtRetry), pendingIntent)
                         .setOngoing(false);
                 notificationManager.notify(7, builder.build());
+                broadcastIntent.putExtra(EXTRACT_PROGRESS_UPDATE_KEY, -1);
+                sendBroadcast(broadcastIntent);
             }
         }
 
@@ -193,6 +203,8 @@ public class ExtractOfflineProductService extends IntentService {
                     .setProgress(100, progress[0], false)
                     .setOngoing(true);
             notificationManager.notify(7, builder.build());
+            broadcastIntent.putExtra(EXTRACT_PROGRESS_UPDATE_KEY, progress[0]);
+            sendBroadcast(broadcastIntent);
         }
 
         @Override

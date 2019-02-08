@@ -32,6 +32,8 @@ import retrofit2.Response;
 public class DownloadOfflineProductService extends IntentService {
 
     private static final String TAG = "DOPService";
+    public static final String IDENTIFIER = "INTENT_IDENTIFIER_FOR_BRAODCASTING";
+    public static final String DOWNLOAD_PROGRESS_UPDATE_KEY = "PROGRESS_UPDATE_FOR_DOWNLOADING";
     public static boolean isDownloadOfflineProductServiceRunning = false;
     SharedPreferences settings;
     NotificationManager notificationManager;
@@ -39,8 +41,11 @@ public class DownloadOfflineProductService extends IntentService {
 
     DownloadZipFileTask downloadZipFileTask;
 
+    Intent broadcastIntent;
+
     public DownloadOfflineProductService() {
         super("DownloadOfflineProductService");
+        broadcastIntent = new Intent(IDENTIFIER);
     }
 
     @Override
@@ -48,13 +53,6 @@ public class DownloadOfflineProductService extends IntentService {
         isDownloadOfflineProductServiceRunning = true;
         settings = getSharedPreferences("prefs", Context.MODE_PRIVATE);
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        builder = new NotificationCompat.Builder(this, "export_channel");
-
-        builder.setContentTitle(getString(R.string.app_name))
-                .setContentText(getString(R.string.txtDownloading))
-                .setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_launcher);
-
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             String channelId = "channel";
             CharSequence channelName = getString(R.string.notification_channel_name);
@@ -62,6 +60,12 @@ public class DownloadOfflineProductService extends IntentService {
             NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
             notificationManager.createNotificationChannel(notificationChannel);
         }
+        builder = new NotificationCompat.Builder(this, "channel");
+
+        builder.setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.txtDownloading))
+                .setAutoCancel(true)
+                .setSmallIcon(R.mipmap.ic_launcher);
 
         doTask();
     }
@@ -85,7 +89,6 @@ public class DownloadOfflineProductService extends IntentService {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         if (response.isSuccessful()) {
-
                             //downloading completed .. notify processing is started!
                             Log.d(TAG, "server contacted and has file");
                             downloadZipFileTask = new DownloadZipFileTask();
@@ -102,6 +105,8 @@ public class DownloadOfflineProductService extends IntentService {
                                     .setOngoing(false)
                                     .addAction(R.mipmap.ic_launcher, getString(R.string.txtRetry), pendingIntent);
                             notificationManager.notify(7, builder.build());
+                            broadcastIntent.putExtra(DOWNLOAD_PROGRESS_UPDATE_KEY, -1);
+                            sendBroadcast(broadcastIntent);
                         }
                     }
 
@@ -117,6 +122,8 @@ public class DownloadOfflineProductService extends IntentService {
                                 .setOngoing(false)
                                 .addAction(R.mipmap.ic_launcher, getString(R.string.txtRetry), pendingIntent);
                         notificationManager.notify(7, builder.build());
+                        broadcastIntent.putExtra(DOWNLOAD_PROGRESS_UPDATE_KEY, -1);
+                        sendBroadcast(broadcastIntent);
                     }
                 });
     }
@@ -172,6 +179,8 @@ public class DownloadOfflineProductService extends IntentService {
     @SuppressLint("StaticFieldLeak")
     private class DownloadZipFileTask extends AsyncTask<ResponseBody, Pair<Integer, Long>, String> {
 
+        int prevProgress = 0;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -199,13 +208,23 @@ public class DownloadOfflineProductService extends IntentService {
                         .setOngoing(false)
                         .setProgress(0, 0, false);
                 notificationManager.notify(7, builder.build());
+                //sending updates to fragment
+                broadcastIntent.putExtra(DOWNLOAD_PROGRESS_UPDATE_KEY, 100);
+                sendBroadcast(broadcastIntent);
             }
 
             if (progress[0].second > 0) {
                 int currentProgress = (int) ((double) progress[0].first / (double) progress[0].second * 100);
-                builder.setProgress(100, currentProgress, false)
-                        .setOngoing(true);
-                notificationManager.notify(7, builder.build());
+                if (currentProgress > prevProgress) {
+                    builder.setProgress(100, currentProgress, false)
+                            .setOngoing(true);
+                    notificationManager.notify(7, builder.build());
+                    //sending updates to fragment
+                    Log.d("aaaaaaaaaaaaa", currentProgress + "");
+                    broadcastIntent.putExtra(DOWNLOAD_PROGRESS_UPDATE_KEY, currentProgress);
+                    sendBroadcast(broadcastIntent);
+                    prevProgress = currentProgress;
+                }
             }
 
             if (progress[0].first == -1) {
@@ -217,6 +236,9 @@ public class DownloadOfflineProductService extends IntentService {
                         .addAction(R.mipmap.ic_launcher, getString(R.string.txtRetry), pendingIntent)
                         .setProgress(0, 0, false);
                 notificationManager.notify(7, builder.build());
+                //sending updates to fragment
+                broadcastIntent.putExtra(DOWNLOAD_PROGRESS_UPDATE_KEY, -1);
+                sendBroadcast(broadcastIntent);
             }
 
         }

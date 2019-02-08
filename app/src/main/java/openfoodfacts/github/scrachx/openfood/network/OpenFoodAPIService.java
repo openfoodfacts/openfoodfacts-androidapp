@@ -7,7 +7,6 @@ import java.util.Map;
 
 import io.reactivex.Single;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.Search;
@@ -28,6 +27,7 @@ import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 
 /**
  * Define our Open Food Facts API endpoints.

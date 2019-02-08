@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <plurals name="offline_notification_count">
         <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
@@ -948,6 +948,26 @@
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
 
+    <string name="txtDownloading">Downloading Data...</string>
+    <string name="txtRetry">Retry</string>
+    <string name="txtDownloaded">Downloaded Successfully!</string>
+    <string name="offline_download">Offline Products</string>
+    <string name="toast_no_pending">No pending download remaining</string>
+    <string name="toast_starting_download">Starting downloading...</string>
+    <string name="toast_extracting_data">Extracting data...</string>
+    <string name="txtExtracting">Extracting data...</string>
+    <string name="txtExtracted">Extracted Successfully!</string>
+    <string name="txtSaved">Saved Successfully!</string>
+    <string name="txtError">Error in saving file</string>
+    <string name="toast_already_running">Service already running!</string>
+    <string name="txtExtractSave">Extract and Save</string>
+    <string name="txtDownloadError">Error in Downloading!</string>
+    <string name="txtSaveError">Error in Saving or Extraction!</string>
+    <string name="txtNotDownloaded">Start Download!</string>
+    <string name="txtNotSaved">Start Extraction!</string>
+    <string name="txtToastFileNotFound">File not found!</string>
+    <string name="txtToastErrorInDelete">Error in deleting file!</string>
+    <string name="txtToastFileDeleted">File deleted successfully!</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
