@@ -934,9 +934,9 @@
     <string name="set_img_front">Set Image as Front</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
-    <string name="txtDownloading">Downloading data...</string>
-    <string name="txtLoaded">Loaded successfully</string>
-    <string name="txtConnectionError">Failed! Connection error</string>
+    <string name="txtDownloading">Downloading data…</string>
+    <string name="txtLoaded">Translations were loaded successfully</string>
+    <string name="txtConnectionError">Essential translation files couldn't be loaded due to a connection error.</string>
     <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Warning :</string>
     <string name="customer_service">Customer Service :</string>
