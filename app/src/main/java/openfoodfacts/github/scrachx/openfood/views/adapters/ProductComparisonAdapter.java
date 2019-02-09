@@ -123,6 +123,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         public CardView productComparisonAdditiveCv;
         public TextView productComparisonAdditiveText;
         public Button fullProductButton;
+        public ImageView productComparisonCo2Icon;
 
         public ProductComparisonViewHolder(View view) {
             super(view);
@@ -141,6 +142,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             productComparisonAdditiveCv = (CardView) view.findViewById(R.id.product_comparison_additive);
             productComparisonAdditiveText = (TextView) view.findViewById(R.id.product_comparison_additive_text);
             fullProductButton = (Button) view.findViewById(R.id.full_product_button);
+            productComparisonCo2Icon = (ImageView) view.findViewById(R.id.product_comparison_co2_icon);
         }
     }
 
@@ -296,6 +298,21 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
             } else {
                 holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(null));
+            }
+
+            if(product.getEnvironmentImpactLevelTags()!=null) {
+                List<String> tags=product.getEnvironmentImpactLevelTags();
+                String tag=tags.get(0).replace("\"","");
+                holder.productComparisonCo2Icon.setVisibility(View.VISIBLE);
+                if(tag.equals("en-high")){
+                    holder.productComparisonCo2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
+                } else if(tag.equals("en-low")){
+                    holder.productComparisonCo2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
+                } else if(tag.equals("en-medium")){
+                    holder.productComparisonCo2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
+                } else {
+                    holder.productComparisonCo2Icon.setVisibility(View.GONE);
+                }
             }
 
             List<String> additivesTags = product.getAdditivesTags();

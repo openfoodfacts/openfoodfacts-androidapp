@@ -105,24 +105,28 @@
                 android:id="@+id/product_comparison_imageGrade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:adjustViewBounds="true"
                 android:maxWidth="180dp"
                 android:scaleType="fitCenter"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="16dp"
-                tools:src="@drawable/nnc_a" />
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="4dp"
+                tools:src="@drawable/nnc_a"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="16dp"
+                android:layout_alignParentStart="true" />
 
             <ImageView
                 android:id="@+id/product_comparison_nova_group"
-                android:layout_width="wrap_content"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="@dimen/horizontal_margin"
-                android:layout_marginEnd="@dimen/horizontal_margin"
-                android:layout_marginRight="@dimen/horizontal_margin"
                 android:layout_marginBottom="@dimen/horizontal_margin"
-                android:maxWidth="20dp"
+                android:layout_marginLeft="@dimen/spacing_small"
                 android:paddingStart="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="@dimen/spacing_small"
@@ -131,20 +135,22 @@
                 android:paddingBottom="@dimen/spacing_small"
                 android:scaleType="fitCenter"
                 android:layout_toRightOf="@id/product_comparison_imageGrade"
-                tools:src="@drawable/ic_nova_group_1" />
+                tools:src="@drawable/ic_nova_group_1"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_toEndOf="@id/product_comparison_imageGrade" />
 
-            <Button
-                android:id="@+id/add_nutriscore_prompt"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Add nutrition facts to compute the Nutri-Score" />
+            <ImageView
+                android:id="@+id/product_comparison_co2_icon"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/product_comparison_nova_group"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/spacing_tiny"
+                android:layout_marginRight="@dimen/spacing_tiny"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/ic_co2_high_24dp"
+                android:layout_toEndOf="@id/product_comparison_nova_group" />
 
         </RelativeLayout>
 
