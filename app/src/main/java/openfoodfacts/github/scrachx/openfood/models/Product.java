@@ -121,6 +121,8 @@ public class Product implements Serializable {
     private List<String> editorsTags = new ArrayList<>();
     @JsonProperty("nova_groups")
     private String novaGroups;
+    @JsonProperty("environment_impact_level_tags")
+    private List<String> environmentImpactLevelTags;
     @JsonProperty("lang")
     private String lang;
     @JsonProperty("purchase_places")
@@ -543,6 +545,9 @@ public class Product implements Serializable {
 
     public String getNovaGroups() {
         return novaGroups;
+    }
+    public List<String> getEnvironmentImpactLevelTags() {
+        return environmentImpactLevelTags;
     }
 
     public String getLang() {

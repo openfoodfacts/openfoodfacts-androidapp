@@ -178,6 +178,28 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@drawable/ic_nova_group_1" />
 
+                <ImageView
+                    android:id="@+id/co2_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/horizontal_margin"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:layout_marginRight="@dimen/horizontal_margin"
+                    android:layout_marginBottom="@dimen/horizontal_margin"
+                    android:maxWidth="20dp"
+                    android:paddingStart="0dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="@dimen/activity_horizontal_margin"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/nova_group"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@drawable/ic_co2_high_24dp" />
+
                 <Button
                     android:id="@+id/add_nutriscore_prompt"
                     android:layout_width="wrap_content"
