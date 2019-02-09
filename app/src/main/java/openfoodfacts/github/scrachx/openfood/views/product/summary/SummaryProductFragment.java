@@ -166,6 +166,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView img;
     @BindView(R.id.nova_group)
     ImageView novaGroup;
+    @BindView(R.id.co2_icon)
+    ImageView co2Icon;
     @BindView(R.id.scores_layout)
     ConstraintLayout scoresLayout;
     @BindView(R.id.ingredient_image_prompt_layout)
@@ -650,6 +652,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             if (product.getNovaGroups() == null && product.getNutritionGradeFr() == null) {
                 img.setVisibility(View.GONE);
                 novaGroup.setVisibility(View.GONE);
+            }
+            if(product.getEnvironmentImpactLevelTags()!=null) {
+                List<String> tags=product.getEnvironmentImpactLevelTags();
+                String tag=tags.get(0).replace("\"","");
+                co2Icon.setVisibility(View.VISIBLE);
+                if(tag.equals("en-high")){
+                    co2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
+                } else if(tag.equals("en-low")){
+                    co2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
+                } else if(tag.equals("en-medium")){
+                    co2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
+                } else {
+                    co2Icon.setVisibility(View.GONE);
+                }
             }
 
         } else {
