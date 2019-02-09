@@ -143,6 +143,8 @@ public class Product implements Serializable {
     private String warning;
     @JsonProperty("customer_service")
     private String customerService;
+    @JsonProperty("environment_infocard")
+    private String environmentInfocard;
 
 
     private Map<String, Object> additionalProperties = new HashMap<>();
@@ -564,6 +566,7 @@ public class Product implements Serializable {
         return noNutritionData;
     }
 
+    public String getEnvironmentInfocard() {return environmentInfocard;}
     /**
      * @return Other information
      */
