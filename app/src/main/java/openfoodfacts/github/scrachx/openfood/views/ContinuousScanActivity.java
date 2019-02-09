@@ -364,9 +364,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 //        intent.putExtra("state", st);
 //        startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
 
-        SelectFlavorBottomSheet bottomSheetFragment = new SelectFlavorBottomSheet();
-        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
-        bottomSheetFragment
+//        SelectFlavorBottomSheet bottomSheetFragment = new SelectFlavorBottomSheet();
+//        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
     }
 
     private void showAllViews() {
