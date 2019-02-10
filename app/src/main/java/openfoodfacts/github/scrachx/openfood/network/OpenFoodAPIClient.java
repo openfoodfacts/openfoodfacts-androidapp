@@ -19,6 +19,7 @@ import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Cache;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
@@ -58,6 +59,7 @@ public class OpenFoodAPIClient {
     private DaoSession daoSession;
 
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
+    private static OkHttpClient httpCacheClient;
 
 
     private final OpenFoodAPIService apiService;
@@ -65,6 +67,14 @@ public class OpenFoodAPIClient {
 
     public OpenFoodAPIClient(Activity activity) {
         this(BuildConfig.HOST);
+        mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
+        mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
+        mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
+        mActivity = activity;
+    }
+
+    public OpenFoodAPIClient(Activity activity, Cache cache) {
+        this(BuildConfig.HOST, cache);
         mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
         mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
         mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
@@ -89,6 +99,19 @@ public class OpenFoodAPIClient {
         apiService = new Retrofit.Builder()
                 .baseUrl(apiUrl)
                 .client(httpClient)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(jacksonConverterFactory)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .build()
+                .create(OpenFoodAPIService.class);
+    }
+
+    private OpenFoodAPIClient(String apiUrl, Cache cache) {
+        httpCacheClient = Utils.HttpClientBuilder(cache);
+
+        apiService = new Retrofit.Builder()
+                .baseUrl(apiUrl)
+                .client(httpCacheClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(jacksonConverterFactory)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))

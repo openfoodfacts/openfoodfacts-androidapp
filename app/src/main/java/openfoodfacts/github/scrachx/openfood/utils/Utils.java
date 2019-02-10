@@ -59,9 +59,14 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -441,6 +446,104 @@ public class Utils {
                     .build();
         }
         return httpClient;
+    }
+
+    /**
+     * Returns an OkHttpClient instance when caching is required to be done.
+     *
+     * @param cache with the directory for storage.
+     * @return httpClient with support of caching
+     */
+
+    public static OkHttpClient HttpClientBuilder(Cache cache) {
+        OkHttpClient httpClient;
+        if (Build.VERSION.SDK_INT == 24) {
+            ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                    .tlsVersions(TlsVersion.TLS_1_2)
+                    .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                    .build();
+
+            httpClient = new OkHttpClient.Builder()
+                    .cache(cache)
+                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                    .readTimeout(30000, TimeUnit.MILLISECONDS)
+                    .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                    .connectionSpecs(Collections.singletonList(spec))
+                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                    .addNetworkInterceptor(provideCacheInterceptor())
+                    .addInterceptor(provideOfflineCacheInterceptor())
+                    .build();
+        } else {
+            httpClient = new OkHttpClient.Builder()
+                    .cache(cache)
+                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                    .readTimeout(30000, TimeUnit.MILLISECONDS)
+                    .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                    .addNetworkInterceptor(provideCacheInterceptor())
+                    .addInterceptor(provideOfflineCacheInterceptor())
+                    .build();
+        }
+        return httpClient;
+    }
+
+    /**
+     * These methods return interceptors with Cache control added onto the responses.
+     * @return Interceptor
+     */
+
+    private static Interceptor provideCacheInterceptor() {
+
+        return new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request();
+                Response originalResponse = chain.proceed(request);
+                String cacheControl = originalResponse.header("Cache-Control");
+
+                if (cacheControl == null || cacheControl.contains("no-store") || cacheControl.contains("no-cache") ||
+                        cacheControl.contains("must-revalidate") || cacheControl.contains("max-stale=0")) {
+
+                    //The max-stale has been arbitrarily set to 1 Day
+                    CacheControl cc = new CacheControl.Builder()
+                            .maxStale(1, TimeUnit.DAYS)
+                            .build();
+
+                    request = request.newBuilder()
+                            .cacheControl(cc)
+                            .build();
+
+                    return chain.proceed(request);
+                } else {
+                    return originalResponse;
+                }
+            }
+        };
+
+    }
+
+
+    private static Interceptor provideOfflineCacheInterceptor() {
+
+        return new Interceptor() {
+            @Override
+            public Response intercept(Interceptor.Chain chain) throws IOException {
+                try {
+                    return chain.proceed(chain.request());
+                } catch (Exception e) {
+                    //The max-stale has been arbitrarily set to 1 Day
+                    CacheControl cacheControl = new CacheControl.Builder()
+                            .onlyIfCached()
+                            .maxStale(1, TimeUnit.DAYS)
+                            .build();
+
+                    Request offlineRequest = chain.request().newBuilder()
+                            .cacheControl(cacheControl)
+                            .build();
+                    return chain.proceed(offlineRequest);
+                }
+            }
+        };
     }
 
     /**

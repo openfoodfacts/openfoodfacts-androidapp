@@ -23,6 +23,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import butterknife.BindView;
@@ -31,6 +33,7 @@ import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Cache;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -63,8 +66,10 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     TextView textHome;
 
     private OpenFoodAPIService apiClient;
+    private OpenFoodAPIService apiCacheClient;
     private SharedPreferences sp;
     private String taglineURL;
+    private Cache cache;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,6 +82,9 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+        File httpCacheDirectory = new File(getContext().getCacheDir(), "offlineCache");
+        //Allocates 10 MB for cache storage
+        cache = new Cache(httpCacheDirectory, 10 * 1024 * 1024);
     }
 
     @Override
@@ -234,7 +242,8 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     private void getTagline(){
 
-       Call<ArrayList<TaglineLanguageModel>> call = apiClient.getTagline();
+       apiCacheClient = new OpenFoodAPIClient(getActivity(), cache).getAPIService();
+       Call<ArrayList<TaglineLanguageModel>> call = apiCacheClient.getTagline();
        call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
            @Override
            public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
