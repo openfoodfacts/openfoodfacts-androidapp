@@ -207,7 +207,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
                                 intent.putExtra("product_found", true);
                                 ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
-                                productsToCompare.add(product);
+                                if (productsToCompare.contains(product)) {
+                                    intent.putExtra("product_already_exists", true);
+                                } else {
+                                    productsToCompare.add(product);
+                                }
                                 intent.putExtra("products_to_compare", productsToCompare);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);

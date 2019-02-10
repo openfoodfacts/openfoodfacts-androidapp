@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -60,6 +61,9 @@ public class ProductComparisonActivity extends AppCompatActivity {
 
         if (getIntent().getExtras() != null && getIntent().getBooleanExtra("product_found", false)){
             products = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
+            if (getIntent().getBooleanExtra("product_already_exists", false)) {
+                Toast.makeText(this, "The product already exists in the comparison list", Toast.LENGTH_SHORT).show();
+            }
         }
 
         productComparisonButton = findViewById(R.id.product_comparison_button);

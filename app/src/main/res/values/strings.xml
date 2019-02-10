@@ -929,6 +929,7 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
+    <string name="compare_product_prompt">Compare this product</string>
 
     <!-- Used for diets AddOn -->
 </resources>
