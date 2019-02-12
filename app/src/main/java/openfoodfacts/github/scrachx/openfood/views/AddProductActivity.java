@@ -243,6 +243,15 @@ public class AddProductActivity extends AppCompatActivity {
         final State state = (State) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
         Product mEditProduct = (Product) getIntent().getSerializableExtra("edit_product");
+
+        if(getIntent().getBooleanExtra("perform_ocr",false)) {
+            bundle.putBoolean("perform_ocr",true);
+        }
+
+        if (getIntent().getBooleanExtra("send_updated", false)) {
+            bundle.putBoolean("send_updated", true);
+        }
+
         if (state != null) {
             mProduct = state.getProduct();
             // Search if the barcode already exists in the OfflineSavedProducts db
@@ -320,7 +329,7 @@ public class AddProductActivity extends AppCompatActivity {
         }
         String code = productDetails.get("code");
         String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguage() + ",product_name_" + getProductLanguage();
-        client.getExistingProductDetails(code, fields)
+        client.getExistingProductDetails(code, fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
@@ -893,8 +902,15 @@ public class AddProductActivity extends AppCompatActivity {
             String value = entry.getValue();
             Log.d(key, value);
         }
+        final SharedPreferences settings = getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
 
-        client.saveProductSingle(code, productDetails, PRODUCT_API_COMMENT + " " + Utils.getVersionName(this))
+        String comment = PRODUCT_API_COMMENT + " " + Utils.getVersionName(this);
+        if (login.isEmpty()) {
+            comment += " ( Added by " + Installation.id(this) + " )";
+        }
+
+        client.saveProductSingle(code, productDetails, comment)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
                     @Override

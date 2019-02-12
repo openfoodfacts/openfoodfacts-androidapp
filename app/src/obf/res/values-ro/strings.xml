@@ -35,5 +35,6 @@
     <!-- OBF tagline in different languages -->
     <string name="tagline">baza de date gratuită a produselor cosmetice</string>
     <string name="product_not_found">Produsul %1$s pe care l-ai scanat nu există încă în Open Beauty Facts. Îl poți adăuga tu?</string>
-    <string name="currently_on_version">Currently on Open Beauty Facts</string>
+    <string name="currently_on_version">Acum pe Open Beauty Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>

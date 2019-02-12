@@ -34,10 +34,17 @@
         <item>Ingredientes</item>
         <item>Nutrição</item>
         <item>Tabela Nutricional</item>
+        <item>Environment</item>
+    </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>Product Photos</item>
+        <item>Ingredient Analysis</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -256,7 +263,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="login_button">Iniciar sessão</string>
     <string name="create_account_button">Criar uma conta</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa, por favor confirme sempre por si mesmo! </string>
+    <string name="warning_alert_data">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa, por favor confirme sempre por si mesmo! </string>
     <string name="from_gallery">Galeria de imagens</string>
     <string name="product_sent">Produto enviado com sucesso</string>
     <string name="action_edit_product">Editar produto</string>
@@ -332,6 +339,10 @@
     <string name="nutriment_serving_size">Por porção : </string>
     <string name="action_manage_account">Gerenciar conta</string>
     <string name="action_contributes">Suas contribuições</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">Terminar sessão</string>
     <string name="contribution_without_account">Poderá iniciar sessão ou criar uma conta para manter as suas contribuições</string>
     <string name="textCarbonFootprint">Pegada ecológica / emissões CO2: </string>
@@ -345,16 +356,16 @@
     <string name="txt_no_results">Sem resultados</string>
     <string name="txt_extend_search">Tente alargar a pesquisa ou adicione o produto</string>
     <string name="txt_no_matching__category_products">Infelizmente não temos nenhum produto nesta categoria, você pode adicionar um?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
+    <string name="txt_no_matching_allergen_products">Não, não temos produtos com esse alérgeno, você pode adicionar um?</string>
+    <string name="txt_no_matching_label_products">Não, não temos produtos com este rótulo, você pode adicionar um?</string>
+    <string name="txt_no_matching_additive_products">Não, não temos nenhum produto com esse aditivo, você pode adicionar um?</string>
+    <string name="txt_no_matching_country_products">Não, não temos produtos deste país, você pode adicionar um?</string>
+    <string name="txt_no_matching_store_products">Não, não temos produtos desta loja, você pode adicionar um?</string>
+    <string name="txt_no_matching_packaging_products">Não, não temos produtos com essa embalagem, você pode adicionar um?</string>
+    <string name="txt_no_matching_brand_products">Não, não temos produtos com essa marca, você pode adicionar um?</string>
+    <string name="txt_no_matching_state_products">Não, não temos nenhum produto desse estado, você pode adicionar um?</string>
+    <string name="txt_no_matching_incomplete_products">Nós não temos produtos incompletos! Adicionar um novo produto?</string>
+    <string name="txt_no_matching_contributor_products">Não, não temos produtos desse contribuidor, você pode adicionar um?</string>
     <string name="txt_no_matching_products">Não encontrámos nenhum produto correspondente.\nPoderá tentar:</string>
     <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Food Facts</string>
     <string name="txt_cant_load_search_results">Não foi possível carregar os resultados da pesquisa</string>
@@ -487,7 +498,7 @@
     <string name="image_upload_resolution">Resolução de upload de imagens</string>
     <string name="can_add_barcode">Problemas com o scanner?\nArraste para cima para digitar o código de barras</string>
     <string name="wikidata_information">Indo além</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
+    <string name="wikidata_unavailable">Ainda não há página da Wikipédia no seu idioma.</string>
     <string name="description">Descrição: </string>
     <string name="title">Título: </string>
     <string name="Wikipedia">Ver na Wikipédia</string>
@@ -495,7 +506,7 @@
     <string name="swipe_down">Deslizar para baixo</string>
     <string name="brand_string">Marca</string>
     <string name="additive_string">Aditivo</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">Alérgeno</string>
     <string name="search_string">Procurar</string>
     <string name="country_string">Países onde foram vendidos</string>
     <string name="store_subtitle">Loja</string>
@@ -687,20 +698,53 @@
     <string name="efsa_warning_high_risk">A Autoridade Europeia para a Segurança dos Alimentos (EFSA) determinou que alguns grupos populacionais têm um alto risco de consumir muito %1$s.</string>
     <string name="legend_noael">dose acima com efeito adverso observado (NOAEL)</string>
     <string name="legend_adi">acima de ingestão diária aceitável (ADI)</string>
+    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="your_diets">Sua(s) dieta(s)</string>
+    <string name="diet_name">Nome da dieta</string>
     <string name="diets_dialog_warning_title">Aviso</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Seus dados de dieta(s) permanecem no seu dispositivo. Nada será carregado a qualquer lugar.</string>
     <string name="EditDiet_Name">Nome</string>
-    <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
-    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
-    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Description">Descrição</string>
+    <string name="EditDiet_Enabled_Disabled">Activado/Desactivado</string>
+    <string name="EditDiet_Authorised_Ingredients">Ingredientes autorizados</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">Liste os ingredientes autorizados que devem aparecer em verde. Exemplo: maçã, cogumelo, tomate… Você pode completar esta lista mais tarde.</string>
+    <string name="EditDiet_So_So_Ingredients">Ingredientes medíocres</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Liste os ingredientes problemáticos que devem aparecer em laranja. Exemplo: ovo, peixe… Você pode completar esta lista mais tarde.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Ingredientes não autorizados</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Liste os ingredientes não autorizados que devem aparecer em vermelho. Exemplo: glúten, leite, óleo de palma, açúcar ... Você pode completar esta lista mais tarde.</string>
+    <string name="extract_ingredients_prompt">Extrair ingredientes</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="nutrition_image_prompt_text">Tire uma foto dos factos nutricionais</string>
+    <string name="ingredient_image_prompt_text">Tirar foto aos ingredientes</string>
+    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
+    <string name="report_img">Report Image</string>
+    <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="set_image_name">Successfully set the image as</string>
+    <string name="warning">Warning :</string>
+    <string name="customer_service">Customer Service :</string>
+    <string name="fast_addition_mode_title">Fast Addition Mode</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Aditivos</string>
     <!-- Used for diets AddOn -->
 </resources>

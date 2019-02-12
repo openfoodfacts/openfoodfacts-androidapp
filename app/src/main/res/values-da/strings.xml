@@ -34,10 +34,17 @@
         <item>Ingredienser</item>
         <item>Ernæring</item>
         <item>Ernæringstabel</item>
+        <item>Miljø</item>
+    </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>Produktbilleder</item>
+        <item>Ingrediensanalyse</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -256,7 +263,7 @@
     <string name="cancel_button">Annullér</string>
     <string name="login_button">Brugernavn</string>
     <string name="create_account_button">Opret konto</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
+    <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
     <string name="from_gallery">Fra galleri</string>
     <string name="product_sent">Produkt sendt med succes</string>
     <string name="action_edit_product">Rediger produkt</string>
@@ -332,6 +339,10 @@
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Administrer konto</string>
     <string name="action_contributes">Dine bidrag</string>
+    <string name="choose_energy_unit">Vælg dine foretrukne enheder for energi til ernæringstabellen</string>
+    <string name="energy_pref_title">Foretrukken enhed til energi</string>
+    <string name="choose_volume_unit">Vælg dine foretrukne enheder for mængde til ernæringstabellen</string>
+    <string name="volume_pref_title">Foretrukken enhed til mængde</string>
     <string name="logout_drawer">Log ud</string>
     <string name="contribution_without_account">Du kan logge ind eller oprette en konto for at gemme bidrag</string>
     <string name="textCarbonFootprint">CO2-regnskab / emissioner: </string>
@@ -687,6 +698,9 @@
     <string name="efsa_warning_high_risk">Den Europæiske Fødevaresikkerhedsautoritet (EFSA) har fastslået, at visse befolkningsgrupper har høj risiko for at indtage for meget %1$s.</string>
     <string name="legend_noael">oven dosis med observeret bivirkning (NOAEL)</string>
     <string name="legend_adi">over Acceptabelt Dagligt Indtag (ADI)</string>
+    <string name="max_energy_val_msg">Denne værdi er over 2000 kcal pr. 100 g. Kan du rette det?</string>
+    <string name="max_nutrient_val_msg">Indtastet værdi er mere end angivet pr. serveringsstørrelse</string>
+    <string name="update_image">Send et opdateret billede</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Din(-e) diæt(-er)</string>
@@ -702,5 +716,35 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de ikke-godkendte ingredienser, som skal vises med rødt. Eksempel: Gluten, mælk, plameolie, sukker... Du kan færdiggøre listen senere.</string>
+    <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
+    <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
+    <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Tilføj næringsfakta og en kategori til beregning af Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">Dette produkt har ikke næringsfakta</string>
+    <string name="nutrition_image_prompt_text">Tag et foto af ernæringsoversigten</string>
+    <string name="ingredient_image_prompt_text">Tag et foto af ingredienserne</string>
+    <string name="category_game_btn">Hjælp med at kategorisere produkter for at beregne Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
+    <string name="report_img">Rapporter billede</string>
+    <string name="detected_ingredients">Detekterede ingredienser</string>
+    <string name="set_image_name">Foto angivet som</string>
+    <string name="warning">Advarsel:</string>
+    <string name="customer_service">Kundeservice:</string>
+    <string name="fast_addition_mode_title">Hurtig tilføjelse-funktion</string>
+    <string name="fast_addition_mode">Gør det muligt hurtigt at tilføje produkter med færre attributter</string>
+    <string name="addtive_search">Søg efter en tilsætningsstof</string>
+    <string name="additives">Tilsætningsstoffer</string>
     <!-- Used for diets AddOn -->
 </resources>

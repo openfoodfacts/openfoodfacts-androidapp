@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_ingredient_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textSize="22sp"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_ingredient_name"
+        android:background="@color/blue_grey_100" />
+
+
+</RelativeLayout>

@@ -36,4 +36,5 @@
     <string name="tagline">brezplačna baza podatkov o izdelkih</string>
     <string name="product_not_found">Skeniran izdelek %1$s še ne obstaja v Open Products Facts. Ali ga lahko dodate?</string>
     <string name="currently_on_version">Trenutno na Open Products Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>

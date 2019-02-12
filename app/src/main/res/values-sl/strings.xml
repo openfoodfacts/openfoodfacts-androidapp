@@ -42,10 +42,17 @@
         <item>Sestavine</item>
         <item>Prehrana</item>
         <item>Prehranska tabela</item>
+        <item>Okolje</item>
+    </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>Fotografije izdelka</item>
+        <item>Analiza sestavin</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -77,9 +84,9 @@
         <item>Holesterol</item>
         <item>Krom</item>
         <item>Baker</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
+        <item>Dihomo-gama-linolenska kislina / DGLA (20: 3 n-6)</item>
+        <item>Dokozaheksaenska kislina / DHA (22: 6 n-3)</item>
+        <item>Eikosapentaenojska kislina / EPA (20: 5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
         <item>Flurid</item>
@@ -264,7 +271,7 @@
     <string name="cancel_button">Prekliči</string>
     <string name="login_button">Prijava</string>
     <string name="create_account_button">Ustvari račun</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Informacije o alergijah nikoli ne bodo poslane na strežnik Open Food Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% točno, zato vas prosimo, da dvakrat preverite sami! </string>
+    <string name="warning_alert_data">Informacije o alergijah nikoli ne bodo poslane na strežnik Open Food Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% točno, zato vas prosimo, da dvakrat preverite sami! </string>
     <string name="from_gallery">Iz galerije</string>
     <string name="product_sent">Izdelek je uspešno poslan</string>
     <string name="action_edit_product">Uredi izdelek</string>
@@ -340,6 +347,10 @@
     <string name="nutriment_serving_size">Na porcijo : </string>
     <string name="action_manage_account">Upravljajte račun</string>
     <string name="action_contributes">Vaši prispevki</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">Odjava</string>
     <string name="contribution_without_account">Prijavite se lahko ali ustvarite račun, s katerim boste ohranili svoje prispevke</string>
     <string name="textCarbonFootprint">Ogljični odtis / emisije CO2: </string>
@@ -366,7 +377,7 @@
     <string name="txt_no_matching_products">Nismo našli ustreznih izdelkov. \nLahko poizkusite :</string>
     <string name="txt_broaden_search">- razširitev iskanja \n- optično preberi in jo dodaj v Open Food Facts</string>
     <string name="txt_cant_load_search_results">Rezultatov iskanja ni mogoče naložiti</string>
-    <string name="something_went_wrong">Sorry, something went wrong…</string>
+    <string name="something_went_wrong">Oprostite, nekaj je šlo narobe…</string>
     <string name="txt_try_again">Poskusi znova</string>
     <string name="nutrition_lactose">Laktoza</string>
     <string name="nutrition_casein">Kazein</string>
@@ -435,7 +446,7 @@
     <string name="take_more_pictures">Naredite več slik</string>
     <string name="txtSaturatedFat">Nasičena maščoba</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Shortcut Not Available</string>
+    <string name="disabled_message">Bližnjica ni na voljo</string>
     <string name="scan_shortcut_short_label">Preberi</string>
     <string name="scan_shortcut_long_label">Preberi izdelek</string>
     <string name="barcode_shortcut_short_label">Iskanje</string>
@@ -460,14 +471,14 @@
     <string name="device_offline_dialog_negative">Opusti</string>
     <string name="device_offline_dialog_positive">Nastavitve</string>
     <string name="saving">Shranjevanje…</string>
-    <string name="scan_first_product">Scan First Product</string>
-    <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
-    <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
-    <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
+    <string name="scan_first_product">Skenirajte prvi izdelek</string>
+    <string name="preference_enable_mobile_data_title">Naloži z uporabo mobilnih podatkov</string>
+    <string name="preference_enable_mobile_data_summary_on">Nove izdelke naloži z mobilnimi podatki in WiFi-jem</string>
+    <string name="preference_enable_mobile_data_summary_off">Nove izdelke naloži samo z uporabo WiFi-ja</string>
     <string name="device_on_mobile_data_warning_title">Informacije</string>
-    <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+    <string name="device_on_mobile_data_warning_message">Nalaganje v mobilnih podatkih je onemogočeno. Povežite se z WiFi ali spremenite nastavitve</string>
     <string name="device_on_mobile_data_warning_positive">Nastavitve</string>
-    <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+    <string name="device_on_mobile_data_warning_negative">Vseeno naloži</string>
     <string name="preference_choose_language_dialog_title">Izberi jezik</string>
     <string name="FAQ">Pogosta vprašanja</string>
     <string name="FrequentlyAskedQuestions">Pogosto zastavljena vprašanja</string>
@@ -596,7 +607,7 @@
     <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Izberite hranilo</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
-    <string name="hint_product_URL">Link of the official page of the product</string>
+    <string name="hint_product_URL">Povezava na uradno stran izdelka</string>
     <string name="product_language">Jezik izdelka: </string>
     <string name="hint_emb_codes">Primeri: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Uradna spletna stran</string>
@@ -604,14 +615,14 @@
     <string name="add_at_least_one_picture">Pred nadaljevanjem dodajte vsaj eno sliko tega izdelka</string>
     <string name="image_uploaded_successfully">Slika uspešno naložena</string>
     <string name="error_adding_product_photos">Nekaj je šlo narobe med poskusom dodajanja fotografije izdelka</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
+    <string name="ingredients_overwrite">Prepiši sestavine</string>
     <string name="choose_mine">Izberi mojo</string>
-    <string name="keep_previous_version">Keep previous version</string>
+    <string name="keep_previous_version">Obdrži prejšnjo različico</string>
     <string name="product_name_overwrite">Prepiši ime izdelka</string>
     <string name="yours">Vaše: </string>
     <string name="currently_on">Trenutno na %s: </string>
-    <string name="quantity_overwrite">Quantity overwrite</string>
-    <string name="link_overwrite">Link overwrite</string>
+    <string name="quantity_overwrite">Prepiši količine</string>
+    <string name="link_overwrite">Prepiši povezavo</string>
     <string name="save_product">Želite shraniti ta izdelek?</string>
     <string name="error_adding_product">Nekaj je šlo narobe pri dodajanju izdelka</string>
     <string name="photos">Fotografije</string>
@@ -695,6 +706,9 @@
     <string name="efsa_warning_high_risk">Evropska agencija za varnost hrane (EFSA) je ugotovila, da imajo nekatere skupine prebivalstva visoko tveganje, če uživajo preveč %1$s.</string>
     <string name="legend_noael">nad odmerkom z opaženim škodljivim učinkom (NOAEL)</string>
     <string name="legend_adi">nad sprejemljivim dnevnim vnosom (ADI)</string>
+    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="update_image">Pošlji posodobljeno sliko</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Your diet(s)</string>
@@ -702,13 +716,43 @@
     <string name="diets_dialog_warning_title">Opozorilo</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
     <string name="EditDiet_Name">Ime</string>
-    <string name="EditDiet_Description">Description</string>
+    <string name="EditDiet_Description">Opis</string>
     <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
     <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
     <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Seznam problematičnih sestavin, ki naj se prikaže v oranžni barvi. Primer: jajce, ribe ... Ta seznam lahko dokončate kasneje.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Neodobrene sestavine</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Seznam neodobrenih sestavin, ki naj se prikaže v rdeči barvi. Primer: brez glutena, mleka, palmovo olje, sladkor... Ta seznam lahko dokončate pozneje.</string>
+    <string name="extract_ingredients_prompt">Preberi sestavine</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
+    <string name="ingredient_image_prompt_text">Fotografiraj sestavine</string>
+    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Različica</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
+    <string name="report_img">Prijavi sliko</string>
+    <string name="detected_ingredients">Prepoznane sestavine</string>
+    <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
+    <string name="warning">Opozorilo:</string>
+    <string name="customer_service">Podpora uporabnikom:</string>
+    <string name="fast_addition_mode_title">Način za hitro dodajanje</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Aditivi</string>
     <!-- Used for diets AddOn -->
 </resources>

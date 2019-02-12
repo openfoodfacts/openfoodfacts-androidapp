@@ -11,14 +11,14 @@
 - Open Beauty Facts vam pomagajo razumeti smisel drobnega tiska na nalepkah izdelkov.
 - Da bi razkrili seznam sestavin, vam ni potrebno biti kemik ali se učiti latinščino, :-)
 - Skenirajte: vodice po britju, losjone za telo, kreme, deodorante, črtala, pudre, dišave, šminke, ličila, maske, parfume, šampone, mila, gele za prhanje, lake za nohte in še veliko več…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+- Menimo, da je lahko koristno za ljudi s kožnimi boleznimi, kot so akne, luskavica, ekcemi… da bi lahko izbrali boljše kozmetične izdelke.
 
 *** Dobro deluje v vseh pogojih ***
 - lahko dodate nove izdelke, tudi če trenutno nimate internetne povezave.
 - Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije
 - Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
 
-*** Your cosmetics, your data ***
+*** Vaša kozmetika, vaši podatki ***
 - Vaši podatki so vaši in se nikoli ne pošljejo na splet
 - Aplikacijo lahko uporabljate anonimno
 - Zgodovino optičnega branja lahko izvozite

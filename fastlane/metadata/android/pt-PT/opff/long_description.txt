@@ -20,15 +20,15 @@ You will also be able to find (according to the indications present on the produ
 - brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Funciona bem em qualquer condição ***
+- Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento.
+- A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
+- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
 
 *** Your pet food, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Pode usar o aplicativo anonimamente
+- Pode exportar seu histórico de digitalizações
 
 
 For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.

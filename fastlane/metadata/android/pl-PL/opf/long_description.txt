@@ -4,7 +4,7 @@ Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składn
 
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Jest dużo ciekawych projectków do których możesz dołączyć. 
 - You can start contributing today by adding your first product. 
 
 ***Poznaj fakty***
@@ -14,7 +14,7 @@ Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składn
 - You can add all the items from your collections
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+- Otwarty ??? Facts - Create your own open database :-)
 
 ***Działa dobrze w każdej sytuacji***
 - Możesz dodać nowe produkty, nawet nie mając teraz połączenia.
@@ -45,7 +45,7 @@ Open Crayons Facts - The largest open database of coloring crayons
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-Open ??? Facts - The largest open database of ???
+Otwarty ??? Facts - The largest open database of ???
 
 Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 

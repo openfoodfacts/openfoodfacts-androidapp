@@ -1,33 +1,33 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+To jsou štítky zobrazené nad snímky obrazovky v playstore. Uchovávejte je krátké a atraktivní.
+Neměňte název souboru.
 ---
 scan_en.png
-Scan products
+Snímání zboží
 
 quickview_en.png
-Get the Nutriscore
+Získejte Nutriční skóre
 
 history_en.png
-Your full scan history, fully private & exportable
+Vaše úplná historie snímání, zcela soukromá & exportovatelná
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Zjistěte více s Wikipedií
 
 allergen_alert_en.png
-Set allergen alerts
+Nastavte si upozornění na alergeny
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Výživa jednoduše
 
 product_view_allergen_alert_en.png
 Hlídání alergenů
 
 categories_en.png
-Get alternatives for your favorite foods
+Získejte alternativy pro vaše oblíbené potraviny
 
 foodtransparency_en.png
-Become an actor of food transparency
+Staňte se hybatelem férovosti potravin
 
 product_view_summary_en.png
 Wikipedia for Food

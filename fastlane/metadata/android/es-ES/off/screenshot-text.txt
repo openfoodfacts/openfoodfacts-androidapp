@@ -27,7 +27,7 @@ categories_en.png
 Obtenga alternativas para sus comidas favoritas
 
 foodtransparency_en.png
-Become an actor of food transparency
+Conviértete en un actor de la transparencia alimentaria
 
 product_view_summary_en.png
 Wikipedia para Comida

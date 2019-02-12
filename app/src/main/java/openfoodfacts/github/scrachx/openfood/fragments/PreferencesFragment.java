@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -168,6 +170,24 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
+        ListPreference energyUnitPreference = (ListPreference) findPreference("energyUnitPreference");
+        String energyUnits[] = getActivity().getResources().getStringArray(R.array.energy_units);;
+        energyUnitPreference.setEntries(energyUnits);
+        energyUnitPreference.setEntryValues(energyUnits);
+        energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            settings.edit().putString("energyUnitPreference", (String) newValue).apply();
+            return true;
+        });
+
+        ListPreference volumeUnitPreference = (ListPreference) findPreference("volumeUnitPreference");
+        String volumeUnits[] = getActivity().getResources().getStringArray(R.array.volume_units);
+        volumeUnitPreference.setEntries(volumeUnits);
+        volumeUnitPreference.setEntryValues(volumeUnits);
+        volumeUnitPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
+            settings.edit().putString("volumeUnitPreference", (String) newValue).apply();
+            return true;
+        }));
+
         ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
         String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
         imageUploadPref.setEntries(values);
@@ -181,6 +201,19 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         CheckBoxPreference photoPreference = (CheckBoxPreference) findPreference("photoMode");
         if (BuildConfig.FLAVOR.equals("opf")) {
             photoPreference.setVisible(false);
+        }
+
+        /*
+            Preference to show version name
+         */
+        Preference versionPref = (Preference) findPreference("Version");
+        versionPref.setEnabled(false);
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            String version = pInfo.versionName;
+            versionPref.setSummary(getString(R.string.version_string) + " " + version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
 
     }

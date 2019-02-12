@@ -13,14 +13,14 @@
     <string name="website_contributor">https://world-cs.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$d products (plus the ones you will contribute) in the world.</string>
-    <string name="txtHome">Open Food Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.</string>
+    <string name="txtHome">Open Products Facts je otevřená databáze veškerého zboží na světě.</string>
     <string name="slide_1_title">Contribute to product transparency</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
+    <string name="slide_1_desc">Nasnímejte zboží, vyfoťte ho, zajistěte transparentnost</string>
     <string name="slide_2_title">Get the facts</string>
     <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
     <string name="slide_3_title">Keep track of the product you use</string>
     <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
-    <string name="slide_4_title">Pracuje offline</string>
+    <string name="slide_4_title">Funguje bez připojení k internetu</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
@@ -36,4 +36,5 @@
     <string name="tagline">the free product database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Products Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>

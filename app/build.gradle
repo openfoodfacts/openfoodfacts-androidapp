@@ -3,7 +3,7 @@ apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.2'
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
@@ -144,6 +144,7 @@ dependencies {
     implementation "com.android.support:multidex:$rootProject.multidexVersion"
 
     //DI
+    implementation 'com.android.support:support-v4:27.1.1'
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     compileOnly 'javax.annotation:jsr250-api:1.0'
@@ -217,6 +218,8 @@ dependencies {
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation 'com.mikepenz:fastadapter-commons:2.1.0@aar'
+
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
 
     //UI Component : Fab
     implementation "com.github.clans:fab:$rootProject.fabVersion"

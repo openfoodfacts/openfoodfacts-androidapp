@@ -1,20 +1,20 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
+Это теги, показываемые над скриншотами в Play Store. Не делайте их слишком длинными или сложными.
+Не меняйте имя файла.
 ---
 scan_en.png
-Сканирование продуктов
+Сканируйте продукты
 
 quickview_en.png
-Получить Nutriscore
+Получите Nutriscore
 
 history_en.png
 Полная история сканирования, полностью приватная и экспортируемая
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Узнайте больше с Википедией
 
 allergen_alert_en.png
-Установите оповещения о аллергенах
+Установите предупреждения о аллергенах
 
 home_en.png
 product_view_nutrition_summary_en.png

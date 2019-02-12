@@ -32,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -52,12 +53,6 @@ public class ContributorsFragment extends BaseFragment {
     TextView otherEditorsText;
     @BindView(R.id.states)
     TextView statesText;
-    @BindView(R.id.contribute_image_front)
-    ImageView imgFront;
-    @BindView(R.id.contribute_image_ingredients)
-    ImageView imgIngredients;
-    @BindView(R.id.contribute_image_nutrients)
-    ImageView imgNutrients;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,7 +63,11 @@ public class ContributorsFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        mState = (State) intent.getExtras().getSerializable("state");
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null) {
+            mState = (State) intent.getExtras().getSerializable("state");
+        }else{
+            mState = ProductFragment.mState;
+        }
         refreshView(mState);
     }
 
@@ -122,17 +121,6 @@ public class ContributorsFragment extends BaseFragment {
             }
         }
 
-        if (isNotBlank(product.getImageFrontUrl())) {
-            Picasso.with(getContext()).load(product.getImageFrontUrl()).into(imgFront);
-        }
-
-        if (isNotBlank(product.getImageIngredientsUrl())) {
-            Picasso.with(getContext()).load(product.getImageIngredientsUrl()).into(imgIngredients);
-        }
-
-        if (isNotBlank(product.getImageNutritionUrl())) {
-            Picasso.with(getContext()).load(product.getImageNutritionUrl()).into(imgNutrients);
-        }
     }
 
     private String[] getDateTime(String dateTime) {

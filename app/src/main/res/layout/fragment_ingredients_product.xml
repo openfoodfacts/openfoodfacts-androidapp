@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
@@ -43,16 +42,25 @@
                 android:text="@string/take_picture_ingredients"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/extract_ingredients_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:text="@string/extract_ingredients_prompt"
+                android:visibility="gone"/>
+
             <android.support.v7.widget.CardView
                 android:id="@+id/cvTextIngredientProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/textIngredientProduct"
@@ -73,12 +81,12 @@
                 android:id="@+id/cvTextSubstanceProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/textSubstanceProduct"
@@ -100,12 +108,12 @@
                 android:id="@+id/cvTextTraceProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/textTraceProduct"
@@ -127,12 +135,12 @@
                 android:id="@+id/cvTextAdditiveProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/textAdditiveProduct"
@@ -154,12 +162,12 @@
                 android:id="@+id/cvTextPalmOilProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/textPalmOilProduct"
@@ -193,12 +201,12 @@
                 android:id="@+id/cvVitaminsTagsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/vitaminsTagsText"
@@ -219,12 +227,12 @@
                 android:id="@+id/cvMineralTagsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/mineralTagsText"
@@ -245,12 +253,12 @@
                 android:id="@+id/cvAminoAcidTagsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/aminoAcidTagsText"
@@ -271,12 +279,12 @@
                 android:id="@+id/cvOtherNutritionTags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/otherNutritionTags"
@@ -292,6 +300,13 @@
                     android:textSize="@dimen/font_normal" />
 
             </android.support.v7.widget.CardView>
+
+            <Button
+                android:id="@+id/change_ing_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/update_image" />
 
         </LinearLayout>
 

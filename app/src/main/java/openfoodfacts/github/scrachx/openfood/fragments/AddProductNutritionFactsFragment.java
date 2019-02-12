@@ -21,13 +21,16 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TableLayout;
@@ -202,38 +205,56 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     EditText serving_size;
     @BindView(R.id.spinner_serving_unit)
     Spinner servingSizeUnit;
+    @BindView(R.id.energy_msg)
+    TextView energy_msg;
     @BindView(R.id.energy)
     EditText energy;
     @BindView(R.id.spinner_energy_unit)
     Spinner energyUnit;
+    @BindView(R.id.fat_msg)
+    TextView fat_msg;
     @BindView(R.id.fat)
     EditText fat;
     @BindView(R.id.spinner_fat_unit)
     Spinner fatUnit;
+    @BindView(R.id.saturated_fat_msg)
+    TextView saturated_fat_msg;
     @BindView(R.id.saturated_fat)
     EditText saturatedFat;
     @BindView(R.id.spinner_saturated_fat_unit)
     Spinner saturatedFatUnit;
+    @BindView(R.id.carbohydrate_msg)
+    TextView carbohydrate_msg;
     @BindView(R.id.carbohydrate)
     EditText carbohydrate;
     @BindView(R.id.spinner_carbohydrate_unit)
     Spinner carbohydrateUnit;
+    @BindView(R.id.sugar_msg)
+    TextView sugar_msg;
     @BindView(R.id.sugar)
     EditText sugar;
     @BindView(R.id.spinner_sugar_unit)
     Spinner sugarUnit;
+    @BindView(R.id.dietary_fibre_msg)
+    TextView dietary_fibre_msg;
     @BindView(R.id.dietary_fibre)
     EditText dietaryFiber;
     @BindView(R.id.spinner_dietary_fiber_unit)
     Spinner dietaryFiberUnit;
+    @BindView(R.id.proteins_msg)
+    TextView proteins_msg;
     @BindView(R.id.proteins)
     EditText proteins;
     @BindView(R.id.spinner_proteins_unit)
     Spinner proteinsUnit;
+    @BindView(R.id.salt_msg)
+    TextView salt_msg;
     @BindView(R.id.salt)
     EditText salt;
     @BindView(R.id.spinner_salt_unit)
     Spinner saltUnit;
+    @BindView(R.id.sodium_msg)
+    TextView sodium_msg;
     @BindView(R.id.sodium)
     EditText sodium;
     @BindView(R.id.spinner_sodium_unit)
@@ -257,6 +278,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private boolean edit_product;
     private Product product;
     private boolean newImageSelected;
+    private EditText lastEditText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -275,6 +297,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle b = getArguments();
+        lastEditText = alcohol;
         if (b != null) {
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
@@ -294,6 +317,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             Toast.makeText(activity, R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
+        alcohol.setImeOptions(EditorInfo.IME_ACTION_DONE);
     }
 
     /**
@@ -666,9 +690,148 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         }
     }
 
+    @OnClick({R.id.for100g_100ml, R.id.per_serving})
+    void checkAfterCheckChange(RadioButton radioButton){
+        checkCarbohydratesInBounds();
+        checkDietaryFibreInBounds();
+        checkEnergyInBounds();
+        checkFatInBounds();
+        checkProteinsInBounds();
+        checkSugarInBounds();
+        checkSaturatedFatInBounds();
+        checkSodiumInBounds();
+        checkSaltInBounds();
+    }
+
+    @OnTextChanged(value = R.id.serving_size, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void checkAfterServingSizeChange(){
+
+        if(radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml){
+            checkCarbohydratesInBounds();
+            checkDietaryFibreInBounds();
+            checkEnergyInBounds();
+            checkFatInBounds();
+            checkProteinsInBounds();
+            checkSugarInBounds();
+            checkSaturatedFatInBounds();
+            checkSodiumInBounds();
+            checkSaltInBounds();
+        }
+
+    }
+
+    @OnTextChanged(value = R.id.proteins, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void checkProteinsInBounds() {
+        if (proteins.getText() != null && proteins.getText().length() != 0) {
+            if (!isValueValid(convertToGrams(Float.parseFloat(proteins.getText().toString()), proteinsUnit.getSelectedItemPosition()))) {
+                proteins_msg.setVisibility(View.VISIBLE);
+                buttonAdd.setEnabled(false);
+            } else {
+                proteins_msg.setVisibility(View.GONE);
+                buttonAdd.setEnabled(true);
+            }
+        }
+
+    }
+
+    @OnTextChanged(value = R.id.dietary_fibre, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void checkDietaryFibreInBounds() {
+        if (dietaryFiber.getText() != null && dietaryFiber.getText().length() != 0) {
+            if (!isValueValid(convertToGrams(Float.parseFloat(dietaryFiber.getText().toString()), dietaryFiberUnit.getSelectedItemPosition()))) {
+                dietary_fibre_msg.setVisibility(View.VISIBLE);
+                buttonAdd.setEnabled(false);
+            } else {
+                dietary_fibre_msg.setVisibility(View.GONE);
+                buttonAdd.setEnabled(true);
+            }
+        }
+    }
+
+    @OnTextChanged(value = R.id.sugar, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void checkSugarInBounds() {
+        if (sugar.getText() != null && sugar.getText().length() != 0) {
+            if (!isValueValid(convertToGrams(Float.parseFloat(sugar.getText().toString()), sugarUnit.getSelectedItemPosition()))) {
+                sugar_msg.setVisibility(View.VISIBLE);
+                buttonAdd.setEnabled(false);
+            } else {
+                sugar_msg.setVisibility(View.GONE);
+                buttonAdd.setEnabled(true);
+            }
+        }
+
+    }
+
+    @OnTextChanged(value = R.id.carbohydrate, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void checkCarbohydratesInBounds() {
+        if (carbohydrate.getText() != null && carbohydrate.getText().length() != 0) {
+            if (!isValueValid(convertToGrams(Float.parseFloat(carbohydrate.getText().toString()), carbohydrateUnit.getSelectedItemPosition()))) {
+                carbohydrate_msg.setVisibility(View.VISIBLE);
+                buttonAdd.setEnabled(false);
+            } else {
+                carbohydrate_msg.setVisibility(View.GONE);
+                buttonAdd.setEnabled(true);
+            }
+        }
+
+    }
+
+    @OnTextChanged(value = R.id.saturated_fat, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void checkSaturatedFatInBounds() {
+
+        if (saturatedFat.getText() != null && saturatedFat.getText().length() != 0) {
+            if (!isValueValid(convertToGrams(Float.parseFloat(saturatedFat.getText().toString()), saturatedFatUnit.getSelectedItemPosition()))) {
+                saturated_fat_msg.setVisibility(View.VISIBLE);
+                buttonAdd.setEnabled(false);
+            } else {
+                saturated_fat_msg.setVisibility(View.GONE);
+                buttonAdd.setEnabled(true);
+            }
+        }
+
+    }
+
+    @OnTextChanged(value = R.id.fat, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void checkFatInBounds() {
+
+        if (fat.getText() != null && fat.getText().length() != 0) {
+            if (!isValueValid(convertToGrams(Float.parseFloat(fat.getText().toString()), fatUnit.getSelectedItemPosition()))) {
+                fat_msg.setVisibility(View.VISIBLE);
+                buttonAdd.setEnabled(false);
+            } else {
+                fat_msg.setVisibility(View.GONE);
+                buttonAdd.setEnabled(true);
+            }
+        }
+
+    }
+
+    @OnTextChanged(value = R.id.energy, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void checkEnergyInBounds() {
+
+        if (energy.getText() != null && energy.getText().length() != 0) {
+            float energyInKcal = convertToKiloCalories(Float.parseFloat(energy.getText().toString()), energyUnit.getSelectedItemPosition());
+
+            if (radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
+                energyInKcal *= (100.0f / Float.parseFloat(serving_size.getText().toString()));
+            }
+
+            if (energyInKcal > 2000.0f) {
+                energy_msg.setVisibility(View.VISIBLE);
+                buttonAdd.setEnabled(false);
+            } else {
+                energy_msg.setVisibility(View.GONE);
+                buttonAdd.setEnabled(true);
+            }
+        }
+
+    }
+
     @OnTextChanged(value = R.id.salt, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void autoCalculateSodiumValue() {
         if (activity.getCurrentFocus() == salt) {
+
+            checkSaltInBounds();
+
             double sodiumValue = 0;
             double saltValue = 0;
             String saltModifier = null;
@@ -700,6 +863,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     @OnTextChanged(value = R.id.sodium, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void autoCalculateSaltValue() {
         if (activity.getCurrentFocus() == sodium) {
+
+            checkSodiumInBounds();
+
             double saltValue = 0;
             double sodiumValue = 0;
             String sodiumModifier = null;
@@ -725,6 +891,32 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             salt.setText(sodiumModifier);
             salt.append(String.valueOf(saltValue));
             saltUnit.setSelection(sodiumUnit.getSelectedItemPosition());
+        }
+    }
+
+    private void checkSaltInBounds() {
+        if (salt.getText() != null && salt.getText().length() != 0) {
+            if (!isValueValid(convertToGrams(Float.parseFloat(salt.getText().toString()), saltUnit.getSelectedItemPosition()))) {
+                salt_msg.setVisibility(View.VISIBLE);
+                buttonAdd.setEnabled(false);
+            } else {
+                salt_msg.setVisibility(View.GONE);
+                buttonAdd.setEnabled(true);
+            }
+        }
+    }
+
+    private void checkSodiumInBounds() {
+
+        if (sodium.getText() != null && sodium.getText().length() != 0) {
+            if (!isValueValid(convertToGrams(Float.parseFloat(sodium.getText().toString()), sodiumUnit.getSelectedItemPosition()))) {
+                sodium_msg.setVisibility(View.VISIBLE);
+                buttonAdd.setEnabled(false);
+            } else {
+                sodium_msg.setVisibility(View.GONE);
+                buttonAdd.setEnabled(true);
+            }
+
         }
     }
 
@@ -1052,6 +1244,62 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 .show();
     }
 
+    private boolean isValueValid(float a) {
+
+        float reference;
+        if (radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml) {
+            reference = 100;
+        } else {
+            reference = Float.parseFloat(serving_size.getText().toString());
+        }
+
+        if (a <= reference) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    /**
+     * Converts a give quantity's unit to kcal
+     *
+     * @param a     The value to be converted
+     * @param index 1 represents kj
+     * @return return the converted value
+     */
+    private float convertToKiloCalories(float a, int index) {
+
+        switch (index) {
+            case 1:
+                a *= 0.23900573614f;
+                break;
+        }
+        return a;
+
+    }
+
+    /**
+     * Converts a given quantity's unit to grams.
+     *
+     * @param a     The value to be converted
+     * @param index 1 represents milligrams, 2 represents micrograms
+     * @return return the converted value
+     */
+    private float convertToGrams(float a, int index) {
+
+        switch (index) {
+            case 1:
+                a /= 1000;
+                break;
+            case 2:
+                a /= 1000000;
+                break;
+        }
+        return a;
+
+    }
+
     /**
      * Adds a new row in the tableLayout.
      *
@@ -1070,6 +1318,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         editText.setHint(text);
         editText.setId(position);
         editText.setKeyListener(keyListener);
+        lastEditText.setNextFocusDownId(editText.getId());
+        lastEditText.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        lastEditText = editText;
+        editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         editText.setSingleLine();
         editText.setPadding(dpsToPixels(10), 0, dpsToPixels(10), 0);
         editText.setGravity(Gravity.CENTER_VERTICAL);

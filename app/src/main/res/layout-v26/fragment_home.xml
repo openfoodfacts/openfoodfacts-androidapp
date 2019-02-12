@@ -47,6 +47,16 @@
             android:textColor="@color/md_black_1000"
             android:textSize="@dimen/font_normal" />
 
+        <TextView
+            android:id="@+id/tvDailyFoodFact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textColor="@color/blue"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            />
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton

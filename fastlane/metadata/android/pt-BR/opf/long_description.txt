@@ -16,15 +16,15 @@ Open Food Facts é uma base de dados de produtos alimentares com ingredientes, a
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Works well in any condition ***
+*** Funciona bem em qualquer condição ***
 - Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
+- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Pode usar o aplicativo anonimamente
+- Pode exportar seu histórico de digitalizações
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
@@ -39,11 +39,11 @@ Collecting the world's food, cosmetic and pet food was so passé. With the insan
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts will be an extremely ambitious project. Eis alguns deles: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - O maior banco de dados aberto de lápis de cor
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - O maior banco de dados aberto de produtos alimentícios em miniatura
 
 Open ??? Facts - The largest open database of ???
 

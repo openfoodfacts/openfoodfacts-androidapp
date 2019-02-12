@@ -30,10 +30,17 @@
         <item>配料</item>
         <item>营养</item>
         <item>营养表</item>
+        <item>环境影响</item>
+    </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>产品照片</item>
+        <item>成分分析</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -200,7 +207,7 @@
     <string name="txtSendAll">全部上传</string>
     <string name="txtNoData">无数据</string>
     <string name="txtPictureNeeded">等待…</string>
-    <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
+    <string name="txtPictureNeededDialogContent">在提交此产品前你应该至少添加一张图片</string>
     <string name="txtPictureNeededDialogYes">Stay</string>
     <string name="txtPictureNeededDialogNo">舍弃</string>
     <string name="toastSending">正在上传</string>
@@ -243,20 +250,20 @@
     <string name="flash_off">Flash [OFF]</string>
     <string name="ring_on">Ring [ON]</string>
     <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="auto_focus_on">自动对焦 [ON]</string>
+    <string name="auto_focus_off">自动对焦 [OFF]</string>
+    <string name="formats">格式</string>
+    <string name="choose_formats">选择格式</string>
+    <string name="select_camera">选择一个摄像头</string>
     <string name="ok_button">确定</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">取消</string>
     <string name="login_button">登录</string>
-    <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">您的过敏信息将永远不会发送到 Open Food Facts 服务器。另外，请注意，产品数据可能不准确，检测可能不是 100％ 准确的，请自行仔细检查！ </string>
+    <string name="create_account_button">创建帐号</string>
+    <string name="warning_alert_data">您的过敏信息将永远不会发送到 Open Food Facts 服务器。另外，请注意，产品数据可能不准确，检测可能不是 100％ 准确的，请自行仔细检查！ </string>
     <string name="from_gallery">从相册中选择</string>
     <string name="product_sent">产品发送成功</string>
     <string name="action_edit_product">编辑产品</string>
-    <string name="title_info_dialog">How does it work?</string>
+    <string name="title_info_dialog">它是如何工作的？</string>
     <string name="text_offline_info_dialog">您可以在离线时扫描产品，稍后将其添加到 Open Food Facts 中。您扫描的所有产品都会显示在这里，可以按下面的按钮发送它们。</string>
     <string name="permission_camera">需要相机权限才能扫描条形码及拍照。</string>
     <string name="permission_title">权限信息</string>
@@ -287,15 +294,15 @@
     <string name="txt_history_exported">历史记录已经导出</string>
     <string name="permision_write_external_storage">需要外部存储权限才能导出历史记录。</string>
     <string name="txt_nutrition_not_found">N/A</string>
-    <string name="no_brand">No Brand</string>
-    <string name="no_title">No Title</string>
+    <string name="no_brand">无品牌</string>
+    <string name="no_title">无标题</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">此产品的营养成分表 %1$s</string>
-    <string name="check_facts">Check</string>
+    <string name="check_facts">检查</string>
     <string name="nutrition">营养</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please enter the weight</string>
-    <string name="enter_weight">Enter the weight</string>
+    <string name="please_enter_weight">请输入重量</string>
+    <string name="enter_weight">输入重量</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="txt_calories_result">在 %2$s %3$s 中含有 %1$s 卡路里</string>
     <string name="nutrition_carbohydrate">碳水化合物</string>
@@ -328,6 +335,10 @@
     <string name="nutriment_serving_size">每部分：</string>
     <string name="action_manage_account">管理账户</string>
     <string name="action_contributes">您的贡献</string>
+    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
+    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
+    <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">注销</string>
     <string name="contribution_without_account">尽可以登录或者创建一个账号来保存您的贡献</string>
     <string name="textCarbonFootprint">碳足迹 / CO2 排放：</string>
@@ -477,7 +488,7 @@
     <string name="login_true">已经登录！</string>
     <string name="confirm_logout">确认注销</string>
     <string name="logout_dialog_content">你确定要注销吗？</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">取消</string>
     <string name="choose_resolution">选择分辨率</string>
     <string name="pref_resolution_summary">为图片上传选择一个分辨率</string>
     <string name="image_upload_resolution">图像上传分辨率</string>
@@ -557,7 +568,7 @@
     <string name="other_editors">产品页面也被以下人员修改 </string>
     <string name="contribution_tab">贡献</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
-    <string name="contribution_tab_title">Show contribution tab</string>
+    <string name="contribution_tab_title">显示贡献标签</string>
     <string name="product">编辑</string>
     <string name="txtDialogsTitle">信息</string>
     <string name="preference_show_all_product_photos_title">显示所有产品照片</string>
@@ -683,6 +694,9 @@
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Your diet(s)</string>
@@ -698,5 +712,35 @@
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="extract_ingredients_prompt">Extract ingredients</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="nutrition_image_prompt_text">拍摄营养成分表</string>
+    <string name="ingredient_image_prompt_text">拍摄营养成分</string>
+    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version">Version</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
+    <string name="report_img">Report Image</string>
+    <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="set_image_name">Successfully set the image as</string>
+    <string name="warning">Warning :</string>
+    <string name="customer_service">Customer Service :</string>
+    <string name="fast_addition_mode_title">Fast Addition Mode</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">添加</string>
     <!-- Used for diets AddOn -->
 </resources>

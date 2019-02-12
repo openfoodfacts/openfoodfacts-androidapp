@@ -9,13 +9,13 @@ v2 ! Vsi OFF prostovoljci so trdo delali na podlagi vaših predlogov. Smo bolj g
 8. Lahka kot prej :)
 
 v2.8 ! Po masivni V2 so vsi OFF prostovoljci še naprej trdo delali na podlagi vaših predlogov. Zdaj štejemo že 570.000 izdelkov iz 182 držav z 10.000 in več sodelavci vključno z vami 🙂
-1. We rebuilt the whole product addition experience (and it even works offline). (hvala Huzaifa)
+1. Prenovili smo selotno izkušnjo z dodajenjem izdelka (deluje celo brez povezave). (hvala Huzaifa)
 2. Zdaj lahko prikažete prehransko dejstvo za del, s katerim se prehranjujete (Rutvik)
 3. Zdaj izračunamo skupine NOVA poleg Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
+4. Čiščenje (Rutvik & Salfai)
 5. 🌎 korejsko in indonezijsko
 
-2.8.8 ! Thought we would stop at product addition ? Vsi OFF prostovoljci so trdo delali. 590.000 izdelkov iz 182 držav, 10k+ sodelavcev, vključno z vami 🙂
+2.8.8 ! Mislili smo, da se bomo ustavili pri dodajanju izdelkov? Vsi OFF prostovoljci so trdo delali. 590.000 izdelkov iz 182 držav, 10k+ sodelavcev, vključno z vami 🙂
 1. Zdaj lahko uredite katerikoli izdelek s svojim OFF računom. Kliknite na ✏️ na strani izdelka, ki ga želite urediti.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+2. Slovaščina, hebrejščina, španščina, arabščina, nizozemščina, madžarščina in vietnamščina (translate.openfoodfacts.org za pomoč)
+3. Open Food Facts v celoti vodijo prostovoljci: Podarite lahko svoj čas (world.openfoodfacts.org/contribute) ali denar (donate.openfoodfacts.org)

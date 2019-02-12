@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
@@ -112,6 +113,10 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
+    private static final String PARAM_OTHER_INFORMATION = "other_information";
+    private static final String PARAM_CONSERVATION_CONDITIONS = "conservation_conditions";
+    private static final String PARAM_RECYCLING_INSTRUCTION_TO_DISCARD = "recycling_instructions_to_discard";
+    private static final String PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE = "recycling_instructions_to_recycle";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
 
     @BindView(R.id.scrollView)
@@ -150,6 +155,14 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText manufacturingPlace;
     @BindView(R.id.emb_code)
     NachoTextView embCode;
+    @BindView(R.id.other_info)
+    EditText otherInfo;
+    @BindView(R.id.conservationCond)
+    EditText conservationCond;
+    @BindView(R.id.recyclingInstructionToDiscard)
+    EditText recyclingInstructionToDiscard;
+    @BindView(R.id.recyclingInstructionToRecycle)
+    EditText recyclingInstructionToRecycle;
     @BindView(R.id.link)
     EditText link;
     @BindView(R.id.country_where_purchased)
@@ -182,6 +195,13 @@ public class AddProductOverviewFragment extends BaseFragment {
     private List<String> labels = new ArrayList<>();
     private List<String> category = new ArrayList<>();
     private boolean newImageSelected;
+    @BindView(R.id.grey_line2)
+    View greyLine2;
+    @BindView(R.id.grey_line3)
+    View greyLine3;
+    @BindView(R.id.grey_line4)
+    View greyLine4;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -199,6 +219,12 @@ public class AddProductOverviewFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //checks the information about the prompt clicked and takes action accordingly
+        if(getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
+            categories.requestFocus();
+        }else if(getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
+            ((AddProductActivity) getActivity()).proceed();
+        }
         Bundle b = getArguments();
         if (b != null) {
             product = (Product) b.getSerializable("product");
@@ -219,10 +245,23 @@ public class AddProductOverviewFragment extends BaseFragment {
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValues();
+            } else {
+                //adittion
+                if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false)) {
+                    enableFastAdditionMode(true);
+                } else {
+                    enableFastAdditionMode(false);
+                }
             }
             barcode.append(" " + code);
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
                 otherImage.setVisibility(View.GONE);
+            }
+            if(b.getBoolean("perform_ocr")) {
+                ((AddProductActivity) activity).proceed();
+            }
+            if (b.getBoolean("send_updated")) {
+                ((AddProductActivity) activity).proceed();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();
@@ -232,6 +271,55 @@ public class AddProductOverviewFragment extends BaseFragment {
                 getString(R.string.hint_product_URL) + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
+
+        //disabling fields in edit/add mode
+        otherInfo.setEnabled(false);
+        conservationCond.setEnabled(false);
+        recyclingInstructionToRecycle.setEnabled(false);
+        recyclingInstructionToDiscard.setEnabled(false);
+    }
+
+    /**
+     * To enable fast addition mode
+     *
+     * @param isEnabled
+     */
+    private void enableFastAdditionMode(boolean isEnabled) {
+        if (isEnabled) {
+            sectionManufacturingDetails.setVisibility(View.GONE);
+            sectionPurchasingDetails.setVisibility(View.GONE);
+            packaging.setVisibility(View.GONE);
+            label.setVisibility(View.GONE);
+            periodsAfterOpening.setVisibility(View.GONE);
+            originOfIngredients.setVisibility(View.GONE);
+            manufacturingPlace.setVisibility(View.GONE);
+            embCode.setVisibility(View.GONE);
+            link.setVisibility(View.GONE);
+            countryWherePurchased.setVisibility(View.GONE);
+            stores.setVisibility(View.GONE);
+            countriesWhereSold.setVisibility(View.GONE);
+            otherImage.setVisibility(View.GONE);
+            greyLine2.setVisibility(View.GONE);
+            greyLine3.setVisibility(View.GONE);
+            greyLine4.setVisibility(View.GONE);
+        } else {
+            sectionManufacturingDetails.setVisibility(View.VISIBLE);
+            sectionPurchasingDetails.setVisibility(View.VISIBLE);
+            packaging.setVisibility(View.VISIBLE);
+            label.setVisibility(View.VISIBLE);
+            periodsAfterOpening.setVisibility(View.VISIBLE);
+            originOfIngredients.setVisibility(View.VISIBLE);
+            manufacturingPlace.setVisibility(View.VISIBLE);
+            embCode.setVisibility(View.VISIBLE);
+            link.setVisibility(View.VISIBLE);
+            countryWherePurchased.setVisibility(View.VISIBLE);
+            stores.setVisibility(View.VISIBLE);
+            countriesWhereSold.setVisibility(View.VISIBLE);
+            otherImage.setVisibility(View.VISIBLE);
+            greyLine2.setVisibility(View.VISIBLE);
+            greyLine3.setVisibility(View.VISIBLE);
+            greyLine4.setVisibility(View.VISIBLE);
+        }
     }
 
     /**
@@ -327,6 +415,18 @@ public class AddProductOverviewFragment extends BaseFragment {
                 chipValues.add(getCountryName(appLanguageCode, tag));
             }
             countriesWhereSold.setText(chipValues);
+        }
+        if (product.getOtherInformation() != null && !product.getOtherInformation().isEmpty()) {
+            otherInfo.setText(product.getOtherInformation());
+        }
+        if (product.getConservationConditions() != null && !product.getConservationConditions().isEmpty()) {
+            conservationCond.setText(product.getConservationConditions());
+        }
+        if (product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
+            recyclingInstructionToDiscard.setText(product.getRecyclingInstructionsToDiscard());
+        }
+        if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
+            recyclingInstructionToRecycle.setText(product.getRecyclingInstructionsToRecycle());
         }
     }
 
@@ -448,6 +548,18 @@ public class AddProductOverviewFragment extends BaseFragment {
                 List<String> chipValues = Arrays.asList(productDetails.get(PARAM_COUNTRIES).split("\\s*,\\s*"));
                 countriesWhereSold.setText(chipValues);
             }
+            if (productDetails.get(PARAM_OTHER_INFORMATION) != null) {
+                otherInfo.setText(productDetails.get(PARAM_OTHER_INFORMATION));
+            }
+            if (productDetails.get(PARAM_CONSERVATION_CONDITIONS) != null) {
+                conservationCond.setText(productDetails.get(PARAM_CONSERVATION_CONDITIONS));
+            }
+            if (productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD) != null) {
+                recyclingInstructionToDiscard.setText(productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD));
+            }
+            if (productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE) != null) {
+                recyclingInstructionToRecycle.setText(productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE));
+            }
         }
     }
 
@@ -534,7 +646,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (edit_product) {
             OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
-            client.getExistingProductDetails(product.getCode(), fields)
+            client.getExistingProductDetails(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new SingleObserver<State>() {
@@ -667,6 +779,10 @@ public class AddProductOverviewFragment extends BaseFragment {
             ((AddProductActivity) activity).addToMap(PARAM_PURCHASE.substring(4), getValues(countryWherePurchased));
             ((AddProductActivity) activity).addToMap(PARAM_STORE.substring(4), getValues(stores));
             ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES.substring(4), getValues(countriesWhereSold));
+            ((AddProductActivity) activity).addToMap(PARAM_OTHER_INFORMATION, otherInfo.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_CONSERVATION_CONDITIONS, conservationCond.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD, recyclingInstructionToDiscard.getText().toString());
+            ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE, recyclingInstructionToRecycle.getText().toString());
         }
 
     }
@@ -728,6 +844,18 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             if (!countriesWhereSold.getChipValues().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES, getValues(countriesWhereSold));
+            }
+            if (!otherInfo.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_OTHER_INFORMATION, otherInfo.getText().toString());
+            }
+            if (!conservationCond.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_CONSERVATION_CONDITIONS, conservationCond.getText().toString());
+            }
+            if (!recyclingInstructionToRecycle.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE, recyclingInstructionToRecycle.getText().toString());
+            }
+            if (!recyclingInstructionToDiscard.getText().toString().isEmpty()) {
+                ((AddProductActivity) activity).addToMap(PARAM_RECYCLING_INSTRUCTION_TO_DISCARD, recyclingInstructionToDiscard.getText().toString());
             }
         }
     }
