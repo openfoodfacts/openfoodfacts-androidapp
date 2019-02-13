@@ -582,7 +582,6 @@
     <string name="notify_content">إضغط لعرض المنتجات التى تم إخراجها</string>
     <string name="notification_channel_name">إخراج الإشعارات</string>
     <string name="notify_channel_description">إشعار لإظهار موقع الملف المستخرج</string>
-    <string name="additives">إضافات</string>
     <string name="products_to_be_completed">مُنتجات مراد إكمالها</string>
     <string name="modified_history">تمت إضافة المنتج على %1$s في %2$s من %3$s. آخر تعديل لصفحة المنتج في %4$s في %5$s من قبل %6$s. صفحة المنتج أيضا تم تعديلها من قبل %7$s</string>
     <string name="offline_notification_title">المساهمات دون اتصال التي تحتاج إلى إرسالها</string>
@@ -746,6 +745,14 @@
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -756,4 +763,6 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">إضافات</string>
 </resources>

@@ -564,7 +564,6 @@
     <string name="notify_content">Cliquez pour afficher les produits exportés</string>
     <string name="notification_channel_name">Notifications d\'exportation</string>
     <string name="notify_channel_description">Notification pour afficher l\'emplacement du fichier exporté</string>
-    <string name="additives">Additifs</string>
     <string name="products_to_be_completed">Produits à compléter</string>
     <string name="modified_history">Produit ajouté le %1$s à %2$s par %3$s. Dernière modification de la page du produit le %4$s à %5$s par %6$s. La fiche produit a également été modifiée par %7$s</string>
     <string name="offline_notification_title">Contributions hors ligne à envoyer</string>
@@ -703,7 +702,7 @@
     <string name="max_nutrient_val_msg">La valeur entrée est plus que donnée par portion</string>
     <string name="update_image">Envoyer une image mise à jour</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
+    <!-- Utilisé par l'AddOn Régime (Diet)-->
     <string name="your_diets">Vos régimes</string>
     <string name="diet_name">Nom du régime</string>
     <string name="diets_dialog_warning_title">Attention</string>
@@ -717,10 +716,7 @@
     <string name="edit_diet_hint_so_so_ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
     <string name="edit_diet_unauthorised_ingredients">Ingrédients non autorisés</string>
     <string name="edit_diet_hint_unauthorised_ingredient">Énumérez les ingrédients non autorisés qui devraient être en rouge. Exemple : gluten, lait, huile de palme, sucre... Vous pourrez remplir cette liste plus tard.</string>
-    <string name="diet_export_1">Pour avoir ce nouveau régime dans Open Food Facts, merci d\'ouvrir l\'application OFF, d\'aller dans le menu</string>
-    <string name="diet_export_2">Cliquer sur le bouton + \nEt copier/coller ces informations dans les champs correspondants :</string>
-    <string name="diet_export_3">Cliquer sur</string>
-    <!-- Used for diets AddOn -->
+    <!-- Utilisé par l'AddOn Régime (Diet)-->
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
     <string name="add_category_prompt_text">Ajouter la catégorie pour calculer le Nutri-Score</string>
@@ -731,14 +727,24 @@
     <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
     <string name="version_string">Application Android Open Food Facts</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
+    <string name="set_ingredient_img">Définir comme image d\'ingrédient</string>
+    <string name="set_img_nutrients">Définir comme image nutritionelle</string>
+    <string name="set_img_front">Définir comme image de profil</string>
     <string name="report_img">Signaler l\'image</string>
     <string name="detected_ingredients">Ingrédients détectés</string>
     <string name="set_image_name">Image sélectionnée en tant que</string>
     <string name="warning">Avertissement :</string>
     <string name="customer_service">Service Clients :</string>
     <string name="fast_addition_mode_title">Mode d\'ajout rapide</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Active l\'ajout rapide de produits avec moins d\'attributs</string>
+    <string name="addtive_search">Rechercher un additif</string>
+    <string name="additives">Additifs</string>
 </resources>

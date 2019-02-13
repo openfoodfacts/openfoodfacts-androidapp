@@ -564,7 +564,6 @@
     <string name="notify_content">Klicka för att visa exporterade produkter</string>
     <string name="notification_channel_name">Exportera meddelanden</string>
     <string name="notify_channel_description">Meddelande för att visa den exporterade filens plats</string>
-    <string name="additives">Tillsatser</string>
     <string name="products_to_be_completed">Produkter att slutföra</string>
     <string name="modified_history">Produkten lades till på %1$s vid %2$s av %3$s. Senaste ändring av produktsidan på %4$s vid %5$s av %6$s. Produktsida redigerades också av %7$s</string>
     <string name="offline_notification_title">Offlinebidrag du ännu inte skickat</string>
@@ -728,6 +727,14 @@
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -738,4 +745,6 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Tillsatser</string>
 </resources>

@@ -467,7 +467,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtSaturatedFat">Tłuszcz nasycony</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Skrót niedostępny</string>
-    <string name="scan_shortcut_short_label">Skan</string>
+    <string name="scan_shortcut_short_label">Skanuj</string>
     <string name="scan_shortcut_long_label">Zeskanuj produkt</string>
     <string name="barcode_shortcut_short_label">Szukaj</string>
     <string name="barcode_shortcut_long_label">Szukaj po kodzie kreskowym</string>
@@ -592,7 +592,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="notify_content">Naciśnij by zobaczyć wyeksportowane produkty</string>
     <string name="notification_channel_name">Ekspotruj powiadomienia</string>
     <string name="notify_channel_description">Powiadomienie wskazujące lokalizację wyeksportowanego pliku</string>
-    <string name="additives">Dodatki</string>
     <string name="products_to_be_completed">Produkty do uzupełnienia</string>
     <string name="modified_history">Produkty dodane dnia %1$s o godzinie %2$s przez %3$s.  Ostatnia zmiana strony produktu w dniu %4$s o %5$s przez %6$s.  Także zmieniona przez %7$s</string>
     <string name="offline_notification_title">Do wysłania z trybu offline</string>
@@ -757,14 +756,25 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="category_game_btn">Pomóż obliczyć Nutri-Score. przez właściwe kategoryzowanie produktów</string>
     <string name="version_string">Aplikacja na Androida Open Food Facts</string>
     <string name="version">Wersja</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
+    <string name="set_ingredient_img">Zdjęcie zawierające składniki produktu</string>
+    <string name="set_img_nutrients">Zdjęcie zawierające tabelę z wartością odżywczą</string>
+    <string name="set_img_front">Głownie zdjęcie produktu</string>
     <string name="report_img">Zgłoś zdjęcie</string>
     <string name="detected_ingredients">Wykryte składniki</string>
     <string name="set_image_name">Pomyślnie ustawiono obraz jako</string>
     <string name="warning">Uwaga :</string>
     <string name="customer_service">Obsługa klienta :</string>
     <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
-    <string name="fast_addition_mode">Wybór tej opcji umożliwi szybkie dodawanie produktów o mniejszej liczbie atrybutów</string>
+    <string name="fast_addition_mode">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
+    <string name="addtive_search">Wyszukaj dodatek</string>
+    <string name="additives">Dodatki</string>
+    <!-- Used for diets AddOn -->
 </resources>

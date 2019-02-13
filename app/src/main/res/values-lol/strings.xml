@@ -564,7 +564,6 @@
     <string name="notify_content">crwdns99343:0crwdne99343:0</string>
     <string name="notification_channel_name">crwdns99345:0crwdne99345:0</string>
     <string name="notify_channel_description">crwdns99347:0crwdne99347:0</string>
-    <string name="additives">crwdns112736:0crwdne112736:0</string>
     <string name="products_to_be_completed">crwdns99349:0crwdne99349:0</string>
     <string name="modified_history">crwdns99351:0%1$scrwdnd99351:0%2$scrwdnd99351:0%3$scrwdnd99351:0%4$scrwdnd99351:0%5$scrwdnd99351:0%6$scrwdnd99351:0%7$scrwdne99351:0</string>
     <string name="offline_notification_title">crwdns99353:0crwdne99353:0</string>
@@ -728,14 +727,24 @@
     <string name="category_game_btn">crwdns111976:0crwdne111976:0</string>
     <string name="version_string">crwdns111978:0crwdne111978:0</string>
     <string name="version">crwdns111980:0crwdne111980:0</string>
-    <string name="set_ingredient_img">crwdns112742:0crwdne112742:0</string>
-    <string name="set_img_nutrients">crwdns112744:0crwdne112744:0</string>
-    <string name="set_img_front">crwdns112746:0crwdne112746:0</string>
+    <string name="txtOtherInfo">crwdns112792:0crwdne112792:0</string>
+    <string name="txtConservationCond">crwdns112794:0crwdne112794:0</string>
+    <string name="txtRecyclingInstructionToRecycle">crwdns112796:0crwdne112796:0</string>
+    <string name="txtRecyclingInstructionToDiscard">crwdns112798:0crwdne112798:0</string>
+    <string name="recyclingInstructionToRecycle">crwdns112800:0crwdne112800:0</string>
+    <string name="recyclingInstructionToDiscard">crwdns112802:0crwdne112802:0</string>
+    <string name="conservationCond">crwdns112804:0crwdne112804:0</string>
+    <string name="other_info">crwdns112806:0crwdne112806:0</string>
+    <string name="set_ingredient_img">crwdns112808:0crwdne112808:0</string>
+    <string name="set_img_nutrients">crwdns112810:0crwdne112810:0</string>
+    <string name="set_img_front">crwdns112812:0crwdne112812:0</string>
     <string name="report_img">crwdns112018:0crwdne112018:0</string>
     <string name="detected_ingredients">crwdns112008:0crwdne112008:0</string>
     <string name="set_image_name">crwdns112738:0crwdne112738:0</string>
     <string name="warning">crwdns112688:0crwdne112688:0</string>
     <string name="customer_service">crwdns112690:0crwdne112690:0</string>
     <string name="fast_addition_mode_title">crwdns112684:0crwdne112684:0</string>
-    <string name="fast_addition_mode">crwdns112686:0crwdne112686:0</string>
+    <string name="fast_addition_mode">crwdns112748:0crwdne112748:0</string>
+    <string name="addtive_search">crwdns112766:0crwdne112766:0</string>
+    <string name="additives">crwdns112736:0crwdne112736:0</string>
 </resources>

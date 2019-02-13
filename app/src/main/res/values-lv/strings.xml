@@ -568,7 +568,6 @@
     <string name="notify_content">Noklikšķiniet, lai skatītu eksportētos produktus</string>
     <string name="notification_channel_name">Eksportēt paziņojumus</string>
     <string name="notify_channel_description">Paziņojums, lai parādītu eksportēto failu atrašanās vietu</string>
-    <string name="additives">Piedevas</string>
     <string name="products_to_be_completed">Produkta nosaukums jāpabeidz</string>
     <string name="modified_history">Produkts pievienots %1$s no %2$s līdz %3$s. Pēdējais produkta lapas rediģējums %4$s no %5$s uz %6$s. Produkta lapu rediģēja arī %7$s</string>
     <string name="offline_notification_title">Nepieciešamie sūtījumi bezsaistē</string>
@@ -732,6 +731,14 @@
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -742,4 +749,6 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Piedevas</string>
 </resources>

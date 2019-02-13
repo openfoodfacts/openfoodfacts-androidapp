@@ -564,7 +564,6 @@
     <string name="notify_content">Feu clic per veure els productes exportats</string>
     <string name="notification_channel_name">Notificacions d\'exportació</string>
     <string name="notify_channel_description">Notificació per mostrar la ubicació de l\'arxiu exportat</string>
-    <string name="additives">Additius</string>
     <string name="products_to_be_completed">Productes que s\'han de completar</string>
     <string name="modified_history">Producte afegit el %1$s a les %2$s per %3$s.  La darrera edició de la pàgina del producte va ser el %4$s a les %5$s per %6$s.  La pàgina del producte, també ha estat editada per %7$s</string>
     <string name="offline_notification_title">Aportacions fora de línia que cal enviar</string>
@@ -728,6 +727,14 @@
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -738,4 +745,6 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Additius</string>
 </resources>
