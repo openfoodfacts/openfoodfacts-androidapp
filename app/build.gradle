@@ -221,7 +221,6 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
 
-
     //UI Component : Fab
     implementation "com.github.clans:fab:$rootProject.fabVersion"
 
