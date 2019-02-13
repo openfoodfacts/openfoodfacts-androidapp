@@ -38,10 +38,6 @@ public class LoadTaxonomiesService extends IntentService {
 
     private void doTask(Intent intent) {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
-                .setContentTitle(getString(R.string.app_name))
-                .setContentText(getString(R.string.txtDownloading))
-                .setSmallIcon(R.mipmap.ic_launcher);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             String channelId = "export_channel";
@@ -52,7 +48,13 @@ public class LoadTaxonomiesService extends IntentService {
             notificationManager.createNotificationChannel(notificationChannel);
         }
 
-        notificationManager.notify(7, builder.build());
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.txtDownloading))
+                .setOngoing(true)
+                .setSmallIcon(R.mipmap.ic_launcher);
+
+        notificationManager.notify(17, builder.build());
 
         Single.zip(
                 productRepository.getLabels(true),
@@ -84,12 +86,14 @@ public class LoadTaxonomiesService extends IntentService {
                 .subscribe(() -> {
                     //view.hideLoading(false);
                     builder.setContentText(getString(R.string.txtLoaded));
-                    notificationManager.notify(7, builder.build());
+                    builder.setOngoing(false);
+                    notificationManager.notify(17, builder.build());
                 }, e -> {
                     e.printStackTrace();
                     //view.hideLoading(true);
-                    builder.setContentText(getString(R.string.txtConnectionError));
-                    notificationManager.notify(7, builder.build());
+                    builder.setContentText(getString(R.string.txtConnectionError))
+                            .setOngoing(false);
+                    notificationManager.notify(17, builder.build());
                 });
     }
 

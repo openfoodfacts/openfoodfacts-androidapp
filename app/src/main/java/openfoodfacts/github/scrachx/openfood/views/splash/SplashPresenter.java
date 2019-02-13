@@ -3,10 +3,13 @@ package openfoodfacts.github.scrachx.openfood.views.splash;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
+
+;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -38,11 +41,17 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                         .putBoolean("firstRun", false)
                         .apply();
             }
-
             if (isNeedToRefresh()) { //true if data was refreshed more than 1 day ago
                 Intent intent = new Intent(context, LoadTaxonomiesService.class);
                 context.startService(intent);
-                view.navigateToMainActivity();
+            }
+            if (firstRun) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.navigateToMainActivity();
+                    }
+                }, 6000);
             } else {
                 view.navigateToMainActivity();
             }
