@@ -727,6 +727,14 @@
     <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
     <string name="version_string">Application Android Open Food Facts</string>
     <string name="version">Version</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Définir comme image d\'ingrédient</string>
     <string name="set_img_nutrients">Définir comme image nutritionelle</string>
     <string name="set_img_front">Définir comme image de profil</string>
@@ -737,6 +745,6 @@
     <string name="customer_service">Service Clients :</string>
     <string name="fast_addition_mode_title">Mode d\'ajout rapide</string>
     <string name="fast_addition_mode">Active l\'ajout rapide de produits avec moins d\'attributs</string>
-    <string name="addtive_search">Search for a additive</string>
+    <string name="addtive_search">Rechercher un additif</string>
     <string name="additives">Additifs</string>
 </resources>

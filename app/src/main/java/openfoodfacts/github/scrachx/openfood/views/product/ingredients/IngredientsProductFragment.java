@@ -154,6 +154,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private CustomTabsIntent customTabsIntent;
     private IIngredientsProductPresenter.Actions presenter;
     private ProductFragmentPagerAdapter pagerAdapter;
+    private boolean extractIngredients = false;
     private boolean sendUpdatedIngredientsImage = false;
 
     //boolean to determine if image should be loaded or not
@@ -302,7 +303,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         List<String> allergens = getAllergens();
 
-        if (mState != null && !product.getIngredientsText().isEmpty()) {
+        if (mState != null && product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
             textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
@@ -665,10 +666,32 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @OnClick(R.id.extract_ingredients_prompt)
     public void extractIngredients() {
-        Intent intent = new Intent( getActivity(), AddProductActivity.class );
-        intent.putExtra( "edit_product", product);
-        intent.putExtra("perform_ocr",true);
-        startActivity(intent);
+        extractIngredients = true;
+
+        final SharedPreferences settings = getActivity().getSharedPreferences( "login", 0 );
+        final String login = settings.getString( "user", "" );
+        if( login.isEmpty() )
+        {
+            new MaterialDialog.Builder( getContext() )
+                    .title( R.string.sign_in_to_edit )
+                    .positiveText( R.string.txtSignIn )
+                    .negativeText( R.string.dialog_cancel )
+                    .onPositive( ( dialog, which ) -> {
+                        Intent intent = new Intent( getContext(), LoginActivity.class );
+                        startActivityForResult( intent, LOGIN_ACTIVITY_REQUEST_CODE );
+                        dialog.dismiss();
+                    } )
+                    .onNegative( ( dialog, which ) -> dialog.dismiss() )
+                    .build().show();
+        }
+        else
+        {
+            mState = (State) getActivity().getIntent().getExtras().getSerializable( "state" );
+            Intent intent = new Intent( getContext(), AddProductActivity.class );
+            intent.putExtra( "edit_product", mState.getProduct() );
+            intent.putExtra("perform_ocr", extractIngredients);
+            startActivityForResult( intent, EDIT_REQUEST_CODE );
+        }
     }
     @OnClick(R.id.imageViewIngredients)
     public void openFullScreen(View v) {
@@ -718,6 +741,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         {
             Intent intent = new Intent( getContext(), AddProductActivity.class );
             intent.putExtra("send_updated", sendUpdatedIngredientsImage);
+            intent.putExtra("perform_ocr", extractIngredients);
             intent.putExtra( "edit_product", mState.getProduct() );
             startActivity( intent );
         }
