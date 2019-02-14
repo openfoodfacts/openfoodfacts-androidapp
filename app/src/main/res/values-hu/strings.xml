@@ -34,12 +34,12 @@
         <item>Összetevők</item>
         <item>Tápanyag</item>
         <item>Tápanyagtáblázat</item>
-        <item>Environment</item>
+        <item>Környezet</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Termékfotók</item>
+        <item>Összetevők elemzése</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -340,7 +340,7 @@
     <string name="action_manage_account">Fiók kezelése</string>
     <string name="action_contributes">Az ön hozzájárulásai</string>
     <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
-    <string name="energy_pref_title">Preferred unit for energy</string>
+    <string name="energy_pref_title">Előnyben részesített energiaegység</string>
     <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
     <string name="volume_pref_title">Preferred unit for volume</string>
     <string name="logout_drawer">Kijelentkezés</string>
@@ -506,7 +506,7 @@
     <string name="swipe_down">Húzás lefelé</string>
     <string name="brand_string">Márkanév</string>
     <string name="additive_string">Adalékanyag</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">Allergén</string>
     <string name="search_string">Keresés</string>
     <string name="country_string">Országok, ahol kapható</string>
     <string name="store_subtitle">Bolt</string>
@@ -695,7 +695,7 @@
     <string name="most_people">A legtöbb ember \n (több mint 50%)</string>
     <string name="some_people">Néhány ember \n (több mint 5%)</string>
     <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-    <string name="risk_of_exposure">Risk of exposure</string>
+    <string name="risk_of_exposure">Kitettség veszély</string>
     <string name="efsa_warning_moderate_risk">Az Európai Élelmiszerbiztonsági Hatóság (EFSA) megállapította, hogy egyes népességcsoportokat mérsékelten veszélyezteti a túl sok  %1$s fogyasztása.</string>
     <string name="efsa_warning_high_risk">Az Európai Élelmiszerbiztonsági Hatóság (EFSA) megállapította, hogy egyes népességcsoportokat nagyon veszélyezteti a túl sok  %1$s fogyasztása.</string>
     <string name="legend_noael">a fenti dózis a megfigyelt káros hatással (NOAEL)</string>
@@ -705,40 +705,48 @@
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="your_diets">Az Ön étrendje(i)</string>
+    <string name="diet_name">Diéta neve</string>
     <string name="diets_dialog_warning_title">Figyelmeztetés</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
     <string name="EditDiet_Name">Név</string>
-    <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
-    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
+    <string name="EditDiet_Description">Leírás</string>
+    <string name="EditDiet_Enabled_Disabled">Engedélyezés/Tiltás</string>
+    <string name="EditDiet_Authorised_Ingredients">Engedélyezett összetevők</string>
     <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Nem engedélyezett összetevők</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Összetevők kiolvasása</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="no_nutrition_data_prompt">Ez a termék nem rendelkezik tápérték adatokkal</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Kép készítése az összetevőkről</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Version</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
-    <string name="report_img">Report Image</string>
-    <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="version_string">Nyissa meg az Open Food Factcs Android-alkalmazását</string>
+    <string name="version">Verzió</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
+    <string name="set_ingredient_img">Kép feltöltése az összetevőkről</string>
+    <string name="set_img_nutrients">Kép feltöltése a tápértéktáblázatról</string>
+    <string name="set_img_front">Borítókép megadása</string>
+    <string name="report_img">Kép jelentése</string>
+    <string name="detected_ingredients">Összetevők detektálása</string>
     <string name="set_image_name">Successfully set the image as</string>
-    <string name="warning">Warning :</string>
-    <string name="customer_service">Customer Service :</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
+    <string name="warning">Figyelmeztetés:</string>
+    <string name="customer_service">Ügyfélszolgálat:</string>
+    <string name="fast_addition_mode_title">Gyors hozzáadása mód</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
-    <string name="addtive_search">Search for a additive</string>
+    <string name="addtive_search">Egy dalékanyag keresése</string>
     <string name="additives">Adalékanyagok</string>
     <!-- Used for diets AddOn -->
 </resources>

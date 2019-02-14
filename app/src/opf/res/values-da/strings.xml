@@ -36,5 +36,5 @@
     <string name="tagline">den gratis produktdatabase</string>
     <string name="product_not_found">Produktet %1$s, du har skannet, findes endnu ikke i Open Products Facts. Kan du tilføje det?</string>
     <string name="currently_on_version">I øjeblikket i Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Hjælp med at kategorisere produkter</string>
 </resources>

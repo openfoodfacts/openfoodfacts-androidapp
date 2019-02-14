@@ -272,6 +272,27 @@ public class Utils {
         return drawable;
     }
 
+    public static String getNovaGroupExplanation(String novaGroup, Context context) {
+
+        if (novaGroup == null) {
+            return "";
+        }
+
+        switch (novaGroup) {
+            case "1":
+                return context.getResources().getString(R.string.nova_grp1_msg);
+            case "2":
+                return context.getResources().getString(R.string.nova_grp2_msg);
+            case "3":
+                return context.getResources().getString(R.string.nova_grp3_msg);
+            case "4":
+                return context.getResources().getString(R.string.nova_grp4_msg);
+            default:
+                return "";
+        }
+
+    }
+
     public static int getNovaGroupDrawable(String novaGroup) {
         int drawable;
 

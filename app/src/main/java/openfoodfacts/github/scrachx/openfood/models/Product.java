@@ -121,6 +121,8 @@ public class Product implements Serializable {
     private List<String> editorsTags = new ArrayList<>();
     @JsonProperty("nova_groups")
     private String novaGroups;
+    @JsonProperty("environment_impact_level_tags")
+    private List<String> environmentImpactLevelTags;
     @JsonProperty("lang")
     private String lang;
     @JsonProperty("purchase_places")
@@ -129,10 +131,20 @@ public class Product implements Serializable {
     private String nutritionDataPer;
     @JsonProperty("no_nutrition_data")
     private String noNutritionData;
+    @JsonProperty("other_information")
+    private String otherInformation;
+    @JsonProperty("conservation_conditions")
+    private String conservationConditions;
+    @JsonProperty("recycling_instructions_to_discard")
+    private String recyclingInstructionsToDiscard;
+    @JsonProperty("recycling_instructions_to_recycle")
+    private String recyclingInstructionsToRecycle;
     @JsonProperty("warning")
     private String warning;
     @JsonProperty("customer_service")
     private String customerService;
+    @JsonProperty("environment_infocard")
+    private String environmentInfocard;
 
 
     private Map<String, Object> additionalProperties = new HashMap<>();
@@ -534,6 +546,9 @@ public class Product implements Serializable {
     public String getNovaGroups() {
         return novaGroups;
     }
+    public List<String> getEnvironmentImpactLevelTags() {
+        return environmentImpactLevelTags;
+    }
 
     public String getLang() {
         return lang;
@@ -549,6 +564,35 @@ public class Product implements Serializable {
 
     public String getNoNutritionData() {
         return noNutritionData;
+    }
+
+    public String getEnvironmentInfocard() {return environmentInfocard;}
+    /**
+     * @return Other information
+     */
+    public String getOtherInformation() {
+        return otherInformation;
+    }
+
+    /**
+     * @return Conservation conditions
+     */
+    public String getConservationConditions() {
+        return conservationConditions;
+    }
+
+    /**
+     * @return Recycling instructions to discard
+     */
+    public String getRecyclingInstructionsToDiscard() {
+        return recyclingInstructionsToDiscard;
+    }
+
+    /**
+     * @return Recycling instructions to recycle
+     */
+    public String getRecyclingInstructionsToRecycle() {
+        return recyclingInstructionsToRecycle;
     }
 
     @Override

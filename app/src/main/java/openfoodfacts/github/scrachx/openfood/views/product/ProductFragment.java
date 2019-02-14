@@ -74,6 +74,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
+import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
@@ -122,6 +123,8 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         toolbar.setVisibility(View.GONE);
         mButtonScan.setVisibility(View.GONE);
 
+        mState = (State) getArguments().getSerializable("state");
+
         setupViewPager(viewPager);
 
         viewPager.setNestedScrollingEnabled(true);
@@ -130,7 +133,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
         api = new OpenFoodAPIClient(getActivity());
 
-        mState = (State) getArguments().getSerializable("state");
         if (!Utils.isHardwareCameraInstalled(getContext())) {
             mButtonScan.setVisibility(View.GONE);
         }
@@ -202,7 +204,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                     break;
 
                 case R.id.search_product:
-                    startActivity(new Intent(getActivity(), MainActivity.class));
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.putExtra("product_search", true);
+                    startActivity(intent);
                     break;
 
                 case R.id.home:
@@ -265,6 +269,12 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
         if (BuildConfig.FLAVOR.equals("off")) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
+            if( (mState.getProduct().getNutriments() != null &&
+                    mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
+                    (mState.getProduct().getEnvironmentInfocard() != null && !mState.getProduct().getEnvironmentInfocard().isEmpty()))
+            {
+                adapterResult.addFragment(new EnvironmentProductFragment(), "Environment");
+            }
             if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("photoMode", false)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
             }
