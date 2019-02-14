@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="58dip"
+    style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown">
+    <!-- Icons come first in the layout, since their placement doesn't depend on
+         the placement of the text views. -->
+    <!--android:layout_width="@dimen/abc_dropdownitem_icon_width"-->
+    <!--android:layout_height="48dip"-->
+    <ImageView
+        android:id="@android:id/icon1"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:scaleType="centerInside"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Icon1" />
+    <ImageView
+        android:id="@+id/search_suggestion_icon"
+        android:layout_width="@dimen/abc_dropdownitem_icon_width"
+        android:layout_height="48dp"
+        android:scaleType="centerInside"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Icon1"
+        app:srcCompat="@drawable/ic_history_black_24dp"/>
+    <ImageView
+        android:id="@+id/edit_query"
+        android:layout_width="48dip"
+        android:layout_height="48dip"
+        android:scaleType="centerInside"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/selectableItemBackground"
+        android:visibility="gone"
+        style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Query" />
+    <ImageView
+        android:id="@id/android:icon2"
+        android:layout_width="48dip"
+        android:layout_height="48dip"
+        android:scaleType="centerInside"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Icon2" />
+    <!-- The subtitle comes before the title, since the height of the title depends on whether the
+         subtitle is visible or gone. -->
+    <TextView android:id="@android:id/text2"
+        style="?android:attr/dropDownItemStyle"
+        android:textAppearance="?attr/textAppearanceSearchResultSubtitle"
+        android:singleLine="true"
+        android:layout_width="match_parent"
+        android:layout_height="29dip"
+        android:paddingBottom="4dip"
+        android:gravity="top"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+    <!-- The title is placed above the subtitle, if there is one. If there is no
+         subtitle, it fills the parent. -->
+    <TextView android:id="@android:id/text1"
+        style="?android:attr/dropDownItemStyle"
+        android:textAppearance="?attr/textAppearanceSearchResultTitle"
+        android:singleLine="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_above="@android:id/text2"
+        android:layout_toRightOf="@id/search_suggestion_icon"
+        android:layout_toEndOf="@id/search_suggestion_icon" />
+</RelativeLayout>
