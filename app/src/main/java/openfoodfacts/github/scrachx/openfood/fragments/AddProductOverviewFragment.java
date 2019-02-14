@@ -114,7 +114,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
-    private static final String PARAM_EATING ="eating";
+    private static final String PARAM_EATING = "eating";
     private static final String PARAM_OTHER_INFORMATION = "other_information";
     private static final String PARAM_CONSERVATION_CONDITIONS = "conservation_conditions";
     private static final String PARAM_RECYCLING_INSTRUCTION_TO_DISCARD = "recycling_instructions_to_discard";
