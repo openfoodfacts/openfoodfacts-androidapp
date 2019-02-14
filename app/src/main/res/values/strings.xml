@@ -932,7 +932,7 @@
     <string name="additives">Additives</string>
 
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Add to Your Lists</string>
+    <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
     <string name="txt_eaten_products">Eaten Products</string>
