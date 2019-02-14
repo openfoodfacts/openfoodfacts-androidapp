@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -69,6 +70,7 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -105,6 +107,14 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     TextView palmOilProduct;
     @BindView(R.id.textMayBeFromPalmOilProduct)
     TextView mayBeFromPalmOilProduct;
+    @BindView(R.id.novaLayout)
+    LinearLayout novaLayout;
+    @BindView(R.id.nova_group)
+    ImageView novaGroup;
+    @BindView(R.id.novaExplanation)
+    TextView novaExplanation;
+    @BindView(R.id.novaMethodLink)
+    TextView novaMethodLink;
     @BindView(R.id.imageViewIngredients)
     ImageView mImageIngredients;
     @BindView(R.id.addPhotoLabel)
@@ -359,6 +369,19 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             } else {
                 mayBeFromPalmOilProduct.setVisibility(View.GONE);
             }
+        }
+
+        if (product.getNovaGroups() != null) {
+            novaLayout.setVisibility(View.VISIBLE);
+            novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups(), getContext()));
+            novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+            novaGroup.setOnClickListener((View v) -> {
+                Uri uri = Uri.parse(getString(R.string.url_nova_groups));
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
+            });
+        } else {
+            novaLayout.setVisibility(View.GONE);
         }
     }
 
@@ -661,6 +684,15 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             return Collections.emptyList();
         } else {
             return allergens;
+        }
+    }
+
+    @OnClick(R.id.novaMethodLink)
+    void novaMethodLinkDisplay() {
+        if (product.getNovaGroups() != null) {
+            Uri uri = Uri.parse(getString(R.string.url_nova_groups));
+            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
         }
     }
 
