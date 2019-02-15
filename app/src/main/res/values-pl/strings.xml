@@ -776,5 +776,4 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="fast_addition_mode">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
     <string name="addtive_search">Wyszukaj dodatek</string>
     <string name="additives">Dodatki</string>
-    <!-- Used for diets AddOn -->
 </resources>
