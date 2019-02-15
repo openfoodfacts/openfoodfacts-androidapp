@@ -36,6 +36,8 @@ public class EnvironmentProductFragment extends BaseFragment {
     CardView recyclingInstructionsToDiscardCv;
     @BindView(R.id.recycling_instructions_recycle_cv)
     CardView recyclingInstructionsToRecycleCv;
+    @BindView(R.id.carbon_footprint_cv)
+    CardView carbonFootprintCardView;
 
     private State mState;
 
@@ -61,6 +63,8 @@ public class EnvironmentProductFragment extends BaseFragment {
             carbonFootprint.setText(bold(getString(R.string.textCarbonFootprint)));
             carbonFootprint.append(carbonFootprintNutriment.getFor100g());
             carbonFootprint.append(carbonFootprintNutriment.getUnit());
+        } else {
+            carbonFootprintCardView.setVisibility(View.GONE);
         }
 
         if (product.getEnvironmentInfocard() != null && !product.getEnvironmentInfocard().isEmpty()) {
