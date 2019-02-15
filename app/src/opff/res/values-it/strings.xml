@@ -36,4 +36,5 @@
     <string name="tagline">database aperto dei prodotti alimentari per animali</string>
     <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Pet Food Facts. Puoi aggiungerlo?</string>
     <string name="currently_on_version">Attualmente su Open Pet Food Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>

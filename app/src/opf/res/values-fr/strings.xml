@@ -36,4 +36,5 @@
     <string name="tagline">l\'information produit ouverte</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Products Facts. Pouvez-vous l\'ajouter ?</string>
     <string name="currently_on_version">Actuellement sur Open Products Facts</string>
+    <string name="category_game_btn">Aidez à classer les produits</string>
 </resources>

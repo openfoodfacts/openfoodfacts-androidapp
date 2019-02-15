@@ -52,6 +52,7 @@
     <!-- Text units -->
     <!-- weight units -->
     <!-- nutrition energy units -->
+    <!-- volume units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -270,7 +271,7 @@
     <string name="cancel_button">Отмена</string>
     <string name="login_button">Логин</string>
     <string name="create_account_button">Создать учетную запись</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatCount,StringFormatInvalid">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
+    <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
     <string name="from_gallery">Из галереи</string>
     <string name="product_sent">Данные о продукте успешно отправлены</string>
     <string name="action_edit_product">Редактировать продукт</string>
@@ -346,6 +347,10 @@
     <string name="nutriment_serving_size">На порцию:</string>
     <string name="action_manage_account">Управление учётной записью</string>
     <string name="action_contributes">Ваш вклад</string>
+    <string name="choose_energy_unit">Выберите предпочтительные единицы калорийности для таблицы питательной ценности</string>
+    <string name="energy_pref_title">Предпочтительная единица калорийности</string>
+    <string name="choose_volume_unit">Выберите предпочтительные единицы объёма для таблицы питательной ценности</string>
+    <string name="volume_pref_title">Предпочтительная единица объема</string>
     <string name="logout_drawer">Выйти</string>
     <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
     <string name="textCarbonFootprint">Углеродный след / выбросы CO2: </string>
@@ -702,7 +707,7 @@
     <string name="legend_noael">выше дозы с наблюдаемым неблагоприятным эффектом (NOAEL)</string>
     <string name="legend_adi">выше допустимой дневной нормы (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="max_nutrient_val_msg">Введенное значение больше указанного на порцию</string>
     <string name="update_image">Отправить обновленное изображение</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
@@ -719,20 +724,35 @@
     <string name="EditDiet_Hint_So_So_Ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Запрещенные ингредиенты</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Перечислите запрещенные ингредиенты, которые будут отображаться красным цветом. Наример: глютен, молоко, пальмовое масло, сахар... Вы можете дополнить список позже.</string>
-    <string name="extract_ingredients_prompt">Extract Ingredients</string>
+    <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Добавьте категорию для вычисления Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Сделайте фото состава</string>
     <string name="category_game_btn">Помогите классифицировать продукты для вычисления Nutri-Score</string>
     <string name="version_string">Приложение Open Food Facts для Android</string>
     <string name="version">Версия</string>
-    <string name="set_ingredient_img">Установить как изображение ингредиентов</string>
-    <string name="set_img_nutrients">Установить как изображение пищевой ценности</string>
-    <string name="set_img_front">Установить как основное изображение</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
     <string name="report_img">Сообщить об изображении</string>
     <string name="detected_ingredients">Обнаруженные ингредиенты</string>
+    <string name="set_image_name">Successfully set the image as</string>
     <string name="warning">Предупреждение :</string>
     <string name="customer_service">Центр поддержки:</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">This option if selected will enable fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode_title">Режим быстрого добавления</string>
+    <string name="fast_addition_mode">Позволяет быстро добавлять продукты с меньшим количеством атрибутов</string>
+    <string name="addtive_search">Search for a additive</string>
+    <string name="additives">Добавки</string>
     <!-- Used for diets AddOn -->
 </resources>

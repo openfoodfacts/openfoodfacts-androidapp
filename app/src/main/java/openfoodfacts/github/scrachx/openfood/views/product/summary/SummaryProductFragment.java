@@ -76,6 +76,7 @@ import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
@@ -83,6 +84,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -137,6 +139,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView categoryProduct;
     @BindView(R.id.textLabelProduct)
     TextView labelProduct;
+    @BindView(R.id.textOtherInfo)
+    TextView otherInfo;
+    @BindView(R.id.textConservationCond)
+    TextView conservationCond;
+    @BindView(R.id.textRecyclingInstructionToRecycle)
+    TextView recyclingInstructionToRecycle;
+    @BindView(R.id.textRecyclingInstructionToDiscard)
+    TextView recyclingInstructionToDiscard;
     @BindView(R.id.front_picture_layout)
     LinearLayout frontPictureLayout;
     @BindView(R.id.imageViewFront)
@@ -149,10 +159,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView uploadingImageProgressText;
     @BindView(R.id.buttonMorePictures)
     Button addMorePicture;
+    @BindView(R.id.add_nutriscore_prompt)
+    Button addNutriScorePrompt;
     @BindView(R.id.imageGrade)
     ImageView img;
     @BindView(R.id.nova_group)
     ImageView novaGroup;
+    @BindView(R.id.co2_icon)
+    ImageView co2Icon;
     @BindView(R.id.scores_layout)
     ConstraintLayout scoresLayout;
     @BindView(R.id.ingredient_image_prompt_layout)
@@ -197,6 +211,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
+    //boolean to determine if nutrient prompt should be shown
+    private boolean showNutrientPrompt = false;
+    //boolean to determine if category prompt should be shown
+    private boolean showCategoryPrompt = false;
     //boolean to indicate if the image clicked was that of ingredients
     private boolean addingIngredientsImage = false;
     //boolean to indicate if the image clicked was that of nutrition
@@ -210,7 +228,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
         Intent intent = getActivity().getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
+        State state;
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null){
+            state = (State) intent.getExtras().getSerializable("state");
+        }else{
+            state = ProductFragment.mState;
+        }
+
         product = state.getProduct();
 
         presenter = new SummaryProductPresenter(product, this);
@@ -228,7 +252,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        refreshView((State) intent.getExtras().getSerializable("state"));
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null) {
+            refreshView((State) intent.getExtras().getSerializable("state"));
+        }else{
+            refreshView(ProductFragment.mState);
+        }
     }
 
     @Override
@@ -254,12 +282,40 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         barCodeProduct.setVisibility(View.VISIBLE);
         nameProduct.setVisibility(View.VISIBLE);
         genericNameProduct.setVisibility(View.VISIBLE);
+        otherInfo.setVisibility(View.VISIBLE);
+        conservationCond.setVisibility(View.VISIBLE);
+        recyclingInstructionToDiscard.setVisibility(View.VISIBLE);
+        recyclingInstructionToRecycle.setVisibility(View.VISIBLE);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
         if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
             isLowBatteryMode = true;
+        }
+
+        //checks the product states_tags to determine which prompt to be shown
+        List<String> statesTags = product.getStatesTags();
+        if (statesTags.contains("en:categories-to-be-completed")) {
+            showCategoryPrompt = true;
+        }
+        if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
+            showNutrientPrompt = false;
+        } else {
+            if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
+                showNutrientPrompt = true;
+            }
+        }
+
+        if (showNutrientPrompt || showCategoryPrompt) {
+            addNutriScorePrompt.setVisibility(View.VISIBLE);
+            if (showNutrientPrompt && showCategoryPrompt) {
+                addNutriScorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+            } else if (showNutrientPrompt) {
+                addNutriScorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+            } else if (showCategoryPrompt) {
+                addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
+            }
         }
 
         presenter.loadAllergens();
@@ -293,12 +349,38 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ingredientImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
-        if (isBlank(product.getImageNutritionUrl())) {
-            nutritionImagePromptLayout.setVisibility(View.VISIBLE);
+        if(!BuildConfig.FLAVOR.equals( "obf" ) && !BuildConfig.FLAVOR.equals( "opf" )) {
+            if (isBlank(product.getImageNutritionUrl())) {
+                nutritionImagePromptLayout.setVisibility(View.VISIBLE);
+            }
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
+        if (isNotBlank(product.getOtherInformation())) {
+            otherInfo.setText(bold(getString(R.string.txtOtherInfo)));
+            otherInfo.append(' ' + product.getOtherInformation());
+        } else {
+            otherInfo.setVisibility(View.GONE);
+        }
+        if (isNotBlank(product.getConservationConditions())) {
+            conservationCond.setText(bold(getString(R.string.txtConservationCond)));
+            conservationCond.append(' ' + product.getConservationConditions());
+        } else {
+            conservationCond.setVisibility(View.GONE);
+        }
+        if (isNotBlank(product.getRecyclingInstructionsToDiscard())) {
+            recyclingInstructionToDiscard.setText(bold(getString(R.string.txtRecyclingInstructionToDiscard)));
+            recyclingInstructionToDiscard.append(' ' + product.getRecyclingInstructionsToDiscard());
+        } else {
+            recyclingInstructionToDiscard.setVisibility(View.GONE);
+        }
+        if (isNotBlank(product.getRecyclingInstructionsToRecycle())) {
+            recyclingInstructionToRecycle.setText(bold(getString(R.string.txtRecyclingInstructionToRecycle)));
+            recyclingInstructionToRecycle.append(' ' + product.getRecyclingInstructionsToRecycle());
+        } else {
+            recyclingInstructionToRecycle.setVisibility(View.GONE);
+        }
         if (isNotBlank(product.getProductName())) {
             nameProduct.setText(product.getProductName());
         } else {
@@ -353,8 +435,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             brandProduct.setVisibility(View.GONE);
         }
         if (isNotBlank(product.getManufacturingPlaces())) {
+            manufacturingProduct.setClickable(true);
+            manufacturingProduct.setMovementMethod(LinkMovementMethod.getInstance());
             manufacturingProduct.setText(bold(getString(R.string.txtManufacturing)));
-            manufacturingProduct.append(' ' + product.getManufacturingPlaces());
+            manufacturingProduct.append(" ");
+
+            String[] origins = product.getManufacturingPlaces().split(",");
+            for (int i = 0; i < origins.length - 1; i++) {
+                manufacturingProduct.append(Utils.getClickableText(origins[i].trim(), "", SearchType.MANUFACTURING_PLACE, getActivity(), customTabsIntent));
+                manufacturingProduct.append(", ");
+            }
+            manufacturingProduct.append(Utils.getClickableText(origins[origins.length - 1].trim(), "", SearchType.MANUFACTURING_PLACE, getActivity(), customTabsIntent));
         } else {
             manufacturingProduct.setVisibility(View.GONE);
         }
@@ -362,8 +453,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (isBlank(product.getOrigins())) {
             ingredientsOrigin.setVisibility(View.GONE);
         } else {
+            ingredientsOrigin.setClickable(true);
+            ingredientsOrigin.setMovementMethod(LinkMovementMethod.getInstance());
             ingredientsOrigin.setText(bold(getString(R.string.txtIngredientsOrigins)));
-            ingredientsOrigin.append(' ' + product.getOrigins());
+            ingredientsOrigin.append(" ");
+
+            String[] origins = product.getOrigins().split(",");
+            for (int i = 0; i < origins.length - 1; i++) {
+                ingredientsOrigin.append(Utils.getClickableText(origins[i].trim(), "", SearchType.ORIGIN, getActivity(), customTabsIntent));
+                ingredientsOrigin.append(", ");
+            }
+            ingredientsOrigin.append(Utils.getClickableText(origins[origins.length - 1].trim(), "", SearchType.ORIGIN, getActivity(), customTabsIntent));
         }
 
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
@@ -557,16 +657,29 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 novaGroup.setImageResource(0);
             }
             if (product.getNovaGroups() == null && product.getNutritionGradeFr() == null) {
-                scoresLayout.setVisibility(View.GONE);
-            } else {
-                scoresLayout.setVisibility(View.VISIBLE);
+                img.setVisibility(View.GONE);
+                novaGroup.setVisibility(View.GONE);
+            }
+            if(product.getEnvironmentImpactLevelTags()!=null) {
+                List<String> tags=product.getEnvironmentImpactLevelTags();
+                if(tags.size()>0) {
+                    String tag=tags.get(0).replace("\"","");
+                    co2Icon.setVisibility(View.VISIBLE);
+                    if(tag.equals("en-high")){
+                        co2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
+                    } else if(tag.equals("en-low")){
+                        co2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
+                    } else if(tag.equals("en-medium")){
+                        co2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
+                    } else {
+                        co2Icon.setVisibility(View.GONE);
+                    }
+                }
             }
 
         } else {
             scoresLayout.setVisibility(View.GONE);
         }
-
-
     }
     private CharSequence getAdditiveTag(AdditiveName additive) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -576,29 +689,55 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             public void onClick(View view) {
                 if (additive.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        ProductActivity productActivity = (ProductActivity) getActivity();
-                        if (value) {
-                            if (productActivity != null && !productActivity.isFinishing()) {
-                                productActivity.showBottomScreen(result, additive);
-                            }
-                        } else {
-                            if (additive.hasOverexposureData()) {
+                        if (getActivity() instanceof ProductActivity) {
+                            ProductActivity productActivity = (ProductActivity) getActivity();
+                            if (value) {
                                 if (productActivity != null && !productActivity.isFinishing()) {
-                                    productActivity.showBottomScreen(null, additive);
+                                    productActivity.showBottomScreen(result, additive);
                                 }
                             } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                                if (additive.hasOverexposureData()) {
+                                    if (productActivity != null && !productActivity.isFinishing()) {
+                                        productActivity.showBottomScreen(null, additive);
+                                    }
+                                } else {
+                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                                }
+                            }
+                        } else {
+                            if (value) {
+                                if (getParentFragment() != null) {
+                                    ((ProductFragment) getParentFragment()).showBottomScreen(result, additive);
+                                }
+                            } else {
+                                if (additive.hasOverexposureData()) {
+                                    if (getParentFragment() != null) {
+                                        ((ProductFragment) getParentFragment()).showBottomScreen(null, additive);
+                                    }
+                                } else {
+                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                                }
                             }
                         }
                     });
                 } else {
-                    ProductActivity productActivity = (ProductActivity) getActivity();
-                    if (additive.hasOverexposureData()) {
-                        if (productActivity != null && !productActivity.isFinishing()) {
-                            productActivity.showBottomScreen(null, additive);
+                    if (getActivity() instanceof ProductActivity) {
+                        ProductActivity productActivity = (ProductActivity) getActivity();
+                        if (additive.hasOverexposureData()) {
+                            if (productActivity != null && !productActivity.isFinishing()) {
+                                productActivity.showBottomScreen(null, additive);
+                            }
+                        } else {
+                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                         }
                     } else {
-                        ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                        if (additive.hasOverexposureData()) {
+                            if (getParentFragment() != null) {
+                                ((ProductFragment) getParentFragment()).showBottomScreen(null, additive);
+                            }
+                        } else {
+                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                        }
                     }
                 }
             }
@@ -827,8 +966,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         @Override
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
-                                ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, category);
+                                if (getActivity() instanceof ProductActivity) {
+                                    ProductActivity productActivity = (ProductActivity) getActivity();
+                                    productActivity.showBottomScreen(result, category);
+                                } else {
+                                    if (getParentFragment() != null) {
+                                        ((ProductFragment) getParentFragment()).showBottomScreen(result, category);
+                                    }
+                                }
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(),
                                         category.getCategoryTag(),
@@ -866,8 +1011,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         @Override
                         public void onresponse(boolean value, JSONObject result) {
                             if (value) {
-                                ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, label);
+                                if (getActivity() instanceof ProductActivity) {
+                                    ProductActivity productActivity = (ProductActivity) getActivity();
+                                    productActivity.showBottomScreen(result, label);
+                                } else {
+                                    if (getParentFragment() != null) {
+                                        ((ProductFragment) getParentFragment()).showBottomScreen(result, label);
+                                    }
+                                }
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(),
                                         label.getLabelTag(),
@@ -898,6 +1049,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @OnClick(R.id.product_incomplete_message_dismiss_icon)
     public void onDismissProductIncompleteMsgClicked() {
         productIncompleteView.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.add_nutriscore_prompt)
+    public void onAddNutriScorePromptClick() {
+        Intent intent = new Intent(getActivity(), AddProductActivity.class);
+        intent.putExtra("edit_product", product);
+        //adds the information about the prompt when navigating the user to the edit the product
+        intent.putExtra("modify_category_prompt", showCategoryPrompt);
+        intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
+        startActivity(intent);
     }
 
     // Implements CustomTabActivityHelper.ConnectionCallback

@@ -36,9 +36,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.Driver;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -47,6 +44,9 @@ import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -54,10 +54,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
@@ -267,6 +267,27 @@ public class Utils {
         }
 
         return drawable;
+    }
+
+    public static String getNovaGroupExplanation(String novaGroup, Context context) {
+
+        if (novaGroup == null) {
+            return "";
+        }
+
+        switch (novaGroup) {
+            case "1":
+                return context.getResources().getString(R.string.nova_grp1_msg);
+            case "2":
+                return context.getResources().getString(R.string.nova_grp2_msg);
+            case "3":
+                return context.getResources().getString(R.string.nova_grp3_msg);
+            case "4":
+                return context.getResources().getString(R.string.nova_grp4_msg);
+            default:
+                return "";
+        }
+
     }
 
     public static int getNovaGroupDrawable(String novaGroup) {
@@ -593,6 +614,55 @@ public class Utils {
     }
 
     /**
+     * Function which returns volume in oz if parameter is in cl, ml, or l
+     *
+     * @param servingSize
+     * @return volume in oz if servingSize is a volume parameter else return the the parameter unchanged
+     */
+    public static String getServingInOz(String servingSize) {
+
+        Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
+        Matcher matcher = regex.matcher(servingSize);
+        if (servingSize.toLowerCase().contains("ml")) {
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val *= 0.033814f;
+            servingSize = getRoundNumber(val).concat(" oz");
+        } else if (servingSize.toLowerCase().contains("cl")) {
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val *= 0.33814f;
+            servingSize = getRoundNumber(val).concat(" oz");
+        } else if (servingSize.toLowerCase().contains("l")) {
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val *= 33.814f;
+            servingSize = getRoundNumber(val).concat(" oz");
+        }
+        return servingSize;
+    }
+
+    /**
+     * Function that returns the volume in liters if input parameter is in oz
+     *
+     * @param servingSize
+     * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
+     */
+    public static String getServingInL(String servingSize) {
+
+        if (servingSize.toLowerCase().contains("oz")) {
+            Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
+            Matcher matcher = regex.matcher(servingSize);
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val /= 33.814f;
+            servingSize = Float.toString(val).concat(" l");
+        }
+
+        return servingSize;
+    }
+
+    /**
      * Function which returns true if the battery level is low
      *
      * @param context
@@ -665,6 +735,21 @@ public class Utils {
             return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
         }
         return "Official Android App "+BuildConfig.VERSION_NAME;
+    }
+
+     /*
+     @param Takes a string
+     @return Returns a Json object
+      */
+
+    public static JSONObject createJsonObject(String response){
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
     }
 }
 
