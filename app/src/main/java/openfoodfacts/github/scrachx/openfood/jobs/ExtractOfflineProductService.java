@@ -70,7 +70,7 @@ public class ExtractOfflineProductService extends IntentService {
                 .setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher);
 
-        unzip(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + "fr.openfoodfacts.org.products.small.zip"), Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
+        unzip(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + getString(R.string.offline_excerpt_filename)), Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
     }
 
     public void unzip(File file, String _location) {
@@ -242,5 +242,11 @@ public class ExtractOfflineProductService extends IntentService {
             }
             return true;
         }
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        super.onTaskRemoved(rootIntent);
+        notificationManager.cancelAll();
     }
 }

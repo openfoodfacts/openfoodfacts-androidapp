@@ -210,7 +210,7 @@ public class ProductsDownloadFragment extends NavigationBaseFragment {
             Toast.makeText(getContext(), getString(R.string.toast_already_running), Toast.LENGTH_SHORT).show();
         } else {
             if (settings.getBoolean("is_data_downloaded", false)) {
-                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + "fr.openfoodfacts.org.products.small.zip");
+                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + getString(R.string.offline_excerpt_filename));
                 boolean isDelete = file.delete();
                 if (isDelete) {
                     Toast.makeText(getContext(), getString(R.string.txtToastFileDeleted), Toast.LENGTH_SHORT).show();

@@ -968,6 +968,7 @@
     <string name="txtToastFileNotFound">File not found!</string>
     <string name="txtToastErrorInDelete">Error in deleting file!</string>
     <string name="txtToastFileDeleted">File deleted successfully!</string>
+    <string name="offline_excerpt_url" translatable="false">data/offline/</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>

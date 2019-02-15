@@ -83,7 +83,7 @@ public class DownloadOfflineProductService extends IntentService {
 
         //downloading data
         OpenFoodAPIClient client = new OpenFoodAPIClient(this);
-        String fileURL = "http://fr.openfoodfacts.org/data/offline/fr.openfoodfacts.org.products.small.zip";
+        String fileURL = getString(R.string.website) + getString(R.string.offline_excerpt_url) + getString(R.string.offline_excerpt_filename);
         client.getAPIService().downloadFileWithDynamicUrlSync(fileURL)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
@@ -176,6 +176,12 @@ public class DownloadOfflineProductService extends IntentService {
         }
     }
 
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        super.onTaskRemoved(rootIntent);
+        notificationManager.cancelAll();
+    }
+
     @SuppressLint("StaticFieldLeak")
     private class DownloadZipFileTask extends AsyncTask<ResponseBody, Pair<Integer, Long>, String> {
 
@@ -190,7 +196,7 @@ public class DownloadOfflineProductService extends IntentService {
         @Override
         protected String doInBackground(ResponseBody... urls) {
             //Copy you logic to calculate progress and call
-            saveToDisk(urls[0], "fr.openfoodfacts.org.products.small.zip");
+            saveToDisk(urls[0], getString(R.string.offline_excerpt_filename));
             return null;
         }
 
@@ -255,6 +261,4 @@ public class DownloadOfflineProductService extends IntentService {
             isDownloadOfflineProductServiceRunning = false;
         }
     }
-
-
 }
