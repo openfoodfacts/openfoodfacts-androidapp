@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,14 @@ public class EnvironmentProductFragment extends BaseFragment {
     TextView carbonFootprint;
     @BindView(R.id.environment_info_text)
     TextView environmentInfoText;
+    @BindView(R.id.recyclingInstructionToDiscard)
+    TextView recyclingInstructionToDiscardText;
+    @BindView(R.id.recyclingInstructionToRecycle)
+    TextView recyclingInstructionToRecycleText;
+    @BindView(R.id.recycling_instructions_discard_cv)
+    CardView recyclingInstructionsToDiscardCv;
+    @BindView(R.id.recycling_instructions_recycle_cv)
+    CardView recyclingInstructionsToRecycleCv;
 
     private State mState;
 
@@ -60,6 +69,20 @@ public class EnvironmentProductFragment extends BaseFragment {
             } else {
                 environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard()));
             }
+        }
+
+        if(product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
+            recyclingInstructionToDiscardText.setText(bold("Recycling instructions - To discard: "));
+            recyclingInstructionToDiscardText.append(product.getRecyclingInstructionsToDiscard());
+        } else {
+            recyclingInstructionsToDiscardCv.setVisibility(View.GONE);
+        }
+
+        if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
+            recyclingInstructionToRecycleText.setText(bold("Recycling instructions - To recycle:"));
+            recyclingInstructionToRecycleText.append(product.getRecyclingInstructionsToRecycle());
+        } else {
+            recyclingInstructionsToRecycleCv.setVisibility(View.GONE);
         }
 
         refreshView(mState);
