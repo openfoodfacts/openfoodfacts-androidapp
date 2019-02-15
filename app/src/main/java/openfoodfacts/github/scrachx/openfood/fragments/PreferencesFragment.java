@@ -61,6 +61,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     AdditiveDao mAdditiveDao;
     private SharedPreferences settings;
     private NavigationDrawerListener navigationDrawerListener;
+    public static String USER_COUNTRY_PREFERENCE_KEY = "user_country";
 
    Context context;
 
@@ -113,16 +114,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        ListPreference countryPreference = ((ListPreference) findPreference("user_country"));
+        ListPreference countryPreference = ((ListPreference) findPreference(USER_COUNTRY_PREFERENCE_KEY));
         List<String> countryLabels = new ArrayList<>();
 
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
         CountryNameDao countryNameDao = daoSession.getCountryNameDao();
-
-        asyncSessionCountries.queryList(countryNameDao.queryBuilder()
-                .where(CountryNameDao.Properties.LanguageCode.eq(LocaleHelper.getLanguage(getActivity())))
-                .orderAsc(CountryNameDao.Properties.Name).build());
 
         asyncSessionCountries.setListenerMainThread(operation -> {
             @SuppressWarnings("unchecked")
@@ -134,9 +131,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             countryPreference.setEntryValues(countryLabels.toArray(new String[countryLabels.size()]));
         });
 
+        asyncSessionCountries.queryList(countryNameDao.queryBuilder()
+                .where(CountryNameDao.Properties.LanguageCode.eq(LocaleHelper.getLanguage(getActivity())))
+                .orderAsc(CountryNameDao.Properties.Name).build());
+
         countryPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
             if (preference instanceof ListPreference) {
-               if (preference.getKey().equals("user_country")) {
+               if (preference.getKey().equals(USER_COUNTRY_PREFERENCE_KEY)) {
                    String country = (String) newValue;
                    SharedPreferences.Editor editor = settings.edit();
                    editor.putString(preference.getKey(), country);
