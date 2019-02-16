@@ -242,10 +242,10 @@ public class Utils {
     }
 
     public static int getImageGrade(String grade) {
-        int drawable;
+        int drawable = 0;
 
         if (grade == null) {
-            return R.drawable.ic_help_outline_orange_24dp;
+            return drawable;
         }
 
         switch (grade.toLowerCase(Locale.getDefault())) {
@@ -264,19 +264,37 @@ public class Utils {
             case "e":
                 drawable = R.drawable.nnc_e;
                 break;
-            default:
-                drawable = R.drawable.ic_help_outline_orange_24dp;
-                break;
         }
 
         return drawable;
     }
 
-    public static int getNovaGroupDrawable(String novaGroup) {
-        int drawable;
+    public static String getNovaGroupExplanation(String novaGroup, Context context) {
 
         if (novaGroup == null) {
-            return R.drawable.ic_help_outline_orange_24dp;
+            return "";
+        }
+
+        switch (novaGroup) {
+            case "1":
+                return context.getResources().getString(R.string.nova_grp1_msg);
+            case "2":
+                return context.getResources().getString(R.string.nova_grp2_msg);
+            case "3":
+                return context.getResources().getString(R.string.nova_grp3_msg);
+            case "4":
+                return context.getResources().getString(R.string.nova_grp4_msg);
+            default:
+                return "";
+        }
+
+    }
+
+    public static int getNovaGroupDrawable(String novaGroup) {
+        int drawable = 0;
+
+        if (novaGroup == null) {
+            return drawable;
         }
 
         switch (novaGroup) {
@@ -291,9 +309,6 @@ public class Utils {
                 break;
             case "4":
                 drawable = R.drawable.ic_nova_group_4;
-                break;
-            default:
-                drawable = R.drawable.ic_help_outline_orange_24dp;
                 break;
         }
         return drawable;

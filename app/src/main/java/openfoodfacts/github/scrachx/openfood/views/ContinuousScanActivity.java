@@ -292,13 +292,21 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             }
                             // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
                             if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
-                                nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
+                                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                                    nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
+                                } else {
+                                    nutriScore.setVisibility(View.INVISIBLE);
+                                }
                             } else {
                                 nutriScore.setVisibility(View.GONE);
                             }
                             // Hide nova group from quickView if app flavour is not OFF or there is no nova group
                             if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
-                                novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                                if (Utils.getNovaGroupDrawable(product.getNovaGroups()) != 0) {
+                                    novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                                } else {
+                                    novaGroup.setVisibility(View.INVISIBLE);
+                                }
                             } else {
                                 novaGroup.setVisibility(View.GONE);
                             }

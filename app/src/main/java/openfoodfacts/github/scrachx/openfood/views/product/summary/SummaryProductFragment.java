@@ -352,8 +352,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ingredientImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
-        if (isBlank(product.getImageNutritionUrl())) {
-            nutritionImagePromptLayout.setVisibility(View.VISIBLE);
+        if(!BuildConfig.FLAVOR.equals( "obf" ) && !BuildConfig.FLAVOR.equals( "opf" )) {
+            if (isBlank(product.getImageNutritionUrl())) {
+                nutritionImagePromptLayout.setVisibility(View.VISIBLE);
+            }
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
@@ -576,7 +578,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri));
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
                 Context context = this.getContext();
-                img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                    img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                } else {
+                    img.setVisibility(View.INVISIBLE);
+                }
                 img.setOnClickListener(view1 -> {
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                     CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
@@ -640,7 +646,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
 
             if (product.getNovaGroups() != null) {
-                novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                if (Utils.getNovaGroupDrawable(product.getNovaGroups()) != 0) {
+                    novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                } else {
+                    novaGroup.setVisibility(View.INVISIBLE);
+                }
                 novaGroup.setOnClickListener(view1 -> {
                     Uri uri = Uri.parse(getString(R.string.url_nova_groups));
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
