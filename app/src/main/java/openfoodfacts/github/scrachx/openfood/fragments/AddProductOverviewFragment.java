@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -417,6 +418,12 @@ public class AddProductOverviewFragment extends BaseFragment {
             final List<String> chipValues = new ArrayList<>();
             for (String tag : countriesTags) {
                 chipValues.add(getCountryName(appLanguageCode, tag));
+            }
+            //Also add the country set by the user in preferences
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String savedCountry = sharedPref.getString("user_country","");
+            if (!savedCountry.isEmpty()) {
+                chipValues.add(savedCountry);
             }
             countriesWhereSold.setText(chipValues);
         }

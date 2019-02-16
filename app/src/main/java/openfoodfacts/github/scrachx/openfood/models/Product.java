@@ -121,6 +121,8 @@ public class Product implements Serializable {
     private List<String> editorsTags = new ArrayList<>();
     @JsonProperty("nova_groups")
     private String novaGroups;
+    @JsonProperty("environment_impact_level_tags")
+    private List<String> environmentImpactLevelTags;
     @JsonProperty("lang")
     private String lang;
     @JsonProperty("purchase_places")
@@ -141,6 +143,8 @@ public class Product implements Serializable {
     private String warning;
     @JsonProperty("customer_service")
     private String customerService;
+    @JsonProperty("environment_infocard")
+    private String environmentInfocard;
 
 
     private Map<String, Object> additionalProperties = new HashMap<>();
@@ -542,6 +546,9 @@ public class Product implements Serializable {
     public String getNovaGroups() {
         return novaGroups;
     }
+    public List<String> getEnvironmentImpactLevelTags() {
+        return environmentImpactLevelTags;
+    }
 
     public String getLang() {
         return lang;
@@ -559,6 +566,7 @@ public class Product implements Serializable {
         return noNutritionData;
     }
 
+    public String getEnvironmentInfocard() {return environmentInfocard;}
     /**
      * @return Other information
      */

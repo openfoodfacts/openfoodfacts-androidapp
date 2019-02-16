@@ -339,10 +339,10 @@
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Administrer konto</string>
     <string name="action_contributes">Dine bidrag</string>
-    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
-    <string name="energy_pref_title">Preferred unit for energy</string>
-    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
-    <string name="volume_pref_title">Preferred unit for volume</string>
+    <string name="choose_energy_unit">Vælg dine foretrukne enheder for energi til ernæringstabellen</string>
+    <string name="energy_pref_title">Foretrukken enhed til energi</string>
+    <string name="choose_volume_unit">Vælg dine foretrukne enheder for mængde til ernæringstabellen</string>
+    <string name="volume_pref_title">Foretrukken enhed til mængde</string>
     <string name="logout_drawer">Log ud</string>
     <string name="contribution_without_account">Du kan logge ind eller oprette en konto for at gemme bidrag</string>
     <string name="textCarbonFootprint">CO2-regnskab / emissioner: </string>
@@ -726,17 +726,25 @@
     <string name="category_game_btn">Hjælp med at kategorisere produkter for at beregne Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
-    <string name="set_image_name">Successfully set the image as</string>
+    <string name="set_image_name">Foto angivet som</string>
     <string name="warning">Advarsel:</string>
     <string name="customer_service">Kundeservice:</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
-    <string name="addtive_search">Search for a additive</string>
+    <string name="fast_addition_mode_title">Hurtig tilføjelse-funktion</string>
+    <string name="fast_addition_mode">Gør det muligt hurtigt at tilføje produkter med færre attributter</string>
+    <string name="addtive_search">Søg efter en tilsætningsstof</string>
     <string name="additives">Tilsætningsstoffer</string>
     <!-- Used for diets AddOn -->
 </resources>

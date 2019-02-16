@@ -113,6 +113,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     ImageView nutriScore;
     @BindView(R.id.quickView_novaGroup)
     ImageView novaGroup;
+    @BindView(R.id.quick_view_co2_icon)
+    ImageView co2Icon;
     @BindView(R.id.quickView_imageProgress)
     ProgressBar imageProgress;
     @BindView(R.id.quickView_searchByBarcode)
@@ -276,15 +278,39 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             }
                             // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
                             if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
-                                nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
+                                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                                    nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
+                                } else {
+                                    nutriScore.setVisibility(View.INVISIBLE);
+                                }
                             } else {
                                 nutriScore.setVisibility(View.GONE);
                             }
                             // Hide nova group from quickView if app flavour is not OFF or there is no nova group
                             if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
-                                novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                                if (Utils.getNovaGroupDrawable(product.getNovaGroups()) != 0) {
+                                    novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                                } else {
+                                    novaGroup.setVisibility(View.INVISIBLE);
+                                }
                             } else {
                                 novaGroup.setVisibility(View.GONE);
+                            }
+                            if(product.getEnvironmentImpactLevelTags()!=null) {
+                                List<String> tags=product.getEnvironmentImpactLevelTags();
+                                if(tags.size() > 0) {
+                                    String tag=tags.get(0).replace("\"","");
+                                    co2Icon.setVisibility(View.VISIBLE);
+                                    if(tag.equals("en-high")){
+                                        co2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
+                                    } else if(tag.equals("en-low")){
+                                        co2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
+                                    } else if(tag.equals("en-medium")){
+                                        co2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
+                                    } else {
+                                        co2Icon.setVisibility(View.GONE);
+                                    }
+                                }
                             }
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fm.beginTransaction();

@@ -153,8 +153,10 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
                     List<AdditiveName> additiveNames = new ArrayList<>();
 
                     for (int i = 0; i < additives.size(); i++) {
-                        if (additives.get(i).getName().toLowerCase().split("- ").length > 1) {
-                            if (additives.get(i).getName().toLowerCase().split("- ")[1].startsWith(newText.toLowerCase())) {
+                        if (additives.get(i).getName().toLowerCase().split(" - ").length > 1) {
+                            String[] additiveContent = additives.get(i).getName().toLowerCase().split(" - ");
+                            if (additiveContent[0].trim().contains(newText.trim().toLowerCase()) || additiveContent[1].trim().contains(newText.trim().toLowerCase())
+                                    || (additiveContent[0]+"-"+additiveContent[1]).contains(newText.trim().toLowerCase())) {
                                 additiveNames.add(additives.get(i));
                             }
                         }
