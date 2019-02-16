@@ -242,10 +242,10 @@ public class Utils {
     }
 
     public static int getImageGrade(String grade) {
-        int drawable;
+        int drawable = 0;
 
         if (grade == null) {
-            return R.drawable.ic_help_outline_orange_24dp;
+            return drawable;
         }
 
         switch (grade.toLowerCase(Locale.getDefault())) {
@@ -263,9 +263,6 @@ public class Utils {
                 break;
             case "e":
                 drawable = R.drawable.nnc_e;
-                break;
-            default:
-                drawable = R.drawable.ic_help_outline_orange_24dp;
                 break;
         }
 
@@ -294,10 +291,10 @@ public class Utils {
     }
 
     public static int getNovaGroupDrawable(String novaGroup) {
-        int drawable;
+        int drawable = 0;
 
         if (novaGroup == null) {
-            return R.drawable.ic_help_outline_orange_24dp;
+            return drawable;
         }
 
         switch (novaGroup) {
@@ -312,9 +309,6 @@ public class Utils {
                 break;
             case "4":
                 drawable = R.drawable.ic_nova_group_4;
-                break;
-            default:
-                drawable = R.drawable.ic_help_outline_orange_24dp;
                 break;
         }
         return drawable;

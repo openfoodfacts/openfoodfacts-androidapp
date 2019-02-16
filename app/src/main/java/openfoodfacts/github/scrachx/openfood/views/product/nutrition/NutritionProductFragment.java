@@ -268,8 +268,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             }
 
             if (product.getNutritionGradeFr() != null && !product.getNutritionGradeFr().isEmpty()) {
-                imageGradeLayout.setVisibility(View.VISIBLE);
-                img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                    imageGradeLayout.setVisibility(View.VISIBLE);
+                    img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                } else {
+                    img.setVisibility(View.INVISIBLE);
+                }
                 img.setOnClickListener(view1 -> {
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
