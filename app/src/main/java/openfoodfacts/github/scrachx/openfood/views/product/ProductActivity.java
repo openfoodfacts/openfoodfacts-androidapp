@@ -206,7 +206,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                     break;
 
                 case R.id.search_product:
-                    startActivity(new Intent(this, MainActivity.class));
+                    Intent intent = new Intent(this, MainActivity.class);
+                    intent.putExtra("product_search", true);
+                    startActivity(intent);
                     break;
 
 				default:

@@ -693,6 +693,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         });
 
 
+        if (getIntent().getBooleanExtra("product_search", false)) {
+            searchMenuItem.expandActionView();
+        }
+
+
         return true;
     }
 

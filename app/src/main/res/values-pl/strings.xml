@@ -755,6 +755,14 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="category_game_btn">Pomóż obliczyć Nutri-Score. przez właściwe kategoryzowanie produktów</string>
     <string name="version_string">Aplikacja na Androida Open Food Facts</string>
     <string name="version">Wersja</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Zdjęcie zawierające składniki produktu</string>
     <string name="set_img_nutrients">Zdjęcie zawierające tabelę z wartością odżywczą</string>
     <string name="set_img_front">Głownie zdjęcie produktu</string>

@@ -237,7 +237,7 @@
     <string name="search_drawer">Αναζήτηση</string>
     <string name="search_by_barcode_drawer">Πληκτρολογήστε barcode</string>
     <string name="category_drawer">Κατηγορίες</string>
-    <string name="search_by_category">Κατηγορια</string>
+    <string name="search_by_category">Κατηγορία</string>
     <string name="search_by_name_drawer">Αναζήτηση βάση ονόματος</string>
     <string name="scan_search">Σάρωση barcode</string>
     <string name="user_drawer">Χρήστης</string>
@@ -245,7 +245,7 @@
     <string name="txt_anonymous">Ανώνυμος</string>
     <string name="txt_product_not_found">Products not found</string>
     <string name="delete_txt">Διαγραφή</string>
-    <string name="sign_in_drawer">Εγγραφη</string>
+    <string name="sign_in_drawer">Σύνδεση</string>
     <string name="alert_drawer">Ειδοποίηση για αλλεργιογόνο</string>
     <string name="warning_allergens">Περιέχει αλλεργιογόνα</string>
     <string name="title_dialog_alert">Προσθήκη ειδοποίησης</string>
@@ -515,7 +515,7 @@
     <string name="store_string">Κατάστημα</string>
     <string name="packaging_string">Συσκευασία</string>
     <string name="label_string">Ετικετα</string>
-    <string name="category_string">Κατηγορια</string>
+    <string name="category_string">Κατηγορία</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Συντελεστης</string>
     <string name="Rate_Us">Show Your Support</string>
@@ -726,6 +726,14 @@
     <string name="category_game_btn">Βοηθήστε στην κατηγοριοποίηση των προϊόντα για να υπολογίσετε το Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Έκδοση</string>
+    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
