@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -55,6 +56,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
@@ -100,6 +102,12 @@ public class AddProductActivity extends AppCompatActivity {
     private String quantityOnServer;
     private String linkOnServer;
     private String ingredientsImageOnServer;
+
+    private int productType = 0;
+    final int OPEN_FOOD_FACT = 5;
+    final int OPEN_BEAUTY_FACTS = 6;
+    final int OPEN_PET_FOOD_FACTS = 7;
+    final int OPEN_PRODUCTS_FACTS = 8;
 
     public static File getCameraPicLocation(Context context) {
         File cacheDir = context.getCacheDir();
@@ -243,6 +251,10 @@ public class AddProductActivity extends AppCompatActivity {
         final State state = (State) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
         Product mEditProduct = (Product) getIntent().getSerializableExtra("edit_product");
+        if(getIntent().getSerializableExtra("productType") != null){
+            productType = (int) getIntent().getSerializableExtra("productType");
+            client = getApiServiceForProductType((int) getIntent().getSerializableExtra("productType"));
+        }
 
         if(getIntent().getBooleanExtra("perform_ocr",false)) {
             bundle.putBoolean("perform_ocr",true);
@@ -939,6 +951,7 @@ public class AddProductActivity extends AppCompatActivity {
                         mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(code)).list());
                         Intent intent = new Intent();
                         intent.putExtra("uploadedToServer", true);
+                        intent.putExtra("productType", productType);
                         setResult(RESULT_OK, intent);
                         finish();
                     }
@@ -1290,5 +1303,21 @@ public class AddProductActivity extends AppCompatActivity {
 
     public void setIngredients(String status, String ingredients) {
         addProductIngredientsFragment.setIngredients(status, ingredients);
+    }
+
+    private OpenFoodAPIService getApiServiceForProductType(int productType){
+
+        switch (productType){
+            case OPEN_FOOD_FACT:
+                return new OpenFoodAPIClient(AddProductActivity.this, "https://ssl-api.openfoodfacts.org").getAPIService();
+            case OPEN_BEAUTY_FACTS:
+                return new OpenFoodAPIClient(AddProductActivity.this, "https://ssl-api.openbeautyfacts.org").getAPIService();
+            case OPEN_PET_FOOD_FACTS:
+                return new OpenFoodAPIClient(AddProductActivity.this, "https://ssl-api.openpetfoodfacts.org").getAPIService();
+            case OPEN_PRODUCTS_FACTS:
+                return new OpenFoodAPIClient(AddProductActivity.this, "https://ssl-api.openproductsfacts.org").getAPIService();
+            default:
+                return client;
+        }
     }
 }

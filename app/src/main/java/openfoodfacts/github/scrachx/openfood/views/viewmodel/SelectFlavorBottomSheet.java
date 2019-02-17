@@ -14,6 +14,8 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 
 public class SelectFlavorBottomSheet extends BottomSheetDialogFragment {
 
@@ -24,13 +26,23 @@ public class SelectFlavorBottomSheet extends BottomSheetDialogFragment {
 
     private Context context;
     private View view;
-    private Activity activity;
+    private productTypeListener productTypeListener;
+
+    private int OPEN_FOOD_FACT = 5;
+    private int OPEN_BEAUTY_FACTS = 6;
+    private int OPEN_PET_FOOD_FACTS = 7;
+    private int OPEN_PRODUCTS_FACTS = 8;
 
     public SelectFlavorBottomSheet() {
     }
 
-    public void setParentActivity(Activity activity){
-        this.activity = activity;
+
+    public interface productTypeListener {
+        void chosenProductType(int productType);
+    }
+
+    public void setProductTypeListener(productTypeListener productTypeListener){
+        this.productTypeListener = productTypeListener;
     }
 
     @Override
@@ -46,8 +58,6 @@ public class SelectFlavorBottomSheet extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         view = inflater.inflate(R.layout.fragment_select_flavor_bottom_sheet, container, false);
         return view;
     }
@@ -69,31 +79,32 @@ public class SelectFlavorBottomSheet extends BottomSheetDialogFragment {
         rlFoodFact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Food Clicked", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
-                intent.putExtra("categorySelected", "food");
-                activity.setResult(26, intent);
+                productTypeListener.chosenProductType(OPEN_FOOD_FACT);
+                dismiss();
             }
         });
 
         rlBeautyFact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Beauty Clicked", Toast.LENGTH_SHORT).show();
+                productTypeListener.chosenProductType(OPEN_BEAUTY_FACTS);
+                dismiss();
             }
         });
 
         rlPetFact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Pet Clicked", Toast.LENGTH_SHORT).show();
+                productTypeListener.chosenProductType(OPEN_PET_FOOD_FACTS);
+                dismiss();
             }
         });
 
         rlOpenProductsFact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Others Clicked", Toast.LENGTH_SHORT).show();
+                productTypeListener.chosenProductType(OPEN_PRODUCTS_FACTS);
+                dismiss();
             }
         });
     }

@@ -60,6 +60,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -206,7 +207,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     private void uploadProducts() {
         SaveListAdapter.showProgressDialog();
         mRecyclerView.getAdapter().notifyDataSetChanged();
-        client = CommonApiManager.getInstance().getOpenFoodApiService();
+        SharedPreferences preferences = android.support.v7.preference.PreferenceManager.getDefaultSharedPreferences(getContext());
+        client = getApiServiceForProductType(preferences.getInt("productType", 0));
         final List<OfflineSavedProduct> listSaveProduct = mOfflineSavedProductDao.loadAll();
         size = saveItems.size();
 
@@ -895,5 +897,26 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     activity.runOnUiThread(sl::notifyDataSetChanged);
                 })
                 .show();
+    }
+
+    private OpenFoodAPIService getApiServiceForProductType(int productType){
+
+        final int OPEN_FOOD_FACT = 5;
+        final int OPEN_BEAUTY_FACTS = 6;
+        final int OPEN_PET_FOOD_FACTS = 7;
+        final int OPEN_PRODUCTS_FACTS = 8;
+
+        switch (productType){
+            case OPEN_FOOD_FACT:
+                return new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
+            case OPEN_BEAUTY_FACTS:
+                return new OpenFoodAPIClient(getActivity(), "https://ssl-api.openbeautyfacts.org").getAPIService();
+            case OPEN_PET_FOOD_FACTS:
+                return new OpenFoodAPIClient(getActivity(), "https://ssl-api.openpetfoodfacts.org").getAPIService();
+            case OPEN_PRODUCTS_FACTS:
+                return new OpenFoodAPIClient(getActivity(), "https://ssl-api.openproductsfacts.org").getAPIService();
+            default:
+                return CommonApiManager.getInstance().getOpenFoodApiService();
+        }
     }
 }
