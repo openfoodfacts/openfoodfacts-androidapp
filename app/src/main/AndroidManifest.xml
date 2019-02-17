@@ -40,6 +40,10 @@
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
+        
+        <provider
+            android:authorities="openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider"
+            android:name=".utils.SearchSuggestionProvider" />
 
         <activity
             android:name=".views.splash.SplashActivity"

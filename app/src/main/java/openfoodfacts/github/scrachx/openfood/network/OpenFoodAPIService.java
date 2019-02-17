@@ -9,6 +9,7 @@ import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -358,7 +359,7 @@ public interface OpenFoodAPIService {
     @GET("/1.json?fields=null")
     Single<Search> getTotalProductCount();
 
-    @GET("/files/tagline/tagline.json")
+    @GET("/files/tagline/tagline-"+ BuildConfig.FLAVOR+".json")
     Call<ArrayList<TaglineLanguageModel>> getTagline();
 
 

@@ -19,6 +19,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.SearchRecentSuggestions;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
@@ -92,6 +93,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -790,6 +792,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
+            //Saves the most recent queries and adds it to the list of suggestions
+            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
+                    SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
+            suggestions.saveRecentQuery(query, null);
             ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
             if (searchMenuItem != null) {
                 searchMenuItem.collapseActionView();
