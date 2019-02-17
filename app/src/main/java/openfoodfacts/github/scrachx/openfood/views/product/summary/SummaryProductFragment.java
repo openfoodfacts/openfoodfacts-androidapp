@@ -108,6 +108,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
 
+    private static final int EDIT_REQUEST_CODE = 2;
     @BindView(R.id.product_incomplete_warning_view_container)
     CardView productIncompleteView;
     @BindView(R.id.textNameProduct)
@@ -184,6 +185,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView warning;
     @BindView(R.id.textCustomerService)
     TextView customerService;
+    private State state;
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
@@ -217,7 +219,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
         Intent intent = getActivity().getIntent();
-        State state = (State) intent.getExtras().getSerializable("state");
+        state = (State) intent.getExtras().getSerializable("state");
         product = state.getProduct();
 
         presenter = new SummaryProductPresenter(product, this);
@@ -948,7 +950,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //adds the information about the prompt when navigating the user to the edit the product
         intent.putExtra("modify_category_prompt", showCategoryPrompt);
         intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
-        startActivity(intent);
+        startActivityForResult(intent, EDIT_REQUEST_CODE);
     }
 
     // Implements CustomTabActivityHelper.ConnectionCallback
@@ -1077,6 +1079,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && data.getBooleanExtra("uploadedToServer", false)) {
+            refreshView(state);
+        }
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
