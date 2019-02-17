@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <item type="layout" name="abc_search_dropdown_item_icons_2line" tools:override="true">@layout/custom_search_suggestion</item>
+</resources>
