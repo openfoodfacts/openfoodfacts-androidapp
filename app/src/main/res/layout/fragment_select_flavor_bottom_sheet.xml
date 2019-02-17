@@ -6,7 +6,7 @@
         android:id="@+id/tvInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please select the best category."
+        android:text="@string/select_category"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@color/md_black_1000"
@@ -29,7 +29,7 @@
             android:id="@+id/ivFoodFact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:background="@mipmap/food_category_icon"
             />
 
         <TextView
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/ivFoodFact"
             android:layout_toRightOf="@id/ivFoodFact"
-            android:text="Food"
+            android:text="@string/food_category"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"
@@ -58,7 +58,7 @@
             android:id="@+id/ivBeautyFact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:background="@mipmap/beauty_category_icon"
             />
 
         <TextView
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/ivBeautyFact"
             android:layout_toRightOf="@id/ivBeautyFact"
-            android:text="Cosmetic &amp; hygine"
+            android:text="@string/cosmetic_category"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"
@@ -87,7 +87,7 @@
             android:id="@+id/ivPetFact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:background="@mipmap/pet_category_icon"
             />
 
         <TextView
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/ivPetFact"
             android:layout_toRightOf="@id/ivPetFact"
-            android:text="Pet Food"
+            android:text="@string/pet_category"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"
@@ -117,7 +117,7 @@
             android:id="@+id/ivOpenProductsFact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:background="@mipmap/product_category_icon"
             />
 
         <TextView
@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/ivOpenProductsFact"
             android:layout_toRightOf="@id/ivOpenProductsFact"
-            android:text="Others"
+            android:text="@string/others_category"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"

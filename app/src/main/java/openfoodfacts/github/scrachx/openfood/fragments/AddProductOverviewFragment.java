@@ -642,6 +642,12 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
     }
 
+    private void setIngredients(String ingredients){
+        if (activity instanceof AddProductActivity) {
+            ((AddProductActivity) activity).setIngredients("set", ingredients);
+        }
+    }
+
     private void setProductLanguage(String lang) {
         languageCode = lang;
         Locale current = LocaleHelper.getLocale(lang);
@@ -668,14 +674,12 @@ public class AddProductOverviewFragment extends BaseFragment {
                                 if (state.getProduct().getProductName(lang) != null) {
                                     if (languageCode.equals(lang)) {
                                         name.setText(state.getProduct().getProductName(lang));
-                                        if (activity instanceof AddProductActivity) {
-                                            ((AddProductActivity) activity).setIngredients("set", state.getProduct().getIngredientsText(lang));
-                                        }
+                                        setIngredients(state.getProduct().getIngredientsText(lang));
                                     }
                                 } else {
                                     name.setText(null);
                                     if (activity instanceof AddProductActivity) {
-                                        ((AddProductActivity) activity).setIngredients("set", null);
+                                        setIngredients(null);
                                     }
                                 }
                             }
@@ -971,9 +975,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 .items(finalLocalLabels)
                 .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
                     name.setText(null);
-                    if (activity instanceof AddProductActivity) {
-                        ((AddProductActivity) activity).setIngredients("set", null);
-                    }
+                    setIngredients(null);
                     setProductLanguage(finalLocalValues.get(which));
                     return true;
                 })

@@ -104,7 +104,7 @@ public class AddProductActivity extends AppCompatActivity {
     private String ingredientsImageOnServer;
 
     private int productType = 0;
-    final int OPEN_FOOD_FACT = 5;
+    final int OPEN_FOOD_FACTS = 5;
     final int OPEN_BEAUTY_FACTS = 6;
     final int OPEN_PET_FOOD_FACTS = 7;
     final int OPEN_PRODUCTS_FACTS = 8;
@@ -1308,7 +1308,7 @@ public class AddProductActivity extends AppCompatActivity {
     private OpenFoodAPIService getApiServiceForProductType(int productType){
 
         switch (productType){
-            case OPEN_FOOD_FACT:
+            case OPEN_FOOD_FACTS:
                 return new OpenFoodAPIClient(AddProductActivity.this, "https://ssl-api.openfoodfacts.org").getAPIService();
             case OPEN_BEAUTY_FACTS:
                 return new OpenFoodAPIClient(AddProductActivity.this, "https://ssl-api.openbeautyfacts.org").getAPIService();

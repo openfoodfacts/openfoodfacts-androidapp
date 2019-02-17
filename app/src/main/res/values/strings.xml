@@ -421,6 +421,12 @@
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <string name="msg_input_empty">Please fill the fields first.</string>
     <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
+    <string name="select_category">Please select the best category.</string>
+    <string name="food_category">Food</string>
+    <string name="cosmetic_category">Cosmetic &amp; hygiene</string>
+    <string name="pet_category">Pet Food</string>
+    <string name="others_category">Others</string>
+
 
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>

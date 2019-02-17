@@ -164,7 +164,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         }
     };
 
-    final int OPEN_FOOD_FACT = 5;
+    final int OPEN_FOOD_FACTS = 5;
     final int OPEN_BEAUTY_FACTS = 6;
     final int OPEN_PET_FOOD_FACTS = 7;
     final int OPEN_PRODUCTS_FACTS = 8;
@@ -806,7 +806,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private OpenFoodAPIService getApiServiceForProductType(int productType){
 
         switch (productType){
-            case OPEN_FOOD_FACT:
+            case OPEN_FOOD_FACTS:
                 return new OpenFoodAPIClient(ContinuousScanActivity.this, "https://ssl-api.openfoodfacts.org").getAPIService();
             case OPEN_BEAUTY_FACTS:
                 return new OpenFoodAPIClient(ContinuousScanActivity.this, "https://ssl-api.openbeautyfacts.org").getAPIService();

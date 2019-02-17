@@ -901,14 +901,14 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
     private OpenFoodAPIService getApiServiceForProductType(int productType){
 
-        final int OPEN_FOOD_FACT = 5;
+        final int OPEN_FOOD_FACTS = 5;
         final int OPEN_BEAUTY_FACTS = 6;
         final int OPEN_PET_FOOD_FACTS = 7;
         final int OPEN_PRODUCTS_FACTS = 8;
 
         switch (productType){
-            case OPEN_FOOD_FACT:
-                return new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
+            case OPEN_FOOD_FACTS:
+                return new OpenFoodAPIClient(getActivity(), "https://world.openfoodfacts.org").getAPIService();
             case OPEN_BEAUTY_FACTS:
                 return new OpenFoodAPIClient(getActivity(), "https://ssl-api.openbeautyfacts.org").getAPIService();
             case OPEN_PET_FOOD_FACTS:
