@@ -22,6 +22,7 @@
             android:orientation="vertical">
 
             <android.support.v7.widget.CardView
+                android:id="@+id/carbon_footprint_cv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -43,6 +44,71 @@
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
+
+                <TextView
+                    android:id="@+id/environment_info_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:background="@drawable/textview_full"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/recycling_instructions_discard_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/recyclingInstructionToDiscard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:background="@drawable/textview_full"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/recycling_instructions_recycle_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/recyclingInstructionToRecycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:background="@drawable/textview_full"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal"/>
 
             </android.support.v7.widget.CardView>
 

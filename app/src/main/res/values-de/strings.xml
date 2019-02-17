@@ -564,7 +564,6 @@
     <string name="notify_content">Hier klicken, um die exportierten Produkte anzuzeigen</string>
     <string name="notification_channel_name">Benachrichtigungen exportieren</string>
     <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
-    <string name="additives">Zusatzstoffe</string>
     <string name="products_to_be_completed">Noch abzuschließende Produkte</string>
     <string name="modified_history">Produkt hinzugefügt am %1$s um %2$s durch %3$s. Letzte Änderung der Produktseite am %4$s um %5$s von %6$s. Produktseite auch von %7$s bearbeitet</string>
     <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
@@ -727,6 +726,14 @@
     <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
+    <string name="txtOtherInfo">Sonstige Angaben:</string>
+    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
+    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="conservationCond">Conservation Conditions</string>
+    <string name="other_info">Weitere Angaben</string>
     <string name="set_ingredient_img">Als Zutatenbild verwenden</string>
     <string name="set_img_nutrients">Als Nährwertbild verwenden</string>
     <string name="set_img_front">Als Vorderansicht verwenden</string>
@@ -737,5 +744,7 @@
     <string name="customer_service">Kundendienst:</string>
     <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
     <string name="fast_addition_mode">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
+    <string name="addtive_search">Nach Zusatzstoff suchen</string>
+    <string name="additives">Zusatzstoffe</string>
     <!-- Used for diets AddOn -->
 </resources>

@@ -131,6 +131,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 mSearchInfo.setSearchQuery(query);
+                mSearchInfo.setSearchType(SearchType.SEARCH);
                 newSearchQuery();
                 return true;
             }
@@ -367,11 +368,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
-                apiClient.getProductsByBrand(searchQuery, pageAddress,  (value, country) ->
+                apiClient.getProductsByBrand(searchQuery, pageAddress, (value, country) ->
                         loadSearchProducts(value, country, R.string.txt_no_matching_brand_products));
                 break;
             case SearchType.COUNTRY:
-                apiClient.getProductsByCountry(searchQuery, pageAddress,  (value, country) ->
+                apiClient.getProductsByCountry(searchQuery, pageAddress, (value, country) ->
                         loadSearchProducts(value, country, R.string.txt_no_matching_country_products));
                 break;
             case SearchType.ORIGIN:
@@ -518,8 +519,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
      * Shows UI indicating that no matching products were found. Called by
      * {@link #loadSearchProducts(boolean, Search, int)} and {@link #loadSearchProducts(boolean, Search, int, int)}
      *
-     * @param msg               message to display when there are no results for given search
-     * @param extendedMsg       additional message to display, -1 if no message is displayed
+     * @param msg         message to display when there are no results for given search
+     * @param extendedMsg additional message to display, -1 if no message is displayed
      */
     private void showEmptySearch(String msg, String extendedMsg) {
         textNoResults.setText(msg);
@@ -534,15 +535,16 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     /**
-     *  Loads the search results into the UI, otherwise shows UI indicating that no matching
-     *  products were found.
-     * @param isResponseSuccessful  true if the search response was successful
-     * @param response              the search results
-     * @param emptyMessage          message to display if there are no results
-     * @param extendedMessage       extended message to display if there are no results
+     * Loads the search results into the UI, otherwise shows UI indicating that no matching
+     * products were found.
+     *
+     * @param isResponseSuccessful true if the search response was successful
+     * @param response             the search results
+     * @param emptyMessage         message to display if there are no results
+     * @param extendedMessage      extended message to display if there are no results
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response,
-            @StringRes int emptyMessage, @StringRes int extendedMessage) {
+                                    @StringRes int emptyMessage, @StringRes int extendedMessage) {
         if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
             showEmptySearch(getResources().getString(emptyMessage),
                     getResources().getString(extendedMessage));
