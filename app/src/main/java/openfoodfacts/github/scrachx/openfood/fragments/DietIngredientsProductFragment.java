@@ -202,7 +202,8 @@ public class DietIngredientsProductFragment extends BaseFragment {
     private void changeMDiet(Diet diet) {
         mDiet = diet;
         mIngredients.clear();
-        mIngredients.addAll(coloredIngredientsFromingredients(mIngredientsTxt));
+        //mIngredients.addAll(coloredIngredientsFromingredients(mIngredientsTxt));
+        mIngredients.addAll(coloredIngredientsFromProduct());
         ingredientsRVAdapter.notifyDataSetChanged();
     }
 
