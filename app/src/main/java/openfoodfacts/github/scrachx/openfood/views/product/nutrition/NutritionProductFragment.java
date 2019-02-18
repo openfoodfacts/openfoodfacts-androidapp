@@ -478,12 +478,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             nutrimentItems.addAll(getNutrimentItems(nutriments, VITAMINS_MAP));
         }
 
-        // Minerals
-        if (nutriments.hasMinerals()) {
+        // Minerals.  Display all that are avialable, regardless of nutriments.hasMinerals() flag.
+        List<NutrimentItem> minerals = getNutrimentItems(nutriments, MINERALS_MAP);
+        if (minerals.size() > 0) {
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_minerals)));
-
-            nutrimentItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
+            nutrimentItems.addAll(minerals);
         }
+
 
         RecyclerView.Adapter adapter = new NutrimentsRecyclerViewAdapter(nutrimentItems);
         nutrimentsRecyclerView.setAdapter(adapter);

@@ -126,6 +126,8 @@ public class Nutriments implements Serializable {
     public static final String IRON = "iron";
     public static final String MAGNESIUM = "magnesium";
 
+    public static final String PREPARED = "_prepared";
+
     public static final Map<String, Integer> MINERALS_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.SILICA, R.string.silica);
         put(Nutriments.BICARBONATE, R.string.bicarbonate);
@@ -201,16 +203,23 @@ public class Nutriments implements Serializable {
     private boolean containsMinerals;
 
     public Nutriment get(String nutrimentName){
-        if (nutrimentName.isEmpty() || !additionalProperties.containsKey(nutrimentName)) {
+        if (nutrimentName.isEmpty() || (!additionalProperties.containsKey(nutrimentName)
+                //Forcing to check _prepared in case only _prepared is available in the response.
+                && !additionalProperties.containsKey(nutrimentName + PREPARED))) {
             return null;
         }
-
         try{
             return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
         }catch (NullPointerException e){
-            // In case one of the getters was unable to get data as string
-            String stacktrace = Log.getStackTraceString(e);
-            Log.e("NUTRIMENTS-MODEL",stacktrace);
+            nutrimentName += PREPARED;
+            try {
+                return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
+            }catch (NullPointerException e2) {
+                // In case one of the getters was unable to get data as string
+                String stacktrace = Log.getStackTraceString(e2);
+                Log.e("NUTRIMENTS-MODEL",stacktrace);
+            }
+
         }
         return null;
     }
