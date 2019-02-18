@@ -74,6 +74,7 @@ import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -138,6 +139,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView categoryProduct;
     @BindView(R.id.textLabelProduct)
     TextView labelProduct;
+    @BindView(R.id.textOtherInfo)
+    TextView otherInfo;
+    @BindView(R.id.textConservationCond)
+    TextView conservationCond;
+    @BindView(R.id.textRecyclingInstructionToRecycle)
+    TextView recyclingInstructionToRecycle;
+    @BindView(R.id.textRecyclingInstructionToDiscard)
+    TextView recyclingInstructionToDiscard;
     @BindView(R.id.front_picture_layout)
     LinearLayout frontPictureLayout;
     @BindView(R.id.imageViewFront)
@@ -358,6 +367,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             nameProduct.setText(product.getProductName());
         } else {
             nameProduct.setVisibility(View.GONE);
+        }
 
         if(LocaleHelper.getLanguage(getContext())!=null) {
             String langCode=LocaleHelper.getLanguage(getContext());
