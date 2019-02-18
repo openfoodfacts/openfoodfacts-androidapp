@@ -5,6 +5,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.SearchRecentSuggestions;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
@@ -25,6 +26,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.dagger.component.FragmentComponent;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentCategoryListBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.MvvmFragment;
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.viewmodel.category.CategoryFragmentViewModel;
 
@@ -98,6 +100,9 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
+                    SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(),
+                            SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
+                    suggestions.saveRecentQuery(query, null);
                     return false;
                 }
 

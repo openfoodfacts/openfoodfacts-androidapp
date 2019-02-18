@@ -23,6 +23,17 @@
             android:summary="@string/choose_volume_unit"
             android:title="@string/volume_pref_title" />
 
+        <Preference
+            android:dialogTitle="@string/search_history_pref_title"
+            android:key="deleteSearchHistoryPreference"
+            android:summary="@string/search_history_pref_summary"
+            android:title="@string/search_history_pref_title" />
+        <ListPreference
+            android:dialogTitle="@string/settings_country_dialog_title"
+            android:key="user_country"
+            android:summary="@string/settings_country_summary"
+            android:title="@string/settings_country_title" />
+
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="startScan"
