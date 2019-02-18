@@ -105,7 +105,6 @@ public class OpenFoodAPIClient {
      * @param activity
      */
     public void getProduct(final String barcode, final Activity activity) {
-        String langCode=LocaleHelper.getLanguage(activity.getApplicationContext());
         apiService.getFullProductByBarcode(barcode, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
@@ -140,6 +139,14 @@ public class OpenFoodAPIClient {
                     Intent intent = new Intent(activity, ProductActivity.class);
                     Bundle bundle = new Bundle();
                     String field="product_name";
+                    String lang=LocaleHelper.getLanguage(activity.getApplicationContext());
+                    //removes country specific code in the language code eg: nl-BE
+                    if(lang.contains("-")){
+                        String langSplit[]=lang.split("-");
+                        lang=langSplit[0];
+                    }
+                    String langCode=lang;
+
                     getFieldByLanguage(barcode,field,langCode,((((value,uxLangAvailable, result) -> {
                         if(value && result!=null) {
                             result=result.replace("\"","");//removes quotations

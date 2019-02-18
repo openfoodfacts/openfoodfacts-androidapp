@@ -370,7 +370,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         if(LocaleHelper.getLanguage(getContext())!=null) {
-            String langCode=LocaleHelper.getLanguage(getContext());
+            String lang=LocaleHelper.getLanguage(getContext());
+            //removes country specific code in the language code eg: nl-BE
+            if(lang.contains("-")){
+                String langSplit[]=lang.split("-");
+                lang=langSplit[0];
+            }
+            String langCode=lang;
+            
             if(product.getProductName(langCode)!=null){
                 nameProduct.setText(product.getProductName(langCode));
             }
