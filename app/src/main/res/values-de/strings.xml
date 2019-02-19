@@ -190,7 +190,7 @@
     <string name="txtFat">Fett</string>
     <string name="txtSugars">Zucker</string>
     <string name="hintBarcode">Strichcode</string>
-    <string name="txtNutriScoreInfo">How is it computed ?</string>
+    <string name="txtNutriScoreInfo">Wie wird es berechnet?</string>
     <string name="hintLogin">Benutzername</string>
     <string name="hintPass">Passwort</string>
     <string name="errorLogin">Benutzername oder Passwort stimmen nicht</string>
@@ -438,8 +438,8 @@
     <string name="take_picture_nutrition_table">Foto der Nährwerttabelle aufnehmen</string>
     <string name="take_more_pictures">Weitere Fotos aufnehmen</string>
     <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
-    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
-    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nutriscore_info_msg">Lesen Sie mehr über die Wissenschaft und Methodik hinter Nutri-Score</string>
+    <string name="nova_info_msg">Lesen Sie mehr über die Wissenschaft hinter Nova</string>
     <string name="nova_grp1_msg">1. Gruppe • Unverarbeitete oder minimal verarbeitete Lebensmittel</string>
     <string name="nova_grp2_msg">2. Gruppe • Verarbeitete kulinarische Zutaten</string>
     <string name="nova_grp3_msg">3. Gruppe • Verarbeitete Lebensmittel</string>
@@ -754,11 +754,11 @@
     <string name="fast_addition_mode">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
     <string name="addtive_search">Nach Zusatzstoff suchen</string>
     <string name="additives">Zusatzstoffe</string>
-    <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="compare_product_prompt">Vergleiche dieses Produkt</string>
+    <string name="search_history_pref_title">Lokalen Suchverlauf löschen</string>
+    <string name="search_history_pref_summary">Entfernen Sie alle Suchaufträge, die Sie auf diesem Gerät durchgeführt haben</string>
+    <string name="settings_country_dialog_title">Wählen Sie Ihr Land aus :</string>
+    <string name="settings_country_summary">Ändern Sie Ihr ausgewähltes Land</string>
     <string name="settings_country_title">Land</string>
     <!-- Used for diets AddOn -->
 </resources>
