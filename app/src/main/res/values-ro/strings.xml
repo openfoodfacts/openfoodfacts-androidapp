@@ -34,7 +34,7 @@
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>Conținut</item>
+        <item>Continut</item>
         <item>Ingrediente</item>
         <item>Informații nutriționale</item>
         <item>Tabel nutrițional</item>
@@ -194,6 +194,7 @@
     <string name="txtFat">Grăsimi</string>
     <string name="txtSugars">Zaharuri</string>
     <string name="hintBarcode">Cod de bare</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Conectați-vă</string>
     <string name="hintPass">Parolă</string>
     <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
@@ -330,7 +331,7 @@
     <string name="nutrition_proteins_short_name">Proteine (g)</string>
     <string name="nutrition_salt">Sare</string>
     <string name="nutrition_salt_short_name">Sare (g)</string>
-    <string name="nutrition_satured_fat">Grăsimi saturate</string>
+    <string name="nutrition_satured_fat">Acizi grași saturați</string>
     <string name="nutrition_satured_fat_short_name">Acizi grași saturați (g)</string>
     <string name="nutrition_serving">Per porție</string>
     <string name="nutrition_serving_size">Cantitatea unei porții:</string>
@@ -388,8 +389,8 @@
     <string name="nutrition_chlore">Clor</string>
     <string name="nutrition_magnesium">Magneziu</string>
     <string name="nutrition_taurine">Taurină</string>
-    <string name="nutrition_monounsaturatedFat">Acizi grași mono-nesaturați</string>
-    <string name="nutrition_polyunsaturatedFat">Acizi grași poli-nesaturați</string>
+    <string name="nutrition_monounsaturatedFat">Grăsimi monosaturate</string>
+    <string name="nutrition_polyunsaturatedFat">Grăsimi polinesaturate</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -440,7 +441,13 @@
     <string name="take_picture_front">Faceți o poză frontală produsului</string>
     <string name="take_picture_nutrition_table">Faceți o poză tabelului cu informații nutriționale</string>
     <string name="take_more_pictures">Faceți mai multe poze</string>
-    <string name="txtSaturatedFat">Grăsimi saturate</string>
+    <string name="txtSaturatedFat">Acizi grași saturați</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Comandă rapidă indisponibilă</string>
     <string name="scan_shortcut_short_label">Scanează</string>
@@ -669,6 +676,7 @@
     <string name="uploading_ingredients_image">Încărcarea imaginii ingredientelor</string>
     <string name="uploading_front_image">Încărcarea imaginii</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Conectați-vă pentru a edita un produs.</string>
     <string name="hint_quantity">Exemple: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Modificare produs</string>
@@ -680,20 +688,20 @@
     <string name="description_activity_product">descriere</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Risc ridicat de supraexpunere</string>
-    <string name="overexposure_moderate">Risc moderat de supraexpunere</string>
-    <string name="infants">Sugari</string>
+    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Copii mici</string>
-    <string name="toddlers_age">1-2 ani</string>
-    <string name="children">Copii</string>
-    <string name="children_age">3-9 ani</string>
-    <string name="adolescents">Adolescenţi</string>
-    <string name="adolescents_age">10-17 ani</string>
-    <string name="adults">Adulţi</string>
-    <string name="adults_age">18-64 ani</string>
-    <string name="elderly">Vârstnic</string>
-    <string name="elderly_age">peste 65 de ani</string>
+    <string name="toddlers">Toddlers</string>
+    <string name="toddlers_age">1 to 2</string>
+    <string name="children">Children</string>
+    <string name="children_age">3 to 9</string>
+    <string name="adolescents">Adolescents</string>
+    <string name="adolescents_age">10 to 17</string>
+    <string name="adults">Adults</string>
+    <string name="adults_age">18 to 64</string>
+    <string name="elderly">Elderly</string>
+    <string name="elderly_age">65+</string>
     <string name="most_people">Majoritatea persoanelor \ n (peste 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
     <string name="safety_and_exposure_assessment">Evaluarea siguranței și a expunerii</string>
@@ -750,5 +758,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditivi</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Țara</string>
     <!-- Used for diets AddOn -->
 </resources>
