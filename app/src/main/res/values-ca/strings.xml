@@ -190,7 +190,7 @@
     <string name="txtFat">Greixos</string>
     <string name="txtSugars">Sucres</string>
     <string name="hintBarcode">Codi de barres</string>
-    <string name="txtNutriScoreInfo">How is it computed ?</string>
+    <string name="txtNutriScoreInfo">Com es calcula?</string>
     <string name="hintLogin">Identificador</string>
     <string name="hintPass">Contrasenya</string>
     <string name="errorLogin">Identificador o contrasenya errònia</string>
@@ -438,8 +438,8 @@
     <string name="take_picture_nutrition_table">Feu una foto de la taula nutricional</string>
     <string name="take_more_pictures">Feu més fotos</string>
     <string name="txtSaturatedFat">Greixos saturats</string>
-    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
-    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nutriscore_info_msg">Llegiu més sobre la ciència i la metodologia que hi ha darrere de Nutri-Score</string>
+    <string name="nova_info_msg">Llegiu més sobre la ciència que hi ha darrere de Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -672,7 +672,7 @@
     <string name="uploading_ingredients_image">S\'està carregant la imatge dels ingredients</string>
     <string name="uploading_front_image">S\'està carregant la imatge frontal</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://es-ca.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Inicieu la sessió per editar un producte.</string>
     <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edita un producte</string>
@@ -754,11 +754,11 @@
     <string name="fast_addition_mode">Permet l\'addició ràpida de productes amb el mínim d\'atributs</string>
     <string name="addtive_search">Cerqueu un additiu</string>
     <string name="additives">Additius</string>
-    <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="compare_product_prompt">Compareu aquest producte</string>
+    <string name="search_history_pref_title">Suprimiu l\'historial de cerca local</string>
+    <string name="search_history_pref_summary">Elimineu totes les cerques que heu realitzat en aquest dispositiu</string>
+    <string name="settings_country_dialog_title">Seleccioneu el vostre país</string>
+    <string name="settings_country_summary">Canvieu el país seleccionat</string>
     <string name="settings_country_title">País</string>
     <!-- Used for diets AddOn -->
 </resources>
