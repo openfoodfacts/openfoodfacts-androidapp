@@ -72,7 +72,7 @@
         <item>Caprylsäure (8:0)</item>
         <item>Casein</item>
         <item>Cerotsäure (26:0)</item>
-        <item>Chlorid</item>
+        <item>Chlor</item>
         <item>Cholesterin</item>
         <item>Chrom</item>
         <item>Kupfer</item>
@@ -93,7 +93,7 @@
         <item>Lignocerinsäure (24:0)</item>
         <item>Linolsäure / LA (18:2 n-6)</item>
         <item>Magnesium</item>
-        <item>Maltodextrine</item>
+        <item>Maltodextrin</item>
         <item>Maltose</item>
         <item>Mangan</item>
         <item>Mead-Säure (20:3 n-9)</item>
@@ -178,10 +178,10 @@
     <string name="txtNutrientLevel100g">Nährwertgehalt pro 100g:</string>
     <string name="txtNutritionLevelLow">in geringer Menge</string>
     <string name="txtNutritionLevelModerate">in mäßiger Menge</string>
-    <string name="txtNutritionLevelHigh">in hoher Menge</string>
+    <string name="txtNutritionLevelHigh">in großen Mengen</string>
     <string name="txtLogin">Benutzername:</string>
     <string name="txtPass">Passwort:</string>
-    <string name="txtTitleHome">Nahrungsmittel einlesen und erfahren, was Sie essen</string>
+    <string name="txtTitleHome">Nahrungsmittel einlesen und erfahren, was Sie da essen</string>
     <string name="txtSave">Speichern</string>
     <string name="txtSignIn">Anmelden</string>
     <string name="txtUser">Benutzerprofil</string>
@@ -190,6 +190,7 @@
     <string name="txtFat">Fett</string>
     <string name="txtSugars">Zucker</string>
     <string name="hintBarcode">Strichcode</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Benutzername</string>
     <string name="hintPass">Passwort</string>
     <string name="errorLogin">Benutzername oder Passwort stimmen nicht</string>
@@ -223,7 +224,7 @@
     <string name="txtDialogsContentInfoSave">Produkt wurde lokal gespeichert und kann im Offline Bearbeiten-Menü überarbeitet werden</string>
     <string name="txtBarcodeRequire">Strichcode erforderlich</string>
     <string name="txtOk">OK</string>
-    <string name="txtContentDialogUploading">Bitte warten bis der Vorgang abgeschlossen ist …</string>
+    <string name="txtContentDialogUploading">Bitte warten, bis der Vorgang abgeschlossen ist …</string>
     <string name="txtAbout">Die von Ihnen eingesandten Fotos werden unter der freien Lizenz „Creative Commons Attribution und ShareAlike” (Weitergabe unter gleichen Bedingungen) veröffentlicht.</string>
     <string name="txtAllsent">Produkte hochgeladen</string>
     <string name="txtPalm">Das Produkt enthält kein Palmöl</string>
@@ -328,7 +329,7 @@
     <string name="nutrition_salt_short_name">Salz (g)</string>
     <string name="nutrition_satured_fat">Gesättigte Fettsäuren</string>
     <string name="nutrition_satured_fat_short_name">Gesättigte Fettsäuren (g)</string>
-    <string name="nutrition_serving">Pro Portion</string>
+    <string name="nutrition_serving">je Portion</string>
     <string name="nutrition_serving_size">Portionsgröße:</string>
     <string name="nutrition_sodium">Natrium</string>
     <string name="nutrition_sodium_short_name">Natrium (g)</string>
@@ -369,23 +370,23 @@
     <string name="txt_no_matching_products">Wir haben keine passenden Produkte gefunden.\nSie können versuchen:</string>
     <string name="txt_broaden_search">• Erweitern Sie Ihre Suche\n• Erfassen und zu Open Food Facts hinzufügen</string>
     <string name="txt_cant_load_search_results">Die Suchergebnisse konnten nicht geladen werden</string>
-    <string name="something_went_wrong">Es tut uns Leid, aber ein Problem ist aufgetreten …</string>
+    <string name="something_went_wrong">Es tut uns leid, aber ein Problem ist aufgetreten …</string>
     <string name="txt_try_again">Wiederholen</string>
     <string name="nutrition_lactose">Laktose</string>
     <string name="nutrition_casein">Casein</string>
-    <string name="nutrition_maltodextrins">Maltodextrine</string>
+    <string name="nutrition_maltodextrins">Maltodextrin</string>
     <string name="nutrition_serum_proteins">Serumproteine</string>
     <string name="nutrition_nucleotides">Nukleotide</string>
-    <string name="for_100g">Für 100 g</string>
-    <string name="serving">Pro Portion</string>
+    <string name="for_100g">je 100 g</string>
+    <string name="serving">je Portion</string>
     <string name="minerals">Mineralien</string>
     <string name="nutrition_calcium">Kalzium</string>
     <string name="nutrition_potassium">Kalium</string>
     <string name="nutrition_chlore">Chlor</string>
     <string name="nutrition_magnesium">Magnesium</string>
     <string name="nutrition_taurine">Taurin</string>
-    <string name="nutrition_monounsaturatedFat">Einfach ungesättigte Fette</string>
-    <string name="nutrition_polyunsaturatedFat">Mehrfach ungesättigte Fette</string>
+    <string name="nutrition_monounsaturatedFat">Einfach ungesättigte Fettsäuren</string>
+    <string name="nutrition_polyunsaturatedFat">Mehrfach ungesättigte Fettsäuren</string>
     <string name="nutrition_omega3">Omega-3</string>
     <string name="nutrition_omega6">Omega-6</string>
     <string name="nutrition_omega9">Omega-9</string>
@@ -412,7 +413,7 @@
     <string name="silica">Siliziumdioxid</string>
     <string name="bicarbonate">Bikarbonat</string>
     <string name="potassium">Kalium</string>
-    <string name="chloride">Chlorid</string>
+    <string name="chloride">Chlor</string>
     <string name="calcium">Kalzium</string>
     <string name="phosphorus">Phosphor</string>
     <string name="iron">Eisen</string>
@@ -437,6 +438,12 @@
     <string name="take_picture_nutrition_table">Foto der Nährwerttabelle aufnehmen</string>
     <string name="take_more_pictures">Weitere Fotos aufnehmen</string>
     <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">1. Gruppe • Unverarbeitete oder minimal verarbeitete Lebensmittel</string>
+    <string name="nova_grp2_msg">2. Gruppe • Verarbeitete kulinarische Zutaten</string>
+    <string name="nova_grp3_msg">3. Gruppe • Verarbeitete Lebensmittel</string>
+    <string name="nova_grp4_msg">4. Gruppe • Hochverarbeitete Nahrungsmittel und Getränke</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Verknüpfung ist nicht verfügbar</string>
     <string name="scan_shortcut_short_label">Einlesen</string>
@@ -475,11 +482,11 @@
     <string name="FAQ">Häufig gestellte Fragen</string>
     <string name="FrequentlyAskedQuestions">Häufig gestellte Fragen</string>
     <string name="translate_help_title">Mithelfen bei der Übersetzung von Open Food Facts</string>
-    <string name="translate_help_summary">Übersetzen Sie die „Open Food Facts”-Datenbank in Ihre Sprache – technischen Kenntnisse sind nicht erforderlich</string>
+    <string name="translate_help_summary">Übersetzen Sie die „Open Food Facts”-Datenbank in Ihre Sprache – technische Kenntnisse sind nicht erforderlich</string>
     <string name="please_check_your_connection">Bitte überprüfen Sie Ihre Internetverbindung.</string>
     <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
     <string name="advanced_search_title">Erweiterte Suche &amp; Diagramme</string>
-    <string name="connectivity_check">Bitte überprüfen Sie Ihre internet-Verbindung</string>
+    <string name="connectivity_check">Bitte überprüfen Sie Ihre Internet-Verbindung</string>
     <string name="dismiss">Verwerfen</string>
     <string name="Terms">Allgemeine Geschäftsbedingungen</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -487,7 +494,7 @@
     <string name="preference_header_network">Netzwerk</string>
     <string name="preference_header_contributing">Mitwirken</string>
     <string name="not_support_books">Bücher werden derzeit von „Open Food Facts” nicht unterstützt</string>
-    <string name="scan_first_string">Ihre Verlauf der angesehenen Produkte wird hier aufgelistet.\nDer Verlauf ist nur für Ihre Augen bestimmt und wird lokal gespeichert.</string>
+    <string name="scan_first_string">Ihr Verlauf der angesehenen Produkte wird hier aufgelistet.\nDer Verlauf ist nur für Ihre Augen bestimmt und wird lokal gespeichert.</string>
     <string name="log_in">Benutzername</string>
     <string name="login_true">Bereits angemeldet!</string>
     <string name="confirm_logout">Abmeldung bestätigen</string>
@@ -510,10 +517,10 @@
     <string name="search_string">Suchen</string>
     <string name="country_string">Vertriebsländer</string>
     <string name="store_subtitle">Laden</string>
-    <string name="packaging_subtitle">Art der Verpackung</string>
+    <string name="packaging_subtitle">Verpackungsart</string>
     <string name="last_seen_string">%1$d %2$s her</string>
     <string name="store_string">Laden</string>
-    <string name="packaging_string">Art der Verpackung</string>
+    <string name="packaging_string">Verpackungsart</string>
     <string name="label_string">Kennzeichnung</string>
     <string name="category_string">Kategorie</string>
     <string name="connection">Verbunden</string>
@@ -542,7 +549,7 @@
     <string name="sort_by">Sortieren nach</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://de.openfoodfacts.org/nutriscore</string>
-    <string name="shake_summary">Telefons schütteln, um Produkte einzulesen</string>
+    <string name="shake_summary">Telefon schütteln, um Produkte einzulesen</string>
     <string name="shake_title">Schütteln zum Erfassen</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Fotos ohne Strichcode können noch nicht mit der App hinzugefügt werden. Bitte probieren Sie die mobile Web-Version aus.</string>
@@ -554,7 +561,7 @@
     <string name="bottomNav_history">Verlauf</string>
     <string name="bottomNav_search">Suchen</string>
     <string name="products_added">Produkte, die Sie hinzugefügt oder bearbeitet haben</string>
-    <string name="products_incomplete">Von Ihnen hinzugefügte Produkte, die noch abgeschlossen werden müssen</string>
+    <string name="products_incomplete">Von Ihnen hinzugefügte Produkte, die noch fertiggestellt werden müssen</string>
     <string name="product_pictures_contributed">Produkte, für die Sie Fotos gemacht haben</string>
     <string name="picture_contributed_incomplete">Produkte, für die Sie Fotos gemacht haben, müssen vervollständigt werden</string>
     <string name="product_info_added">Produkte, für die Sie Informationen hinzugefügt haben</string>
@@ -665,6 +672,7 @@
     <string name="uploading_ingredients_image">Zutatenbild wird hochgeladen</string>
     <string name="uploading_front_image">Bild der Vorderseite wird hochgeladen</string>
     <string name="url_nova_groups">https://de.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Bitte melden Sie sich an, um ein Produkt zu bearbeiten.</string>
     <string name="hint_quantity">Beispiele: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 Pfund</string>
     <string name="edit_product_title">Produkt bearbeiten</string>
@@ -729,10 +737,10 @@
     <string name="version">Version</string>
     <string name="txtOtherInfo">Sonstige Angaben:</string>
     <string name="txtConservationCond">Conservation Conditions: </string>
-    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
-    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
-    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
-    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="txtRecyclingInstructionToRecycle">Verwertungshinweise - Zur Wiederverwertung: </string>
+    <string name="txtRecyclingInstructionToDiscard">Verwertungshinweise - Zur Entsorgung: </string>
+    <string name="recyclingInstructionToRecycle">Verwertungshinweise (zur Wiederverwertung)</string>
+    <string name="recyclingInstructionToDiscard">Verwertungshinweise (zur Entsorgung)</string>
     <string name="conservationCond">Conservation Conditions</string>
     <string name="other_info">Weitere Angaben</string>
     <string name="set_ingredient_img">Als Zutatenbild verwenden</string>
@@ -747,5 +755,11 @@
     <string name="fast_addition_mode">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
     <string name="addtive_search">Nach Zusatzstoff suchen</string>
     <string name="additives">Zusatzstoffe</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Land</string>
     <!-- Used for diets AddOn -->
 </resources>

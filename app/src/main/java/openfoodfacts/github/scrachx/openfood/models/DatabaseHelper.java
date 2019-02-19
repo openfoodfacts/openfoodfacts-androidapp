@@ -133,6 +133,11 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 }
                 break;
             }
+            case 11: {
+                ProductListsDao.createTable(db, true);
+                YourListedProductDao.createTable(db, true);
+                break;
+            }
         }
     }
 

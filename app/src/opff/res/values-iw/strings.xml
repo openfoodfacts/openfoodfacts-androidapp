@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים אפילו ללא חיבור לאינטרנט כדי להוסיף אותם ל־Open Pet Food Facts בשלב מאוחר יותר. המוצרים שנסרקו יופיעו כאן ותהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="tagline">מסד הנתונים החופשי למוצרי מזון לחיות מחמד</string>
+    <string name="tagline">free pet food products database</string>
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Pet Food Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="currently_on_version">כרגע ב־Open Pet Food Facts</string>
     <string name="category_game_btn">Help categorize products</string>

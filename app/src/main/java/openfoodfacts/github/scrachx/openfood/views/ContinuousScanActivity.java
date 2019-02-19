@@ -44,6 +44,7 @@ import com.squareup.picasso.Picasso;
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -202,6 +203,19 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                         } else {
                             product = state.getProduct();
+                            if (getIntent().getBooleanExtra("compare_product", false)) {
+                                Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
+                                intent.putExtra("product_found", true);
+                                ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
+                                if (productsToCompare.contains(product)) {
+                                    intent.putExtra("product_already_exists", true);
+                                } else {
+                                    productsToCompare.add(product);
+                                }
+                                intent.putExtra("products_to_compare", productsToCompare);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
                             new HistoryTask().doInBackground(product);
                             showAllViews();
                             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);

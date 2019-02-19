@@ -17,9 +17,9 @@
         <item quantity="one">1 day ago</item>
         <item quantity="other">%d நாட்களுக்கு முன்னர்</item>
     </plurals>
-    <string name="action_settings">அமைப்புகள்</string>
+    <string name="action_settings">Settings</string>
     <string name="action_about">இதைப் பற்றி</string>
-    <string name="action_discover">கண்டறிக</string>
+    <string name="action_discover">Discover</string>
     <string name="contribute">எவ்வாறு பங்களிப்பது</string>
     <string name="action_find">கண்டுபிடி</string>
     <string name="text_barcode">பார்கோடை தட்டச்சு செய்க :</string>
@@ -30,9 +30,9 @@
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>சுருக்கம்</item>
-        <item>மூலப்பொருட்கள்</item>
-        <item>ஊட்டச்சத்து</item>
+        <item>Summary</item>
+        <item>Ingredients</item>
+        <item>Nutrition</item>
         <item>ஊட்டச்சத்து அட்டவணை</item>
         <item>Environment</item>
     </string-array>
@@ -48,9 +48,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>கிராம்</item>
-        <item>மிகி</item>
-        <item>மைகி</item>
+        <item>g</item>
+        <item>mg</item>
+        <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
     </string-array>
@@ -62,29 +62,29 @@
         <item>அராக்கிடிக் அமிலம் (20:0)</item>
         <item>அராக்கிடோனிக் அமிலம் / AA / ARA (20:4 n-6)</item>
         <item>பெஹெனிக் அமிலம் (22:0)</item>
-        <item>பைகார்பனேட்</item>
-        <item>பயோட்டின்</item>
+        <item>Bicarbonate</item>
+        <item>Biotin</item>
         <item>பியூட்ரிக் அமிலம் (4:0)</item>
-        <item>காஃபின்</item>
-        <item>கால்சியம்</item>
+        <item>Caffeine</item>
+        <item>Calcium</item>
         <item>கேப்ரிக் அமிலம் (10:0)</item>
         <item>கேப்ரோய்க் அமிலம் (6:0)</item>
         <item>கேப்ரிலிக் அமிலம் (8:0)</item>
-        <item>கேசீன்</item>
+        <item>Casein</item>
         <item>செரோடிக் அமிலம் (26:0)</item>
-        <item>குளோரைடு</item>
-        <item>இரத்தக்கொழுப்பு</item>
-        <item>குரோமியம்</item>
-        <item>செம்பு</item>
+        <item>Chloride</item>
+        <item>Cholesterol</item>
+        <item>Chromium</item>
+        <item>Copper</item>
         <item>டிஹோமோ-ஃகாமா-லினோலெனிக் அமிலம் / DGLA (20:3 n-6)</item>
         <item>டோக்கோசாஹெக்ஸாயினோய்க் அமிலம் / DHA (22:6 n-3)</item>
         <item>எய்க்கோசாபென்டாயினோய்க் அமிலம் / EPA (20:5 n-3)</item>
         <item>எலாய்டிக் அமிலம் (18:1 n-9)</item>
         <item>எருசிக் அமிலம் (22:1 n-9)</item>
-        <item>புளூரைடு</item>
-        <item>ஃப்ரூக்டோஸ்</item>
+        <item>Fluoride</item>
+        <item>Fructose</item>
         <item>ஃகாமா-லினோலெனிக் அமிலம் / GLA (18:3 n-6)</item>
-        <item>குளுக்கோஸ்</item>
+        <item>Glucose</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>Iodine</item>
         <item>Iron</item>
@@ -139,8 +139,8 @@
     <!-- Text units -->
     <string-array name="images_array">
         <item>இயல்புநிலை</item>
-        <item>ஊட்டச்சத்து</item>
-        <item>மூலப்பொருட்கள்</item>
+        <item>Nutrition</item>
+        <item>Ingredients</item>
     </string-array>
     <!-- Content Description -->
     <string name="bookmark">அடையாளக்குறி</string>
@@ -190,6 +190,7 @@
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Barcode</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
@@ -437,6 +438,12 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">ஸ்கேன்</string>
@@ -665,6 +672,7 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
@@ -747,4 +755,10 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Country</string>
 </resources>

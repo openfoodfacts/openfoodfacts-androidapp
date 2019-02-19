@@ -26,6 +26,6 @@
 Opomba: Open Beauty Facts spletno mesto in aplikacija temeljita na Open Food Facts, pri čemer se upoštevajo posebnosti kozmetike.
 
 Informacije o Open Beauty Facts so na voljo tudi na spletnem mestu https://world.openbeautyfacts.org
-Vprašanja, povratne informacije: contact@openfoodfacts.org
+Questions, feedback : contact@openfoodfacts.org
 
 Za človeško hrano lahko namestite Open Food Facts, za hrano za hišne ljubljenčke, Open Pet Food Facts in za vse ostale izdelke, Open Products Facts.

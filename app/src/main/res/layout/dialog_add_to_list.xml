@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_dialogAddToList"/>
+
+    <TextView
+        android:id="@+id/tvAddToNewList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textSize="22sp"
+        android:text="@string/txt_add_to_new_list"
+        android:drawableLeft="@drawable/plus"
+        app:layout_constraintTop_toBottomOf="@id/rv_dialogAddToList"/>
+
+</android.support.constraint.ConstraintLayout>

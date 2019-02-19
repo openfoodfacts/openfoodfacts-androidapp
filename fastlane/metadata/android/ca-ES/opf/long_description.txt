@@ -4,7 +4,7 @@ Open Food Facts és una base de dades oberta de productes amb ingredients, al·l
 
 - Open Food Facts és una base de dades de productes creada per tothom, per a tothom.
 - Podeu utilitzar-la per a millorar la vostra tria i, com que les dades són obertes, qualsevol persona pot tornar-la a utilitzar per a qualsevol propòsit.
-- Open Food Facts és un projecte sense ànim de lucre, desenvolupat per milers de persones voluntàries de tot el món. Tenim molts projectes interessants en els quals podeu contribuir de moltes maneres diferents. 
+- Open Food Facts és un projecte sense ànim de lucre, desenvolupat per milers de persones voluntàries de tot el món. Tenim molts projectes interessants en els que hi podeu contribuir de moltes maneres diferents. 
 - Podeu començar a contribuir avui afegint el vostre primer producte. 
 
 *** Obteniu les Dades ***
@@ -22,7 +22,7 @@ Open Food Facts és una base de dades oberta de productes amb ingredients, al·l
 - No necessiteu una càmera per buscar un producte. També podeu escriure el codi de barres si no teniu cap càmera o no us funciona.
 
 *** Els vostres productes, les vostres dades ***
-- Les vostres dades personals són vostres i mai no s'envien a Internet
+- Your personal data is yours, and is never sent online
 - Podeu utilitzar l'aplicació de forma anònima
 - Podeu exportar el vostre historial d'escaneig
 
@@ -39,11 +39,11 @@ Recollint els aliments, productes cosmètics i aliments per a animals de tot el 
 
 Així que ens vam animar a crear no 1, sinó 77.000 noves bases de dades separades! 
 
-Open Products Facts serà un projecte extremadament ambiciós. Aquestes són algunes d'elles: 
+Open Products Facts serà un projecte extremadament ambiciós. Here are a few of them: 
 
-Open Crayons Facts - La base de dades oberta més gran de llapis de colors
+Open Crayons Facts - The largest open database of coloring crayons
 
-Open Miniature Food Facts - La base de dades oberta més gran de productes alimentaris en miniatura
+Open Miniature Food Facts - The largest open database of miniature food products
 
 Open ??? Facts - La base de dades oberta més gran de ???
 

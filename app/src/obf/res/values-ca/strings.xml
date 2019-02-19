@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Escanegeu els productes fins i tot quan no esteu connectat per afegir-los a Open Beauty Facts més endavant. Els productes escanejats apareixeran aquí i podreu enviar-los mitjançant el botó que es mostra a continuació.</string>
     <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Beauty Facts. A més, aneu amb compte, les dades del producte poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">la base de dades de cosmètics lliure</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">El producte %1$s que heu escanejat encara no existeix a Open Beauty Facts. Podeu afegir-lo?</string>
     <string name="currently_on_version">Actualment a Open Beauty Facts</string>
     <string name="category_game_btn">Help categorize products</string>
