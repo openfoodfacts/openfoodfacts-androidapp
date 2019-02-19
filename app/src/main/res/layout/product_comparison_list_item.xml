@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_comparison_list_item_layout"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:clipToPadding="false"
+    android:isScrollContainer="false">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/product_comparison_picture_layout">
+
+            <ImageButton
+                android:id="@+id/product_comparison_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:adjustViewBounds="true"
+                android:background="?android:selectableItemBackground"
+                android:maxHeight="120dp"
+                android:scaleType="fitCenter"
+                android:transitionName="@string/product_transition"
+                app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+            <TextView
+                android:id="@+id/product_comparison_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/take_picture_front"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/product_comparison_details_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_below="@id/product_comparison_picture_layout"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/product_comparison_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:padding="@dimen/padding_too_short"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+                <TextView
+                    android:id="@+id/product_comparison_brand"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:padding="@dimen/padding_too_short"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+                <TextView
+                    android:id="@+id/product_comparison_quantity"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:padding="@dimen/padding_too_short"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/product_comparison_scores_layout"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_below="@id/product_comparison_details_cv">
+
+            <ImageView
+                android:id="@+id/product_comparison_imageGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:adjustViewBounds="true"
+                android:maxWidth="180dp"
+                android:scaleType="fitCenter"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="4dp"
+                tools:src="@drawable/nnc_a"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="16dp"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:id="@+id/product_comparison_nova_group"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/horizontal_margin"
+                android:layout_marginBottom="@dimen/horizontal_margin"
+                android:layout_marginLeft="@dimen/spacing_small"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="@dimen/spacing_small"
+                android:paddingEnd="@dimen/spacing_small"
+                android:paddingRight="@dimen/spacing_small"
+                android:paddingBottom="@dimen/spacing_small"
+                android:scaleType="fitCenter"
+                android:layout_toRightOf="@id/product_comparison_imageGrade"
+                tools:src="@drawable/ic_nova_group_1"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_toEndOf="@id/product_comparison_imageGrade" />
+
+            <ImageView
+                android:id="@+id/product_comparison_co2_icon"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/product_comparison_nova_group"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/spacing_tiny"
+                android:layout_marginRight="@dimen/spacing_tiny"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@drawable/ic_co2_high_24dp"
+                android:layout_toEndOf="@id/product_comparison_nova_group" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_comparison_nutrient_cv"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/product_comparison_scores_layout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/product_comparison_textNutrientTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:background="@drawable/textview_full"
+                    android:padding="@dimen/spacing_small"
+                    android:text="No nutrient information available for this product"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/product_comparison_listNutrientLevels"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:visibility="gone"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:background="@drawable/textview_full"
+                    android:divider="@color/white"
+                    tools:listitem="@layout/nutrient_lvl_list_item"
+                    android:dividerHeight="0dp"
+                    android:padding="@dimen/spacing_small"
+                    android:paddingBottom="60dp"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/product_comparison_additive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/product_comparison_nutrient_cv">
+
+            <TextView
+                android:id="@+id/product_comparison_additive_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:background="@drawable/textview_full"
+                android:padding="@dimen/spacing_small"
+                android:textSize="@dimen/font_normal"
+                android:text="No additive data available for this product"/>
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/full_product_button"
+            android:layout_below="@id/product_comparison_additive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_tiny"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:text="Go to full product page"/>
+
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
