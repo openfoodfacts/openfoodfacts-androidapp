@@ -13,7 +13,7 @@
     <string name="website_contributor">https://world-ru.openproductsfacts.org/contributor/</string>
     <string name="terms_url">https://world-ru.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Pet Food Facts - это база данных, содержащая более %1$d продуктов (плюс те, о которых напишете вы) со всего мира.</string>
-    <string name="txtHome">Open Products Facts - открытая база данных всех продуктов в мире.</string>
+    <string name="txtHome">Open Food Facts - открытая база данных продуктов питания с ингредиентами, аллергенами, питательной ценностью и всей информацией, которую мы можем найти на этикетках продуктов.</string>
     <string name="slide_1_title">Способствовать прозрачности продукта</string>
     <string name="slide_1_desc">Сканируйте продукты, фотографируйте их, способствуйте продуктовой прозрачности</string>
     <string name="slide_2_title">Узнать</string>
@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Сканируйте продукты, когда вы не подключены к сети, чтобы добавить их в Open Products Facts позже. Все продукты, которые вы отсканируете, будут отображаться здесь, и вы сможете отправить их, используя кнопку ниже.</string>
     <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Products Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
     <!-- OPF tagline in different languages -->
-    <string name="tagline">свободная база данных продуктов</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">Отсканированного продукта %1$s ещё нет в базе Open Products Facts. Вы можете добавить его?</string>
     <string name="currently_on_version">В настоящее время на Open Products Facts</string>
     <string name="category_game_btn">Help categorize products</string>

@@ -19,7 +19,7 @@
     </plurals>
     <string name="action_settings">Beállítások</string>
     <string name="action_about">Névjegy</string>
-    <string name="action_discover">Felfedez</string>
+    <string name="action_discover">Felfedezés</string>
     <string name="contribute">Hogyan járulhat hozzá</string>
     <string name="action_find">Keres</string>
     <string name="text_barcode">Vonalkód begépelése:</string>
@@ -81,7 +81,7 @@
         <item>Eikozapentaénsav / EPA (20:5 n-3)</item>
         <item>Elaidinsav (18: 1 n-9)</item>
         <item>Erukasav (22:1 n-9)</item>
-        <item>Fluorid</item>
+        <item>Fluor</item>
         <item>Fruktóz</item>
         <item>Gamma-linolénsav / GLA (18:3 n-6)</item>
         <item>Glükóz</item>
@@ -145,7 +145,7 @@
     <!-- Content Description -->
     <string name="bookmark">Könyvjelző</string>
     <string name="edit">Szerkesztés</string>
-    <string name="search_button">Keresés</string>
+    <string name="search_button">Keres</string>
     <string name="no_products">Nem találhatóak termékek</string>
     <string name="desc_list_item_icon">Termék ikon</string>
     <string name="alert_dialog_warning_title">Figyelmeztetés</string>
@@ -181,7 +181,7 @@
     <string name="txtNutritionLevelHigh">nagy mennyiségben</string>
     <string name="txtLogin">Bejelentkezés:</string>
     <string name="txtPass">Jelszó:</string>
-    <string name="txtTitleHome">Tegye nyilvánossá az élelmiszerét és tudja, hogy mit eszik</string>
+    <string name="txtTitleHome">Tedd nyílttá ételed és tudd mit eszel</string>
     <string name="txtSave">Mentés</string>
     <string name="txtSignIn">Bejelentkezés</string>
     <string name="txtUser">Felhasználói felület</string>
@@ -190,6 +190,7 @@
     <string name="txtFat">Zsír</string>
     <string name="txtSugars">Cukrok</string>
     <string name="hintBarcode">Vonalkód</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Bejelentkezés</string>
     <string name="hintPass">Jelszó</string>
     <string name="errorLogin">Bejelentkezési vagy jelszó hiba</string>
@@ -234,7 +235,7 @@
     <string name="msg_share">Nézze meg a terméket az Open Food Facts adatbázisában:</string>
     <string name="create_account">Regisztráció</string>
     <string name="home_drawer">Kezdőlap</string>
-    <string name="search_drawer">Keresés</string>
+    <string name="search_drawer">Keres</string>
     <string name="search_by_barcode_drawer">Keresés vonalkód alapján</string>
     <string name="category_drawer">Kategóriák</string>
     <string name="search_by_category">Kategória</string>
@@ -342,13 +343,13 @@
     <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
     <string name="energy_pref_title">Előnyben részesített energiaegység</string>
     <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
-    <string name="volume_pref_title">Preferred unit for volume</string>
+    <string name="volume_pref_title">Előnyben részesített mennyiségegység</string>
     <string name="logout_drawer">Kijelentkezés</string>
     <string name="contribution_without_account">Jelentkezzen be vagy hozzon létre egy fiókot a hozzájárulásainak megtartásához</string>
     <string name="textCarbonFootprint">Ökológiai lábnyom / szén-dioxid-kibocsátás: </string>
     <string name="txtDialogPowerMode">Gyorsnézet</string>
     <string name="txtSeeMore">Továbbiak</string>
-    <string name="action_search">Keresés</string>
+    <string name="action_search">Keres</string>
     <string name="search_hint">Termék keresése</string>
     <string name="number_of_results">Találatok száma: </string>
     <string name="brand">Márkanév:</string>
@@ -420,7 +421,7 @@
     <string name="zinc">Cink</string>
     <string name="copper">Réz</string>
     <string name="manganese">Mangán</string>
-    <string name="fluoride">Fluorid</string>
+    <string name="fluoride">Fluor</string>
     <string name="selenium">Szelén</string>
     <string name="chromium">Króm</string>
     <string name="molybdenum">Molibdén</string>
@@ -432,16 +433,22 @@
     <string name="collagen_meat_protein_ratio">Kollagén húsfehérje arány</string>
     <string name="cocoa">Kakaó</string>
     <string name="chlorophyl">Klorofill</string>
-    <string name="take_picture_ingredients">Készítsen képet az összetevőkről</string>
-    <string name="take_picture_front">Készítsen képet a termék csomagolásáról</string>
-    <string name="take_picture_nutrition_table">Készítsen képet a tápanyagtáblázatról</string>
+    <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
+    <string name="take_picture_front">Kép készítése a termék csomagolásáról</string>
+    <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
     <string name="take_more_pictures">Készítsen további képeket</string>
     <string name="txtSaturatedFat">Telített zsír</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Coport 1 - Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek</string>
+    <string name="nova_grp2_msg">Csoport 2 - Feldolgozott összetevők</string>
+    <string name="nova_grp3_msg">Csoport 3 - Feldolgozott élelmiszerek</string>
+    <string name="nova_grp4_msg">4. csoport - Többszörösen feldolgozott élelmiszer- és italtermékek</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Parancsikon nem elérhető</string>
     <string name="scan_shortcut_short_label">Beolvasás</string>
     <string name="scan_shortcut_long_label">Termék beolvasása</string>
-    <string name="barcode_shortcut_short_label">Keresés</string>
+    <string name="barcode_shortcut_short_label">Keres</string>
     <string name="barcode_shortcut_long_label">Keresés vonalkód alapján</string>
     <string name="history_shortcut_short_label">Előzmények</string>
     <string name="history_shortcut_long_label">Előzmények</string>
@@ -507,7 +514,7 @@
     <string name="brand_string">Márkanév</string>
     <string name="additive_string">Adalékanyag</string>
     <string name="allergen_string">Allergén</string>
-    <string name="search_string">Keresés</string>
+    <string name="search_string">Keres</string>
     <string name="country_string">Országok, ahol kapható</string>
     <string name="store_subtitle">Bolt</string>
     <string name="packaging_subtitle">Csomagolás</string>
@@ -552,9 +559,9 @@
     <string name="code_detected">Vonalkód felismerve</string>
     <string name="do_you_want_to">Szeretne fényképeket hozzáadni ehhez a vonalkódhoz?</string>
     <string name="bottomNav_history">Előzmények</string>
-    <string name="bottomNav_search">Keresés</string>
+    <string name="bottomNav_search">Keres</string>
     <string name="products_added">Termékek, amelyeket hozzáadott vagy szerkesztett</string>
-    <string name="products_incomplete">Termékek, amiket hozzáadtál, és befejezésre várnak</string>
+    <string name="products_incomplete">Termékek, amiket hozzáadott és befejezésre vár</string>
     <string name="product_pictures_contributed">Termékek, amelyekről képeket készített</string>
     <string name="picture_contributed_incomplete">Termékek, amelyekről képeket készített és ki kell egészíteni</string>
     <string name="product_info_added">Termékek, amelyekhez információt adott hozzá</string>
@@ -568,7 +575,7 @@
     <string name="modified_history">A terméket hozzáadta %3$s a következő időpontban: %1$s, %2$s. A termékoldalt legutóbb szerkesztette %6$s a következő időpontban: %4$s, %5$s. A termékoldalt szerkesztette még %7$s</string>
     <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
     <string name="creator_history">A terméket hozzáadta a következő időpontban: %1$s, %2$s CET</string>
-    <string name="last_editor_history">A termékoldalt legutóbb szerkesztette a következő időpontban: %1$s, %2$s CEST </string>
+    <string name="last_editor_history">Termékoldalt legutóbb szerkesztette a következő időpontban: %1$s, %2$s CEST </string>
     <string name="other_editors">A termékoldalt szerkesztette még </string>
     <string name="contribution_tab">Hozzájárulások</string>
     <string name="contribution_tab_summary">Felhasználói hozzájárulások lap megjelenítése a termékekkel</string>
@@ -667,6 +674,7 @@
     <string name="uploading_ingredients_image">Kép feltöltése az összetevőkről</string>
     <string name="uploading_front_image">Kép feltöltése a termékről</string>
     <string name="url_nova_groups">https://hu.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Kérjük, jelentkezzen be egy termék szerkesztéséhez.</string>
     <string name="hint_quantity">Példák: 2 liter, 250 g, 1 kg, 25 cl, 6 fl oz, 1 font</string>
     <string name="edit_product_title">Termék szerkesztése</string>
@@ -702,7 +710,7 @@
     <string name="legend_adi">ajánlott napi bevitel (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="update_image">Frissített kép küldése</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Az Ön étrendje(i)</string>
@@ -728,24 +736,30 @@
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Nyissa meg az Open Food Factcs Android-alkalmazását</string>
     <string name="version">Verzió</string>
-    <string name="txtOtherInfo">Other Information: </string>
-    <string name="txtConservationCond">Conservation Conditions: </string>
-    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
-    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
-    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
-    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
-    <string name="conservationCond">Conservation Conditions</string>
-    <string name="other_info">Other Information</string>
+    <string name="txtOtherInfo">Egyéb információ: </string>
+    <string name="txtConservationCond">Tartósítási feltételek: </string>
+    <string name="txtRecyclingInstructionToRecycle">Újrahasznosítási utasítások - újrahasznosítás: </string>
+    <string name="txtRecyclingInstructionToDiscard">Újrahasznosítási utasítások - eldobáshoz: </string>
+    <string name="recyclingInstructionToRecycle">Újrahasznosítási utasítások (újrahasznosítás)</string>
+    <string name="recyclingInstructionToDiscard">Újrahasznosítási utasítások (eldobáshoz)</string>
+    <string name="conservationCond">Tartósítási feltételek</string>
+    <string name="other_info">Egyéb információ</string>
     <string name="set_ingredient_img">Kép feltöltése az összetevőkről</string>
     <string name="set_img_nutrients">Kép feltöltése a tápértéktáblázatról</string>
     <string name="set_img_front">Borítókép megadása</string>
     <string name="report_img">Kép jelentése</string>
     <string name="detected_ingredients">Összetevők detektálása</string>
-    <string name="set_image_name">Successfully set the image as</string>
+    <string name="set_image_name">A kép sikeresen beállítva</string>
     <string name="warning">Figyelmeztetés:</string>
     <string name="customer_service">Ügyfélszolgálat:</string>
     <string name="fast_addition_mode_title">Gyors hozzáadása mód</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Egy dalékanyag keresése</string>
     <string name="additives">Adalékanyagok</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Ország</string>
 </resources>

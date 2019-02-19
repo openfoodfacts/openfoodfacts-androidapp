@@ -5,17 +5,17 @@ Nove skupine
 Nova skupina:
 
 Skupina 1
-Skupina 1 - Nepredelana ali minimalno predelana živila
-Nepredelana ali minimalno predelana živila
+Group 1 - Unprocessed or minimally processed foods
+Unprocessed or minimally processed foods
 
 Skupina 2
-Skupina 2 - predelane kulinarične sestavine
-Predelane kulinarične sestavine
+Group 2 - Processed culinary ingredients
+Processed culinary ingredients
 
 Skupina 3
-Skupina 3 - Predelana živila
-Predelana živila
+Group 3 - Processed foods
+Processed foods
 
 Skupina 4
-Skupina 4 - Ultra predelani izdelki hrane in pijače
+Group 4 - Ultra-processed food and drink products
 Ultra predelani izdelki hrane in pijače

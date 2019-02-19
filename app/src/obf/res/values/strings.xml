@@ -13,8 +13,8 @@
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
     <string name="faq_url" translatable="false">https://world.openbeautyfacts.org/faq</string>
     <string name="advanced_search_url" translatable="false">https://world.openbeautyfacts.org/cgi/search.pl</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$d cosmetic products (plus the ones you will contribute) with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
-    <string name="txtHome">Open Beauty Facts is a database of cosmetic products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
+    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$d cosmetic products (plus the ones you will contribute).</string>
+    <string name="txtHome">Open Beauty Facts is a database of cosmetic products.</string>
     <string name="slide_1_title">Contribute to Cosmetic transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
     <string name="slide_2_title">Get the facts</string>

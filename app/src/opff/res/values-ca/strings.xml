@@ -24,7 +24,7 @@
     <string name="slide_4_desc">Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">Mire este producte a Open Food Facts :</string>
+    <string name="msg_share">Mireu aquest producte a Open Food Facts:</string>
     <string name="not_support_books">Actualment, els llibres no són compatibles amb Open Food Facts</string>
     <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-lo i afegiu-lo a Open Food Facts</string>
     <string name="Donation">Cliqueu aquí per a fer un donatiu a Open Food Facts</string>

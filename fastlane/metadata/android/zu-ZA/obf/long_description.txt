@@ -2,10 +2,10 @@
 
 - I-Open Food Facts iyinhlangano yemininingwane yokudla eyenziwe yilowo nalowo, wonke umuntu.
 - Ungayisebenzisa ukwenza ukhetho olungcono kakhulu, futhi njengoba livulekile idatha, noma ubani angayisebenzisa kabusha nganoma iyiphi injongo.
-- I-Open Beauty Facts yinhlelo engeyona inzuzo eyenziwa yizinkulungwane zamavolontiya avela emhlabeni wonke. Sinezinhlelo eziningi ezithakazelisayo ongazifaka ngezindlela eziningi ezahlukene. 
+- I-Open Beauty Facts yinhlelo engeyona inzuzo eyenziwa yizinkulungwane zamavolontiya avela emhlabeni wonke. We have lots of exciting projects you can contribute to in many different ways. 
 - Ungaqala ukufaka isandla namhlanje ngokungeza umkhiqizo kusuka ekhabetheni lakho lezithombeni. 
 
-*** Thola amaqiniso ***
+*** Get the Facts ***
 
 - Izithasiselo ze-Cosmetics, i-Fil. amakhodi, izinombolo ze-CI, i-INCI (I-International Nomenclature yezithako ezenziwe ngama-cosmetic), uhlu lwezithako, izilonda, amakhodi wokupakisha... 
 - I-Open Beauty Facts ikusiza ukuba wenze umqondo wokuphrinta okuhle kumalebula womkhiqizo.
@@ -26,6 +26,6 @@
 Qaphela: I-Open Beauty Facts iyakhiwa, isayithi kanye nesicelo kusekelwe ku-Open Food Facts kanye nezinguquko kuzokwenziwa ukucabangela izici zezimonyo.
 
 I-Open Beauty Facts iyatholakala futhi kuwebhu ku-https: //world.openbeautyfacts.org
-Imibuzo, impendulo: contact@openfoodfacts.org
+Questions, feedback : contact@openfoodfacts.org
 
 Ukuze uthole ukudla kwabantu, ungafaka ama-Open Food Facts, ukuze uthole ukudla kwezilwane, ama-Open Pet Food Facts, kanye nayo yonke eminye imikhiqizo, Ama-Open Products Facts.

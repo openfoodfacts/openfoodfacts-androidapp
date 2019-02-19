@@ -26,8 +26,8 @@
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>概要</item>
-        <item>配料</item>
+        <item>摘要</item>
+        <item>成分</item>
         <item>营养</item>
         <item>营养表</item>
         <item>环境影响</item>
@@ -136,7 +136,7 @@
     <string-array name="images_array">
         <item>默认</item>
         <item>营养</item>
-        <item>配料</item>
+        <item>成分</item>
     </string-array>
     <!-- Content Description -->
     <string name="bookmark">书签</string>
@@ -172,9 +172,9 @@
     <string name="txtPalmOilProduct">来自棕榈油的配料：</string>
     <string name="txtServingSize">份量：</string>
     <string name="txtNutrientLevel100g">100g 所含营养等级：</string>
-    <string name="txtNutritionLevelLow">较少含量</string>
-    <string name="txtNutritionLevelModerate">中等含量</string>
-    <string name="txtNutritionLevelHigh">较高含量</string>
+    <string name="txtNutritionLevelLow">库存量</string>
+    <string name="txtNutritionLevelModerate">中等数量</string>
+    <string name="txtNutritionLevelHigh">最高含量</string>
     <string name="txtLogin">用户名：</string>
     <string name="txtPass">密码：</string>
     <string name="txtTitleHome">打开你的食物知道你在吃什么</string>
@@ -186,6 +186,7 @@
     <string name="txtFat">脂肪</string>
     <string name="txtSugars">糖</string>
     <string name="hintBarcode">条形码</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">登录</string>
     <string name="hintPass">密码</string>
     <string name="errorLogin">用户名或密码错误</string>
@@ -225,7 +226,7 @@
     <string name="txtPalm">该产品不含棕榈油</string>
     <string name="txtBarcodeNotValid">条形码无效</string>
     <string name="try_it_scan_now">扫描产品</string>
-    <string name="share">分享</string>
+    <string name="share">推荐给好友</string>
     <string name="translate">翻译</string>
     <string name="msg_share">在 Open Food Facts 中查看这个产品：</string>
     <string name="create_account">登录</string>
@@ -329,7 +330,7 @@
     <string name="nutrition_sodium">钠</string>
     <string name="nutrition_sodium_short_name">钠（g）</string>
     <string name="nutrition_sugars">糖</string>
-    <string name="nutrition_sugars_short_name">糖（g）</string>
+    <string name="nutrition_sugars_short_name">糖（克）</string>
     <string name="nutrition_trans_fat">反式脂肪</string>
     <string name="nutrition_trans_fat_short_name">反式脂肪（g）</string>
     <string name="nutriment_serving_size">每部分：</string>
@@ -383,7 +384,7 @@
     <string name="nutrition_monounsaturatedFat">单不饱和脂肪</string>
     <string name="nutrition_polyunsaturatedFat">多元不饱和脂肪</string>
     <string name="nutrition_omega3">欧米伽 3</string>
-    <string name="nutrition_omega6">欧米伽 6</string>
+    <string name="nutrition_omega6">欧米伽 5</string>
     <string name="nutrition_omega9">欧米伽 9</string>
     <string name="nutrition_sucrose">蔗糖</string>
     <string name="nutrition_glucose">葡萄糖</string>
@@ -425,14 +426,20 @@
     <string name="taurine">牛磺酸</string>
     <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">水果，蔬菜，坚果</string>
-    <string name="collagen_meat_protein_ratio">胶原蛋白肉蛋白比例</string>
+    <string name="collagen_meat_protein_ratio">胶原蛋白比例</string>
     <string name="cocoa">可可粉</string>
     <string name="chlorophyl">叶绿素</string>
-    <string name="take_picture_ingredients">拍摄配料照片</string>
+    <string name="take_picture_ingredients">拍摄营养成分</string>
     <string name="take_picture_front">拍摄正面照片</string>
-    <string name="take_picture_nutrition_table">拍摄营养成分表</string>
+    <string name="take_picture_nutrition_table">拍摄营养成分</string>
     <string name="take_more_pictures">拍摄更多照片</string>
     <string name="txtSaturatedFat">饱和脂肪</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">快捷方式不可用</string>
     <string name="scan_shortcut_short_label">扫描</string>
@@ -504,7 +511,7 @@
     <string name="additive_string">添加剂</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">搜索</string>
-    <string name="country_string">售卖此商品的国家</string>
+    <string name="country_string">可出售的国家</string>
     <string name="store_subtitle">商店</string>
     <string name="packaging_subtitle">包装</string>
     <string name="last_seen_string">%1$d %2$s 之前</string>
@@ -549,8 +556,8 @@
     <string name="do_you_want_to">是否要将照片添加到此条码？</string>
     <string name="bottomNav_history">历史记录</string>
     <string name="bottomNav_search">搜索</string>
-    <string name="products_added">您所编辑和添加的产品</string>
-    <string name="products_incomplete">您添加的产品需求已经完成</string>
+    <string name="products_added">你所添加或编辑的产品</string>
+    <string name="products_incomplete">您添加的产品需要完成</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
@@ -620,7 +627,7 @@
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Overview</string>
-    <string name="ingredients">配料</string>
+    <string name="ingredients">成分</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
@@ -633,11 +640,11 @@
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
     <string name="traces">痕迹</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
-    <string name="nutrition_facts_not_specified">营养成分没有在产品上注明</string>
+    <string name="nutrition_facts_not_specified">营养成分没有在产品傻姑娘注明</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per Serving</string>
-    <string name="serving_size">份量</string>
+    <string name="serving_size">分量</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">添加营养</string>
     <string name="add_this_product">Add this product</string>
@@ -661,6 +668,7 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">请登录以编辑产品</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">编辑产品</string>
@@ -743,4 +751,10 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">添加</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">国家</string>
 </resources>

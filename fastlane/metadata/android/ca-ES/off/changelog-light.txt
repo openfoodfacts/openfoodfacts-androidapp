@@ -12,7 +12,7 @@ v2.8! Després de la massiva V2, tot el voluntariat s'ha mantingut treballant in
 1. Hem reconstruït tota l'experiència d'addició de producte (i fins i tot funciona sense connexió). (gràcies Huzaifa)
 2. Ara podeu obtenir informació nutricional sobre la porció que esteu menjant (Rutvik)
 3. Ara computem grups NOVA, a més del Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
+4. Neteja i manteniment del codi (per Rutvik i Salfai)
 5. Coreà i indonesi
 
 2.8.8 ! Crèieu que deixaríem d'afegir productes? Tot el voluntariat d'OFF han continuat treballant intensament. Més de 590.000 productes alliberats, 182 països, més de 10.000 persones col·laboradores, inclosos vosaltres. ;-)

@@ -575,7 +575,14 @@ public class Product implements Serializable {
         return noNutritionData;
     }
 
-    public String getEnvironmentInfocard() {return environmentInfocard;}
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+  
+    public String getEnvironmentInfocard() {
+      return environmentInfocard;
+    }
+      
     /**
      * @return Other information
      */
@@ -609,6 +616,7 @@ public class Product implements Serializable {
         return new ToStringBuilder(this)
                 .append("code", code)
                 .append("productName", productName)
+                .append("additional_properties",additionalProperties)
                 .toString();
     }
 }

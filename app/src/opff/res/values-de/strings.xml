@@ -13,28 +13,28 @@
     <string name="website_contributor">https://world-de.openpetfoodfacts.org/mitwirkender/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Pet Food Facts ist eine Datenbank mit mehr als %1$d Tiernahrungsprodukten (und denjenigen, die Sie beitragen werden) mit Zutaten, Allergenen, Vermerken und allen Kleinigkeiten von Informationen, die wir auf Etiketten von Tiernahrungsprodukten finden können. Wau. Wau.</string>
-    <string name="txtHome">„Open Pet Food Facts” ist eine Datenbank der Nahrungsprodukte für Haustiere mit deren Bestandteilen, Allergenen, Indizien und und all den Kleinigkeiten, die wir auf Produktetiketten für Haustiernahrung finden können. Wau-Wau, Miau.</string>
+    <string name="txtHome">„Open Pet Food Facts” ist eine Datenbank der Nahrungsprodukte für Haustiere mit deren Bestandteilen, Allergenen, Indizien und all den Kleinigkeiten, die wir auf Produktetiketten für Haustiernahrung finden können. Wau-Wau, Miau.</string>
     <string name="slide_1_title">Beitrag zur Transparenz von Tiernahrungsprodukten leisten</string>
-    <string name="slide_1_desc">Produkte erfassen, und diese fotografieren, ermöglichen die Transparenz von Tiernahrung</string>
+    <string name="slide_1_desc">Produkte erfassen und diese fotografieren ermöglichen die Transparenz von Tiernahrung</string>
     <string name="slide_2_title">Holen Sie sich die Fakten</string>
     <string name="slide_2_desc">Umfassende Informationen über das erfasste Produkt wurden für Sie entschlüsselt</string>
     <string name="slide_3_title">Behalten Sie den Überblick über das Produkt, das Sie verwenden</string>
-    <string name="slide_3_desc">Alle durch Sie eingelesenen Tiernahrung können in einer praktischen Liste exportiert werden.</string>
+    <string name="slide_3_desc">Alle durch Sie eingelesene Tiernahrung können in einer praktischen Liste exportiert werden.</string>
     <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
     <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
-    <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in Open Pet Facts. Bitte fügen Sie es hinzu.</string>
-    <string name="txtDialogsContentPowerMode">Das eingelesene Produkt existiert bereits in „Open Pet Facts”.</string>
+    <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in Open Pet Food Facts. Bitte fügen Sie es hinzu.</string>
+    <string name="txtDialogsContentPowerMode">Das eingelesene Produkt existiert bereits in „Open Pet Food Facts”.</string>
     <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
     <string name="not_support_books">Bücher werden derzeit von „Open Food Facts” nicht unterstützt</string>
     <string name="txt_broaden_search">• Erweitern Sie Ihre Suche\n• Erfassen und zu Open Food Facts hinzufügen</string>
     <string name="Donation">Hier klicken, um für Open Food Facts zu spenden</string>
     <string name="translate_help_title">Mithelfen bei der Übersetzung von Open Food Facts</string>
-    <string name="translate_help_summary">Übersetzen Sie die „Open Food Facts”-Datenbank in Ihre Sprache – technischen Kenntnisse sind nicht erforderlich</string>
-    <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Pet Food Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche gesendet werden.</string>
+    <string name="translate_help_summary">Übersetzen Sie die „Open Food Facts”-Datenbank in Ihre Sprache – technische Kenntnisse sind nicht erforderlich</string>
+    <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Pet Food Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche versenden.</string>
     <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="tagline">kostenlose Tiernahrungsdatenbank</string>
+    <string name="tagline">free pet food products database</string>
     <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Pet Food Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="currently_on_version">Aktuell auf Open Pet Food Facts</string>
-    <string name="category_game_btn">Mithelfen, Produkte zu kategorisieren</string>
+    <string name="category_game_btn">Helfen, Produkte zu kategorisieren</string>
 </resources>

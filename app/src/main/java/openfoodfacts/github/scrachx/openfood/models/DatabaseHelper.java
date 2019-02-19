@@ -134,7 +134,11 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 break;
             }
             case 11: {
-                //Log.i("INFO", "Upgrade to version 11 ! ");
+                ProductListsDao.createTable(db, true);
+                YourListedProductDao.createTable(db, true);
+                break;
+            }
+            case 12: {
                 DietDao.createTable(db,true);
                 DietNameDao.createTable(db,true);
                 DietIngredientsDao.createTable(db,true);

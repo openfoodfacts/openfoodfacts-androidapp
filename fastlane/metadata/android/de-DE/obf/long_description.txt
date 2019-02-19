@@ -21,7 +21,7 @@
 ★★★ Ihre Kosmetik — Ihre Daten ★★★
 • Ihre Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
-• Sie können Ihre Erfassungsverlauf exportieren
+• Sie können Ihren Erfassungsverlauf exportieren
 
 Hinweis: Open Beauty Facts befindet sich im Aufbau, die Seite und die Anwendung basieren auf Open Food Facts und es werden Änderungen vorgenommen, um den Besonderheiten der Kosmetik Rechnung tragen zu können.
 

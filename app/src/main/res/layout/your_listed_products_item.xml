@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rvYourListedProducts"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <FrameLayout
+        android:id="@+id/imgFrameYourListedProduct"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/spacing_tiny"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:paddingEnd="8dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="4dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imgProductYourListedProduct"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            tools:srcCompat="@drawable/header" />
+
+        <ProgressBar
+            android:id="@+id/imageProgressbarYourListedProduct"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="4dp"
+            android:visibility="visible" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/llYourListedProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_tiny"
+        android:layout_toEndOf="@+id/imgFrameYourListedProduct"
+        android:layout_toRightOf="@+id/imgFrameYourListedProduct"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titleYourListedProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="2dp"
+            android:textSize="@dimen/font_large"
+            tools:text="Nutella" />
+
+        <TextView
+            android:id="@+id/productDetailsYourListedProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="2dp"
+            android:textSize="@dimen/font_normal"
+            tools:text="Ferrero" />
+
+
+        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+            android:id="@+id/barcodeYourListedProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="2dp"
+            android:gravity="center_vertical"
+            android:padding="2dp"
+            android:textSize="@dimen/font_small"
+            app:drawableLeftCompat="@drawable/barcode_grey_24dp"
+            tools:text="123456789" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/brown_100"
+        android:layout_below="@id/llYourListedProduct"/>
+
+</RelativeLayout>
+

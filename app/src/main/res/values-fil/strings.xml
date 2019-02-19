@@ -190,6 +190,7 @@
     <string name="txtFat">Taba</string>
     <string name="txtSugars">Mga asukal</string>
     <string name="hintBarcode">Barcode</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Mag-login</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Error sa login o password</string>
@@ -236,7 +237,7 @@
     <string name="home_drawer">Home</string>
     <string name="search_drawer">Hanapin</string>
     <string name="search_by_barcode_drawer">I-type ang barcode</string>
-    <string name="category_drawer">Mga kategorya</string>
+    <string name="category_drawer">Mga Kategorya</string>
     <string name="search_by_category">Kategorya</string>
     <string name="search_by_name_drawer">Maghanap ayon sa pangalan</string>
     <string name="scan_search">I-scan ang Barcode</string>
@@ -437,6 +438,12 @@
     <string name="take_picture_nutrition_table">Kumuha ng larawan ng talahanayan ng nutrisyon</string>
     <string name="take_more_pictures">Kumuha ng marami pang mga larawan</string>
     <string name="txtSaturatedFat">Saturated na taba</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Hindi magagamit ang shortcut</string>
     <string name="scan_shortcut_short_label">Scan</string>
@@ -510,10 +517,10 @@
     <string name="search_string">Hanapin</string>
     <string name="country_string">Mga bansa kung saan ibinebenta</string>
     <string name="store_subtitle">Tindahan</string>
-    <string name="packaging_subtitle">Balot</string>
+    <string name="packaging_subtitle">Packaging</string>
     <string name="last_seen_string">%1$d %2$s ang nakalipas</string>
     <string name="store_string">Tindahan</string>
-    <string name="packaging_string">Balot</string>
+    <string name="packaging_string">Packaging</string>
     <string name="label_string">Tanda</string>
     <string name="category_string">Kategorya</string>
     <string name="connection">Nakakonekta</string>
@@ -553,8 +560,8 @@
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
     <string name="bottomNav_history">Kasaysayan</string>
     <string name="bottomNav_search">Hanapin</string>
-    <string name="products_added">Mga produkto na iyong idinagdag at na-edit</string>
-    <string name="products_incomplete">Mga produkto na iyong dinagdag na kailangang kumpletohin</string>
+    <string name="products_added">Mga produkto na iyong idinagdag o na-edit</string>
+    <string name="products_incomplete">Mga produkto na iyong idinagdag na kailangang makumpleto</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
@@ -637,7 +644,7 @@
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
     <string name="traces">Mga bakas</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
-    <string name="nutrition_facts_not_specified">Nutrisyon facts ay hindi nakasaad sa produkto.</string>
+    <string name="nutrition_facts_not_specified">Mga nutrisyon facts not hindi tinukoy sa produkto.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per Serving</string>
@@ -649,7 +656,7 @@
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
     <string name="product_name">Pangalan ng produkto</string>
-    <string name="quantity">Kandidad</string>
+    <string name="quantity">Dami</string>
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Tagal ng oras pagkatapos ng pagbukas</string>
     <string name="manufacturing_details">Manufacturing Details</string>
@@ -658,13 +665,14 @@
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Mga tindahan</string>
+    <string name="stores">Mga Tindahan</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">I-edit ang produkto</string>
@@ -747,4 +755,10 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Mga additibo</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Bansa</string>
 </resources>

@@ -18,7 +18,7 @@
         <item quantity="one">1 دن پہلے</item>
         <item quantity="other">%d days ago</item>
     </plurals>
-    <string name="action_settings">ترتیبات</string>
+    <string name="action_settings">Settings</string>
     <string name="action_about">کے بارے میں</string>
     <string name="action_discover">انکشاف کریں</string>
     <string name="contribute">کیسے تعاون کریں</string>
@@ -49,9 +49,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>جی</item>
-        <item>ایم جی</item>
-        <item>مائکرگرام</item>
+        <item>g</item>
+        <item>mg</item>
+        <item>µg</item>
         <item>DV %</item>
         <item>IU</item>
     </string-array>
@@ -63,68 +63,68 @@
         <item>اریکی ڈونک ایسڈ (20:0)</item>
         <item>اریکی ڈونک ایسڈ/اے اے/اے آراے (20:4 6-n)</item>
         <item>بھینیک ایسڈ (22:0)</item>
-        <item>بائی کاربونیٹ</item>
-        <item>بائیوٹن</item>
+        <item>Bicarbonate</item>
+        <item>Biotin</item>
         <item>بترک ایسڈ (4:0)</item>
-        <item>کیفین</item>
-        <item>کیلشیم</item>
+        <item>Caffeine</item>
+        <item>Calcium</item>
         <item>کپرک ایسڈ (10:0)</item>
         <item>کپراوک ایسڈ (6:0)</item>
         <item>کیپری لک ایسڈ (8:0)</item>
-        <item>کیسین</item>
+        <item>Casein</item>
         <item>سیروٹک ایسڈ (26:0)</item>
-        <item>کلورائیڈ</item>
-        <item>کولیسٹرول</item>
-        <item>کرومیم</item>
-        <item>کاپر</item>
+        <item>Chloride</item>
+        <item>Cholesterol</item>
+        <item>Chromium</item>
+        <item>Copper</item>
         <item>دیہومو-گاما-لائنولینک ایسڈ /ڈی جی ایل اے (20:3 n-6)</item>
         <item>ڈوکوسینوایک ہیگسانک ایسڈ/ڈی ایچ اے (22:6 n-3)</item>
         <item>ایکسانک پینسانک ایسڈ/ای پی اے (20:5 3-n)</item>
         <item>ایلاڈک ایسڈ (18:1 n-9)</item>
         <item>ایروسک ایسڈ (22:1 n-9)</item>
-        <item>فلورائیڈ</item>
-        <item>فرکٹوس</item>
+        <item>Fluoride</item>
+        <item>Fructose</item>
         <item>گاما-لنولینک ایسڈ/جی ایل اے (18:3 n-6)</item>
-        <item>گلوکوز</item>
+        <item>Glucose</item>
         <item>گونڈواک ایسڈ (20:1 n-9)</item>
-        <item>آئیوڈین</item>
-        <item>آئرن</item>
-        <item>لیکٹوس</item>
+        <item>Iodine</item>
+        <item>Iron</item>
+        <item>Lactose</item>
         <item>لارک ایسڈ (12:0)</item>
         <item>لگنوسرک ایسڈ (24:0)</item>
         <item>لائنولک ایسڈ/ایل اے (18:2 n-6)</item>
-        <item>میگنیشیم</item>
-        <item>مالٹوڈیکسٹرنس</item>
-        <item>مالٹوس</item>
-        <item>مینگنیز</item>
+        <item>Magnesium</item>
+        <item>Maltodextrins</item>
+        <item>Maltose</item>
+        <item>Manganese</item>
         <item>میڈ ایسڈ (20:3 n-9)</item>
         <item>ملیسک ایسڈ (30:0)</item>
-        <item>مولبڈینم</item>
+        <item>Molybdenum</item>
         <item>مونونسیچوریٹڈ فیٹ</item>
         <item>مونٹینک ایسڈ (28:0)</item>
         <item>مائی رسٹک ایسڈ (14:0)</item>
         <item>نیروانک ایسڈ (24:1 n-9)</item>
-        <item>نیوکلیوٹائیڈز</item>
+        <item>Nucleotides</item>
         <item>اولک ایسڈ (18:1 n-9)</item>
         <item>اومیگا 3 فیٹی ایسڈز</item>
         <item>اومیگا 6 فیٹی ایسڈز</item>
         <item>اومیگا 9 فیٹی ایسڈز</item>
         <item>پلمیٹک ایسڈ (16:0)</item>
         <item>پینتھوتھنیک ایسڈ/پینتھوتھینیٹ (وٹامن بی 5)</item>
-        <item>پی ایچ</item>
-        <item>فاسفورس</item>
+        <item>pH</item>
+        <item>Phosphorus</item>
         <item>شکر الکوحل (پولیولس)</item>
         <item>پولی انسیچوریٹڈ فیٹ</item>
-        <item>پوٹاشیم</item>
-        <item>سلینیم</item>
+        <item>Potassium</item>
+        <item>Selenium</item>
         <item>سیرم پروٹیز</item>
-        <item>سلیکا</item>
+        <item>Silica</item>
         <item>سٹارچ/نشاستہ</item>
         <item>اسٹیرک ایسڈ (18:0)</item>
-        <item>سکروز</item>
-        <item>ٹاورین</item>
-        <item>ٹرانس فیٹ</item>
-        <item>وٹامن اے</item>
+        <item>Sucrose</item>
+        <item>Taurine</item>
+        <item>Trans fat</item>
+        <item>Vitamin A</item>
         <item>وٹامن بی1 (تھائی من)</item>
         <item>وٹامن بی 12 (کوبلامن)</item>
         <item>وٹامن بی 2 (ریبوفلاون)</item>
@@ -132,10 +132,10 @@
         <item>وٹامن بی 6 (پائیری ڈاکسن)</item>
         <item>وٹامن بی 9 (فولک ایسڈ)</item>
         <item>وٹامن سی (اسکاربک ایسڈ)</item>
-        <item>وٹامن ڈی</item>
-        <item>وٹامن ای</item>
-        <item>وٹامن کے</item>
-        <item>زنک</item>
+        <item>Vitamin D</item>
+        <item>Vitamin E</item>
+        <item>Vitamin K</item>
+        <item>Zinc</item>
     </string-array>
     <!-- Text units -->
     <string-array name="images_array">
@@ -146,10 +146,10 @@
     <!-- Content Description -->
     <string name="bookmark">بک مارک</string>
     <string name="edit">تدوین کریں</string>
-    <string name="search_button">تلاش کریں</string>
+    <string name="search_button">Search</string>
     <string name="no_products">پراڈکٹ تلاش نہیں کی جاسکی</string>
     <string name="desc_list_item_icon">آئٹم کی شبیہ (آئکن)</string>
-    <string name="alert_dialog_warning_title">انتباہ</string>
+    <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">صارف نام/پاس ورڈ تبدیل ہوچکا ہے، براہ مہربانی معلومات اپ ڈیٹ کریں</string>
     <string name="alert_dialog_product_error_msg">پراڈکٹ تلاش نہیں کی جا سکی، براہ مہربانی دوبارہ کوشش کریں</string>
     <string name="toast_retrieving">Loading...</string>
@@ -191,6 +191,7 @@
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Barcode</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
@@ -438,6 +439,12 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">سکین</string>
@@ -666,6 +673,7 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
@@ -748,4 +756,10 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Country</string>
 </resources>
