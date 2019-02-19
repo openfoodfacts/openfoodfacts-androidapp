@@ -32,6 +32,8 @@ public interface NavigationDrawerListener {
     int ITEM_MANAGE_ACCOUNT = 17;
     int ITEM_INCOMPLETE_PRODUCTS = 18;
     int ITEM_ADDITIVES =19;
+    int ITEM_YOUR_LISTS = 20;
+
 
     @Retention(SOURCE)
     @IntDef({

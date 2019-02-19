@@ -189,7 +189,13 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".views.product.CalculateDetails" />
+
+        <activity
+            android:name=".views.ProductListsActivity"
+            android:parentActivityName=".views.MainActivity" />
+        <activity android:name=".views.YourListedProducts"></activity>
         <activity android:name=".views.ProductComparisonActivity"></activity>
+
     </application>
 
 </manifest>
