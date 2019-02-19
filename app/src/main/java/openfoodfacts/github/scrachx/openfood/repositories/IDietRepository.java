@@ -49,6 +49,8 @@ public interface IDietRepository {
 
     void addIngredient(String name, String languageCode);
 
+    void addIngredient(String ingredientTag, String name, String languageCode);
+
     void addDietIngredientsByTags(String dietTag, String ingredientTag, long state);
 
     void addDietIngredients(String dietTag, String ingredientName, String languageCode, long state);

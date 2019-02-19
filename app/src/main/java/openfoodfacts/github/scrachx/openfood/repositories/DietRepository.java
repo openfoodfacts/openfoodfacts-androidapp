@@ -470,7 +470,7 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public void addIngredient(String name, String languageCode) {
-        name = name.trim();
+        name = name.trim().replaceAll("_","");
         if (name != "") {
             //Log.i("INFO", "Début de addIngredient avec " + name + ", " + languageCode);
             //Recherche du IngredientName correspondant au name et language code
@@ -479,17 +479,57 @@ public class DietRepository implements IDietRepository {
                 //Le IngredientName retourné est vide, on lui ajoute les infos name, languageCode et ingredientTag
                 ingredientName.setName(name);
                 ingredientName.setLanguageCode(languageCode);
-                ingredientName.setIngredientTag(languageCode + ":" + name);
+                ingredientName.setIngredientTag(languageCode + ":" + name.replaceAll(" ","-"));
                 ingredientNameDao.getSession().insert(ingredientName);
             }
-            //Recherche de la Ingredient correspondante au name et languageCode
+            //Recherche de l'Ingredient correspondant au name et languageCode
             Ingredient ingredient = getIngredientByNameAndLanguageCode(name, languageCode);
             if (ingredient.getTag() == null) {
                 //La Ingredient retournée est vide, on lui ajoute sont tag
-                ingredient.setTag(languageCode + ":" + name);
+                ingredient.setTag(languageCode + ":" + name.replaceAll(" ","-"));
                 ingredientDao.getSession().insertOrReplace(ingredient);
             }
             //Log.i("INFO", "Fin de addIngredient avec " + name + ", " + languageCode);
+        }
+    }
+
+    /**
+     * Add a new ingredient from the information ingredientTag, languageCode and name of one of its ingredientName(s) if it doesn't already exists.
+     *
+     * @param ingredientTag Tag of the ingredient
+     * @param name          Name of the ingredient
+     * @param languageCode  LanguageCode used
+     *
+     * @author dobriseb
+     */
+    @Override
+    public void addIngredient(String ingredientTag, String name, String languageCode) {
+        Ingredient ingredient = getIngredientByTag(ingredientTag);
+        if ( ingredient.getTag() == null) {
+            //No ingredient with this tag
+            ingredient.setTag(ingredientTag);
+            ingredientDao.getSession().insertOrReplace(ingredient);
+            //By run addIngredient again we will create the name and associate it to this ingredient.
+            addIngredient(ingredientTag, name, languageCode);
+        } else {
+            //A ingredient exists with this tag
+            List<IngredientName> ingredientNames = ingredient.getNames();
+            boolean addName = true;
+            for (int i = 0; i < ingredientNames.size(); i++) {
+                IngredientName ingredientName =  ingredientNames.get(i);
+                if (ingredientName.getLanguageCode().equals(languageCode) && ingredientName.getName().equals(name.replaceAll("_",""))) {
+                    //Ingredient exists and had thie name in thie languageCode. Nothings to do.
+                    addName = false;
+                }
+            }
+            if (addName) {
+                //Add this name to the ingredient
+                IngredientName ingredientName = new IngredientName();
+                ingredientName.setName(name.replaceAll("_",""));
+                ingredientName.setLanguageCode(languageCode);
+                ingredientName.setIngredientTag(ingredientTag);
+                ingredientNameDao.getSession().insert(ingredientName);
+            }
         }
     }
 
