@@ -56,8 +56,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>г</item>
         <item>мг</item>
+        <item>кг</item>
         <item>мкг</item>
         <item>% РСНП</item>
         <item>МЕ</item>
@@ -94,7 +94,7 @@
         <item>Гамма-линоленовая кислота (18: 3 n-6)</item>
         <item>Глюкоза</item>
         <item>Гондоиновая кислота (20:1 n-9)</item>
-        <item>Йод</item>
+        <item>Иод</item>
         <item>Железо</item>
         <item>Лактоза</item>
         <item>Лауриновая кислота (12:0)</item>
@@ -198,6 +198,7 @@
     <string name="txtFat">Жир</string>
     <string name="txtSugars">Сахара</string>
     <string name="hintBarcode">Штрих-код</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Логин</string>
     <string name="hintPass">Пароль</string>
     <string name="errorLogin">Неверные имя или пароль</string>
@@ -445,6 +446,12 @@
     <string name="take_picture_nutrition_table">Сделайте фото энерг. ценности</string>
     <string name="take_more_pictures">Сделайте дополнительные фото</string>
     <string name="txtSaturatedFat">Насыщенные жиры</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Ярлык недоступен</string>
     <string name="scan_shortcut_short_label">Сканировать</string>
@@ -673,6 +680,7 @@
     <string name="uploading_ingredients_image">Загрузка изображения состава</string>
     <string name="uploading_front_image">Загрузка изображения лицевой стороны</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Войдите, чтобы отредактировать продукт.</string>
     <string name="hint_quantity">Например: 2 л, 250 г, 1 кг, 250 мл, 1 фунт</string>
     <string name="edit_product_title">Редактировать продукт</string>
@@ -754,5 +762,11 @@
     <string name="fast_addition_mode">Позволяет быстро добавлять продукты с меньшим количеством атрибутов</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Добавки</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Страна</string>
     <!-- Used for diets AddOn -->
 </resources>
