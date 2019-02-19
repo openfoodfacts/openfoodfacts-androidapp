@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 class ProductStringConverter extends StdConverter<String, String> {
     public String convert(String value) {
         return StringEscapeUtils.unescapeHtml4(value).replace("\\'", "'").replace("&quot", "'");
@@ -160,21 +162,233 @@ public class Product implements Serializable {
     }
 
     public String getProductName(String languageCode) {
-        if (additionalProperties.get("product_name_" + languageCode) != null) {
+        if (!languageCode.equals("en") && additionalProperties.get("product_name_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("product_name_" + languageCode).toString())) {
             return additionalProperties.get("product_name_" + languageCode)
                     .toString()
                     .replace("\\'", "'")
                     .replace("&quot", "'");
+        } else if (additionalProperties.get("product_name_en") != null
+                && isNotBlank(additionalProperties.get("product_name_en").toString())) {
+            return additionalProperties.get("product_name_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getProductName();
         }
-        return null;
+
+    }
+
+    public String getGenericName(String languageCode) {
+        if (!languageCode.equals("en") && additionalProperties.get("generic_name_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("generic_name_" + languageCode).toString())) {
+            return additionalProperties.get("generic_name_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("generic_name_en") != null
+                && isNotBlank(additionalProperties.get("generic_name_en").toString())) {
+            return additionalProperties.get("generic_name_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getGenericName();
+        }
+
     }
 
     public String getIngredientsText(String languageCode) {
-        if (additionalProperties.get("ingredients_text_" + languageCode) != null) {
-            return additionalProperties.get("ingredients_text_" + languageCode).toString();
+        if (!languageCode.equals("en") && additionalProperties.get("ingredients_text_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("ingredients_text_" + languageCode).toString())) {
+            return additionalProperties.get("ingredients_text_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("ingredients_text_en") != null
+                && isNotBlank(additionalProperties.get("ingredients_text_en").toString())) {
+            return additionalProperties.get("ingredients_text_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getIngredientsText();
         }
-        return null;
+
     }
+
+    public String getOtherInformation(String languageCode) {
+        if (!languageCode.equals("en") && additionalProperties.get("other_information_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("other_information_" + languageCode).toString())) {
+            return additionalProperties.get("other_information_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("other_information_en") != null
+                && isNotBlank(additionalProperties.get("other_information_en").toString())) {
+            return additionalProperties.get("other_information_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getOtherInformation();
+        }
+
+    }
+
+    public String getConservationConditions(String languageCode) {
+        if (!languageCode.equals("en") && additionalProperties.get("conservation_conditions_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("conservation_conditions_" + languageCode).toString())) {
+            return additionalProperties.get("conservation_conditions_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("conservation_conditions_en") != null
+                && isNotBlank(additionalProperties.get("conservation_conditions_en").toString())) {
+            return additionalProperties.get("conservation_conditions_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getConservationConditions();
+        }
+
+    }
+
+    public String getRecyclingInstructionsToDiscard(String languageCode) {
+
+        if (!languageCode.equals("en") && additionalProperties.get("recycling_instructions_to_discard_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("recycling_instructions_to_discard_" + languageCode).toString())) {
+            return additionalProperties.get("recycling_instructions_to_discard_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("recycling_instructions_to_discard_en") != null
+                && isNotBlank(additionalProperties.get("recycling_instructions_to_discard_en").toString())) {
+            return additionalProperties.get("recycling_instructions_to_discard_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getRecyclingInstructionsToDiscard();
+        }
+    }
+
+    public String getRecyclingInstructionsToRecycle(String languageCode) {
+
+        if (!languageCode.equals("en") && additionalProperties.get("recycling_instructions_to_recycle_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("recycling_instructions_to_recycle_" + languageCode).toString())) {
+            return additionalProperties.get("recycling_instructions_to_recycle_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("recycling_instructions_to_recycle_en") != null
+                && isNotBlank(additionalProperties.get("recycling_instructions_to_recycle_en").toString())) {
+            return additionalProperties.get("recycling_instructions_to_recycle_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getRecyclingInstructionsToRecycle();
+        }
+    }
+
+    public String getWarning(String languageCode) {
+
+        if (!languageCode.equals("en") && additionalProperties.get("warning_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("warning_" + languageCode).toString())) {
+            return additionalProperties.get("warning_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("warning_en") != null
+                && isNotBlank(additionalProperties.get("warning_en").toString())) {
+            return additionalProperties.get("warning_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getWarning();
+        }
+    }
+
+    public String getCustomerService(String languageCode) {
+
+        if (!languageCode.equals("en") && additionalProperties.get("customer_service_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("customer_service_" + languageCode).toString())) {
+            return additionalProperties.get("customer_service_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("customer_service_en") != null
+                && isNotBlank(additionalProperties.get("customer_service_en").toString())) {
+            return additionalProperties.get("customer_service_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getCustomerService();
+        }
+    }
+
+    public String getImageFrontUrl(String languageCode) {
+
+        if (!languageCode.equals("en") && additionalProperties.get("image_front_url_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("image_front_url_" + languageCode).toString())) {
+            return additionalProperties.get("image_front_url_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("image_front_url_en") != null
+                && isNotBlank(additionalProperties.get("image_front_url_en").toString())) {
+            return additionalProperties.get("image_front_url_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getImageFrontUrl();
+        }
+    }
+
+    public String getImageIngredientsUrl(String languageCode) {
+
+        if (!languageCode.equals("en") && additionalProperties.get("image_ingredients_url_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("image_ingredients_url_" + languageCode).toString())) {
+            return additionalProperties.get("image_ingredients_url_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("image_ingredients_url_en") != null
+                && isNotBlank(additionalProperties.get("image_ingredients_url_en").toString())) {
+            return additionalProperties.get("image_ingredients_url_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getImageIngredientsUrl();
+        }
+    }
+
+    public String getImageNutritionUrl(String languageCode) {
+
+        if (!languageCode.equals("en") && additionalProperties.get("image_nutrition_url_" + languageCode) != null
+                && isNotBlank(additionalProperties.get("image_nutrition_url_" + languageCode).toString())) {
+            return additionalProperties.get("image_nutrition_url_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get("image_nutrition_url_en") != null
+                && isNotBlank(additionalProperties.get("image_nutrition_url_en").toString())) {
+            return additionalProperties.get("image_nutrition_url_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return getImageNutritionUrl();
+        }
+    }
+
 
     /**
      * @return The statesTags

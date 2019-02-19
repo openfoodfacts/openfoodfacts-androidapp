@@ -138,28 +138,26 @@ public class OpenFoodAPIClient {
                     new HistoryTask().doInBackground(s.getProduct());
                     Intent intent = new Intent(activity, ProductActivity.class);
                     Bundle bundle = new Bundle();
-                    String field="product_name";
-                    String lang=LocaleHelper.getLanguage(activity.getApplicationContext());
-                    //removes country specific code in the language code eg: nl-BE
-                    if(lang.contains("-")){
-                        String langSplit[]=lang.split("-");
-                        lang=langSplit[0];
-                    }
-                    String langCode=lang;
-
-                    getFieldByLanguage(barcode,field,langCode,((((value,uxLangAvailable, result) -> {
-                        if(value && result!=null) {
-                            result=result.replace("\"","");//removes quotations
-                            Product product=s.getProduct();
-                            if(uxLangAvailable) {
-                                s.setAdditionalProperty(field+"_"+langCode,result);
-                                product.setAdditionalProperty(field+"_"+langCode,result);
-                            } else {
-                                s.setAdditionalProperty(field+"_en",result);
-                                product.setAdditionalProperty(field+"_en",result);
-                            }
-                            s.setProduct(product);
+                    String langCode = LocaleHelper.getLanguageTrimmed(activity.getApplicationContext());
+                    String fieldsArray[] = activity.getResources().getStringArray(R.array.fields_array);
+                    ArrayList<String> fieldsList = new ArrayList<>();
+                    for (int i = 0; i<fieldsArray.length; i++) {
+                        if (!langCode.equals("en")) {
+                            fieldsList.add(fieldsArray[i]+"_"+langCode);
                         }
+                        fieldsList.add(fieldsArray[i]+"_en");
+                    }
+                    getFieldByLanguage(barcode, fieldsList, ((((value, result) -> {
+
+                        Product product = s.getProduct();
+                        for (HashMap.Entry<String,String> fieldEntry : result.entrySet()) {
+                            if (fieldEntry.getValue() != null) {
+                                String fieldValue = fieldEntry.getValue();
+                                fieldValue = fieldValue.replace("\"","");
+                                product.setAdditionalProperty(fieldEntry.getKey(),fieldValue);
+                            }
+                        }
+                        s.setProduct(product);
                         bundle.putSerializable("state", s);
                         intent.putExtras(bundle);
                         activity.startActivity(intent);
@@ -197,29 +195,33 @@ public class OpenFoodAPIClient {
 
     }
 
-    public void getFieldByLanguage(String barcode,String field,String langCode,final OnFieldByLanguageCallback fieldByLanguageCallback)
-    {
-        apiService.getFieldByLangCode(barcode,field+"_"+langCode+","+field+"_en").enqueue(new Callback<JsonNode>() {
+    public void getFieldByLanguage(String barcode, ArrayList<String> fields, final OnFieldByLanguageCallback fieldByLanguageCallback) {
+        StringBuilder fieldQuery = new StringBuilder();
+        for (String s : fields) {
+            fieldQuery.append(s);
+            fieldQuery.append(",");
+        }
+        apiService.getFieldByLangCode(barcode, fieldQuery.toString()).enqueue(new Callback<JsonNode>() {
             @Override
             public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
-                JsonNode responseNode=response.body();
-                if(responseNode.findValue("product").findValue(field+"_"+langCode)!=null) {
-                    String result=responseNode.findValue("product").findValue(field+"_"+langCode).toString();
-                    fieldByLanguageCallback.onFieldByLanguageResponse(true,true,result);
+                JsonNode responseNode = response.body();
+                HashMap<String,String> resultMap = new HashMap<>();
+                for (String field : fields) {
+                    if (responseNode.findValue("product").findValue(field) != null &&
+                            (!responseNode.findValue("product").findValue(field).toString().equals(""))) {
+                        String value = responseNode.findValue("product").findValue(field).toString();
+                        resultMap.put(field, value);
+                    } else {
+                        resultMap.put(field, null);
+                    }
                 }
-                else if(responseNode.findValue("product").findValue(field+"_en")!=null){
-                    String result=responseNode.findValue("product").findValue(field+"_en").toString();
-                    fieldByLanguageCallback.onFieldByLanguageResponse(true,false,result);
-                }
-                else {
-                    fieldByLanguageCallback.onFieldByLanguageResponse(true,false,null);
-                }
+                fieldByLanguageCallback.onFieldByLanguageResponse(true,resultMap);
 
             }
 
             @Override
             public void onFailure(Call<JsonNode> call, Throwable t) {
-                fieldByLanguageCallback.onFieldByLanguageResponse(false,false,null);
+                fieldByLanguageCallback.onFieldByLanguageResponse(false,null);
             }
         });
     }
@@ -581,7 +583,7 @@ public class OpenFoodAPIClient {
     }
 
     public interface OnFieldByLanguageCallback {
-        void onFieldByLanguageResponse(boolean value,boolean uxLangAvailable, String result);
+        void onFieldByLanguageResponse(boolean value, HashMap<String,String> result);
     }
 
     /**
