@@ -190,6 +190,7 @@
     <string name="txtFat">ಫ್ಯಾಟ್</string>
     <string name="txtSugars">ಸಕ್ಕರೆಗಳು</string>
     <string name="hintBarcode">ಬಾರ್‌ ಕೋಡ್</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">ಲಾಗಿನ್</string>
     <string name="hintPass">ಪಾಸ್‌ವರ್ಡ್</string>
     <string name="errorLogin">ಲಾಗಿನ್ ಅಥವಾ ಪಾಸ್ವರ್ಡ್ ದೋಷ</string>
@@ -437,6 +438,12 @@
     <string name="take_picture_nutrition_table">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ</string>
     <string name="take_more_pictures">ಇನ್ನಷ್ಟು ಚಿತ್ರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ</string>
     <string name="txtSaturatedFat">ಪರಿಷ್ಕರಿಸಿದ ಕೊಬ್ಬು</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">ಶಾರ್ಟ್‌ಕಟ್ ಲಭ್ಯವಿಲ್ಲ</string>
     <string name="scan_shortcut_short_label">Scan</string>
@@ -665,6 +672,7 @@
     <string name="uploading_ingredients_image">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
     <string name="uploading_front_image">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">ಉತ್ಪನ್ನವನ್ನು ಸಂಪಾದಿಸಲು ದಯವಿಟ್ಟು ಸೈನ್ ಇನ್ ಮಾಡಿ.</string>
     <string name="hint_quantity">ಉದಾಹರಣೆಗಳು: 2 ಎಲ್, 250 ಗ್ರಾಂ, 1 ಕೆಜಿ, 25 ಕ್ಲಾ, 6 ಫ್ಲ್ ಔಜ್, 1 ಪೌಂಡ್</string>
     <string name="edit_product_title">Edit a product</string>
@@ -746,5 +754,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">ಸೇರ್ಪಡೆ</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Country</string>
     <!-- Used for diets AddOn -->
 </resources>
