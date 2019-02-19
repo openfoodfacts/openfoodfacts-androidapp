@@ -17,7 +17,7 @@
         <item quantity="one">1 dia atrás</item>
         <item quantity="other">%d dias atrás</item>
     </plurals>
-    <string name="action_settings">Configurações</string>
+    <string name="action_settings">Definições</string>
     <string name="action_about">Sobre</string>
     <string name="action_discover">Descubra</string>
     <string name="contribute">Como contribuir</string>
@@ -178,7 +178,7 @@
     <string name="txtNutrientLevel100g">Valores nutricionais por 100g :</string>
     <string name="txtNutritionLevelLow">em quantidade baixa</string>
     <string name="txtNutritionLevelModerate">em quantidade moderada</string>
-    <string name="txtNutritionLevelHigh">em quantidade alta</string>
+    <string name="txtNutritionLevelHigh">em quantidade elevada</string>
     <string name="txtLogin">Utilizador :</string>
     <string name="txtPass">Senha :</string>
     <string name="txtTitleHome">Abra os seus alimentos e saiba o que consome</string>
@@ -186,10 +186,11 @@
     <string name="txtSignIn">Iniciar sessão</string>
     <string name="txtUser">Painel do utilizador</string>
     <string name="txtToastSaved">Utilizador guardado</string>
-    <string name="txtSalt">Sal</string>
+    <string name="txtSalt">Sal :</string>
     <string name="txtFat">Gorduras</string>
     <string name="txtSugars">Açúcares</string>
     <string name="hintBarcode">Código de barras</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Iniciar sessão</string>
     <string name="hintPass">Palavra-passe</string>
     <string name="errorLogin">Utilizador ou palavra-passe errada</string>
@@ -309,7 +310,7 @@
     <string name="enter_weight">Digite o peso</string>
     <string name="calculate_nutrition_facts">Calcular Fatos Nutricionais</string>
     <string name="txt_calories_result">%1$s kcal em %2$s %3$s</string>
-    <string name="nutrition_carbohydrate">Carboidrato</string>
+    <string name="nutrition_carbohydrate">Carboidratos</string>
     <string name="nutrition_carbohydrate_short_name">Carboidrato (g)</string>
     <string name="nutrition_cholesterol">Colesterol</string>
     <string name="nutrition_cholesterol_short_name">Colesterol (g)</string>
@@ -317,14 +318,14 @@
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Gorduras</string>
     <string name="nutrition_fat_short_name">Gorduras (g)</string>
-    <string name="nutrition_fiber">Fibra dietética</string>
+    <string name="nutrition_fiber">Fibra</string>
     <string name="nutrition_fiber_short_name">Fibra dietética (g)</string>
     <string name="nutrition_header">Informação nutricional</string>
     <string name="nutrition_no_data_message">Sem dados para este produto</string>
     <string name="nutrition_per_quantity">Por 100g/100ml</string>
     <string name="nutrition_proteins">Proteínas</string>
     <string name="nutrition_proteins_short_name">Proteínas (g)</string>
-    <string name="nutrition_salt">Sal</string>
+    <string name="nutrition_salt">Sal :</string>
     <string name="nutrition_salt_short_name">Sal (g)</string>
     <string name="nutrition_satured_fat">Gordura saturada</string>
     <string name="nutrition_satured_fat_short_name">Gorduras saturadas (g)</string>
@@ -384,8 +385,8 @@
     <string name="nutrition_chlore">Cloro</string>
     <string name="nutrition_magnesium">Magnésio</string>
     <string name="nutrition_taurine">Taurina</string>
-    <string name="nutrition_monounsaturatedFat">Gordura monoinsaturada</string>
-    <string name="nutrition_polyunsaturatedFat">Gordura polinsaturada</string>
+    <string name="nutrition_monounsaturatedFat">Gorduras monoinsaturadas</string>
+    <string name="nutrition_polyunsaturatedFat">Gorduras polinsaturadas</string>
     <string name="nutrition_omega3">Ómega 3</string>
     <string name="nutrition_omega6">Ómega 6</string>
     <string name="nutrition_omega9">Ómega 9</string>
@@ -433,10 +434,16 @@
     <string name="cocoa">Cacau</string>
     <string name="chlorophyl">Clorofila</string>
     <string name="take_picture_ingredients">Tirar foto aos ingredientes</string>
-    <string name="take_picture_front">Tirar foto à parte frontal</string>
+    <string name="take_picture_front">Tirar foto frontal</string>
     <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
     <string name="take_more_pictures">Tirar mais fotos</string>
     <string name="txtSaturatedFat">Gordura saturada</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Grupo 1 - Alimentos não processados ​​ou minimamente processados</string>
+    <string name="nova_grp2_msg">Grupo 2 - Ingredientes culinários processados</string>
+    <string name="nova_grp3_msg">Grupo 3 - Alimentos processados</string>
+    <string name="nova_grp4_msg">Grupo 4 - Produtos de bebidas e alimentos ultraprocessados</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Atalho Indisponível</string>
     <string name="scan_shortcut_short_label">Escanear</string>
@@ -457,11 +464,11 @@
     <string name="airplane_mode_active_dialog_title">Modo de avião activado</string>
     <string name="airplane_mode_active_dialog_message">O modo de avião está activo, por favor desactive para continuar.</string>
     <string name="airplane_mode_active_dialog_negative">Descartar</string>
-    <string name="airplane_mode_active_dialog_positive">Configurações</string>
+    <string name="airplane_mode_active_dialog_positive">Definições</string>
     <string name="device_offline_dialog_title">Rede indisponível</string>
     <string name="device_offline_dialog_message">É necessária uma ligação de rede para fazer isto, gostaria de alterar as definições?</string>
     <string name="device_offline_dialog_negative">Descartar</string>
-    <string name="device_offline_dialog_positive">Configurações</string>
+    <string name="device_offline_dialog_positive">Definições</string>
     <string name="saving">A guardar…</string>
     <string name="scan_first_product">Escanear o primeiro produto</string>
     <string name="preference_enable_mobile_data_title">Carregamento por dados móveis</string>
@@ -508,7 +515,7 @@
     <string name="additive_string">Aditivo</string>
     <string name="allergen_string">Alérgeno</string>
     <string name="search_string">Procurar</string>
-    <string name="country_string">Países onde foram vendidos</string>
+    <string name="country_string">Países onde é vendido</string>
     <string name="store_subtitle">Loja</string>
     <string name="packaging_subtitle">Embalagem</string>
     <string name="last_seen_string">%1$d %2$s atrás</string>
@@ -635,13 +642,13 @@
     <string name="extracting_ingredients">Extraindo ingredientes</string>
     <string name="looksGood">Parece bem</string>
     <string name="skip_ingredients">Demasiado mau \n Ignorar Ingredientes</string>
-    <string name="traces">Traços</string>
+    <string name="traces">Vestígios</string>
     <string name="traces_hint">Indique ingredientes que sejam mencionados como \'Pode conter vestígios de\', \'Feito em uma fábrica que também usa\', etc. \nExemplos: Leite, Glúten, Nozes</string>
     <string name="nutrition_facts_not_specified">Os fatores nutricionais não são especificados no produto.</string>
     <string name="nutrition_facts_picture">Imagens de fatos nutricionais</string>
     <string name="for_100g_100ml">Por 100g / 100ml</string>
     <string name="per_serving">Por Porção</string>
-    <string name="serving_size">Porção</string>
+    <string name="serving_size">Tamanho da porção</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Adicionar um nutriente</string>
     <string name="add_this_product">Adicione este produto</string>
@@ -665,6 +672,7 @@
     <string name="uploading_ingredients_image">Fazendo upload da imagem de ingredientes</string>
     <string name="uploading_front_image">Fazendo upload da imagem da frente</string>
     <string name="url_nova_groups">https://pt.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Por favor, faça o login para editar um produto.</string>
     <string name="hint_quantity">Exemplos: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 libra</string>
     <string name="edit_product_title">Editar um produto</string>
@@ -689,7 +697,7 @@
     <string name="adults">Adultos</string>
     <string name="adults_age">18 a 64</string>
     <string name="elderly">Idosos</string>
-    <string name="elderly_age">&gt;65</string>
+    <string name="elderly_age">>65</string>
     <string name="most_people">A maioria das pessoas\n(mais de 50%)</string>
     <string name="some_people">Algumas pessoas\n(mais de 5%)</string>
     <string name="safety_and_exposure_assessment">Avaliação de segurança e exposição</string>
@@ -746,5 +754,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditivos</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">País</string>
     <!-- Used for diets AddOn -->
 </resources>
