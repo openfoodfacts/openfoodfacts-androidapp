@@ -190,6 +190,7 @@
     <string name="txtFat">Yağ</string>
     <string name="txtSugars">Şeker</string>
     <string name="hintBarcode">Barkod</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Giriş</string>
     <string name="hintPass">Şifre</string>
     <string name="errorLogin">Giriş veya parola hatası</string>
@@ -437,6 +438,12 @@
     <string name="take_picture_nutrition_table">Beslenme tablosunun resmini çekin</string>
     <string name="take_more_pictures">Daha fazla resim çek</string>
     <string name="txtSaturatedFat">Doymuş yağ</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Kısayol Mevcut Değil</string>
     <string name="scan_shortcut_short_label">Tara</string>
@@ -510,10 +517,10 @@
     <string name="search_string">Ara</string>
     <string name="country_string">Satılan ülkeler</string>
     <string name="store_subtitle">Mağaza</string>
-    <string name="packaging_subtitle">Paketleme</string>
+    <string name="packaging_subtitle">Ambalaj</string>
     <string name="last_seen_string">%1$d%2$s önce</string>
     <string name="store_string">Mağaza</string>
-    <string name="packaging_string">Paketleme</string>
+    <string name="packaging_string">Ambalaj</string>
     <string name="label_string">Etiket</string>
     <string name="category_string">Kategori</string>
     <string name="connection">Bağlandı</string>
@@ -554,7 +561,7 @@
     <string name="bottomNav_history">Geçmiş</string>
     <string name="bottomNav_search">Ara</string>
     <string name="products_added">Eklediğiniz veya düzenlediğiniz ürünler</string>
-    <string name="products_incomplete">Eklemiş olduğunuz tamamlanması gereken ürünler</string>
+    <string name="products_incomplete">Eklemiş olduğunuz, tamamlanması gereken ürünler</string>
     <string name="product_pictures_contributed">Fotoğraflarını çektiğiniz ürünler</string>
     <string name="picture_contributed_incomplete">Fotoğraflarını çektiğiniz tamamlanması gereken ürünler</string>
     <string name="product_info_added">Için bilgi eklediğiniz ürünler</string>
@@ -632,12 +639,12 @@
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
-    <string name="extracting_ingredients">Bileşenler ayıklanıyor</string>
+    <string name="extracting_ingredients">Malzemeler çıkartılıyor</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">İzler</string>
+    <string name="traces">İz</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
-    <string name="nutrition_facts_not_specified">Besin değeri ürün üzerinde belirtilmemiştir.</string>
+    <string name="nutrition_facts_not_specified">Besin değerleri ürün üzerinde belirtilmemiştir.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per Serving</string>
@@ -651,9 +658,9 @@
     <string name="product_name">Ürün adı</string>
     <string name="quantity">Miktar</string>
     <string name="labels">Labels</string>
-    <string name="period_of_time_after_opening">Açılıştan sonra ki süre</string>
+    <string name="period_of_time_after_opening">Açıldıktan sonra geçen süre</string>
     <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">Malzemelerin menşei</string>
+    <string name="origin_of_ingredients">Malzemelerin kaynağı</string>
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
@@ -665,9 +672,10 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-    <string name="edit_product_title">Ürünü düzenle</string>
+    <string name="edit_product_title">Ürün düzenle</string>
     <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
@@ -746,5 +754,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Katkı maddeleri</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Ülke</string>
     <!-- Used for diets AddOn -->
 </resources>

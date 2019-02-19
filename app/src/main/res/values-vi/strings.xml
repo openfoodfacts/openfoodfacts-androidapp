@@ -68,7 +68,7 @@
         <item>Axit caprylic (8:0)</item>
         <item>Casein</item>
         <item>Axit cerotic (26:0)</item>
-        <item>Clorid</item>
+        <item>Clorua</item>
         <item>Cholesterol</item>
         <item>Crom</item>
         <item>Đồng</item>
@@ -107,7 +107,7 @@
         <item>Axit Palmitic (16: 0)</item>
         <item>Axit Pantothenic / Pantothenate (Vitamin B5)</item>
         <item>độ kiềm</item>
-        <item>Phospho</item>
+        <item>Phốt pho</item>
         <item>Đường rượu (Polyols)</item>
         <item>Chất béo không bão hòa đa</item>
         <item>Kali</item>
@@ -130,7 +130,7 @@
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
-        <item>Kẽm</item>
+        <item>Zinc</item>
     </string-array>
     <!-- Text units -->
     <string-array name="images_array">
@@ -144,7 +144,7 @@
     <string name="search_button">Tìm kiếm</string>
     <string name="no_products">Không tìm thấy sản phẩm</string>
     <string name="desc_list_item_icon">Biểu tượng mục</string>
-    <string name="alert_dialog_warning_title">Cảnh báo</string>
+    <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Người dùng / mật khẩu đã thay đổi, vui lòng cập nhật thông tin</string>
     <string name="alert_dialog_product_error_msg">Không tìm thấy sản phẩm, vui lòng thử lại</string>
     <string name="toast_retrieving">Loading...</string>
@@ -172,12 +172,12 @@
     <string name="txtPalmOilProduct">Thành phần từ dầu cọ:</string>
     <string name="txtServingSize">Kích thước phục vụ :</string>
     <string name="txtNutrientLevel100g">Mức dinh dưỡng cho 100g:</string>
-    <string name="txtNutritionLevelLow">với số lượng thấp</string>
-    <string name="txtNutritionLevelModerate">với số lượng vừa phải</string>
-    <string name="txtNutritionLevelHigh">với số lượng cao</string>
+    <string name="txtNutritionLevelLow">hơi ít quá</string>
+    <string name="txtNutritionLevelModerate">vừa phải rồi</string>
+    <string name="txtNutritionLevelHigh">nhiều quá đấy</string>
     <string name="txtLogin">Login :</string>
     <string name="txtPass">Mật khẩu :</string>
-    <string name="txtTitleHome">Mở thức ăn của bạn và biết bạn ăn gì</string>
+    <string name="txtTitleHome">Open your food and know what you eat</string>
     <string name="txtSave">Lưu</string>
     <string name="txtSignIn">Đăng nhập</string>
     <string name="txtUser">User panel</string>
@@ -185,7 +185,8 @@
     <string name="txtSalt">Muối</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Đường</string>
-    <string name="hintBarcode">Mã vạch</string>
+    <string name="hintBarcode">Barcode</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Mật khẩu</string>
     <string name="errorLogin">Lỗi đăng nhập hoặc mật khẩu</string>
@@ -242,7 +243,7 @@
     <string name="txt_product_not_found">Không tìm thấy sản phẩm</string>
     <string name="delete_txt">Xóa</string>
     <string name="sign_in_drawer">Đăng nhập</string>
-    <string name="alert_drawer">Cảnh báo dị ứng</string>
+    <string name="alert_drawer">Allergen alert</string>
     <string name="warning_allergens">Chứa chất gây dị ứng</string>
     <string name="title_dialog_alert">Thêm thông báo</string>
     <string name="toggle_flash">Đèn flash</string>
@@ -311,14 +312,14 @@
     <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
     <string name="nutrition_energy">Năng lượng</string>
     <string name="nutrition_energy_short_name">Năng lượng</string>
-    <string name="nutrition_fat">Chất béo</string>
+    <string name="nutrition_fat">Fat</string>
     <string name="nutrition_fat_short_name">Chất béo (g)</string>
     <string name="nutrition_fiber">Chất xơ</string>
     <string name="nutrition_fiber_short_name">Chất xơ (g)</string>
     <string name="nutrition_header">Giá trị dinh dưỡng</string>
     <string name="nutrition_no_data_message">Không có dữ liệu cho sản phẩm này</string>
     <string name="nutrition_per_quantity">Cho 100g / 100ml</string>
-    <string name="nutrition_proteins">Chất đạm</string>
+    <string name="nutrition_proteins">Proteins</string>
     <string name="nutrition_proteins_short_name">Chất đạm (g)</string>
     <string name="nutrition_salt">Muối</string>
     <string name="nutrition_salt_short_name">Muối (g)</string>
@@ -326,10 +327,10 @@
     <string name="nutrition_satured_fat_short_name">Chất béo bão hòa (g)</string>
     <string name="nutrition_serving">Mỗi khẩu</string>
     <string name="nutrition_serving_size">Kích thước phục vụ :</string>
-    <string name="nutrition_sodium">Natri</string>
+    <string name="nutrition_sodium">Sodium</string>
     <string name="nutrition_sodium_short_name">Natri (g)</string>
     <string name="nutrition_sugars">Đường</string>
-    <string name="nutrition_sugars_short_name">Đường (g)</string>
+    <string name="nutrition_sugars_short_name">Sugars (g)</string>
     <string name="nutrition_trans_fat">Chất béo chuyển hóa</string>
     <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
     <string name="nutriment_serving_size">Per portion : </string>
@@ -372,13 +373,13 @@
     <string name="nutrition_maltodextrins">Bột tinh</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
-    <string name="for_100g">Cho 100 g</string>
+    <string name="for_100g">For 100 g</string>
     <string name="serving">Mỗi khẩu</string>
     <string name="minerals">Khoáng chất</string>
-    <string name="nutrition_calcium">Calci</string>
+    <string name="nutrition_calcium">Canxi</string>
     <string name="nutrition_potassium">Kali</string>
     <string name="nutrition_chlore">Clo</string>
-    <string name="nutrition_magnesium">Magnesi</string>
+    <string name="nutrition_magnesium">Magiê</string>
     <string name="nutrition_taurine">Taurin</string>
     <string name="nutrition_monounsaturatedFat">Chất béo không bão hòa đơn</string>
     <string name="nutrition_polyunsaturatedFat">Chất béo không bão hòa đa</string>
@@ -403,36 +404,42 @@
     <string name="vitamin_b9">Vitamin B9</string>
     <string name="vitamin_b12">Vitamin B12</string>
     <string name="biotin">Biotin</string>
-    <string name="pantothenic_acid">Axit pantothenic</string>
-    <string name="nutrition_minerals">Khoáng sản</string>
+    <string name="pantothenic_acid">Pantothenic acid</string>
+    <string name="nutrition_minerals">Khoáng chất</string>
     <string name="silica">Silic dioxit</string>
-    <string name="bicarbonate">Bicacbonat</string>
+    <string name="bicarbonate">Muối cacbonat</string>
     <string name="potassium">Kali</string>
-    <string name="chloride">Clorid</string>
-    <string name="calcium">Calci</string>
-    <string name="phosphorus">Phospho</string>
+    <string name="chloride">Clorua</string>
+    <string name="calcium">Canxi</string>
+    <string name="phosphorus">Phốt pho</string>
     <string name="iron">Sắt</string>
-    <string name="magnesium">Magnesi</string>
-    <string name="zinc">Kẽm</string>
+    <string name="magnesium">Magiê</string>
+    <string name="zinc">Zinc</string>
     <string name="copper">Đồng</string>
     <string name="manganese">Mangan</string>
     <string name="fluoride">Flo</string>
     <string name="selenium">Selen</string>
     <string name="chromium">Crom</string>
     <string name="molybdenum">Molypden</string>
-    <string name="iodine">Iốt</string>
+    <string name="iodine">I-ốt</string>
     <string name="caffeine">Caffeine</string>
     <string name="taurine">Taurin</string>
     <string name="ph">độ kiềm</string>
-    <string name="fruits_vegetables_nuts">Trái cây, rau, quả hạch</string>
+    <string name="fruits_vegetables_nuts">Trái cây, rau củ, hạt</string>
     <string name="collagen_meat_protein_ratio">Tỷ lệ đạm trong thịt Collagen</string>
     <string name="cocoa">Ca cao</string>
     <string name="chlorophyl">Diệp lục</string>
-    <string name="take_picture_ingredients">Chụp ảnh các thành phần</string>
-    <string name="take_picture_front">Chụp ảnh mặt trước</string>
-    <string name="take_picture_nutrition_table">Chụp ảnh bảng dinh dưỡng</string>
+    <string name="take_picture_ingredients">Hãy chụp các thành phần nguyên liệu</string>
+    <string name="take_picture_front">Hãy chụp phía trước sản phầm</string>
+    <string name="take_picture_nutrition_table">Hãy chụp bảng dinh dưỡng</string>
     <string name="take_more_pictures">Chụp thêm ảnh</string>
     <string name="txtSaturatedFat">Chất béo bão hòa</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Quét</string>
@@ -447,7 +454,7 @@
     <string name="next">KẾ TIẾP</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
-    <string name="contact">Tiếp xúc</string>
+    <string name="contact">Contact</string>
     <string name="contact_summary">Liên hệ với nhóm</string>
     <string name="email_not_found">Không tìm thấy ứng dụng email nào</string>
     <string name="airplane_mode_active_dialog_title">Đã bật chế độ trên máy bay</string>
@@ -469,7 +476,7 @@
     <string name="device_on_mobile_data_warning_negative">Vẫn tải lên</string>
     <string name="preference_choose_language_dialog_title">Chọn ngôn ngữ</string>
     <string name="FAQ">FAQ</string>
-    <string name="FrequentlyAskedQuestions">Các câu hỏi thường gặp</string>
+    <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
     <string name="translate_help_title">Giúp dịch Open Food Facts</string>
     <string name="translate_help_summary">Mang cơ sở dữ liệu Sự Open Food Facts sang ngôn ngữ của bạn - không yêu cầu kiến ​​thức kỹ thuật</string>
     <string name="please_check_your_connection">Vui lòng kiểm tra kết nối của bạn.</string>
@@ -531,7 +538,7 @@
     <string name="txtOptions">Tùy chọn</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Nhãn hiệu</string>
-    <string name="by_barcode">Mã vạch</string>
+    <string name="by_barcode">Barcode</string>
     <string name="by_time">Đã xem gần đây</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Lớp dinh dưỡng</string>
@@ -547,9 +554,9 @@
     <string name="format_error">Định dạng mã vạch / QR sai</string>
     <string name="code_detected">Chúng tôi đã phát hiện mã vạch</string>
     <string name="do_you_want_to">Bạn có muốn thêm ảnh vào mã vạch này không?</string>
-    <string name="bottomNav_history">Lịch sử</string>
+    <string name="bottomNav_history">History</string>
     <string name="bottomNav_search">Tìm kiếm</string>
-    <string name="products_added">Các sản phẩm bạn đã thêm hoặc chỉnh sửa</string>
+    <string name="products_added">Products you added or edited</string>
     <string name="products_incomplete">Products you added that need to be completed</string>
     <string name="product_pictures_contributed">Sản phẩm bạn chụp ảnh cho</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
@@ -631,7 +638,7 @@
     <string name="extracting_ingredients">Trích xuất nguyên liệu</string>
     <string name="looksGood">Có vẻ tốt</string>
     <string name="skip_ingredients">Quá xấu \n Bỏ qua thành phần</string>
-    <string name="traces">Dấu vết</string>
+    <string name="traces">Traces</string>
     <string name="traces_hint">Cho biết các thành phần từ các đề cập như \'Có thể chứa dấu vết\', \'Được sản xuất tại nhà máy cũng sử dụng\', v. v. \nVí dụ: Sữa, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Thành phần dinh dưỡng không được chỉ định trên sản phẩm.</string>
     <string name="nutrition_facts_picture">Hình ảnh về sự kiện dinh dưỡng</string>
@@ -654,13 +661,14 @@
     <string name="emb_code">Mã EMB</string>
     <string name="purchasing_details">Chi tiết mua hàng</string>
     <string name="country_where_purchased">Quốc gia nơi đã mua</string>
-    <string name="stores">Cửa hàng</string>
+    <string name="stores">Stores</string>
     <string name="additional_pictures">Hình ảnh bổ sung</string>
     <string name="hint_product_pictures">(Thêm nhiều hình ảnh của sản phẩm hơn, ví dụ: hướng dẫn tái chế, nhãn, vv..)</string>
     <string name="uploading_nutrition_image">Tải lên hình ảnh sự kiện dinh dưỡng</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world-vi.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Vui lòng đăng nhập để chỉnh sửa sản phẩm.</string>
     <string name="hint_quantity">Ví dụ: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Chỉnh sửa sản phẩm</string>
@@ -672,19 +680,19 @@
     <string name="description_activity_product">sự miêu tả</string>
     <string name="intent_filter_share_label">Thêm vào Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Nguy cơ phơi nhiễm quá mức</string>
-    <string name="overexposure_moderate">Nguy cơ vừa phải khi phơi nhiễm quá mức</string>
-    <string name="infants">Trẻ sơ sinh</string>
+    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Trẻ mới biết đi</string>
-    <string name="toddlers_age">1 đến 2</string>
-    <string name="children">Bọn trẻ</string>
-    <string name="children_age">3 đến 9</string>
-    <string name="adolescents">Thanh thiếu niên</string>
-    <string name="adolescents_age">10 đến 17</string>
-    <string name="adults">Người lớn</string>
-    <string name="adults_age">18 đến 64</string>
-    <string name="elderly">Người cao tuổi</string>
+    <string name="toddlers">Toddlers</string>
+    <string name="toddlers_age">1 to 2</string>
+    <string name="children">Children</string>
+    <string name="children_age">3 to 9</string>
+    <string name="adolescents">Adolescents</string>
+    <string name="adolescents_age">10 to 17</string>
+    <string name="adults">Adults</string>
+    <string name="adults_age">18 to 64</string>
+    <string name="elderly">Elderly</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Hầu hết mọi người \n (trên 50%)</string>
     <string name="some_people">Một số người \n (trên 5%)</string>
@@ -742,5 +750,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Nước</string>
     <!-- Used for diets AddOn -->
 </resources>
