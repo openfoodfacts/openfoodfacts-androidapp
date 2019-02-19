@@ -181,7 +181,7 @@
     <string name="txtNutritionLevelHigh">en quantité élevée</string>
     <string name="txtLogin">Identifiant :</string>
     <string name="txtPass">Mot de passe :</string>
-    <string name="txtTitleHome">Ouvrez votre nourriture et sachez ce que vous mangez</string>
+    <string name="txtTitleHome">Ouvrez votre nourriture pour savoir ce que vous mangez</string>
     <string name="txtSave">Enregistrer</string>
     <string name="txtSignIn">Se connecter</string>
     <string name="txtUser">Panneau utilisateur</string>
@@ -189,7 +189,8 @@
     <string name="txtSalt">Sel</string>
     <string name="txtFat">Matières grasses</string>
     <string name="txtSugars">Sucres</string>
-    <string name="hintBarcode">Code-barres</string>
+    <string name="hintBarcode">Code barre</string>
+    <string name="txtNutriScoreInfo">Comment est-il calculé?</string>
     <string name="hintLogin">Connexion</string>
     <string name="hintPass">Mot de passe</string>
     <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
@@ -319,7 +320,7 @@
     <string name="nutrition_fat_short_name">Matières grasses (g)</string>
     <string name="nutrition_fiber">Fibres alimentaires</string>
     <string name="nutrition_fiber_short_name">Fibres (g)</string>
-    <string name="nutrition_header">Informations nutritionnelles</string>
+    <string name="nutrition_header">Composition nutritionnelle</string>
     <string name="nutrition_no_data_message">Aucune donnée n\'est disponible pour ce produit</string>
     <string name="nutrition_per_quantity">Pour 100g/100ml</string>
     <string name="nutrition_proteins">Protéines</string>
@@ -437,6 +438,12 @@
     <string name="take_picture_nutrition_table">Prendre une photo du tableau nutritionnel</string>
     <string name="take_more_pictures">Prendre plus de photos</string>
     <string name="txtSaturatedFat">Graisses saturées</string>
+    <string name="nutriscore_info_msg">En savoir plus sur la science et la méthodologie à la base de Nutri-Score</string>
+    <string name="nova_info_msg">En savoir plus sur la science derrière Nova</string>
+    <string name="nova_grp1_msg">Groupe 1 - Aliments non transformés ou transformés minimalement</string>
+    <string name="nova_grp2_msg">Groupe 2 - Ingrédients culinaires transformés</string>
+    <string name="nova_grp3_msg">Groupe 3 - Aliments transformés</string>
+    <string name="nova_grp4_msg">Groupe 4 - Produits alimentaires et boissons ultra-transformés</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Raccourci non disponible</string>
     <string name="scan_shortcut_short_label">Scanner</string>
@@ -473,7 +480,7 @@
     <string name="device_on_mobile_data_warning_negative">Envoyer quand même?</string>
     <string name="preference_choose_language_dialog_title">Choisir la langue</string>
     <string name="FAQ">FAQ</string>
-    <string name="FrequentlyAskedQuestions">Questions fréquemment posées</string>
+    <string name="FrequentlyAskedQuestions">Foire Aux Questions</string>
     <string name="translate_help_title">Aidez à traduire Open Food Facts</string>
     <string name="translate_help_summary">Rendez la base de données Open Food Facts disponible dans votre langue - aucune connaissance technique requise</string>
     <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
@@ -535,7 +542,7 @@
     <string name="txtOptions">Options</string>
     <string name="by_title">Titre</string>
     <string name="by_brand">Marque</string>
-    <string name="by_barcode">Code-barres</string>
+    <string name="by_barcode">Code barre</string>
     <string name="by_time">Dernières consultations</string>
     <string name="sort">Trier</string>
     <string name="by_nutrition_grade">Note nutritionnelle</string>
@@ -665,6 +672,7 @@
     <string name="uploading_ingredients_image">Envoi de l\'image des ingrédients</string>
     <string name="uploading_front_image">Envoi de l\'image principale</string>
     <string name="url_nova_groups">https://fr.openfoodfacts.org/classification-nova-pour-la-transformation-des-aliments</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Veuillez vous connecter pour modifier un produit.</string>
     <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 onces liquides, 1 livre</string>
     <string name="edit_product_title">Modifier un produit</string>
@@ -676,11 +684,11 @@
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Ajouter à Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Risque élevé de surexposition</string>
-    <string name="overexposure_moderate">Risque modéré de surexposition</string>
+    <string name="overexposure_high">Risque élevé de sur-exposition</string>
+    <string name="overexposure_moderate">Risque modéré de sur-exposition</string>
     <string name="infants">Nourrissons</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Les tout-petits</string>
+    <string name="toddlers">Jeunes enfants</string>
     <string name="toddlers_age">1 à 2</string>
     <string name="children">Enfants</string>
     <string name="children_age">3 à 9</string>
@@ -726,14 +734,14 @@
     <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
     <string name="version_string">Application Android Open Food Facts</string>
     <string name="version">Version</string>
-    <string name="txtOtherInfo">Other Information: </string>
-    <string name="txtConservationCond">Conservation Conditions: </string>
-    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
-    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
-    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
-    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
-    <string name="conservationCond">Conservation Conditions</string>
-    <string name="other_info">Other Information</string>
+    <string name="txtOtherInfo">Autres informations: </string>
+    <string name="txtConservationCond">Conditions de conservation: </string>
+    <string name="txtRecyclingInstructionToRecycle">Instructions de recyclage - à recycler: </string>
+    <string name="txtRecyclingInstructionToDiscard">Instructions de recyclage - à jeter : </string>
+    <string name="recyclingInstructionToRecycle">Instructions de recyclage (à recycler)</string>
+    <string name="recyclingInstructionToDiscard">Consignes de recyclage (à jeter)</string>
+    <string name="conservationCond">Conditions de conservation</string>
+    <string name="other_info">Autres informations</string>
     <string name="set_ingredient_img">Définir comme image d\'ingrédient</string>
     <string name="set_img_nutrients">Définir comme image nutritionelle</string>
     <string name="set_img_front">Définir comme image de profil</string>
@@ -746,5 +754,11 @@
     <string name="fast_addition_mode">Active l\'ajout rapide de produits avec moins d\'attributs</string>
     <string name="addtive_search">Rechercher un additif</string>
     <string name="additives">Additifs</string>
+    <string name="compare_product_prompt">Comparer ce produit</string>
+    <string name="search_history_pref_title">Supprimer l\'historique de recherche</string>
+    <string name="search_history_pref_summary">Supprimer toutes les recherches que vous avez effectuées sur cet appareil</string>
+    <string name="settings_country_dialog_title">Sélectionnez votre pays</string>
+    <string name="settings_country_summary">Changer le pays sélectionné</string>
+    <string name="settings_country_title">Pays</string>
     <!-- Used for diets AddOn -->
 </resources>

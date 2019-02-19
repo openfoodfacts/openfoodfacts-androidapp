@@ -27,7 +27,7 @@ Um das Open Food Facts Projekt zu entdecken, besuchen Sie bitte https://openfood
 ★★★ Ihre Nahrung — Ihre Daten ★★★
 • Ihre Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
-• Sie können Ihre Erfassungsverlauf exportieren
+• Sie können Ihren Erfassungsverlauf exportieren
 
 Open Food Facts ist auch im Internet verfügbar unter https://world.openfoodfacts.org
 Fragen und Rückmeldungen: contact@openfoodfacts.org

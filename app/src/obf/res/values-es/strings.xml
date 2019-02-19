@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Escanea productos incluso cuando estés sin conexión para agregarlos posteriormente a Open Beauty Facts. Los productos escaneados aparecerán aquí y podrás enviarlo usando el botón de abajo.</string>
     <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Beauty Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">la información cosmética libre</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">El producto %1$s que escaneaste aún no existe en Open Beauty Facts. ¿Puedes agregarla?</string>
     <string name="currently_on_version">Actualmente en Open Beauty Facts</string>
     <string name="category_game_btn">Help categorize products</string>

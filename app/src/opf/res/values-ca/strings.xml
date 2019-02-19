@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Escanegeu els productes fins i tot quan no estigueu connectat per a afegir-los a Open Products Facts més endavant. Els productes escanejats apareixeran aquí i podreu enviar-los amb el botó que teniu més avall.</string>
     <string name="warning_alert_data">La informació de les al·lèrgies que patiu no s\'enviarà mai al servidor d\'Open Products Facts. A més, aneu amb compte: les dades del producte poden ser poc precises i és possible que la detecció no sigui 100% exacta, així que comproveu-ho bé! </string>
     <!-- OPF tagline in different languages -->
-    <string name="tagline">la base de dades de productes lliure</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">El producte %1$s que heu escanejat encara no existeix a Open Product Facts. Podeu afegir-lo?</string>
     <string name="currently_on_version">Actualment a Open Products Facts</string>
     <string name="category_game_btn">Help categorize products</string>

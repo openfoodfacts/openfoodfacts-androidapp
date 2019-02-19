@@ -103,7 +103,7 @@
         <item>Acido montánico (28:0)</item>
         <item>Ácido mirístico (14:0)</item>
         <item>Ácido nervónico (24:1 n-9)</item>
-        <item>Nucleótidos</item>
+        <item>Nuclotidos</item>
         <item>Ácido oleico (18:1 n-9)</item>
         <item>Ácidos grasos omega-3</item>
         <item>Ácidos grasos omega-6</item>
@@ -122,7 +122,7 @@
         <item>Ácido esteárico (18: 0)</item>
         <item>Sacarosa</item>
         <item>Taurina</item>
-        <item>Grasas trans</item>
+        <item>Grasa trans</item>
         <item>Vitamina A</item>
         <item>Vitamina B1 (tiamina)</item>
         <item>Vitamina B12 (cobalamina)</item>
@@ -176,9 +176,9 @@
     <string name="txtPalmOilProduct">Ingredientes con aceite de palma:</string>
     <string name="txtServingSize">Tamaño de la ración:</string>
     <string name="txtNutrientLevel100g">Niveles de nutrientes por cada 100g:</string>
-    <string name="txtNutritionLevelLow">en bajas cantidades</string>
-    <string name="txtNutritionLevelModerate">en cantidades moderadadas</string>
-    <string name="txtNutritionLevelHigh">en altas cantidades</string>
+    <string name="txtNutritionLevelLow">En bajas cantidades</string>
+    <string name="txtNutritionLevelModerate">En cantidades moderadadas</string>
+    <string name="txtNutritionLevelHigh">En altas cantidades</string>
     <string name="txtLogin">Usuario:</string>
     <string name="txtPass">Contraseña:</string>
     <string name="txtTitleHome">Abra su comida y sepa qué come</string>
@@ -190,6 +190,7 @@
     <string name="txtFat">Grasas</string>
     <string name="txtSugars">Azúcares</string>
     <string name="hintBarcode">Código de barras</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Iniciar sesión</string>
     <string name="hintPass">Contraseña</string>
     <string name="errorLogin">Usuario o contraseña incorrecto</string>
@@ -259,7 +260,7 @@
     <string name="formats">Formatos</string>
     <string name="choose_formats">Elegir formatos</string>
     <string name="select_camera">Selecciona una cámara</string>
-    <string name="ok_button">Ok</string>
+    <string name="ok_button">Aceptar</string>
     <string name="cancel_button">Cancelar</string>
     <string name="login_button">Iniciar sesión</string>
     <string name="create_account_button">Crear cuenta</string>
@@ -326,7 +327,7 @@
     <string name="nutrition_proteins_short_name">Proteínas (g)</string>
     <string name="nutrition_salt">Sal</string>
     <string name="nutrition_salt_short_name">Sal (g)</string>
-    <string name="nutrition_satured_fat">Grasas saturada</string>
+    <string name="nutrition_satured_fat">Grasa saturada</string>
     <string name="nutrition_satured_fat_short_name">Grasas saturadas (g)</string>
     <string name="nutrition_serving">Por porción</string>
     <string name="nutrition_serving_size">Tamaño de la ración:</string>
@@ -334,7 +335,7 @@
     <string name="nutrition_sodium_short_name">Sodio (g)</string>
     <string name="nutrition_sugars">Azúcares</string>
     <string name="nutrition_sugars_short_name">Azúcares (g)</string>
-    <string name="nutrition_trans_fat">Grasas trans</string>
+    <string name="nutrition_trans_fat">Grasa trans</string>
     <string name="nutrition_trans_fat_short_name">Grasas trans (g)</string>
     <string name="nutriment_serving_size">Por porción: </string>
     <string name="action_manage_account">Gestionar cuenta</string>
@@ -349,7 +350,7 @@
     <string name="txtDialogPowerMode">Vista rápida</string>
     <string name="txtSeeMore">Ver más</string>
     <string name="action_search">Buscar</string>
-    <string name="search_hint">Buscar un producto</string>
+    <string name="search_hint">Buscar artículo</string>
     <string name="number_of_results">Número de resultados: </string>
     <string name="brand">Marca:</string>
     <string name="number_of_products">Número de productos: </string>
@@ -374,8 +375,8 @@
     <string name="nutrition_lactose">Lactosa</string>
     <string name="nutrition_casein">Caseína</string>
     <string name="nutrition_maltodextrins">Maltodextrínas</string>
-    <string name="nutrition_serum_proteins">Proteínas séricas</string>
-    <string name="nutrition_nucleotides">Nucleótidos</string>
+    <string name="nutrition_serum_proteins">Proteínas Séricas</string>
+    <string name="nutrition_nucleotides">Nuclotidos</string>
     <string name="for_100g">Por cada 100 g</string>
     <string name="serving">Por porción</string>
     <string name="minerals">Minerales</string>
@@ -384,11 +385,11 @@
     <string name="nutrition_chlore">Cloro</string>
     <string name="nutrition_magnesium">Magnesio</string>
     <string name="nutrition_taurine">Taurina</string>
-    <string name="nutrition_monounsaturatedFat">Grasas monoinsaturadas</string>
-    <string name="nutrition_polyunsaturatedFat">Grasas poliinsaturadas</string>
-    <string name="nutrition_omega3">Omega-3</string>
-    <string name="nutrition_omega6">Omega-6</string>
-    <string name="nutrition_omega9">Omega-9</string>
+    <string name="nutrition_monounsaturatedFat">Grasas mono insaturadas</string>
+    <string name="nutrition_polyunsaturatedFat">Grasas polisaturadas</string>
+    <string name="nutrition_omega3">Omega 3</string>
+    <string name="nutrition_omega6">Omega 6</string>
+    <string name="nutrition_omega9">Omega 9</string>
     <string name="nutrition_sucrose">Sacarosa</string>
     <string name="nutrition_glucose">Glucosa</string>
     <string name="nutrition_fructose">Fructosa</string>
@@ -409,7 +410,7 @@
     <string name="biotin">Biotina</string>
     <string name="pantothenic_acid">Ácido pantoténico</string>
     <string name="nutrition_minerals">Minerales</string>
-    <string name="silica">Silicato</string>
+    <string name="silica">Sílica</string>
     <string name="bicarbonate">Bicarbonato</string>
     <string name="potassium">Potasio</string>
     <string name="chloride">Cloruro</string>
@@ -429,22 +430,28 @@
     <string name="taurine">Taurina</string>
     <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">Frutas, vegetales, nueces</string>
-    <string name="collagen_meat_protein_ratio">Relación de colágeno/proteínas de carne</string>
+    <string name="collagen_meat_protein_ratio">Relación colágeno/proteínas de carne</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Clorofila</string>
     <string name="take_picture_ingredients">Haz una foto de los ingredientes</string>
     <string name="take_picture_front">Haz una foto de la parte frontal</string>
     <string name="take_picture_nutrition_table">Haz una foto de la tabla nutricional</string>
     <string name="take_more_pictures">Haz más fotos</string>
-    <string name="txtSaturatedFat">Grasas saturadas</string>
+    <string name="txtSaturatedFat">Grasa saturada</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Grupo 1 - Alimentos no procesados o mínimamente procesados</string>
+    <string name="nova_grp2_msg">Grupo 2 - Ingredientes culinarios procesados</string>
+    <string name="nova_grp3_msg">Grupo 3 - Alimentos procesados</string>
+    <string name="nova_grp4_msg">Grupo 4 - Alimentos y bebidas ultraprocesadas</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Acceso directo no disponible</string>
     <string name="scan_shortcut_short_label">Escanear</string>
     <string name="scan_shortcut_long_label">Escanear producto</string>
     <string name="barcode_shortcut_short_label">Buscar</string>
     <string name="barcode_shortcut_long_label">Buscar por código de barras</string>
-    <string name="history_shortcut_short_label">Historial</string>
-    <string name="history_shortcut_long_label">Historial</string>
+    <string name="history_shortcut_short_label">Historia</string>
+    <string name="history_shortcut_long_label">Historia</string>
     <string name="contributions_shortcut_short_label">Contribuciones</string>
     <string name="contributions_shortcut_long_label">Mis contribuciones</string>
     <string name="forgot_password">Olvidé mi contraseña</string>
@@ -477,7 +484,7 @@
     <string name="translate_help_title">Ayude a traducir Open Food Facts</string>
     <string name="translate_help_summary">Lleva la base de datos de Open Food Facts a tu idioma - no se requiere conocimiento técnico</string>
     <string name="please_check_your_connection">Por favor, compruebe su conexión.</string>
-    <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/es</string>
+    <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
     <string name="advanced_search_title">Búsqueda avanzada &amp; Gráficos</string>
     <string name="connectivity_check">Por favor, revise su conexión a internet</string>
     <string name="dismiss">Descartar</string>
@@ -553,7 +560,7 @@
     <string name="do_you_want_to">¿Quieres añadir fotos a este código de barras?</string>
     <string name="bottomNav_history">Historia</string>
     <string name="bottomNav_search">Buscar</string>
-    <string name="products_added">Productos que ha añadido o modificado</string>
+    <string name="products_added">Productos que has añadido o modificado</string>
     <string name="products_incomplete">Productos añadidos por usted que necesitan ser completados</string>
     <string name="product_pictures_contributed">Productos para los que tomó fotografías</string>
     <string name="picture_contributed_incomplete">Los productos a los que tomaste fotografías necesitan ser completados</string>
@@ -643,7 +650,7 @@
     <string name="per_serving">Por porción</string>
     <string name="serving_size">Tamaño de la porción</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Añadir un nutriente</string>
+    <string name="add_a_nutrient">Añade un nutriente</string>
     <string name="add_this_product">Añadir este producto</string>
     <string name="product_picture">Imagen del producto</string>
     <string name="one_photo_compulsory">(solo es obligatoria una foto para poder enviar un nuevo producto)</string>
@@ -665,9 +672,10 @@
     <string name="uploading_ingredients_image">Subiendo la imagen de los ingredientes</string>
     <string name="uploading_front_image">Subiendo la imagen del frente</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Por favor, identifíquese para editar un producto.</string>
     <string name="hint_quantity">Ejemplos: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 libra</string>
-    <string name="edit_product_title">Modificar un producto</string>
+    <string name="edit_product_title">Modifica un producto</string>
     <string name="hint_serving_size">Ejemplos: 60 g, 12 oz, 20 cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s ya está presente en los datos nutricionales</string>
     <string name="save_edits">Guardar ediciones</string>
@@ -677,19 +685,19 @@
     <string name="intent_filter_share_label">Añadir a Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Riesgo alto de sobreexposición</string>
-    <string name="overexposure_moderate">Riesgo moderado de sobreexposición</string>
-    <string name="infants">Bebés</string>
+    <string name="overexposure_moderate">Riesgo moderado de sobre exposición</string>
+    <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Niños pequeños</string>
-    <string name="toddlers_age">De 1 a 2</string>
-    <string name="children">Niños</string>
-    <string name="children_age">De 3 a 9</string>
-    <string name="adolescents">Adolescentes</string>
-    <string name="adolescents_age">De 10 a 17</string>
-    <string name="adults">Adultos</string>
-    <string name="adults_age">De 18 a 64</string>
-    <string name="elderly">Ancianos</string>
-    <string name="elderly_age">Mayores de 65</string>
+    <string name="toddlers">Toddlers</string>
+    <string name="toddlers_age">1 to 2</string>
+    <string name="children">Children</string>
+    <string name="children_age">3 to 9</string>
+    <string name="adolescents">Adolescents</string>
+    <string name="adolescents_age">10 to 17</string>
+    <string name="adults">Adults</string>
+    <string name="adults_age">18 to 64</string>
+    <string name="elderly">Elderly</string>
+    <string name="elderly_age">65+</string>
     <string name="most_people">La mayoría de las personas\n(sobre el 50%)</string>
     <string name="some_people">Algunas personas\n(sobre el 5%)</string>
     <string name="safety_and_exposure_assessment">Valoración de seguridad y exposición</string>
@@ -721,7 +729,7 @@
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
-    <string name="nutrition_image_prompt_text">Haz una foto de la tabla nutricional</string>
+    <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Haz una foto de los ingredientes</string>
     <string name="category_game_btn">Ayuda a categorizar productos para calcular el NutriScore</string>
     <string name="version_string">Aplicación de Android Open Food Facts</string>
@@ -746,5 +754,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditivos</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">País</string>
     <!-- Used for diets AddOn -->
 </resources>

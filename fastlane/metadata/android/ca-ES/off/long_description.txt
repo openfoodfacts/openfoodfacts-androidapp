@@ -29,7 +29,7 @@ Per descobrir el projecte Open Food Facts, visiteu https://es-ca.openfoodfacts.o
 - Podeu utilitzar l'aplicació de forma anònima
 - Podeu exportar el vostre historial d'escaneig
 
-Open Food Facts també està disponible a internet, a l'adreça https://es-ca.openfoodfacts.org
+Open Food Facts també està disponible a internet, a l'adreça https://world.openfoodfacts.org
 Preguntes, comentaris : contact@openfoodfacts.org
 
 Per a cosmètics, podeu instal·lar Open Beauty Facts, per al menjar per a animals domèstics, Open Pet Food Facts i per a tots els altres productes, Open Products Facts.
