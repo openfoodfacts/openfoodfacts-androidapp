@@ -39,11 +39,11 @@ La raccolta di alimenti del mondo, cosmetici ed alimenti per animali domestici e
 
 Così abbiamo deciso di creare non 1, ma altri 77000 nuovi database separati ! 
 
-Open Products Facts sarà un progetto estremamente ambizioso. Eccone alcuni: 
+Open Products Facts sarà un progetto estremamente ambizioso. Ecco alcuni di questi: 
 
 Open Crayons Facts - Il più grande database aperto di pastelli colorati
 
-Open Miniature Food Facts - Il più grande database di miniature di prodotti alimentari
+Open Miniature Food Facts - Il più grande database di prodotti alimentari miniature
 
 Aperto ??? Facts - Il più grande database di ???
 
