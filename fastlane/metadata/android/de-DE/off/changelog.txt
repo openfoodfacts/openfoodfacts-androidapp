@@ -2,7 +2,7 @@
 ═══════════════
 Neue native Version von Open Food Facts. Alle Freiwilligen von Open Food Facts haben hart daran gearbeitet, basierend auf Ihren Vorschlägen und Ihrem Feedback 🙂
 ═══════════════
-🟊 Open Food Facts ist heute eine globalere Bewegung denn je. 500.00 freigegebene Produkte, 10.000 registrierte Mitwirkende, 182 Länder. Möchten Sich sich uns anschließen?
+🟊 Open Food Facts ist heute eine globalere Bewegung denn je. 500.00 freigegebene Produkte, 10.000 registrierte Mitwirkende, 182 Länder. Möchten Sie sich uns anschließen?
 ═══════════════
 Was gibt es Neues?
 ═══════════════
@@ -10,7 +10,7 @@ Was gibt es Neues?
 2. Den „NutriScore”-Nährwert für alle Produkte der Welt abrufen. Produkte einfach vergleichen. Einfacher als das Entziffern von Ernährungstabellen.
 3. Zusätzliche Informationen von Wikipedia abrufen. Klicken Sie auf eine Lebensmittelkategorie, einen Zusatzstoff …, um mehr zu erfahren und ähnliche Produkte anzuzeigen.
 4. Sie können Warnhinweise zu Allergenen festlegen (überprüfen Sie aber immer selbst das aktuelle Etikett!).
-5. Sie erhalten nun einen Verlauf der Erfassten Produkte, den Sie exportieren können und der nie Ihr Handy verlässt.
+5. Sie erhalten nun einen Verlauf der erfassten Produkte, den Sie exportieren können und der nie Ihr Handy verlässt
 6. Sie können Ihr Handy jederzeit innerhalb der App schütteln, um mit dem Einlesen zu beginnen.
 7. Sie können jetzt neue Produkte hinzufügen, auch wenn Sie keine Verbindung zum Internet haben.
 8. Sie können jetzt helfen, Ihre Lieblingsspeisen direkt aus der App heraus zu vervollständigen: Fotos aufnehmen, Infos ausfüllen, Lebensmitteltransparenz schaffen
