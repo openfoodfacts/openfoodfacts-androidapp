@@ -566,7 +566,14 @@ public class Product implements Serializable {
         return noNutritionData;
     }
 
-    public String getEnvironmentInfocard() {return environmentInfocard;}
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+  
+    public String getEnvironmentInfocard() {
+      return environmentInfocard;
+    }
+      
     /**
      * @return Other information
      */

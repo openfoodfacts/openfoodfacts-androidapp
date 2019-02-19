@@ -937,6 +937,7 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
+    <string name="compare_product_prompt">Compare this product</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
     <string name="settings_country_dialog_title">Select your country</string>

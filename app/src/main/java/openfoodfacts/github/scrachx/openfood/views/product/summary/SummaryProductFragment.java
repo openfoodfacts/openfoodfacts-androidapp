@@ -79,6 +79,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -195,6 +196,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView warning;
     @BindView(R.id.textCustomerService)
     TextView customerService;
+    @BindView(R.id.compare_product_button)
+    Button compareProductButton;
     private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
@@ -1058,6 +1061,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //adds the information about the prompt when navigating the user to the edit the product
         intent.putExtra("modify_category_prompt", showCategoryPrompt);
         intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.compare_product_button)
+    public void onCompareProductButtonClick() {
+        Intent intent = new Intent(getContext(), ProductComparisonActivity.class);
+        intent.putExtra("product_found", true);
+        ArrayList<Product> productsToCompare = new ArrayList<>();
+        productsToCompare.add(product);
+        intent.putExtra("products_to_compare", productsToCompare);
         startActivity(intent);
     }
 
