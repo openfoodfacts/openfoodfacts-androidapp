@@ -586,8 +586,8 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Saturated fat</string>
-    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
-    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
+    <string name="nova_info_msg">Learn more about Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
