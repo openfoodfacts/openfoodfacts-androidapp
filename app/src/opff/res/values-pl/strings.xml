@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Skanuj produkty nawet w trybie offline, aby później dodać je do Open Pet Food Facts. Zeskanowane produkty pojawią się tutaj i będziesz mógł je wysłać za pomocą przycisku poniżej.</string>
     <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie mogą nie być dokładne, a wykrycie ich też nie może być pewne. Zatem, sprawdzaj dwa razy! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="tagline">bezpłatna baza danych zawierającą produkty żywnościowe dla zwierząt domowych</string>
+    <string name="tagline">free pet food products database</string>
     <string name="product_not_found">Zeskanowany produkt %1$s, jeszcze nie znajduje się w Open Pet Food Facts. Czy możesz go dodać?</string>
     <string name="currently_on_version">Aktualnie na Open Pet Food Facts</string>
     <string name="category_game_btn">Pomóż kategoryzować produkty</string>
