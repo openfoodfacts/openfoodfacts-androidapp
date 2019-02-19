@@ -17,20 +17,23 @@ public interface NavigationDrawerListener {
     int ITEM_SEARCH_BY_CODE = 2;
     int ITEM_CATEGORIES = 3;
     int ITEM_SCAN = 4;
-    int ITEM_HISTORY = 5;
-    int ITEM_LOGIN = 6;
-    int ITEM_ALERT = 7;
-    int ITEM_PREFERENCES = 8;
-    int ITEM_OFFLINE = 9;
-    int ITEM_ABOUT = 10;
-    int ITEM_CONTRIBUTE = 11;
-    int ITEM_OBF = 12;
-    int ITEM_ADVANCED_SEARCH = 13;
-    int ITEM_MY_CONTRIBUTIONS = 14;
-    int ITEM_LOGOUT = 15;
-    int ITEM_MANAGE_ACCOUNT = 16;
-    int ITEM_INCOMPLETE_PRODUCTS = 17;
-    int ITEM_ADDITIVES =18;
+    int ITEM_COMPARE = 5;
+    int ITEM_HISTORY = 6;
+    int ITEM_LOGIN = 7;
+    int ITEM_ALERT = 8;
+    int ITEM_PREFERENCES = 9;
+    int ITEM_OFFLINE = 10;
+    int ITEM_ABOUT = 11;
+    int ITEM_CONTRIBUTE = 12;
+    int ITEM_OBF = 13;
+    int ITEM_ADVANCED_SEARCH = 14;
+    int ITEM_MY_CONTRIBUTIONS = 15;
+    int ITEM_LOGOUT = 16;
+    int ITEM_MANAGE_ACCOUNT = 17;
+    int ITEM_INCOMPLETE_PRODUCTS = 18;
+    int ITEM_ADDITIVES =19;
+    int ITEM_YOUR_LISTS = 20;
+
 
     @Retention(SOURCE)
     @IntDef({
@@ -38,6 +41,7 @@ public interface NavigationDrawerListener {
             ITEM_SEARCH_BY_CODE,
             ITEM_CATEGORIES,
             ITEM_SCAN,
+            ITEM_COMPARE,
             ITEM_HISTORY,
             ITEM_LOGIN,
             ITEM_ALERT,

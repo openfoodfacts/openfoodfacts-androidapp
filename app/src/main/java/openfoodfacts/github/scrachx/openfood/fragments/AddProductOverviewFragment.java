@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -114,6 +115,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
+    private static final String PARAM_EATING = "eating";
     private static final String PARAM_OTHER_INFORMATION = "other_information";
     private static final String PARAM_CONSERVATION_CONDITIONS = "conservation_conditions";
     private static final String PARAM_RECYCLING_INSTRUCTION_TO_DISCARD = "recycling_instructions_to_discard";
@@ -150,6 +152,8 @@ public class AddProductOverviewFragment extends BaseFragment {
     NachoTextView label;
     @BindView(R.id.period_of_time_after_opening)
     AutoCompleteTextView periodsAfterOpening;
+    @BindView(R.id.cb_eating)
+    CheckBox cbEating;
     @BindView(R.id.origin_of_ingredients)
     NachoTextView originOfIngredients;
     @BindView(R.id.manufacturing_place)
@@ -779,6 +783,11 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (BuildConfig.FLAVOR.equals("obf")) {
                 ((AddProductActivity) activity).addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
             }
+            if(mImageUrl!=null){
+                ((AddProductActivity) activity).addToMap("imageUrl", mImageUrl);
+            }
+            Boolean cbEatingChecked = cbEating.isChecked();
+            ((AddProductActivity) activity).addToMap(PARAM_EATING, cbEatingChecked.toString());
             ((AddProductActivity) activity).addToMap(PARAM_ORIGIN.substring(4), getValues(originOfIngredients));
             ((AddProductActivity) activity).addToMap(PARAM_MANUFACTURING_PLACE.substring(4), manufacturingPlace.getText().toString());
             ((AddProductActivity) activity).addToMap(PARAM_EMB_CODE.substring(4), getValues(embCode));
@@ -831,6 +840,11 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (!periodsAfterOpening.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
             }
+            if(mImageUrl!=null){
+                ((AddProductActivity) activity).addToMap("imageUrl", mImageUrl);
+            }
+            Boolean cbEatingChecked = cbEating.isChecked();
+            ((AddProductActivity) activity).addToMap(PARAM_EATING, cbEatingChecked.toString());
             if (!originOfIngredients.getChipValues().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_ORIGIN, getValues(originOfIngredients));
             }
