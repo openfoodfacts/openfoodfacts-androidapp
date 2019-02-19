@@ -5,17 +5,17 @@ Grups NOVA
 Grup NOVA:
 
 Grup 1
-Grup 1 - Aliments no processats o mínimament processats
-Aliments no processats o mínimament processats
+Group 1 - Unprocessed or minimally processed foods
+Unprocessed or minimally processed foods
 
 Grup 2
-Grup 2 - Ingredients culinaris processats
-Ingredients culinaris processats
+Group 2 - Processed culinary ingredients
+Processed culinary ingredients
 
 Grup 3
-Grup 3 - Aliments processats
-Aliments processats
+Group 3 - Processed foods
+Processed foods
 
 Grup 4
-Grup 4 - Productes alimentaris i begudes ultraprocessades
+Group 4 - Ultra-processed food and drink products
 Productes alimentaris i begudes ultraprocessades
