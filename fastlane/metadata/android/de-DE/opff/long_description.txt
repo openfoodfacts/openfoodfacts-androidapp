@@ -25,10 +25,10 @@ Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
 • Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren
 • Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
 
-★★★ Ihre Tierfutter — Ihre Daten ★★★
+★★★ Ihr Tierfutter — Ihre Daten ★★★
 • Ihre persönlichen Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
-• Sie können Ihre Erfassungsverlauf exportieren
+• Sie können Ihren Erfassungsverlauf exportieren
 
 
 Für Lebensmittel können Sie „Open Food Facts”, für Kosmetik „Open Beauty Facts” und für alle anderen Produkte „Open Products Facts” installieren.
