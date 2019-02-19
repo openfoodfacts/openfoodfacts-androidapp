@@ -190,7 +190,7 @@
     <string name="txtFat">Zsír</string>
     <string name="txtSugars">Cukrok</string>
     <string name="hintBarcode">Vonalkód</string>
-    <string name="txtNutriScoreInfo">How is it computed ?</string>
+    <string name="txtNutriScoreInfo">Hogyan számítjuk ki?</string>
     <string name="hintLogin">Bejelentkezés</string>
     <string name="hintPass">Jelszó</string>
     <string name="errorLogin">Bejelentkezési vagy jelszó hiba</string>
@@ -438,8 +438,8 @@
     <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
     <string name="take_more_pictures">Készítsen további képeket</string>
     <string name="txtSaturatedFat">Telített zsír</string>
-    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
-    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nutriscore_info_msg">Tudjon meg többet a Nutri-Score mögötti tudományról és módszertanról</string>
+    <string name="nova_info_msg">Tudjon meg többet a Nova mögötti tudományról</string>
     <string name="nova_grp1_msg">Coport 1 - Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek</string>
     <string name="nova_grp2_msg">Csoport 2 - Feldolgozott összetevők</string>
     <string name="nova_grp3_msg">Csoport 3 - Feldolgozott élelmiszerek</string>
@@ -756,11 +756,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Egy dalékanyag keresése</string>
     <string name="additives">Adalékanyagok</string>
-    <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="compare_product_prompt">Termék összehasonlítása</string>
+    <string name="search_history_pref_title">Keresési előzmények törlése</string>
+    <string name="search_history_pref_summary">Távolítsa el az ezen az eszközön végzett összes keresési előzményt</string>
+    <string name="settings_country_dialog_title">Válaszd ki az országod</string>
+    <string name="settings_country_summary">Változtassa meg a kiválasztott országot</string>
     <string name="settings_country_title">Ország</string>
     <!-- Used for diets AddOn -->
 </resources>
