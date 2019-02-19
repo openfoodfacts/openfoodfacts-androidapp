@@ -194,6 +194,7 @@
     <string name="txtFat">Tauki</string>
     <string name="txtSugars">Cukurs</string>
     <string name="hintBarcode">Svītrkods</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Lietotājvārds</string>
     <string name="hintPass">Parole</string>
     <string name="errorLogin">Lietotāja vai paroles kļūda</string>
@@ -441,6 +442,12 @@
     <string name="take_picture_nutrition_table">Fotografēt uzturvērtības tabulu</string>
     <string name="take_more_pictures">Uzņemt papildus fotogrāfijas</string>
     <string name="txtSaturatedFat">Piesātinātie tauki</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Saīsne nav pieejama</string>
     <string name="scan_shortcut_short_label">Skenēt</string>
@@ -669,6 +676,7 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Rediģējiet produktu</string>
@@ -750,5 +758,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Piedevas</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Country</string>
     <!-- Used for diets AddOn -->
 </resources>
