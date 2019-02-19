@@ -607,6 +607,7 @@ public class Product implements Serializable {
         return new ToStringBuilder(this)
                 .append("code", code)
                 .append("productName", productName)
+                .append("additional_properties",additionalProperties)
                 .toString();
     }
 }
