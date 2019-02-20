@@ -190,7 +190,7 @@
     <string name="txtFat">Zsír</string>
     <string name="txtSugars">Cukrok</string>
     <string name="hintBarcode">Vonalkód</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">Tudjon meg többet a tápanyagszintekről</string>
     <string name="hintLogin">Bejelentkezés</string>
     <string name="hintPass">Jelszó</string>
     <string name="errorLogin">Bejelentkezési vagy jelszó hiba</string>
@@ -439,8 +439,8 @@
     <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
     <string name="take_more_pictures">Készítsen további képeket</string>
     <string name="txtSaturatedFat">Telített zsír</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nutriscore_info_msg">Tudjon meg többet a Nutri-Score-ról</string>
+    <string name="nova_info_msg">További információ a Nováról</string>
     <string name="nova_grp1_msg">Coport 1 - Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek</string>
     <string name="nova_grp2_msg">Csoport 2 - Feldolgozott összetevők</string>
     <string name="nova_grp3_msg">Csoport 3 - Feldolgozott élelmiszerek</string>
