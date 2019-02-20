@@ -256,7 +256,7 @@
     <string name="delete_txt">Удалить</string>
     <string name="sign_in_drawer">Войти</string>
     <string name="alert_drawer">Предупреждение об аллергенах</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Ваши списки</string>
     <string name="warning_allergens">Содержит аллергены</string>
     <string name="title_dialog_alert">Добавить предупреждение</string>
     <string name="toggle_flash">Вспышка</string>
@@ -509,7 +509,7 @@
     <string name="confirm_logout">Подтвердить выход</string>
     <string name="logout_dialog_content">Вы уверены, что хотите выйти?</string>
     <string name="dialog_cancel">Отмена</string>
-    <string name="dialog_create">Create</string>
+    <string name="dialog_create">Создать</string>
     <string name="choose_resolution">Выберите разрешение</string>
     <string name="pref_resolution_summary">Выберите разрешение для загрузки изображения</string>
     <string name="image_upload_resolution">Разрешение загрузки изображения</string>
@@ -765,8 +765,8 @@
     <string name="addtive_search">Поиск добавки</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Add to your lists</string>
-    <string name="txt_create_new_list">Create a new list</string>
+    <string name="add_to_product_lists">Добавить в ваши списки</string>
+    <string name="txt_create_new_list">Создать новый список</string>
     <string name="txt_add_to_new_list">Добавить в новый список</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Products to buy</string>
