@@ -194,7 +194,7 @@
     <string name="txtFat">Grăsimi</string>
     <string name="txtSugars">Zaharuri</string>
     <string name="hintBarcode">Cod de bare</string>
-    <string name="txtNutriScoreInfo">How is it computed ?</string>
+    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Conectați-vă</string>
     <string name="hintPass">Parolă</string>
     <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
@@ -252,6 +252,7 @@
     <string name="delete_txt">Ştergeţi</string>
     <string name="sign_in_drawer">Conectare</string>
     <string name="alert_drawer">Alertă alergeni</string>
+    <string name="your_lists">Your lists</string>
     <string name="warning_allergens">Conține alergeni</string>
     <string name="title_dialog_alert">Adaugare alertă</string>
     <string name="toggle_flash">Mod bliț</string>
@@ -442,8 +443,8 @@
     <string name="take_picture_nutrition_table">Faceți o poză tabelului cu informații nutriționale</string>
     <string name="take_more_pictures">Faceți mai multe poze</string>
     <string name="txtSaturatedFat">Acizi grași saturați</string>
-    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
-    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
+    <string name="nova_info_msg">Learn more about Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -504,6 +505,7 @@
     <string name="confirm_logout">Confirmă Deconectarea</string>
     <string name="logout_dialog_content">Ești sigur că vrei să te deconectezi?</string>
     <string name="dialog_cancel">Anulare</string>
+    <string name="dialog_create">Create</string>
     <string name="choose_resolution">Alege Rezoluție</string>
     <string name="pref_resolution_summary">Alege o rezoluție pentru încărcare imagini</string>
     <string name="image_upload_resolution">Rezoluția pentru încărcarea imaginilor</string>
@@ -758,6 +760,22 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditivi</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">Add to your lists</string>
+    <string name="txt_create_new_list">Create a new list</string>
+    <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="export_csv_your_listed_products">Export în format CSV</string>
+    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
+    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="txt_discard">Renunță</string>
+    <string name="txt_save">Salvează</string>
+    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">Compare this product</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
