@@ -137,6 +137,8 @@
             </RelativeLayout>
 
             <Button
+                android:drawableLeft="@drawable/ic_compare_arrows_black_18dp"
+                android:drawablePadding="5dp"
                 android:id="@+id/compare_product_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -662,6 +664,8 @@
             </LinearLayout>
 
             <Button
+                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
+                android:drawablePadding="5dp"
                 android:id="@+id/buttonMorePictures"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"

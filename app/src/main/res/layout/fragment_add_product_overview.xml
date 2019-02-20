@@ -659,6 +659,8 @@
             tools:visibility="visible" />
 
         <Button
+            android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
+            android:drawablePadding="5dp"
             android:id="@+id/btn_other_pictures"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
