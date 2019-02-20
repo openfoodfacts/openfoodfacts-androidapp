@@ -114,8 +114,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                     productListsDao.insert(productList);
                 }
                 )
-                .positiveText(R.string.txtYes)
-                .negativeText(R.string.txtNo)
+                .positiveText(R.string.dialog_create)
+                .negativeText(R.string.dialog_cancel)
                 .onPositive((dialog, which) -> {
                     dialog.dismiss();
                     adapter.notifyDataSetChanged();
