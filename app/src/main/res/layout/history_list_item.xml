@@ -50,14 +50,16 @@
 
     <TextView
         android:id="@+id/titleHistory"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imgHistoryFrame"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_toEndOf="@id/imgHistoryFrame"
-        android:layout_toLeftOf="@id/barcodeHistory"
         android:layout_toRightOf="@id/imgHistoryFrame"
-        android:layout_toStartOf="@id/barcodeHistory"
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="1"
@@ -79,24 +81,6 @@
         android:maxLines="1"
         android:textSize="@dimen/font_normal"
         tools:text="Ferrero" />
-
-
-    <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
-        android:id="@+id/barcodeHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/titleHistory"
-        android:layout_alignParentEnd="true"
-
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginStart="10dp"
-        android:drawablePadding="2dp"
-        android:gravity="center_vertical"
-        android:textSize="@dimen/font_small"
-        app:drawableLeftCompat="@drawable/barcode_grey_24dp"
-        tools:text="123456789" />
 
 
     <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
