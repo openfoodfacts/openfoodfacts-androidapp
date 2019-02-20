@@ -763,7 +763,7 @@
     <string name="txt_eaten_products">Verzehrte Produkte</string>
     <string name="txt_products_to_buy">Zu erwerbende Produkte</string>
     <string name="export_csv_your_listed_products">Als CSV-Datei exportieren</string>
-    <string name="txt_exporting_your_listed_products">Ihrer Produkte werden exportiert …</string>
+    <string name="txt_exporting_your_listed_products">Ihre Produkte werden exportiert …</string>
     <string name="txt_your_listed_products_exported">Ihre Produkte wurden exportiert</string>
     <string name="txt_discard">Verwerfen</string>
     <string name="txt_save">Speichern</string>
