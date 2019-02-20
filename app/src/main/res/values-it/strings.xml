@@ -501,7 +501,7 @@
     <string name="confirm_logout">Conferma il logout</string>
     <string name="logout_dialog_content">Sei sicuro di uscire?</string>
     <string name="dialog_cancel">Annulla</string>
-    <string name="dialog_create">Create</string>
+    <string name="dialog_create">Crea</string>
     <string name="choose_resolution">Scegli la risoluzione</string>
     <string name="pref_resolution_summary">Scegli una risoluzione per il caricamento delle immagini</string>
     <string name="image_upload_resolution">Risoluzione di caricamento immagini</string>
@@ -757,8 +757,8 @@
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additivi</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Add to your lists</string>
-    <string name="txt_create_new_list">Create a new list</string>
+    <string name="add_to_product_lists">Aggiungi alle tue liste</string>
+    <string name="txt_create_new_list">Crea una nuova lista</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Products to buy</string>
