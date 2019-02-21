@@ -215,7 +215,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         if (getActivity() instanceof AppCompatActivity) {
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
             if (actionBar != null) {
-                actionBar.setTitle(R.string.home_drawer);
+                actionBar.setTitle("");
             }
         }
 
