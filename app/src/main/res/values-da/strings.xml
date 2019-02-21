@@ -19,7 +19,7 @@
     </plurals>
     <string name="action_settings">Indstillinger</string>
     <string name="action_about">Om</string>
-    <string name="action_discover">Find</string>
+    <string name="action_discover">Opdag</string>
     <string name="contribute">Sådan bidrager du</string>
     <string name="action_find">Find</string>
     <string name="text_barcode">Angiv stregkoden:</string>
@@ -72,9 +72,9 @@
         <item>Caprylsyre (8: 0)</item>
         <item>Kasein</item>
         <item>-Cerotinsyre (26:0)</item>
-        <item>Klorid</item>
+        <item>Chlorid</item>
         <item>Kolesterol</item>
-        <item>Krom</item>
+        <item>Chrom</item>
         <item>Kobber</item>
         <item>Dihomo-gamma-linolensyre/DGLA (20:3 n-6)</item>
         <item>Docosahexaensyre/DHA (22:6 n-3)</item>
@@ -93,7 +93,7 @@
         <item>Lignocersyre (24:0)</item>
         <item>Linolsyre/LA (18:2 n-6)</item>
         <item>Magnesium</item>
-        <item>Maltodextrin</item>
+        <item>Maltodextriner</item>
         <item>Maltose</item>
         <item>Mangan</item>
         <item>Myresyre (20:3 n-9)</item>
@@ -176,20 +176,21 @@
     <string name="txtPalmOilProduct">Ingrediænser fra palmeolie:</string>
     <string name="txtServingSize">Portionsstørrelse :</string>
     <string name="txtNutrientLevel100g">Næringsstoffer pr. 100 g :</string>
-    <string name="txtNutritionLevelLow">i lav mængde</string>
-    <string name="txtNutritionLevelModerate">i moderat mængde</string>
-    <string name="txtNutritionLevelHigh">i høj mængde</string>
+    <string name="txtNutritionLevelLow">i lavt kvantum</string>
+    <string name="txtNutritionLevelModerate">i moderat kvantum</string>
+    <string name="txtNutritionLevelHigh">i højt kvantum</string>
     <string name="txtLogin">Brugernavn:</string>
     <string name="txtPass">Adgangskode:</string>
-    <string name="txtTitleHome">Åbn din mad, for at vide hvad du spiser</string>
+    <string name="txtTitleHome">Åbn din mad og vær klar over, hvad du spiser</string>
     <string name="txtSave">Gem</string>
     <string name="txtSignIn">Log ind</string>
     <string name="txtUser">Brugerpanel</string>
     <string name="txtToastSaved">Bruger gemt</string>
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fedt</string>
-    <string name="txtSugars">Sukkerarter</string>
+    <string name="txtSugars">Sukkertyper</string>
     <string name="hintBarcode">Stregkode</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Brugernavn</string>
     <string name="hintPass">Adgangskode</string>
     <string name="errorLogin">Brugernavn eller adgangskode-fejl</string>
@@ -245,7 +246,7 @@
     <string name="txt_anonymous">Anonym</string>
     <string name="txt_product_not_found">Produkter blev ikke fundet</string>
     <string name="delete_txt">Slet</string>
-    <string name="sign_in_drawer">Logg inn</string>
+    <string name="sign_in_drawer">Log ind</string>
     <string name="alert_drawer">Allergenadvarsel</string>
     <string name="warning_allergens">Indeholder allergener</string>
     <string name="title_dialog_alert">Tilføje advarsel</string>
@@ -319,7 +320,7 @@
     <string name="nutrition_fat_short_name">Fedt (g)</string>
     <string name="nutrition_fiber">Kostfibre</string>
     <string name="nutrition_fiber_short_name">Kostfibre (g)</string>
-    <string name="nutrition_header">Ernæringsinnhold</string>
+    <string name="nutrition_header">Ernæringsfakta</string>
     <string name="nutrition_no_data_message">Der er ingen data tilgængelig for dette produkt</string>
     <string name="nutrition_per_quantity">Til 100g / 100ml</string>
     <string name="nutrition_proteins">Proteiner</string>
@@ -328,11 +329,11 @@
     <string name="nutrition_salt_short_name">Salt (g)</string>
     <string name="nutrition_satured_fat">Mættet fedt</string>
     <string name="nutrition_satured_fat_short_name">Mættet fedt (g)</string>
-    <string name="nutrition_serving">Per portion</string>
+    <string name="nutrition_serving">Pr. portion</string>
     <string name="nutrition_serving_size">Portionsstørrelse :</string>
     <string name="nutrition_sodium">Natrium</string>
     <string name="nutrition_sodium_short_name">Natrium (g)</string>
-    <string name="nutrition_sugars">Sukkerarter</string>
+    <string name="nutrition_sugars">Sukkertyper</string>
     <string name="nutrition_sugars_short_name">Sukker (g)</string>
     <string name="nutrition_trans_fat">Transfedt</string>
     <string name="nutrition_trans_fat_short_name">Transfedt (g)</string>
@@ -373,18 +374,18 @@
     <string name="txt_try_again">Prøv igen</string>
     <string name="nutrition_lactose">Laktose</string>
     <string name="nutrition_casein">Kasein</string>
-    <string name="nutrition_maltodextrins">Maltodextrin</string>
+    <string name="nutrition_maltodextrins">Maltodextriner</string>
     <string name="nutrition_serum_proteins">Serumproteiner</string>
     <string name="nutrition_nucleotides">Nukleotider</string>
     <string name="for_100g">Pr. 100 g</string>
-    <string name="serving">Per portion</string>
+    <string name="serving">Pr. portion</string>
     <string name="minerals">Mineraler</string>
     <string name="nutrition_calcium">Calcium</string>
     <string name="nutrition_potassium">Kalium</string>
     <string name="nutrition_chlore">Klor</string>
     <string name="nutrition_magnesium">Magnesium</string>
     <string name="nutrition_taurine">Taurin</string>
-    <string name="nutrition_monounsaturatedFat">Enkeltumættet fedt</string>
+    <string name="nutrition_monounsaturatedFat">Monoumættet fedt</string>
     <string name="nutrition_polyunsaturatedFat">Flerumættet fedt</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
@@ -412,7 +413,7 @@
     <string name="silica">Silica</string>
     <string name="bicarbonate">Bikarbonat</string>
     <string name="potassium">Kalium</string>
-    <string name="chloride">Klorid</string>
+    <string name="chloride">Chlorid</string>
     <string name="calcium">Calcium</string>
     <string name="phosphorus">Fosfor</string>
     <string name="iron">Jern</string>
@@ -422,21 +423,27 @@
     <string name="manganese">Mangan</string>
     <string name="fluoride">Fluor</string>
     <string name="selenium">Selen</string>
-    <string name="chromium">Krom</string>
+    <string name="chromium">Chrom</string>
     <string name="molybdenum">Molybdæn</string>
     <string name="iodine">Jod</string>
     <string name="caffeine">Koffein</string>
     <string name="taurine">Taurin</string>
     <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">Frugter, grøntsager, nødder</string>
-    <string name="collagen_meat_protein_ratio">Kollagen kødproteinforhold</string>
+    <string name="collagen_meat_protein_ratio">Kollagenkødproteinforhold</string>
     <string name="cocoa">Kakao</string>
-    <string name="chlorophyl">Klorofyl</string>
-    <string name="take_picture_ingredients">Tag et billede af ingredienserne</string>
-    <string name="take_picture_front">Tag et billede af forsiden</string>
-    <string name="take_picture_nutrition_table">Tag et billede af ernæringstabellen</string>
+    <string name="chlorophyl">Chlorophyl</string>
+    <string name="take_picture_ingredients">Tag et foto af ingredienserne</string>
+    <string name="take_picture_front">Tag et foto af forsiden</string>
+    <string name="take_picture_nutrition_table">Tag et foto af ernæringsoversigten</string>
     <string name="take_more_pictures">Tag flere billeder</string>
     <string name="txtSaturatedFat">Mættet fedt</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Gruppe 1 - Ubehandlede eller minimalt forarbejdede fødevarer</string>
+    <string name="nova_grp2_msg">Gruppe 2 - Forarbejdede kulinariske ingredienser</string>
+    <string name="nova_grp3_msg">Gruppe 3 - Forarbejdede fødevarer</string>
+    <string name="nova_grp4_msg">Gruppe 4 - Ultraforarbejdede føde- og drikkevarer</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Genvej ikke tilgængelig</string>
     <string name="scan_shortcut_short_label">Skan</string>
@@ -508,7 +515,7 @@
     <string name="additive_string">Tilsætningsstof</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Søg</string>
-    <string name="country_string">Land hvor produktet selges</string>
+    <string name="country_string">Lande, hvorfra der sælges</string>
     <string name="store_subtitle">Butik</string>
     <string name="packaging_subtitle">Emballage</string>
     <string name="last_seen_string">%1$d %2$s siden</string>
@@ -637,7 +644,7 @@
     <string name="skip_ingredients">Ærgerligt\nOverspring ingredienser</string>
     <string name="traces">Spor</string>
     <string name="traces_hint">Angiv ingredienser ud fra beskrivelser som \"Kan indeholde spor af\", \"Fremstillet på fabrik, der også benytter\" mv.\nEksempel: Mælk, Gluten, Nødder</string>
-    <string name="nutrition_facts_not_specified">Ernæringsinnhold er ikke spesifisert på produktet.</string>
+    <string name="nutrition_facts_not_specified">Ernæringsindhold er ikke specificeret på produktet.</string>
     <string name="nutrition_facts_picture">Næringsindholdsfoto</string>
     <string name="for_100g_100ml">Pr. 100 g/100 ml</string>
     <string name="per_serving">Pr. portion</string>
@@ -649,9 +656,9 @@
     <string name="one_photo_compulsory">(kun ét foto kræves for at tilføje et nyt produkt)</string>
     <string name="product_details">Produktoplysninger</string>
     <string name="product_name">Produktnavn</string>
-    <string name="quantity">Mængde</string>
+    <string name="quantity">Kvantitet</string>
     <string name="labels">Etiketter</string>
-    <string name="period_of_time_after_opening">Holdbarhed efter åbning</string>
+    <string name="period_of_time_after_opening">Tidsperiode efter åbning</string>
     <string name="manufacturing_details">Produktionsoplysninger</string>
     <string name="origin_of_ingredients">Oprindelse af ingredienser</string>
     <string name="manufacturing_place">Produktionssted</string>
@@ -665,6 +672,7 @@
     <string name="uploading_ingredients_image">Uploader ingrediensfoto</string>
     <string name="uploading_front_image">Uploader forsidefoto</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Log ind for at redigere et produkt.</string>
     <string name="hint_quantity">Eksempler: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pund</string>
     <string name="edit_product_title">Rediger et produkt</string>
@@ -726,14 +734,14 @@
     <string name="category_game_btn">Hjælp med at kategorisere produkter for at beregne Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="txtOtherInfo">Other Information: </string>
-    <string name="txtConservationCond">Conservation Conditions: </string>
-    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
-    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
-    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
-    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
-    <string name="conservationCond">Conservation Conditions</string>
-    <string name="other_info">Other Information</string>
+    <string name="txtOtherInfo">Anden information: </string>
+    <string name="txtConservationCond">Opbevaringsbetingelser: </string>
+    <string name="txtRecyclingInstructionToRecycle">Genbrugsanvisning - Genbrug: </string>
+    <string name="txtRecyclingInstructionToDiscard">Genbrugsanvisninger - Til udsmidning: </string>
+    <string name="recyclingInstructionToRecycle">Genbrugsanvisning (genbrug)</string>
+    <string name="recyclingInstructionToDiscard">Genbrugsanvisning (affald)</string>
+    <string name="conservationCond">Opbevaringsbetingelser</string>
+    <string name="other_info">Anden information</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -746,5 +754,11 @@
     <string name="fast_addition_mode">Gør det muligt hurtigt at tilføje produkter med færre attributter</string>
     <string name="addtive_search">Søg efter en tilsætningsstof</string>
     <string name="additives">Tilsætningsstoffer</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Land</string>
     <!-- Used for diets AddOn -->
 </resources>

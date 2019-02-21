@@ -18,5 +18,12 @@
         android:title="@string/calculate_nutrition_facts"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_addToList"
+        android:icon="@drawable/plus"
+        android:title="@string/add_to_product_lists"
+        app:showAsAction="always" />
+
+
 </menu>
 

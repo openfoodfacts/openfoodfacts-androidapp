@@ -15,12 +15,12 @@
     <string name="txtHome">Open Food Facts là một cơ sở dữ liệu về thực phẩm cùng nguyên liệu, chất gây dị ứng, thành phần dinh dưỡng và những mẩu thông tin khác trên bao bì của sản phẩm.</string>
     <string name="slide_1_title">Đóng góp cho sự minh bạch của thực phẩm</string>
     <string name="slide_1_desc">Scan sản phẩm, chụp chúng, tạo dựng sự minh bạch cho sản phẩm</string>
-    <string name="slide_2_title">Nhận được sự thật</string>
-    <string name="slide_2_desc">Thông tin mở rộng về sản phẩm bạn đã quét, giải mã cho bạn</string>
+    <string name="slide_2_title">Get the facts</string>
+    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
     <string name="slide_3_title">Lấy điểm Nutriscore</string>
     <string name="slide_3_desc">Một cái nhìn tổng quan về đặc tính dinh dưỡng của sản phẩm mà bạn yêu thích</string>
-    <string name="slide_4_title">Hoạt động ngoại tuyến</string>
-    <string name="slide_4_desc">Bạn có thể thêm các sản phẩm mới, ngay cả khi bạn không có kết nối Internet ngay bây giờ</string>
+    <string name="slide_4_title">Works offline</string>
+    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">Sản phẩm bạn đã quét không tồn tại trong Sự Open Food Facts. Vui lòng thêm nó.</string>
     <string name="txtDialogsContentPowerMode">Sản phẩm bạn scan đã có trên Open Food Facts.</string>
     <string name="msg_share">Xem sản phẩm này trên Open Food Facts:</string>
@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">Scan sản phẩm ngay cả khi offline để thêm vào Open Food Fact sau. Sản phẩm đã scan sẽ xuất hiện ở đây và bạn có thể gửi chúng bằng nút ở bên dưới.</string>
     <string name="warning_alert_data">Thông tin bệnh dị ứng của bạn không bao giờ sẽ được gửi đến máy chủ Open Food Facts. Ngoài ra, hãy cẩn thận rằng dữ liệu sản phẩm có thể không chính xác, và việc phát hiện có thể không chính xác 100%, vì vậy xin vui lòng kiểm tra lần nữa! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">cơ sở dữ liệu sản phẩm thực phẩm mở</string>
+    <string name="tagline">the free food products database</string>
     <string name="product_not_found">Sản phẩm %1$s bạn đã quét không tồn tại trong Sự Open Food Facts. Bạn có thể thêm nó?</string>
     <string name="currently_on_version">Gần đây trên Open Food Facts</string>
 </resources>

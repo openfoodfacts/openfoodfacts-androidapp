@@ -48,8 +48,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>g</item>
         <item>mg</item>
+        <item>kg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
@@ -190,6 +190,7 @@
     <string name="txtFat">Rasva</string>
     <string name="txtSugars">Sokerit</string>
     <string name="hintBarcode">Viivakoodi</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">Käyttäjätunnus</string>
     <string name="hintPass">Salasana</string>
     <string name="errorLogin">Käyttäjätunnus tai salasana virheellinen</string>
@@ -437,6 +438,12 @@
     <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Tyydyttynyt rasva</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Skannaa</string>
@@ -451,7 +458,7 @@
     <string name="next">SEURAAVA</string>
     <string name="skip">OHITA</string>
     <string name="start">SELVÄ</string>
-    <string name="contact">Yhteystiedot</string>
+    <string name="contact">Contact</string>
     <string name="contact_summary">Contact the team</string>
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
@@ -508,7 +515,7 @@
     <string name="additive_string">Lisäaine</string>
     <string name="allergen_string">Allergeeni</string>
     <string name="search_string">Etsi</string>
-    <string name="country_string">Maat joissa myynnissä</string>
+    <string name="country_string">Maat myyntiehdot</string>
     <string name="store_subtitle">Kauppa</string>
     <string name="packaging_subtitle">Pakkaus</string>
     <string name="last_seen_string">%1$d %2$s ago</string>
@@ -641,7 +648,7 @@
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per Serving</string>
-    <string name="serving_size">Annoskoko</string>
+    <string name="serving_size">Palvelevat koko</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Lisää ravintoaine</string>
     <string name="add_this_product">Add this product</string>
@@ -653,7 +660,7 @@
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">Ainesosien alkuperä</string>
+    <string name="origin_of_ingredients">Alkuperä ainesosien</string>
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">EMB-koodi</string>
     <string name="purchasing_details">Purchasing Details</string>
@@ -665,9 +672,10 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-    <string name="edit_product_title">Muokkaa tuotetta</string>
+    <string name="edit_product_title">Muokkaa tuote</string>
     <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
@@ -746,5 +754,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Lisäaineet</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Maa</string>
     <!-- Used for diets AddOn -->
 </resources>

@@ -13,7 +13,7 @@
     <plurals name="days">
         <item quantity="other">%d days ago</item>
     </plurals>
-    <string name="action_settings">設定</string>
+    <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
     <string name="action_discover">探索</string>
     <string name="contribute">如何貢獻</string>
@@ -26,9 +26,9 @@
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>總覽</item>
+        <item>摘要</item>
         <item>成分</item>
-        <item>營養成分</item>
+        <item>营养</item>
         <item>營養成分表</item>
         <item>Environment</item>
     </string-array>
@@ -58,43 +58,43 @@
         <item>Arachidic acid (20:0)</item>
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
-        <item>碳酸氫鹽</item>
+        <item>碳酸氢钠</item>
         <item>生物素</item>
         <item>Butyric acid (4:0)</item>
         <item>咖啡因</item>
-        <item>鈣</item>
+        <item>钙</item>
         <item>Capric acid (10:0)</item>
         <item>Caproic acid (6:0)</item>
         <item>Caprylic acid (8:0)</item>
         <item>酪蛋白</item>
         <item>Cerotic acid (26:0)</item>
         <item>氯化物</item>
-        <item>膽固醇</item>
-        <item>鉻</item>
-        <item>銅</item>
+        <item>胆固醇</item>
+        <item>铬</item>
+        <item>铜</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
         <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
-        <item>氟化物</item>
+        <item>氟</item>
         <item>果糖</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
         <item>葡萄糖</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>碘</item>
-        <item>鐵</item>
+        <item>铁</item>
         <item>乳糖</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
-        <item>鎂</item>
-        <item>麥芽糊精</item>
-        <item>麥芽糖</item>
-        <item>錳</item>
+        <item>镁</item>
+        <item>麦芽糖</item>
+        <item>麦芽糖</item>
+        <item>锰</item>
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
-        <item>鉬</item>
+        <item>钼</item>
         <item>Monounsaturated fat</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
@@ -110,16 +110,16 @@
         <item>磷</item>
         <item>Sugar alcohols (Polyols)</item>
         <item>Polyunsaturated fat</item>
-        <item>鉀</item>
+        <item>钾</item>
         <item>硒</item>
         <item>Serum proteins</item>
-        <item>二氧化矽</item>
+        <item>二氧化硅</item>
         <item>Starch</item>
         <item>Stearic acid (18:0)</item>
         <item>蔗糖</item>
         <item>牛磺酸</item>
         <item>反式脂肪</item>
-        <item>維生素 A</item>
+        <item>维生素 A</item>
         <item>Vitamin B1 (Thiamin)</item>
         <item>Vitamin B12 (Cobalamin)</item>
         <item>Vitamin B2 (Riboflavin)</item>
@@ -130,12 +130,12 @@
         <item>维生素 D</item>
         <item>维生素 E</item>
         <item>维生素 K</item>
-        <item>鋅</item>
+        <item>锌</item>
     </string-array>
     <!-- Text units -->
     <string-array name="images_array">
         <item>預設值</item>
-        <item>營養成分</item>
+        <item>营养</item>
         <item>成分</item>
     </string-array>
     <!-- Content Description -->
@@ -172,9 +172,9 @@
     <string name="txtPalmOilProduct">來自棕櫚油的成分：</string>
     <string name="txtServingSize">份量：</string>
     <string name="txtNutrientLevel100g">每100公克的營養等級：</string>
-    <string name="txtNutritionLevelLow">低量</string>
-    <string name="txtNutritionLevelModerate">中等量</string>
-    <string name="txtNutritionLevelHigh">大量</string>
+    <string name="txtNutritionLevelLow">库存量</string>
+    <string name="txtNutritionLevelModerate">中等数量</string>
+    <string name="txtNutritionLevelHigh">最高含量</string>
     <string name="txtLogin">登入：</string>
     <string name="txtPass">密碼：</string>
     <string name="txtTitleHome">打開你的食物，知道你吃了什麼</string>
@@ -182,10 +182,11 @@
     <string name="txtSignIn">登入</string>
     <string name="txtUser">使用者面板</string>
     <string name="txtToastSaved">使用者已儲存</string>
-    <string name="txtSalt">鹽</string>
+    <string name="txtSalt">盐</string>
     <string name="txtFat">脂肪</string>
     <string name="txtSugars">糖</string>
-    <string name="hintBarcode">條碼</string>
+    <string name="hintBarcode">条形码</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">登入</string>
     <string name="hintPass">密碼</string>
     <string name="errorLogin">使用者名稱或密碼錯誤</string>
@@ -232,11 +233,11 @@
     <string name="home_drawer">首頁</string>
     <string name="search_drawer">搜尋</string>
     <string name="search_by_barcode_drawer">輸入條碼</string>
-    <string name="category_drawer">類別</string>
+    <string name="category_drawer">类别</string>
     <string name="search_by_category">分類</string>
     <string name="search_by_name_drawer">透過名稱搜尋</string>
     <string name="scan_search">掃描條碼</string>
-    <string name="user_drawer">使用者</string>
+    <string name="user_drawer">用户</string>
     <string name="offline_edit_drawer">離線編輯</string>
     <string name="txt_anonymous">匿名</string>
     <string name="txt_product_not_found">產品未找到</string>
@@ -299,7 +300,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">此產品的營養成分錶 %1$s</string>
     <string name="check_facts">Check</string>
-    <string name="nutrition">營養成分</string>
+    <string name="nutrition">营养</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please enter the weight</string>
     <string name="enter_weight">Enter the weight</string>
@@ -307,26 +308,26 @@
     <string name="txt_calories_result">在 %2$s %3$s 有 %1$s 千卡</string>
     <string name="nutrition_carbohydrate">碳水化合物</string>
     <string name="nutrition_carbohydrate_short_name">碳水化合物（公克）</string>
-    <string name="nutrition_cholesterol">膽固醇</string>
+    <string name="nutrition_cholesterol">胆固醇</string>
     <string name="nutrition_cholesterol_short_name">膽固醇（公克）</string>
     <string name="nutrition_energy">能量</string>
     <string name="nutrition_energy_short_name">能量</string>
     <string name="nutrition_fat">脂肪</string>
     <string name="nutrition_fat_short_name">脂肪（公克）</string>
-    <string name="nutrition_fiber">膳食纖維</string>
+    <string name="nutrition_fiber">膳食纤维</string>
     <string name="nutrition_fiber_short_name">膳食纖維（公克）</string>
-    <string name="nutrition_header">營養成分</string>
+    <string name="nutrition_header">营养成分</string>
     <string name="nutrition_no_data_message">對該產品沒有可用的資料</string>
     <string name="nutrition_per_quantity">每100公克/100毫升</string>
-    <string name="nutrition_proteins">蛋白質</string>
+    <string name="nutrition_proteins">蛋白质</string>
     <string name="nutrition_proteins_short_name">蛋白質（公克）</string>
-    <string name="nutrition_salt">鹽</string>
+    <string name="nutrition_salt">盐</string>
     <string name="nutrition_salt_short_name">鹽（公克）</string>
     <string name="nutrition_satured_fat">饱和脂肪</string>
     <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
     <string name="nutrition_serving">每份</string>
     <string name="nutrition_serving_size">份量：</string>
-    <string name="nutrition_sodium">鈉</string>
+    <string name="nutrition_sodium">钠</string>
     <string name="nutrition_sodium_short_name">鈉（公克）</string>
     <string name="nutrition_sugars">糖</string>
     <string name="nutrition_sugars_short_name">糖（公克）</string>
@@ -369,70 +370,76 @@
     <string name="txt_try_again">再試一次</string>
     <string name="nutrition_lactose">乳糖</string>
     <string name="nutrition_casein">酪蛋白</string>
-    <string name="nutrition_maltodextrins">麥芽糊精</string>
-    <string name="nutrition_serum_proteins">血清蛋白</string>
+    <string name="nutrition_maltodextrins">麦芽糖</string>
+    <string name="nutrition_serum_proteins">血浆蛋白</string>
     <string name="nutrition_nucleotides">核苷酸</string>
-    <string name="for_100g">每 100 公克</string>
+    <string name="for_100g">每 100 g</string>
     <string name="serving">每份</string>
-    <string name="minerals">礦物質</string>
-    <string name="nutrition_calcium">鈣</string>
-    <string name="nutrition_potassium">鉀</string>
+    <string name="minerals">矿物质</string>
+    <string name="nutrition_calcium">钙</string>
+    <string name="nutrition_potassium">钾</string>
     <string name="nutrition_chlore">氯</string>
-    <string name="nutrition_magnesium">鎂</string>
+    <string name="nutrition_magnesium">镁</string>
     <string name="nutrition_taurine">牛磺酸</string>
-    <string name="nutrition_monounsaturatedFat">單不飽和脂肪</string>
-    <string name="nutrition_polyunsaturatedFat">多不飽和脂肪</string>
+    <string name="nutrition_monounsaturatedFat">单不饱和脂肪</string>
+    <string name="nutrition_polyunsaturatedFat">多元不饱和脂肪</string>
     <string name="nutrition_omega3">欧米伽 3</string>
     <string name="nutrition_omega6">欧米伽 5</string>
     <string name="nutrition_omega9">欧米伽 9</string>
     <string name="nutrition_sucrose">蔗糖</string>
     <string name="nutrition_glucose">葡萄糖</string>
     <string name="nutrition_fructose">果糖</string>
-    <string name="nutrition_maltose">麥芽糖</string>
+    <string name="nutrition_maltose">麦芽糖</string>
     <string name="nutrition_alcohol">酒精</string>
-    <string name="nutrition_vitamins">維生素</string>
-    <string name="vitamin_a">維生素 A</string>
+    <string name="nutrition_vitamins">维生素</string>
+    <string name="vitamin_a">维生素 A</string>
     <string name="vitamin_d">维生素 D</string>
     <string name="vitamin_e">维生素 E</string>
     <string name="vitamin_k">维生素 K</string>
-    <string name="vitamin_c">維生素 C</string>
-    <string name="vitamin_b1">維生素 B1</string>
-    <string name="vitamin_b2">維生素 B2</string>
-    <string name="vitamin_pp">維生素 PP</string>
-    <string name="vitamin_b6">維生素 B6</string>
-    <string name="vitamin_b9">維生素 B9</string>
-    <string name="vitamin_b12">維生素 B12</string>
+    <string name="vitamin_c">维生素 C</string>
+    <string name="vitamin_b1">维生素 B1</string>
+    <string name="vitamin_b2">维生素 B2</string>
+    <string name="vitamin_pp">维生素 PP</string>
+    <string name="vitamin_b6">维生素 B6</string>
+    <string name="vitamin_b9">维生素 B9</string>
+    <string name="vitamin_b12">维生素 B12</string>
     <string name="biotin">生物素</string>
     <string name="pantothenic_acid">泛酸</string>
-    <string name="nutrition_minerals">礦物質</string>
-    <string name="silica">二氧化矽</string>
-    <string name="bicarbonate">碳酸氫鹽</string>
-    <string name="potassium">鉀</string>
+    <string name="nutrition_minerals">矿物质</string>
+    <string name="silica">二氧化硅</string>
+    <string name="bicarbonate">碳酸氢钠</string>
+    <string name="potassium">钾</string>
     <string name="chloride">氯化物</string>
-    <string name="calcium">鈣</string>
+    <string name="calcium">钙</string>
     <string name="phosphorus">磷</string>
-    <string name="iron">鐵</string>
-    <string name="magnesium">鎂</string>
-    <string name="zinc">鋅</string>
-    <string name="copper">銅</string>
-    <string name="manganese">錳</string>
-    <string name="fluoride">氟化物</string>
+    <string name="iron">铁</string>
+    <string name="magnesium">镁</string>
+    <string name="zinc">锌</string>
+    <string name="copper">铜</string>
+    <string name="manganese">锰</string>
+    <string name="fluoride">氟</string>
     <string name="selenium">硒</string>
-    <string name="chromium">鉻</string>
-    <string name="molybdenum">鉬</string>
+    <string name="chromium">铬</string>
+    <string name="molybdenum">钼</string>
     <string name="iodine">碘</string>
     <string name="caffeine">咖啡因</string>
     <string name="taurine">牛磺酸</string>
     <string name="ph">pH值</string>
-    <string name="fruits_vegetables_nuts">水果，蔬菜，堅果</string>
-    <string name="collagen_meat_protein_ratio">膠原蛋白肉與蛋白的比例</string>
-    <string name="cocoa">可可</string>
-    <string name="chlorophyl">葉綠素</string>
-    <string name="take_picture_ingredients">拍攝成分的照片</string>
-    <string name="take_picture_front">拍攝正面的照片</string>
-    <string name="take_picture_nutrition_table">拍攝營養成份表的照片</string>
+    <string name="fruits_vegetables_nuts">水果，蔬菜，坚果</string>
+    <string name="collagen_meat_protein_ratio">胶原蛋白比例</string>
+    <string name="cocoa">可可粉</string>
+    <string name="chlorophyl">叶绿素</string>
+    <string name="take_picture_ingredients">拍摄营养成分</string>
+    <string name="take_picture_front">拍摄正面照片</string>
+    <string name="take_picture_nutrition_table">拍摄营养成分</string>
     <string name="take_more_pictures">拍攝更多照片</string>
     <string name="txtSaturatedFat">饱和脂肪</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">無法使用捷徑</string>
     <string name="scan_shortcut_short_label">掃描</string>
@@ -453,11 +460,11 @@
     <string name="airplane_mode_active_dialog_title">飛行模式已開啟</string>
     <string name="airplane_mode_active_dialog_message">飛行模式已啟用，請禁用此功能以繼續。</string>
     <string name="airplane_mode_active_dialog_negative">關閉</string>
-    <string name="airplane_mode_active_dialog_positive">設定</string>
+    <string name="airplane_mode_active_dialog_positive">设置</string>
     <string name="device_offline_dialog_title">沒有可用的網路連線</string>
     <string name="device_offline_dialog_message">需要網絡連接來做到這一點，你想在設置中改變它嗎？</string>
     <string name="device_offline_dialog_negative">關閉</string>
-    <string name="device_offline_dialog_positive">設定</string>
+    <string name="device_offline_dialog_positive">设置</string>
     <string name="saving">儲存…</string>
     <string name="scan_first_product">掃描您的第一個產品</string>
     <string name="preference_enable_mobile_data_title">透過行動數據來進行上傳</string>
@@ -504,12 +511,12 @@
     <string name="additive_string">添加劑</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">搜尋</string>
-    <string name="country_string">販售國</string>
+    <string name="country_string">可出售的国家</string>
     <string name="store_subtitle">商店</string>
-    <string name="packaging_subtitle">包裝套件</string>
+    <string name="packaging_subtitle">包装</string>
     <string name="last_seen_string">%1$d %2$s ago</string>
     <string name="store_string">商店</string>
-    <string name="packaging_string">包裝套件</string>
+    <string name="packaging_string">包装</string>
     <string name="label_string">標籤</string>
     <string name="category_string">分類</string>
     <string name="connection">Connected</string>
@@ -531,7 +538,7 @@
     <string name="txtOptions">Options</string>
     <string name="by_title">Title</string>
     <string name="by_brand">牌子</string>
-    <string name="by_barcode">條碼</string>
+    <string name="by_barcode">条形码</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
@@ -631,13 +638,13 @@
     <string name="extracting_ingredients">摘錄配料</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">追蹤</string>
+    <string name="traces">痕迹</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">產品未具體標明營養成分</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per Serving</string>
-    <string name="serving_size">份量</string>
+    <string name="serving_size">分量</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">新增營養</string>
     <string name="add_this_product">Add this product</string>
@@ -645,11 +652,11 @@
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
     <string name="product_name">品名</string>
-    <string name="quantity">數量</string>
+    <string name="quantity">数量</string>
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">開封後保存期限</string>
     <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">配料來源</string>
+    <string name="origin_of_ingredients">成分来源</string>
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
@@ -661,6 +668,7 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">編輯產品</string>
@@ -742,5 +750,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">添加</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">國家</string>
     <!-- Used for diets AddOn -->
 </resources>

@@ -62,15 +62,15 @@
         <item>Arachidic acid (20:0)</item>
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
-        <item>बाईकार्बोनेट</item>
+        <item>बिकारबोनिट</item>
         <item>बायोटिन</item>
         <item>Butyric acid (4:0)</item>
-        <item>कैफ़ीन</item>
+        <item>कैफीन</item>
         <item>केल्शियम</item>
         <item>Capric acid (10:0)</item>
         <item>Caproic acid (6:0)</item>
         <item>Caprylic acid (8:0)</item>
-        <item>केसीन</item>
+        <item>कैसिइन</item>
         <item>Cerotic acid (26:0)</item>
         <item>क्लोराइड</item>
         <item>कोलेस्ट्रॉल</item>
@@ -81,14 +81,14 @@
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
-        <item>फ़्लोराइड</item>
-        <item>फ्रक्टोज़</item>
+        <item>फ्लोराइड</item>
+        <item>फ्रुक्टोज</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
-        <item>ग्लूकोज़</item>
+        <item>शर्करा</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>आयोडीन</item>
         <item>लोहा</item>
-        <item>लैक्टोज़</item>
+        <item>लैक्टोज</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
@@ -120,8 +120,8 @@
         <item>सिलिका</item>
         <item>Starch</item>
         <item>Stearic acid (18:0)</item>
-        <item>सुक्रोज़</item>
-        <item>टौरीन</item>
+        <item>सुक्रोज</item>
+        <item>टौरीने</item>
         <item>ट्रांस वसा</item>
         <item>विटामिन ए</item>
         <item>Vitamin B1 (Thiamin)</item>
@@ -190,6 +190,7 @@
     <string name="txtFat">वसा</string>
     <string name="txtSugars">शुगर्स</string>
     <string name="hintBarcode">बारकोड</string>
+    <string name="txtNutriScoreInfo">How is it computed ?</string>
     <string name="hintLogin">लॉगिन</string>
     <string name="hintPass">पासवर्ड</string>
     <string name="errorLogin">लॉगिन या पासवर्ड एरर</string>
@@ -371,27 +372,27 @@
     <string name="txt_cant_load_search_results">खोज परिणामों का लोड करना नामुमकिन है</string>
     <string name="something_went_wrong">क्षमा करें, कुछ गलत हो गया…</string>
     <string name="txt_try_again">फिर कोशिश करे</string>
-    <string name="nutrition_lactose">लैक्टोज़</string>
-    <string name="nutrition_casein">केसीन</string>
+    <string name="nutrition_lactose">लैक्टोज</string>
+    <string name="nutrition_casein">कैसिइन</string>
     <string name="nutrition_maltodextrins">माल्टोडेक्सट्रिन्स</string>
     <string name="nutrition_serum_proteins">सीरम प्रोटीन</string>
     <string name="nutrition_nucleotides">न्यूक्लियोटाइड</string>
     <string name="for_100g">१०० g के लिए</string>
     <string name="serving">प्रत्येक हिस्सा</string>
-    <string name="minerals">मिनरल</string>
+    <string name="minerals">खनिज</string>
     <string name="nutrition_calcium">केल्शियम</string>
     <string name="nutrition_potassium">पोटेशियम</string>
     <string name="nutrition_chlore">क्लोरीन</string>
     <string name="nutrition_magnesium">मैग्नीशियम</string>
-    <string name="nutrition_taurine">टौरीन</string>
-    <string name="nutrition_monounsaturatedFat">मोनो अनसैचुरेटेड फ़ैट</string>
-    <string name="nutrition_polyunsaturatedFat">पॉलीअनसैचुरेटेड फ़ैट</string>
+    <string name="nutrition_taurine">टौरीने</string>
+    <string name="nutrition_monounsaturatedFat">एक-संतृप्त वसा</string>
+    <string name="nutrition_polyunsaturatedFat">बहुसंतृप्त वसा</string>
     <string name="nutrition_omega3">ओमेगा 3</string>
     <string name="nutrition_omega6">ओमेगा 6</string>
     <string name="nutrition_omega9">ओमेगा 9</string>
-    <string name="nutrition_sucrose">सुक्रोज़</string>
-    <string name="nutrition_glucose">ग्लूकोज़</string>
-    <string name="nutrition_fructose">फ्रक्टोज़</string>
+    <string name="nutrition_sucrose">सुक्रोज</string>
+    <string name="nutrition_glucose">शर्करा</string>
+    <string name="nutrition_fructose">फ्रुक्टोज</string>
     <string name="nutrition_maltose">माल्टोज़</string>
     <string name="nutrition_alcohol">अल्कोहॉल</string>
     <string name="nutrition_vitamins">विटामिन</string>
@@ -408,9 +409,9 @@
     <string name="vitamin_b12">विटामिन बी 12</string>
     <string name="biotin">बायोटिन</string>
     <string name="pantothenic_acid">पैंटोथैनिक एसिड</string>
-    <string name="nutrition_minerals">मिनरल</string>
+    <string name="nutrition_minerals">खनिज</string>
     <string name="silica">सिलिका</string>
-    <string name="bicarbonate">बाईकार्बोनेट</string>
+    <string name="bicarbonate">बिकारबोनिट</string>
     <string name="potassium">पोटेशियम</string>
     <string name="chloride">क्लोराइड</string>
     <string name="calcium">केल्शियम</string>
@@ -420,23 +421,29 @@
     <string name="zinc">ज़िंक</string>
     <string name="copper">तांबा</string>
     <string name="manganese">मैंगनीज़</string>
-    <string name="fluoride">फ़्लोराइड</string>
+    <string name="fluoride">फ्लोराइड</string>
     <string name="selenium">सेलेनियम</string>
     <string name="chromium">क्रोमियम</string>
     <string name="molybdenum">मॉलीब्डेनम</string>
     <string name="iodine">आयोडीन</string>
-    <string name="caffeine">कैफ़ीन</string>
-    <string name="taurine">टौरीन</string>
+    <string name="caffeine">कैफीन</string>
+    <string name="taurine">टौरीने</string>
     <string name="ph">पीएच</string>
     <string name="fruits_vegetables_nuts">फल, सब्जियां, दाने</string>
     <string name="collagen_meat_protein_ratio">कोलेजन मांस प्रोटीन अनुपात</string>
     <string name="cocoa">कोकोआ</string>
     <string name="chlorophyl">क्लोरोफिल</string>
-    <string name="take_picture_ingredients">सामग्री की एक चित्र लीजिए</string>
+    <string name="take_picture_ingredients">सामग्रियों की एक छायाचित्र लीजिए</string>
     <string name="take_picture_front">सामने की तस्वीर ले</string>
     <string name="take_picture_nutrition_table">पोषण तालिका की एक तस्वीर लें</string>
     <string name="take_more_pictures">और तस्वीरें लें</string>
     <string name="txtSaturatedFat">संतृप्त वसा</string>
+    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
+    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">शॉर्टकट उपलब्ध नहीं है</string>
     <string name="scan_shortcut_short_label">स्कैन</string>
@@ -665,6 +672,7 @@
     <string name="uploading_ingredients_image">सामग्री की तस्वीर अपलोड हो रही है</string>
     <string name="uploading_front_image">उत्पाद की तस्वीर अपलोड हो रही है</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">किसी उत्पाद को संपादित करने के लिए कृपया साइन इन करें।</string>
     <string name="hint_quantity">उदाहरण: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
@@ -746,5 +754,11 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">योगशील</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">देश</string>
     <!-- Used for diets AddOn -->
 </resources>
