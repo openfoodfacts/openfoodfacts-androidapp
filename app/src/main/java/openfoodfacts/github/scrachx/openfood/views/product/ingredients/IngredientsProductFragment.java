@@ -42,6 +42,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -290,18 +291,24 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         presenter.loadAdditives();
 
         if (isNotBlank(product.getImageIngredientsUrl())) {
-            addPhotoLabel.setVisibility(View.GONE);
 
-            // Load Image if isLowBatteryMode is false
-            if (!isLowBatteryMode) {
-                Picasso.with(getContext())
-                        .load(product.getImageIngredientsUrl())
-                        .into(mImageIngredients);
+            if (!Locale.getDefault().getLanguage().equals(product.getLang())) {
+                addPhotoLabel.setText("Take a photo of the ingredients in "+Locale.getDefault().getDisplayLanguage());
+                mUrlImage = null;
             } else {
-                mImageIngredients.setVisibility(View.GONE);
-            }
+                addPhotoLabel.setVisibility(View.GONE);
 
-            mUrlImage = product.getImageIngredientsUrl();
+                // Load Image if isLowBatteryMode is false
+                if (!isLowBatteryMode) {
+                    Picasso.with(getContext())
+                            .load(product.getImageIngredientsUrl())
+                            .into(mImageIngredients);
+                } else {
+                    mImageIngredients.setVisibility(View.GONE);
+                }
+
+                mUrlImage = product.getImageIngredientsUrl();
+            }
         }
 
         //useful when this fragment is used in offline saving
