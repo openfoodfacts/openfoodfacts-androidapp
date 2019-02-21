@@ -1,10 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.Resources;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
 
@@ -69,6 +65,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
 
         //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
         holder.txtTitle.setText(item.getTitle());
+        holder.txtBarcode.setText(item.getBarcode());
         holder.txtProductDetails.setText(stringBuilder.toString());
         if(BuildConfig.FLAVOR.equals("opf")||BuildConfig.FLAVOR.equals("opff")||BuildConfig.FLAVOR.equals("obf")){
             holder.imgNutritionGrade.setVisibility(View.GONE);
@@ -108,16 +105,6 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
 
         Date date = list.get(position).getTime();
         calcTime(date, holder);
-
-        holder.itemView.setOnClickListener(v -> {
-            ConnectivityManager cm = (ConnectivityManager) v.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            if (isConnected) {
-                OpenFoodAPIClient api = new OpenFoodAPIClient(mActivity);
-                api.getProduct(item.getBarcode(), (Activity) v.getContext());
-            }
-        });
 
         //animate(holder);
     }
