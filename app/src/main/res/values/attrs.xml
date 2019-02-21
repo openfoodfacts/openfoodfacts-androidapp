@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="CustomView">
+    <attr name="drawableLeftCompat" format="reference"/>
+    <attr name="drawableRightCompat" format="reference"/>
+    <attr name="drawableTopCompat" format="reference"/>
+    <attr name="drawableBottomCompat" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="CustomEditTextView" parent="CustomView">
+        <attr name="drawableLeftCompat" />
+        <attr name="drawableRightCompat" />
+        <attr name="drawableTopCompat" />
+        <attr name="drawableBottomCompat" />
+    </declare-styleable>
+    <declare-styleable name="CustomButtonView" parent="CustomView">
+        <attr name="drawableLeftCompat" />
+        <attr name="drawableRightCompat" />
+        <attr name="drawableTopCompat" />
+        <attr name="drawableBottomCompat" />
+    </declare-styleable>
+    <declare-styleable name="CustomTextView" parent="CustomView">
+        <attr name="drawableLeftCompat" />
+        <attr name="drawableRightCompat" />
+        <attr name="drawableTopCompat" />
+        <attr name="drawableBottomCompat" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,35 @@
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+
+The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+
+Če želite raziskati projekt odprta dejstva o hrani, obiščite https://openfoodfacts.org
+
+
+***Contribute to Food Transparency***
+
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
+- You can start contributing today by adding a product from your food cupboard. 
+
+*** Pridobite dejstva***
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
+
+*** Dobro deluje v vseh pogojih ***
+- lahko dodate nove izdelke, tudi če trenutno nimate internetne povezave.
+- Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije
+- Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
+
+*** Vaša hrana, vaši podatki ***
+- Vaši podatki so vaši in se nikoli ne pošljejo na splet
+- Aplikacijo lahko uporabljate anonimno
+- Zgodovino optičnega branja lahko izvozite
+
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Questions, feedback : contact@openfoodfacts.org
+
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

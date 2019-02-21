@@ -1,0 +1,35 @@
+扫描食品或者食品条形码获取配料信息、添加剂和营养成分。
+
+The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+
+想获得更多 Open Food Facts 项目信息，请访问 https://openfoodfacts.org
+
+
+***促进食品信息透明化***
+
+- Open Food Facts 是一个大家共同建立，为了每一个人的食品数据库。
+- 您可以使用它来做出更好的食物选择，并且由于它是公开数据，任何人都可以将其复用于任何目的。
+- Open Food Facts 是一个由全球数以千计的志愿者者开发的非盈利性项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
+- 从今天起您可以通过添加您食品橱柜中的产品为我们的项目献一份力。 
+
+***获取信息***
+- Open Food Facts 可帮助您了解产品标签上的各个细节。 您能找到（根据产品上的指示）：
+- 碳足迹（二氧化碳排放量）和包装信息（以及回收说明），
+-  Nutriscore（营养评分）、营养素、脂肪/脂肪含量、饱和脂肪酸、碳水化合物、糖分、纤维、蛋白质、以及盐和钠。
+- 品牌、过敏原、标签（简介、无麸质、纯素食、素食、清真、犹太...），可追溯性信息（包装规范、原料来源）
+- 对于葡萄酒和啤酒产品，您能找到酒精含量信息。
+
+在任何情况下都有效
+- 即使没有连接互联网，你也可以添加新的产品。
+- 应用程序仅加载严格必要以减少数据及电量消耗
+- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。
+
+***您的食物，您的数据***
+- 你的数据只属于你，并永远不会被上传。
+- 您可以匿名使用该应用
+- 您可以导出历史记录
+
+Open Food Facts 也可以在网站 https://world.openfoodfacts.org 上找到
+Questions, feedback : contact@openfoodfacts.org
+
+关于化妆品，您可以安装 Open Beauty Facts；关于宠物食品，您可以安装 Open Pet Food Facts；关于其他所有其他产品，您可以安装 Open Products Facts。

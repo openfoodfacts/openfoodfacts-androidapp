@@ -1,0 +1,22 @@
+v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a more global movement than ever. 500k products freed, 182 countries, 10K+ contributors, incl. you :-)
+1. NutriScore pro všechny produkty na světe
+2. Exportovatelná historie, uvidíte pouze vy
+3. Upozornění na alergeny
+4. Tap additives to explore with Wikipedia.
+5. Take photos, be part of food transparency
+6. Mnohem rychlejší, dokonce i na 2G. Můžete dokonce přispívat i bez připojení k internetu
+7. Nevyžaduje registraci
+8. Lehká verze stejně jako předtím :)
+
+v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+1. Přebudovali jsme celý proces přidávání produktů (funguje dokonce i offline). (Díky Huzaifovi)
+2. Nyní můžete získat nutriční údaje pro porci jídla, kterou právě jíte (Rutvik)
+3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
+4. Domácí úklid (podle Rutvik & Salfai)
+5. 🌎 Korejština a indonéština
+
+2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
+1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
+2. 🌍 slovenština, hebrejština, španělština, arabština, holandština, maďarština a vietnamština (pomozte na translate.openfoodfacts.org)
+3. Open Food Fact funguje na základě usilí dobrovolníků. Můžete věnovat čas
+(world.openfoodfacts.org/contribute) nebo peníze (donate.openfoodfacts.org)

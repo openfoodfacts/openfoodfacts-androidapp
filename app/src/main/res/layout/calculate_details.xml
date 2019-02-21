@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/Black_Back_Arrow" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/result_text_view"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:textSize="15sp"
+            android:maxLines="2"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/nutriments_recycler_view_calc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listheader="@layout/nutrition_fact_header_new"
+            tools:listitem="@layout/nutriment_item_list"
+            android:paddingBottom="60dp"
+            android:scrollbars="vertical"/>
+
+    </LinearLayout>
+</LinearLayout>
+
+
+

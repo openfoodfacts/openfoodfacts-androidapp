@@ -1,0 +1,31 @@
+***Contribuez à la transparence cosmétique***
+
+- Open Beauty Facts est une base de données de produits cosmétiques faite par tout le monde, pour tout le monde.
+- Vous pouvez l'utiliser pour faire de meilleurs choix cosmétiques, et comme ce sont des données ouvertes, n'importe qui peut les réutiliser pour n'importe quel but.
+- Open Beauty Facts est un projet à but non lucratif développé par des milliers de volontaires du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons. 
+- Vous pouvez commencer à contribuer aujourd'hui en ajoutant un produit de votre armoire cosmétique. 
+
+*** Obtenez les faits ***
+
+- Additifs cosmétiques, codes FIL , numéros CI, INCI (Nomenclature Internationale des Ingrédients Cosmétiques), liste d'ingrédients, allergènes, codes d'emballage ... 
+- Open Beauty Facts vous aide à comprendre les petits caractères sur les étiquettes des produits.
+- Vous n'avez plus besoin d'être chimiste et d'apprendre le latin pour déchiffrer une liste d'ingrédients :-)
+- Vous pouvez scanner: après-rasage, lotions pour le corps, crèmes, déodorant, eyeliner, fond de teint, parfum, rouge à lèvres, maquillage, masque, parfum, shampoing, savon, gel douche, vernis à ongles et bien plus encore …
+- Nous pensons que l'app peut être utile pour les personnes souffrant d'affections cutanées comme l'acné, le psoriasis, l'eczéma ... pour faire de meilleurs choix cosmétiques.
+
+*** Fonctionne bien dans toutes les conditions ***
+- Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d'une connexion Internet sur le moment.
+- L'application ne charge que le strict nécessaire pour réduire la consommation de données et de la batterie
+- Vous n'avez pas besoin d'une caméra pour rechercher un produit. Vous pouvez également taper le code à barres si vous n'avez pas d'appareil photo ou si vous avez un problème avec celui-ci.
+
+*** Vos cosmétiques, vos données ***
+- Vos données vous appartiennent et ne sont jamais envoyées en ligne
+- Vous pouvez utiliser l'application anonymement
+- Vous pouvez exporter votre historique de scans
+
+Note: Open Beauty Facts est en cours de construction, le site et l'application sont basés sur Open Food Facts et des changements seront apportés pour prendre en compte les spécificités des cosmétiques.
+
+Open Beauty Facts est également disponible sur le Web à l'adresse https://world-fr.openbeautyfacts.org
+Questions, commentaires: contact@openfoodfacts.org
+
+Pour la nourriture humaine, vous pouvez installer Open Food Facts, pour les aliments pour animaux de compagnie, Open Pet Food Facts, et pour tous les autres produits, Open Products Facts.

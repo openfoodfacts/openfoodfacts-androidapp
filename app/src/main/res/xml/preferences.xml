@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/preference_header_general">
+
+
+        <ListPreference
+            android:defaultValue="en"
+            android:dialogTitle="@string/preference_choose_language_dialog_title"
+            android:key="Locale.Helper.Selected.Language"
+            android:summary="@string/prefs_language_summary"
+            android:title="@string/prefs_language" />
+
+        <ListPreference
+            android:dialogTitle="@string/energy_pref_title"
+            android:key="energyUnitPreference"
+            android:summary="Choose your preferred units for energy for the nutrition table"
+            android:title="@string/energy_pref_title" />
+
+        <ListPreference
+            android:dialogTitle="@string/volume_pref_title"
+            android:key="volumeUnitPreference"
+            android:summary="@string/choose_volume_unit"
+            android:title="@string/volume_pref_title" />
+
+        <Preference
+            android:dialogTitle="@string/search_history_pref_title"
+            android:key="deleteSearchHistoryPreference"
+            android:summary="@string/search_history_pref_summary"
+            android:title="@string/search_history_pref_title" />
+        <ListPreference
+            android:dialogTitle="@string/settings_country_dialog_title"
+            android:key="user_country"
+            android:summary="@string/settings_country_summary"
+            android:title="@string/settings_country_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="startScan"
+            android:summary="@string/prefs_scan_startup_summary"
+            android:title="@string/prefs_scan_startup" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="powerMode"
+            android:summary="@string/prefs_power_mode_summary"
+            android:title="@string/prefs_power_mode" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="shakeScanMode"
+            android:summary="@string/shake_summary"
+            android:title="@string/shake_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/preference_header_network">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="enableMobileDataUpload"
+            android:summaryOff="@string/preference_enable_mobile_data_summary_off"
+            android:summaryOn="@string/preference_enable_mobile_data_summary_on"
+            android:title="@string/preference_enable_mobile_data_title" />
+
+        <ListPreference
+            android:defaultValue="640 X 480"
+            android:dialogTitle="@string/choose_resolution"
+            android:key="ImageUpload"
+            android:selectable="true"
+            android:summary="@string/pref_resolution_summary"
+            android:title="@string/image_upload_resolution" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="disableImageLoad"
+            android:summary="@string/disable_image_loading"
+            android:title="@string/DisableLoadTitle" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/preference_header_contributing">
+
+        <Preference
+            android:summary="@string/Donation"
+            android:title="@string/Donate">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/donation_url" />
+        </Preference>
+
+        <Preference
+            android:key="local_translate_help"
+            android:summary="@string/translate_help_summary"
+            android:title="@string/translate_help_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="contributionTab"
+            android:summary="@string/contribution_tab_summary"
+            android:title="@string/contribution_tab_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="fastAdditionMode"
+            android:summary="@string/fast_addition_mode"
+            android:title="@string/fast_addition_mode_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="photoMode"
+            android:summary="@string/preference_show_all_product_photos_summary"
+            android:title="@string/preference_show_all_product_photos_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/preference_header_about">
+
+        <Preference
+            android:key="contact_team"
+            android:summary="@string/contact_summary"
+            android:title="@string/contact" />
+
+        <Preference
+            android:key="FAQ"
+            android:summary="@string/FrequentlyAskedQuestions"
+            android:title="@string/FAQ" />
+        <Preference
+            android:key="RateUs"
+            android:summary="@string/Rate_Us_title"
+            android:title="@string/Rate_Us" />
+
+        <Preference
+            android:key="Terms"
+            android:summary="@string/TermsOfUse"
+            android:title="@string/Terms" />
+
+        <Preference
+            android:key="Version"
+            android:title="@string/version" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

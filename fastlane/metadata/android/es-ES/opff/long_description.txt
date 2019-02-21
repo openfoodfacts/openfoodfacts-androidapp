@@ -1,0 +1,34 @@
+Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+
+The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+
+To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+
+***Contribute to Pet Food Transparency***
+
+- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
+- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
+- You can start contributing today by adding a product from your pet's cupboard. 
+
+
+*** Obtener los datos ***
+
+You will also be able to find (according to the indications present on the products):
+- list of ingredients (including ash content)
+- nutritional info, nutrition traffic lights…
+- brands, allergens, labels (organic, vegan...)
+- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+
+*** Funciona bien en cualquier condición ***
+- Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento.
+- La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería
+- No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
+
+*** Your pet food, your data ***
+- Tus datos son tuyos y nunca se envían en línea
+- Puedes usar la aplicación de forma anónima
+- Puedes exportar tu historial de escaneo
+
+
+For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.

@@ -1,0 +1,21 @@
+Nova group
+
+Nova groups
+
+Nova group:
+
+Ryhmä 1
+Group 1 - Unprocessed or minimally processed foods
+Unprocessed or minimally processed foods
+
+Ryhmä 2
+Group 2 - Processed culinary ingredients
+Processed culinary ingredients
+
+Ryhmä 3
+Group 3 - Processed foods
+Processed foods
+
+Ryhmä 4
+Group 4 - Ultra-processed food and drink products
+Ultra-processed food and drink products

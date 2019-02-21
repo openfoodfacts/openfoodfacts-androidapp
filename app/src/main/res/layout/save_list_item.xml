@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgSaveProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_small"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/img_scan" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:layout_marginStart="@dimen/spacing_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/percentage_completed"
+        app:layout_constraintStart_toEndOf="@id/imgSaveProduct"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/titleSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_normal"
+            tools:text="Product Name" />
+
+        <TextView
+            android:id="@+id/offlineBrand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:textSize="@dimen/font_normal"
+            app:layout_constraintTop_toBottomOf="@id/titleSave"
+            tools:text="Test Brand" />
+
+        <TextView
+            android:id="@+id/offlineWeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:textSize="@dimen/font_normal"
+            app:layout_constraintTop_toBottomOf="@id/offlineBrand"
+            tools:text="200 g" />
+
+        <TextView
+            android:id="@+id/barcodeSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:textSize="@dimen/font_normal"
+            app:layout_constraintTop_toBottomOf="@id/offlineWeight"
+            tools:text="8888888888888" />
+    </android.support.constraint.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/percentage_completed"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
+        android:layout_margin="@dimen/spacing_normal"
+        android:max="25"
+        android:progress="12"
+        app:layout_constraintBottom_toBottomOf="@id/imgSaveProduct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imgSaveProduct" />
+
+    <TextView
+        android:id="@+id/txt_percentage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_small"
+        app:layout_constraintBottom_toBottomOf="@id/percentage_completed"
+        app:layout_constraintEnd_toEndOf="@id/percentage_completed"
+        app:layout_constraintStart_toStartOf="@id/percentage_completed"
+        app:layout_constraintTop_toTopOf="@id/percentage_completed"
+        tools:text="35%" />
+
+    <ProgressBar
+        android:id="@+id/offlineUploadProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+</android.support.constraint.ConstraintLayout>

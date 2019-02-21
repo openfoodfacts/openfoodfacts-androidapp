@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/saveRel"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <FrameLayout
+        android:id="@+id/searchImgFrame"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/spacing_normal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            tools:src="@drawable/header" />
+
+        <ProgressBar
+            android:id="@+id/searchImgProgressbar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/searchImgFrame"
+        android:layout_alignTop="@+id/searchImgFrame"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_toLeftOf="@id/imgGrade"
+        android:layout_toRightOf="@id/searchImgFrame"
+        android:columnCount="1"
+        android:rowCount="2">
+
+        <TextView
+            android:id="@+id/nameProduct"
+            android:layout_width="fill_parent"
+            android:layout_row="0"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textAlignment="gravity"
+            android:textSize="@dimen/font_large"
+            tools:text="Product name with a long long long description" />
+
+        <TextView
+            android:id="@+id/productDetails"
+            android:layout_width="fill_parent"
+            android:layout_row="1"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textSize="@dimen/font_normal"
+            tools:text="Product details which are also sometimes very long" />
+
+    </GridLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/imgGrade"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/spacing_small"
+        tools:src="@drawable/nnc_small_a" />
+
+</RelativeLayout>

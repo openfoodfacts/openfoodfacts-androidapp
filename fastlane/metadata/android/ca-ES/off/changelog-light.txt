@@ -1,0 +1,21 @@
+v2 ! Totes les persones voluntàries han treballat molt, en funció dels vostres suggeriments. Som un moviment més global que mai. Més de 500.000 productes alliberats, 182 països, més de 10.000 persones col·laboradores, inclosos vosaltres :-)
+1. El NutriScore per a tots els productes del món
+2. Historial exportable, només per a vosaltres
+3. Alertes sobre al·lèrgens
+4. Cliqueu additius per explorar amb la Viquipèdia.
+5. Feu fotos, sigueu part de la transparència alimentària
+6. Molt més ràpid, fins i tot en 2G. Fins i tot podeu contribuir sense connexió a internet
+7. No cal registrar-se
+8. Tan lleugera com abans :)
+
+v2.8! Després de la massiva V2, tot el voluntariat s'ha mantingut treballant intensament, segons els vostres suggeriments. Ara hem arribat als 570.000 productes alliberats des de 182 països per més de 10.000 col·laboradors, inclosos vosaltres. ;-)
+1. Hem reconstruït tota l'experiència d'addició de producte (i fins i tot funciona sense connexió). (gràcies Huzaifa)
+2. Ara podeu obtenir informació nutricional sobre la porció que esteu menjant (Rutvik)
+3. Ara computem grups NOVA, a més del Nutriscore (Huzaifa)
+4. Neteja i manteniment del codi (per Rutvik i Salfai)
+5. Coreà i indonesi
+
+2.8.8 ! Crèieu que deixaríem d'afegir productes? Tot el voluntariat d'OFF han continuat treballant intensament. Més de 590.000 productes alliberats, 182 països, més de 10.000 persones col·laboradores, inclosos vosaltres. ;-)
+1. Ara podeu editar qualsevol producte amb el vostre compte d'OFF. Feu clic damunt de "✏" a la pàgina del producte per editar-la.
+2. 🌍 Eslovac, hebreu, espanyol, àrab, holandès, hongarès i vietnamita (translate.openfoodfacts.org per ajudar)
+3. Open Food Facts és un gran esforç per a tots els voluntaris: podeu donar part del vostre temps (world.openfoodfacts.org/contribute) o diners (donate.openfoodfacts.org)

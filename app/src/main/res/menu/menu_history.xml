@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_remove_all_history"
+        android:icon="@drawable/ic_delete_black_24dp"
+        android:title="@string/clear_history"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_export_all_history"
+        android:icon="@drawable/ic_file_download_black_24dp"
+        android:title="@string/export_csv_history"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/sort_history"
+        android:icon="@drawable/ic_sort_black_24dp"
+        android:title="@string/sort"
+        app:showAsAction="ifRoom">
+
+    </item>
+
+</menu>

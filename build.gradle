@@ -1,0 +1,76 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+        classpath 'com.github.timfreiheit:ResourcePlaceholdersPlugin:0.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+ext {
+    supportLibraryVersion = '27.1.1'
+    multidexVersion = '1.0.3'
+
+    daggerVersion = '2.13'
+
+    rxVersion = '2.1.7'
+    rxAndroidVersion = '2.0.1'
+
+    retrofitVersion = '2.3.0'
+    okhttpVersion = '3.9.0'
+
+    gsonVersion = '2.8.2'
+    jacksonVersion = '2.8.9'
+
+    greenDaoVersion = '3.2.0'
+
+    picassoVersion = '2.5.2'
+    //DO NOT UPDATE : saveInAppExternalFilesDir() removed
+    easyImageVersion = '1.4.0'
+
+    butterknifeVersion = '8.8.1'
+
+    openCsvVersion = '4.1'
+
+    journeyappsZxingScannerVersion = '3.6.0'
+    zxingCoreVersion = '3.3.0' //For Android 14+ support zxing:core should be 3.3.0 or earlier
+
+    htmlDomVersion = '1.11.2'
+
+    apacheCollectionsVersion = '4.1'
+    apacheValidatorVersion = '1.6'
+
+    loadToastVersion = '1.0.12'
+    zoomingImgVersion = '2.1.3'
+    materialDialogVersion = '0.9.6.0'
+    fabVersion = '1.6.4'
+
+    fontIconCoreVersion = '3.0.0@aar'
+    googleMaterialFontVersion = '3.0.1.2.original@aar'
+    materialFontVersion = '2.2.0.4@aar'
+    awesomeFontVersion = '4.7.0.2@aar'
+
+    jUnitVersion = '4.12'
+    jsonUnitVersion = '1.27.0'
+    espressoVersion = '3.0.1'
+    mockitoVersion = '2.13.0'
+}

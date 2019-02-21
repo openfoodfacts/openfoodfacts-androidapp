@@ -1,0 +1,35 @@
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+
+The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+
+To discover the Open Food Facts project, please visit https://openfoodfacts.org
+
+
+***Contribute to Food Transparency***
+
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara. 
+- You can start contributing today by adding a product from your food cupboard. 
+
+*** Dapatkan faktanya ***
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
+
+*** Bekerja dengan baik di segala kondisi ***
+- Bisa menambahkan produk, bahkan tanpa koneksi internet.
+- Aplikasi hanya membuat hal yang diperlukan untuk mengurangi konsumsi data dan baterai
+- Tidak memerlukan kamera untuk mencari produk. Jika bermasalah dengan kamera, mengetik angka kode batang bisa dilakukan.
+
+*** Your food, your data ***
+- Datamu adalah milikmu, tidak akan diunggah
+- Bisa menggunakan aplikasi secara anonim
+- Bisa mengekspor riwayat pemindaian
+
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Pertanyaan, umpan balik: contact@openfoodfacts.org
+
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

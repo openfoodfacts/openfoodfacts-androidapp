@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:clipToPadding="false"
+    android:isScrollContainer="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".fragments.AddProductPhotosFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/section_product_pictures"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/additional_pictures"
+            android:textColor="#dd0b16"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/hint_product_pictures"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="@string/hint_product_pictures"
+            android:textColor="@color/grey_500"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_product_pictures" />
+
+        <ImageView
+            android:id="@+id/btnAddOtherImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintStart_toStartOf="@id/section_product_pictures"
+            app:layout_constraintTop_toBottomOf="@id/hint_product_pictures"
+            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+        <ProgressBar
+            android:id="@+id/imageProgress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/btnAddOtherImage"
+            app:layout_constraintTop_toBottomOf="@id/hint_product_pictures"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/imageProgressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:text="@string/toastSending"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/btnAddOtherImage"
+            app:layout_constraintStart_toEndOf="@id/imageProgress"
+            app:layout_constraintTop_toTopOf="@id/btnAddOtherImage"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/grey_line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/grey_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnAddOtherImage" />
+
+        <TableLayout
+            android:id="@+id/table_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:orientation="horizontal"
+            android:shrinkColumns="0"
+            android:stretchColumns="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grey_line1" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="#3C950E"
+            android:text="@string/add_this_product"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/table_layout" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

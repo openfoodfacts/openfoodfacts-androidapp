@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string-array name="nav_drawer_items_product">
+    <item>Summary</item>
+    <item>Ingredients</item>
+    <item>Nutrition</item>
+    <item>Nutrition Table</item>
+  </string-array>
+  <string-array name="units_array">
+    <item>g</item>
+    <item>mg</item>
+    <item>kg</item>
+    <item>l</item>
+    <item>ml</item>
+    <item>cl</item>
+    <item>fl oz</item>
+  </string-array>
+  <string-array name="images_array">
+    <item>Default</item>
+    <item>Nutrition</item>
+    <item>Ingredients</item>
+  </string-array>
+</resources>

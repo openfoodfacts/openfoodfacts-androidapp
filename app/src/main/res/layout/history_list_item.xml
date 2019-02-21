@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/historyRel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <FrameLayout
+        android:id="@+id/imgHistoryFrame"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/spacing_small"
+        android:paddingBottom="10dp"
+        android:paddingEnd="8dp"
+        android:paddingRight="8dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imgHistoryProduct"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            tools:srcCompat="@drawable/header" />
+
+        <ProgressBar
+            android:id="@+id/historyImageProgressbar"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="4dp"
+            android:visibility="visible" />
+    </FrameLayout>
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/nutritionGradeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imgHistoryFrame"
+        android:layout_alignEnd="@id/imgHistoryFrame"
+        android:layout_alignRight="@id/imgHistoryFrame"
+        tools:src="@drawable/nnc_small_a" />
+
+    <TextView
+        android:id="@+id/titleHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imgHistoryFrame"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@id/imgHistoryFrame"
+        android:layout_toLeftOf="@id/barcodeHistory"
+        android:layout_toRightOf="@id/imgHistoryFrame"
+        android:layout_toStartOf="@id/barcodeHistory"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textSize="@dimen/font_large"
+        tools:text="Nutella" />
+
+    <TextView
+        android:id="@+id/productDetailsHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgHistoryFrame"
+        android:layout_marginBottom="12dp"
+        android:layout_toEndOf="@id/imgHistoryFrame"
+        android:layout_toLeftOf="@id/dateView"
+        android:layout_toRightOf="@id/imgHistoryFrame"
+        android:layout_toStartOf="@id/dateView"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textSize="@dimen/font_normal"
+        tools:text="Ferrero" />
+
+
+    <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+        android:id="@+id/barcodeHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/titleHistory"
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:drawablePadding="2dp"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/font_small"
+        app:drawableLeftCompat="@drawable/barcode_grey_24dp"
+        tools:text="123456789" />
+
+
+    <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+        android:id="@+id/dateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/productDetailsHistory"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:drawablePadding="2dp"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/font_small"
+        app:drawableLeftCompat="@drawable/ic_history_grey_24dp"
+        tools:text="5 minutes ago" />
+
+
+</RelativeLayout>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/edit_text_weight"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height_short"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:hint="@string/enter_weight"
+        android:inputType="numberDecimal"
+        android:padding="@dimen/padding_too_short"
+        android:textSize="@dimen/font_normal"
+        app:layout_constraintEnd_toStartOf="@id/spinner_weight"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/spinner_weights"
+        android:entries="@array/weights_array"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@id/edit_text_weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edit_text_weight"
+        app:layout_constraintTop_toTopOf="@id/edit_text_weight" />
+
+    <Button
+        android:id="@+id/txt_calories_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:textSize="@dimen/font_normal"
+        android:hint="@string/check_facts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_weight" />
+
+</android.support.constraint.ConstraintLayout>
+

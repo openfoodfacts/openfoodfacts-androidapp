@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.AddProductActivity">
+
+    <View
+        android:id="@+id/overview_indicator"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginStart="@dimen/spacing_larger"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="@drawable/stage_active"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/overview_indicator"
+        app:layout_constraintEnd_toStartOf="@id/ingredients_indicator"
+        app:layout_constraintStart_toEndOf="@id/overview_indicator"
+        app:layout_constraintTop_toTopOf="@id/overview_indicator" />
+
+    <View
+        android:id="@+id/ingredients_indicator"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/stage_inactive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/overview_indicator" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/overview_indicator"
+        app:layout_constraintEnd_toStartOf="@id/nutrition_facts_indicator"
+        app:layout_constraintStart_toEndOf="@id/ingredients_indicator"
+        app:layout_constraintTop_toTopOf="@id/overview_indicator" />
+
+    <View
+        android:id="@+id/nutrition_facts_indicator"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="@dimen/spacing_larger"
+        android:layout_marginRight="@dimen/spacing_larger"
+        android:background="@drawable/stage_inactive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/overview_indicator" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/padding_short"
+        android:gravity="center_horizontal"
+        android:maxWidth="65dp"
+        android:text="@string/overview"
+        android:textSize="13sp"
+        android:layout_marginBottom="@dimen/padding_short"
+        app:layout_constraintEnd_toEndOf="@id/overview_indicator"
+        app:layout_constraintStart_toStartOf="@id/overview_indicator"
+        app:layout_constraintTop_toBottomOf="@id/overview_indicator" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_short"
+        android:gravity="center_horizontal"
+        android:maxWidth="100dp"
+        android:text="@string/ingredients"
+        android:textSize="13sp"
+        android:layout_marginBottom="@dimen/padding_short"
+        app:layout_constraintEnd_toEndOf="@id/ingredients_indicator"
+        app:layout_constraintStart_toStartOf="@id/ingredients_indicator"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_indicator" />
+
+    <TextView
+        android:id="@+id/text_nutrition_facts_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/padding_short"
+        android:gravity="center_horizontal"
+        android:maxWidth="60dp"
+        android:text="@string/nutrition_facts"
+        android:textSize="13sp"
+        android:layout_marginBottom="@dimen/padding_short"
+        app:layout_constraintEnd_toEndOf="@id/nutrition_facts_indicator"
+        app:layout_constraintStart_toStartOf="@id/nutrition_facts_indicator"
+        app:layout_constraintTop_toBottomOf="@id/nutrition_facts_indicator" />
+
+    <View
+        android:id="@+id/grey_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:background="@color/grey_400"
+        app:layout_constraintTop_toBottomOf="@id/text_nutrition_facts_indicator" />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_small"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/grey_line" />
+
+    <!-- layout for the Snackbar -->
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/grey_line" />
+
+</android.support.constraint.ConstraintLayout>

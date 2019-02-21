@@ -1,0 +1,45 @@
+Ce sont les slogans affichés au-dessus des captures d'écran dans le Playstore. Gardez-les concis et attrayants.
+Ne modifiez pas le nom du fichier.
+---
+scan_fr.png
+Scannez des produits
+
+quickview_fr.png
+Obtenez le Nutriscore
+
+history_fr.png
+L'historique de vos scans, entièrement privé et exportable
+
+product_view_wikipedia_fr.png
+Allez plus loin avec Wikipedia
+
+allergen_alert_fr.png
+Mettez des alertes allergènes
+
+home_fr.png
+product_view_nutrition_summary_fr.png
+La nutrition, simplifiée
+
+product_view_allergen_alert_fr.png
+Alerte allergènes
+
+categories_fr.png
+Trouvez des alternatives pour vos aliments préférés
+
+foodtransparency_fr.png
+Devenez un acteur de la transparence alimentaire
+
+product_view_summary_fr.png
+Wikipedia pour la nourriture
+Wikipedia pour la cosmétique
+Wikipedia pour l'alimentation des animaux de compagnie
+Wikipedia des produits
+
+product_view_ingredients_fr.png
+Ingrédients
+
+menu_fr.png
+Puissant
+
+product_view_nutrition_table_fr.png
+Composition nutritionnelle

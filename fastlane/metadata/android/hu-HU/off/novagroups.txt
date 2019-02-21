@@ -1,0 +1,21 @@
+Nova csoport
+
+Nova csoportok
+
+Nova csoport:
+
+1. csoport
+Coport 1 - Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
+Unprocessed or minimally processed foods
+
+Csoport 2
+Csoport 2 - Feldolgozott összetevők
+Processed culinary ingredients
+
+Csoport 3
+Csoport 3 - Feldolgozott élelmiszerek
+Processed foods
+
+Csoport 4
+4. csoport - Többszörösen feldolgozott élelmiszer- és italtermékek
+Többszörösen feldolgozott élelmiszer- és italtermékek

@@ -1,0 +1,96 @@
+language: android
+
+jdk: oraclejdk8
+
+env:
+  global:
+    - ANDROID_API_LEVEL=27
+    - ANDROID_EMULATOR_LEVEL=21
+    - ANDROID_BUILD_TOOLS_VERSION=28.0.2
+    - ANDROID_ABI=armeabi-v7a
+    - ANDROID_TAG=google_apis
+    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+    - secure: "fpNJresszWHcOg8Qh4plu2RJFOv9AzCMh2dVV2SbwWNRuf2j15raDdFGhCD2tEM7ddhqrfHgmiwqFSWCzjWw1azx0ovGJfFhikLM741pLb68S/EkOdvl9RU6DXeC6+Tyg0iaustgkoK24kwkzx/kg3o56TyFg1g2ufsQqfEseJtOGVQEh86zj8ncfU60VcMP7HHqHZMjlZaQ+G0Ale4ofzQzmAbiNiNPjykMbjDhzdKMTeZLXnj8S59twI1y/D/JdfKCiq/xOnO3HbIZBZ4A3nVb/fV5WCR4Kw6LRzoNE9qYnxJFaeIYSF9+YDDol9PbQRWTX5EgDnJBbZqj8aSYUEk3WUGRnDCKYR0R/v/BhTfnLIp1jBQWyhDJ56iPZ+tgRfChMejsf8aH8agPwczjfbX8H/1NLzBAtF/elA67dPaoQMqb33nO8D+ESIIyYNsK4CyfeDF6/qT/IcBBa7FUfhIOHjwLnaeCyZS78eq2QUSNkDaATKM8BUot+hGMTenBpivEDKL1L+twFFFKjNK3HkvnJ2H92P/EgT7OUVSuPnD5czfK3WydMmbimChKoygSq5/62tC6FMHUNdNj7pHnfJWTdSj+RgNJKVTasPJAQ1B+pU/z+TZVJMsBpME2CTtNGC6+o9W/6K5FMUt/2J/P63RHJqXXZLtttphN3tg7eLo="
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - tools # to install Android SDK tools 25.1.x
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
+    - android-$ANDROID_EMULATOR_LEVEL
+    # For Google APIs
+    - addon-google_apis-google-$ANDROID_API_LEVEL
+    # Google Play Services
+    - extra-google-google_play_services
+    # Support library
+    - extra-android-support
+    # Latest artifacts in local repository
+    - extra-google-m2repository
+    - extra-android-m2repository
+    # Specify at least one system image
+    - sys-img-armeabi-v7a-google_apis-$ANDROID_EMULATOR_LEVEL
+
+  licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+    - '.*intel.+'
+
+  before_cache:
+    # Do not cache a few Gradle files/directories (see https://docs.travis-ci.com/user/languages/java/#Caching)
+    - rm -f  ${TRAVIS_BUILD_DIR}/gradle/caches/modules-2/modules-2.lock
+    - rm -fr ${TRAVIS_BUILD_DIR}/gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    # Gradle dependencies
+    - ${TRAVIS_BUILD_DIR}/gradle/caches/
+    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
+
+    # Cache maven
+    - $HOME/.m2
+
+before_script:
+# Create and start emulator.
+  - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
+  - emulator -avd test -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
+before_install:
+  - yes | sdkmanager "platforms;android-27"
+
+jobs:
+ include:
+  - stage: test
+    script:
+      - ./gradlew connectedObfDebugAndroidTest --stacktrace
+
+  - stage: test
+    script:
+      - ./gradlew connectedOffDebugAndroidTest --stacktrace
+
+  - stage: test
+    script:
+      - ./gradlew connectedOpfDebugAndroidTest --stacktrace
+
+  - stage: test
+    script:
+      - ./gradlew connectedOpffDebugAndroidTest --stacktrace
+
+branches:
+  only:
+    - master
+
+notifications:
+  email: false
+  slack: openfoodfacts:mXLLSlWjBKA9e03ELQ83rNvB
+
+sudo: required
+
+addons:
+  artifacts: true
+  paths:
+    - my_path

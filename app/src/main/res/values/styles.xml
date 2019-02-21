@@ -1,0 +1,69 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!--<item name="colorPrimary">@color/material_blue_500</item>-->
+        <!--<item name="statusBarColor">@color/grey_300</item>-->
+        <!--<item name="colorBackground">@color/grey_50</item>-->
+        <item name="colorAccent">@color/red_700</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    </style>
+
+    <style name="Black_Back_Arrow" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/md_black_1000</item>
+    </style>
+
+    <style name="customSearchView" parent="Widget.AppCompat.Light.SearchView">
+        <item name="submitBackground">@color/md_light_appbar</item>
+        <item name="queryBackground">@color/md_light_appbar</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="searchViewStyle">@style/customSearchView</item>
+    </style>
+
+    <style name="SplashTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="PreferenceThemeOverlay.v14">
+        <item name="android:textColor">@color/grey_800</item>
+        <item name="android:textColorSecondary">@color/grey_500</item>
+        <item name="android:summary">@color/grey_500</item>
+    </style>
+
+    <style name="DefaultButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/grey_50</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:shadowColor">@color/grey_100</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="ButtonToBrowseProducts">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/button_height_short</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:color">@color/blue</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:shadowColor">@color/blue_500</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+</resources>

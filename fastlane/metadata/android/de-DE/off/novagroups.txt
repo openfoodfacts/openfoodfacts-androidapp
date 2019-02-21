@@ -1,0 +1,21 @@
+Nova-Gruppe
+
+Nova-Gruppen
+
+Nova-Gruppe:
+
+Gruppe 1
+1. Gruppe • Unverarbeitete oder minimal verarbeitete Lebensmittel
+Unverarbeitete oder minimal verarbeitete Lebensmittel
+
+Gruppe 2
+2. Gruppe • Verarbeitete kulinarische Zutaten
+Verarbeitete kulinarische Zutaten
+
+Gruppe 3
+3. Gruppe • Verarbeitete Lebensmittel
+Verarbeitete Lebensmittel
+
+Gruppe 4
+4. Gruppe • Hochverarbeitete Nahrungsmittel und Getränke
+Hochveredelte Nahrungsmittel und Getränke

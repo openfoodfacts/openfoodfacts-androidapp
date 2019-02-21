@@ -1,0 +1,31 @@
+Piedalīties Kosmētikas datubāzes izveidē
+
+Open Beauty Facts ir kosmētikas datu bāze veidota no visiem un priekš visiem.
+šo datu bāzi var izmantot lai apskatītu kosmētikas produktus un tādēl, ka datu bāze ir atvērta, ikviens var izmantot to jebkādām vajadzībām.
+Open Beauty Facts ir bezpeļņas projekts izveidots, pateicoties tūkstošiem brīvprātīgajiem no visas pasaules. Mums ir daudz interesantu projektu, kuros tu vari piedalīties dažādos veidos. 
+Dalību projektā iespējams uzsākt jau šodien, pievienojot produktus no savas kosmētikas lādītes. 
+
+*** Iegūt faktus ***
+
+- kosmētikas piedevas, F.I.L kodi. c-I numuri, INCI (Internacionālā kosmētikas sastāvdaļu nomenklatūra), sastāvdaļu saraksts, alergēni, iepakojumu kodi... 
+- Open Beauty Facts palīdz jums saprast, ks izdrukāts uz produktu etiķetēm.
+- Jums nevajag būt ķīmiķim un iemācīties latīņu valodu, lai saprastu sastāvdaļu sarakstu :-)
+- Varat skenēt: Pēcskūšanāš losionus, ķermeņa losionus, krēmus, dezodorantus, acu lainerus, lūpu krāsas, sejas maskas, smaržas, šampūnus, ziepes, dušas želeju, nagu lakas un vēl daudz ko citu…
+- Mūsuprāt šī datubāze var būt ļoti noderīga cilvēķiem ar ādas slimībām kā pūtītes, psoreāze, ekzēma... lai veiktu labāku kosmētikas izvēli.
+
+*** darbojas labi jebkurā stāvoklī ***
+- Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+
+*** Your cosmetics, your data ***
+- Your data is yours, and is never sent online
+- You can use the app anonymously
+- You can export your scan history
+
+Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+
+Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
+Questions, feedback : contact@openfoodfacts.org
+
+For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

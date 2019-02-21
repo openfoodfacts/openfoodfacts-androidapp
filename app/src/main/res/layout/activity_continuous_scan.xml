@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.ContinuousScanActivity">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="125dp"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:tint="@color/white"
+        android:visibility="gone"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_mode_edit_black"
+        tools:visibility="visible" />
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.journeyapps.barcodescanner.DecoratedBarcodeView
+            android:id="@+id/barcode_scanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/button_more"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/spacing_small"
+            app:srcCompat="@drawable/ic_more_vert_white_24dp" />
+
+        <ImageView
+            android:id="@+id/toggle_flash"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="@dimen/spacing_small"
+            app:srcCompat="@drawable/ic_flash_off_white_24dp" />
+
+        <TextView
+            android:id="@+id/txt_product_not_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="152dp"
+            android:gravity="center_horizontal"
+            android:text="@string/product_not_complete"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </FrameLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/quick_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_quick_view"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="150dp"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="visible"
+            tools:ignore="MissingPrefix">
+
+
+            <View
+                android:id="@+id/quickView_slideUpIndicator"
+                android:layout_width="20dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:background="@drawable/rounded_slide__up_indicator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/quickView_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:singleLine="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Roasted Dalia" />
+
+
+            <RelativeLayout
+                android:id="@+id/quickView_details"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quickView_name"
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:paddingBottom="@dimen/spacing_normal">
+
+                <ImageView
+                    android:id="@+id/quickView_image"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    tools:src="@drawable/img_scan" />
+
+                <ProgressBar
+                    android:id="@+id/quickView_imageProgress"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:visibility="visible"
+                    />
+
+                <TextView
+                    android:layout_toRightOf="@id/quickView_image"
+                    android:id="@+id/quickView_brand"
+                    android:layout_width="95dp"
+                    android:layout_height="wrap_content"
+
+                    android:singleLine="true"
+                    tools:text="Brand : Tip Top" />
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/quickView_image"
+                    android:layout_below="@id/quickView_brand"
+                    android:id="@+id/quickView_quantity"
+                    android:layout_width="95dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    tools:text="Quantity : 500 g" />
+
+
+
+
+
+                <ImageView
+                    android:layout_toRightOf="@id/quickView_quantity"
+                    android:layout_alignTop="@id/quickView_brand"
+                    android:id="@+id/quickView_nutriScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_toLeftOf="@+id/quickView_novaGroup"
+                    tools:src="@drawable/nnc_a" />
+
+                <ImageView
+                    android:layout_alignTop="@id/quickView_brand"
+                    android:id="@+id/quickView_novaGroup"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:layout_toLeftOf="@id/quick_view_co2_icon"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    tools:srcCompat="@drawable/ic_nova_group_1" />
+
+                <ImageView
+                    android:id="@+id/quick_view_co2_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/quickView_quantity"
+                    android:layout_alignTop="@id/quickView_brand"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="false"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:adjustViewBounds="true"
+                    android:paddingTop="8dp"
+                    android:scaleType="fitCenter"
+                    tools:srcCompat="@drawable/ic_co2_high_24dp" />
+
+
+            </RelativeLayout>
+
+            <ProgressBar
+                android:id="@+id/quickView_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="32dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/quickView_progressText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/loading_product"
+                android:textSize="16sp"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/quickView_progress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/quickView_progress"
+                app:layout_constraintTop_toTopOf="@+id/quickView_progress" />
+
+            <TextView
+                android:id="@+id/quickView_productNotFound"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="@string/txtDialogsContent"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/quickView_searchByBarcode"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:hint="@string/barcode_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="number"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <FrameLayout
+                android:id="@+id/frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/spacing_large"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quickView_details" />
+
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</android.support.constraint.ConstraintLayout>

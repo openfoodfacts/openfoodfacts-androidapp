@@ -1,0 +1,35 @@
+İçerikler, katkı maddeleri ve beslenme gerçekleriyle ilgili bilgi almak için gıda ürünlerini veya barkodlarını okutun.
+
+Uygulama, hali hazırda ücretsiz ve açık veritabanı olan Open Food Facts'teki 547.000 ürünü (175.000 ABD ürünü dahil) görüntülemeyi ve eksik olan ürünler için fotoğraf ve bilgi eklemeyi sağlıyor.
+
+To discover the Open Food Facts project, please visit https://openfoodfacts.org
+
+
+Gıda Şeffaflığına Katkıda Bulunun
+
+-Open Food Facts, herkes tarafından herkes için oluşturulan bir gıda ürünleri veritabanıdır.
+-Daha iyi gıda tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
+-Open Food Facts dünyanın dört bir yanından, binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
+-Bugün gıda dolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz. 
+
+***Gerçekleri Öğrenin***
+-Open Food Facts size, ürün etiketlerindeki satır aralarını daha iyi anlayabilmenizde yardımcı olur. Bulabilecekleriniz (ürünlerin üzerinde belirtilenlere göre) şunlardır:
+-karbon ayakizi (CO2 salınımı) ve paketleme (geri dönüşüm talimatları vb.),
+-Nutriscore (besleyicilik değeri), besinler, yağ/yağ içeriği, doymuş yağ asitleri, karbonhidratlar, şekerler, lif, protein ve tuz ve sodyum.
+- markalar, alerjenler, etiketler (biyo, glutensiz, vegan, vejetaryen, helal, koşer...), izlenebilirlik bilgileri (ambalaj kodları, malzemelerin kaynağı)
+-Şaraplarda ve biralarda alkol içeriğini bulacaksınız.
+
+*** Works well in any condition ***
+- You can add new products, even if you don't have an Internet connection right now.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+
+*** Your food, your data ***
+- Your data is yours, and is never sent online
+- You can use the app anonymously
+- You can export your scan history
+
+Open Food Facts aynı zamanda https://world.openfoodfacts.org internet adresinde mevcuttur.
+Sorular, geri bildirim : contact@openfoodfacts.org
+
+Kozmetik için Open Beauty Facts, evcil hayvan gıdaları için Open Pet Food Facts yüklenebilir. Geri kalan her şey için, Open Products Facts.

@@ -1,0 +1,45 @@
+هذه هي الخطوط الموضحة أعلى لقطات الشاشة في المتجر. والاحتفاظ بها قصيرة وجذابة.
+لا تغير اسم الملف.
+---
+scan_en.png
+مسح المنتجات
+
+quickview_en.png
+الحصول على Nutriscore (مجموع نقاط التغذية)
+
+history_en.png
+سجل الفحوصات الكامل الخاص بك و قابلة للإخراج
+
+product_view_wikipedia_en.png
+اذهب ابعد مع ويكيبيديا
+
+allergen_alert_en.png
+ضبط التنبيهات المسببة للحساسية
+
+home_en.png
+product_view_nutrition_summary_en.png
+التغذية ، مبسطة
+
+product_view_allergen_alert_en.png
+تنبيه مسببات الحساسية
+
+categories_en.png
+احصل على بدائل للأطعمة المفضلة لديك
+
+foodtransparency_en.png
+أصبح عنصر فعال فى الشفافية الغذائية
+
+product_view_summary_en.png
+ويكيبيديا للغذاء
+ويكيبيديا لمستحضرات التجميل
+ويكيبيديا لأغذية الحيوانات الأليفة
+ويكيبيديا للمنتجات
+
+product_view_ingredients_en.png
+المكونات
+
+menu_en.png
+قوي
+
+product_view_nutrition_table_en.png
+حقائق غذائية

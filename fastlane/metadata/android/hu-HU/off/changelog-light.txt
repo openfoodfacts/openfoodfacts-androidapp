@@ -1,0 +1,21 @@
+v2 ! Minden OFF önkéntes keményen dolgozott, az ön javaslatai alapján. Még inkább globális mozgalom vagyunk, mint valaha. 500 000 szabad termék, 182 ország, 10 000-nél is több hozzájáruló, beleértve ön :-)
+1. NutriScore a világ összes termékéhez
+2. Exportálható előzmény, ami kizárólag az Ön számára látható
+3. Allergén riasztások
+4. Érintse meg az adalékanyagokat, hogy felfedezze a Wikipedia-val.
+5. Készítsen fényképeket, legyen részese az élelmiszer átláthatóságnak
+6. Sokkal gyorsabb, még 2G-s hálózaton is. Akár kapcsolat nélküli módban is hozzájárulhat
+7. Nincs szükség regisztrációra
+8. Erőforráskímélő, mint ezelőtt :)
+
+v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
+2. You can now get nutrition facts for the portion you're eating (Rutvik)
+3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
+4. Housecleaning (by Rutvik & Salfai)
+5. 🌎 Korean & Indonesian
+
+2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
+1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
+2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
+3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)

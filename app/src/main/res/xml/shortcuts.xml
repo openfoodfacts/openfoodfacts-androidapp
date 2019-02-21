@@ -1,0 +1,55 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_scan"
+        android:shortcutDisabledMessage="@string/disabled_message"
+        android:shortcutId="scan"
+        android:shortcutLongLabel="@string/scan_shortcut_long_label"
+        android:shortcutShortLabel="@string/scan_shortcut_short_label">
+        <intent
+            android:action="SCAN"
+            android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
+            android:targetPackage="${applicationId}" />
+        <categories android:name="${applicationId}" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_search"
+        android:shortcutDisabledMessage="@string/disabled_message"
+        android:shortcutId="barcode"
+        android:shortcutLongLabel="@string/barcode_shortcut_long_label"
+        android:shortcutShortLabel="@string/barcode_shortcut_short_label">
+        <intent
+            android:action="BARCODE"
+            android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
+            android:targetPackage="${applicationId}" />
+        <categories android:name="${applicationId}" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_history"
+        android:shortcutDisabledMessage="@string/disabled_message"
+        android:shortcutId="history"
+        android:shortcutLongLabel="@string/history_shortcut_long_label"
+        android:shortcutShortLabel="@string/history_shortcut_short_label">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity"
+            android:targetPackage="${applicationId}" />
+        <categories android:name="${applicationId}" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_contributions"
+        android:shortcutDisabledMessage="@string/disabled_message"
+        android:shortcutId="contributions"
+        android:shortcutLongLabel="@string/contributions_shortcut_long_label"
+        android:shortcutShortLabel="@string/contributions_shortcut_short_label">
+        <intent
+            android:action="CONTRIBUTIONS"
+            android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
+            android:targetPackage="${applicationId}" />
+        <categories android:name="${applicationId}" />
+    </shortcut>
+
+</shortcuts>

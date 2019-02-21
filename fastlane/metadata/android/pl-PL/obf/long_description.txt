@@ -1,0 +1,31 @@
+***Przyczyń się do przejrzystości informacji o Kosmetykach***
+
+Open Beauty Facts to baza produktów kosmetycznych tworzona przez każdego dla wszystkich.
+- Możesz wykorzystać ją, aby dokonać lepszych wyborów kosmetycznych, a ponieważ jest to baza zawierająca otwarte dane, każdy może spożytkować je w dowolnym celu.
+Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z całego świata. Mamy wiele ekscytujących projektów, w których możesz być na wiele różnych sposobów zaangażowany. 
+- Możesz zaangażować się już dzisiaj, dodając produkt z twojej półki z kosmetykami. 
+
+***Poznaj fakty***
+
+Dodatki do kosmetyków, F.I.L. kody, numery CI, INCI (Międzynarodowe Nazewnictwo Składników Kosmetyków), lista składników, alergeny, kody opakowań... 
+Open Beauty Facts pomagają zrozumieć drobny tekst na etykietach.
+Nie trzeba już być chemikiem i znać łacinę aby odszyfrować skład :-)
+Możesz skanować: wody po goleniu, balsamy do ciała, dezodoranty, eyelinery, podkłady, perfumy, szminki, produkty do makijażu, maseczki, szampony, mydła, żele pod prysznic, lakiery do paznokci i wiele innych…
+Uważamy, że może być przydatna dla osób z chorobami skóry m. in. trądzik, łuszczyca, egzema... pomagając przy wyborze lepszych kosmetyków.
+
+***Działa dobrze w każdej sytuacji***
+- Możesz dodawać nowe produkty, nawet jeśli w danej chwili nie masz połączenia z Internetem.
+-W celu ograniczenia zużycia danych, jak i lepszego zarządzania energią aplikacja ładuje tylko absolutnie niezbędne elementy
+-Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
+
+***Twoje kosmetyki, twoje dane***
+Twoje dany nigdy nie są wysyłane online
+-Możesz korzystać z aplikacji anonimowo
+- Możesz wyeksportować swoją historię skanowania
+
+Uwaga: Open Beauty Facts jest w trakcie tworzenia. Jej strona internetowa jak i aplikacja opierają się obecnie na danych danych Open Food Facts, tam też zmiany są zapisywane.
+
+Open Beauty Facts jest również dostępny w sieci: https://world.openbeautyfacts.org
+Pytania, opinie: contact@openfoodfacts.org
+
+W przypadku żywności dla ludzi możesz zainstalować Open Food Facts, w kwestii karmy dla zwierząt Open Pet Food Facts, a dla wszystkich pozostałych produktów, Open Products Facts.

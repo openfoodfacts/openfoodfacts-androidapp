@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_100"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_300"
+            android:contentDescription="@string/app_name"
+            android:gravity="center"
+            android:padding="@dimen/padding_short"
+            android:scaleType="center"
+            android:text="@string/wikidata_information"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_large"
+            android:textStyle="bold"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/titleContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_tiny"
+                android:background="@color/grey_50"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/titleBottomSheet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/title_activity_product"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/font_large"
+                    android:textStyle="bold"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/titleBottomSheetIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleContainer"
+                android:layout_margin="@dimen/spacing_tiny"
+                android:background="@color/grey_50"
+                android:gravity="center"
+                android:padding="@dimen/spacing_small"
+                android:text="@string/description_activity_product"
+                android:textAlignment="center"
+                android:textSize="@dimen/font_normal"/>
+
+            <include
+                android:id="@+id/exposureEvalTable"
+                layout="@layout/exposure_eval_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/buttonsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/exposureEvalTable"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:gravity="center_horizontal"
+                android:weightSum="100">
+
+
+                <Button
+                    android:id="@+id/wikipediaButton"
+                    style="@style/ButtonToBrowseProducts"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="50"
+                    android:background="@color/blue"
+                    android:text="@string/Wikipedia"/>
+
+
+                <Button
+                    android:id="@+id/buttonToBrowseProducts"
+                    style="@style/ButtonToBrowseProducts"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_weight="50"
+                    android:background="@color/blue"
+                    android:text="@string/Browse_Products"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

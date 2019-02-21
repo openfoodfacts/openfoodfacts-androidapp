@@ -1,0 +1,21 @@
+Nova skupina
+
+Nove skupine
+
+Nova skupina:
+
+Skupina 1
+Group 1 - Unprocessed or minimally processed foods
+Unprocessed or minimally processed foods
+
+Skupina 2
+Group 2 - Processed culinary ingredients
+Processed culinary ingredients
+
+Skupina 3
+Group 3 - Processed foods
+Processed foods
+
+Skupina 4
+Group 4 - Ultra-processed food and drink products
+Ultra predelani izdelki hrane in pijače

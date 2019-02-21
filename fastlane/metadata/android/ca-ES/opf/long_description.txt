@@ -1,0 +1,54 @@
+Open Food Facts és una base de dades oberta de productes amb ingredients, al·lèrgens, dades nutricionals i totes les peces d'informació que es poden trobar a les etiquetes dels productes.
+
+*** Contribuïu a la transparència dels productes ***
+
+- Open Food Facts és una base de dades de productes creada per tothom, per a tothom.
+- Podeu utilitzar-la per a millorar la vostra tria i, com que les dades són obertes, qualsevol persona pot tornar-la a utilitzar per a qualsevol propòsit.
+- Open Food Facts és un projecte sense ànim de lucre, desenvolupat per milers de persones voluntàries de tot el món. Tenim molts projectes interessants en els que hi podeu contribuir de moltes maneres diferents. 
+- Podeu començar a contribuir avui afegint el vostre primer producte. 
+
+*** Obteniu les Dades ***
+- Open Products Facts us ajuda a entendre la lletra petita que hi ha en les etiquetes dels productes.
+
+*** Recull TOOOOTES les coses ***
+- Podeu afegir tots els productes de casa vostra
+- Open Crayons Facts - La base de dades oberta més gran de llapis de colors
+- Open Miniature Food Facts - La base de dades oberta més gran de productes alimentaris en miniatura
+- Open ??? Facts - Creeu la vostra pròpia base de dades oberta :-)
+
+*** Funciona bé en qualsevol condició ***
+- Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet.
+- L'aplicació només carrega l'estrictament necessari per a reduir les dades i el consum de la bateria
+- No necessiteu una càmera per buscar un producte. També podeu escriure el codi de barres si no teniu cap càmera o no us funciona.
+
+*** Els vostres productes, les vostres dades ***
+- Your personal data is yours, and is never sent online
+- Podeu utilitzar l'aplicació de forma anònima
+- Podeu exportar el vostre historial d'escaneig
+
+Per als aliments, podeu instal·lar Open Food Facts, per als productes cosmètics, Open Beauty Facts i per als aliments per a animals domèstics, Open Pet Food Facts.
+
+Open Products Facts també està disponible a internet, a l'adreça https://es-ca.openproductsfacts.org
+Preguntes, comentaris : contact@openfoodfacts.org
+
+*** Original April's Fool Listing ***
+
+Ahir al matí, l'equip d'Open Food Facts es va despertar amb una sorprenent revelació. 
+
+Recollint els aliments, productes cosmètics i aliments per a animals de tot el món es van passar tant. Amb el desenfrenat progrés realitzat durant l'últim any, segurament estem a punt de completar la nostra missió de recollir tots els productes alimentaris i cosmètics del món, oi?
+
+Així que ens vam animar a crear no 1, sinó 77.000 noves bases de dades separades! 
+
+Open Products Facts serà un projecte extremadament ambiciós. Here are a few of them: 
+
+Open Crayons Facts - The largest open database of coloring crayons
+
+Open Miniature Food Facts - The largest open database of miniature food products
+
+Open ??? Facts - La base de dades oberta més gran de ???
+
+Demà, seleccionarem les 3 bases de dades amb més èxit, i començarem a recollir tots els productes coincidents del món.
+
+Seran papereres metàl·liques, targetes telefòniques o bases de dades de telèfons mòbils? 
+
+Així que si t'agraden les samarretes, els llibres de cuina, el paper d'origami o els globus de neu, comença a escanejar utilitzant l'aplicació Open Products Facts per a Android a Google Play

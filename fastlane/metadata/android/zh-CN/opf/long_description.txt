@@ -1,0 +1,54 @@
+打开“Open Food Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原等所有信息。
+
+*** Contribute to Product Transparency ***
+
+- Open Products Facts is a products database made by everyone, for everyone.
+- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
+- You can start contributing today by adding your first product. 
+
+***获取信息***
+- Open Products Facts helps you to make sense of the fine print on products labels.
+
+*** Collect AAAALL the things ***
+- You can add all the items from your collections
+- Open Crayons Facts - The largest open database of coloring crayons
+- Open Miniature Food Facts - The largest open database of miniature food products
+- Open ??? Facts - Create your own open database :-)
+
+在任何情况下都有效
+- 即使没有连接互联网，你也可以添加新的产品。
+- 应用程序仅加载严格必要以减少数据及电量消耗
+- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。
+
+*** Your products, your data ***
+- Your personal data is yours, and is never sent online
+- 您可以匿名使用该应用
+- 您可以导出历史记录
+
+For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+
+Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Questions, feedback : contact@openfoodfacts.org
+
+*** Original April's Fool Listing ***
+
+Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+
+Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+
+So we set up to create not 1, but other 77000 separate new databases ! 
+
+Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+
+Open Crayons Facts - The largest open database of coloring crayons
+
+Open Miniature Food Facts - The largest open database of miniature food products
+
+Open ??? Facts - The largest open database of ???
+
+Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+
+Will it be trash cans, télécartes, or mobile phones database ? 
+
+So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play

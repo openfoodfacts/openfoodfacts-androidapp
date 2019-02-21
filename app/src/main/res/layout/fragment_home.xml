@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/imageHome"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="@dimen/spacing_larger"
+            android:layout_marginStart="@dimen/spacing_larger"
+            android:layout_marginTop="@dimen/spacing_larger"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
+
+        <TextView
+            android:id="@+id/taglineHome"
+            android:layout_width="184dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/OFFlogo"
+            android:gravity="center_horizontal"
+            android:text="@string/tagline"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/spacing_larger"
+            android:gravity="center"
+            android:text="@string/txtHome"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/md_black_1000"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/tvDailyFoodFact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textColor="@color/blue"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            />
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/buttonScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:contentDescription="@string/try_it_scan_now"
+        app:srcCompat="@drawable/barcode_white_24dp" />
+</RelativeLayout>

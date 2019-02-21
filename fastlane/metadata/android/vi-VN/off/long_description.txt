@@ -1,0 +1,35 @@
+Quét thực phẩm hoặc mã vạch của chúng để lấy dữ liệu về thành phần, chất phụ gia và dinh dưỡng.
+
+Ứng dụng này cho phép xem 547.000 sản phẩm (bao gồm 175.000 sản phẩm tại Mỹ) có trong cơ sở dữ liệu mở miễn phí của Open Food Facts, và cũng để thêm hình ảnh và dữ liệu cho các sản phẩm bị thiếu.
+
+Để khám phá dự án Sự Open Food Facts, vui lòng truy cập https://openfoodfacts.org
+
+
+*** Đóng góp vàosự minh bạch của thực phẩm ***
+
+- Open Food Facts là một cơ sở dữ liệu về thực phẩm được thực hiện bởi mọi người và phục vụ cho tất cả.
+Là một dữ liệu mở, bạn dùng nó để lựa chọn thực phẩm và cũng có thể cho nhiều mục địch khác.
+- Open Facts Facts là một dự án phi lợi nhuận được phát triển bởi hàng ngàn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
+- Bạn có thể đóng góp ngay hôm nay khi thêm sản phẩm từ tủ thực phẩm của bạn. 
+
+*** Sự thật là ***
+- Open Food Facts giúp bạn hiểu những thứ hào nhoáng được in trên bao bì. Bạn có thể tìm được (dựa theo những chỉ số trên bao bì):
+Hàm lượng carbon (phơi nhiễm CO2) và việc đóng gói (cũng như hướng dẫn tái chế),
+- Chỉ số dinh dưỡng, chất bổ, chất béo, a-xít béo bão hòa, Cacbohydrat, đường, chất sơ, protein, muối và natri.
+- thương hiệu, chất gây dị ứng. nhãn (tiểu sử, không gluten, người ăn chay trường, người ăn chay, thực phẩm của Hồi giáo, thực phẩm của người Do Thái...) khả năng truy xuất nguồn gốc (mã đóng gói, nguyên liệu gốc)
+- Với rượu và bia, bạn sẽ có chỉ số cồn.
+
+*** Works well in any condition ***
+- You can add new products, even if you don't have an Internet connection right now.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+
+*** Thức ăn của bạn, dữ liệu của bạn ***
+- Your data is yours, and is never sent online
+- You can use the app anonymously
+- You can export your scan history
+
+Open Food Facts có trên web tại địa chỉ https://world-vi.openfoodfacts.org
+Câu hỏi và phản hồi: contact@openfoodfacts.org
+
+Với mỹ phẩm, hãy cài đặt Open Beauty Facts, với thực phẩm cho thú cưng và với mọi hàng hóa khác, hãy dùng Open Beauty Facts.

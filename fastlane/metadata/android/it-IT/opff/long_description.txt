@@ -1,0 +1,34 @@
+Scansiona prodotti alimentari per animali o i loro codici a barre per ottenere dati su ingredienti, additivi e valori nutrizionali.
+
+L'app consente di vedere gli oltre 600 alimenti per animali già contenuti nel database libero e aperto di Open Pet Food Facts e di aggiungere foto e dati per i prodotti mancanti.
+
+Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfacts.org
+
+***Contribuire alla trasparenza del cibo per animali***
+
+- Open Pet Food Facts è un database di alimenti per animali realizzato da tutti, per tutti.
+- Puoi usarlo per scegliere meglio tra gli alimenti per animali e, dato che sono dati aperti, chiunque può riutilizzarlo per qualsiasi scopo.
+- Open Pet Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
+- Puoi iniziare a contribuire oggi aggiungendo un prodotto dei tuoi alimenti per animali. 
+
+
+*** Prendi i fatti ***
+
+Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
+- l'elenco degli ingredienti (compreso il contenuto di ceneri)
+- informazioni nutrizionali, semafori nutrizionali…
+- marche, allergeni, etichette (biologico, vegano...)
+- Funziona con cibo per cani (cibo per cani secco ed umido), cibo per gatti, cibo per conigli, cibo per serpenti, cibo per pesci, cibo per uccelli, cibo per cavalli o ogni alimento per il tuo animale preferito.
+
+*** Funziona bene in qualsiasi condizione ***
+- Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
+- L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
+- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se non hai una fotocamera o non funziona.
+
+*** Il tuo cibo per animali, i tuoi dati ***
+- I tuoi dati personali sono tuoi e non vengono mai inviati online
+- Puoi usare l'app in modo anonimo
+- Puoi esportare la cronologia di scansione
+
+
+Per il cibo puoi installare Open Food Facts, per i cosmetici Open Beauty Facts e per tutti gli altri prodotti Open Products Facts.

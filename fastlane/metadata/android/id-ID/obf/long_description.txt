@@ -1,0 +1,33 @@
+***Kontribusi untuk Transparansi Industri Kosmetik***
+
+- Open Beauty Facts adalah basis data produk kosmetik dibuat oleh semua orang untuk semua orang.
+- Dapat digunakan untuk membuat pilihan kosmetik yang lebih baik dan dapat digunakan oleh siapa saja untuk tujuan apa saja karena merupakan data terbuka.
+- Open Beauty Facts adalah proyek nirlaba yang dikembangkan oleh ribuan sukarelawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara. 
+- Untuk memulai kontribusi, tambahkan sebuah produk di lemari kosmetik anda. 
+
+*** Dapatkan faktanya ***
+
+- Bahan tambahan kosmetik F.I.L. kode, angka, INCI (International Nomenclature of Cosmetics Ingredients/Tata Nama Kosmetik Internasional), komposisi bahan, alergen, kode kemasan... 
+- Open Beauty Facts membantu anda untuk memahami label kemasan produk.
+- Tidak harus menjadi analis kimia dan mempelajari bahasa latin lagi untuk memahami komposisi kosmetik :-)
+- Yang dapat dipindai: Aftershave, lotion tubuh, krim, deodoran, eyeliner, foundation, wewangian, lipstick, masker, parfum, sampo, sabun, gel mandi, cat kuku, dan banyak lagi…
+-Akan sangat berguna untuk membuat pilihan kosmetik yang lebih baik bagi orang dengan kondisi kulit seperti jerawat, psoriasis, dan eksim.
+
+*** Bekerja dengan baik di segala kondisi ***
+- Bisa menambahkan produk, bahkan tanpa koneksi internet.
+- Aplikasi hanya membuat hal yang diperlukan untuk mengurangi konsumsi data dan baterai
+- Tidak memerlukan kamera untuk mencari produk. Jika bermasalah dengan kamera, mengetik angka kode batang bisa dilakukan.
+
+*** Kosmetikmu, Datamu ***
+- Datamu adalah milikmu, tidak akan diunggah
+- Bisa menggunakan aplikasi secara anonim
+- Bisa mengekspor riwayat pemindaian
+
+Catatan: Open Beauty Facts sedang dibangun, situs dan aplikasi didasarkan pada Open Food Facts dan perubahan akan dibuat untuk mempertimbangkan kekhususan kosmetik.
+
+Open Beauty Facts juga tersedia di situs web https://world.openbeautyfacts.org
+Pertanyaan, umpan balik: contact@openfoodfacts.org
+
+Pasang Open Food Facts untuk info makanan manusia.
+Pasang Open Pet Food Facts untuk info makanan hewan.
+Pasang Open Product Facst untuk info produk lainnya.

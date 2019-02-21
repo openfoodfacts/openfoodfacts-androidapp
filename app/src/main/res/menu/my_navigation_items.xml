@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/black">
+    <!--<item-->
+    <!--android:id="@+id/bookmark"-->
+    <!--android:enabled="true"-->
+    <!--android:icon="@drawable/ic_bookmark_white_24dp"-->
+    <!--android:title="@string/bookmark" />-->
+    <item
+        android:id="@+id/share"
+        android:enabled="true"
+        android:icon="@drawable/ic_share_black_24dp"
+        android:title="@string/share" />
+    <!--<item-->
+    <!--android:id="@+id/translation"-->
+    <!--android:enabled="true"-->
+    <!--android:icon="@drawable/ic_translate_white_24dp"-->
+    <!--android:title="@string/translate" />-->
+    <item
+        android:id="@+id/edit_product"
+        android:enabled="true"
+        android:icon="@drawable/ic_mode_edit_black"
+        android:title="@string/product" />
+
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/baseline_home_black_36dp"
+        android:title="@string/home_drawer" />
+
+    <item
+        android:id="@+id/search_product"
+        android:enabled="true"
+        android:icon="@drawable/ic_search_black"
+        android:title="@string/bottomNav_search" />
+
+    <item
+        android:id="@+id/history_bottom_nav"
+        android:enabled="true"
+        android:icon="@drawable/ic_history_grey_24dp"
+        android:title="@string/bottomNav_history" />
+
+</menu>

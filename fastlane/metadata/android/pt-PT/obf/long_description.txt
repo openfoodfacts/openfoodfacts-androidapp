@@ -1,0 +1,31 @@
+***Contribua para a Transparência Alimentar***
+
+- Open Food Facts é um banco de dados de produtos alimentícios feito por todos, para todos.
+- Pode usá-lo para fazer melhores escolhas alimentares, e como são dados abertos, qualquer um pode reutilizá-lo para qualquer finalidade.
+- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
+- You can start contributing today by adding a product from your cosmetic cupboard. 
+
+*** Conheça os fatos ***
+
+- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+- Open Beauty Facts helps you to make sense of the fine print on products labels.
+- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+
+*** Funciona bem em qualquer condição ***
+- Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento.
+- A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
+- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
+
+*** Your cosmetics, your data ***
+- Seus dados são seus e nunca são enviados on-line
+- Pode usar o aplicativo anonimamente
+- Pode exportar seu histórico de digitalizações
+
+Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+
+Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
+Perguntas, feedback: contact@openfoodfacts.org
+
+For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

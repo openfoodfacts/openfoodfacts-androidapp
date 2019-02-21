@@ -1,0 +1,35 @@
+Digitalize produtos alimentares para obter dados sobre ingredientes, aditivos e informação nutricional.
+
+A aplicação permite visualizar os 547.000 produtos (incluindo 175.000 nos EUA) já contidos no banco de dados aberto e gratuito dos Open Food Facts e de adicionar fotos e dados de produtos faltantes.
+
+Para descobrir o projeto Open Food Facts, visite https://pt.openfoodfacts.org
+
+
+***Contribua para a Transparência Alimentar***
+
+- Open Food Facts é um banco de dados de produtos alimentícios feito por todos, para todos.
+- Pode usá-lo para fazer melhores escolhas alimentares, e como são dados abertos, qualquer um pode reutilizá-lo para qualquer finalidade.
+- Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
+- Pode começar a contribuir hoje, adicionando um produto do seu armário de alimentos. 
+
+*** Conheça os fatos ***
+- Open Food Facts ajuda a entender as letras miúdas dos rótulos dos produtos. Poderá encontrar (de acordo com as indicações presentes nos produtos):
+- pegada de carbono (emissões de CO2) e embalagem (assim como instruções de reciclagem),
+- Nutriscore (escore nutricional), nutrientes, teor de gordura / gordura, ácidos graxos saturados, carboidratos, açúcares, fibras, proteínas e sal e sódio.
+- marcas, alérgenos, rótulos (bio, sem glúten, vegan, vegetariano, halal, kosher ...), informações de rastreabilidade (códigos de embalagem, origem dos ingredientes)
+- Em vinhos e cervejas encontrará o teor alcoólico.
+
+*** Funciona bem em qualquer condição ***
+- Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento.
+- A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
+- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
+
+*** Sua comida, seus dados ***
+- Seus dados são seus e nunca são enviados on-line
+- Pode usar o aplicativo anonimamente
+- Pode exportar seu histórico de digitalizações
+
+O Open Food Facts também está disponível na web em https://pt.openfoodfacts.org
+Perguntas, feedback: contact@openfoodfacts.org
+
+Para cosméticos pode instalar o Open Beauty Facts, para comida para animais Open Pet Food Facts, e para todos os outros produtos Open Products Facts.

@@ -1,0 +1,19 @@
+
+==================
+Nuova versione nativa di Open Food Facts. Tutti i volontari di Open Food Facts ci hanno lavorato duramente, in base ai tuoi suggerimenti e feedback :)
+==================
+* Open Food Facts è ora un movimento più globale che mai. 500,000 prodotti liberati, 10,000 collaboratori registrati, 182 paesi. Ti unisci a noi?
+==================
+Novità?
+==================
+1. Ottieni un'immagine a 360°: nutrizione, ingredienti e tutti i fatti del cibo, presentati in modo ordinato e chiaro.
+2. Ottieni il grado nutrizionale "NutriScore" per tutti i prodotti nel mondo. Confronta facilmente i prodotti. Più facile che decifrare le tabelle nutrizionali.
+3. Ottieni informazioni extra da Wikipedia. Clicca su una categoria alimentare, un additivo... per imparare di più e vedere prodotti simili.
+4. Puoi impostare le allerte allergeni (controlla sempre l'etichetta vera e propria!)
+5. Ottieni ora una cronologia di scansione che puoi esportare e che non lascia mai il tuo telefono
+6. Puoi scuotere il telefono in qualsiasi momento nell'app per avviare la scansione
+7. Ora puoi aggiungere nuovi prodotti anche quando sei offline
+8. Ora puoi aiutare a completare i tuoi cibi preferiti direttamente dall'app: scatta foto, inserisci informazioni, fai in modo che la trasparenza alimentare si realizzi
+9. Tutto è anche molto più veloce. I prodotti si caricano incredibilmente velocemente, anche con una cattiva connessione mobile.
+10. Non siamo interessati ai tuoi dati personali. Non è necessario registrarsi per scansionare e contribuire.
+Fantastico! Nonostante tutte le novità, l'app è leggera come prima. Lo spazio sul tuo telefono è sacro.

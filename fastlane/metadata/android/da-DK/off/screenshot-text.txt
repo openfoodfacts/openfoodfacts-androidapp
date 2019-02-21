@@ -1,0 +1,45 @@
+Det er overskrifterne vist ovenover skærmfotoene i Google Play. Hold dem korte og attraktive.
+Ændre ikke på filnavnet.
+---
+scan_en.png
+Skan produkter
+
+quickview_en.png
+Få næringssoren
+
+history_en.png
+Din fulde skanningshistorik, helt privat og eksporterbar
+
+product_view_wikipedia_en.png
+Gå videre med Wikipedia
+
+allergen_alert_en.png
+Indstil allergenadvarsler
+
+home_en.png
+product_view_nutrition_summary_en.png
+Ernæring, forenklet
+
+product_view_allergen_alert_en.png
+Allergenadvarsel
+
+categories_en.png
+Få alternativer til dine yndlingsretter
+
+foodtransparency_en.png
+Bliv medspilleri fødevarergennemsigtighed
+
+product_view_summary_en.png
+Wikipedia for Mad
+Wikipedia for Kosmetik
+Wikipedia for Ddrefoder
+Wikipedia over produkter
+
+product_view_ingredients_en.png
+Ingredienser
+
+menu_en.png
+Kraftfuld
+
+product_view_nutrition_table_en.png
+Ernæringsfakta

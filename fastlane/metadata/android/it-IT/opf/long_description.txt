@@ -1,0 +1,54 @@
+Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni, dati nutrizionali e tutti i frammenti d'informazione che si possono trovare sulle etichette dei prodotti.
+
+*** Contribuire alla trasparenza dei prodotti ***
+
+- Open Products Facts è un database di prodotti fatto da tutti per tutti.
+- Puoi usarlo per fare migliori scelte e dato che sono dati aperti, chiunque può riutilizzarli per ogni scopo.
+- Open Products Facts è un progetto no-profit sviluppato da migliaia di volontari da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
+- Puoi iniziare a contribuire oggi aggiungendo il tuo primo prodotto. 
+
+*** Prendi i fatti ***
+- Open Products Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti.
+
+*** Raccogli TUUUUTTE le cose ***
+- Puoi aggiungere tutti gli articoli dalle tue raccolte
+- Open Crayons Facts - Il più grande database aperto di pastelli colorati
+- Open Miniature Facts - Il più grande database aperto di miniature di prodotti alimentari
+- Open ??? Facts - Crea il tuo database aperto :-)
+
+*** Funziona bene in qualsiasi condizione ***
+- Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
+- L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
+- Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se non hai una fotocamera o non funziona.
+
+*** I tuoi prodotti, i tuoi dati ***
+- I tuoi dati personali sono tuoi e non vengono mai inviati online
+- Puoi usare l'app in modo anonimo
+- Puoi esportare la cronologia di scansione
+
+Per il cibo, è possibile installare Open Food Facts, per i cosmetici, Open Beauty Facts e per alimenti per animali domestici, Open Pet Food Facts.
+
+Open Produts Facts è anche disponibile sul web ad https://world.openproductsfacts.org
+Domande e feedback a: contact@openfoodfacts.org
+
+*** Elenco Originale Pesci D'Aprile ***
+
+Ieri mattina, il team di Open Food Facts si è svegliato con una rivelazione sbalorditiva. 
+
+La raccolta di alimenti del mondo, cosmetici ed alimenti per animali domestici era così passé. Con il folle progresso dell'ultimo anno, dobbiamo veramente essere vicini al completare la nostra missione di raccolta di tutti i prodotti alimentari e cosmetici nel mondo, giusto ?
+
+Così abbiamo deciso di creare non 1, ma altri 77000 nuovi database separati ! 
+
+Open Products Facts sarà un progetto estremamente ambizioso. Eccone alcuni: 
+
+Open Crayons Facts - Il più grande database aperto di pastelli colorati
+
+Open Miniature Food Facts - Il più grande database di miniature di prodotti alimentari
+
+Aperto ??? Facts - Il più grande database di ???
+
+Domani selezioneremo i 3 database più utili e inizieremo a raccogliere tutti i prodotti corrispondenti nel mondo.
+
+Saranno database di bidoni della spazzatura, télécartes, o telefoni cellulari ? 
+
+Quindi se ti piacciono le magliette, i libri di cucina, gli origami di carta o i globi di neve, inizia a scansionare usando l'app Open Products Facts Android su Google Play
