@@ -84,6 +84,20 @@
             app:drawableLeftCompat="@drawable/barcode_grey_24dp"
             tools:text="123456789" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/countYourListedProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imgFrameYourListedProduct"
+        android:layout_alignBottom="@+id/imgFrameYourListedProduct"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:gravity="center"
+        android:textSize="17sp" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <plurals name="offline_notification_count">
         <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
@@ -964,5 +964,9 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
+    <string name="txt_enter_count">Enter number of products:</string>
+    <string name="txt_hint_count">Input can be a faction also</string>
+    <string name="txt_btn_count">Add</string>
+    <string name="toast_null_count">Number can\'t be null!</string>
     <!-- Used for diets AddOn -->
 </resources>
