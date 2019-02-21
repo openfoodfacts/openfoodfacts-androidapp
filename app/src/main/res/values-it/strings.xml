@@ -736,7 +736,7 @@
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Versione</string>
-    <string name="txtOtherInfo">Other Information: </string>
+    <string name="txtOtherInfo">Altre informazioni: </string>
     <string name="txtConservationCond">Conservation Conditions: </string>
     <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
     <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
