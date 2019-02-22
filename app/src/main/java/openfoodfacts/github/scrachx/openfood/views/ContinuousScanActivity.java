@@ -214,7 +214,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
                             fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                         } else {
-                            addToList.setVisibility(View.VISIBLE);
                             product = state.getProduct();
                             if (getIntent().getBooleanExtra("compare_product", false)) {
                                 Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
@@ -628,9 +627,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         }
                     }
                     if (slideOffset > 0.01f) {
+                        if (name.getVisibility() == View.VISIBLE) {
+                            addToList.setVisibility(View.VISIBLE);
+                        }
                         details.setVisibility(View.GONE);
                         barcodeView.pause();
                     } else {
+                        addToList.setVisibility(View.GONE);
                         barcodeView.resume();
                         details.setVisibility(View.VISIBLE);
                     }
