@@ -737,12 +737,12 @@
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
     <string name="txtOtherInfo">Sonstige Angaben:</string>
-    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtConservationCond">Konservierungszustand: </string>
     <string name="txtRecyclingInstructionToRecycle">Verwertungshinweise - Zur Wiederverwertung: </string>
     <string name="txtRecyclingInstructionToDiscard">Verwertungshinweise - Zur Entsorgung: </string>
     <string name="recyclingInstructionToRecycle">Verwertungshinweise (zur Wiederverwertung)</string>
     <string name="recyclingInstructionToDiscard">Verwertungshinweise (zur Entsorgung)</string>
-    <string name="conservationCond">Conservation Conditions</string>
+    <string name="conservationCond">Konservierungszustand</string>
     <string name="other_info">Weitere Angaben</string>
     <string name="set_ingredient_img">Als Zutatenbild verwenden</string>
     <string name="set_img_nutrients">Als Nährwertbild verwenden</string>
@@ -778,5 +778,6 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="settings_country_dialog_title">Wählen Sie Ihr Land aus :</string>
     <string name="settings_country_summary">Ändern Sie Ihr ausgewähltes Land</string>
     <string name="settings_country_title">Land</string>
+    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
 </resources>
