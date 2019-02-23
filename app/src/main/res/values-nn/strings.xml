@@ -190,6 +190,7 @@
     <string name="txtFat">Fett</string>
     <string name="txtSugars">Sukker</string>
     <string name="hintBarcode">Strekkode</string>
+    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Brukernavn</string>
     <string name="hintPass">Passord</string>
     <string name="errorLogin">Feil brukernavn eller passord</string>
@@ -247,6 +248,7 @@
     <string name="delete_txt">Slett</string>
     <string name="sign_in_drawer">Logg inn</string>
     <string name="alert_drawer">Allergenadvarsel</string>
+    <string name="your_lists">Your lists</string>
     <string name="warning_allergens">Inneholder allergener</string>
     <string name="title_dialog_alert">Legg til varsel</string>
     <string name="toggle_flash">Flash</string>
@@ -437,6 +439,12 @@
     <string name="take_picture_nutrition_table">Ta et bilde av næringslisten</string>
     <string name="take_more_pictures">Ta flere bilder</string>
     <string name="txtSaturatedFat">Mettet fett</string>
+    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
+    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Scan</string>
@@ -493,6 +501,7 @@
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_create">Create</string>
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
@@ -508,7 +517,7 @@
     <string name="additive_string">Tilsetningsstoff</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Søk</string>
-    <string name="country_string">Land der produktet selges</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Butikk</string>
     <string name="packaging_subtitle">Emballasje</string>
     <string name="last_seen_string">%1$d %2$s ago</string>
@@ -665,6 +674,7 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
@@ -746,5 +756,27 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Tilsetningsstoffer</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">Add to your lists</string>
+    <string name="txt_create_new_list">Create a new list</string>
+    <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="export_csv_your_listed_products">Eksportér CSV</string>
+    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
+    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="txt_discard">Discard</string>
+    <string name="txt_save">Lagr</string>
+    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_i_m_eating_this">I\'m eating this</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Land</string>
     <!-- Used for diets AddOn -->
 </resources>
