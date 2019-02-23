@@ -778,6 +778,6 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="settings_country_dialog_title">Wählen Sie Ihr Land aus :</string>
     <string name="settings_country_summary">Ändern Sie Ihr ausgewähltes Land</string>
     <string name="settings_country_title">Land</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="txt_no_nutrition_data">Dieses Produkt enthält keine Nährwertangaben auf der Verpackung. Wenn sich dies geändert hat, können Sie das Produkt bearbeiten.</string>
     <!-- Used for diets AddOn -->
 </resources>
