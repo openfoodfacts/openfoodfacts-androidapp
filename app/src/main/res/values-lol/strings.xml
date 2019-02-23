@@ -777,5 +777,6 @@
     <string name="settings_country_dialog_title">crwdns114554:0crwdne114554:0</string>
     <string name="settings_country_summary">crwdns114556:0crwdne114556:0</string>
     <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
+    <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
     <!-- Used for diets AddOn -->
 </resources>

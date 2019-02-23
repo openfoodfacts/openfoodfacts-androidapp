@@ -780,5 +780,6 @@
     <string name="settings_country_dialog_title">Válaszd ki az országod</string>
     <string name="settings_country_summary">Változtassa meg a kiválasztott országot</string>
     <string name="settings_country_title">Ország</string>
+    <string name="txt_no_nutrition_data">Ez a termék nem tartalmaz tápértéketadatokat a csomagoláson. Ha ez megváltozott, akkor szerkessze a terméket.</string>
     <!-- Used for diets AddOn -->
 </resources>
