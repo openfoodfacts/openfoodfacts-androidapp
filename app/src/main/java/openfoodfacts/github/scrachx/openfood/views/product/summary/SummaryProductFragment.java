@@ -222,6 +222,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean addingIngredientsImage = false;
     //boolean to indicate if the image clicked was that of nutrition
     private boolean addingNutritionImage = false;
+    //boolean to determine if nutrition data should be shown
+    private boolean showNutritionData=true;
 
     @Override
     public void onAttach(Context context) {
@@ -294,6 +296,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
         if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
             showNutrientPrompt = false;
+            showNutritionData= false;
         } else {
             if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
                 showNutrientPrompt = true;
@@ -309,6 +312,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             } else if (showCategoryPrompt) {
                 addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
             }
+        }
+
+        if (!showNutritionData) {
+            nutritionImagePromptLayout.setVisibility(View.GONE);
         }
 
         presenter.loadAllergens();
@@ -342,8 +349,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ingredientImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
-        if (isBlank(product.getImageNutritionUrl())) {
-            nutritionImagePromptLayout.setVisibility(View.VISIBLE);
+        if(!BuildConfig.FLAVOR.equals( "obf" ) && !BuildConfig.FLAVOR.equals( "opf" )) {
+            if (isBlank(product.getImageNutritionUrl()) && showNutritionData) {
+                nutritionImagePromptLayout.setVisibility(View.VISIBLE);
+            }
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc

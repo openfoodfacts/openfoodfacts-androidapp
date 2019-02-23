@@ -107,6 +107,17 @@
                 android:textIsSelectable="true"
                 android:textSize="@dimen/font_normal" />
 
+            <TextView
+                android:id="@+id/textNoNutritionData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:text="@string/txt_no_nutrition_data"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
 
             <android.support.v7.widget.CardView
                 android:id="@+id/serving_size_card_view"
@@ -200,7 +211,8 @@
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:id="@+id/nutrimentsCardView">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
