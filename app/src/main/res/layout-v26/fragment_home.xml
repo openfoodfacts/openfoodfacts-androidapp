@@ -24,16 +24,22 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/taglineHome"
             android:layout_width="184dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center_horizontal"
-            android:autoSizeTextType="uniform"
-            android:contentDescription="@string/OFFlogo"
+            android:layout_height="30dp"
             android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            app:autoSizeMaxTextSize="28sp"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeStepGranularity="0.1sp"
+            app:autoSizeTextType="uniform"
+            android:contentDescription="@string/OFFlogo"
             android:text="@string/tagline"
-            android:textStyle="bold" />
+            app:layout_constraintEnd_toEndOf="@id/imageHome"
+            app:layout_constraintStart_toStartOf="@id/imageHome"
+            app:layout_constraintTop_toBottomOf="@id/imageHome" />
 
         <TextView
             android:id="@+id/textHome"

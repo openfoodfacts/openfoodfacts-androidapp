@@ -58,7 +58,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>Streszczenie</item>
+        <item>Podsumowanie</item>
         <item>Składniki</item>
         <item>Odżywianie</item>
         <item>Wartości odżywcze</item>
@@ -173,7 +173,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <!-- Content Description -->
     <string name="bookmark">Zakładka</string>
     <string name="edit">Edytuj</string>
-    <string name="search_button">Szukaj</string>
+    <string name="search_button">Poszukiwanie</string>
     <string name="no_products">Nie odnaleziono produktów</string>
     <string name="desc_list_item_icon">Ikona przedmiotu</string>
     <string name="alert_dialog_warning_title">Ostrzeżenie</string>
@@ -206,7 +206,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtNutrientLevel100g">Poziom składników odżywczych na 100g :</string>
     <string name="txtNutritionLevelLow">w małej ilości</string>
     <string name="txtNutritionLevelModerate">w umiarkowanej ilości</string>
-    <string name="txtNutritionLevelHigh">wysokiej jakości</string>
+    <string name="txtNutritionLevelHigh">w wysokiej ilości</string>
     <string name="txtLogin">Logowanie :</string>
     <string name="txtPass">Hasło :</string>
     <string name="txtTitleHome">Otwórz jedzenie i dowiedz się co jesz</string>
@@ -218,6 +218,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtFat">Tłuszcz</string>
     <string name="txtSugars">Cukry</string>
     <string name="hintBarcode">Kod kreskowy</string>
+    <string name="txtNutriScoreInfo">Dowiedz się więcej o poziomach składników odżywczych</string>
     <string name="hintLogin">Logowanie</string>
     <string name="hintPass">Hasło</string>
     <string name="errorLogin">Błędny login lub hasło</string>
@@ -262,7 +263,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
     <string name="create_account">Zarejestruj się</string>
     <string name="home_drawer">Strona główna</string>
-    <string name="search_drawer">Szukaj</string>
+    <string name="search_drawer">Poszukiwanie</string>
     <string name="search_by_barcode_drawer">Wpisz kod kreskowy</string>
     <string name="category_drawer">Kategorie</string>
     <string name="search_by_category">Kategoria</string>
@@ -273,8 +274,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txt_anonymous">Anonimowy</string>
     <string name="txt_product_not_found">Nie odnaleziono produktów</string>
     <string name="delete_txt">Usuń</string>
-    <string name="sign_in_drawer">Zaloguj</string>
-    <string name="alert_drawer">Ostrzeżenie o alergensch</string>
+    <string name="sign_in_drawer">Zaloguj się</string>
+    <string name="alert_drawer">Ostrzeżenie o alergenach</string>
+    <string name="your_lists">Twoje listy</string>
     <string name="warning_allergens">Zawiera alergeny</string>
     <string name="title_dialog_alert">Dodaj powiadomienie</string>
     <string name="toggle_flash">Lampa błyskowa</string>
@@ -376,7 +378,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="textCarbonFootprint">Ślad węglowy / emisjie dwutlenku węgla: </string>
     <string name="txtDialogPowerMode">Szybki podgląd</string>
     <string name="txtSeeMore">Więcej</string>
-    <string name="action_search">Szukaj</string>
+    <string name="action_search">Poszukiwanie</string>
     <string name="search_hint">Wyszukaj produkt</string>
     <string name="number_of_results">Liczba wyników: </string>
     <string name="brand">Marka :</string>
@@ -412,8 +414,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_chlore">Chlor</string>
     <string name="nutrition_magnesium">Magnez</string>
     <string name="nutrition_taurine">Tauryna</string>
-    <string name="nutrition_monounsaturatedFat">Jednonienasycony tłuszcz</string>
-    <string name="nutrition_polyunsaturatedFat">Wielonioenasycony tłuszcz</string>
+    <string name="nutrition_monounsaturatedFat">Tłuszcz jednonienasycony</string>
+    <string name="nutrition_polyunsaturatedFat">Tłuszcz wielonienasycony</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -455,21 +457,27 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="iodine">Jod</string>
     <string name="caffeine">Kofeina</string>
     <string name="taurine">Tauryna</string>
-    <string name="ph">ph</string>
+    <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">Owoce, warzywa, orzechy</string>
-    <string name="collagen_meat_protein_ratio">Stosunek kolagenu do białka w mięsie</string>
+    <string name="collagen_meat_protein_ratio">Stosunek kolagenu do białka mięsa</string>
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Chlorofil</string>
     <string name="take_picture_ingredients">Zrób zdjęcie składników</string>
-    <string name="take_picture_front">Zrób zdjęcie z przodu</string>
-    <string name="take_picture_nutrition_table">Zrób zdjęcie tabeli wartości odżywczej</string>
+    <string name="take_picture_front">Zrób zdjęcie przodu</string>
+    <string name="take_picture_nutrition_table">Zrób zdjęcie tabeli żywieniowej</string>
     <string name="take_more_pictures">Zrób więcej zdjęć</string>
     <string name="txtSaturatedFat">Tłuszcz nasycony</string>
+    <string name="nutriscore_info_msg">Dowiedz się więcej o Nutri-Score</string>
+    <string name="nova_info_msg">Dowiedz się więcej o Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Skrót niedostępny</string>
-    <string name="scan_shortcut_short_label">Skanuj</string>
+    <string name="scan_shortcut_short_label">Skan</string>
     <string name="scan_shortcut_long_label">Zeskanuj produkt</string>
-    <string name="barcode_shortcut_short_label">Szukaj</string>
+    <string name="barcode_shortcut_short_label">Poszukiwanie</string>
     <string name="barcode_shortcut_long_label">Szukaj po kodzie kreskowym</string>
     <string name="history_shortcut_short_label">Historia</string>
     <string name="history_shortcut_long_label">Historia</string>
@@ -485,7 +493,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="airplane_mode_active_dialog_title">Włączono tryb samolotowy</string>
     <string name="airplane_mode_active_dialog_message">Uruchomiony tryb samolotowy, wyłącz go by kontynuować.</string>
     <string name="airplane_mode_active_dialog_negative">Odrzuć</string>
-    <string name="airplane_mode_active_dialog_positive">Opcje</string>
+    <string name="airplane_mode_active_dialog_positive">Ustawienia</string>
     <string name="device_offline_dialog_title">Sieć niedostępna</string>
     <string name="device_offline_dialog_message">Połączenie z siecią jest wymagane do wykonania tej czynności, czy chcesz zmienić ustawienia?</string>
     <string name="device_offline_dialog_negative">Odrzuć</string>
@@ -521,6 +529,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="confirm_logout">Potwierdź wylogowanie się</string>
     <string name="logout_dialog_content">Czy na pewno chcesz wylogować się?</string>
     <string name="dialog_cancel">Anuluj</string>
+    <string name="dialog_create">Stwórz</string>
     <string name="choose_resolution">Wybierz rozdzielczość</string>
     <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
     <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
@@ -535,7 +544,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="brand_string">Marka</string>
     <string name="additive_string">Dodatek</string>
     <string name="allergen_string">Alergeny</string>
-    <string name="search_string">Szukaj</string>
+    <string name="search_string">Poszukiwanie</string>
     <string name="country_string">Kraje sprzedaży</string>
     <string name="store_subtitle">Sklep</string>
     <string name="packaging_subtitle">Opakowania</string>
@@ -580,9 +589,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="code_detected">Wykryliśmy kod kreskowy</string>
     <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
     <string name="bottomNav_history">Historia</string>
-    <string name="bottomNav_search">Szukaj</string>
+    <string name="bottomNav_search">Poszukiwanie</string>
     <string name="products_added">Produkty dodane lub edytowane przez ciebie</string>
-    <string name="products_incomplete">Dodane przez ciebie produkty wymagają uzupełnienia</string>
+    <string name="products_incomplete">Dodane produkty, które należy uzupełnić</string>
     <string name="product_pictures_contributed">Produkty, które sfotografowałeś</string>
     <string name="picture_contributed_incomplete">Produkty, które sfotografowałeś i wymagają uzupełnienia</string>
     <string name="product_info_added">Produkty, do których dodałeś informacje</string>
@@ -694,9 +703,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="uploading_ingredients_image">Przesyłanie obrazu składników</string>
     <string name="uploading_front_image">Przesyłanie przedniego obrazu</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Zaloguj się, aby edytować produkt.</string>
     <string name="hint_quantity">Przykłady: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 funt</string>
-    <string name="edit_product_title">Edycja produktu</string>
+    <string name="edit_product_title">Edytuj produkt</string>
     <string name="hint_serving_size">Przykłady: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s jest już obecny w faktach żywnościowych</string>
     <string name="save_edits">Zapisz zmiany</string>
@@ -705,19 +715,19 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="description_activity_product">opis</string>
     <string name="intent_filter_share_label">Dodaj do Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Wysokie ryzyko przedawkowania</string>
-    <string name="overexposure_moderate">Średnie ryzyko przedawkowania</string>
-    <string name="infants">Niemowlęta</string>
+    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Małe dzieci</string>
-    <string name="toddlers_age">1 do 2 lat</string>
-    <string name="children">Dzieci</string>
-    <string name="children_age">3 do 9 lat</string>
-    <string name="adolescents">Nastolatkowie</string>
-    <string name="adolescents_age">10 do 17 lat</string>
-    <string name="adults">Dorośli</string>
-    <string name="adults_age">18 do 64 lat</string>
-    <string name="elderly">Osoby starsze</string>
+    <string name="toddlers">Toddlers</string>
+    <string name="toddlers_age">1 to 2</string>
+    <string name="children">Children</string>
+    <string name="children_age">3 to 9</string>
+    <string name="adolescents">Adolescents</string>
+    <string name="adolescents_age">10 to 17</string>
+    <string name="adults">Adults</string>
+    <string name="adults_age">18 to 64</string>
+    <string name="elderly">Elderly</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Większość populacji\n(ponad 50%)</string>
     <string name="some_people">Część populacji\n(ponad 5%)</string>
@@ -755,14 +765,14 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="category_game_btn">Pomóż obliczyć Nutri-Score. przez właściwe kategoryzowanie produktów</string>
     <string name="version_string">Aplikacja na Androida Open Food Facts</string>
     <string name="version">Wersja</string>
-    <string name="txtOtherInfo">Other Information: </string>
-    <string name="txtConservationCond">Conservation Conditions: </string>
-    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
-    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
-    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
-    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
-    <string name="conservationCond">Conservation Conditions</string>
-    <string name="other_info">Other Information</string>
+    <string name="txtOtherInfo">Pozostałe informacje: </string>
+    <string name="txtConservationCond">Warunki przechowywania: </string>
+    <string name="txtRecyclingInstructionToRecycle">Instrukcje dotyczące recyklingu - do recyklingu: </string>
+    <string name="txtRecyclingInstructionToDiscard">Instrukcje dotyczące recyklingu - wyrzucić: </string>
+    <string name="recyclingInstructionToRecycle">Instrukcje dotyczące recyklingu (do recyklingu)</string>
+    <string name="recyclingInstructionToDiscard">Instrukcje dotyczące recyklingu (do wyrzucenia)</string>
+    <string name="conservationCond">Warunki przechowywania</string>
+    <string name="other_info">Pozostałe informacje</string>
     <string name="set_ingredient_img">Zdjęcie zawierające składniki produktu</string>
     <string name="set_img_nutrients">Zdjęcie zawierające tabelę z wartością odżywczą</string>
     <string name="set_img_front">Głownie zdjęcie produktu</string>
@@ -775,5 +785,27 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="fast_addition_mode">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
     <string name="addtive_search">Wyszukaj dodatek</string>
     <string name="additives">Dodatki</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">Dodaj do swoich list</string>
+    <string name="txt_create_new_list">Utworzyć nową listę</string>
+    <string name="txt_add_to_new_list">Dodaj do nowej listy</string>
+    <string name="txt_eaten_products">Zjedzone produkty</string>
+    <string name="txt_products_to_buy">Produkty do kupienia</string>
+    <string name="export_csv_your_listed_products">Eksport CSV</string>
+    <string name="txt_exporting_your_listed_products">Eksportowanie twoich produktów…</string>
+    <string name="txt_your_listed_products_exported">Twój profil został eksportowany</string>
+    <string name="txt_discard">Odrzuć</string>
+    <string name="txt_save">Zapisz</string>
+    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_i_m_eating_this">I\'m eating this</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Kraj</string>
     <!-- Used for diets AddOn -->
 </resources>

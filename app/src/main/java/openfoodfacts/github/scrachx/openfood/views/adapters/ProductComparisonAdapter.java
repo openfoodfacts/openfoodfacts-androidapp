@@ -291,13 +291,13 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                     holder.nutrientsRecyclerView.setAdapter(new NutrientLevelListAdapter(context, loadLevelItems(product)));
                 }
             } else {
-                holder.productComparisonImageGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(null)));
+                holder.productComparisonImageGrade.setVisibility(View.INVISIBLE);
             }
 
             if (product.getNovaGroups() != null) {
                 holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
             } else {
-                holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(null));
+                holder.productComparisonNovaGroup.setVisibility(View.INVISIBLE);
             }
 
             if(product.getEnvironmentImpactLevelTags()!=null) {

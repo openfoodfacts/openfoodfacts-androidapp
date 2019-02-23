@@ -67,6 +67,8 @@
         <item>g</item>
         <item>mg</item>
         <item>kg</item>
+        <item>l</item>
+        <item>cl</item>
     </string-array>
 
     <!-- nutrition energy units -->
@@ -684,6 +686,7 @@
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_create">Create</string>
 
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
@@ -976,5 +979,6 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
+    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
 </resources>
