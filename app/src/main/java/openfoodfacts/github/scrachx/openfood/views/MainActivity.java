@@ -208,7 +208,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
                     ()).commit();
-            getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
         }
 
         // chrome custom tab init
