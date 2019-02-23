@@ -231,14 +231,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        Intent intent = getActivity().getIntent();
-        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null){
-            state = (State) intent.getExtras().getSerializable("state");
-        } else {
-            state = ProductFragment.mState;
-        }
-        product = state.getProduct();
-
         presenter = new SummaryProductPresenter(product, this);
     }
 
@@ -254,6 +246,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null){
+            state = (State) intent.getExtras().getSerializable("state");
+        } else {
+            state = ProductFragment.mState;
+        }
+        product = state.getProduct();
+
         refreshView(state);
     }
 
@@ -573,7 +572,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri));
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
                 Context context = this.getContext();
-                img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                    img.setVisibility(View.VISIBLE);
+                    img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                } else {
+                    img.setVisibility(View.GONE);
+                }
                 img.setOnClickListener(view1 -> {
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                     CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
@@ -637,7 +641,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
 
             if (product.getNovaGroups() != null) {
-                novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                if (Utils.getNovaGroupDrawable(product.getNovaGroups()) != 0) {
+                    novaGroup.setVisibility(View.VISIBLE);
+                    novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                } else {
+                    novaGroup.setVisibility(View.GONE);
+                }
                 novaGroup.setOnClickListener(view1 -> {
                     Uri uri = Uri.parse(getString(R.string.url_nova_groups));
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
@@ -1134,7 +1143,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK && data.getBooleanExtra("uploadedToServer", false)) {
+        if (resultCode == RESULT_OK) {
             refreshView(state);
         }
 
