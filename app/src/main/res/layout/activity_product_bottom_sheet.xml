@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    android:background="@color/primary_dark">
+
+    <ImageView
+        android:id="@+id/bottom_sheet_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_forum_white_24dp"
+        android:layout_alignParentLeft="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/bottom_sheet_icon"
+        android:id="@+id/bottom_sheet_linear_layout"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/bottom_sheet_product_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:paddingRight="@dimen/spacing_small"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_small"
+            tools:text="Are those mackerels in tomato sauce?"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bottom_sheet_question_prompt"
+            android:textColor="@android:color/darker_gray"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_small"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/spacing_normal"
+        app:srcCompat="@drawable/ic_clear_white_24dp"
+        android:id="@+id/bottom_sheet_clear_icon"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
