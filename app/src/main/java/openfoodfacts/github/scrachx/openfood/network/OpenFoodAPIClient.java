@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -27,6 +28,8 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.utils.FeedBackActionsListeners;
+import openfoodfacts.github.scrachx.openfood.utils.FeedBackDialog;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -275,13 +278,49 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public QuestionsState getQuestionsForIncompleteProducts(String barcode) {
-        final QuestionsState[] state = new QuestionsState[1];
+    public void getQuestionsForIncompleteProducts(String barcode, Activity activity) {
         apiService.getQuestionsForIncompleteProducts(barcode).enqueue(new Callback<QuestionsState>() {
             @Override
             public void onResponse(Call<QuestionsState> call, Response<QuestionsState> response) {
                 QuestionsState questionsState = response.body();
-                state[0] = questionsState;
+                if (questionsState != null && !questionsState.getStatus().equals("no_questions")) {
+                    FeedBackDialog mDialog = new FeedBackDialog(activity)
+                            .setBackgroundColor(R.color.colorPrimaryDark)
+                            .setIcon(activity.getDrawable(R.drawable.ic_feedback_black_24dp))
+                            .setIconColor(R.color.gray)
+                            .setTitle("Open Food Facts")
+                            .setDescription("")
+                            .setReviewQuestion(questionsState.getQuestions().get(0).getQuestion())
+                            .setPositiveFeedbackText("Yes")
+                            .setNegativeFeedbackText("No")
+                            .setAmbiguityFeedbackText("I'm not sure")
+                            .setOnReviewClickListener(new FeedBackActionsListeners() {
+                                @Override
+                                public void onPositiveFeedback(FeedBackDialog dialog) {
+                                    //init POST request
+                                    dialog.dismiss();
+                                }
+
+                                @Override
+                                public void onNegativeFeedback(FeedBackDialog dialog) {
+                                    //do nothing
+                                    dialog.dismiss();
+                                }
+
+                                @Override
+                                public void onAmbiguityFeedback(FeedBackDialog dialog) {
+                                    //do nothing
+                                    dialog.dismiss();
+                                }
+
+                                @Override
+                                public void onCancelListener(DialogInterface dialog) {
+                                    //do nothing
+                                    dialog.dismiss();
+                                }
+                            })
+                            .show();
+                }
             }
 
             @Override
@@ -289,7 +328,6 @@ public class OpenFoodAPIClient {
                 t.printStackTrace();
             }
         });
-        return state[0];
     }
 
 

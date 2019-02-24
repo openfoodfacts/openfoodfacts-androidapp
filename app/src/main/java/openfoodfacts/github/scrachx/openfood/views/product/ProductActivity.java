@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -62,6 +63,8 @@ import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.FeedBackActionsListeners;
+import openfoodfacts.github.scrachx.openfood.utils.FeedBackDialog;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -139,11 +142,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         OpenFoodAPIClient questionApi = new OpenFoodAPIClient(this, "https://robotoff.openfoodfacts.org/");
 
-		productQuestionsState = questionApi.getQuestionsForIncompleteProducts(mState.getProduct().getCode());
-
-		if (!productQuestionsState.getStatus().equals("no_questions")) {
-
-        }
+		questionApi.getQuestionsForIncompleteProducts(mState.getProduct().getCode(), this);
 
 		setupViewPager( viewPager );
 
