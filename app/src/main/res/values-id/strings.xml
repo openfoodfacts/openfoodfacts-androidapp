@@ -15,7 +15,7 @@
     </plurals>
     <string name="action_settings">Pengaturan</string>
     <string name="action_about">Tentang,</string>
-    <string name="action_discover">Menemukan</string>
+    <string name="action_discover">mendapatkan</string>
     <string name="contribute">Bagaimana cara  kontribusi,</string>
     <string name="action_find">mencari</string>
     <string name="text_barcode">ketik kode batang</string>
@@ -58,40 +58,40 @@
         <item>Arachidic acid (20:0)</item>
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
-        <item>Bikarbonatt</item>
+        <item>Bikarbonat</item>
         <item>Biotiin</item>
         <item>Butyric acid (4:0)</item>
-        <item>cafe</item>
+        <item>Kafein</item>
         <item>Kalsium</item>
         <item>Capric acid (10:0)</item>
         <item>Caproic acid (6:0)</item>
         <item>Caprylic acid (8:0)</item>
         <item>kasen</item>
         <item>Cerotic acid (26:0)</item>
-        <item>Khloriida</item>
+        <item>Khlorida</item>
         <item>Kolesterol</item>
-        <item>Kromiuum</item>
-        <item>tembaga keras</item>
+        <item>Kromium</item>
+        <item>Tembaga</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
         <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
-        <item>Fluoridaa</item>
+        <item>Fluor</item>
         <item>Fruktosa</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
         <item>Glukosa,,</item>
         <item>Gondoic acid (20:1 n-9)</item>
-        <item>Yudium</item>
-        <item>besii</item>
+        <item>Yodium</item>
+        <item>Besi</item>
         <item>laxtosa</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
-        <item>magnesium</item>
-        <item>Maltoodekstrin</item>
+        <item>Magnesium</item>
+        <item>Maltodekstrin</item>
         <item>Maltose</item>
-        <item>Mangaan</item>
+        <item>Mangan</item>
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molibdenum</item>
@@ -107,7 +107,7 @@
         <item>Palmitic acid (16:0)</item>
         <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
         <item>pH</item>
-        <item>pospor</item>
+        <item>Fosfor</item>
         <item>Sugar alcohols (Polyols)</item>
         <item>Polyunsaturated fat</item>
         <item>poKaliium</item>
@@ -116,9 +116,9 @@
         <item>silikaa</item>
         <item>Starch</item>
         <item>Stearic acid (18:0)</item>
-        <item>Sukrosa.</item>
+        <item>Sukrosa</item>
         <item>taurin</item>
-        <item>lemax trans</item>
+        <item>Lemak trans</item>
         <item>Vitamin A</item>
         <item>Vitamin B1 (Thiamin)</item>
         <item>Vitamin B12 (Cobalamin)</item>
@@ -172,13 +172,13 @@
     <string name="txtPalmOilProduct">Bahan dari minyak kelapa sawit :</string>
     <string name="txtServingSize">Porsi penyajian :</string>
     <string name="txtNutrientLevel100g">Tingkat nutrisi untuk 100 g:</string>
-    <string name="txtNutritionLevelLow">dalam jumlah kecil</string>
+    <string name="txtNutritionLevelLow">kualitas jumlah rendah</string>
     <string name="txtNutritionLevelModerate">dalam jumlah sedang</string>
-    <string name="txtNutritionLevelHigh">dalam jumlah besar</string>
+    <string name="txtNutritionLevelHigh">kualitas hasil rendah</string>
     <string name="txtLogin">Masuk:</string>
     <string name="txtPass">Kata Sandi :</string>
-    <string name="txtTitleHome">Buka makananmu dan ketahui apa yang kamu makan</string>
-    <string name="txtSave">Simpan</string>
+    <string name="txtTitleHome">buka makanan biar kamu mengetahui apa makananmu</string>
+    <string name="txtSave">menyimpan </string>
     <string name="txtSignIn">Masuk</string>
     <string name="txtUser">Panel Pengguna</string>
     <string name="txtToastSaved">Pengguna yang disimpan</string>
@@ -186,8 +186,9 @@
     <string name="txtFat">Lemak</string>
     <string name="txtSugars">Gula</string>
     <string name="hintBarcode">kode batang</string>
+    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Masuk</string>
-    <string name="hintPass">Kata Sandi</string>
+    <string name="hintPass">kata sandi anda</string>
     <string name="errorLogin">Nama pengguna atau password salah</string>
     <string name="errorWeb">Tidak bisa mengakses internet. Mohon periksa koneksi anda.</string>
     <string name="uploadLater">Gambar akan diunggah ketika jaringan tersedia</string>
@@ -225,7 +226,7 @@
     <string name="txtPalm">Produk ini tidak mengandung minyak sawit</string>
     <string name="txtBarcodeNotValid">Kode batang tidak valid</string>
     <string name="try_it_scan_now">Pindai produk</string>
-    <string name="share">Bagikan</string>
+    <string name="share">membagikan</string>
     <string name="translate">Terjemahkan</string>
     <string name="msg_share">Lihat produk ini pada Open Food Facts:</string>
     <string name="create_account">Daftar</string>
@@ -241,8 +242,9 @@
     <string name="txt_anonymous">Anonim</string>
     <string name="txt_product_not_found">tidak ada produk</string>
     <string name="delete_txt">Hapus</string>
-    <string name="sign_in_drawer">Masuk</string>
+    <string name="sign_in_drawer">memasuki</string>
     <string name="alert_drawer">Peringatan bahan alergi</string>
+    <string name="your_lists">Your lists</string>
     <string name="warning_allergens">Mengandung alergen</string>
     <string name="title_dialog_alert">Tambahkan peringatan</string>
     <string name="toggle_flash">Flash</string>
@@ -309,11 +311,11 @@
     <string name="nutrition_carbohydrate_short_name">Karbohidrat (g)</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
     <string name="nutrition_cholesterol_short_name">Tingkat Kolesterol</string>
-    <string name="nutrition_energy">tenaga</string>
-    <string name="nutrition_energy_short_name">tenaga</string>
+    <string name="nutrition_energy">Energi</string>
+    <string name="nutrition_energy_short_name">Energi</string>
     <string name="nutrition_fat">Lemak</string>
     <string name="nutrition_fat_short_name">lemakk</string>
-    <string name="nutrition_fiber">kandungan makanan</string>
+    <string name="nutrition_fiber">Serat makanan</string>
     <string name="nutrition_fiber_short_name">kandungan serat</string>
     <string name="nutrition_header">tabel nutrisi</string>
     <string name="nutrition_no_data_message">tidak ada data tersedia dalam produk ini</string>
@@ -330,7 +332,7 @@
     <string name="nutrition_sodium_short_name">sodiumm</string>
     <string name="nutrition_sugars">Gula</string>
     <string name="nutrition_sugars_short_name">gula manis</string>
-    <string name="nutrition_trans_fat">lemax trans</string>
+    <string name="nutrition_trans_fat">Lemak trans</string>
     <string name="nutrition_trans_fat_short_name">lemax transs</string>
     <string name="nutriment_serving_size">per butir</string>
     <string name="action_manage_account">menggunakan akun</string>
@@ -369,27 +371,27 @@
     <string name="txt_try_again">coba kembali</string>
     <string name="nutrition_lactose">laxtosa</string>
     <string name="nutrition_casein">kasen</string>
-    <string name="nutrition_maltodextrins">Maltoodekstrin</string>
+    <string name="nutrition_maltodextrins">Maltodekstrin</string>
     <string name="nutrition_serum_proteins">protein serum</string>
     <string name="nutrition_nucleotides">Nukleotidaa</string>
     <string name="for_100g">untuk100g</string>
     <string name="serving">porsi</string>
-    <string name="minerals">Meneral</string>
+    <string name="minerals">Mineral</string>
     <string name="nutrition_calcium">Kalsium</string>
     <string name="nutrition_potassium">poKaliium</string>
     <string name="nutrition_chlore">kolorin</string>
-    <string name="nutrition_magnesium">magnesium</string>
+    <string name="nutrition_magnesium">Magnesium</string>
     <string name="nutrition_taurine">taurin</string>
-    <string name="nutrition_monounsaturatedFat">Lemak tidak jenuh Mono</string>
-    <string name="nutrition_polyunsaturatedFat">Poli tidak jenuh lemak</string>
-    <string name="nutrition_omega3">Omega3</string>
+    <string name="nutrition_monounsaturatedFat">Lemak tak jenuh Mono</string>
+    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
-    <string name="nutrition_omega9">Omega9</string>
-    <string name="nutrition_sucrose">Sukrosa.</string>
+    <string name="nutrition_omega9">Omega 9</string>
+    <string name="nutrition_sucrose">Sukrosa</string>
     <string name="nutrition_glucose">Glukosa,,</string>
     <string name="nutrition_fructose">Fruktosa</string>
     <string name="nutrition_maltose">Maltose</string>
-    <string name="nutrition_alcohol">Alkoholo</string>
+    <string name="nutrition_alcohol">Alkohol</string>
     <string name="nutrition_vitamins">banyak vitamin</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
@@ -404,35 +406,41 @@
     <string name="vitamin_b12">Vitamin.B12</string>
     <string name="biotin">Biotiin</string>
     <string name="pantothenic_acid">Asem pantotenat</string>
-    <string name="nutrition_minerals">Meneral</string>
+    <string name="nutrition_minerals">Mineral</string>
     <string name="silica">silikaa</string>
-    <string name="bicarbonate">Bikarbonatt</string>
+    <string name="bicarbonate">Bikarbonat</string>
     <string name="potassium">poKaliium</string>
-    <string name="chloride">Khloriida</string>
+    <string name="chloride">Khlorida</string>
     <string name="calcium">Kalsium</string>
-    <string name="phosphorus">pospor</string>
-    <string name="iron">besii</string>
-    <string name="magnesium">magnesium</string>
+    <string name="phosphorus">Fosfor</string>
+    <string name="iron">Besi</string>
+    <string name="magnesium">Magnesium</string>
     <string name="zinc">zat</string>
-    <string name="copper">tembaga keras</string>
-    <string name="manganese">Mangaan</string>
-    <string name="fluoride">Fluoridaa</string>
+    <string name="copper">Tembaga</string>
+    <string name="manganese">Mangan</string>
+    <string name="fluoride">Fluor</string>
     <string name="selenium">senium</string>
-    <string name="chromium">Kromiuum</string>
+    <string name="chromium">Kromium</string>
     <string name="molybdenum">Molibdenum</string>
-    <string name="iodine">Yudium</string>
-    <string name="caffeine">cafe</string>
+    <string name="iodine">Yodium</string>
+    <string name="caffeine">Kafein</string>
     <string name="taurine">taurin</string>
     <string name="ph">pH</string>
-    <string name="fruits_vegetables_nuts">Buah-, sayuran, kacang</string>
-    <string name="collagen_meat_protein_ratio">Rasio protein dagiing kolagen</string>
-    <string name="cocoa">asoe coklat</string>
-    <string name="chlorophyl">Klorofiil</string>
+    <string name="fruits_vegetables_nuts">Buah-buahan, sayuran, kacang-kacangan</string>
+    <string name="collagen_meat_protein_ratio">Rasio protein daging kolagen</string>
+    <string name="cocoa">Biji cokelat</string>
+    <string name="chlorophyl">Klorofil</string>
     <string name="take_picture_ingredients">mengambil gambar ramuan</string>
     <string name="take_picture_front">mengambil gambar dari bahan ramuan</string>
     <string name="take_picture_nutrition_table">ambil gambar nutrisi</string>
     <string name="take_more_pictures">memfoto</string>
     <string name="txtSaturatedFat">Lemak jenuh</string>
+    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
+    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Pintasan tidak tersedia</string>
     <string name="scan_shortcut_short_label">Scan</string>
@@ -489,6 +497,7 @@
     <string name="confirm_logout">Konfirmasi keluar</string>
     <string name="logout_dialog_content">Apakah anda yakin untuk keluar?</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_create">Create</string>
     <string name="choose_resolution">Pilih Resolusi</string>
     <string name="pref_resolution_summary">Pilih resolusi untuk unggahan gambar</string>
     <string name="image_upload_resolution">Resolusi unggahan gambar</string>
@@ -661,6 +670,7 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit produk</string>
@@ -742,5 +752,28 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditif</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">Add to your lists</string>
+    <string name="txt_create_new_list">Create a new list</string>
+    <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="export_csv_your_listed_products">kirim CSV</string>
+    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
+    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="txt_discard">Buang</string>
+    <string name="txt_save">menyimpan </string>
+    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_i_m_eating_this">I\'m eating this</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Negara</string>
+    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
 </resources>

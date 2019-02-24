@@ -34,7 +34,7 @@
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
+        <item>제품 사진</item>
         <item>Ingredient Analysis</item>
     </string-array>
     <!-- Text units -->
@@ -114,7 +114,7 @@
         <item>Selenium</item>
         <item>Serum proteins</item>
         <item>규토</item>
-        <item>Starch</item>
+        <item>전분</item>
         <item>Stearic acid (18:0)</item>
         <item>자당</item>
         <item>타우린</item>
@@ -186,6 +186,7 @@
     <string name="txtFat">지방</string>
     <string name="txtSugars">당류</string>
     <string name="hintBarcode">바코드</string>
+    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">로그인</string>
     <string name="hintPass">암호</string>
     <string name="errorLogin">계정 또는 비밀번호 오류</string>
@@ -243,6 +244,7 @@
     <string name="delete_txt">삭제</string>
     <string name="sign_in_drawer">로그인에</string>
     <string name="alert_drawer">알레르기 항원 경보</string>
+    <string name="your_lists">Your lists</string>
     <string name="warning_allergens">알레르기 항원이 포함되어있습니다.</string>
     <string name="title_dialog_alert">경보 추가하기</string>
     <string name="toggle_flash">Flash</string>
@@ -256,7 +258,7 @@
     <string name="choose_formats">Choose Formats</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">확인</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">취소</string>
     <string name="login_button">로그인</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
@@ -433,12 +435,18 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">포화 지방</string>
+    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
+    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Scan</string>
-    <string name="scan_shortcut_long_label">Scan Product</string>
+    <string name="scan_shortcut_long_label">제품 스캔</string>
     <string name="barcode_shortcut_short_label">수색</string>
-    <string name="barcode_shortcut_long_label">Search By Barcode</string>
+    <string name="barcode_shortcut_long_label">바코드로 검색</string>
     <string name="history_shortcut_short_label">History</string>
     <string name="history_shortcut_long_label">History</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
@@ -451,7 +459,7 @@
     <string name="contact_summary">Contact the team</string>
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">비행기 모드 활성화</string>
-    <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
+    <string name="airplane_mode_active_dialog_message">비행기 모드로 설정되어있습니다. 계속하려면 해제하시기 바랍니다.</string>
     <string name="airplane_mode_active_dialog_negative">Dismiss</string>
     <string name="airplane_mode_active_dialog_positive">설정</string>
     <string name="device_offline_dialog_title">Network unavailable</string>
@@ -477,20 +485,21 @@
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="connectivity_check">Please check your internet connection</string>
     <string name="dismiss">Dismiss</string>
-    <string name="Terms">Terms</string>
+    <string name="Terms">약관</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-    <string name="preference_header_general">General</string>
+    <string name="preference_header_general">일반</string>
     <string name="preference_header_network">네트워크</string>
-    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_contributing">도움 보내기</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">로그인</string>
     <string name="login_true">이미 로그인했습니다!</string>
-    <string name="confirm_logout">Confirm Logout</string>
+    <string name="confirm_logout">로그아웃 확인</string>
     <string name="logout_dialog_content">로그아웃 하겠습니까?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">취소</string>
+    <string name="dialog_create">Create</string>
     <string name="choose_resolution">해상도 선택</string>
-    <string name="pref_resolution_summary">Pick a resolution for image upload</string>
+    <string name="pref_resolution_summary">업로드하는 이미지 해상도 설정</string>
     <string name="image_upload_resolution">Image upload resolution</string>
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
     <string name="wikidata_information">Going further</string>
@@ -515,7 +524,7 @@
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
     <string name="Rate_Us">Show Your Support</string>
-    <string name="Rate_Us_title">Rate our App</string>
+    <string name="Rate_Us_title">앱 별점 평가</string>
     <string name="app_disabled_text">Application is disabled</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">비타민:</string>
@@ -585,7 +594,7 @@
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
-    <string name="initial_loading">Initial loading</string>
+    <string name="initial_loading">초기 로딩</string>
     <string name="preferences">환경 설정</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
@@ -621,11 +630,11 @@
     <string name="percent">%1$d%%</string>
     <string name="overview">Overview</string>
     <string name="ingredients">성분</string>
-    <string name="nutrition_facts">Nutrition Facts</string>
+    <string name="nutrition_facts">영양 성분 정보</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
-    <string name="ingredients_list">Ingredients List</string>
+    <string name="ingredients_list">성분 목록</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
     <string name="extracting_ingredients">Extracting ingredients</string>
@@ -661,6 +670,7 @@
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">제품을 편집</string>
@@ -742,5 +752,28 @@
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">Add to your lists</string>
+    <string name="txt_create_new_list">Create a new list</string>
+    <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="export_csv_your_listed_products">CSV로 내보내기</string>
+    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
+    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="txt_discard">삭제</string>
+    <string name="txt_save">저장</string>
+    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_i_m_eating_this">I\'m eating this</string>
+    <string name="compare_product_prompt">Compare this product</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">국가</string>
+    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
 </resources>

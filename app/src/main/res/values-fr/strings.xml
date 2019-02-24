@@ -190,7 +190,7 @@
     <string name="txtFat">Matières grasses</string>
     <string name="txtSugars">Sucres</string>
     <string name="hintBarcode">Code barre</string>
-    <string name="txtNutriScoreInfo">Comment est-il calculé?</string>
+    <string name="txtNutriScoreInfo">En savoir plus sur les niveaux de nutriments</string>
     <string name="hintLogin">Connexion</string>
     <string name="hintPass">Mot de passe</string>
     <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
@@ -248,6 +248,7 @@
     <string name="delete_txt">Supprimer</string>
     <string name="sign_in_drawer">Se connecter</string>
     <string name="alert_drawer">Alerte allergènes</string>
+    <string name="your_lists">Vos listes</string>
     <string name="warning_allergens">Contient des allergènes</string>
     <string name="title_dialog_alert">Ajouter une alerte</string>
     <string name="toggle_flash">Flash</string>
@@ -438,8 +439,8 @@
     <string name="take_picture_nutrition_table">Prendre une photo du tableau nutritionnel</string>
     <string name="take_more_pictures">Prendre plus de photos</string>
     <string name="txtSaturatedFat">Graisses saturées</string>
-    <string name="nutriscore_info_msg">En savoir plus sur la science et la méthodologie à la base de Nutri-Score</string>
-    <string name="nova_info_msg">En savoir plus sur la science derrière Nova</string>
+    <string name="nutriscore_info_msg">En savoir plus sur le Nutri-Score</string>
+    <string name="nova_info_msg">En savoir plus sur Nova</string>
     <string name="nova_grp1_msg">Groupe 1 - Aliments non transformés ou transformés minimalement</string>
     <string name="nova_grp2_msg">Groupe 2 - Ingrédients culinaires transformés</string>
     <string name="nova_grp3_msg">Groupe 3 - Aliments transformés</string>
@@ -500,6 +501,7 @@
     <string name="confirm_logout">Confirmer la déconnexion</string>
     <string name="logout_dialog_content">Etes-vous sûr(e) de vouloir vous déconnecter?</string>
     <string name="dialog_cancel">Annuler</string>
+    <string name="dialog_create">Créer</string>
     <string name="choose_resolution">Choisir la résolution</string>
     <string name="pref_resolution_summary">Choisissez une résolution pour l’envoi d’images</string>
     <string name="image_upload_resolution">Résolution de l\'envoi d\'images</string>
@@ -754,11 +756,28 @@
     <string name="fast_addition_mode">Active l\'ajout rapide de produits avec moins d\'attributs</string>
     <string name="addtive_search">Rechercher un additif</string>
     <string name="additives">Additifs</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">Ajouter à vos listes</string>
+    <string name="txt_create_new_list">Créer une nouvelle liste</string>
+    <string name="txt_add_to_new_list">Ajouter à une nouvelle liste</string>
+    <string name="txt_eaten_products">Produits consommés</string>
+    <string name="txt_products_to_buy">Produits à acheter</string>
+    <string name="export_csv_your_listed_products">Exporter en CSV</string>
+    <string name="txt_exporting_your_listed_products">Exporter vos produits…</string>
+    <string name="txt_your_listed_products_exported">Vos produits ont été délivrés</string>
+    <string name="txt_discard">Annuler</string>
+    <string name="txt_save">Enregistrer</string>
+    <string name="write_external_storage_your_listed_products">Les droits d\'accès en écriture sur le support de stockage externe sont nécessaires pour exporter les données.</string>
+    <string name="txt_info_eaten_products">Vous pourrez ajouter un produit à cette liste en scannant les produits, en faisant glisser la carte du produit vers le haut et en appuyant sur \"je vais manger ça\".
+        Vous pourrez également ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.</string>
+    <string name="txt_info_your_listed_products">Vous pourrez ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.</string>
+    <string name="txt_i_m_eating_this">Je vais manger ça</string>
     <string name="compare_product_prompt">Comparer ce produit</string>
     <string name="search_history_pref_title">Supprimer l\'historique de recherche</string>
     <string name="search_history_pref_summary">Supprimer toutes les recherches que vous avez effectuées sur cet appareil</string>
     <string name="settings_country_dialog_title">Sélectionnez votre pays</string>
     <string name="settings_country_summary">Changer le pays sélectionné</string>
     <string name="settings_country_title">Pays</string>
+    <string name="txt_no_nutrition_data">Ce produit ne contient aucune information nutritionnelle sur l\'emballage. Si cela a changé, vous pouvez modifier le produit.</string>
     <!-- Used for diets AddOn -->
 </resources>
