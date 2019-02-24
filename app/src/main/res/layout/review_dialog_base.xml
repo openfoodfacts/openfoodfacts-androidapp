@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/semi_trans"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="25dp">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@+id/semi_trans"
+            android:id="@+id/dialog_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/feedback_body_layout"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="125dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/review_title"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/review_description"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    tools:text="171, Straight Road, Cross Street"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="#FFF"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/review_questions"
+                    tools:text="Are reservations required here?"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/review_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:layout_marginBottom="-20dp"
+            android:src="@drawable/reviewdialog_round_icon"
+            android:layout_above="@+id/dialog_body" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/dialog_action"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:weightSum="3"
+        android:background="#FFF">
+        <LinearLayout
+            android:id="@+id/postive_feedback_layout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/reviewdialog_review_action_ripple"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/postive_feedback_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:tint="@color/sampleColor"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/reviewdialog_ic_accept_action"
+                />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/positive_feedback_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="YES"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:textColor="#000"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/negative_feedback_layout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/reviewdialog_review_action_ripple"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/negative_feedback_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:tint="@color/sampleColor"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/reviewdialog_ic_cancel_action"
+                />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/negative_feedback_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="NO"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:textColor="#000"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ambiguity_feedback_layout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/reviewdialog_review_action_ripple"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ambiguity_feedback_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:tint="@color/sampleColor"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/reviewdialog_ic_ambiguity_action"
+                />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/ambiguity_feedback_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="NOT SURE"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:textColor="#000"
+                android:layout_marginTop="5dp"
+
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

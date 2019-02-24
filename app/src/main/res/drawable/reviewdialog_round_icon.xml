@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/round_background">
+        <shape
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval">
+            <solid
+                android:id="@+id/background_color"
+                android:color="#FFFFFF"/>
+            <size
+                android:width="120dp"
+                android:height="120dp"/>
+        </shape>
+    </item>
+    <item
+        android:left="20dp"
+        android:right="20dp"
+        android:bottom="20dp"
+        android:top="20dp"
+        android:drawable="@drawable/reviewdialog_ic_restaurant"
+        android:id="@+id/drawable_image" />
+</layer-list>
