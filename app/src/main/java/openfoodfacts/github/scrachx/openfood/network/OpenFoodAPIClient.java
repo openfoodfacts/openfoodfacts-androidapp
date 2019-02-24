@@ -320,19 +320,19 @@ public class OpenFoodAPIClient {
                                         @Override
                                         public void onPositiveFeedback(FeedBackDialog dialog) {
                                             //init POST request
-                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 1, null, activity);
+                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 1, activity);
                                             dialog.dismiss();
                                         }
 
                                         @Override
                                         public void onNegativeFeedback(FeedBackDialog dialog) {
-                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 0, null, activity);
+                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 0, activity);
                                             dialog.dismiss();
                                         }
 
                                         @Override
                                         public void onAmbiguityFeedback(FeedBackDialog dialog) {
-                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), -1, null, activity);
+                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), -1, activity);
                                             dialog.dismiss();
                                         }
 
@@ -367,8 +367,8 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void sendProductInsights(String insightId, int annotation, Integer update, Activity activity) {
-        apiService.sendProductInsight(insightId, annotation, update).enqueue(new Callback<ResponseBody>() {
+    public void sendProductInsights(String insightId, int annotation, Activity activity) {
+        apiService.sendProductInsight(insightId, annotation).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {

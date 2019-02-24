@@ -87,7 +87,7 @@ public interface OpenFoodAPIService {
 
     @FormUrlEncoded
     @POST("api/v1/insights/annotate")
-    Call<ResponseBody> sendProductInsight(@Field("insight_id") String insightId, @Field("annotation") int annotation, @Field("update") Integer update);
+    Call<ResponseBody> sendProductInsight(@Field("insight_id") String insightId, @Field("annotation") int annotation);
 
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)
