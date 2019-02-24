@@ -110,6 +110,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     ProductsRecyclerViewAdapter productsRecyclerViewAdapter;
 
     private OpenFoodAPIClient api;
+    private OpenFoodAPIClient questionApi;
     private ShareActionProvider mShareActionProvider;
     private State mState;
     private SensorManager mSensorManager;
@@ -134,6 +135,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 		api = new OpenFoodAPIClient( this );
 
 		mState = (State) getIntent().getExtras().getSerializable( "state" );
+
+		questionApi = new OpenFoodAPIClient(this, "https://robotoff.openfoodfacts.org/");
+
+		questionApi.getQuestionsForIncompleteProducts(mState.getProduct().getCode());
 
 		setupViewPager( viewPager );
 

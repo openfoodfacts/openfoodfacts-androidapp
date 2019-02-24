@@ -10,6 +10,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -23,6 +24,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
@@ -77,6 +79,9 @@ public interface OpenFoodAPIService {
 
     @GET("api/v0/product/{barcode}.json?fields=ingredients")
     Call<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
+
+    @GET("api/v1/questions/{barcode}")
+    Call<QuestionsState> getQuestionsForIncompleteProducts(@Path("barcode") String barcode);
 
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)

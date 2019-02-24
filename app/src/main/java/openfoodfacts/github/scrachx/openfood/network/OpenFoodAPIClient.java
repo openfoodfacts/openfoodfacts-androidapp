@@ -275,6 +275,23 @@ public class OpenFoodAPIClient {
         });
     }
 
+    public void getQuestionsForIncompleteProducts(String barcode) {
+        apiService.getQuestionsForIncompleteProducts(barcode).enqueue(new Callback<QuestionsState>() {
+            @Override
+            public void onResponse(Call<QuestionsState> call, Response<QuestionsState> response) {
+                QuestionsState questionsState = response.body();
+                List<Questions> questions = questionsState.getQuestions();
+                Log.d("OpenFoodAPIClient", "Hey "+questions.get(0).getQuestion()+"&&"+questions.get(0).getValue());
+            }
+
+            @Override
+            public void onFailure(Call<QuestionsState> call, Throwable t) {
+                Log.d("OpenFoodAPIClient", "Hey2");
+                t.printStackTrace();
+            }
+        });
+    }
+
 
     public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Context activity, final OnProductSentCallback productSentCallback, SendProduct product) {
         if (!response.isSuccessful() || response.body().getStatus() == 0) {
