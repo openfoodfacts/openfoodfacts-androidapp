@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.util.ArrayList;
 import java.util.Map;
 
+import butterknife.Optional;
 import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -81,7 +82,12 @@ public interface OpenFoodAPIService {
     Call<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
 
     @GET("api/v1/questions/{barcode}")
-    Call<QuestionsState> getQuestionsForIncompleteProducts(@Path("barcode") String barcode);
+    Call<QuestionsState> getQuestionsForIncompleteProducts(@Path("barcode") String barcode,
+                                                           @Query("lang") String langCode);
+
+    @FormUrlEncoded
+    @POST("api/v1/insights/annotate")
+    Call<ResponseBody> sendProductInsight(@Field("insight_id") String insightId, @Field("annotation") int annotation, @Field("update") Integer update);
 
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)

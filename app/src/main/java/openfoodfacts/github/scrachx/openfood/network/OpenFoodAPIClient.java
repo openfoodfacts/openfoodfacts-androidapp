@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,6 +40,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import org.apache.commons.lang3.StringUtils;
 import retrofit2.Call;
@@ -284,11 +286,12 @@ public class OpenFoodAPIClient {
     }
 
     public void getQuestionsForIncompleteProducts(String barcode, Activity activity) {
-        apiService.getQuestionsForIncompleteProducts(barcode).enqueue(new Callback<QuestionsState>() {
+        apiService.getQuestionsForIncompleteProducts(barcode, Locale.getDefault().getLanguage()).enqueue(new Callback<QuestionsState>() {
             @Override
             public void onResponse(Call<QuestionsState> call, Response<QuestionsState> response) {
                 QuestionsState questionsState = response.body();
-                if (questionsState != null && !questionsState.getStatus().equals("no_questions")) {
+                if (questionsState != null && !questionsState.getStatus().equals("no_questions")
+                        && questionsState.getQuestions().get(0).getType().equals("add-binary")) {
                     BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(activity);
                     View sheetView = activity.getLayoutInflater().inflate(R.layout.activity_product_bottom_sheet, null);
                     TextView questionTextView = sheetView.findViewById(R.id.bottom_sheet_product_question);
@@ -307,28 +310,29 @@ public class OpenFoodAPIClient {
                                     .setTitle("Open Food Facts")
                                     .setDescription(questionsState.getQuestions().get(0).getQuestion())
                                     .setReviewQuestion(questionsState.getQuestions().get(0).getValue())
-                                    .setPositiveFeedbackText("Yes")
+                                    .setPositiveFeedbackText(activity.getString(R.string.product_question_positive))
                                     .setPositiveFeedbackIcon(activity.getDrawable(R.drawable.ic_check_circle_black_24dp))
-                                    .setNegativeFeedbackText("No")
+                                    .setNegativeFeedbackText(activity.getString(R.string.product_question_negative))
                                     .setNegativeFeedbackIcon(activity.getDrawable(R.drawable.ic_cancel_black_24dp))
-                                    .setAmbiguityFeedbackText("I'm not sure")
+                                    .setAmbiguityFeedbackText(activity.getString(R.string.product_question_ambiguous))
                                     .setAmbiguityFeedbackIcon(activity.getDrawable(R.drawable.ic_help_black_24dp))
                                     .setOnReviewClickListener(new FeedBackActionsListeners() {
                                         @Override
                                         public void onPositiveFeedback(FeedBackDialog dialog) {
                                             //init POST request
+                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 1, null, activity);
                                             dialog.dismiss();
                                         }
 
                                         @Override
                                         public void onNegativeFeedback(FeedBackDialog dialog) {
-                                            //do nothing
+                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 0, null, activity);
                                             dialog.dismiss();
                                         }
 
                                         @Override
                                         public void onAmbiguityFeedback(FeedBackDialog dialog) {
-                                            //do nothing
+                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), -1, null, activity);
                                             dialog.dismiss();
                                         }
 
@@ -358,6 +362,29 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(Call<QuestionsState> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public void sendProductInsights(String insightId, int annotation, Integer update, Activity activity) {
+        apiService.sendProductInsight(insightId, annotation, update).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Toast toast = Toast.makeText(OFFApplication.getInstance(), R.string.product_insight_submit_message, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    View view = toast.getView();
+                    TextView textView = view.findViewById(android.R.id.message);
+                    textView.setTextSize(18);
+                    view.setBackgroundColor(activity.getResources().getColor(R.color.primary_dark));
+                    toast.setDuration(Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 t.printStackTrace();
             }
         });
