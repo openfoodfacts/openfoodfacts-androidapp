@@ -289,11 +289,14 @@ public class OpenFoodAPIClient {
                             .setIcon(activity.getDrawable(R.drawable.ic_feedback_black_24dp))
                             .setIconColor(R.color.gray)
                             .setTitle("Open Food Facts")
-                            .setDescription("")
-                            .setReviewQuestion(questionsState.getQuestions().get(0).getQuestion())
+                            .setDescription(questionsState.getQuestions().get(0).getQuestion())
+                            .setReviewQuestion(questionsState.getQuestions().get(0).getValue())
                             .setPositiveFeedbackText("Yes")
+                            .setPositiveFeedbackIcon(activity.getDrawable(R.drawable.ic_check_circle_black_24dp))
                             .setNegativeFeedbackText("No")
+                            .setNegativeFeedbackIcon(activity.getDrawable(R.drawable.ic_cancel_black_24dp))
                             .setAmbiguityFeedbackText("I'm not sure")
+                            .setAmbiguityFeedbackIcon(activity.getDrawable(R.drawable.ic_help_black_24dp))
                             .setOnReviewClickListener(new FeedBackActionsListeners() {
                                 @Override
                                 public void onPositiveFeedback(FeedBackDialog dialog) {
