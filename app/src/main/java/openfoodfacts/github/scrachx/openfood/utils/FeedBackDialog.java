@@ -26,13 +26,16 @@ public class FeedBackDialog {
 
     private Context mContext;
 
+
     private Drawable mIcon;
 
-    private Color mIconColor;
+    @ColorRes
+    private int mIconColor;
 
     private String mTitle;
 
-    private Color mBackgroundColor;
+    @ColorRes
+    private int mBackgroundColor;
 
     private String mDescription;
 
@@ -181,20 +184,20 @@ public class FeedBackDialog {
             layerDrawable.setDrawableByLayerId(R.id.drawable_image,drawable);
 
             titleImageView.setImageDrawable(layerDrawable);
-            titleTextView.setText(mContext.getString(this.mTitle));
-            descriptionTextView.setText(mContext.getString(this.mDescription));
-            reviewQuestionTextView.setText(mContext.getString(this.mReviewQuestion));
+            titleTextView.setText(this.mTitle);
+            descriptionTextView.setText(this.mDescription);
+            reviewQuestionTextView.setText(this.mReviewQuestion);
 
             positiveFeedbackTextView.setText(this.mPositiveFeedbackText);
-            positiveFeedbackIconView.setImageResource(this.mPositiveFeedbackIcon);
+            positiveFeedbackIconView.setImageDrawable(this.mPositiveFeedbackIcon);
             positiveFeedbackIconView.setColorFilter(mContext.getResources().getColor(mIconColor));
 
             negativeFeedbackTextView.setText(this.mNegativeFeedbackText);
-            negativeFeedbackIconView.setImageResource(this.mNegativeFeedbackIcon);
+            negativeFeedbackIconView.setImageDrawable(this.mNegativeFeedbackIcon);
             negativeFeedbackIconView.setColorFilter(mContext.getResources().getColor(mIconColor));
 
             ambiguityFeedbackTextView.setText(this.mAmbiguityFeedbackText);
-            ambiguityFeedbackIconView.setImageResource(this.mAmbiguityFeedbackIcon);
+            ambiguityFeedbackIconView.setImageDrawable(this.mAmbiguityFeedbackIcon);
             ambiguityFeedbackIconView.setColorFilter(mContext.getResources().getColor(mIconColor));
 
             feedbackBodyLayout.setBackgroundResource(this.mBackgroundColor);
@@ -204,100 +207,100 @@ public class FeedBackDialog {
         return this;
     }
 
-    public int getTitleIcon()
+    public Drawable getTitleIcon()
     {
         return mIcon;
     }
 
-    public FeedBackDialog setIcon(int mIcon)
+    public FeedBackDialog setIcon(Drawable mIcon)
     {
         this.mIcon =  mIcon;
         return this;
     }
 
-    public int getTitle()
+    public String getTitle()
     {
         return mTitle;
     }
 
-    public FeedBackDialog setTitle(int mTitle)
+    public FeedBackDialog setTitle(String mTitle)
     {
         this.mTitle = mTitle;
         return this;
     }
 
-    public int getDescription()
+    public String getDescription()
     {
         return mDescription;
     }
 
-    public FeedBackDialog setDescription(int mDescription)
+    public FeedBackDialog setDescription(String mDescription)
     {
         this.mDescription = mDescription;
         return this;
     }
 
-    public int getPositiveFeedbackText()
+    public String getPositiveFeedbackText()
     {
         return mPositiveFeedbackText;
     }
 
-    public FeedBackDialog setPositiveFeedbackText(@StringRes int mPositiveFeedbackText)
+    public FeedBackDialog setPositiveFeedbackText( String mPositiveFeedbackText)
     {
         this.mPositiveFeedbackText = mPositiveFeedbackText;
         return this;
     }
 
-    public int getPositiveFeedbackIcon()
+    public Drawable getPositiveFeedbackIcon()
     {
         return mPositiveFeedbackIcon;
     }
 
-    public FeedBackDialog setPositiveFeedbackIcon(@DrawableRes int mPositiveFeedbackIcon)
+    public FeedBackDialog setPositiveFeedbackIcon(Drawable mPositiveFeedbackIcon)
     {
         this.mPositiveFeedbackIcon = mPositiveFeedbackIcon;
         return this;
     }
 
-    public int getNegativeFeedbackText()
+    public String getNegativeFeedbackText()
     {
         return mNegativeFeedbackText;
     }
 
-    public FeedBackDialog setNegativeFeedbackText(@StringRes int mNegativeFeedbackText)
+    public FeedBackDialog setNegativeFeedbackText(String mNegativeFeedbackText)
     {
         this.mNegativeFeedbackText = mNegativeFeedbackText;
         return this;
     }
 
-    public int getNegativeFeedbackIcon()
+    public Drawable getNegativeFeedbackIcon()
     {
         return mNegativeFeedbackIcon;
     }
 
-    public FeedBackDialog setNegativeFeedbackIcon(@DrawableRes int mNegativeFeedbackIcon)
+    public FeedBackDialog setNegativeFeedbackIcon(Drawable mNegativeFeedbackIcon)
     {
         this.mNegativeFeedbackIcon = mNegativeFeedbackIcon;
         return this;
     }
 
-    public int getAmbiguityFeedbackText()
+    public String getAmbiguityFeedbackText()
     {
         return mAmbiguityFeedbackText;
     }
 
-    public FeedBackDialog setAmbiguityFeedbackText(@StringRes int mAmbiguityFeedbackText)
+    public FeedBackDialog setAmbiguityFeedbackText(String mAmbiguityFeedbackText)
     {
         this.mAmbiguityFeedbackText = mAmbiguityFeedbackText;
         return this;
     }
 
-    public int getAmbiguityFeedbackIcon()
+    public Drawable getAmbiguityFeedbackIcon()
     {
         return mAmbiguityFeedbackIcon;
     }
 
-    public FeedBackDialog setAmbiguityFeedbackIcon(@DrawableRes int mAmbiguityFeedbackIcon)
+    public FeedBackDialog setAmbiguityFeedbackIcon(Drawable mAmbiguityFeedbackIcon)
     {
         this.mAmbiguityFeedbackIcon = mAmbiguityFeedbackIcon;
         return this;
@@ -323,12 +326,12 @@ public class FeedBackDialog {
         return this;
     }
 
-    public int getReviewQuestion()
+    public String getReviewQuestion()
     {
         return mReviewQuestion;
     }
 
-    public FeedBackDialog setReviewQuestion(int mReviewQuestion)
+    public FeedBackDialog setReviewQuestion(String mReviewQuestion)
     {
         this.mReviewQuestion = mReviewQuestion;
         return this;
