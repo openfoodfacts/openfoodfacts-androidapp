@@ -839,7 +839,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      */
     private PrimaryDrawerItem createOfflineEditDrawerItem() {
         if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9)
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(10)
                     .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
                             .color.md_red_700));
         } else {

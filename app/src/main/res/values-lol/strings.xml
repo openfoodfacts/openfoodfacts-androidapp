@@ -190,7 +190,7 @@
     <string name="txtFat">crwdns113418:0crwdne113418:0</string>
     <string name="txtSugars">crwdns113420:0crwdne113420:0</string>
     <string name="hintBarcode">crwdns113422:0crwdne113422:0</string>
-    <string name="txtNutriScoreInfo">crwdns113424:0crwdne113424:0</string>
+    <string name="txtNutriScoreInfo">crwdns115384:0crwdne115384:0</string>
     <string name="hintLogin">crwdns113426:0crwdne113426:0</string>
     <string name="hintPass">crwdns113428:0crwdne113428:0</string>
     <string name="errorLogin">crwdns113430:0crwdne113430:0</string>
@@ -248,6 +248,7 @@
     <string name="delete_txt">crwdns113538:0crwdne113538:0</string>
     <string name="sign_in_drawer">crwdns113540:0crwdne113540:0</string>
     <string name="alert_drawer">crwdns113542:0crwdne113542:0</string>
+    <string name="your_lists">crwdns115386:0crwdne115386:0</string>
     <string name="warning_allergens">crwdns113544:0crwdne113544:0</string>
     <string name="title_dialog_alert">crwdns113546:0crwdne113546:0</string>
     <string name="toggle_flash">crwdns113548:0crwdne113548:0</string>
@@ -438,8 +439,8 @@
     <string name="take_picture_nutrition_table">crwdns113912:0crwdne113912:0</string>
     <string name="take_more_pictures">crwdns113914:0crwdne113914:0</string>
     <string name="txtSaturatedFat">crwdns113916:0crwdne113916:0</string>
-    <string name="nutriscore_info_msg">crwdns113918:0crwdne113918:0</string>
-    <string name="nova_info_msg">crwdns113920:0crwdne113920:0</string>
+    <string name="nutriscore_info_msg">crwdns115388:0crwdne115388:0</string>
+    <string name="nova_info_msg">crwdns115390:0crwdne115390:0</string>
     <string name="nova_grp1_msg">crwdns113922:0crwdne113922:0</string>
     <string name="nova_grp2_msg">crwdns113924:0crwdne113924:0</string>
     <string name="nova_grp3_msg">crwdns113926:0crwdne113926:0</string>
@@ -500,6 +501,7 @@
     <string name="confirm_logout">crwdns114046:0crwdne114046:0</string>
     <string name="logout_dialog_content">crwdns114048:0crwdne114048:0</string>
     <string name="dialog_cancel">crwdns114050:0crwdne114050:0</string>
+    <string name="dialog_create">crwdns115392:0crwdne115392:0</string>
     <string name="choose_resolution">crwdns114052:0crwdne114052:0</string>
     <string name="pref_resolution_summary">crwdns114054:0crwdne114054:0</string>
     <string name="image_upload_resolution">crwdns114056:0crwdne114056:0</string>
@@ -754,11 +756,27 @@
     <string name="fast_addition_mode">crwdns114542:0crwdne114542:0</string>
     <string name="addtive_search">crwdns114544:0crwdne114544:0</string>
     <string name="additives">crwdns114546:0crwdne114546:0</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">crwdns115394:0crwdne115394:0</string>
+    <string name="txt_create_new_list">crwdns115396:0crwdne115396:0</string>
+    <string name="txt_add_to_new_list">crwdns115398:0crwdne115398:0</string>
+    <string name="txt_eaten_products">crwdns115400:0crwdne115400:0</string>
+    <string name="txt_products_to_buy">crwdns115402:0crwdne115402:0</string>
+    <string name="export_csv_your_listed_products">crwdns115404:0crwdne115404:0</string>
+    <string name="txt_exporting_your_listed_products">crwdns115406:0crwdne115406:0</string>
+    <string name="txt_your_listed_products_exported">crwdns115408:0crwdne115408:0</string>
+    <string name="txt_discard">crwdns115410:0crwdne115410:0</string>
+    <string name="txt_save">crwdns115412:0crwdne115412:0</string>
+    <string name="write_external_storage_your_listed_products">crwdns115414:0crwdne115414:0</string>
+    <string name="txt_info_eaten_products">crwdns115416:0crwdne115416:0</string>
+    <string name="txt_info_your_listed_products">crwdns115418:0crwdne115418:0</string>
+    <string name="txt_i_m_eating_this">crwdns115420:0crwdne115420:0</string>
     <string name="compare_product_prompt">crwdns114548:0crwdne114548:0</string>
     <string name="search_history_pref_title">crwdns114550:0crwdne114550:0</string>
     <string name="search_history_pref_summary">crwdns114552:0crwdne114552:0</string>
     <string name="settings_country_dialog_title">crwdns114554:0crwdne114554:0</string>
     <string name="settings_country_summary">crwdns114556:0crwdne114556:0</string>
     <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
+    <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
     <!-- Used for diets AddOn -->
 </resources>
