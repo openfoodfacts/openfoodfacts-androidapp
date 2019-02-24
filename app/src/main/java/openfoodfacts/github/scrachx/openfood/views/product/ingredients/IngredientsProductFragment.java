@@ -295,7 +295,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (isNotBlank(product.getImageIngredientsUrl())) {
 
             if (!Locale.getDefault().getLanguage().equals(product.getLang())) {
-                addPhotoLabel.setText("Take a photo of the ingredients in "+Locale.getDefault().getDisplayLanguage());
+                addPhotoLabel.setText(getString(R.string.image_prompt_language)+Locale.getDefault().getDisplayLanguage());
                 mUrlImage = null;
             } else {
                 addPhotoLabel.setVisibility(View.GONE);
