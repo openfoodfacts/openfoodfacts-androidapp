@@ -42,6 +42,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -289,10 +290,13 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
 
-        if (isNotBlank(product.getImageIngredientsUrl())) {
+        if (!Locale.getDefault().getLanguage().equals(product.getLang())) {
+            addPhotoLabel.setText(getString(R.string.image_prompt_language) + Locale.getDefault().getDisplayLanguage());
+            mUrlImage = null;
+        } else {
             addPhotoLabel.setVisibility(View.GONE);
-
             // Load Image if isLowBatteryMode is false
+
             if (!isLowBatteryMode) {
                 Picasso.with(getContext())
                         .load(product.getImageIngredientsUrl())
@@ -300,7 +304,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             } else {
                 mImageIngredients.setVisibility(View.GONE);
             }
-
             mUrlImage = product.getImageIngredientsUrl();
         }
 
