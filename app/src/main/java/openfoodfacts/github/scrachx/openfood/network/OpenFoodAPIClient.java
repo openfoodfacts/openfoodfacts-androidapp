@@ -370,6 +370,7 @@ public class OpenFoodAPIClient {
                     View view = toast.getView();
                     TextView textView = view.findViewById(android.R.id.message);
                     textView.setTextSize(18);
+                    textView.setTextColor(activity.getResources().getColor(R.color.colorPrimaryLight));
                     view.setBackgroundColor(activity.getResources().getColor(R.color.primary_dark));
                     toast.setDuration(Toast.LENGTH_SHORT);
                     toast.show();
