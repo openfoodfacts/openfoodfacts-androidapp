@@ -190,7 +190,7 @@
     <string name="txtFat">Fett</string>
     <string name="txtSugars">Zucker</string>
     <string name="hintBarcode">Strichcode</string>
-    <string name="txtNutriScoreInfo">How is it computed ?</string>
+    <string name="txtNutriScoreInfo">Erfahren Sie mehr über die Nährstoffwerte</string>
     <string name="hintLogin">Benutzername</string>
     <string name="hintPass">Passwort</string>
     <string name="errorLogin">Benutzername oder Passwort stimmen nicht</string>
@@ -248,6 +248,7 @@
     <string name="delete_txt">Löschen</string>
     <string name="sign_in_drawer">Anmelden</string>
     <string name="alert_drawer">Allergen-Warnung</string>
+    <string name="your_lists">Ihre Listen</string>
     <string name="warning_allergens">Enthält Allergene</string>
     <string name="title_dialog_alert">Alarm hinzufügen</string>
     <string name="toggle_flash">Blitz</string>
@@ -438,8 +439,8 @@
     <string name="take_picture_nutrition_table">Foto der Nährwerttabelle aufnehmen</string>
     <string name="take_more_pictures">Weitere Fotos aufnehmen</string>
     <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
-    <string name="nutriscore_info_msg">Read more about the science and methodology behind Nutri-Score</string>
-    <string name="nova_info_msg">Read more about the science behind Nova</string>
+    <string name="nutriscore_info_msg">Mehr über Nutri-Score erfahren</string>
+    <string name="nova_info_msg">Mehr über Nova erfahren</string>
     <string name="nova_grp1_msg">1. Gruppe • Unverarbeitete oder minimal verarbeitete Lebensmittel</string>
     <string name="nova_grp2_msg">2. Gruppe • Verarbeitete kulinarische Zutaten</string>
     <string name="nova_grp3_msg">3. Gruppe • Verarbeitete Lebensmittel</string>
@@ -500,6 +501,7 @@
     <string name="confirm_logout">Abmeldung bestätigen</string>
     <string name="logout_dialog_content">Möchten Sie sich wirklich abmelden?</string>
     <string name="dialog_cancel">Abbrechen</string>
+    <string name="dialog_create">Erstellen</string>
     <string name="choose_resolution">Auflösung wählen</string>
     <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
     <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
@@ -735,12 +737,12 @@
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
     <string name="txtOtherInfo">Sonstige Angaben:</string>
-    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtConservationCond">Konservierungszustand: </string>
     <string name="txtRecyclingInstructionToRecycle">Verwertungshinweise - Zur Wiederverwertung: </string>
     <string name="txtRecyclingInstructionToDiscard">Verwertungshinweise - Zur Entsorgung: </string>
     <string name="recyclingInstructionToRecycle">Verwertungshinweise (zur Wiederverwertung)</string>
     <string name="recyclingInstructionToDiscard">Verwertungshinweise (zur Entsorgung)</string>
-    <string name="conservationCond">Conservation Conditions</string>
+    <string name="conservationCond">Konservierungszustand</string>
     <string name="other_info">Weitere Angaben</string>
     <string name="set_ingredient_img">Als Zutatenbild verwenden</string>
     <string name="set_img_nutrients">Als Nährwertbild verwenden</string>
@@ -754,11 +756,28 @@
     <string name="fast_addition_mode">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
     <string name="addtive_search">Nach Zusatzstoff suchen</string>
     <string name="additives">Zusatzstoffe</string>
-    <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">Zu Ihren Listen hinzufügen</string>
+    <string name="txt_create_new_list">Neue Liste erstellen</string>
+    <string name="txt_add_to_new_list">Zu einer neuen Liste hinzufügen</string>
+    <string name="txt_eaten_products">Verzehrte Produkte</string>
+    <string name="txt_products_to_buy">Zu erwerbende Produkte</string>
+    <string name="export_csv_your_listed_products">Als CSV-Datei exportieren</string>
+    <string name="txt_exporting_your_listed_products">Ihre Produkte werden exportiert …</string>
+    <string name="txt_your_listed_products_exported">Ihre Produkte wurden exportiert</string>
+    <string name="txt_discard">Verwerfen</string>
+    <string name="txt_save">Speichern</string>
+    <string name="write_external_storage_your_listed_products">Berechtigung zum Schreiben der SD-Karte ist erforderlich, um Daten exportieren zu können.</string>
+    <string name="txt_info_eaten_products">Sie können ein Produkt zu dieser Liste hinzufügen, indem Sie Produkte erfassen, die Produktkarte nach oben ziehen und auf „Ich esse das” tippen.
+Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>
+    <string name="txt_info_your_listed_products">Sie können dieser Liste Produkte hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>
+    <string name="txt_i_m_eating_this">Ich esse das</string>
+    <string name="compare_product_prompt">Vergleiche dieses Produkt</string>
+    <string name="search_history_pref_title">Lokalen Suchverlauf löschen</string>
+    <string name="search_history_pref_summary">Entfernen Sie alle Suchaufträge, die Sie auf diesem Gerät durchgeführt haben</string>
+    <string name="settings_country_dialog_title">Wählen Sie Ihr Land aus :</string>
+    <string name="settings_country_summary">Ändern Sie Ihr ausgewähltes Land</string>
     <string name="settings_country_title">Land</string>
+    <string name="txt_no_nutrition_data">Von diesem Produkt  sind keine Nährwertangaben auf der Verpackung angegeben. Wenn sich dieses geändert hat, können Sie das Produkt bearbeiten.</string>
     <!-- Used for diets AddOn -->
 </resources>
