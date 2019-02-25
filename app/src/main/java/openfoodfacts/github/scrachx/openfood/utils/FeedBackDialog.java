@@ -10,8 +10,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.View;
 import android.view.Window;
@@ -122,37 +120,15 @@ public class FeedBackDialog {
     private void initiateListeners()
     {
 
-        positiveFeedbackLayout.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                onPositiveFeedbackClicked(v);
-            }
-        });
+        positiveFeedbackLayout.setOnClickListener(this::onPositiveFeedbackClicked);
 
-        negativeFeedbackLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onNegativeFeedbackClicked(v);
-            }
-        });
+        negativeFeedbackLayout.setOnClickListener(this::onNegativeFeedbackClicked);
 
-        ambiguityFeedbackLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onAmbiguityFeedbackClicked(v);
-            }
-        });
+        ambiguityFeedbackLayout.setOnClickListener(this::onAmbiguityFeedbackClicked);
 
         if(mDialog != null)
         {
-            mDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                @Override
-                public void onCancel(DialogInterface dialog)
-                {
-                    onCancelListener(dialog);
-                }
-            });
+            mDialog.setOnCancelListener(this::onCancelListener);
         }
     }
 

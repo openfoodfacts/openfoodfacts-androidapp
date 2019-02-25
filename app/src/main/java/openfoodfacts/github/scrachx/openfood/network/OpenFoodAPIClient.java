@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -290,73 +291,70 @@ public class OpenFoodAPIClient {
             @Override
             public void onResponse(Call<QuestionsState> call, Response<QuestionsState> response) {
                 QuestionsState questionsState = response.body();
-                if (questionsState != null && !questionsState.getStatus().equals("no_questions")
-                        && questionsState.getQuestions().get(0).getType().equals("add-binary")) {
+                if (questionsState != null && !questionsState.getStatus().equals("no_questions")) {
+                    List<Question> questions = questionsState.getQuestions();
+                    Question question = questions.get(0);
+
+                    if (!question.getType().equals("add-binary")) {
+                        return;
+                    }
+
                     BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(activity);
                     View sheetView = activity.getLayoutInflater().inflate(R.layout.activity_product_bottom_sheet, null);
                     TextView questionTextView = sheetView.findViewById(R.id.bottom_sheet_product_question);
-                    questionTextView.setText(questionsState.getQuestions().get(0).getQuestion()+" : "+questionsState.getQuestions().get(0).getValue());
+                    questionTextView.setText(String.format("%s : %s", question.getQuestion(),
+                            question.getValue()));
 
                     LinearLayout questionLinearLayout = sheetView.findViewById(R.id.bottom_sheet_linear_layout);
                     ImageView clearImageView = sheetView.findViewById(R.id.bottom_sheet_clear_icon);
-                    questionLinearLayout.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            mBottomSheetDialog.dismiss();
-                            FeedBackDialog mDialog = new FeedBackDialog(activity)
-                                    .setBackgroundColor(R.color.colorPrimaryDark)
-                                    .setIcon(activity.getDrawable(R.drawable.ic_feedback_black_24dp))
-                                    .setIconColor(R.color.gray)
-                                    .setTitle("Open Food Facts")
-                                    .setDescription(questionsState.getQuestions().get(0).getQuestion())
-                                    .setReviewQuestion(questionsState.getQuestions().get(0).getValue())
-                                    .setPositiveFeedbackText(activity.getString(R.string.product_question_positive))
-                                    .setPositiveFeedbackIcon(activity.getDrawable(R.drawable.ic_check_circle_black_24dp))
-                                    .setNegativeFeedbackText(activity.getString(R.string.product_question_negative))
-                                    .setNegativeFeedbackIcon(activity.getDrawable(R.drawable.ic_cancel_black_24dp))
-                                    .setAmbiguityFeedbackText(activity.getString(R.string.product_question_ambiguous))
-                                    .setAmbiguityFeedbackIcon(activity.getDrawable(R.drawable.ic_help_black_24dp))
-                                    .setOnReviewClickListener(new FeedBackActionsListeners() {
-                                        @Override
-                                        public void onPositiveFeedback(FeedBackDialog dialog) {
-                                            //init POST request
-                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 1, activity);
-                                            dialog.dismiss();
-                                        }
+                    questionLinearLayout.setOnClickListener(view -> {
+                        mBottomSheetDialog.dismiss();
+                        FeedBackDialog mDialog = new FeedBackDialog(activity)
+                                .setBackgroundColor(R.color.colorPrimaryDark)
+                                .setIcon(ContextCompat.getDrawable(activity, R.drawable.ic_feedback_black_24dp))
+                                .setIconColor(R.color.gray)
+                                .setTitle("Open Food Facts")
+                                .setDescription(question.getQuestion())
+                                .setReviewQuestion(question.getValue())
+                                .setPositiveFeedbackText(activity.getString(R.string.product_question_positive))
+                                .setPositiveFeedbackIcon(ContextCompat.getDrawable(activity, R.drawable.ic_check_circle_black_24dp))
+                                .setNegativeFeedbackText(activity.getString(R.string.product_question_negative))
+                                .setNegativeFeedbackIcon(ContextCompat.getDrawable(activity, R.drawable.ic_cancel_black_24dp))
+                                .setAmbiguityFeedbackText(activity.getString(R.string.product_question_ambiguous))
+                                .setAmbiguityFeedbackIcon(ContextCompat.getDrawable(activity, R.drawable.ic_help_black_24dp))
+                                .setOnReviewClickListener(new FeedBackActionsListeners() {
+                                    @Override
+                                    public void onPositiveFeedback(FeedBackDialog dialog) {
+                                        //init POST request
+                                        sendProductInsights(question.getInsightId(), 1, activity);
+                                        dialog.dismiss();
+                                    }
 
-                                        @Override
-                                        public void onNegativeFeedback(FeedBackDialog dialog) {
-                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 0, activity);
-                                            dialog.dismiss();
-                                        }
+                                    @Override
+                                    public void onNegativeFeedback(FeedBackDialog dialog) {
+                                        sendProductInsights(question.getInsightId(), 0, activity);
+                                        dialog.dismiss();
+                                    }
 
-                                        @Override
-                                        public void onAmbiguityFeedback(FeedBackDialog dialog) {
-                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), -1, activity);
-                                            dialog.dismiss();
-                                        }
+                                    @Override
+                                    public void onAmbiguityFeedback(FeedBackDialog dialog) {
+                                        sendProductInsights(question.getInsightId(), -1, activity);
+                                        dialog.dismiss();
+                                    }
 
-                                        @Override
-                                        public void onCancelListener(DialogInterface dialog) {
-                                            //do nothing
-                                            dialog.dismiss();
-                                        }
-                                    })
-                                    .show();
-                        }
+                                    @Override
+                                    public void onCancelListener(DialogInterface dialog) {
+                                        //do nothing
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .show();
                     });
 
-                    clearImageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            mBottomSheetDialog.dismiss();
-                        }
-                    });
+                    clearImageView.setOnClickListener(view -> mBottomSheetDialog.dismiss());
 
                     mBottomSheetDialog.setContentView(sheetView);
                     mBottomSheetDialog.show();
-
-
                 }
             }
 
