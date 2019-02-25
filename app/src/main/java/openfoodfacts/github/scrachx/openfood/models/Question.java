@@ -20,6 +20,11 @@ public class Question implements Serializable {
     private String insightId;
     @JsonProperty("insight_type")
     private String insightType;
+    @JsonProperty("source_image_url")
+    private String sourceImageUrl;
+    @JsonProperty("image_url")
+    private String imageUrl;
+
 
     public String getCode() {
         return code;
@@ -45,27 +50,11 @@ public class Question implements Serializable {
         return insightType;
     }
 
-    public void setInsightType(String insightType) {
-        this.insightType = insightType;
+    public String getSourceImageUrl() {
+        return sourceImageUrl;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public void setInsightId(String insightId) {
-        this.insightId = insightId;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
+    public String getImageUrl() {
+        return imageUrl;
     }
 }
