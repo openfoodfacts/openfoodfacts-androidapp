@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,9 +22,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.firebase.jobdispatcher.JobParameters;
 
-import io.reactivex.SingleObserver;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -313,9 +309,8 @@ public class OpenFoodAPIClient {
                                 .setBackgroundColor(R.color.colorPrimaryDark)
                                 .setIcon(ContextCompat.getDrawable(activity, R.drawable.ic_feedback_black_24dp))
                                 .setIconColor(R.color.gray)
-                                .setTitle("Open Food Facts")
-                                .setDescription(question.getQuestion())
-                                .setReviewQuestion(question.getValue())
+                                .setReviewQuestion(question.getQuestion())
+                                .setReviewValue(question.getValue())
                                 .setPositiveFeedbackText(activity.getString(R.string.product_question_positive))
                                 .setPositiveFeedbackIcon(ContextCompat.getDrawable(activity, R.drawable.ic_check_circle_black_24dp))
                                 .setNegativeFeedbackText(activity.getString(R.string.product_question_negative))

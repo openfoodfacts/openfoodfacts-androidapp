@@ -30,20 +30,17 @@ public class FeedBackDialog {
     @ColorRes
     private int mIconColor;
 
-    private String mTitle;
-
     @ColorRes
     private int mBackgroundColor;
 
-    private String mDescription;
-
     private String mReviewQuestion;
+
+    private String mReviewValue;
 
 
     private ImageView titleImageView;
-    private TextView titleTextView;
-    private TextView descriptionTextView;
     private TextView reviewQuestionTextView;
+    private TextView reviewValueTextView;
 
     private LinearLayout positiveFeedbackLayout;
     private LinearLayout negativeFeedbackLayout;
@@ -97,9 +94,8 @@ public class FeedBackDialog {
     private void initiateAllViews()
     {
         titleImageView          = (ImageView) mDialog.findViewById(R.id.review_icon);
-        titleTextView           = (TextView) mDialog.findViewById(R.id.review_title);
-        descriptionTextView     = (TextView) mDialog.findViewById(R.id.review_description);
-        reviewQuestionTextView  = (TextView) mDialog.findViewById(R.id.review_questions);
+        reviewQuestionTextView = (TextView) mDialog.findViewById(R.id.review_question);
+        reviewValueTextView = (TextView) mDialog.findViewById(R.id.review_value);
 
         feedbackBodyLayout      = (LinearLayout) mDialog.findViewById(R.id.feedback_body_layout);
 
@@ -160,9 +156,8 @@ public class FeedBackDialog {
             layerDrawable.setDrawableByLayerId(R.id.drawable_image,drawable);
 
             titleImageView.setImageDrawable(layerDrawable);
-            titleTextView.setText(this.mTitle);
-            descriptionTextView.setText(this.mDescription);
             reviewQuestionTextView.setText(this.mReviewQuestion);
+            reviewValueTextView.setText(this.mReviewValue);
 
             positiveFeedbackTextView.setText(this.mPositiveFeedbackText);
             positiveFeedbackIconView.setImageDrawable(this.mPositiveFeedbackIcon);
@@ -194,25 +189,14 @@ public class FeedBackDialog {
         return this;
     }
 
-    public String getTitle()
+    public String getReviewQuestion()
     {
-        return mTitle;
+        return mReviewQuestion;
     }
 
-    public FeedBackDialog setTitle(String mTitle)
+    public FeedBackDialog setReviewQuestion(String question)
     {
-        this.mTitle = mTitle;
-        return this;
-    }
-
-    public String getDescription()
-    {
-        return mDescription;
-    }
-
-    public FeedBackDialog setDescription(String mDescription)
-    {
-        this.mDescription = mDescription;
+        this.mReviewQuestion = question;
         return this;
     }
 
@@ -302,14 +286,14 @@ public class FeedBackDialog {
         return this;
     }
 
-    public String getReviewQuestion()
+    public String getReviewValue()
     {
-        return mReviewQuestion;
+        return mReviewValue;
     }
 
-    public FeedBackDialog setReviewQuestion(String mReviewQuestion)
+    public FeedBackDialog setReviewValue(String value)
     {
-        this.mReviewQuestion = mReviewQuestion;
+        this.mReviewValue = value;
         return this;
     }
 

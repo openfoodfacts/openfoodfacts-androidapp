@@ -26,27 +26,17 @@
                 android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="125dp">
+                android:minHeight="100dp">
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/review_title"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:textSize="14sp"
-                    android:ellipsize="marquee"
-                    android:singleLine="true"
+                    android:textStyle="bold"
                     android:layout_marginTop="30dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:gravity="center"
-                    android:textSize="12sp"
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/review_description"
+                    android:id="@+id/review_question"
                     android:singleLine="true"
                     android:ellipsize="marquee"
-                    tools:text="171, Straight Road, Cross Street"
+                    tools:text="Question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -55,8 +45,8 @@
                     android:textSize="18sp"
                     android:textColor="#FFF"
                     android:layout_marginTop="5dp"
-                    android:id="@+id/review_questions"
-                    tools:text="Are reservations required here?"
+                    android:id="@+id/review_value"
+                    tools:text="Value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -111,6 +101,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:textColor="#000"
+                android:textAllCaps="true"
                 android:layout_marginTop="5dp"
                 />
         </LinearLayout>
@@ -137,6 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="NO"
+                android:textAllCaps="true"
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:gravity="center"
@@ -168,6 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="NOT SURE"
+                android:textAllCaps="true"
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:gravity="center"

@@ -970,6 +970,6 @@
     <string name="bottom_sheet_question_prompt">Tap here to answer</string>
     <string name="product_question_positive">Yes</string>
     <string name="product_question_negative">No</string>
-    <string name="product_question_ambiguous">I\'m not sure</string>
+    <string name="product_question_ambiguous">Not sure</string>
     <string name="product_insight_submit_message">Thank you for your feedback!</string>
 </resources>
