@@ -2,8 +2,10 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -54,6 +56,7 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.OfflineListItem;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
@@ -67,8 +70,12 @@ import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.adapters.OfflineListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 
+import static openfoodfacts.github.scrachx.openfood.jobs.DownloadOfflineProductService.DOWNLOAD_PROGRESS_UPDATE_KEY;
+import static openfoodfacts.github.scrachx.openfood.jobs.DownloadOfflineProductService.IDENTIFIER;
+import static openfoodfacts.github.scrachx.openfood.models.OfflineListItem.TYPE_SMALL;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_OFFLINE;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
@@ -91,12 +98,16 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     ImageView noDataImage;
     @BindView(R.id.noDataText)
     TextView noDataText;
+    @BindView(R.id.recyclerList)
+    RecyclerView recyclerView;
     private List<SaveItem> saveItems;
     private String loginS, passS;
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private int size;
     private Activity activity;
     private OpenFoodAPIService client;
+    List<OfflineListItem> list;
+    OfflineListAdapter adapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -109,6 +120,20 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
+
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getIntExtra(DOWNLOAD_PROGRESS_UPDATE_KEY, -2) != -2) {
+                int downloadProgress = intent.getIntExtra(DOWNLOAD_PROGRESS_UPDATE_KEY, -2);
+                int index = intent.getIntExtra("index", -1);
+                if (index > -1) {
+                    list.get(index).setProgress(downloadProgress);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        }
+    };
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -128,6 +153,24 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
                 DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration(dividerItemDecoration);
+
+        //for products download part
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        list = new ArrayList<>();
+        adapter = new OfflineListAdapter(list, getActivity());
+        DividerItemDecoration dividerItemDecoration2 = new DividerItemDecoration(recyclerView.getContext(),
+                DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration2);
+        recyclerView.setAdapter(adapter);
+        OfflineListItem item1 = new OfflineListItem();
+        item1.setName("France");
+        item1.setType(TYPE_SMALL);
+        item1.setSize(32);
+        item1.setUrl("fr.openfoodfacts.org.products.small.zip");
+        list.add(item1);
+
+        adapter.notifyDataSetChanged();
+
     }
 
     @OnClick(R.id.message_dismiss_icon)
@@ -797,6 +840,13 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 actionBar.setTitle(R.string.offline_edit_drawer);
             }
         }
+        getActivity().registerReceiver(receiver, new IntentFilter(IDENTIFIER));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().unregisterReceiver(receiver);
     }
 
     private void fillAdapter() {
@@ -819,6 +869,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                     noDataText.setText(R.string.no_offline_data);
                     buttonSend.setVisibility(View.GONE);
                     if (!firstUpload) {
+                        noDataImage.setVisibility(View.VISIBLE);
                         noDataImage.setImageResource(R.drawable.ic_cloud_upload);
                         noDataText.setText(R.string.first_offline);
                     }

@@ -1,140 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="25dp">
+    android:visibility="visible">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/message_container_card_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:elevation="1dp"
-        android:padding="@dimen/padding_large"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSendAll"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="@dimen/spacing_small"
-        android:layout_marginLeft="@dimen/spacing_small">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
-
-            <ImageButton
-                android:id="@+id/message_dismiss_icon"
-                android:layout_width="@dimen/button_height_too_short"
-                android:layout_height="@dimen/button_height_too_short"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_margin="@dimen/padding_short"
-                android:background="@color/white"
-                app:srcCompat="@drawable/ic_action_cross"
-                android:contentDescription="TODO" />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="@dimen/padding_short"
-                    android:text="@string/title_info_dialog"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/font_large"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="@dimen/padding_normal"
-                    android:text="@string/text_offline_info_dialog"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
-    <RelativeLayout
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/noDataImg"
-            android:layout_width="@dimen/img_width_height"
-            android:layout_height="@dimen/img_width_height"
-            android:layout_margin="@dimen/padding_normal"
-            android:layout_below="@id/noDataText"
-            android:paddingTop="@dimen/padding_large"
-            android:layout_centerHorizontal="true"
-            android:visibility="visible"
-            app:srcCompat="@drawable/ic_cloud_done"
-            android:contentDescription="TODO" />
-
-        <TextView
-            android:id="@+id/noDataText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:layout_margin="@dimen/padding_normal"
-            android:text="@string/no_offline_data"
-            android:textColor="@color/grey_500"
-            android:textSize="35sp"
-            android:visibility="visible" />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSendAll"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewOffline"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/listOfflineSave"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/save_list_item"
-            android:layout_margin="@dimen/spacing_normal" />
+            android:layout_margin="8dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/offline_product_title"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
 
-    <openfoodfacts.github.scrachx.openfood.utils.CustomButtonView
-        android:id="@+id/buttonSendAll"
-        style="@style/DefaultButtonText"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewOffline"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/spacing_normal"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginStart="14dp"
-        android:background="@drawable/rounded_button"
-        android:paddingEnd="50dp"
-        android:paddingStart="50dp"
-        android:text="@string/txtSendAll"
-        android:textSize="@dimen/font_normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/offline_product_send_title"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+
+            <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/message_container_card_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_small"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="1dp"
+                    android:padding="@dimen/padding_large"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonSendAll"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white">
+
+                        <ImageButton
+                            android:id="@+id/message_dismiss_icon"
+                            android:layout_width="@dimen/button_height_too_short"
+                            android:layout_height="@dimen/button_height_too_short"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="@dimen/padding_short"
+                            android:background="@color/white"
+                            android:contentDescription="TODO"
+                            app:srcCompat="@drawable/ic_action_cross" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="@dimen/padding_short"
+                                android:text="@string/title_info_dialog"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/font_large"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="@dimen/padding_normal"
+                                android:text="@string/text_offline_info_dialog"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/font_normal" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/spacing_normal"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/buttonSendAll"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/noDataImg"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/padding_normal"
+                        android:contentDescription="TODO"
+                        android:scaleType="centerCrop"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toTopOf="@+id/noDataText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_cloud_done" />
+
+                    <TextView
+                        android:id="@+id/noDataText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/noDataImg"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/no_offline_data"
+                        android:textAlignment="center"
+                        android:textColor="@color/grey_500"
+                        android:textSize="25sp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/noDataImg" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonSendAll"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/listOfflineSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:scrollbars="vertical"
+                        tools:listitem="@layout/save_list_item" />
+
+                </LinearLayout>
+
+                <openfoodfacts.github.scrachx.openfood.utils.CustomButtonView
+                    android:id="@+id/buttonSendAll"
+                    style="@style/DefaultButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/rounded_button"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="50dp"
+                    android:text="@string/txtSendAll"
+                    android:textSize="@dimen/font_normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 
 </android.support.constraint.ConstraintLayout>

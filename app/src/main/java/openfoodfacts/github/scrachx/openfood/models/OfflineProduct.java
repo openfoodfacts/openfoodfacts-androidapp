@@ -24,28 +24,39 @@ public class OfflineProduct {
     private String quantity;
     @CsvBindByName(column = "nutrition_grade_fr")
     private String nutritionGrade;
+    private String url;
 
-    public OfflineProduct(String title, String brands, String barcode, String quantity, String nutritionGrade) {
+    public OfflineProduct(String title, String brands, String barcode, String quantity, String nutritionGrade, String url) {
         this.title = title;
         this.brands = brands;
         this.barcode = barcode;
         this.quantity = quantity;
         this.nutritionGrade = nutritionGrade;
+        this.url = url;
     }
 
-    @Generated(hash = 524339296)
-    public OfflineProduct(Long id, String title, String brands, String barcode, String quantity,
-                          String nutritionGrade) {
+    @Generated(hash = 319590731)
+    public OfflineProduct(Long id, String title, String brands, String barcode, String quantity, String nutritionGrade,
+                          String url) {
         this.id = id;
         this.title = title;
         this.brands = brands;
         this.barcode = barcode;
         this.quantity = quantity;
         this.nutritionGrade = nutritionGrade;
+        this.url = url;
     }
 
     @Generated(hash = 1425505421)
     public OfflineProduct() {
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getTitle() {

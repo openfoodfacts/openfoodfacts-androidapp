@@ -33,7 +33,6 @@ public interface NavigationDrawerListener {
     int ITEM_INCOMPLETE_PRODUCTS = 18;
     int ITEM_ADDITIVES =19;
     int ITEM_YOUR_LISTS = 20;
-    int ITEM_OFFLINE_DOWNLOAD = 21;
 
 
     @Retention(SOURCE)
@@ -56,7 +55,6 @@ public interface NavigationDrawerListener {
             ITEM_LOGOUT,
             ITEM_INCOMPLETE_PRODUCTS,
             ITEM_ADDITIVES,
-            ITEM_OFFLINE_DOWNLOAD
     })
     @interface NavigationDrawerType {
     }

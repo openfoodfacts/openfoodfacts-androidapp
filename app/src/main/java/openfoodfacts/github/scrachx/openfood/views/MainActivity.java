@@ -84,7 +84,6 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.ProductsDownloadFragment;
 import openfoodfacts.github.scrachx.openfood.jobs.DownloadOfflineProductService;
 import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
@@ -327,7 +326,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.your_lists).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(ITEM_YOUR_LISTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
-                        new PrimaryDrawerItem().withName(R.string.offline_download).withIdentifier(ITEM_OFFLINE_DOWNLOAD).withIcon(GoogleMaterial.Icon.gmd_offline_pin),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                         new DividerDrawerItem(),
                         primaryDrawerItem,
@@ -449,11 +447,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                      .onNegative((dialog, which) -> Toast.makeText(getApplicationContext(), "Cancelled",
                                              Toast.LENGTH_SHORT).show()).show();
                              break;
-
-                        case ITEM_OFFLINE_DOWNLOAD:
-                            fragment = new ProductsDownloadFragment();
-                            break;
-
 
                         default:
                             // nothing to do
@@ -809,20 +802,20 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
             Bundle bundle = new Bundle();
             bundle.putString("from_download_service", "start_extraction");
-            moveToProductsDownload(bundle);
+//            moveToProductsDownload(bundle);
         }
 
         // to handle retry from DownloadOfflineProductService
         if (intent.getStringExtra("from_download_service") != null && intent.getStringExtra("from_download_service").equals("retry")) {
             Bundle bundle = new Bundle();
             bundle.putString("from_download_service", "retry");
-            moveToProductsDownload(bundle);
+//            moveToProductsDownload(bundle);
         }
         // to handle retry from ExtractOfflineProductService
         if (intent.getStringExtra("from_extract_service") != null && intent.getStringExtra("from_extract_service").equals("retry")) {
             Bundle bundle = new Bundle();
             bundle.putString("from_extract_service", "retry");
-            moveToProductsDownload(bundle);
+//            moveToProductsDownload(bundle);
         }
         handleIntent(intent);
     }
@@ -868,15 +861,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     /**
-     * This moves the main activity to the Offline Product fragment.
-     */
-    public void moveToProductsDownload(Bundle bundle) {
-        Fragment fragment = new ProductsDownloadFragment();
-        fragment.setArguments(bundle);
-        changeFragment(fragment, getString(R.string.offline_download), ITEM_OFFLINE_DOWNLOAD);
-    }
-
-    /**
      * Create the drawer item. This adds a badge if there are items in the offline edit, otherwise
      * there is no badge present.
      *
@@ -884,7 +868,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      */
     private PrimaryDrawerItem createOfflineEditDrawerItem() {
         if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(10)
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE)
                     .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
                             .color.md_red_700));
         } else {
