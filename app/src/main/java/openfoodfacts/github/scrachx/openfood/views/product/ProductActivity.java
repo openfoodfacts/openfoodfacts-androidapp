@@ -59,6 +59,7 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -110,6 +111,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     ProductsRecyclerViewAdapter productsRecyclerViewAdapter;
 
     private OpenFoodAPIClient api;
+    private QuestionsState productQuestionsState;
     private ShareActionProvider mShareActionProvider;
     private State mState;
     private SensorManager mSensorManager;
@@ -134,6 +136,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 		api = new OpenFoodAPIClient( this );
 
 		mState = (State) getIntent().getExtras().getSerializable( "state" );
+
+        OpenFoodAPIClient questionApi = new OpenFoodAPIClient(this, "https://robotoff.openfoodfacts.org/");
+
+        questionApi.getQuestionsForIncompleteProducts(mState.getProduct().getCode(), this);
 
 		setupViewPager( viewPager );
 

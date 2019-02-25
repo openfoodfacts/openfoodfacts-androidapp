@@ -316,4 +316,8 @@
         <item>@color/dot_dark_screen3</item>
         <item>@color/dot_dark_screen4</item>
     </array>
+
+    <!--FeedBack Dialog sample color-->
+    <color name="sampleColor">#795548</color>
+    <color name="grey">#E7E7E7</color>
 </resources>

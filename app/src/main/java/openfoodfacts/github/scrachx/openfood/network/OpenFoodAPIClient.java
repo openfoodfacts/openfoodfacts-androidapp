@@ -4,12 +4,19 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetDialog;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -27,10 +34,13 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.utils.FeedBackActionsListeners;
+import openfoodfacts.github.scrachx.openfood.utils.FeedBackDialog;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import org.apache.commons.lang3.StringUtils;
 import retrofit2.Call;
@@ -274,6 +284,112 @@ public class OpenFoodAPIClient {
             }
         });
     }
+
+    public void getQuestionsForIncompleteProducts(String barcode, Activity activity) {
+        apiService.getQuestionsForIncompleteProducts(barcode, Locale.getDefault().getLanguage()).enqueue(new Callback<QuestionsState>() {
+            @Override
+            public void onResponse(Call<QuestionsState> call, Response<QuestionsState> response) {
+                QuestionsState questionsState = response.body();
+                if (questionsState != null && !questionsState.getStatus().equals("no_questions")
+                        && questionsState.getQuestions().get(0).getType().equals("add-binary")) {
+                    BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(activity);
+                    View sheetView = activity.getLayoutInflater().inflate(R.layout.activity_product_bottom_sheet, null);
+                    TextView questionTextView = sheetView.findViewById(R.id.bottom_sheet_product_question);
+                    questionTextView.setText(questionsState.getQuestions().get(0).getQuestion()+" : "+questionsState.getQuestions().get(0).getValue());
+
+                    LinearLayout questionLinearLayout = sheetView.findViewById(R.id.bottom_sheet_linear_layout);
+                    ImageView clearImageView = sheetView.findViewById(R.id.bottom_sheet_clear_icon);
+                    questionLinearLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mBottomSheetDialog.dismiss();
+                            FeedBackDialog mDialog = new FeedBackDialog(activity)
+                                    .setBackgroundColor(R.color.colorPrimaryDark)
+                                    .setIcon(activity.getDrawable(R.drawable.ic_feedback_black_24dp))
+                                    .setIconColor(R.color.gray)
+                                    .setTitle("Open Food Facts")
+                                    .setDescription(questionsState.getQuestions().get(0).getQuestion())
+                                    .setReviewQuestion(questionsState.getQuestions().get(0).getValue())
+                                    .setPositiveFeedbackText(activity.getString(R.string.product_question_positive))
+                                    .setPositiveFeedbackIcon(activity.getDrawable(R.drawable.ic_check_circle_black_24dp))
+                                    .setNegativeFeedbackText(activity.getString(R.string.product_question_negative))
+                                    .setNegativeFeedbackIcon(activity.getDrawable(R.drawable.ic_cancel_black_24dp))
+                                    .setAmbiguityFeedbackText(activity.getString(R.string.product_question_ambiguous))
+                                    .setAmbiguityFeedbackIcon(activity.getDrawable(R.drawable.ic_help_black_24dp))
+                                    .setOnReviewClickListener(new FeedBackActionsListeners() {
+                                        @Override
+                                        public void onPositiveFeedback(FeedBackDialog dialog) {
+                                            //init POST request
+                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 1, activity);
+                                            dialog.dismiss();
+                                        }
+
+                                        @Override
+                                        public void onNegativeFeedback(FeedBackDialog dialog) {
+                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), 0, activity);
+                                            dialog.dismiss();
+                                        }
+
+                                        @Override
+                                        public void onAmbiguityFeedback(FeedBackDialog dialog) {
+                                            sendProductInsights(questionsState.getQuestions().get(0).getInsightId(), -1, activity);
+                                            dialog.dismiss();
+                                        }
+
+                                        @Override
+                                        public void onCancelListener(DialogInterface dialog) {
+                                            //do nothing
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .show();
+                        }
+                    });
+
+                    clearImageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mBottomSheetDialog.dismiss();
+                        }
+                    });
+
+                    mBottomSheetDialog.setContentView(sheetView);
+                    mBottomSheetDialog.show();
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<QuestionsState> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public void sendProductInsights(String insightId, int annotation, Activity activity) {
+        apiService.sendProductInsight(insightId, annotation).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Toast toast = Toast.makeText(OFFApplication.getInstance(), R.string.product_insight_submit_message, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    View view = toast.getView();
+                    TextView textView = view.findViewById(android.R.id.message);
+                    textView.setTextSize(18);
+                    view.setBackgroundColor(activity.getResources().getColor(R.color.primary_dark));
+                    toast.setDuration(Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
 
 
     public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Context activity, final OnProductSentCallback productSentCallback, SendProduct product) {

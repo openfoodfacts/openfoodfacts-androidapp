@@ -10,6 +10,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -77,6 +78,14 @@ public interface OpenFoodAPIService {
 
     @GET("api/v0/product/{barcode}.json?fields=ingredients")
     Call<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
+
+    @GET("api/v1/questions/{barcode}")
+    Call<QuestionsState> getQuestionsForIncompleteProducts(@Path("barcode") String barcode,
+                                                           @Query("lang") String langCode);
+
+    @FormUrlEncoded
+    @POST("api/v1/insights/annotate")
+    Call<ResponseBody> sendProductInsight(@Field("insight_id") String insightId, @Field("annotation") int annotation);
 
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)

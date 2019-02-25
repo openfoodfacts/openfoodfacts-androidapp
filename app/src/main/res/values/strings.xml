@@ -966,4 +966,10 @@
     <string name="settings_country_title">Country</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
+
+    <string name="bottom_sheet_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive">Yes</string>
+    <string name="product_question_negative">No</string>
+    <string name="product_question_ambiguous">I\'m not sure</string>
+    <string name="product_insight_submit_message">Thank you for your feedback!</string>
 </resources>
