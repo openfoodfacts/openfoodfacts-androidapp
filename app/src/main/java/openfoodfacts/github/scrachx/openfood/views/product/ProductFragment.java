@@ -125,6 +125,10 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
         mState = (State) getArguments().getSerializable("state");
 
+        OpenFoodAPIClient questionApi = new OpenFoodAPIClient(getActivity(), "https://robotoff.openfoodfacts.org/");
+
+        questionApi.getQuestionsForIncompleteProducts(mState.getProduct().getCode(), getActivity());
+
         setupViewPager(viewPager);
 
         viewPager.setNestedScrollingEnabled(true);
