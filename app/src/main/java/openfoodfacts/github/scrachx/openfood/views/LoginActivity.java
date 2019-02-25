@@ -149,9 +149,11 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void attemptLogin() {
         String login = loginView.getText().toString();
         String password = passwordView.getText().toString();
-        if (TextUtils.isEmpty(login)) {
+        if (TextUtils.isEmpty(login) || TextUtils.isEmpty(password)) {
             loginView.setError(getString(R.string.error_field_required));
             loginView.requestFocus();
+            passwordView.setError(getString(R.string.error_field_required));
+            passwordView.requestFocus();
             return;
         }
         if (!(password.length() >= 6)) {
