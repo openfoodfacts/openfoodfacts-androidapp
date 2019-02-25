@@ -21,6 +21,9 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             />
+         <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/product_lists_recycler_view"
@@ -28,7 +31,7 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/materialize_baseline_grid_small">
         </android.support.v7.widget.RecyclerView>
-
+        </ScrollView>
 
     </LinearLayout>
 
