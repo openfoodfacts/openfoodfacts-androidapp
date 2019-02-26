@@ -577,7 +577,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri));
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
                 Context context = this.getContext();
-                img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                    img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                } else {
+                    img.setVisibility(View.GONE);
+                }
                 img.setOnClickListener(view1 -> {
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                     CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
