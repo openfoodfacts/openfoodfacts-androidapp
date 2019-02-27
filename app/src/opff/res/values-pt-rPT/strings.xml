@@ -23,7 +23,7 @@
     <string name="slide_4_title">Funciona offline</string>
     <string name="slide_4_desc">Pode adicionar novos produtos, mesmo se não tiver uma conexão com a Internet agora</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
+    <string name="txtDialogsContentPowerMode">O produto que você digitalizou já existe em Open Pet Food Facts.</string>
     <string name="msg_share">Ver este produto no Open Food Facts :</string>
     <string name="not_support_books">Atualmente, livros não são suportados pelo Open Food Facts</string>
     <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Food Facts</string>

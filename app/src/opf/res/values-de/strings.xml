@@ -12,7 +12,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-de.openfoodfacts.org/mitwirkender/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts ist eine offene Datenbank mit mehr als %1$d Produkten (und denjenigen, die Sie beitragen werden) in der Welt.</string>
+    <string name="txtHomeOnline">Open Products Facts ist eine offene Datenbank mit mehr als %1$d Produkten (und denjenigen, die Sie beitragen werden).</string>
     <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.</string>
     <string name="slide_1_title">Beitrag zur Transparenz von Produkten leisten</string>
     <string name="slide_1_desc">Produkte erfassen und Fotos hinzufügen ermöglichen das Verständnis über Lebensmittelprodukte</string>
