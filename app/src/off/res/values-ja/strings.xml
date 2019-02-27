@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">オフラインのときも、Open Food Facts に後で追加するために製品をスキャンしてください。スキャンした製品がここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
     <string name="warning_alert_data">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">フリーの食品データベース</string>
+    <string name="tagline">the free food products database</string>
     <string name="product_not_found">スキャンした製品 %1$s はまだ Open Food Facts に存在しません。追加できますか?</string>
     <string name="currently_on_version">現在の Open Food Facts</string>
 </resources>

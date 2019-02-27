@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Scanează produsele chiar dacă ești deconectat și le poți adăuga mai târziu în baza de date Open Beauty Facts. Produsele scanate vor apărea aici și le vei putea trimite folosind butonul de mai jos.</string>
     <string name="warning_alert_data">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Beauty Facts. Totodată, fii atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% corectă, așa că te rog să verifici și tu personal acele produse! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">baza de date gratuită a produselor cosmetice</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">Produsul %1$s pe care l-ai scanat nu există încă în Open Beauty Facts. Îl poți adăuga tu?</string>
     <string name="currently_on_version">Acum pe Open Beauty Facts</string>
     <string name="category_game_btn">Help categorize products</string>
