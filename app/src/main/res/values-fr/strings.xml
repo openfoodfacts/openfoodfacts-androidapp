@@ -749,9 +749,9 @@
     <string name="set_img_front">Définir comme image de profil</string>
     <string name="report_img">Signaler l\'image</string>
     <string name="detected_ingredients">Ingrédients détectés</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
-    <string name="txtLoaded">Translations were downloaded successfully</string>
-    <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
+    <string name="txtDownloading">Téléchargement des taxonomies…</string>
+    <string name="txtLoaded">Les transactions ont été exportées avec succès</string>
+    <string name="txtConnectionError">Nous n\'avons pas pu télécharger certaines données. Cela peut être dû à une erreur de connexion.</string>
     <string name="set_image_name">Image sélectionnée en tant que</string>
     <string name="warning">Avertissement :</string>
     <string name="customer_service">Service Clients :</string>
