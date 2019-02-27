@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.firebase.jobdispatcher.JobParameters;
@@ -32,7 +33,9 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+
 import org.apache.commons.lang3.StringUtils;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -141,20 +144,20 @@ public class OpenFoodAPIClient {
                     String langCode = LocaleHelper.getLanguageTrimmed(activity.getApplicationContext());
                     String fieldsArray[] = activity.getResources().getStringArray(R.array.fields_array);
                     ArrayList<String> fieldsList = new ArrayList<>();
-                    for (int i = 0; i<fieldsArray.length; i++) {
+                    for (int i = 0; i < fieldsArray.length; i++) {
                         if (!langCode.equals("en")) {
-                            fieldsList.add(fieldsArray[i]+"_"+langCode);
+                            fieldsList.add(fieldsArray[i] + "_" + langCode);
                         }
-                        fieldsList.add(fieldsArray[i]+"_en");
+                        fieldsList.add(fieldsArray[i] + "_en");
                     }
                     getFieldByLanguage(barcode, fieldsList, ((((value, result) -> {
 
                         Product product = s.getProduct();
-                        for (HashMap.Entry<String,String> fieldEntry : result.entrySet()) {
+                        for (HashMap.Entry<String, String> fieldEntry : result.entrySet()) {
                             if (fieldEntry.getValue() != null) {
                                 String fieldValue = fieldEntry.getValue();
-                                fieldValue = fieldValue.replace("\"","");
-                                product.setAdditionalProperty(fieldEntry.getKey(),fieldValue);
+                                fieldValue = fieldValue.replace("\"", "");
+                                product.setAdditionalProperty(fieldEntry.getKey(), fieldValue);
                             }
                         }
                         s.setProduct(product);
@@ -205,49 +208,50 @@ public class OpenFoodAPIClient {
             @Override
             public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
                 JsonNode responseNode = response.body();
-                HashMap<String,String> resultMap = new HashMap<>();
-                for (String field : fields) {
-                    if (responseNode.findValue("product").findValue(field) != null &&
-                            (!responseNode.findValue("product").findValue(field).toString().equals(""))) {
-                        String value = responseNode.findValue("product").findValue(field).toString();
-                        resultMap.put(field, value);
-                    } else {
-                        resultMap.put(field, null);
+                if (responseNode != null) {
+                    HashMap<String, String> resultMap = new HashMap<>();
+                    for (String field : fields) {
+                        if (responseNode.findValue("product").findValue(field) != null &&
+                                (!responseNode.findValue("product").findValue(field).toString().equals(""))) {
+                            String value = responseNode.findValue("product").findValue(field).toString();
+                            resultMap.put(field, value);
+                        } else {
+                            resultMap.put(field, null);
+                        }
                     }
+                    fieldByLanguageCallback.onFieldByLanguageResponse(true, resultMap);
                 }
-                fieldByLanguageCallback.onFieldByLanguageResponse(true,resultMap);
 
             }
 
             @Override
             public void onFailure(Call<JsonNode> call, Throwable t) {
-                fieldByLanguageCallback.onFieldByLanguageResponse(false,null);
+                fieldByLanguageCallback.onFieldByLanguageResponse(false, null);
             }
         });
     }
 
-    public void getIngredients(String barcode,final OnIngredientListCallback ingredientListCallback)
-    {
-        ArrayList<ProductIngredient> ProductIngredients=new ArrayList<>();
+    public void getIngredients(String barcode, final OnIngredientListCallback ingredientListCallback) {
+        ArrayList<ProductIngredient> ProductIngredients = new ArrayList<>();
         apiService.getIngredientsByBarcode(barcode).enqueue(new Callback<JsonNode>() {
             @Override
             public void onResponse(@NonNull Call<JsonNode> call, Response<JsonNode> response) {
-                final JsonNode node=response.body();
-                final JsonNode ingredientsJsonNode=node.findValue("ingredients");
-                for(int i=0;i<ingredientsJsonNode.size();i++)
-                {
-                    ProductIngredient ProductIngredient=new ProductIngredient();
+                final JsonNode node = response.body();
+                final JsonNode ingredientsJsonNode = node.findValue("ingredients");
+                for (int i = 0; i < ingredientsJsonNode.size(); i++) {
+                    ProductIngredient ProductIngredient = new ProductIngredient();
                     ProductIngredient.setId(ingredientsJsonNode.get(i).findValue("id").toString());
                     ProductIngredient.setText(ingredientsJsonNode.get(i).findValue("text").toString());
                     ProductIngredient.setRank(Long.valueOf(ingredientsJsonNode.get(i).findValue("rank").toString()));
                     ProductIngredients.add(ProductIngredient);
                 }
-                ingredientListCallback.onIngredientListResponse(true,ProductIngredients);
+                ingredientListCallback.onIngredientListResponse(true, ProductIngredients);
 
             }
+
             @Override
             public void onFailure(@NonNull Call<JsonNode> call, Throwable t) {
-                ingredientListCallback.onIngredientListResponse(false,null);
+                ingredientListCallback.onIngredientListResponse(false, null);
             }
         });
     }
@@ -452,8 +456,8 @@ public class OpenFoodAPIClient {
     }
 
     public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
-     /**  final LoadToast lt = new LoadToast(context);
-        lt.show();**/
+        /**  final LoadToast lt = new LoadToast(context);
+         lt.show();**/
 
         apiService.saveImage(getUploadableMap(image, context))
                 .enqueue(new Callback<JsonNode>() {
@@ -464,7 +468,7 @@ public class OpenFoodAPIClient {
                             ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                             mToUploadProductDao.insertOrReplace(product);
                             Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
-                            if(imageUploadListener != null){
+                            if (imageUploadListener != null) {
                                 imageUploadListener.onFailure(response.toString());
                             }
                             //lt.error();
@@ -473,7 +477,7 @@ public class OpenFoodAPIClient {
 
                         JsonNode body = response.body();
                         Log.d("onResponse", body.toString());
-                        if(imageUploadListener != null){
+                        if (imageUploadListener != null) {
                             imageUploadListener.onSuccess();
                         }
                         if (!body.isObject()) {
@@ -489,7 +493,7 @@ public class OpenFoodAPIClient {
                     @Override
                     public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
                         Log.d("onResponse", t.toString());
-                        if(imageUploadListener != null){
+                        if (imageUploadListener != null) {
                             imageUploadListener.onFailure(context.getString(R.string.uploadLater));
                         }
                         ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
@@ -583,7 +587,7 @@ public class OpenFoodAPIClient {
     }
 
     public interface OnFieldByLanguageCallback {
-        void onFieldByLanguageResponse(boolean value, HashMap<String,String> result);
+        void onFieldByLanguageResponse(boolean value, HashMap<String, String> result);
     }
 
     /**
@@ -830,6 +834,7 @@ public class OpenFoodAPIClient {
         });
 
     }
+
     public void getProductsByManufacturingPlace(final String manufacturingPlace, final int page, final OnStoreCallback onStoreCallback) {
         apiService.getProductsByManufacturingPlace(manufacturingPlace, page).enqueue(new Callback<Search>() {
             @Override

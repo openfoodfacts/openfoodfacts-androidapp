@@ -162,18 +162,8 @@ public class Product implements Serializable {
     }
 
     public String getProductName(String languageCode) {
-        if (!languageCode.equals("en") && additionalProperties.get("product_name_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("product_name_" + languageCode).toString())) {
-            return additionalProperties.get("product_name_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("product_name_en") != null
-                && isNotBlank(additionalProperties.get("product_name_en").toString())) {
-            return additionalProperties.get("product_name_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("product_name", languageCode) != null) {
+            return getFieldHelper("product_name", languageCode);
         } else {
             return getProductName();
         }
@@ -181,18 +171,8 @@ public class Product implements Serializable {
     }
 
     public String getGenericName(String languageCode) {
-        if (!languageCode.equals("en") && additionalProperties.get("generic_name_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("generic_name_" + languageCode).toString())) {
-            return additionalProperties.get("generic_name_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("generic_name_en") != null
-                && isNotBlank(additionalProperties.get("generic_name_en").toString())) {
-            return additionalProperties.get("generic_name_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("generic_name", languageCode) != null) {
+            return getFieldHelper("generic_name", languageCode);
         } else {
             return getGenericName();
         }
@@ -200,18 +180,8 @@ public class Product implements Serializable {
     }
 
     public String getIngredientsText(String languageCode) {
-        if (!languageCode.equals("en") && additionalProperties.get("ingredients_text_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("ingredients_text_" + languageCode).toString())) {
-            return additionalProperties.get("ingredients_text_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("ingredients_text_en") != null
-                && isNotBlank(additionalProperties.get("ingredients_text_en").toString())) {
-            return additionalProperties.get("ingredients_text_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("ingredients_text", languageCode) != null) {
+            return getFieldHelper("ingredients_text", languageCode);
         } else {
             return getIngredientsText();
         }
@@ -219,18 +189,8 @@ public class Product implements Serializable {
     }
 
     public String getOtherInformation(String languageCode) {
-        if (!languageCode.equals("en") && additionalProperties.get("other_information_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("other_information_" + languageCode).toString())) {
-            return additionalProperties.get("other_information_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("other_information_en") != null
-                && isNotBlank(additionalProperties.get("other_information_en").toString())) {
-            return additionalProperties.get("other_information_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("other_information", languageCode) != null) {
+            return getFieldHelper("other_information", languageCode);
         } else {
             return getOtherInformation();
         }
@@ -238,18 +198,8 @@ public class Product implements Serializable {
     }
 
     public String getConservationConditions(String languageCode) {
-        if (!languageCode.equals("en") && additionalProperties.get("conservation_conditions_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("conservation_conditions_" + languageCode).toString())) {
-            return additionalProperties.get("conservation_conditions_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("conservation_conditions_en") != null
-                && isNotBlank(additionalProperties.get("conservation_conditions_en").toString())) {
-            return additionalProperties.get("conservation_conditions_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("conservation_conditions", languageCode) != null) {
+            return getFieldHelper("conservation_conditions", languageCode);
         } else {
             return getConservationConditions();
         }
@@ -257,95 +207,40 @@ public class Product implements Serializable {
     }
 
     public String getRecyclingInstructionsToDiscard(String languageCode) {
-
-        if (!languageCode.equals("en") && additionalProperties.get("recycling_instructions_to_discard_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("recycling_instructions_to_discard_" + languageCode).toString())) {
-            return additionalProperties.get("recycling_instructions_to_discard_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("recycling_instructions_to_discard_en") != null
-                && isNotBlank(additionalProperties.get("recycling_instructions_to_discard_en").toString())) {
-            return additionalProperties.get("recycling_instructions_to_discard_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("recycling_instructions_to_discard", languageCode) != null) {
+            return getFieldHelper("recycling_instructions_to_discard", languageCode);
         } else {
             return getRecyclingInstructionsToDiscard();
         }
     }
 
     public String getRecyclingInstructionsToRecycle(String languageCode) {
-
-        if (!languageCode.equals("en") && additionalProperties.get("recycling_instructions_to_recycle_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("recycling_instructions_to_recycle_" + languageCode).toString())) {
-            return additionalProperties.get("recycling_instructions_to_recycle_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("recycling_instructions_to_recycle_en") != null
-                && isNotBlank(additionalProperties.get("recycling_instructions_to_recycle_en").toString())) {
-            return additionalProperties.get("recycling_instructions_to_recycle_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("recycling_instructions_to_recycle", languageCode) != null) {
+            return getFieldHelper("recycling_instructions_to_recycle", languageCode);
         } else {
             return getRecyclingInstructionsToRecycle();
         }
     }
 
     public String getWarning(String languageCode) {
-
-        if (!languageCode.equals("en") && additionalProperties.get("warning_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("warning_" + languageCode).toString())) {
-            return additionalProperties.get("warning_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("warning_en") != null
-                && isNotBlank(additionalProperties.get("warning_en").toString())) {
-            return additionalProperties.get("warning_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("warning", languageCode) != null) {
+            return getFieldHelper("warning", languageCode);
         } else {
             return getWarning();
         }
     }
 
     public String getCustomerService(String languageCode) {
-
-        if (!languageCode.equals("en") && additionalProperties.get("customer_service_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("customer_service_" + languageCode).toString())) {
-            return additionalProperties.get("customer_service_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("customer_service_en") != null
-                && isNotBlank(additionalProperties.get("customer_service_en").toString())) {
-            return additionalProperties.get("customer_service_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("customer_service", languageCode) != null) {
+            return getFieldHelper("customer_service", languageCode);
         } else {
             return getCustomerService();
         }
     }
 
     public String getImageFrontUrl(String languageCode) {
-
-        if (!languageCode.equals("en") && additionalProperties.get("image_front_url_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("image_front_url_" + languageCode).toString())) {
-            return additionalProperties.get("image_front_url_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("image_front_url_en") != null
-                && isNotBlank(additionalProperties.get("image_front_url_en").toString())) {
-            return additionalProperties.get("image_front_url_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("image_front_url", languageCode) != null) {
+            return getFieldHelper("image_front_url", languageCode);
         } else {
             return getImageFrontUrl();
         }
@@ -353,18 +248,8 @@ public class Product implements Serializable {
 
     public String getImageIngredientsUrl(String languageCode) {
 
-        if (!languageCode.equals("en") && additionalProperties.get("image_ingredients_url_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("image_ingredients_url_" + languageCode).toString())) {
-            return additionalProperties.get("image_ingredients_url_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
-        } else if (additionalProperties.get("image_ingredients_url_en") != null
-                && isNotBlank(additionalProperties.get("image_ingredients_url_en").toString())) {
-            return additionalProperties.get("image_ingredients_url_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        if (getFieldHelper("image_ingredient_url", languageCode) != null) {
+            return getFieldHelper("image_ingredient_url", languageCode);
         } else {
             return getImageIngredientsUrl();
         }
@@ -372,21 +257,31 @@ public class Product implements Serializable {
 
     public String getImageNutritionUrl(String languageCode) {
 
-        if (!languageCode.equals("en") && additionalProperties.get("image_nutrition_url_" + languageCode) != null
-                && isNotBlank(additionalProperties.get("image_nutrition_url_" + languageCode).toString())) {
-            return additionalProperties.get("image_nutrition_url_" + languageCode)
+        if (getFieldHelper("image_nutrition_url", languageCode) != null) {
+            return getFieldHelper("image_nutrition_url", languageCode);
+        } else {
+            return getImageNutritionUrl();
+        }
+    }
+
+    public String getFieldHelper(String field, String languageCode) {
+
+        if (!languageCode.equals("en") && additionalProperties.get(field + "_" + languageCode) != null
+                && isNotBlank(additionalProperties.get(field + "_" + languageCode).toString())) {
+            return additionalProperties.get(field + "_" + languageCode)
                     .toString()
                     .replace("\\'", "'")
                     .replace("&quot", "'");
-        } else if (additionalProperties.get("image_nutrition_url_en") != null
-                && isNotBlank(additionalProperties.get("image_nutrition_url_en").toString())) {
-            return additionalProperties.get("image_nutrition_url_en")
+        } else if (additionalProperties.get(field + "_en") != null
+                && isNotBlank(additionalProperties.get(field + "_en").toString())) {
+            return additionalProperties.get(field + "_en")
                     .toString()
                     .replace("\\'", "'")
                     .replace("&quot", "'");
         } else {
-            return getImageNutritionUrl();
+            return null;
         }
+
     }
 
 
@@ -405,6 +300,7 @@ public class Product implements Serializable {
     public String getCustomerService() {
         return customerService;
     }
+
     public String getWarning() {
         return warning;
     }
@@ -760,6 +656,7 @@ public class Product implements Serializable {
     public String getNovaGroups() {
         return novaGroups;
     }
+
     public List<String> getEnvironmentImpactLevelTags() {
         return environmentImpactLevelTags;
     }
@@ -783,11 +680,11 @@ public class Product implements Serializable {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-  
+
     public String getEnvironmentInfocard() {
-      return environmentInfocard;
+        return environmentInfocard;
     }
-      
+
     /**
      * @return Other information
      */
@@ -821,7 +718,7 @@ public class Product implements Serializable {
         return new ToStringBuilder(this)
                 .append("code", code)
                 .append("productName", productName)
-                .append("additional_properties",additionalProperties)
+                .append("additional_properties", additionalProperties)
                 .toString();
     }
 }
