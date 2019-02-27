@@ -144,6 +144,7 @@
         <service android:name=".utils.WifiUploadReceiver$WifiService" />
         <service android:name=".jobs.DownloadOfflineProductService" />
         <service android:name=".jobs.ExtractOfflineProductService" />
+        <service android:name=".views.LoadTaxonomiesService" />
 
         <provider
             android:name=".utils.GenericFileProvider"
