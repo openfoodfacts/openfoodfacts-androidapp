@@ -341,6 +341,7 @@
             </android.support.v7.widget.CardView>
 
             <Button
+                android:drawableLeft="@drawable/ic_add_a_photo_black"
                 android:id="@+id/change_ing_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
