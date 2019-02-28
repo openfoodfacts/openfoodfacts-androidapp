@@ -751,9 +751,9 @@
     <string name="set_img_front">Borítókép megadása</string>
     <string name="report_img">Kép jelentése</string>
     <string name="detected_ingredients">Összetevők detektálása</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
-    <string name="txtLoaded">Translations were downloaded successfully</string>
-    <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
+    <string name="txtDownloading">Taxonómiák letöltése…</string>
+    <string name="txtLoaded">Fordítások sikeresen letöltve</string>
+    <string name="txtConnectionError">Bizonyos adatokat nem tudtunk letölteni. Ennek oka lehet a csatlakozási hiba.</string>
     <string name="set_image_name">A kép sikeresen beállítva</string>
     <string name="warning">Figyelmeztetés:</string>
     <string name="customer_service">Ügyfélszolgálat:</string>
