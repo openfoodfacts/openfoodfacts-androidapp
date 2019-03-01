@@ -760,17 +760,17 @@
     <string name="addtive_search">Søg efter en tilsætningsstof</string>
     <string name="additives">Tilsætningsstoffer</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Add to your lists</string>
-    <string name="txt_create_new_list">Create a new list</string>
-    <string name="txt_add_to_new_list">Add to a new list</string>
-    <string name="txt_eaten_products">Eaten products</string>
-    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="add_to_product_lists">Føj til dine lister</string>
+    <string name="txt_create_new_list">Opret en ny liste</string>
+    <string name="txt_add_to_new_list">Føj til en ny lliste</string>
+    <string name="txt_eaten_products">Spiste produkter</string>
+    <string name="txt_products_to_buy">Produkter at købe</string>
     <string name="export_csv_your_listed_products">Eksport CSV</string>
-    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
-    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="txt_exporting_your_listed_products">Eksporterer dine produkter…</string>
+    <string name="txt_your_listed_products_exported">Din produkter er nu eksporteret</string>
     <string name="txt_discard">Kassér</string>
     <string name="txt_save">Gem</string>
-    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
+    <string name="write_external_storage_your_listed_products">Skrivetilladelse til ekstern lagerplads er nødvendig til historikeksport.</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
