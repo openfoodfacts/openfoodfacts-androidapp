@@ -773,14 +773,14 @@
     <string name="write_external_storage_your_listed_products">Skrivetilladelse til ekstern lagerplads er nødvendig til historikeksport.</string>
     <string name="txt_info_eaten_products">Du kan føje produkter til denne liste ved at skanne dem, trække dem op og trykke på \"Jeg spiser dette\".
         Du kan også føje produkter til denne liste ved at søge efter dem og trykke på knappen + øverst til højre på produktsiden.</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_i_m_eating_this">I\'m eating this</string>
-    <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="txt_info_your_listed_products">Du kan tilføje produkter til denne liste ved at søge efter dem og trykke på knappen + øverst til højre på produktsiden.</string>
+    <string name="txt_i_m_eating_this">Jeg spiser dette</string>
+    <string name="compare_product_prompt">Sammenlign dette produkt</string>
+    <string name="search_history_pref_title">Slet lokal søgehistorik</string>
+    <string name="search_history_pref_summary">Fjern alle søgningerne du har udført på denne enhed</string>
+    <string name="settings_country_dialog_title">Vælg dit land</string>
+    <string name="settings_country_summary">Skift dit valgte land</string>
     <string name="settings_country_title">Land</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
     <!-- Used for diets AddOn -->
 </resources>
