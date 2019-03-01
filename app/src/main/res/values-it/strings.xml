@@ -737,7 +737,7 @@
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Versione</string>
     <string name="txtOtherInfo">Altre informazioni: </string>
-    <string name="txtConservationCond">Conservation Conditions: </string>
+    <string name="txtConservationCond">Condizioni di conservazione: </string>
     <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
     <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
     <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
@@ -753,11 +753,11 @@
     <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Successfully set the image as</string>
-    <string name="warning">Warning :</string>
-    <string name="customer_service">Customer Service :</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
+    <string name="warning">Attenzione :</string>
+    <string name="customer_service">Servizio Clienti :</string>
+    <string name="fast_addition_mode_title">Modalità di aggiunta rapida</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
-    <string name="addtive_search">Search for a additive</string>
+    <string name="addtive_search">Cerca un additivo</string>
     <string name="additives">Additivi</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Aggiungi alle tue liste</string>
@@ -776,11 +776,11 @@
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="search_history_pref_title">Elimina la cronologia delle ricerche locali</string>
+    <string name="search_history_pref_summary">Rimuovi tutte le ricerche eseguite su questo dispositivo</string>
+    <string name="settings_country_dialog_title">Seleziona il paese</string>
+    <string name="settings_country_summary">Cambia il tuo paese selezionato</string>
     <string name="settings_country_title">Paese</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="txt_no_nutrition_data">Questo prodotto non ha alcuna informazione nutrizionale sulla confezione. Se questo è cambiato, puoi modificare il prodotto.</string>
     <!-- Used for diets AddOn -->
 </resources>
