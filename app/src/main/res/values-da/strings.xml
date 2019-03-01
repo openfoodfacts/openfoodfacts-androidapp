@@ -751,7 +751,7 @@
     <string name="detected_ingredients">Detekterede ingredienser</string>
     <string name="txtDownloading">Downloader taxonomier…</string>
     <string name="txtLoaded">Oversættelser blev korrekt downloadet</string>
-    <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
+    <string name="txtConnectionError">Visse data kunne ikke downloades. Dette kan skyldes en forbindelsesfejl.</string>
     <string name="set_image_name">Foto angivet som</string>
     <string name="warning">Advarsel:</string>
     <string name="customer_service">Kundeservice:</string>
