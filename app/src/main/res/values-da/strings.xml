@@ -190,7 +190,7 @@
     <string name="txtFat">Fedt</string>
     <string name="txtSugars">Sukkertyper</string>
     <string name="hintBarcode">Stregkode</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">Få mere at vide om næringsniveauerne</string>
     <string name="hintLogin">Brugernavn</string>
     <string name="hintPass">Adgangskode</string>
     <string name="errorLogin">Brugernavn eller adgangskode-fejl</string>
@@ -248,7 +248,7 @@
     <string name="delete_txt">Slet</string>
     <string name="sign_in_drawer">Log ind</string>
     <string name="alert_drawer">Allergenadvarsel</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Dine lister</string>
     <string name="warning_allergens">Indeholder allergener</string>
     <string name="title_dialog_alert">Tilføje advarsel</string>
     <string name="toggle_flash">Blitz</string>
@@ -439,8 +439,8 @@
     <string name="take_picture_nutrition_table">Tag et foto af ernæringsoversigten</string>
     <string name="take_more_pictures">Tag flere billeder</string>
     <string name="txtSaturatedFat">Mættet fedt</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nutriscore_info_msg">Få mere at vide om Nutri-Scoren</string>
+    <string name="nova_info_msg">Få mere at vide om Nova</string>
     <string name="nova_grp1_msg">Gruppe 1 - Ubehandlede eller minimalt forarbejdede fødevarer</string>
     <string name="nova_grp2_msg">Gruppe 2 - Forarbejdede kulinariske ingredienser</string>
     <string name="nova_grp3_msg">Gruppe 3 - Forarbejdede fødevarer</string>
@@ -501,7 +501,7 @@
     <string name="confirm_logout">Bekræft Log ud</string>
     <string name="logout_dialog_content">Log ud, sikker?</string>
     <string name="dialog_cancel">Annullér</string>
-    <string name="dialog_create">Create</string>
+    <string name="dialog_create">Opret</string>
     <string name="choose_resolution">Vælg opløsning</string>
     <string name="pref_resolution_summary">Vælg en opløsning til billed-upload</string>
     <string name="image_upload_resolution">Upload-fotoopløsning</string>
@@ -749,8 +749,8 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
-    <string name="txtLoaded">Translations were downloaded successfully</string>
+    <string name="txtDownloading">Downloader taxonomier…</string>
+    <string name="txtLoaded">Oversættelser blev korrekt downloadet</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Foto angivet som</string>
     <string name="warning">Advarsel:</string>
