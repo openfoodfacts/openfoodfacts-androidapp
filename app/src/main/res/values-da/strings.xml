@@ -771,8 +771,8 @@
     <string name="txt_discard">Kassér</string>
     <string name="txt_save">Gem</string>
     <string name="write_external_storage_your_listed_products">Skrivetilladelse til ekstern lagerplads er nødvendig til historikeksport.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">Du kan føje produkter til denne liste ved at skanne dem, trække dem op og trykke på \"Jeg spiser dette\".
+        Du kan også føje produkter til denne liste ved at søge efter dem og trykke på knappen + øverst til højre på produktsiden.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">Compare this product</string>
