@@ -233,72 +233,11 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @OnClick(R.id.buttonScan)
     protected void OnScan() {
-        if (Utils.isHardwareCameraInstalled(getActivity())) {
-            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(getActivity())
-                            .title(R.string.action_about)
-                            .content(R.string.permission_camera)
-                            .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                            .show();
-                } else {
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                }
-            } else {
-                Intent intent = new Intent(getActivity(), ContinuousScanActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        }
+        ProductActivity.onScanButtonClicked(getActivity());
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        String[] menuTitles = getResources().getStringArray(R.array.nav_drawer_items_product);
-
-        adapterResult = new ProductFragmentPagerAdapter(getChildFragmentManager());
-        adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-        if (preferences.getBoolean("contributionTab", false)) {
-            adapterResult.addFragment(new ContributorsFragment(), getString(R.string.contribution_tab));
-        }
-        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opff")) {
-            adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
-        }
-        if (BuildConfig.FLAVOR.equals("off")) {
-            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
-            if( (mState.getProduct().getNutriments() != null &&
-                    mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
-                    (mState.getProduct().getEnvironmentInfocard() != null && !mState.getProduct().getEnvironmentInfocard().isEmpty()))
-            {
-                adapterResult.addFragment(new EnvironmentProductFragment(), "Environment");
-            }
-            if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("photoMode", false)) {
-                adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
-            }
-        }
-        if (BuildConfig.FLAVOR.equals("opff")) {
-            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
-
-            if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("photoMode", false)) {
-                adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
-            }
-        }
-
-        if (BuildConfig.FLAVOR.equals("obf")) {
-            if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("photoMode", false)) {
-                adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
-            }
-        }
-
-        if (BuildConfig.FLAVOR.equals("opf")) {
-            adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
-        }
-
-
-        viewPager.setAdapter(adapterResult);
+        adapterResult = ProductActivity.setupViewPager(viewPager, adapterResult, mState, getActivity());
     }
 
     /**
@@ -315,85 +254,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-//                NavUtils.navigateUpFromSameTask(this);
-                getActivity().finish();
-                return true;
-
-            case R.id.menu_item_share:
-                String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
-                Intent sharingIntent = new Intent();
-                sharingIntent.setAction(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
-                String shareSub = "\n\n";
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                return true;
-
-            case R.id.action_edit_product:
-                String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
-                if (mState.getProduct().getUrl() != null) {
-                    url = " " + mState.getProduct().getUrl();
-                }
-
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getActivity().getBaseContext(), null);
-
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(url), new WebViewFallback());
-                return true;
-
-            case R.id.action_facts:
-
-                MaterialDialog.Builder builder = new MaterialDialog.Builder(getActivity())
-                        .title(R.string.calculate_nutrition_facts)
-                        .customView(R.layout.dialog_calculate_calories, false)
-                        .dismissListener(dialogInterface -> Utils.hideKeyboard(getActivity()));
-                MaterialDialog dialog = builder.build();
-                dialog.show();
-                View view = dialog.getCustomView();
-                if (view != null) {
-                    EditText etWeight = view.findViewById(R.id.edit_text_weight);
-                    Spinner spinner = view.findViewById(R.id.spinner_weight);
-                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
-                            btn.setOnClickListener(new View.OnClickListener() {
-
-                                @Override
-                                public void onClick(View v) {
-                                    if (!TextUtils.isEmpty(etWeight.getText().toString())) {
-
-                                        String SpinnerValue = (String) spinner.getSelectedItem();
-                                        String weight = etWeight.getText().toString();
-                                        Product p = mState.getProduct();
-                                        Intent intent = new Intent(getContext(), CalculateDetails.class);
-                                        intent.putExtra("sampleObject", p);
-                                        intent.putExtra("spinnervalue", SpinnerValue);
-                                        intent.putExtra("weight", weight);
-                                        startActivity(intent);
-                                        dialog.dismiss();
-                                    } else {
-                                        Toast.makeText(getContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-                }
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        return ProductActivity.onOptionsItemSelected(item, mState, getActivity());
     }
 
     @Override
