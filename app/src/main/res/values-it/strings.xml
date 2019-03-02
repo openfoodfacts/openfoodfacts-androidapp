@@ -439,8 +439,8 @@
     <string name="take_picture_nutrition_table">Prendi una foto della tabella nutrizionale</string>
     <string name="take_more_pictures">Fai ulteriori foto</string>
     <string name="txtSaturatedFat">Grassi saturi</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nutriscore_info_msg">Ulteriori informazioni su Punteggio-Nutri</string>
+    <string name="nova_info_msg">Ulteriori informazioni su Nova</string>
     <string name="nova_grp1_msg">Gruppo 1 - Alimenti non trasformati o minimamente trasformati</string>
     <string name="nova_grp2_msg">Gruppo 2 - Ingredienti culinari elaborati</string>
     <string name="nova_grp3_msg">Gruppo 3 - Alimenti trasformati</string>
@@ -734,14 +734,14 @@
     <string name="nutrition_image_prompt_text">Fai una foto alla tabella nutrizionale</string>
     <string name="ingredient_image_prompt_text">Prendi una foto degli ingredienti</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version_string">App Android Open Food Facts</string>
     <string name="version">Versione</string>
     <string name="txtOtherInfo">Altre informazioni: </string>
     <string name="txtConservationCond">Condizioni di conservazione: </string>
     <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
     <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
-    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
-    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="recyclingInstructionToRecycle">Istruzioni per il riciclaggio (per riciclare)</string>
+    <string name="recyclingInstructionToDiscard">Istruzioni per il riciclaggio (per scartare)</string>
     <string name="conservationCond">Condizioni di conservazione</string>
     <string name="other_info">Altre informazioni</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -749,7 +749,7 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Segnala immagine</string>
     <string name="detected_ingredients">Ingredienti rilevati</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
+    <string name="txtDownloading">Download delle tassonomie…</string>
     <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Imposta correttamente l\'immagine come</string>
@@ -774,8 +774,8 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_i_m_eating_this">I\'m eating this</string>
-    <string name="compare_product_prompt">Compare this product</string>
+    <string name="txt_i_m_eating_this">Sto mangiando questo</string>
+    <string name="compare_product_prompt">Confronta questo prodotto</string>
     <string name="search_history_pref_title">Elimina la cronologia delle ricerche locali</string>
     <string name="search_history_pref_summary">Rimuovi tutte le ricerche eseguite su questo dispositivo</string>
     <string name="settings_country_dialog_title">Seleziona il paese</string>
