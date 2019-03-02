@@ -265,7 +265,7 @@
     <string name="cancel_button">Ακύρωση</string>
     <string name="login_button">Σύνδεση</string>
     <string name="create_account_button">Δημιουργία Λογαριασμού</string>
-    <string name="warning_alert_data">Η αλλεργίες που εισάγετε είναι προσωπικές και δεν στέλνονται σε εμάς. Να είστε προσεχτικοί καθώς οι πληροφορίες προϊόντων δεν είναι τελείως ακριβής και προτείνεται να ελέγχετε τι παίρνετε. </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="from_gallery">Από τη συλλογή</string>
     <string name="product_sent">Το προϊόν στάλθηκε με επιτυχία</string>
     <string name="action_edit_product">Επεξεργασία προϊόντος</string>
@@ -294,7 +294,7 @@
     <string name="scan_history_drawer">Ιστορικό</string>
     <string name="clear_history">Καθαρισμός ιστορικού</string>
     <string name="title_clear_history_dialog">Εκκαθάριση</string>
-    <string name="text_clear_history_dialog">Θέλετε να διαγράψετε όλο το ιστορικό σάρωσης;</string>
+    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Εξαγωγή σε CSV</string>
     <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">Ιστορικό εξήχθη</string>
@@ -307,8 +307,8 @@
     <string name="check_facts">Προβολή στοιχείων</string>
     <string name="nutrition">Θρεπτική Αξία</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Παρακαλούμε εισάγετε το βάρος</string>
-    <string name="enter_weight">Καταχωρίστε το βάρος</string>
+    <string name="please_enter_weight">Please type the product weight</string>
+    <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">Υπολογίστε τα Διατροφικά Στοιχεία</string>
     <string name="txt_calories_result">%1$s kcal σε %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Υδατάνθρακας</string>
@@ -341,10 +341,10 @@
     <string name="nutriment_serving_size">Ανά μερίδα: </string>
     <string name="action_manage_account">Διαχείριση λογαριασμού</string>
     <string name="action_contributes">Οι συνεισφορές σας</string>
-    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
-    <string name="energy_pref_title">Preferred unit for energy</string>
-    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
-    <string name="volume_pref_title">Preferred unit for volume</string>
+    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
+    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
+    <string name="volume_pref_title">Preferred volume unit</string>
     <string name="logout_drawer">Αποσύνδεση</string>
     <string name="contribution_without_account">Μπορείτε να συνδεθείτε ή να δημιουργήσετε έναν λογαριασμό για να κρατήσετε τις συνεισφορές σας</string>
     <string name="textCarbonFootprint">Αποτύπωμα άνθρακα / εκπομπές CO2: </string>
@@ -485,7 +485,7 @@
     <string name="translate_help_title">Βοηθήστε να μεταφραστεί το Open Food Facts</string>
     <string name="translate_help_summary">Βοηθήστε στην μετάφραση της εφαρμογής χωρίς να απαιτούνται τεχνολογικές γνώσεις</string>
     <string name="please_check_your_connection">Παρακαλώ ελέγξτε τη σύνδεσή σας στο internet.</string>
-    <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Σύνθετη αναζήτηση &amp; Σχεδιαγράμματα</string>
     <string name="connectivity_check">Παρακαλώ ελέγξτε τη σύνδεσή σας στο internet</string>
     <string name="dismiss">Απόρριψη</string>
@@ -605,7 +605,7 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Δεν είναι δυνατή η εξαγωγή συστατικών από την εικόνα</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_in_carbohydrate_value">Carbohydrate can\'t be less than the sum of sugar and starch</string>
+    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Επιλέξτε ένα θρεπτικό συστατικό</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
     <string name="hint_product_URL">Σύνδεσμος της επίσημης σελίδας του προϊόντος</string>
@@ -625,7 +625,7 @@
     <string name="quantity_overwrite">Quantity overwrite</string>
     <string name="link_overwrite">Αντικατάσταση συνδέσμου</string>
     <string name="save_product">Θέλετε να αποθηκεύσετε το προϊόν;</string>
-    <string name="error_adding_product">Κάτι πήγε στραβά κατά την προσθήκη προϊόντος</string>
+    <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Φωτογραφίες</string>
     <string name="please_wait">Παρακαλώ περιμένετε</string>
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
@@ -681,7 +681,7 @@
     <string name="hint_serving_size">Παραδείγματα: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s είναι ήδη παρόν διατροφικά στοιχειά</string>
     <string name="save_edits">Αποθηκεύστε τις αλλαγές</string>
-    <string name="contribution_by">Συνεισφορά από:</string>
+    <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Ονομασία</string>
     <string name="description_activity_product">περιγραφή</string>
     <string name="intent_filter_share_label">Προσθήκη στο Open Food Facts</string>
@@ -716,7 +716,7 @@
     <string name="your_diets">Η(Οι) Διατροφή(ές) σας</string>
     <string name="diet_name">Όνομα Διατροφής</string>
     <string name="diets_dialog_warning_title">Warning</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
     <string name="EditDiet_Name">Όνομα</string>
     <string name="EditDiet_Description">Περιγραφή</string>
     <string name="EditDiet_Enabled_Disabled">Ενεργοποιημένο ή απενεργοποιημένο</string>
@@ -725,7 +725,7 @@
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Προσθέστε μια κατηγορία για να υπολογίσετε το Nutri-Score</string>
