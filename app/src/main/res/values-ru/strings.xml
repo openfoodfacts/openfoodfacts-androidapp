@@ -302,7 +302,7 @@
     <string name="scan_history_drawer">История</string>
     <string name="clear_history">Очистить историю</string>
     <string name="title_clear_history_dialog">Очистить</string>
-    <string name="text_clear_history_dialog">Действительно очистить историю сканирования?</string>
+    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Экспорт в CSV</string>
     <string name="txt_exporting_history">Экспорт истории…</string>
     <string name="txt_history_exported">История экспортирована</string>
@@ -315,8 +315,8 @@
     <string name="check_facts">Проверить</string>
     <string name="nutrition">Пищевая ценность</string>
     <string name="calculated_nutrition">Расчитанная пищевая ценность</string>
-    <string name="please_enter_weight">Пожалуйста, введите вес</string>
-    <string name="enter_weight">Введите вес</string>
+    <string name="please_enter_weight">Please type the product weight</string>
+    <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">Расчитать пищевую ценность</string>
     <string name="txt_calories_result">%1$s ккал в %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Углеводы</string>
@@ -349,10 +349,10 @@
     <string name="nutriment_serving_size">На порцию:</string>
     <string name="action_manage_account">Управление учётной записью</string>
     <string name="action_contributes">Ваш вклад</string>
-    <string name="choose_energy_unit">Выберите предпочтительные единицы калорийности для таблицы питательной ценности</string>
-    <string name="energy_pref_title">Предпочтительная единица калорийности</string>
-    <string name="choose_volume_unit">Выберите предпочтительные единицы объёма для таблицы питательной ценности</string>
-    <string name="volume_pref_title">Предпочтительная единица объема</string>
+    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
+    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
+    <string name="volume_pref_title">Preferred volume unit</string>
     <string name="logout_drawer">Выйти</string>
     <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
     <string name="textCarbonFootprint">Углеродный след / выбросы CO2: </string>
@@ -493,7 +493,7 @@
     <string name="translate_help_title">Помогите перевести Open Food Facts</string>
     <string name="translate_help_summary">Перевести базу данных Open Food Facts на ваш родной язык - никаких технических знаний не требуется</string>
     <string name="please_check_your_connection">Проверьте подключение к интернету.</string>
-    <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Расширенный поиск и графики</string>
     <string name="connectivity_check">Пожалуйста, проверьте подключение к интернету</string>
     <string name="dismiss">Отменить</string>
@@ -613,7 +613,7 @@
     <string name="error_adding_ingredients">Что-то пошло не так при попытке добавления ингредиентов продукта</string>
     <string name="unable_to_extract_ingredients">Не удалось извлечь ингредиенты из изображения</string>
     <string name="error_adding_nutrition_facts">Что-то пошло не так при попытке добавить пищевую ценность продукта</string>
-    <string name="error_in_carbohydrate_value">Количество углеводов не может быть меньше суммы сахара и крахмала</string>
+    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Выберите питательное вещество</string>
     <string name="error_adding_product_details">Что-то пошло не так, когда вы пытались добавить сведения о продукте</string>
     <string name="hint_product_URL">Ссылка на официальную страницу продукта</string>
@@ -633,7 +633,7 @@
     <string name="quantity_overwrite">Перезапись количества</string>
     <string name="link_overwrite">Перезапись ссылки</string>
     <string name="save_product">Вы хотите сохранить продукт?</string>
-    <string name="error_adding_product">Что-то пошло не так при добавлении продукта</string>
+    <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Фотографии</string>
     <string name="please_wait">Подождите</string>
     <string name="product_uploaded_successfully">Продукт успешно загружен</string>
@@ -689,7 +689,7 @@
     <string name="hint_serving_size">Примеры: 60 г, 12 унций, 20 мл, 2 л</string>
     <string name="nutrient_already_added">%s уже присутствует в фактах питания</string>
     <string name="save_edits">Сохранить изменения</string>
-    <string name="contribution_by">Вклад от</string>
+    <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Название</string>
     <string name="description_activity_product">описание</string>
     <string name="intent_filter_share_label">Добавить в Open Food Facts</string>
@@ -724,7 +724,7 @@
     <string name="your_diets">Ваши диеты</string>
     <string name="diet_name">Название диеты</string>
     <string name="diets_dialog_warning_title">Предупреждение</string>
-    <string name="warning_diets_data">Данные о вашей диете остаются на вашем устройстве. Ничего не будет загружено куда-либо.</string>
+    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
     <string name="EditDiet_Name">Название</string>
     <string name="EditDiet_Description">Описание</string>
     <string name="EditDiet_Enabled_Disabled">Включить/Выключить</string>
@@ -733,7 +733,7 @@
     <string name="EditDiet_So_So_Ingredients">Нежелательные ингредиенты</string>
     <string name="EditDiet_Hint_So_So_Ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Запрещенные ингредиенты</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Перечислите запрещенные ингредиенты, которые будут отображаться красным цветом. Наример: глютен, молоко, пальмовое масло, сахар... Вы можете дополнить список позже.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Добавьте категорию для вычисления Nutri-Score</string>

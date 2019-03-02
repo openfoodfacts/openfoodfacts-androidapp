@@ -294,7 +294,7 @@
     <string name="scan_history_drawer">ಇತಿಹಾಸ</string>
     <string name="clear_history">ಇತಿಹಾಸ ತೆರವುಮಾಡಿ</string>
     <string name="title_clear_history_dialog">ತೆರವು ಮಾಡಿ</string>
-    <string name="text_clear_history_dialog">ನೀವು ಎಲ್ಲಾ ಇತಿಹಾಸವನ್ನು ಅಳಿಸಲು ಬಯಸುತ್ತೀರಾ?</string>
+    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">CSV ರಫ್ತು ಮಾಡಿ</string>
     <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">ಇತಿಹಾಸವನ್ನು ರಫ್ತು ಮಾಡಲಾಗಿದೆ</string>
@@ -307,8 +307,8 @@
     <string name="check_facts">ಪರಿಶೀಲಿಸಿ</string>
     <string name="nutrition">ಪೋಷಣೆ</string>
     <string name="calculated_nutrition">ಲೆಕ್ಕಹಾಕಿದ ನ್ಯೂಟ್ರಿಷನ್</string>
-    <string name="please_enter_weight">ದಯಮಾಡಿ ಸ್ವೀಕೃತದಾರರನ್ನು ನಮೂದಿಸಿ</string>
-    <string name="enter_weight">ತೂಕವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="please_enter_weight">Please type the product weight</string>
+    <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">ಲೆಕ್ಕಹಾಕಿದ ನ್ಯೂಟ್ರಿಷನ್</string>
     <string name="txt_calories_result">%1$s kcal ನಲ್ಲಿ %2$s %3$s</string>
     <string name="nutrition_carbohydrate">ಕಾರ್ಬೋಹೈಡ್ರೇಟ್</string>
@@ -341,10 +341,10 @@
     <string name="nutriment_serving_size">ಪ್ರತಿ ಭಾಗ: </string>
     <string name="action_manage_account">ಖಾತೆಯನ್ನು ನಿರ್ವಹಿಸಿ</string>
     <string name="action_contributes">ನಿಮ್ಮ ಕೊಡುಗೆಗಳು</string>
-    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
-    <string name="energy_pref_title">Preferred unit for energy</string>
-    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
-    <string name="volume_pref_title">Preferred unit for volume</string>
+    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
+    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
+    <string name="volume_pref_title">Preferred volume unit</string>
     <string name="logout_drawer">ಲಾಗ್‌ಔಟ್</string>
     <string name="contribution_without_account">ನಿಮ್ಮ ಕೊಡುಗೆಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳಲು ನೀವು ಸೈನ್-ಇನ್ ಮಾಡಬಹುದು ಅಥವಾ ಖಾತೆಯನ್ನು ರಚಿಸಬಹುದು</string>
     <string name="textCarbonFootprint">ಇಂಗಾಲದ ಹೆಜ್ಜೆಗುರುತು / CO2 ಹೊರಸೂಸುವಿಕೆಗಳು: </string>
@@ -485,7 +485,7 @@
     <string name="translate_help_title">ಆಹಾರದ ಸತ್ಯಗಳನ್ನು ತೆರೆಯಲು ಅನುವಾದಿಸಲು ಸಹಾಯ ಮಾಡಿ</string>
     <string name="translate_help_summary">ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಡೇಟಾಬೇಸ್ ಅನ್ನು ನಿಮ್ಮ ಭಾಷೆಗೆ ತರಲು - ಯಾವುದೇ ತಾಂತ್ರಿಕ ಜ್ಞಾನ ಅಗತ್ಯವಿಲ್ಲ</string>
     <string name="please_check_your_connection">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
-    <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">ಸುಧಾರಿತ ಹುಡುಕಾಟ &amp; ಚಾರ್ಟ್ಗಳು</string>
     <string name="connectivity_check">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ</string>
     <string name="dismiss">ವಜಾಮಾಡು</string>
@@ -605,7 +605,7 @@
     <string name="error_adding_ingredients">ಉತ್ಪನ್ನ ಪದಾರ್ಥಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
     <string name="unable_to_extract_ingredients">ಚಿತ್ರದಿಂದ ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
     <string name="error_adding_nutrition_facts">ಉತ್ಪನ್ನ ಪೌಷ್ಟಿಕ ಸತ್ಯಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
-    <string name="error_in_carbohydrate_value">ಕಾರ್ಬೋಹೈಡ್ರೇಟ್ ಸಕ್ಕರೆ ಮತ್ತು ಪಿಷ್ಟದ ಮೊತ್ತಕ್ಕಿಂತ ಕಡಿಮೆ ಇರುವಂತಿಲ್ಲ</string>
+    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">ಪೌಷ್ಟಿಕಾಂಶವನ್ನು ಆರಿಸಿ</string>
     <string name="error_adding_product_details">ಉತ್ಪನ್ನ ವಿವರಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
     <string name="hint_product_URL">ಉತ್ಪನ್ನದ ಅಧಿಕೃತ ಪುಟದ ಲಿಂಕ್</string>
@@ -625,7 +625,7 @@
     <string name="quantity_overwrite">ಪ್ರಮಾಣ ಬದಲಿಸಿ</string>
     <string name="link_overwrite">ಲಿಂಕ್ ಬದಲಿಸಿ</string>
     <string name="save_product">ಉತ್ಪನ್ನವನ್ನು ಉಳಿಸಲು ನೀವು ಬಯಸುವಿರಾ?</string>
-    <string name="error_adding_product">ಉತ್ಪನ್ನವನ್ನು ಸೇರಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
+    <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">ಫೋಟೋಗಳು</string>
     <string name="please_wait">ದಯಮಾಡಿ ನಿರೀಕ್ಷಿಸಿ</string>
     <string name="product_uploaded_successfully">ಉತ್ಪನ್ನವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಕಳುಹಿಸಲಾಗಿದೆ</string>
@@ -681,7 +681,7 @@
     <string name="hint_serving_size">ಉದಾಹರಣೆಗಳು: 60 ಗ್ರಾಂ, 12 ಔನ್ಸ್, 20 ಕ್ಲಾ, 2 ಫ್ಲಾ ಔಜ್</string>
     <string name="nutrient_already_added">%s ಪೌಷ್ಟಿಕಾಂಶ ಸತ್ಯಗಳಲ್ಲಿ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ</string>
     <string name="save_edits">ಸಂಪಾದನೆಗಳನ್ನು ಉಳಿಸಿ</string>
-    <string name="contribution_by">ಮೂಲಕ ಕೊಡುಗೆ</string>
+    <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">ಶೀರ್ಷಿಕೆ</string>
     <string name="description_activity_product">ವಿವರಣೆ</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
@@ -716,7 +716,7 @@
     <string name="your_diets">Your diet(s)</string>
     <string name="diet_name">Diet name</string>
     <string name="diets_dialog_warning_title">ಎಚ್ಚರಿಕೆ</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
     <string name="EditDiet_Name">ಹೆಸರು</string>
     <string name="EditDiet_Description">Description</string>
     <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
@@ -725,7 +725,7 @@
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <string name="extract_ingredients_prompt">ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಿರಿ</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
