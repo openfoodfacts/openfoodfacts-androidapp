@@ -281,7 +281,7 @@
         <item>Ingredients</item>
     </string-array>
 
-    <string-array name="fields_array">
+    <string-array name="fields_array" translatable="false">
         <item>product_name</item>
         <item>generic_name</item>
         <item>ingredients_text</item>
