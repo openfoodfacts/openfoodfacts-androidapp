@@ -800,16 +800,16 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txt_discard">Odrzuć</string>
     <string name="txt_save">Zapisz</string>
     <string name="write_external_storage_your_listed_products">Napisz, że potrzebne jest zewnętrzne zezwolenie na eksport danych.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_i_m_eating_this">I\'m eating this</string>
-    <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="txt_info_eaten_products">Będzie można dodać produkt do listy przez skanowanie produktów, przeciąganie karty produktu i naciskając \"Jem to\".
+          Będzie można również dodać produkt do listy przez wyszukiwanie i kliknięcie na przycisk + na górze po prawej stronie opisu produktu.</string>
+    <string name="txt_info_your_listed_products">Będziesz mógł dodawać produkty do listy przez wyszukiwanie i kliknięcie na przycisk + na górze po prawej stronie.</string>
+    <string name="txt_i_m_eating_this">Jem to</string>
+    <string name="compare_product_prompt">Porównaj ten produkt</string>
+    <string name="search_history_pref_title">Usuń prywatną historię wyszukiwania</string>
+    <string name="search_history_pref_summary">Usuń wszystkie wyszukiwania z tego urządzenia</string>
+    <string name="settings_country_dialog_title">Wybierz kraj</string>
+    <string name="settings_country_summary">Zmień kraj</string>
     <string name="settings_country_title">Kraj</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
     <!-- Used for diets AddOn -->
 </resources>
