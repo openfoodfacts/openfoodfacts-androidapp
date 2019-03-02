@@ -265,7 +265,7 @@
     <string name="cancel_button">Mégse</string>
     <string name="login_button">Bejelentkezés</string>
     <string name="create_account_button">Fiók létrehozása</string>
-    <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
+    <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
     <string name="from_gallery">Galériából</string>
     <string name="product_sent">Termék sikeresen elküldve</string>
     <string name="action_edit_product">Termék szerkesztése</string>
@@ -294,7 +294,7 @@
     <string name="scan_history_drawer">Előzmények</string>
     <string name="clear_history">Előzmények törlése</string>
     <string name="title_clear_history_dialog">Törlés</string>
-    <string name="text_clear_history_dialog">Szeretné törölni az összes beolvasási előzményt?</string>
+    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">CSV export</string>
     <string name="txt_exporting_history">Előzmények exportálása…</string>
     <string name="txt_history_exported">Előzmények exportálva</string>
@@ -307,8 +307,8 @@
     <string name="check_facts">Ellenőrzés</string>
     <string name="nutrition">Tápanyag</string>
     <string name="calculated_nutrition">Kiszámított tápanyag</string>
-    <string name="please_enter_weight">Kérem, írja be a súlyt</string>
-    <string name="enter_weight">Írja be a súlyt</string>
+    <string name="please_enter_weight">Please type the product weight</string>
+    <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">Tápértékadatok kiszámítása</string>
     <string name="txt_calories_result">%1$s kcal %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Szénhidrát</string>
@@ -341,10 +341,10 @@
     <string name="nutriment_serving_size">Adagonként: </string>
     <string name="action_manage_account">Fiók kezelése</string>
     <string name="action_contributes">Az ön hozzájárulásai</string>
-    <string name="choose_energy_unit">Choose your preferred units for energy for the nutrition table</string>
-    <string name="energy_pref_title">Előnyben részesített energiaegység</string>
-    <string name="choose_volume_unit">Choose your preferred units for volume for the nutrition table</string>
-    <string name="volume_pref_title">Előnyben részesített mennyiségegység</string>
+    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
+    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
+    <string name="volume_pref_title">Preferred volume unit</string>
     <string name="logout_drawer">Kijelentkezés</string>
     <string name="contribution_without_account">Jelentkezzen be vagy hozzon létre egy fiókot a hozzájárulásainak megtartásához</string>
     <string name="textCarbonFootprint">Ökológiai lábnyom / szén-dioxid-kibocsátás: </string>
@@ -485,7 +485,7 @@
     <string name="translate_help_title">Segítse az Open Food Facts fordítását</string>
     <string name="translate_help_summary">Hozza az Open Food Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
     <string name="please_check_your_connection">Kérjük, ellenőrizze a hálózati kapcsolatát.</string>
-    <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Részletes Keresés &amp; Diagramok</string>
     <string name="connectivity_check">Kérjük, ellenőrizze az internet kapcsolatát</string>
     <string name="dismiss">Elutasít</string>
@@ -605,7 +605,7 @@
     <string name="error_adding_ingredients">Valami hiba történt a termékösszetevők hozzáadása közben</string>
     <string name="unable_to_extract_ingredients">Nem sikerült az összetevők kiolvasása képből</string>
     <string name="error_adding_nutrition_facts">Valami hiba történt a tápértékadatok hozzáadása közben</string>
-    <string name="error_in_carbohydrate_value">A szénhidrát nem lehet kevesebb, mint a cukor és keményítő összege</string>
+    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Válasszon egy tápanyagot</string>
     <string name="error_adding_product_details">Valami hiba történt a termék részletek hozzáadása közben</string>
     <string name="hint_product_URL">A termék hivatalos oldalának linkje</string>
@@ -625,7 +625,7 @@
     <string name="quantity_overwrite">Mennyiség felülírása</string>
     <string name="link_overwrite">Link felülírása</string>
     <string name="save_product">Szeretnéd menteni a terméket?</string>
-    <string name="error_adding_product">Valami hiba történt a termék hozzáadásakor</string>
+    <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Fényképek</string>
     <string name="please_wait">Kérem, várjon</string>
     <string name="product_uploaded_successfully">Termék sikeresen feltöltve</string>
@@ -683,7 +683,7 @@
     <string name="hint_serving_size">Példák: 60 g, 12 oz, 20 ml, 2 fl oz</string>
     <string name="nutrient_already_added">%s már jelen van a tárléptékadatok között</string>
     <string name="save_edits">Mentse a módosításokat</string>
-    <string name="contribution_by">Hozzájárult</string>
+    <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Cím</string>
     <string name="description_activity_product">leírás</string>
     <string name="intent_filter_share_label">Hozzáadás az Open Food Facts-hez</string>
@@ -718,7 +718,7 @@
     <string name="your_diets">Az Ön étrendje(i)</string>
     <string name="diet_name">Diéta neve</string>
     <string name="diets_dialog_warning_title">Figyelmeztetés</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be upload anywhere.</string>
+    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
     <string name="EditDiet_Name">Név</string>
     <string name="EditDiet_Description">Leírás</string>
     <string name="EditDiet_Enabled_Disabled">Engedélyezés/Tiltás</string>
@@ -727,7 +727,7 @@
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
     <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Nem engedélyezett összetevők</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar... You can complete this list later.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Összetevők kiolvasása</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
