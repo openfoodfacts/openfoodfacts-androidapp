@@ -322,7 +322,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="scan_history_drawer">Historia</string>
     <string name="clear_history">Usuń historię</string>
     <string name="title_clear_history_dialog">Wyczyść</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Czy chcesz wyczyścić historię skanowania?</string>
     <string name="export_csv_history">Eksport CSV</string>
     <string name="txt_exporting_history">Eksport historii…</string>
     <string name="txt_history_exported">Eksportowano historię</string>
@@ -335,8 +335,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="check_facts">Sprawdź</string>
     <string name="nutrition">Odżywianie</string>
     <string name="calculated_nutrition">Obliczone wartości odżywcze</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="please_enter_weight">Proszę wpisać wagę produktu</string>
+    <string name="enter_weight">Wpisz wagę produktu</string>
     <string name="calculate_nutrition_facts">Oblicz wartości odżywcze</string>
     <string name="txt_calories_result">%1$s kcal w %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Węglowodany</string>
@@ -369,10 +369,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutriment_serving_size">Na porcję : </string>
     <string name="action_manage_account">Zarządzaj kontem</string>
     <string name="action_contributes">Twój wkład</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="choose_energy_unit">Wybierz preferowane jednostki energii dla tabeli odżywiania</string>
+    <string name="energy_pref_title">Preferowana jednostka energii</string>
+    <string name="choose_volume_unit">Wybierz preferowane jednostki objętości dla tabeli wartości</string>
+    <string name="volume_pref_title">Preferowana jednostka objętości</string>
     <string name="logout_drawer">Wyloguj</string>
     <string name="contribution_without_account">Możesz zalogować się lub utworzyć konto by zachować swój wkład</string>
     <string name="textCarbonFootprint">Ślad węglowy / emisjie dwutlenku węgla: </string>
@@ -634,7 +634,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="error_adding_ingredients">Coś poszło nie tak podczas próby dodania składników produktu</string>
     <string name="unable_to_extract_ingredients">Nie można wydobyć składników z obrazu</string>
     <string name="error_adding_nutrition_facts">Coś poszło nie tak podczas próby dodania faktów żywieniowych produktu</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
+    <string name="error_in_carbohydrate_value">Węglowodany nie mogą wynosić mniej niż suma cukru i skrobi</string>
     <string name="choose_nutrient">Wybierz składnik odżywczy</string>
     <string name="error_adding_product_details">Coś poszło nie tak podczas próby dodania szczegółów produktu</string>
     <string name="hint_product_URL">Link do oficjalnej strony produktu</string>
