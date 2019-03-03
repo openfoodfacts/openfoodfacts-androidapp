@@ -322,7 +322,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="scan_history_drawer">Historia</string>
     <string name="clear_history">Usuń historię</string>
     <string name="title_clear_history_dialog">Wyczyść</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Czy chcesz wyczyścić historię skanowania?</string>
     <string name="export_csv_history">Eksport CSV</string>
     <string name="txt_exporting_history">Eksport historii…</string>
     <string name="txt_history_exported">Eksportowano historię</string>
@@ -335,8 +335,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="check_facts">Sprawdź</string>
     <string name="nutrition">Odżywianie</string>
     <string name="calculated_nutrition">Obliczone wartości odżywcze</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="please_enter_weight">Proszę wpisać wagę produktu</string>
+    <string name="enter_weight">Wpisz wagę produktu</string>
     <string name="calculate_nutrition_facts">Oblicz wartości odżywcze</string>
     <string name="txt_calories_result">%1$s kcal w %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Węglowodany</string>
@@ -369,10 +369,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutriment_serving_size">Na porcję : </string>
     <string name="action_manage_account">Zarządzaj kontem</string>
     <string name="action_contributes">Twój wkład</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="choose_energy_unit">Wybierz preferowane jednostki energii dla tabeli odżywiania</string>
+    <string name="energy_pref_title">Preferowana jednostka energii</string>
+    <string name="choose_volume_unit">Wybierz preferowane jednostki objętości dla tabeli wartości</string>
+    <string name="volume_pref_title">Preferowana jednostka objętości</string>
     <string name="logout_drawer">Wyloguj</string>
     <string name="contribution_without_account">Możesz zalogować się lub utworzyć konto by zachować swój wkład</string>
     <string name="textCarbonFootprint">Ślad węglowy / emisjie dwutlenku węgla: </string>
@@ -634,7 +634,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="error_adding_ingredients">Coś poszło nie tak podczas próby dodania składników produktu</string>
     <string name="unable_to_extract_ingredients">Nie można wydobyć składników z obrazu</string>
     <string name="error_adding_nutrition_facts">Coś poszło nie tak podczas próby dodania faktów żywieniowych produktu</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
+    <string name="error_in_carbohydrate_value">Węglowodany nie mogą wynosić mniej niż suma cukru i skrobi</string>
     <string name="choose_nutrient">Wybierz składnik odżywczy</string>
     <string name="error_adding_product_details">Coś poszło nie tak podczas próby dodania szczegółów produktu</string>
     <string name="hint_product_URL">Link do oficjalnej strony produktu</string>
@@ -654,7 +654,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="quantity_overwrite">Nadpisanie ilości</string>
     <string name="link_overwrite">Nadpisywanie linku</string>
     <string name="save_product">Czy chcesz zapisać produkt?</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">Coś poszło nie tak przy dodawaniu produktu</string>
     <string name="photos">Zdjęcia</string>
     <string name="please_wait">Proszę czekać</string>
     <string name="product_uploaded_successfully">Produkt przesłany pomyślnie</string>
@@ -710,7 +710,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="hint_serving_size">Przykłady: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s jest już obecny w faktach żywnościowych</string>
     <string name="save_edits">Zapisz zmiany</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="contribution_by">Wkład</string>
     <string name="title_activity_product">Tytuł</string>
     <string name="description_activity_product">opis</string>
     <string name="intent_filter_share_label">Dodaj do Open Food Facts</string>
@@ -745,7 +745,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="your_diets">Twoje diety</string>
     <string name="diet_name">Nazwa diety</string>
     <string name="diets_dialog_warning_title">Ostrzeżenie</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">Dane dietetyczne pozostają na urządzeniu. Nic nie zostanie nigdzie przesłane.</string>
     <string name="EditDiet_Name">Nazwa</string>
     <string name="EditDiet_Description">Opis</string>
     <string name="EditDiet_Enabled_Disabled">Aktywne i nieaktywne</string>
@@ -754,7 +754,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="EditDiet_So_So_Ingredients">Takie składniki jak</string>
     <string name="EditDiet_Hint_So_So_Ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Niezatwierdzone składniki</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Lista niedopuszczony składników, które powinny zostać wyświetlone na czerwono. Przykład: gluten, mleko, olej palmowy, cukier... Możesz później uzupełnić listę.</string>
     <string name="extract_ingredients_prompt">Wyodrębnij składniki</string>
     <string name="add_nutrient_prompt_text">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
     <string name="add_category_prompt_text">W celu obliczenia Nutri-Score wpisz kategorię produktu</string>
@@ -778,9 +778,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="set_img_front">Głownie zdjęcie produktu</string>
     <string name="report_img">Zgłoś zdjęcie</string>
     <string name="detected_ingredients">Wykryte składniki</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
-    <string name="txtLoaded">Translations were downloaded successfully</string>
-    <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
+    <string name="txtDownloading">Pobieranie taksonomii…</string>
+    <string name="txtLoaded">Pomyślnie pobrano tłumaczenia</string>
+    <string name="txtConnectionError">Nie pobrano niektórych danych. Może to być spowodowane błędem połączenia.</string>
     <string name="set_image_name">Pomyślnie ustawiono obraz jako</string>
     <string name="warning">Uwaga :</string>
     <string name="customer_service">Obsługa klienta :</string>
@@ -799,17 +799,17 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txt_your_listed_products_exported">Twój profil został eksportowany</string>
     <string name="txt_discard">Odrzuć</string>
     <string name="txt_save">Zapisz</string>
-    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_i_m_eating_this">I\'m eating this</string>
-    <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="write_external_storage_your_listed_products">Napisz, że potrzebne jest zewnętrzne zezwolenie na eksport danych.</string>
+    <string name="txt_info_eaten_products">Będzie można dodać produkt do listy przez skanowanie produktów, przeciąganie karty produktu i naciskając \"Jem to\".
+          Będzie można również dodać produkt do listy przez wyszukiwanie i kliknięcie na przycisk + na górze po prawej stronie opisu produktu.</string>
+    <string name="txt_info_your_listed_products">Będziesz mógł dodawać produkty do listy przez wyszukiwanie i kliknięcie na przycisk + na górze po prawej stronie.</string>
+    <string name="txt_i_m_eating_this">Jem to</string>
+    <string name="compare_product_prompt">Porównaj ten produkt</string>
+    <string name="search_history_pref_title">Usuń prywatną historię wyszukiwania</string>
+    <string name="search_history_pref_summary">Usuń wszystkie wyszukiwania z tego urządzenia</string>
+    <string name="settings_country_dialog_title">Wybierz kraj</string>
+    <string name="settings_country_summary">Zmień kraj</string>
     <string name="settings_country_title">Kraj</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
     <!-- Used for diets AddOn -->
 </resources>

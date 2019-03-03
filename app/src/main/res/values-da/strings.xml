@@ -294,7 +294,7 @@
     <string name="scan_history_drawer">Historik</string>
     <string name="clear_history">Ryd historik</string>
     <string name="title_clear_history_dialog">Ryd</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Vil du slette hele din scanningshistorik?</string>
     <string name="export_csv_history">Eksport CSV</string>
     <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">Historik eksporteret</string>
@@ -307,8 +307,8 @@
     <string name="check_facts">Tjek</string>
     <string name="nutrition">Ernæring</string>
     <string name="calculated_nutrition">Beregnet ernæring</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="please_enter_weight">Indtast venligst produktets vægt</string>
+    <string name="enter_weight">Indtast produktets vægt</string>
     <string name="calculate_nutrition_facts">Beregn ernæringfakta</string>
     <string name="txt_calories_result">%1$s kcal i %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Kulhydrat</string>
@@ -341,10 +341,10 @@
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Administrer konto</string>
     <string name="action_contributes">Dine bidrag</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="choose_energy_unit">Vælg din foretrukne energienhed til ernæringstabellen</string>
+    <string name="energy_pref_title">Foretrukken energienhed</string>
+    <string name="choose_volume_unit">Vælg din foretrukne enhed for mængde til ernæringstabellen</string>
+    <string name="volume_pref_title">Foretrukken volumenenhed</string>
     <string name="logout_drawer">Log ud</string>
     <string name="contribution_without_account">Du kan logge ind eller oprette en konto for at gemme bidrag</string>
     <string name="textCarbonFootprint">CO2-regnskab / emissioner: </string>
@@ -605,7 +605,7 @@
     <string name="error_adding_ingredients">Noget gik galt under forsøget på at tilføje produktingredienser</string>
     <string name="unable_to_extract_ingredients">Kunne ikke udtrække ingredienser fra fotoet</string>
     <string name="error_adding_nutrition_facts">Noget gik galt under forsøget på at tilføje produktingrediensfakta</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
+    <string name="error_in_carbohydrate_value">Indhold af kulhydrater kan ikke være mindre end summen af sukker og stivelse</string>
     <string name="choose_nutrient">Vælg et næringsstof</string>
     <string name="error_adding_product_details">Noget gik galt under forsøget på at tilføje produktoplysninger</string>
     <string name="hint_product_URL">Link til den officielle produktside</string>
@@ -625,7 +625,7 @@
     <string name="quantity_overwrite">Mængdeoverskrivning</string>
     <string name="link_overwrite">Link-overskrivning</string>
     <string name="save_product">Vil du gemme dette produkt?</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">Noget gik galt, da produktet skulle tilføjes</string>
     <string name="photos">Fotos</string>
     <string name="please_wait">Vent venligst</string>
     <string name="product_uploaded_successfully">Produkt uploadet</string>
@@ -681,7 +681,7 @@
     <string name="hint_serving_size">Ekseampler: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s er allerede til stede i næringsfakta</string>
     <string name="save_edits">Gem ændringer</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="contribution_by">Bidrag fra</string>
     <string name="title_activity_product">Title</string>
     <string name="description_activity_product">beskrivelse</string>
     <string name="intent_filter_share_label">Føj til Open Food Facts</string>
@@ -716,7 +716,7 @@
     <string name="your_diets">Din(-e) diæt(-er)</string>
     <string name="diet_name">Diætnavn</string>
     <string name="diets_dialog_warning_title">Advarsel</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">Kostens data bliver på din enhed. Intet bliver uploadet.</string>
     <string name="EditDiet_Name">Navn</string>
     <string name="EditDiet_Description">Beskrivelse</string>
     <string name="EditDiet_Enabled_Disabled">Aktivér/Deaktivér</string>
@@ -725,7 +725,7 @@
     <string name="EditDiet_So_So_Ingredients">-</string>
     <string name="EditDiet_Hint_So_So_Ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de uønskede ingredienser, der skal vises med rød skrift. Eksempel: Gluten, mælk, palmeolie, sukker… Du kan færdiggøre denne liste senere.</string>
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
