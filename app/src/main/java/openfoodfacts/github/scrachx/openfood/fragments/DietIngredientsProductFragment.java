@@ -9,7 +9,6 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +48,6 @@ public class DietIngredientsProductFragment extends BaseFragment {
     private OpenFoodAPIClient api;
     private State mState;
     private Diet mDiet;
-    private List<String> mIngredientsTxt;
     private List<SpannableStringBuilder> mIngredients;
     private IProductRepository productRepository;
     private IDietRepository dietRepository;
@@ -73,18 +71,15 @@ public class DietIngredientsProductFragment extends BaseFragment {
         product = mState.getProduct();
     }
 
-    public static DietIngredientsProductFragment newInstance(String diet, String ingredients) {
-        DietIngredientsProductFragment fragment = new DietIngredientsProductFragment();
-        Bundle args = new Bundle();
-        args.putString("DIET", diet);
-        args.putString("INGREDIENTS", ingredients);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        //No diet, no fragment !!!
+        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DietDao dietDao = daoSession.getDietDao();
+        if (dietDao.loadAll().size() == 0) {
+            return null;
+        }
         return inflater.inflate(R.layout.fragment_diet_ingredients_product, container, false);
     }
 
@@ -164,46 +159,21 @@ public class DietIngredientsProductFragment extends BaseFragment {
             }
         });
 
-        if (getArguments() != null) {
-            Bundle args = getArguments();
-            if (args.containsKey("LANGUAGECODE")) {
-                languageCode = args.getString("LANGUAGECODE");
-            }
-            if (args.containsKey("DIET")) {
-                //dietRV.scrollToPosition(diets.indexOf(args.getString("DIET")));
-                //lastDietDisplayed = diets.indexOf(args.getString("DIET"));
-            }
-            if (args.containsKey("INGREDIENTS_TEXT")) {
-                mIngredientsTxt = dietRepository.getIngredientsListFromIngredientsText(args.getString("INGREDIENTS_TEXT"), false);
-                //fillIngredients(coloredIngredientsFromingredients(mIngredientsTxt));
-            }
-            //dietRV.setText("Tous");
-            if (mState != null && product.getIngredients() != null) {
-                fillIngredients(coloredIngredientsFromProduct());
-            }
-            /*
-            if (mState != null && product.getIngredientsText() != null) {
-                mIngredientsTxt = dietRepository.getIngredientsListFromIngredientsText(product.getIngredientsText(), false);
-                fillIngredients(coloredIngredientsFromingredients(mIngredientsTxt));
-            }
-            */
+        if (mState != null && product.getIngredients() != null) {
+            languageCode = product.getLang();
+            fillIngredients(coloredIngredientsFromProduct());
         }
     }
 
     private void changeMDiet(Diet diet) {
         mDiet = diet;
         mIngredients.clear();
-        //mIngredients.addAll(coloredIngredientsFromingredients(mIngredientsTxt));
         mIngredients.addAll(coloredIngredientsFromProduct());
         ingredientsRVAdapter.notifyDataSetChanged();
     }
 
     private List<SpannableStringBuilder> coloredIngredientsFromProduct() {
         return dietRepository.getColoredSSBFromProductAndDiet(product, mDiet.getTag());
-    }
-
-    private List<SpannableStringBuilder> coloredIngredientsFromingredients(List<String> ingredients) {
-        return dietRepository.getColoredSSBFromIngredientsDiet(ingredients, mDiet.getTag(),languageCode);
     }
 
     public void fillIngredients(List<SpannableStringBuilder> ingredients) {
@@ -219,7 +189,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
                     if (productIngredient.getText().replace("_","").equals(mIngredients.get(position).toString())) {
                         ingredientTag = productIngredient.getId();
                         //Sometimes ID passed from a product doesn't exists in the taxonomy from ingredient.json.
-                        if (dietRepository.getIngredientByTag(productIngredient.getId()) != null) {
+                        if (dietRepository.getIngredientByTag(productIngredient.getId()) == null) {
                             //That's it, create a new ingredient
                             dietRepository.addIngredient(productIngredient.getId(), productIngredient.getText(), productIngredient.getId().split(":")[0]);
                         }
@@ -285,7 +255,6 @@ public class DietIngredientsProductFragment extends BaseFragment {
     public void refreshView(State state) {
         super.refreshView(state);
         mState = state;
-        final Product product = mState.getProduct();
     }
 
     public interface ClickListener {

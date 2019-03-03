@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +20,7 @@ import java.util.List;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.Diet;
 import openfoodfacts.github.scrachx.openfood.models.DietDao;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DietsAdapter;
@@ -30,7 +30,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 /**
  * @see R.layout#fragment_diets
  * Created by dobriseb on 2018.10.15.
- * Gestion des régimes dans la BD locale.
+ * Diet gest in local database.
  */
 public class DietsFragment extends NavigationBaseFragment {
 
@@ -50,7 +50,7 @@ public class DietsFragment extends NavigationBaseFragment {
 
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //Gestion du message d'avertissement, les données restent sur l'appareil.
+        //Warning message, data stay on device.
         mSettings = getActivity().getSharedPreferences("prefs", 0);
         boolean firstRunDiets = mSettings.getBoolean("firstRunDiets", true);
         if (firstRunDiets) {
@@ -64,29 +64,14 @@ public class DietsFragment extends NavigationBaseFragment {
             editor.apply();
         }
 
-        //Recherche des données à afficher dans le Recycler
+        //Looking for data to be load in the Recycler
         mRvDiet = (RecyclerView) view.findViewById(R.id.diets_recycler);
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         DietDao dietDao = daoSession.getDietDao();
-        List dietList = dietDao.loadAll();
-        //Pour le test.
-/*
-        if (dietList.isEmpty()) {
-            Diet diet1 = new Diet();
-            diet1.setTag("en:Vegetarian");
-            diet1.setEnabled(true);
-            dietList.add(diet1);
-            Diet diet2 = new Diet();
-            diet2.setTag("en:Vegan");
-            diet2.setEnabled(false);
-            dietList.add(diet2);
-        }
-*/
+        List<Diet> dietList = dietDao.loadAll();
 
-        //Activation du recycler avec l'adapter qui va bien
+        //Activate the recycler with the good adapter
         mRvDiet.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        //DietsAdapter adapter = new DietsAdapter(dietList);
-        //mRvDiet.setAdapter(adapter);
         mRvDiet.setAdapter(new DietsAdapter(dietList, new ClickListener() {
             @Override
             public void onPositionClicked(int position, View v) {
@@ -105,7 +90,6 @@ public class DietsFragment extends NavigationBaseFragment {
     }
 
     /**
-     * Ajout d'un régime.
      * Add a diet.
      */
     @OnClick(R.id.fab)

@@ -40,7 +40,6 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -323,8 +322,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
-            //txtIngredients = dietRepository.getColoredSpannableStringBuilderFromSpannableIngredients(INGREDIENT_PATTERN, txtIngredients);
-            //txtIngredients = dietRepository.getColoredSSBFromSSBIngredients(txtIngredients, product.getLang());
             txtIngredients = dietRepository.getColoredSSBFromSSBAndProduct(txtIngredients, product);
             if (TextUtils.isEmpty(product.getIngredientsText())) {
                extractIngredientsPrompt.setVisibility(View.VISIBLE);
@@ -862,9 +859,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void openFragmentDietIngredientsProcuct(View v) {
         //Prepare a new dietIngredientsProductFragment and show it
         Bundle parameters = new Bundle();
-        parameters.putString("INGREDIENTS_TEXT", product.getIngredientsText());
-        parameters.putStringArrayList("INGREDIENTS", (ArrayList) product.getIngredients());
-        parameters.putString("LANGUAGECODE", product.getLang());
         DietIngredientsProductFragment dietIngredientsProductFragment = new DietIngredientsProductFragment();
         dietIngredientsProductFragment.setArguments(parameters);
         this.getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) this.getView().getParent().getParent().getParent()).getId(), dietIngredientsProductFragment, "").addToBackStack("ReturntoProduct").commit();
