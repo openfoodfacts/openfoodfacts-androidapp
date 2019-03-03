@@ -16,6 +16,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
@@ -46,7 +47,6 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -59,6 +59,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
@@ -85,7 +86,6 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAda
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -671,15 +671,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             public void onClick(View view) {
                 if (additive.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        ProductActivity productActivity = (ProductActivity) getActivity();
+                        FragmentActivity activity = getActivity();
                         if (value) {
-                            if (productActivity != null && !productActivity.isFinishing()) {
-                                productActivity.showBottomScreen(result, additive);
+                            if (activity != null && !activity.isFinishing()) {
+                                BottomScreenCommon.showBottomScreen(result, additive,
+                                        activity.getSupportFragmentManager());
                             }
                         } else {
                             if (additive.hasOverexposureData()) {
-                                if (productActivity != null && !productActivity.isFinishing()) {
-                                    productActivity.showBottomScreen(null, additive);
+                                if (activity != null && !activity.isFinishing()) {
+                                    BottomScreenCommon.showBottomScreen(result, additive,
+                                            activity.getSupportFragmentManager());
                                 }
                             } else {
                                 ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
@@ -687,10 +689,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         }
                     });
                 } else {
-                    ProductActivity productActivity = (ProductActivity) getActivity();
+                    FragmentActivity activity = getActivity();
                     if (additive.hasOverexposureData()) {
-                        if (productActivity != null && !productActivity.isFinishing()) {
-                            productActivity.showBottomScreen(null, additive);
+                        if (activity != null && !activity.isFinishing()) {
+                            BottomScreenCommon.showBottomScreen(null, additive,
+                                    activity.getSupportFragmentManager());
                         }
                     } else {
                         ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
@@ -918,18 +921,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             @Override
             public void onClick(View view) {
                 if (category.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(category.getWikiDataId(), new WikidataApiClient.OnWikiResponse() {
-                        @Override
-                        public void onresponse(boolean value, JSONObject result) {
-                            if (value) {
-                                ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, category);
-                            } else {
-                                ProductBrowsingListActivity.startActivity(getContext(),
-                                        category.getCategoryTag(),
-                                        category.getName(),
-                                        SearchType.CATEGORY);
-                            }
+                    apiClientForWikiData.doSomeThing(category.getWikiDataId(), (value, result) -> {
+                        if (value) {
+                            FragmentActivity activity = getActivity();
+                            BottomScreenCommon.showBottomScreen(result, category,
+                                    activity.getSupportFragmentManager());
+                        } else {
+                            ProductBrowsingListActivity.startActivity(getContext(),
+                                    category.getCategoryTag(),
+                                    category.getName(),
+                                    SearchType.CATEGORY);
                         }
                     });
                 } else {
@@ -957,18 +958,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             public void onClick(View view) {
 
                 if (label.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(label.getWikiDataId(), new WikidataApiClient.OnWikiResponse() {
-                        @Override
-                        public void onresponse(boolean value, JSONObject result) {
-                            if (value) {
-                                ProductActivity productActivity = (ProductActivity) getActivity();
-                                productActivity.showBottomScreen(result, label);
-                            } else {
-                                ProductBrowsingListActivity.startActivity(getContext(),
-                                        label.getLabelTag(),
-                                        label.getName(),
-                                        SearchType.LABEL);
-                            }
+                    apiClientForWikiData.doSomeThing(label.getWikiDataId(), (value, result) -> {
+                        if (value) {
+                            FragmentActivity activity = getActivity();
+                            BottomScreenCommon.showBottomScreen(result, label,
+                                    activity.getSupportFragmentManager());
+                        } else {
+                            ProductBrowsingListActivity.startActivity(getContext(),
+                                    label.getLabelTag(),
+                                    label.getName(),
+                                    SearchType.LABEL);
                         }
                     });
 
