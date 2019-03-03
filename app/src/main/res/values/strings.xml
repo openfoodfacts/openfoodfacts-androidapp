@@ -654,7 +654,7 @@
     <string name="dismiss">Dismiss</string>
 
     <string name="Terms">Terms</string>
-    <string name="TermsOfUse" translatable="false">Terms and Privacy</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <string name="faq_url" translatable="false">https://world.openfoodfacts.org/faq</string>
     <string name="advanced_search_url" translatable="false">https://world.openfoodfacts.org/cgi/search.pl</string>
