@@ -725,7 +725,7 @@
     <string name="EditDiet_So_So_Ingredients">-</string>
     <string name="EditDiet_Hint_So_So_Ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de uønskede ingredienser, der skal vises med rød skrift. Eksempel: Gluten, mælk, palmeolie, sukker… Du kan færdiggøre denne liste senere.</string>
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
