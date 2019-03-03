@@ -924,8 +924,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     apiClientForWikiData.doSomeThing(category.getWikiDataId(), (value, result) -> {
                         if (value) {
                             FragmentActivity activity = getActivity();
-                            BottomScreenCommon.showBottomScreen(result, category,
-                                    activity.getSupportFragmentManager());
+
+                            if (activity != null && !activity.isFinishing()) {
+                                BottomScreenCommon.showBottomScreen(result, category,
+                                        activity.getSupportFragmentManager());
+                            }
                         } else {
                             ProductBrowsingListActivity.startActivity(getContext(),
                                     category.getCategoryTag(),
@@ -961,8 +964,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     apiClientForWikiData.doSomeThing(label.getWikiDataId(), (value, result) -> {
                         if (value) {
                             FragmentActivity activity = getActivity();
-                            BottomScreenCommon.showBottomScreen(result, label,
-                                    activity.getSupportFragmentManager());
+                            if (activity != null && !activity.isFinishing()) {
+                                BottomScreenCommon.showBottomScreen(result, label,
+                                        activity.getSupportFragmentManager());
+                            }
                         } else {
                             ProductBrowsingListActivity.startActivity(getContext(),
                                     label.getLabelTag(),
