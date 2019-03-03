@@ -764,6 +764,7 @@
     <string name="add_to_product_lists">Añadir a tus listas</string>
     <string name="txt_create_new_list">Crear nueva lista</string>
     <string name="txt_add_to_new_list">Añadir a una nueva lista</string>
+    <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Productos consumidos</string>
     <string name="txt_products_to_buy">Productos para comprar</string>
     <string name="export_csv_your_listed_products">Exportar CSV</string>
@@ -784,4 +785,5 @@
     <string name="settings_country_title">País</string>
     <string name="txt_no_nutrition_data">Este producto no tiene ninguna información nutricional en el envase. Si esto ha cambiado, puede editar el producto.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
 </resources>
