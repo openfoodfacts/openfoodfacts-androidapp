@@ -766,6 +766,7 @@
     <string name="add_to_product_lists">Add hozzá a listáidhoz</string>
     <string name="txt_create_new_list">Hozzon létre egy új listát</string>
     <string name="txt_add_to_new_list">Add hozzá az új listádhoz</string>
+    <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Elfogyasztott termékek</string>
     <string name="txt_products_to_buy">Termékek vásárolni</string>
     <string name="export_csv_your_listed_products">CSV export</string>
@@ -786,4 +787,5 @@
     <string name="settings_country_title">Ország</string>
     <string name="txt_no_nutrition_data">Ez a termék nem tartalmaz tápértéketadatokat a csomagoláson. Ha ez megváltozott, akkor szerkessze a terméket.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
 </resources>
