@@ -490,6 +490,7 @@
     <string name="connectivity_check">Si us plau, comproveu la connexió a internet</string>
     <string name="dismiss">Omet</string>
     <string name="Terms">Condicions</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://es-ca.openfoodfacts.org/terms-of-use</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Xarxa</string>
