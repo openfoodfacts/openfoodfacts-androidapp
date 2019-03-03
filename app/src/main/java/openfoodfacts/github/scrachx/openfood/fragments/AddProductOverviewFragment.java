@@ -117,7 +117,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
-    private static final String PARAM_EATING = "eating";
     private static final String PARAM_OTHER_INFORMATION = "other_information";
     private static final String PARAM_CONSERVATION_CONDITIONS = "conservation_conditions";
     private static final String PARAM_RECYCLING_INSTRUCTION_TO_DISCARD = "recycling_instructions_to_discard";
@@ -154,8 +153,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     NachoTextView label;
     @BindView(R.id.period_of_time_after_opening)
     AutoCompleteTextView periodsAfterOpening;
-    @BindView(R.id.cb_eating)
-    CheckBox cbEating;
     @BindView(R.id.origin_of_ingredients)
     NachoTextView originOfIngredients;
     @BindView(R.id.manufacturing_place)
@@ -447,7 +444,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
             recyclingInstructionToRecycle.setText(product.getRecyclingInstructionsToRecycle());
         }
-        cbEating.setChecked(checkIfProductIsEaten());
     }
 
     /**
@@ -580,7 +576,6 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE) != null) {
                 recyclingInstructionToRecycle.setText(productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE));
             }
-            cbEating.setChecked(checkIfProductIsEaten());
         }
     }
 
@@ -1106,17 +1101,4 @@ public class AddProductOverviewFragment extends BaseFragment {
         return (int) (50 * scale + 0.5f);
     }
 
-    public boolean checkIfProductIsEaten() {
-        YourListedProductDao yourListedProductsDao = Utils.getAppDaoSession(getContext()).getYourListedProductDao();
-        List<YourListedProduct> eatenProducts =
-                yourListedProductsDao._queryProductLists_Products(1L);
-        if (!eatenProducts.isEmpty()) {
-            for (YourListedProduct product : eatenProducts) {
-                if (product.getBarcode().equals(product.getBarcode())) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 }
