@@ -72,6 +72,8 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
@@ -108,6 +110,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
 
@@ -197,6 +200,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView customerService;
     @BindView(R.id.compare_product_button)
     Button compareProductButton;
+    @BindView(R.id.btn_eating)
+    Button btnEating;
+    @BindView(R.id.btn_eating_ticked)
+    Button btnEatingTicked;
     private State state;
     private Product product;
     private OpenFoodAPIClient api;
@@ -212,6 +219,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private SummaryProductFragment mFragment;
     private ISummaryProductPresenter.Actions presenter;
     private Uri manufactureUri;
+    YourListedProductDao yourListedProductsDao;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     //boolean to determine if nutrient prompt should be shown
@@ -342,6 +350,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             mUrlImage = product.getImageUrl();
         }
+
+        yourListedProductsDao = Utils.getAppDaoSession(getContext()).getYourListedProductDao();
+        //check if this product exists in eaten list
+        if (checkIfProductIsEaten()) {
+            btnEating.setVisibility(View.GONE);
+            btnEatingTicked.setVisibility(View.VISIBLE);
+        } else {
+            btnEating.setVisibility(View.VISIBLE);
+            btnEatingTicked.setVisibility(View.GONE);
+        }
+
 
         //the following checks whether the ingredient and nutrition images are already uploaded for the product
         if (isBlank(product.getImageIngredientsUrl())) {
@@ -1007,6 +1026,76 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         intent.putExtra("modify_category_prompt", showCategoryPrompt);
         intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_eating)
+    public void onBtnEatingClick() {
+        btnEating.setVisibility(View.GONE);
+        btnEatingTicked.setVisibility(View.VISIBLE);
+        addProductToEatenList();
+    }
+
+    @OnClick(R.id.btn_eating_ticked)
+    public void onBtnEatingTickedClick() {
+        btnEating.setVisibility(View.VISIBLE);
+        btnEatingTicked.setVisibility(View.GONE);
+        removeProductFromEatenlist();
+    }
+
+    public boolean checkIfProductIsEaten() {
+        List<YourListedProduct> eatenProducts =
+                yourListedProductsDao._queryProductLists_Products(1L);
+        if (!eatenProducts.isEmpty()) {
+            for (YourListedProduct product : eatenProducts) {
+                if (product.getBarcode().equals(barcode)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void addProductToEatenList() {
+        String barcode = product.getCode();
+        String productName = product.getProductName();
+        StringBuilder stringBuilder = new StringBuilder();
+        if (isNotEmpty(product.getBrands())) {
+            stringBuilder.append(product.getBrands());
+        }
+        if (isNotEmpty(product.getQuantity())) {
+            stringBuilder.append(" - ").append(product.getQuantity());
+        }
+        String productDetailsString = stringBuilder.toString();
+        String imageUrl = product.getImageUrl();
+        if (isNotEmpty(product.getImageUrl())) {
+            stringBuilder.append(" - ").append(product.getImageUrl());
+        }
+
+        YourListedProduct product = new YourListedProduct();
+        product.setBarcode(barcode);
+        product.setListId(1L);
+        product.setListName(getString(R.string.txt_eaten_products));
+        product.setProductName(productName);
+        product.setProductDetails(productDetailsString);
+        product.setImageUrl(imageUrl);
+        yourListedProductsDao.insertOrReplace(product);
+    }
+
+    public void removeProductFromEatenlist() {
+        YourListedProduct thisProduct = new YourListedProduct();
+        thisProduct.setBarcode(barcode);
+        thisProduct.setListId(1L);
+        List<YourListedProduct> eatenProducts =
+                yourListedProductsDao._queryProductLists_Products(1L);
+        if (!eatenProducts.isEmpty()) {
+            for (YourListedProduct product : eatenProducts) {
+                if (product.getBarcode().equals(barcode)) {
+                    thisProduct.setId(product.getId());
+                }
+            }
+        }
+        yourListedProductsDao.delete(thisProduct);
+
     }
 
     @OnClick(R.id.compare_product_button)

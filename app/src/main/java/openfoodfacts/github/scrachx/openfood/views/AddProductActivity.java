@@ -1066,11 +1066,6 @@ public class AddProductActivity extends AppCompatActivity {
             productDetails.put("password", password);
         }
         checkFrontImageUploadStatus();
-
-        if(productDetails.get("eating").equals("true")){
-            addProductToList(1L,getString(R.string.txt_eaten_products));
-
-        }
     }
 
     private void addProductToList(Long listId,String listName){

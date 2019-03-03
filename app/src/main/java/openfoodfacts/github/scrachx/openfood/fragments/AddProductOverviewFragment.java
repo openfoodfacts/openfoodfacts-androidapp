@@ -73,6 +73,8 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -445,6 +447,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
             recyclingInstructionToRecycle.setText(product.getRecyclingInstructionsToRecycle());
         }
+        cbEating.setChecked(checkIfProductIsEaten());
     }
 
     /**
@@ -577,6 +580,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE) != null) {
                 recyclingInstructionToRecycle.setText(productDetails.get(PARAM_RECYCLING_INSTRUCTION_TO_RECYCLE));
             }
+            cbEating.setChecked(checkIfProductIsEaten());
         }
     }
 
@@ -792,8 +796,6 @@ public class AddProductOverviewFragment extends BaseFragment {
             if(mImageUrl!=null){
                 ((AddProductActivity) activity).addToMap("imageUrl", mImageUrl);
             }
-            Boolean cbEatingChecked = cbEating.isChecked();
-            ((AddProductActivity) activity).addToMap(PARAM_EATING, cbEatingChecked.toString());
             ((AddProductActivity) activity).addToMap(PARAM_ORIGIN.substring(4), getValues(originOfIngredients));
             ((AddProductActivity) activity).addToMap(PARAM_MANUFACTURING_PLACE.substring(4), manufacturingPlace.getText().toString());
             ((AddProductActivity) activity).addToMap(PARAM_EMB_CODE.substring(4), getValues(embCode));
@@ -849,8 +851,6 @@ public class AddProductOverviewFragment extends BaseFragment {
             if(mImageUrl!=null){
                 ((AddProductActivity) activity).addToMap("imageUrl", mImageUrl);
             }
-            Boolean cbEatingChecked = cbEating.isChecked();
-            ((AddProductActivity) activity).addToMap(PARAM_EATING, cbEatingChecked.toString());
             if (!originOfIngredients.getChipValues().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_ORIGIN, getValues(originOfIngredients));
             }
@@ -1104,5 +1104,19 @@ public class AddProductOverviewFragment extends BaseFragment {
         // converts 50dp to equivalent pixels.
         final float scale = activity.getResources().getDisplayMetrics().density;
         return (int) (50 * scale + 0.5f);
+    }
+
+    public boolean checkIfProductIsEaten() {
+        YourListedProductDao yourListedProductsDao = Utils.getAppDaoSession(getContext()).getYourListedProductDao();
+        List<YourListedProduct> eatenProducts =
+                yourListedProductsDao._queryProductLists_Products(1L);
+        if (!eatenProducts.isEmpty()) {
+            for (YourListedProduct product : eatenProducts) {
+                if (product.getBarcode().equals(product.getBarcode())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
