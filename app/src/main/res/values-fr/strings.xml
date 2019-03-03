@@ -490,6 +490,7 @@
     <string name="connectivity_check">Veuillez vérifier votre connexion Internet</string>
     <string name="dismiss">Ignorer</string>
     <string name="Terms">Conditions d\'utilisation</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world-fr.openfoodfacts.org/conditions-d-utilisation</string>
     <string name="preference_header_general">Général</string>
     <string name="preference_header_network">Réseau</string>
@@ -527,7 +528,7 @@
     <string name="category_string">Catégorie</string>
     <string name="connection">Connecté</string>
     <string name="contributor_string">Contributeur</string>
-    <string name="Rate_Us">Partage ton soutien</string>
+    <string name="Rate_Us">Montrez votre soutien</string>
     <string name="Rate_Us_title">Évaluez notre application</string>
     <string name="app_disabled_text">L\'application est désactivée</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
