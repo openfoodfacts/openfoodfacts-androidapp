@@ -494,6 +494,7 @@
     <string name="connectivity_check">Please check your internet connection</string>
     <string name="dismiss">Dismiss</string>
     <string name="Terms">Uslovi</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <string name="preference_header_general">Opšte</string>
     <string name="preference_header_network">Mreža</string>

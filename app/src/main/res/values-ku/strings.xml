@@ -490,6 +490,7 @@
     <string name="connectivity_check">Please check your internet connection</string>
     <string name="dismiss">Dismiss</string>
     <string name="Terms">Terms</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
@@ -744,9 +745,9 @@
     <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
     <string name="conservationCond">Conservation Conditions</string>
     <string name="other_info">Other Information</string>
-    <string name="set_ingredient_img">Set image as Ingredient</string>
-    <string name="set_img_nutrients">Set Image as Nutrition</string>
-    <string name="set_img_front">Set Image as Front</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtDownloading">Downloading taxonomies…</string>

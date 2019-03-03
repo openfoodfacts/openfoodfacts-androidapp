@@ -490,6 +490,7 @@
     <string name="connectivity_check">Моля проверете връзката си с интернет</string>
     <string name="dismiss">Отхвърли</string>
     <string name="Terms">Условия</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://bg.openfoodfacts.org/terms-of-use</string>
     <string name="preference_header_general">Общи</string>
     <string name="preference_header_network">Мрежа</string>

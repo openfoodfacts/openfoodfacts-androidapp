@@ -486,6 +486,7 @@
     <string name="connectivity_check">請檢查您的網路連線</string>
     <string name="dismiss">關閉</string>
     <string name="Terms">條款</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <string name="preference_header_general">通用</string>
     <string name="preference_header_network">網路</string>
