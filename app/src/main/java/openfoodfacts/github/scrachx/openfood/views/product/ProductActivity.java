@@ -22,7 +22,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,7 +29,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,27 +41,20 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -278,14 +269,22 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
 	private void setupViewPager( ViewPager viewPager )
 	{
+        adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
 		adapterResult = setupViewPager(viewPager, adapterResult, mState, this);
     }
 
+    /**
+     * CAREFUL ! YOU MUST INSTANTIATE YOUR OWN ADAPTERRESULT BEFORE CALLING THIS METHOD
+     * @param viewPager
+     * @param adapterResult
+     * @param mState
+     * @param activity
+     * @return
+     */
     public static ProductFragmentPagerAdapter setupViewPager (ViewPager viewPager, ProductFragmentPagerAdapter adapterResult, State mState, Activity activity) {
         String[] menuTitles = activity.getResources().getStringArray( R.array.nav_drawer_items_product );
         String[] newMenuTitles=activity.getResources().getStringArray(R.array.nav_drawer_new_items_product);
 
-        adapterResult = new ProductFragmentPagerAdapter( ((FragmentActivity) activity).getSupportFragmentManager() );
         adapterResult.addFragment( new SummaryProductFragment(), menuTitles[0] );
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences( activity );
         if( BuildConfig.FLAVOR.equals( "off" ) || BuildConfig.FLAVOR.equals( "obf" ) || BuildConfig.FLAVOR.equals( "opff" ) )
@@ -519,39 +518,6 @@ doesn't have calories information in nutrition facts.
                             .show();
                 }
             }
-        }
-    }
-
-    public void showBottomScreen(JSONObject result, AdditiveName additive) {
-        showBottomSheet(result, additive.getId(), additive.getName(), additive.getWikiDataId(),
-                SearchType.ADDITIVE, "additive_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, LabelName label) {
-        showBottomSheet(result, label.getId(), label.getName(), label.getWikiDataId(),
-                SearchType.LABEL, "label_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, CategoryName category) {
-        showBottomSheet(result, category.getId(), category.getName(), category.getWikiDataId(),
-                SearchType.CATEGORY, "category_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, AllergenName allergen) {
-        showBottomSheet(result, allergen.getId(), allergen.getName(), allergen.getWikiDataId(),
-                SearchType.ALLERGEN, "allergen_details_fragment");
-    }
-
-    private void showBottomSheet(JSONObject result, Long id, String name,
-                                 String wikidataId, String searchType, String fragmentTag) {
-        try {
-            String jsonObjectStr = (result != null) ? result.getJSONObject("entities")
-                    .getJSONObject(wikidataId).toString() : null;
-            ProductAttributeDetailsFragment fragment =
-                    ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
-            fragment.show(getSupportFragmentManager(), fragmentTag);
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 

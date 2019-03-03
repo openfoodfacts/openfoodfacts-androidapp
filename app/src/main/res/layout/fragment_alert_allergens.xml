@@ -49,7 +49,7 @@
         android:clickable="true"
         android:focusable="true"
         android:tint="@android:color/white"
-        fab:backgroundTint="@color/blue"
+        fab:backgroundTint="@color/red"
         fab:fabSize="normal"
         fab:srcCompat="@drawable/plus" />
 

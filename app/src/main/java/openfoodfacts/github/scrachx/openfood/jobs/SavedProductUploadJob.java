@@ -1,7 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.jobs;
 
-import android.widget.Toast;
-
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 

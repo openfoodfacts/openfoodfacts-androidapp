@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Indstillinger</string>
     <string name="saving">Gemmer…</string>
     <string name="scan_first_product">Skan første produkt</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload via mobildata</string>
     <string name="preference_enable_mobile_data_summary_on">Upload nye produkter via mobildata og Wi-Fi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload nye produkter alene via Wi-Fi</string>
@@ -487,10 +488,13 @@
     <string name="please_check_your_connection">Tjek Internetforbindelsen.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Avanceret søgning og Diagrammer</string>
+    <string name="compare_products">Sammenlign produkter</string>
     <string name="connectivity_check">Tjek Internetforbindelsen</string>
     <string name="dismiss">Afvis</string>
     <string name="Terms">Vilkår</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Generelt</string>
     <string name="preference_header_network">Netværk</string>
     <string name="preference_header_contributing">Bidrag</string>
@@ -763,6 +767,7 @@
     <string name="add_to_product_lists">Føj til dine lister</string>
     <string name="txt_create_new_list">Opret en ny liste</string>
     <string name="txt_add_to_new_list">Føj til en ny lliste</string>
+    <string name="create_new_list_list_name">Listens navn</string>
     <string name="txt_eaten_products">Spiste produkter</string>
     <string name="txt_products_to_buy">Produkter at købe</string>
     <string name="export_csv_your_listed_products">Eksport CSV</string>
@@ -781,6 +786,11 @@
     <string name="settings_country_dialog_title">Vælg dit land</string>
     <string name="settings_country_summary">Skift dit valgte land</string>
     <string name="settings_country_title">Land</string>
+    <string name="list_text">Føjet til:\u0020</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
+    <string name="add_product">Tilføj produkter</string>
+    <string name="add_another_product">Tilføj et produkt mere</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

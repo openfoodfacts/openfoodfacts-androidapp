@@ -121,11 +121,13 @@
             app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list" />
 
         <Button
+            android:drawableLeft="@drawable/ic_compare_arrows_black_18dp"
+            android:drawablePadding="5dp"
             android:id="@+id/btn_extract_ingredients"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="@string/extract_ingredients"
-            android:textColor="@color/white"
+            android:textColor="@color/md_black_1000"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
             app:layout_constraintEnd_toEndOf="@id/ingredients_list"

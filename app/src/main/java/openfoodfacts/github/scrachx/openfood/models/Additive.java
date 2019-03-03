@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -190,7 +191,7 @@ public class Additive {
     }
 
     public Boolean getIsWikiDataIdPresent() {
-        return this.isWikiDataIdPresent;
+        return BooleanUtils.toBooleanDefaultIfNull(this.isWikiDataIdPresent,false);
     }
 
     public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {

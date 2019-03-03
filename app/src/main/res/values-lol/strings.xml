@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">crwdns113978:0crwdne113978:0</string>
     <string name="saving">crwdns113980:0crwdne113980:0</string>
     <string name="scan_first_product">crwdns113982:0crwdne113982:0</string>
+    <string name="preference_delete_search_history">crwdns115914:0crwdne115914:0</string>
     <string name="preference_enable_mobile_data_title">crwdns113984:0crwdne113984:0</string>
     <string name="preference_enable_mobile_data_summary_on">crwdns113986:0crwdne113986:0</string>
     <string name="preference_enable_mobile_data_summary_off">crwdns113988:0crwdne113988:0</string>
@@ -487,10 +488,13 @@
     <string name="please_check_your_connection">crwdns114010:0crwdne114010:0</string>
     <string name="donation_url">crwdns115724:0crwdne115724:0</string>
     <string name="advanced_search_title">crwdns114014:0crwdne114014:0</string>
+    <string name="compare_products">crwdns115742:0crwdne115742:0</string>
     <string name="connectivity_check">crwdns114016:0crwdne114016:0</string>
     <string name="dismiss">crwdns114018:0crwdne114018:0</string>
     <string name="Terms">crwdns114020:0crwdne114020:0</string>
+    <string name="TermsOfUse">crwdns114022:0crwdne114022:0</string>
     <string name="terms_url">crwdns114024:0crwdne114024:0</string>
+    <string name="hunger_game_url">crwdns115744:0crwdne115744:0</string>
     <string name="preference_header_general">crwdns114030:0crwdne114030:0</string>
     <string name="preference_header_network">crwdns114032:0crwdne114032:0</string>
     <string name="preference_header_contributing">crwdns114036:0crwdne114036:0</string>
@@ -763,6 +767,7 @@
     <string name="add_to_product_lists">crwdns115394:0crwdne115394:0</string>
     <string name="txt_create_new_list">crwdns115396:0crwdne115396:0</string>
     <string name="txt_add_to_new_list">crwdns115398:0crwdne115398:0</string>
+    <string name="create_new_list_list_name">crwdns115736:0crwdne115736:0</string>
     <string name="txt_eaten_products">crwdns115400:0crwdne115400:0</string>
     <string name="txt_products_to_buy">crwdns115402:0crwdne115402:0</string>
     <string name="export_csv_your_listed_products">crwdns115404:0crwdne115404:0</string>
@@ -780,6 +785,11 @@
     <string name="settings_country_dialog_title">crwdns114554:0crwdne114554:0</string>
     <string name="settings_country_summary">crwdns114556:0crwdne114556:0</string>
     <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
+    <string name="list_text">crwdns115878:0crwdne115878:0</string>
     <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
+    <string name="add_product">crwdns115746:0crwdne115746:0</string>
+    <string name="add_another_product">crwdns115748:0crwdne115748:0</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

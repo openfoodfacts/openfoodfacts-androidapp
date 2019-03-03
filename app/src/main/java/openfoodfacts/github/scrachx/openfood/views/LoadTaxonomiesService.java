@@ -83,18 +83,18 @@ public class LoadTaxonomiesService extends IntentService {
                 .observeOn(AndroidSchedulers.mainThread())
                 .toCompletable()
                 //.doOnSubscribe(d -> view.showLoading())
-                .subscribe(() -> {
+                 .subscribe(() -> {
                     //view.hideLoading(false);
-                    builder.setContentText(getString(R.string.txtLoaded));
-                    builder.setOngoing(false);
-                    notificationManager.notify(17, builder.build());
+                  //   builder.setContentText(getString(R.string.txtLoaded));
+                 //    builder.setOngoing(false);
+                 //    notificationManager.notify(17, builder.build());
                 }, e -> {
-                    e.printStackTrace();
+                   //  e.printStackTrace();
                     //view.hideLoading(true);
-                    builder.setContentText(getString(R.string.txtConnectionError))
-                            .setOngoing(false);
-                    notificationManager.notify(17, builder.build());
-                });
+                   //  builder.setContentText(getString(R.string.txtConnectionError))
+                    //         .setOngoing(false);
+                    // notificationManager.notify(17, builder.build());
+                 });
     }
 
 }

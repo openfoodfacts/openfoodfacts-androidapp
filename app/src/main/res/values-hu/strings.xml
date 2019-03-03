@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Beállítások</string>
     <string name="saving">Mentés…</string>
     <string name="scan_first_product">Első termék beolvasása</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Feltöltés mobilinterneten</string>
     <string name="preference_enable_mobile_data_summary_on">Új termékek feltöltése mobilinternet &amp; WiFi használatával</string>
     <string name="preference_enable_mobile_data_summary_off">Új termékek feltöltése csak WiFi használatával</string>
@@ -487,10 +488,13 @@
     <string name="please_check_your_connection">Kérjük, ellenőrizze a hálózati kapcsolatát.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Részletes Keresés &amp; Diagramok</string>
+    <string name="compare_products">Compare Products</string>
     <string name="connectivity_check">Kérjük, ellenőrizze az internet kapcsolatát</string>
     <string name="dismiss">Elutasít</string>
     <string name="Terms">Feltételek</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Általános</string>
     <string name="preference_header_network">Hálózat</string>
     <string name="preference_header_contributing">Hozzájárulás</string>
@@ -765,6 +769,7 @@
     <string name="add_to_product_lists">Add hozzá a listáidhoz</string>
     <string name="txt_create_new_list">Hozzon létre egy új listát</string>
     <string name="txt_add_to_new_list">Add hozzá az új listádhoz</string>
+    <string name="create_new_list_list_name">Lista neve</string>
     <string name="txt_eaten_products">Elfogyasztott termékek</string>
     <string name="txt_products_to_buy">Termékek vásárolni</string>
     <string name="export_csv_your_listed_products">CSV export</string>
@@ -783,6 +788,11 @@
     <string name="settings_country_dialog_title">Válaszd ki az országod</string>
     <string name="settings_country_summary">Változtassa meg a kiválasztott országot</string>
     <string name="settings_country_title">Ország</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">Ez a termék nem tartalmaz tápértéketadatokat a csomagoláson. Ha ez megváltozott, akkor szerkessze a terméket.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
+    <string name="add_product">Add Products</string>
+    <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

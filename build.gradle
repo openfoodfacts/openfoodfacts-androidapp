@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
 
-        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.android.tools.build:gradle:3.3.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
@@ -32,8 +32,8 @@ ext {
 
     daggerVersion = '2.13'
 
-    rxVersion = '2.1.7'
-    rxAndroidVersion = '2.0.1'
+    rxVersion = '2.2.7'
+    rxAndroidVersion = '2.1.0'
 
     retrofitVersion = '2.3.0'
     okhttpVersion = '3.9.0'

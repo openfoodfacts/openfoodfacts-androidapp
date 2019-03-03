@@ -90,6 +90,7 @@
                 android:layout_marginRight="@dimen/spacing_normal"
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:gravity="center"
+                android:drawableLeft="@drawable/ic_add_box_black_18dp"
                 android:text="@string/add_nutrient_prompt_text"
                 android:visibility="gone"/>
 
@@ -119,34 +120,11 @@
                 android:visibility="gone" />
 
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/serving_size_card_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:cardElevation="4dp">
-
-                <TextView
-                    android:id="@+id/textServingSize"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
-                    android:padding="@dimen/spacing_small"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
-
-            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:id="@+id/nutrient_levels_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
                 app:cardElevation="4dp">
 
@@ -208,6 +186,31 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:text="@string/calculate_nutrition_facts" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/serving_size_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/textServingSize"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:background="@drawable/textview_full"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+
+            </android.support.v7.widget.CardView>
+
+
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"

@@ -18,7 +18,7 @@
     <string name="slide_2_title">Get the facts</string>
     <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
     <string name="slide_3_title">Krijg de Nutriscore</string>
-    <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
+    <string name="slide_3_desc">Een synthetische weergave van de voedingseigenschappen van uw favoriete levensmiddelen</string>
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
@@ -29,7 +29,7 @@
     <string name="Donation">Klik hier om te doneren aan Open Food Facts</string>
     <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">Scan de producten ook als u offline bent, om ze later aan Open Food Facts toe te voegen. De gescande producten verschijnen hier en u kunt ze verzenden via de onderstaande knop.</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
