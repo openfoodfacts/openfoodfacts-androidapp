@@ -498,6 +498,7 @@
     <string name="connectivity_check">Prosim preverite svojo internetno povezavo</string>
     <string name="dismiss">Opusti</string>
     <string name="Terms">Pogoji uporabe</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <string name="preference_header_general">Splošno</string>
     <string name="preference_header_network">Omrežje</string>
