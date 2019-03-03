@@ -22,7 +22,6 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
 
     //ajouter un constructeur prenant en entrée une liste
     public DietIngredientsProductAdapter(List<SpannableStringBuilder> list, DietIngredientsProductFragment.ClickListener listener) {
-        //Log.i("INFO", "DietIngredientAdapter_DietIngredientAdapter " + list.size());
         this.list = list;
         this.listener = listener;
     }
@@ -64,14 +63,12 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
         // onClick Listener for view
         @Override
         public void onClick(View v) {
-            //Log.i("INFO", "DietIngredientHolder_onClick : Identifiant de la vue cliquée : " + v.getId()+ "=>" + stateFromView(v) + " sur " + ingredientTextView.getText() + " pour le régime courant");
             listenerRef.get().onPositionClicked(getAdapterPosition(), v);
         }
 
         //onLongClickListener for view
         @Override
         public boolean onLongClick(View v) {
-            //Log.i("INFO", "DietIngredientHolder_onLongClick : Click long sur la vue : " + v.getId()+ "=>" + stateFromView(v) + " sur " + ingredientTextView.getText() + " pour tous les régimes");
             listenerRef.get().onLongClicked(getAdapterPosition(), v);
             return true;
         }
@@ -96,7 +93,6 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
     //et par la même d'indiquer la vue à inflater (à partir des layout xml)
     @Override
     public DietIngredientsProductHolder onCreateViewHolder(ViewGroup viewGroup, int itemType) {
-        //Log.i("INFO", "DietIngredientAdapter_DietIngredientHolder ");
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_diet_ingredients_product,viewGroup,false);
         return new DietIngredientsProductHolder(view, listener);
     }
@@ -104,10 +100,8 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
     //c'est ici que nous allons remplir notre cellule avec le texte/image de chaque MyObjects
     @Override
     public void onBindViewHolder(DietIngredientsProductHolder dietIngredientHolder, int position) {
-        //Log.i("INFO", "DietIngredientAdapter_onBindViewHolder " + list.size() + list.get(position));
         SpannableStringBuilder ingredient = list.get(position);
         dietIngredientHolder.bind(ingredient);
-        //Log.i("INFO","Recherche du state de l'ingrédient pour l Diet ?");
     }
 
     @Override

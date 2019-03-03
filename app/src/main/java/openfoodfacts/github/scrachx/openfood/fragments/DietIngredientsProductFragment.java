@@ -95,7 +95,6 @@ public class DietIngredientsProductFragment extends BaseFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i("INFO", "Début de OnViewCreated de DietIngredientsProductFragment");
         super.onViewCreated(view, savedInstanceState);
 
         Intent intent = getActivity().getIntent();
@@ -130,7 +129,6 @@ public class DietIngredientsProductFragment extends BaseFragment {
         dietRV.setAdapter(new DietHAdapter(dietList, new ClickListener() {
             @Override
             public void onPositionClicked(int position, View v) {
-                //Log.i("INFO", "Click on " + position + " de la vue " + v.toString());
                 int changeToPosition = position<dietRV.getAdapter().getItemCount()-1 ? position+1 : 0;
                 dietRV.smoothScrollToPosition(changeToPosition);
                 changeMDiet(dietList.get(changeToPosition));
@@ -138,7 +136,6 @@ public class DietIngredientsProductFragment extends BaseFragment {
 
             @Override
             public void onLongClicked(int position, View v) {
-                //Log.i("INFO", "LongClick on " + position + " de la vue " + v.toString());
                 dietRV.scrollToPosition(position-1);
                 changeMDiet(dietList.get(position-1));
             }
@@ -173,7 +170,6 @@ public class DietIngredientsProductFragment extends BaseFragment {
                 languageCode = args.getString("LANGUAGECODE");
             }
             if (args.containsKey("DIET")) {
-                Log.i("INFO", "Argument DIET : " + args.getString("DIET"));
                 //dietRV.scrollToPosition(diets.indexOf(args.getString("DIET")));
                 //lastDietDisplayed = diets.indexOf(args.getString("DIET"));
             }
@@ -181,22 +177,17 @@ public class DietIngredientsProductFragment extends BaseFragment {
                 mIngredientsTxt = dietRepository.getIngredientsListFromIngredientsText(args.getString("INGREDIENTS_TEXT"), false);
                 //fillIngredients(coloredIngredientsFromingredients(mIngredientsTxt));
             }
-            if (args.containsKey("INGREDIENTS")) {
-                Log.i("INFO", "Argument INGREDIENTS : "); // + args.getStringArrayList("INGREDIENTS").toString());
-            }
             //dietRV.setText("Tous");
             if (mState != null && product.getIngredients() != null) {
                 fillIngredients(coloredIngredientsFromProduct());
             }
             /*
             if (mState != null && product.getIngredientsText() != null) {
-                //Log.i("INFO", "Ingrédients : " + product.getIngredientsText());
                 mIngredientsTxt = dietRepository.getIngredientsListFromIngredientsText(product.getIngredientsText(), false);
                 fillIngredients(coloredIngredientsFromingredients(mIngredientsTxt));
             }
             */
         }
-        Log.i("INFO", "Fin de OnViewCreated de DietIngredientsProductFragment");
     }
 
     private void changeMDiet(Diet diet) {
@@ -216,12 +207,10 @@ public class DietIngredientsProductFragment extends BaseFragment {
     }
 
     public void fillIngredients(List<SpannableStringBuilder> ingredients) {
-        //Log.i("INFO", "FragmentDietIngredientsProduct_fillIngredients " + ingredients.size());
         mIngredients = ingredients;
         ingredientsRVAdapter = new DietIngredientsProductAdapter(mIngredients, new ClickListener() {
             @Override
             public void onPositionClicked(int position, View v) {
-                //Log.i("INFO", "Click sur le bouton " + v.getId() + ":" + stateFromView(v) + " de l'enregistrement n°" + position + " : " + mIngredients.get(position) + " pour la diet : " + mDiet.getTag());
                 //addDietTagIngredients because languageCode of the product is not necessary languageCode of the Diet !
                 String ingredientTag = "";
                 List<ProductIngredient> productIngredients = product.getIngredients();
@@ -246,7 +235,6 @@ public class DietIngredientsProductFragment extends BaseFragment {
             }
             @Override
             public void onLongClicked(int position, View v) {
-                //Log.i("INFO", "LongClick sur le bouton " + v.getId() + ":" + stateFromView(v)  + " de l'enregistrement n°" + position + " : " + mIngredients.get(position));
                 String ingredientTag = "";
                 List<ProductIngredient> productIngredients = product.getIngredients();
                 for (int i = 0; i < productIngredients.size(); i++) {
@@ -283,7 +271,6 @@ public class DietIngredientsProductFragment extends BaseFragment {
     private int stateFromView(View v) {
         int state = 2;
         String vName = v.toString().substring(v.toString().indexOf("state")+5);
-        //Log.i("INFO", "stateFromView : " + vName);
         if (vName.equals("GreenImageButton}")) {
             state = 1;
         } else if (vName.equals("OrangeImageButton}")) {

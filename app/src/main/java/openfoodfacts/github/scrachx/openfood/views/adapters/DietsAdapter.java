@@ -58,7 +58,6 @@ public class DietsAdapter extends RecyclerView.Adapter<DietsAdapter.ViewHolder> 
 
         @Override
         public void onClick(View view) {
-            Log.i("INFO", "DietsHolder_onClick : Identifiant de la vue cliquée : " + view.getId());
             listenerRef.get().onPositionClicked(getAdapterPosition(), view);
         }
     }
@@ -76,37 +75,15 @@ public class DietsAdapter extends RecyclerView.Adapter<DietsAdapter.ViewHolder> 
         final Diet diet = mDiets.get(position);
         TextView textView = holder.nameTextView;
         textView.setText(diet.getTag().substring(diet.getTag().indexOf(":") + 1));
-        /*textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("INFO", "Click sur le Régime " + diet.getTag());
-                Fragment fragment = new EditDietFragment();
-                FragmentTransaction transaction =   .getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, fragment );
-                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-                transaction.commit();
-            }
-        });*/
         Switch mSwitch = holder.dietEnabledSwitch;
         mSwitch.setChecked(diet.getEnabled());
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.i("INFO", "Changement de switch passage à " + isChecked + " pour " + diet.getTag());
                 IDietRepository dietRepository = DietRepository.getInstance();
                 dietRepository.setDietEnabled(diet.getTag(), isChecked);
             }
         });
-        Log.i("INFO", "setTag avec : " + textView.getText());
         textView.setTag(textView.getText());
-/*
-        Button button = holder.messageButton;
-        button.setText(R.string.delete_txt);
-        button.setOnClickListener(v -> {
-            mDietNames.remove(holder.getAdapterPosition());
-            notifyItemRemoved(holder.getAdapterPosition());
-            //mProductRepository.setAllergenEnabled(dietName.getDietTag(), false);
-        });
-*/
     }
 
     @Override
@@ -118,16 +95,13 @@ public class DietsAdapter extends RecyclerView.Adapter<DietsAdapter.ViewHolder> 
     }
 
     /**
-     * Modification d'un régime
      * Modify a diet.
      */
     @OnClick
     public void onClick() {
-        Log.i("INFO", "Début de onClick de DietsAdapter");
     }
 
     void openFragmentEditDietForModification () {
-        Log.i("INFO", "Début de openFragmentEditDietForModification de FragmentDiets");
         Fragment fragment = new EditDietFragment();
         FragmentTransaction transaction = fragment.getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment );

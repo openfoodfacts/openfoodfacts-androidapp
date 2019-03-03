@@ -66,7 +66,6 @@ public class IngredientsWrapperDeserializer extends StdDeserializer<IngredientsW
                         JsonNode parentNode = parentsElementsIterator.next();
                         String parent = parentNode.asText();
                         parents.put(subNode.getKey(), parent);
-                        Log.i("INFO", "IngredientsWrapperDeserializer, ajout de " + parent);
                     }
                 }
                 Map<String, String> children = new HashMap<>();  /* Entry<parentTag> */
@@ -77,7 +76,6 @@ public class IngredientsWrapperDeserializer extends StdDeserializer<IngredientsW
                         JsonNode childNode = childElementIterator.next();
                         String child = childNode.asText();
                         children.put(subNode.getKey(), child);
-                        Log.i("INFO", "IngredientsWrapperDeserializer, ajout de " + child);
                     }
                 }
 

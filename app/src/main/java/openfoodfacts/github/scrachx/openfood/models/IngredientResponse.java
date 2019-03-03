@@ -30,7 +30,6 @@ public class IngredientResponse {
      * @param wikiDataCode       Code to look up ingredient in wikidata
      */
     public IngredientResponse(String uniqueIngredientId, Map<String, String> names, Map<String, String> parents, Map<String, String> children, String wikiDataCode) {
-        Log.i("INFO", "IngredientResponse("+ uniqueIngredientId + ", " + names.toString() + ", " + wikiDataCode + ")");
         this.uniqueIngredientID = uniqueIngredientId;
         this.names = names;
         this.parents = parents;
@@ -46,7 +45,6 @@ public class IngredientResponse {
      * @param names              Map of key: Country code, value: Translated name of ingredient.
      */
     public IngredientResponse(String uniqueIngredientId, Map<String, String> names, Map<String, String> parents, Map<String, String> children) {
-        Log.i("INFO", "IngredientResponse("+ uniqueIngredientId + ", " + names.toString() + ")");
         this.uniqueIngredientID = uniqueIngredientId;
         this.names = names;
         this.parents = parents;
@@ -60,7 +58,6 @@ public class IngredientResponse {
      * @return The newly constructed Ingredient object.
      */
     public Ingredient map() {
-        Log.i("INFO","IngredientResponse.map()");
         Ingredient ingredient;
         if (isWikiDataIdPresent) {
             ingredient = new Ingredient(uniqueIngredientID, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), wikiDataCode);

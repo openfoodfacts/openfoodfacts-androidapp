@@ -860,7 +860,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @OnClick(R.id.textIngredientProduct)
     public void openFragmentDietIngredientsProcuct(View v) {
-        //Log.i("INFO", "Click on IngredientProduct");
         //Prepare a new dietIngredientsProductFragment and show it
         Bundle parameters = new Bundle();
         parameters.putString("INGREDIENTS_TEXT", product.getIngredientsText());

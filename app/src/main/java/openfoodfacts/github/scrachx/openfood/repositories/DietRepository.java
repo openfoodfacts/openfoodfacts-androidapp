@@ -100,7 +100,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public void saveDiets(List<Diet> diets) {
-        //Log.i("INFO", "Début de saveDiets");
         db.beginTransaction();
         try {
             for (Diet diet : diets) {
@@ -116,7 +115,6 @@ public class DietRepository implements IDietRepository {
         } finally {
             db.endTransaction();
         }
-        //Log.i("INFO", "Fin de saveDiets");
     }
 
     /**
@@ -124,11 +122,9 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public void saveDiet(Diet diet) {
-        //Log.i("INFO", "Début de saveDiet");
         List<Diet> diets = new ArrayList<>();
         diets.add(diet);
         saveDiets(diets);
-        //Log.i("INFO", "Fin de saveDiet");
     }
 
     /**
@@ -136,9 +132,7 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public void saveDietIngredients(DietIngredients dietIngredients) {
-        //Log.i("INFO", "Début de saveDietIngredients");
         dietIngredientsDao.insertOrReplace(dietIngredients);
-        //Log.i("INFO", "Début de saveDietIngredients");
     }
 
     /**
@@ -149,7 +143,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public void setDietEnabled(String dietTag, Boolean isEnabled) {
-        //Log.i("INFO", "Début de setDietEnabled avec " + dietTag + "-" + isEnabled);
         Diet diet = dietDao.queryBuilder()
                 .where(DietDao.Properties.Tag.eq(dietTag))
                 .unique();
@@ -158,7 +151,6 @@ public class DietRepository implements IDietRepository {
             diet.setEnabled(isEnabled);
             dietDao.update(diet);
         }
-        //Log.i("INFO", "Fin de setDietEnabled avec " + dietTag + "-" + isEnabled);
     }
 
     /**
@@ -180,7 +172,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public Diet getDietByTag(String tag) {
-        //Log.i("INFO", "Début de getDietByTag avec " + tag);
         //Looking for the Diet.
         List<Diet> diets = dietDao.queryBuilder().where(DietDao.Properties.Tag.eq(tag)).list();
         if (diets.size() == 0) {
@@ -194,7 +185,6 @@ public class DietRepository implements IDietRepository {
             }
         }
         //return the first (and only) Diet object
-        //Log.i("INFO", "fin de getDietByTag : " + diets.get(0).getTag());
         return diets.get(0);
     }
 
@@ -210,7 +200,6 @@ public class DietRepository implements IDietRepository {
     @Override
     public Diet getDietByNameAndLanguageCode(String name, String languageCode) {
         name = name.trim();
-        //Log.i("INFO", "Début de getDietByNameAndLanguageCode avec " + name + ", " + languageCode);
         //Looking for a DietName with name and languageCode
         DietName dietName = getDietNameByNameAndLanguageCode(name, languageCode);
         if (dietName.getDietTag() == null) {
@@ -218,7 +207,6 @@ public class DietRepository implements IDietRepository {
             return new Diet();
         }
         //Return the Diet with the Tag of the DietName found.
-        //Log.i("INFO", "Fin de getDietByNameAndLanguageCode : " + dietName.getDietTag());
         return getDietByTag(dietName.getDietTag());
     }
 
@@ -235,7 +223,6 @@ public class DietRepository implements IDietRepository {
     @Override
     public DietName getDietNameByNameAndLanguageCode(String name, String languageCode) {
         name = name.trim();
-        //Log.i("INFO", "Début de getDietNameByNameAndLanguageCode avec " + name + ", " + languageCode);
         //Looking for the DietName with name and languageCode
         List<DietName> dietNames = dietNameDao.queryBuilder().where(
                 DietNameDao.Properties.Name.eq(name),
@@ -252,7 +239,6 @@ public class DietRepository implements IDietRepository {
             }
         }
         //Return the first (and only) DietName.
-        //Log.i("INFO", "Fin de getDietNameByNameAndLanguageCode : " + dietNames.get(0).getDietTag());
         return dietNames.get(0);
     }
 
@@ -268,7 +254,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public DietName getDietNameByDietTagAndLanguageCode(String dietTag, String languageCode) {
-        //Log.i("INFO", "Début de getDietNameByDietTagAndLanguageCode avec " + dietTag + ", " + languageCode);
         //Looking for a DietName with the dietTag and LanguageCode passed
         List<DietName> dietNames = dietNameDao.queryBuilder().where(
                 DietNameDao.Properties.DietTag.eq(dietTag),
@@ -285,7 +270,6 @@ public class DietRepository implements IDietRepository {
             }
         }
         //return the first (and only) DietName object.
-        //Log.i("INFO", "Fin de getDietNameByDietTagAndLanguageCode : " + dietNames.get(0).getDietTag());
         return dietNames.get(0);
     }
 
@@ -304,7 +288,6 @@ public class DietRepository implements IDietRepository {
     public void addDiet(String name, String description, boolean isEnabled, String languageCode) {
         name = name.trim();
         if (name != "") {
-            //Log.i("INFO", "Début de addDiet avec " + name + ", " + description + ", " + isEnabled + ", " + languageCode);
             //Looking for a DietName object with this Name and LanguageCode
             DietName dietName = getDietNameByNameAndLanguageCode(name, languageCode);
             if (dietName.getDietTag() == null) {
@@ -325,7 +308,6 @@ public class DietRepository implements IDietRepository {
             //In all the case, update its Enabled field and save the Diet object
             diet.setEnabled(isEnabled);
             dietDao.getSession().insertOrReplace(diet);
-            //Log.i("INFO", "Fin de addDiet avec " + name + ", " + description + ", " + isEnabled + ", " + languageCode);
         }
     }
 
@@ -340,7 +322,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public Ingredient getIngredientByTag(String tag) {
-        //Log.i("INFO", "Début de getIngredientByTag avec " + tag);
         //Looking for the Ingredient associated.
         List<Ingredient> ingredients = ingredientDao.queryBuilder().where(IngredientDao.Properties.Tag.eq(tag)).list();
         if (ingredients.size() == 0) {
@@ -348,13 +329,11 @@ public class DietRepository implements IDietRepository {
             return new Ingredient();
         } else if (ingredients.size() > 1) {
             //Too many ingredient objects with the same Tag. This will never happened, but, well just in case, suppress doubloons and return the survivor
-            //Log.i("INFO", "Trop (" + ingredients.size() + ") de régimes liés au Tag de " + tag + "... Suppression");
             for (int i = 1; i < ingredients.size(); i++) {
                 Ingredient ingredient = ingredients.get(i);
                 ingredient.delete();
             }
         }
-        //Log.i("INFO", "Fin de getIngredientByTag avec " + ingredients.get(0).getTag());
         return ingredients.get(0);
     }
 
@@ -370,16 +349,13 @@ public class DietRepository implements IDietRepository {
     @Override
     public Ingredient getIngredientByNameAndLanguageCode(String name, String languageCode) {
         name = name.trim();
-        //Log.i("INFO", "Début de getIngredientByNameAndLanguageCode avec " + name + ", " + languageCode);
         //Looking for an IngredientName object with name and languageCode
         IngredientName ingredientName = getIngredientNameByNameAndLanguageCode(name, languageCode);
         if (ingredientName.getIngredientTag() == null) {
             //Not found, return a new Ingredient
-            //Log.i("INFO", "Fin de getIngredientByNameAndLanguageCode : New Ingredient.");
             return new Ingredient();
         }
         //Return the ingredient that has this ingredientName.
-        //Log.i("INFO", "Fin de getIngredientByNameAndLanguageCode via getIngredientByTag.");
         return getIngredientByTag(ingredientName.getIngredientTag());
     }
 
@@ -393,11 +369,9 @@ public class DietRepository implements IDietRepository {
      * @author dobriseb
      */
     private IngredientName getIngredientNameFromDoublon(List<IngredientName> ingredientNames) {
-        //Log.i("INFO", "Début de getIngredientNameFromDoublon avec " + ingredientNames.toString());
         if (ingredientNames != null) {
             if (ingredientNames.size() == 0) {
                 //No IngredientName, return a new one
-                //Log.i("INFO", "Fin de getIngredientNameFromDoublon : New IngredientName.");
                 return new IngredientName();
             } else if (ingredientNames.size() > 1) {
                 //Doubloon, suppress after test.
@@ -412,7 +386,6 @@ public class DietRepository implements IDietRepository {
                 }
             }
             //Return the first IngredientName.
-            //Log.i("INFO", "Fin de getIngredientNameFromDoublon : " + ingredientNames.get(0).getLanguageCode() + ":" + ingredientNames.get(0).getName());
             return ingredientNames.get(0);
         }
         return null;
@@ -430,13 +403,11 @@ public class DietRepository implements IDietRepository {
     @Override
     public IngredientName getIngredientNameByNameAndLanguageCode(String name, String languageCode) {
         name = name.trim();
-        //Log.i("INFO", "Début de getIngredientNameByNameAndLanguageCode avec " + name + ", " + languageCode);
         //Recherche d'un IngredientName ayant name et languageCode
         List<IngredientName> ingredientNames = ingredientNameDao.queryBuilder().where(
                 new WhereCondition.StringCondition("lower(NAME) = lower('" + name.replaceAll("'", "''") + "')"),
                 IngredientNameDao.Properties.LanguageCode.eq(languageCode)
         ).list();
-        //Log.i("INFO", "Fin de getIngredientNameByNameAndLanguageCode, trouvé " + (ingredientNames.size() > 0 ? ingredientNames.get(0).getName() : "aucun"));
         return getIngredientNameFromDoublon(ingredientNames);
     }
 
@@ -451,12 +422,10 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public IngredientName getIngredientNameByIngredientTagAndLanguageCode(String ingredientTag, String languageCode) {
-        Log.i("INFO", "Début de getIngredientNameByIngredientTagAndLanguageCode avec " + ingredientTag + ", " + languageCode);
         List<IngredientName> ingredientNames = ingredientNameDao.queryBuilder().where(
                 IngredientNameDao.Properties.IngredientTag.eq(ingredientTag),
                 IngredientNameDao.Properties.LanguageCode.eq(languageCode)
         ).list();
-        //Log.i("INFO", "Fin de getIngredientNameByIngredientTagAndLanguageCode via getIngredientNameFromDoublon.");
         return getIngredientNameFromDoublon(ingredientNames);
     }
 
@@ -472,7 +441,6 @@ public class DietRepository implements IDietRepository {
     public void addIngredient(String name, String languageCode) {
         name = name.trim().replaceAll("_","");
         if (name != "") {
-            //Log.i("INFO", "Début de addIngredient avec " + name + ", " + languageCode);
             //Recherche du IngredientName correspondant au name et language code
             IngredientName ingredientName = getIngredientNameByNameAndLanguageCode(name, languageCode);
             if (ingredientName.getIngredientTag() == null) {
@@ -489,7 +457,6 @@ public class DietRepository implements IDietRepository {
                 ingredient.setTag(languageCode + ":" + name.replaceAll(" ","-"));
                 ingredientDao.getSession().insertOrReplace(ingredient);
             }
-            //Log.i("INFO", "Fin de addIngredient avec " + name + ", " + languageCode);
         }
     }
 
@@ -563,7 +530,6 @@ public class DietRepository implements IDietRepository {
     public void addDietIngredients(String dietTag, String ingredientName, String languageCode, long state) {
         ingredientName = ingredientName.trim();
         if (ingredientName != "") {
-            //Log.i("INFO", "Début de addDietIngredients avec " + dietTag + ", " + ingredientName + ", " + languageCode + ", " + state);
             Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientName, languageCode);
             if (ingredient.getTag() != null) {
                 //Ingredient trouvé. Association des deux.
@@ -573,7 +539,6 @@ public class DietRepository implements IDietRepository {
                 addIngredient(ingredientName, languageCode);
                 addDietIngredients(dietTag, ingredientName, languageCode, state);
             }
-            //Log.i("INFO", "Fin de addDietIngredients avec " + dietTag + ", " + ingredientName + ", " + languageCode + ", " + state);
         }
     }
 
@@ -588,7 +553,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<DietIngredients> getDietIngredientsListByDietTagAndState(String dietTag, long state) {
-        //Log.i("INFO", "Début de getDietIngredientsListByDietTag avec " + dietTag + ", " + state);
         //Recherche des DietIngredients ayant dietTag
         List<DietIngredients> dietIngredientsList;
         if (state == -2) {
@@ -601,7 +565,6 @@ public class DietRepository implements IDietRepository {
                     DietIngredientsDao.Properties.State.eq(state)
             ).list();
         }
-        //Log.i("INFO", "Fin de getDietIngredientsListByDietTag avec " + dietIngredientsList.size() + " éléments.");
         return dietIngredientsList;
     }
 
@@ -629,16 +592,13 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<Ingredient> getIngredientsLinkedToDietByDietTagAndState(String dietTag, long state) {
-        //Log.i("INFO", "Début de getIngredientsLinkedToDietByDietTagAndState avec " + dietTag + " " + state);
         List<DietIngredients> dietIngredientsList = getDietIngredientsListByDietTagAndState(dietTag, state);
         if (dietIngredientsList != null) {
             List<Ingredient> ingredients = new ArrayList<>();
             for (int i = 0; i < dietIngredientsList.size(); i++) {
                 DietIngredients dietIngredients = dietIngredientsList.get(i);
-                //Log.i("INFO", "Ajout de " + dietIngredients.getIngredientTag());
                 ingredients.add(getIngredientByTag(dietIngredients.getIngredientTag()));
             }
-            //Log.i("INFO", "Fin de getIngredientsLinkedToDietByDietTagAndState avec " + (ingredients != null ? ingredients.size() : 0) + " éléments.");
             return ingredients;
         }
         return null;
@@ -669,9 +629,7 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<Ingredient> getIngredientsLinkedToDietByDietNameLanguageCodeAndState(String dietName, String languageCode, long state) {
-        //Log.i("INFO", "Début de getIngredientsLinkedToDietByDietNameLanguageCodeAndState avec " + dietName + " " + languageCode + " " + state);
         Diet diet = getDietByNameAndLanguageCode(dietName, languageCode);
-        //Log.i("INFO", "Fin de getIngredientsLinkedToDietByDietNameLanguageCodeAndState via getIngredientsLinkedToDietByDietTagAndState");
         return getIngredientsLinkedToDietByDietTagAndState(diet.getTag(), state);
     }
 
@@ -700,7 +658,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<IngredientName> getIngredientNamesByIngredientsAndLanguageCode(List<Ingredient> ingredients, String languageCode) {
-        //Log.i("INFO", "Début de getIngredientNamesByIngredientsAndLanguageCode avec " + ingredients + " " + languageCode);
         List<IngredientName> ingredientNames = new ArrayList<>();
         if (ingredients != null) {
             for (int i = 0; i < ingredients.size(); i++) {
@@ -708,7 +665,6 @@ public class DietRepository implements IDietRepository {
                 ingredientNames.add(getIngredientNameByIngredientTagAndLanguageCode(ingredient.getTag(), languageCode));
             }
         }
-        //Log.i("INFO", "Fin de getIngredientNamesByIngredientsAndLanguageCode : " + ingredientNames.size() + " éléments.");
         return ingredientNames;
     }
 
@@ -724,7 +680,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public String getSortedIngredientNameStringByDietTagStateAndLanguageCode(String dietTag, long state, String languageCode) {
-        //Log.i("INFO", "Début de getSortedIngredientNameStringByDietTagStateAndLanguageCode avec " + dietTag + " " + state + " " + languageCode);
         List<Ingredient> ingredients = getIngredientsLinkedToDietByDietTagAndState(dietTag, state);
         if (ingredients != null) {
             List<IngredientName> ingredientNames = getIngredientNamesByIngredientsAndLanguageCode(ingredients, languageCode);
@@ -739,11 +694,9 @@ public class DietRepository implements IDietRepository {
                 for (int i = 0; i < ingredientNames.size(); i++) {
                     ingredientNameList.add(ingredientNames.get(i).getName());
                 }
-                //Log.i("INFO", "Fin de getSortedIngredientNameStringByDietTagStateAndLanguageCode avec " + android.text.TextUtils.join(", ", ingredientNameList));
                 return android.text.TextUtils.join(", ", ingredientNameList);
             }
         }
-        //Log.i("INFO", "Fin de getSortedIngredientNameStringByDietTagStateAndLanguageCode avec null.");
         return null;
     }
 
@@ -758,7 +711,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<String> getIngredientNameLinkedToEnabledDietsByLanguageCode(long state, String languageCode) {
-        //Log.i("INFO", "Début de getIngredientNameLinkedToEnabledDietsByLanguageCode avec " + state + ", " + languageCode);
         List<Diet> diets = getEnabledDiets();
         List<Ingredient> ingredientsTBC = new ArrayList<>();
         for (int i = 0; i < diets.size(); i++) {
@@ -785,7 +737,6 @@ public class DietRepository implements IDietRepository {
                     ingredientDao.delete(ingredient);
                 } else {
                     if (!ingredientsTBC.contains(ingredient)) {
-                        //Log.i("INFO", "Ajout de l'ingrédient " + ingredient.getTag());
                         ingredientsTBC.add(ingredient);
                     }
                 }
@@ -799,10 +750,8 @@ public class DietRepository implements IDietRepository {
                     ingredientNameList.add(ingredientNames.get(i).getName());
                 }
             }
-            //Log.i("INFO", "Fin de getIngredientNameLinkedToEnabledDietsByLanguageCode avec " + ingredientNameList.size() + " éléments.");
             return ingredientNameList;
         }
-        //Log.i("INFO", "Fin de getIngredientNameLinkedToEnabledDietsByLanguageCode avec une liste vide.");
         return new ArrayList<String>();
     }
 
@@ -895,14 +844,12 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public SpannableStringBuilder getColoredSpannableStringBuilderFromSpannableIngredients(Pattern INGREDIENT_PATTERN, SpannableStringBuilder txtIngredients) {
-        //Log.i("INFO", "Début de getColoredSpannableStringBuilderFromSpannableIngredients avec " + INGREDIENT_PATTERN.toString() + " " + txtIngredients.toString());
         List<String> ingredientsToBeColoredInRed = getIngredientNameLinkedToEnabledDietsByLanguageCode(-1, Locale.getDefault().getLanguage());
         List<String> ingredientsToBeColoredInOrange = getIngredientNameLinkedToEnabledDietsByLanguageCode(0, Locale.getDefault().getLanguage());
         List<String> ingredientsToBeColoredInGreen = getIngredientNameLinkedToEnabledDietsByLanguageCode(1, Locale.getDefault().getLanguage());
         if (ingredientsToBeColoredInGreen.size() > 0) txtIngredients = setSpanColorBetweenTokens(INGREDIENT_PATTERN, txtIngredients, ingredientsToBeColoredInGreen, 1);
         if (ingredientsToBeColoredInOrange.size() > 0) txtIngredients = setSpanColorBetweenTokens(INGREDIENT_PATTERN, txtIngredients, ingredientsToBeColoredInOrange, 0);
         if (ingredientsToBeColoredInRed.size() > 0) txtIngredients = setSpanColorBetweenTokens(INGREDIENT_PATTERN, txtIngredients, ingredientsToBeColoredInRed, -1);
-        //Log.i("INFO", "Fin de getColoredSpannableStringBuilderFromSpannableIngredients : " + ingredientsToBeColoredInGreen.size() + " vert, " + ingredientsToBeColoredInOrange.size() + " Orange, " + ingredientsToBeColoredInRed.size() + " rouge dans " + txtIngredients.toString());
         return txtIngredients;
     }
     //To be delete ?
@@ -919,7 +866,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public SpannableStringBuilder getColoredSSBFromSSBIngredients(SpannableStringBuilder ssbIngredients, String languageCode) {
-        //Log.i("INFO", "Début de getColoredSpannableStringBuilderFromSpannableStringBuilderIngredients avec " + ssbIngredients.toString());
         String ingredientsText = ssbIngredients.toString();
         List<String> ingredientsList = getIngredientsListFromIngredientsText(ingredientsText, true);
         List<SpannableStringBuilder> ssbIngredientsList = getColoredSSBFromIngredientsDiet(ingredientsList, "enabled", languageCode);
@@ -951,7 +897,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public SpannableStringBuilder getColoredSSBFromSSBAndProduct(SpannableStringBuilder ssbIngredients, Product product) {
-        //Log.i("INFO", "getColoredSSBFromSSBAndProduct : Begin : " + ssbIngredients.toString());
         long state;
         int start = 0;
         int end = 0;
@@ -1019,7 +964,6 @@ public class DietRepository implements IDietRepository {
                 }
             } else {
                 //The ingredient is not in the list. Theoretically, this is not possible !!!
-                Log.i("INFO", "The ingredient '"+ ingredient + "' is not in '" + ingredients + "'" );
             }
         }
         return  ssbIngredients;
@@ -1038,7 +982,6 @@ public class DietRepository implements IDietRepository {
      * @return
      */
     private SpannableStringBuilder setSpanColorBetweenTokens(Pattern INGREDIENT_PATTERN, CharSequence text, List<String> ingredientsToBeColored, long state) {
-        Log.i("INFO", "Début de setSpanColorBetweenTokens avec " + INGREDIENT_PATTERN.toString() + ", " + text.toString() + ", " + ingredientsToBeColored.toString() + ", " + state);
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
         Matcher m = INGREDIENT_PATTERN.matcher(ssb);
         while (m.find()) {
@@ -1053,12 +996,10 @@ public class DietRepository implements IDietRepository {
                     } else if (tm.contains(")")) {
                         end -= 1;
                     }
-                    //Log.i("INFO", "Ajout d'un Span de " + start + " à " + end + " de state " + state + " sur " + ingredientValue + ".");
                     ssb.setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))), start, end, SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
             }
         }
-        //Log.i("INFO", "Fin de setSpanColorBetweenTokens avec " + ssb.toString());
         return ssb;
     }
 
@@ -1129,7 +1070,6 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<SpannableStringBuilder> getColoredSSBFromIngredientsDiet(List<String> ingredients, String dietTag, String languageCode) {
-        //Log.i("INFO", "Début de getColoredSSBFromIngredientsDiet avec " + ingredients.toString() + " et " + dietTag);
         List<SpannableStringBuilder> ingredientsSp = new ArrayList<>();
         long state;
         for (int i = 0; i < ingredients.size(); i++) {

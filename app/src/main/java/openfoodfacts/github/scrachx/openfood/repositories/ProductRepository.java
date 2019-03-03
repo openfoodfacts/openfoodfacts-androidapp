@@ -443,7 +443,6 @@ public class ProductRepository implements IProductRepository {
                          if (c.getString(1) == null) {
                              //TAGTR is null (no correspondance found) create a new ingredient
                              String tag = c.getString(0);
-                             //Log.i("INFO"," Création de l'ingrédient : " + tag);
                              String[] tagSplit = tag.split(":");
                              IngredientName ingredientName = new IngredientName(tag, tagSplit[0], tagSplit[1]);
                              List<IngredientName> ingredientNames = new ArrayList<>();
@@ -452,7 +451,6 @@ public class ProductRepository implements IProductRepository {
                              saveIngredient(ingredient);
                          } else {
                              //replace TAGTF by TAGTR in Table
-                             //Log.i("INFO","update de la relation diet/ingrédient : " + c.getString(0) + "->" + c.getString(1) );
                              daoSession.getDatabase().execSQL("update DIET_INGREDIENTS set INGREDIENT_TAG='" + c.getString(1) + "' where INGREDIENT_TAG='" + c.getString(0) + "'");
                          }
                      } while (c.moveToNext());
@@ -471,11 +469,9 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveIngredient(Ingredient ingredient) {
-        //Log.i("INFO", "Début de saveIngredient");
         List<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(ingredient);
         saveIngredients(ingredients);
-        //Log.i("INFO", "Début de saveIngredient");
     }
 
     /**

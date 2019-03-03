@@ -90,7 +90,6 @@ public class DietsFragment extends NavigationBaseFragment {
         mRvDiet.setAdapter(new DietsAdapter(dietList, new ClickListener() {
             @Override
             public void onPositionClicked(int position, View v) {
-                Log.i("INFO", "Click sur " + v.getId() + " de l'enregistrement n°" + position + " ayant pour Tag : " + v.getTag());
                 Fragment fragment = new EditDietFragment();
                 if (v.getTag() != null) {
                     Bundle args = new Bundle();
@@ -102,12 +101,6 @@ public class DietsFragment extends NavigationBaseFragment {
                 transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
                 transaction.commit();
             }
-/*
-            @Override
-            public void onLongClicked(int position, View v) {
-                //Log.i("INFO", "LongClick sur " + v.getId() + " de l'enregistrement n°" + position);
-            }
-*/
         }));
     }
 
@@ -117,7 +110,6 @@ public class DietsFragment extends NavigationBaseFragment {
      */
     @OnClick(R.id.fab)
     void openFragmentAddDiet () {
-        Log.i("INFO", "Début de onClick sur fab de FragmentDiets");
         Fragment fragment = new EditDietFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment );

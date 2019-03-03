@@ -21,7 +21,6 @@ public class DietHAdapter extends RecyclerView.Adapter<DietHAdapter.DietHHolder>
 
     //ajouter un constructeur prenant en entrée une liste
     public DietHAdapter(List<Diet> dietList, DietIngredientsProductFragment.ClickListener listener) {
-        //Log.i("INFO", "DietHAdapter_DietHAdapter " + dietList.size());
         this.dietList = dietList;
         this.listener = listener;
     }
@@ -47,14 +46,12 @@ public class DietHAdapter extends RecyclerView.Adapter<DietHAdapter.DietHHolder>
         // onClick Listener for view
         @Override
         public void onClick(View v) {
-            //Log.i("INFO", "DietHHolder_onClick : Identifiant de la vue cliquée : " + v.getId()+ "=>" + dietTextView.getText() + ".");
             listenerRef.get().onPositionClicked(getAdapterPosition(), v);
         }
 
         //onLongClickListener for view
         @Override
         public boolean onLongClick(View v) {
-            //Log.i("INFO", "DietHHolder_onLongClick : Click long sur la vue : " + v.getId()+ "=>" + dietTextView.getText() + ".");
             listenerRef.get().onLongClicked(getAdapterPosition(), v);
             return true;
         }
@@ -65,7 +62,6 @@ public class DietHAdapter extends RecyclerView.Adapter<DietHAdapter.DietHHolder>
     //et par la même d'indiquer la vue à inflater (à partir des layout xml)
     @Override
     public DietHHolder onCreateViewHolder(ViewGroup viewGroup, int itemType) {
-        //Log.i("INFO", "DietHAdapter_DietHHolder ");
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_diet_h,viewGroup,false);
         return new DietHHolder(view, listener);
     }
@@ -73,7 +69,6 @@ public class DietHAdapter extends RecyclerView.Adapter<DietHAdapter.DietHHolder>
     //c'est ici que nous allons remplir notre cellule avec le texte/image de chaque MyObjects
     @Override
     public void onBindViewHolder(DietHHolder dietHHolder, int position) {
-        //Log.i("INFO", "DietHAdapter_onBindViewHolder " + dietList.size() + dietList.get(position).getTag());
         String diet = dietList.get(position).getTag().substring(3);
         dietHHolder.bind(diet);
     }

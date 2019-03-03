@@ -78,7 +78,6 @@ public class EditDietFragment extends Fragment {
     //private OnFragmentInteractionListener mListener;
 
     public EditDietFragment() {
-        //Log.i("INFO", "Début de EditDietFragment() de FragmentEditDiet");
         // Required empty public constructor
     }
 
@@ -91,7 +90,6 @@ public class EditDietFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static EditDietFragment newInstance(String dietName) {
-        //Log.i("INFO", "Début de EditDietFragment(" + dietName + ") de FragmentEditDiet");
         EditDietFragment fragment = new EditDietFragment();
         Bundle args = new Bundle();
         args.putString(ARG_DIET_NAME, dietName);
@@ -101,7 +99,6 @@ public class EditDietFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        //Log.i("INFO", "Début de OnCreate de FragmentEditDiet");
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         if (getArguments() != null) {
@@ -112,7 +109,6 @@ public class EditDietFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //Log.i("INFO", "Début de OnCreateView de FragmentEditDiet");
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_edit_diet, container, false);
         ButterKnife.bind(this, view);
@@ -148,7 +144,6 @@ public class EditDietFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_share) {
-            Log.i("INFO", "Début de shareButton de FragmentEditDiet");
             dietRepository = DietRepository.getInstance();
             StringBuffer extraText = new StringBuffer();
             extraText.append(getString(R.string.diet_export_1) + " \"" + getString(R.string.your_diets) + "\"\n" + getString(R.string.diet_export_2) + "\n");
@@ -173,25 +168,19 @@ public class EditDietFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        //Log.i("INFO", "Début de OnActivityCreated de FragmentEditDiet");
         super.onActivityCreated(savedInstanceState);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        //Log.i("INFO", "Début de OnViewCreated de FragmentEditDiet");
         super.onViewCreated(view, savedInstanceState);
         appLanguageCode = LocaleHelper.getLanguage(getActivity());
-        Log.i("INFO", "Valeur de appLanguageCode : " + appLanguageCode);
         initializeChips();
         loadAutoSuggestions();
-        //Log.i("INFO", "Fin de OnViewCreated de FragmentEditDiet");
     }
 
     @OnClick(R.id.save_edits)
     void saveEdits() {
-        //Log.i("INFO", "Début de saveEdits de FragmentEditDiet");
-        //Log.i("INFO", "dietName : " + dietName.getText() + " dietDescription : " + dietDescription.getText() + " dietEnabled : " + dietEnabled.isChecked() + " ingredientsAuthorised : " + ingredientsAuthorised.getText() + " ingredientsSoSo : " + ingredientsSoSo.getText() + " ingredientsUnauthorised : " + ingredientsUnauthorised.getText());
         dietRepository = DietRepository.getInstance();
         //Add or replace a diet row with the form's informations.
         dietRepository.addDiet(dietName.getText().toString(), dietDescription.getText().toString(), dietEnabled.isChecked(), languageCode);
@@ -252,7 +241,6 @@ public class EditDietFragment extends Fragment {
             ingredients.clear();
             for (int i = 0; i < ingredientNames.size(); i++) {
                 ingredients.add(ingredientNames.get(i).getName());
-                Log.i("INFO", "Ajout de l'ingrédient : " + ingredientNames.get(i).getName());
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, ingredients);
             ingredientsAuthorised.setAdapter(adapter);
