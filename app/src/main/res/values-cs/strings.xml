@@ -498,6 +498,7 @@
     <string name="connectivity_check">Zkontrolujte připojení k internetu</string>
     <string name="dismiss">Zamítnout</string>
     <string name="Terms">Podmínky</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <string name="preference_header_general">Hlavní nastavení</string>
     <string name="preference_header_network">Síť</string>
