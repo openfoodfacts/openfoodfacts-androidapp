@@ -137,6 +137,28 @@
             </RelativeLayout>
 
             <Button
+                android:id="@+id/btn_eating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:background="@drawable/button_grey_border"
+                android:drawableLeft="@drawable/ic_add_24dp"
+                android:text="@string/txt_im_eating_this" />
+
+            <Button
+                android:id="@+id/btn_eating_ticked"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_button"
+                android:drawableLeft="@drawable/ic_check_white_24dp"
+                android:padding="8dp"
+                android:text="@string/txt_im_eating_this"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <Button
                 android:id="@+id/compare_product_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

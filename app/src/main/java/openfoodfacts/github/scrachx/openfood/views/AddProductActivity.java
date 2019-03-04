@@ -371,10 +371,6 @@ public class AddProductActivity extends AppCompatActivity {
                         saveProductOffline();
                     }
                 });
-        if(productDetails.get("eating").equals("true")){
-            //add product to eaten list
-            addProductToList(1L,getString(R.string.txt_eaten_products));
-        }
     }
 
     /**

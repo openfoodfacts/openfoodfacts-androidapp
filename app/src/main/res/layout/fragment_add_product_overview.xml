@@ -359,20 +359,6 @@
             app:layout_constraintTop_toBottomOf="@id/recyclingInstructionToRecycle"
             tools:visibility="visible" />
 
-        <CheckBox
-            android:id="@+id/cb_eating"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:text="@string/txt_i_m_eating_this"
-            android:paddingLeft="@dimen/spacing_small"
-            android:paddingRight="@dimen/spacing_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/period_of_time_after_opening"
-            android:textSize="18sp" />
 
 
 
@@ -385,7 +371,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@color/grey_400"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cb_eating" />
+            app:layout_constraintTop_toBottomOf="@id/period_of_time_after_opening" />
 
         <TextView
             android:id="@+id/section_manufacturing_details"
