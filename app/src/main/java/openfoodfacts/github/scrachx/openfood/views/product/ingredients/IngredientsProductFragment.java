@@ -856,7 +856,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     @OnClick(R.id.textIngredientProduct)
-    public void openFragmentDietIngredientsProcuct(View v) {
+    public void openFragmentDietIngredientsProduct(View v) {
         //Prepare a new dietIngredientsProductFragment and show it
         Bundle parameters = new Bundle();
         DietIngredientsProductFragment dietIngredientsProductFragment = new DietIngredientsProductFragment();
