@@ -11,7 +11,7 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts to otwarta baza danych ponad %1$1 produktów (i tworzonych przez ciebie) ze składnikami, alergenami, danymi odżywczymi i wszystkimi informacjami z opakowań.</string>
+    <string name="txtHomeOnline">Open Food Facts to otwarta baza danych ponad %1$d produktów spożywczych (również tych dodanych przez ciebie) zawierająca składniki odżywcze, alergeny, wskazówki dietetyczne oraz inne ciekawe informacje jakie można znaleźć na etykietach produktów.</string>
     <string name="txtHome">Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składnikami, alergenami, wartościami odżywczymi i wszystkimi informacjami które możemy znaleźć na etykietach produktów.</string>
     <string name="slide_1_title">Przyczyń się do przejrzystości Żywność</string>
     <string name="slide_1_desc">Skanuj produkty, fotografuj je, niech się dzieje transparentność jedzenia</string>

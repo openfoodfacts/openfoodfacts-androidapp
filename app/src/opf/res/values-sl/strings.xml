@@ -33,7 +33,8 @@
     <string name="text_offline_info_dialog">Skenirajte izdelke tudi, ko ste brez povezave, da jih boste kasneje dodali v Open Products Facts. Skenirani izdelki bodo prikazani tukaj in jih boste lahko poslali z uporabo spodnjega gumba.</string>
     <string name="warning_alert_data">Informacije o alergijah nikoli ne bodo poslani na strežnik Open Facts Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% točno, zato vas prosimo, da dvakrat preverite sami! </string>
     <!-- OPF tagline in different languages -->
-    <string name="tagline">brezplačna baza podatkov o izdelkih</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">Skeniran izdelek %1$s še ne obstaja v Open Products Facts. Ali ga lahko dodate?</string>
     <string name="currently_on_version">Trenutno na Open Products Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>

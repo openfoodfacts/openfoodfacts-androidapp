@@ -19,15 +19,15 @@ Para descobrir o projeto Open Food Facts, por favor visite https://openfoodfacts
 - marcas, alérgenos, rótulos (bio, sem glúten, vegan, vegetariano, halal, kosher ...), informações de rastreabilidade (códigos de embalagem, origem dos ingredientes)
 - Em vinhos e cervejas encontrará o teor alcoólico.
 
-*** Works well in any condition ***
+*** Funciona bem em qualquer condição ***
 - Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
+- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
 
 *** Sua comida, seus dados ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Seus dados são seus e nunca são enviados on-line
+- Pode usar o aplicativo anonimamente
+- Pode exportar seu histórico de digitalizações
 
 O Open Food Facts também está disponível na web em https://pt.openfoodfacts.org
 Perguntas, feedback: contact@openfoodfacts.org

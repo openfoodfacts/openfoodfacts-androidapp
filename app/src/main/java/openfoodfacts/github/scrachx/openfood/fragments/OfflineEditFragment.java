@@ -223,7 +223,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             size--;
 
             String fields = "link,quantity,image_ingredients_url,ingredients_text_" + productDetails.get("lang") + ",product_name_" + productDetails.get("lang");
-            client.getExistingProductDetails(product.getBarcode(), fields)
+            client.getExistingProductDetails(product.getBarcode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new SingleObserver<State>() {

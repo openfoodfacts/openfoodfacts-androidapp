@@ -19,6 +19,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.SearchRecentSuggestions;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
@@ -92,6 +93,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -206,7 +208,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
                     ()).commit();
-            getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
         }
 
         // chrome custom tab init
@@ -274,7 +275,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // Add Manage Account profile if the user is connected
         SharedPreferences preferences = getSharedPreferences("login", 0);
-        String userLogin = preferences.getString(getResources().getString(R.string.user), null);
+        String userLogin = preferences.getString("user", null);
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = userLogin != null && userSession != null;
         isConnected = userLogin != null;
@@ -314,11 +315,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new SectionDrawerItem().withName(R.string.search_drawer),
                         new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
                         new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.additives).withIcon(getResources().getDrawable(R.drawable.additives)).withIdentifier(ITEM_ADDITIVES).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Compare Products").withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(ITEM_ADVANCED_SEARCH).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
                         new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                         new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.your_lists).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(ITEM_YOUR_LISTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
@@ -346,8 +350,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         case ITEM_CATEGORIES:
                             startActivity(CategoryActivity.getIntent(this));
                             break;
+
+                        case ITEM_ADDITIVES:
+                            startActivity(new Intent(this, AdditivesExplorer.class));
+                            break;
                         case ITEM_SCAN:
                             scan();
+                            break;
+                        case ITEM_COMPARE:
+                            startActivity(new Intent(MainActivity.this, ProductComparisonActivity.class));
                             break;
                         case ITEM_HISTORY:
                             startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
@@ -421,6 +432,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             myContributions();
                             break;
 
+                        case ITEM_YOUR_LISTS:
+                            startActivity(ProductListsActivity.getIntent(this));
+                            break;
+
                          case ITEM_LOGOUT:
                              new MaterialDialog.Builder(MainActivity.this)
                                      .title(R.string.confirm_logout)
@@ -457,6 +472,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("obf")) {
             result.removeItem(ITEM_ALERT);
+            result.removeItem(ITEM_ADDITIVES);
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
@@ -467,6 +483,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("opf")) {
             result.removeItem(ITEM_ALERT);
+            result.removeItem(ITEM_ADDITIVES);
             result.removeItem(ITEM_ADVANCED_SEARCH);
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
@@ -618,8 +635,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             case LOGIN_REQUEST:
                 if (resultCode == RESULT_OK) {
                     result.removeItem(ITEM_LOGIN);
-                    result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS),
-                            getLogoutDrawerItem());
                     headerResult.updateProfile(getUserProfile());
                     headerResult.addProfiles(getProfileSettingDrawerItem());
                 }
@@ -684,6 +699,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 return true;
             }
         });
+
+
+        if (getIntent().getBooleanExtra("product_search", false)) {
+            searchMenuItem.expandActionView();
+        }
 
 
         return true;
@@ -776,6 +796,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
+            //Saves the most recent queries and adds it to the list of suggestions
+            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
+                    SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
+            suggestions.saveRecentQuery(query, null);
             ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
             if (searchMenuItem != null) {
                 searchMenuItem.collapseActionView();
@@ -815,7 +839,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      */
     private PrimaryDrawerItem createOfflineEditDrawerItem() {
         if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9)
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(10)
                     .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
                             .color.md_red_700));
         } else {
@@ -994,7 +1018,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                                 if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
                                     File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
                                     image = new ProductImage(temp_barcode, OTHER, imageFile);
-                                    api.postImg(MainActivity.this, image);
+                                    api.postImg(MainActivity.this, image, null);
                                 } else {
                                     Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                                     State st = new State();

@@ -10,6 +10,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.StringRes;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -72,6 +73,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
     TextView textExtendSearch;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.buttonScan)
+    FloatingActionButton mButtonScan;
     private SearchInfo mSearchInfo;
     private EndlessRecyclerViewScrollListener scrollListener;
     private List<Product> mProducts;
@@ -128,6 +131,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 mSearchInfo.setSearchQuery(query);
+                mSearchInfo.setSearchType(SearchType.SEARCH);
                 newSearchQuery();
                 return true;
             }
@@ -226,7 +230,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brand);
+        setContentView(R.layout.activity_product_browsing_list);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         countProductsView.setVisibility(View.INVISIBLE);
@@ -268,6 +272,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             case SearchType.COUNTRY:
                 toolbar.setSubtitle(R.string.country_string);
+                break;
+            case SearchType.ORIGIN:
+                toolbar.setSubtitle(R.string.origin_of_ingredients);
+                break;
+            case SearchType.MANUFACTURING_PLACE:
+                toolbar.setSubtitle(R.string.manufacturing_place);
                 break;
             case SearchType.ADDITIVE:
                 toolbar.setSubtitle(R.string.additive_string);
@@ -358,12 +368,21 @@ public class ProductBrowsingListActivity extends BaseActivity {
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
-                apiClient.getProductsByBrand(searchQuery, pageAddress,  (value, country) ->
+                apiClient.getProductsByBrand(searchQuery, pageAddress, (value, country) ->
                         loadSearchProducts(value, country, R.string.txt_no_matching_brand_products));
                 break;
             case SearchType.COUNTRY:
-                apiClient.getProductsByCountry(searchQuery, pageAddress,  (value, country) ->
+                apiClient.getProductsByCountry(searchQuery, pageAddress, (value, country) ->
                         loadSearchProducts(value, country, R.string.txt_no_matching_country_products));
+                break;
+            case SearchType.ORIGIN:
+                apiClient.getProductsByOrigin(searchQuery, pageAddress, (value, origin) ->
+                        loadSearchProducts(value, origin, R.string.txt_no_matching_country_products));
+                break;
+            case SearchType.MANUFACTURING_PLACE:
+                apiClient.getProductsByManufacturingPlace(searchQuery, pageAddress, (value, manufacturingPlace) ->
+                        loadSearchProducts(value, manufacturingPlace, R.string.txt_no_matching_country_products));
+                break;
             case SearchType.ADDITIVE:
                 apiClient.getProductsByAdditive(searchQuery, pageAddress, (value, additive) ->
                         loadSearchProducts(value, additive, R.string.txt_no_matching_additive_products));
@@ -500,8 +519,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
      * Shows UI indicating that no matching products were found. Called by
      * {@link #loadSearchProducts(boolean, Search, int)} and {@link #loadSearchProducts(boolean, Search, int, int)}
      *
-     * @param msg               message to display when there are no results for given search
-     * @param extendedMsg       additional message to display, -1 if no message is displayed
+     * @param msg         message to display when there are no results for given search
+     * @param extendedMsg additional message to display, -1 if no message is displayed
      */
     private void showEmptySearch(String msg, String extendedMsg) {
         textNoResults.setText(msg);
@@ -516,15 +535,16 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     /**
-     *  Loads the search results into the UI, otherwise shows UI indicating that no matching
-     *  products were found.
-     * @param isResponseSuccessful  true if the search response was successful
-     * @param response              the search results
-     * @param emptyMessage          message to display if there are no results
-     * @param extendedMessage       extended message to display if there are no results
+     * Loads the search results into the UI, otherwise shows UI indicating that no matching
+     * products were found.
+     *
+     * @param isResponseSuccessful true if the search response was successful
+     * @param response             the search results
+     * @param emptyMessage         message to display if there are no results
+     * @param extendedMessage      extended message to display if there are no results
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response,
-            @StringRes int emptyMessage, @StringRes int extendedMessage) {
+                                    @StringRes int emptyMessage, @StringRes int extendedMessage) {
         if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
             showEmptySearch(getResources().getString(emptyMessage),
                     getResources().getString(extendedMessage));
@@ -541,6 +561,28 @@ public class ProductBrowsingListActivity extends BaseActivity {
             showEmptySearch(getResources().getString(emptyMessage), null);
         } else {
             loadData(isResponseSuccessful, response);
+        }
+    }
+
+    @OnClick(R.id.buttonScan)
+    protected void onButtonScanClick() {
+        if (Utils.isHardwareCameraInstalled(this)) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                    new MaterialDialog.Builder(this)
+                            .title(R.string.action_about)
+                            .content(R.string.permission_camera)
+                            .neutralText(R.string.txtOk)
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .show();
+                } else {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                }
+            } else {
+                Intent intent = new Intent(this, ContinuousScanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
         }
     }
 

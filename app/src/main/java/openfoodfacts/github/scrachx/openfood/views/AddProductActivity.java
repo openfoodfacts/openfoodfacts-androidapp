@@ -55,12 +55,16 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
+import static org.apache.commons.lang3.StringUtils.capitalize;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class AddProductActivity extends AppCompatActivity {
 
@@ -243,6 +247,15 @@ public class AddProductActivity extends AppCompatActivity {
         final State state = (State) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
         Product mEditProduct = (Product) getIntent().getSerializableExtra("edit_product");
+
+        if(getIntent().getBooleanExtra("perform_ocr",false)) {
+            bundle.putBoolean("perform_ocr",true);
+        }
+
+        if (getIntent().getBooleanExtra("send_updated", false)) {
+            bundle.putBoolean("send_updated", true);
+        }
+
         if (state != null) {
             mProduct = state.getProduct();
             // Search if the barcode already exists in the OfflineSavedProducts db
@@ -320,7 +333,7 @@ public class AddProductActivity extends AppCompatActivity {
         }
         String code = productDetails.get("code");
         String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguage() + ",product_name_" + getProductLanguage();
-        client.getExistingProductDetails(code, fields)
+        client.getExistingProductDetails(code, fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
@@ -358,6 +371,10 @@ public class AddProductActivity extends AppCompatActivity {
                         saveProductOffline();
                     }
                 });
+        if(productDetails.get("eating").equals("true")){
+            //add product to eaten list
+            addProductToList(1L,getString(R.string.txt_eaten_products));
+        }
     }
 
     /**
@@ -893,8 +910,15 @@ public class AddProductActivity extends AppCompatActivity {
             String value = entry.getValue();
             Log.d(key, value);
         }
+        final SharedPreferences settings = getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
 
-        client.saveProductSingle(code, productDetails, PRODUCT_API_COMMENT + " " + Utils.getVersionName(this))
+        String comment = PRODUCT_API_COMMENT + " " + Utils.getVersionName(this);
+        if (login.isEmpty()) {
+            comment += " ( Added by " + Installation.id(this) + " )";
+        }
+
+        client.saveProductSingle(code, productDetails, comment)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
                     @Override
@@ -1042,6 +1066,36 @@ public class AddProductActivity extends AppCompatActivity {
             productDetails.put("password", password);
         }
         checkFrontImageUploadStatus();
+
+        if(productDetails.get("eating").equals("true")){
+            addProductToList(1L,getString(R.string.txt_eaten_products));
+
+        }
+    }
+
+    private void addProductToList(Long listId,String listName){
+        String barcode=productDetails.get("code");
+        String languageCode=productDetails.get("lang");
+        String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+        String productName=productDetails.get("product_name"+"_"+lc);
+        StringBuilder stringBuilder = new StringBuilder();
+        if (isNotEmpty(productDetails.get("brands"))) {
+            stringBuilder.append(capitalize(productDetails.get("brands").split(",")[0].trim()));
+        }
+        if (isNotEmpty(productDetails.get("quantity"))) {
+            stringBuilder.append(" - ").append(productDetails.get("quantity"));
+        }
+        String productDetailsString=stringBuilder.toString();
+        String imageUrl=productDetails.get("imageUrl");
+        YourListedProductDao yourListedProductsDao=Utils.getAppDaoSession(this).getYourListedProductDao();
+        YourListedProduct product=new YourListedProduct();
+        product.setBarcode(barcode);
+        product.setListId(listId);
+        product.setListName(listName);
+        product.setProductName(productName);
+        product.setProductDetails(productDetailsString);
+        product.setImageUrl(imageUrl);
+        yourListedProductsDao.insertOrReplace(product);
     }
 
     @OnClick(R.id.overview_indicator)

@@ -155,7 +155,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             return;
         }
         if (!(password.length() >= 6)) {
-            passwordView.setError(getString(R.string.error_invalid_password));
+            Toast.makeText(this,getText(R.string.error_invalid_password),Toast.LENGTH_SHORT).show();
             passwordView.requestFocus();
             return;
         }

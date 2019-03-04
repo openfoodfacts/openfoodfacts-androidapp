@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -92,6 +93,12 @@ public class AddProductIngredientsFragment extends BaseFragment {
     Button btnSkipIngredients;
     @BindView(R.id.traces)
     NachoTextView traces;
+    @BindView(R.id.section_traces)
+    TextView tracesHeader;
+    @BindView(R.id.hint_traces)
+    TextView tracesHint;
+    @BindView(R.id.grey_line2)
+    View greyLine2;
     AllergenNameDao mAllergenNameDao;
     private Activity activity;
     private File photoFile;
@@ -121,6 +128,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if(getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
+            if (!getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
+                ((AddProductActivity) getActivity()).proceed();
+            }
+        }
         Bundle b = getArguments();
         if (b != null) {
             mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
@@ -137,6 +149,19 @@ public class AddProductIngredientsFragment extends BaseFragment {
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValues();
+            } else {
+                //addition
+                if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false)) {
+                    enableFastAdditionMode(true);
+                } else {
+                    enableFastAdditionMode(false);
+                }
+            }
+            if(b.getBoolean("perform_ocr")) {
+                extractIngredients();
+            }
+            if (b.getBoolean("send_updated")) {
+                newIngredientsImage();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show();
@@ -191,6 +216,25 @@ public class AddProductIngredientsFragment extends BaseFragment {
         AllergenName allergenName = mAllergenNameDao.queryBuilder().where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode)).unique();
         if (allergenName != null) return allergenName.getName();
         return tag;
+    }
+
+    /**
+     * To enable fast addition mode
+     *
+     * @param isEnabled
+     */
+    private void enableFastAdditionMode(boolean isEnabled) {
+        if (isEnabled) {
+            traces.setVisibility(View.GONE);
+            tracesHeader.setVisibility(View.GONE);
+            tracesHint.setVisibility(View.GONE);
+            greyLine2.setVisibility(View.GONE);
+        } else {
+            traces.setVisibility(View.VISIBLE);
+            tracesHeader.setVisibility(View.VISIBLE);
+            tracesHint.setVisibility(View.VISIBLE);
+            greyLine2.setVisibility(View.VISIBLE);
+        }
     }
 
     /**

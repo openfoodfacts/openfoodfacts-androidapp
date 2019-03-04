@@ -332,7 +332,14 @@ public class Nutriments implements Serializable {
             } else if (unit.equals("µg")) {
                 float value = Float.valueOf(stringValue);
                 return getRoundNumber(value * 1000000);
-            } else {
+            } else if (unit.equals("l")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value / 1000);
+            } else if (unit.equals("cl")) {
+                float value = Float.valueOf(stringValue);
+                return getRoundNumber(value / 10);
+            }
+            else {
                 return stringValue;
             }
         }
@@ -362,7 +369,15 @@ public class Nutriments implements Serializable {
                 float value = Float.valueOf(strValue);
                 value = (userSetServing / 100000) * value;
                 return getRoundNumber(value);
-            } else {
+            } else if (unit.equals("l")) {
+                float value = Float.valueOf(strValue);
+                value = (userSetServing * 10) * value;
+                return getRoundNumber(value);
+            } else if (unit.equals("cl")) {
+                float value = Float.valueOf(strValue);
+                value = (userSetServing / 10) * value;
+                return getRoundNumber(value);
+            }else {
                 return strValue;
             }
         }

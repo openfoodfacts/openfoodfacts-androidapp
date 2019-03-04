@@ -36,9 +36,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.Driver;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -47,6 +44,9 @@ import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -54,10 +54,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
@@ -85,6 +85,8 @@ public class Utils {
     public static boolean DISABLE_IMAGE_LOAD = false;
 
     public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
+    public static final String HEADER_USER_AGENT_SCAN = "Scan";
+    public static final String HEADER_USER_AGENT_SEARCH = "Search";
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
@@ -240,10 +242,10 @@ public class Utils {
     }
 
     public static int getImageGrade(String grade) {
-        int drawable;
+        int drawable = 0;
 
         if (grade == null) {
-            return R.drawable.ic_help_outline_orange_24dp;
+            return drawable;
         }
 
         switch (grade.toLowerCase(Locale.getDefault())) {
@@ -262,19 +264,37 @@ public class Utils {
             case "e":
                 drawable = R.drawable.nnc_e;
                 break;
-            default:
-                drawable = R.drawable.ic_help_outline_orange_24dp;
-                break;
         }
 
         return drawable;
     }
 
-    public static int getNovaGroupDrawable(String novaGroup) {
-        int drawable;
+    public static String getNovaGroupExplanation(String novaGroup, Context context) {
 
         if (novaGroup == null) {
-            return R.drawable.ic_help_outline_orange_24dp;
+            return "";
+        }
+
+        switch (novaGroup) {
+            case "1":
+                return context.getResources().getString(R.string.nova_grp1_msg);
+            case "2":
+                return context.getResources().getString(R.string.nova_grp2_msg);
+            case "3":
+                return context.getResources().getString(R.string.nova_grp3_msg);
+            case "4":
+                return context.getResources().getString(R.string.nova_grp4_msg);
+            default:
+                return "";
+        }
+
+    }
+
+    public static int getNovaGroupDrawable(String novaGroup) {
+        int drawable = 0;
+
+        if (novaGroup == null) {
+            return drawable;
         }
 
         switch (novaGroup) {
@@ -290,18 +310,15 @@ public class Utils {
             case "4":
                 drawable = R.drawable.ic_nova_group_4;
                 break;
-            default:
-                drawable = R.drawable.ic_help_outline_orange_24dp;
-                break;
         }
         return drawable;
     }
 
     public static int getSmallImageGrade(String grade) {
-        int drawable;
+        int drawable = 0;
 
         if (grade == null) {
-            return R.drawable.ic_error;
+            return drawable;
         }
 
         switch (grade.toLowerCase(Locale.getDefault())) {
@@ -319,9 +336,6 @@ public class Utils {
                 break;
             case "e":
                 drawable = R.drawable.nnc_small_e;
-                break;
-            default:
-                drawable = R.drawable.ic_error;
                 break;
         }
 
@@ -600,6 +614,55 @@ public class Utils {
     }
 
     /**
+     * Function which returns volume in oz if parameter is in cl, ml, or l
+     *
+     * @param servingSize
+     * @return volume in oz if servingSize is a volume parameter else return the the parameter unchanged
+     */
+    public static String getServingInOz(String servingSize) {
+
+        Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
+        Matcher matcher = regex.matcher(servingSize);
+        if (servingSize.toLowerCase().contains("ml")) {
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val *= 0.033814f;
+            servingSize = getRoundNumber(val).concat(" oz");
+        } else if (servingSize.toLowerCase().contains("cl")) {
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val *= 0.33814f;
+            servingSize = getRoundNumber(val).concat(" oz");
+        } else if (servingSize.toLowerCase().contains("l")) {
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val *= 33.814f;
+            servingSize = getRoundNumber(val).concat(" oz");
+        }
+        return servingSize;
+    }
+
+    /**
+     * Function that returns the volume in liters if input parameter is in oz
+     *
+     * @param servingSize
+     * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
+     */
+    public static String getServingInL(String servingSize) {
+
+        if (servingSize.toLowerCase().contains("oz")) {
+            Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
+            Matcher matcher = regex.matcher(servingSize);
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val /= 33.814f;
+            servingSize = Float.toString(val).concat(" l");
+        }
+
+        return servingSize;
+    }
+
+    /**
      * Function which returns true if the battery level is low
      *
      * @param context
@@ -660,6 +723,33 @@ public class Utils {
             e.printStackTrace();
         }
         return "(version unknown)";
+    }
+    /**
+     * @param type Type of call (Search or Scan)
+     * @return Returns the header to be put in network call
+     */
+    public static String getUserAgent(String type) {
+        if(type.equals(HEADER_USER_AGENT_SCAN)) {
+            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
+        } else if(type.equals(HEADER_USER_AGENT_SEARCH)) {
+            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
+        }
+        return "Official Android App "+BuildConfig.VERSION_NAME;
+    }
+
+     /*
+     @param Takes a string
+     @return Returns a Json object
+      */
+
+    public static JSONObject createJsonObject(String response){
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
     }
 }
 

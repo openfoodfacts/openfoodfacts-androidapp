@@ -25,10 +25,10 @@ You will also be able to find (according to the indications present on the produ
 - Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije
 - Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+*** Vaša hrana za hišne živali, vaši podatki ***
+- Vaši podatki so vaši in se nikoli ne pošljejo na splet
 - Aplikacijo lahko uporabljate anonimno
 - Zgodovino optičnega branja lahko izvozite
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Za prehrano ljudi lahko namestite Open Food Facts, za kozmetiko, Open Beauty Facts in za vse druge izdelke, Open Products Facts.

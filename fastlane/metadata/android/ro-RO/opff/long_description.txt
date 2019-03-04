@@ -4,7 +4,7 @@ The app allows to view the over 600 pet food products already contained in the f
 
 To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+***Contribuie la transparența produselor alimentare veterinare***
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
@@ -25,7 +25,7 @@ You will also be able to find (according to the indications present on the produ
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your pet food, your data ***
+*** Alimentele animalului de companie, datele dvs. ***
 - Your personal data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history

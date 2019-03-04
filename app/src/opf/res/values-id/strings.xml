@@ -13,7 +13,7 @@
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$d products (plus the ones you will contribute) in the world.</string>
-    <string name="txtHome">hal hal manakan buka adalah  sistem data  terbuka dari produk makanan dengan bahan-bahan, alergen, fakta nutrisi dan semua tidbits informasi bisa dilihat pada label produk</string>
+    <string name="txtHome">Open Product Facts adalah basis data terbuka untuk semua produk di seluruh dunia.</string>
     <string name="slide_1_title">Contribute to product transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
     <string name="slide_2_title">Dapatkan faktanya</string>
@@ -36,4 +36,5 @@
     <string name="tagline">the free product database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Products Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>

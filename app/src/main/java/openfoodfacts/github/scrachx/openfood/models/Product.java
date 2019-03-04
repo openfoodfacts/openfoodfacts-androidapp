@@ -121,6 +121,8 @@ public class Product implements Serializable {
     private List<String> editorsTags = new ArrayList<>();
     @JsonProperty("nova_groups")
     private String novaGroups;
+    @JsonProperty("environment_impact_level_tags")
+    private List<String> environmentImpactLevelTags;
     @JsonProperty("lang")
     private String lang;
     @JsonProperty("purchase_places")
@@ -129,6 +131,21 @@ public class Product implements Serializable {
     private String nutritionDataPer;
     @JsonProperty("no_nutrition_data")
     private String noNutritionData;
+    @JsonProperty("other_information")
+    private String otherInformation;
+    @JsonProperty("conservation_conditions")
+    private String conservationConditions;
+    @JsonProperty("recycling_instructions_to_discard")
+    private String recyclingInstructionsToDiscard;
+    @JsonProperty("recycling_instructions_to_recycle")
+    private String recyclingInstructionsToRecycle;
+    @JsonProperty("warning")
+    private String warning;
+    @JsonProperty("customer_service")
+    private String customerService;
+    @JsonProperty("environment_infocard")
+    private String environmentInfocard;
+
 
     private Map<String, Object> additionalProperties = new HashMap<>();
 
@@ -171,6 +188,14 @@ public class Product implements Serializable {
     }
 
 
+    public String getCustomerService() {
+        return customerService;
+    }
+    public String getWarning() {
+        return warning;
+    }
+
+
     /**
      * @return The vitaminTags
      */
@@ -207,6 +232,7 @@ public class Product implements Serializable {
         this.aminoAcidTags = aminoAcidTags;
     }
 
+
     /**
      * @return The otherNutritionTags
      */
@@ -239,6 +265,7 @@ public class Product implements Serializable {
     public String getImageIngredientsUrl() {
         return imageIngredientsUrl;
     }
+
 
     /**
      * @return The imageNutritionUrl
@@ -519,6 +546,9 @@ public class Product implements Serializable {
     public String getNovaGroups() {
         return novaGroups;
     }
+    public List<String> getEnvironmentImpactLevelTags() {
+        return environmentImpactLevelTags;
+    }
 
     public String getLang() {
         return lang;
@@ -536,11 +566,48 @@ public class Product implements Serializable {
         return noNutritionData;
     }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+  
+    public String getEnvironmentInfocard() {
+      return environmentInfocard;
+    }
+      
+    /**
+     * @return Other information
+     */
+    public String getOtherInformation() {
+        return otherInformation;
+    }
+
+    /**
+     * @return Conservation conditions
+     */
+    public String getConservationConditions() {
+        return conservationConditions;
+    }
+
+    /**
+     * @return Recycling instructions to discard
+     */
+    public String getRecyclingInstructionsToDiscard() {
+        return recyclingInstructionsToDiscard;
+    }
+
+    /**
+     * @return Recycling instructions to recycle
+     */
+    public String getRecyclingInstructionsToRecycle() {
+        return recyclingInstructionsToRecycle;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .append("code", code)
                 .append("productName", productName)
+                .append("additional_properties",additionalProperties)
                 .toString();
     }
 }

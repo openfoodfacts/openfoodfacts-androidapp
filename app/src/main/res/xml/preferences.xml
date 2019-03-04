@@ -3,12 +3,36 @@
 
     <PreferenceCategory android:title="@string/preference_header_general">
 
+
         <ListPreference
             android:defaultValue="en"
             android:dialogTitle="@string/preference_choose_language_dialog_title"
             android:key="Locale.Helper.Selected.Language"
             android:summary="@string/prefs_language_summary"
             android:title="@string/prefs_language" />
+
+        <ListPreference
+            android:dialogTitle="@string/energy_pref_title"
+            android:key="energyUnitPreference"
+            android:summary="Choose your preferred units for energy for the nutrition table"
+            android:title="@string/energy_pref_title" />
+
+        <ListPreference
+            android:dialogTitle="@string/volume_pref_title"
+            android:key="volumeUnitPreference"
+            android:summary="@string/choose_volume_unit"
+            android:title="@string/volume_pref_title" />
+
+        <Preference
+            android:dialogTitle="@string/search_history_pref_title"
+            android:key="deleteSearchHistoryPreference"
+            android:summary="@string/search_history_pref_summary"
+            android:title="@string/search_history_pref_title" />
+        <ListPreference
+            android:dialogTitle="@string/settings_country_dialog_title"
+            android:key="user_country"
+            android:summary="@string/settings_country_summary"
+            android:title="@string/settings_country_title" />
 
         <CheckBoxPreference
             android:defaultValue="false"
@@ -51,7 +75,7 @@
             android:defaultValue="false"
             android:key="disableImageLoad"
             android:summary="@string/disable_image_loading"
-            android:title="@string/DisableLoadTitle"/>
+            android:title="@string/DisableLoadTitle" />
 
     </PreferenceCategory>
 
@@ -74,13 +98,19 @@
             android:defaultValue="false"
             android:key="contributionTab"
             android:summary="@string/contribution_tab_summary"
-            android:title="@string/contribution_tab_title"/>
+            android:title="@string/contribution_tab_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="fastAdditionMode"
+            android:summary="@string/fast_addition_mode"
+            android:title="@string/fast_addition_mode_title" />
 
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="photoMode"
-            android:title="@string/preference_show_all_product_photos_title"
-            android:summary="@string/preference_show_all_product_photos_summary" />
+            android:summary="@string/preference_show_all_product_photos_summary"
+            android:title="@string/preference_show_all_product_photos_title" />
 
     </PreferenceCategory>
 
@@ -104,6 +134,10 @@
             android:key="Terms"
             android:summary="@string/TermsOfUse"
             android:title="@string/Terms" />
+
+        <Preference
+            android:key="Version"
+            android:title="@string/version" />
 
     </PreferenceCategory>
 </PreferenceScreen>

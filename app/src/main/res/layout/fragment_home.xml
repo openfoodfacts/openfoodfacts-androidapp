@@ -5,11 +5,15 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
         android:orientation="vertical">
 
 
@@ -18,9 +22,9 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginEnd="@dimen/spacing_larger"
             android:layout_marginStart="@dimen/spacing_larger"
             android:layout_marginTop="@dimen/spacing_larger"
+            android:layout_marginEnd="@dimen/spacing_larger"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
@@ -28,12 +32,16 @@
         <TextView
             android:id="@+id/taglineHome"
             android:layout_width="184dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_height="30dp"
             android:contentDescription="@string/OFFlogo"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             android:text="@string/tagline"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="28sp"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeStepGranularity="0.1sp"
+            app:autoSizeTextType="uniform"
+            />
 
         <TextView
             android:id="@+id/textHome"
@@ -46,6 +54,16 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/md_black_1000"
             android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/tvDailyFoodFact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            android:textColor="@color/blue"
+            android:visibility="gone" />
+
 
     </LinearLayout>
 

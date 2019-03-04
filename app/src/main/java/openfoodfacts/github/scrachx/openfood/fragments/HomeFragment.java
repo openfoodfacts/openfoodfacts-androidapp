@@ -4,10 +4,13 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -18,11 +21,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
-
 import java.io.IOException;
-
+import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.SingleObserver;
@@ -30,8 +32,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Search;
+import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
@@ -39,22 +43,28 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
-public class HomeFragment extends NavigationBaseFragment {
+public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
+
+    @BindView(R.id.tvDailyFoodFact)
+    TextView tvDailyFoodFact;
 
     @BindView(R.id.textHome)
     TextView textHome;
 
     private OpenFoodAPIService apiClient;
     private SharedPreferences sp;
+    private String taglineURL;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +77,7 @@ public class HomeFragment extends NavigationBaseFragment {
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+        getTagline();
     }
 
     @Override
@@ -98,6 +109,21 @@ public class HomeFragment extends NavigationBaseFragment {
                 ((MainActivity) getContext()).moveToBarcodeEntry();
             }
         }
+    }
+
+    @OnClick(R.id.tvDailyFoodFact)
+    protected void setDailyFoodFact(){
+        // chrome custom tab init
+        CustomTabsIntent customTabsIntent;
+        CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
+        customTabActivityHelper.setConnectionCallback(this);
+        Uri dailyFoodFactUri = Uri.parse(taglineURL);
+        customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null);
+
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(),
+                customTabActivityHelper.getSession());
+        CustomTabActivityHelper.openCustomTab(getActivity(),
+                customTabsIntent, dailyFoodFactUri, new WebViewFallback());
     }
 
     @Override
@@ -184,12 +210,54 @@ public class HomeFragment extends NavigationBaseFragment {
                     }
                 });
 
+        getTagline();
+
         if (getActivity() instanceof AppCompatActivity) {
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
             if (actionBar != null) {
-                actionBar.setTitle(R.string.home_drawer);
+                actionBar.setTitle("");
             }
         }
 
+    }
+
+    @Override
+    public void onCustomTabsConnected() {
+
+    }
+
+    @Override
+    public void onCustomTabsDisconnected() {
+
+    }
+
+    private void getTagline(){
+        OpenFoodAPIService openFoodAPIService = new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
+        Call<ArrayList<TaglineLanguageModel>> call = openFoodAPIService.getTagline();
+        call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
+            @Override
+            public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
+                if(response.isSuccessful()){
+                    String locale = String.valueOf(Resources.getSystem().getConfiguration().locale);
+                    boolean isLanguageFound = false;
+                    for (int i = 0; i < response.body().size(); i++){
+                        if (response.body().get(i).getLanguage().equals(locale)){
+                            taglineURL = response.body().get(i).getTaglineModel().getUrl();
+                            tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
+                            tvDailyFoodFact.setVisibility(View.VISIBLE);
+                            isLanguageFound = true;
+                        }
+                    }
+                    if (!isLanguageFound){
+                        taglineURL = response.body().get(response.body().size() -1).getTaglineModel().getUrl();
+                        tvDailyFoodFact.setText(response.body().get(response.body().size() -1).getTaglineModel().getMessage());
+                        tvDailyFoodFact.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) { }
+        });
     }
 }

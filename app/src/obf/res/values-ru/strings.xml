@@ -12,7 +12,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ru.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world-ru.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$d cosmetic products (plus the ones you will contribute) with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
+    <string name="txtHomeOnline">Open Beauty Facts - это база данных, содержащая более %1$d косметических продуктов (плюс те, о которых напишете вы) с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках.</string>
     <string name="txtHome">Open Beauty Facts - это база данных косметических продуктов с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках продуктов.</string>
     <string name="slide_1_title">Способствовать косметической прозрачности</string>
     <string name="slide_1_desc">Сканируйте продукты, фотографируйте их, способствуйте косметической прозрачности</string>
@@ -36,4 +36,5 @@
     <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">Отсканированного продукта %1$s ещё нет в базе Open Beauty Facts. Вы можете добавить его?</string>
     <string name="currently_on_version">В настоящее время на Open Beauty Facts</string>
+    <string name="category_game_btn">Помогите классифицировать продукты</string>
 </resources>

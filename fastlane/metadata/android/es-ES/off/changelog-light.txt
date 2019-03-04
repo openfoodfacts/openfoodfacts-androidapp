@@ -1,4 +1,4 @@
-v2! TODOS los voluntarios han trabajado fuerte, según sus sugerencias. Somos un movimiento más global que nunca. 500k productos liberados, 182 países, 10K+ contribuyentes, incluido usted :-)
+v2! TODOS los voluntarios han trabajado duro, según sus sugerencias. Somos un movimiento más global que nunca. 500k productos liberados, 182 países, 10K+ contribuyentes, incluido usted :-)
 1. NutriScore para todos los productos en el mundo
 2. Historia exportable, solo para tus ojos
 3. Alerta de alérgenos
@@ -8,14 +8,14 @@ v2! TODOS los voluntarios han trabajado fuerte, según sus sugerencias. Somos un
 7. No requiere registro
 8. Tan ligero como antes :)
 
-v2.8! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
-1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
-2. You can now get nutrition facts for the portion you're eating (Rutvik)
-3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
-5. 🌎 Korean & Indonesian
+v2.8! Después del masivo de V2, todos los voluntarios de OFF siguieron trabajando duro, en base a sus sugerencias. Ahora hay 570k productos liberados de 182 países por más de 10K contribuyentes, incluido tu 🙂
+1. Reconstruimos toda la experiencia de añadir productos (e incluso funciona sin conexión). (gracias Huzaifa)
+2. Ahora puede obtener información nutricional de la porción que está comiendo (Rutvik)
+3. Ahora calculamos los grupos NOVA además del Nutriscore (Huzaifa)
+4. Limpieza y mantenimiento del código (por Rutvik i Salfai)
+5. 🌎 Coreano e indonesio
 
-v 2.8.8! Pensaron que nos detendríamos en la adición del producto? Todos los voluntarios OFF siguieron trabajando duro. 590 mil productos liberados, 182 países, más de 10 mil contribuyentes, incluiso you 🙂
+v 2.8.8! Pensaron que nos detendríamos en la adición del producto? Todos los voluntarios OFF siguieron trabajando duro. 590 mil productos liberados, 182 países, más de 10 mil contribuyentes, incluido tu 🙂
 1. Ahora puede editar cualquier producto con su cuenta OFF. Haga clic en ✏️ en una página de producto para editarla.
 2. 🌍 Eslovaco, hebreo, español, árabe, holandés, húngaro y vietnamita (translate.openfoodfacts.org para ayudar)
 3. Open Food Facts es un esfuerzo totalmente realizado por voluntarios: puede donar tiempo (world.openfoodfacts.org/contribute) o dinero (donate.openfoodfacts.org)

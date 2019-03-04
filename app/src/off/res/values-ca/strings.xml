@@ -15,7 +15,7 @@
     <string name="txtHome">Open Food Facts és una base de dades oberta de més de productes alimentaris amb ingredients, al·lèrgens, dades nutricionals i tots els detalls de la informació que podem trobar a les etiquetes dels productes.</string>
     <string name="slide_1_title">Contribuïu a la Transparència alimentària</string>
     <string name="slide_1_desc">Escanegeu els productes, feu-los fotos, feu més transparent l\'alimentació</string>
-    <string name="slide_2_title">Obteniu les Dades Reals</string>
+    <string name="slide_2_title">Obteniu les Dades</string>
     <string name="slide_2_desc">Àmplia informació sobre el producte que heu escanejat, desxifrada per a vostè</string>
     <string name="slide_3_title">Obteniu la Puntuació Nutricional</string>
     <string name="slide_3_desc">Una visió sintètica de les propietats nutritives dels vostres productes alimentaris preferits</string>
@@ -26,13 +26,13 @@
     <string name="msg_share">Mireu aquest producte a Open Food Facts:</string>
     <string name="not_support_books">Actualment, els llibres no són compatibles amb Open Food Facts</string>
     <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-lo i afegiu-lo a Open Food Facts</string>
-    <string name="Donation">Feu clic aquí per a fer un donatiu a Open Food Facts</string>
+    <string name="Donation">Cliqueu aquí per a fer un donatiu a Open Food Facts</string>
     <string name="translate_help_title">Ajudeu a traduir Open Food Facts</string>
     <string name="translate_help_summary">Porteu la base de dades Open Food Facts al vostre idioma - no es requereix cap coneixement tècnic</string>
     <string name="text_offline_info_dialog">Escanegeu els productes fins i tot quan no esteu connectat per afegir-los a Open Food Facts més endavant. Els productes escanejats apareixeran aquí i podreu enviar-los mitjançant el botó que es mostra a continuació.</string>
     <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades!</string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">la base de dades de productes alimentaris lliure</string>
+    <string name="tagline">the free food products database</string>
     <string name="product_not_found">El producte %1$s que heu escanejat encara no existeix a Open Food Facts. Podeu afegir-lo?</string>
     <string name="currently_on_version">Actualment a Open Food Facts</string>
 </resources>

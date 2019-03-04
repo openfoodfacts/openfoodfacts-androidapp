@@ -3,11 +3,14 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.SearchRecentSuggestions;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -27,6 +30,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import org.apache.commons.text.WordUtils;
+import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,12 +42,17 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
@@ -54,6 +63,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     AdditiveDao mAdditiveDao;
     private SharedPreferences settings;
     private NavigationDrawerListener navigationDrawerListener;
+    public static String USER_COUNTRY_PREFERENCE_KEY = "user_country";
 
    Context context;
 
@@ -105,6 +115,46 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             }
             return true;
         });
+
+        Preference deleteSearchHistoryButton = findPreference("deleteSearchHistoryPreference");
+        deleteSearchHistoryButton.setOnPreferenceClickListener(preference -> {
+            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(), SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
+            suggestions.clearHistory();
+            return true;
+        });
+
+        ListPreference countryPreference = ((ListPreference) findPreference(USER_COUNTRY_PREFERENCE_KEY));
+        List<String> countryLabels = new ArrayList<>();
+
+        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
+        CountryNameDao countryNameDao = daoSession.getCountryNameDao();
+
+        asyncSessionCountries.setListenerMainThread(operation -> {
+            @SuppressWarnings("unchecked")
+            List<CountryName> countryNames = (List<CountryName>) operation.getResult();
+            for (int i = 0; i < countryNames.size(); i++) {
+                countryLabels.add(countryNames.get(i).getName());
+            }
+            countryPreference.setEntries(countryLabels.toArray(new String[countryLabels.size()]));
+            countryPreference.setEntryValues(countryLabels.toArray(new String[countryLabels.size()]));
+        });
+
+        asyncSessionCountries.queryList(countryNameDao.queryBuilder()
+                .where(CountryNameDao.Properties.LanguageCode.eq(LocaleHelper.getLanguage(getActivity())))
+                .orderAsc(CountryNameDao.Properties.Name).build());
+
+        countryPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
+            if (preference instanceof ListPreference) {
+               if (preference.getKey().equals(USER_COUNTRY_PREFERENCE_KEY)) {
+                   String country = (String) newValue;
+                   SharedPreferences.Editor editor = settings.edit();
+                   editor.putString(preference.getKey(), country);
+                   editor.apply();
+               }
+            }
+            return true;
+        }));
 
         Preference contactButton = findPreference("contact_team");
         contactButton.setOnPreferenceClickListener(preference -> {
@@ -168,6 +218,24 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
+        ListPreference energyUnitPreference = (ListPreference) findPreference("energyUnitPreference");
+        String energyUnits[] = getActivity().getResources().getStringArray(R.array.energy_units);;
+        energyUnitPreference.setEntries(energyUnits);
+        energyUnitPreference.setEntryValues(energyUnits);
+        energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            settings.edit().putString("energyUnitPreference", (String) newValue).apply();
+            return true;
+        });
+
+        ListPreference volumeUnitPreference = (ListPreference) findPreference("volumeUnitPreference");
+        String volumeUnits[] = getActivity().getResources().getStringArray(R.array.volume_units);
+        volumeUnitPreference.setEntries(volumeUnits);
+        volumeUnitPreference.setEntryValues(volumeUnits);
+        volumeUnitPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
+            settings.edit().putString("volumeUnitPreference", (String) newValue).apply();
+            return true;
+        }));
+
         ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
         String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
         imageUploadPref.setEntries(values);
@@ -181,6 +249,19 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         CheckBoxPreference photoPreference = (CheckBoxPreference) findPreference("photoMode");
         if (BuildConfig.FLAVOR.equals("opf")) {
             photoPreference.setVisible(false);
+        }
+
+        /*
+            Preference to show version name
+         */
+        Preference versionPref = (Preference) findPreference("Version");
+        versionPref.setEnabled(false);
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            String version = pInfo.versionName;
+            versionPref.setSummary(getString(R.string.version_string) + " " + version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
 
     }

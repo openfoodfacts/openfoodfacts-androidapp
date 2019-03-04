@@ -6,16 +6,16 @@ Nova csoport:
 
 1. csoport
 Coport 1 - Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
-Feldolgozatlan vagy minimálisan feldolgozott élelmiszerek
+Unprocessed or minimally processed foods
 
 Csoport 2
 Csoport 2 - Feldolgozott összetevők
-Feldolgozott összetevők
+Processed culinary ingredients
 
 Csoport 3
 Csoport 3 - Feldolgozott élelmiszerek
-Feldolgozott élelmiszerek
+Processed foods
 
 Csoport 4
-Csoport 4 - Teljesen feldolgozott élelmiszer- és italtermékek
-Többszörösen feldolgozott élelmiszerek és italok
+4. csoport - Többszörösen feldolgozott élelmiszer- és italtermékek
+Többszörösen feldolgozott élelmiszer- és italtermékek

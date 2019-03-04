@@ -11,7 +11,7 @@
     <string name="website_product">https://jp.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://jp.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute) with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
+    <string name="txtHomeOnline">Open Food Facts は %1$d を超える (およびあなたが貢献した) 食品の原材料、アレルゲン、栄養成分表、および製品ラベルで見ることができるすべての情報のオープンデータベースです。</string>
     <string name="txtHome">Open Food Facts は、食品の原材料、アレルゲン、栄養成分表、および製品ラベルで見ることができるすべての情報のオープンデータベースです。</string>
     <string name="slide_1_title">食品の透明性に貢献します</string>
     <string name="slide_1_desc">製品をスキャンし、写真に写して、食品の透明性を実現します</string>
@@ -34,5 +34,5 @@
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
     <string name="product_not_found">スキャンした製品 %1$s はまだ Open Food Facts に存在しません。追加できますか?</string>
-    <string name="currently_on_version">Currently on Open Food Facts</string>
+    <string name="currently_on_version">現在の Open Food Facts</string>
 </resources>

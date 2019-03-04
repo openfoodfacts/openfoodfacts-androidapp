@@ -11,10 +11,10 @@
     <string name="website_product">https://world-de.openfoodfacts.org/produkt/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-de.openfoodfacts.org/mitwirkender/</string>
-    <string name="txtHomeOnline">Open Food Facts ist eine offene Datenbank mit mehr als %1$d Lebensmittelprodukten (und denjenigen, die Sie beitragen werden) mit Inhaltsstoffen, Allergenen, Nährwertangaben und allen Informationen, die wir auf Produktetiketten finden können.</string>
-    <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.</string>
+    <string name="txtHomeOnline">Open Food Facts ist eine offene Datenbank mit mehr als %1$d Lebensmittelprodukten (und denjenigen, die Sie beitragen werden).</string>
+    <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln. </string>
     <string name="slide_1_title">Beitrag zur Transparenz von Lebensmittelprodukten leisten</string>
-    <string name="slide_1_desc">Produkte erfassen und Fotos hinzufügen, ermöglichen das Verständnis über Lebensmittelprodukte</string>
+    <string name="slide_1_desc">Produkte erfassen und Fotos hinzufügen ermöglichen das Verständnis über Lebensmittelprodukte</string>
     <string name="slide_2_title">Holen Sie sich die Fakten</string>
     <string name="slide_2_desc">Umfassende Informationen über das erfasste Produkt wurden für Sie entschlüsselt</string>
     <string name="slide_3_title">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
@@ -28,11 +28,11 @@
     <string name="txt_broaden_search">• Erweitern Sie Ihre Suche\n• Erfassen und zu Open Food Facts hinzufügen</string>
     <string name="Donation">Hier klicken, um für Open Food Facts zu spenden</string>
     <string name="translate_help_title">Mithelfen bei der Übersetzung von Open Food Facts</string>
-    <string name="translate_help_summary">Übersetzen Sie die „Open Food Facts”-Datenbank in Ihre Sprache – technischen Kenntnisse sind nicht erforderlich</string>
-    <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Food Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche gesendet werden.</string>
+    <string name="translate_help_summary">Übersetzen Sie die „Open Food Facts”-Datenbank in Ihre Sprache – technische Kenntnisse sind nicht erforderlich</string>
+    <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Food Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche versenden.</string>
     <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">Freie Datenbank für Produkte</string>
+    <string name="tagline">the free food products database</string>
     <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Food Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="currently_on_version">Aktuell auf Open Food Facts</string>
 </resources>

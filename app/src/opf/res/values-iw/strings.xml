@@ -33,7 +33,8 @@
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים אפילו ללא חיבור לאינטרנט כדי להוסיף אותם ל־Open Products Facts בשלב מאוחר יותר. המוצרים שנסרקו יופיעו כאן ותהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Products Facts. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <!-- OPF tagline in different languages -->
-    <string name="tagline">מסד נתוני המוצרים החופשי</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Products Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="currently_on_version">עכשיו ב־Open Products Facts</string>
+    <string name="category_game_btn">Help categorize products</string>
 </resources>
