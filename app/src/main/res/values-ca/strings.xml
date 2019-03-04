@@ -718,15 +718,15 @@
     <string name="diet_name">Nom de la dieta</string>
     <string name="diets_dialog_warning_title">Avís</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
-    <string name="EditDiet_Name">Nom</string>
-    <string name="EditDiet_Description">Descripció</string>
-    <string name="EditDiet_Enabled_Disabled">Habilitat/Deshabilitat</string>
-    <string name="EditDiet_Authorised_Ingredients">Ingredients autoritzats</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Llista els ingredients autoritzats, que haurien d\'aparèixer en verd. Exemple: poma, bolet, tomàquet… Podeu completar aquesta llista més endavant.</string>
-    <string name="EditDiet_So_So_Ingredients">Ingredients poc recomanables</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Llista els ingredients problemàtics, que haurien d\'aparèixer en taronja. Exemple: ou, peix… Podeu completar aquesta llista més endavant.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Ingredients no autoritzats</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_name">Nom</string>
+    <string name="edit_diet_description">Descripció</string>
+    <string name="edit_diet_enabled_disabled">Habilitat/Deshabilitat</string>
+    <string name="edit_diet_authorised_ingredients">Ingredients autoritzats</string>
+    <string name="edit_diet_hint_ingredient_authorised">Llista els ingredients autoritzats, que haurien d\'aparèixer en verd. Exemple: poma, bolet, tomàquet… Podeu completar aquesta llista més endavant.</string>
+    <string name="edit_diet_so_so_ingredients">Ingredients poc recomanables</string>
+    <string name="edit_diet_hint_so_so_ingredient">Llista els ingredients problemàtics, que haurien d\'aparèixer en taronja. Exemple: ou, peix… Podeu completar aquesta llista més endavant.</string>
+    <string name="edit_diet_unauthorised_ingredients">Ingredients no autoritzats</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extreu els ingredients</string>
     <string name="add_nutrient_prompt_text">Afegiu informació nutricional per calcular el Nutri-Score</string>
     <string name="add_category_prompt_text">Afegiu una categoria per calcular Nutri-Score</string>
@@ -784,6 +784,5 @@
     <string name="settings_country_summary">Canvieu el país seleccionat</string>
     <string name="settings_country_title">País</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
 </resources>

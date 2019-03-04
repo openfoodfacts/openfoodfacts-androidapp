@@ -718,15 +718,15 @@
     <string name="diet_name">Diætnavn</string>
     <string name="diets_dialog_warning_title">Advarsel</string>
     <string name="warning_diets_data">Kostens data bliver på din enhed. Intet bliver uploadet.</string>
-    <string name="EditDiet_Name">Navn</string>
-    <string name="EditDiet_Description">Beskrivelse</string>
-    <string name="EditDiet_Enabled_Disabled">Aktivér/Deaktivér</string>
-    <string name="EditDiet_Authorised_Ingredients">Godkendte ingredienser</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Angiv de godkendte ingredienser, som skal vises med grønt. Eksempel: Æble, champignon, tomat... Du kan færdiggøre listen senere.</string>
-    <string name="EditDiet_So_So_Ingredients">-</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de uønskede ingredienser, der skal vises med rød skrift. Eksempel: Gluten, mælk, palmeolie, sukker… Du kan færdiggøre denne liste senere.</string>
+    <string name="edit_diet_name">Navn</string>
+    <string name="edit_diet_description">Beskrivelse</string>
+    <string name="edit_diet_enabled_disabled">Aktivér/Deaktivér</string>
+    <string name="edit_diet_authorised_ingredients">Godkendte ingredienser</string>
+    <string name="edit_diet_hint_ingredient_authorised">Angiv de godkendte ingredienser, som skal vises med grønt. Eksempel: Æble, champignon, tomat... Du kan færdiggøre listen senere.</string>
+    <string name="edit_diet_so_so_ingredients">-</string>
+    <string name="edit_diet_hint_so_so_ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
+    <string name="edit_diet_unauthorised_ingredients">Ikke-godkendte ingredienser</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Angiv de uønskede ingredienser, der skal vises med rød skrift. Eksempel: Gluten, mælk, palmeolie, sukker… Du kan færdiggøre denne liste senere.</string>
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
@@ -784,6 +784,5 @@
     <string name="settings_country_summary">Skift dit valgte land</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
 </resources>

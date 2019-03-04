@@ -718,15 +718,15 @@
     <string name="diet_name">Nome da dieta</string>
     <string name="diets_dialog_warning_title">Aviso</string>
     <string name="warning_diets_data">Seus dados de dieta(s) permanecem no seu dispositivo. Nada será carregado a qualquer lugar.</string>
-    <string name="EditDiet_Name">Nome</string>
-    <string name="EditDiet_Description">Descrição</string>
-    <string name="EditDiet_Enabled_Disabled">Activado/Desactivado</string>
-    <string name="EditDiet_Authorised_Ingredients">Ingredientes autorizados</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Liste os ingredientes autorizados que devem aparecer em verde. Exemplo: maçã, cogumelo, tomate… Você pode completar esta lista mais tarde.</string>
-    <string name="EditDiet_So_So_Ingredients">Ingredientes medíocres</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Liste os ingredientes problemáticos que devem aparecer em laranja. Exemplo: ovo, peixe… Você pode completar esta lista mais tarde.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Ingredientes não autorizados</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Liste os ingredientes não autorizados que devem aparecer em vermelho. Exemplo: glúten, leite, óleo de palma, açúcar... Você pode completar esta lista mais tarde.</string>
+    <string name="edit_diet_name">Nome</string>
+    <string name="edit_diet_description">Descrição</string>
+    <string name="edit_diet_enabled_disabled">Activado/Desactivado</string>
+    <string name="edit_diet_authorised_ingredients">Ingredientes autorizados</string>
+    <string name="edit_diet_hint_ingredient_authorised">Liste os ingredientes autorizados que devem aparecer em verde. Exemplo: maçã, cogumelo, tomate… Você pode completar esta lista mais tarde.</string>
+    <string name="edit_diet_so_so_ingredients">Ingredientes medíocres</string>
+    <string name="edit_diet_hint_so_so_ingredient">Liste os ingredientes problemáticos que devem aparecer em laranja. Exemplo: ovo, peixe… Você pode completar esta lista mais tarde.</string>
+    <string name="edit_diet_unauthorised_ingredients">Ingredientes não autorizados</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Liste os ingredientes não autorizados que devem aparecer em vermelho. Exemplo: glúten, leite, óleo de palma, açúcar... Você pode completar esta lista mais tarde.</string>
     <string name="extract_ingredients_prompt">Extrair ingredientes</string>
     <string name="add_nutrient_prompt_text">Adicione fatos nutricionais para calcular o Nutri-Score</string>
     <string name="add_category_prompt_text">Adicione uma categoria para calcular o Nutri-Score</string>
@@ -784,6 +784,5 @@
     <string name="settings_country_summary">Alterar seu país selecionado</string>
     <string name="settings_country_title">País</string>
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
 </resources>

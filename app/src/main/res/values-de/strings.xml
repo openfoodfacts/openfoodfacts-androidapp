@@ -718,15 +718,15 @@
     <string name="diet_name">Name der Ernährung</string>
     <string name="diets_dialog_warning_title">Warnhinweis</string>
     <string name="warning_diets_data">Ihre Ernährungsdaten bleiben auf Ihrem Gerät gespeichert. Es wird nirgendwo etwas hochgeladen.</string>
-    <string name="EditDiet_Name">Name</string>
-    <string name="EditDiet_Description">Beschreibung</string>
-    <string name="EditDiet_Enabled_Disabled">Aktiviert/Deaktiviert</string>
-    <string name="EditDiet_Authorised_Ingredients">Zugelassene Inhaltsstoffe</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Listet die zugelassenen Inhaltsstoffe auf, die grün dargestellt werden sollen. Beispiel: Apfel, Pilze, Tomate … Sie können diese Liste später ergänzen.</string>
-    <string name="EditDiet_So_So_Ingredients">So auch die Inhaltsstoffe</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Listet die problematischen Inhaltsstoffe auf, die in Orange angezeigt werden sollen. Beispiel: Ei, Fisch … Sie können diese Liste später ergänzen.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Nicht zugelassene Inhaltsstoffe</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Listet die nicht zugelassenen Zutaten auf, die rot angezeigt werden sollen. Beispiel: Gluten, Milch, Palmöl, Zucker … Sie können diese Liste später ergänzen.</string>
+    <string name="edit_diet_name">Name</string>
+    <string name="edit_diet_description">Beschreibung</string>
+    <string name="edit_diet_enabled_disabled">Aktiviert/Deaktiviert</string>
+    <string name="edit_diet_authorised_ingredients">Zugelassene Inhaltsstoffe</string>
+    <string name="edit_diet_hint_ingredient_authorised">Listet die zugelassenen Inhaltsstoffe auf, die grün dargestellt werden sollen. Beispiel: Apfel, Pilze, Tomate … Sie können diese Liste später ergänzen.</string>
+    <string name="edit_diet_so_so_ingredients">So auch die Inhaltsstoffe</string>
+    <string name="edit_diet_hint_so_so_ingredient">Listet die problematischen Inhaltsstoffe auf, die in Orange angezeigt werden sollen. Beispiel: Ei, Fisch … Sie können diese Liste später ergänzen.</string>
+    <string name="edit_diet_unauthorised_ingredients">Nicht zugelassene Inhaltsstoffe</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Listet die nicht zugelassenen Zutaten auf, die rot angezeigt werden sollen. Beispiel: Gluten, Milch, Palmöl, Zucker … Sie können diese Liste später ergänzen.</string>
     <string name="extract_ingredients_prompt">Zutaten extrahieren</string>
     <string name="add_nutrient_prompt_text">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
     <string name="add_category_prompt_text">Kategorie hinzufügen, um den Nutri-Wert zu berechnen</string>
@@ -784,6 +784,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="settings_country_summary">Ändern Sie Ihr ausgewähltes Land</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Von diesem Produkt  sind keine Nährwertangaben auf der Verpackung angegeben. Wenn sich dieses geändert hat, können Sie das Produkt bearbeiten.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
 </resources>
