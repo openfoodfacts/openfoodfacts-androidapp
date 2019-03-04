@@ -15,7 +15,7 @@
     <string name="txtHome">Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó összetevők, allergének, tápanyagok adataival együtt és egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.</string>
     <string name="slide_1_title">Hozzájárulás az Élelmiszer átláthatósághoz</string>
     <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé az élelmiszer átláthatóságot</string>
-    <string name="slide_2_title">Kapja meg a tényeket</string>
+    <string name="slide_2_title">Kapja meg a Tényeket</string>
     <string name="slide_2_desc">Széleskörű információ az ön által beolvasott termékről, megfejtve az ön számára</string>
     <string name="slide_3_title">Kapja meg a Nutriscore-t</string>
     <string name="slide_3_desc">A kedvenc élelmiszereinek táplálkozási tulajdonságai összefoglaló nézetben</string>
@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">Olvassa be a termékeket akkor is, amikor kapcsolat nélküli módban van, hogy később hozzáadja azokat az Open Food Facts-hez. A beolvasott termékek itt fognak megjelenni és az alábbi gomb használatával elküldheti őket.</string>
     <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">a szabad élelmiszer adatbázis</string>
+    <string name="tagline">the free food products database</string>
     <string name="product_not_found">A beolvasott %1$s termék nem található az Open Food Facts adatbázisában. Hozzá tudná adni?</string>
     <string name="currently_on_version">Jelenleg az Open Food Facts</string>
 </resources>

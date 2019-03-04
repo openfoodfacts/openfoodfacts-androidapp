@@ -12,7 +12,7 @@ v2.8! Después del masivo de V2, todos los voluntarios de OFF siguieron trabajan
 1. Reconstruimos toda la experiencia de añadir productos (e incluso funciona sin conexión). (gracias Huzaifa)
 2. Ahora puede obtener información nutricional de la porción que está comiendo (Rutvik)
 3. Ahora calculamos los grupos NOVA además del Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
+4. Limpieza y mantenimiento del código (por Rutvik i Salfai)
 5. 🌎 Coreano e indonesio
 
 v 2.8.8! Pensaron que nos detendríamos en la adición del producto? Todos los voluntarios OFF siguieron trabajando duro. 590 mil productos liberados, 182 países, más de 10 mil contribuyentes, incluido tu 🙂

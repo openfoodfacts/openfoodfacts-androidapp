@@ -19,6 +19,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.SearchRecentSuggestions;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
@@ -92,6 +93,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -206,7 +208,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
                     ()).commit();
-            getSupportActionBar().setTitle(getResources().getString(R.string.home_drawer));
         }
 
         // chrome custom tab init
@@ -316,10 +317,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.additives).withIcon(getResources().getDrawable(R.drawable.additives)).withIdentifier(ITEM_ADDITIVES).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Compare Products").withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(ITEM_ADVANCED_SEARCH).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
                         new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
                         new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.your_lists).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(ITEM_YOUR_LISTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                         new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
@@ -353,6 +356,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             break;
                         case ITEM_SCAN:
                             scan();
+                            break;
+                        case ITEM_COMPARE:
+                            startActivity(new Intent(MainActivity.this, ProductComparisonActivity.class));
                             break;
                         case ITEM_HISTORY:
                             startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
@@ -424,6 +430,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                         case ITEM_MY_CONTRIBUTIONS:
                             myContributions();
+                            break;
+
+                        case ITEM_YOUR_LISTS:
+                            startActivity(ProductListsActivity.getIntent(this));
                             break;
 
                          case ITEM_LOGOUT:
@@ -786,6 +796,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             Log.e("INTENT", "start activity");
             String query = intent.getStringExtra(SearchManager.QUERY);
+            //Saves the most recent queries and adds it to the list of suggestions
+            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
+                    SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
+            suggestions.saveRecentQuery(query, null);
             ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
             if (searchMenuItem != null) {
                 searchMenuItem.collapseActionView();
@@ -825,7 +839,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      */
     private PrimaryDrawerItem createOfflineEditDrawerItem() {
         if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(9)
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(10)
                     .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
                             .color.md_red_700));
         } else {

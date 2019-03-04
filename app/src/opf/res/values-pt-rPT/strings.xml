@@ -33,8 +33,8 @@
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo que esteja desligado da Internet, e poderá enviá-los para o Open Products Facts mais tarde. Os produtos digitalizados irão aparecer aqui e poderá enviá-los utilizando o botão abaixo.</string>
     <string name="warning_alert_data">A informação sobre as suas alergias nunca serão enviadas para o servidor do Open Products Facts. Além disso, tenha em conta que os dados dos produtos podem não ser rigorosos e a deteção pode não ser 100% fiável, por isso confirme 2 vezes! </string>
     <!-- OPF tagline in different languages -->
-    <string name="tagline">a base de dados de produtos livre</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Products Facts. Pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente em Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Ajude a categorizar produtos</string>
 </resources>

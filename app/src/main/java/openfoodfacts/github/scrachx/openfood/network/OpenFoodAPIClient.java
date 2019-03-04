@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,19 +14,16 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.firebase.jobdispatcher.JobParameters;
 
-import io.reactivex.SingleObserver;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
@@ -137,9 +133,32 @@ public class OpenFoodAPIClient {
                     new HistoryTask().doInBackground(s.getProduct());
                     Intent intent = new Intent(activity, ProductActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("state", s);
-                    intent.putExtras(bundle);
-                    activity.startActivity(intent);
+                    String field="product_name";
+                    String lang=LocaleHelper.getLanguage(activity.getApplicationContext());
+                    //removes country specific code in the language code eg: nl-BE
+                    if(lang.contains("-")){
+                        String langSplit[]=lang.split("-");
+                        lang=langSplit[0];
+                    }
+                    String langCode=lang;
+
+                    getFieldByLanguage(barcode,field,langCode,((((value,uxLangAvailable, result) -> {
+                        if(value && result!=null) {
+                            result=result.replace("\"","");//removes quotations
+                            Product product=s.getProduct();
+                            if(uxLangAvailable) {
+                                s.setAdditionalProperty(field+"_"+langCode,result);
+                                product.setAdditionalProperty(field+"_"+langCode,result);
+                            } else {
+                                s.setAdditionalProperty(field+"_en",result);
+                                product.setAdditionalProperty(field+"_en",result);
+                            }
+                            s.setProduct(product);
+                        }
+                        bundle.putSerializable("state", s);
+                        intent.putExtras(bundle);
+                        activity.startActivity(intent);
+                    }))));
                 }
             }
 
@@ -171,6 +190,33 @@ public class OpenFoodAPIClient {
             }
         });
 
+    }
+
+    public void getFieldByLanguage(String barcode,String field,String langCode,final OnFieldByLanguageCallback fieldByLanguageCallback)
+    {
+        apiService.getFieldByLangCode(barcode,field+"_"+langCode+","+field+"_en").enqueue(new Callback<JsonNode>() {
+            @Override
+            public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                JsonNode responseNode=response.body();
+                if(responseNode.findValue("product").findValue(field+"_"+langCode)!=null) {
+                    String result=responseNode.findValue("product").findValue(field+"_"+langCode).toString();
+                    fieldByLanguageCallback.onFieldByLanguageResponse(true,true,result);
+                }
+                else if(responseNode.findValue("product").findValue(field+"_en")!=null){
+                    String result=responseNode.findValue("product").findValue(field+"_en").toString();
+                    fieldByLanguageCallback.onFieldByLanguageResponse(true,false,result);
+                }
+                else {
+                    fieldByLanguageCallback.onFieldByLanguageResponse(true,false,null);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonNode> call, Throwable t) {
+                fieldByLanguageCallback.onFieldByLanguageResponse(false,false,null);
+            }
+        });
     }
 
     public void getIngredients(String barcode,final OnIngredientListCallback ingredientListCallback)
@@ -527,6 +573,10 @@ public class OpenFoodAPIClient {
 
     public interface OnIngredientListCallback {
         void onIngredientListResponse(boolean value, ArrayList<ProductIngredient> productIngredients);
+    }
+
+    public interface OnFieldByLanguageCallback {
+        void onFieldByLanguageResponse(boolean value,boolean uxLangAvailable, String result);
     }
 
     /**

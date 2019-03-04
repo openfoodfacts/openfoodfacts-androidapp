@@ -24,7 +24,7 @@
     <string name="txtDialogsContent">Le produit que vous recherchez n\'existe pas dans notre base de données. Voulez-vous l\'ajouter?</string>
     <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Food Facts.</string>
     <string name="msg_share">Regardez ce produit sur Open Food Facts :</string>
-    <string name="not_support_books">Les livres ne sont pas actuellement pris en charge par Open Food Facts</string>
+    <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Food Facts</string>
     <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Food Facts</string>
     <string name="Donation">Cliquez ici pour faire un don à Open Food Facts</string>
     <string name="translate_help_title">Aidez à traduire Open Food Facts</string>

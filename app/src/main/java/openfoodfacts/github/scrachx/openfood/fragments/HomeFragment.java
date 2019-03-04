@@ -21,7 +21,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,7 +31,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
@@ -77,6 +75,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+        getTagline();
     }
 
     @Override
@@ -209,14 +208,12 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                     }
                 });
 
-        if (BuildConfig.FLAVOR.equals("off")){
-            getTagline();
-        }
+        getTagline();
 
         if (getActivity() instanceof AppCompatActivity) {
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
             if (actionBar != null) {
-                actionBar.setTitle(R.string.home_drawer);
+                actionBar.setTitle("");
             }
         }
 
@@ -233,32 +230,32 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     }
 
     private void getTagline(){
+        OpenFoodAPIService openFoodAPIService = new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
+        Call<ArrayList<TaglineLanguageModel>> call = openFoodAPIService.getTagline();
+        call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
+            @Override
+            public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
+                if(response.isSuccessful()){
+                    String locale = String.valueOf(Resources.getSystem().getConfiguration().locale);
+                    boolean isLanguageFound = false;
+                    for (int i = 0; i < response.body().size(); i++){
+                        if (response.body().get(i).getLanguage().equals(locale)){
+                            taglineURL = response.body().get(i).getTaglineModel().getUrl();
+                            tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
+                            tvDailyFoodFact.setVisibility(View.VISIBLE);
+                            isLanguageFound = true;
+                        }
+                    }
+                    if (!isLanguageFound){
+                        taglineURL = response.body().get(response.body().size() -1).getTaglineModel().getUrl();
+                        tvDailyFoodFact.setText(response.body().get(response.body().size() -1).getTaglineModel().getMessage());
+                        tvDailyFoodFact.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
 
-       Call<ArrayList<TaglineLanguageModel>> call = apiClient.getTagline();
-       call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
-           @Override
-           public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
-               if(response.isSuccessful()){
-                   String locale = String.valueOf(Resources.getSystem().getConfiguration().locale);
-                   boolean isLanguageFound = false;
-                   for (int i = 0; i < response.body().size(); i++){
-                       if (response.body().get(i).getLanguage().equals(locale)){
-                           taglineURL = response.body().get(i).getTaglineModel().getUrl();
-                           tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
-                           tvDailyFoodFact.setVisibility(View.VISIBLE);
-                           isLanguageFound = true;
-                       }
-                   }
-                   if (!isLanguageFound){
-                       taglineURL = response.body().get(response.body().size() -1).getTaglineModel().getUrl();
-                       tvDailyFoodFact.setText(response.body().get(response.body().size() -1).getTaglineModel().getMessage());
-                       tvDailyFoodFact.setVisibility(View.VISIBLE);
-                   }
-               }
-           }
-
-           @Override
-           public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) { }
-       });
+            @Override
+            public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) { }
+        });
     }
 }

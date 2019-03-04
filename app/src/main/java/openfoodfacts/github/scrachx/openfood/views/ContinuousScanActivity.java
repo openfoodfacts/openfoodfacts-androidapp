@@ -17,13 +17,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -45,6 +48,7 @@ import com.squareup.picasso.Picasso;
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -66,14 +70,18 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.viewmodel.SelectFlavorBottomSheet;
-
+import static org.apache.commons.lang3.StringUtils.capitalize;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity implements SelectFlavorBottomSheet.productTypeListener {
 
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
@@ -124,6 +132,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     EditText searchByBarcode;
     @BindView(R.id.quickView_details)
     RelativeLayout details;
+    @BindView(R.id.button_add_to_list)
+    ImageButton addToList;
     @Inject
     OpenFoodAPIService client;
 
@@ -198,6 +208,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         progressBar.setVisibility(View.GONE);
                         progressText.setVisibility(View.GONE);
                         if (state.getStatus() == 0) {
+                            addToList.setVisibility(View.GONE);
                             hideAllViews();
                             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                             quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
@@ -210,6 +221,19 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                         } else {
                             product = state.getProduct();
+                            if (getIntent().getBooleanExtra("compare_product", false)) {
+                                Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
+                                intent.putExtra("product_found", true);
+                                ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
+                                if (productsToCompare.contains(product)) {
+                                    intent.putExtra("product_already_exists", true);
+                                } else {
+                                    productsToCompare.add(product);
+                                }
+                                intent.putExtra("products_to_compare", productsToCompare);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
                             new HistoryTask().doInBackground(product);
                             showAllViews();
                             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
@@ -320,6 +344,45 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                     }
                                 }
                             }
+                            final Product p = product;
+                            addToList.setOnClickListener(view -> {
+                                String barcode = p.getCode();
+                                String productName = p.getProductName();
+                                String imageUrl = p.getImageSmallUrl();
+                                StringBuilder stringBuilder = new StringBuilder();
+                                if (isNotEmpty(p.getBrands())) {
+                                    stringBuilder.append(capitalize(p.getBrands().split(",")[0].trim()));
+                                }
+                                if (isNotEmpty(p.getQuantity())) {
+                                    stringBuilder.append(" - ").append(p.getQuantity());
+                                }
+                                String productDetails = stringBuilder.toString();
+
+                                MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(ContinuousScanActivity.this)
+                                        .title(R.string.add_to_product_lists)
+                                        .customView(R.layout.dialog_add_to_list, true);
+                                MaterialDialog addToListDialog = addToListBuilder.build();
+                                addToListDialog.show();
+                                View addToListView = addToListDialog.getCustomView();
+                                if (addToListView != null) {
+                                    ProductListsDao productListsDao = Utils.getDaoSession(ContinuousScanActivity.this).getProductListsDao();
+                                    List<ProductLists> productLists = productListsDao.loadAll();
+
+                                    RecyclerView addToListRecyclerView =
+                                            addToListView.findViewById(R.id.rv_dialogAddToList);
+                                    DialogAddToListAdapter addToListAdapter =
+                                            new DialogAddToListAdapter(ContinuousScanActivity.this, productLists, barcode, productName, productDetails, imageUrl);
+                                    addToListRecyclerView.setLayoutManager(new LinearLayoutManager(ContinuousScanActivity.this));
+                                    addToListRecyclerView.setAdapter(addToListAdapter);
+                                    TextView tvAddToList = addToListView.findViewById(R.id.tvAddToNewList);
+                                    tvAddToList.setOnClickListener((View view1) -> {
+                                        Intent intent = new Intent(ContinuousScanActivity.this, ProductListsActivity.class);
+                                        intent.putExtra("product", p);
+                                        startActivity(intent);
+                                    });
+                                }
+                            });
+
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fm.beginTransaction();
                             ProductFragment productFragment = new ProductFragment();
@@ -335,6 +398,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
                     @Override
                     public void onError(Throwable e) {
+                        addToList.setVisibility(View.GONE);
                         try {
                             // A network error happened
                             if (e instanceof IOException) {
@@ -438,6 +502,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         fab_status.setVisibility(View.GONE);
         imageProgress.setVisibility(View.GONE);
         txtProductIncomplete.setVisibility(View.GONE);
+        addToList.setVisibility(View.GONE);
     }
 
     @Override
@@ -564,9 +629,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         }
                     }
                     if (slideOffset > 0.01f) {
+                        if (name.getVisibility() == View.VISIBLE) {
+                            addToList.setVisibility(View.VISIBLE);
+                        }
                         details.setVisibility(View.GONE);
                         barcodeView.pause();
                     } else {
+                        addToList.setVisibility(View.GONE);
                         barcodeView.resume();
                         details.setVisibility(View.VISIBLE);
                     }
@@ -726,12 +795,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     searchByBarcode.setVisibility(View.VISIBLE);
                     quickView.setVisibility(View.INVISIBLE);
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            quickView.setVisibility(View.VISIBLE);
-                        }
-                    }, 500);
+                    handler.postDelayed(() -> quickView.setVisibility(View.VISIBLE), 500);
                     searchByBarcode.requestFocus();
                     break;
                 case R.id.toggleCamera:

@@ -57,12 +57,16 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
+import static org.apache.commons.lang3.StringUtils.capitalize;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class AddProductActivity extends AppCompatActivity {
 
@@ -379,6 +383,10 @@ public class AddProductActivity extends AppCompatActivity {
                         saveProductOffline();
                     }
                 });
+        if(productDetails.get("eating").equals("true")){
+            //add product to eaten list
+            addProductToList(1L,getString(R.string.txt_eaten_products));
+        }
     }
 
     /**
@@ -1071,6 +1079,36 @@ public class AddProductActivity extends AppCompatActivity {
             productDetails.put("password", password);
         }
         checkFrontImageUploadStatus();
+
+        if(productDetails.get("eating").equals("true")){
+            addProductToList(1L,getString(R.string.txt_eaten_products));
+
+        }
+    }
+
+    private void addProductToList(Long listId,String listName){
+        String barcode=productDetails.get("code");
+        String languageCode=productDetails.get("lang");
+        String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+        String productName=productDetails.get("product_name"+"_"+lc);
+        StringBuilder stringBuilder = new StringBuilder();
+        if (isNotEmpty(productDetails.get("brands"))) {
+            stringBuilder.append(capitalize(productDetails.get("brands").split(",")[0].trim()));
+        }
+        if (isNotEmpty(productDetails.get("quantity"))) {
+            stringBuilder.append(" - ").append(productDetails.get("quantity"));
+        }
+        String productDetailsString=stringBuilder.toString();
+        String imageUrl=productDetails.get("imageUrl");
+        YourListedProductDao yourListedProductsDao=Utils.getAppDaoSession(this).getYourListedProductDao();
+        YourListedProduct product=new YourListedProduct();
+        product.setBarcode(barcode);
+        product.setListId(listId);
+        product.setListName(listName);
+        product.setProductName(productName);
+        product.setProductDetails(productDetailsString);
+        product.setImageUrl(imageUrl);
+        yourListedProductsDao.insertOrReplace(product);
     }
 
     @OnClick(R.id.overview_indicator)

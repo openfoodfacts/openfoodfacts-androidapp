@@ -50,10 +50,12 @@
 
     <TextView
         android:id="@+id/titleHistory"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imgHistoryFrame"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:layout_toEndOf="@id/imgHistoryFrame"
         android:layout_toLeftOf="@id/barcodeHistory"
         android:layout_toRightOf="@id/imgHistoryFrame"
@@ -96,7 +98,8 @@
         android:gravity="center_vertical"
         android:textSize="@dimen/font_small"
         app:drawableLeftCompat="@drawable/barcode_grey_24dp"
-        tools:text="123456789" />
+        tools:text="123456789"
+        android:visibility="gone"/>
 
 
     <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
