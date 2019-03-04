@@ -162,8 +162,9 @@ public class Product implements Serializable {
     }
 
     public String getProductName(String languageCode) {
-        if (getFieldHelper("product_name", languageCode) != null) {
-            return getFieldHelper("product_name", languageCode);
+        String result = getFieldHelper("product_name", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getProductName();
         }
@@ -171,8 +172,9 @@ public class Product implements Serializable {
     }
 
     public String getGenericName(String languageCode) {
-        if (getFieldHelper("generic_name", languageCode) != null) {
-            return getFieldHelper("generic_name", languageCode);
+        String result = getFieldHelper("generic_name", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getGenericName();
         }
@@ -180,8 +182,9 @@ public class Product implements Serializable {
     }
 
     public String getIngredientsText(String languageCode) {
-        if (getFieldHelper("ingredients_text", languageCode) != null) {
-            return getFieldHelper("ingredients_text", languageCode);
+        String result = getFieldHelper("ingredients_text", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getIngredientsText();
         }
@@ -189,8 +192,9 @@ public class Product implements Serializable {
     }
 
     public String getOtherInformation(String languageCode) {
-        if (getFieldHelper("other_information", languageCode) != null) {
-            return getFieldHelper("other_information", languageCode);
+        String result = getFieldHelper("other_information", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getOtherInformation();
         }
@@ -198,8 +202,9 @@ public class Product implements Serializable {
     }
 
     public String getConservationConditions(String languageCode) {
-        if (getFieldHelper("conservation_conditions", languageCode) != null) {
-            return getFieldHelper("conservation_conditions", languageCode);
+        String result = getFieldHelper("conservation_conditions", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getConservationConditions();
         }
@@ -207,58 +212,63 @@ public class Product implements Serializable {
     }
 
     public String getRecyclingInstructionsToDiscard(String languageCode) {
-        if (getFieldHelper("recycling_instructions_to_discard", languageCode) != null) {
-            return getFieldHelper("recycling_instructions_to_discard", languageCode);
+        String result = getFieldHelper("recycling_instructions_to_discard", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getRecyclingInstructionsToDiscard();
         }
     }
 
     public String getRecyclingInstructionsToRecycle(String languageCode) {
-        if (getFieldHelper("recycling_instructions_to_recycle", languageCode) != null) {
-            return getFieldHelper("recycling_instructions_to_recycle", languageCode);
+        String result = getFieldHelper("recycling_instructions_to_recycle", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getRecyclingInstructionsToRecycle();
         }
     }
 
     public String getWarning(String languageCode) {
-        if (getFieldHelper("warning", languageCode) != null) {
-            return getFieldHelper("warning", languageCode);
+        String result = getFieldHelper("warning", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getWarning();
         }
     }
 
     public String getCustomerService(String languageCode) {
-        if (getFieldHelper("customer_service", languageCode) != null) {
-            return getFieldHelper("customer_service", languageCode);
+        String result = getFieldHelper("customer_service", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getCustomerService();
         }
     }
 
     public String getImageFrontUrl(String languageCode) {
-        if (getFieldHelper("image_front_url", languageCode) != null) {
-            return getFieldHelper("image_front_url", languageCode);
+        String result = getFieldHelper("image_front_url", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getImageFrontUrl();
         }
     }
 
     public String getImageIngredientsUrl(String languageCode) {
-
-        if (getFieldHelper("image_ingredient_url", languageCode) != null) {
-            return getFieldHelper("image_ingredient_url", languageCode);
+        String result = getFieldHelper("image_ingredient_url", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getImageIngredientsUrl();
         }
     }
 
     public String getImageNutritionUrl(String languageCode) {
-
-        if (getFieldHelper("image_nutrition_url", languageCode) != null) {
-            return getFieldHelper("image_nutrition_url", languageCode);
+        String result = getFieldHelper("image_nutrition_url", languageCode);
+        if (result != null) {
+            return result;
         } else {
             return getImageNutritionUrl();
         }
