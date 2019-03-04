@@ -772,6 +772,7 @@
     <string name="add_to_product_lists">Dodaj v vaš seznam</string>
     <string name="txt_create_new_list">Ustvari nov seznam</string>
     <string name="txt_add_to_new_list">Dodaj na nov seznam</string>
+    <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Pojedeni izdelki</string>
     <string name="txt_products_to_buy">Izdelki za nakup</string>
     <string name="export_csv_your_listed_products">Izvoz CSV</string>
@@ -792,4 +793,5 @@
     <string name="settings_country_title">Država</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
 </resources>

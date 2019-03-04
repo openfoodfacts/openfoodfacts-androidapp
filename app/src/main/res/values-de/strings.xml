@@ -764,6 +764,7 @@
     <string name="add_to_product_lists">Zu Ihren Listen hinzufügen</string>
     <string name="txt_create_new_list">Neue Liste erstellen</string>
     <string name="txt_add_to_new_list">Zu einer neuen Liste hinzufügen</string>
+    <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Verzehrte Produkte</string>
     <string name="txt_products_to_buy">Zu erwerbende Produkte</string>
     <string name="export_csv_your_listed_products">Als CSV-Datei exportieren</string>
@@ -784,4 +785,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Von diesem Produkt  sind keine Nährwertangaben auf der Verpackung angegeben. Wenn sich dieses geändert hat, können Sie das Produkt bearbeiten.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
 </resources>

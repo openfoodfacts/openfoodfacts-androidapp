@@ -793,6 +793,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="add_to_product_lists">Dodaj do swoich list</string>
     <string name="txt_create_new_list">Utworzyć nową listę</string>
     <string name="txt_add_to_new_list">Dodaj do nowej listy</string>
+    <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Zjedzone produkty</string>
     <string name="txt_products_to_buy">Produkty do kupienia</string>
     <string name="export_csv_your_listed_products">Eksport CSV</string>
@@ -813,4 +814,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="settings_country_title">Kraj</string>
     <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
 </resources>

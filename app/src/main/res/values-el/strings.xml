@@ -764,6 +764,7 @@
     <string name="add_to_product_lists">Προσθήκη στην λίστα</string>
     <string name="txt_create_new_list">Δημιουργία νέας λίστας</string>
     <string name="txt_add_to_new_list">Προσθήκη σε νέα λίστα</string>
+    <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Προϊόντα προς αγορά</string>
     <string name="export_csv_your_listed_products">Εξαγωγή σε CSV</string>
@@ -784,4 +785,5 @@
     <string name="settings_country_title">Χώρα</string>
     <string name="txt_no_nutrition_data">Το προϊόν αυτό δεν περιέχει πληροφορίες διατροφής στη συσκευασία. Αν αυτό Δεν ισχύει, μπορείτε να επεξεργαστείτε το προϊόν.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
 </resources>

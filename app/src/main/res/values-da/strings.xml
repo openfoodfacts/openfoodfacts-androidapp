@@ -764,6 +764,7 @@
     <string name="add_to_product_lists">Føj til dine lister</string>
     <string name="txt_create_new_list">Opret en ny liste</string>
     <string name="txt_add_to_new_list">Føj til en ny lliste</string>
+    <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Spiste produkter</string>
     <string name="txt_products_to_buy">Produkter at købe</string>
     <string name="export_csv_your_listed_products">Eksport CSV</string>
@@ -784,4 +785,5 @@
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
 </resources>

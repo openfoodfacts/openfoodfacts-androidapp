@@ -764,6 +764,7 @@
     <string name="add_to_product_lists">crwdns115394:0crwdne115394:0</string>
     <string name="txt_create_new_list">crwdns115396:0crwdne115396:0</string>
     <string name="txt_add_to_new_list">crwdns115398:0crwdne115398:0</string>
+    <string name="create_new_list_list_name">crwdns115736:0crwdne115736:0</string>
     <string name="txt_eaten_products">crwdns115400:0crwdne115400:0</string>
     <string name="txt_products_to_buy">crwdns115402:0crwdne115402:0</string>
     <string name="export_csv_your_listed_products">crwdns115404:0crwdne115404:0</string>
@@ -783,4 +784,5 @@
     <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
     <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
 </resources>
