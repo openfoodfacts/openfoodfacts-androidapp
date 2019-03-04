@@ -12,6 +12,7 @@ import openfoodfacts.github.scrachx.openfood.models.Category;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.Country;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.Ingredient;
 import openfoodfacts.github.scrachx.openfood.models.Label;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
@@ -34,6 +35,8 @@ public interface IProductRepository {
 
     Single<List<Category>> getCategories(Boolean refresh);
 
+    Single<List<Ingredient>> getIngredients(Boolean refresh);
+
     void saveLabels(List<Label> labels);
 
     void saveTags(List<Tag> tags);
@@ -45,6 +48,12 @@ public interface IProductRepository {
     void saveAllergens(List<Allergen> allergens);
 
     void saveCategories(List<Category> categories);
+
+    void deleteIngredientCascade();
+
+    void saveIngredients(List<Ingredient> ingredients);
+
+    void saveIngredient(Ingredient ingredient);
 
     void setAllergenEnabled(String allergenTag, Boolean isEnabled);
 

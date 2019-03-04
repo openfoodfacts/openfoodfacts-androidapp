@@ -60,14 +60,16 @@ public class LoadTaxonomiesService extends IntentService {
                 productRepository.getLabels(true),
                 productRepository.getTags(true),
                 productRepository.getAllergens(true),
+                productRepository.getIngredients(false), //TODO : have a test on last-modified-date of ingredients.json before download it. Then pass the parameter to true
                 productRepository.getCountries(true),
                 productRepository.getAdditives(true),
-                productRepository.getCategories(true), (labels, tags, allergens, countries, additives, categories) -> {
+                productRepository.getCategories(true), (labels, tags, allergens, ingredients, countries, additives, categories) -> {
                     Completable.merge(
                             Arrays.asList(
                                     Completable.fromAction(() -> productRepository.saveLabels(labels)),
                                     Completable.fromAction(() -> productRepository.saveTags(tags)),
                                     Completable.fromAction(() -> productRepository.saveAllergens(allergens)),
+                                    Completable.fromAction(() -> productRepository.saveIngredients(ingredients)),
                                     Completable.fromAction(() -> productRepository.saveCountries(countries)),
                                     Completable.fromAction(() -> productRepository.saveAdditives(additives)),
                                     Completable.fromAction(() -> productRepository.saveCategories(categories))

@@ -138,6 +138,12 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 YourListedProductDao.createTable(db, true);
                 break;
             }
+            case 12: {
+                IngredientDao.createTable(db, true);
+                IngredientNameDao.createTable(db, true);
+                IngredientsRelationDao.createTable(db, true);
+                break;
+            }
         }
     }
 
