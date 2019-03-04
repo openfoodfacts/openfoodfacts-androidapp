@@ -160,11 +160,12 @@
 
             <Button
                 android:id="@+id/compare_product_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginVertical="@dimen/spacing_tiny"
-                android:text="@string/compare_product_prompt"/>
+                android:layout_margin="8dp"
+                android:background="@drawable/button_grey_border"
+                android:text="@string/compare_product_prompt" />
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/scores_layout"
