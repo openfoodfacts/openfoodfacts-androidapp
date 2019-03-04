@@ -1,11 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
@@ -16,68 +14,39 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
-import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -299,39 +268,6 @@ doesn't have calories information in nutrition facts.
                             .show();
                 }
             }
-        }
-    }
-
-    public void showBottomScreen(JSONObject result, AdditiveName additive) {
-        showBottomSheet(result, additive.getId(), additive.getName(), additive.getWikiDataId(),
-                SearchType.ADDITIVE, "additive_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, LabelName label) {
-        showBottomSheet(result, label.getId(), label.getName(), label.getWikiDataId(),
-                SearchType.LABEL, "label_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, CategoryName category) {
-        showBottomSheet(result, category.getId(), category.getName(), category.getWikiDataId(),
-                SearchType.CATEGORY, "category_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, AllergenName allergen) {
-        showBottomSheet(result, allergen.getId(), allergen.getName(), allergen.getWikiDataId(),
-                SearchType.ALLERGEN, "allergen_details_fragment");
-    }
-
-    private void showBottomSheet(JSONObject result, Long id, String name,
-                                 String wikidataId, String searchType, String fragmentTag) {
-        try {
-            String jsonObjectStr = (result != null) ? result.getJSONObject("entities")
-                    .getJSONObject(wikidataId).toString() : null;
-            ProductAttributeDetailsFragment fragment =
-                    ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
-            fragment.show(getChildFragmentManager(), fragmentTag);
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 
