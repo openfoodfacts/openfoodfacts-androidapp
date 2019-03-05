@@ -487,11 +487,13 @@
     <string name="please_check_your_connection">Tjek Internetforbindelsen.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Avanceret søgning og Diagrammer</string>
+    <string name="compare_products">"Compare Products"</string>
     <string name="connectivity_check">Tjek Internetforbindelsen</string>
     <string name="dismiss">Afvis</string>
     <string name="Terms">Vilkår</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Generelt</string>
     <string name="preference_header_network">Netværk</string>
     <string name="preference_header_contributing">Bidrag</string>
@@ -786,4 +788,6 @@
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
+    <string name="add_product">Add Products</string>
+    <string name="add_another_product">Add another product</string>
 </resources>
