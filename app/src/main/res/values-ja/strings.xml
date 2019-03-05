@@ -483,11 +483,13 @@
     <string name="please_check_your_connection">インターネット接続を確認して下さい</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">高度な検索 &amp; グラフ</string>
+    <string name="compare_products">"Compare Products"</string>
     <string name="connectivity_check">インターネット接続を確認してください</string>
     <string name="dismiss">消去</string>
     <string name="Terms">利用規約</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">全般</string>
     <string name="preference_header_network">ネットワーク</string>
     <string name="preference_header_contributing">貢献</string>
@@ -782,4 +784,6 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
+    <string name="add_product">Add Products</string>
+    <string name="add_another_product">Add another product</string>
 </resources>
