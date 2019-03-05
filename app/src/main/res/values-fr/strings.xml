@@ -487,13 +487,13 @@
     <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
     <string name="donation_url">https://donner.openfoodfacts.org</string>
     <string name="advanced_search_title">Recherche avancée &amp; Graphiques</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Comparer les produits</string>
     <string name="connectivity_check">Veuillez vérifier votre connexion Internet</string>
     <string name="dismiss">Ignorer</string>
     <string name="Terms">Conditions d\'utilisation</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world-fr.openfoodfacts.org/conditions-d-utilisation</string>
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://world-fr.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Général</string>
     <string name="preference_header_network">Réseau</string>
     <string name="preference_header_contributing">Contribuer</string>
@@ -719,7 +719,7 @@
     <string name="your_diets">Vos régimes</string>
     <string name="diet_name">Nom du régime</string>
     <string name="diets_dialog_warning_title">Attention</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">Les données de votre régime restent sur votre appareil. Rien ne sort de votre appareil.</string>
     <string name="EditDiet_Name">Nom</string>
     <string name="EditDiet_Description">Description</string>
     <string name="EditDiet_Enabled_Disabled">Activé/Désactivé</string>
@@ -728,7 +728,7 @@
     <string name="EditDiet_So_So_Ingredients">Ingrédients peu recommandés</string>
     <string name="EditDiet_Hint_So_So_Ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
     <string name="EditDiet_Unauthorised_Ingredients">Ingrédients non autorisés</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Énumérez les ingrédients non autorisés devant apparaître en rouge. Exemple: gluten, lait, huile de palme, sucre… Vous pourrez compléter cette liste ultérieurement.</string>
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
     <string name="add_category_prompt_text">Ajouter la catégorie pour calculer le Nutri-Score</string>
