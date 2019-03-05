@@ -487,7 +487,7 @@
     <string name="please_check_your_connection">Controlla la connessione.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Ricerca avanzata &amp; grafici</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compara prodotti</string>
     <string name="connectivity_check">Per favore controlla la tua connessione Internet</string>
     <string name="dismiss">Chiudi</string>
     <string name="Terms">Termini</string>
@@ -788,6 +788,6 @@
     <string name="txt_no_nutrition_data">Questo prodotto non ha alcuna informazione nutrizionale sulla confezione. Se questo è cambiato, puoi modificare il prodotto.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_product">Aggiungi prodotti</string>
+    <string name="add_another_product">Aggiungi un altro prodotto</string>
 </resources>
