@@ -650,7 +650,7 @@
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-    <string name="compare_products">"Compare Products"</string>
+    <string name="compare_products">Compare Products</string>
     <string name="connectivity_check">Please check your internet connection</string>
     <string name="dismiss">Dismiss</string>
 
