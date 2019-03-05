@@ -515,7 +515,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="please_check_your_connection">Sprawdź połączenie.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Wyszukiwanie zaawansowane &amp; wykresy</string>
-    <string name="compare_products">"Compare Products"</string>
+    <string name="compare_products">Compare Products</string>
     <string name="connectivity_check">Sprawdź łączność z Internetem</string>
     <string name="dismiss">Odrzuć</string>
     <string name="Terms">Warunki</string>
