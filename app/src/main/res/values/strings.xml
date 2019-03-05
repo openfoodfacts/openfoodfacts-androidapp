@@ -974,4 +974,5 @@
     <!-- Used for diets AddOn -->
     <string name="empty" />
     <string name="add_product">Add Products</string>
+    <string name="add_another_product">Add another product</string>
 </resources>

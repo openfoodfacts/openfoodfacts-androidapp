@@ -187,7 +187,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
 
             //Modify the text on the button for adding products
             if (this.addProductButton != null) {
-                addProductButton.setText("Add another product");
+                addProductButton.setText(R.string.add_another_product);
             }
 
             holder.productComparisonImage.setOnClickListener(new View.OnClickListener() {
