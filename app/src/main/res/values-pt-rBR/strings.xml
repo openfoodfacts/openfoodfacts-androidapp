@@ -487,11 +487,13 @@
     <string name="please_check_your_connection">Por favor, verifique sua conexão.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Busca avançada &amp; Gráficos</string>
+    <string name="compare_products">"Compare Products"</string>
     <string name="connectivity_check">Por favor, verifique sua conexão de internet</string>
     <string name="dismiss">Descartar</string>
     <string name="Terms">Termos e condições</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Gerais</string>
     <string name="preference_header_network">Rede</string>
     <string name="preference_header_contributing">Contribuições</string>
@@ -786,4 +788,6 @@
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
+    <string name="add_product">Add Products</string>
+    <string name="add_another_product">Add another product</string>
 </resources>
