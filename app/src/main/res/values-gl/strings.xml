@@ -487,11 +487,13 @@
     <string name="please_check_your_connection">Por favor, comprobe a conexión.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Busca Avanzada &amp; Gráficos</string>
+    <string name="compare_products">"Compare Products"</string>
     <string name="connectivity_check">Comprobe a súa conexión a internet</string>
     <string name="dismiss">Descartar</string>
     <string name="Terms">Termos</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Xeral</string>
     <string name="preference_header_network">Rede</string>
     <string name="preference_header_contributing">Contribuíndo</string>
@@ -786,4 +788,6 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
+    <string name="add_product">Add Products</string>
+    <string name="add_another_product">Add another product</string>
 </resources>
