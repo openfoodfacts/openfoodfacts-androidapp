@@ -495,7 +495,7 @@
     <string name="please_check_your_connection">Будь ласка, перевірте інтернет.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Розширений Пошук та Графіки</string>
-    <string name="compare_products">"Compare Products"</string>
+    <string name="compare_products">Compare Products</string>
     <string name="connectivity_check">Please check your internet connection</string>
     <string name="dismiss">Закрити</string>
     <string name="Terms">Terms</string>
