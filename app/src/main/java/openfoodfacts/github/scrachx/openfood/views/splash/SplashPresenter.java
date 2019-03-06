@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 
@@ -34,7 +33,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
 
     @Override
     public void refreshData() {
-        if (BuildConfig.FLAVOR.equals("off")) {
+        //if (BuildConfig.FLAVOR.equals("off")) {
             boolean firstRun = settings.getBoolean("firstRun", true);
             if (firstRun) {
                 settings.edit()
@@ -55,9 +54,9 @@ public class SplashPresenter implements ISplashPresenter.Actions {
             } else {
                 view.navigateToMainActivity();
             }
-        } else {
-            view.navigateToMainActivity();
-        }
+        //} else {
+        //    view.navigateToMainActivity();
+        //}
     }
 
     /*
