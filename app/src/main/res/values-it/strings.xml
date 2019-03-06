@@ -294,7 +294,7 @@
     <string name="scan_history_drawer">Cronologia</string>
     <string name="clear_history">Cancella cronologia</string>
     <string name="title_clear_history_dialog">Cancella</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Vuoi cancellare tutta la cronologia delle scansioni?</string>
     <string name="export_csv_history">Esporta CSV</string>
     <string name="txt_exporting_history">Sto esportando la cronologia…</string>
     <string name="txt_history_exported">Cronologia esportata</string>
@@ -307,8 +307,8 @@
     <string name="check_facts">Verifica</string>
     <string name="nutrition">Nutrizione</string>
     <string name="calculated_nutrition">Valori nutrizionali calcolati</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="please_enter_weight">Inserisci il peso del prodotto</string>
+    <string name="enter_weight">Inserisci il peso del prodotto</string>
     <string name="calculate_nutrition_facts">Calcola i valori nutrizionali</string>
     <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Carboidrato</string>
@@ -341,10 +341,10 @@
     <string name="nutriment_serving_size">Per porzione :</string>
     <string name="action_manage_account">Gestisci account</string>
     <string name="action_contributes">I tuoi contributi</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="choose_energy_unit">Scegli le tue unità preferite per l\'energia per la tabella nutrizionale</string>
+    <string name="energy_pref_title">Unità di energia preferita</string>
+    <string name="choose_volume_unit">Scegli le tue unità preferite di volume per la tabella nutrizionale</string>
+    <string name="volume_pref_title">Unità di volume preferita</string>
     <string name="logout_drawer">Termina sessione</string>
     <string name="contribution_without_account">Puoi accedere o creare un account per salvare il tuo contributo</string>
     <string name="textCarbonFootprint">Emissioni di CO2 (impronta climatica): </string>
@@ -487,11 +487,13 @@
     <string name="please_check_your_connection">Controlla la connessione.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Ricerca avanzata &amp; grafici</string>
+    <string name="compare_products">Compara prodotti</string>
     <string name="connectivity_check">Per favore controlla la tua connessione Internet</string>
     <string name="dismiss">Chiudi</string>
     <string name="Terms">Termini</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://it.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Generale</string>
     <string name="preference_header_network">Rete</string>
     <string name="preference_header_contributing">Contribuire</string>
@@ -606,7 +608,7 @@
     <string name="error_adding_ingredients">Qualcosa è andato storto durante il tentativo di aggiunta degli ingredienti del prodotto</string>
     <string name="unable_to_extract_ingredients">Impossibile estrarre gli ingredienti dall\'immagine</string>
     <string name="error_adding_nutrition_facts">Qualcosa è andato storto durante il tentativo di aggiunta delle informazioni nutrizionali del prodotto</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
+    <string name="error_in_carbohydrate_value">I carboidrati non possono essere inferiori alla somma degli zuccheri e dell\'amido</string>
     <string name="choose_nutrient">Scegli un nutriente</string>
     <string name="error_adding_product_details">Qualcosa è andato storto durante il tentativo di aggiunta dei dettagli del prodotto</string>
     <string name="hint_product_URL">Collegamento alla pagina ufficiale del prodotto</string>
@@ -626,7 +628,7 @@
     <string name="quantity_overwrite">Sovrascrittura della quantità</string>
     <string name="link_overwrite">Sovrascrittura del collegamento</string>
     <string name="save_product">Vuoi salvare il prodotto?</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">Qualcosa è andato storto durante l\'aggiunta del prodotto</string>
     <string name="photos">Foto</string>
     <string name="please_wait">Attendi</string>
     <string name="product_uploaded_successfully">Prodotto caricato con successo</string>
@@ -682,7 +684,7 @@
     <string name="hint_serving_size">Esempi: 60 g, 12 oz, 20 cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s è già presente nelle informazioni nutrizionali</string>
     <string name="save_edits">Salva modifiche</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="contribution_by">Contributori</string>
     <string name="title_activity_product">Titolo</string>
     <string name="description_activity_product">descrizione</string>
     <string name="intent_filter_share_label">Aggiungi a Open Food Facts</string>
@@ -717,16 +719,17 @@
     <string name="your_diets">La/e tua/e dieta/e</string>
     <string name="diet_name">Nome della dieta</string>
     <string name="diets_dialog_warning_title">Attenzione</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">I tuoi dati sulla dieta rimangono sul tuo dispositivo. Nulla verrà caricato da qualche parte.</string>
     <string name="edit_diet_name">Nome</string>
     <string name="edit_diet_description">Descrizione</string>
     <string name="edit_diet_enabled_disabled">Attivato/Disattivato</string>
     <string name="edit_diet_authorised_ingredients">Ingredienti autorizzati</string>
-    <string name="edit_diet_hint_ingredient_authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
+    <string name="edit_diet_hint_ingredient_authorised">Elenca gli ingredienti autorizzati che dovrebbero apparire in verde. Ad esempio: mele, funghi, pomodori… Puoi completare questa lista più tardi.</string>
     <string name="edit_diet_so_so_ingredients">Ingredienti così cosi</string>
-    <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
+    <string name="edit_diet_hint_so_so_ingredient">Elenca gli ingredienti problematici che dovrebbero apparire in arancione. Ad esempio: uova, pesce… Puoi completare questa lista più tardi.</string>
     <string name="edit_diet_unauthorised_ingredients">Ingredienti non autorizzati</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Elenca gli ingredienti non autorizzati che dovrebbero apparire in rosso. Ad esempio: glutine, latte, olio di palma, zucchero… Puoi completare questa lista più tardi.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
     <string name="add_nutrient_prompt_text">Aggiungi i dati nutrizionali per calcolare il punteggio-Nutri</string>
     <string name="add_category_prompt_text">Aggiungi una categoria per calcolare il punteggio-Nutri</string>
@@ -764,7 +767,7 @@
     <string name="add_to_product_lists">Aggiungi alle tue liste</string>
     <string name="txt_create_new_list">Crea una nuova lista</string>
     <string name="txt_add_to_new_list">Aggiungi a una nuova lista</string>
-    <string name="create_new_list_list_name">List Name</string>
+    <string name="create_new_list_list_name">Nome della lista</string>
     <string name="txt_eaten_products">Prodotti alimentari</string>
     <string name="txt_products_to_buy">Prodotti da acquistare</string>
     <string name="export_csv_your_listed_products">Esporta CSV</string>
@@ -773,9 +776,9 @@
     <string name="txt_discard">Annulla</string>
     <string name="txt_save">Salva</string>
     <string name="write_external_storage_your_listed_products">È richiesto il permesso di scrittura sulla memoria esterna per esportare la cronologia.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">Sarai in grado di aggiungere prodotti a questo elenco mediante la scansione di prodotti, trascinando la scheda del prodotto verso l\'alto e toccando \"Sto mangiando questo\".
+        Potrai anche aggiungere prodotti a questo elenco cercandoli e facendo clic sul pulsante \"+\" in alto a destra nella pagina del prodotto.</string>
+    <string name="txt_info_your_listed_products">Potrai aggiungere prodotti a questo elenco cercandoli e facendo clic sul pulsante \"+\" in alto a destra nella pagina del prodotto.</string>
     <string name="txt_i_m_eating_this">Sto mangiando questo</string>
     <string name="compare_product_prompt">Confronta questo prodotto</string>
     <string name="search_history_pref_title">Elimina la cronologia delle ricerche locali</string>
@@ -785,4 +788,6 @@
     <string name="settings_country_title">Paese</string>
     <string name="txt_no_nutrition_data">Questo prodotto non ha alcuna informazione nutrizionale sulla confezione. Se questo è cambiato, puoi modificare il prodotto.</string>
     <string name="empty"></string>
+    <string name="add_product">Aggiungi prodotti</string>
+    <string name="add_another_product">Aggiungi un altro prodotto</string>
 </resources>

@@ -487,11 +487,13 @@
     <string name="please_check_your_connection">crwdns114010:0crwdne114010:0</string>
     <string name="donation_url">crwdns115724:0crwdne115724:0</string>
     <string name="advanced_search_title">crwdns114014:0crwdne114014:0</string>
+    <string name="compare_products">crwdns115742:0crwdne115742:0</string>
     <string name="connectivity_check">crwdns114016:0crwdne114016:0</string>
     <string name="dismiss">crwdns114018:0crwdne114018:0</string>
     <string name="Terms">crwdns114020:0crwdne114020:0</string>
     <string name="TermsOfUse">crwdns114022:0crwdne114022:0</string>
     <string name="terms_url">crwdns114024:0crwdne114024:0</string>
+    <string name="hunger_game_url">crwdns115744:0crwdne115744:0</string>
     <string name="preference_header_general">crwdns114030:0crwdne114030:0</string>
     <string name="preference_header_network">crwdns114032:0crwdne114032:0</string>
     <string name="preference_header_contributing">crwdns114036:0crwdne114036:0</string>
@@ -785,4 +787,6 @@
     <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
+    <string name="add_product">crwdns115746:0crwdne115746:0</string>
+    <string name="add_another_product">crwdns115748:0crwdne115748:0</string>
 </resources>

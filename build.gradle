@@ -32,8 +32,8 @@ ext {
 
     daggerVersion = '2.13'
 
-    rxVersion = '2.1.7'
-    rxAndroidVersion = '2.0.1'
+    rxVersion = '2.2.7'
+    rxAndroidVersion = '2.1.0'
 
     retrofitVersion = '2.3.0'
     okhttpVersion = '3.9.0'

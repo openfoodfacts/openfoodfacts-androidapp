@@ -487,11 +487,13 @@
     <string name="please_check_your_connection">कृपया अपना कनेक्शन जाँचें</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">उन्नत खोज और चार्ट्स</string>
+    <string name="compare_products">Compare Products</string>
     <string name="connectivity_check">कृपया अपना इंटरनेट कनेक्शन जाँचें।</string>
     <string name="dismiss">ख़ारिज करें</string>
     <string name="Terms">शर्तें</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world-hi.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">सामान्य</string>
     <string name="preference_header_network">नेटवर्क</string>
     <string name="preference_header_contributing">योगदान</string>
@@ -785,4 +787,6 @@
     <string name="settings_country_title">देश</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="empty"></string>
+    <string name="add_product">Add Products</string>
+    <string name="add_another_product">Add another product</string>
 </resources>
