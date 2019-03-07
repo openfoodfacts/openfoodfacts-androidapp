@@ -282,7 +282,11 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             }
             if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
 
-                holder.productComparisonImageGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                if (product.getNutritionGradeFr() != null) {
+                    holder.productComparisonImageGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                } else {
+                    holder.productComparisonImageGrade.setImageDrawable(null);
+                }
 
                 if (nutriments!=null) {
                     holder.nutrientsRecyclerView.setVisibility(View.VISIBLE);
