@@ -754,7 +754,7 @@
     <string name="detected_ingredients">Ingrédients détectés</string>
     <string name="txtDownloading">Téléchargement des taxonomies…</string>
     <string name="txtLoaded">Les traductions nécessaires au bon fonctionnement de l'appli ont été téléchargées avec succès</string>
-    <string name="txtConnectionError">Nous n\'avons pas pu télécharger les traductions nécessaires au bon fonctionnement de l'appli. Cela peut être dû à une erreur de connexion.</string>
+    <string name="txtConnectionError">Nous n\'avons pas pu télécharger les traductions nécessaires au bon fonctionnement de l\'appli. Cela peut être dû à une erreur de connexion.</string>
     <string name="set_image_name">Image sélectionnée en tant que</string>
     <string name="warning">Avertissement :</string>
     <string name="customer_service">Service Clients :</string>
