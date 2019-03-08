@@ -290,7 +290,7 @@
     <string name="scan_history_drawer">履歴</string>
     <string name="clear_history">履歴をクリア</string>
     <string name="title_clear_history_dialog">クリア</string>
-    <string name="text_clear_history_dialog">すべてのスキャン履歴をクリアしますか?</string>
+    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">CSV をエクスポート</string>
     <string name="txt_exporting_history">履歴のエクスポート中…</string>
     <string name="txt_history_exported">履歴をエクスポートしました</string>
@@ -303,8 +303,8 @@
     <string name="check_facts">確認</string>
     <string name="nutrition">栄養</string>
     <string name="calculated_nutrition">計算された栄養</string>
-    <string name="please_enter_weight">体重を入力してください</string>
-    <string name="enter_weight">体重を入力</string>
+    <string name="please_enter_weight">Please type the product weight</string>
+    <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">栄養成分を計算</string>
     <string name="txt_calories_result">%2$s %3$s の %1$s kcal</string>
     <string name="nutrition_carbohydrate">炭水化物</string>
@@ -337,10 +337,10 @@
     <string name="nutriment_serving_size">品目当たり :</string>
     <string name="action_manage_account">アカウントの管理</string>
     <string name="action_contributes">あなたの貢献</string>
-    <string name="choose_energy_unit">栄養成分表のエネルギーに使用するお好みの単位を選択してください</string>
-    <string name="energy_pref_title">エネルギーの単位</string>
-    <string name="choose_volume_unit">栄養成分表の分量に使用するお好みの単位を選択してください</string>
-    <string name="volume_pref_title">分量の単位</string>
+    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
+    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
+    <string name="volume_pref_title">Preferred volume unit</string>
     <string name="logout_drawer">ログアウト</string>
     <string name="contribution_without_account">サインイン、またはアカウントを作成して、貢献を続けることができます</string>
     <string name="textCarbonFootprint">カーボンフットプリント / CO2 排出量: </string>
@@ -481,12 +481,15 @@
     <string name="translate_help_title">Open Food Factsの翻訳を手伝う</string>
     <string name="translate_help_summary">Open Food Factsデータベースをあなたの言語に対応させます - 技術的な知識は必要ありません</string>
     <string name="please_check_your_connection">インターネット接続を確認して下さい</string>
-    <string name="donation_url">https://www.helloasso.com/associations/open-food-facts/formulaires/1/widget/en</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">高度な検索 &amp; グラフ</string>
+    <string name="compare_products">Compare Products</string>
     <string name="connectivity_check">インターネット接続を確認してください</string>
     <string name="dismiss">消去</string>
     <string name="Terms">利用規約</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">全般</string>
     <string name="preference_header_network">ネットワーク</string>
     <string name="preference_header_contributing">貢献</string>
@@ -601,7 +604,7 @@
     <string name="error_adding_ingredients">製品の原材料を追加中に問題が発生しました</string>
     <string name="unable_to_extract_ingredients">画像から成分を抽出することができません。</string>
     <string name="error_adding_nutrition_facts">製品の栄養成分を追加中に問題が発生しました。</string>
-    <string name="error_in_carbohydrate_value">炭水化物は、砂糖とでんぷんの合計より少なくできません</string>
+    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">栄養素を選ぶ</string>
     <string name="error_adding_product_details">製品の詳細を追加中に問題が発生しました</string>
     <string name="hint_product_URL">製品の公式ページへのリンク</string>
@@ -621,7 +624,7 @@
     <string name="quantity_overwrite">数量の上書き</string>
     <string name="link_overwrite">リンクの上書き</string>
     <string name="save_product">製品を保存しますか?</string>
-    <string name="error_adding_product">製品を追加するときに問題が発生しました</string>
+    <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">写真</string>
     <string name="please_wait">しばらくお待ちください</string>
     <string name="product_uploaded_successfully">製品をアップロードしました</string>
@@ -677,7 +680,7 @@
     <string name="hint_serving_size">例: 60 g, 12 オンス, 20 cl, 2 液量オンス</string>
     <string name="nutrient_already_added">%s はすでに栄養成分表に含まれています</string>
     <string name="save_edits">編集内容を保存</string>
-    <string name="contribution_by">投稿者</string>
+    <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">タイトル</string>
     <string name="description_activity_product">説明</string>
     <string name="intent_filter_share_label">Open Food Facts に寄付する</string>
@@ -712,7 +715,7 @@
     <string name="your_diets">あなたの規定食</string>
     <string name="diet_name">既定食名</string>
     <string name="diets_dialog_warning_title">警告</string>
-    <string name="warning_diets_data">あなたの食事データはあなたのデバイスに残ります。何もアップロードされません。</string>
+    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
     <string name="EditDiet_Name">名前</string>
     <string name="EditDiet_Description">説明</string>
     <string name="EditDiet_Enabled_Disabled">有効/無効</string>
@@ -721,7 +724,7 @@
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
     <string name="EditDiet_Hint_So_So_Ingredient">オレンジ色で表示すべき問題のある原材料を一覧表示します。例 : 卵、魚… この一覧は後で完成させることができます。</string>
     <string name="EditDiet_Unauthorised_Ingredients">未承認の原材料</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">赤で表示すべき未承認の原材料を一覧表示します。例 : グルテン、牛乳、パーム油、砂糖... 後でこの一覧を完成させることができます。</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <string name="extract_ingredients_prompt">原材料を抽出</string>
     <string name="add_nutrient_prompt_text">栄養成分を追加してニュートリスコアを計算する</string>
     <string name="add_category_prompt_text">カテゴリーを追加してニュートリスコアを計算する</string>
@@ -759,6 +762,7 @@
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="export_csv_your_listed_products">CSV をエクスポート</string>
@@ -779,4 +783,7 @@
     <string name="settings_country_title">国</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
+    <string name="empty"></string>
+    <string name="add_product">Add Products</string>
+    <string name="add_another_product">Add another product</string>
 </resources>

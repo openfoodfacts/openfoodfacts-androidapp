@@ -307,6 +307,12 @@ public class AddProductOverviewFragment extends BaseFragment {
             greyLine2.setVisibility(View.GONE);
             greyLine3.setVisibility(View.GONE);
             greyLine4.setVisibility(View.GONE);
+            otherInfo.setVisibility(View.GONE);
+            conservationCond.setVisibility(View.GONE);
+            recyclingInstructionToDiscard.setVisibility(View.GONE);
+            recyclingInstructionToRecycle.setVisibility(View.GONE);
+            periodsAfterOpening.setVisibility(View.GONE);
+            cbEating.setVisibility(View.GONE);
         } else {
             sectionManufacturingDetails.setVisibility(View.VISIBLE);
             sectionPurchasingDetails.setVisibility(View.VISIBLE);

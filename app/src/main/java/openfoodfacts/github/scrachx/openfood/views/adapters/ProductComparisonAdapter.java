@@ -187,7 +187,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
 
             //Modify the text on the button for adding products
             if (this.addProductButton != null) {
-                addProductButton.setText("Add another product");
+                addProductButton.setText(R.string.add_another_product);
             }
 
             holder.productComparisonImage.setOnClickListener(new View.OnClickListener() {
@@ -282,7 +282,11 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             }
             if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
 
-                holder.productComparisonImageGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                if (product.getNutritionGradeFr() != null) {
+                    holder.productComparisonImageGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                } else {
+                    holder.productComparisonImageGrade.setImageDrawable(null);
+                }
 
                 if (nutriments!=null) {
                     holder.nutrientsRecyclerView.setVisibility(View.VISIBLE);
@@ -304,11 +308,11 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 List<String> tags=product.getEnvironmentImpactLevelTags();
                 String tag=tags.get(0).replace("\"","");
                 holder.productComparisonCo2Icon.setVisibility(View.VISIBLE);
-                if(tag.equals("en-high")){
+                if(tag.equals("en:high")){
                     holder.productComparisonCo2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
-                } else if(tag.equals("en-low")){
+                } else if(tag.equals("en:low")){
                     holder.productComparisonCo2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
-                } else if(tag.equals("en-medium")){
+                } else if(tag.equals("en:medium")){
                     holder.productComparisonCo2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
                 } else {
                     holder.productComparisonCo2Icon.setVisibility(View.GONE);
