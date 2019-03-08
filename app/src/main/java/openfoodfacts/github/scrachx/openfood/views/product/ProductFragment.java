@@ -206,6 +206,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     }
 
     private void setupViewPager(ViewPager viewPager) {
+        adapterResult = new ProductFragmentPagerAdapter(getChildFragmentManager());
         adapterResult = ProductActivity.setupViewPager(viewPager, adapterResult, mState, getActivity());
     }
 
