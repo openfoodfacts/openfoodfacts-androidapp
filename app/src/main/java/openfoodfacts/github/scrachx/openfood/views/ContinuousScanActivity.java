@@ -327,11 +327,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 if(tags.size() > 0) {
                                     String tag=tags.get(0).replace("\"","");
                                     co2Icon.setVisibility(View.VISIBLE);
-                                    if(tag.equals("en-high")){
+                                    if(tag.equals("en:high")){
                                         co2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
-                                    } else if(tag.equals("en-low")){
+                                    } else if(tag.equals("en:low")){
                                         co2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
-                                    } else if(tag.equals("en-medium")){
+                                    } else if(tag.equals("en:medium")){
                                         co2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
                                     } else {
                                         co2Icon.setVisibility(View.GONE);

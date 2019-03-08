@@ -43,6 +43,7 @@
         android:layout_margin="16dp"
         android:contentDescription="@string/try_it_scan_now"
         app:elevation="10dp"
+        android:layout_gravity="top"
         app:fabSize="normal"
         app:layout_anchor="@id/bottom_navigation"
         app:layout_anchorGravity="top|right"
