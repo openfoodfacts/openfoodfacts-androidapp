@@ -13,7 +13,7 @@
     <string name="website_contributor">https://world-da.openfoodfacts.org/bidragsyder</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Products Facts er en åben database med flere end %1$d produkter (plus dem du vil bidrage med) fra hele verden.</string>
-    <string name="txtHome">Open Products Facts er en åben database over alle produkter i verden.</string>
+    <string name="txtHome">Open Products Facts er en åben database over alle verdena produkter.</string>
     <string name="slide_1_title">Bidrag til produktgennemsigtighed</string>
     <string name="slide_1_desc">Skan produkter, tilføj billeder, gør produktgennemsigtighed til virkelighed</string>
     <string name="slide_2_title">Få fat i fakta</string>
@@ -33,8 +33,8 @@
     <string name="text_offline_info_dialog">Indskan produkter selv mens du er offline, så du kan føje dem til Open Products Facts senere. De skannede produkter vil fremgå her, og du vil kunne indsende dem vha. knappen nedenfor.</string>
     <string name="warning_alert_data">Dine allergioplysninger vil aldrig blive sendt til Open Products Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
     <!-- OPF tagline in different languages -->
-    <string name="tagline">den gratis produktdatabase</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">Produktet %1$s, du har skannet, findes endnu ikke i Open Products Facts. Kan du tilføje det?</string>
     <string name="currently_on_version">I øjeblikket i Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Hjælp med at kategorisere produkter</string>
 </resources>

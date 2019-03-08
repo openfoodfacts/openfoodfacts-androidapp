@@ -40,6 +40,10 @@
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
+        
+        <provider
+            android:authorities="openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider"
+            android:name=".utils.SearchSuggestionProvider" />
 
         <activity
             android:name=".views.splash.SplashActivity"
@@ -62,16 +66,14 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <intent-filter
-                android:label="@string/intent_filter_share_label">
+            <intent-filter android:label="@string/intent_filter_share_label">
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:mimeType="image/*" />
             </intent-filter>
-            <intent-filter
-                android:label="@string/intent_filter_share_label">
+            <intent-filter android:label="@string/intent_filter_share_label">
                 <action android:name="android.intent.action.SEND" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -140,6 +142,7 @@
         </service>
         <service android:name=".utils.UploadService" />
         <service android:name=".utils.WifiUploadReceiver$WifiService" />
+        <service android:name=".views.LoadTaxonomiesService" />
 
         <provider
             android:name=".utils.GenericFileProvider"
@@ -182,14 +185,19 @@
             android:name=".views.ContinuousScanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".views.AddProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
         <activity android:name=".views.product.CalculateDetails" />
+
+        <activity
+            android:name=".views.ProductListsActivity"
+            android:parentActivityName=".views.MainActivity" />
+        <activity android:name=".views.YourListedProducts"></activity>
+        <activity android:name=".views.ProductComparisonActivity"></activity>
+
     </application>
 
 </manifest>

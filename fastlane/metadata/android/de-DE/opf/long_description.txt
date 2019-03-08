@@ -1,9 +1,9 @@
 „Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.
 
-★★★ Beitrag zur Transparent von Produkten ★★★
+★★★ Beitrag zur Transparenz von Produkten ★★★
 
 • Open Products Facts ist eine Produktdatenbank, die von jedermann für alle erstellt wurde.
-• Sie können sie verwenden, um bessere Lebensmittelauswahlen zu treffen, und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
+• Sie können sie verwenden, um bessere Lebensmittelauswahlen zu treffen und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
 • Open Products Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können. 
 • Sie können noch heute beginnen, indem Sie Ihr erstes Produkt hinzufügen. 
 
@@ -24,7 +24,7 @@
 ★★★ Ihre Produkte — Ihre Daten ★★★
 • Ihre persönlichen Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
-• Sie können Ihre Erfassungsverlauf exportieren
+• Sie können Ihren Erfassungsverlauf exportieren
 
 Für Lebensmittel können Sie „Open Food Facts”, für Kosmetika „Open Beauty Facts” und für Tiernahrung „Open Pet Food Facts” installieren.
 

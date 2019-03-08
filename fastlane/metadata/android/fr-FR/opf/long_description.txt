@@ -39,7 +39,7 @@ Collecter la nourriture, la cosmétique et la nourriture pour animaux de compagn
 
 Nous avons donc décidé de mettre en place non pas une 1, mais pas moins de 77000 nouvelles bases de données distinctes! 
 
-Open Products Facts sera un projet extrêmement ambitieux. Voici quelques-uns d'entre elles: 
+Open Products Facts sera un projet extrêmement ambitieux. Voici quelques-unes d'entre elles: 
 
 Open Crayons Facts - La plus grande base de données ouverte de crayons à colorier
 

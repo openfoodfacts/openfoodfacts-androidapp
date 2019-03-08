@@ -16,7 +16,7 @@
     <string name="txtHome">Az Open Pet Food Facts állateledelek adatbázisa, a termékekhez tartozó összetevők, allergének, jelölések adataival együtt és minden egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel. Vau. Vau.</string>
     <string name="slide_1_title">Hozzájárulás az Állateledel átláthatósághoz</string>
     <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé az állateledel átláthatóságot</string>
-    <string name="slide_2_title">Kapja meg a tényeket</string>
+    <string name="slide_2_title">Kapja meg a Tényeket</string>
     <string name="slide_2_desc">Széleskörű információ az ön által beolvasott termékről, megfejtve az ön számára</string>
     <string name="slide_3_title">Kövesse nyomon a terméket amit használ</string>
     <string name="slide_3_desc">Az összes állateledel amit ön beolvas, egy könnyen kezelhető listán amit exportálni is tud</string>
@@ -36,5 +36,5 @@
     <string name="tagline">free pet food products database</string>
     <string name="product_not_found">A beolvasott %1$s termék nem található az Open Pet Food Facts adatbázisában. Hozzá tudná adni?</string>
     <string name="currently_on_version">Currently on Open Pet Food Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Segítsen kategorizálni a termékeket</string>
 </resources>

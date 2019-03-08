@@ -1,11 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
@@ -16,67 +14,39 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
-import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
-import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -122,6 +92,8 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         toolbar.setVisibility(View.GONE);
         mButtonScan.setVisibility(View.GONE);
 
+        mState = (State) getArguments().getSerializable("state");
+
         setupViewPager(viewPager);
 
         viewPager.setNestedScrollingEnabled(true);
@@ -130,7 +102,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
         api = new OpenFoodAPIClient(getActivity());
 
-        mState = (State) getArguments().getSerializable("state");
         if (!Utils.isHardwareCameraInstalled(getContext())) {
             mButtonScan.setVisibility(View.GONE);
         }
@@ -202,7 +173,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                     break;
 
                 case R.id.search_product:
-                    startActivity(new Intent(getActivity(), MainActivity.class));
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.putExtra("product_search", true);
+                    startActivity(intent);
                     break;
 
                 case R.id.home:
@@ -229,66 +202,12 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @OnClick(R.id.buttonScan)
     protected void OnScan() {
-        if (Utils.isHardwareCameraInstalled(getActivity())) {
-            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(getActivity())
-                            .title(R.string.action_about)
-                            .content(R.string.permission_camera)
-                            .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                            .show();
-                } else {
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                }
-            } else {
-                Intent intent = new Intent(getActivity(), ContinuousScanActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        }
+        ProductActivity.onScanButtonClicked(getActivity());
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        String[] menuTitles = getResources().getStringArray(R.array.nav_drawer_items_product);
-
         adapterResult = new ProductFragmentPagerAdapter(getChildFragmentManager());
-        adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-        if (preferences.getBoolean("contributionTab", false)) {
-            adapterResult.addFragment(new ContributorsFragment(), getString(R.string.contribution_tab));
-        }
-        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opff")) {
-            adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
-        }
-        if (BuildConfig.FLAVOR.equals("off")) {
-            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
-            if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("photoMode", false)) {
-                adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
-            }
-        }
-        if (BuildConfig.FLAVOR.equals("opff")) {
-            adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
-
-            if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("photoMode", false)) {
-                adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
-            }
-        }
-
-        if (BuildConfig.FLAVOR.equals("obf")) {
-            if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("photoMode", false)) {
-                adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
-            }
-        }
-
-        if (BuildConfig.FLAVOR.equals("opf")) {
-            adapterResult.addFragment(new ProductPhotosFragment(), "Product Photos");
-        }
-
-
-        viewPager.setAdapter(adapterResult);
+        adapterResult = ProductActivity.setupViewPager(viewPager, adapterResult, mState, getActivity());
     }
 
     /**
@@ -305,85 +224,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-//                NavUtils.navigateUpFromSameTask(this);
-                getActivity().finish();
-                return true;
-
-            case R.id.menu_item_share:
-                String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
-                Intent sharingIntent = new Intent();
-                sharingIntent.setAction(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
-                String shareSub = "\n\n";
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                return true;
-
-            case R.id.action_edit_product:
-                String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
-                if (mState.getProduct().getUrl() != null) {
-                    url = " " + mState.getProduct().getUrl();
-                }
-
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getActivity().getBaseContext(), null);
-
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(url), new WebViewFallback());
-                return true;
-
-            case R.id.action_facts:
-
-                MaterialDialog.Builder builder = new MaterialDialog.Builder(getActivity())
-                        .title(R.string.calculate_nutrition_facts)
-                        .customView(R.layout.dialog_calculate_calories, false)
-                        .dismissListener(dialogInterface -> Utils.hideKeyboard(getActivity()));
-                MaterialDialog dialog = builder.build();
-                dialog.show();
-                View view = dialog.getCustomView();
-                if (view != null) {
-                    EditText etWeight = view.findViewById(R.id.edit_text_weight);
-                    Spinner spinner = view.findViewById(R.id.spinner_weight);
-                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
-                            btn.setOnClickListener(new View.OnClickListener() {
-
-                                @Override
-                                public void onClick(View v) {
-                                    if (!TextUtils.isEmpty(etWeight.getText().toString())) {
-
-                                        String SpinnerValue = (String) spinner.getSelectedItem();
-                                        String weight = etWeight.getText().toString();
-                                        Product p = mState.getProduct();
-                                        Intent intent = new Intent(getContext(), CalculateDetails.class);
-                                        intent.putExtra("sampleObject", p);
-                                        intent.putExtra("spinnervalue", SpinnerValue);
-                                        intent.putExtra("weight", weight);
-                                        startActivity(intent);
-                                        dialog.dismiss();
-                                    } else {
-                                        Toast.makeText(getContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-                }
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        return ProductActivity.onOptionsItemSelected(item, mState, getActivity());
     }
 
     @Override
@@ -428,39 +269,6 @@ doesn't have calories information in nutrition facts.
                             .show();
                 }
             }
-        }
-    }
-
-    public void showBottomScreen(JSONObject result, AdditiveName additive) {
-        showBottomSheet(result, additive.getId(), additive.getName(), additive.getWikiDataId(),
-                SearchType.ADDITIVE, "additive_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, LabelName label) {
-        showBottomSheet(result, label.getId(), label.getName(), label.getWikiDataId(),
-                SearchType.LABEL, "label_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, CategoryName category) {
-        showBottomSheet(result, category.getId(), category.getName(), category.getWikiDataId(),
-                SearchType.CATEGORY, "category_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, AllergenName allergen) {
-        showBottomSheet(result, allergen.getId(), allergen.getName(), allergen.getWikiDataId(),
-                SearchType.ALLERGEN, "allergen_details_fragment");
-    }
-
-    private void showBottomSheet(JSONObject result, Long id, String name,
-                                 String wikidataId, String searchType, String fragmentTag) {
-        try {
-            String jsonObjectStr = (result != null) ? result.getJSONObject("entities")
-                    .getJSONObject(wikidataId).toString() : null;
-            ProductAttributeDetailsFragment fragment =
-                    ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
-            fragment.show(getChildFragmentManager(), fragmentTag);
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 

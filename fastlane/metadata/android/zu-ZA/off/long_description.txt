@@ -1,23 +1,23 @@
-Skena imikhiqizo yokudla noma ibhakhodi yabo ukuthola idatha kumazitha, izithasiselo namaqiniso okudla.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
-Uhlelo lokusebenza luvumela ukubuka imikhiqizo engu-547.000 (kufaka phakathi i-175.000 e-US) esivele iqukethe i-database evulekile nevulekile ye-Open Food Facts, futhi futhi ukwengeza izithombe nedatha yemikhiqizo elahlekile.
+The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
 
 Ukuze uthole iphrojekthi ye-Open Food Facts, sicela uvakashele ku-https: //openfoodfacts.org
 
 
-*** Nika isandla ekudleni kokuphawula ***
+***Contribute to Food Transparency***
 
-- I-Open Food Facts iyinhlangano yemininingwane yokudla eyenziwe yilowo nalowo, wonke umuntu.
-- Ungayisebenzisa ukwenza ukukhetha okungcono kokudla, futhi njengoba kuvuliwe idatha, noma ubani angayisebenzisa kabusha nganoma iyiphi injongo.
-- I-Open Food Facts yinqubo engeyona inzuzo eyenziwe yizinkulungwane zamavolontiya avela emhlabeni jikelele. Sinezinhlelo eziningi ezithakazelisayo ongazifaka ngezindlela eziningi ezahlukene. 
-- Ungaqala ukufaka isandla namhlanje ngokufaka umkhiqizo kusuka ebhodini lakho lokudla. 
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- You can start contributing today by adding a product from your food cupboard. 
 
-*** Thola amaqiniso ***
-- I-Open Food Facts ikusiza ukuba wenze umqondo wokuphrinta okuhle kumalebula womkhiqizo. Uzokwazi ukuthola (ngokusho izinkomba ezikhona emikhiqizo):
-- isikhuthazo se-carbon (ukukhishwa kwe-CO2) nokupakisha (kanye nemiyalelo yokuvuselela),
-- I-Nutriscore (amaphuzu okunomsoco), izakhi, amanothi / amanoni, amafutha amaningi agcwele, ama-carbohydrate, ushukela, i-fibre, amaprotheni nosawoti kanye ne-sodium.
-- ama-brand, ama-allergen, amalebula (i-bio, i-gluten yamahhala, i-vegan, i-vegetarian, i-halal, i-kosher ...), ulwazi lwe-traceability (amakhodi wokupakisha, umsuka wezithako)
-- Ngewayini newayini, uzothola okuqukethwe kotshwala.
+*** Get the Facts ***
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
 
 *** Isebenza kahle nganoma yisiphi isimo ***
 - Ungangeza imikhiqizo emisha, noma ngabe awunawo uxhumano lwe-inthanethi okwamanje.
@@ -29,7 +29,7 @@ Ukuze uthole iphrojekthi ye-Open Food Facts, sicela uvakashele ku-https: //openf
 - Ungasebenzisa uhlelo lokusebenza ngokungaziwa
 - Ungathumela umlando wakho wokuskena
 
-I-Open Food Facts iyatholakala futhi kuwebhu ku-https: //world.openfoodfacts.org
-Imibuzo, impendulo: contact@openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Questions, feedback : contact@openfoodfacts.org
 
-Ukuze uthole izimonyo, ungafaka ama-Open Beauty Facts, ukuze uthole ukudla kwezilwane, amaqiniso avulekile wokudla okufakiwe, kanye nayo yonke eminye imikhiqizo, i-Open Products Facts.
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

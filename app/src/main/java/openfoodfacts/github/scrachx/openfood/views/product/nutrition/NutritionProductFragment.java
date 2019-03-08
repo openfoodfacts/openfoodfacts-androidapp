@@ -19,7 +19,11 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +31,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -93,6 +98,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
     @BindView(R.id.imageGrade)
     ImageView img;
+    @BindView(R.id.imageGradeLayout)
+    LinearLayout imageGradeLayout;
+    @BindView(R.id.nutriscoreLink)
+    TextView nutriscoreLink;
     @BindView(R.id.listNutrientLevels)
     RecyclerView rv;
     @BindView(R.id.textServingSize)
@@ -113,8 +122,16 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView addPhotoLabel;
     @BindView(R.id.nutriments_recycler_view)
     RecyclerView nutrimentsRecyclerView;
+    @BindView(R.id.textNutriScoreInfo)
+    TextView textNutriScoreInfo;
     @BindView(R.id.nutrient_levels_card_view)
     CardView nutrientLevelsCardView;
+    @BindView(R.id.calculateNutritionFacts)
+    Button calculateNutritionFacts;
+    @BindView(R.id.nutrimentsCardView)
+    CardView nutrimentsCardView;
+    @BindView(R.id.textNoNutritionData)
+    TextView textNoNutritionData;
 
     private String mUrlImage;
     private String barcode;
@@ -128,6 +145,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     //the following booleans indicate whether the prompts are to be made visible
     private boolean showNutritionPrompt = false;
     private boolean showCategoryPrompt = false;
+    //boolean to determine if nutrition data should be shown
+    private boolean showNutritionData=true;
     private Product product;
     private State mState;
 
@@ -164,6 +183,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
         if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
             showNutritionPrompt = false;
+            showNutritionData = false;
         } else {
             if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
                 showNutritionPrompt = true;
@@ -179,6 +199,16 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             } else if (showCategoryPrompt) {
                 nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
             }
+        }
+
+        if (!showNutritionData) {
+            mImageNutrition.setVisibility(View.GONE);
+            addPhotoLabel.setVisibility(View.GONE);
+            imageGradeLayout.setVisibility(View.GONE);
+            calculateNutritionFacts.setVisibility(View.GONE);
+            nutrimentsCardView.setVisibility(View.GONE);
+            textNoNutritionData.setVisibility(View.VISIBLE);
+
         }
 
         List<NutrientLevelItem> levelItem = new ArrayList<>();
@@ -261,12 +291,22 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                                                     salt.getImageLevel()));
             }
 
-            img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
-            img.setOnClickListener(view1 -> {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            if (product.getNutritionGradeFr() != null && !product.getNutritionGradeFr().isEmpty()) {
+                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                    imageGradeLayout.setVisibility(View.VISIBLE);
+                    img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+                } else {
+                    img.setVisibility(View.INVISIBLE);
+                }
+                img.setOnClickListener(view1 -> {
+                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
-            });
+                    CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+                });
+            } else {
+                imageGradeLayout.setVisibility(View.GONE);
+            }
+
         }
 
         //checks the flags and accordingly sets the text of the prompt
@@ -283,6 +323,22 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
+
+        textNutriScoreInfo.setClickable(true);
+        textNutriScoreInfo.setMovementMethod(LinkMovementMethod.getInstance());
+        SpannableStringBuilder spannableStringBuilder=new SpannableStringBuilder();
+        ClickableSpan clickableSpan=new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View view) {
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getActivity().getPackageName()));
+                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.url_nutrient_values)), new WebViewFallback());
+
+            }
+        };
+        spannableStringBuilder.append(getString(R.string.txtNutriScoreInfo));
+        spannableStringBuilder.setSpan(clickableSpan,0,spannableStringBuilder.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textNutriScoreInfo.setText(spannableStringBuilder);
 
         if (TextUtils.isEmpty(product.getServingSize())) {
             serving.setVisibility(View.GONE);
@@ -465,6 +521,14 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         return items;
+    }
+
+    @OnClick(R.id.nutriscoreLink)
+    void nutriscoreLinkDisplay() {
+        if (product.getNutritionGradeFr() != null) {
+            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+        }
     }
 
     @OnClick(R.id.imageViewNutrition)

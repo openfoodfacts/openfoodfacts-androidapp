@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.preference.PreferenceManager;
@@ -32,6 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -52,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
@@ -69,7 +72,7 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -105,6 +108,14 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     TextView palmOilProduct;
     @BindView(R.id.textMayBeFromPalmOilProduct)
     TextView mayBeFromPalmOilProduct;
+    @BindView(R.id.novaLayout)
+    LinearLayout novaLayout;
+    @BindView(R.id.nova_group)
+    ImageView novaGroup;
+    @BindView(R.id.novaExplanation)
+    TextView novaExplanation;
+    @BindView(R.id.novaMethodLink)
+    TextView novaMethodLink;
     @BindView(R.id.imageViewIngredients)
     ImageView mImageIngredients;
     @BindView(R.id.addPhotoLabel)
@@ -154,6 +165,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private CustomTabsIntent customTabsIntent;
     private IIngredientsProductPresenter.Actions presenter;
     private ProductFragmentPagerAdapter pagerAdapter;
+    private boolean extractIngredients = false;
     private boolean sendUpdatedIngredientsImage = false;
 
     //boolean to determine if image should be loaded or not
@@ -302,7 +314,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         List<String> allergens = getAllergens();
 
-        if (mState != null && !product.getIngredientsText().isEmpty()) {
+        if (mState != null && product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
             textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
@@ -359,6 +371,19 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 mayBeFromPalmOilProduct.setVisibility(View.GONE);
             }
         }
+
+        if (product.getNovaGroups() != null) {
+            novaLayout.setVisibility(View.VISIBLE);
+            novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups(), getContext()));
+            novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+            novaGroup.setOnClickListener((View v) -> {
+                Uri uri = Uri.parse(getString(R.string.url_nova_groups));
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
+            });
+        } else {
+            novaLayout.setVisibility(View.GONE);
+        }
     }
 
     private CharSequence getAdditiveTag(AdditiveName additive) {
@@ -369,58 +394,32 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             public void onClick(View view) {
                 if (additive.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        if (getActivity() instanceof ProductActivity) {
-                            ProductActivity productActivity = (ProductActivity) getActivity();
-                            if (value) {
-                                if (productActivity != null && !productActivity.isFinishing()) {
-                                    productActivity.showBottomScreen(result, additive);
-                                }
-                            } else {
-                                if (additive.hasOverexposureData()) {
-                                    if (productActivity != null && !productActivity.isFinishing()) {
-                                        productActivity.showBottomScreen(null, additive);
-                                    }
-                                } else {
-                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                                }
+                        FragmentActivity activity = getActivity();
+                        if (value) {
+                            if (activity != null && !activity.isFinishing()) {
+                                BottomScreenCommon.showBottomScreen(result, additive,
+                                        activity.getSupportFragmentManager());
                             }
                         } else {
-                            ProductFragment productFragment = (ProductFragment) getParentFragment();
-                            if (value) {
-                                if (productFragment != null) {
-                                    productFragment.showBottomScreen(result, additive);
+                            if (additive.hasOverexposureData()) {
+                                if (activity != null && !activity.isFinishing()) {
+                                    BottomScreenCommon.showBottomScreen(result, additive,
+                                            activity.getSupportFragmentManager());
                                 }
                             } else {
-                                if (additive.hasOverexposureData()) {
-                                    if (productFragment != null) {
-                                        productFragment.showBottomScreen(null, additive);
-                                    }
-
-                                } else {
-                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                                }
+                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                             }
                         }
                     });
                 } else {
-                    if (getActivity() instanceof ProductActivity) {
-                        ProductActivity productActivity = (ProductActivity) getActivity();
-                        if (additive.hasOverexposureData()) {
-                            if (productActivity != null && !productActivity.isFinishing()) {
-                                productActivity.showBottomScreen(null, additive);
-                            }
-                        } else {
-                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                    FragmentActivity activity = getActivity();
+                    if (additive.hasOverexposureData()) {
+                        if (activity != null && !activity.isFinishing()) {
+                            BottomScreenCommon.showBottomScreen(null, additive,
+                                    activity.getSupportFragmentManager());
                         }
                     } else {
-                        ProductFragment productFragment = (ProductFragment) getParentFragment();
-                        if (additive.hasOverexposureData()) {
-                            if (productFragment != null) {
-                                productFragment.showBottomScreen(null, additive);
-                            }
-                        } else {
-                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                        }
+                        ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                     }
                 }
             }
@@ -468,16 +467,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                             allergen.getWikiDataId(),
                             (value, result) -> {
                                 if (value) {
-                                    if (getActivity() instanceof ProductActivity) {
-                                        ProductActivity productActivity = (ProductActivity) getActivity();
-                                        if (productActivity != null && !productActivity.isFinishing()) {
-                                            productActivity.showBottomScreen(result, allergen);
-                                        }
-                                    } else {
-                                        ProductFragment productFragment = (ProductFragment) getParentFragment();
-                                        if (productFragment != null) {
-                                            productFragment.showBottomScreen(result, allergen);
-                                        }
+                                    FragmentActivity activity = getActivity();
+                                    if (activity != null && !activity.isFinishing()) {
+                                        BottomScreenCommon.showBottomScreen(result, allergen,
+                                                activity.getSupportFragmentManager());
                                     }
                                 } else {
                                     ProductBrowsingListActivity.startActivity(getContext(),
@@ -663,12 +656,43 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
     }
 
+    @OnClick(R.id.novaMethodLink)
+    void novaMethodLinkDisplay() {
+        if (product.getNovaGroups() != null) {
+            Uri uri = Uri.parse(getString(R.string.url_nova_groups));
+            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
+        }
+    }
+
     @OnClick(R.id.extract_ingredients_prompt)
     public void extractIngredients() {
-        Intent intent = new Intent( getActivity(), AddProductActivity.class );
-        intent.putExtra( "edit_product", product);
-        intent.putExtra("perform_ocr",true);
-        startActivity(intent);
+        extractIngredients = true;
+
+        final SharedPreferences settings = getActivity().getSharedPreferences( "login", 0 );
+        final String login = settings.getString( "user", "" );
+        if( login.isEmpty() )
+        {
+            new MaterialDialog.Builder( getContext() )
+                    .title( R.string.sign_in_to_edit )
+                    .positiveText( R.string.txtSignIn )
+                    .negativeText( R.string.dialog_cancel )
+                    .onPositive( ( dialog, which ) -> {
+                        Intent intent = new Intent( getContext(), LoginActivity.class );
+                        startActivityForResult( intent, LOGIN_ACTIVITY_REQUEST_CODE );
+                        dialog.dismiss();
+                    } )
+                    .onNegative( ( dialog, which ) -> dialog.dismiss() )
+                    .build().show();
+        }
+        else
+        {
+            mState = (State) getActivity().getIntent().getExtras().getSerializable( "state" );
+            Intent intent = new Intent( getContext(), AddProductActivity.class );
+            intent.putExtra( "edit_product", mState.getProduct() );
+            intent.putExtra("perform_ocr", extractIngredients);
+            startActivityForResult( intent, EDIT_REQUEST_CODE );
+        }
     }
     @OnClick(R.id.imageViewIngredients)
     public void openFullScreen(View v) {
@@ -718,6 +742,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         {
             Intent intent = new Intent( getContext(), AddProductActivity.class );
             intent.putExtra("send_updated", sendUpdatedIngredientsImage);
+            intent.putExtra("perform_ocr", extractIngredients);
             intent.putExtra( "edit_product", mState.getProduct() );
             startActivity( intent );
         }

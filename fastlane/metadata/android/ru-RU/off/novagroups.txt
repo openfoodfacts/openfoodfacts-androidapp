@@ -5,11 +5,11 @@
 Группа NOVA:
 
 Группа %1
-Группа 1 - Необработанные или минимально обработанные пищевые продукты
-Необработанные или минимально обработанные пищевые продукты
+Group 1 - Unprocessed or minimally processed foods
+Unprocessed or minimally processed foods
 
 Группа %2
-Группа 2 - Обработанные кулинарные ингредиенты
+Group 2 - Processed culinary ingredients
 Processed culinary ingredients
 
 Группа %3

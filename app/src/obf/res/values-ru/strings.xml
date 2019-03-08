@@ -33,8 +33,8 @@
     <string name="text_offline_info_dialog">Сканируйте продукты, когда вы не подключены к сети, чтобы добавить их в Open Beauty Facts позже. Все продукты, которые вы отсканируете, будут отображаться здесь, и вы сможете отправить их, используя кнопку ниже.</string>
     <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Beauty Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">свободная база данных косметики</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">Отсканированного продукта %1$s ещё нет в базе Open Beauty Facts. Вы можете добавить его?</string>
     <string name="currently_on_version">В настоящее время на Open Beauty Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Помогите классифицировать продукты</string>
 </resources>

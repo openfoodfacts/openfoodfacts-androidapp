@@ -265,6 +265,78 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/categories" />
 
+        <EditText
+            android:id="@+id/other_info"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="@string/other_info"
+            android:inputType="text"
+            android:nextFocusDown="@id/period_of_time_after_opening"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label" />
+
+        <EditText
+            android:id="@+id/conservationCond"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="@string/conservationCond"
+            android:inputType="text"
+            android:nextFocusDown="@id/period_of_time_after_opening"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/other_info" />
+
+        <EditText
+            android:id="@+id/recyclingInstructionToDiscard"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="@string/recyclingInstructionToDiscard"
+            android:inputType="text"
+            android:nextFocusDown="@id/period_of_time_after_opening"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/conservationCond" />
+
+        <EditText
+            android:id="@+id/recyclingInstructionToRecycle"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_edittext"
+            android:gravity="center_vertical"
+            android:hint="@string/recyclingInstructionToRecycle"
+            android:inputType="text"
+            android:nextFocusDown="@id/period_of_time_after_opening"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclingInstructionToDiscard" />
+
         <AutoCompleteTextView
             android:id="@+id/period_of_time_after_opening"
             android:layout_width="0dp"
@@ -284,8 +356,25 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label"
+            app:layout_constraintTop_toBottomOf="@id/recyclingInstructionToRecycle"
             tools:visibility="visible" />
+
+        <CheckBox
+            android:id="@+id/cb_eating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/txt_i_m_eating_this"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/period_of_time_after_opening"
+            android:textSize="18sp" />
+
+
 
         <View
             android:id="@+id/grey_line2"
@@ -296,7 +385,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:background="@color/grey_400"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/period_of_time_after_opening" />
+            app:layout_constraintTop_toBottomOf="@id/cb_eating" />
 
         <TextView
             android:id="@+id/section_manufacturing_details"

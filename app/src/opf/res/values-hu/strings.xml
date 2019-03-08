@@ -13,10 +13,10 @@
     <string name="website_contributor">https://world-hu.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$d products (plus the ones you will contribute) in the world.</string>
-    <string name="txtHome">Az Open Products Facts a világ minden tájáról származó termékek nyílt adatbázisa.</string>
+    <string name="txtHome">Az Open Food Facts élelmiszerek nyílt adatbázisa, a termékekhez tartozó összetevők, allergének, tápanyagok adataival együtt és egyéb információval, ami a termék csomagolásán vagy címkéjén szerepel.</string>
     <string name="slide_1_title">Hozzájárulás a termék átláthatósághoz</string>
     <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé a termék átláthatóságot</string>
-    <string name="slide_2_title">Kapja meg a tényeket</string>
+    <string name="slide_2_title">Kapja meg a Tényeket</string>
     <string name="slide_2_desc">Széleskörű információ az ön által beolvasott termékekről, megfejtve az ön számára</string>
     <string name="slide_3_title">Kövesse nyomon a terméket amit használ</string>
     <string name="slide_3_desc">Az összes termék amit ön beolvasott, egy könnyen kezelhető listán amit exportálni is tud</string>
@@ -36,5 +36,5 @@
     <string name="tagline">the free product database</string>
     <string name="product_not_found">A beolvasott %1$s termék nem található az Open Products Facts adatbázisában. Hozzá tudná adni?</string>
     <string name="currently_on_version">Currently on Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Segítsen kategorizálni a termékeket</string>
 </resources>

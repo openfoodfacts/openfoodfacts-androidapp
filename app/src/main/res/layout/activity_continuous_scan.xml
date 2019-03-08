@@ -109,6 +109,19 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Roasted Dalia" />
 
+            <ImageButton
+                android:id="@+id/button_add_to_list"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@color/zxing_transparent"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/quickView_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/quickView_name"
+                app:srcCompat="@drawable/plus" />
+
 
             <RelativeLayout
                 android:id="@+id/quickView_details"
@@ -175,15 +188,31 @@
                     tools:src="@drawable/nnc_a" />
 
                 <ImageView
-                    android:layout_alignParentRight="true"
                     android:layout_alignTop="@id/quickView_brand"
                     android:id="@+id/quickView_novaGroup"
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/spacing_small"
+                    android:layout_toLeftOf="@id/quick_view_co2_icon"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     tools:srcCompat="@drawable/ic_nova_group_1" />
+
+                <ImageView
+                    android:id="@+id/quick_view_co2_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/quickView_quantity"
+                    android:layout_alignTop="@id/quickView_brand"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="false"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:adjustViewBounds="true"
+                    android:paddingTop="8dp"
+                    android:scaleType="fitCenter"
+                    tools:srcCompat="@drawable/ic_co2_high_24dp" />
 
 
             </RelativeLayout>
