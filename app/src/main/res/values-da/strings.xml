@@ -785,7 +785,7 @@
     <string name="settings_country_dialog_title">Vælg dit land</string>
     <string name="settings_country_summary">Skift dit valgte land</string>
     <string name="settings_country_title">Land</string>
-    <string name="list_text">Added in:\u0020</string>
+    <string name="list_text">Føjet til:\u0020</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>

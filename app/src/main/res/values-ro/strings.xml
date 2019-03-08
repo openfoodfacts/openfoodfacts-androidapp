@@ -38,12 +38,12 @@
         <item>Ingrediente</item>
         <item>Informații nutriționale</item>
         <item>Tabel nutrițional</item>
-        <item>Environment</item>
+        <item>Mediu</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Fotografiile produselor</item>
+        <item>Ingredient Analiza</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -720,18 +720,18 @@
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
+    <string name="your_diets">Dieta dumneavoastră</string>
+    <string name="diet_name">Numele dietei</string>
     <string name="diets_dialog_warning_title">Atenţie</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
     <string name="EditDiet_Name">Nume</string>
-    <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Enabled/Disabled</string>
-    <string name="EditDiet_Authorised_Ingredients">Authorized ingredients</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
+    <string name="EditDiet_Description">Descriere</string>
+    <string name="EditDiet_Enabled_Disabled">Activare/Dezactivare</string>
+    <string name="EditDiet_Authorised_Ingredients">Componente autorizate</string>
+    <string name="EditDiet_Hint_Ingredient_Authorised">Listează ingredientele autorizate care ar trebui să apară în verde. Exemplu: măr, ciuperci, roșii… Puteți completa această listă mai târziu.</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Listează ingredientelelor problematice care ar trebui să apară în portocaliu. Exemplu: ou, pește… Puteți completa această listă mai târziu.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Componente neautorizate</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Extrageți ingredientele</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
