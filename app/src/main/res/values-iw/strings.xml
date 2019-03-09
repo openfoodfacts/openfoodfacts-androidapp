@@ -796,7 +796,6 @@
     <string name="settings_country_title">מדינה</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">הוספת מוצרים</string>
     <string name="add_another_product">הוספת מוצר נוסף</string>

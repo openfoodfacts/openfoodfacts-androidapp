@@ -725,6 +725,7 @@
     <string name="edit_diet_hint_so_so_ingredient">オレンジ色で表示すべき問題のある原材料を一覧表示します。例 : 卵、魚… この一覧は後で完成させることができます。</string>
     <string name="edit_diet_unauthorised_ingredients">未承認の原材料</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">原材料を抽出</string>
     <string name="add_nutrient_prompt_text">栄養成分を追加してニュートリスコアを計算する</string>
     <string name="add_category_prompt_text">カテゴリーを追加してニュートリスコアを計算する</string>
@@ -783,7 +784,6 @@
     <string name="settings_country_title">国</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>

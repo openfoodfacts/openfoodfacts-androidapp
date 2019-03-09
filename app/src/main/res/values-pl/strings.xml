@@ -758,6 +758,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="edit_diet_hint_so_so_ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
     <string name="edit_diet_unauthorised_ingredients">Niezatwierdzone składniki</string>
     <string name="edit_diet_hint_unauthorised_ingredient">Lista niedopuszczony składników, które powinny zostać wyświetlone na czerwono. Przykład: gluten, mleko, olej palmowy, cukier... Możesz później uzupełnić listę.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Wyodrębnij składniki</string>
     <string name="add_nutrient_prompt_text">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
     <string name="add_category_prompt_text">W celu obliczenia Nutri-Score wpisz kategorię produktu</string>
@@ -816,7 +817,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="settings_country_title">Kraj</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>

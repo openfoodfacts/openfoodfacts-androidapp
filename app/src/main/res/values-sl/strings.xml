@@ -737,6 +737,7 @@
     <string name="edit_diet_hint_so_so_ingredient">Seznam problematičnih sestavin, ki naj se prikaže v oranžni barvi. Primer: jajce, ribe ... Ta seznam lahko dokončate kasneje.</string>
     <string name="edit_diet_unauthorised_ingredients">Neodobrene sestavine</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Preberi sestavine</string>
     <string name="add_nutrient_prompt_text">Dodajte prehranska dejstva za izračun Nutri-Score</string>
     <string name="add_category_prompt_text">Dodaj kategorijo za izračun Nutri-Score</string>
@@ -795,7 +796,6 @@
     <string name="settings_country_title">Država</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
