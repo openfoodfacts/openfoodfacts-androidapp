@@ -750,9 +750,9 @@
     <string name="txtOtherInfo">Прочие сведения: </string>
     <string name="txtConservationCond">Условия хранения: </string>
     <string name="txtRecyclingInstructionToRecycle">Инструкции по утилизации - для переработки: </string>
-    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
+    <string name="txtRecyclingInstructionToDiscard">Инструкции по утилизации - для выброса: </string>
     <string name="recyclingInstructionToRecycle">Инструкции по утилизации (для переработки)</string>
-    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
+    <string name="recyclingInstructionToDiscard">Инструкции по утилизации (для выброса)</string>
     <string name="conservationCond">Условия хранения</string>
     <string name="other_info">Прочие сведения</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -763,7 +763,7 @@
     <string name="txtDownloading">Downloading taxonomies…</string>
     <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
-    <string name="set_image_name">Successfully set the image as</string>
+    <string name="set_image_name">Изображение установлено как</string>
     <string name="warning">Предупреждение :</string>
     <string name="customer_service">Центр поддержки:</string>
     <string name="fast_addition_mode_title">Режим быстрого добавления</string>
@@ -793,6 +793,7 @@
     <string name="settings_country_dialog_title">Выберите свою страну</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Страна</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>

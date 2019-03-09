@@ -294,7 +294,7 @@
     <string name="scan_history_drawer">Verlauf</string>
     <string name="clear_history">Verlauf leeren</string>
     <string name="title_clear_history_dialog">Leeren</string>
-    <string name="text_clear_history_dialog">Möchten Sie den gesamten Verlauf der erfassten Produkte leeren?</string>
+    <string name="text_clear_history_dialog">Möchten Sie den gesamten Verlauf Ihrer erfassten Produkte leeren?</string>
     <string name="export_csv_history">Als CSV-Datei exportieren</string>
     <string name="txt_exporting_history">Verlauf exportieren …</string>
     <string name="txt_history_exported">Verlauf exportiert</string>
@@ -308,7 +308,7 @@
     <string name="nutrition">Nährwertangaben</string>
     <string name="calculated_nutrition">Berechnete Nährwerte</string>
     <string name="please_enter_weight">Bitte geben Sie das Produktgewicht ein</string>
-    <string name="enter_weight">Geben Sie das Produktgewicht ein</string>
+    <string name="enter_weight">Produktgewicht eingeben</string>
     <string name="calculate_nutrition_facts">Nährwertangaben berechnen</string>
     <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Kohlenhydrate</string>
@@ -487,13 +487,13 @@
     <string name="please_check_your_connection">Bitte überprüfen Sie Ihre Internetverbindung.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Erweiterte Suche &amp; Diagramme</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Produkte vergleichen</string>
     <string name="connectivity_check">Bitte überprüfen Sie Ihre Internet-Verbindung</string>
     <string name="dismiss">Verwerfen</string>
     <string name="Terms">Allgemeine Geschäftsbedingungen</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://world-de.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Allgemein</string>
     <string name="preference_header_network">Netzwerk</string>
     <string name="preference_header_contributing">Mitwirken</string>
@@ -608,7 +608,7 @@
     <string name="error_adding_ingredients">Beim Versuch, Produktzutaten hinzuzufügen, ist ein Fehler aufgetreten</string>
     <string name="unable_to_extract_ingredients">Die Zutaten können nicht aus dem Bild extrahiert werden</string>
     <string name="error_adding_nutrition_facts">Beim Versuch, Nährwertangaben für Produkte hinzuzufügen, ist ein Fehler aufgetreten</string>
-    <string name="error_in_carbohydrate_value">Kohlenhydrate können nicht weniger als die Summe von Zucker und Stärke sein</string>
+    <string name="error_in_carbohydrate_value">Kohlenhydrate können nicht geringer als die Summe von Zucker und Stärke sein</string>
     <string name="choose_nutrient">Wählen Sie einen Nährstoff</string>
     <string name="error_adding_product_details">Beim Versuch, Produktdetails hinzuzufügen, ist ein Fehler aufgetreten</string>
     <string name="hint_product_URL">Link der offiziellen Seite des Produkts</string>
@@ -766,7 +766,7 @@
     <string name="add_to_product_lists">Zu Ihren Listen hinzufügen</string>
     <string name="txt_create_new_list">Neue Liste erstellen</string>
     <string name="txt_add_to_new_list">Zu einer neuen Liste hinzufügen</string>
-    <string name="create_new_list_list_name">List Name</string>
+    <string name="create_new_list_list_name">Listenname</string>
     <string name="txt_eaten_products">Verzehrte Produkte</string>
     <string name="txt_products_to_buy">Zu erwerbende Produkte</string>
     <string name="export_csv_your_listed_products">Als CSV-Datei exportieren</string>
@@ -785,8 +785,9 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="settings_country_dialog_title">Wählen Sie Ihr Land aus</string>
     <string name="settings_country_summary">Ändern Sie Ihr ausgewähltes Land</string>
     <string name="settings_country_title">Land</string>
+    <string name="list_text">Hinzugefügt in:\u0020</string>
     <string name="txt_no_nutrition_data">Von diesem Produkt  sind keine Nährwertangaben auf der Verpackung angegeben. Wenn sich dieses geändert hat, können Sie das Produkt bearbeiten.</string>
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_product">Produkte hinzufügen</string>
+    <string name="add_another_product">Weiteres Produkt hinzufügen</string>
 </resources>

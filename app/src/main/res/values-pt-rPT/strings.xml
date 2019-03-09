@@ -785,6 +785,7 @@
     <string name="settings_country_dialog_title">Selecione seu país</string>
     <string name="settings_country_summary">Alterar seu país selecionado</string>
     <string name="settings_country_title">País</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
     <string name="empty"></string>
     <string name="add_product">Add Products</string>

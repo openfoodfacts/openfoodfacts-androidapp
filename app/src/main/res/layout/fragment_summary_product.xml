@@ -137,12 +137,23 @@
             </RelativeLayout>
 
             <Button
+                android:drawableLeft="@drawable/ic_compare_arrows_black_18dp"
+                android:drawablePadding="5dp"
                 android:id="@+id/compare_product_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="@dimen/spacing_tiny"
                 android:text="@string/compare_product_prompt"/>
+
+            <TextView
+                android:id="@+id/listname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginVertical="@dimen/spacing_tiny"
+                android:textStyle="bold" />
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/scores_layout"
@@ -662,6 +673,8 @@
             </LinearLayout>
 
             <Button
+                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
+                android:drawablePadding="5dp"
                 android:id="@+id/buttonMorePictures"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"

@@ -7,7 +7,7 @@
     <EditText
         android:id="@+id/edit_text_weight"
         android:layout_width="0dp"
-        android:layout_height="@dimen/button_height_short"
+        android:layout_height= "@dimen/button_height_normal"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:hint="@string/enter_weight"

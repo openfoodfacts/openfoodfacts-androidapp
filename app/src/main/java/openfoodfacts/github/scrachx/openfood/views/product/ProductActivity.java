@@ -22,7 +22,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,6 +42,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -269,14 +269,22 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
 	private void setupViewPager( ViewPager viewPager )
 	{
+        adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
 		adapterResult = setupViewPager(viewPager, adapterResult, mState, this);
     }
 
+    /**
+     * CAREFUL ! YOU MUST INSTANTIATE YOUR OWN ADAPTERRESULT BEFORE CALLING THIS METHOD
+     * @param viewPager
+     * @param adapterResult
+     * @param mState
+     * @param activity
+     * @return
+     */
     public static ProductFragmentPagerAdapter setupViewPager (ViewPager viewPager, ProductFragmentPagerAdapter adapterResult, State mState, Activity activity) {
         String[] menuTitles = activity.getResources().getStringArray( R.array.nav_drawer_items_product );
         String[] newMenuTitles=activity.getResources().getStringArray(R.array.nav_drawer_new_items_product);
 
-        adapterResult = new ProductFragmentPagerAdapter( ((FragmentActivity) activity).getSupportFragmentManager() );
         adapterResult.addFragment( new SummaryProductFragment(), menuTitles[0] );
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences( activity );
         if( BuildConfig.FLAVOR.equals( "off" ) || BuildConfig.FLAVOR.equals( "obf" ) || BuildConfig.FLAVOR.equals( "opff" ) )
