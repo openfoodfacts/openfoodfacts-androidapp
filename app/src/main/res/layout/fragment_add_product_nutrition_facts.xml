@@ -694,6 +694,8 @@
                 app:layout_constraintTop_toBottomOf="@id/alcohol" />
 
             <Button
+                android:drawableLeft="@drawable/ic_add_box_black_18dp"
+                android:drawablePadding="5dp"
                 android:id="@+id/btn_add_a_nutrient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
