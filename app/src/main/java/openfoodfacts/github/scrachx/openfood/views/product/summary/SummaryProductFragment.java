@@ -197,6 +197,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView warning;
     @BindView(R.id.textCustomerService)
     TextView customerService;
+    @BindView(R.id.listname)
+    TextView listName;
     @BindView(R.id.compare_product_button)
     Button compareProductButton;
     @BindView(R.id.btn_eating)
@@ -231,6 +233,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean addingNutritionImage = false;
     //boolean to determine if nutrition data should be shown
     private boolean showNutritionData=true;
+
+    private YourListedProductDao yourListedProductDao;
 
     @Override
     public void onAttach(Context context) {
@@ -287,6 +291,21 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         barCodeProduct.setVisibility(View.VISIBLE);
         nameProduct.setVisibility(View.VISIBLE);
         genericNameProduct.setVisibility(View.VISIBLE);
+
+        yourListedProductDao = Utils.getAppDaoSession(getContext()).getYourListedProductDao();
+        List<YourListedProduct> searchResult = yourListedProductDao.queryBuilder()
+                .where(YourListedProductDao.Properties.Barcode.eq(product.getCode())).list();
+        if (searchResult.size() > 0) {
+            listName.setVisibility(View.VISIBLE);
+            listName.setText(getString(R.string.list_text));
+            int i = 0;
+            for (; i < searchResult.size() - 1; i++) {
+                listName.append(searchResult.get(i).getListName() + ", ");
+            }
+            listName.append(searchResult.get(i).getListName());
+        } else {
+            listName.setVisibility(View.GONE);
+        }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -403,21 +422,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             nameProduct.setVisibility(View.GONE);
         }
 
-        if(LocaleHelper.getLanguage(getContext())!=null) {
-            String lang=LocaleHelper.getLanguage(getContext());
+        if (LocaleHelper.getLanguage(getContext()) != null) {
+            String lang = LocaleHelper.getLanguage(getContext());
             //removes country specific code in the language code eg: nl-BE
-            if(lang.contains("-")){
-                String langSplit[]=lang.split("-");
-                lang=langSplit[0];
+            if (lang.contains("-")) {
+                String langSplit[] = lang.split("-");
+                lang = langSplit[0];
             }
-            String langCode=lang;
-            
-            if(product.getProductName(langCode)!=null){
+            String langCode = lang;
+
+            if (product.getProductName(langCode) != null) {
                 nameProduct.setText(product.getProductName(langCode));
-            }
-            else if(product.getProductName("en")!=null) {
+            } else if (product.getProductName("en") != null) {
                 nameProduct.setText(product.getProductName("en"));
-            } else if(product.getProductName()!=null){
+            } else if (product.getProductName() != null) {
                 nameProduct.setText(product.getProductName());
             } else {
                 nameProduct.setVisibility(View.GONE);
@@ -604,8 +622,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
                 });
 
-                if(nutriments!=null)
-                {
+                if (nutriments != null) {
                     nutritionLightsCardView.setVisibility(View.VISIBLE);
                     Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
                     if (fat != null && fatNutriment != null) {
@@ -631,7 +648,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     }
 
                     Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
-                    if (sugars != null && sugarsNutriment  != null) {
+                    if (sugars != null && sugarsNutriment != null) {
                         String sugarsLocalize = sugars.getLocalize(context);
                         String sugarsValue = getRoundNumber(sugarsNutriment.getFor100g()) + " " + sugarsNutriment.getUnit();
                         String modifier = nutriments.getModifier(Nutriments.SUGARS);
@@ -680,6 +697,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             scoresLayout.setVisibility(View.GONE);
         }
     }
+
     private CharSequence getAdditiveTag(AdditiveName additive) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
 

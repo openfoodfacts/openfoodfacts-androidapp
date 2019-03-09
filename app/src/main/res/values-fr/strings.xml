@@ -753,8 +753,8 @@
     <string name="report_img">Signaler l\'image</string>
     <string name="detected_ingredients">Ingrédients détectés</string>
     <string name="txtDownloading">Téléchargement des taxonomies…</string>
-    <string name="txtLoaded">Les traductions ont été téléchargées avec succès</string>
-    <string name="txtConnectionError">Nous n\'avons pas pu télécharger certaines données. Cela peut être dû à une erreur de connexion.</string>
+    <string name="txtLoaded">Les traductions nécessaires au bon fonctionnement de l\'appli ont été téléchargées avec succès</string>
+    <string name="txtConnectionError">Nous n\'avons pas pu télécharger les traductions nécessaires au bon fonctionnement de l\'appli. Cela peut être dû à une erreur de connexion.</string>
     <string name="set_image_name">Image sélectionnée en tant que</string>
     <string name="warning">Avertissement :</string>
     <string name="customer_service">Service Clients :</string>
@@ -785,6 +785,7 @@
     <string name="settings_country_dialog_title">Sélectionnez votre pays</string>
     <string name="settings_country_summary">Changer le pays sélectionné</string>
     <string name="settings_country_title">Pays</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">Ce produit ne contient aucune information nutritionnelle sur l\'emballage. Si cela a changé, vous pouvez modifier le produit.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
