@@ -485,7 +485,7 @@
     <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
     <string name="please_check_your_connection">Controleer uw verbinding.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org&amp;hl=nl</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Vergelijk Producten</string>
     <string name="connectivity_check">Controleer je internetverbinding</string>
