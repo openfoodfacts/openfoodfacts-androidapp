@@ -487,7 +487,7 @@
     <string name="please_check_your_connection">Por favor, compruebe su conexión.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Búsqueda avanzada &amp; Gráficos</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Comparar productos</string>
     <string name="connectivity_check">Por favor, revise su conexión a internet</string>
     <string name="dismiss">Descartar</string>
     <string name="Terms">Términos</string>
@@ -766,7 +766,7 @@
     <string name="add_to_product_lists">Añadir a tus listas</string>
     <string name="txt_create_new_list">Crear nueva lista</string>
     <string name="txt_add_to_new_list">Añadir a una nueva lista</string>
-    <string name="create_new_list_list_name">List Name</string>
+    <string name="create_new_list_list_name">Nombre de la lista</string>
     <string name="txt_eaten_products">Productos consumidos</string>
     <string name="txt_products_to_buy">Productos para comprar</string>
     <string name="export_csv_your_listed_products">Exportar CSV</string>
@@ -785,10 +785,10 @@
     <string name="settings_country_dialog_title">Seleccione su país</string>
     <string name="settings_country_summary">Cambiar tu país seleccionado</string>
     <string name="settings_country_title">País</string>
-    <string name="list_text">Added in:\u0020</string>
+    <string name="list_text">Añadido en:\u0020</string>
     <string name="txt_no_nutrition_data">Este producto no tiene ninguna información nutricional en el envase. Si esto ha cambiado, puede editar el producto.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_product">Añadir Productos</string>
+    <string name="add_another_product">Añadir otro producto</string>
 </resources>
