@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        app:itemBackground="@color/blue"
+        app:itemBackground="@color/blue_500"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:menu="@menu/my_navigation_items"
