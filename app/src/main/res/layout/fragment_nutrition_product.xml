@@ -90,6 +90,7 @@
                 android:layout_marginRight="@dimen/spacing_normal"
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:gravity="center"
+                android:drawableLeft="@drawable/ic_add_box_black_18dp"
                 android:text="@string/add_nutrient_prompt_text"
                 android:visibility="gone"/>
 
