@@ -34,7 +34,7 @@
         <item>Ingrediënten</item>
         <item>Voedingswaarde</item>
         <item>Voedingswaarde</item>
-        <item>Environment</item>
+        <item>Milieu</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -485,7 +485,7 @@
     <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
     <string name="please_check_your_connection">Controleer uw verbinding.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <string name="donation_url">https://donate.openfoodfacts.org&amp;hl=nl</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare Products</string>
     <string name="connectivity_check">Controleer je internetverbinding</string>
@@ -504,7 +504,7 @@
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Weet u zeker dat u wilt uitloggen?</string>
     <string name="dialog_cancel">Annuleer</string>
-    <string name="dialog_create">Create</string>
+    <string name="dialog_create">Maak aan</string>
     <string name="choose_resolution">Kies resolutie</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
@@ -608,7 +608,7 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
+    <string name="error_in_carbohydrate_value">Koolhydraten kunnen niet minder zijn dan de som van suiker en zetmeel</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
     <string name="hint_product_URL">Link of the official page of the product</string>
@@ -684,7 +684,7 @@
     <string name="hint_serving_size">30 g, 2 koekjes van 60 g, 5 cl, een glas van 20 cl</string>
     <string name="nutrient_already_added">%s is al aanwezig in de voedingswaardentabel</string>
     <string name="save_edits">Bewerkingen opslaan</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="contribution_by">Bijgedragen door</string>
     <string name="title_activity_product">Titel</string>
     <string name="description_activity_product">beschrijving</string>
     <string name="intent_filter_share_label">Voeg toe aan Open Food Facts</string>
