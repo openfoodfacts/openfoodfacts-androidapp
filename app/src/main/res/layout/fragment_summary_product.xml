@@ -140,10 +140,12 @@
                 android:drawableLeft="@drawable/ic_compare_arrows_black_18dp"
                 android:drawablePadding="5dp"
                 android:id="@+id/compare_product_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="@dimen/spacing_tiny"
+                android:paddingVertical="16dp"
                 android:text="@string/compare_product_prompt"/>
 
             <TextView
@@ -221,14 +223,17 @@
 
                 <Button
                     android:id="@+id/add_nutriscore_prompt"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_margin="16dp"
+                    android:drawableLeft="@drawable/ic_add_box_black_18dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:paddingVertical="16dp"
                     tools:text="Add nutrition facts to compute the Nutri-Score"
                     android:visibility="gone"
                     />
@@ -676,10 +681,12 @@
                 android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
                 android:drawablePadding="5dp"
                 android:id="@+id/buttonMorePictures"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/spacing_tiny"
+                android:paddingVertical="16dp"
                 android:text="@string/take_more_pictures" />
 
         </LinearLayout>
