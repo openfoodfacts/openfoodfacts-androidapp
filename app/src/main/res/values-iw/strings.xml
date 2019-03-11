@@ -480,6 +480,7 @@
     <string name="device_offline_dialog_positive">הגדרות</string>
     <string name="saving">בהליכי שמירה…</string>
     <string name="scan_first_product">סריקת המוצר הראשון</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">להעלות כשיש חיבור נתונים סלולרי</string>
     <string name="preference_enable_mobile_data_summary_on">להעלות מוצרים חדשים כשיש חיבור נתונים סלולרי או אלחוטי</string>
     <string name="preference_enable_mobile_data_summary_off">להעלות מוצרים חדשים כשיש חיבור נתונים אלחוטי בלבד</string>
