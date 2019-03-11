@@ -468,6 +468,7 @@
     <string name="device_offline_dialog_positive">Tetapan</string>
     <string name="saving">Saving…</string>
     <string name="scan_first_product">Scan First Product</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
