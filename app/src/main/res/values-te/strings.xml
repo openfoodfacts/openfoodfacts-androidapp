@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">అమరికలు</string>
     <string name="saving">సేవ్…</string>
     <string name="scan_first_product">మొదటి ఉత్పత్తి స్కాన్</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">మొబైల్ డేటాలో అప్లోడ్ చేయండి</string>
     <string name="preference_enable_mobile_data_summary_on">మొబైల్ డేటాను &amp; WiFi ఉపయోగించి క్రొత్త ఉత్పత్తులను అప్లోడ్ చేయండి</string>
     <string name="preference_enable_mobile_data_summary_off">WiFi ని ఉపయోగించి క్రొత్త ఉత్పత్తులను మాత్రమే అప్లోడ్ చేయండి</string>
