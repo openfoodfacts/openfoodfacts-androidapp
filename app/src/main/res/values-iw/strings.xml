@@ -760,7 +760,7 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">דיווח על תמונה</string>
     <string name="detected_ingredients">הרכיבים שזוהו</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
+    <string name="txtDownloading">טקסונומיות מתקבלות…</string>
     <string name="txtLoaded">התרגומים התקבלו בהצלחה</string>
     <string name="txtConnectionError">לא הצלחנו להוריד נתונים מסוימים. יכול להיות שמדובר בשגיאת חיבור.</string>
     <string name="set_image_name">התמונה הוגדרה בהצלחה בתור</string>
@@ -785,7 +785,7 @@
     <string name="write_external_storage_your_listed_products">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא את הנתונים.</string>
     <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„נאכל כעת”.
         כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על הכפתור + בפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">השוואת המוצר הזה</string>
     <string name="search_history_pref_title">מחיקת היסטוריית החיפוש המקומית</string>
@@ -793,8 +793,8 @@
     <string name="settings_country_dialog_title">בחירת המדינה שלך</string>
     <string name="settings_country_summary">החלפת המדינה שבחרת</string>
     <string name="settings_country_title">מדינה</string>
-    <string name="list_text">Added in:\u0020</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="list_text">מועד הוספה:\u0020</string>
+    <string name="txt_no_nutrition_data">למוצר זה אינו פירוט תזונתי על האריזה. אם מצב זה השתנה, ניתן לערוך את המוצר.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">הוספת מוצרים</string>
