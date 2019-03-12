@@ -224,6 +224,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         energyUnitPreference.setEntryValues(energyUnits);
         energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {
             settings.edit().putString("energyUnitPreference", (String) newValue).apply();
+            Toast.makeText(getActivity(),getString(R.string.chng_sv),Toast.LENGTH_SHORT).show();
             return true;
         });
 
@@ -233,6 +234,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         volumeUnitPreference.setEntryValues(volumeUnits);
         volumeUnitPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
             settings.edit().putString("volumeUnitPreference", (String) newValue).apply();
+            Toast.makeText(getActivity(),getString(R.string.chng_sv),Toast.LENGTH_SHORT).show();
             return true;
         }));
 
@@ -242,6 +244,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         imageUploadPref.setEntryValues(values);
         imageUploadPref.setOnPreferenceChangeListener((preference, newValue) -> {
             settings.edit().putString("imageUpload", (String) newValue).apply();
+            Toast.makeText(getActivity(),getString(R.string.chng_sv),Toast.LENGTH_SHORT).show();
             return true;
         });
 
