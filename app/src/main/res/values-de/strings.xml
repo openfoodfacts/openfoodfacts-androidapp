@@ -24,7 +24,7 @@
     <string name="action_find">Suchen</string>
     <string name="text_barcode">Strichcode eingeben:</string>
     <string name="message_in_activity_save_product_offline">Mindestens ein Foto ist erforderlich, um ein neues Produkt einzureichen.</string>
-    <string name="product_incomplete_message">The ingredient list of this product is not complete. As a result, the allergen alert is not shown.</string>
+    <string name="product_incomplete_message">Die Zutatenliste dieses Produkts ist unvollständig. Das hat zur Folge, dass Warnhinweise über Allergene nicht angezeigt wird.</string>
     <string name="no_offline_data">Alles erledigt</string>
     <string name="first_offline">Offline hinzugefügte Produkte werden hier angezeigt</string>
     <!-- Image Upload -->
@@ -212,7 +212,7 @@
     <string name="txtSendAll">Alles hochladen</string>
     <string name="txtNoData">Keine Daten</string>
     <string name="txtPictureNeeded">Warten …</string>
-    <string name="txtPictureNeededDialogContent">You should at least add one photo before submitting this product</string>
+    <string name="txtPictureNeededDialogContent">Sie sollten mindestens ein Foto hinzufügen, bevor Sie dieses Produkt übermitteln.</string>
     <string name="txtPictureNeededDialogYes">Bleiben</string>
     <string name="txtPictureNeededDialogNo">Verwerfen</string>
     <string name="toastSending">Wird hochgeladen …</string>
@@ -225,7 +225,7 @@
     <string name="txtBarcodeRequire">Strichcode erforderlich</string>
     <string name="txtOk">OK</string>
     <string name="txtContentDialogUploading">Bitte warten, bis der Vorgang abgeschlossen ist …</string>
-    <string name="txtAbout">The photos you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
+    <string name="txtAbout">Die von Ihnen übermittelten Fotos werden unter der freien Lizenz Creative Commons Attribution und ShareAlike veröffentlicht.</string>
     <string name="txtAllsent">Produkte hochgeladen</string>
     <string name="txtPalm">Das Produkt enthält kein Palmöl</string>
     <string name="txtBarcodeNotValid">Strichcode ungültig</string>
@@ -450,7 +450,7 @@
     <string name="scan_shortcut_short_label">Einlesen</string>
     <string name="scan_shortcut_long_label">Produkt erfassen</string>
     <string name="barcode_shortcut_short_label">Suchen</string>
-    <string name="barcode_shortcut_long_label">Search by barcode</string>
+    <string name="barcode_shortcut_long_label">Nach Strichcode suchen</string>
     <string name="history_shortcut_short_label">Verlauf</string>
     <string name="history_shortcut_long_label">Verlauf</string>
     <string name="contributions_shortcut_short_label">Beiträge</string>
@@ -471,7 +471,7 @@
     <string name="device_offline_dialog_negative">Verwerfen</string>
     <string name="device_offline_dialog_positive">Einstellungen</string>
     <string name="saving">Wird gespeichert …</string>
-    <string name="scan_first_product">Scan your first product</string>
+    <string name="scan_first_product">Erfassen Sie Ihr erstes Produkt</string>
     <string name="preference_delete_search_history">Verlauf erfolgreich gelöscht</string>
     <string name="preference_enable_mobile_data_title">Hochladen bei Mobilfunkverbindung</string>
     <string name="preference_enable_mobile_data_summary_on">Neue Produkte über Mobilfunkverbindung und WLAN hochladen</string>
@@ -484,7 +484,7 @@
     <string name="FAQ">Häufig gestellte Fragen</string>
     <string name="FrequentlyAskedQuestions">Häufig gestellte Fragen</string>
     <string name="translate_help_title">Mithelfen bei der Übersetzung von Open Food Facts</string>
-    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Übersetzen Sie Open Food Facts in Ihre Sprache — es werden keine technischen Kenntnisse benötigt</string>
     <string name="please_check_your_connection">Bitte überprüfen Sie Ihre Internetverbindung.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Erweiterte Suche &amp; Diagramme</string>
@@ -501,9 +501,9 @@
     <string name="not_support_books">Books are not currently supported by Open Food Facts. Please check Open Products Facts.</string>
     <string name="scan_first_string">Ihr Verlauf der angesehenen Produkte wird hier aufgelistet.\nDer Verlauf ist nur für Ihre Augen bestimmt und wird lokal gespeichert.</string>
     <string name="log_in">Benutzername</string>
-    <string name="login_true">You are already logged in.</string>
-    <string name="confirm_logout">Confirm Open Food Facts logout</string>
-    <string name="logout_dialog_content">Are you sure to log out of your Open Food Facts contributor account ?</string>
+    <string name="login_true">Sie sind bereits angemeldet.</string>
+    <string name="confirm_logout">Abmelden von Open Food Facts bestätigen</string>
+    <string name="logout_dialog_content">Möchten Sie sich wirklich von Ihrem Open Food Facts Mitwirkendenkonto abmelden?</string>
     <string name="dialog_cancel">Abbrechen</string>
     <string name="dialog_create">Erstellen</string>
     <string name="choose_resolution">Auflösung wählen</string>
