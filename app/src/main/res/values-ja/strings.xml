@@ -468,6 +468,7 @@
     <string name="device_offline_dialog_positive">設定</string>
     <string name="saving">保存中…</string>
     <string name="scan_first_product">最初の製品をスキャンします</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">モバイルデータ通信時にアップロード</string>
     <string name="preference_enable_mobile_data_summary_on">モバイル データ通信 &amp; WiFi を使用して新しい製品をアップロードします</string>
     <string name="preference_enable_mobile_data_summary_off">WiFi 接続時のみ新しい製品をアップロードします</string>

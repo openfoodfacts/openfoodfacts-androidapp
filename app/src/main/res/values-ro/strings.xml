@@ -476,6 +476,7 @@
     <string name="device_offline_dialog_positive">Configurări</string>
     <string name="saving">Se salvează…</string>
     <string name="scan_first_product">Scanați primul produs</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Încărcați prin datele mobile</string>
     <string name="preference_enable_mobile_data_summary_on">Încărcați produse noi utilizând datele mobile &amp; Wi-Fi</string>
     <string name="preference_enable_mobile_data_summary_off">Încărcați produse noi utilizând doar WiFi</string>

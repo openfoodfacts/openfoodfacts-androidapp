@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Configuración</string>
     <string name="saving">Guardando…</string>
     <string name="scan_first_product">Escanear el primer producto</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Enviar con datos móviles</string>
     <string name="preference_enable_mobile_data_summary_on">Enviar nuevos productos usando datos móviles &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Enviar nuevos productos usando solo WiFi</string>
