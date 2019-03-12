@@ -277,7 +277,6 @@ public class AddProductOverviewFragment extends BaseFragment {
                 getString(R.string.hint_product_URL) + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
-
         //disabling fields in edit/add mode
         //otherInfo.setEnabled(false);
         //.setEnabled(false);
@@ -441,8 +440,8 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
         if (product.getConservationConditions() != null && !product.getConservationConditions().isEmpty()) {
             conservationCond.setText(product.getConservationConditions());
-        }*/
-        /*if (product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
+        }
+        if (product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
             recyclingInstructionToDiscard.setText(product.getRecyclingInstructionsToDiscard());
         }
         if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
