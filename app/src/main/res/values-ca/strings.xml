@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Preferències</string>
     <string name="saving">S\'està desant…</string>
     <string name="scan_first_product">Escanegeu el primer producte</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Càrrega amb dades mòbils</string>
     <string name="preference_enable_mobile_data_summary_on">Carrega de nous productes utilitzant dades mòbils &amp; Wi-Fi</string>
     <string name="preference_enable_mobile_data_summary_off">Carrega nous productes utilitzant només Wi-Fi</string>

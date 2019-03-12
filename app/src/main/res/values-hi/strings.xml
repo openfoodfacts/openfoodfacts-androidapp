@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">सेटिंग्स</string>
     <string name="saving">सेविंग…</string>
     <string name="scan_first_product">पहला उत्पाद स्कैन करें</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">मोबाइल डेटा पर अपलोड करें</string>
     <string name="preference_enable_mobile_data_summary_on">मोबाइल डेटा और WiFi का उपयोग करके नए उत्पाद अपलोड करें</string>
     <string name="preference_enable_mobile_data_summary_off">केवल WiFi का उपयोग कर नए उत्पाद अपलोड करें</string>

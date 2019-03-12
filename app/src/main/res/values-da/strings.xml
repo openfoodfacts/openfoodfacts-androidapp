@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Indstillinger</string>
     <string name="saving">Gemmer…</string>
     <string name="scan_first_product">Skan første produkt</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload via mobildata</string>
     <string name="preference_enable_mobile_data_summary_on">Upload nye produkter via mobildata og Wi-Fi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload nye produkter alene via Wi-Fi</string>

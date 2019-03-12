@@ -480,6 +480,7 @@
     <string name="device_offline_dialog_positive">Настройки</string>
     <string name="saving">Сохранение…</string>
     <string name="scan_first_product">Сканировать первый продукт</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Загрузка в сотовой сети</string>
     <string name="preference_enable_mobile_data_summary_on">Загрузка новых продуктов с использованием мобильных данных &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Загружать новые продукты только с помощью Wi-Fi</string>

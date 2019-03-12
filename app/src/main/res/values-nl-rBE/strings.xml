@@ -128,7 +128,7 @@
         <item>Vitamine B12 (Cobalamine)</item>
         <item>Vitamine B2 (Riboflavine)</item>
         <item>Vitamine B3 / Vitamine PP (Niacine)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
+        <item>Vitamine B6 (pyridoxine)</item>
         <item>Vitamine B9 (Foliumzuur)</item>
         <item>Vitamine C (ascorbinezuur)</item>
         <item>Vitamine D</item>
@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Instellingen</string>
     <string name="saving">Opslaan…</string>
     <string name="scan_first_product">Scan je eerste product</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload via mobiele data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload nieuwe producten via mobiele data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload nieuwe producten alleen via WiFi</string>
@@ -485,7 +486,7 @@
     <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
     <string name="please_check_your_connection">Controleer uw verbinding.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <string name="donation_url">https://donate.openfoodfacts.org&amp;hl=nl</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Vergelijk Producten</string>
     <string name="connectivity_check">Controleer je internetverbinding</string>
@@ -493,7 +494,7 @@
     <string name="Terms">Voorwaarden</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-    <string name="hunger_game_url">https://world-nl.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game&amp;hl=nl</string>
     <string name="preference_header_general">Algemeen</string>
     <string name="preference_header_network">Netwerk</string>
     <string name="preference_header_contributing">Bijdragen</string>
@@ -609,7 +610,7 @@
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
     <string name="error_in_carbohydrate_value">Koolhydraten kunnen niet minder zijn dan de som van suiker en zetmeel</string>
-    <string name="choose_nutrient">Choose a nutrient</string>
+    <string name="choose_nutrient">Kies een voedingsstof</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
     <string name="hint_product_URL">Link of the official page of the product</string>
     <string name="product_language">Producttaal: </string>
@@ -619,8 +620,8 @@
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
     <string name="image_uploaded_successfully">Image uploaded successfully</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
-    <string name="choose_mine">Kies mijn</string>
+    <string name="ingredients_overwrite">Ingrediënten overschrijven</string>
+    <string name="choose_mine">Kies de mijne</string>
     <string name="keep_previous_version">Behoud de vorige versie</string>
     <string name="product_name_overwrite">Productnaam overschrijven</string>
     <string name="yours">Jouw: </string>
@@ -677,11 +678,11 @@
     <string name="uploading_ingredients_image">Foto van de ingrediënten aan het uploaden</string>
     <string name="uploading_front_image">Foto van voorkant aan het uploaden</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-    <string name="url_nutrient_values">https://world-nl.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels&amp;hl=nl</string>
     <string name="sign_in_to_edit">Log in om een product te bewerken.</string>
     <string name="hint_quantity">Voorbeelden: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz</string>
     <string name="edit_product_title">Product aanpassen</string>
-    <string name="hint_serving_size">30 g, 2 koekjes van 60 g, 5 cl, een glas van 20 cl</string>
+    <string name="hint_serving_size">Voorbeelden: 60 g, 12 oz, 20 cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s is al aanwezig in de voedingswaardentabel</string>
     <string name="save_edits">Bewerkingen opslaan</string>
     <string name="contribution_by">Bijgedragen door</string>
@@ -760,7 +761,7 @@
     <string name="customer_service">Klantenservice :</string>
     <string name="fast_addition_mode_title">Snelle toevoegmodus</string>
     <string name="fast_addition_mode">Maakt snelle toevoeging van producten met minder kenmerken mogelijk</string>
-    <string name="addtive_search">Zoeken naar een additief</string>
+    <string name="addtive_search">Zoek een additief</string>
     <string name="additives">Additieven</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Voeg toe aan je lijsten</string>

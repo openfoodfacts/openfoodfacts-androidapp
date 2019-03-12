@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Instellingen</string>
     <string name="saving">Opslaan…</string>
     <string name="scan_first_product">Scan je eerste product</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload via mobiele data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload nieuwe producten via mobiele data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload nieuwe producten alleen via WiFi</string>
