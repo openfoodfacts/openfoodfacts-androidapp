@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Ligorî</string>
     <string name="saving">Saving…</string>
     <string name="scan_first_product">Scan First Product</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
@@ -747,9 +748,9 @@
     <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
     <string name="conservationCond">Conservation Conditions</string>
     <string name="other_info">Other Information</string>
-    <string name="set_ingredient_img">Set image as Ingredient</string>
-    <string name="set_img_nutrients">Set Image as Nutrition</string>
-    <string name="set_img_front">Set Image as Front</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtDownloading">Downloading taxonomies…</string>

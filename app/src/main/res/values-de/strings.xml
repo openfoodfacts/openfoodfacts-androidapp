@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Einstellungen</string>
     <string name="saving">Wird gespeichert …</string>
     <string name="scan_first_product">Erstes Produkt erfassen</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Hochladen bei Mobilfunkverbindung</string>
     <string name="preference_enable_mobile_data_summary_on">Neue Produkte über Mobilfunkverbindung und WLAN hochladen</string>
     <string name="preference_enable_mobile_data_summary_off">Neue Produkte nur über WLAN hochladen</string>

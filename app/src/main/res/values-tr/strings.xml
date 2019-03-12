@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Ayarlar</string>
     <string name="saving">Kaydediyor…</string>
     <string name="scan_first_product">İlk Ürünü Tara</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Mobil verilere yükle</string>
     <string name="preference_enable_mobile_data_summary_on">Mobil veri &amp; WiFi kullanarak yeni ürünler yükleyin</string>
     <string name="preference_enable_mobile_data_summary_off">Yalnızca WiFi kullanarak yeni ürünleri yükle</string>

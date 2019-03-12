@@ -118,6 +118,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         Preference deleteSearchHistoryButton = findPreference("deleteSearchHistoryPreference");
         deleteSearchHistoryButton.setOnPreferenceClickListener(preference -> {
+            Toast.makeText(getContext(),getString(R.string.preference_delete_search_history),Toast.LENGTH_SHORT).show();
             SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(), SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
             suggestions.clearHistory();
             return true;

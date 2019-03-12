@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Axustes</string>
     <string name="saving">Gardando…</string>
     <string name="scan_first_product">Escanear o primeiro produto</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Subir con datos móbiles</string>
     <string name="preference_enable_mobile_data_summary_on">Subir novos produtos utilizando datos móbiles &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Subir novos produtos só utilizando WiFi</string>

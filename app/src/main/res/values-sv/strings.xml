@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Inställningar</string>
     <string name="saving">Sparar…</string>
     <string name="scan_first_product">Skanna första produkten</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Ladda upp över mobildata</string>
     <string name="preference_enable_mobile_data_summary_on">Ladda upp nya produkter med mobildata &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Ladda bara upp produkter över WiFi</string>

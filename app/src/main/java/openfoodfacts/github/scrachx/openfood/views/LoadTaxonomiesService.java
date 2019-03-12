@@ -89,15 +89,15 @@ public class LoadTaxonomiesService extends IntentService {
                     //.doOnSubscribe(d -> view.showLoading())
                     .subscribe(() -> {
                         //view.hideLoading(false);
-                        builder.setContentText(getString(R.string.txtLoaded));
-                        builder.setOngoing(false);
-                        notificationManager.notify(17, builder.build());
+                      //   builder.setContentText(getString(R.string.txtLoaded));
+                     //    builder.setOngoing(false);
+                     //    notificationManager.notify(17, builder.build());
                     }, e -> {
-                        e.printStackTrace();
+                       //  e.printStackTrace();
                         //view.hideLoading(true);
-                        builder.setContentText(getString(R.string.txtConnectionError))
-                                .setOngoing(false);
-                        notificationManager.notify(17, builder.build());
+                       // builder.setContentText(getString(R.string.txtConnectionError))
+                        //        .setOngoing(false);
+                        // notificationManager.notify(17, builder.build());
                     });
         } else if (BuildConfig.FLAVOR.equals("obf")) {
             Single.zip(
@@ -129,15 +129,15 @@ public class LoadTaxonomiesService extends IntentService {
                     //.doOnSubscribe(d -> view.showLoading())
                     .subscribe(() -> {
                         //view.hideLoading(false);
-                        builder.setContentText(getString(R.string.txtLoaded));
-                        builder.setOngoing(false);
-                        notificationManager.notify(17, builder.build());
+                      //   builder.setContentText(getString(R.string.txtLoaded));
+                     //    builder.setOngoing(false);
+                     //    notificationManager.notify(17, builder.build());
                     }, e -> {
-                        e.printStackTrace();
+                       //  e.printStackTrace();
                         //view.hideLoading(true);
-                        builder.setContentText(getString(R.string.txtConnectionError))
-                                .setOngoing(false);
-                        notificationManager.notify(17, builder.build());
+                       // builder.setContentText(getString(R.string.txtConnectionError))
+                        //        .setOngoing(false);
+                        // notificationManager.notify(17, builder.build());
                     });
         } else if (BuildConfig.FLAVOR.equals("opf") || BuildConfig.FLAVOR.equals("opff")) {
             Single.zip(
@@ -161,15 +161,15 @@ public class LoadTaxonomiesService extends IntentService {
                     //.doOnSubscribe(d -> view.showLoading())
                     .subscribe(() -> {
                         //view.hideLoading(false);
-                        builder.setContentText(getString(R.string.txtLoaded));
-                        builder.setOngoing(false);
-                        notificationManager.notify(17, builder.build());
+                      //   builder.setContentText(getString(R.string.txtLoaded));
+                     //    builder.setOngoing(false);
+                     //    notificationManager.notify(17, builder.build());
                     }, e -> {
-                        e.printStackTrace();
+                       //  e.printStackTrace();
                         //view.hideLoading(true);
-                        builder.setContentText(getString(R.string.txtConnectionError))
-                                .setOngoing(false);
-                        notificationManager.notify(17, builder.build());
+                       // builder.setContentText(getString(R.string.txtConnectionError))
+                        //        .setOngoing(false);
+                        // notificationManager.notify(17, builder.build());
                     });
         }
     }

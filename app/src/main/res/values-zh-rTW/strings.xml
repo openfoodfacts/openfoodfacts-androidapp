@@ -468,6 +468,7 @@
     <string name="device_offline_dialog_positive">設定</string>
     <string name="saving">儲存…</string>
     <string name="scan_first_product">掃描您的第一個產品</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">透過行動數據來進行上傳</string>
     <string name="preference_enable_mobile_data_summary_on">使用行動數據 &amp; WiFi 來上傳新產品</string>
     <string name="preference_enable_mobile_data_summary_off">僅使用 WiFi 來上傳新產品</string>

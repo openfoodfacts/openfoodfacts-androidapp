@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">crwdns113978:0crwdne113978:0</string>
     <string name="saving">crwdns113980:0crwdne113980:0</string>
     <string name="scan_first_product">crwdns113982:0crwdne113982:0</string>
+    <string name="preference_delete_search_history">crwdns115914:0crwdne115914:0</string>
     <string name="preference_enable_mobile_data_title">crwdns113984:0crwdne113984:0</string>
     <string name="preference_enable_mobile_data_summary_on">crwdns113986:0crwdne113986:0</string>
     <string name="preference_enable_mobile_data_summary_off">crwdns113988:0crwdne113988:0</string>

@@ -490,6 +490,7 @@
     <string name="device_offline_dialog_positive">الإعدادات</string>
     <string name="saving">حفظ…</string>
     <string name="scan_first_product">مسح المنتج الأول</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">تحميل على بيانات الجوال</string>
     <string name="preference_enable_mobile_data_summary_on">تحميل منتجات جديدة باستخدام بيانات الجوال &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">قم بتحميل منتجات جديدة باستخدام WiFi فقط</string>
