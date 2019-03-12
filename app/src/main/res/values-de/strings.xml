@@ -434,10 +434,10 @@
     <string name="collagen_meat_protein_ratio">Kollagenwert</string>
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Chlorophyll</string>
-    <string name="take_picture_ingredients">Take a photo of the ingredient list</string>
+    <string name="take_picture_ingredients">Foto der Zutatenliste aufnehmen</string>
     <string name="take_picture_front">Machen Sie ein Foto von der Vorderseite</string>
-    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
-    <string name="take_more_pictures">Take more photos</string>
+    <string name="take_picture_nutrition_table">Foto von der Nährwerttabelle aufnehmen</string>
+    <string name="take_more_pictures">Weitere Fotos aufnehmen</string>
     <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
     <string name="nutriscore_info_msg">Mehr über Nutri-Score erfahren</string>
     <string name="nova_info_msg">Mehr über Nova erfahren</string>
@@ -446,7 +446,7 @@
     <string name="nova_grp3_msg">3. Gruppe • Verarbeitete Lebensmittel</string>
     <string name="nova_grp4_msg">4. Gruppe • Hochverarbeitete Nahrungsmittel und Getränke</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">The shortcut is not available.</string>
+    <string name="disabled_message">Das Tastaturkürzel ist nicht verfügbar.</string>
     <string name="scan_shortcut_short_label">Einlesen</string>
     <string name="scan_shortcut_long_label">Produkt erfassen</string>
     <string name="barcode_shortcut_short_label">Suchen</string>
@@ -506,7 +506,7 @@
     <string name="logout_dialog_content">Are you sure to log out of your Open Food Facts contributor account ?</string>
     <string name="dialog_cancel">Abbrechen</string>
     <string name="dialog_create">Erstellen</string>
-    <string name="choose_resolution">Choose resolution</string>
+    <string name="choose_resolution">Auflösung wählen</string>
     <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
     <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
     <string name="can_add_barcode">Probleme beim Einlesen?\nNach oben wischen, um den Strichcode einzugeben</string>
@@ -541,8 +541,8 @@
     <string name="other_tags_text">Weitere Stoffe:</string>
     <!--shared element transition key-->
     <string name="wikidata">Wikidata-Informationen</string>
-    <string name="disable_image_loading">Disable photo loading when battery is low</string>
-    <string name="DisableLoadTitle">Disable photo loading</string>
+    <string name="disable_image_loading">Laden von Fotos bei schwachem Akku deaktivieren</string>
+    <string name="DisableLoadTitle">Laden von Fotos deaktivieren</string>
     <string name="txtCamera">Kamera</string>
     <string name="txtGallery">Galerie</string>
     <string name="txtOptions">Einstellungen</string>
@@ -670,7 +670,7 @@
     <string name="manufacturing_place">Herstellungsort</string>
     <string name="emb_code">Zulassungsnummer</string>
     <string name="purchasing_details">Bezahlinformationen</string>
-    <string name="country_where_purchased">Country of purchase</string>
+    <string name="country_where_purchased">Vertriebsland</string>
     <string name="stores">Läden</string>
     <string name="additional_pictures">Zusätzliche Bilder</string>
     <string name="hint_product_pictures">(Fügen Sie weitere Bilder des Produkts hinzu. Z.B.: Recyclinganweisungen, Etiketten, etc.)</string>
@@ -740,7 +740,7 @@
     <string name="category_game_btn">Hilft bei der Kategorisierung von Produkten, um den Nutri-Score zu berechnen</string>
     <string name="version_string">Open Food Facts Android app</string>
     <string name="version">Version</string>
-    <string name="txtOtherInfo">Additional information: </string>
+    <string name="txtOtherInfo">Zusätzliche Informationen: </string>
     <string name="txtConservationCond">Conservation conditions: </string>
     <string name="txtRecyclingInstructionToRecycle">Verwertungshinweise - Zur Wiederverwertung: </string>
     <string name="txtRecyclingInstructionToDiscard">Verwertungshinweise - Zur Entsorgung: </string>
