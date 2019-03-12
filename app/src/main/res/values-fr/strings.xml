@@ -472,7 +472,7 @@
     <string name="device_offline_dialog_positive">Paramètres</string>
     <string name="saving">Enregistrement…</string>
     <string name="scan_first_product">Scannez votre premier produit</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Historique supprimé avec succès</string>
     <string name="preference_enable_mobile_data_title">Télécharger via réseau mobile</string>
     <string name="preference_enable_mobile_data_summary_on">Télécharger de nouveaux produits en utilisant les données mobiles &amp; le WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Télécharger de nouveaux produits en utilisant seulement le WiFi</string>
