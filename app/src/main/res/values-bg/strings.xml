@@ -605,7 +605,7 @@
     <string name="initial_loading">Първоначално зареждане</string>
     <string name="preferences">Предпочитания</string>
     <string name="OFFlogo">Open Food Facts лого</string>
-    <string name="loading_product">Зареждане на продукт...</string>
+    <string name="loading_product">Зареждане на продукт %s</string>
     <string name="error_adding_ingredients">Нещо се обърка, докато се опитвахме да добавим съставките на продукта</string>
     <string name="unable_to_extract_ingredients">Невъзможно е да се извлекат съставки от изображението</string>
     <string name="error_adding_nutrition_facts">Нещо се обърка, докато се опитвахме да добавим хранителна информация за продукта</string>
@@ -794,4 +794,5 @@
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>
