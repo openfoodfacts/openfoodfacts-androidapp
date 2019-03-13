@@ -10,9 +10,9 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="zero">منذ d% دقيقة مضت</item>
+        <item quantity="zero">%d minutes ago</item>
         <item quantity="one">قبل دقيقة</item>
-        <item quantity="two">قبل دقيقة</item>
+        <item quantity="two">منذ %d دقيقة</item>
         <item quantity="few">قبل دقيقة</item>
         <item quantity="many">قبل دقيقة</item>
         <item quantity="other">%d minutes ago</item>
@@ -20,7 +20,7 @@
     <plurals name="hours">
         <item quantity="zero">قبل ساعة</item>
         <item quantity="one">قبل ساعة</item>
-        <item quantity="two">قبل ساعة</item>
+        <item quantity="two">%d منذ ساعات</item>
         <item quantity="few">%d hours ago</item>
         <item quantity="many">%d hours ago</item>
         <item quantity="other">%d منذ ساعات</item>
@@ -28,9 +28,9 @@
     <plurals name="days">
         <item quantity="zero">منذ %d يوم</item>
         <item quantity="one">منذ يوم</item>
-        <item quantity="two">منذ يومان</item>
-        <item quantity="few">منذ بضع ايام</item>
-        <item quantity="many">منذ عدة ايام</item>
+        <item quantity="two">منذ %d يوم</item>
+        <item quantity="few">منذ %d يوم</item>
+        <item quantity="many">منذ %d يوم</item>
         <item quantity="other">%d منذ أيام</item>
     </plurals>
     <string name="action_settings">الإعدادات</string>
@@ -810,4 +810,5 @@
     <string name="empty"></string>
     <string name="add_product">أضف المنتجات</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>
