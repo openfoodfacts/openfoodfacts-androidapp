@@ -181,6 +181,8 @@
             </android.support.v7.widget.CardView>
 
             <Button
+                android:drawableLeft="@drawable/ic_call_to_action_black_18dp"
+                android:drawablePadding="5dp"
                 android:id="@+id/calculateNutritionFacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
