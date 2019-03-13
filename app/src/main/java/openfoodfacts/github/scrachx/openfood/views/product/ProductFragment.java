@@ -22,6 +22,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -85,72 +86,73 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_product, container, false);
-        if (getResources().getBoolean(R.bool.portrait_only)) {
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
-        ButterKnife.bind(this, view);
-        toolbar.setVisibility(View.GONE);
-        mButtonScan.setVisibility(View.GONE);
-
-        mState = (State) getArguments().getSerializable("state");
-
-        setupViewPager(viewPager);
-
-        viewPager.setNestedScrollingEnabled(true);
-
-        tabLayout.setupWithViewPager(viewPager);
-
-        api = new OpenFoodAPIClient(getActivity());
-
-        if (!Utils.isHardwareCameraInstalled(getContext())) {
-            mButtonScan.setVisibility(View.GONE);
-        }
-
-        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mShakeDetector = new ShakeDetector();
-
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(getContext());
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-
-        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
-            @Override
-            public void onShake(int count) {
-
-                if (scanOnShake) {
-                    Utils.scan(getActivity());
-                }
+        try {
+            if (getResources().getBoolean(R.bool.portrait_only)) {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             }
-        });
+            ButterKnife.bind(this, view);
+            toolbar.setVisibility(View.GONE);
+            mButtonScan.setVisibility(View.GONE);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            mState = (State) getArguments().getSerializable("state");
 
-            switch (item.getItemId()) {
+            setupViewPager(viewPager);
+
+            viewPager.setNestedScrollingEnabled(true);
+
+            tabLayout.setupWithViewPager(viewPager);
+
+            api = new OpenFoodAPIClient(getActivity());
+
+            if (!Utils.isHardwareCameraInstalled(getContext())) {
+                mButtonScan.setVisibility(View.GONE);
+            }
+
+            // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
+            mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            mShakeDetector = new ShakeDetector();
+
+            SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(getContext());
+            scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+
+            mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
+                @Override
+                public void onShake(int count) {
+
+                    if (scanOnShake) {
+                        Utils.scan(getActivity());
+                    }
+                }
+            });
+
+            bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+
+                switch (item.getItemId()) {
 //                case R.id.bookmark:
 //                     Implementation of bookmark will be here
 //                    Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
 //                    break;
-                case R.id.share:
-                    String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
-                    Intent sharingIntent = new Intent();
-                    sharingIntent.setAction(Intent.ACTION_SEND);
-                    sharingIntent.setType("text/plain");
-                    String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
-                    String shareSub = "\n\n";
-                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
-                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                    break;
+                    case R.id.share:
+                        String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
+                        Intent sharingIntent = new Intent();
+                        sharingIntent.setAction(Intent.ACTION_SEND);
+                        sharingIntent.setType("text/plain");
+                        String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
+                        String shareSub = "\n\n";
+                        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+                        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                        startActivity(Intent.createChooser(sharingIntent, "Share using"));
+                        break;
 //                case R.id.translation:
 //                     Implementation of Translation will be here
 //                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
 //                    break;
-                case R.id.edit_product:
-                    final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
-                    final String login = settings.getString("user", "");
-                    if (login.isEmpty()) {
-                        new MaterialDialog.Builder(getActivity())
+                    case R.id.edit_product:
+                        final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
+                        final String login = settings.getString("user", "");
+                        if (login.isEmpty()) {
+                            new MaterialDialog.Builder(getActivity())
                                 .title(R.string.sign_in_to_edit)
                                 .positiveText(R.string.txtSignIn)
                                 .negativeText(R.string.dialog_cancel)
@@ -161,32 +163,36 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                                 })
                                 .onNegative((dialog, which) -> dialog.dismiss())
                                 .build().show();
-                    } else {
-                        Intent intent = new Intent(getActivity(), AddProductActivity.class);
-                        intent.putExtra("edit_product", mState.getProduct());
+                        } else {
+                            Intent intent = new Intent(getActivity(), AddProductActivity.class);
+                            intent.putExtra("edit_product", mState.getProduct());
+                            startActivity(intent);
+                        }
+                        break;
+
+                    case R.id.history_bottom_nav:
+                        startActivity(new Intent(getActivity(), HistoryScanActivity.class));
+                        break;
+
+                    case R.id.search_product:
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        intent.putExtra("product_search", true);
                         startActivity(intent);
-                    }
-                    break;
+                        break;
 
-                case R.id.history_bottom_nav:
-                    startActivity(new Intent(getActivity(), HistoryScanActivity.class));
-                    break;
+                    case R.id.home:
+                        getActivity().onBackPressed();
+                        break;
 
-                case R.id.search_product:
-                    Intent intent = new Intent(getContext(), MainActivity.class);
-                    intent.putExtra("product_search", true);
-                    startActivity(intent);
-                    break;
+                    default:
+                        return true;
+                }
+                return true;
+            });
+        }catch (Throwable th){
+            Log.w(this.getClass().getSimpleName(), th);
 
-                case R.id.home:
-                    getActivity().onBackPressed();
-                    break;
-
-                default:
-                    return true;
-            }
-            return true;
-        });
+        }
         return view;
     }
 
