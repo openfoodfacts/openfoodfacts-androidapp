@@ -339,4 +339,5 @@
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
   <string name="forgot_password">Forgot Password</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

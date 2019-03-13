@@ -265,21 +265,21 @@
                     tools:srcCompat="@drawable/ic_co2_high_24dp" />
 
                 <Button
-                    android:id="@+id/add_nutriscore_prompt"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin"
-                    android:layout_margin="16dp"
-                    android:drawableLeft="@drawable/ic_add_box_black_18dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:paddingVertical="16dp"
-                    tools:text="Add nutrition facts to compute the Nutri-Score"
-                    android:visibility="gone"
-                    />
+                        android:id="@+id/add_nutriscore_prompt"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_margin="16dp"
+                        android:drawableLeft="@drawable/ic_add_box_black_18dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:paddingVertical="16dp"
+                        tools:text="@string/add_nutrition_facts_for_nutriscore"
+                        android:visibility="gone"
+                />
 
             </android.support.constraint.ConstraintLayout>
 
