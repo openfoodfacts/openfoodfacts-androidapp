@@ -792,4 +792,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="empty"></string>
     <string name="add_product">Produkt hinzufügen</string>
     <string name="add_another_product">Weiteres Produkt hinzufügen</string>
+    <string name="add_nutrition_facts_for_nutriscore">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
 </resources>
