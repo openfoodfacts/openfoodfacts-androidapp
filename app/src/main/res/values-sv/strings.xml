@@ -792,4 +792,5 @@
     <string name="empty"></string>
     <string name="add_product">Lägg till produkter</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>
