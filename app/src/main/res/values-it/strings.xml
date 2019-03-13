@@ -436,8 +436,8 @@
     <string name="chlorophyl">Clorofilla</string>
     <string name="take_picture_ingredients">Take a photo of the ingredient list</string>
     <string name="take_picture_front">Scatta una foto della parte anteriore</string>
-    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
-    <string name="take_more_pictures">Take more photos</string>
+    <string name="take_picture_nutrition_table">Scatta una foto della tabella nutrizionale</string>
+    <string name="take_more_pictures">Scatta più foto</string>
     <string name="txtSaturatedFat">Grassi saturi</string>
     <string name="nutriscore_info_msg">Ulteriori informazioni su Punteggio-Nutri</string>
     <string name="nova_info_msg">Ulteriori informazioni su Nova</string>
@@ -446,11 +446,11 @@
     <string name="nova_grp3_msg">Gruppo 3 - Alimenti trasformati</string>
     <string name="nova_grp4_msg">Gruppo 4 - Prodotti alimentari e bevande ultra-elaborati</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">The shortcut is not available.</string>
+    <string name="disabled_message">La scorciatoia non è disponibile.</string>
     <string name="scan_shortcut_short_label">Scansiona</string>
     <string name="scan_shortcut_long_label">Scansione del prodotto</string>
     <string name="barcode_shortcut_short_label">Cerca</string>
-    <string name="barcode_shortcut_long_label">Search by barcode</string>
+    <string name="barcode_shortcut_long_label">Cerca per codice a barre</string>
     <string name="history_shortcut_short_label">Cronologia</string>
     <string name="history_shortcut_long_label">Cronologia</string>
     <string name="contributions_shortcut_short_label">Contributi</string>
@@ -471,7 +471,7 @@
     <string name="device_offline_dialog_negative">Chiudi</string>
     <string name="device_offline_dialog_positive">Impostazioni</string>
     <string name="saving">Salvataggio…</string>
-    <string name="scan_first_product">Scan your first product</string>
+    <string name="scan_first_product">Scansiona il tuo primo prodotto</string>
     <string name="preference_delete_search_history">Storia cancellata con successo</string>
     <string name="preference_enable_mobile_data_title">Carica con i dati cellulare</string>
     <string name="preference_enable_mobile_data_summary_on">Carica nuovi prodotti utilizzando i dati mobili e WiFi</string>
@@ -484,7 +484,7 @@
     <string name="FAQ">Domande frequenti</string>
     <string name="FrequentlyAskedQuestions">Domande poste frequentemente</string>
     <string name="translate_help_title">Aiuta a tradurre Open Food Facts</string>
-    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Porta Open Food Facts nella tua lingua - non sono richieste conoscenze tecniche</string>
     <string name="please_check_your_connection">Controlla la connessione.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Ricerca avanzata &amp; grafici</string>
@@ -498,15 +498,15 @@
     <string name="preference_header_general">Generale</string>
     <string name="preference_header_network">Rete</string>
     <string name="preference_header_contributing">Contribuire</string>
-    <string name="not_support_books">Books are not currently supported by Open Food Facts. Please check Open Products Facts.</string>
+    <string name="not_support_books">I libri non sono attualmente supportati da Open Food Facts. Si prega di verificare su Open Products Facts.</string>
     <string name="scan_first_string">La cronologia dei prodotti visualizzati verrà elencata qui.\nQuesta cronologia è privata e viene archiviata localmente.</string>
     <string name="log_in">Login</string>
-    <string name="login_true">You are already logged in.</string>
-    <string name="confirm_logout">Confirm Open Food Facts logout</string>
-    <string name="logout_dialog_content">Are you sure to log out of your Open Food Facts contributor account ?</string>
+    <string name="login_true">Hai già effettuato l\'accesso.</string>
+    <string name="confirm_logout">Conferma il logout da Open Food Facts</string>
+    <string name="logout_dialog_content">Sei sicuro di uscire dal tuo account contributore di Open Food Facts?</string>
     <string name="dialog_cancel">Annulla</string>
     <string name="dialog_create">Crea</string>
-    <string name="choose_resolution">Choose resolution</string>
+    <string name="choose_resolution">Scegli la risoluzione</string>
     <string name="pref_resolution_summary">Scegli una risoluzione per il caricamento delle immagini</string>
     <string name="image_upload_resolution">Risoluzione di caricamento immagini</string>
     <string name="can_add_barcode">Problemi con la scansione?\nTrascina fino a digitare il codice a barre</string>
@@ -541,8 +541,8 @@
     <string name="other_tags_text">Altre sostanze:</string>
     <!--shared element transition key-->
     <string name="wikidata">Dati di Wikidata</string>
-    <string name="disable_image_loading">Disable photo loading when battery is low</string>
-    <string name="DisableLoadTitle">Disable photo loading</string>
+    <string name="disable_image_loading">Disabilita il caricamento delle foto quando la batteria è scarica</string>
+    <string name="DisableLoadTitle">Disabilita caricamento foto</string>
     <string name="txtCamera">Fotocamera</string>
     <string name="txtGallery">Galleria</string>
     <string name="txtOptions">Opzioni</string>
@@ -670,7 +670,7 @@
     <string name="manufacturing_place">Luogo di produzione</string>
     <string name="emb_code">Codice EMB</string>
     <string name="purchasing_details">Dettagli di acquisto</string>
-    <string name="country_where_purchased">Country of purchase</string>
+    <string name="country_where_purchased">Paese d\'acquisto</string>
     <string name="stores">Negozi</string>
     <string name="additional_pictures">Foto aggiuntive</string>
     <string name="hint_product_pictures">(Aggiungi più foto del prodotto, per esempio: istruzioni per il riciclo, etichette, ecc.)</string>
@@ -738,10 +738,10 @@
     <string name="nutrition_image_prompt_text">Fai una foto alla tabella nutrizionale</string>
     <string name="ingredient_image_prompt_text">Prendi una foto degli ingredienti</string>
     <string name="category_game_btn">Aiuta a categorizzare i prodotti per calcolare il punteggio-Nutri</string>
-    <string name="version_string">Open Food Facts Android app</string>
+    <string name="version_string">App Android Open Food Facts</string>
     <string name="version">Versione</string>
-    <string name="txtOtherInfo">Additional information: </string>
-    <string name="txtConservationCond">Conservation conditions: </string>
+    <string name="txtOtherInfo">Informazioni aggiuntive: </string>
+    <string name="txtConservationCond">Condizioni di conservazione: </string>
     <string name="txtRecyclingInstructionToRecycle">Istruzioni per il riciclaggio - Per riciclare: </string>
     <string name="txtRecyclingInstructionToDiscard">Istruzioni per il riciclaggio - Per scartare: </string>
     <string name="recyclingInstructionToRecycle">Istruzioni per il riciclaggio (per riciclare)</string>
