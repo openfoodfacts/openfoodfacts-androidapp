@@ -792,4 +792,5 @@
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Nutri- స్కోరును లెక్కించడానికి పోషకాహార వాస్తవాలను జోడించండి</string>
 </resources>
