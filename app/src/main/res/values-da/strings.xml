@@ -740,8 +740,8 @@
     <string name="category_game_btn">Hjælp med at kategorisere produkter for at beregne Nutri-Score</string>
     <string name="version_string">Open Food Facts Android-app</string>
     <string name="version">Version</string>
-    <string name="txtOtherInfo">Additional information: </string>
-    <string name="txtConservationCond">Conservation conditions: </string>
+    <string name="txtOtherInfo">Yderligere information: </string>
+    <string name="txtConservationCond">Konserveringsforhold: </string>
     <string name="txtRecyclingInstructionToRecycle">Genbrugsanvisning - Genbrug: </string>
     <string name="txtRecyclingInstructionToDiscard">Genbrugsanvisninger - Til udsmidning: </string>
     <string name="recyclingInstructionToRecycle">Genbrugsanvisning (genbrug)</string>
