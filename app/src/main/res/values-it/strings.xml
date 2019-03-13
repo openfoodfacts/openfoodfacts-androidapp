@@ -792,4 +792,5 @@
     <string name="empty"></string>
     <string name="add_product">Inserisci prodotti</string>
     <string name="add_another_product">Aggiungi un altro prodotto</string>
+    <string name="add_nutrition_facts_for_nutriscore">Aggiungi i dati nutrizionali per calcolare il punteggio-Nutri</string>
 </resources>
