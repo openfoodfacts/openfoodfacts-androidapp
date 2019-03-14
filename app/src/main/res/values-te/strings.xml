@@ -265,7 +265,7 @@
     <string name="cancel_button">రద్దుచేయి</string>
     <string name="login_button">లాగిన్</string>
     <string name="create_account_button">ఖాతాను సృష్టించండి</string>
-    <string name="warning_alert_data">మీ అలెర్జీలు సమాచారం ఓపెన్ ఫుడ్ ఫాక్ట్స్ సర్వర్కు ఎప్పటికీ పంపబడదు. అలాగే, ఉత్పత్తి డేటా ఖచ్చితమైనది కాకపోవచ్చు, మరియు గుర్తింపు 100% ఖచ్చితమైనది కాకపోవచ్చు, కాబట్టి దయచేసి మీకు రెండుసార్లు తనిఖీ చేయండి! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="from_gallery">గ్యాలరీ నుండి</string>
     <string name="product_sent">ఉత్పత్తి విజయవంతంగా పంపబడింది</string>
     <string name="action_edit_product">ఉత్పత్తిని సవరించండి</string>
