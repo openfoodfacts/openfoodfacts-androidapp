@@ -500,6 +500,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="device_offline_dialog_positive">Ustawienia</string>
     <string name="saving">Zapisywanie…</string>
     <string name="scan_first_product">Zeskanuj pierwszy produkt</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Prześlij używając danyme mobilne</string>
     <string name="preference_enable_mobile_data_summary_on">Wyślij nowe produkty używając dane mobilne &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Prześlij nowe produkty tylko przez WiFi</string>
@@ -820,4 +821,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

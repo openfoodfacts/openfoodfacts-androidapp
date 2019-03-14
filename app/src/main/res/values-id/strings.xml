@@ -468,6 +468,7 @@
     <string name="device_offline_dialog_positive">Pengaturan</string>
     <string name="saving">Menyimpan…</string>
     <string name="scan_first_product">Pindai produk pertama</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Unggah dalam mode data</string>
     <string name="preference_enable_mobile_data_summary_on">Unggah produk baru menggunakan data telepon &amp; Wifi</string>
     <string name="preference_enable_mobile_data_summary_off">Unggah produk baru hanya melalui Wifi</string>
@@ -781,10 +782,11 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Negara</string>
-    <string name="list_text">Added in:\u0020</string>
+    <string name="list_text">Ditambahkan dalam:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

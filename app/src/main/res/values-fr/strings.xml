@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Paramètres</string>
     <string name="saving">Enregistrement…</string>
     <string name="scan_first_product">Scannez votre premier produit</string>
+    <string name="preference_delete_search_history">Historique supprimé avec succès</string>
     <string name="preference_enable_mobile_data_title">Télécharger via réseau mobile</string>
     <string name="preference_enable_mobile_data_summary_on">Télécharger de nouveaux produits en utilisant les données mobiles &amp; le WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Télécharger de nouveaux produits en utilisant seulement le WiFi</string>
@@ -785,10 +786,11 @@
     <string name="settings_country_dialog_title">Sélectionnez votre pays</string>
     <string name="settings_country_summary">Changer le pays sélectionné</string>
     <string name="settings_country_title">Pays</string>
-    <string name="list_text">Added in:\u0020</string>
+    <string name="list_text">Ajouté : \u0020</string>
     <string name="txt_no_nutrition_data">Ce produit ne contient aucune information nutritionnelle sur l\'emballage. Si cela a changé, vous pouvez modifier le produit.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Ajouter un produit</string>
     <string name="add_another_product">Ajouter un autre produit</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

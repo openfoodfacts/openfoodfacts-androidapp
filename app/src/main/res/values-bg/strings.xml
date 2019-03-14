@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Настройки</string>
     <string name="saving">Запазване…</string>
     <string name="scan_first_product">Сканиране на първия продукт</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Качване при мобилни данни</string>
     <string name="preference_enable_mobile_data_summary_on">Качване на нови продукти чрез мобилни данни &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Качвайте нови продукти само с WiFi</string>
@@ -793,4 +794,5 @@
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

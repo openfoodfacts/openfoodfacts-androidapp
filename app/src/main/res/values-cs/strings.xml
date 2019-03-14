@@ -480,6 +480,7 @@
     <string name="device_offline_dialog_positive">Nastavení</string>
     <string name="saving">Ukládání…</string>
     <string name="scan_first_product">Skenovat první produkt</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Nahrávání přes mobilní data</string>
     <string name="preference_enable_mobile_data_summary_on">Nahrajte nové produkty pomocí mobilních dat &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Nahrajte nové produkty pouze přes WiFi</string>
@@ -799,4 +800,5 @@
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

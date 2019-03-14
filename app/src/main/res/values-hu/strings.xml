@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Beállítások</string>
     <string name="saving">Mentés…</string>
     <string name="scan_first_product">Első termék beolvasása</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Feltöltés mobilinterneten</string>
     <string name="preference_enable_mobile_data_summary_on">Új termékek feltöltése mobilinternet &amp; WiFi használatával</string>
     <string name="preference_enable_mobile_data_summary_off">Új termékek feltöltése csak WiFi használatával</string>
@@ -793,4 +794,5 @@
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

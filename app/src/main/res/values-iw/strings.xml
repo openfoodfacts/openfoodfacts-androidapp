@@ -366,14 +366,14 @@
     <string name="txt_no_results">לא נמצאו תוצאות</string>
     <string name="txt_extend_search">כדאי להרחיב את החיפוש שלך או להוסיף את המוצר</string>
     <string name="txt_no_matching__category_products">שוד ושבר, אין לנו אף מוצר בקטגוריה הזו, נוכל לבקש ממך להוסיף מוצרים?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching_allergen_products">השם ישמור, אין לנו מוצרים עם האלרגן הזה, נוכל לבקש ממך להוסיף אחד?</string>
+    <string name="txt_no_matching_label_products">אוי א בראך, אינו לנו מוצרים עם התווית הזאת, נוכל לבקש ממך להוסיף אחד?</string>
+    <string name="txt_no_matching_additive_products">אתרע מזלך, אין לנו מוצרים עם התוסף הזה, נוכל לבקש ממך להוסיף אחד?</string>
+    <string name="txt_no_matching_country_products">חזיז ורעם, אין לנו מוצרים מהמדינה הזאת, נוכל לבקש ממך להוסיף אחד?</string>
+    <string name="txt_no_matching_store_products">חי חדקי, אין לנו מוצרים מהחנות הזאת, נוכל לבקש ממך להוסיף אחד?</string>
     <string name="txt_no_matching_packaging_products">אללי, אין לנו מוצרים עם סוג אריזה שכזה, נוכל לבקש ממך להוסיף אחד?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
+    <string name="txt_no_matching_brand_products">געוואלד, אין לנו מוצרים מהמותג הזה, נוכל לבקש ממך להוסיף אחד?</string>
+    <string name="txt_no_matching_state_products">הו לא, אינו לנו מוצרים מהמיקום הזה, נוכל לבקש ממך להוסיף אחד?</string>
     <string name="txt_no_matching_incomplete_products">אין מוצרים שלא הושלמו! ברצונך להוסיף מוצר חדש?</string>
     <string name="txt_no_matching_contributor_products">אבוי, אין לנו מוצרים שנתרמו על ידי המתנדב הזה, נוכל לבקש ממך להוסיף אחד?</string>
     <string name="txt_no_matching_products">לא מצאנו מוצרים מתאימים.\nניתן לנסות:</string>
@@ -480,6 +480,7 @@
     <string name="device_offline_dialog_positive">הגדרות</string>
     <string name="saving">בהליכי שמירה…</string>
     <string name="scan_first_product">סריקת המוצר הראשון</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">להעלות כשיש חיבור נתונים סלולרי</string>
     <string name="preference_enable_mobile_data_summary_on">להעלות מוצרים חדשים כשיש חיבור נתונים סלולרי או אלחוטי</string>
     <string name="preference_enable_mobile_data_summary_off">להעלות מוצרים חדשים כשיש חיבור נתונים אלחוטי בלבד</string>
@@ -760,7 +761,7 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">דיווח על תמונה</string>
     <string name="detected_ingredients">הרכיבים שזוהו</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
+    <string name="txtDownloading">טקסונומיות מתקבלות…</string>
     <string name="txtLoaded">התרגומים התקבלו בהצלחה</string>
     <string name="txtConnectionError">לא הצלחנו להוריד נתונים מסוימים. יכול להיות שמדובר בשגיאת חיבור.</string>
     <string name="set_image_name">התמונה הוגדרה בהצלחה בתור</string>
@@ -785,7 +786,7 @@
     <string name="write_external_storage_your_listed_products">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא את הנתונים.</string>
     <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„נאכל כעת”.
         כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על הכפתור + בפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">השוואת המוצר הזה</string>
     <string name="search_history_pref_title">מחיקת היסטוריית החיפוש המקומית</string>
@@ -793,10 +794,11 @@
     <string name="settings_country_dialog_title">בחירת המדינה שלך</string>
     <string name="settings_country_summary">החלפת המדינה שבחרת</string>
     <string name="settings_country_title">מדינה</string>
-    <string name="list_text">Added in:\u0020</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="list_text">מועד הוספה:\u0020</string>
+    <string name="txt_no_nutrition_data">למוצר זה אינו פירוט תזונתי על האריזה. אם מצב זה השתנה, ניתן לערוך את המוצר.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">הוספת מוצרים</string>
     <string name="add_another_product">הוספת מוצר נוסף</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

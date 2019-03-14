@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Mga setting</string>
     <string name="saving">Nagsesave…</string>
     <string name="scan_first_product">Suriin ang Unang Produkto</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Mag-upload sa data ng mobile</string>
     <string name="preference_enable_mobile_data_summary_on">Mag-upload ng bagong mga produkto gamit ang data ng mobile &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Mag-upload ng bagong mga produkto gamit lamang ang WiFi</string>
@@ -791,4 +792,5 @@
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

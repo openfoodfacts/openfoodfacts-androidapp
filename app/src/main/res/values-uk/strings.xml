@@ -480,6 +480,7 @@
     <string name="device_offline_dialog_positive">Налаштування</string>
     <string name="saving">Збереження…</string>
     <string name="scan_first_product">Проскануй перший товар</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Завантажувати дані на девайс</string>
     <string name="preference_enable_mobile_data_summary_on">Завантажте нові товари за допомогою даних з девайсу та WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Завантажувати нові товари лише за допомогою WiFi</string>
@@ -799,4 +800,5 @@
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

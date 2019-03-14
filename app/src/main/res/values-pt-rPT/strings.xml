@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Definições</string>
     <string name="saving">A guardar…</string>
     <string name="scan_first_product">Digitalizar primeiro produto</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Carregamento por dados móveis</string>
     <string name="preference_enable_mobile_data_summary_on">Carregar novos produtos via dados móveis &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Carregar novos produtos por WiFi apenas</string>
@@ -791,4 +792,5 @@
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

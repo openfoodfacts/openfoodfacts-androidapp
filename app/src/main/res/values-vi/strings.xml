@@ -99,7 +99,7 @@
         <item>Axit Montanic (28: 0)</item>
         <item>Axit Myristic (14:0)</item>
         <item>Axit nervonic (24: 1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nucleotides (nu-clê-ô-tit)</item>
         <item>Axít oleic (18: 1 n-9)</item>
         <item>Axit béo omega-3</item>
         <item>Axít béo Omega 6</item>
@@ -130,7 +130,7 @@
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
-        <item>Zinc</item>
+        <item>Kẽm</item>
     </string-array>
     <!-- Text units -->
     <string-array name="images_array">
@@ -185,7 +185,7 @@
     <string name="txtSalt">Muối</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Đường</string>
-    <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">Mã vạch</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Mật khẩu</string>
@@ -320,7 +320,7 @@
     <string name="nutrition_header">Giá trị dinh dưỡng</string>
     <string name="nutrition_no_data_message">Không có dữ liệu cho sản phẩm này</string>
     <string name="nutrition_per_quantity">Cho 100g / 100ml</string>
-    <string name="nutrition_proteins">Proteins</string>
+    <string name="nutrition_proteins">Chất đạm</string>
     <string name="nutrition_proteins_short_name">Chất đạm (g)</string>
     <string name="nutrition_salt">Muối</string>
     <string name="nutrition_salt_short_name">Muối (g)</string>
@@ -328,7 +328,7 @@
     <string name="nutrition_satured_fat_short_name">Chất béo bão hòa (g)</string>
     <string name="nutrition_serving">Mỗi khẩu</string>
     <string name="nutrition_serving_size">Kích thước phục vụ :</string>
-    <string name="nutrition_sodium">Sodium</string>
+    <string name="nutrition_sodium">Natri</string>
     <string name="nutrition_sodium_short_name">Natri (g)</string>
     <string name="nutrition_sugars">Đường</string>
     <string name="nutrition_sugars_short_name">Sugars (g)</string>
@@ -372,8 +372,8 @@
     <string name="nutrition_lactose">Đường sữa</string>
     <string name="nutrition_casein">Casein</string>
     <string name="nutrition_maltodextrins">Bột tinh</string>
-    <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="nutrition_serum_proteins">Protein huyết thanh</string>
+    <string name="nutrition_nucleotides">Nucleotides (nu-clê-ô-tit)</string>
     <string name="for_100g">For 100 g</string>
     <string name="serving">Mỗi khẩu</string>
     <string name="minerals">Khoáng chất</string>
@@ -392,7 +392,7 @@
     <string name="nutrition_fructose">Đường đôi</string>
     <string name="nutrition_maltose">Mạch nha</string>
     <string name="nutrition_alcohol">Cồn</string>
-    <string name="nutrition_vitamins">Vitamins</string>
+    <string name="nutrition_vitamins">Vitamin</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
     <string name="vitamin_e">Vitamin E</string>
@@ -405,7 +405,7 @@
     <string name="vitamin_b9">Vitamin B9</string>
     <string name="vitamin_b12">Vitamin B12</string>
     <string name="biotin">Biotin</string>
-    <string name="pantothenic_acid">Pantothenic acid</string>
+    <string name="pantothenic_acid">Axit pantothenic</string>
     <string name="nutrition_minerals">Khoáng chất</string>
     <string name="silica">Silic dioxit</string>
     <string name="bicarbonate">Muối cacbonat</string>
@@ -415,7 +415,7 @@
     <string name="phosphorus">Phốt pho</string>
     <string name="iron">Sắt</string>
     <string name="magnesium">Magiê</string>
-    <string name="zinc">Zinc</string>
+    <string name="zinc">Kẽm</string>
     <string name="copper">Đồng</string>
     <string name="manganese">Mangan</string>
     <string name="fluoride">Flo</string>
@@ -468,6 +468,7 @@
     <string name="device_offline_dialog_positive">Cài đặt</string>
     <string name="saving">Saving…</string>
     <string name="scan_first_product">Quét sản phẩm đầu tiên</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Tải lên dữ liệu di động</string>
     <string name="preference_enable_mobile_data_summary_on">Tải lên các sản phẩm mới sử dụng dữ liệu di động &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Tải lên các sản phẩm mới chỉ sử dụng WiFi</string>
@@ -543,7 +544,7 @@
     <string name="txtOptions">Tùy chọn</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Nhãn hiệu</string>
-    <string name="by_barcode">Barcode</string>
+    <string name="by_barcode">Mã vạch</string>
     <string name="by_time">Đã xem gần đây</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Lớp dinh dưỡng</string>
@@ -757,7 +758,7 @@
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
-    <string name="additives">Additives</string>
+    <string name="additives">Chất phụ gia</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
@@ -787,4 +788,5 @@
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

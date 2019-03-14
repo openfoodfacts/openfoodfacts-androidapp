@@ -480,6 +480,7 @@
     <string name="device_offline_dialog_positive">Настройки</string>
     <string name="saving">Сохранение…</string>
     <string name="scan_first_product">Сканировать первый продукт</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Загрузка в сотовой сети</string>
     <string name="preference_enable_mobile_data_summary_on">Загрузка новых продуктов с использованием мобильных данных &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Загружать новые продукты только с помощью Wi-Fi</string>
@@ -738,10 +739,10 @@
     <string name="EditDiet_Unauthorised_Ingredients">Запрещенные ингредиенты</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrient_prompt_text">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>
     <string name="add_category_prompt_text">Добавьте категорию для вычисления Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="add_nutrient_category_prompt_text">Добавьте факты о питании и категорию, чтобы вычислить Nutri-Score</string>
+    <string name="no_nutrition_data_prompt">Этот продукт не имеет фактов о себе</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Сделайте фото состава</string>
     <string name="category_game_btn">Помогите классифицировать продукты для вычисления Nutri-Score</string>
@@ -799,4 +800,5 @@
     <string name="empty"></string>
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>
