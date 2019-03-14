@@ -281,6 +281,21 @@
         <item>Ingredients</item>
     </string-array>
 
+    <string-array name="fields_array" translatable="false">
+        <item>product_name</item>
+        <item>generic_name</item>
+        <item>ingredients_text</item>
+        <item>other_information</item>
+        <item>conservation_conditions</item>
+        <item>recycling_instructions_to_discard</item>
+        <item>recycling_instructions_to_recycle</item>
+        <item>warning</item>
+        <item>customer_service</item>
+        <item>image_front_url</item>
+        <item>image_ingredients_url</item>
+        <item>image_nutrition_url</item>
+    </string-array>
+
     <!-- Content Description -->
     <string name="bookmark">Bookmark</string>
     <string name="edit">Edit</string>
