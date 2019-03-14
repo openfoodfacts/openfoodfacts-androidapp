@@ -219,7 +219,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void refreshView(State state) {
         super.refreshView(state);
         mState = state;
-
         String langCode = LocaleHelper.getLanguageTrimmed(getContext());
         if (getArguments() != null) {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");

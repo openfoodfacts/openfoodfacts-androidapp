@@ -277,7 +277,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/category_hint" />
-
+        <!--
         <EditText
             android:id="@+id/other_info"
             android:layout_width="0dp"
@@ -349,7 +349,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recyclingInstructionToDiscard" />
-
+            -->
         <AutoCompleteTextView
             android:id="@+id/period_of_time_after_opening"
             android:layout_width="0dp"
@@ -369,7 +369,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recyclingInstructionToRecycle"
+            app:layout_constraintTop_toBottomOf="@id/label"
             tools:visibility="visible" />
 
         <CheckBox
