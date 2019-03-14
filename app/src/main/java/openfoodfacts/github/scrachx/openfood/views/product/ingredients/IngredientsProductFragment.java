@@ -66,6 +66,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.DietRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.IDietRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -219,6 +220,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         super.refreshView(state);
         mState = state;
 
+        String langCode = LocaleHelper.getLanguageTrimmed(getContext());
         if (getArguments() != null) {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         }
@@ -295,19 +297,19 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
 
-        if (isNotBlank(product.getImageIngredientsUrl())) {
+        if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.with(getContext())
-                        .load(product.getImageIngredientsUrl())
+                        .load(product.getImageIngredientsUrl(langCode))
                         .into(mImageIngredients);
             } else {
                 mImageIngredients.setVisibility(View.GONE);
             }
 
-            mUrlImage = product.getImageIngredientsUrl();
+            mUrlImage = product.getImageIngredientsUrl(langCode);
         }
 
         //useful when this fragment is used in offline saving
@@ -319,12 +321,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         List<String> allergens = getAllergens();
 
-        if (mState != null && product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
+        if (mState != null && product.getIngredientsText(langCode) != null && !product.getIngredientsText(langCode).isEmpty()) {
             textIngredientProductCardView.setVisibility(View.VISIBLE);
-            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
+            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText(langCode).replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
             txtIngredients = dietRepository.getColoredSSBFromSSBAndProduct(txtIngredients, product);
-            if (TextUtils.isEmpty(product.getIngredientsText())) {
+            if (TextUtils.isEmpty(product.getIngredientsText(langCode))) {
                extractIngredientsPrompt.setVisibility(View.VISIBLE);
             }
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
@@ -333,7 +335,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             }
         } else {
             textIngredientProductCardView.setVisibility(View.GONE);
-            if (isNotBlank(product.getImageIngredientsUrl())) {
+            if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
                 extractIngredientsPrompt.setVisibility(View.VISIBLE);
             }
         }
