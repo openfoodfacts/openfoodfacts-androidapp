@@ -155,7 +155,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             return;
         }
         if (TextUtils.isEmpty(password)) {
-            passwordView.setError(getString(R.string.error_string_required));
+            passwordView.setError(getString(R.string.error_field_required));
             passwordView.requestFocus();
             return;
         }
