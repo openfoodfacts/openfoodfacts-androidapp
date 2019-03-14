@@ -43,6 +43,7 @@
         android:layout_margin="16dp"
         android:contentDescription="@string/try_it_scan_now"
         app:elevation="10dp"
+        android:layout_gravity="top"
         app:fabSize="normal"
         app:layout_anchor="@id/bottom_navigation"
         app:layout_anchorGravity="top|right"
@@ -54,9 +55,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        app:itemBackground="@color/white"
-        app:itemIconTint="@drawable/nav_item_state"
-        app:itemTextColor="@drawable/nav_item_state"
+        app:itemBackground="@color/blue_500"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:menu="@menu/my_navigation_items"
         tools:layout_editor_absoluteY="503dp"/>
 

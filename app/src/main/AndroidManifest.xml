@@ -141,6 +141,7 @@
         </service>
         <service android:name=".utils.UploadService" />
         <service android:name=".utils.WifiUploadReceiver$WifiService" />
+        <service android:name=".views.LoadTaxonomiesService" />
 
         <provider
             android:name=".utils.GenericFileProvider"

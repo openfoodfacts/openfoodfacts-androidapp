@@ -136,13 +136,69 @@
 
             </RelativeLayout>
 
-            <Button
-                android:id="@+id/compare_product_button"
+            <android.support.v7.widget.CardView
+                android:id="@+id/product_incomplete_warning_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_small"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#EEE"
+                    android:gravity="center"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/message_icon"
+                        android:layout_width="@dimen/button_height_normal"
+                        android:layout_height="@dimen/button_height_normal"
+                        android:padding="@dimen/padding_too_short"
+                        app:srcCompat="@drawable/warning_icon" />
+
+                    <TextView
+                        android:id="@+id/product_incomplete_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/message_dismiss_icon"
+                        android:layout_toLeftOf="@+id/message_dismiss_icon"
+                        android:layout_toRightOf="@+id/message_icon"
+                        android:gravity="center"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="4dp"
+                        android:paddingRight="24dp"
+                        android:paddingBottom="4dp"
+                        android:text="@string/product_incomplete_message"
+                        android:textAlignment="center"
+                        android:textColor="@color/md_black_1000" />
+
+                    <ImageButton
+                        android:id="@+id/product_incomplete_message_dismiss_icon"
+                        android:layout_width="@dimen/button_height_too_much_short"
+                        android:layout_height="@dimen/button_height_too_much_short"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="4dp"
+                        android:background="#EEE"
+                        app:srcCompat="@drawable/ic_action_cross" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+
+
+            <TextView
+                android:id="@+id/listname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
                 android:layout_marginVertical="@dimen/spacing_tiny"
-                android:text="@string/compare_product_prompt"/>
+                android:textStyle="bold" />
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/scores_layout"
@@ -209,27 +265,25 @@
                     tools:srcCompat="@drawable/ic_co2_high_24dp" />
 
                 <Button
-                    android:id="@+id/add_nutriscore_prompt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Add nutrition facts to compute the Nutri-Score"
-                    android:visibility="gone"
-                    />
+                        android:id="@+id/add_nutriscore_prompt"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_margin="16dp"
+                        android:drawableLeft="@drawable/ic_add_box_black_18dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:paddingVertical="16dp"
+                        tools:text="@string/add_nutrition_facts_for_nutriscore"
+                        android:visibility="gone"
+                />
 
             </android.support.constraint.ConstraintLayout>
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cvProductName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:cardElevation="4dp">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -247,6 +301,7 @@
                         android:textIsSelectable="true"
                         android:textStyle="bold" />
 
+
                     <TextView
                         android:id="@+id/textGenericNameProduct"
                         android:layout_width="fill_parent"
@@ -257,16 +312,63 @@
                         android:paddingBottom="@dimen/spacing_small"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
+                    <TextView
+                        android:drawableLeft="@drawable/barcode_grey_24dp"
+                        android:id="@+id/textBarcodeProduct"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
+
+                    <TextView
+                        android:id="@+id/textQuantityProduct"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
+                    <TextView
+                        android:id="@+id/textBrandProduct"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/light_blue_A700"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
+
+                    <Button
+                        android:drawableLeft="@drawable/ic_compare_arrows_black_18dp"
+                        android:drawablePadding="5dp"
+                        android:id="@+id/compare_product_button"
+                        android:layout_width="match_parent"
+                        android:layout_margin="16dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="@dimen/spacing_tiny"
+                        android:paddingVertical="16dp"
+                        android:text="@string/compare_product_prompt"/>
+
 
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cvNutritionLights"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
                 android:visibility="gone"
                 app:cardElevation="4dp">
@@ -313,9 +415,7 @@
                 android:id="@+id/cvTextAdditiveProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
                 app:cardElevation="4dp">
@@ -340,7 +440,8 @@
                 android:id="@+id/cvProductDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:layout_marginBottom="@dimen/spacing_tiny"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -348,108 +449,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/product_incomplete_warning_view_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_small"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="@dimen/spacing_small"
-                        android:layout_marginBottom="@dimen/spacing_small"
-                        android:visibility="gone">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="#EEE"
-                            android:gravity="center"
-                            android:padding="4dp">
-
-                            <ImageView
-                                android:id="@+id/message_icon"
-                                android:layout_width="@dimen/button_height_normal"
-                                android:layout_height="@dimen/button_height_normal"
-                                android:padding="@dimen/padding_too_short"
-                                app:srcCompat="@drawable/warning_icon" />
-
-                            <TextView
-                                android:id="@+id/product_incomplete_message"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toStartOf="@+id/message_dismiss_icon"
-                                android:layout_toLeftOf="@+id/message_dismiss_icon"
-                                android:layout_toRightOf="@+id/message_icon"
-                                android:gravity="center"
-                                android:paddingLeft="4dp"
-                                android:paddingTop="4dp"
-                                android:paddingRight="24dp"
-                                android:paddingBottom="4dp"
-                                android:text="@string/product_incomplete_message"
-                                android:textAlignment="center"
-                                android:textColor="@color/md_black_1000" />
-
-                            <ImageButton
-                                android:id="@+id/product_incomplete_message_dismiss_icon"
-                                android:layout_width="@dimen/button_height_too_much_short"
-                                android:layout_height="@dimen/button_height_too_much_short"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_margin="4dp"
-                                android:background="#EEE"
-                                app:srcCompat="@drawable/ic_action_cross" />
-                        </RelativeLayout>
-                    </android.support.v7.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/textBarcodeProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textQuantityProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textPackagingProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textBrandProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
 
                     <TextView
                         android:id="@+id/textCategoryProduct"
@@ -476,6 +475,35 @@
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
+
+                    <TextView
+                        android:id="@+id/textPackagingProduct"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/light_blue_A700"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cvProductDetailsGeo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        app:cardElevation="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
 
                     <TextView
                         android:id="@+id/textManufacturingProduct"
@@ -555,6 +583,22 @@
                         android:textColorLink="@color/light_blue_A700"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cvProductDetailsOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textOtherInfo"
@@ -662,11 +706,15 @@
             </LinearLayout>
 
             <Button
+                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
+                android:drawablePadding="5dp"
                 android:id="@+id/buttonMorePictures"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/spacing_tiny"
+                android:paddingVertical="16dp"
                 android:text="@string/take_more_pictures" />
 
         </LinearLayout>

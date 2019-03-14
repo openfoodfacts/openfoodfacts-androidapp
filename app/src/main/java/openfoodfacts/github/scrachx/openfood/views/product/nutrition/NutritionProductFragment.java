@@ -24,7 +24,6 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +62,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -127,6 +127,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView textNutriScoreInfo;
     @BindView(R.id.nutrient_levels_card_view)
     CardView nutrientLevelsCardView;
+    @BindView(R.id.calculateNutritionFacts)
+    Button calculateNutritionFacts;
+    @BindView(R.id.nutrimentsCardView)
+    CardView nutrimentsCardView;
+    @BindView(R.id.textNoNutritionData)
+    TextView textNoNutritionData;
 
     private String mUrlImage;
     private String barcode;
@@ -140,6 +146,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     //the following booleans indicate whether the prompts are to be made visible
     private boolean showNutritionPrompt = false;
     private boolean showCategoryPrompt = false;
+    //boolean to determine if nutrition data should be shown
+    private boolean showNutritionData=true;
     private Product product;
     private State mState;
 
@@ -169,6 +177,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         super.refreshView(state);
         mState = state;
         product = state.getProduct();
+        String langCode=LocaleHelper.getLanguageTrimmed(getContext());
         //checks the product states_tags to determine which prompt to be shown
         List<String> statesTags = product.getStatesTags();
         if (statesTags.contains("en:categories-to-be-completed")) {
@@ -176,6 +185,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
         if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
             showNutritionPrompt = false;
+            showNutritionData = false;
         } else {
             if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
                 showNutritionPrompt = true;
@@ -191,6 +201,16 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             } else if (showCategoryPrompt) {
                 nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
             }
+        }
+
+        if (!showNutritionData) {
+            mImageNutrition.setVisibility(View.GONE);
+            addPhotoLabel.setVisibility(View.GONE);
+            imageGradeLayout.setVisibility(View.GONE);
+            calculateNutritionFacts.setVisibility(View.GONE);
+            nutrimentsCardView.setVisibility(View.GONE);
+            textNoNutritionData.setVisibility(View.VISIBLE);
+
         }
 
         List<NutrientLevelItem> levelItem = new ArrayList<>();
@@ -359,13 +379,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             mTextPerPortion.setVisibility(View.GONE);
         }
 
-        if (isNotBlank(product.getImageNutritionUrl())) {
+        if (isNotBlank(product.getImageNutritionUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.with(getContext())
-                        .load(product.getImageNutritionUrl())
+                        .load(product.getImageNutritionUrl(langCode))
                         .into(mImageNutrition);
             } else {
 
@@ -373,10 +393,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
             }
             Picasso.with(getContext())
-                    .load(product.getImageNutritionUrl())
+                    .load(product.getImageNutritionUrl(langCode))
                     .into(mImageNutrition);
 
-            mUrlImage = product.getImageNutritionUrl();
+            mUrlImage = product.getImageNutritionUrl(langCode);
         }
 
         //useful when this fragment is used in offline saving

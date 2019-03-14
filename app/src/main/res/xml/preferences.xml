@@ -101,7 +101,7 @@
             android:title="@string/contribution_tab_title" />
 
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="fastAdditionMode"
             android:summary="@string/fast_addition_mode"
             android:title="@string/fast_addition_mode_title" />

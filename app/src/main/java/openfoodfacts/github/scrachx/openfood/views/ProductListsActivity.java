@@ -63,7 +63,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
             new MaterialDialog.Builder(this)
                     .title(R.string.txt_create_new_list)
-                    .input("List name","",false, (dialog, input) -> {
+                    .input(R.string.create_new_list_list_name,
+                            R.string.empty, false, (dialog, input) -> {
                                 ProductLists productList=new ProductLists(input.toString(),0);
                                 productLists.add(productList);
                                 productListsDao.insert(productList);
@@ -76,8 +77,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                                 startActivityForResult(intent,1);
                             }
                     )
-                    .positiveText(R.string.txt_discard)
-                    .negativeText(R.string.txtSave)
+                    .positiveText(R.string.txtSave)
+                    .negativeText(R.string.txt_discard)
                     .onPositive((dialog, which) -> {
                         dialog.dismiss();
                         adapter.notifyDataSetChanged();

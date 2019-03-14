@@ -51,7 +51,7 @@ public class CategoryActivity extends BaseActivity {
         setTitle(R.string.category_drawer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        game_button = (Button) findViewById(R.id.game_button);
+        game_button = findViewById(R.id.game_button);
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
@@ -59,27 +59,18 @@ public class CategoryActivity extends BaseActivity {
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
 
-        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
-            @Override
-            public void onShake(int count) {
-                if (scanOnShake) {
-                    Utils.scan(CategoryActivity.this);
-                }
+        mShakeDetector.setOnShakeListener(count -> {
+            if (scanOnShake) {
+                Utils.scan(CategoryActivity.this);
             }
         });
 
         // chrome custom tab for category hunger game
-        game_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String url = "https://world.openfoodfacts.org/hunger-game";
-                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                CustomTabsIntent customTabsIntent = builder.build();
-                customTabsIntent.launchUrl(getBaseContext(), Uri.parse(url));
-
-
-            }
+        game_button.setOnClickListener(v -> {
+            String url = getString(R.string.hunger_game_url);
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(getBaseContext(), Uri.parse(url));
         });
 
 

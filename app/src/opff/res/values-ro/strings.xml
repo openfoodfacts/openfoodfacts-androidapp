@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Scanați produsele când sunteți offline pentru a le adăuga in Open Pet Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de mai jos.</string>
     <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="tagline">baza de date gratuită a produselor alimentare veterinare</string>
+    <string name="tagline">free pet food products database</string>
     <string name="product_not_found">Produsul %1$s pe care l-ai scanat încă nu există în Open Pet Food Facts. Îl poți adăuga tu?</string>
     <string name="currently_on_version">Currently on Open Pet Food Facts</string>
     <string name="category_game_btn">Help categorize products</string>
