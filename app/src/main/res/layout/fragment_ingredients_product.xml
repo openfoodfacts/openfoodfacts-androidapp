@@ -100,7 +100,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/textIngredientProduct"
@@ -123,8 +123,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="gone"
-                >
+                app:cardElevation="@dimen/card_elevation"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textSubstanceProduct"
@@ -149,7 +149,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/textTraceProduct"
@@ -174,7 +174,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/textAdditiveProduct"
@@ -199,7 +199,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/textPalmOilProduct"
@@ -236,7 +236,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/vitaminsTagsText"
@@ -260,7 +260,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/mineralTagsText"
@@ -284,7 +284,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/aminoAcidTagsText"
@@ -308,7 +308,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/otherNutritionTags"
