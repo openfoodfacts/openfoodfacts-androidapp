@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
@@ -25,16 +24,11 @@ import openfoodfacts.github.scrachx.openfood.models.DietDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.DietRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.IDietRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DietHAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DietIngredientsProductAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 
 public class DietIngredientsProductFragment extends BaseFragment {
 
@@ -45,14 +39,10 @@ public class DietIngredientsProductFragment extends BaseFragment {
     boolean smoothScroll = true;
 
     private Product product;
-    private OpenFoodAPIClient api;
     private State mState;
     private Diet mDiet;
     private List<SpannableStringBuilder> mIngredients;
-    private IProductRepository productRepository;
     private IDietRepository dietRepository;
-    private CustomTabActivityHelper customTabActivityHelper;
-    private CustomTabsIntent customTabsIntent;
     // Fetching of the (theoretical) language of input:
     //To be replaced with the product.getLang() !!!
     private String languageCode = Locale.getDefault().getLanguage();
@@ -61,10 +51,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        productRepository = ProductRepository.getInstance();
         dietRepository = DietRepository.getInstance();
-        customTabActivityHelper = new CustomTabActivityHelper();
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");

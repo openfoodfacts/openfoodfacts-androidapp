@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">ಸೆಟ್ಟಿಂಗ್</string>
     <string name="saving">ಉಳಿಸಲಾಗುತ್ತಿದೆ…</string>
     <string name="scan_first_product">ಮೊದಲ ಉತ್ಪನ್ನವನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">ಮೊಬೈಲ್ ಡೇಟಾದಲ್ಲಿ ಅಪ್ಲೋಡ್ ಮಾಡಿ</string>
     <string name="preference_enable_mobile_data_summary_on">ಮೊಬೈಲ್ ಡೇಟಾ &amp; ವೈಫೈ ಬಳಸಿಕೊಂಡು ಹೊಸ ಉತ್ಪನ್ನಗಳನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ</string>
     <string name="preference_enable_mobile_data_summary_off">ವೈಫೈ ಬಳಸಿ ಹೊಸ ಉತ್ಪನ್ನಗಳನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ</string>
@@ -487,10 +488,13 @@
     <string name="please_check_your_connection">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">ಸುಧಾರಿತ ಹುಡುಕಾಟ &amp; ಚಾರ್ಟ್ಗಳು</string>
+    <string name="compare_products">Compare Products</string>
     <string name="connectivity_check">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ</string>
     <string name="dismiss">ವಜಾಮಾಡು</string>
     <string name="Terms">ನಿಯಮಗಳು</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">ಸಾಮಾನ್ಯ</string>
     <string name="preference_header_network">ನೆಟ್ವರ್ಕ್</string>
     <string name="preference_header_contributing">ಕೊಡುಗೆಗಳು</string>
@@ -763,6 +767,7 @@
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="export_csv_your_listed_products">CSV ರಫ್ತು ಮಾಡಿ</string>
@@ -781,5 +786,10 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="empty"></string>
+    <string name="add_product">Add Products</string>
+    <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>
