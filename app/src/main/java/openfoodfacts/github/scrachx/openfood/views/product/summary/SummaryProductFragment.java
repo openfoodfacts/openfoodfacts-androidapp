@@ -755,17 +755,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAdditivesState(String state) {
-        switch (state) {
-            case LOADING: {
-                textAdditiveProductCardView.setVisibility(View.VISIBLE);
-                additiveProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    textAdditiveProductCardView.setVisibility(View.VISIBLE);
+                    additiveProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    textAdditiveProductCardView.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                textAdditiveProductCardView.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     @Override
@@ -866,44 +868,50 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showCategoriesState(String state) {
-        switch (state) {
-            case LOADING: {
-                categoryProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    categoryProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    categoryProduct.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                categoryProduct.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     @Override
     public void showLabelsState(String state) {
-        switch (state) {
-            case LOADING: {
-                labelProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    labelProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    labelProduct.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                labelProduct.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     @Override
     public void showCountriesState(String state) {
-        switch (state) {
-            case LOADING: {
-                countryProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    countryProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    countryProduct.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                countryProduct.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     private String getEmbUrl(String embTag) {
