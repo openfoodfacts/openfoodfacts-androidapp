@@ -242,6 +242,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/packaging" />
 
+        <TextView
+            android:id="@+id/category_hint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="(Required to calculate the Nutri-Score)"
+            android:textColor="@color/grey_500"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/categories"
+            app:layout_constraintStart_toStartOf="@+id/categories"
+            app:layout_constraintTop_toBottomOf="@+id/categories" />
+
+
         <com.hootsuite.nachos.NachoTextView
             android:id="@+id/label"
             android:layout_width="0dp"
@@ -263,7 +276,7 @@
             app:chipTextColor="@color/grey_50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/categories" />
+            app:layout_constraintTop_toBottomOf="@+id/category_hint" />
 
         <EditText
             android:id="@+id/other_info"
@@ -659,6 +672,8 @@
             tools:visibility="visible" />
 
         <Button
+            android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
+            android:drawablePadding="5dp"
             android:id="@+id/btn_other_pictures"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

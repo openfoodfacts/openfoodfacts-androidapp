@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.preference.PreferenceManager;
@@ -54,6 +55,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.DietIngredientsProductFra
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
@@ -74,7 +76,6 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPager
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -399,58 +400,32 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             public void onClick(View view) {
                 if (additive.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        if (getActivity() instanceof ProductActivity) {
-                            ProductActivity productActivity = (ProductActivity) getActivity();
-                            if (value) {
-                                if (productActivity != null && !productActivity.isFinishing()) {
-                                    productActivity.showBottomScreen(result, additive);
-                                }
-                            } else {
-                                if (additive.hasOverexposureData()) {
-                                    if (productActivity != null && !productActivity.isFinishing()) {
-                                        productActivity.showBottomScreen(null, additive);
-                                    }
-                                } else {
-                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                                }
+                        FragmentActivity activity = getActivity();
+                        if (value) {
+                            if (activity != null && !activity.isFinishing()) {
+                                BottomScreenCommon.showBottomScreen(result, additive,
+                                        activity.getSupportFragmentManager());
                             }
                         } else {
-                            ProductFragment productFragment = (ProductFragment) getParentFragment();
-                            if (value) {
-                                if (productFragment != null) {
-                                    productFragment.showBottomScreen(result, additive);
+                            if (additive.hasOverexposureData()) {
+                                if (activity != null && !activity.isFinishing()) {
+                                    BottomScreenCommon.showBottomScreen(result, additive,
+                                            activity.getSupportFragmentManager());
                                 }
                             } else {
-                                if (additive.hasOverexposureData()) {
-                                    if (productFragment != null) {
-                                        productFragment.showBottomScreen(null, additive);
-                                    }
-
-                                } else {
-                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                                }
+                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                             }
                         }
                     });
                 } else {
-                    if (getActivity() instanceof ProductActivity) {
-                        ProductActivity productActivity = (ProductActivity) getActivity();
-                        if (additive.hasOverexposureData()) {
-                            if (productActivity != null && !productActivity.isFinishing()) {
-                                productActivity.showBottomScreen(null, additive);
-                            }
-                        } else {
-                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                    FragmentActivity activity = getActivity();
+                    if (additive.hasOverexposureData()) {
+                        if (activity != null && !activity.isFinishing()) {
+                            BottomScreenCommon.showBottomScreen(null, additive,
+                                    activity.getSupportFragmentManager());
                         }
                     } else {
-                        ProductFragment productFragment = (ProductFragment) getParentFragment();
-                        if (additive.hasOverexposureData()) {
-                            if (productFragment != null) {
-                                productFragment.showBottomScreen(null, additive);
-                            }
-                        } else {
-                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                        }
+                        ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                     }
                 }
             }
@@ -498,16 +473,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                             allergen.getWikiDataId(),
                             (value, result) -> {
                                 if (value) {
-                                    if (getActivity() instanceof ProductActivity) {
-                                        ProductActivity productActivity = (ProductActivity) getActivity();
-                                        if (productActivity != null && !productActivity.isFinishing()) {
-                                            productActivity.showBottomScreen(result, allergen);
-                                        }
-                                    } else {
-                                        ProductFragment productFragment = (ProductFragment) getParentFragment();
-                                        if (productFragment != null) {
-                                            productFragment.showBottomScreen(result, allergen);
-                                        }
+                                    FragmentActivity activity = getActivity();
+                                    if (activity != null && !activity.isFinishing()) {
+                                        BottomScreenCommon.showBottomScreen(result, allergen,
+                                                activity.getSupportFragmentManager());
                                     }
                                 } else {
                                     ProductBrowsingListActivity.startActivity(getContext(),
