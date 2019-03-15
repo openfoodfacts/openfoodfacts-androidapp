@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -201,6 +202,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView listName;
     @BindView(R.id.compare_product_button)
     Button compareProductButton;
+    @BindView(R.id.scrollView)
+    public NestedScrollView scrollView;
     private State state;
     private Product product;
     private OpenFoodAPIClient api;

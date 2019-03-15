@@ -47,6 +47,7 @@ import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
+import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -304,6 +305,19 @@ doesn't have calories information in nutrition facts.
         if (scanOnShake) {
             //register the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
+    }
+
+    public void bottomSheetWillGrow() {
+        if (adapterResult == null || adapterResult.getCount() == 0) {
+            return;
+        }
+        // without this, the view can be centered vertically on initial show. we force the scroll to top !
+        if (adapterResult.getItem(0) instanceof SummaryProductFragment) {
+            SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.getItem(0);
+            if(productFragment.scrollView!=null) {
+                productFragment.scrollView.scrollTo(0, 0);
+            }
         }
     }
 }
