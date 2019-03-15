@@ -928,6 +928,10 @@
     <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="diet_export_1">To have this new diet in Open Food Facts, thanks to open OFF App, goto to menu</string>
+    <string name="diet_export_2">Click on the + button\nThen copy/paste theses informations in the corresponding fields :</string>
+    <string name="diet_export_3">Click on</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
@@ -987,7 +991,6 @@
     <string name="settings_country_title">Country</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty" />
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>

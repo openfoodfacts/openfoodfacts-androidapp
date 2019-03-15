@@ -176,7 +176,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
                     if (productIngredient.getText().replace("_","").equals(mIngredients.get(position).toString())) {
                         ingredientTag = productIngredient.getId();
                         //Sometimes ID passed from a product doesn't exists in the taxonomy from ingredient.json.
-                        if (dietRepository.getIngredientByTag(productIngredient.getId()) == null) {
+                        if (dietRepository.getIngredientByTag(productIngredient.getId()).getTag() == null) {
                             //That's it, create a new ingredient
                             dietRepository.addIngredient(productIngredient.getId(), productIngredient.getText(), productIngredient.getId().split(":")[0]);
                         }
@@ -199,7 +199,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
                     if (productIngredient.getText().replace("_","").equals(mIngredients.get(position).toString())) {
                         ingredientTag = productIngredient.getId();
                         //Sometimes ID passed from a product doesn't exists in the taxonomy from ingredient.json.
-                        if (dietRepository.getIngredientByTag(productIngredient.getId()) != null) {
+                        if (dietRepository.getIngredientByTag(productIngredient.getId()).getTag() != null) {
                             //That's it, create a new ingredient
                             dietRepository.addIngredient(productIngredient.getId(), productIngredient.getText(), productIngredient.getId().split(":")[0]);
                         }
