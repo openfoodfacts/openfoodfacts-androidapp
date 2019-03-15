@@ -131,8 +131,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     TextView otherNutritionTagTextView;
     @BindView(R.id.cvTextIngredientProduct)
     CardView textIngredientProductCardView;
-    @BindView(R.id.cvTextSubstanceProduct)
-    CardView textSubstanceProductCardView;
     @BindView(R.id.cvTextTraceProduct)
     CardView textTraceProductCardView;
     @BindView(R.id.cvTextAdditiveProduct)
@@ -637,12 +635,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void showAllergensState(String state) {
         switch (state) {
             case LOADING: {
-                textSubstanceProductCardView.setVisibility(View.VISIBLE);
+                substanceProduct.setVisibility(View.VISIBLE);
                 substanceProduct.append(getString(R.string.txtLoading));
                 break;
             }
             case EMPTY: {
-                textSubstanceProductCardView.setVisibility(View.GONE);
+                substanceProduct.setVisibility(View.GONE);
                 break;
             }
         }
