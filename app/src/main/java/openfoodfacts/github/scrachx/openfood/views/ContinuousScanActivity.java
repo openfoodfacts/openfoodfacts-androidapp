@@ -151,6 +151,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private Handler handler;
     private Runnable runnable;
     private BottomSheetBehavior bottomSheetBehavior;
+    /**
+     * the product details is not shown properly ( blank or not aligned) on some device.
+     * This boolean is here to try to fix it.
+     */
+    private boolean shouldDoLayoutForBottomSheetIssue=false;
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
@@ -387,6 +392,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             fragmentTransaction.replace(R.id.frame_layout, productFragment);
                             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                             fragmentTransaction.commit();
+                            shouldDoLayoutForBottomSheetIssue=true;
                         }
                     }
 
@@ -610,6 +616,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
                     bottomSheet.requestLayout();
                 }
+                if(newState==BottomSheetBehavior.STATE_EXPANDED && shouldDoLayoutForBottomSheetIssue){
+                    doLayoutForBottomSheetIssue(bottomSheet);
+                }
             }
 
             @Override
@@ -632,11 +641,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         }
                         details.setVisibility(View.GONE);
                         barcodeView.pause();
+
                     } else {
                         addToList.setVisibility(View.GONE);
                         barcodeView.resume();
                         details.setVisibility(View.VISIBLE);
                     }
+                }
+                if(slideOffset>0.01f && shouldDoLayoutForBottomSheetIssue){
+                    bottomSheet.scrollTo(0,0);
+                    doLayoutForBottomSheetIssue(bottomSheet);
                 }
             }
         });
@@ -702,6 +716,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             }
             return false;
         });
+    }
+
+    private void doLayoutForBottomSheetIssue(@NonNull View bottomSheet) {
+        Log.i(ContinuousScanActivity.class.getSimpleName(),"Perform layout to fix issue on Galaxy S8");
+        bottomSheet.requestLayout();
+        bottomSheet.invalidate();
+        shouldDoLayoutForBottomSheetIssue=false;
     }
 
     private boolean isProductIncomplete() {
