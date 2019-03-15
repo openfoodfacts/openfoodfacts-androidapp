@@ -110,7 +110,6 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
@@ -134,7 +133,6 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textColorLink="@color/light_blue_A700"
                     android:textIsSelectable="true"
