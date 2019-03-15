@@ -118,7 +118,7 @@
                         android:layout_marginTop="@dimen/activity_vertical_margin"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:adjustViewBounds="true"
-                        android:background="?android:selectableItemBackground"
+                        android:background="@drawable/button_shape"
                         android:maxHeight="120dp"
                         android:scaleType="fitCenter"
                         android:transitionName="@string/product_transition"
@@ -264,21 +264,18 @@
                     tools:srcCompat="@drawable/ic_co2_high_24dp" />
 
                 <Button
-                        android:id="@+id/add_nutriscore_prompt"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="@dimen/activity_horizontal_margin"
-                        android:layout_margin="16dp"
-                        android:drawableLeft="@drawable/ic_add_box_black_18dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:paddingVertical="16dp"
-                        tools:text="@string/add_nutrition_facts_for_nutriscore"
-                        android:visibility="gone"
-                />
+                    android:id="@+id/add_nutriscore_prompt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:drawableLeft="@drawable/ic_add_box_blue_18dp"
+                    android:drawableStart="@drawable/ic_add_box_blue_18dp"
+                    tools:text="@string/add_nutrition_facts_for_nutriscore"
+                    android:visibility="gone"
+                    style="@style/BorderButton"/>
 
             </android.support.constraint.ConstraintLayout>
 
@@ -309,21 +306,23 @@
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
+                        android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
 
                     <Button
-                        android:drawableLeft="@drawable/ic_compare_arrows_black_18dp"
-                        android:drawablePadding="5dp"
                         android:id="@+id/compare_product_button"
                         android:layout_width="match_parent"
-                        android:layout_margin="16dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginVertical="@dimen/spacing_tiny"
-                        android:paddingVertical="16dp"
-                        android:text="@string/compare_product_prompt"/>
+                        android:text="@string/compare_product_prompt"
+                        android:drawableStart="@drawable/ic_compare_arrows_blue_18dp"
+                        android:drawableLeft="@drawable/ic_compare_arrows_blue_18dp"
+                        style="@style/BorderButton"/>
 
 
                 </LinearLayout>
@@ -349,7 +348,6 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginRight="@dimen/spacing_normal"
-                        android:background="@drawable/textview_full"
                         android:padding="@dimen/spacing_small"
                         android:text="@string/txtNutrientLevel100g"
                         android:textIsSelectable="true"
@@ -363,7 +361,6 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:background="@drawable/textview_full"
                         android:divider="@color/white"
                         android:dividerHeight="0dp"
                         android:padding="@dimen/spacing_small"
@@ -396,9 +393,8 @@
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:background="@drawable/textview_full"
                         android:padding="@dimen/spacing_small"
-                        android:textColorLink="@color/light_blue_A700"
+                        android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
 
@@ -411,7 +407,7 @@
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
+                        android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
 
@@ -424,7 +420,7 @@
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
+                        android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
                     <TextView
@@ -436,7 +432,7 @@
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
+                        android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
                 </LinearLayout>
@@ -471,16 +467,15 @@
             </LinearLayout>
 
             <Button
-                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
-                android:drawablePadding="5dp"
                 android:id="@+id/buttonMorePictures"
                 android:layout_width="match_parent"
-                android:layout_margin="16dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:paddingVertical="16dp"
-                android:text="@string/take_more_pictures" />
+                android:layout_margin="@dimen/spacing_normal"
+                android:text="@string/take_more_pictures"
+                android:drawableStart="@drawable/ic_add_a_photo_blue_18dp"
+                android:drawableLeft="@drawable/ic_add_a_photo_blue_18dp"
+                style="@style/BorderButton"/>
 
         </LinearLayout>
 
