@@ -281,6 +281,21 @@
         <item>Ingredients</item>
     </string-array>
 
+    <string-array name="fields_array" translatable="false">
+        <item>product_name</item>
+        <item>generic_name</item>
+        <item>ingredients_text</item>
+        <item>other_information</item>
+        <item>conservation_conditions</item>
+        <item>recycling_instructions_to_discard</item>
+        <item>recycling_instructions_to_recycle</item>
+        <item>warning</item>
+        <item>customer_service</item>
+        <item>image_front_url</item>
+        <item>image_ingredients_url</item>
+        <item>image_nutrition_url</item>
+    </string-array>
+
     <!-- Content Description -->
     <string name="bookmark">Bookmark</string>
     <string name="edit">Edit</string>
@@ -637,7 +652,7 @@
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
 
 
@@ -976,4 +991,5 @@
     <string name="empty" />
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>
