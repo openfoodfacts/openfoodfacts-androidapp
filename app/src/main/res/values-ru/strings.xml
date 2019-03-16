@@ -488,7 +488,7 @@
     <string name="device_on_mobile_data_warning_message">Загрузка на мобильные данные отключена, подключитесь к Wi-Fi или измените это в настройках</string>
     <string name="device_on_mobile_data_warning_positive">Настройки</string>
     <string name="device_on_mobile_data_warning_negative">Загрузить в любом случае</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Изменения успешно сохранены</string>
     <string name="preference_choose_language_dialog_title">Выберите язык</string>
     <string name="FAQ">ЧаВО</string>
     <string name="FrequentlyAskedQuestions">Часто задаваемые вопросы</string>
