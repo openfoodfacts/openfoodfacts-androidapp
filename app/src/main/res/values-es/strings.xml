@@ -472,7 +472,7 @@
     <string name="device_offline_dialog_positive">Configuración</string>
     <string name="saving">Guardando…</string>
     <string name="scan_first_product">Escanear el primer producto</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Historial eliminado con éxito</string>
     <string name="preference_enable_mobile_data_title">Enviar con datos móviles</string>
     <string name="preference_enable_mobile_data_summary_on">Enviar nuevos productos usando datos móviles &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Enviar nuevos productos usando solo WiFi</string>
@@ -480,7 +480,7 @@
     <string name="device_on_mobile_data_warning_message">El envío con datos móviles está deshabilitado, por favor conéctese mediante WiFi o cámbielo en sus preferencias</string>
     <string name="device_on_mobile_data_warning_positive">Preferencias</string>
     <string name="device_on_mobile_data_warning_negative">Enviar de todas formas</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Cambios guardados correctamente</string>
     <string name="preference_choose_language_dialog_title">Elegir idioma</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Preguntas frecuentes</string>
