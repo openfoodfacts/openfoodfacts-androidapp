@@ -480,7 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Le téléchargement via données mobiles est désactivé, veuillez vous connecter au WiFi ou changer cela dans les préférences</string>
     <string name="device_on_mobile_data_warning_positive">Préférences</string>
     <string name="device_on_mobile_data_warning_negative">Envoyer quand même?</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Les modifications ont été enregistrées avec succès</string>
     <string name="preference_choose_language_dialog_title">Choisir la langue</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Foire Aux Questions</string>
