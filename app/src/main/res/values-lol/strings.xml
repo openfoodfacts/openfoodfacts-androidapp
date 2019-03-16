@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">crwdns113992:0crwdne113992:0</string>
     <string name="device_on_mobile_data_warning_positive">crwdns113994:0crwdne113994:0</string>
     <string name="device_on_mobile_data_warning_negative">crwdns113996:0crwdne113996:0</string>
+    <string name="changes_saved">crwdns116016:0crwdne116016:0</string>
     <string name="preference_choose_language_dialog_title">crwdns113998:0crwdne113998:0</string>
     <string name="FAQ">crwdns114000:0crwdne114000:0</string>
     <string name="FrequentlyAskedQuestions">crwdns114002:0crwdne114002:0</string>
