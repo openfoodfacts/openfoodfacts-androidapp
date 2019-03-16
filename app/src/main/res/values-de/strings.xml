@@ -480,7 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Hochladen über Mobilfunkverbindung ist deaktiviert. Bitte verbinden Sie sich mit WLAN oder ändern Sie dies in den Einstellungen</string>
     <string name="device_on_mobile_data_warning_positive">Einstellungen</string>
     <string name="device_on_mobile_data_warning_negative">Trotzdem hochladen</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Änderungen erfolgreich gespeichert</string>
     <string name="preference_choose_language_dialog_title">Sprache auswählen</string>
     <string name="FAQ">Häufig gestellte Fragen</string>
     <string name="FrequentlyAskedQuestions">Häufig gestellte Fragen</string>
