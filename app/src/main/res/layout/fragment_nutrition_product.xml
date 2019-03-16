@@ -36,7 +36,14 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
-
+            <Button
+                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
+                android:drawablePadding="5dp"
+                android:id="@+id/newAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/update_image"
+                android:layout_gravity="center_horizontal"/>
             <TextView
                 android:id="@+id/addPhotoLabel"
                 android:layout_width="match_parent"
