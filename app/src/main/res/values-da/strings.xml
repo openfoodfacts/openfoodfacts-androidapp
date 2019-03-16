@@ -480,7 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Upload via mobildata er inaktiv. Opret forbindelse til Wi-Fi eller ændr indstillingen i præferencer</string>
     <string name="device_on_mobile_data_warning_positive">Præferencer</string>
     <string name="device_on_mobile_data_warning_negative">Upload alligevel</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Ændring er gemt</string>
     <string name="preference_choose_language_dialog_title">Vælg sprog</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Ofte stillede spørgsmål</string>
