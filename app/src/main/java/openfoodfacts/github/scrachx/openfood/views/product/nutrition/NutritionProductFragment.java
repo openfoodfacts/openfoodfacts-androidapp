@@ -661,6 +661,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             }
         }
     }
+    @OnClick(R.id.newAdd)
+    public void openNew(View v) {
+        // take a picture
+        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
+    }
 
     public String getNutrients() {
         return mUrlImage;
