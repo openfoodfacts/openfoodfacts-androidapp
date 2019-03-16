@@ -480,7 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Il caricamento con i dati cellulare è disattivato, connettiti al WiFi o modifica l\'opzione tra le impostazioni</string>
     <string name="device_on_mobile_data_warning_positive">Impostazioni</string>
     <string name="device_on_mobile_data_warning_negative">Carica comunque</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Modifiche salvate correttamente</string>
     <string name="preference_choose_language_dialog_title">Scegli la lingua</string>
     <string name="FAQ">Domande frequenti</string>
     <string name="FrequentlyAskedQuestions">Domande poste frequentemente</string>
