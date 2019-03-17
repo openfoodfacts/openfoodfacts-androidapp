@@ -426,6 +426,10 @@ public class DietRepository implements IDietRepository {
                 IngredientNameDao.Properties.IngredientTag.eq(ingredientTag),
                 IngredientNameDao.Properties.LanguageCode.eq(languageCode)
         ).list();
+        if (ingredientNames.size() == 0 && ingredientTag.indexOf(languageCode + ":") != 0) {
+            //No value for this tag and language code. Looking for "default" value (Tag and LanguageCode of the Tag)
+            return getIngredientNameByIngredientTagAndLanguageCode(ingredientTag, ingredientTag.split(":")[0]);
+        }
         return getIngredientNameFromDoublon(ingredientNames);
     }
 
@@ -687,6 +691,12 @@ public class DietRepository implements IDietRepository {
                 Collections.sort(ingredientNames, new Comparator<IngredientName>() {
                     @Override
                     public int compare(IngredientName iN1, IngredientName iN2) {
+                        if (iN1.getName() == null) {
+                            if (iN2.getName() == null) {
+                                return 0;
+                            }
+                            return -1;
+                        }
                         return iN1.getName().compareTo(iN2.getName());
                     }
                 });
@@ -933,7 +943,7 @@ public class DietRepository implements IDietRepository {
                 //then came "sucre" with rank>0 : "...,       11.4%,               6.1% [pâte de cacao,      , cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
                 //The erased "sucre" is not the good one, but it doesn't matter cause the second (and "good") "sucre" will be treated when the "sucre" of rank=0 will come.
                 //So we split the ingredients in two (before start and after) and replace the ingredient from the second one by spaces (as many as the length of ingredient).
-                ingredients = ingredients.substring(0,start) + ingredients.substring(start).replaceFirst(ingredient, new String(new char[ingredient.length()]).replace('\0', ' '));
+                ingredients = ingredients.substring(0,start) + ingredients.substring(start).replaceFirst(Pattern.quote(ingredient), new String(new char[ingredient.length()]).replace('\0', ' '));
                 if (state == 2) {
                     //The ingredientTag doesn't seems to have a relation with a diet, looking for the sentence.
                     //Theoretically this will never append. But this is theory.
