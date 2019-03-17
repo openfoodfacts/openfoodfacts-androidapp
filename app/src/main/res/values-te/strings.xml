@@ -730,6 +730,7 @@
     <string name="edit_diet_hint_so_so_ingredient">నారింజలో కనిపించే సమస్యాత్మక పదార్థాలను జాబితా చేయండి. ఉదాహరణ: గుడ్డు, చేప… మీరు తర్వాత ఈ జాబితాను పూర్తి చెయ్యవచ్చు.</string>
     <string name="edit_diet_unauthorised_ingredients">అనధికార పదార్థాలు</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Nutri- స్కోరును లెక్కించడానికి పోషకాహార వాస్తవాలను జోడించండి</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>

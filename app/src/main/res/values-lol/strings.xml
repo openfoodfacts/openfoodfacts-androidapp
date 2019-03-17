@@ -730,6 +730,7 @@
     <string name="edit_diet_hint_so_so_ingredient">crwdns114482:0crwdne114482:0</string>
     <string name="edit_diet_unauthorised_ingredients">crwdns114484:0crwdne114484:0</string>
     <string name="edit_diet_hint_unauthorised_ingredient">crwdns115734:0crwdne115734:0</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">crwdns114488:0crwdne114488:0</string>
     <string name="add_nutrient_prompt_text">crwdns114490:0crwdne114490:0</string>
     <string name="add_category_prompt_text">crwdns114492:0crwdne114492:0</string>
@@ -787,7 +788,6 @@
     <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
     <string name="list_text">crwdns115878:0crwdne115878:0</string>
     <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">crwdns115746:0crwdne115746:0</string>
     <string name="add_another_product">crwdns115748:0crwdne115748:0</string>

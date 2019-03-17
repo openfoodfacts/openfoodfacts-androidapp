@@ -730,6 +730,7 @@
     <string name="edit_diet_hint_so_so_ingredient">Llista els ingredients problemàtics, que haurien d\'aparèixer en taronja. Exemple: ou, peix… Podeu completar aquesta llista més endavant.</string>
     <string name="edit_diet_unauthorised_ingredients">Ingredients no autoritzats</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extreu els ingredients</string>
     <string name="add_nutrient_prompt_text">Afegiu informació nutricional per calcular el Nutri-Score</string>
     <string name="add_category_prompt_text">Afegiu una categoria per calcular Nutri-Score</string>

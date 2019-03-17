@@ -729,7 +729,7 @@
     <string name="edit_diet_so_so_ingredients">Ingrédients peu recommandés</string>
     <string name="edit_diet_hint_so_so_ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
     <string name="edit_diet_unauthorised_ingredients">Ingrédients non autorisés</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Énumérez les ingrédients non autorisés devant apparaître en rouge. Exemple: gluten, lait, huile de palme, sucre… Vous pourrez compléter cette liste ultérieurement.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
