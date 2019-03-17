@@ -476,7 +476,7 @@
     <string name="device_on_mobile_data_warning_message">Tải lên dữ liệu di động bị tắt, vui lòng kết nối với WiFi hoặc thay đổi tùy chọn này trong tùy chọn</string>
     <string name="device_on_mobile_data_warning_positive">Tuỳ chỉnh</string>
     <string name="device_on_mobile_data_warning_negative">Vẫn tải lên</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Thay đổi được lưu thành công</string>
     <string name="preference_choose_language_dialog_title">Chọn ngôn ngữ</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
