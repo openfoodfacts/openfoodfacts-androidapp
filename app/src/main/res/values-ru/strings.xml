@@ -787,19 +787,19 @@
     <string name="write_external_storage_your_listed_products">Для экспорта данных требуется разрешение на запись во внешнее хранилище.</string>
     <string name="txt_info_eaten_products">Вы сможете добавить продукт в этот список, сканируя продукты, перетаскиванием карточки продукта вверх и постучав по  \"Я ем это\".
         Вы также сможете добавить продукты в этот список, найдя их и кликнув на кнопку \"+\", в верхнем правом углу страницы продукта.</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_i_m_eating_this">I\'m eating this</string>
-    <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="txt_info_your_listed_products">Вы сможете добавлять товары в этот список, выполнив их поиск и кликнув кнопку \"+\" в правом верхнем углу страницы товара.</string>
+    <string name="txt_i_m_eating_this">Я ем это</string>
+    <string name="compare_product_prompt">Сравнить этот продукт</string>
+    <string name="search_history_pref_title">Очистить историю поиска</string>
+    <string name="search_history_pref_summary">Удалить все поиски, которые вы выполняли на этом устройстве</string>
     <string name="settings_country_dialog_title">Выберите свою страну</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_summary">Изменить выбранную страну</string>
     <string name="settings_country_title">Страна</string>
-    <string name="list_text">Added in:\u0020</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="list_text">Добавлено в:\u0020</string>
+    <string name="txt_no_nutrition_data">Этот продукт не имеет никакой информации о питании на упаковке. Если это изменилось, вы можете отредактировать продукт.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Добавить продукты</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_another_product">Добавить другой продукт</string>
     <string name="add_nutrition_facts_for_nutriscore">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>
 </resources>
