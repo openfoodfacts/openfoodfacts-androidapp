@@ -488,7 +488,7 @@
     <string name="device_on_mobile_data_warning_message">העלאת מוצרים חדשים כשיש חיבור נתונים סלולרי מושבתת, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
     <string name="device_on_mobile_data_warning_positive">העדפות</string>
     <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">השינויים נשמרו בהצלחה</string>
     <string name="preference_choose_language_dialog_title">בחירת שפה</string>
     <string name="FAQ">שו״ת</string>
     <string name="FrequentlyAskedQuestions">שאלות ותשובות נפוצות</string>
