@@ -62,6 +62,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -176,6 +177,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         super.refreshView(state);
         mState = state;
         product = state.getProduct();
+        String langCode=LocaleHelper.getLanguageTrimmed(getContext());
         //checks the product states_tags to determine which prompt to be shown
         List<String> statesTags = product.getStatesTags();
         if (statesTags.contains("en:categories-to-be-completed")) {
@@ -377,13 +379,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             mTextPerPortion.setVisibility(View.GONE);
         }
 
-        if (isNotBlank(product.getImageNutritionUrl())) {
+        if (isNotBlank(product.getImageNutritionUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.with(getContext())
-                        .load(product.getImageNutritionUrl())
+                        .load(product.getImageNutritionUrl(langCode))
                         .into(mImageNutrition);
             } else {
 
@@ -391,10 +393,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
             }
             Picasso.with(getContext())
-                    .load(product.getImageNutritionUrl())
+                    .load(product.getImageNutritionUrl(langCode))
                     .into(mImageNutrition);
 
-            mUrlImage = product.getImageNutritionUrl();
+            mUrlImage = product.getImageNutritionUrl(langCode);
         }
 
         //useful when this fragment is used in offline saving
