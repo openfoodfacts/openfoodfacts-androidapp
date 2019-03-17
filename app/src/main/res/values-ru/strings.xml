@@ -780,13 +780,13 @@
     <string name="txt_eaten_products">Съеденные продукты</string>
     <string name="txt_products_to_buy">Продукты для покупки</string>
     <string name="export_csv_your_listed_products">Экспорт в CSV</string>
-    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
-    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="txt_exporting_your_listed_products">Экспорт ваших продуктов…</string>
+    <string name="txt_your_listed_products_exported">Ваши продукты были экспортированы</string>
     <string name="txt_discard">Отменить</string>
     <string name="txt_save">Сохранить</string>
-    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="write_external_storage_your_listed_products">Для экспорта данных требуется разрешение на запись во внешнее хранилище.</string>
+    <string name="txt_info_eaten_products">Вы сможете добавить продукт в этот список, сканируя продукты, перетаскиванием карточки продукта вверх и постучав по  \"Я ем это\".
+        Вы также сможете добавить продукты в этот список, найдя их и нажав на кнопку \"+\", в верхнем правом углу страницы продукта.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">Compare this product</string>
