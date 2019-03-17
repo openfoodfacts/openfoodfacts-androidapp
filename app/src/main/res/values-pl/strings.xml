@@ -500,7 +500,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="device_offline_dialog_positive">Ustawienia</string>
     <string name="saving">Zapisywanie…</string>
     <string name="scan_first_product">Zeskanuj pierwszy produkt</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Historia została usunięta</string>
     <string name="preference_enable_mobile_data_title">Prześlij używając danyme mobilne</string>
     <string name="preference_enable_mobile_data_summary_on">Wyślij nowe produkty używając dane mobilne &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Prześlij nowe produkty tylko przez WiFi</string>
@@ -508,7 +508,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="device_on_mobile_data_warning_message">Dane mobilne są wyłączone, połącz się z WiFi lub zmień ustawienia</string>
     <string name="device_on_mobile_data_warning_positive">Ustawienia</string>
     <string name="device_on_mobile_data_warning_negative">Przesyłaj mimo to</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Zmiany zostały pomyślnie zapisane</string>
     <string name="preference_choose_language_dialog_title">Wybierz język</string>
     <string name="FAQ">Odpowiedzi na najczęstsze pytania</string>
     <string name="FrequentlyAskedQuestions">Często zadawane pytania</string>
@@ -797,7 +797,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="add_to_product_lists">Dodaj do swoich list</string>
     <string name="txt_create_new_list">Utworzyć nową listę</string>
     <string name="txt_add_to_new_list">Dodaj do nowej listy</string>
-    <string name="create_new_list_list_name">List Name</string>
+    <string name="create_new_list_list_name">Nazwa listy</string>
     <string name="txt_eaten_products">Zjedzone produkty</string>
     <string name="txt_products_to_buy">Produkty do kupienia</string>
     <string name="export_csv_your_listed_products">Eksport CSV</string>
@@ -816,11 +816,11 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="settings_country_dialog_title">Wybierz kraj</string>
     <string name="settings_country_summary">Zmień kraj</string>
     <string name="settings_country_title">Kraj</string>
-    <string name="list_text">Added in:\u0020</string>
+    <string name="list_text">Dodano w:\u0020</string>
     <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Dodaj produkty</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_another_product">Dodaj kolejny produkt</string>
     <string name="add_nutrition_facts_for_nutriscore">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
 </resources>
