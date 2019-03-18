@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -201,6 +202,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView listName;
     @BindView(R.id.compare_product_button)
     Button compareProductButton;
+    @BindView(R.id.scrollView)
+    public NestedScrollView scrollView;
     @BindView(R.id.btn_eating)
     Button btnEating;
     @BindView(R.id.btn_eating_ticked)
@@ -770,17 +773,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAdditivesState(String state) {
-        switch (state) {
-            case LOADING: {
-                textAdditiveProductCardView.setVisibility(View.VISIBLE);
-                additiveProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    textAdditiveProductCardView.setVisibility(View.VISIBLE);
+                    additiveProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    textAdditiveProductCardView.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                textAdditiveProductCardView.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     @Override
@@ -881,44 +886,50 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showCategoriesState(String state) {
-        switch (state) {
-            case LOADING: {
-                categoryProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    categoryProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    categoryProduct.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                categoryProduct.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     @Override
     public void showLabelsState(String state) {
-        switch (state) {
-            case LOADING: {
-                labelProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    labelProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    labelProduct.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                labelProduct.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     @Override
     public void showCountriesState(String state) {
-        switch (state) {
-            case LOADING: {
-                countryProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    countryProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    countryProduct.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                countryProduct.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     private String getEmbUrl(String embTag) {
