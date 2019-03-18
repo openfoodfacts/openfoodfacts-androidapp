@@ -118,7 +118,6 @@
                         android:layout_marginTop="@dimen/activity_vertical_margin"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:adjustViewBounds="true"
-                        android:background="@drawable/button_shape"
                         android:maxHeight="120dp"
                         android:scaleType="fitCenter"
                         android:transitionName="@string/product_transition"
