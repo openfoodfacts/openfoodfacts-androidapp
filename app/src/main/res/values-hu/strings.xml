@@ -480,7 +480,7 @@
     <string name="device_on_mobile_data_warning_message">A feltöltés mobilinterneten le van tiltva, kérjük, csatlakozzon WiFi-hez vagy módosítsa a beállításokat</string>
     <string name="device_on_mobile_data_warning_positive">Tulajdonságok</string>
     <string name="device_on_mobile_data_warning_negative">Feltöltés mindenképpen</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">A módosítások sikeresen mentésre kerültek</string>
     <string name="preference_choose_language_dialog_title">Válasszon nyelvet</string>
     <string name="FAQ">GYIK</string>
     <string name="FrequentlyAskedQuestions">Gyakran Ismételt Kérdések</string>
