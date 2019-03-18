@@ -480,7 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Uppladdning på mobildata är inaktiverat, vänligen anslut till WiFi eller ändra dina inställningar</string>
     <string name="device_on_mobile_data_warning_positive">Inställningar</string>
     <string name="device_on_mobile_data_warning_negative">Ladda upp ändå</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Ändringarna har sparats korrekt</string>
     <string name="preference_choose_language_dialog_title">Välj språk</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Vanliga frågor (FAQ)</string>
