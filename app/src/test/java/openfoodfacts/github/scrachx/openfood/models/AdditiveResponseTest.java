@@ -28,7 +28,7 @@ public class AdditiveResponseTest {
 
     @Test
     public void mapWithoutWikiDataId_returnsAdditiveWithNamesWithoutWikiDataId() {
-        mAdditiveResponse = new AdditiveResponse(ADDITIVE_TAG, mStringMap);
+        mAdditiveResponse = new AdditiveResponse(ADDITIVE_TAG, mStringMap,null);
         Additive additive = mAdditiveResponse.map();
 
         assertEquals(ADDITIVE_TAG, additive.getTag());
