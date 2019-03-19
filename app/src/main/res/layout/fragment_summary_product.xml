@@ -396,7 +396,7 @@
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
+                        android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal"
