@@ -291,6 +291,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         if (isNotBlank(product.getImageIngredientsUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
+            updateImageBtn.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
