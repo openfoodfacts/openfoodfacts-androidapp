@@ -294,7 +294,9 @@
                         android:paddingBottom="@dimen/spacing_small"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textIsSelectable="true"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Product name"
+                        />
 
                     <TextView
                         android:id="@+id/textBrandProduct"
@@ -307,7 +309,9 @@
                         android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Brands: ..."
+                        />
 
                     <Button
                         android:id="@+id/compare_product_button"
@@ -395,7 +399,9 @@
                         android:padding="@dimen/spacing_small"
                         android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Additives: ..."
+                        />
 
                     <TextView
                         android:id="@+id/textCategoryProduct"
@@ -408,7 +414,9 @@
                         android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Categories: ..."
+                        />
 
                     <TextView
                         android:id="@+id/textLabelProduct"
@@ -421,7 +429,9 @@
                         android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Labels: ..."
+                        />
                     <TextView
                         android:id="@+id/textEmbCode"
                         android:layout_width="fill_parent"
@@ -433,7 +443,9 @@
                         android:padding="@dimen/padding_too_short"
                         android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Packager codes: ..."
+                        />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
             <LinearLayout
