@@ -127,6 +127,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView textNutriScoreInfo;
     @BindView(R.id.nutrient_levels_card_view)
     CardView nutrientLevelsCardView;
+    @BindView(R.id.newAdd)
+    Button img1;
 
     private String mUrlImage;
     private String barcode;
@@ -361,6 +363,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         if (isNotBlank(product.getImageNutritionUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
+            img1.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
