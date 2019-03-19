@@ -37,26 +37,7 @@ public class LoadTaxonomiesService extends IntentService {
     }
 
     private void doTask(Intent intent) {
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            String channelId = "export_channel";
-            CharSequence channelName = getString(R.string.notification_channel_name);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
-            notificationChannel.setDescription(getString(R.string.notify_channel_description));
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
-                .setContentTitle(getString(R.string.app_name))
-                .setContentText(getString(R.string.txtDownloading))
-                .setOngoing(true)
-                .setSmallIcon(R.mipmap.ic_launcher);
-
-        notificationManager.notify(17, builder.build());
-
-        Single.zip(
+               Single.zip(
                 productRepository.getLabels(true),
                 productRepository.getTags(true),
                 productRepository.getAllergens(true),
