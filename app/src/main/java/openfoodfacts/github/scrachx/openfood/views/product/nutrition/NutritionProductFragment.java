@@ -129,6 +129,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     CardView nutrientLevelsCardView;
     @BindView(R.id.newAdd)
     Button img1;
+    @BindView(R.id.calculateNutritionFacts)
+    Button calculateNutritionFacts;
+    @BindView(R.id.nutrimentsCardView)
+    CardView nutrimentsCardView;
+    @BindView(R.id.textNoNutritionData)
+    TextView textNoNutritionData;
 
     private String mUrlImage;
     private String barcode;
