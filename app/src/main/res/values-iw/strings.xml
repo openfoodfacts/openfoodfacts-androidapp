@@ -788,7 +788,7 @@
     <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„נאכל כעת”.
         כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="txt_info_your_listed_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על הכפתור + בפינה השמאלית העליונה של עמוד המוצר.</string>
-    <string name="txt_i_m_eating_this">I\'m eating this</string>
+    <string name="txt_i_m_eating_this">זה מוצר שאני אוכל/ת</string>
     <string name="compare_product_prompt">השוואת המוצר הזה</string>
     <string name="search_history_pref_title">מחיקת היסטוריית החיפוש המקומית</string>
     <string name="search_history_pref_summary">הסרת כל החיפושים שערכת דרך המכשיר הזה</string>
