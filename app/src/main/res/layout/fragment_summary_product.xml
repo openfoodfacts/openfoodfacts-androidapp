@@ -28,7 +28,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:padding="@dimen/padding_normal">
 
                 <LinearLayout
                     android:id="@+id/ingredient_image_prompt_layout"
@@ -163,17 +163,21 @@
                         android:id="@+id/product_incomplete_message"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toStartOf="@+id/message_dismiss_icon"
-                        android:layout_toLeftOf="@+id/message_dismiss_icon"
+                        android:layout_toStartOf="@+id/product_incomplete_message_dismiss_icon"
+                        android:layout_toLeftOf="@+id/product_incomplete_message_dismiss_icon"
                         android:layout_toRightOf="@+id/message_icon"
+                        android:layout_toEndOf="@+id/message_icon"
                         android:gravity="center"
-                        android:paddingLeft="4dp"
-                        android:paddingTop="4dp"
-                        android:paddingRight="24dp"
-                        android:paddingBottom="4dp"
+                        android:paddingLeft="@dimen/spacing_tiny"
+                        android:paddingStart="@dimen/spacing_tiny"
+                        android:paddingRight="@dimen/spacing_large"
+                        android:paddingEnd="@dimen/spacing_large"
+                        android:paddingTop="@dimen/spacing_tiny"
+                        android:paddingBottom="@dimen/spacing_tiny"
                         android:text="@string/product_incomplete_message"
                         android:textAlignment="center"
-                        android:textColor="@color/md_black_1000" />
+                        android:textColor="@color/md_black_1000"
+                        />
 
                     <ImageButton
                         android:id="@+id/product_incomplete_message_dismiss_icon"
