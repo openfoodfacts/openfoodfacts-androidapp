@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
 android {
-    buildToolsVersion "28.0.2"
     compileSdkVersion 27
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"

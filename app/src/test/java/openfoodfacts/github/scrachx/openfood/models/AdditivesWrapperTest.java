@@ -24,9 +24,9 @@ public class AdditivesWrapperTest {
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put(LANGUAGE_CODE_ENGLISH, VINEGAR_EN);
         stringMap.put(LANGUAGE_CODE_FRENCH, VINEGAR_FR);
-        AdditiveResponse additiveResponse1 = new AdditiveResponse(ADDITIVE_TAG, stringMap);
+        AdditiveResponse additiveResponse1 = new AdditiveResponse(ADDITIVE_TAG, stringMap,null);
         AdditiveResponse additiveResponse2 =
-                new AdditiveResponse(ADDITIVE_TAG, stringMap, WIKI_DATA_ID);
+                new AdditiveResponse(ADDITIVE_TAG, stringMap,null, WIKI_DATA_ID);
         additivesWrapper.setAdditives(Arrays.asList(additiveResponse1, additiveResponse2));
         List<Additive> mappedAdditives = additivesWrapper.map();
 
@@ -41,7 +41,7 @@ public class AdditivesWrapperTest {
         // TODO: fix so that this test passes. Currently gives a null pointer.
         // The problem is based on using Boolean class rather than boolean primitive
         // Need to set the Boolean to false somewhere
-        // assertFalse(mappedAdditives.get(0).getIsWikiDataIdPresent());
+         assertFalse(mappedAdditives.get(0).getIsWikiDataIdPresent());
 
         assertNull(mappedAdditive1.getWikiDataId());
 
