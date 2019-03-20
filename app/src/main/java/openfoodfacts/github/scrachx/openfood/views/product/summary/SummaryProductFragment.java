@@ -142,18 +142,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView novaGroup;
     @BindView(R.id.scores_layout)
     ConstraintLayout scoresLayout;
-    @BindView(R.id.ingredient_image_prompt_layout)
-    LinearLayout ingredientImagePromptLayout;
-    @BindView(R.id.imageViewIngredients)
-    ImageView imageViewIngredients;
-    @BindView(R.id.add_ingredient_photo_label)
-    TextView ingredientPhotoLabel;
-    @BindView(R.id.nutrition_image_prompt_layout)
-    LinearLayout nutritionImagePromptLayout;
-    @BindView(R.id.imageViewNutrition)
-    ImageView imageViewNutrition;
-    @BindView(R.id.add_nutrition_photo_label)
-    TextView nutritionPhotoLabel;
     @BindView(R.id.listNutrientLevels)
     RecyclerView rv;
     @BindView(R.id.textNutrientTxt)
@@ -191,9 +179,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean addingIngredientsImage = false;
     //boolean to indicate if the image clicked was that of nutrition
     private boolean addingNutritionImage = false;
-    //boolean to determine if nutrition data should be shown
-    private boolean showNutritionData=true;
-
     private YourListedProductDao yourListedProductDao;
 
     @Override
@@ -271,7 +256,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
         if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
             showNutrientPrompt = false;
-            showNutritionData= false;
         } else {
             if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
                 showNutrientPrompt = true;
@@ -287,10 +271,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             } else if (showCategoryPrompt) {
                 addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
             }
-        }
-
-        if (!showNutritionData) {
-            nutritionImagePromptLayout.setVisibility(View.GONE);
         }
 
         presenter.loadAllergens();
@@ -319,17 +299,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             mUrlImage = product.getImageUrl();
         }
 
-        //the following checks whether the ingredient and nutrition images are already uploaded for the product
-        if (isBlank(product.getImageIngredientsUrl(langCode))) {
-            ingredientImagePromptLayout.setVisibility(View.VISIBLE);
-        }
-
-        if(!BuildConfig.FLAVOR.equals( "obf" ) && !BuildConfig.FLAVOR.equals( "opf" )) {
-            if (isBlank(product.getImageNutritionUrl(langCode)) && showNutritionData) {
-                nutritionImagePromptLayout.setVisibility(View.VISIBLE);
-            }
-        }
-
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
         if (product.getProductName(langCode) != null) {
@@ -341,8 +310,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (isNotBlank(product.getBrands())) {
             brandProduct.setClickable(true);
             brandProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            brandProduct.setText(bold(getString(R.string.txtBrands)));
-            brandProduct.append(" ");
+            brandProduct.setText("");
 
             String[] brands = product.getBrands().split(",");
             for (int i = 0; i < brands.length - 1; i++) {
@@ -874,35 +842,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    //when the prompt for the images are selected, the camera is initialized and corresponding booleans flipped
-    @OnClick(R.id.imageViewIngredients)
-    public void addIngredientImage() {
-        addingIngredientsImage = true;
-        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-        } else {
-            if (Utils.isHardwareCameraInstalled(getContext())) {
-                EasyImage.openCamera(this, 0);
-            } else {
-                EasyImage.openGallery(getActivity(), 0, false);
-            }
-        }
-    }
-
-    @OnClick(R.id.imageViewNutrition)
-    public void addNutritionImage() {
-        addingNutritionImage = true;
-        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-        } else {
-            if (Utils.isHardwareCameraInstalled(getContext())) {
-                EasyImage.openCamera(this, 0);
-            } else {
-                EasyImage.openGallery(getActivity(), 0, false);
-            }
-        }
-    }
-
     @OnClick(R.id.imageViewFront)
     public void openFullScreen(View v) {
         if (mUrlImage != null) {
@@ -962,7 +901,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     image.setFilePath(resultUri.getPath());
                     showOtherImageProgress();
                     api.postImg(getContext(), image, this);
-                    ingredientImagePromptLayout.setVisibility(View.GONE);
                     addingIngredientsImage = false;
                 }
 
@@ -971,7 +909,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     image.setFilePath(resultUri.getPath());
                     showOtherImageProgress();
                     api.postImg(getContext(), image, this);
-                    nutritionImagePromptLayout.setVisibility(View.GONE);
                     addingNutritionImage = false;
                 }
 
