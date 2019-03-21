@@ -9,6 +9,10 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
+    <style name="errorText" parent="@style/TextAppearance.Design.Error">
+        <item name="android:textColor">@color/design_error</item>
+    </style>
+
     <style name="Black_Back_Arrow" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="android:textColorPrimary">@color/md_black_1000</item>
     </style>

@@ -44,4 +44,12 @@ public class UnitUtils {
         //TODO : what about % DV and IU
         return a;
     }
+
+    public static double saltToSodium(Double saltValue) {
+        return saltValue * 0.39370078740157477;
+    }
+
+    public static double sodiumToSalt(Double sodiumValue) {
+        return sodiumValue * 2.54;
+    }
 }
