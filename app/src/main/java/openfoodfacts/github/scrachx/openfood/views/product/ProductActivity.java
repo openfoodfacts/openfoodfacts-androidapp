@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,7 +29,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,27 +41,20 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -250,80 +243,97 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
     @OnClick(R.id.buttonScan)
     protected void OnScan() {
-        if (Utils.isHardwareCameraInstalled(this)) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(this)
+        onScanButtonClicked(this);
+    }
+
+    public static void onScanButtonClicked(Activity activity) {
+        if (Utils.isHardwareCameraInstalled(activity)) {
+            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
+                    new MaterialDialog.Builder(activity)
                             .title(R.string.action_about)
                             .content(R.string.permission_camera)
                             .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
                             .show();
                 } else {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                    ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
                 }
             } else {
-                Intent intent = new Intent(this, ContinuousScanActivity.class);
+                Intent intent = new Intent(activity, ContinuousScanActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                activity.startActivity(intent);
             }
         }
     }
 
 	private void setupViewPager( ViewPager viewPager )
 	{
-		String[] menuTitles = getResources().getStringArray( R.array.nav_drawer_items_product );
-		String[] newMenuTitles=getResources().getStringArray(R.array.nav_drawer_new_items_product);
+        adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
+		adapterResult = setupViewPager(viewPager, adapterResult, mState, this);
+    }
 
-		adapterResult = new ProductFragmentPagerAdapter( getSupportFragmentManager() );
-		adapterResult.addFragment( new SummaryProductFragment(), menuTitles[0] );
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences( this );
+    /**
+     * CAREFUL ! YOU MUST INSTANTIATE YOUR OWN ADAPTERRESULT BEFORE CALLING THIS METHOD
+     * @param viewPager
+     * @param adapterResult
+     * @param mState
+     * @param activity
+     * @return
+     */
+    public static ProductFragmentPagerAdapter setupViewPager (ViewPager viewPager, ProductFragmentPagerAdapter adapterResult, State mState, Activity activity) {
+        String[] menuTitles = activity.getResources().getStringArray( R.array.nav_drawer_items_product );
+        String[] newMenuTitles=activity.getResources().getStringArray(R.array.nav_drawer_new_items_product);
+
+        adapterResult.addFragment( new SummaryProductFragment(), menuTitles[0] );
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences( activity );
         if( BuildConfig.FLAVOR.equals( "off" ) || BuildConfig.FLAVOR.equals( "obf" ) || BuildConfig.FLAVOR.equals( "opff" ) )
         {
             adapterResult.addFragment( new IngredientsProductFragment(), menuTitles[1] );
         }
-		if( BuildConfig.FLAVOR.equals( "off" ) )
-		{
-			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
+        if( BuildConfig.FLAVOR.equals( "off" ) )
+        {
+            adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
             if( (mState.getProduct().getNutriments() != null &&
                     mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
                     (mState.getProduct().getEnvironmentInfocard() != null && !mState.getProduct().getEnvironmentInfocard().isEmpty()))
             {
                 adapterResult.addFragment(new EnvironmentProductFragment(), "Environment");
             }
-			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
-			{
-				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
-			}
-		}
-		if( BuildConfig.FLAVOR.equals( "opff" ) )
-		{
-			adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
-			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
-			{
-				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
-			}
-		}
+            if( PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false ) )
+            {
+                adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
+            }
+        }
+        if( BuildConfig.FLAVOR.equals( "opff" ) )
+        {
+            adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
+            if( PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false ) )
+            {
+                adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
+            }
+        }
 
-		if( BuildConfig.FLAVOR.equals( "obf" ) )
-		{
-			if( PreferenceManager.getDefaultSharedPreferences( this ).getBoolean( "photoMode", false ) )
-			{
-				adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
-			}
-			adapterResult.addFragment( new IngredientsAnalysisProductFragment(), newMenuTitles[1] );
-		}
+        if( BuildConfig.FLAVOR.equals( "obf" ) )
+        {
+            if( PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false ) )
+            {
+                adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
+            }
+            adapterResult.addFragment( new IngredientsAnalysisProductFragment(), newMenuTitles[1] );
+        }
 
-		if( BuildConfig.FLAVOR.equals( "opf" ) )
-		{
-			adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
-		}
+        if( BuildConfig.FLAVOR.equals( "opf" ) )
+        {
+            adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
+        }
         if( preferences.getBoolean( "contributionTab", false ) )
         {
-            adapterResult.addFragment( new ContributorsFragment(), getString( R.string.contribution_tab ) );
+            adapterResult.addFragment( new ContributorsFragment(), activity.getString( R.string.contribution_tab ) );
         }
 
         viewPager.setAdapter(adapterResult);
+        return adapterResult;
     }
 
     /**
@@ -340,34 +350,38 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        return onOptionsItemSelected(item, mState, this);
+    }
+
+    public static boolean onOptionsItemSelected(MenuItem item, State mState, Activity activity) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
 //                NavUtils.navigateUpFromSameTask(this);
-                finish();
+                activity.finish();
                 return true;
 
             case R.id.menu_item_share:
-                String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
+                String shareUrl = " " + activity.getString(R.string.website_product) + mState.getProduct().getCode();
                 Intent sharingIntent = new Intent();
                 sharingIntent.setAction(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
+                String shareBody = activity.getResources().getString(R.string.msg_share) + shareUrl;
                 String shareSub = "\n\n";
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share using"));
+                activity.startActivity(Intent.createChooser(sharingIntent, "Share using"));
                 return true;
 
             case R.id.action_edit_product:
-                String url = getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
+                String url = activity.getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
                 if (mState.getProduct().getUrl() != null) {
                     url = " " + mState.getProduct().getUrl();
                 }
 
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), null);
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(activity.getBaseContext(), null);
 
-                CustomTabActivityHelper.openCustomTab(ProductActivity.this, customTabsIntent, Uri.parse(url), new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(url), new WebViewFallback());
                 return true;
 
             case R.id.action_addToList:
@@ -384,27 +398,27 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                 }
                 String productDetails=stringBuilder.toString();
 
-                MaterialDialog.Builder addToListBuilder=new MaterialDialog.Builder(this)
+                MaterialDialog.Builder addToListBuilder=new MaterialDialog.Builder(activity)
                         .title(R.string.add_to_product_lists)
                         .customView(R.layout.dialog_add_to_list,true);
                 MaterialDialog addToListDialog=addToListBuilder.build();
                 addToListDialog.show();
                 View addToListView=addToListDialog.getCustomView();
                 if(addToListView!=null){
-                    ProductListsDao productListsDao=Utils.getDaoSession(this).getProductListsDao();
+                    ProductListsDao productListsDao=Utils.getDaoSession(activity).getProductListsDao();
                     List<ProductLists> productLists=productListsDao.loadAll();
 
                     RecyclerView addToListRecyclerView=
                             addToListView.findViewById(R.id.rv_dialogAddToList);
                     DialogAddToListAdapter addToListAdapter=
-                            new DialogAddToListAdapter(this,productLists, barcode,productName,productDetails,imageUrl);
-                    addToListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+                            new DialogAddToListAdapter(activity,productLists, barcode,productName,productDetails,imageUrl);
+                    addToListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
                     addToListRecyclerView.setAdapter(addToListAdapter);
                     TextView tvAddToList=addToListView.findViewById(R.id.tvAddToNewList);
                     tvAddToList.setOnClickListener(view -> {
-                        Intent intent=new Intent(this,ProductListsActivity.class);
+                        Intent intent=new Intent(activity,ProductListsActivity.class);
                         intent.putExtra("product",p);
-                        startActivity(intent);
+                        activity.startActivity(intent);
                     });
 
                 }
@@ -412,10 +426,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
             case R.id.action_facts:
 
-                MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
+                MaterialDialog.Builder builder = new MaterialDialog.Builder(activity)
                         .title(R.string.calculate_nutrition_facts)
                         .customView(R.layout.dialog_calculate_calories, false)
-                        .dismissListener(dialogInterface -> Utils.hideKeyboard(ProductActivity.this));
+                        .dismissListener(dialogInterface -> Utils.hideKeyboard(activity));
                 MaterialDialog dialog = builder.build();
                 dialog.show();
                 View view = dialog.getCustomView();
@@ -435,14 +449,14 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                                         String SpinnerValue = (String) spinner.getSelectedItem();
                                         String weight = etWeight.getText().toString();
                                         Product p = mState.getProduct();
-                                        Intent intent = new Intent(getApplicationContext(), CalculateDetails.class);
+                                        Intent intent = new Intent(activity.getApplicationContext(), CalculateDetails.class);
                                         intent.putExtra("sampleObject", p);
                                         intent.putExtra("spinnervalue", SpinnerValue);
                                         intent.putExtra("weight", weight);
-                                        startActivity(intent);
+                                        activity.startActivity(intent);
                                         dialog.dismiss();
                                     } else {
-                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(activity.getApplicationContext(), activity.getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -457,7 +471,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                 return true;
 
             default:
-                return super.onOptionsItemSelected(item);
+                return true;
         }
     }
 
@@ -504,39 +518,6 @@ doesn't have calories information in nutrition facts.
                             .show();
                 }
             }
-        }
-    }
-
-    public void showBottomScreen(JSONObject result, AdditiveName additive) {
-        showBottomSheet(result, additive.getId(), additive.getName(), additive.getWikiDataId(),
-                SearchType.ADDITIVE, "additive_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, LabelName label) {
-        showBottomSheet(result, label.getId(), label.getName(), label.getWikiDataId(),
-                SearchType.LABEL, "label_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, CategoryName category) {
-        showBottomSheet(result, category.getId(), category.getName(), category.getWikiDataId(),
-                SearchType.CATEGORY, "category_details_fragment");
-    }
-
-    public void showBottomScreen(JSONObject result, AllergenName allergen) {
-        showBottomSheet(result, allergen.getId(), allergen.getName(), allergen.getWikiDataId(),
-                SearchType.ALLERGEN, "allergen_details_fragment");
-    }
-
-    private void showBottomSheet(JSONObject result, Long id, String name,
-                                 String wikidataId, String searchType, String fragmentTag) {
-        try {
-            String jsonObjectStr = (result != null) ? result.getJSONObject("entities")
-                    .getJSONObject(wikidataId).toString() : null;
-            ProductAttributeDetailsFragment fragment =
-                    ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
-            fragment.show(getSupportFragmentManager(), fragmentTag);
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 

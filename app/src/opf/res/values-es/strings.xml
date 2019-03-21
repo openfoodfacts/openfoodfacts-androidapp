@@ -36,5 +36,5 @@
     <string name="tagline">the free product database</string>
     <string name="product_not_found">El producto %1$s que has escaneado aún no esta en el inventario de Open Products Facts, ¿puedes añadirlo?</string>
     <string name="currently_on_version">Actualmente en Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Ayuda a categorizar productos</string>
 </resources>

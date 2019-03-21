@@ -27,9 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
                 app:cardElevation="4dp">
 
                 <TextView
@@ -44,6 +42,17 @@
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/environment_info_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardElevation="4dp">
 
                 <TextView
                     android:id="@+id/environment_info_text"
@@ -66,9 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
                 app:cardElevation="4dp">
 
                 <TextView
@@ -92,9 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
                 app:cardElevation="4dp">
 
                 <TextView

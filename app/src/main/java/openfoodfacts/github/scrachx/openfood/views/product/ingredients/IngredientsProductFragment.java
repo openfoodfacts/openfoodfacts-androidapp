@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.preference.PreferenceManager;
@@ -53,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
@@ -61,6 +63,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -71,7 +74,6 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPager
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -129,8 +131,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     TextView otherNutritionTagTextView;
     @BindView(R.id.cvTextIngredientProduct)
     CardView textIngredientProductCardView;
-    @BindView(R.id.cvTextSubstanceProduct)
-    CardView textSubstanceProductCardView;
     @BindView(R.id.cvTextTraceProduct)
     CardView textTraceProductCardView;
     @BindView(R.id.cvTextAdditiveProduct)
@@ -212,7 +212,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void refreshView(State state) {
         super.refreshView(state);
         mState = state;
-
+        String langCode = LocaleHelper.getLanguageTrimmed(getContext());
         if (getArguments() != null) {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         }
@@ -289,20 +289,20 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
 
-        if (isNotBlank(product.getImageIngredientsUrl())) {
+        if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
             updateImageBtn.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.with(getContext())
-                        .load(product.getImageIngredientsUrl())
+                        .load(product.getImageIngredientsUrl(langCode))
                         .into(mImageIngredients);
             } else {
                 mImageIngredients.setVisibility(View.GONE);
             }
 
-            mUrlImage = product.getImageIngredientsUrl();
+            mUrlImage = product.getImageIngredientsUrl(langCode);
         }
 
         //useful when this fragment is used in offline saving
@@ -314,11 +314,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         List<String> allergens = getAllergens();
 
-        if (mState != null && product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
+        if (mState != null && product.getIngredientsText(langCode) != null && !product.getIngredientsText(langCode).isEmpty()) {
             textIngredientProductCardView.setVisibility(View.VISIBLE);
-            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
+            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText(langCode).replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
-            if (TextUtils.isEmpty(product.getIngredientsText())) {
+            if (TextUtils.isEmpty(product.getIngredientsText(langCode))) {
                extractIngredientsPrompt.setVisibility(View.VISIBLE);
             }
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
@@ -327,7 +327,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             }
         } else {
             textIngredientProductCardView.setVisibility(View.GONE);
-            if (isNotBlank(product.getImageIngredientsUrl())) {
+            if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
                 extractIngredientsPrompt.setVisibility(View.VISIBLE);
             }
         }
@@ -394,58 +394,32 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             public void onClick(View view) {
                 if (additive.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        if (getActivity() instanceof ProductActivity) {
-                            ProductActivity productActivity = (ProductActivity) getActivity();
-                            if (value) {
-                                if (productActivity != null && !productActivity.isFinishing()) {
-                                    productActivity.showBottomScreen(result, additive);
-                                }
-                            } else {
-                                if (additive.hasOverexposureData()) {
-                                    if (productActivity != null && !productActivity.isFinishing()) {
-                                        productActivity.showBottomScreen(null, additive);
-                                    }
-                                } else {
-                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                                }
+                        FragmentActivity activity = getActivity();
+                        if (value) {
+                            if (activity != null && !activity.isFinishing()) {
+                                BottomScreenCommon.showBottomScreen(result, additive,
+                                        activity.getSupportFragmentManager());
                             }
                         } else {
-                            ProductFragment productFragment = (ProductFragment) getParentFragment();
-                            if (value) {
-                                if (productFragment != null) {
-                                    productFragment.showBottomScreen(result, additive);
+                            if (additive.hasOverexposureData()) {
+                                if (activity != null && !activity.isFinishing()) {
+                                    BottomScreenCommon.showBottomScreen(result, additive,
+                                            activity.getSupportFragmentManager());
                                 }
                             } else {
-                                if (additive.hasOverexposureData()) {
-                                    if (productFragment != null) {
-                                        productFragment.showBottomScreen(null, additive);
-                                    }
-
-                                } else {
-                                    ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                                }
+                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                             }
                         }
                     });
                 } else {
-                    if (getActivity() instanceof ProductActivity) {
-                        ProductActivity productActivity = (ProductActivity) getActivity();
-                        if (additive.hasOverexposureData()) {
-                            if (productActivity != null && !productActivity.isFinishing()) {
-                                productActivity.showBottomScreen(null, additive);
-                            }
-                        } else {
-                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                    FragmentActivity activity = getActivity();
+                    if (additive.hasOverexposureData()) {
+                        if (activity != null && !activity.isFinishing()) {
+                            BottomScreenCommon.showBottomScreen(null, additive,
+                                    activity.getSupportFragmentManager());
                         }
                     } else {
-                        ProductFragment productFragment = (ProductFragment) getParentFragment();
-                        if (additive.hasOverexposureData()) {
-                            if (productFragment != null) {
-                                productFragment.showBottomScreen(null, additive);
-                            }
-                        } else {
-                            ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                        }
+                        ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                     }
                 }
             }
@@ -493,16 +467,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                             allergen.getWikiDataId(),
                             (value, result) -> {
                                 if (value) {
-                                    if (getActivity() instanceof ProductActivity) {
-                                        ProductActivity productActivity = (ProductActivity) getActivity();
-                                        if (productActivity != null && !productActivity.isFinishing()) {
-                                            productActivity.showBottomScreen(result, allergen);
-                                        }
-                                    } else {
-                                        ProductFragment productFragment = (ProductFragment) getParentFragment();
-                                        if (productFragment != null) {
-                                            productFragment.showBottomScreen(result, allergen);
-                                        }
+                                    FragmentActivity activity = getActivity();
+                                    if (activity != null && !activity.isFinishing()) {
+                                        BottomScreenCommon.showBottomScreen(result, allergen,
+                                                activity.getSupportFragmentManager());
                                     }
                                 } else {
                                     ProductBrowsingListActivity.startActivity(getContext(),
@@ -668,12 +636,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void showAllergensState(String state) {
         switch (state) {
             case LOADING: {
-                textSubstanceProductCardView.setVisibility(View.VISIBLE);
+                substanceProduct.setVisibility(View.VISIBLE);
                 substanceProduct.append(getString(R.string.txtLoading));
                 break;
             }
             case EMPTY: {
-                textSubstanceProductCardView.setVisibility(View.GONE);
+                substanceProduct.setVisibility(View.GONE);
                 break;
             }
         }

@@ -191,6 +191,12 @@ public class CalculateDetails extends BaseActivity {
             case "kg":
                 weightInG = weight * 1000;
                 break;
+            case "l":
+                weightInG = weight * 1000;
+                break;
+            case "cl":
+                weightInG = weight * 10;
+                break;
             default:
                 weightInG = weight;
                 break;
