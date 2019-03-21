@@ -150,8 +150,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     CardView nutritionLightsCardView;
     @BindView(R.id.textAdditiveProduct)
     TextView additiveProduct;
-    @BindView(R.id.listname)
-    TextView listName;
     @BindView(R.id.compare_product_button)
     Button compareProductButton;
     @BindView(R.id.scrollView)
@@ -226,21 +224,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         brandProduct.setVisibility(View.VISIBLE);
         embCode.setVisibility(View.VISIBLE);
         nameProduct.setVisibility(View.VISIBLE);
-
-        yourListedProductDao = Utils.getAppDaoSession(getContext()).getYourListedProductDao();
-        List<YourListedProduct> searchResult = yourListedProductDao.queryBuilder()
-                .where(YourListedProductDao.Properties.Barcode.eq(product.getCode())).list();
-        if (searchResult.size() > 0) {
-            listName.setVisibility(View.VISIBLE);
-            listName.setText(getString(R.string.list_text));
-            int i = 0;
-            for (; i < searchResult.size() - 1; i++) {
-                listName.append(searchResult.get(i).getListName() + ", ");
-            }
-            listName.append(searchResult.get(i).getListName());
-        } else {
-            listName.setVisibility(View.GONE);
-        }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
