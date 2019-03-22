@@ -16,7 +16,6 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -24,24 +23,20 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -51,8 +46,6 @@ import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductLists;
-import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -336,18 +329,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         return adapterResult;
     }
 
-    /**
-     * This method is used to hide share_item and edit_product in App Bar
-     */
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem share_item = menu.findItem(R.id.menu_item_share);
-        share_item.setVisible(false);
-        MenuItem edit_product = menu.findItem(R.id.action_edit_product);
-        edit_product.setVisible(false);
-        return true;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return onOptionsItemSelected(item, mState, this);
@@ -361,133 +342,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                 activity.finish();
                 return true;
 
-            case R.id.menu_item_share:
-                String shareUrl = " " + activity.getString(R.string.website_product) + mState.getProduct().getCode();
-                Intent sharingIntent = new Intent();
-                sharingIntent.setAction(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                String shareBody = activity.getResources().getString(R.string.msg_share) + shareUrl;
-                String shareSub = "\n\n";
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                activity.startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                return true;
-
-            case R.id.action_edit_product:
-                String url = activity.getString(R.string.website) + "cgi/product.pl?type=edit&code=" + mState.getProduct().getCode();
-                if (mState.getProduct().getUrl() != null) {
-                    url = " " + mState.getProduct().getUrl();
-                }
-
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(activity.getBaseContext(), null);
-
-                CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(url), new WebViewFallback());
-                return true;
-
-            case R.id.action_addToList:
-                Product p = mState.getProduct();
-                String barcode=p.getCode();
-                String productName=p.getProductName();
-                String imageUrl=p.getImageSmallUrl();
-                StringBuilder stringBuilder = new StringBuilder();
-                if (isNotEmpty(p.getBrands())) {
-                    stringBuilder.append(capitalize(p.getBrands().split(",")[0].trim()));
-                }
-                if (isNotEmpty(p.getQuantity())) {
-                    stringBuilder.append(" - ").append(p.getQuantity());
-                }
-                String productDetails=stringBuilder.toString();
-
-                MaterialDialog.Builder addToListBuilder=new MaterialDialog.Builder(activity)
-                        .title(R.string.add_to_product_lists)
-                        .customView(R.layout.dialog_add_to_list,true);
-                MaterialDialog addToListDialog=addToListBuilder.build();
-                addToListDialog.show();
-                View addToListView=addToListDialog.getCustomView();
-                if(addToListView!=null){
-                    ProductListsDao productListsDao=Utils.getDaoSession(activity).getProductListsDao();
-                    List<ProductLists> productLists=productListsDao.loadAll();
-
-                    RecyclerView addToListRecyclerView=
-                            addToListView.findViewById(R.id.rv_dialogAddToList);
-                    DialogAddToListAdapter addToListAdapter=
-                            new DialogAddToListAdapter(activity,productLists, barcode,productName,productDetails,imageUrl);
-                    addToListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
-                    addToListRecyclerView.setAdapter(addToListAdapter);
-                    TextView tvAddToList=addToListView.findViewById(R.id.tvAddToNewList);
-                    tvAddToList.setOnClickListener(view -> {
-                        Intent intent=new Intent(activity,ProductListsActivity.class);
-                        intent.putExtra("product",p);
-                        activity.startActivity(intent);
-                    });
-
-                }
-                return true;
-
-            case R.id.action_facts:
-
-                MaterialDialog.Builder builder = new MaterialDialog.Builder(activity)
-                        .title(R.string.calculate_nutrition_facts)
-                        .customView(R.layout.dialog_calculate_calories, false)
-                        .dismissListener(dialogInterface -> Utils.hideKeyboard(activity));
-                MaterialDialog dialog = builder.build();
-                dialog.show();
-                View view = dialog.getCustomView();
-                if (view != null) {
-                    EditText etWeight = view.findViewById(R.id.edit_text_weight);
-                    Spinner spinner = view.findViewById(R.id.spinner_weight);
-                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
-                            btn.setOnClickListener(new View.OnClickListener() {
-
-                                @Override
-                                public void onClick(View v) {
-                                    if (!TextUtils.isEmpty(etWeight.getText().toString())) {
-
-                                        String SpinnerValue = (String) spinner.getSelectedItem();
-                                        String weight = etWeight.getText().toString();
-                                        Product p = mState.getProduct();
-                                        Intent intent = new Intent(activity.getApplicationContext(), CalculateDetails.class);
-                                        intent.putExtra("sampleObject", p);
-                                        intent.putExtra("spinnervalue", SpinnerValue);
-                                        intent.putExtra("weight", weight);
-                                        activity.startActivity(intent);
-                                        dialog.dismiss();
-                                    } else {
-                                        Toast.makeText(activity.getApplicationContext(), activity.getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-                }
-                return true;
-
             default:
                 return true;
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_product, menu);
-
-/*
-Hide the 'Calculate Calories' option from the overflow menu if the product
-doesn't have calories information in nutrition facts.
-*/
-        if (mState.getProduct().getNutriments() == null || mState.getProduct().getNutriments().get(Nutriments.ENERGY) == null) {
-            menu.findItem(R.id.action_facts).setVisible(false);
-        }
-
-        return true;
     }
 
     // Call to update the share intent

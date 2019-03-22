@@ -7,7 +7,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -205,17 +204,6 @@ public class CalculateDetails extends BaseActivity {
         return snew;
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem share_item = menu.findItem(R.id.menu_item_share);
-        share_item.setVisible(false);
-        MenuItem edit_product = menu.findItem(R.id.action_edit_product);
-        edit_product.setVisible(false);
-        MenuItem calculate = menu.findItem(R.id.action_facts);
-        calculate.setVisible(false);
-        return true;
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -229,12 +217,6 @@ public class CalculateDetails extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_product, menu);
-        return true;
     }
 }
 

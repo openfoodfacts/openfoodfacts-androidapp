@@ -23,8 +23,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +33,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -211,35 +208,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         adapterResult = ProductActivity.setupViewPager(viewPager, adapterResult, mState, getActivity());
     }
 
-    /**
-     * This method is used to hide share_item and edit_product in App Bar
-     */
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem share_item = menu.findItem(R.id.menu_item_share);
-        share_item.setVisible(false);
-        MenuItem edit_product = menu.findItem(R.id.action_edit_product);
-        edit_product.setVisible(false);
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return ProductActivity.onOptionsItemSelected(item, mState, getActivity());
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_product, menu);
-
-/*
-Hide the 'Calculate Calories' option from the overflow menu if the product
-doesn't have calories information in nutrition facts.
-*/
-        if (mState.getProduct().getNutriments() == null || mState.getProduct().getNutriments().get(Nutriments.ENERGY) == null) {
-            menu.findItem(R.id.action_facts).setVisible(false);
-        }
-
     }
 
     // Call to update the share intent
