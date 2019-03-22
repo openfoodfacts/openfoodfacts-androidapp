@@ -85,7 +85,7 @@ public class NutrimentsTest {
         // See note about confusion between value and name above
         assertEquals(NUTRIMENT_NAME, nutriment.getValue());
         assertEquals(NUTRIMENT_100G, nutriment.getFor100g());
-        assertEquals(NUTRIMENT_SERVING, nutriment.getForServing());
+        assertEquals(NUTRIMENT_SERVING, nutriment.getForServingInGrams());
         assertEquals(NUTRIMENT_UNIT, nutriment.getUnit());
     }
 
