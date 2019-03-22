@@ -151,51 +151,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
-//                case R.id.bookmark:
-//                     Implementation of bookmark will be here
-//                    Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
-//                    break;
-                case R.id.share:
-                    String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
-                    Intent sharingIntent = new Intent();
-                    sharingIntent.setAction(Intent.ACTION_SEND);
-                    sharingIntent.setType("text/plain");
-                    String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
-                    String shareSub = "\n\n";
-                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
-                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                    break;
-//                case R.id.translation:
-//                     Implementation of Translation will be here
-//                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
-//                    break;
-				case R.id.edit_product:
-					final SharedPreferences settings = getSharedPreferences( "login", 0 );
-					final String login = settings.getString( "user", "" );
-					if( login.isEmpty() )
-					{
-						new MaterialDialog.Builder( ProductActivity.this )
-								.title( R.string.sign_in_to_edit )
-								.positiveText( R.string.txtSignIn )
-								.negativeText( R.string.dialog_cancel )
-								.onPositive( ( dialog, which ) -> {
-									Intent intent = new Intent( ProductActivity.this, LoginActivity.class );
-									startActivityForResult( intent, LOGIN_ACTIVITY_REQUEST_CODE );
-									dialog.dismiss();
-								} )
-								.onNegative( ( dialog, which ) -> dialog.dismiss() )
-								.build().show();
-					}
-					else
-					{
-						mState = (State) getIntent().getExtras().getSerializable( "state" );
-						Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
-						intent.putExtra( "edit_product", mState.getProduct() );
-						startActivityForResult( intent, EDIT_REQUEST_CODE );
-					}
-					break;
-
                 case R.id.history_bottom_nav:
                     startActivity(new Intent(this, HistoryScanActivity.class));
                     break;

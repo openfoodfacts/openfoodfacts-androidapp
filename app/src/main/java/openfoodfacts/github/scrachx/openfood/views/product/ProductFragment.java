@@ -39,7 +39,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
@@ -125,47 +124,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
-//                case R.id.bookmark:
-//                     Implementation of bookmark will be here
-//                    Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
-//                    break;
-                case R.id.share:
-                    String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
-                    Intent sharingIntent = new Intent();
-                    sharingIntent.setAction(Intent.ACTION_SEND);
-                    sharingIntent.setType("text/plain");
-                    String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
-                    String shareSub = "\n\n";
-                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
-                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                    break;
-//                case R.id.translation:
-//                     Implementation of Translation will be here
-//                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
-//                    break;
-                case R.id.edit_product:
-                    final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
-                    final String login = settings.getString("user", "");
-                    if (login.isEmpty()) {
-                        new MaterialDialog.Builder(getActivity())
-                                .title(R.string.sign_in_to_edit)
-                                .positiveText(R.string.txtSignIn)
-                                .negativeText(R.string.dialog_cancel)
-                                .onPositive((dialog, which) -> {
-                                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                                    startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
-                                    dialog.dismiss();
-                                })
-                                .onNegative((dialog, which) -> dialog.dismiss())
-                                .build().show();
-                    } else {
-                        Intent intent = new Intent(getActivity(), AddProductActivity.class);
-                        intent.putExtra("edit_product", mState.getProduct());
-                        startActivity(intent);
-                    }
-                    break;
-
                 case R.id.history_bottom_nav:
                     startActivity(new Intent(getActivity(), HistoryScanActivity.class));
                     break;
