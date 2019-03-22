@@ -160,6 +160,10 @@ public class AddProductOverviewFragment extends BaseFragment {
     EditText link;
     @BindView(R.id.link_til)
     LinearLayout linkParent;
+    @BindView(R.id.hint_link)
+    View linkHint;
+    @BindView(R.id.hint_link_2)
+    View linkHint2;
     @BindView(R.id.country_where_purchased)
     NachoTextView countryWherePurchased;
     @BindView(R.id.country_where_purchased_til)
@@ -204,10 +208,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     View greyLine4;
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -280,38 +280,22 @@ public class AddProductOverviewFragment extends BaseFragment {
      * @param isEnabled
      */
     private void enableFastAdditionMode(boolean isEnabled) {
+        int visibility=View.VISIBLE;
         if (isEnabled) {
-            sectionManufacturingDetails.setVisibility(View.GONE);
-            sectionPurchasingDetails.setVisibility(View.GONE);
-            packaging.setVisibility(View.GONE);
-            label.setVisibility(View.GONE);
-            periodsAfterOpeningParent.setVisibility(View.GONE);
-            changeVisibilityManufacturingSectionTo(View.GONE);
-            changePurchasingSectionVisibilityTo(View.GONE);
-            otherImage.setVisibility(View.GONE);
-            greyLine2.setVisibility(View.GONE);
-            greyLine3.setVisibility(View.GONE);
-            greyLine4.setVisibility(View.GONE);
-            //disabling fields in edit/add mode
-            //otherInfo.setVisibility(View.GONE);
-            //conservationCond.setVisibility(View.GONE);
-            //recyclingInstructionToDiscard.setVisibility(View.GONE);
-            //recyclingInstructionToRecycle.setVisibility(View.GONE);
-            periodsAfterOpeningParent.setVisibility(View.GONE);
-            cbEating.setVisibility(View.GONE);
-        } else {
-            sectionManufacturingDetails.setVisibility(View.VISIBLE);
-            sectionPurchasingDetails.setVisibility(View.VISIBLE);
-            packaging.setVisibility(View.VISIBLE);
-            label.setVisibility(View.VISIBLE);
-            periodsAfterOpeningParent.setVisibility(View.VISIBLE);
-            changeVisibilityManufacturingSectionTo(View.VISIBLE);
-            changePurchasingSectionVisibilityTo(View.VISIBLE);
-            otherImage.setVisibility(View.VISIBLE);
-            greyLine2.setVisibility(View.VISIBLE);
-            greyLine3.setVisibility(View.VISIBLE);
-            greyLine4.setVisibility(View.VISIBLE);
+            visibility=View.GONE;
         }
+        sectionManufacturingDetails.setVisibility(visibility);
+        sectionPurchasingDetails.setVisibility(visibility);
+        packaging.setVisibility(visibility);
+        label.setVisibility(visibility);
+        periodsAfterOpeningParent.setVisibility(visibility);
+        changeVisibilityManufacturingSectionTo(visibility);
+        changePurchasingSectionVisibilityTo(visibility);
+        otherImage.setVisibility(visibility);
+        greyLine2.setVisibility(visibility);
+        greyLine3.setVisibility(visibility);
+        greyLine4.setVisibility(visibility);
+        cbEating.setVisibility(visibility);
     }
 
     /**
@@ -552,7 +536,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     }
 
     private void initializeChips() {
-        NachoTextView nachoTextViews[] = {brand, packaging, categories, label, originOfIngredients, embCode, countryWherePurchased, stores, countriesWhereSold};
+        NachoTextView[] nachoTextViews = {brand, packaging, categories, label, originOfIngredients, embCode, countryWherePurchased, stores, countriesWhereSold};
         for (NachoTextView nachoTextView : nachoTextViews) {
             nachoTextView.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
             nachoTextView.setNachoValidator(new ChipifyingNachoValidator());
@@ -676,10 +660,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         activity = getActivity();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
 
     @OnClick(R.id.btn_next)
     void next() {
@@ -874,6 +854,9 @@ public class AddProductOverviewFragment extends BaseFragment {
         manufacturingPlaceParent.setVisibility(visibility);
         embCodeParent.setVisibility(visibility);
         linkParent.setVisibility(visibility);
+        linkHint.setVisibility(visibility);
+        linkHint2.setVisibility(visibility);
+
     }
 
     @OnClick(R.id.section_purchasing_details)
@@ -1006,6 +989,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
+                //nothing to do here...
             }
 
             @Override

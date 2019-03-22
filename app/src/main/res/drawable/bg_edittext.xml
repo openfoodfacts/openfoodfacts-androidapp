@@ -3,8 +3,9 @@
             android:width="1dp"
             android:color="@color/grey_400"/>
     <padding
-            android:left="@dimen/spacing_small"
-            android:right="@dimen/spacing_small">
+            android:left="@dimen/spacing_tiny"
+            android:right="@dimen/spacing_tiny"
+    >
     </padding>
     <corners android:radius="3dp"/>
 </shape>

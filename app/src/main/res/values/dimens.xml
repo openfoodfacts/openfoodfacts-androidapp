@@ -66,9 +66,9 @@
     <dimen name="card_elevation">1dp</dimen>
 
 
-    <dimen name="floating_hint_margin">5dp</dimen>
-    <dimen name="floating_hint_margin_nacho">10dp</dimen>
-    <dimen name="top_margin_spinner_hint">16dp</dimen>
+    <dimen name="floating_hint_margin">6dp</dimen>
+    <dimen name="floating_hint_margin_nacho">8dp</dimen>
+    <dimen name="top_margin_spinner_hint">18dp</dimen>
 
 
 
