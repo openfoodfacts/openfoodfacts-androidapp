@@ -25,7 +25,8 @@
                 android:id="@+id/product_header_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="@dimen/card_elevation">
+                app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:id="@+id/product_header_layout"
                     android:layout_width="match_parent"
@@ -86,9 +87,7 @@
                             android:background="?android:selectableItemBackground"
                             android:maxHeight="120dp"
                             android:scaleType="fitCenter"
-                            android:transitionName="@string/product_transition"
-                            app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
-                            />
+                            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
                         <TextView
                             android:id="@+id/addPhotoLabel"
@@ -96,8 +95,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="@string/take_picture_front"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -108,99 +106,150 @@
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/action_buttons_layout"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="90dp"
+                android:background="@color/white"
                 >
 
                 <LinearLayout
                     android:id="@+id/action_compare_button_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical">
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/action_add_to_list_button_layout"
+                    style="@style/ActionButtonLayout"
+                    >
 
                     <ImageButton
-                        android:id="@+id/action_compare_button_icon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="@dimen/spacing_tiny"
-                        android:adjustViewBounds="true"
-                        android:background="@drawable/circle_button"
-                        android:maxHeight="120dp"
-                        android:scaleType="fitCenter"
-                        android:transitionName="@string/product_transition"
-                        app:srcCompat="@drawable/ic_compare_arrows_black_18dp"
+                        android:id="@+id/action_compare_button"
+                        app:srcCompat="@drawable/ic_compare_arrows_circle_24dp"
+                        style="@style/ActionButton"
                         />
 
                     <TextView
                         android:id="@+id/action_compare_button_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Compare"
-                        android:textStyle="bold"
+                        android:text="@string/product_summary_action_compare_button_label"
+                        style="@style/ActionButtonLabel"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/action_add_to_list_button_layout"
+                    app:layout_constraintStart_toEndOf="@id/action_compare_button_layout"
+                    app:layout_constraintEnd_toStartOf="@id/action_edit_button_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/ActionButtonLayout"
+                    >
+
+                    <ImageButton
+                        android:id="@+id/action_add_to_list_button"
+                        app:srcCompat="@drawable/ic_bookmark_circle_24dp"
+                        style="@style/ActionButton"
                         />
 
+                    <TextView
+                        android:id="@+id/action_add_to_list_button_label"
+                        android:text="@string/product_summary_action_add_to_list_button_label"
+                        style="@style/ActionButtonLabel"
+                        />
                 </LinearLayout>
-            </android.support.constraint.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/action_edit_button_layout"
+                    app:layout_constraintStart_toEndOf="@id/action_add_to_list_button_layout"
+                    app:layout_constraintEnd_toStartOf="@id/action_share_button_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/ActionButtonLayout"
+                    >
 
-            <android.support.v7.widget.CardView
+                    <ImageButton
+                        android:id="@+id/action_edit_button"
+                        app:srcCompat="@drawable/ic_edit_circle_24dp"
+                        style="@style/ActionButton"
+                        />
+
+                    <TextView
+                        android:id="@+id/action_edit_button_label"
+                        android:text="@string/product_summary_action_edit_button_label"
+                        style="@style/ActionButtonLabel"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/action_share_button_layout"
+                    style="@style/ActionButtonLayout"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/action_edit_button_layout"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/action_share_button"
+                        style="@style/ActionButton"
+                        app:srcCompat="@drawable/ic_share_circle_24dp" />
+
+                    <TextView
+                        android:id="@+id/action_share_button_label"
+                        style="@style/ActionButtonLabel"
+                        android:text="@string/product_summary_action_share_button_label" />
+                </LinearLayout>
+
+
+            </android.support.constraint.ConstraintLayout>
+            <View style="@style/HorizontalLineSeparator" />
+
+            <RelativeLayout
                 android:id="@+id/product_incomplete_warning_view_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="@dimen/spacing_small"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:visibility="gone"
-                app:cardElevation="@dimen/card_elevation">
+                android:padding="4dp"
+                android:background="@color/orange_800"
+                >
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/message_icon"
+                    android:layout_width="@dimen/button_height_normal"
+                    android:layout_height="@dimen/button_height_normal"
+                    android:padding="@dimen/padding_too_short"
+                    app:srcCompat="@drawable/warning_icon"
+                    />
+
+                <TextView
+                    android:id="@+id/product_incomplete_message"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="#EEE"
+                    android:layout_toStartOf="@+id/product_incomplete_message_dismiss_icon"
+                    android:layout_toLeftOf="@+id/product_incomplete_message_dismiss_icon"
+                    android:layout_toEndOf="@+id/message_icon"
+                    android:layout_toRightOf="@+id/message_icon"
                     android:gravity="center"
-                    android:padding="4dp">
+                    android:paddingStart="@dimen/spacing_tiny"
+                    android:paddingLeft="@dimen/spacing_tiny"
+                    android:paddingEnd="@dimen/spacing_large"
+                    android:paddingRight="@dimen/spacing_large"
+                    android:paddingTop="@dimen/spacing_small"
+                    android:paddingBottom="@dimen/spacing_small"
+                    android:text="@string/product_incomplete_message"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    />
 
-                    <ImageView
-                        android:id="@+id/message_icon"
-                        android:layout_width="@dimen/button_height_normal"
-                        android:layout_height="@dimen/button_height_normal"
-                        android:padding="@dimen/padding_too_short"
-                        app:srcCompat="@drawable/warning_icon" />
-
-                    <TextView
-                        android:id="@+id/product_incomplete_message"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toStartOf="@+id/product_incomplete_message_dismiss_icon"
-                        android:layout_toLeftOf="@+id/product_incomplete_message_dismiss_icon"
-                        android:layout_toEndOf="@+id/message_icon"
-                        android:layout_toRightOf="@+id/message_icon"
-                        android:gravity="center"
-                        android:paddingStart="@dimen/spacing_tiny"
-                        android:paddingLeft="@dimen/spacing_tiny"
-                        android:paddingTop="@dimen/spacing_tiny"
-                        android:paddingEnd="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large"
-                        android:paddingBottom="@dimen/spacing_tiny"
-                        android:text="@string/product_incomplete_message"
-                        android:textAlignment="center"
-                        android:textColor="@color/md_black_1000" />
-
-                    <ImageButton
-                        android:id="@+id/product_incomplete_message_dismiss_icon"
-                        android:layout_width="@dimen/button_height_too_much_short"
-                        android:layout_height="@dimen/button_height_too_much_short"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_margin="4dp"
-                        android:background="#EEE"
-                        app:srcCompat="@drawable/ic_action_cross" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
+                <ImageButton
+                    android:id="@+id/product_incomplete_message_dismiss_icon"
+                    android:layout_width="@dimen/button_height_too_short"
+                    android:layout_height="@dimen/button_height_too_short"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="4dp"
+                    app:srcCompat="@drawable/ic_action_cross"
+                    />
+            </RelativeLayout>
+            <View style="@style/HorizontalLineSeparator" />
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/scores_layout"
@@ -210,38 +259,27 @@
                 <ImageView
                     android:id="@+id/imageGrade"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin"
-                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:clickable="true"
                     android:focusable="true"
-                    android:maxWidth="180dp"
+                    android:maxHeight="100dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/nnc_a"
-                    />
+                    app:layout_constraintEnd_toStartOf="@id/nova_group"
+                    tools:src="@drawable/nnc_a" />
 
                 <ImageView
                     android:id="@+id/nova_group"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/horizontal_margin"
-                    android:layout_marginEnd="@dimen/horizontal_margin"
-                    android:layout_marginRight="@dimen/horizontal_margin"
-                    android:layout_marginBottom="@dimen/horizontal_margin"
-                    android:maxWidth="20dp"
-                    android:paddingStart="0dp"
-                    android:paddingLeft="0dp"
-                    android:paddingTop="@dimen/activity_horizontal_margin"
-                    android:paddingEnd="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="60dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/co2_icon"
                     app:layout_constraintStart_toEndOf="@id/imageGrade"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@drawable/ic_nova_group_1" />
@@ -249,18 +287,9 @@
                 <ImageView
                     android:id="@+id/co2_icon"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/horizontal_margin"
-                    android:layout_marginEnd="@dimen/horizontal_margin"
-                    android:layout_marginRight="@dimen/horizontal_margin"
-                    android:layout_marginBottom="@dimen/horizontal_margin"
-                    android:maxWidth="20dp"
-                    android:paddingStart="0dp"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="@dimen/activity_horizontal_margin"
-                    android:paddingRight="16dp"
-                    android:paddingBottom="8dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="60dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -272,10 +301,10 @@
                     android:id="@+id/add_nutriscore_prompt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_normal"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent"
                     android:drawableLeft="@drawable/ic_add_box_blue_18dp"
                     android:drawableStart="@drawable/ic_add_box_blue_18dp"
                     tools:text="@string/add_nutrition_facts_for_nutriscore"
@@ -283,31 +312,6 @@
                     style="@style/BorderButton"/>
 
             </android.support.constraint.ConstraintLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/compare_product_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_normal"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/compare_product_prompt"
-                        android:drawableStart="@drawable/ic_compare_arrows_blue_18dp"
-                        android:drawableLeft="@drawable/ic_compare_arrows_blue_18dp"
-                        style="@style/BorderButton"/>
-
-
-                </LinearLayout>
-
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cvNutritionLights"

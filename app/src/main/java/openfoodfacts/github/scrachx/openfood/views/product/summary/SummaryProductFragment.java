@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,9 +34,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,11 +69,11 @@ import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
@@ -79,8 +82,11 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
+import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -105,13 +111,14 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
-import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
 
     @BindView(R.id.product_incomplete_warning_view_container)
-    CardView productIncompleteView;
+    RelativeLayout productIncompleteView;
     @BindView(R.id.textNameProduct)
     TextView nameProduct;
     @BindView(R.id.textBrandProduct)
@@ -150,8 +157,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     CardView nutritionLightsCardView;
     @BindView(R.id.textAdditiveProduct)
     TextView additiveProduct;
-    @BindView(R.id.compare_product_button)
-    Button compareProductButton;
+    @BindView(R.id.action_compare_button)
+    ImageButton compareProductButton;
     @BindView(R.id.scrollView)
     public NestedScrollView scrollView;
     private State state;
@@ -177,7 +184,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean addingIngredientsImage = false;
     //boolean to indicate if the image clicked was that of nutrition
     private boolean addingNutritionImage = false;
-    private YourListedProductDao yourListedProductDao;
+    private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
 
     @Override
     public void onAttach(Context context) {
@@ -764,7 +771,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         startActivity(intent);
     }
 
-    @OnClick(R.id.compare_product_button)
+    @OnClick(R.id.action_compare_button)
     public void onCompareProductButtonClick() {
         Intent intent = new Intent(getContext(), ProductComparisonActivity.class);
         intent.putExtra("product_found", true);
@@ -772,6 +779,84 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         productsToCompare.add(product);
         intent.putExtra("products_to_compare", productsToCompare);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.action_share_button)
+    public void onShareProductButtonClick() {
+        String shareUrl = " " + getString(R.string.website_product) + product.getCode();
+        Intent sharingIntent = new Intent();
+        sharingIntent.setAction(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
+        String shareSub = "\n\n";
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share using"));
+    }
+
+    @OnClick(R.id.action_edit_button)
+    public void onEditProductButtonClick() {
+        final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
+        if (login.isEmpty()) {
+            new MaterialDialog.Builder(getActivity())
+                    .title(R.string.sign_in_to_edit)
+                    .positiveText(R.string.txtSignIn)
+                    .negativeText(R.string.dialog_cancel)
+                    .onPositive((dialog, which) -> {
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
+                        dialog.dismiss();
+                    })
+                    .onNegative((dialog, which) -> dialog.dismiss())
+                    .build().show();
+        } else {
+            Intent intent = new Intent(getActivity(), AddProductActivity.class);
+            intent.putExtra("edit_product", product);
+            startActivity(intent);
+        }
+    }
+
+    @OnClick(R.id.action_add_to_list_button)
+    public void onBookmarkProductButtonClick() {
+        Activity activity = getActivity();
+
+        String barcode = product.getCode();
+        String productName = product.getProductName();
+        String imageUrl = product.getImageSmallUrl();
+        StringBuilder stringBuilder = new StringBuilder();
+        if (isNotEmpty(product.getBrands())) {
+            stringBuilder.append(capitalize(product.getBrands().split(",")[0].trim()));
+        }
+        if (isNotEmpty(product.getQuantity())) {
+            stringBuilder.append(" - ").append(product.getQuantity());
+        }
+        String productDetails = stringBuilder.toString();
+
+        MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(activity)
+                .title(R.string.add_to_product_lists)
+                .customView(R.layout.dialog_add_to_list, true);
+        MaterialDialog addToListDialog = addToListBuilder.build();
+        addToListDialog.show();
+        View addToListView = addToListDialog.getCustomView();
+        if (addToListView != null) {
+            ProductListsDao productListsDao = Utils.getDaoSession(activity).getProductListsDao();
+            List<ProductLists> productLists = productListsDao.loadAll();
+
+            RecyclerView addToListRecyclerView =
+                    addToListView.findViewById(R.id.rv_dialogAddToList);
+            DialogAddToListAdapter addToListAdapter =
+                    new DialogAddToListAdapter(activity, productLists, barcode, productName, productDetails, imageUrl);
+            addToListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
+            addToListRecyclerView.setAdapter(addToListAdapter);
+            TextView tvAddToList = addToListView.findViewById(R.id.tvAddToNewList);
+            tvAddToList.setOnClickListener(view -> {
+                Intent intent = new Intent(activity, ProductListsActivity.class);
+                intent.putExtra("product", product);
+                activity.startActivity(intent);
+            });
+
+        }
     }
 
     // Implements CustomTabActivityHelper.ConnectionCallback
