@@ -121,6 +121,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     RelativeLayout productIncompleteView;
     @BindView(R.id.textNameProduct)
     TextView nameProduct;
+    @BindView(R.id.textQuantityProduct)
+    TextView quantityProduct;
     @BindView(R.id.textBrandProduct)
     TextView brandProduct;
     @BindView(R.id.textEmbCode)
@@ -229,6 +231,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //refresh visibilty of UI components
         labelProduct.setVisibility(View.VISIBLE);
         brandProduct.setVisibility(View.VISIBLE);
+        quantityProduct.setVisibility(View.VISIBLE);
         embCode.setVisibility(View.VISIBLE);
         nameProduct.setVisibility(View.VISIBLE);
 
@@ -295,6 +298,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             nameProduct.setText(product.getProductName(langCode));
         } else {
             nameProduct.setVisibility(View.GONE);
+        }
+
+        if (isNotBlank(product.getQuantity())) {
+            quantityProduct.setText(product.getQuantity());
+        } else {
+            quantityProduct.setVisibility(View.GONE);
         }
 
         if (isNotBlank(product.getBrands())) {

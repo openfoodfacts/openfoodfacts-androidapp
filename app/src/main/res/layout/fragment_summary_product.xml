@@ -65,6 +65,13 @@
                             android:textIsSelectable="true"
                             android:textSize="@dimen/font_normal"
                             tools:text="Brands: ..." />
+                        <TextView
+                            android:id="@+id/textQuantityProduct"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_tiny"
+                            android:textSize="@dimen/font_normal"
+                            tools:text="Quantity" />
                     </LinearLayout>
 
                     <LinearLayout
