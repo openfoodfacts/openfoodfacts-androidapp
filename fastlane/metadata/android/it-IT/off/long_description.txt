@@ -10,6 +10,7 @@ Per scoprire il progetto volontario Open Food Facts, visita https://world.openfo
 ▶ Scegli i prodotti che ti fanno bene
 -Il grado del punteggio nutrizionale, da "A" a "E" >> Qualità nutrizionale
 - Il gruppo NOVA, da "1" a "4" >> Trova il cibo Ultra-processato
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ E buono per il pianeta!
 - L'impatto sul carbonio del tuo cibo
@@ -25,6 +26,8 @@ Per scoprire il progetto volontario Open Food Facts, visita https://world.openfo
 - Open Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi.
 - Puoi iniziare a contribuire oggi aggiungendo un prodotto dal tuo frigo.
 
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Ottieni i fatti
 - Open Food Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai in grado di trovare:
