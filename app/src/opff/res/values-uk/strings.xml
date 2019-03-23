@@ -25,7 +25,7 @@
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">Подивіться на цей товар на \"Open Food Facts\":</string>
-    <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+    <string name="not_support_books">Книги наразі не підтримуються додатоком Open Food Facts</string>
     <string name="txt_broaden_search">- розширити пошук\n- просканувати та додати товар</string>
     <string name="Donation">Натисніть тут, щоб підтримати Open Food Facts</string>
     <string name="translate_help_title">Допоможіть перекласти Open Food Facts</string>

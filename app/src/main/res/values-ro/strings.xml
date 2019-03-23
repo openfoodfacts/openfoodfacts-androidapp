@@ -484,6 +484,7 @@
     <string name="device_on_mobile_data_warning_message">Încărcarea prin datelre mobile este dezactivată, vă rugăm conectați-vă la WiFi sau modificați opțiunile în setări</string>
     <string name="device_on_mobile_data_warning_positive">Preferinţe</string>
     <string name="device_on_mobile_data_warning_negative">Încărcați oricum</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Alegeți limba</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Întrebări Frecvente</string>
@@ -492,7 +493,7 @@
     <string name="please_check_your_connection">Te rog verifică conexiunea ta.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Cautare avansată &amp; Grafice</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Te rog verifică conexiunea ta la internet</string>
     <string name="dismiss">Renunță</string>
     <string name="Terms">Termeni</string>
@@ -556,7 +557,7 @@
     <string name="by_time">Vizualizat recent</string>
     <string name="sort">Sortează</string>
     <string name="by_nutrition_grade">Notă nutrițională</string>
-    <string name="sort_by">Sortează după</string>
+    <string name="sort_by">Ordonează după</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Scutură telefonul pentru a scana produse</string>
@@ -794,7 +795,7 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

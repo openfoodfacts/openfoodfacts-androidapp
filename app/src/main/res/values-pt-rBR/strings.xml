@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">O carregamento via dados móveis está desactivado, por favor ligue por WiFi ou altere isto nas definições</string>
     <string name="device_on_mobile_data_warning_positive">Preferências</string>
     <string name="device_on_mobile_data_warning_negative">Carregar mesmo assim</string>
+    <string name="changes_saved">Alterações salvas com sucesso</string>
     <string name="preference_choose_language_dialog_title">Escolher idioma</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Perguntas Frequentes</string>
@@ -488,7 +489,7 @@
     <string name="please_check_your_connection">Por favor, verifique sua conexão.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Busca avançada &amp; Gráficos</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare produtos</string>
     <string name="connectivity_check">Por favor, verifique sua conexão de internet</string>
     <string name="dismiss">Descartar</string>
     <string name="Terms">Termos e condições</string>
@@ -506,7 +507,7 @@
     <string name="logout_dialog_content">Você quer mesmo sair?</string>
     <string name="dialog_cancel">Cancelar</string>
     <string name="dialog_create">Criar</string>
-    <string name="choose_resolution">Escolher Resolução</string>
+    <string name="choose_resolution">Escolha a resolução</string>
     <string name="pref_resolution_summary">Escolha uma resolução para upload da imagem</string>
     <string name="image_upload_resolution">Resolução de upload de imagens</string>
     <string name="can_add_barcode">Problemas com o scanner?\nArraste para cima para digitar o código de barras</string>
@@ -552,7 +553,7 @@
     <string name="by_time">Visualizados Recentemente</string>
     <string name="sort">Ordenar</string>
     <string name="by_nutrition_grade">Nota Nutricional</string>
-    <string name="sort_by">Ordenar Por</string>
+    <string name="sort_by">Ordenar por</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world-pt.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Agite o telefone para escanear produtos</string>
@@ -653,7 +654,7 @@
     <string name="nutrition_facts_not_specified">Os fatores nutricionais não são especificados no produto.</string>
     <string name="nutrition_facts_picture">Imagens de fatos nutricionais</string>
     <string name="for_100g_100ml">Por 100g / 100ml</string>
-    <string name="per_serving">Por Porção</string>
+    <string name="per_serving">Por porção</string>
     <string name="serving_size">Tamanho da porção</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Adicionar um nutriente</string>
@@ -790,7 +791,7 @@
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Adicionar produtos</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Adicione fatos nutricionais para calcular o Nutri-Score</string>
 </resources>
