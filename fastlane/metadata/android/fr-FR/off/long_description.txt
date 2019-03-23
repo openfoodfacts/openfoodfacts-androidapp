@@ -10,6 +10,7 @@ Pour découvrir le projet Open Food Facts mené par des volontaires, rendez-vous
 ▶ Choisissez les produits qui sont bons pour vous
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
 - The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ And good for the planet!
 - L'impact carbone de votre nourriture
@@ -25,6 +26,8 @@ Pour découvrir le projet Open Food Facts mené par des volontaires, rendez-vous
 - Open Food Facts est un projet à but non lucratif développé par des milliers de volontaires du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons.
 - Vous pouvez commencer à contribuer aujourd'hui en ajoutant un produit de votre frigo.
 
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
 - Open Food Facts vous aide à comprendre les petits caractères sur les étiquettes des produits. Vous pourrez trouver :
