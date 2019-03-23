@@ -449,10 +449,10 @@
     <string name="txtSaturatedFat">Насыщенные жиры</string>
     <string name="nutriscore_info_msg">Узнайте больше о Nutri-Score</string>
     <string name="nova_info_msg">Узнайте больше о Nova</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_grp1_msg">Группа 1 - Непереработанные или минимально переработанные пищевые продукты</string>
+    <string name="nova_grp2_msg">Группа 2 - Переработанные кулинарные ингредиенты</string>
+    <string name="nova_grp3_msg">Группа 3 - Переработанные продукты</string>
+    <string name="nova_grp4_msg">Группа 4 - Ультра-трансформированные продукты питания и напитки</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Ярлык недоступен</string>
     <string name="scan_shortcut_short_label">Сканировать</string>
@@ -497,7 +497,7 @@
     <string name="please_check_your_connection">Проверьте подключение к интернету.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Расширенный поиск и графики</string>
-    <string name="compare_products">Compare products</string>
+    <string name="compare_products">Сравнить продукты</string>
     <string name="connectivity_check">Пожалуйста, проверьте подключение к интернету</string>
     <string name="dismiss">Отменить</string>
     <string name="Terms">Условия использования</string>
