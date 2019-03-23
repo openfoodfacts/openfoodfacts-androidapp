@@ -10,6 +10,7 @@ Aby poznać projekt wspierany przez wolontariuszy Open Food Facts, odwiedź http
 ▶ Wybierz produkty, które są dla Ciebie dobre
 - Klasa Nutri-Score, od "A" do "E" >> Jakość wartości odżywczej
 - Grupa NOVA, od „1” do „4” >> Znajdź wysoko przetworzoną żywność
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ I dobre dla naszej planety!
 - Wpływ żywności na emisję CO₂
@@ -25,6 +26,8 @@ Możesz z niej korzystać aby wybierać lepsze jedzenie. Ponieważ to są otwart
 Open Food Facts to projekt nie dochodowy tworzony przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projectków do których możesz dołączyć.
 - Możesz zacząć współtworzyć dzisiaj, dodając produkt z twojej lodówki.
 
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Poznaj fakty
 Open Food Facts pomaga zrozumieć drobny tekst na etykietach. Będziesz mógł znaleźć:
