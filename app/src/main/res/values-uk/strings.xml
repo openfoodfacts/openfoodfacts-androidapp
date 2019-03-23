@@ -8,13 +8,13 @@
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minute ago</item>
+        <item quantity="one">1 хвилину тому</item>
         <item quantity="few">%d minutes ago</item>
         <item quantity="many">%d minutes ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d хвилин тому</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
+        <item quantity="one">1 годину тому</item>
         <item quantity="few">%d hours ago</item>
         <item quantity="many">%d hours ago</item>
         <item quantity="other">%d hours ago</item>
@@ -23,7 +23,7 @@
         <item quantity="one">1 day ago</item>
         <item quantity="few">%d days ago</item>
         <item quantity="many">%d days ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d днів тому</item>
     </plurals>
     <string name="action_settings">Налаштування</string>
     <string name="action_about">Про додаток</string>
@@ -34,7 +34,7 @@
     <string name="message_in_activity_save_product_offline">Лише одне фото є обов\'язковим для додавання нового продукту.</string>
     <string name="product_incomplete_message">Інформація про продукт не є повною, тому неможливо перейти до заповнення алергенів.</string>
     <string name="no_offline_data">Усе готово</string>
-    <string name="first_offline">Products added offline will appear here</string>
+    <string name="first_offline">Тут відображуються продукти, що були додані в оффлайні</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -42,12 +42,12 @@
         <item>Інгредієнти</item>
         <item>Харчова цінність</item>
         <item>Детальна харчова цінність</item>
-        <item>Environment</item>
+        <item>Середовище</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Фотографії продукту</item>
+        <item>Аналіз інгредієнтів</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -60,24 +60,24 @@
         <item>мг</item>
         <item>µg</item>
         <item>% DV</item>
-        <item>IU</item>
+        <item>Міжнародна одиниця</item>
     </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Альфа-ліноленова кислота / ALA (18: 3 n-3)</item>
+        <item>Арахінова кислота (20:0)</item>
+        <item>Арахінова кислота / AA / ARA (20:4 n-6)</item>
+        <item>Бегенова кислота (22:0)</item>
         <item>Бікарбонат</item>
         <item>Біотин</item>
-        <item>Butyric acid (4:0)</item>
+        <item>Масляна кислота (4:0)</item>
         <item>Кофеїн</item>
         <item>Кальцій</item>
-        <item>Capric acid (10:0)</item>
-        <item>Caproic acid (6:0)</item>
-        <item>Caprylic acid (8:0)</item>
+        <item>Деканова кислота (10:0)</item>
+        <item>Капронова кислота (6:0)</item>
+        <item>Каприлова кислота (8:0)</item>
         <item>Казеїн</item>
         <item>Cerotic acid (26:0)</item>
         <item>Хлорид</item>
@@ -126,19 +126,19 @@
         <item>Селен</item>
         <item>Serum proteins</item>
         <item>Кремнезем</item>
-        <item>Starch</item>
-        <item>Stearic acid (18:0)</item>
+        <item>Крохмаль</item>
+        <item>Стеаринова кислота (18:0)</item>
         <item>Сахароза</item>
         <item>Таурин</item>
         <item>Транс-жири</item>
         <item>Вітамін А</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
+        <item>Вітамін В1 (тіамін)</item>
+        <item>Вітамін B12 (кобаламін)</item>
+        <item>Вітамін B12 (рибофлавін)</item>
+        <item>Вітамін B3 / Вітамін PP (нікотинова кислота)</item>
+        <item>Вітамін B6 (піридоксин)</item>
         <item>Вітамін B9 (Фолієва кислота)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>Вітамін C (аскорбінова кислота)</item>
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
@@ -151,8 +151,8 @@
         <item>Інгредієнти</item>
     </string-array>
     <!-- Content Description -->
-    <string name="bookmark">Bookmark</string>
-    <string name="edit">Edit</string>
+    <string name="bookmark">Закладка</string>
+    <string name="edit">Редагувати</string>
     <string name="search_button">Пошук</string>
     <string name="no_products">Товари не знайдено</string>
     <string name="desc_list_item_icon">Іконка елемента</string>
@@ -219,10 +219,10 @@
     <string name="txtTakePicture">Зробити фото</string>
     <string name="txtSendAll">Завантажити все</string>
     <string name="txtNoData">Даних немає</string>
-    <string name="txtPictureNeeded">Wait…</string>
+    <string name="txtPictureNeeded">Зачекайте…</string>
     <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
-    <string name="txtPictureNeededDialogYes">Stay</string>
-    <string name="txtPictureNeededDialogNo">Discard</string>
+    <string name="txtPictureNeededDialogYes">Залишитися</string>
+    <string name="txtPictureNeededDialogNo">Скасувати</string>
     <string name="toastSending">Uploading...</string>
     <string name="dataSaved">Збережено на твоєму девайсі</string>
     <string name="txtInfoAddUser">Будь ласка, введіть логін та пароль</string>
@@ -239,7 +239,7 @@
     <string name="txtBarcodeNotValid">Некоректний код товару</string>
     <string name="try_it_scan_now">Сканування товару</string>
     <string name="share">Поділитися</string>
-    <string name="translate">Translate</string>
+    <string name="translate">Перекласти</string>
     <string name="msg_share">Подивіться на цей товар на \"Open Food Facts\":</string>
     <string name="create_account">Зареєструватися</string>
     <string name="home_drawer">Головна</string>
@@ -259,25 +259,25 @@
     <string name="your_lists">Your lists</string>
     <string name="warning_allergens">Містить алергени</string>
     <string name="title_dialog_alert">Додати оповіщення</string>
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="toggle_flash">Спалах</string>
+    <string name="flash_on">Спалах [ON]</string>
+    <string name="flash_off">Спалах [OFF]</string>
+    <string name="ring_on">Звук [ON]</string>
+    <string name="ring_off">Звук [OFF]</string>
+    <string name="auto_focus_on">Автофокус [ON]</string>
+    <string name="auto_focus_off">Автофокус [OFF]</string>
+    <string name="formats">Формати</string>
+    <string name="choose_formats">Оберіть формат</string>
+    <string name="select_camera">Обрати камеру</string>
     <string name="ok_button">Добре</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Скасувати</string>
     <string name="login_button">Логін</string>
-    <string name="create_account_button">Create Account</string>
+    <string name="create_account_button">Створити обліковий запис</string>
     <string name="warning_alert_data">Інформація про вашу алергію ніколи не буде відправлена ​​на сервер Open Food Facts. Крім того, будьте обережні, бо дані продукту можуть бути неточними, а виявлення може бути не на 100% точним, тому подвійно перевіряйте самостійно! </string>
     <string name="from_gallery">З галереї</string>
     <string name="product_sent">Товар успішно відправлено</string>
     <string name="action_edit_product">Редагувати товар</string>
-    <string name="title_info_dialog">How does it work?</string>
+    <string name="title_info_dialog">Як це працює?</string>
     <string name="text_offline_info_dialog">Ви можете сканувати товари, коли Ви знаходитесь у автономний режимі, щоб пізніше додати їх до Open Food Facts. Усі скановані товари відображатимуться тут, і ви зможете їх надіслати за допомогою кнопки нижче.</string>
     <string name="permission_camera">Дозвіл на використання камери необхідний для сканування кодів товарів та фотографування.</string>
     <string name="permission_title">Інформація про надання дозволу</string>
@@ -289,7 +289,7 @@
     <string name="new_offline_info">Будь ласка, сфотографуйте товар, склад, харчову цінність та іншу інформацію на етикетці. Дякуємо!</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Пароль має містити принаймні 6 символів.</string>
-    <string name="user">user</string>
+    <string name="user">користувач</string>
     <string name="error_field_required">Це поле є обов\'язковим.</string>
     <string name="action_preferences">Налаштування</string>
     <string name="prefs_scan_startup">Відкривати при запуску</string>
@@ -307,14 +307,14 @@
     <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">Історію збережено</string>
     <string name="permision_write_external_storage">Щоб зберегти історію, необхідно дати дозвіл на збереження.</string>
-    <string name="txt_nutrition_not_found">N/A</string>
-    <string name="no_brand">No Brand</string>
-    <string name="no_title">No Title</string>
+    <string name="txt_nutrition_not_found">Недоступний</string>
+    <string name="no_brand">Торгівельну марку не знайдено</string>
+    <string name="no_title">Без назви</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">Стосунки з харчуванням для %1$s цього продукту</string>
-    <string name="check_facts">Check</string>
+    <string name="check_facts">Перевірити</string>
     <string name="nutrition">Харчова цінність</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
+    <string name="calculated_nutrition">Розраховане харчування</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
@@ -379,7 +379,7 @@
     <string name="txt_no_matching_products">Ми не знайшли відповідних продуктів.\nВи можете спробувати:</string>
     <string name="txt_broaden_search">- розширити пошук\n- просканувати та додати товар</string>
     <string name="txt_cant_load_search_results">Не вдалося завантажити результати пошуку</string>
-    <string name="something_went_wrong">Sorry, something went wrong…</string>
+    <string name="something_went_wrong">На жаль, щось пішло не так…</string>
     <string name="txt_try_again">Спробуйте ще раз</string>
     <string name="nutrition_lactose">Лактоза</string>
     <string name="nutrition_casein">Казеїн</string>
@@ -498,61 +498,61 @@
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Розширений Пошук та Графіки</string>
     <string name="compare_products">Compare products</string>
-    <string name="connectivity_check">Please check your internet connection</string>
+    <string name="connectivity_check">Будь ласка, перевірте підключення до інтернету</string>
     <string name="dismiss">Закрити</string>
-    <string name="Terms">Terms</string>
+    <string name="Terms">Умови</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
-    <string name="preference_header_general">General</string>
-    <string name="preference_header_network">Network</string>
-    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_general">Загальні</string>
+    <string name="preference_header_network">Мережа</string>
+    <string name="preference_header_contributing">Зробити внесок</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-    <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+    <string name="scan_first_string">Тут відображується історія переглянутих Вами продуктів.\nЦей список зберігається виключно локально в призначений для перегляду лише Вами.</string>
     <string name="log_in">Логін</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">Скасувати</string>
     <string name="dialog_create">Create</string>
     <string name="choose_resolution">Choose Resolution</string>
-    <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-    <string name="image_upload_resolution">Image upload resolution</string>
-    <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+    <string name="pref_resolution_summary">Виберіть роздільну здатність для завантаження зображення</string>
+    <string name="image_upload_resolution">Роздільна здатність зображення для завантаження</string>
+    <string name="can_add_barcode">Виникли проблеми зі скануванням?\nПеретягніть вгору щоб ввести штрихкод</string>
     <string name="wikidata_information">Going further</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
-    <string name="description">Description: </string>
-    <string name="title">Title: </string>
-    <string name="Wikipedia">View on Wikipedia</string>
-    <string name="Browse_Products">Browse Products</string>
-    <string name="swipe_down">Swipe down</string>
+    <string name="wikidata_unavailable">Наразі у Вікіпедії не існує сторінки Вашою мовою.</string>
+    <string name="description">Опис: </string>
+    <string name="title">Заголовок: </string>
+    <string name="Wikipedia">Переглянути у Вікіпедії</string>
+    <string name="Browse_Products">Переглянути продукти</string>
+    <string name="swipe_down">Зсунути вниз</string>
     <string name="brand_string">Виробник</string>
-    <string name="additive_string">Additive</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="additive_string">Добавка</string>
+    <string name="allergen_string">Алерген</string>
     <string name="search_string">Пошук</string>
     <string name="country_string">Countries where sold</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Packaging</string>
-    <string name="last_seen_string">%1$d %2$s ago</string>
+    <string name="last_seen_string">%1$d %2$s тому</string>
     <string name="store_string">Магазин</string>
     <string name="packaging_string">Packaging</string>
-    <string name="label_string">Label</string>
+    <string name="label_string">Мітка</string>
     <string name="category_string">Категорія</string>
-    <string name="connection">Connected</string>
-    <string name="contributor_string">Contributor</string>
-    <string name="Rate_Us">Show Your Support</string>
-    <string name="Rate_Us_title">Rate our App</string>
-    <string name="app_disabled_text">Application is disabled</string>
+    <string name="connection">Підключено</string>
+    <string name="contributor_string">Учасник</string>
+    <string name="Rate_Us">Підтримати</string>
+    <string name="Rate_Us_title">Оцінити наш додаток</string>
+    <string name="app_disabled_text">Додаток вимкнено</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">Вітаміни:</string>
-    <string name="amino_acid_tags_text">Amino Acids:</string>
+    <string name="amino_acid_tags_text">Амінокислоти:</string>
     <string name="mineral_tags_text">Мінерали:</string>
-    <string name="other_tags_text">Other Substances:</string>
+    <string name="other_tags_text">Інші речовини:</string>
     <!--shared element transition key-->
-    <string name="wikidata">Wikidata data</string>
+    <string name="wikidata">Дані Wikidata</string>
     <string name="disable_image_loading">Disable image loading when battery is low</string>
     <string name="DisableLoadTitle">Disable image loading</string>
-    <string name="txtCamera">Camera</string>
+    <string name="txtCamera">Камера</string>
     <string name="txtGallery">Gallery</string>
     <string name="txtOptions">Options</string>
     <string name="by_title">Title</string>
@@ -595,7 +595,7 @@
     <string name="contribution_tab">Внески</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
-    <string name="product">Edit</string>
+    <string name="product">Редагувати</string>
     <string name="txtDialogsTitle">Інформація</string>
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
@@ -782,7 +782,7 @@
     <string name="export_csv_your_listed_products">Зберегти у файл CSV</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
-    <string name="txt_discard">Discard</string>
+    <string name="txt_discard">Скасувати</string>
     <string name="txt_save">Зберегти</string>
     <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
