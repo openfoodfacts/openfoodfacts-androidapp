@@ -10,6 +10,7 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 ▶ Выбирайте продукты, которые подходят для вас
 - Шкала Nutri-Score от «А» до «Е» >> Питательная ценность
 - Классификация NOVA group, от "1" до "4" >> Найди Ультра-полуфабрикаты
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ И хороши для планеты!
 - Углеродное воздействие вашей пищи
@@ -25,6 +26,8 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 - Open Food Facts — это некоммерческий проект, разработанный тысячами добровольцев со всего мира. Вы можете принять участие удобным вам способом во множестве интересных проектов.
 - Вы можете внести свой вклад уже сегодня, добавив продукт из вашего холодильника.
 
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Получайте факты
 - Open Food Facts помогают вам понять тонкости на этикетках продуктов. Вы сможете найти:
