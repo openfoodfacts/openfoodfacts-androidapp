@@ -81,7 +81,7 @@ public class ProductTest {
                 "\"product_name\": \"Ice\"," +
                 "\"code\": \"0022343\"}";
         Product product = deserialize(productJson);
-        assertTrue(product.toString().endsWith("[code=0022343,productName=Ice]"));
+        assertTrue(product.toString().endsWith("[code=0022343,productName=Ice,additional_properties={}]"));
     }
 
     private Product deserialize(String json) throws IOException {

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -18,11 +17,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -46,7 +45,6 @@ import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -61,7 +59,6 @@ import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
@@ -117,40 +114,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     CardView productIncompleteView;
     @BindView(R.id.textNameProduct)
     TextView nameProduct;
-    @BindView(R.id.textGenericNameProduct)
-    TextView genericNameProduct;
-    @BindView(R.id.textBarcodeProduct)
-    TextView barCodeProduct;
-    @BindView(R.id.textQuantityProduct)
-    TextView quantityProduct;
-    @BindView(R.id.textPackagingProduct)
-    TextView packagingProduct;
     @BindView(R.id.textBrandProduct)
     TextView brandProduct;
-    @BindView(R.id.textManufacturingProduct)
-    TextView manufacturingProduct;
-    @BindView(R.id.textIngredientsOriginProduct)
-    TextView ingredientsOrigin;
     @BindView(R.id.textEmbCode)
     TextView embCode;
-    @BindView(R.id.textManufactureUrl)
-    TextView manufactureUlrProduct;
-    @BindView(R.id.textStoreProduct)
-    TextView storeProduct;
-    @BindView(R.id.textCountryProduct)
-    TextView countryProduct;
     @BindView(R.id.textCategoryProduct)
     TextView categoryProduct;
     @BindView(R.id.textLabelProduct)
     TextView labelProduct;
-    @BindView(R.id.textOtherInfo)
-    TextView otherInfo;
-    @BindView(R.id.textConservationCond)
-    TextView conservationCond;
-    @BindView(R.id.textRecyclingInstructionToRecycle)
-    TextView recyclingInstructionToRecycle;
-    @BindView(R.id.textRecyclingInstructionToDiscard)
-    TextView recyclingInstructionToDiscard;
     @BindView(R.id.front_picture_layout)
     LinearLayout frontPictureLayout;
     @BindView(R.id.imageViewFront)
@@ -191,16 +162,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     CardView nutritionLightsCardView;
     @BindView(R.id.textAdditiveProduct)
     TextView additiveProduct;
-    @BindView(R.id.cvTextAdditiveProduct)
-    CardView textAdditiveProductCardView;
-    @BindView(R.id.textWarning)
-    TextView warning;
-    @BindView(R.id.textCustomerService)
-    TextView customerService;
     @BindView(R.id.listname)
     TextView listName;
     @BindView(R.id.compare_product_button)
     Button compareProductButton;
+    @BindView(R.id.scrollView)
+    public NestedScrollView scrollView;
     private State state;
     private Product product;
     private OpenFoodAPIClient api;
@@ -211,11 +178,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private CustomTabsIntent customTabsIntent;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
-    private Uri embCodeUri;
     private TagDao mTagDao;
     private SummaryProductFragment mFragment;
     private ISummaryProductPresenter.Actions presenter;
-    private Uri manufactureUri;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     //boolean to determine if nutrient prompt should be shown
@@ -270,22 +235,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter = new SummaryProductPresenter(product, this);
         categoryProduct.setText(bold(getString(R.string.txtCategories)));
         labelProduct.setText(bold(getString(R.string.txtLabels)));
-        countryProduct.setText(bold(getString(R.string.txtCountries)));
 
         //refresh visibilty of UI components
         labelProduct.setVisibility(View.VISIBLE);
         brandProduct.setVisibility(View.VISIBLE);
-        quantityProduct.setVisibility(View.VISIBLE);
-        packagingProduct.setVisibility(View.VISIBLE);
-        countryProduct.setVisibility(View.VISIBLE);
-        storeProduct.setVisibility(View.VISIBLE);
         embCode.setVisibility(View.VISIBLE);
-        manufactureUlrProduct.setVisibility(View.VISIBLE);
-        manufacturingProduct.setVisibility(View.VISIBLE);
-        ingredientsOrigin.setVisibility(View.VISIBLE);
-        barCodeProduct.setVisibility(View.VISIBLE);
         nameProduct.setVisibility(View.VISIBLE);
-        genericNameProduct.setVisibility(View.VISIBLE);
 
         yourListedProductDao = Utils.getAppDaoSession(getContext()).getYourListedProductDao();
         List<YourListedProduct> searchResult = yourListedProductDao.queryBuilder()
@@ -341,12 +296,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter.loadAllergens();
         presenter.loadCategories();
         presenter.loadLabels();
-        presenter.loadCountries();
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
 
         mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
         barcode = product.getCode();
+        String langCode = LocaleHelper.getLanguageTrimmed(getContext());
 
         if (isNotBlank(product.getImageUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
@@ -365,100 +320,24 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         //the following checks whether the ingredient and nutrition images are already uploaded for the product
-        if (isBlank(product.getImageIngredientsUrl())) {
+        if (isBlank(product.getImageIngredientsUrl(langCode))) {
             ingredientImagePromptLayout.setVisibility(View.VISIBLE);
         }
 
         if(!BuildConfig.FLAVOR.equals( "obf" ) && !BuildConfig.FLAVOR.equals( "opf" )) {
-            if (isBlank(product.getImageNutritionUrl()) && showNutritionData) {
+            if (isBlank(product.getImageNutritionUrl(langCode)) && showNutritionData) {
                 nutritionImagePromptLayout.setVisibility(View.VISIBLE);
             }
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
-        if (isNotBlank(product.getOtherInformation())) {
-            otherInfo.setText(bold(getString(R.string.txtOtherInfo)));
-            otherInfo.append(' ' + product.getOtherInformation());
-        } else {
-            otherInfo.setVisibility(View.GONE);
-        }
-        if (isNotBlank(product.getConservationConditions())) {
-            conservationCond.setText(bold(getString(R.string.txtConservationCond)));
-            conservationCond.append(' ' + product.getConservationConditions());
-        } else {
-            conservationCond.setVisibility(View.GONE);
-        }
-        if (isNotBlank(product.getRecyclingInstructionsToDiscard())) {
-            recyclingInstructionToDiscard.setText(bold(getString(R.string.txtRecyclingInstructionToDiscard)));
-            recyclingInstructionToDiscard.append(' ' + product.getRecyclingInstructionsToDiscard());
-        } else {
-            recyclingInstructionToDiscard.setVisibility(View.GONE);
-        }
-        if (isNotBlank(product.getRecyclingInstructionsToRecycle())) {
-            recyclingInstructionToRecycle.setText(bold(getString(R.string.txtRecyclingInstructionToRecycle)));
-            recyclingInstructionToRecycle.append(' ' + product.getRecyclingInstructionsToRecycle());
-        } else {
-            recyclingInstructionToRecycle.setVisibility(View.GONE);
-        }
-        if (isNotBlank(product.getProductName())) {
-            nameProduct.setText(product.getProductName());
+        if (product.getProductName(langCode) != null) {
+            nameProduct.setText(product.getProductName(langCode));
         } else {
             nameProduct.setVisibility(View.GONE);
         }
 
-        if (LocaleHelper.getLanguage(getContext()) != null) {
-            String lang = LocaleHelper.getLanguage(getContext());
-            //removes country specific code in the language code eg: nl-BE
-            if (lang.contains("-")) {
-                String langSplit[] = lang.split("-");
-                lang = langSplit[0];
-            }
-            String langCode = lang;
-
-            if (product.getProductName(langCode) != null) {
-                nameProduct.setText(product.getProductName(langCode));
-            } else if (product.getProductName("en") != null) {
-                nameProduct.setText(product.getProductName("en"));
-            } else if (product.getProductName() != null) {
-                nameProduct.setText(product.getProductName());
-            } else {
-                nameProduct.setVisibility(View.GONE);
-            }
-        }
-        if (isNotBlank(product.getGenericName())) {
-            genericNameProduct.setText(product.getGenericName());
-        } else {
-            genericNameProduct.setVisibility(View.GONE);
-        }
-        if (isNotBlank(barcode)) {
-            barCodeProduct.setText(bold(getString(R.string.txtBarcode)));
-            barCodeProduct.append(' ' + barcode);
-        } else {
-            barCodeProduct.setVisibility(View.GONE);
-        }
-        if (isNotBlank(product.getQuantity())) {
-            quantityProduct.setText(bold(getString(R.string.txtQuantity)));
-            quantityProduct.append(' ' + product.getQuantity());
-        } else {
-            quantityProduct.setVisibility(View.GONE);
-        }
-        if (isNotBlank(product.getPackaging())) {
-            packagingProduct.setClickable(true);
-            packagingProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            packagingProduct.setText(bold(getString(R.string.txtPackaging)));
-            packagingProduct.append(" ");
-            String[] packagings = product.getPackaging().split(",");
-
-            for (int i = 0; i < packagings.length - 1; i++) {
-                packagingProduct.append(Utils.getClickableText(packagings[i].trim(), "", SearchType.PACKAGING, getActivity(), customTabsIntent));
-                packagingProduct.append(", ");
-            }
-
-            packagingProduct.append(Utils.getClickableText(packagings[packagings.length - 1].trim(), "", SearchType.PACKAGING, getActivity(), customTabsIntent));
-        } else {
-            packagingProduct.setVisibility(View.GONE);
-        }
         if (isNotBlank(product.getBrands())) {
             brandProduct.setClickable(true);
             brandProduct.setMovementMethod(LinkMovementMethod.getInstance());
@@ -473,19 +352,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             brandProduct.append(Utils.getClickableText(brands[brands.length - 1].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
         } else {
             brandProduct.setVisibility(View.GONE);
-        }
-        if (isNotBlank(product.getManufacturingPlaces())) {
-            manufacturingProduct.setText(bold(getString(R.string.txtManufacturing)));
-            manufacturingProduct.append(' ' + product.getManufacturingPlaces());
-        } else {
-            manufacturingProduct.setVisibility(View.GONE);
-        }
-
-        if (isBlank(product.getOrigins())) {
-            ingredientsOrigin.setVisibility(View.GONE);
-        } else {
-            ingredientsOrigin.setText(bold(getString(R.string.txtIngredientsOrigins)));
-            ingredientsOrigin.append(' ' + product.getOrigins());
         }
 
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
@@ -505,64 +371,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
         } else {
             embCode.setVisibility(View.GONE);
-        }
-
-        if (isNotBlank(product.getStores())) {
-            storeProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            storeProduct.setText(bold(getString(R.string.txtStores)));
-            storeProduct.append(" ");
-
-            String store;
-            String stores[] = product.getStores().split(",");
-            for (int i = 0; i < stores.length - 1; i++) {
-                store = stores[i];
-                storeProduct.append(Utils.getClickableText(store.trim(), store, SearchType.STORE, getActivity(), customTabsIntent));
-                storeProduct.append(", ");
-            }
-
-            store = stores[stores.length - 1];
-            storeProduct.append(Utils.getClickableText(store.trim(), store, SearchType.STORE, getActivity(), customTabsIntent));
-        } else {
-            storeProduct.setVisibility(View.GONE);
-        }
-        if (isNotBlank(product.getManufactureUrl())) {
-            manufactureUri = Uri.parse(product.getManufactureUrl());
-            if (manufactureUri.getScheme() == null)
-                manufactureUri = Uri.parse("http://" + product.getManufactureUrl());
-            customTabActivityHelper.mayLaunchUrl(manufactureUri, null, null);
-
-            String manufactureUrlTitle = getString(R.string.txtManufactureUrl);
-            SpannableString spannableText = new SpannableString(manufactureUrlTitle + "\n" + product.getManufactureUrl());
-
-            ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View textView) {
-                    CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, manufactureUri, new WebViewFallback());
-                }
-            };
-
-            spannableText.setSpan(clickableSpan, manufactureUrlTitle.length() + 1, spannableText.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-            spannableText.setSpan(new StyleSpan(Typeface.BOLD), 0, manufactureUrlTitle.length(), 0);
-
-            manufactureUlrProduct.setText(spannableText);
-            manufactureUlrProduct.setMovementMethod(LinkMovementMethod.getInstance());
-        } else {
-            manufactureUlrProduct.setVisibility(View.GONE);
-        }
-
-
-        if (isNotBlank(product.getWarning())) {
-            warning.setText(bold(getString(R.string.warning)));
-            warning.append(product.getWarning());
-        } else {
-            warning.setVisibility(View.GONE);
-        }
-
-        if (isNotBlank(product.getCustomerService())) {
-            customerService.setText(bold(getString(R.string.customer_service)));
-            customerService.append(product.getCustomerService());
-        } else {
-            customerService.setVisibility(View.GONE);
         }
 
         // if the device does not have a camera, hide the button
@@ -772,17 +580,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAdditivesState(String state) {
-        switch (state) {
-            case LOADING: {
-                textAdditiveProductCardView.setVisibility(View.VISIBLE);
-                additiveProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    additiveProduct.append(getString(R.string.txtLoading));
+                    additiveProduct.setVisibility(View.VISIBLE);
+                    break;
+                }
+                case EMPTY: {
+                    additiveProduct.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                textAdditiveProductCardView.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     @Override
@@ -866,61 +676,35 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public void showCountries(List<CountryName> countries) {
-        countryProduct.setText(bold(getString(R.string.txtCountries)));
-        countryProduct.setClickable(true);
-        countryProduct.setMovementMethod(LinkMovementMethod.getInstance());
-        countryProduct.append(" ");
-
-        for (int i = 0; i < countries.size() - 1; i++) {
-            countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(i).getName()).trim(), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
-            countryProduct.append(", ");
-        }
-
-        countryProduct.append(Utils.getClickableText(StringUtils.capitalize(countries.get(countries.size() - 1).getName()).trim(), "", SearchType.COUNTRY, getActivity(), customTabsIntent));
-
-    }
-
-    @Override
     public void showCategoriesState(String state) {
-        switch (state) {
-            case LOADING: {
-                categoryProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    categoryProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    categoryProduct.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                categoryProduct.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     @Override
     public void showLabelsState(String state) {
-        switch (state) {
-            case LOADING: {
-                labelProduct.append(getString(R.string.txtLoading));
-                break;
+        getActivity().runOnUiThread(() -> {
+            switch (state) {
+                case LOADING: {
+                    labelProduct.append(getString(R.string.txtLoading));
+                    break;
+                }
+                case EMPTY: {
+                    labelProduct.setVisibility(View.GONE);
+                    break;
+                }
             }
-            case EMPTY: {
-                labelProduct.setVisibility(View.GONE);
-                break;
-            }
-        }
-    }
-
-    @Override
-    public void showCountriesState(String state) {
-        switch (state) {
-            case LOADING: {
-                countryProduct.append(getString(R.string.txtLoading));
-                break;
-            }
-            case EMPTY: {
-                countryProduct.setVisibility(View.GONE);
-                break;
-            }
-        }
+        });
     }
 
     private String getEmbUrl(String embTag) {
