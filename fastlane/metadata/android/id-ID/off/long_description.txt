@@ -10,6 +10,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 ▶ Choose the products that are good for you
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
 - The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ And good for the planet!
 - The carbon impact of your food
@@ -25,6 +26,8 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
 - You can start contributing today by adding a product from your fridge.
 
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
 - Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
