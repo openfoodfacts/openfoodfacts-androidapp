@@ -10,6 +10,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 ▶ Válassza ki a megfelelő termékeket
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
 - The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ And good for the planet!
 - The carbon impact of your food
@@ -25,6 +26,8 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - Az Open Beauty Facts egy nonprofit projekt, amelyet több ezer önkéntes fejlesztett ki a világ minden tájáról. Rengeteg izgalmas projektünk van, amelyekkel sokféleképpen járulhat hozzá.
 - You can start contributing today by adding a product from your fridge.
 
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
 - Az Open Food Facts segít önnek a termékek cimkéin található apróbetűs rész értelmezésében. You will be able to find:
