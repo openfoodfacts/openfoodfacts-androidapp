@@ -480,7 +480,7 @@
     <string name="device_on_mobile_data_warning_message">O carregamento via dados móveis está desactivado, por favor ligue por WiFi ou altere isto nas definições</string>
     <string name="device_on_mobile_data_warning_positive">Preferências</string>
     <string name="device_on_mobile_data_warning_negative">Carregar mesmo assim</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Alterações salvas com sucesso</string>
     <string name="preference_choose_language_dialog_title">Escolher idioma</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Perguntas Frequentes</string>
