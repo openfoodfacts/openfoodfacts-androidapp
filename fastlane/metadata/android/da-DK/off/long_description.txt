@@ -10,6 +10,7 @@ For se det frivilligtdrevne Open Food Facts-projeter, så besøg https://world.o
 ▶ Vælg de produkter, der passer til dig
 - Nutri-Score klasse, fra "A" til "E" >> Ernæringsmæssig kvalitet
 - NOVA-gruppe, fra "1" til "4" >> Find de ultraforarbejdede fødevarer
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ Og god til planeten!
 - CO2-påvirkningen fra din mad
@@ -25,6 +26,8 @@ For se det frivilligtdrevne Open Food Facts-projeter, så besøg https://world.o
 - Open Food Facts er et nonprofit-projekt, der er udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder.
 - Du kan begynde at bidrage i dag ved at tilføje et produkt fra dit køleskab.
 
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Få faktaene
 - Open Food Facts hjælper dig med at forstå det med småt på produktetiketterne. Du vil kunne finde:
