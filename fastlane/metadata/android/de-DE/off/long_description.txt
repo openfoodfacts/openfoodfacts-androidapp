@@ -10,6 +10,7 @@ Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken
 ▶ Wählen Sie die Produkte aus, die gut für Sie sind
 • Die Nutri-Score-Klasse, von „A” bis „E” ➜ Nährwertqualität
 • Die NOVA-Gruppe, von „1” bis „4” ➜ Finden Sie hochverarbeiteten Lebensmittel
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ Und gut für den Planeten!
 • Der CO₂-Einfluss Ihrer Lebensmittel
@@ -25,6 +26,8 @@ Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken
 • Open Food Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können.
 • Sie können noch heute damit beginnen, einen Beitrag zu leisten, indem Sie ein Produkt aus Ihrem Kühlschrank hinzufügen.
 
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Rufen Sie die Fakten auf
 • Open Food Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Sie können finden:
