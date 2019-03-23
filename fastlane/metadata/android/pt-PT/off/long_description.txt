@@ -10,6 +10,7 @@ Para descobrir o projeto Open Food Facts realizado por voluntários, visite http
 ▶ Escolha os produtos que são bons para você
 - A classificação Nutri-Score, de "A" a "E" >> Qualidade nutricional
 - O grupo NOVA, de "1" a "4" >> Encontre o alimento ultraprocessado
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ E bom para o planeta!
 - O impacto de carbono de sua comida
@@ -25,6 +26,8 @@ Para descobrir o projeto Open Food Facts realizado por voluntários, visite http
 - Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras.
 - Você pode começar a contribuir hoje adicionando um produto de sua geladeira.
 
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Obtenha os Factos
 - Open Food Facts ajuda a entender as letras miúdas dos rótulos dos produtos. Você será capaz de encontrar:
