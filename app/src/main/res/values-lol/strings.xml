@@ -793,6 +793,10 @@
     <string name="add_product">crwdns115984:0crwdne115984:0</string>
     <string name="add_another_product">crwdns115748:0crwdne115748:0</string>
     <string name="add_nutrition_facts_for_nutriscore">crwdns115986:0crwdne115986:0</string>
+    <string name="product_summary_action_compare_button_label">crwdns116160:0crwdne116160:0</string>
+    <string name="product_summary_action_add_to_list_button_label">crwdns116162:0crwdne116162:0</string>
+    <string name="product_summary_action_edit_button_label">crwdns116164:0crwdne116164:0</string>
+    <string name="product_summary_action_share_button_label">crwdns116166:0crwdne116166:0</string>
     <string name="error_nutrient_entry">crwdns116154:0crwdne116154:0</string>
     <string name="error_nutrient_serving_data">crwdns116156:0crwdne116156:0</string>
     <string name="error_in_nutrient_data">crwdns116158:0crwdne116158:0</string>
