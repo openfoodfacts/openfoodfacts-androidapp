@@ -64,6 +64,7 @@ before_install:
 
 jobs:
  include:
+   #TODO: all these stages could be replaced by one stage with "gradlew check --stacktrace" in order to launch unit test too
   - stage: test
     script:
       - ./gradlew connectedObfDebugAndroidTest --stacktrace

@@ -435,7 +435,7 @@
     <string name="cocoa">Какао</string>
     <string name="chlorophyl">Хлорофил</string>
     <string name="take_picture_ingredients">Направете снимка на съставките</string>
-    <string name="take_picture_front">Направете снимка отпред</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Направете снимка на таблицата с хранителните стойности</string>
     <string name="take_more_pictures">Направете още снимки</string>
     <string name="txtSaturatedFat">Saturated fat</string>
@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Настройки</string>
     <string name="saving">Запазване…</string>
     <string name="scan_first_product">Сканиране на първия продукт</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Качване при мобилни данни</string>
     <string name="preference_enable_mobile_data_summary_on">Качване на нови продукти чрез мобилни данни &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Качвайте нови продукти само с WiFi</string>
@@ -479,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Качването на мобилни данни е забранено, моля, свържете се с WiFi или променете това в предпочитанията си</string>
     <string name="device_on_mobile_data_warning_positive">Предпочитания</string>
     <string name="device_on_mobile_data_warning_negative">Качете все пак</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Изберете език</string>
     <string name="FAQ">ЧЗВ</string>
     <string name="FrequentlyAskedQuestions">Често задавани въпроси</string>
@@ -487,7 +489,7 @@
     <string name="please_check_your_connection">Моля проверете връзката си.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Разширено търсене &amp; Графики</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Моля проверете връзката си с интернет</string>
     <string name="dismiss">Отхвърли</string>
     <string name="Terms">Условия</string>
@@ -551,7 +553,7 @@
     <string name="by_time">Наскоро разглеждано</string>
     <string name="sort">Сортирай</string>
     <string name="by_nutrition_grade">Хранителен клас</string>
-    <string name="sort_by">Сортирай по</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Разклатете телефона, за да сканирате продуктите</string>
@@ -604,7 +606,7 @@
     <string name="initial_loading">Първоначално зареждане</string>
     <string name="preferences">Предпочитания</string>
     <string name="OFFlogo">Open Food Facts лого</string>
-    <string name="loading_product">Зареждане на продукт...</string>
+    <string name="loading_product">Зареждане на продукт %s</string>
     <string name="error_adding_ingredients">Нещо се обърка, докато се опитвахме да добавим съставките на продукта</string>
     <string name="unable_to_extract_ingredients">Невъзможно е да се извлекат съставки от изображението</string>
     <string name="error_adding_nutrition_facts">Нещо се обърка, докато се опитвахме да добавим хранителна информация за продукта</string>
@@ -787,9 +789,18 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Редактирай</string>
+    <string name="product_summary_action_share_button_label">Сподели</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

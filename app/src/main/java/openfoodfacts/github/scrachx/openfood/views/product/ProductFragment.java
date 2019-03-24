@@ -15,7 +15,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -23,8 +22,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,20 +30,18 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
+import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,8 +60,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     Toolbar toolbar;
     @BindView(R.id.tabs)
     TabLayout tabLayout;
-    @BindView(R.id.buttonScan)
-    FloatingActionButton mButtonScan;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
     RecyclerView productBrowsingRecyclerView;
@@ -90,8 +83,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
         ButterKnife.bind(this, view);
         toolbar.setVisibility(View.GONE);
-        mButtonScan.setVisibility(View.GONE);
-
         mState = (State) getArguments().getSerializable("state");
 
         setupViewPager(viewPager);
@@ -101,10 +92,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         tabLayout.setupWithViewPager(viewPager);
 
         api = new OpenFoodAPIClient(getActivity());
-
-        if (!Utils.isHardwareCameraInstalled(getContext())) {
-            mButtonScan.setVisibility(View.GONE);
-        }
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
@@ -125,47 +112,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-
             switch (item.getItemId()) {
-//                case R.id.bookmark:
-//                     Implementation of bookmark will be here
-//                    Toast.makeText(ProductActivity.this,"Bookmark",Toast.LENGTH_SHORT).show();
-//                    break;
-                case R.id.share:
-                    String shareUrl = " " + getString(R.string.website_product) + mState.getProduct().getCode();
-                    Intent sharingIntent = new Intent();
-                    sharingIntent.setAction(Intent.ACTION_SEND);
-                    sharingIntent.setType("text/plain");
-                    String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
-                    String shareSub = "\n\n";
-                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
-                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                    break;
-//                case R.id.translation:
-//                     Implementation of Translation will be here
-//                    Toast.makeText(ProductActivity.this,"Translation",Toast.LENGTH_SHORT).show();
-//                    break;
-                case R.id.edit_product:
-                    final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
-                    final String login = settings.getString("user", "");
-                    if (login.isEmpty()) {
-                        new MaterialDialog.Builder(getActivity())
-                                .title(R.string.sign_in_to_edit)
-                                .positiveText(R.string.txtSignIn)
-                                .negativeText(R.string.dialog_cancel)
-                                .onPositive((dialog, which) -> {
-                                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                                    startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
-                                    dialog.dismiss();
-                                })
-                                .onNegative((dialog, which) -> dialog.dismiss())
-                                .build().show();
-                    } else {
-                        Intent intent = new Intent(getActivity(), AddProductActivity.class);
-                        intent.putExtra("edit_product", mState.getProduct());
-                        startActivity(intent);
-                    }
+                case R.id.scan_bottom_nav:
+                    ProductActivity.onScanButtonClicked(getActivity());
                     break;
 
                 case R.id.history_bottom_nav:
@@ -200,45 +149,14 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
     }
 
-    @OnClick(R.id.buttonScan)
-    protected void OnScan() {
-        ProductActivity.onScanButtonClicked(getActivity());
-    }
-
     private void setupViewPager(ViewPager viewPager) {
         adapterResult = new ProductFragmentPagerAdapter(getChildFragmentManager());
         adapterResult = ProductActivity.setupViewPager(viewPager, adapterResult, mState, getActivity());
     }
 
-    /**
-     * This method is used to hide share_item and edit_product in App Bar
-     */
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem share_item = menu.findItem(R.id.menu_item_share);
-        share_item.setVisible(false);
-        MenuItem edit_product = menu.findItem(R.id.action_edit_product);
-        edit_product.setVisible(false);
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return ProductActivity.onOptionsItemSelected(item, mState, getActivity());
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_product, menu);
-
-/*
-Hide the 'Calculate Calories' option from the overflow menu if the product
-doesn't have calories information in nutrition facts.
-*/
-        if (mState.getProduct().getNutriments() == null || mState.getProduct().getNutriments().get(Nutriments.ENERGY) == null) {
-            menu.findItem(R.id.action_facts).setVisible(false);
-        }
-
     }
 
     // Call to update the share intent
@@ -304,6 +222,19 @@ doesn't have calories information in nutrition facts.
         if (scanOnShake) {
             //register the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
+    }
+
+    public void bottomSheetWillGrow() {
+        if (adapterResult == null || adapterResult.getCount() == 0) {
+            return;
+        }
+        // without this, the view can be centered vertically on initial show. we force the scroll to top !
+        if (adapterResult.getItem(0) instanceof SummaryProductFragment) {
+            SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.getItem(0);
+            if(productFragment.scrollView!=null) {
+                productFragment.scrollView.scrollTo(0, 0);
+            }
         }
     }
 }

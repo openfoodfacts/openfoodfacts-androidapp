@@ -302,6 +302,9 @@
     <color name="dot_light_screen2">#8cf9eb</color>
     <color name="dot_light_screen3">#93c6fd</color>
     <color name="dot_light_screen4">#e4b5fc</color>
+    <color name="button_link">#1c72e9</color>
+    <color name="url_link">#1c72e9</color>
+    <color name="tag_link">#1c72e9</color>
 
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>

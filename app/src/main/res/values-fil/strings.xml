@@ -435,7 +435,7 @@
     <string name="cocoa">Cocoa</string>
     <string name="chlorophyl">Chlorophyl</string>
     <string name="take_picture_ingredients">Kumuha ng larawan ng mga sangkap</string>
-    <string name="take_picture_front">Kumuha ng isang larawan ng harapang bahagi</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Kumuha ng larawan ng talahanayan ng nutrisyon</string>
     <string name="take_more_pictures">Kumuha ng marami pang mga larawan</string>
     <string name="txtSaturatedFat">Saturated na taba</string>
@@ -472,6 +472,7 @@
     <string name="device_offline_dialog_positive">Mga setting</string>
     <string name="saving">Nagsesave…</string>
     <string name="scan_first_product">Suriin ang Unang Produkto</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Mag-upload sa data ng mobile</string>
     <string name="preference_enable_mobile_data_summary_on">Mag-upload ng bagong mga produkto gamit ang data ng mobile &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Mag-upload ng bagong mga produkto gamit lamang ang WiFi</string>
@@ -479,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Ang pag-upload sa mobile data ay hindi gagana, mangyaring kumonekta sa WiFi o baguhin ito sa mga kagustuhan</string>
     <string name="device_on_mobile_data_warning_positive">Mga preperensiya</string>
     <string name="device_on_mobile_data_warning_negative">Mag-upload pa rin</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Pumili ng lenggwahe</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Mga Madalas na tanong</string>
@@ -487,7 +489,7 @@
     <string name="please_check_your_connection">Pakisuri sa koneksiyon ng iyong internet.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Masusing Paghahanap &amp; Chart</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Tingnan ang iyong Koneksyon sa internet</string>
     <string name="dismiss">Alisin</string>
     <string name="Terms">Mga alituntunin</string>
@@ -551,7 +553,7 @@
     <string name="by_time">Kamakailan Tiningnan</string>
     <string name="sort">Uri</string>
     <string name="by_nutrition_grade">Marka ng nutrisyon</string>
-    <string name="sort_by">Pag-uuri sa pamamagitan ng</string>
+    <string name="sort_by">Ayusin ayon sa</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">I-shake ang telepono upang masuri ang mga produkto</string>
@@ -652,7 +654,7 @@
     <string name="nutrition_facts_not_specified">Mga nutrisyon facts not hindi tinukoy sa produkto.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="per_serving">Bawat serving</string>
     <string name="serving_size">Sukat ng serving</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Magdagdag ng sustansya</string>
@@ -785,9 +787,18 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Bansa</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Pamatnugutan</string>
+    <string name="product_summary_action_share_button_label">Ibahagi</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

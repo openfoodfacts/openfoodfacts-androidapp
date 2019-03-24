@@ -125,6 +125,7 @@ public class Nutriments implements Serializable {
     public static final String PHOSPHORUS = "phosphorus";
     public static final String IRON = "iron";
     public static final String MAGNESIUM = "magnesium";
+    public static final String DEFAULT_NUTRITION_SIZE = "100g";
 
     public static final Map<String, Integer> MINERALS_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.SILICA, R.string.silica);
@@ -272,7 +273,6 @@ public class Nutriments implements Serializable {
     }
 
     public static class Nutriment {
-
         private final String value;
         private final String for100g;
         private final String forServing;

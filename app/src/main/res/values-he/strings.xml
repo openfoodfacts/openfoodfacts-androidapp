@@ -669,4 +669,5 @@
   <string name="uploading_ingredients_image">Uploading ingredients image</string>
   <string name="uploading_front_image">Uploading front image</string>
   <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

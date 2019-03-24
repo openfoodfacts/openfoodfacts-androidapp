@@ -431,7 +431,7 @@
     <string name="cocoa">ココア</string>
     <string name="chlorophyl">クロロフィル</string>
     <string name="take_picture_ingredients">原材料の写真を撮ります</string>
-    <string name="take_picture_front">正面の写真を撮ります</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">栄養成分表の写真を撮ります</string>
     <string name="take_more_pictures">もっと写真を撮ります</string>
     <string name="txtSaturatedFat">飽和脂肪酸</string>
@@ -468,6 +468,7 @@
     <string name="device_offline_dialog_positive">設定</string>
     <string name="saving">保存中…</string>
     <string name="scan_first_product">最初の製品をスキャンします</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">モバイルデータ通信時にアップロード</string>
     <string name="preference_enable_mobile_data_summary_on">モバイル データ通信 &amp; WiFi を使用して新しい製品をアップロードします</string>
     <string name="preference_enable_mobile_data_summary_off">WiFi 接続時のみ新しい製品をアップロードします</string>
@@ -475,6 +476,7 @@
     <string name="device_on_mobile_data_warning_message">モバイルデータ通信時のアップロードが無効になっています。WiFiに接続するか、設定でこれを変更してください</string>
     <string name="device_on_mobile_data_warning_positive">プリファレンス</string>
     <string name="device_on_mobile_data_warning_negative">とにかくアップロード</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">言語を選択</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">よく寄せられる質問</string>
@@ -483,7 +485,7 @@
     <string name="please_check_your_connection">インターネット接続を確認して下さい</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">高度な検索 &amp; グラフ</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">インターネット接続を確認してください</string>
     <string name="dismiss">消去</string>
     <string name="Terms">利用規約</string>
@@ -547,7 +549,7 @@
     <string name="by_time">最近表示した</string>
     <string name="sort">並べ替え</string>
     <string name="by_nutrition_grade">栄養グレード</string>
-    <string name="sort_by">並べ替え順</string>
+    <string name="sort_by">並び替え</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">携帯電話を振って製品をスキャンします</string>
@@ -781,9 +783,18 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">国</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">栄養成分を追加してニュートリスコアを計算する</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">編集</string>
+    <string name="product_summary_action_share_button_label">共有</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>
