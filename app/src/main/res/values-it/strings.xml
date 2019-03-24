@@ -794,8 +794,8 @@
     <string name="add_product">Inserisci prodotti</string>
     <string name="add_another_product">Aggiungi un altro prodotto</string>
     <string name="add_nutrition_facts_for_nutriscore">Aggiungi i dati nutrizionali per calcolare il punteggio-Nutri</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">Confronta</string>
+    <string name="product_summary_action_add_to_list_button_label">Aggiungi alla lista</string>
     <string name="product_summary_action_edit_button_label">Modifica</string>
     <string name="product_summary_action_share_button_label">Condividi</string>
     <string name="error_nutrient_entry">Il valore dovrebbe essere numerico e può iniziare con &lt;, &gt; o ~. Esempio: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
