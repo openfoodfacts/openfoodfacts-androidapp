@@ -1,6 +1,6 @@
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
-
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +35,6 @@ public class OfflineSavedProductTest {
     private static final String INGREDIENTS = "Maltodextrin, buttermilk, salt, monosodium glutamate, lactic acid, dried garlic, dried onion, spices, natural flavors (soy).";
     private static final String TRACES = "Gluten";
     private static final String SERVING_SIZE = "75g";
-    private static final String NUTRITION_DATA_PER = "100g";
     private static final String ENERGY = "520";
     private static final String ENERGY_UNIT = "kcal";
     private static final String FAT = "25";
@@ -80,7 +79,7 @@ public class OfflineSavedProductTest {
         productDetails.put("ingredients_text", INGREDIENTS);
         productDetails.put("traces", TRACES);
         productDetails.put("serving_size", SERVING_SIZE);
-        productDetails.put("nutrition_data_per", NUTRITION_DATA_PER);
+        productDetails.put("nutrition_data_per", Nutriments.DEFAULT_NUTRITION_SIZE);
         productDetails.put("nutriment_energy", ENERGY);
         productDetails.put("nutriment_energy_unit", ENERGY_UNIT);
         productDetails.put("nutriment_fat", FAT);

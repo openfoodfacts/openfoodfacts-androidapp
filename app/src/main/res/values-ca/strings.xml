@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">La càrrega amb dades mòbils està desactivada, connecteu-vos a la Wi-Fi o canvieu la configuració</string>
     <string name="device_on_mobile_data_warning_positive">Preferències</string>
     <string name="device_on_mobile_data_warning_negative">Carrega igualment</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Trieu la llengua</string>
     <string name="FAQ">PMF</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
@@ -488,7 +489,7 @@
     <string name="please_check_your_connection">Si us plau, comproveu la connexió a internet.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Cerca avançada &amp; Gràfics</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Si us plau, comproveu la connexió a internet</string>
     <string name="dismiss">Omet</string>
     <string name="Terms">Condicions</string>
@@ -601,7 +602,7 @@
     <string name="trouble_scanning">Teniu problemes escanejant?</string>
     <string name="barcode_hint">Teniu problemes escanejant? Escriviu el codi de barres</string>
     <string name="switch_camera">Canvia la càmera</string>
-    <string name="autofocus">Autofocus</string>
+    <string name="autofocus">Autoenfocament</string>
     <string name="initial_loading">Càrrega inicial</string>
     <string name="preferences">Preferències</string>
     <string name="OFFlogo">Logo d\'Open Food Facts</string>
@@ -613,7 +614,7 @@
     <string name="choose_nutrient">Trieu un nutrient</string>
     <string name="error_adding_product_details">Alguna cosa ha sortit malament mentre s\'intentaven afegir detalls del producte</string>
     <string name="hint_product_URL">Enllaç de la pàgina oficial del producte</string>
-    <string name="product_language">Llengua del producte: </string>
+    <string name="product_language">Llengua d\'etiquetat: </string>
     <string name="hint_emb_codes">Exemples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Lloc web oficial</string>
     <string name="scan_QR_code">Escaneja el codi QR del lloc web del producte</string>
@@ -653,7 +654,7 @@
     <string name="nutrition_facts_not_specified">Les dades nutricionals no s\'especifiquen en el producte.</string>
     <string name="nutrition_facts_picture">Imatge de la Informació Nutricional</string>
     <string name="for_100g_100ml">Per 100 g/100 ml</string>
-    <string name="per_serving">Per porció</string>
+    <string name="per_serving">Per ració</string>
     <string name="serving_size">Mida de la porció</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Afegir un nutrient</string>
@@ -790,7 +791,10 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Afegiu productes</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Afegiu informació nutricional per calcular el Nutri-Score</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

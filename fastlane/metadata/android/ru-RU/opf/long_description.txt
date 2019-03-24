@@ -1,54 +1,54 @@
 Open Food Facts - открытая база данных продуктов питания с ингредиентами, аллергенами, питательной ценностью и всей информацией, которую мы можем найти на этикетках продуктов.
 
-*** Contribute to Product Transparency ***
+*** Содействие прозрачности продукта ***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Вы можете принять участие удобным вам способом во множестве интересных проектов. 
-- You can start contributing today by adding your first product. 
+- Open Food Facts — это база данных пищевых продуктов, создаваемая всеми и для всех.
+- Она будет полезна при выборе продуктов, а так как данные открыты, любой человек может использовать их в любых целях.
+- Open Food Facts — это некоммерческий проект, разработанный тысячами добровольцев со всего мира. Вы можете принять участие удобным вам способом во множестве интересных проектов. 
+- Вы можете начать вносить свой вклад прямо сегодня, добавив свой первый продукт. 
 
 *** Узнайте ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+- Open Products Facts помогают вам понять тонкости мелкого шрифта на этикетках продуктов.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
-- Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+*** Собирайте ВСЕЕЕЕ вещи ***
+- Вы можете добавить все предметы из ваших коллекций
+- Open Crayons Facts - Крупнейшая открытая база данных цветных карандашей
+- Open Miniature Food Facts - Крупнейшая открытая база данных миниатюрных продуктов питания
+- Open ??? Facts - Cоздайте свою собственную открытую базу данных :-)
 
 *** Хорошо работает в любых условиях ***
 - Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас.
 - Приложение загружает только строго необходимое для снижения потребления данных и аккумулятора
 - Вам не нужна камера для обзора продукта. Вы также можете ввести штрих-код, если у вас нет камеры или с ней проблема.
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
+*** Ваши продукты, ваши данные ***
+- Ваши данные принадлежат вам и никогда не отправляются онлайн
 - Вы можете использовать приложение анонимно
 - Вы можете экспортировать историю сканирования
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Для еды вы можете установить Open Food Facts, для косметики Open Beauty Facts и для корма для животных Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Open Beauty Facts также доступны в Интернете на https://world.openproductsfacts.org
 Вопросы, отзывы: contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** Оригинальный первоапрельский список ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Вчера утром команда Open Food Facts проснулась с потрясающим откровением. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Коллекционирование пищевых продуктов, косметики и кормов для животных в мире было настолько утомительным. Учитывая безумный прогресс, достигнутый за последний год, мы, безусловно, должны быть близки к завершению нашей миссии по сбору всех продуктов питания и косметики в мире, верно?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Поэтому мы настроены на создание не 1-ой, а целых 77000 отдельных новых баз данных! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts будут чрезвычайно амбициозным проектом. Here are a few of them: 
 
 Open Crayons Facts - The largest open database of coloring crayons
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-Open ??? Facts - The largest open database of ???
+Open ??? Facts - Крупнейшая открытая база данных ???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Завтра мы выберем 3-и наиболее успешные базы данных и начнем собирать все подходящие продукты в мире.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+Это будет мусорная корзина, телефон или база данных мобильных телефонов? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Поэтому, если вам нравятся футболки, кулинарные книги, бумага для оригами или снежные шары, начинайте сканировать с помощью Android-приложения Open Products Facts в Google Play

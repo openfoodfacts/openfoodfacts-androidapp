@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">మొబైల్ డేటాలో అప్లోడ్ నిలిపివేయబడింది, దయచేసి WiFi కి కనెక్ట్ చేయండి లేదా ప్రాధాన్యతలను మార్చండి</string>
     <string name="device_on_mobile_data_warning_positive">ప్రాధాన్యతలు</string>
     <string name="device_on_mobile_data_warning_negative">అయినా అప్లోడ్ చేయండి</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">భాషని ఎంచుకోండి</string>
     <string name="FAQ">తరచూగా అడగబడిన ప్రశ్నలు</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
@@ -488,7 +489,7 @@
     <string name="please_check_your_connection">దయచేసి మీ కనెక్షన్ను తనిఖీ చేయండి.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">ఆధునిక శోధన &amp; చార్ట్స్</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">దయచేసి మీ ఇంటర్నెట్ కనెక్షన్ను తనిఖీ చేయండి</string>
     <string name="dismiss">Dismiss</string>
     <string name="Terms">నిబంధనలు</string>
@@ -552,7 +553,7 @@
     <string name="by_time">ఇటీవల వీక్షించినవి</string>
     <string name="sort">క్రమీకరించు</string>
     <string name="by_nutrition_grade">న్యూట్రిషన్ గ్రేడ్</string>
-    <string name="sort_by">ఆమరిక</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">ఉత్పత్తులను స్కాన్ చేయడానికి ఫోన్ను షేక్ చేయండి</string>
@@ -653,7 +654,7 @@
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="per_serving">Per serving</string>
     <string name="serving_size">Serving size</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
@@ -790,7 +791,10 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Nutri- స్కోరును లెక్కించడానికి పోషకాహార వాస్తవాలను జోడించండి</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

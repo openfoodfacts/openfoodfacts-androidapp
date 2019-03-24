@@ -374,7 +374,7 @@
     <string name="nutrition_maltodextrins">Bột tinh</string>
     <string name="nutrition_serum_proteins">Protein huyết thanh</string>
     <string name="nutrition_nucleotides">Nucleotides (nu-clê-ô-tit)</string>
-    <string name="for_100g">For 100 g</string>
+    <string name="for_100g">Cho 100 g</string>
     <string name="serving">Mỗi khẩu</string>
     <string name="minerals">Khoáng chất</string>
     <string name="nutrition_calcium">Canxi</string>
@@ -431,7 +431,7 @@
     <string name="cocoa">Ca cao</string>
     <string name="chlorophyl">Diệp lục</string>
     <string name="take_picture_ingredients">Hãy chụp các thành phần nguyên liệu</string>
-    <string name="take_picture_front">Hãy chụp phía trước sản phầm</string>
+    <string name="take_picture_front">Take a picture of the front</string>
     <string name="take_picture_nutrition_table">Hãy chụp bảng dinh dưỡng</string>
     <string name="take_more_pictures">Chụp thêm ảnh</string>
     <string name="txtSaturatedFat">Chất béo bão hòa</string>
@@ -476,6 +476,7 @@
     <string name="device_on_mobile_data_warning_message">Tải lên dữ liệu di động bị tắt, vui lòng kết nối với WiFi hoặc thay đổi tùy chọn này trong tùy chọn</string>
     <string name="device_on_mobile_data_warning_positive">Tuỳ chỉnh</string>
     <string name="device_on_mobile_data_warning_negative">Vẫn tải lên</string>
+    <string name="changes_saved">Thay đổi được lưu thành công</string>
     <string name="preference_choose_language_dialog_title">Chọn ngôn ngữ</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
@@ -484,7 +485,7 @@
     <string name="please_check_your_connection">Vui lòng kiểm tra kết nối của bạn.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Tìm kiếm nâng cao &amp; Biểu đồ</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Xin vui lòng kiểm tra kết nối Internet của bạn</string>
     <string name="dismiss">Dismiss</string>
     <string name="Terms">Điều khoản sử dụng</string>
@@ -548,7 +549,7 @@
     <string name="by_time">Đã xem gần đây</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Lớp dinh dưỡng</string>
-    <string name="sort_by">Sắp xếp theo</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Lắc điện thoại để quét sản phẩm</string>
@@ -644,12 +645,12 @@
     <string name="extracting_ingredients">Trích xuất nguyên liệu</string>
     <string name="looksGood">Có vẻ tốt</string>
     <string name="skip_ingredients">Quá xấu \n Bỏ qua thành phần</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Trace</string>
     <string name="traces_hint">Cho biết các thành phần từ các đề cập như \'Có thể chứa dấu vết\', \'Được sản xuất tại nhà máy cũng sử dụng\', v. v. \nVí dụ: Sữa, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Thành phần dinh dưỡng không được chỉ định trên sản phẩm.</string>
     <string name="nutrition_facts_picture">Hình ảnh về sự kiện dinh dưỡng</string>
     <string name="for_100g_100ml">Cho 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="per_serving">Mỗi khẩu</string>
     <string name="serving_size">Kích thước phục vụ</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Thêm chất dinh dưỡng</string>
@@ -667,7 +668,7 @@
     <string name="emb_code">Mã EMB</string>
     <string name="purchasing_details">Chi tiết mua hàng</string>
     <string name="country_where_purchased">Quốc gia nơi đã mua</string>
-    <string name="stores">Stores</string>
+    <string name="stores">Cửa hàng</string>
     <string name="additional_pictures">Hình ảnh bổ sung</string>
     <string name="hint_product_pictures">(Thêm nhiều hình ảnh của sản phẩm hơn, ví dụ: hướng dẫn tái chế, nhãn, vv..)</string>
     <string name="uploading_nutrition_image">Tải lên hình ảnh sự kiện dinh dưỡng</string>
@@ -786,7 +787,10 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Thêm sản phẩm</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="error_nutrient_entry">Giá trị phải là số và có thể bắt đầu bằng &lt;, &gt; hoặc ~. Ví dụ: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_serving_data">Giá trị phải là giá trị dương</string>
+    <string name="error_in_nutrient_data">Một số giá trị dinh dưỡng không hợp lệ. Xin vui lòng sửa các trường trên với dấu đánh dấu lỗi</string>
 </resources>

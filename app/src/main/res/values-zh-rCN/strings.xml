@@ -431,7 +431,7 @@
     <string name="cocoa">可可粉</string>
     <string name="chlorophyl">叶绿素</string>
     <string name="take_picture_ingredients">拍摄营养成分</string>
-    <string name="take_picture_front">拍摄正面照片</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">拍摄营养成分</string>
     <string name="take_more_pictures">拍摄更多照片</string>
     <string name="txtSaturatedFat">饱和脂肪</string>
@@ -476,6 +476,7 @@
     <string name="device_on_mobile_data_warning_message">移动数据上传功能已禁用，请连接至 WiFi 或在偏好设置中更改</string>
     <string name="device_on_mobile_data_warning_positive">偏好</string>
     <string name="device_on_mobile_data_warning_negative">继续上传</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">选择语言</string>
     <string name="FAQ">常问问题</string>
     <string name="FrequentlyAskedQuestions">常见问题</string>
@@ -484,7 +485,7 @@
     <string name="please_check_your_connection">请检查你的网络连接</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">高级搜索和图表</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">比较产品</string>
     <string name="connectivity_check">请检查您的互联网连接</string>
     <string name="dismiss">忽略</string>
     <string name="Terms">条款</string>
@@ -649,7 +650,7 @@
     <string name="nutrition_facts_not_specified">营养成分没有在产品傻姑娘注明</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="per_serving">每份</string>
     <string name="serving_size">分量</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">添加营养</string>
@@ -786,7 +787,10 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">添加产品</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

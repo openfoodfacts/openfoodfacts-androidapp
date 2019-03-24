@@ -306,7 +306,7 @@ public class AddProductActivity extends AppCompatActivity {
         addProductIngredientsFragment.setArguments(bundle);
         adapterResult.addFragment(addProductOverviewFragment, "Overview");
         adapterResult.addFragment(addProductIngredientsFragment, "Ingredients");
-        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) {
+        if (isNutritionDataAvailable()) {
             addProductNutritionFactsFragment.setArguments(bundle);
             adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
         } else if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
@@ -321,7 +321,7 @@ public class AddProductActivity extends AppCompatActivity {
     private void saveProduct() {
         addProductOverviewFragment.getDetails();
         addProductIngredientsFragment.getDetails();
-        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) {
+        if (isNutritionDataAvailable()) {
             addProductNutritionFactsFragment.getDetails();
         }
         final SharedPreferences settings = getSharedPreferences("login", 0);
@@ -1037,14 +1037,14 @@ public class AddProductActivity extends AppCompatActivity {
         if (!edit_product) {
             if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
                 viewPager.setCurrentItem(0, true);
-            } else if ((BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) && addProductNutritionFactsFragment.nutritionCheckFailed()) {
+            } else if (isNutritionDataAvailable() && addProductNutritionFactsFragment.containsInvalidValue()) {
                 viewPager.setCurrentItem(2, true);
             } else {
                 saveProduct();
             }
         } else {
             // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
-            if ((BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) && addProductNutritionFactsFragment.nutritionCheckFailed()) {
+            if ((isNutritionDataAvailable()) && addProductNutritionFactsFragment.containsInvalidValue()) {
                 viewPager.setCurrentItem(2, true);
             } else {
                 saveEditedProduct();
@@ -1052,10 +1052,14 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
+    private boolean isNutritionDataAvailable() {
+        return BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff");
+    }
+
     private void saveEditedProduct() {
         addProductOverviewFragment.getAllDetails();
         addProductIngredientsFragment.getAllDetails();
-        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff")) {
+        if (isNutritionDataAvailable()) {
             addProductNutritionFactsFragment.getAllDetails();
         }
         final SharedPreferences settings = getSharedPreferences("login", 0);

@@ -435,7 +435,7 @@
     <string name="cocoa">Cacau</string>
     <string name="chlorophyl">Clorofila</string>
     <string name="take_picture_ingredients">Tirar foto aos ingredientes</string>
-    <string name="take_picture_front">Tirar foto frontal</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
     <string name="take_more_pictures">Tirar mais fotos</string>
     <string name="txtSaturatedFat">Gordura saturada</string>
@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">O carregamento via dados móveis está desactivado, por favor ligue por WiFi ou altere isto nas definições</string>
     <string name="device_on_mobile_data_warning_positive">Configurações</string>
     <string name="device_on_mobile_data_warning_negative">Carregar mesmo assim</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Escolher idioma</string>
     <string name="FAQ">Perguntas frequentes</string>
     <string name="FrequentlyAskedQuestions">Perguntas Frequentes</string>
@@ -488,7 +489,7 @@
     <string name="please_check_your_connection">Por favor, verifique a sua ligação à Internet.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Pesquisa avançada &amp; Diagramas</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare produtos</string>
     <string name="connectivity_check">Por favor, verifique a sua ligação à Internet</string>
     <string name="dismiss">Descartar</string>
     <string name="Terms">Condições</string>
@@ -653,7 +654,7 @@
     <string name="nutrition_facts_not_specified">Informação nutricional não especificada no produto.</string>
     <string name="nutrition_facts_picture">Imagens de fatos nutricionais</string>
     <string name="for_100g_100ml">Por 100g / 100ml</string>
-    <string name="per_serving">Por Porção</string>
+    <string name="per_serving">Por porção</string>
     <string name="serving_size">Tamanho da porção</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Adicionar um nutriente</string>
@@ -790,7 +791,10 @@
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Adicionar produtos</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Adicione fatos nutricionais para calcular o Nutri-Score</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>
