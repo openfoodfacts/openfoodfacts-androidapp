@@ -34,5 +34,5 @@
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
     <string name="product_not_found">Zeskanowany produkt %1$s jeszcze nie figuruje w Open Food Facts. Możesz go dodać?</string>
-    <string name="currently_on_version">Aktualnie na Otwartych faktach o Produktach</string>
+    <string name="currently_on_version">Aktualna wersja w Open Food Facts</string>
 </resources>
