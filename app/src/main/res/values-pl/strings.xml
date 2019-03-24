@@ -357,7 +357,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_salt">Sól</string>
     <string name="nutrition_salt_short_name">Sól (g)</string>
     <string name="nutrition_satured_fat">Tłuszcze nasycone</string>
-    <string name="nutrition_satured_fat_short_name">Tłuszcz nasycony (g)</string>
+    <string name="nutrition_satured_fat_short_name">Tłuszcze nasycone (g)</string>
     <string name="nutrition_serving">Na porcję</string>
     <string name="nutrition_serving_size">Porcja :</string>
     <string name="nutrition_sodium">Sód</string>
@@ -375,7 +375,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="volume_pref_title">Preferowana jednostka objętości</string>
     <string name="logout_drawer">Wyloguj</string>
     <string name="contribution_without_account">Możesz zalogować się lub utworzyć konto by zachować swój wkład</string>
-    <string name="textCarbonFootprint">Ślad węglowy / emisjie dwutlenku węgla: </string>
+    <string name="textCarbonFootprint">Ślad węglowy / emisja CO₂: </string>
     <string name="txtDialogPowerMode">Szybki podgląd</string>
     <string name="txtSeeMore">Więcej</string>
     <string name="action_search">Poszukiwanie</string>
