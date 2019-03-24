@@ -127,7 +127,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Kwas miodowy (20: 3 n-9)</item>
         <item>Kwas melisowy (30: 0)</item>
         <item>Molibden</item>
-        <item>Tłuszcz jednonienasycony</item>
+        <item>Tłuszcze jednonienasycone</item>
         <item>Kwas montanowy (28:0)</item>
         <item>Kwas mirystynowy (14:0)</item>
         <item>Kwas nerwonowy (24:1 n-9)</item>
@@ -137,7 +137,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Kwas Omega 6</item>
         <item>Kwas Omega 9</item>
         <item>Kwas palmitynowy (16:0)</item>
-        <item>Kwas pantotenowy / Pantofenian (witamina B5)</item>
+        <item>Witamina B5 ( Kwas pantotenowy / Pantotenian)</item>
         <item>pH</item>
         <item>Fosfor</item>
         <item>Alkohole cukrowe (poliole)</item>
@@ -152,12 +152,12 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Tauryna</item>
         <item>Tłuszcze trans</item>
         <item>Witamina A</item>
-        <item>Witamina B1</item>
-        <item>Witamina B12</item>
-        <item>Witamina B2</item>
-        <item>Witamina B3</item>
-        <item>Witamina B6</item>
-        <item>Witamina B9</item>
+        <item>Witamina B1 (Tiamina)</item>
+        <item>Witamina B12 (Kobalamina)</item>
+        <item>Witamina B2 (Ryboflawina)</item>
+        <item>Witamina B3 / Witamina PP (Niacyna)</item>
+        <item>Witamina B6 (Pirydoksyna)</item>
+        <item>Witamina B9 (Kwas foliowy)</item>
         <item>Witamina C</item>
         <item>Witamina D</item>
         <item>Witamina E</item>
@@ -484,7 +484,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="contributions_shortcut_short_label">Wkład</string>
     <string name="contributions_shortcut_long_label">Mój wkład</string>
     <string name="forgot_password">Zapomniałeś hasła</string>
-    <string name="next">NASTĘPNY</string>
+    <string name="next">DALEJ</string>
     <string name="skip">POMIŃ</string>
     <string name="start">ZROZUMIAŁEM</string>
     <string name="contact">Kontakt</string>
