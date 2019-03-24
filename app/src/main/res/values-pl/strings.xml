@@ -304,9 +304,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="permission_denied">Aktywuj zezwolenie w ustawieniach</string>
     <string name="permission_storage">Do zrobienia lub wybrania zdjęć potrzebne jest pozwolenie na przechowywanie</string>
     <string name="info_download_data">Musisz pobrać część danych aby ta funkcjonalność działała, naciśnij tak by pobrać.</string>
-    <string name="info_download_data_connection">Musisz pobrać dane by funkcjonalność zadziałała. Prosimy o uruchomienia połączenia z Internetem.</string>
+    <string name="info_download_data_connection">Aby funkcjonalność zadziałała, niektóre dane muszą zostać pobrane. Proszę o nawiązanie połączenia z Internetem.</string>
     <string name="msg_input_empty">Proszę na początku wypełnić pola.</string>
-    <string name="new_offline_info">Proszę zrobić zdjęcie produktu, składników, tabeli wartości odżywczych oraz innych danych na etykiecie. Dziękujemy!</string>
+    <string name="new_offline_info">Proszę zrobić zdjęcie produktu, listy składników, tabeli wartości odżywczych oraz innych ważnych informacji znajdujących się na etykiecie produktu. Dziękujemy!</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Hasło powinno liczyć co najmniej 6 znaków.</string>
     <string name="user">użytkownik</string>
