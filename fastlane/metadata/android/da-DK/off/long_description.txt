@@ -1,8 +1,8 @@
 Skan fødevareprodukter eller deres stregkode for at få data om ingredienser, tilsætningsstoffer og ernæringsfakta.
 
-▶ Find & Compare more than 800.000 products
+▶ Find og sammenlign flere end 800.000 produkter
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+App'en giver mulighed for at se de 800.000 produkter (inkl. 175.000 i USA), som allerede er indeholdt i den gratis og åbne database Open Food Facts samt også at tilføje fotos og data for nye produkter.
 
 
 For se det frivilligtdrevne Open Food Facts-projeter, så besøg https://world.openfoodfacts.org
@@ -10,7 +10,7 @@ For se det frivilligtdrevne Open Food Facts-projeter, så besøg https://world.o
 ▶ Vælg de produkter, der passer til dig
 - Nutri-Score klasse, fra "A" til "E" >> Ernæringsmæssig kvalitet
 - NOVA-gruppe, fra "1" til "4" >> Find de ultraforarbejdede fødevarer
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+- Du kan nemt sammenligne lige så mange produkter side om side, du ønsker, ved blot at skanne dem. 
 
 ▶ Og god til planeten!
 - CO2-påvirkningen fra din mad
@@ -26,8 +26,8 @@ For se det frivilligtdrevne Open Food Facts-projeter, så besøg https://world.o
 - Open Food Facts er et nonprofit-projekt, der er udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder.
 - Du kan begynde at bidrage i dag ved at tilføje et produkt fra dit køleskab.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+▶ Opret lister
+Opret indkøbslister, hold styr på, hvad du har spist og del og eksportér nemt dine lister.
 
 ▶ Få faktaene
 - Open Food Facts hjælper dig med at forstå det med småt på produktetiketterne. Du vil kunne finde:
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - Open Food Facts-fællesskabet samarbejder med forskerhold på tværs af kloden for at forbedre ernæringsforskning til gavn for alle.
 
 
-▶ Offlineskan: Skan i ENHVER situation! (coming soon)
+▶ Offlineskan: Skan i ENHVER situation! (kommer snart)
 Skan med lysets hastighed (selvom du er i et fly, ubåd eller supermarked)
 
 - Hele kloden, i din lomme!

@@ -1,8 +1,8 @@
 ניתן לסרוק מוצרי מזון או את הברקוד שלהם כדי לקבל מידע על רכיבים, תוספים ועובדות תזונתיות.
 
-▶ Find & Compare more than 800.000 products
+◀ איתור והשוואה של למעלה מ־800,000 מוצרים
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+היישומון מאפשר לצפות ב־800,000 מוצרי מזון (לרבות 175,000 בארה״ב) שכבר נמצאים במסד הנתונים החופשי והפתוח Open Food Facts, לרבות הוספת תמונות ונתונים למוצרים חדשים.
 
 
 כדי לחקור על מיזם Open Food Facts שמופעל לחלוטין על ידי מתנדבים, נא לבקר בכתובת https://world.openfoodfacts.org
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - קהילת Open Food Facts משתפת פעולה עם צוותי מחקר בכל רחבי העולם כדי לשפר את המחקר התזונתי לטובת הכלל.
 
 
-◀ סריקה בלתי מקוונת: סריקה בכל מצב! (coming soon)
+◀ סריקה בלתי מקוונת: סריקה בכל מצב! (בקרוב)
 סריקה במהירות האור (אפילו במטוס, בצוללת או בסופר)
 
 - כל העולם, בכף ידך!
