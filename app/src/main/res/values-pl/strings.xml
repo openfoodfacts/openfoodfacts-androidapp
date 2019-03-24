@@ -121,7 +121,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Kwas lignocerowy (24: 0)</item>
         <item>Kwas linolowy / LA (18: 2 n-6)</item>
         <item>Magnez</item>
-        <item>Maltodekstryny</item>
+        <item>Maltodekstryna</item>
         <item>Maltoza</item>
         <item>Mangan</item>
         <item>Kwas miodowy (20: 3 n-9)</item>
@@ -204,9 +204,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtPalmOilProduct">Składniki z oleju palmowego :</string>
     <string name="txtServingSize">Porcja :</string>
     <string name="txtNutrientLevel100g">Poziom składników odżywczych na 100g :</string>
-    <string name="txtNutritionLevelLow">w małej ilości</string>
-    <string name="txtNutritionLevelModerate">w umiarkowanej ilości</string>
-    <string name="txtNutritionLevelHigh">w wysokiej ilości</string>
+    <string name="txtNutritionLevelLow">niska zawartość</string>
+    <string name="txtNutritionLevelModerate">umiarkowana zawartość</string>
+    <string name="txtNutritionLevelHigh">wysoka zawartość</string>
     <string name="txtLogin">Logowanie :</string>
     <string name="txtPass">Hasło :</string>
     <string name="txtTitleHome">Otwórz jedzenie i dowiedz się co jesz</string>
@@ -293,7 +293,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="cancel_button">Anuluj</string>
     <string name="login_button">Logowanie</string>
     <string name="create_account_button">Załóż konto</string>
-    <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie mogą nie być dokładne, a wykrycie ich też nie może być pewne. Zatem, sprawdzaj dwa razy! </string>
+    <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie spożywczym mogą nie być dokładne, a wykrywalność alergenów poprawna. Zatem, sprawdzaj dwa razy!</string>
     <string name="from_gallery">Z galerii</string>
     <string name="product_sent">Produkt wysłany z powodzeniem</string>
     <string name="action_edit_product">Edytuj produkt</string>
@@ -356,7 +356,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_proteins_short_name">Proteiny (g)</string>
     <string name="nutrition_salt">Sól</string>
     <string name="nutrition_salt_short_name">Sól (g)</string>
-    <string name="nutrition_satured_fat">Tłuszcz nasycony</string>
+    <string name="nutrition_satured_fat">Tłuszcze nasycone</string>
     <string name="nutrition_satured_fat_short_name">Tłuszcz nasycony (g)</string>
     <string name="nutrition_serving">Na porcję</string>
     <string name="nutrition_serving_size">Porcja :</string>
@@ -403,10 +403,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txt_try_again">Spróbuj ponownie</string>
     <string name="nutrition_lactose">Laktoza</string>
     <string name="nutrition_casein">Kazeina</string>
-    <string name="nutrition_maltodextrins">Maltodekstryny</string>
+    <string name="nutrition_maltodextrins">Maltodekstryna</string>
     <string name="nutrition_serum_proteins">Białka surowicy</string>
     <string name="nutrition_nucleotides">Nukleotydy</string>
-    <string name="for_100g">Na 100 g</string>
+    <string name="for_100g">W 100 g</string>
     <string name="serving">Na porcję</string>
     <string name="minerals">Minerały</string>
     <string name="nutrition_calcium">Wapń</string>
@@ -432,7 +432,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="vitamin_c">Witamina C</string>
     <string name="vitamin_b1">Witamina B1</string>
     <string name="vitamin_b2">Witamina B2</string>
-    <string name="vitamin_pp">Witamina PP</string>
+    <string name="vitamin_pp">Witamina B3 (Witamina PP)</string>
     <string name="vitamin_b6">Witamina B6</string>
     <string name="vitamin_b9">Witamina B9</string>
     <string name="vitamin_b12">Witamina B12</string>
@@ -466,7 +466,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="take_picture_front">Zrób zdjęcie przodu</string>
     <string name="take_picture_nutrition_table">Zrób zdjęcie tabeli wartości odżywczej</string>
     <string name="take_more_pictures">Zrób więcej zdjęć</string>
-    <string name="txtSaturatedFat">Tłuszcz nasycony</string>
+    <string name="txtSaturatedFat">Tłuszcze nasycone</string>
     <string name="nutriscore_info_msg">Dowiedz się więcej o Nutri-Score</string>
     <string name="nova_info_msg">Dowiedz się więcej o Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
@@ -823,6 +823,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="add_product">Dodaj produkty</string>
     <string name="add_another_product">Dodaj kolejny produkt</string>
     <string name="add_nutrition_facts_for_nutriscore">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Edytuj</string>
+    <string name="product_summary_action_share_button_label">Udostępnij</string>
     <string name="error_nutrient_entry">Wartość musi być liczbą i może zacząć się: &lt;, &gt; lub ~. Przykład: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Wartość rozmiar porcji musi być wartością dodatnią</string>
     <string name="error_in_nutrient_data">Niektóre wartości odżywcze nie są prawidłowe. Proszę poprawić pola oznaczone jako nieprawidłowe</string>
