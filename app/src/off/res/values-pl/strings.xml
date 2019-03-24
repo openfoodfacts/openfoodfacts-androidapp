@@ -23,7 +23,7 @@
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
     <string name="txtDialogsContent">Zeskanowany produkt nie figuruje jeszcze w Open Food Facts. Dodaj go.</string>
     <string name="txtDialogsContentPowerMode">Zeskanowany produkt już widnieje na Open Food Facts.</string>
-    <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
+    <string name="msg_share">Zobacz produkt w Open Food Facts :</string>
     <string name="not_support_books">Open Food Facts obecnie nie obsługuje książek</string>
     <string name="txt_broaden_search">rozszerzenie zakresu wyszukiwania \n - zeskanuj i dodaj do Open Food Facts</string>
     <string name="Donation">Kliknij tu, by przekazać darowiznę na rzecz Open Food Facts</string>
