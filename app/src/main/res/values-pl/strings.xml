@@ -704,9 +704,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="stores">Sklepy</string>
     <string name="additional_pictures">Dodatkowe zdjęcia</string>
     <string name="hint_product_pictures">(Dodaj więcej zdjęć produktu, np. instrukcje recyklingu, etykiety itp.)</string>
-    <string name="uploading_nutrition_image">Przesyłanie obrazu faktów żywieniowych</string>
-    <string name="uploading_ingredients_image">Przesyłanie obrazu składników</string>
-    <string name="uploading_front_image">Przesyłanie przedniego obrazu</string>
+    <string name="uploading_nutrition_image">Wysyłanie zdjęcia tabeli wartości odżywczej</string>
+    <string name="uploading_ingredients_image">Wysyłanie zdjęcia listy składników</string>
+    <string name="uploading_front_image">Wysyłanie głównego zdjęcia produktu</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Zaloguj się, aby edytować produkt.</string>
