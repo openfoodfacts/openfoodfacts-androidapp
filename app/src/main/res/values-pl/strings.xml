@@ -231,7 +231,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtYes">Tak</string>
     <string name="txtNo">Nie</string>
     <string name="hintNameProduct">Nazwa</string>
-    <string name="hintEnergy">Energia w kilodżulach na porcję</string>
+    <string name="hintEnergy">Energia w kJ na porcję</string>
     <string name="hintEnergyUnit">Jednostka energii</string>
     <string name="hintWeight">Waga</string>
     <string name="hintStores">Sklep</string>
