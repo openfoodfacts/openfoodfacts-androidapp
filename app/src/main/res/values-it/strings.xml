@@ -794,7 +794,7 @@
     <string name="add_product">Inserisci prodotti</string>
     <string name="add_another_product">Aggiungi un altro prodotto</string>
     <string name="add_nutrition_facts_for_nutriscore">Aggiungi i dati nutrizionali per calcolare il punteggio-Nutri</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="error_nutrient_entry">Il valore dovrebbe essere numerico e può iniziare con &lt;, &gt; o ~. Esempio: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_serving_data">Il valore della dimensione della porzione deve essere un valore positivo</string>
+    <string name="error_in_nutrient_data">Alcuni valori nutrizionali non sono validi. Si prega di correggere i campi con un indicatore di errore</string>
 </resources>
