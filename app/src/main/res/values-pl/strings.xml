@@ -254,13 +254,13 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtOk">Dobrze</string>
     <string name="txtContentDialogUploading">Proszę nie wychodzić w czasie procesu…</string>
     <string name="txtAbout">Publikujesz przesłane przez siebie obrazy na wolnej licencji reative Commons Attribution and ShareAlike.</string>
-    <string name="txtAllsent">Wysłano produkty</string>
+    <string name="txtAllsent">Produkty zostały wysłane</string>
     <string name="txtPalm">Produkt nie zawiera oleju palmowego</string>
     <string name="txtBarcodeNotValid">Nieważny kod kreskowy</string>
     <string name="try_it_scan_now">Skanuj produkt</string>
     <string name="share">Udostępnij</string>
     <string name="translate">Przetłumacz</string>
-    <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
+    <string name="msg_share">Zobacz produkt w Open Food Facts :</string>
     <string name="create_account">Zarejestruj się</string>
     <string name="home_drawer">Strona główna</string>
     <string name="search_drawer">Poszukiwanie</string>
