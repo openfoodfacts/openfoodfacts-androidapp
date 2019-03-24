@@ -22,6 +22,46 @@
             android:orientation="vertical"
             >
 
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/product_allergen_alert_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@color/orange_800"
+                >
+
+                <TextView
+                    android:id="@+id/product_allergen_alert_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_small"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="@string/product_incomplete_message"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/product_allergen_alert_dismiss"
+                    app:layout_constraintTop_toBottomOf="@id/product_allergen_alert_dismiss"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/product_allergen_alert_dismiss"
+                    android:background="@color/orange_800"
+                    android:layout_width="@dimen/button_height_too_short"
+                    android:layout_height="@dimen/button_height_too_short"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/product_allergen_alert_text"
+                    app:layout_constraintLeft_toRightOf="@id/product_allergen_alert_text"
+                    android:tint="@color/white"
+                    app:srcCompat="@drawable/ic_action_cross"
+                    />
+            </android.support.constraint.ConstraintLayout>
+
             <android.support.v7.widget.CardView
                 android:id="@+id/product_header_card"
                 android:layout_width="match_parent"
@@ -205,47 +245,6 @@
                 </LinearLayout>
 
 
-            </android.support.constraint.ConstraintLayout>
-            <View style="@style/HorizontalLineSeparator" />
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/product_allergen_alert_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:background="@color/orange_800"
-                >
-
-                <TextView
-                    android:id="@+id/product_allergen_alert_text"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/spacing_small"
-                    android:layout_marginRight="@dimen/spacing_small"
-                    android:gravity="center"
-                    android:text="@string/product_incomplete_message"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/product_allergen_alert_dismiss"
-                    app:layout_constraintTop_toBottomOf="@id/product_allergen_alert_dismiss"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/product_allergen_alert_dismiss"
-                    android:background="@color/orange_800"
-                    android:layout_width="@dimen/button_height_too_short"
-                    android:layout_height="@dimen/button_height_too_short"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="4dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/product_allergen_alert_text"
-                    app:layout_constraintLeft_toRightOf="@id/product_allergen_alert_text"
-                    android:tint="@color/white"
-                    app:srcCompat="@drawable/ic_action_cross"
-                    />
             </android.support.constraint.ConstraintLayout>
             <View style="@style/HorizontalLineSeparator" />
 
