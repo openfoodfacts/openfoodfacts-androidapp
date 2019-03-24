@@ -51,7 +51,9 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -589,30 +591,24 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAllergens(List<AllergenName> allergens) {
-        List<String> productAllergens = product.getAllergensHierarchy();
-        List<String> traces = product.getTracesTags();
-        productAllergens.addAll(traces);
         if (!allergens.isEmpty() && product.getStatesTags().get(0).contains("to-be-completed")) {
             productIncompleteView.setVisibility(View.VISIBLE);
         }
 
-        List<String> matchAll = new ArrayList<>();
-        for (int a = 0; a < allergens.size(); a++) {
-            for (int i = 0; i < productAllergens.size(); i++) {
+        Set<String> productAllergens = new HashSet<>(product.getAllergensHierarchy());
+        productAllergens.addAll(product.getTracesTags());
 
-                if (productAllergens.get(i).trim().equals(allergens.get(a).getAllergenTag().trim())) {
-                    matchAll.add(allergens.get(a).getName());
-                }
+        List<String> allergenMatch = new ArrayList<>();
+        for (AllergenName allergenName : allergens) {
+            if (productAllergens.contains(allergenName.getAllergenTag())) {
+                allergenMatch.add(allergenName.getName());
             }
         }
 
-        /**
-         * shows the dialog if allergen is found.
-         */
-        if (matchAll.size() > 0) {
+        if (allergenMatch.size() > 0) {
             new MaterialDialog.Builder(getActivity())
                     .title(R.string.warning_allergens)
-                    .items(matchAll)
+                    .items(allergenMatch)
                     .neutralText(R.string.txtOk)
                     .titleColorRes(R.color.red_500)
                     .dividerColorRes(R.color.indigo_900)
