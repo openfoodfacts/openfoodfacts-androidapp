@@ -732,10 +732,10 @@
     <string name="EditDiet_Unauthorised_Ingredients">Niet-geautoriseerde ingrediënten</string>
     <string name="EditDiet_Hint_Unauthorised_Ingredient">Maak een lijst van de ongeautoriseerde ingrediënten die in rood zouden moeten verschijnen. Voorbeeld: gluten, melk, palmolie, suiker… U kunt deze lijst later invullen.</string>
     <string name="extract_ingredients_prompt">Extract ingrediënten</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrient_prompt_text">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
     <string name="add_category_prompt_text">Voeg een categorie toe om de Nutri-Score te berekenen</string>
     <string name="add_nutrient_category_prompt_text">Voeg voedingsfeiten en een categorie toe om de Nutri-Score te berekenen</string>
-    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="no_nutrition_data_prompt">Dit product bevat geen voedingsfeiten</string>
     <string name="nutrition_image_prompt_text">Neem een foto van de voedingstabel</string>
     <string name="ingredient_image_prompt_text">Maak een foto van de ingrediënten</string>
     <string name="category_game_btn">Help producten te categoriseren om de Nutri-Score te berekenen</string>
@@ -793,7 +793,7 @@
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
     <string name="add_another_product">Voeg een nieuw product toe</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
     <string name="product_summary_action_compare_button_label">Vergelijken</string>
     <string name="product_summary_action_add_to_list_button_label">Toevoegen aan lijst</string>
     <string name="product_summary_action_edit_button_label">Bewerken</string>
