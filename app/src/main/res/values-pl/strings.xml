@@ -348,12 +348,12 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_fat">Tłuszcz</string>
     <string name="nutrition_fat_short_name">Tłuszcz (g)</string>
     <string name="nutrition_fiber">Błonnik pokarmowy</string>
-    <string name="nutrition_fiber_short_name">Błonnik pokarmowy (g)</string>
+    <string name="nutrition_fiber_short_name">Błonnik (g)</string>
     <string name="nutrition_header">Wartości odżywcze</string>
     <string name="nutrition_no_data_message">Brak danych o produkcie</string>
-    <string name="nutrition_per_quantity">Na 100g/100ml</string>
+    <string name="nutrition_per_quantity">W 100g/100ml</string>
     <string name="nutrition_proteins">Proteiny</string>
-    <string name="nutrition_proteins_short_name">Proteiny (g)</string>
+    <string name="nutrition_proteins_short_name">Białko (g)</string>
     <string name="nutrition_salt">Sól</string>
     <string name="nutrition_salt_short_name">Sól (g)</string>
     <string name="nutrition_satured_fat">Tłuszcze nasycone</string>
@@ -823,8 +823,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="add_product">Dodaj produkty</string>
     <string name="add_another_product">Dodaj kolejny produkt</string>
     <string name="add_nutrition_facts_for_nutriscore">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">Porównaj</string>
+    <string name="product_summary_action_add_to_list_button_label">Dodaj do listy</string>
     <string name="product_summary_action_edit_button_label">Edytuj</string>
     <string name="product_summary_action_share_button_label">Udostępnij</string>
     <string name="error_nutrient_entry">Wartość musi być liczbą i może zacząć się: &lt;, &gt; lub ~. Przykład: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
