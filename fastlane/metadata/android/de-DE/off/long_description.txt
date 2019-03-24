@@ -1,8 +1,8 @@
 Lebensmittel erfassen oder deren Barcode einlesen, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
 
-▶ Find & Compare more than 800.000 products
+▶ Findet und vergleicht mehr als 800.000 Produkte
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+Die App ermöglicht es, die 800.000 Produkte (davon 175.000 in den USA) anzuzeigen, die bereits in der kostenlosen und offenen Datenbank Open Food Facts enthalten sind, sowie Fotos und Daten für neue Produkte hinzuzufügen.
 
 
 Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken, besuchen Sie https://world.openfoodfacts.org
@@ -10,7 +10,7 @@ Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken
 ▶ Wählen Sie die Produkte aus, die gut für Sie sind
 • Die Nutri-Score-Klasse, von „A” bis „E” ➜ Nährwertqualität
 • Die NOVA-Gruppe, von „1” bis „4” ➜ Finden Sie hochverarbeiteten Lebensmittel
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+• Sie können beliebig viele Produkte miteinander vergleichen, indem Sie sie einfach scannen. 
 
 ▶ Und gut für den Planeten!
 • Der CO₂-Einfluss Ihrer Lebensmittel
@@ -26,8 +26,8 @@ Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken
 • Open Food Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können.
 • Sie können noch heute damit beginnen, einen Beitrag zu leisten, indem Sie ein Produkt aus Ihrem Kühlschrank hinzufügen.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+▶ Listen erstellen
+Erstellen Sie Einkaufslisten, verfolgen Sie, was Sie gegessen haben, und teilen und exportieren Sie einfach Ihre Listen.
 
 ▶ Rufen Sie die Fakten auf
 • Open Food Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Sie können finden:
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 • Die Gemeinschaft von Open Food Facts arbeitet mit Forschungsteams auf der ganzen Welt zusammen, um die Erforschung der Ernährung zum Wohle aller zu verbessern.
 
 
-▶ Offline erfassen: Einlesen in einem beliebigen Zustand! (coming soon)
+▶ Offline erfassen: Einlesen in einem beliebigen Zustand! (demnächst verfügbar)
 Mit Lichtgeschwindigkeit erfassen (auch wenn Sie sich in einem Flugzeug, U-Boot oder Supermarkt befinden)
 
 • Den ganzen Planeten, in Ihrer Tasche!
