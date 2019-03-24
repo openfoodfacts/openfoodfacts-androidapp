@@ -796,5 +796,5 @@
     <string name="add_nutrition_facts_for_nutriscore">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="error_nutrient_entry">Værdien skal være numerisk og kan starte med &lt;, &gt; eller ~, f.eks. &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Portionsstørrelsen skal udgøre en positiv værdi</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="error_in_nutrient_data">Nogle næringsværdier er ugyldige. Korrigér venligst ovenstående fejlmarkerede felter</string>
 </resources>
