@@ -530,7 +530,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="not_support_books">Open Food Facts obecnie nie obsługuje książek</string>
     <string name="scan_first_string">Historia produktów, które przeglądałeś zostanie podana tutaj.\n Jest przechowywana lokalnie, tylko dla ciebie.</string>
     <string name="log_in">Logowanie</string>
-    <string name="login_true">Już zalogowany!</string>
+    <string name="login_true">Jesteś już zalogowany.</string>
     <string name="confirm_logout">Potwierdź wylogowanie się</string>
     <string name="logout_dialog_content">Czy na pewno chcesz wylogować się?</string>
     <string name="dialog_cancel">Anuluj</string>
@@ -570,8 +570,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="other_tags_text">Inne substancje:</string>
     <!--shared element transition key-->
     <string name="wikidata">Dane z Wikidata</string>
-    <string name="disable_image_loading">Wyłącz ładowanie zdjęć, gdy poziom baterii jest niski</string>
-    <string name="DisableLoadTitle">Wyłącz ładowanie zdjęć</string>
+    <string name="disable_image_loading">Wyłącz wczytywanie zdjęć, gdy poziom naładowania baterii jest niski</string>
+    <string name="DisableLoadTitle">Wyłącz wczytywanie zdjęć</string>
     <string name="txtCamera">Kamera</string>
     <string name="txtGallery">Galeria</string>
     <string name="txtOptions">Opcje</string>
