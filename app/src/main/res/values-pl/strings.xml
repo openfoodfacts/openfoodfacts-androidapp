@@ -337,7 +337,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="calculated_nutrition">Obliczone wartości odżywcze</string>
     <string name="please_enter_weight">Proszę wpisać wagę produktu</string>
     <string name="enter_weight">Wpisz wagę produktu</string>
-    <string name="calculate_nutrition_facts">Oblicz wartości odżywcze</string>
+    <string name="calculate_nutrition_facts">Oblicz wartość odżywczą porcji produktu</string>
     <string name="txt_calories_result">%1$s kcal w %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Węglowodany</string>
     <string name="nutrition_carbohydrate_short_name">Węglowodany (g)</string>
@@ -825,5 +825,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="add_nutrition_facts_for_nutriscore">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
     <string name="error_nutrient_entry">Wartość musi być liczbą i może zacząć się: &lt;, &gt; lub ~. Przykład: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Wartość rozmiar porcji musi być wartością dodatnią</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="error_in_nutrient_data">Niektóre wartości odżywcze nie są prawidłowe. Proszę poprawić pola oznaczone jako nieprawidłowe</string>
 </resources>
