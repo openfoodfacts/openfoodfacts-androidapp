@@ -218,29 +218,19 @@
                 android:background="@color/orange_800"
                 >
 
-                <ImageView
-                    android:id="@+id/message_icon"
-                    android:layout_width="@dimen/button_height_normal"
-                    android:layout_height="@dimen/button_height_normal"
-                    android:padding="@dimen/padding_too_short"
-                    app:srcCompat="@drawable/warning_icon"
-                    />
-
                 <TextView
                     android:id="@+id/product_incomplete_message"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toStartOf="@+id/product_incomplete_message_dismiss_icon"
                     android:layout_toLeftOf="@+id/product_incomplete_message_dismiss_icon"
-                    android:layout_toEndOf="@+id/message_icon"
-                    android:layout_toRightOf="@+id/message_icon"
                     android:gravity="center"
-                    android:paddingStart="@dimen/spacing_tiny"
-                    android:paddingLeft="@dimen/spacing_tiny"
-                    android:paddingEnd="@dimen/spacing_large"
-                    android:paddingRight="@dimen/spacing_large"
-                    android:paddingTop="@dimen/spacing_small"
-                    android:paddingBottom="@dimen/spacing_small"
+                    android:paddingStart="@dimen/spacing_small"
+                    android:paddingLeft="@dimen/spacing_small"
+                    android:paddingEnd="@dimen/spacing_small"
+                    android:paddingRight="@dimen/spacing_small"
+                    android:paddingTop="@dimen/spacing_normal"
+                    android:paddingBottom="@dimen/spacing_normal"
                     android:text="@string/product_incomplete_message"
                     android:textAlignment="center"
                     android:textColor="@color/white"
@@ -248,11 +238,13 @@
 
                 <ImageButton
                     android:id="@+id/product_incomplete_message_dismiss_icon"
+                    android:background="@color/orange_800"
                     android:layout_width="@dimen/button_height_too_short"
                     android:layout_height="@dimen/button_height_too_short"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_margin="4dp"
+                    android:tint="@color/white"
                     app:srcCompat="@drawable/ic_action_cross"
                     />
             </RelativeLayout>
