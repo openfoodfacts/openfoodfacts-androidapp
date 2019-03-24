@@ -25,6 +25,7 @@
     <string name="text_barcode">Type the barcode :</string>
     <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
     <string name="product_incomplete_message">The ingredient list of this product is not complete. As a result, the allergen alert is not shown.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">You\'re all done</string>
     <string name="first_offline">Products added offline will appear here</string>
 

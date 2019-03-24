@@ -208,47 +208,45 @@
             </android.support.constraint.ConstraintLayout>
             <View style="@style/HorizontalLineSeparator" />
 
-            <RelativeLayout
-                android:id="@+id/product_incomplete_warning_view_container"
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/product_allergen_alert_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:visibility="gone"
-                android:padding="4dp"
                 android:background="@color/orange_800"
                 >
 
                 <TextView
-                    android:id="@+id/product_incomplete_message"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/product_allergen_alert_text"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_toStartOf="@+id/product_incomplete_message_dismiss_icon"
-                    android:layout_toLeftOf="@+id/product_incomplete_message_dismiss_icon"
+                    android:layout_marginLeft="@dimen/spacing_small"
+                    android:layout_marginRight="@dimen/spacing_small"
                     android:gravity="center"
-                    android:paddingStart="@dimen/spacing_small"
-                    android:paddingLeft="@dimen/spacing_small"
-                    android:paddingEnd="@dimen/spacing_tiny"
-                    android:paddingRight="@dimen/spacing_tiny"
-                    android:paddingTop="@dimen/spacing_normal"
-                    android:paddingBottom="@dimen/spacing_normal"
                     android:text="@string/product_incomplete_message"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/product_allergen_alert_dismiss"
+                    app:layout_constraintTop_toBottomOf="@id/product_allergen_alert_dismiss"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/product_incomplete_message_dismiss_icon"
+                    android:id="@+id/product_allergen_alert_dismiss"
                     android:background="@color/orange_800"
                     android:layout_width="@dimen/button_height_too_short"
                     android:layout_height="@dimen/button_height_too_short"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_margin="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/product_allergen_alert_text"
+                    app:layout_constraintLeft_toRightOf="@id/product_allergen_alert_text"
                     android:tint="@color/white"
                     app:srcCompat="@drawable/ic_action_cross"
                     />
-            </RelativeLayout>
+            </android.support.constraint.ConstraintLayout>
             <View style="@style/HorizontalLineSeparator" />
 
             <android.support.constraint.ConstraintLayout
