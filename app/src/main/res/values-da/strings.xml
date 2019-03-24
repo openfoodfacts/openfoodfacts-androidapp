@@ -794,6 +794,10 @@
     <string name="add_product">Tilføj produkter</string>
     <string name="add_another_product">Tilføj et produkt mere</string>
     <string name="add_nutrition_facts_for_nutriscore">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Rediger</string>
+    <string name="product_summary_action_share_button_label">Del</string>
     <string name="error_nutrient_entry">Værdien skal være numerisk og kan starte med &lt;, &gt; eller ~, f.eks. &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Portionsstørrelsen skal udgøre en positiv værdi</string>
     <string name="error_in_nutrient_data">Nogle næringsværdier er ugyldige. Korrigér venligst ovenstående fejlmarkerede felter</string>

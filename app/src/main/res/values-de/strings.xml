@@ -794,6 +794,10 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="add_product">Produkt hinzufügen</string>
     <string name="add_another_product">Weiteres Produkt hinzufügen</string>
     <string name="add_nutrition_facts_for_nutriscore">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
+    <string name="product_summary_action_compare_button_label">Vergleiche</string>
+    <string name="product_summary_action_add_to_list_button_label">Zur Liste hinzufügen</string>
+    <string name="product_summary_action_edit_button_label">Bearbeiten</string>
+    <string name="product_summary_action_share_button_label">Teilen</string>
     <string name="error_nutrient_entry">Der Wert sollte numerisch sein und kann mit &lt;, &gt; oder ~ beginnen. Beispiel: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">Die Portionsgröße muss ein positiver Wert sein</string>
     <string name="error_in_nutrient_data">Einige Nährstoffwerte sind ungültig. Die oben als fehlerhaft markierten Felder müssen ausgefüllt werden.</string>
