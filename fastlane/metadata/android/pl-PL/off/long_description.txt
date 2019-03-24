@@ -1,8 +1,8 @@
 Skanuj produkty lub ich kody kreskowe, by uzyskać dane o składzie, dodatkach i wartościach odżywczych.
 
-▶ Find & Compare more than 800.000 products
+▶ Znajdź i porównaj ponad 800 000 produktów
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+Aplikacja pozwala przeglądać ponad 800.000 produktów (w tym 175.000 w USA) już znajdujących się w bazie wolnego i otwartego Open Food Facts jak i również dodać zdjęcia oraz dane dla nowych produktów.
 
 
 Aby poznać projekt wspierany przez wolontariuszy Open Food Facts, odwiedź https://world.openfoodfacts.org
@@ -46,7 +46,7 @@ Open Food Facts pomaga zrozumieć drobny tekst na etykietach. Będziesz mógł z
 - The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
+▶ Offline Scan: Scan in ANY condition! (wkrótce)
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
