@@ -32,7 +32,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
@@ -44,7 +43,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
-import openfoodfacts.github.scrachx.openfood.views.BottomNavigationBehavior;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
@@ -150,8 +148,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 			}
 			return true;
 		} );
-		CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
-		layoutParams.setBehavior( new BottomNavigationBehavior() );
 
 		//To update the product details
 		onRefresh();
