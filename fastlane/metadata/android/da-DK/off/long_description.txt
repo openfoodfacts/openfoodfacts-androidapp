@@ -1,8 +1,8 @@
 Skan fødevareprodukter eller deres stregkode for at få data om ingredienser, tilsætningsstoffer og ernæringsfakta.
 
-▶ Find & Compare more than 800.000 products
+▶ Find og sammenlign flere end 800.000 produkter
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+App'en giver mulighed for at se de 800.000 produkter (inkl. 175.000 i USA), som allerede er indeholdt i den gratis og åbne database Open Food Facts samt også at tilføje fotos og data for nye produkter.
 
 
 For se det frivilligtdrevne Open Food Facts-projeter, så besøg https://world.openfoodfacts.org
