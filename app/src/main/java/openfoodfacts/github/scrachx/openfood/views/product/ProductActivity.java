@@ -20,6 +20,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -138,6 +139,10 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                     Intent intent = new Intent(this, MainActivity.class);
                     intent.putExtra("product_search", true);
                     startActivity(intent);
+                    break;
+
+                case R.id.home:
+                    NavUtils.navigateUpFromSameTask(this);
                     break;
 
 				default:
