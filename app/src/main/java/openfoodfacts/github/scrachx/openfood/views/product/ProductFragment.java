@@ -15,7 +15,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -31,7 +30,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -62,8 +60,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     Toolbar toolbar;
     @BindView(R.id.tabs)
     TabLayout tabLayout;
-    @BindView(R.id.buttonScan)
-    FloatingActionButton mButtonScan;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
     RecyclerView productBrowsingRecyclerView;
@@ -87,8 +83,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
         ButterKnife.bind(this, view);
         toolbar.setVisibility(View.GONE);
-        mButtonScan.setVisibility(View.GONE);
-
         mState = (State) getArguments().getSerializable("state");
 
         setupViewPager(viewPager);
@@ -98,10 +92,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         tabLayout.setupWithViewPager(viewPager);
 
         api = new OpenFoodAPIClient(getActivity());
-
-        if (!Utils.isHardwareCameraInstalled(getContext())) {
-            mButtonScan.setVisibility(View.GONE);
-        }
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
@@ -122,8 +112,11 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-
             switch (item.getItemId()) {
+                case R.id.scan_bottom_nav:
+                    ProductActivity.onScanButtonClicked(getActivity());
+                    break;
+
                 case R.id.history_bottom_nav:
                     startActivity(new Intent(getActivity(), HistoryScanActivity.class));
                     break;
@@ -154,11 +147,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             intent.putExtra("edit_product", mState.getProduct());
             startActivity(intent);
         }
-    }
-
-    @OnClick(R.id.buttonScan)
-    protected void OnScan() {
-        ProductActivity.onScanButtonClicked(getActivity());
     }
 
     private void setupViewPager(ViewPager viewPager) {

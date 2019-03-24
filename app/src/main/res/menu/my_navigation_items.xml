@@ -2,6 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@android:color/black">
     <item
+        android:id="@+id/scan_bottom_nav"
+        android:enabled="true"
+        android:icon="@drawable/barcode_white_24dp"
+        android:title="@string/scan_shortcut_short_label"
+        />
+
+    <item
         android:id="@+id/home"
         android:enabled="true"
         android:icon="@drawable/baseline_home_black_36dp"

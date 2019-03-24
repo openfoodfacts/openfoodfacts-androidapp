@@ -18,7 +18,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -26,14 +25,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -45,7 +37,6 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -55,15 +46,9 @@ import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.BottomNavigationBehavior;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
-import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
@@ -73,8 +58,6 @@ import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProduc
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-import static org.apache.commons.lang3.StringUtils.capitalize;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
@@ -86,9 +69,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 	Toolbar toolbar;
 	@BindView( R.id.tabs )
 	TabLayout tabLayout;
-	@BindView( R.id.buttonScan )
-	FloatingActionButton mButtonScan;
-	@BindView( R.id.bottom_navigation )
+    @BindView( R.id.bottom_navigation )
 	BottomNavigationView bottomNavigationView;
 
     RecyclerView productBrowsingRecyclerView;
@@ -125,11 +106,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
 		tabLayout.setupWithViewPager( viewPager );
 
-		if( !Utils.isHardwareCameraInstalled( this ) )
-		{
-			mButtonScan.setVisibility( View.GONE );
-		}
-
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -149,8 +125,11 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-
             switch (item.getItemId()) {
+                case R.id.scan_bottom_nav:
+                    onScanButtonClicked(this);
+                    break;
+
                 case R.id.history_bottom_nav:
                     startActivity(new Intent(this, HistoryScanActivity.class));
                     break;
@@ -188,11 +167,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 			onRefresh();
 		}
 	}
-
-    @OnClick(R.id.buttonScan)
-    protected void OnScan() {
-        onScanButtonClicked(this);
-    }
 
     public static void onScanButtonClicked(Activity activity) {
         if (Utils.isHardwareCameraInstalled(activity)) {
