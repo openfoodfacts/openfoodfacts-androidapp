@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -38,13 +37,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -120,7 +116,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
 
     @BindView(R.id.product_allergen_alert_layout)
-    ConstraintLayout productAllergenAlertLayout;
+    LinearLayout productAllergenAlertLayout;
     @BindView(R.id.product_allergen_alert_text)
     TextView productAllergenAlert;
     @BindView(R.id.textNameProduct)
@@ -625,7 +621,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         for (String allergenName : allergenMatch) {
             String formattedAllergen;
             if (first) {
-                formattedAllergen = String.format(" %s", allergenName);
+                formattedAllergen = allergenName;
             } else {
                 formattedAllergen = String.format(", %s", allergenName);
             }
@@ -801,11 +797,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
-    }
-
-    @OnClick(R.id.product_allergen_alert_dismiss)
-    public void onDismissProductIncompleteMsgClicked() {
-        productAllergenAlertLayout.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.add_nutriscore_prompt)
