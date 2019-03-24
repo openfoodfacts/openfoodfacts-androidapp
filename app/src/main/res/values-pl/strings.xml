@@ -152,13 +152,13 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Tauryna</item>
         <item>Tłuszcze trans</item>
         <item>Witamina A</item>
-        <item>Witamina B1 (Tiamina)</item>
-        <item>Witamina B12 (Kobalamina)</item>
-        <item>Witamina B2 (Ryboflawina)</item>
-        <item>Witamina B3 / Witamina PP (Niacyna)</item>
-        <item>Witamina B6 (Pirydoksyna)</item>
-        <item>Witamina B9 (Kwas foliowy)</item>
-        <item>Witamina C</item>
+        <item>Witamina B1 (tiamina)</item>
+        <item>Witamina B12 (kobalamina)</item>
+        <item>Witamina B2 (ryboflawina)</item>
+        <item>Witamina B3 / Witamina PP (niacyna)</item>
+        <item>Witamina B6 (pirydoksyna)</item>
+        <item>Witamina B9 (kwas foliowy)</item>
+        <item>Witamina C (kwas askorbinowy)</item>
         <item>Witamina D</item>
         <item>Witamina E</item>
         <item>Witamina K</item>
@@ -177,10 +177,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="no_products">Nie odnaleziono produktów</string>
     <string name="desc_list_item_icon">Ikona przedmiotu</string>
     <string name="alert_dialog_warning_title">Ostrzeżenie</string>
-    <string name="alert_dialog_warning_msg_user">Zmieniono nazwę użytkownika/hasło, zaktualizuj informacje</string>
+    <string name="alert_dialog_warning_msg_user">Zmieniono nazwę użytkownika/hasło. Proszę zaktualizuj informacje</string>
     <string name="alert_dialog_product_error_msg">Produkt nieznaleziony, spróbuj ponownie</string>
     <string name="toast_retrieving">Ładowanie…</string>
-    <string name="txtGenericName">Potoczna nazwa :</string>
+    <string name="txtGenericName">Nazwa potoczna :</string>
     <string name="txtBarcode">Kod kreskowy :</string>
     <string name="txtQuantity">Ilość :</string>
     <string name="txtPackaging">Opakowanie :</string>
@@ -189,7 +189,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtLabels">Etykiety, certyfikaty, nagrody :</string>
     <string name="txtManufacturing">Miejsca produkcji lub przetworzenia :</string>
     <string name="txtIngredientsOrigins">Pochodzenie składników :</string>
-    <string name="txtCity">Miasto, stan i kraj zakupu :</string>
+    <string name="txtCity">Miasto, rejon i kraj zakupu :</string>
     <string name="txtEMB">Kod EMB:</string>
     <string name="txtManufactureUrl">Link do strony produktu na oficjalnej stronie producenta:</string>
     <string name="txtStores">Sklepy :</string>
@@ -203,7 +203,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtMayBeFromPalmOilProduct">Składniki pochodzące z oleju palmowego :</string>
     <string name="txtPalmOilProduct">Składniki z oleju palmowego :</string>
     <string name="txtServingSize">Porcja :</string>
-    <string name="txtNutrientLevel100g">Poziom składników odżywczych na 100g :</string>
+    <string name="txtNutrientLevel100g">Wartość odżywcza w 100g :</string>
     <string name="txtNutritionLevelLow">niska zawartość</string>
     <string name="txtNutritionLevelModerate">umiarkowana zawartość</string>
     <string name="txtNutritionLevelHigh">wysoka zawartość</string>
@@ -231,7 +231,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtYes">Tak</string>
     <string name="txtNo">Nie</string>
     <string name="hintNameProduct">Nazwa</string>
-    <string name="hintEnergy">Energia w kilodżulach na porcję</string>
+    <string name="hintEnergy">Energia w kJ na porcję</string>
     <string name="hintEnergyUnit">Jednostka energii</string>
     <string name="hintWeight">Waga</string>
     <string name="hintStores">Sklep</string>
@@ -254,13 +254,13 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtOk">Dobrze</string>
     <string name="txtContentDialogUploading">Proszę nie wychodzić w czasie procesu…</string>
     <string name="txtAbout">Publikujesz przesłane przez siebie obrazy na wolnej licencji reative Commons Attribution and ShareAlike.</string>
-    <string name="txtAllsent">Wysłano produkty</string>
+    <string name="txtAllsent">Produkty zostały wysłane</string>
     <string name="txtPalm">Produkt nie zawiera oleju palmowego</string>
     <string name="txtBarcodeNotValid">Nieważny kod kreskowy</string>
     <string name="try_it_scan_now">Skanuj produkt</string>
     <string name="share">Udostępnij</string>
     <string name="translate">Przetłumacz</string>
-    <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
+    <string name="msg_share">Zobacz produkt w Open Food Facts :</string>
     <string name="create_account">Zarejestruj się</string>
     <string name="home_drawer">Strona główna</string>
     <string name="search_drawer">Poszukiwanie</string>

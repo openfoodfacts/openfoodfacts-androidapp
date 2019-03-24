@@ -119,7 +119,7 @@
         <item>Serum proteins</item>
         <item>Silicium</item>
         <item>Zetmeel</item>
-        <item>Stearic acid (18:0)</item>
+        <item>Stearinezuur (18:0)</item>
         <item>Sucrose</item>
         <item>Taurine</item>
         <item>Transvet</item>
@@ -253,11 +253,11 @@
     <string name="title_dialog_alert">Voeg melding toe</string>
     <string name="toggle_flash">Flash</string>
     <string name="flash_on">Flash [AAN]</string>
-    <string name="flash_off">Flash [UIT]</string>
+    <string name="flash_off">Flash [OFF]</string>
     <string name="ring_on">Ring [ON]</string>
     <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
+    <string name="auto_focus_on">Autofocus [ON]</string>
+    <string name="auto_focus_off">Autofocus [OFF]</string>
     <string name="formats">Formaten</string>
     <string name="choose_formats">Kies een format</string>
     <string name="select_camera">Selecteer een camera</string>
@@ -357,18 +357,18 @@
     <string name="number_of_products">Aantal producten: </string>
     <string name="txt_no_results">Geen resultaten gevonden</string>
     <string name="txt_extend_search">Probeer uw zoekopdracht te verbreden of voeg het product toe</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching__category_products">Oh nee, we hebben geen enkel product in deze categorie, kunt u er een toevoegen?</string>
+    <string name="txt_no_matching_allergen_products">Oh nee, we hebben geen producten met dit allergeen, kun je er een toevoegen?</string>
+    <string name="txt_no_matching_label_products">Oh nee, we hebben geen producten met dit label, kun je er een toevoegen?</string>
+    <string name="txt_no_matching_additive_products">Oh nee, we hebben geen producten met dit additief, kun je er een toevoegen?</string>
+    <string name="txt_no_matching_country_products">Oh nee, we hebben geen producten uit dit land, kunt u er een toevoegen?</string>
+    <string name="txt_no_matching_store_products">Oh nee, we hebben geen producten in deze winkel, kun je er een toevoegen?</string>
     <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
     <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
     <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
-    <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+    <string name="txt_no_matching_incomplete_products">We hebben geen onvolledige producten! Voeg een nieuw product toe?</string>
+    <string name="txt_no_matching_contributor_products">Oh nee, we hebben geen producten van deze bijdrager, kunt u er een toevoegen?</string>
+    <string name="txt_no_matching_products">We hebben geen overeenkomende producten gevonden.\nJe kunt proberen:</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="txt_cant_load_search_results">Kan zoekresultaten niet laden</string>
     <string name="something_went_wrong">Sorry, er ging iets fout…</string>
@@ -488,7 +488,7 @@
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
     <string name="please_check_your_connection">Controleer uw verbinding.</string>
     <string name="donation_url">https://donate.openfoodfacts.org&amp;hl=nl</string>
-    <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+    <string name="advanced_search_title">Geavanceerd zoeken &amp; Grafieken</string>
     <string name="compare_products">Vergelijk Producten</string>
     <string name="connectivity_check">Controleer je internetverbinding</string>
     <string name="dismiss">Afwijzen</string>
@@ -500,7 +500,7 @@
     <string name="preference_header_network">Netwerk</string>
     <string name="preference_header_contributing">Bijdragen</string>
     <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Food Facts</string>
-    <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+    <string name="scan_first_string">Uw bekeken productgeschiedenis wordt hier weergegeven.\nDeze geschiedenis is alleen voor uw ogen en wordt lokaal opgeslagen.</string>
     <string name="log_in">Inloggen</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
@@ -510,7 +510,7 @@
     <string name="choose_resolution">Kies resolutie</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
-    <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
+    <string name="can_add_barcode">Heeft u problemen met scannen?\nSleep omhoog om de streepjescode in te voeren</string>
     <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">Er is nog geen Wikipedia-pagina in uw taal.</string>
     <string name="description">Beschrijving: </string>
