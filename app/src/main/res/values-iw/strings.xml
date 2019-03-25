@@ -802,8 +802,8 @@
     <string name="add_product">הוספת מוצרים</string>
     <string name="add_another_product">הוספת מוצר נוסף</string>
     <string name="add_nutrition_facts_for_nutriscore">יש להוסיף מפרט תזונתי כדי לחשב ציון תזונתי</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">השוואה</string>
+    <string name="product_summary_action_add_to_list_button_label">הוספה לרשימה</string>
     <string name="product_summary_action_edit_button_label">עריכה</string>
     <string name="product_summary_action_share_button_label">שיתוף</string>
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
