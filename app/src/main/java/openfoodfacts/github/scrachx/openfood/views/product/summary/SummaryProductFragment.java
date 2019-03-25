@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -38,20 +37,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -117,8 +115,10 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
 
-    @BindView(R.id.product_incomplete_warning_view_container)
-    RelativeLayout productIncompleteView;
+    @BindView(R.id.product_allergen_alert_layout)
+    LinearLayout productAllergenAlertLayout;
+    @BindView(R.id.product_allergen_alert_text)
+    TextView productAllergenAlert;
     @BindView(R.id.textNameProduct)
     TextView nameProduct;
     @BindView(R.id.textQuantityProduct)
@@ -589,39 +589,48 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAllergens(List<AllergenName> allergens) {
-        List<String> productAllergens = product.getAllergensHierarchy();
-        List<String> traces = product.getTracesTags();
-        productAllergens.addAll(traces);
-        if (!allergens.isEmpty() && product.getStatesTags().get(0).contains("to-be-completed")) {
-            productIncompleteView.setVisibility(View.VISIBLE);
+        if (allergens.isEmpty()) {
+            return;
         }
 
-        List<String> matchAll = new ArrayList<>();
-        for (int a = 0; a < allergens.size(); a++) {
-            for (int i = 0; i < productAllergens.size(); i++) {
+        if (!product.getStatesTags().contains("en:complete")) {
+            productAllergenAlert.setText(R.string.product_incomplete_message);
+            productAllergenAlertLayout.setVisibility(View.VISIBLE);
+            return;
+        }
 
-                if (productAllergens.get(i).trim().equals(allergens.get(a).getAllergenTag().trim())) {
-                    matchAll.add(allergens.get(a).getName());
-                }
+        Set<String> productAllergens = new HashSet<>(product.getAllergensHierarchy());
+        productAllergens.addAll(product.getTracesTags());
+
+        List<String> allergenMatch = new ArrayList<>();
+        for (AllergenName allergenName : allergens) {
+            if (productAllergens.contains(allergenName.getAllergenTag())) {
+                allergenMatch.add(allergenName.getName());
             }
         }
 
-        /**
-         * shows the dialog if allergen is found.
-         */
-        if (matchAll.size() > 0) {
-            new MaterialDialog.Builder(getActivity())
-                    .title(R.string.warning_allergens)
-                    .items(matchAll)
-                    .neutralText(R.string.txtOk)
-                    .titleColorRes(R.color.red_500)
-                    .dividerColorRes(R.color.indigo_900)
-                    .icon(new IconicsDrawable(getActivity())
-                            .icon(GoogleMaterial.Icon.gmd_warning)
-                            .color(Color.RED)
-                            .sizeDp(24))
-                    .show();
+        if (allergenMatch.isEmpty()) {
+            return;
         }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(
+                String.format("%s\n", getResources().getString(R.string.product_allergen_prompt)));
+
+        boolean first = true;
+        for (String allergenName : allergenMatch) {
+            String formattedAllergen;
+            if (first) {
+                formattedAllergen = allergenName;
+            } else {
+                formattedAllergen = String.format(", %s", allergenName);
+            }
+
+            stringBuilder.append(formattedAllergen);
+            first = false;
+        }
+        productAllergenAlert.setText(stringBuilder.toString());
+        productAllergenAlertLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -788,11 +797,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
-    }
-
-    @OnClick(R.id.product_incomplete_message_dismiss_icon)
-    public void onDismissProductIncompleteMsgClicked() {
-        productIncompleteView.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.add_nutriscore_prompt)
