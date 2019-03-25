@@ -25,6 +25,7 @@
     <string name="text_barcode">crwdns112912:0crwdne112912:0</string>
     <string name="message_in_activity_save_product_offline">crwdns112914:0crwdne112914:0</string>
     <string name="product_incomplete_message">crwdns115918:0crwdne115918:0</string>
+    <string name="product_allergen_prompt">crwdns116168:0crwdne116168:0</string>
     <string name="no_offline_data">crwdns112918:0crwdne112918:0</string>
     <string name="first_offline">crwdns112920:0crwdne112920:0</string>
     <!-- Image Upload -->
