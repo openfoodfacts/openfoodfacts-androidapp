@@ -25,6 +25,7 @@
     <string name="text_barcode">Barkodu yazın :</string>
     <string name="message_in_activity_save_product_offline">Yeni bir ürün göndermek için sadece bir fotoğraf zorunludur.</string>
     <string name="product_incomplete_message">Ürün tamamlanmadı. Bu yüzden alerji kontrolü yapamadık.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">İşleminiz tamamlandı</string>
     <string name="first_offline">Çevrimdışı eklenen ürünler burada görünecek</string>
     <!-- Image Upload -->
