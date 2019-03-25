@@ -33,6 +33,7 @@
     <string name="text_barcode">Введіть код продукту:</string>
     <string name="message_in_activity_save_product_offline">Лише одне фото є обов\'язковим для додавання нового продукту.</string>
     <string name="product_incomplete_message">Інформація про продукт не є повною, тому неможливо перейти до заповнення алергенів.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Усе готово</string>
     <string name="first_offline">Тут відображуються продукти, що були додані в оффлайні</string>
     <!-- Image Upload -->
