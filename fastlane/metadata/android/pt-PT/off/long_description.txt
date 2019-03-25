@@ -59,7 +59,7 @@ Digitalize à velocidade da luz (mesmo se você estiver num avião, submarino ou
 - Pode exportar seu histórico de digitalizações
 
 ▶ Configurar alertas de alérgenos em produtos
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+- Leite, glúten, ovos, soja, nozes, peixe, aipo, mostarda, dióxido de enxofre e sulfitos, amendoim, sementes de gergelim, crustáceos, moluscos ou alergia de tremoços?
 - Acelere suas compras fazendo uma triagem inicial de sua comida com o Open Food Facts.
 - Tenha cuidado para que as informações não sejam 100% precisas e a detecção não seja 100% precisa. Portanto, verifique sempre por si mesmo, com a embalagem.
 
