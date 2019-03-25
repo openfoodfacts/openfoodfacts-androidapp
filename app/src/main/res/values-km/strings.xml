@@ -22,6 +22,7 @@
     <string name="text_barcode">វាយបញ្ចូលបាដកូដ:</string>
     <string name="message_in_activity_save_product_offline">មានតែរូបថតមួយប៉ុណ្ណោះដែលមានកាតព្វកិច្ចត្រូវតែផ្ញើផលិតផលថ្មី។</string>
     <string name="product_incomplete_message">ផលិតផលនេះមិនបានបញ្ចប់ទេ។ ជាលទ្ធផលយើងមិនអាចធ្វើការត្រួតពិនិត្យអាឡែរហ្សីបានទេ។</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">អ្នកធ្វើបានរួចរាល់ហើយ</string>
     <string name="first_offline">ផលិតផលដែលបានបន្ថែមក្រៅបណ្តាញនឹងបង្ហាញនៅទីនេះ</string>
     <!-- Image Upload -->
