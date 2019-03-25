@@ -509,7 +509,7 @@
     <string name="dialog_create">Maak aan</string>
     <string name="choose_resolution">Kies resolutie</string>
     <string name="pref_resolution_summary">Kies een resolutie voor het uploaden van afbeeldingen</string>
-    <string name="image_upload_resolution">Image upload resolution</string>
+    <string name="image_upload_resolution">Beeld upload resolutie</string>
     <string name="can_add_barcode">Heeft u problemen met scannen?\nSleep omhoog om de streepjescode in te voeren</string>
     <string name="wikidata_information">Verder gaan</string>
     <string name="wikidata_unavailable">Er is nog geen Wikipedia-pagina in uw taal.</string>
