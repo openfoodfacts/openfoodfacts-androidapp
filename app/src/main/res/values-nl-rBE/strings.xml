@@ -61,7 +61,7 @@
         <item>Alfa-linoleenzuur / ALA (18:3 n-3)</item>
         <item>Arachidinezuur (20:0)</item>
         <item>Arachidonzuur / AA / ARA (20: 4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Behenic zuur (22:0)</item>
         <item>Carbonaten</item>
         <item>Biotine</item>
         <item>Boterzuur (4:0)</item>
@@ -369,7 +369,7 @@
     <string name="txt_no_matching_incomplete_products">We hebben geen onvolledige producten! Voeg een nieuw product toe?</string>
     <string name="txt_no_matching_contributor_products">Oh nee, we hebben geen producten van deze bijdrager, kunt u er een toevoegen?</string>
     <string name="txt_no_matching_products">We hebben geen overeenkomende producten gevonden.\nJe kunt proberen:</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="txt_broaden_search">- verbreding van uw zoekopdracht \n- scan en voeg het toe aan Open Food Facts</string>
     <string name="txt_cant_load_search_results">Kan zoekresultaten niet laden</string>
     <string name="something_went_wrong">Sorry, er ging iets fout…</string>
     <string name="txt_try_again">Probeer het opnieuw</string>
@@ -552,14 +552,14 @@
     <string name="by_barcode">Streepjescode</string>
     <string name="by_time">Recent bekeken</string>
     <string name="sort">Sorteer</string>
-    <string name="by_nutrition_grade">Nutrition Grade</string>
+    <string name="by_nutrition_grade">Voeding Grade</string>
     <string name="sort_by">Ordenen volgens</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world-nl.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Schud telefoon om producten te scannen</string>
     <string name="shake_title">Schud om te scannen</string>
     <!-- strings related to share images -->
-    <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+    <string name="sorry_msg">Foto\'s zonder streepjescode kunnen nog niet met de app worden toegevoegd. Probeer de mobiele webversie.</string>
     <string name="no_barcode">We hebben geen barcode gevonden</string>
     <string name="enter_barcode">Typ hieronder de streepjescode</string>
     <string name="format_error">Verkeerde Streepjescode-/QR-format</string>
@@ -574,8 +574,8 @@
     <string name="product_info_added">Products you added information for</string>
     <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
     <string name="show_by">Weergeven</string>
-    <string name="notify_title">Exporteren voltooid</string>
-    <string name="notify_content">Click to view exported products</string>
+    <string name="notify_title">Export voltooid</string>
+    <string name="notify_content">Klik om geëxporteerde producten te bekijken</string>
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Products to be completed</string>
@@ -607,8 +607,8 @@
     <string name="preferences">Voorkeuren</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Product %s wordt geladen</string>
-    <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
-    <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
+    <string name="error_adding_ingredients">Er is iets misgegaan tijdens het proberen ingrediënten voor het product toe te voegen</string>
+    <string name="unable_to_extract_ingredients">Kan ingrediënten niet uit afbeelding extraheren</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
     <string name="error_in_carbohydrate_value">Koolhydraten kunnen niet minder zijn dan de som van suiker en zetmeel</string>
     <string name="choose_nutrient">Kies een voedingsstof</string>
@@ -618,18 +618,18 @@
     <string name="hint_emb_codes">Voorbeelden: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Officiële website</string>
     <string name="scan_QR_code">QR-code scannen voor productwebsite</string>
-    <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
-    <string name="image_uploaded_successfully">Image uploaded successfully</string>
+    <string name="add_at_least_one_picture">Voeg ten minste één foto van dit product toe voordat u doorgaat</string>
+    <string name="image_uploaded_successfully">Afbeelding succesvol geüpload</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
     <string name="ingredients_overwrite">Ingrediënten overschrijven</string>
     <string name="choose_mine">Kies de mijne</string>
-    <string name="keep_previous_version">Behoud de vorige versie</string>
+    <string name="keep_previous_version">Houd de vorige versie</string>
     <string name="product_name_overwrite">Productnaam overschrijven</string>
     <string name="yours">Jouw: </string>
     <string name="currently_on">Momenteel op %s: </string>
-    <string name="quantity_overwrite">Grootte overschrijven</string>
-    <string name="link_overwrite">Link overwrite</string>
-    <string name="save_product">Do you want to save the product?</string>
+    <string name="quantity_overwrite">Aantal overschrijven</string>
+    <string name="link_overwrite">Link overschrijven</string>
+    <string name="save_product">Wilt u het product opslaan?</string>
     <string name="error_adding_product">Er is iets misgegaan bij het toevoegen van het product</string>
     <string name="photos">Foto’s</string>
     <string name="please_wait">Een ogenblik geduld</string>
@@ -711,9 +711,9 @@
     <string name="risk_of_exposure">Risico op overmatig gebruik</string>
     <string name="efsa_warning_moderate_risk">De Europese Autoriteit voor voedselveiligheid (EFSA) heeft vastgesteld dat sommige bevolkingsgroepen een matig risico lopen om te veel %1$s te consumeren.</string>
     <string name="efsa_warning_high_risk">De Europese Autoriteit voor voedselveiligheid (EFSA) heeft vastgesteld dat sommige bevolkingsgroepen een hoog risico lopen om te veel %1$s te consumeren.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
+    <string name="legend_noael">boven dosis met waargenomen negatief effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_energy_val_msg">Deze waarde is hoger dan 2000 kcal per 100 g. Kun je het corrigeren?</string>
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
@@ -743,12 +743,12 @@
     <string name="version">Versie</string>
     <string name="txtOtherInfo">Overige Informatie: </string>
     <string name="txtConservationCond">Bewaaraanwijzingen: </string>
-    <string name="txtRecyclingInstructionToRecycle">Recyclinginstructies - recycle: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recyclinginstructies - om te recyclen: </string>
     <string name="txtRecyclingInstructionToDiscard">Recyclinginstructies - weggooien: </string>
     <string name="recyclingInstructionToRecycle">Recyclinginstructies (recyclen)</string>
     <string name="recyclingInstructionToDiscard">Recyclinginstructies (weggooien)</string>
-    <string name="conservationCond">Bewaaraanwijzingen</string>
-    <string name="other_info">Overige Informatie</string>
+    <string name="conservationCond">Conserveringsvoorwaarden</string>
+    <string name="other_info">Andere informatie</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
