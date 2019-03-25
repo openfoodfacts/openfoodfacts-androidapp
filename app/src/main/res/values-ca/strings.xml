@@ -25,6 +25,7 @@
     <string name="text_barcode">Introduïu el codi de barres:</string>
     <string name="message_in_activity_save_product_offline">Amb una foto és suficient per enviar un producte nou.</string>
     <string name="product_incomplete_message">Aquest producte no està complet. Per això no hem pogut fer el control d\'al·lèrgens.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Enllestit</string>
     <string name="first_offline">Els productes afegits fora de línia apareixeran aquí</string>
     <!-- Image Upload -->

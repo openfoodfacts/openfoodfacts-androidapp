@@ -25,6 +25,7 @@
     <string name="text_barcode">Tipo de código de barras :</string>
     <string name="message_in_activity_save_product_offline">Só é obligatoria unha foto para enviar un novo produto.</string>
     <string name="product_incomplete_message">Este produto non está completo. Como resultado, non puidemos facer as comprobacións de alérxenos.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Remataches</string>
     <string name="first_offline">Os produtos engadidos fora de liña aparecerán aquí</string>
     <!-- Image Upload -->

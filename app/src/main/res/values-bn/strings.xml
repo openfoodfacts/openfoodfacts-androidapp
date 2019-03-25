@@ -25,6 +25,7 @@
     <string name="text_barcode">বারকোড টাইপ করুন :</string>
     <string name="message_in_activity_save_product_offline">একটি নতুন পণ্য পাঠাতে শুধুমাত্র একটি ছবি বাধ্যতামূলক।</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">You\'re all done</string>
     <string name="first_offline">Products added offline will appear here</string>
     <!-- Image Upload -->

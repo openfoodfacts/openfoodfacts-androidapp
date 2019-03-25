@@ -33,6 +33,7 @@
     <string name="text_barcode">Zadejte čárový kód:</string>
     <string name="message_in_activity_save_product_offline">K odeslání nového produktu je povinná jedna fotografie.</string>
     <string name="product_incomplete_message">Tento produkt není kompletní. V důsledku toho jsme nemohli provést kontrolu alergenů.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Hotovo</string>
     <string name="first_offline">Zde se zobrazí produkty přidané offline</string>
     <!-- Image Upload -->

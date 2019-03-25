@@ -41,6 +41,7 @@
     <string name="text_barcode">اكتب الرمز الشريطي:</string>
     <string name="message_in_activity_save_product_offline">صورة واحدة فقط إلزامية لإرسال منتج جديد.</string>
     <string name="product_incomplete_message">هذا المنتج غير كامل. ونتيجة لذلك، لم نتمكن من القيام بفحص المواد المسببة للحساسية.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">لقد انتهيت</string>
     <string name="first_offline">ستظهر هنا المنتجات المضافة بلا اتصال بالإنترنت</string>
     <!-- Image Upload -->

@@ -25,6 +25,7 @@
     <string name="text_barcode">Streepjescode invoeren:</string>
     <string name="message_in_activity_save_product_offline">Slechts één foto is verplicht om een ​​nieuw product te verzenden.</string>
     <string name="product_incomplete_message">Dit product is niet compleet. Hierdoor konden we de allergenencontrole niet uitvoeren.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Je bent helemaal klaar</string>
     <string name="first_offline">Producten die offline toegevoegd zijn, verschijnen hier</string>
     <!-- Image Upload -->

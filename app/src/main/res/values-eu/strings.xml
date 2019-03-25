@@ -25,6 +25,7 @@
     <string name="text_barcode">Idatzi barra-kodea :</string>
     <string name="message_in_activity_save_product_offline">Argazki bakarra da beharrezkoa produktu berri bat bidaltzeko.</string>
     <string name="product_incomplete_message">Produktu hau ez dago osatuta. Ondorioz, ezin izan dugu alergenoen egiaztapena egin.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Bukatu duzu</string>
     <string name="first_offline">Offline gehitutako produktuak hemen agertuko dira</string>
     <!-- Image Upload -->

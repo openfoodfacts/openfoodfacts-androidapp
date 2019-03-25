@@ -21,6 +21,7 @@
     <string name="text_barcode">バーコードを入力 :</string>
     <string name="message_in_activity_save_product_offline">新しい製品を送るには、写真1枚だけ義務付けられています。</string>
     <string name="product_incomplete_message">この製品は完全ではありません。その結果、アレルゲンチェックを行うことができませんでした。</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">すべて完了しました</string>
     <string name="first_offline">オフラインで追加した製品がここに表示されます</string>
     <!-- Image Upload -->

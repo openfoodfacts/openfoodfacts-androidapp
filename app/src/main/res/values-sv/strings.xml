@@ -25,6 +25,7 @@
     <string name="text_barcode">Skriv streckkoden :</string>
     <string name="message_in_activity_save_product_offline">Bara ett foto behövs för att skicka en ny produkt.</string>
     <string name="product_incomplete_message">Denna produkt är inte komplett. På grund av detta kunde vi inte göra allergenkontrollen.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Du är klar</string>
     <string name="first_offline">Produkter som läggs till offline visas här</string>
     <!-- Image Upload -->

@@ -21,6 +21,7 @@
     <string name="text_barcode">输入条形码：</string>
     <string name="message_in_activity_save_product_offline">至少需要一张照片来创建新的产品。</string>
     <string name="product_incomplete_message">该产品还未完成。因此，我们无法做过敏原检查。</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">你已经全部完成</string>
     <string name="first_offline">离线添加的产品将显示在此处</string>
     <!-- Image Upload -->

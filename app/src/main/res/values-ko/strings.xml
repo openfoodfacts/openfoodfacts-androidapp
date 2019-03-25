@@ -21,6 +21,7 @@
     <string name="text_barcode">바코드를 입력하십시오.</string>
     <string name="message_in_activity_save_product_offline">세재품에는 한 장만의 사진만 보낼 수 있습니다.</string>
     <string name="product_incomplete_message">이 제품의 정보는 완벽하지 않습니다, 이로인해 알레르기 검사를 진행할수 없습니다.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">완료되었습니다.</string>
     <string name="first_offline">오프라인에 추가 한 제품이 여기에 표시됩니다.</string>
     <!-- Image Upload -->
