@@ -53,6 +53,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="text_barcode">Wprowadź kod kreskowy:</string>
     <string name="message_in_activity_save_product_offline">Tylko jedno zdjęcie jest obowiązkowe, by wysłać nowy produkt.</string>
     <string name="product_incomplete_message">Produkt jest niekompletny. W wyniku tego nie mogliśmy sktontrolować alergeny.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Wszystko gotowe</string>
     <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
     <!-- Image Upload -->
