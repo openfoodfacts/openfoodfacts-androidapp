@@ -21,6 +21,7 @@
     <string name="text_barcode">Nhập mã vạch:</string>
     <string name="message_in_activity_save_product_offline">Bắt buộc có một hình ảnh để gửi sản phẩm mới.</string>
     <string name="product_incomplete_message">Sản phẩm này chưa hoàn thiện. Theo kết quả, chúng tôi không thể kiểm tra chất gây dị ứng.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Bạn đã xong</string>
     <string name="first_offline">Sản phẩm được thêm offline sẽ xuất hiện ở đây</string>
     <!-- Image Upload -->
