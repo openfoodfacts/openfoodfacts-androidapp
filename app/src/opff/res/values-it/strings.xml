@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Scansione i prodotti anche quando sei offline così che possano essere aggiunti a Open Pet Food Facts successivamente. I prodotti scansionati appariranno qui e potrai inviarli utilizzando il pulsante sottostante.</string>
     <string name="warning_alert_data">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="tagline">free pet food products database</string>
+    <string name="tagline">database aperto dei prodotti alimentari per animali</string>
     <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Pet Food Facts. Puoi aggiungerlo?</string>
     <string name="currently_on_version">Attualmente su Open Pet Food Facts</string>
     <string name="category_game_btn">Aiuta a categorizzare i prodotti</string>

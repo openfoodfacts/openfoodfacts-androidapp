@@ -348,16 +348,16 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_fat">Tłuszcz</string>
     <string name="nutrition_fat_short_name">Tłuszcz (g)</string>
     <string name="nutrition_fiber">Błonnik pokarmowy</string>
-    <string name="nutrition_fiber_short_name">Błonnik pokarmowy (g)</string>
+    <string name="nutrition_fiber_short_name">Błonnik (g)</string>
     <string name="nutrition_header">Wartości odżywcze</string>
     <string name="nutrition_no_data_message">Brak danych o produkcie</string>
-    <string name="nutrition_per_quantity">Na 100g/100ml</string>
+    <string name="nutrition_per_quantity">W 100g/100ml</string>
     <string name="nutrition_proteins">Proteiny</string>
-    <string name="nutrition_proteins_short_name">Proteiny (g)</string>
+    <string name="nutrition_proteins_short_name">Białko (g)</string>
     <string name="nutrition_salt">Sól</string>
     <string name="nutrition_salt_short_name">Sól (g)</string>
     <string name="nutrition_satured_fat">Tłuszcze nasycone</string>
-    <string name="nutrition_satured_fat_short_name">Tłuszcz nasycony (g)</string>
+    <string name="nutrition_satured_fat_short_name">Tłuszcze nasycone (g)</string>
     <string name="nutrition_serving">Na porcję</string>
     <string name="nutrition_serving_size">Porcja :</string>
     <string name="nutrition_sodium">Sód</string>
@@ -375,7 +375,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="volume_pref_title">Preferowana jednostka objętości</string>
     <string name="logout_drawer">Wyloguj</string>
     <string name="contribution_without_account">Możesz zalogować się lub utworzyć konto by zachować swój wkład</string>
-    <string name="textCarbonFootprint">Ślad węglowy / emisjie dwutlenku węgla: </string>
+    <string name="textCarbonFootprint">Ślad węglowy / emisja CO₂: </string>
     <string name="txtDialogPowerMode">Szybki podgląd</string>
     <string name="txtSeeMore">Więcej</string>
     <string name="action_search">Poszukiwanie</string>
@@ -681,8 +681,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="traces">Ślady</string>
     <string name="traces_hint">Wskaż składniki z wzmianek pokroju \'Może zawierać śladowe ilości\', \'Wyprodukowano w fabryce które również stosuje\' itd. \nPrzykłady: Mleko, Gluten, Orzechy</string>
     <string name="nutrition_facts_not_specified">Nie podano wartości odżywczych dla tego produktu.</string>
-    <string name="nutrition_facts_picture">Obraz faktów odżywieniowych</string>
-    <string name="for_100g_100ml">Na 100 g / 100 ml</string>
+    <string name="nutrition_facts_picture">Zdjęcie informacji o wartości odżywczej</string>
+    <string name="for_100g_100ml">W 100 g / 100 ml</string>
     <string name="per_serving">Na porcję</string>
     <string name="serving_size">Porcja</string>
     <string name="alcohol_unit" formatted="false">% obj / °</string>
@@ -824,8 +824,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="add_product">Dodaj produkty</string>
     <string name="add_another_product">Dodaj kolejny produkt</string>
     <string name="add_nutrition_facts_for_nutriscore">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">Porównaj</string>
+    <string name="product_summary_action_add_to_list_button_label">Dodaj do listy</string>
     <string name="product_summary_action_edit_button_label">Edytuj</string>
     <string name="product_summary_action_share_button_label">Udostępnij</string>
     <string name="error_nutrient_entry">Wartość musi być liczbą i może zacząć się: &lt;, &gt; lub ~. Przykład: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>

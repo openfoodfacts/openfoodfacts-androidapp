@@ -790,8 +790,8 @@
     <string name="add_product">Thêm sản phẩm</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">So sánh</string>
+    <string name="product_summary_action_add_to_list_button_label">Thêm vào danh sách</string>
     <string name="product_summary_action_edit_button_label">Chỉnh sửa</string>
     <string name="product_summary_action_share_button_label">Chia sẻ</string>
     <string name="error_nutrient_entry">Giá trị phải là số và có thể bắt đầu bằng &lt;, &gt; hoặc ~. Ví dụ: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>

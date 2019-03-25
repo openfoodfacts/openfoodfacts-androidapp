@@ -18,14 +18,14 @@
     <string name="slide_2_title">Get the facts</string>
     <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
     <string name="slide_3_title">Krijg de Nutriscore</string>
-    <string name="slide_3_desc">Een synthetische weergave van de voedingseigenschappen van uw favoriete levensmiddelen</string>
+    <string name="slide_3_desc">Een synthetisch beeld van de nutritionele eigenschappen van uw favoriete voedingsproducten</string>
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
     <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
     <string name="msg_share">Bekijk dit product op Open Food Facts</string>
     <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Food Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="txt_broaden_search">- verbreding van uw zoekopdracht \n- scan en voeg het toe aan Open Food Facts</string>
     <string name="Donation">Klik hier om te doneren aan Open Food Facts</string>
     <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
