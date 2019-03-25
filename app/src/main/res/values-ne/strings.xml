@@ -25,6 +25,7 @@
     <string name="text_barcode">बारकोड टाइप गर्नुहोस्:</string>
     <string name="message_in_activity_save_product_offline">नयाँ उत्पादन पठाउनका लागि केवल एक फोटो अनिवार्य छ।</string>
     <string name="product_incomplete_message">यो उत्पादन पूर्ण छैन। परिणामको रूपमा, हामी एलर्जेन जाँच गर्न सक्दैनौँ।</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">तपाईँले सबै गर्नुभयो</string>
     <string name="first_offline">अफलाइन थपिएका उत्पादनहरू यहाँ देखिने छन्</string>
     <!-- Image Upload -->

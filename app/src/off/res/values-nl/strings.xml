@@ -19,7 +19,7 @@
     <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
     <string name="slide_3_title">Krijg de Nutriscore</string>
     <string name="slide_3_desc">Een synthetische weergave van de voedingseigenschappen van uw favoriete levensmiddelen</string>
-    <string name="slide_4_title">Works offline</string>
+    <string name="slide_4_title">Werkt offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
     <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>

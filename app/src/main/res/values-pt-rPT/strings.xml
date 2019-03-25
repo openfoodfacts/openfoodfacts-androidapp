@@ -25,6 +25,7 @@
     <string name="text_barcode">Escreva o código de barras:</string>
     <string name="message_in_activity_save_product_offline">É obrigatória apenas uma foto para enviar um novo produto.</string>
     <string name="product_incomplete_message">Este produto não está completo. Em consequência não pudemos fazer a verificação de alérgenos.</string>
+    <string name="product_allergen_prompt">Este produto contém:</string>
     <string name="no_offline_data">Está tudo pronto</string>
     <string name="first_offline">Os produtos adicionados offline aparecerão aqui</string>
     <!-- Image Upload -->
@@ -435,7 +436,7 @@
     <string name="cocoa">Cacau</string>
     <string name="chlorophyl">Clorofila</string>
     <string name="take_picture_ingredients">Tirar foto aos ingredientes</string>
-    <string name="take_picture_front">Take a photo of the front</string>
+    <string name="take_picture_front">Tire uma foto da frente</string>
     <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
     <string name="take_more_pictures">Tirar mais fotos</string>
     <string name="txtSaturatedFat">Gordura saturada</string>
@@ -768,7 +769,7 @@
     <string name="add_to_product_lists">Adicionar às suas listas</string>
     <string name="txt_create_new_list">Criar uma nova lista</string>
     <string name="txt_add_to_new_list">Adicionar a uma nova lista</string>
-    <string name="create_new_list_list_name">List Name</string>
+    <string name="create_new_list_list_name">Nome da lista</string>
     <string name="txt_eaten_products">Produtos comidos</string>
     <string name="txt_products_to_buy">Produtos para comprar</string>
     <string name="export_csv_your_listed_products">Exportar para CSV</string>
@@ -798,7 +799,7 @@
     <string name="product_summary_action_add_to_list_button_label">Adicionar à lista</string>
     <string name="product_summary_action_edit_button_label">Editar</string>
     <string name="product_summary_action_share_button_label">Partilhar</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_nutrient_entry">O valor deve ser numérico e pode começar com &lt;, &gt; ou ~. Exemplo: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_serving_data">O valor de tamanho do serviço deve ser um valor positivo</string>
     <string name="error_in_nutrient_data">Alguns valores de nutrientes não são válidos. Por favor, corrija os campos acima com marcador de erro</string>
 </resources>
