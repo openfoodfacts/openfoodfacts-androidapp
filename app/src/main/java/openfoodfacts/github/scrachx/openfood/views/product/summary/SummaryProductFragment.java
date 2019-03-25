@@ -593,7 +593,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             return;
         }
 
-        if (!product.getStatesTags().contains("en:ingredients-completed")) {
+        if (!product.getStatesTags().contains("en:complete")) {
             productAllergenAlert.setText(R.string.product_incomplete_message);
             productAllergenAlertLayout.setVisibility(View.VISIBLE);
             return;
