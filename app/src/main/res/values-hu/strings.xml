@@ -25,6 +25,7 @@
     <string name="text_barcode">Vonalkód begépelése:</string>
     <string name="message_in_activity_save_product_offline">Csak egy fénykép kötelező egy új termék elküldéséhez.</string>
     <string name="product_incomplete_message">Ez a termékoldal nem teljes. Ennek eredményeként nem tudtuk elvégezni az allergén ellenőrzést.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Mindennel elkészült</string>
     <string name="first_offline">A kapcsolat nélküli módban hozzáadott termékek itt fognak megjelenni</string>
     <!-- Image Upload -->
