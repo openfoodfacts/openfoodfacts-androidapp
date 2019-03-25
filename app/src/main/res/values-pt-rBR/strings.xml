@@ -25,7 +25,7 @@
     <string name="text_barcode">Escreva o código de barras:</string>
     <string name="message_in_activity_save_product_offline">É obrigatória apenas uma foto para enviar um novo produto.</string>
     <string name="product_incomplete_message">Este produto não está completo. Como resultado, não pudemos verificar a presença de alérgenos.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Este pacote contém:</string>
     <string name="no_offline_data">Está tudo pronto</string>
     <string name="first_offline">Produtos adicionados offline aparecerão aqui</string>
     <!-- Image Upload -->
