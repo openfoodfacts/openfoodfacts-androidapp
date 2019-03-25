@@ -488,6 +488,7 @@
     <string name="device_on_mobile_data_warning_message">Nalaganje v mobilnih podatkih je onemogočeno. Povežite se z WiFi ali spremenite nastavitve</string>
     <string name="device_on_mobile_data_warning_positive">Nastavitve</string>
     <string name="device_on_mobile_data_warning_negative">Vseeno naloži</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Izberi jezik</string>
     <string name="FAQ">Pogosta vprašanja</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
@@ -496,7 +497,7 @@
     <string name="please_check_your_connection">Prosim, preverite povezavo.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Napredno iskanje &amp; Grafikoni</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Prosim preverite svojo internetno povezavo</string>
     <string name="dismiss">Opusti</string>
     <string name="Terms">Pogoji uporabe</string>
@@ -798,7 +799,14 @@
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Dodajte prehranska dejstva za izračun Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Uredi</string>
+    <string name="product_summary_action_share_button_label">Deli</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

@@ -2,44 +2,44 @@ Those are the taglines shown above the screenshots in the playstore. Keep them s
 Don't change the filename.
 ---
 scan_en.png
-Scan products
+Scan producten
 
 quickview_en.png
 Krijg de Nutriscore
 
 history_en.png
-Your full scan history, fully private & exportable
+Je hele scangeschiedenis, totaal privé en exporteerbaar
 
 product_view_wikipedia_en.png
-Go further with Wikipedia
+Ga verder met Wikipedia
 
 allergen_alert_en.png
-Set allergen alerts
+Stel allergeenwaarschuwingen in
 
 home_en.png
 product_view_nutrition_summary_en.png
-Nutrition, simplified
+Voeding, vereenvoudigd
 
 product_view_allergen_alert_en.png
 Allergenen alert
 
 categories_en.png
-Get alternatives for your favorite foods
+Krijg alternatieven voor je favoriete voedingsmiddelen
 
 foodtransparency_en.png
-Become an actor of food transparency
+Word een speler voor voedseltransparantie
 
 product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Wikipedia voor voedsel
+Wikipedia voor cosmetica
+Wikipedia voor dierenvoeding
+Wikipedia van producten
 
 product_view_ingredients_en.png
 Ingrediënten
 
 menu_en.png
-Powerful
+Krachtig
 
 product_view_nutrition_table_en.png
 Voedigswaarden
