@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">Skan produkterne selv når du er offline for at føje dem til Open Food Facts senere. De indskannede produkter vises her, og du vil kunne indsende dem vha. knappen nedenfor.</string>
     <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
+    <string name="tagline">den gratis fødevareproduktdatabase</string>
     <string name="product_not_found">Produktet %1$s, du har skannet, findes endnu ikke i Open Food Facts. Vil du tilføje det?</string>
     <string name="currently_on_version">I øjeblikket i Open Food Facts</string>
 </resources>
