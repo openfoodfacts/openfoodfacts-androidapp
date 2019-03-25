@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo quando estiver offline, para adicioná-los posteriormente ao Open Food Facts. Os produtos digitalizados aparecerão aqui e você poderá enviá-los usando o botão abaixo.</string>
     <string name="warning_alert_data">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa, por favor confirme sempre por si mesmo! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
+    <string name="tagline">a base de dados livre de produtos alimentícios</string>
     <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente no Open Food Facts</string>
 </resources>
