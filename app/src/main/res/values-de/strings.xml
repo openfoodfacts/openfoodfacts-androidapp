@@ -435,7 +435,7 @@
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Chlorophyll</string>
     <string name="take_picture_ingredients">Foto der Inhaltsstoffe aufnehmen</string>
-    <string name="take_picture_front">Foto der Vorderseite aufnehmen</string>
+    <string name="take_picture_front">Machen Sie ein Foto von der Vorderseite</string>
     <string name="take_picture_nutrition_table">Foto der Nährwerttabelle aufnehmen</string>
     <string name="take_more_pictures">Weitere Fotos aufnehmen</string>
     <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
@@ -472,7 +472,7 @@
     <string name="device_offline_dialog_positive">Einstellungen</string>
     <string name="saving">Wird gespeichert …</string>
     <string name="scan_first_product">Erstes Produkt erfassen</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Verlauf erfolgreich gelöscht</string>
     <string name="preference_enable_mobile_data_title">Hochladen bei Mobilfunkverbindung</string>
     <string name="preference_enable_mobile_data_summary_on">Neue Produkte über Mobilfunkverbindung und WLAN hochladen</string>
     <string name="preference_enable_mobile_data_summary_off">Neue Produkte nur über WLAN hochladen</string>
@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Hochladen über Mobilfunkverbindung ist deaktiviert. Bitte verbinden Sie sich mit WLAN oder ändern Sie dies in den Einstellungen</string>
     <string name="device_on_mobile_data_warning_positive">Einstellungen</string>
     <string name="device_on_mobile_data_warning_negative">Trotzdem hochladen</string>
+    <string name="changes_saved">Änderungen erfolgreich gespeichert</string>
     <string name="preference_choose_language_dialog_title">Sprache auswählen</string>
     <string name="FAQ">Häufig gestellte Fragen</string>
     <string name="FrequentlyAskedQuestions">Häufig gestellte Fragen</string>
@@ -653,7 +654,7 @@
     <string name="nutrition_facts_not_specified">Die Nährwertinformationen sind nicht auf dem Produkt angegeben.</string>
     <string name="nutrition_facts_picture">Foto der Nährwertinformationen</string>
     <string name="for_100g_100ml">Für 100g / 100ml</string>
-    <string name="per_serving">Pro Portion</string>
+    <string name="per_serving">je Portion</string>
     <string name="serving_size">Portionsgröße</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Nährstoff hinzufügen</string>
@@ -789,7 +790,14 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="list_text">Hinzugefügt in:\u0020</string>
     <string name="txt_no_nutrition_data">Von diesem Produkt  sind keine Nährwertangaben auf der Verpackung angegeben. Wenn sich dieses geändert hat, können Sie das Produkt bearbeiten.</string>
     <string name="empty"></string>
-    <string name="add_product">Produkte hinzufügen</string>
+    <string name="add_product">Produkt hinzufügen</string>
     <string name="add_another_product">Weiteres Produkt hinzufügen</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
+    <string name="product_summary_action_compare_button_label">Vergleiche</string>
+    <string name="product_summary_action_add_to_list_button_label">Zur Liste hinzufügen</string>
+    <string name="product_summary_action_edit_button_label">Bearbeiten</string>
+    <string name="product_summary_action_share_button_label">Teilen</string>
+    <string name="error_nutrient_entry">Der Wert sollte numerisch sein und kann mit &lt;, &gt; oder ~ beginnen. Beispiel: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">Die Portionsgröße muss ein positiver Wert sein</string>
+    <string name="error_in_nutrient_data">Einige Nährstoffwerte sind ungültig. Die oben als fehlerhaft markierten Felder müssen ausgefüllt werden.</string>
 </resources>

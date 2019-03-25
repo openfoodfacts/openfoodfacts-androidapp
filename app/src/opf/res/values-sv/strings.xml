@@ -28,7 +28,7 @@
     <string name="not_support_books">Books are not currently supported by Open Products Facts</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
     <string name="Donation">Click here to donate to Open Products Facts</string>
-    <string name="translate_help_title">Help translate Open Products Facts</string>
+    <string name="translate_help_title">Hjälp till att översätta Open Products Facts</string>
     <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
