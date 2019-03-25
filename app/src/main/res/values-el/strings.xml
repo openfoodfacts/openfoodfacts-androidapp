@@ -25,6 +25,7 @@
     <string name="text_barcode">Πληκτρολογήστε το barcode:</string>
     <string name="message_in_activity_save_product_offline">Μόνο μία φωτογραφία είναι υποχρεωτική για να στείλετε ένα νέο προϊόν.</string>
     <string name="product_incomplete_message">Αυτό το προϊόν δεν έχει ολοκληρωθεί. Ως αποτέλεσμα, δεν μπορούσαμε να κάνουμε τον έλεγχο των αλλεργιογόνων.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Είστε έτοιμοι</string>
     <string name="first_offline">Τα προϊόντα που προστέθηκαν εκτός σύνδεσης θα εμφανιστούν εδώ</string>
     <!-- Image Upload -->
