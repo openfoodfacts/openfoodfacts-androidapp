@@ -1,19 +1,19 @@
 
 ==================
-New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
+Nieuwe versie van Open Food Facts. Alle Open Food Facts-vrijwilligers hebben er hard aan gewerkt, op basis van jullie suggesties en feedback :)
 ==================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
+* Open Food Facts is nu een meer wereldwijde beweging dan ooit. 500k producten beschikbaar, 10K geregistreerde bijdragers, 182 landen. Doe je met ons mee?
 ==================
-What's new ?
+Wat is er nieuw?
 ==================
-1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
-2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
-3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
-4. You can set allergens alerts (always double check the actual label yourself though!)
-5. You now get a scan history you can export and that never leaves your phone
-6. You can shake your phone at any time in the app to start scanning
-7. You can now add new products even when you're offline
-8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
-9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
-10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
-Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
+1. Je krijgt een totaalbeeld: voeding, ingrediënten en alle voedselfeiten, netjes en duidelijk gepresenteerd.
+2. Krijg de "NutriScore" voedingswaarde voor alle producten in de wereld. Vergelijk eenvoudig producten. Gemakkelijker dan het ontcijferen van voedingswaardentabellen.
+3. Krijg extra informatie van Wikipedia. Klik op een voedselcategorie, een additief… om meer te leren en vergelijkbare producten te zien.
+4. Je kunt allergeen-waarschuwingen instellen (controleer wel altijd het echte etiket!)
+5. Je krijgt nu een scangeschiedenis die je kunt exporteren. Deze geschiedenis kan niet door anderen bekeken worden.
+6. U kunt uw telefoon schudden op elk gewenst moment in de app om te beginnen met het scannen
+7. Je kunt nu nieuwe producten toevoegen, zelfs als je offline bent
+8. Je kunt nu helpen om je favoriete voedselproducten direct in de app te voltooien: foto's nemen, info invullen, en ons voedsel transparant te maken
+9. Alles is ook veel sneller. Producten laden razendsnel, zelfs met een slechte mobiele verbinding.
+10. We zijn nog steeds niet geïnteresseerd in je persoonlijke gegevens. Je hoeft je niet aan te melden om te scannen en bij te dragen.
+Extra! Ondanks alle nieuwe functies is de app net zo klein als voorheen. De ruimte op je telefoon staat centraal.

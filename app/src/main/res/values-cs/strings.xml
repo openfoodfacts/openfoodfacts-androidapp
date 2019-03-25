@@ -42,12 +42,12 @@
         <item>Složení</item>
         <item>Nutriční hodnoty</item>
         <item>Tabulka nutričních hodnot</item>
-        <item>Environment</item>
+        <item>Prostředí</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Fotografie výrobků</item>
+        <item>Analýza složek</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -68,11 +68,11 @@
     <string-array name="nutrients_array">
         <item>Kyselina alfa-linolenová/ALA (18:3 n-3)</item>
         <item>Kyselina arachidová (20: 0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
+        <item>Kyselina arachidonová / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
         <item>Jedlá soda</item>
         <item>Biotin</item>
-        <item>Butyric acid (4:0)</item>
+        <item>Kyselina máselná (4:0)</item>
         <item>Kofein</item>
         <item>Vápník</item>
         <item>Kyselina kaprinová (10:0)</item>
@@ -85,13 +85,13 @@
         <item>Chrom</item>
         <item>Měď</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+        <item>Kyselina dokosahexaenová / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
         <item>Fluorid</item>
         <item>Fruktóza</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>Kyselina gama-linolenová / GLA (18: 3 n-6)</item>
         <item>Glukóza</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>Jód</item>
@@ -99,15 +99,15 @@
         <item>Laktóza</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>Kyselina linolová / LA (18:2 n-6)</item>
         <item>Hořčík</item>
         <item>Maltodextriny</item>
         <item>Sladový cukr</item>
         <item>Mangan</item>
         <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>Kyselina melissová (30: 0)</item>
         <item>Molybden</item>
-        <item>Monounsaturated fat</item>
+        <item>Mononenasycený tuk</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Kyselina nervonová (24: 1 n-9)</item>
@@ -121,13 +121,13 @@
         <item>pH</item>
         <item>Fosfor</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>Poly nenasycený tuk</item>
         <item>Draslík</item>
         <item>Selen</item>
-        <item>Serum proteins</item>
+        <item>Sérové ​​proteiny</item>
         <item>Oxid křemičitý</item>
         <item>Škrob</item>
-        <item>Stearic acid (18:0)</item>
+        <item>Kyselina stearová (18:0)</item>
         <item>Sacharóza</item>
         <item>Taurin</item>
         <item>Trans-tuky</item>
@@ -135,10 +135,10 @@
         <item>Vitamín B1 (thiamin)</item>
         <item>Vitamín B12 (Cobalamin)</item>
         <item>Vitamín B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
+        <item>Vitamín B3 / vitamín PP (Niacin)</item>
         <item>Vitamin B6 (Pyridoxin)</item>
         <item>Vitamín B9 (kyselina listová)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>Vitamin C (kyselina askorbová)</item>
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
@@ -170,7 +170,7 @@
     <string name="txtManufacturing">Výrobní nebo zpracovatelská místa:</string>
     <string name="txtIngredientsOrigins">Původ přísad :</string>
     <string name="txtCity">Město, stát a země, kde byl zakoupen :</string>
-    <string name="txtEMB">EMB Code:</string>
+    <string name="txtEMB">Kód EMB:</string>
     <string name="txtManufactureUrl">Odkaz na stránku produktu na oficiálních stránkách výrobce:</string>
     <string name="txtStores">Prodejny :</string>
     <string name="txtCountries">Země prodeje :</string>
@@ -260,12 +260,12 @@
     <string name="warning_allergens">Obsahuje alergeny</string>
     <string name="title_dialog_alert">Přidat upozornění</string>
     <string name="toggle_flash">Blesk</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
+    <string name="flash_on">Blesk [ON]</string>
+    <string name="flash_off">Blesk [OFF]</string>
+    <string name="ring_on">Kroužek [ON]</string>
+    <string name="ring_off">Kroužek [OFF]</string>
+    <string name="auto_focus_on">Automatické ostření [ON]</string>
+    <string name="auto_focus_off">Automatické ostření [OFF]</string>
     <string name="formats">Formáty</string>
     <string name="choose_formats">Zvolte formát</string>
     <string name="select_camera">Vyberte kameru</string>
@@ -314,7 +314,7 @@
     <string name="display_fact">Nutriční tabulka %1$s tohoto přípravku</string>
     <string name="check_facts">Zkontrolovat</string>
     <string name="nutrition">Nutriční hodnoty</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
+    <string name="calculated_nutrition">Vypočtené nutriční hodnoty</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
@@ -365,12 +365,12 @@
     <string name="number_of_products">Počet výrobků: </string>
     <string name="txt_no_results">Nebyly nalezeny žádné výsledky</string>
     <string name="txt_extend_search">Pokuste se rozšířit vyhledávání nebo produkt přidejte</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching__category_products">Ale ne, v této kategorii nemáme žádný produkt, můžete ho přidat?</string>
+    <string name="txt_no_matching_allergen_products">Ale ne, nemáme žádný produkt s tímto alergenem, můžete ho přidat?</string>
+    <string name="txt_no_matching_label_products">Ale ne, nemáme žádný produkt s tímto štítkem, můžete ho přidat?</string>
+    <string name="txt_no_matching_additive_products">Ale ne, nemáme žádný produkt s touto přísadou, můžete ho přidat?</string>
+    <string name="txt_no_matching_country_products">Ale ne, nemáme žádný produkt z této země, můžete ho přidat?</string>
+    <string name="txt_no_matching_store_products">Ale ne, nemáme žádný produkt z tohoto obchodu, můžete ho přidat?</string>
     <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
     <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
     <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
@@ -443,7 +443,7 @@
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Chlorofyl</string>
     <string name="take_picture_ingredients">Vyfotit složení produktu</string>
-    <string name="take_picture_front">Vyfotit přední stranu produktu</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Vyfotit nutriční tabulku</string>
     <string name="take_more_pictures">Vyfotit další obrázky</string>
     <string name="txtSaturatedFat">Nasycené tuky</string>
@@ -488,6 +488,7 @@
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Předvolby</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Zvolit jazyk</string>
     <string name="FAQ">FAQ - často kladené dotazy</string>
     <string name="FrequentlyAskedQuestions">Často Kladené Otázky</string>
@@ -496,7 +497,7 @@
     <string name="please_check_your_connection">Zkontrolujte připojení k Internetu.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Zkontrolujte připojení k internetu</string>
     <string name="dismiss">Zamítnout</string>
     <string name="Terms">Podmínky</string>
@@ -560,7 +561,7 @@
     <string name="by_time">Nedávno zobrazené</string>
     <string name="sort">Řazení</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Seřadit podle</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Shake phone to scan products</string>
@@ -661,7 +662,7 @@
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Na porci</string>
+    <string name="per_serving">V jedné porci</string>
     <string name="serving_size">Velikost porce</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
@@ -798,7 +799,14 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Přidat produkty</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Upravit</string>
+    <string name="product_summary_action_share_button_label">Sdílet</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

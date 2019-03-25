@@ -435,7 +435,7 @@
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Clorofila</string>
     <string name="take_picture_ingredients">Haz una foto de los ingredientes</string>
-    <string name="take_picture_front">Haz una foto de la parte frontal</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Haz una foto de la tabla nutricional</string>
     <string name="take_more_pictures">Haz más fotos</string>
     <string name="txtSaturatedFat">Grasa saturada</string>
@@ -472,7 +472,7 @@
     <string name="device_offline_dialog_positive">Configuración</string>
     <string name="saving">Guardando…</string>
     <string name="scan_first_product">Escanear el primer producto</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Historial eliminado con éxito</string>
     <string name="preference_enable_mobile_data_title">Enviar con datos móviles</string>
     <string name="preference_enable_mobile_data_summary_on">Enviar nuevos productos usando datos móviles &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Enviar nuevos productos usando solo WiFi</string>
@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">El envío con datos móviles está deshabilitado, por favor conéctese mediante WiFi o cámbielo en sus preferencias</string>
     <string name="device_on_mobile_data_warning_positive">Preferencias</string>
     <string name="device_on_mobile_data_warning_negative">Enviar de todas formas</string>
+    <string name="changes_saved">Cambios guardados correctamente</string>
     <string name="preference_choose_language_dialog_title">Elegir idioma</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Preguntas frecuentes</string>
@@ -790,7 +791,14 @@
     <string name="txt_no_nutrition_data">Este producto no tiene ninguna información nutricional en el envase. Si esto ha cambiado, puede editar el producto.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Añadir Productos</string>
+    <string name="add_product">Agregar productos</string>
     <string name="add_another_product">Añadir otro producto</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Añadir información nutricional para calcular la puntuación de Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Editar</string>
+    <string name="product_summary_action_share_button_label">Compartir</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

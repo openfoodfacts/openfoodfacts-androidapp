@@ -1,35 +1,76 @@
 Quét thực phẩm hoặc mã vạch của chúng để lấy dữ liệu về thành phần, chất phụ gia và dinh dưỡng.
 
-Ứng dụng này cho phép xem 547.000 sản phẩm (bao gồm 175.000 sản phẩm tại Mỹ) có trong cơ sở dữ liệu mở miễn phí của Open Food Facts, và cũng để thêm hình ảnh và dữ liệu cho các sản phẩm bị thiếu.
+▶ Find & Compare more than 800.000 products
 
-Để khám phá dự án Sự Open Food Facts, vui lòng truy cập https://openfoodfacts.org
+The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
 
 
-*** Đóng góp vàosự minh bạch của thực phẩm ***
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
+▶ Choose the products that are good for you
+- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
+- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+- You can easily compare as many products as you want, side by side by simply scanning them. 
+
+▶ And good for the planet!
+- The carbon impact of your food
+- Get a sense of how much of your daily carbon quota you're using for food
+- Based on the footprints computed for France by ADEME.
+- Join us and help us to bring the Carbon Impact to your country!
+- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+
+
+▶ Contribute to Food Transparency
 - Open Food Facts là một cơ sở dữ liệu về thực phẩm được thực hiện bởi mọi người và phục vụ cho tất cả.
 Là một dữ liệu mở, bạn dùng nó để lựa chọn thực phẩm và cũng có thể cho nhiều mục địch khác.
-- Open Facts Facts là một dự án phi lợi nhuận được phát triển bởi hàng ngàn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
-- Bạn có thể đóng góp ngay hôm nay khi thêm sản phẩm từ tủ thực phẩm của bạn. 
+- Open Facts Facts là một dự án phi lợi nhuận được phát triển bởi hàng ngàn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau.
+- You can start contributing today by adding a product from your fridge.
 
-*** Sự thật là ***
-- Open Food Facts giúp bạn hiểu những thứ hào nhoáng được in trên bao bì. Bạn có thể tìm được (dựa theo những chỉ số trên bao bì):
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
+
+▶ Get the Facts
+- Open Food Facts giúp bạn hiểu những thứ hào nhoáng được in trên bao bì. You will be able to find:
 Hàm lượng carbon (phơi nhiễm CO2) và việc đóng gói (cũng như hướng dẫn tái chế),
 - Chỉ số dinh dưỡng, chất bổ, chất béo, a-xít béo bão hòa, Cacbohydrat, đường, chất sơ, protein, muối và natri.
 - thương hiệu, chất gây dị ứng. nhãn (tiểu sử, không gluten, người ăn chay trường, người ăn chay, thực phẩm của Hồi giáo, thực phẩm của người Do Thái...) khả năng truy xuất nguồn gốc (mã đóng gói, nguyên liệu gốc)
 - Với rượu và bia, bạn sẽ có chỉ số cồn.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Thức ăn của bạn, dữ liệu của bạn ***
+▶ Based on Science, helping back Science!
+
+- We don't make up things. We rely on peer-reviewed science.
+- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+- You can get a synthesis of EFSA exposure levels on food additives.
+- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+
+
+▶ Offline Scan: Scan in ANY condition! (coming soon)
+Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+
+- The whole planet, in your pocket !
+- You can add new products, even if you don't have an Internet connection right now.
+- The app loads only the strict necessary to reduce data and battery consumption.
+
+▶ Your food, your data
 - Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
+▶ Set up allergen alerts on products
+- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+
+
+▶ Say hello and/or join us!
+
+
 Open Food Facts có trên web tại địa chỉ https://world-vi.openfoodfacts.org
+
+
 Câu hỏi và phản hồi: contact@openfoodfacts.org
+
 
 Với mỹ phẩm, hãy cài đặt Open Beauty Facts, với thực phẩm cho thú cưng và với mọi hàng hóa khác, hãy dùng Open Beauty Facts.

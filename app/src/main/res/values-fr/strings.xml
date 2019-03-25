@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Le téléchargement via données mobiles est désactivé, veuillez vous connecter au WiFi ou changer cela dans les préférences</string>
     <string name="device_on_mobile_data_warning_positive">Préférences</string>
     <string name="device_on_mobile_data_warning_negative">Envoyer quand même?</string>
+    <string name="changes_saved">Les modifications ont été enregistrées avec succès</string>
     <string name="preference_choose_language_dialog_title">Choisir la langue</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Foire Aux Questions</string>
@@ -488,7 +489,7 @@
     <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
     <string name="donation_url">https://donner.openfoodfacts.org</string>
     <string name="advanced_search_title">Recherche avancée &amp; Graphiques</string>
-    <string name="compare_products">Comparer les produits</string>
+    <string name="compare_products">Comparer les articles</string>
     <string name="connectivity_check">Veuillez vérifier votre connexion Internet</string>
     <string name="dismiss">Ignorer</string>
     <string name="Terms">Conditions d\'utilisation</string>
@@ -790,7 +791,14 @@
     <string name="txt_no_nutrition_data">Ce produit ne contient aucune information nutritionnelle sur l\'emballage. Si cela a changé, vous pouvez modifier le produit.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Ajouter un produit</string>
+    <string name="add_product">Ajouter des produits</string>
     <string name="add_another_product">Ajouter un autre produit</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Comparer</string>
+    <string name="product_summary_action_add_to_list_button_label">Ajouter à une liste</string>
+    <string name="product_summary_action_edit_button_label">Modifier</string>
+    <string name="product_summary_action_share_button_label">Partager</string>
+    <string name="error_nutrient_entry">La valeur doit être numérique et peut commencer par &lt;, &gt; or ~. Exemple: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">La valeur de la taille de la portion doit être une valeur positive</string>
+    <string name="error_in_nutrient_data">Certaines valeurs nutritives ne sont pas valides. Veuillez corriger les champs ci-dessus avec un marqueur d\'erreur</string>
 </resources>

@@ -151,7 +151,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtGenericName">Common name :</string>
     <string name="txtBarcode">Barcode :</string>
     <string name="txtQuantity">Quantity :</string>
@@ -215,16 +215,16 @@
     <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
     <string name="txtPictureNeededDialogYes">Stay</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading...</string>
+    <string name="toastSending">Uploading…</string>
     <string name="dataSaved">Saved locally on your device</string>
     <string name="txtInfoAddUser">Please enter your login and password</string>
     <string name="txtDataUpdated">Data updated</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="txtBarcodeRequire">Barcode required</string>
     <string name="txtOk">OK</string>
-    <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
+    <string name="txtContentDialogUploading">Please don\'t exit during the process…</string>
     <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
     <string name="txtAllsent">Products sent</string>
     <string name="txtPalm">The product does not contain any palm oil</string>
@@ -265,7 +265,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="from_gallery">From gallery</string>
     <string name="product_sent">Product sent successfully</string>
     <string name="action_edit_product">Edit product</string>
@@ -296,7 +296,7 @@
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Export CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="txt_nutrition_not_found">N/A</string>
@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
@@ -488,7 +489,7 @@
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Please check your internet connection</string>
     <string name="dismiss">Dismiss</string>
     <string name="Terms">Terms</string>
@@ -552,7 +553,7 @@
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Sort By</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Shake phone to scan products</string>
@@ -653,7 +654,7 @@
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="per_serving">Per serving</string>
     <string name="serving_size">Serving size</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
@@ -790,7 +791,14 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Edit</string>
+    <string name="product_summary_action_share_button_label">Share</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

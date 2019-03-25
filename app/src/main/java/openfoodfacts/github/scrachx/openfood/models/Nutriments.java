@@ -2,16 +2,18 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import android.support.annotation.Nullable;
 import android.util.Log;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import static android.text.TextUtils.isEmpty;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
@@ -23,9 +25,11 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Nutriments implements Serializable {
+
     private static final long serialVersionUID = 1L;
     private static final String DEFAULT_UNIT = "g";
-    public final static String ENERGY = "energy";
+
+    public final static String ENERGY ="energy";
     public static final String ENERGY_FROM_FAT = "energy-from-fat";
     public static final String FAT = "fat";
     public static final String SATURATED_FAT = "saturated-fat";
@@ -123,6 +127,8 @@ public class Nutriments implements Serializable {
     public static final String PHOSPHORUS = "phosphorus";
     public static final String IRON = "iron";
     public static final String MAGNESIUM = "magnesium";
+    public static final String DEFAULT_NUTRITION_SIZE = "100g";
+
     public static final Map<String, Integer> MINERALS_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.SILICA, R.string.silica);
         put(Nutriments.BICARBONATE, R.string.bicarbonate);
@@ -148,7 +154,8 @@ public class Nutriments implements Serializable {
         put(Nutriments.COCOA, R.string.cocoa);
         put(Nutriments.CHLOROPHYL, R.string.chlorophyl);
     }};
-    public static final Map<String, Integer> FAT_MAP = new HashMap<String, Integer>() {{
+
+    public static final Map<String, Integer> FAT_MAP = new HashMap<String, Integer>(){{
         put(Nutriments.SATURATED_FAT, R.string.nutrition_satured_fat);
         put(Nutriments.MONOUNSATURATED_FAT, R.string.nutrition_monounsaturatedFat);
         put(Nutriments.POLYUNSATURATED_FAT, R.string.nutrition_polyunsaturatedFat);
@@ -158,7 +165,8 @@ public class Nutriments implements Serializable {
         put(Nutriments.TRANS_FAT, R.string.nutrition_trans_fat);
         put(Nutriments.CHOLESTEROL, R.string.nutrition_cholesterol);
     }};
-    public static final Map<String, Integer> CARBO_MAP = new HashMap<String, Integer>() {{
+
+    public static final Map<String, Integer> CARBO_MAP = new HashMap<String, Integer>(){{
         put(Nutriments.SUGARS, R.string.nutrition_sugars);
         put(Nutriments.SUCROSE, R.string.nutrition_sucrose);
         put(Nutriments.GLUCOSE, R.string.nutrition_glucose);
@@ -167,12 +175,14 @@ public class Nutriments implements Serializable {
         put(Nutriments.MALTOSE, R.string.nutrition_maltose);
         put(Nutriments.MALTODEXTRINS, R.string.nutrition_maltodextrins);
     }};
-    public static final Map<String, Integer> PROT_MAP = new HashMap<String, Integer>() {{
+
+    public static final Map<String, Integer> PROT_MAP = new HashMap<String, Integer>(){{
         put(Nutriments.CASEIN, R.string.nutrition_casein);
         put(Nutriments.SERUM_PROTEINS, R.string.nutrition_serum_proteins);
         put(Nutriments.NUCLEOTIDES, R.string.nutrition_nucleotides);
     }};
-    public static final Map<String, Integer> VITAMINS_MAP = new HashMap<String, Integer>() {{
+
+    public static final Map<String, Integer> VITAMINS_MAP = new HashMap<String, Integer>(){{
         put(Nutriments.VITAMIN_A, R.string.vitamin_a);
         put(Nutriments.BETA_CAROTENE, R.string.vitamin_a);
         put(Nutriments.VITAMIN_D, R.string.vitamin_d);
@@ -188,36 +198,37 @@ public class Nutriments implements Serializable {
         put(Nutriments.BIOTIN, R.string.biotin);
         put(Nutriments.PANTOTHENIC_ACID, R.string.pantothenic_acid);
     }};
+
     private Map<String, Object> additionalProperties = new HashMap<>();
     private boolean containsVitamins;
     private boolean containsMinerals;
 
-    public Nutriment get(String nutrimentName) {
+    public Nutriment get(String nutrimentName){
         if (nutrimentName.isEmpty() || !additionalProperties.containsKey(nutrimentName)) {
             return null;
         }
 
-        try {
+        try{
             return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName),
                 getModifier(nutrimentName));
-        } catch (NullPointerException e) {
+        }catch (NullPointerException e){
             // In case one of the getters was unable to get data as string
             String stacktrace = Log.getStackTraceString(e);
-            Log.e("NUTRIMENTS-MODEL", stacktrace);
+            Log.e("NUTRIMENTS-MODEL",stacktrace);
         }
         return null;
     }
 
-    public String getUnit(String nutrimentName) {
+    public String getUnit(String nutrimentName){
         String unit = ((String) additionalProperties.get(nutrimentName + "_unit"));
         return isEmpty(unit) ? DEFAULT_UNIT : unit;
     }
 
-    public String getServing(String nutrimentName) {
+    public String getServing(String nutrimentName){
         return additionalProperties.get(nutrimentName + "_serving").toString();
     }
 
-    public String get100g(String nutrimentName) {
+    public String get100g(String nutrimentName){
         return additionalProperties.get(nutrimentName + "_100g").toString();
     }
 
@@ -236,7 +247,7 @@ public class Nutriments implements Serializable {
         return null;
     }
 
-    public boolean contains(String nutrimentName) {
+    public boolean contains(String nutrimentName){
         return additionalProperties.containsKey(nutrimentName);
     }
 

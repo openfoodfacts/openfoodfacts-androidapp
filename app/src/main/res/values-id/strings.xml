@@ -431,7 +431,7 @@
     <string name="cocoa">Biji cokelat</string>
     <string name="chlorophyl">Klorofil</string>
     <string name="take_picture_ingredients">mengambil gambar ramuan</string>
-    <string name="take_picture_front">mengambil gambar dari bahan ramuan</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">ambil gambar nutrisi</string>
     <string name="take_more_pictures">memfoto</string>
     <string name="txtSaturatedFat">Lemak jenuh</string>
@@ -476,6 +476,7 @@
     <string name="device_on_mobile_data_warning_message">Unggah pada data seluler dimatikan, sambungkan Wi-Fi atau ubah ini di preferensi</string>
     <string name="device_on_mobile_data_warning_positive">pengaturan</string>
     <string name="device_on_mobile_data_warning_negative">Tetap unggah</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Pilih bahasa</string>
     <string name="FAQ">Pertanyaan Umum</string>
     <string name="FrequentlyAskedQuestions">Pertanyaan Umum</string>
@@ -484,7 +485,7 @@
     <string name="please_check_your_connection">Mohon periksa koneksi jaringan anda.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Pencarian lanjutan &amp; grafik</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Silakan periksa koneksi internet Anda</string>
     <string name="dismiss">Abaikan</string>
     <string name="Terms">Ketentuan</string>
@@ -548,7 +549,7 @@
     <string name="by_time">Barusaja dilihat</string>
     <string name="sort">Urutkan</string>
     <string name="by_nutrition_grade">Mutu Nutrisi</string>
-    <string name="sort_by">Urutkan berdasarkan</string>
+    <string name="sort_by">Sortir dengan</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Goyang telepon untuk memindai produk</string>
@@ -649,7 +650,7 @@
     <string name="nutrition_facts_not_specified">Fakta nutrisi tidak ditentukan pada produk.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="per_serving">porsi</string>
     <string name="serving_size">Melayani ukuran</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Tambahkan nutrisi</string>
@@ -786,7 +787,14 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Sunting</string>
+    <string name="product_summary_action_share_button_label">membagikan</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

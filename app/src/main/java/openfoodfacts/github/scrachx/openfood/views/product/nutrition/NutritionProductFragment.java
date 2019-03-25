@@ -38,6 +38,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -373,19 +374,19 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
-        if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kcal")) {
+        if (energy != null && settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL).equals(UnitUtils.ENERGY_KCAL)) {
             nutrimentItems.add(
                 new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                     Utils.getEnergy(energy.getFor100gInUnits()),
                     Utils.getEnergy(energy.getForServingInUnits()),
-                    "kcal",
+                    UnitUtils.ENERGY_KCAL,
                     nutriments.getModifier(ENERGY)));
-        } else if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kJ")) {
+        } else if (energy != null && settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL).equals(UnitUtils.ENERGY_KJ.toLowerCase())) {
             nutrimentItems.add(
                 new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                     energy.getFor100gInUnits(),
                     energy.getForServingInUnits(),
-                    "kJ",
+                    UnitUtils.ENERGY_KJ.toLowerCase(),
                     nutriments.getModifier(ENERGY)));
         }
 

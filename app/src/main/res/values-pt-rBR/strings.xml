@@ -441,10 +441,10 @@
     <string name="txtSaturatedFat">Gordura saturada</string>
     <string name="nutriscore_info_msg">Saiba mais sobre o Nutri-Score</string>
     <string name="nova_info_msg">Saiba mais sobre Nova</string>
-    <string name="nova_grp1_msg">Grupo 1 - Alimentos não processados ​​ou minimamente processados</string>
+    <string name="nova_grp1_msg">Grupo 1 - Alimentos não processados ou minimamente processados</string>
     <string name="nova_grp2_msg">Grupo 2 - Ingredientes culinários processados</string>
     <string name="nova_grp3_msg">Grupo 3 - Alimentos processados</string>
-    <string name="nova_grp4_msg">Grupo 4 - Produtos de bebidas e alimentos ultraprocessados</string>
+    <string name="nova_grp4_msg">Grupo 4 - Comida e bebida ultra-processado</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Atalho Indisponível</string>
     <string name="scan_shortcut_short_label">Escanear</string>
@@ -472,7 +472,7 @@
     <string name="device_offline_dialog_positive">Definições</string>
     <string name="saving">A guardar…</string>
     <string name="scan_first_product">Escanear o primeiro produto</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Histórico excluído com sucesso</string>
     <string name="preference_enable_mobile_data_title">Carregamento por dados móveis</string>
     <string name="preference_enable_mobile_data_summary_on">Carregar novos produtos via dados móveis &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Carregar novos produtos por WiFi apenas</string>
@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">O carregamento via dados móveis está desactivado, por favor ligue por WiFi ou altere isto nas definições</string>
     <string name="device_on_mobile_data_warning_positive">Preferências</string>
     <string name="device_on_mobile_data_warning_negative">Carregar mesmo assim</string>
+    <string name="changes_saved">Alterações salvas com sucesso</string>
     <string name="preference_choose_language_dialog_title">Escolher idioma</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Perguntas Frequentes</string>
@@ -488,13 +489,13 @@
     <string name="please_check_your_connection">Por favor, verifique sua conexão.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Busca avançada &amp; Gráficos</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Comparar produtos</string>
     <string name="connectivity_check">Por favor, verifique sua conexão de internet</string>
     <string name="dismiss">Descartar</string>
     <string name="Terms">Termos e condições</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://world-pt.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Gerais</string>
     <string name="preference_header_network">Rede</string>
     <string name="preference_header_contributing">Contribuições</string>
@@ -506,7 +507,7 @@
     <string name="logout_dialog_content">Você quer mesmo sair?</string>
     <string name="dialog_cancel">Cancelar</string>
     <string name="dialog_create">Criar</string>
-    <string name="choose_resolution">Escolher Resolução</string>
+    <string name="choose_resolution">Escolha a resolução</string>
     <string name="pref_resolution_summary">Escolha uma resolução para upload da imagem</string>
     <string name="image_upload_resolution">Resolução de upload de imagens</string>
     <string name="can_add_barcode">Problemas com o scanner?\nArraste para cima para digitar o código de barras</string>
@@ -552,7 +553,7 @@
     <string name="by_time">Visualizados Recentemente</string>
     <string name="sort">Ordenar</string>
     <string name="by_nutrition_grade">Nota Nutricional</string>
-    <string name="sort_by">Ordenar Por</string>
+    <string name="sort_by">Ordenar por</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world-pt.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Agite o telefone para escanear produtos</string>
@@ -653,7 +654,7 @@
     <string name="nutrition_facts_not_specified">Os fatores nutricionais não são especificados no produto.</string>
     <string name="nutrition_facts_picture">Imagens de fatos nutricionais</string>
     <string name="for_100g_100ml">Por 100g / 100ml</string>
-    <string name="per_serving">Por Porção</string>
+    <string name="per_serving">Por porção</string>
     <string name="serving_size">Tamanho da porção</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Adicionar um nutriente</string>
@@ -703,7 +704,7 @@
     <string name="adults">Adultos</string>
     <string name="adults_age">18 a 64</string>
     <string name="elderly">Idosos</string>
-    <string name="elderly_age">>65</string>
+    <string name="elderly_age">65+</string>
     <string name="most_people">A maioria das pessoas\n(mais de 50%)</string>
     <string name="some_people">Algumas pessoas\n(mais de 5%)</string>
     <string name="safety_and_exposure_assessment">Avaliação de segurança e exposição</string>
@@ -714,7 +715,7 @@
     <string name="legend_adi">acima de ingestão diária aceitável (ADI)</string>
     <string name="max_energy_val_msg">Este valor está acima de 2000 kcal por 100g. Você pode corrigi-lo?</string>
     <string name="max_nutrient_val_msg">O valor inserido é mais do que determinado por tamanho da porção</string>
-    <string name="update_image">Enviar uma imagem atualizada</string>
+    <string name="update_image">Envie uma imagem atualizada</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Sua(s) dieta(s)</string>
@@ -734,7 +735,7 @@
     <string name="add_nutrient_prompt_text">Adicione fatos nutricionais para calcular o Nutri-Score</string>
     <string name="add_category_prompt_text">Adicione uma categoria para calcular o Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Adicione fatos nutricionais e uma categoria para calcular o Nutri-Score</string>
-    <string name="no_nutrition_data_prompt">Este produto não tem fatos nutricionais</string>
+    <string name="no_nutrition_data_prompt">Este produto não possui informações nutricionais</string>
     <string name="nutrition_image_prompt_text">Tire uma foto dos factos nutricionais</string>
     <string name="ingredient_image_prompt_text">Tirar foto aos ingredientes</string>
     <string name="category_game_btn">Ajude a categorizar produtos para calcular o Nutri-Score</string>
@@ -743,11 +744,11 @@
     <string name="txtOtherInfo">Outras Informações: </string>
     <string name="txtConservationCond">Condições de Conservação: </string>
     <string name="txtRecyclingInstructionToRecycle">Instruções de Reciclagem - Para Reciclar: </string>
-    <string name="txtRecyclingInstructionToDiscard">Instruções de Reciclagem - Para Descartar: </string>
-    <string name="recyclingInstructionToRecycle">Instruções de Reciclagem (para reciclar)</string>
-    <string name="recyclingInstructionToDiscard">Instruções de Reciclagem (para descartar)</string>
+    <string name="txtRecyclingInstructionToDiscard">Instruções de reciclagem - para descartar: </string>
+    <string name="recyclingInstructionToRecycle">Instruções de reciclagem (para reciclar)</string>
+    <string name="recyclingInstructionToDiscard">Instruções de reciclagem (para descartar)</string>
     <string name="conservationCond">Condições de Conservação</string>
-    <string name="other_info">Outras Informações</string>
+    <string name="other_info">Outra informação</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -757,17 +758,17 @@
     <string name="txtLoaded">Traduções foram descarregadas com sucesso</string>
     <string name="txtConnectionError">Não foi possível descarregar certos dados. Isso pode ser devido a um erro de conexão.</string>
     <string name="set_image_name">Imagem definida com sucesso como</string>
-    <string name="warning">Aviso:</string>
-    <string name="customer_service">Serviço de Apoio ao Cliente:</string>
+    <string name="warning">Aviso :</string>
+    <string name="customer_service">Serviço ao cliente :</string>
     <string name="fast_addition_mode_title">Modo de adição rápida</string>
-    <string name="fast_addition_mode">Permite adição rápida de produtos com menos atributos</string>
-    <string name="addtive_search">Procurar um aditivo</string>
+    <string name="fast_addition_mode">Permite a adição rápida de produtos com menos atributos</string>
+    <string name="addtive_search">Procure por um aditivo</string>
     <string name="additives">Aditivos</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Adicionar às suas listas</string>
     <string name="txt_create_new_list">Criar uma nova lista</string>
     <string name="txt_add_to_new_list">Adicionar a uma nova lista</string>
-    <string name="create_new_list_list_name">List Name</string>
+    <string name="create_new_list_list_name">Nome da Lista</string>
     <string name="txt_eaten_products">Produtos comidos</string>
     <string name="txt_products_to_buy">Produtos para comprar</string>
     <string name="export_csv_your_listed_products">Exportar para CSV</string>
@@ -786,11 +787,18 @@
     <string name="settings_country_dialog_title">Selecione seu país</string>
     <string name="settings_country_summary">Alterar seu país selecionado</string>
     <string name="settings_country_title">País</string>
-    <string name="list_text">Added in:\u0020</string>
+    <string name="list_text">Adicionado em:\u0020</string>
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
-    <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_product">Adicionar produtos</string>
+    <string name="add_another_product">Adicione outro produto</string>
+    <string name="add_nutrition_facts_for_nutriscore">Adicione fatos nutricionais para calcular o Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Comparar</string>
+    <string name="product_summary_action_add_to_list_button_label">Adicionar à lista</string>
+    <string name="product_summary_action_edit_button_label">Editar</string>
+    <string name="product_summary_action_share_button_label">Partilhar</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Alguns valores de nutrientes não são válidos. Por favor, corrija os campos acima com marcador de erro</string>
 </resources>

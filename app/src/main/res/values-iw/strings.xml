@@ -480,7 +480,7 @@
     <string name="device_offline_dialog_positive">הגדרות</string>
     <string name="saving">בהליכי שמירה…</string>
     <string name="scan_first_product">סריקת המוצר הראשון</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">ההיסטוריה נמחקה בהצלחה</string>
     <string name="preference_enable_mobile_data_title">להעלות כשיש חיבור נתונים סלולרי</string>
     <string name="preference_enable_mobile_data_summary_on">להעלות מוצרים חדשים כשיש חיבור נתונים סלולרי או אלחוטי</string>
     <string name="preference_enable_mobile_data_summary_off">להעלות מוצרים חדשים כשיש חיבור נתונים אלחוטי בלבד</string>
@@ -488,6 +488,7 @@
     <string name="device_on_mobile_data_warning_message">העלאת מוצרים חדשים כשיש חיבור נתונים סלולרי מושבתת, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
     <string name="device_on_mobile_data_warning_positive">העדפות</string>
     <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
+    <string name="changes_saved">השינויים נשמרו בהצלחה</string>
     <string name="preference_choose_language_dialog_title">בחירת שפה</string>
     <string name="FAQ">שו״ת</string>
     <string name="FrequentlyAskedQuestions">שאלות ותשובות נפוצות</string>
@@ -560,7 +561,7 @@
     <string name="by_time">נצפו לאחרונה</string>
     <string name="sort">מיון</string>
     <string name="by_nutrition_grade">ציון תזונתי</string>
-    <string name="sort_by">מיון לפי</string>
+    <string name="sort_by">סידור לפי</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">יש לנער את הטלפון כדי לסרוק מוצרים</string>
@@ -787,7 +788,7 @@
     <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„נאכל כעת”.
         כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="txt_info_your_listed_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על הכפתור + בפינה השמאלית העליונה של עמוד המוצר.</string>
-    <string name="txt_i_m_eating_this">I\'m eating this</string>
+    <string name="txt_i_m_eating_this">זה מוצר שאני אוכל/ת</string>
     <string name="compare_product_prompt">השוואת המוצר הזה</string>
     <string name="search_history_pref_title">מחיקת היסטוריית החיפוש המקומית</string>
     <string name="search_history_pref_summary">הסרת כל החיפושים שערכת דרך המכשיר הזה</string>
@@ -800,5 +801,12 @@
     <string name="empty"></string>
     <string name="add_product">הוספת מוצרים</string>
     <string name="add_another_product">הוספת מוצר נוסף</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">יש להוסיף מפרט תזונתי כדי לחשב ציון תזונתי</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">עריכה</string>
+    <string name="product_summary_action_share_button_label">שיתוף</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

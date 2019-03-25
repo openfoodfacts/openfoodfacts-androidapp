@@ -190,7 +190,7 @@
     <string name="txtFat">Vet</string>
     <string name="txtSugars">Suikers</string>
     <string name="hintBarcode">Barcode</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">Meer informatie over de voedingsstofniveaus</string>
     <string name="hintLogin">Inloggen</string>
     <string name="hintPass">Wachtwoord</string>
     <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>
@@ -248,7 +248,7 @@
     <string name="delete_txt">Verwijder</string>
     <string name="sign_in_drawer">Aanmelden</string>
     <string name="alert_drawer">Allergenen alert</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Jouw lijsten</string>
     <string name="warning_allergens">Bevat allergenen</string>
     <string name="title_dialog_alert">Voeg melding toe</string>
     <string name="toggle_flash">Flash</string>
@@ -308,7 +308,7 @@
     <string name="nutrition">Voedingswaarde</string>
     <string name="calculated_nutrition">Berekende voedingswaarde</string>
     <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="enter_weight">Typ het gewicht van het product</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Koolhydraten</string>
@@ -439,8 +439,8 @@
     <string name="take_picture_nutrition_table">Maak een foto van de voedingstabel</string>
     <string name="take_more_pictures">Maak meer foto\'s</string>
     <string name="txtSaturatedFat">Verzadigd vet</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nutriscore_info_msg">Meer informatie over de Nutri-Score</string>
+    <string name="nova_info_msg">Meer informatie over Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">Upload via mobiele data is uitgeschakeld, verbind met WiFi of verander dit in de instellingen</string>
     <string name="device_on_mobile_data_warning_positive">Voorkeuren</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Kies taal</string>
     <string name="FAQ">Veelgestelde vragen (FAQ)</string>
     <string name="FrequentlyAskedQuestions">Veelgestelde Vragen</string>
@@ -488,13 +489,13 @@
     <string name="please_check_your_connection">Controleer uw verbinding.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Vergelijk Producten</string>
     <string name="connectivity_check">Controleer je internetverbinding</string>
     <string name="dismiss">Afwijzen</string>
     <string name="Terms">Voorwaarden</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://world-nl.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Algemeen</string>
     <string name="preference_header_network">Netwerk</string>
     <string name="preference_header_contributing">Bijdragen</string>
@@ -552,7 +553,7 @@
     <string name="by_time">Recent bekeken</string>
     <string name="sort">Sorteer</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Sorteer op</string>
+    <string name="sort_by">Ordenen volgens</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Schud telefoon om producten te scannen</string>
@@ -616,19 +617,19 @@
     <string name="product_language">Producttaal: </string>
     <string name="hint_emb_codes">Voorbeelden: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Officiële website</string>
-    <string name="scan_QR_code">Scan QR Code for product website</string>
+    <string name="scan_QR_code">QR-code scannen voor productwebsite</string>
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
     <string name="image_uploaded_successfully">Image uploaded successfully</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
+    <string name="ingredients_overwrite">Ingrediënten overschrijven</string>
     <string name="choose_mine">Kies mijn</string>
     <string name="keep_previous_version">Behoud de vorige versie</string>
     <string name="product_name_overwrite">Productnaam overschrijven</string>
     <string name="yours">Jouw: </string>
     <string name="currently_on">Momenteel op %s: </string>
     <string name="quantity_overwrite">Grootte overschrijven</string>
-    <string name="link_overwrite">Link overwrite</string>
-    <string name="save_product">Do you want to save the product?</string>
+    <string name="link_overwrite">Link overschrijven</string>
+    <string name="save_product">Wilt u het product opslaan?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Foto’s</string>
     <string name="please_wait">Een ogenblik geduld</string>
@@ -767,7 +768,7 @@
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
-    <string name="create_new_list_list_name">List Name</string>
+    <string name="create_new_list_list_name">Lijstnaam</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="export_csv_your_listed_products">CSV exporteren</string>
@@ -790,7 +791,14 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Voeg producten toe</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Vergelijken</string>
+    <string name="product_summary_action_add_to_list_button_label">Toevoegen aan lijst</string>
+    <string name="product_summary_action_edit_button_label">Bewerken</string>
+    <string name="product_summary_action_share_button_label">Delen</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

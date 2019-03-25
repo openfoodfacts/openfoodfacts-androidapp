@@ -431,7 +431,7 @@
     <string name="cocoa">可可粉</string>
     <string name="chlorophyl">叶绿素</string>
     <string name="take_picture_ingredients">拍摄营养成分</string>
-    <string name="take_picture_front">拍摄正面照片</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">拍摄营养成分</string>
     <string name="take_more_pictures">拍攝更多照片</string>
     <string name="txtSaturatedFat">饱和脂肪</string>
@@ -476,6 +476,7 @@
     <string name="device_on_mobile_data_warning_message">已禁止透過行動數據上傳資料，請連接 WiFi 或修改此項設定</string>
     <string name="device_on_mobile_data_warning_positive">偏好設定</string>
     <string name="device_on_mobile_data_warning_negative">仍要上傳</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">選擇語言</string>
     <string name="FAQ">常見問答</string>
     <string name="FrequentlyAskedQuestions">常見問答</string>
@@ -484,7 +485,7 @@
     <string name="please_check_your_connection">請檢查您的網路連線。</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">進階搜尋 &amp; 圖表</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">請檢查你的網絡連線</string>
     <string name="dismiss">關閉</string>
     <string name="Terms">條款</string>
@@ -548,7 +549,7 @@
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Sort By</string>
+    <string name="sort_by">排序依</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Shake phone to scan products</string>
@@ -649,7 +650,7 @@
     <string name="nutrition_facts_not_specified">產品未具體標明營養成分</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="per_serving">每份</string>
     <string name="serving_size">分量</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">新增營養</string>
@@ -786,7 +787,14 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">編輯</string>
+    <string name="product_summary_action_share_button_label">分享</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

@@ -14,7 +14,7 @@
         <ListPreference
             android:dialogTitle="@string/energy_pref_title"
             android:key="energyUnitPreference"
-            android:summary="Choose your preferred units for energy for the nutrition table"
+            android:summary="@string/choose_energy_unit"
             android:title="@string/energy_pref_title" />
 
         <ListPreference

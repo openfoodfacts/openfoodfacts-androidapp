@@ -435,7 +435,7 @@
     <string name="cocoa">ಕೊಕೊ</string>
     <string name="chlorophyl">ಕ್ಲೋರೊಫಿಲ್</string>
     <string name="take_picture_ingredients">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ</string>
-    <string name="take_picture_front">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ</string>
     <string name="take_more_pictures">ಇನ್ನಷ್ಟು ಚಿತ್ರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ</string>
     <string name="txtSaturatedFat">ಪರಿಷ್ಕರಿಸಿದ ಕೊಬ್ಬು</string>
@@ -480,6 +480,7 @@
     <string name="device_on_mobile_data_warning_message">ಮೊಬೈಲ್ ಡೇಟಾದಲ್ಲಿ ಅಪ್ಲೋಡ್ ನಿಷ್ಕ್ರಿಯಗೊಂಡಿದೆ, ದಯವಿಟ್ಟು ವೈಫೈಗೆ ಸಂಪರ್ಕಪಡಿಸಿ ಅಥವಾ ಇದನ್ನು ಆದ್ಯತೆಗಳಲ್ಲಿ ಬದಲಾಯಿಸಿ</string>
     <string name="device_on_mobile_data_warning_positive">ಆದ್ಯತೆಗಳು</string>
     <string name="device_on_mobile_data_warning_negative">ಹೇಗಾದರೂ ಅಪ್ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">ಭಾಷೆ ಆಯ್ಕೆ</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">ಪದೇ ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು</string>
@@ -488,7 +489,7 @@
     <string name="please_check_your_connection">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">ಸುಧಾರಿತ ಹುಡುಕಾಟ &amp; ಚಾರ್ಟ್ಗಳು</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ</string>
     <string name="dismiss">ವಜಾಮಾಡು</string>
     <string name="Terms">ನಿಯಮಗಳು</string>
@@ -552,7 +553,7 @@
     <string name="by_time">ಇತ್ತೀಚೆಗೆ ನೋಡಲಾಗಿದೆ</string>
     <string name="sort">ವಿಂಗಡಿಸಿ</string>
     <string name="by_nutrition_grade">ನ್ಯೂಟ್ರಿಷನ್ ಟೇಬಲ್</string>
-    <string name="sort_by">ವಿಂಗಡಿಸು</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಫೋನ್ ಅನ್ನು ಶೇಕ್ ಮಾಡಿ</string>
@@ -790,7 +791,14 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">ತಿದ್ದು</string>
+    <string name="product_summary_action_share_button_label">ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

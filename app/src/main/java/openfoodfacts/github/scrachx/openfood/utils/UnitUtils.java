@@ -82,4 +82,12 @@ public class UnitUtils {
         }
         return valueInGramOrMl;
     }
+
+    public static double saltToSodium(Double saltValue) {
+        return saltValue * 0.39370078740157477;
+    }
+
+    public static double sodiumToSalt(Double sodiumValue) {
+        return sodiumValue * 2.54;
+    }
 }
