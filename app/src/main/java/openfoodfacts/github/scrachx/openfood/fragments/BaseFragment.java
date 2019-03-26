@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshView;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 public abstract class BaseFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
 
@@ -60,5 +62,13 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         if (swipeRefreshLayout != null) {
             swipeRefreshLayout.setRefreshing(false);
         }
+    }
+
+    protected State getStateFromActivityIntent(){
+        Intent intent = getActivity().getIntent();
+        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null) {
+            return  (State) intent.getExtras().getSerializable("state");
+        }
+        return ProductFragment.mState;
     }
 }
