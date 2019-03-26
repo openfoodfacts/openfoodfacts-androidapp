@@ -59,26 +59,26 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Alfa linolenik asit / ALA (18:3 n-3)</item>
+        <item>Arakidik asit (20:0)</item>
+        <item>Araşidonik asit / AA / ARA (20:4 n-6)</item>
+        <item>Behenik asit (22:0)</item>
         <item>Bikarbonat</item>
         <item>Biyotin</item>
-        <item>Butyric acid (4:0)</item>
+        <item>Bütirik asit (4:0)</item>
         <item>Kafein</item>
         <item>Kalsiyum</item>
-        <item>Capric acid (10:0)</item>
-        <item>Caproic acid (6:0)</item>
-        <item>Caprylic acid (8:0)</item>
+        <item>Kaprik asit (10:0)</item>
+        <item>Kaproik asit (6:0)</item>
+        <item>Kaprilik asit (8:0)</item>
         <item>Sütteki protein</item>
-        <item>Cerotic acid (26:0)</item>
+        <item>Serotik asit (26:0)</item>
         <item>Klorid</item>
         <item>Kollesterol</item>
         <item>Krom</item>
         <item>Bakır</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+        <item>Dihomo gama linolenik asit / DGLA (20:3 n-6)</item>
+        <item>Dokosaheksaenoik asit / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
