@@ -33,7 +33,7 @@
     <string name="text_barcode">נא להזין את הברקוד:</string>
     <string name="message_in_activity_save_product_offline">נדרשת לפחות תמונה אחת לטובת שליחת מוצר חדש.</string>
     <string name="product_incomplete_message">המפרט של מוצר זה לוקה בחסר. כתוצאה מכך, לא הצלחנו לבדוק מה הם מעוררי הרגישות.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">מוצר זה מכיל:</string>
     <string name="no_offline_data">סיימת</string>
     <string name="first_offline">מוצרים שהוספת ללא חיבור לאינטרנט יופיעו כאן</string>
     <!-- Image Upload -->
