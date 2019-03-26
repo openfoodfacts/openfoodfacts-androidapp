@@ -25,6 +25,7 @@
     <string name="text_barcode">பார்கோடை தட்டச்சு செய்க :</string>
     <string name="message_in_activity_save_product_offline">ஒரு புதிய தயாரிப்பை அனுப்புவதற்கு, ஒரு புகைப்படம் மட்டுமே கட்டாயமாகும்.</string>
     <string name="product_incomplete_message">இத்தயாரிப்பு முழுமை பெறவில்லை. இதன் விளைவாக, நாங்கள் ஒவ்வாமை பரிசோதனையைச் செய்ய முடியவில்லை.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">நீங்கள் அனைத்தையும் முடித்துவிட்டீர்கள்</string>
     <string name="first_offline">ஆஃப்லைனில் சேர்க்கப்பட்ட தயாரிப்புகள் இங்கே தோன்றும்</string>
     <!-- Image Upload -->
@@ -731,6 +732,7 @@
     <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>

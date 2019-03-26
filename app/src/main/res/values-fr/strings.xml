@@ -25,6 +25,7 @@
     <string name="text_barcode">Saisissez le code-barre :</string>
     <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
     <string name="product_incomplete_message">Ce produit n\'est pas complet. En conséquence, nous n\'avons pas pu faire le test d\'allergène.</string>
+    <string name="product_allergen_prompt">Ce produit contient:</string>
     <string name="no_offline_data">C\'est bon :)</string>
     <string name="first_offline">Les produits ajoutés hors ligne apparaîtront ici</string>
     <!-- Image Upload -->
@@ -731,6 +732,7 @@
     <string name="edit_diet_hint_so_so_ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
     <string name="edit_diet_unauthorised_ingredients">Ingrédients non autorisés</string>
     <string name="edit_diet_hint_unauthorised_ingredient">Énumérez les ingrédients non autorisés devant apparaître en rouge. Exemple: gluten, lait, huile de palme, sucre… Vous pourrez compléter cette liste ultérieurement.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
     <string name="add_category_prompt_text">Ajouter la catégorie pour calculer le Nutri-Score</string>

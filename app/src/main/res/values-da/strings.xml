@@ -25,6 +25,7 @@
     <string name="text_barcode">Angiv stregkoden:</string>
     <string name="message_in_activity_save_product_offline">Kun ét foto kræves for at indsende et nyt produkt.</string>
     <string name="product_incomplete_message">Dette produkt er ikke komplet. Der kan derforikke foretages et allergentjek.</string>
+    <string name="product_allergen_prompt">Dette produkt indeholder:</string>
     <string name="no_offline_data">Du er helt færdig</string>
     <string name="first_offline">Produkter tilføjet offline vil fremgå her</string>
     <!-- Image Upload -->
@@ -731,6 +732,7 @@
     <string name="edit_diet_hint_so_so_ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
     <string name="edit_diet_unauthorised_ingredients">Ikke-godkendte ingredienser</string>
     <string name="edit_diet_hint_unauthorised_ingredient">Angiv de uønskede ingredienser, der skal vises med rød skrift. Eksempel: Gluten, mælk, palmeolie, sukker… Du kan færdiggøre denne liste senere.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>

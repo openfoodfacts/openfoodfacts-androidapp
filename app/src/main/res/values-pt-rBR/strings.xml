@@ -25,6 +25,7 @@
     <string name="text_barcode">Escreva o código de barras:</string>
     <string name="message_in_activity_save_product_offline">É obrigatória apenas uma foto para enviar um novo produto.</string>
     <string name="product_incomplete_message">Este produto não está completo. Como resultado, não pudemos verificar a presença de alérgenos.</string>
+    <string name="product_allergen_prompt">Este pacote contém:</string>
     <string name="no_offline_data">Está tudo pronto</string>
     <string name="first_offline">Produtos adicionados offline aparecerão aqui</string>
     <!-- Image Upload -->
@@ -731,6 +732,7 @@
     <string name="edit_diet_hint_so_so_ingredient">Liste os ingredientes problemáticos que devem aparecer em laranja. Exemplo: ovo, peixe… Você pode completar esta lista mais tarde.</string>
     <string name="edit_diet_unauthorised_ingredients">Ingredientes não autorizados</string>
     <string name="edit_diet_hint_unauthorised_ingredient">Liste os ingredientes não autorizados que devem aparecer em vermelho. Exemplo: glúten, leite, óleo de palma, açúcar... Você pode completar esta lista mais tarde.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extrair ingredientes</string>
     <string name="add_nutrient_prompt_text">Adicione fatos nutricionais para calcular o Nutri-Score</string>
     <string name="add_category_prompt_text">Adicione uma categoria para calcular o Nutri-Score</string>
@@ -793,11 +795,11 @@
     <string name="add_product">Adicionar produtos</string>
     <string name="add_another_product">Adicione outro produto</string>
     <string name="add_nutrition_facts_for_nutriscore">Adicione fatos nutricionais para calcular o Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Comparar</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Adicionar à lista</string>
     <string name="product_summary_action_edit_button_label">Editar</string>
     <string name="product_summary_action_share_button_label">Partilhar</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_nutrient_entry">O valor deve ser numérico e pode começar com &lt;, &gt; ou ~. Exemplo: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_serving_data">O valor de tamanho do serviço deve ser um valor positivo</string>
     <string name="error_in_nutrient_data">Alguns valores de nutrientes não são válidos. Por favor, corrija os campos acima com marcador de erro</string>
 </resources>

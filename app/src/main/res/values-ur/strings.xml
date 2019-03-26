@@ -26,6 +26,7 @@
     <string name="text_barcode">بار کوڈ درج کریں:</string>
     <string name="message_in_activity_save_product_offline">نئی مصنوعات بھیجنے کے لیے صرف ایک تصویر کافی ہے۔</string>
     <string name="product_incomplete_message">یہ مصنوعات مکمل نہیں ہے۔ اس کے نتیجہ میں‏، اس وجہ سے ہم حساسیہ چیک نہیں کرسکے۔</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">آپ نے تقریباً مکمل کرلیا ہے</string>
     <string name="first_offline">آف لائن اضافہ کی گئی مصنوعات یہاں ظاہر ہوں گیں</string>
     <!-- Image Upload -->
@@ -791,7 +792,6 @@
     <string name="settings_country_title">Country</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>

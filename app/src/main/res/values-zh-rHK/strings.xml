@@ -21,6 +21,7 @@
     <string name="text_barcode">輸入條碼：</string>
     <string name="message_in_activity_save_product_offline">致少需要一張照片來建立一個新的產品</string>
     <string name="product_incomplete_message">產品資訊不足，無法進行過敏原檢查。</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">您已經大功告成了。</string>
     <string name="first_offline">離職的產品將會顯示於此</string>
     <!-- Image Upload -->

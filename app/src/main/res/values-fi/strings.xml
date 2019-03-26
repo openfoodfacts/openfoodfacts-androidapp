@@ -25,6 +25,7 @@
     <string name="text_barcode">Kirjoita viivakoodi:</string>
     <string name="message_in_activity_save_product_offline">Vain yksi kuva on pakollinen uuden tuotteen lähettämiseksi.</string>
     <string name="product_incomplete_message">Tämän tuotteen tiedot ovat puutteelliset. Allergeenitarkistusta ei voitu tehdä.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Valmis</string>
     <string name="first_offline">Täällä näkyvät offline-tilassa lisätyt tuotteet</string>
     <!-- Image Upload -->
@@ -731,6 +732,7 @@
     <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Lisää ravintosisältö Nutri-Score -arvon laskemiseksi</string>
     <string name="add_category_prompt_text">Lisää kategoria Nutri-Score -arvon laskemiseksi</string>

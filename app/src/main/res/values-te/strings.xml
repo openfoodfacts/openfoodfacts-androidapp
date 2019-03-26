@@ -25,6 +25,7 @@
     <string name="text_barcode">బార్కోడ్ను టైప్ చేయండి:</string>
     <string name="message_in_activity_save_product_offline">క్రొత్త ఉత్పత్తిని పంపడానికి ఒక ఫోటో మాత్రమే తప్పనిసరి.</string>
     <string name="product_incomplete_message">ఈ ఉత్పత్తి పూర్తి కాలేదు. ఫలితంగా, మేము అలెర్జీ చెక్ చేయలేము.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">మీరు పూర్తి చేసారు</string>
     <string name="first_offline">ఆఫ్లైన్ జోడించిన ఉత్పత్తులు ఇక్కడ కనిపిస్తాయి</string>
     <!-- Image Upload -->
@@ -731,6 +732,7 @@
     <string name="edit_diet_hint_so_so_ingredient">నారింజలో కనిపించే సమస్యాత్మక పదార్థాలను జాబితా చేయండి. ఉదాహరణ: గుడ్డు, చేప… మీరు తర్వాత ఈ జాబితాను పూర్తి చెయ్యవచ్చు.</string>
     <string name="edit_diet_unauthorised_ingredients">అనధికార పదార్థాలు</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Nutri- స్కోరును లెక్కించడానికి పోషకాహార వాస్తవాలను జోడించండి</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>

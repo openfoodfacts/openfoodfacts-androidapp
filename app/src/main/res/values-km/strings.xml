@@ -22,6 +22,7 @@
     <string name="text_barcode">វាយបញ្ចូលបាដកូដ:</string>
     <string name="message_in_activity_save_product_offline">មានតែរូបថតមួយប៉ុណ្ណោះដែលមានកាតព្វកិច្ចត្រូវតែផ្ញើផលិតផលថ្មី។</string>
     <string name="product_incomplete_message">ផលិតផលនេះមិនបានបញ្ចប់ទេ។ ជាលទ្ធផលយើងមិនអាចធ្វើការត្រួតពិនិត្យអាឡែរហ្សីបានទេ។</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">អ្នកធ្វើបានរួចរាល់ហើយ</string>
     <string name="first_offline">ផលិតផលដែលបានបន្ថែមក្រៅបណ្តាញនឹងបង្ហាញនៅទីនេះ</string>
     <!-- Image Upload -->
@@ -728,6 +729,7 @@
     <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
@@ -786,7 +788,6 @@
     <string name="settings_country_title">Country</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
