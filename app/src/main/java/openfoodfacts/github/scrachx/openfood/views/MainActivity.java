@@ -453,9 +453,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                     if (fragment != null) {
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
-                    } else {
-                        // error in creating fragment
-                        Log.e("MainActivity", "Error in creating fragment");
                     }
 
                     return false;
