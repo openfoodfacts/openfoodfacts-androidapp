@@ -22,6 +22,24 @@
             android:orientation="vertical"
             >
 
+            <LinearLayout
+                android:id="@+id/product_allergen_alert_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@color/orange_800"
+                >
+
+                <TextView
+                    android:id="@+id/product_allergen_alert_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_large"
+                    android:text="@string/product_incomplete_message"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+
             <android.support.v7.widget.CardView
                 android:id="@+id/product_header_card"
                 android:layout_width="match_parent"
@@ -206,49 +224,6 @@
 
 
             </android.support.constraint.ConstraintLayout>
-            <View style="@style/HorizontalLineSeparator" />
-
-            <RelativeLayout
-                android:id="@+id/product_incomplete_warning_view_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:visibility="gone"
-                android:padding="4dp"
-                android:background="@color/orange_800"
-                >
-
-                <TextView
-                    android:id="@+id/product_incomplete_message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@+id/product_incomplete_message_dismiss_icon"
-                    android:layout_toLeftOf="@+id/product_incomplete_message_dismiss_icon"
-                    android:gravity="center"
-                    android:paddingStart="@dimen/spacing_small"
-                    android:paddingLeft="@dimen/spacing_small"
-                    android:paddingEnd="@dimen/spacing_tiny"
-                    android:paddingRight="@dimen/spacing_tiny"
-                    android:paddingTop="@dimen/spacing_normal"
-                    android:paddingBottom="@dimen/spacing_normal"
-                    android:text="@string/product_incomplete_message"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    />
-
-                <ImageButton
-                    android:id="@+id/product_incomplete_message_dismiss_icon"
-                    android:background="@color/orange_800"
-                    android:layout_width="@dimen/button_height_too_short"
-                    android:layout_height="@dimen/button_height_too_short"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_margin="4dp"
-                    android:tint="@color/white"
-                    app:srcCompat="@drawable/ic_action_cross"
-                    />
-            </RelativeLayout>
             <View style="@style/HorizontalLineSeparator" />
 
             <android.support.constraint.ConstraintLayout
