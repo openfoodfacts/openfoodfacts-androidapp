@@ -149,7 +149,7 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Category>> getCategories(Boolean refresh) {
-        if (refresh || tableIsEmpty(countryDao)) {
+        if (refresh || tableIsEmpty(categoryDao)) {
             return productApi.getCategories()
                     .map(CategoriesWrapper::map);
         } else {

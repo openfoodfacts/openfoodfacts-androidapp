@@ -389,11 +389,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
                     if (fat != null && fatNutriment != null) {
                         String fatNutrimentLevel = fat.getLocalize(context);
-                        String modifier = nutriments.getModifier(Nutriments.FAT);
                         levelItem.add(new NutrientLevelItem(getString(R.string.txtFat),
-                                (modifier == null ? "" : modifier)
-                                        + getRoundNumber(fatNutriment.getFor100g())
-                                        + " " + fatNutriment.getUnit(),
+                                fatNutriment.getDisplayStringFor100g(),
                                 fatNutrimentLevel,
                                 fat.getImageLevel()));
                     }
@@ -401,10 +398,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
                     if (saturatedFat != null && saturatedFatNutriment != null) {
                         String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                        String saturatedFatValue = getRoundNumber(saturatedFatNutriment.getFor100g()) + " " + saturatedFatNutriment.getUnit();
-                        String modifier = nutriments.getModifier(Nutriments.SATURATED_FAT);
-                        levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat),
-                                (modifier == null ? "" : modifier) + saturatedFatValue,
+                        levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat),saturatedFatNutriment.getDisplayStringFor100g(),
                                 saturatedFatLocalize,
                                 saturatedFat.getImageLevel()));
                     }
@@ -412,10 +406,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
                     if (sugars != null && sugarsNutriment != null) {
                         String sugarsLocalize = sugars.getLocalize(context);
-                        String sugarsValue = getRoundNumber(sugarsNutriment.getFor100g()) + " " + sugarsNutriment.getUnit();
-                        String modifier = nutriments.getModifier(Nutriments.SUGARS);
                         levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars),
-                                (modifier == null ? "" : modifier) + sugarsValue,
+                                sugarsNutriment.getDisplayStringFor100g(),
                                 sugarsLocalize,
                                 sugars.getImageLevel()));
                     }
@@ -423,10 +415,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
                     if (salt != null && saltNutriment != null) {
                         String saltLocalize = salt.getLocalize(context);
-                        String saltValue = getRoundNumber(saltNutriment.getFor100g()) + " " + saltNutriment.getUnit();
-                        String modifier = nutriments.getModifier(Nutriments.SALT);
                         levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt),
-                                (modifier == null ? "" : modifier) + saltValue,
+                                saltNutriment.getDisplayStringFor100g(),
                                 saltLocalize,
                                 salt.getImageLevel()));
                     }
