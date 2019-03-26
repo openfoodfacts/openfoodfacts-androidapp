@@ -393,11 +393,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
                 if (fat != null && fatNutriment != null) {
                     String fatNutrimentLevel = fat.getLocalize(context);
-                    String modifier = nutriments.getModifier(Nutriments.FAT);
-                    levelItem.add(new NutrientLevelItem("Fat",
-                            (modifier == null ? "" : modifier)
-                                    + getRoundNumber(fatNutriment.getFor100g())
-                                    + " " + fatNutriment.getUnit(),
+                    levelItem.add(new NutrientLevelItem("Fat",fatNutriment.getDisplayStringFor100g(),
                             fatNutrimentLevel,
                             fat.getImageLevel()));
                 }
@@ -405,10 +401,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
                 if (saturatedFat != null && saturatedFatNutriment != null) {
                     String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                    String saturatedFatValue = getRoundNumber(saturatedFatNutriment.getFor100g()) + " " + saturatedFatNutriment.getUnit();
-                    String modifier = nutriments.getModifier(Nutriments.SATURATED_FAT);
-                    levelItem.add(new NutrientLevelItem("Saturated fat",
-                            (modifier == null ? "" : modifier) + saturatedFatValue,
+                    levelItem.add(new NutrientLevelItem("Saturated fat",saturatedFatNutriment.getDisplayStringFor100g(),
                             saturatedFatLocalize,
                             saturatedFat.getImageLevel()));
                 }
@@ -416,10 +409,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
                 if (sugars != null && sugarsNutriment  != null) {
                     String sugarsLocalize = sugars.getLocalize(context);
-                    String sugarsValue = getRoundNumber(sugarsNutriment.getFor100g()) + " " + sugarsNutriment.getUnit();
-                    String modifier = nutriments.getModifier(Nutriments.SUGARS);
-                    levelItem.add(new NutrientLevelItem("Sugars",
-                            (modifier == null ? "" : modifier) + sugarsValue,
+                    levelItem.add(new NutrientLevelItem("Sugars",sugarsNutriment.getDisplayStringFor100g(),
                             sugarsLocalize,
                             sugars.getImageLevel()));
                 }
@@ -427,10 +417,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
                 if (salt != null && saltNutriment != null) {
                     String saltLocalize = salt.getLocalize(context);
-                    String saltValue = getRoundNumber(saltNutriment.getFor100g()) + " " + saltNutriment.getUnit();
-                    String modifier = nutriments.getModifier(Nutriments.SALT);
-                    levelItem.add(new NutrientLevelItem("Salt",
-                            (modifier == null ? "" : modifier) + saltValue,
+                    levelItem.add(new NutrientLevelItem("Salt",saltNutriment.getDisplayStringFor100g(),
                             saltLocalize,
                             salt.getImageLevel()));
                 }
