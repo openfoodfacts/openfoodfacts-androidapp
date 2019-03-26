@@ -25,6 +25,7 @@
     <string name="text_barcode">Type the barcode :</string>
     <string name="message_in_activity_save_product_offline">Nur unu foto estas deviga por sendi novan produkton.</string>
     <string name="product_incomplete_message">Ĉi tiu produkto ne estas kompleta. Tial ni ne povis kontroli la alergenojn.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Vi finis</string>
     <string name="first_offline">Products added offline will appear here</string>
     <!-- Image Upload -->

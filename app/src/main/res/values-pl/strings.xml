@@ -53,6 +53,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="text_barcode">Wprowadź kod kreskowy:</string>
     <string name="message_in_activity_save_product_offline">Tylko jedno zdjęcie jest obowiązkowe, by wysłać nowy produkt.</string>
     <string name="product_incomplete_message">Produkt jest niekompletny. W wyniku tego nie mogliśmy sktontrolować alergeny.</string>
+    <string name="product_allergen_prompt">Produkt zawiera:</string>
     <string name="no_offline_data">Wszystko gotowe</string>
     <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
     <!-- Image Upload -->
@@ -469,10 +470,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtSaturatedFat">Tłuszcze nasycone</string>
     <string name="nutriscore_info_msg">Dowiedz się więcej o Nutri-Score</string>
     <string name="nova_info_msg">Dowiedz się więcej o Nova</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_grp1_msg">Grupa 1 - Żywność nieprzetworzona lub minimalnie przetworzona</string>
+    <string name="nova_grp2_msg">Grupa 2 - Przetworzone składniki kulinarne</string>
+    <string name="nova_grp3_msg">Grupa 3 - Żywność przetworzona</string>
+    <string name="nova_grp4_msg">Grupa 4 - Żywność wysoko przetworzona</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Skrót niedostępny</string>
     <string name="scan_shortcut_short_label">Skan</string>
@@ -517,7 +518,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="please_check_your_connection">Sprawdź połączenie.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Wyszukiwanie zaawansowane &amp; wykresy</string>
-    <string name="compare_products">Compare products</string>
+    <string name="compare_products">Porównaj artykuły spożywcze</string>
     <string name="connectivity_check">Sprawdź łączność z Internetem</string>
     <string name="dismiss">Odrzuć</string>
     <string name="Terms">Warunki</string>
@@ -720,19 +721,19 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="description_activity_product">opis</string>
     <string name="intent_filter_share_label">Dodaj do Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="overexposure_high">Wysokie ryzyko nadmiernego narażenia</string>
+    <string name="overexposure_moderate">Umiarkowane ryzyko nadmiernego narażenia</string>
+    <string name="infants">Niemowlęta</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="toddlers">Małe dzieci</string>
+    <string name="toddlers_age">1 do 2 lat</string>
+    <string name="children">Dzieci</string>
+    <string name="children_age">3 do 9 lat</string>
+    <string name="adolescents">Nastolatkowie</string>
+    <string name="adolescents_age">10 do 17 lat</string>
+    <string name="adults">Dorośli</string>
+    <string name="adults_age">18 do 64 lat</string>
+    <string name="elderly">Seniorzy</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Większość populacji\n(ponad 50%)</string>
     <string name="some_people">Część populacji\n(ponad 5%)</string>

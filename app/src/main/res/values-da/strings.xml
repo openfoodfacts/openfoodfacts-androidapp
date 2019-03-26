@@ -25,6 +25,7 @@
     <string name="text_barcode">Angiv stregkoden:</string>
     <string name="message_in_activity_save_product_offline">Kun ét foto kræves for at indsende et nyt produkt.</string>
     <string name="product_incomplete_message">Dette produkt er ikke komplet. Der kan derforikke foretages et allergentjek.</string>
+    <string name="product_allergen_prompt">Dette produkt indeholder:</string>
     <string name="no_offline_data">Du er helt færdig</string>
     <string name="first_offline">Produkter tilføjet offline vil fremgå her</string>
     <!-- Image Upload -->

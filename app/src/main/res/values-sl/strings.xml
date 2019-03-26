@@ -33,6 +33,7 @@
     <string name="text_barcode">Vnesite črtno kodo :</string>
     <string name="message_in_activity_save_product_offline">Za pošiljanje novega izdelka je obvezno le ena fotografija.</string>
     <string name="product_incomplete_message">Ta izdelek ni popoln. Zaradi tega ni moče preveriti vsebnost alergenov.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Pripravljeni ste</string>
     <string name="first_offline">Tukaj bodo prikazani izdelki, ki so bili dodani brez povezave</string>
     <!-- Image Upload -->

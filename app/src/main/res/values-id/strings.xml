@@ -21,6 +21,7 @@
     <string name="text_barcode">ketik kode batang</string>
     <string name="message_in_activity_save_product_offline">Hanya satu foto yang wajib untuk mengirim produk baru.</string>
     <string name="product_incomplete_message">Produk ini tidak lengkap. Akibatnya, kami tidak bisa melakukan pemeriksaan alergen.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Anda selesai</string>
     <string name="first_offline">Produk yang ditambahkan luring akan tampil disini</string>
     <!-- Image Upload -->

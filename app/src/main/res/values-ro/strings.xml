@@ -29,6 +29,7 @@
     <string name="text_barcode">Introduceți codul de bare</string>
     <string name="message_in_activity_save_product_offline">Doar o singură fotografie este obligatorie pentru a trimite un produs nou.</string>
     <string name="product_incomplete_message">Acest produs nu este complet. Ca urmare, nu am putut verifica alergenii.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Aţi terminat tot</string>
     <string name="first_offline">Produsele adăugate offline vor apărea aici</string>
     <!-- Image Upload -->

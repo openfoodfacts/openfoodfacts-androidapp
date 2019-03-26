@@ -25,6 +25,7 @@
     <string name="text_barcode">Kirjoita viivakoodi:</string>
     <string name="message_in_activity_save_product_offline">Vain yksi kuva on pakollinen uuden tuotteen lähettämiseksi.</string>
     <string name="product_incomplete_message">Tämän tuotteen tiedot ovat puutteelliset. Allergeenitarkistusta ei voitu tehdä.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Valmis</string>
     <string name="first_offline">Täällä näkyvät offline-tilassa lisätyt tuotteet</string>
     <!-- Image Upload -->

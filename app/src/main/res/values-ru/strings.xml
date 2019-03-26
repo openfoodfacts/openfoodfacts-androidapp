@@ -33,6 +33,7 @@
     <string name="text_barcode">Введите штрихкод:</string>
     <string name="message_in_activity_save_product_offline">Для отправки продукта обязательна только одна фотография.</string>
     <string name="product_incomplete_message">Этот продукт не является полным. В результате мы не смогли выполнить проверку аллергена.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Всё готово</string>
     <string name="first_offline">Продукты, добавленные в автономном режиме, появятся здесь</string>
     <!-- Image Upload -->

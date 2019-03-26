@@ -25,6 +25,7 @@
     <string name="text_barcode">Streepjescode invoeren:</string>
     <string name="message_in_activity_save_product_offline">Slechts één foto is verplicht om een ​​nieuw product te verzenden.</string>
     <string name="product_incomplete_message">Dit product is niet compleet. Hierdoor konden we de allergenencontrole niet uitvoeren.</string>
+    <string name="product_allergen_prompt">Dit product bevat:</string>
     <string name="no_offline_data">Je bent helemaal klaar</string>
     <string name="first_offline">Producten die offline toegevoegd zijn, verschijnen hier</string>
     <!-- Image Upload -->
@@ -58,10 +59,10 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
+        <item>Alfa-linoleenzuur / ALA (18:3 n-3)</item>
+        <item>Arachidinezuur (20:0)</item>
         <item>Arachidonzuur / AA / ARA (20: 4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Behenic zuur (22:0)</item>
         <item>Carbonaten</item>
         <item>Biotine</item>
         <item>Boterzuur (4:0)</item>
@@ -512,7 +513,7 @@
     <string name="image_upload_resolution">Image upload resolution</string>
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
     <string name="wikidata_information">Going further</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
+    <string name="wikidata_unavailable">Er is nog geen Wikipedia-pagina in uw taal.</string>
     <string name="description">Beschrijving: </string>
     <string name="title">Titel: </string>
     <string name="Wikipedia">Bekijk op Wikipedia</string>
@@ -555,7 +556,7 @@
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Ordenen volgens</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://world-nl.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Schud telefoon om producten te scannen</string>
     <string name="shake_title">Schud om te scannen</string>
     <!-- strings related to share images -->

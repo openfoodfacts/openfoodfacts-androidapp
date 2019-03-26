@@ -25,6 +25,7 @@
     <string name="text_barcode">Strichcode eingeben:</string>
     <string name="message_in_activity_save_product_offline">Mindestens ein Foto ist erforderlich, um ein neues Produkt einzureichen.</string>
     <string name="product_incomplete_message">Unvollständige Produktinformationen. Deshalb konnten wir die Allergenprüfung nicht durchführen.</string>
+    <string name="product_allergen_prompt">Dieses Produkt enthält:</string>
     <string name="no_offline_data">Alles erledigt</string>
     <string name="first_offline">Offline hinzugefügte Produkte werden hier angezeigt</string>
     <!-- Image Upload -->
