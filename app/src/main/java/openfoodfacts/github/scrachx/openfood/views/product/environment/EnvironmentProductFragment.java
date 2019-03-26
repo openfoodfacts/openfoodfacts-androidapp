@@ -61,7 +61,7 @@ public class EnvironmentProductFragment extends BaseFragment {
         if(nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
             Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
             carbonFootprint.setText(bold(getString(R.string.textCarbonFootprint)));
-            carbonFootprint.append(carbonFootprintNutriment.getFor100g());
+            carbonFootprint.append(carbonFootprintNutriment.getFor100gInUnits());
             carbonFootprint.append(carbonFootprintNutriment.getUnit());
         } else {
             carbonFootprintCardView.setVisibility(View.GONE);
