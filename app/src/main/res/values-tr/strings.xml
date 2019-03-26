@@ -35,12 +35,12 @@
         <item>İçindekiler</item>
         <item>Beslenme</item>
         <item>Besin Değerleri Tablosu</item>
-        <item>Environment</item>
+        <item>Çevre</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Ürün Fotoğrafları</item>
+        <item>İçerik Analizi</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
