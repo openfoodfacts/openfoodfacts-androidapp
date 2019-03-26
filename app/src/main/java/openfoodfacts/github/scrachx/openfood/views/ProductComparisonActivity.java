@@ -12,38 +12,22 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.theartofdev.edmodo.cropper.CropImage;
 
-import org.apache.commons.collections.BagUtils;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductComparisonAdapter;
-import openfoodfacts.github.scrachx.openfood.views.product.summary.ISummaryProductPresenter;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
-import static java.security.AccessController.getContext;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 
 public class ProductComparisonActivity extends AppCompatActivity {
 
