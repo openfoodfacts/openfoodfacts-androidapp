@@ -798,6 +798,11 @@
     <string name="product_summary_action_add_to_list_button_label">crwdns116162:0crwdne116162:0</string>
     <string name="product_summary_action_edit_button_label">crwdns116164:0crwdne116164:0</string>
     <string name="product_summary_action_share_button_label">crwdns116166:0crwdne116166:0</string>
+    <string name="product_question_prompt">crwdns116170:0crwdne116170:0</string>
+    <string name="product_question_positive_response">crwdns116172:0crwdne116172:0</string>
+    <string name="product_question_negative_response">crwdns116174:0crwdne116174:0</string>
+    <string name="product_question_ambiguous_response">crwdns116176:0crwdne116176:0</string>
+    <string name="product_question_submit_message">crwdns116178:0crwdne116178:0</string>
     <string name="error_nutrient_entry">crwdns116154:0crwdne116154:0</string>
     <string name="error_nutrient_serving_data">crwdns116156:0crwdne116156:0</string>
     <string name="error_in_nutrient_data">crwdns116158:0crwdne116158:0</string>
