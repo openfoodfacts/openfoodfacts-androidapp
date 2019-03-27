@@ -15,9 +15,9 @@
     <string name="txtHome">Open Food Facts est une base de données ouverte et collaborative de produits alimentaires. Vous pouvez faire de meilleurs choix pour vous, pour la planète, et contribuer à faire avancer la recherche en photographiant et complétant des produits</string>
     <string name="slide_1_title">Contribuez à la transparence alimentaire</string>
     <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez un acteur de la transparence alimentaire</string>
-    <string name="slide_2_title">Obtenez les faits</string>
-    <string name="slide_2_desc">Des informations détaillées sur le produit que vous avez scanné, déchiffrées pour vous</string>
-    <string name="slide_3_title">Obtenez le Nutri-Score</string>
+    <string name="slide_2_title">Les étiquettes, déchiffrées</string>
+    <string name="slide_2_desc">Des informations simples sur la qualité nutritionnelle, le degré de transformation et l'impact écologique pour vous aider à faire des choix plus éclairés.</string>
+    <string name="slide_3_title">Le Nutri-Score sur tous les produits</string>
     <string name="slide_3_desc">Une vue synthétique des propriétés nutritionnelles de vos produits alimentaires préférés</string>
     <string name="slide_4_title">Fonctionne hors connexion</string>
     <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
