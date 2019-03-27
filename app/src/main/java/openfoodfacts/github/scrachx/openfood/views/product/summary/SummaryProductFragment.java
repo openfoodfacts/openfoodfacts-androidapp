@@ -435,7 +435,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void refreshScoresLayout() {
         if (novaGroup.getVisibility() == View.GONE &&
                 co2Icon.getVisibility() == View.GONE &&
-                nutriscoreImage.getVisibility() == View.GONE) {
+                nutriscoreImage.getVisibility() == View.GONE &&
+                addNutriScorePrompt.getVisibility() == View.GONE) {
             scoresLayout.setVisibility(View.GONE);
         } else {
             scoresLayout.setVisibility(View.VISIBLE);
