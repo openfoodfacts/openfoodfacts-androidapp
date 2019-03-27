@@ -799,6 +799,11 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="product_summary_action_add_to_list_button_label">Zur Liste hinzufügen</string>
     <string name="product_summary_action_edit_button_label">Bearbeiten</string>
     <string name="product_summary_action_share_button_label">Teilen</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Ja</string>
+    <string name="product_question_negative_response">Nein</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">Der Wert sollte numerisch sein und kann mit &lt;, &gt; oder ~ beginnen. Beispiel: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">Die Portionsgröße muss ein positiver Wert sein</string>
     <string name="error_in_nutrient_data">Einige Nährstoffwerte sind ungültig. Die oben als fehlerhaft markierten Felder müssen ausgefüllt werden.</string>
