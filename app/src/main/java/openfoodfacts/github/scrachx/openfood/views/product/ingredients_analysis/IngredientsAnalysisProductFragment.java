@@ -66,6 +66,8 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
+        this.product = state.getProduct();
+
         if(adapter!=null) {
             adapter.notifyDataSetChanged();
         }
