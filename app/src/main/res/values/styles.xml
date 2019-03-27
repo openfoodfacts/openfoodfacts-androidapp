@@ -70,6 +70,12 @@
         <item name="android:shadowRadius">1</item>
     </style>
 
+    <style name="QuestionDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
     <style name="BorderButton">
         <item name="android:background">@drawable/button_shape</item>
         <item name="android:textColor">@color/button_link</item>

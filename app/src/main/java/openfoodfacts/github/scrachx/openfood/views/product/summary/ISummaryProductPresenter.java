@@ -6,8 +6,9 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.Question;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 
 /**
@@ -17,6 +18,10 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 public interface ISummaryProductPresenter {
 
     interface Actions {
+        void loadProductQuestion();
+
+        void annotateInsight(String insightId, int annotation);
+
         void loadAllergens();
 
         void loadCategories();
@@ -30,6 +35,10 @@ public interface ISummaryProductPresenter {
 
     interface View {
         void showAllergens(List<AllergenName> allergens);
+
+        void showProductQuestion(Question question);
+
+        void showAnnotatedInsightToast(InsightAnnotationResponse insightAnnotationResponse);
 
         void showCategories(List<CategoryName> categories);
 
