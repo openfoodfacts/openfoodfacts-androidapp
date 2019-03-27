@@ -799,6 +799,11 @@
     <string name="product_summary_action_add_to_list_button_label">Ajouter à une liste</string>
     <string name="product_summary_action_edit_button_label">Modifier</string>
     <string name="product_summary_action_share_button_label">Partager</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Oui</string>
+    <string name="product_question_negative_response">Non</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">La valeur doit être numérique et peut commencer par &lt;, &gt; or ~. Exemple: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">La valeur de la taille de la portion doit être une valeur positive</string>
     <string name="error_in_nutrient_data">Certaines valeurs nutritives ne sont pas valides. Veuillez corriger les champs ci-dessus avec un marqueur d\'erreur</string>
