@@ -291,6 +291,73 @@
             </android.support.constraint.ConstraintLayout>
             <View style="@style/HorizontalLineSeparator" />
 
+            <RelativeLayout
+                android:id="@+id/product_question_layout"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/spacing_tiny"
+                android:paddingTop="@dimen/spacing_tiny"
+                android:background="@color/primary_dark"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:id="@+id/product_question_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_forum_white_24dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@id/product_question_icon"
+                    android:layout_toEndOf="@id/product_question_icon"
+                    android:id="@+id/bottom_sheet_linear_layout"
+                    android:layout_centerVertical="true"
+                    >
+                    <TextView
+                        android:id="@+id/product_question_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:paddingRight="@dimen/spacing_small"
+                        android:paddingLeft="@dimen/spacing_small"
+                        android:paddingTop="@dimen/spacing_small"
+                        tools:text="Does the product belong to this category?"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/product_question_prompt"
+                        android:textColor="@android:color/darker_gray"
+                        android:paddingLeft="@dimen/spacing_small"
+                        android:paddingStart="@dimen/spacing_small"
+                        android:paddingRight="@dimen/spacing_tiny"
+                        android:paddingEnd="@dimen/spacing_tiny"
+                        android:paddingBottom="@dimen/spacing_small"
+                        />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/product_question_dismiss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/spacing_normal"
+                    app:srcCompat="@drawable/ic_clear_white_24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+
             <android.support.v7.widget.CardView
                 android:id="@+id/cvNutritionLights"
                 android:layout_width="match_parent"
