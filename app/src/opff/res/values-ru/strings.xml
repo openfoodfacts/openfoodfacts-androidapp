@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ru.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world-ru.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts - это база данных, содержащая более %1$d кормов для домашних животных (плюс те, о которых напишете вы) с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках продуктов для домашних животных. Гав. Гав.</string>
-    <string name="txtHome">Open Pet Food Facts - это база данных продуктов для домашних животных с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках продуктов для домашних животных. Гав. Гав.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Способствовать прозрачности кормов для животных</string>
     <string name="slide_1_desc">Сканируйте продукты, фотографируйте их, способствуйте прозрачности кормов для животных</string>
     <string name="slide_2_title">Узнать</string>
