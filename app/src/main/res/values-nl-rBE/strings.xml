@@ -25,7 +25,7 @@
     <string name="text_barcode">Streepjescode invoeren:</string>
     <string name="message_in_activity_save_product_offline">Slechts één foto is verplicht om een ​​nieuw product te verzenden.</string>
     <string name="product_incomplete_message">Dit product is niet compleet. Hierdoor konden we de allergenencontrole niet uitvoeren.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Dit product bevat:</string>
     <string name="no_offline_data">Je bent helemaal klaar</string>
     <string name="first_offline">Producten die offline toegevoegd zijn, verschijnen hier</string>
     <!-- Image Upload -->
@@ -799,6 +799,11 @@
     <string name="product_summary_action_add_to_list_button_label">Toevoegen aan lijst</string>
     <string name="product_summary_action_edit_button_label">Bewerken</string>
     <string name="product_summary_action_share_button_label">Delen</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Ja</string>
+    <string name="product_question_negative_response">Nee</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">De waarde moet numeriek zijn en kan beginnen met &lt;, &gt; or ~. Voorbeeld: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">De waarde van de dienende grootte moet een positieve waarde zijn</string>
     <string name="error_in_nutrient_data">Sommige voedingswaarden zijn niet geldig. Corrigeer bovenstaande velden met een foutmarkering</string>

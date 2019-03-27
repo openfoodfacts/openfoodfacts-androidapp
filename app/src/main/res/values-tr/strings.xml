@@ -35,12 +35,12 @@
         <item>İçindekiler</item>
         <item>Beslenme</item>
         <item>Besin Değerleri Tablosu</item>
-        <item>Environment</item>
+        <item>Çevre</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Ürün Fotoğrafları</item>
+        <item>İçerik Analizi</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -59,62 +59,62 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Alfa linolenik asit / ALA (18:3 n-3)</item>
+        <item>Arakidik asit (20:0)</item>
+        <item>Araşidonik asit / AA / ARA (20:4 n-6)</item>
+        <item>Behenik asit (22:0)</item>
         <item>Bikarbonat</item>
         <item>Biyotin</item>
-        <item>Butyric acid (4:0)</item>
+        <item>Bütirik asit (4:0)</item>
         <item>Kafein</item>
         <item>Kalsiyum</item>
-        <item>Capric acid (10:0)</item>
-        <item>Caproic acid (6:0)</item>
-        <item>Caprylic acid (8:0)</item>
+        <item>Kaprik asit (10:0)</item>
+        <item>Kaproik asit (6:0)</item>
+        <item>Kaprilik asit (8:0)</item>
         <item>Sütteki protein</item>
-        <item>Cerotic acid (26:0)</item>
+        <item>Serotik asit (26:0)</item>
         <item>Klorid</item>
         <item>Kollesterol</item>
         <item>Krom</item>
         <item>Bakır</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>Dihomo gama linolenik asit / DGLA (20:3 n-6)</item>
+        <item>Dokosaheksaenoik asit / DHA (22:6 n-3)</item>
+        <item>Eikosapentaenoik asit / EPA (20:5 n-3)</item>
+        <item>Elaidik asit (18:1 n-9)</item>
+        <item>Erusik asit (22:1 n-9)</item>
         <item>Florür</item>
         <item>Fruktoz</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>Gama linolenik asit / GLA (18:3 n-6)</item>
         <item>Glikoz</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>Gondoik asit (20:1 n-9)</item>
         <item>İyot</item>
         <item>Demir</item>
         <item>Laktoz</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>Laurik asit (12:0)</item>
+        <item>Lignoserik asit (24:0)</item>
+        <item>Linoleik asit / LA (18:2 n-6)</item>
         <item>Magnezyum</item>
         <item>Maltodextrins</item>
         <item>Maltoz</item>
         <item>Manganez</item>
         <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>Melisik asit (30:0)</item>
         <item>Molibden</item>
-        <item>Monounsaturated fat</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>Tekil doymamış yağ</item>
+        <item>Montanik asit (28:0)</item>
+        <item>Miristik asit (14:0)</item>
+        <item>Nervonik asit (24:1 n-9)</item>
         <item>Nükleotidler</item>
-        <item>Oleic acid (18:1 n-9)</item>
-        <item>Omega 3 fatty acids</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
-        <item>Palmitic acid (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>Oleik asit (18:1 n-9)</item>
+        <item>Omega 3 yağ asitleri</item>
+        <item>Omega 6 yağ asitleri</item>
+        <item>Omega 9 yağ asitleri</item>
+        <item>Palmitik asit (16:0)</item>
+        <item>Pantotenik asit / Pantotenat (B5 vitamini)</item>
         <item>pH</item>
         <item>Fosfor</item>
-        <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>Şeker alkolleri (Polioller)</item>
+        <item>Çoklu doymamış yağ</item>
         <item>Potasyum</item>
         <item>Selenyum</item>
         <item>Serum proteinleri</item>
@@ -125,13 +125,13 @@
         <item>Taurin</item>
         <item>Trans yağ</item>
         <item>A vitamini</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>B1 vitamini (Tiyamin)</item>
+        <item>B12 vitamini (Kobalamin)</item>
+        <item>B2 vitamini (Riboflavin)</item>
+        <item>B3 vitamini / PP vitamini (Niyasin)</item>
+        <item>B6 vitamini (Piridoksin)</item>
+        <item>B9 vitamini (Folik asit)</item>
+        <item>C vitamini (Askorbik asit)</item>
         <item>D vitamini</item>
         <item>E vitamini</item>
         <item>K vitamini</item>
@@ -799,6 +799,11 @@
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Düzenle</string>
     <string name="product_summary_action_share_button_label">Paylaş</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Evet</string>
+    <string name="product_question_negative_response">Hayır</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
