@@ -795,11 +795,11 @@
     <string name="product_summary_action_add_to_list_button_label">Thêm vào danh sách</string>
     <string name="product_summary_action_edit_button_label">Chỉnh sửa</string>
     <string name="product_summary_action_share_button_label">Chia sẻ</string>
-    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_prompt">Bấm vào đây để trả lời</string>
     <string name="product_question_positive_response">Có</string>
     <string name="product_question_negative_response">Không</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
-    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="product_question_ambiguous_response">Không chắc</string>
+    <string name="product_question_submit_message">Cảm ơn sự đóng góp của bạn!</string>
     <string name="error_nutrient_entry">Giá trị phải là số và có thể bắt đầu bằng &lt;, &gt; hoặc ~. Ví dụ: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Giá trị phải là giá trị dương</string>
     <string name="error_in_nutrient_data">Một số giá trị dinh dưỡng không hợp lệ. Xin vui lòng sửa các trường trên với dấu đánh dấu lỗi</string>
