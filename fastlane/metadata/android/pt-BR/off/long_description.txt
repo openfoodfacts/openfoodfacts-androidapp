@@ -1,8 +1,8 @@
 Escaneie códigos de barras de produtos alimentares para obter dados sobre ingredients, aditivos e informações nutricionais.
 
-▶ Find & Compare more than 800.000 products
+▶ Encontre e compare mais de 800.000 produtos
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+A aplicação permite visualizar os 800.000 produtos (incluindo 175.000 nos EUA) já contidos no banco de dados aberto e gratuito dos Open Food Facts e de adicionar fotos e dados de produtos novos.
 
 
 Para descobrir o projeto Open Food Facts realizado por voluntários, visite https://world-pt.openfoodfacts.org
@@ -10,7 +10,7 @@ Para descobrir o projeto Open Food Facts realizado por voluntários, visite http
 ▶ Escolha os produtos que são bons para você
 - A classificação Nutri-Score, de "A" a "E" >> Qualidade nutricional
 - O grupo NOVA, de "1" a "4" >> Encontre o alimento ultraprocessado
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+- Você pode facilmente comparar quantos produtos quiser, lado a lado simplesmente digitalizando-os. 
 
 ▶ E bom para o planeta!
 - O impacto de carbono de sua comida
@@ -26,8 +26,8 @@ Para descobrir o projeto Open Food Facts realizado por voluntários, visite http
 - Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários do mundo inteiro. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras.
 - Você pode começar a contribuir hoje adicionando um produto de sua geladeira.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+Criar listas
+Crie listas de compras, controle o que você comeu e compartilhe facilmente e exporte suas listas.
 
 ▶ Obtenha os Factos
 - Open Food Facts ajuda a entender as letras miúdas dos rótulos dos produtos. Você será capaz de encontrar:
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - A comunidade Open Food Facts está colaborando com equipes de pesquisa em todo o planeta para melhorar a pesquisa nutricional que beneficia a todos.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
+▶ Offline Scan: Scan in ANY condition! (brevemente)
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - O planeta inteiro, no seu bolso!

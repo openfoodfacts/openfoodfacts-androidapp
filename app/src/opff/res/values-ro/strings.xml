@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts este o bază de date deschisă cu mai mult de %1$d produse alimentare veterinare (plus cele pe care le veți adăuga) cu ingrediente, alergeni, indicii și toate informatiile pe care le găsim pe etichetele produselor.</string>
-    <string name="txtHome">Open Pet Food Facts este o bază de date a produselor alimentare veterinare, care cuprinde ingredientele, alergenii, declarațiile nutriționale și toate informatiile pe care le găsim pe etichetele produselor alimentare veterinare.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Contribuie la transparența produselor alimentare veterinare</string>
     <string name="slide_1_desc">Scanați produsele, fotografiați-le, ajutați la concretizarea transparenței produselor alimentare veterinare</string>
     <string name="slide_2_title">Obțineți informații</string>
