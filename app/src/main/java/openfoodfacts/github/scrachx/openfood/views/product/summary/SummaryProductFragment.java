@@ -325,6 +325,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
                 Context context = this.getContext();
                 if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                    nutriscoreImage.setVisibility(View.VISIBLE);
                     nutriscoreImage.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
                 } else {
                     nutriscoreImage.setVisibility(View.GONE);
