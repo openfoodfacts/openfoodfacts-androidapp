@@ -324,16 +324,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri));
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
                 Context context = this.getContext();
-                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
-                    nutriscoreImage.setVisibility(View.VISIBLE);
-                    nutriscoreImage.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
-                } else {
-                    nutriscoreImage.setVisibility(View.GONE);
-                }
-                nutriscoreImage.setOnClickListener(view1 -> {
-                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                    CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
-                });
+
 
                 if (nutriments != null) {
                     nutritionLightsCardView.setVisibility(View.VISIBLE);
@@ -379,6 +370,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             rv.setLayoutManager(new LinearLayoutManager(getContext()));
             rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
+            refreshNutriscore();
             refreshNovaIcon();
             refreshCo2Icon();
             refreshScoresLayout();
@@ -398,8 +390,23 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
+    private void refreshNutriscore(){
+        if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+            nutriscoreImage.setVisibility(View.VISIBLE);
+            Context context = this.getContext();
+            nutriscoreImage.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+        } else {
+            nutriscoreImage.setVisibility(View.GONE);
+        }
+        nutriscoreImage.setOnClickListener(view1 -> {
+            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+        });
+    }
+
     private void refreshNovaIcon() {
         if (product.getNovaGroups() != null) {
+            novaGroup.setVisibility(View.VISIBLE);
             novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
             novaGroup.setOnClickListener(view1 -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
@@ -407,11 +414,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
             });
         } else {
-            novaGroup.setImageResource(0);
-        }
-        if (product.getNovaGroups() == null && product.getNutritionGradeFr() == null) {
-            nutriscoreImage.setVisibility(View.GONE);
             novaGroup.setVisibility(View.GONE);
+            novaGroup.setImageResource(0);
         }
     }
 

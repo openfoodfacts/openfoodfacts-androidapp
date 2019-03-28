@@ -915,15 +915,6 @@ public class AddProductActivity extends AppCompatActivity {
             newValues.remove(KEY_USER_ID);
             newValues.remove(KEY_PASSWORD);
             productHasChange = !newValues.equals(initialValues);
-            if (productHasChange && Log.isLoggable(ADD_TAG,Log.DEBUG)) {
-                for (Map.Entry<String, String> entry : newValues.entrySet()) {
-                    String newValue = entry.getValue();
-                    String old = initialValues.get(entry.getKey());
-                    if (!StringUtils.equals(newValue, old)) {
-                        Log.d(ADD_TAG, "entry " + entry.getKey() + " changed: old=" + old + ", new=" + newValue);
-                    }
-                }
-            }
         }
         if (productHasChange) {
             saveProductToServer(code, comment);
