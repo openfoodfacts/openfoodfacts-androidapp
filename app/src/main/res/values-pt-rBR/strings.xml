@@ -799,11 +799,11 @@
     <string name="product_summary_action_add_to_list_button_label">Adicionar à lista</string>
     <string name="product_summary_action_edit_button_label">Editar</string>
     <string name="product_summary_action_share_button_label">Partilhar</string>
-    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_prompt">Toque aqui para responder</string>
     <string name="product_question_positive_response">Sim</string>
     <string name="product_question_negative_response">Não</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
-    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="product_question_ambiguous_response">Não tenho certeza</string>
+    <string name="product_question_submit_message">Obrigado pela sua contribuição!</string>
     <string name="error_nutrient_entry">O valor deve ser numérico e pode começar com &lt;, &gt; ou ~. Exemplo: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">O valor de tamanho do serviço deve ser um valor positivo</string>
     <string name="error_in_nutrient_data">Alguns valores de nutrientes não são válidos. Por favor, corrija os campos acima com marcador de erro</string>
