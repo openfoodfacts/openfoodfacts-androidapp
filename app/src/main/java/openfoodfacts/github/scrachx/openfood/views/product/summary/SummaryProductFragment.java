@@ -854,7 +854,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //adds the information about the prompt when navigating the user to the edit the product
         intent.putExtra("modify_category_prompt", showCategoryPrompt);
         intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
-        startActivity(intent);
+        startActivityForResult(intent, EDIT_REQUEST_CODE);
     }
 
     @OnClick(R.id.action_compare_button)
