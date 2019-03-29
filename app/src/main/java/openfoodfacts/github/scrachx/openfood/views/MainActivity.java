@@ -73,6 +73,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Objects;
 
@@ -899,7 +900,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         Uri selectedImage = null;
         ArrayList<Uri> selectedImagesArray = new ArrayList<>();
         selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-        boolean isBarCodePresent = false;
         if (selectedImage != null) {
             selectedImagesArray.add(selectedImage);
             chooseDialog(selectedImagesArray);
@@ -909,6 +909,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void handleSendMultipleImages(Intent intent) {
         ArrayList<Uri> selectedImagesArray = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
         if (selectedImagesArray != null) {
+            selectedImagesArray.removeAll(Collections.singleton(null));
             chooseDialog(selectedImagesArray);
         }
     }
