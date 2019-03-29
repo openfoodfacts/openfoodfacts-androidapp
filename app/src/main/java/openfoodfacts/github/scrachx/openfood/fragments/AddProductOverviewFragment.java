@@ -105,8 +105,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
-    //TODO to review
-    private static final String PARAM_EATING = "eating";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
 
     @BindView(R.id.scrollView)
