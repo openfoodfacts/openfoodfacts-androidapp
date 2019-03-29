@@ -178,7 +178,7 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
-                    android:text="No nutrient information available for this product"
+                    android:text="@string/no_nutrient_information_available_for_this_product"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal"
                     android:textStyle="bold" />
@@ -224,7 +224,7 @@
                 android:background="@drawable/textview_full"
                 android:padding="@dimen/spacing_small"
                 android:textSize="@dimen/font_normal"
-                android:text="No additive data available for this product"/>
+                android:text="@string/no_additive_data_available_for_this_product"/>
 
         </android.support.v7.widget.CardView>
 
@@ -236,7 +236,7 @@
             android:layout_margin="@dimen/spacing_tiny"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:text="Go to full product page"/>
+            android:text="@string/go_to_full_product_page"/>
 
     </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>
