@@ -825,4 +825,7 @@
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="go_to_full_product_page">Go to full product page</string>
+    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
+    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
 </resources>

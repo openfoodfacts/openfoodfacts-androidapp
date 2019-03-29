@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Το Open Pet Food Facts είναι μια βάση δεδομένων με πάνω από %1$d τροφές ζώων (συν αυτά που μπορείτε να προσθέσετε εσείς) με συστατικά, αλλεργιογόνα, ενδείξεις και όλες τις μικρές και μεγάλες λεπτομέρειες που μπορούμε να βρούμε.</string>
-    <string name="txtHome">Το Open Pet Food Facts είναι μια βάση δεδομένων για ζωοτροφές με συστατικά, αλλεργιογόνα, ενδείξεις και όλα τα στοιχεία της πληροφορίας που μπορούμε να βρούμε σε ετικέτες προϊόντων. Νιαου Νιαου.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Συμβάλλετε στη διαφάνεια των τροφών κατοικιδίων</string>
     <string name="slide_1_desc">Σαρώστε τα προϊόντα, τραβήξτε τα φωτογραφία και κάντε τη διατροφική διαφάνεια των ζωοτροφών πραγματικότητα</string>
     <string name="slide_2_title">Get the facts</string>
