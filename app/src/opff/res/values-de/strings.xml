@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-de.openpetfoodfacts.org/mitwirkender/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts ist eine Datenbank mit mehr als %1$d Tiernahrungsprodukten (und denjenigen, die Sie beitragen werden) mit Zutaten, Allergenen, Vermerken und allen Kleinigkeiten von Informationen, die wir auf Etiketten von Tiernahrungsprodukten finden können. Wau. Wau.</string>
-    <string name="txtHome">„Open Pet Food Facts” ist eine Datenbank der Nahrungsprodukte für Haustiere mit deren Bestandteilen, Allergenen, Indizien und all den Kleinigkeiten, die wir auf Produktetiketten für Haustiernahrung finden können. Wau-Wau, Miau.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Beitrag zur Transparenz von Tiernahrungsprodukten leisten</string>
     <string name="slide_1_desc">Produkte erfassen und diese fotografieren ermöglichen die Transparenz von Tiernahrung</string>
     <string name="slide_2_title">Holen Sie sich die Fakten</string>
