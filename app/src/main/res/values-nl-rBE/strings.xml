@@ -807,4 +807,7 @@
     <string name="error_nutrient_entry">De waarde moet numeriek zijn en kan beginnen met &lt;, &gt; or ~. Voorbeeld: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">De waarde van de dienende grootte moet een positieve waarde zijn</string>
     <string name="error_in_nutrient_data">Sommige voedingswaarden zijn niet geldig. Corrigeer bovenstaande velden met een foutmarkering</string>
+    <string name="go_to_full_product_page">Go to full product page</string>
+    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
+    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
 </resources>
