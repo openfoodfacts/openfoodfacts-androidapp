@@ -377,19 +377,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             countriesWhereSold.setText(chipValues);
         }
-        //disabling fields in edit/add mode
-        /*if (product.getOtherInformation() != null && !product.getOtherInformation().isEmpty()) {
-            otherInfo.setText(product.getOtherInformation());
-        }
-        if (product.getConservationConditions() != null && !product.getConservationConditions().isEmpty()) {
-            conservationCond.setText(product.getConservationConditions());
-        }
-        if (product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
-            recyclingInstructionToDiscard.setText(product.getRecyclingInstructionsToDiscard());
-        }
-        if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
-            recyclingInstructionToRecycle.setText(product.getRecyclingInstructionsToRecycle());
-        }*/
+
     }
 
     /**

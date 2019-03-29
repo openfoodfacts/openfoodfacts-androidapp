@@ -325,7 +325,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
                 Context context = this.getContext();
 
-
                 if (nutriments != null) {
                     nutritionLightsCardView.setVisibility(View.VISIBLE);
                     Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
@@ -390,7 +389,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    private void refreshNutriscore(){
+    private void refreshNutriscore() {
         if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
             nutriscoreImage.setVisibility(View.VISIBLE);
             Context context = this.getContext();
@@ -420,6 +419,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void refreshCo2Icon() {
+        co2Icon.setVisibility(View.GONE);
         if (product.getEnvironmentImpactLevelTags() != null) {
             List<String> tags = product.getEnvironmentImpactLevelTags();
             if (tags.size() > 0) {
@@ -431,12 +431,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     co2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
                 } else if (tag.equals("en:medium")) {
                     co2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
-                } else {
-                    co2Icon.setVisibility(View.GONE);
                 }
             }
-        } else {
-            co2Icon.setVisibility(View.GONE);
         }
     }
 
@@ -533,8 +529,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             spannableStringBuilder.setSpan(iconSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
 
             spannableStringBuilder.append(riskWarningStr);
-            spannableStringBuilder.setSpan(new ForegroundColorSpan(riskWarningColor), spannableStringBuilder.length() - riskWarningStr.length(), spannableStringBuilder.length(),
-                SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder
+                .setSpan(new ForegroundColorSpan(riskWarningColor), spannableStringBuilder.length() - riskWarningStr.length(), spannableStringBuilder.length(),
+                    SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
         return spannableStringBuilder;
@@ -949,13 +946,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    // Implements CustomTabActivityHelper.ConnectionCallback
     @Override
     public void onCustomTabsConnected() {
         nutriscoreImage.setClickable(true);
     }
 
-    // Implements CustomTabActivityHelper.ConnectionCallback
     @Override
     public void onCustomTabsDisconnected() {
         nutriscoreImage.setClickable(false);
