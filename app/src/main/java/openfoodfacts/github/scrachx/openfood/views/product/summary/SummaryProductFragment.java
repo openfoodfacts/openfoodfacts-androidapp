@@ -46,7 +46,12 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
-import openfoodfacts.github.scrachx.openfood.utils.*;
+import openfoodfacts.github.scrachx.openfood.utils.QuestionActionListeners;
+import openfoodfacts.github.scrachx.openfood.utils.QuestionDialog;
+import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
@@ -869,6 +874,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         startActivity(intent);
     }
 
+
     @OnClick(R.id.action_share_button)
     public void onShareProductButtonClick() {
         String shareUrl = " " + getString(R.string.website_product) + product.getCode();
@@ -912,14 +918,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String barcode = product.getCode();
         String productName = product.getProductName();
         String imageUrl = product.getImageSmallUrl();
-        StringBuilder stringBuilder = new StringBuilder();
-        if (isNotEmpty(product.getBrands())) {
-            stringBuilder.append(capitalize(product.getBrands().split(",")[0].trim()));
-        }
-        if (isNotEmpty(product.getQuantity())) {
-            stringBuilder.append(" - ").append(product.getQuantity());
-        }
-        String productDetails = stringBuilder.toString();
+        String productDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
 
         MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(activity)
             .title(R.string.add_to_product_lists)
@@ -928,7 +927,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         addToListDialog.show();
         View addToListView = addToListDialog.getCustomView();
         if (addToListView != null) {
-            ProductListsDao productListsDao = Utils.getDaoSession(activity).getProductListsDao();
+            ProductListsDao productListsDao =ProductListsActivity.getProducListsDaoWithDefaultList(this.getContext());
             List<ProductLists> productLists = productListsDao.loadAll();
 
             RecyclerView addToListRecyclerView =

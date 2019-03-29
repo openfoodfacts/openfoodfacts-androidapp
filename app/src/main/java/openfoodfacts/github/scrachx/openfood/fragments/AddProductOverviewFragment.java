@@ -86,7 +86,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
-    private static final String PARAM_EATING = "eating";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
@@ -120,8 +119,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     AutoCompleteTextView periodsAfterOpening;
     @BindView(R.id.period_of_time_after_opening_til)
     LinearLayout periodsAfterOpeningParent;
-    @BindView(R.id.cb_eating)
-    CheckBox cbEating;
     @BindView(R.id.origin_of_ingredients)
     NachoTextView originOfIngredients;
     @BindView(R.id.origin_of_ingredients_til)
@@ -274,7 +271,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         greyLine2.setVisibility(visibility);
         greyLine3.setVisibility(visibility);
         greyLine4.setVisibility(visibility);
-        cbEating.setVisibility(visibility);
     }
 
     /**
@@ -718,8 +714,6 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (mImageUrl != null) {
                 targetMap.put("imageUrl", mImageUrl);
             }
-            Boolean cbEatingChecked = cbEating.isChecked();
-            targetMap.put(PARAM_EATING, cbEatingChecked.toString());
             targetMap.put(PARAM_ORIGIN.substring(4), getValues(originOfIngredients));
             targetMap.put(PARAM_MANUFACTURING_PLACE.substring(4), manufacturingPlace.getText().toString());
             targetMap.put(PARAM_EMB_CODE.substring(4), getValues(embCode));
@@ -770,8 +764,6 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (mImageUrl != null) {
                 ((AddProductActivity) activity).addToMap("imageUrl", mImageUrl);
             }
-            Boolean cbEatingChecked = cbEating.isChecked();
-            ((AddProductActivity) activity).addToMap(PARAM_EATING, cbEatingChecked.toString());
             if (!originOfIngredients.getChipValues().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_ORIGIN, getValues(originOfIngredients));
             }
