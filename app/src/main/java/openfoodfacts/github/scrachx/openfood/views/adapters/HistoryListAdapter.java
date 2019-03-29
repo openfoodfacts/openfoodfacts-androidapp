@@ -20,6 +20,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
 import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
 
 import static org.apache.commons.lang3.StringUtils.capitalize;
@@ -54,19 +55,13 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.historyImageProgressbar.setVisibility(View.VISIBLE);
         HistoryItem item = list.get(position);
 
-        StringBuilder stringBuilder = new StringBuilder();
-        if (isNotEmpty(item.getBrands())) {
-            stringBuilder.append(capitalize(item.getBrands().split(",")[0].trim()));
-        }
 
-        if (isNotEmpty(item.getQuantity())) {
-            stringBuilder.append(" - ").append(item.getQuantity());
-        }
+        String productBrandsQuantityDetails = YourListedProducts.getProductBrandsQuantityDetails(item);
 
         //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
         holder.txtTitle.setText(item.getTitle());
         holder.txtBarcode.setText(item.getBarcode());
-        holder.txtProductDetails.setText(stringBuilder.toString());
+        holder.txtProductDetails.setText(productBrandsQuantityDetails);
         if(BuildConfig.FLAVOR.equals("opf")||BuildConfig.FLAVOR.equals("opff")||BuildConfig.FLAVOR.equals("obf")){
             holder.imgNutritionGrade.setVisibility(View.GONE);
         }

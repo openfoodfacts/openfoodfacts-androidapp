@@ -36,6 +36,18 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         return new Intent(context, ProductListsActivity.class);
     }
 
+
+    public static ProductListsDao getProducListsDaoWithDefaultList(Context context){
+        ProductListsDao  productListsDao=Utils.getDaoSession(context).getProductListsDao();
+        if(productListsDao.loadAll().size()==0) {
+            ProductLists eatenList=new ProductLists(context.getString(R.string.txt_eaten_products),0);
+            productListsDao.insert(eatenList);
+            ProductLists toBuyList=new ProductLists(context.getString(R.string.txt_products_to_buy),0);
+            productListsDao.insert(toBuyList);
+        }
+        return  productListsDao;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +56,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         setTitle(R.string.your_lists);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        productListsDao=Utils.getDaoSession(this).getProductListsDao();
-        if(productListsDao.loadAll().size()==0) {
-            ProductLists eatenList=new ProductLists(getString(R.string.txt_eaten_products),0);
-            productListsDao.insert(eatenList);
-            ProductLists toBuyList=new ProductLists(getString(R.string.txt_products_to_buy),0);
-            productListsDao.insert(toBuyList);
-        }
+        productListsDao=getProducListsDaoWithDefaultList(this);
          productLists=productListsDao.loadAll();
 
         adapter= new ProductListsAdapter(this,productLists);

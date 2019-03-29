@@ -8,11 +8,11 @@
       android:strokeAlpha="1"
       android:strokeWidth="0.46978721"
       android:fillColor="#00000000"
-      android:strokeColor="#1c72e9"
+      android:strokeColor="@color/button_link"
       android:fillAlpha="1"/>
   <path
       android:pathData="m7.2467,14.7731v1.9803h1.9803L15.0675,10.9128 13.0872,8.9325ZM16.5989,9.3814c0.206,-0.206 0.206,-0.5386 0,-0.7446L15.3632,7.4011c-0.206,-0.2059 -0.5386,-0.2059 -0.7446,0l-0.9664,0.9664 1.9803,1.9803z"
       android:strokeWidth="0.52807611"
-      android:fillColor="#1c72e9"
+      android:fillColor="@color/button_link"
       android:fillAlpha="1"/>
 </vector>

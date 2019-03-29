@@ -18,6 +18,7 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
 
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -96,14 +97,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
 
             productHolder.vProductName.setText(product.getProductName());
 
-            StringBuilder stringBuilder = new StringBuilder();
-            if (isNotEmpty(product.getBrands())) {
-                stringBuilder.append(capitalize(product.getBrands().split(",")[0].trim()));
-            }
-
-            if (isNotEmpty(product.getQuantity())) {
-                stringBuilder.append(" - ").append(product.getQuantity());
-            }
+            String brandsQuantityDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
 
             if (isNotEmpty(product.getNutritionGradeFr())) {
                 if(Utils.getSmallImageGrade(product.getNutritionGradeFr()) != 0) {
@@ -116,7 +110,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
                 productHolder.vProductGrade.setVisibility(View.INVISIBLE);
             }
 
-            productHolder.vProductDetails.setText(stringBuilder.toString());
+            productHolder.vProductDetails.setText(brandsQuantityDetails);
         }
 
     }

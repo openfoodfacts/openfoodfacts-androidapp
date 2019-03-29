@@ -68,12 +68,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
-import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
+import openfoodfacts.github.scrachx.openfood.views.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -100,7 +95,6 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
@@ -155,10 +149,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageButton compareProductButton;
     @BindView(R.id.scrollView)
     public NestedScrollView scrollView;
-    @BindView(R.id.btn_eating)
-    Button btnEating;
-    @BindView(R.id.btn_eating_ticked)
-    Button btnEatingTicked;
     @BindView(R.id.product_question_layout)
     RelativeLayout productQuestionLayout;
     @BindView(R.id.product_question_text)
@@ -280,14 +270,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         yourListedProductsDao = Utils.getAppDaoSession(getContext()).getYourListedProductDao();
-        //check if this product exists in eaten list
-        if (checkIfProductIsEaten()) {
-            btnEating.setVisibility(View.GONE);
-            btnEatingTicked.setVisibility(View.VISIBLE);
-        } else {
-            btnEating.setVisibility(View.VISIBLE);
-            btnEatingTicked.setVisibility(View.GONE);
-        }
 
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
@@ -916,75 +898,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         startActivity(intent);
     }
 
-    @OnClick(R.id.btn_eating)
-    public void onBtnEatingClick() {
-        btnEating.setVisibility(View.GONE);
-        btnEatingTicked.setVisibility(View.VISIBLE);
-        addProductToEatenList();
-    }
-
-    @OnClick(R.id.btn_eating_ticked)
-    public void onBtnEatingTickedClick() {
-        btnEating.setVisibility(View.VISIBLE);
-        btnEatingTicked.setVisibility(View.GONE);
-        removeProductFromEatenlist();
-    }
-
-    public boolean checkIfProductIsEaten() {
-        List<YourListedProduct> eatenProducts =
-            yourListedProductsDao._queryProductLists_Products(1L);
-        if (!eatenProducts.isEmpty()) {
-            for (YourListedProduct product : eatenProducts) {
-                if (product.getBarcode().equals(barcode)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public void addProductToEatenList() {
-        String barcode = product.getCode();
-        String productName = product.getProductName();
-        StringBuilder stringBuilder = new StringBuilder();
-        if (isNotEmpty(product.getBrands())) {
-            stringBuilder.append(product.getBrands());
-        }
-        if (isNotEmpty(product.getQuantity())) {
-            stringBuilder.append(" - ").append(product.getQuantity());
-        }
-        String productDetailsString = stringBuilder.toString();
-        String imageUrl = product.getImageUrl();
-        if (isNotEmpty(product.getImageUrl())) {
-            stringBuilder.append(" - ").append(product.getImageUrl());
-        }
-
-        YourListedProduct product = new YourListedProduct();
-        product.setBarcode(barcode);
-        product.setListId(1L);
-        product.setListName(getString(R.string.txt_eaten_products));
-        product.setProductName(productName);
-        product.setProductDetails(productDetailsString);
-        product.setImageUrl(imageUrl);
-        yourListedProductsDao.insertOrReplace(product);
-    }
-
-    public void removeProductFromEatenlist() {
-        YourListedProduct thisProduct = new YourListedProduct();
-        thisProduct.setBarcode(barcode);
-        thisProduct.setListId(1L);
-        List<YourListedProduct> eatenProducts =
-            yourListedProductsDao._queryProductLists_Products(1L);
-        if (!eatenProducts.isEmpty()) {
-            for (YourListedProduct product : eatenProducts) {
-                if (product.getBarcode().equals(barcode)) {
-                    thisProduct.setId(product.getId());
-                }
-            }
-        }
-        yourListedProductsDao.delete(thisProduct);
-
-    }
 
     @OnClick(R.id.action_share_button)
     public void onShareProductButtonClick() {
@@ -1029,14 +942,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String barcode = product.getCode();
         String productName = product.getProductName();
         String imageUrl = product.getImageSmallUrl();
-        StringBuilder stringBuilder = new StringBuilder();
-        if (isNotEmpty(product.getBrands())) {
-            stringBuilder.append(capitalize(product.getBrands().split(",")[0].trim()));
-        }
-        if (isNotEmpty(product.getQuantity())) {
-            stringBuilder.append(" - ").append(product.getQuantity());
-        }
-        String productDetails = stringBuilder.toString();
+        String productDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
 
         MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(activity)
                 .title(R.string.add_to_product_lists)
@@ -1045,7 +951,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         addToListDialog.show();
         View addToListView = addToListDialog.getCustomView();
         if (addToListView != null) {
-            ProductListsDao productListsDao = Utils.getDaoSession(activity).getProductListsDao();
+            ProductListsDao productListsDao =ProductListsActivity.getProducListsDaoWithDefaultList(this.getContext());
             List<ProductLists> productLists = productListsDao.loadAll();
 
             RecyclerView addToListRecyclerView =

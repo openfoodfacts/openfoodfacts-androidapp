@@ -105,6 +105,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_PURCHASE = "add_purchase_places";
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
+    //TODO to review
     private static final String PARAM_EATING = "eating";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
 
@@ -138,6 +139,8 @@ public class AddProductOverviewFragment extends BaseFragment {
     NachoTextView label;
     @BindView(R.id.period_of_time_after_opening)
     AutoCompleteTextView periodsAfterOpening;
+    @BindView(R.id.period_of_time_after_opening_til)
+    LinearLayout periodsAfterOpeningParent;
     @BindView(R.id.origin_of_ingredients)
     NachoTextView originOfIngredients;
     @BindView(R.id.origin_of_ingredients_til)
