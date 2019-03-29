@@ -23,9 +23,6 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
 import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
 
-import static org.apache.commons.lang3.StringUtils.capitalize;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
-
 public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> {
 
     private final List<HistoryItem> list;

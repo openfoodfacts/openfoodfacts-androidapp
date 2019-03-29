@@ -34,11 +34,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -174,6 +170,9 @@ public class AddProductIngredientsFragment extends BaseFragment {
             extractIngredients.setVisibility(View.VISIBLE);
         }
         loadAutoSuggestions();
+        if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
+            getAllDetails(((AddProductActivity) getActivity()).getInitialValues());
+        }
     }
 
     /**
@@ -399,15 +398,15 @@ public class AddProductIngredientsFragment extends BaseFragment {
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    public void getAllDetails() {
+    public void getAllDetails(Map<String,String> targetMap) {
         traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
             String languageCode = ((AddProductActivity) activity).getProductLanguage();
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-            ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
+            targetMap.put(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
             List<String> list = traces.getChipValues();
             String string = StringUtils.join(list, ',');
-            ((AddProductActivity) activity).addToMap(PARAM_TRACES.substring(4), string);
+            targetMap.put(PARAM_TRACES.substring(4), string);
         }
     }
 
