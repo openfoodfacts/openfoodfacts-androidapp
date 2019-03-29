@@ -20,6 +20,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnLongClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -28,41 +32,13 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.text.WordUtils;
-import org.greenrobot.greendao.async.AsyncSession;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnLongClick;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -75,8 +51,14 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAu
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.WordUtils;
+import org.greenrobot.greendao.async.AsyncSession;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
+
+import java.io.File;
+import java.util.*;
 
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
@@ -87,7 +69,6 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTH
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public class AddProductOverviewFragment extends BaseFragment {
-
     private static final String PARAM_NAME = "product_name";
     private static final String PARAM_BARCODE = "code";
     private static final String PARAM_QUANTITY = "quantity";
@@ -107,7 +88,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_COUNTRIES = "add_countries";
     private static final String PARAM_EATING = "eating";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
-
     @BindView(R.id.scrollView)
     ScrollView scrollView;
     @BindView(R.id.btnAddImageFront)
@@ -146,7 +126,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     NachoTextView originOfIngredients;
     @BindView(R.id.origin_of_ingredients_til)
     LinearLayout originOfIngredientsParent;
-
     @BindView(R.id.manufacturing_place)
     EditText manufacturingPlace;
     @BindView(R.id.manufacturing_place_til)
@@ -155,7 +134,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     NachoTextView embCode;
     @BindView(R.id.emb_code_til)
     LinearLayout embCodeParent;
-
     @BindView(R.id.link)
     EditText link;
     @BindView(R.id.link_til)
@@ -207,8 +185,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     @BindView(R.id.grey_line4)
     View greyLine4;
 
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -221,9 +197,9 @@ public class AddProductOverviewFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //checks the information about the prompt clicked and takes action accordingly
-        if(getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
+        if (getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
             categories.requestFocus();
-        }else if(getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
+        } else if (getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
             ((AddProductActivity) getActivity()).proceed();
         }
         Bundle b = getArguments();
@@ -258,7 +234,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
                 otherImage.setVisibility(View.GONE);
             }
-            if(b.getBoolean("perform_ocr")) {
+            if (b.getBoolean("perform_ocr")) {
                 ((AddProductActivity) activity).proceed();
             }
             if (b.getBoolean("send_updated")) {
@@ -269,9 +245,12 @@ public class AddProductOverviewFragment extends BaseFragment {
             activity.finish();
         }
         link.setHint(Html.fromHtml("<small><small>" +
-                getString(R.string.hint_product_URL) + "</small></small>"));
+            getString(R.string.hint_product_URL) + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
+        if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
+            getAllDetails(((AddProductActivity) getActivity()).getInitialValues());
+        }
     }
 
     /**
@@ -280,9 +259,9 @@ public class AddProductOverviewFragment extends BaseFragment {
      * @param isEnabled
      */
     private void enableFastAdditionMode(boolean isEnabled) {
-        int visibility=View.VISIBLE;
+        int visibility = View.VISIBLE;
         if (isEnabled) {
-            visibility=View.GONE;
+            visibility = View.GONE;
         }
         sectionManufacturingDetails.setVisibility(visibility);
         sectionPurchasingDetails.setVisibility(visibility);
@@ -310,20 +289,20 @@ public class AddProductOverviewFragment extends BaseFragment {
             mImageUrl = product.getImageFrontUrl();
             imageProgress.setVisibility(View.VISIBLE);
             Picasso.with(getContext())
-                    .load(product.getImageFrontUrl())
-                    .resize(dpsToPixels(), dpsToPixels())
-                    .centerInside()
-                    .into(imageFront, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            imageProgress.setVisibility(View.GONE);
-                        }
+                .load(product.getImageFrontUrl())
+                .resize(dpsToPixels(), dpsToPixels())
+                .centerInside()
+                .into(imageFront, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        imageProgress.setVisibility(View.GONE);
+                    }
 
-                        @Override
-                        public void onError() {
-                            imageProgress.setVisibility(View.GONE);
-                        }
-                    });
+                    @Override
+                    public void onError() {
+                        imageProgress.setVisibility(View.GONE);
+                    }
+                });
         }
         if (product.getLang() != null && !product.getLang().isEmpty()) {
             setProductLanguage(product.getLang());
@@ -392,63 +371,61 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             //Also add the country set by the user in preferences
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String savedCountry = sharedPref.getString("user_country","");
+            String savedCountry = sharedPref.getString("user_country", "");
             if (!savedCountry.isEmpty()) {
                 chipValues.add(savedCountry);
             }
             countriesWhereSold.setText(chipValues);
         }
-        //disabling fields in edit/add mode
-        /*if (product.getOtherInformation() != null && !product.getOtherInformation().isEmpty()) {
-            otherInfo.setText(product.getOtherInformation());
-        }
-        if (product.getConservationConditions() != null && !product.getConservationConditions().isEmpty()) {
-            conservationCond.setText(product.getConservationConditions());
-        }
-        if (product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
-            recyclingInstructionToDiscard.setText(product.getRecyclingInstructionsToDiscard());
-        }
-        if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
-            recyclingInstructionToRecycle.setText(product.getRecyclingInstructionsToRecycle());
-        }*/
+
     }
 
     /**
      * @param languageCode 2 letter language code. example hi, en etc.
-     * @param tag          the complete tag. example en:india
+     * @param tag the complete tag. example en:india
      * @return returns the name of the country if found in the db or else returns the tag itself.
      */
     private String getCountryName(String languageCode, String tag) {
-        CountryName countryName = mCountryNameDao.queryBuilder().where(CountryNameDao.Properties.CountyTag.eq(tag), CountryNameDao.Properties.LanguageCode.eq(languageCode)).unique();
-        if (countryName != null) return countryName.getName();
+        CountryName countryName = mCountryNameDao.queryBuilder().where(CountryNameDao.Properties.CountyTag.eq(tag), CountryNameDao.Properties.LanguageCode.eq(languageCode))
+            .unique();
+        if (countryName != null) {
+            return countryName.getName();
+        }
         return tag;
     }
 
     /**
      * @param languageCode 2 letter language code. example de, en etc.
-     * @param tag          the complete tag. example de:hoher-omega-3-gehalt
+     * @param tag the complete tag. example de:hoher-omega-3-gehalt
      * @return returns the name of the label if found in the db or else returns the tag itself.
      */
     private String getLabelName(String languageCode, String tag) {
         LabelName labelName = mLabelNameDao.queryBuilder().where(LabelNameDao.Properties.LabelTag.eq(tag), LabelNameDao.Properties.LanguageCode.eq(languageCode)).unique();
-        if (labelName != null) return labelName.getName();
+        if (labelName != null) {
+            return labelName.getName();
+        }
         return tag;
     }
 
     /**
      * @param languageCode 2 letter language code. example en, fr etc.
-     * @param tag          the complete tag. example en:plant-based-foods-and-beverages
+     * @param tag the complete tag. example en:plant-based-foods-and-beverages
      * @return returns the name of the category (example Plant-based foods and beverages) if found in the db or else returns the tag itself.
      */
     private String getCategoryName(String languageCode, String tag) {
-        CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.CategoryTag.eq(tag), CategoryNameDao.Properties.LanguageCode.eq(languageCode)).unique();
-        if (categoryName != null) return categoryName.getName();
+        CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.CategoryTag.eq(tag), CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+            .unique();
+        if (categoryName != null) {
+            return categoryName.getName();
+        }
         return tag;
     }
 
     private String getEmbCode(String embTag) {
         Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
-        if (tag != null) return tag.getName();
+        if (tag != null) {
+            return tag.getName();
+        }
         return embTag;
     }
 
@@ -462,20 +439,20 @@ public class AddProductOverviewFragment extends BaseFragment {
                 imageProgress.setVisibility(View.VISIBLE);
                 mImageUrl = productDetails.get("image_front");
                 Picasso.with(getContext())
-                        .load("file://" + mImageUrl)
-                        .resize(dpsToPixels(), dpsToPixels())
-                        .centerInside()
-                        .into(imageFront, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                imageProgress.setVisibility(View.GONE);
-                            }
+                    .load("file://" + mImageUrl)
+                    .resize(dpsToPixels(), dpsToPixels())
+                    .centerInside()
+                    .into(imageFront, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
 
-                            @Override
-                            public void onError() {
-                                imageProgress.setVisibility(View.GONE);
-                            }
-                        });
+                        @Override
+                        public void onError() {
+                            imageProgress.setVisibility(View.GONE);
+                        }
+                    });
             }
             if (productDetails.get(PARAM_LANGUAGE) != null) {
                 setProductLanguage(productDetails.get(PARAM_LANGUAGE));
@@ -531,7 +508,6 @@ public class AddProductOverviewFragment extends BaseFragment {
                 List<String> chipValues = Arrays.asList(productDetails.get(PARAM_COUNTRIES).split("\\s*,\\s*"));
                 countriesWhereSold.setText(chipValues);
             }
-
         }
     }
 
@@ -554,14 +530,14 @@ public class AddProductOverviewFragment extends BaseFragment {
         CategoryNameDao categoryNameDao = daoSession.getCategoryNameDao();
 
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
-                .where(CountryNameDao.Properties.LanguageCode.eq(appLanguageCode))
-                .orderDesc(CountryNameDao.Properties.Name).build());
+            .where(CountryNameDao.Properties.LanguageCode.eq(appLanguageCode))
+            .orderDesc(CountryNameDao.Properties.Name).build());
         asyncSessionLabels.queryList(labelNameDao.queryBuilder()
-                .where(LabelNameDao.Properties.LanguageCode.eq(appLanguageCode))
-                .orderDesc(LabelNameDao.Properties.Name).build());
+            .where(LabelNameDao.Properties.LanguageCode.eq(appLanguageCode))
+            .orderDesc(LabelNameDao.Properties.Name).build());
         asyncSessionCategories.queryList(categoryNameDao.queryBuilder()
-                .where(CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode))
-                .orderDesc(CategoryNameDao.Properties.Name).build());
+            .where(CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode))
+            .orderDesc(CategoryNameDao.Properties.Name).build());
 
         asyncSessionCountries.setListenerMainThread(operation -> {
             @SuppressWarnings("unchecked")
@@ -571,7 +547,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 countries.add(countryNames.get(i).getName());
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
-                    android.R.layout.simple_dropdown_item_1line, countries);
+                android.R.layout.simple_dropdown_item_1line, countries);
             EmbCodeAutoCompleteAdapter customAdapter = new EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
             originOfIngredients.setAdapter(adapter);
             countryWherePurchased.setAdapter(adapter);
@@ -586,7 +562,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 labels.add(labelNames.get(i).getName());
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
-                    android.R.layout.simple_dropdown_item_1line, labels);
+                android.R.layout.simple_dropdown_item_1line, labels);
             label.setAdapter(adapter);
         });
         asyncSessionCategories.setListenerMainThread(operation -> {
@@ -597,7 +573,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 category.add(categoryNames.get(i).getName());
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
-                    android.R.layout.simple_dropdown_item_1line, category);
+                android.R.layout.simple_dropdown_item_1line, category);
             categories.setAdapter(adapter);
         });
         if (BuildConfig.FLAVOR.equals("obf")) {
@@ -619,38 +595,38 @@ public class AddProductOverviewFragment extends BaseFragment {
             OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
             client.getExistingProductDetails(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new SingleObserver<State>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-                            name.setText(getString(R.string.txtLoading));
-                        }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<State>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        name.setText(getString(R.string.txtLoading));
+                    }
 
-                        @Override
-                        public void onSuccess(State state) {
-                            if (state.getStatus() == 1) {
-                                if (state.getProduct().getProductName(lang) != null) {
-                                    if (languageCode.equals(lang)) {
-                                        name.setText(state.getProduct().getProductName(lang));
-                                        if (activity instanceof AddProductActivity) {
-                                            ((AddProductActivity) activity).setIngredients("set", state.getProduct().getIngredientsText(lang));
-                                        }
-                                    }
-                                } else {
-                                    name.setText(null);
+                    @Override
+                    public void onSuccess(State state) {
+                        if (state.getStatus() == 1) {
+                            if (state.getProduct().getProductName(lang) != null) {
+                                if (languageCode.equals(lang)) {
+                                    name.setText(state.getProduct().getProductName(lang));
                                     if (activity instanceof AddProductActivity) {
-                                        ((AddProductActivity) activity).setIngredients("set", null);
+                                        ((AddProductActivity) activity).setIngredients("set", state.getProduct().getIngredientsText(lang));
                                     }
+                                }
+                            } else {
+                                name.setText(null);
+                                if (activity instanceof AddProductActivity) {
+                                    ((AddProductActivity) activity).setIngredients("set", null);
                                 }
                             }
                         }
+                    }
 
-                        @Override
-                        public void onError(Throwable e) {
-                            name.setText(null);
-                        }
-                    });
+                    @Override
+                    public void onError(Throwable e) {
+                        name.setText(null);
+                    }
+                });
         }
     }
 
@@ -659,7 +635,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         super.onAttach(context);
         activity = getActivity();
     }
-
 
     @OnClick(R.id.btn_next)
     void next() {
@@ -682,8 +657,8 @@ public class AddProductOverviewFragment extends BaseFragment {
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(activity, imageFront,
-                                activity.getString(R.string.product_transition));
+                    makeSceneTransitionAnimation(activity, imageFront,
+                        activity.getString(R.string.product_transition));
                 startActivity(intent, options.toBundle());
             } else {
                 startActivity(intent);
@@ -724,36 +699,35 @@ public class AddProductOverviewFragment extends BaseFragment {
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    public void getAllDetails() {
+    public void getAllDetails(Map<String, String> targetMap) {
         chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
-            ((AddProductActivity) activity).addToMap(PARAM_BARCODE, code);
-            ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
-            ((AddProductActivity) activity).addToMap(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
+            targetMap.put(PARAM_BARCODE, code);
+            targetMap.put(PARAM_LANGUAGE, languageCode);
+            targetMap.put(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-            ((AddProductActivity) activity).addToMap(PARAM_NAME + "_" + lc, name.getText().toString());
-            ((AddProductActivity) activity).addToMap(PARAM_QUANTITY, quantity.getText().toString());
-            ((AddProductActivity) activity).addToMap(PARAM_BRAND.substring(4), getValues(brand));
-            ((AddProductActivity) activity).addToMap(PARAM_PACKAGING.substring(4), getValues(packaging));
-            ((AddProductActivity) activity).addToMap(PARAM_CATEGORIES.substring(4), getValues(categories));
-            ((AddProductActivity) activity).addToMap(PARAM_LABELS.substring(4), getValues(label));
+            targetMap.put(PARAM_NAME + "_" + lc, name.getText().toString());
+            targetMap.put(PARAM_QUANTITY, quantity.getText().toString());
+            targetMap.put(PARAM_BRAND.substring(4), getValues(brand));
+            targetMap.put(PARAM_PACKAGING.substring(4), getValues(packaging));
+            targetMap.put(PARAM_CATEGORIES.substring(4), getValues(categories));
+            targetMap.put(PARAM_LABELS.substring(4), getValues(label));
             if (BuildConfig.FLAVOR.equals("obf")) {
-                ((AddProductActivity) activity).addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
+                targetMap.put(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
             }
-            if(mImageUrl!=null){
-                ((AddProductActivity) activity).addToMap("imageUrl", mImageUrl);
+            if (mImageUrl != null) {
+                targetMap.put("imageUrl", mImageUrl);
             }
             Boolean cbEatingChecked = cbEating.isChecked();
-            ((AddProductActivity) activity).addToMap(PARAM_EATING, cbEatingChecked.toString());
-            ((AddProductActivity) activity).addToMap(PARAM_ORIGIN.substring(4), getValues(originOfIngredients));
-            ((AddProductActivity) activity).addToMap(PARAM_MANUFACTURING_PLACE.substring(4), manufacturingPlace.getText().toString());
-            ((AddProductActivity) activity).addToMap(PARAM_EMB_CODE.substring(4), getValues(embCode));
-            ((AddProductActivity) activity).addToMap(PARAM_LINK, link.getText().toString());
-            ((AddProductActivity) activity).addToMap(PARAM_PURCHASE.substring(4), getValues(countryWherePurchased));
-            ((AddProductActivity) activity).addToMap(PARAM_STORE.substring(4), getValues(stores));
-            ((AddProductActivity) activity).addToMap(PARAM_COUNTRIES.substring(4), getValues(countriesWhereSold));
+            targetMap.put(PARAM_EATING, cbEatingChecked.toString());
+            targetMap.put(PARAM_ORIGIN.substring(4), getValues(originOfIngredients));
+            targetMap.put(PARAM_MANUFACTURING_PLACE.substring(4), manufacturingPlace.getText().toString());
+            targetMap.put(PARAM_EMB_CODE.substring(4), getValues(embCode));
+            targetMap.put(PARAM_LINK, link.getText().toString());
+            targetMap.put(PARAM_PURCHASE.substring(4), getValues(countryWherePurchased));
+            targetMap.put(PARAM_STORE.substring(4), getValues(stores));
+            targetMap.put(PARAM_COUNTRIES.substring(4), getValues(countriesWhereSold));
         }
-
     }
 
     /**
@@ -793,7 +767,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (!periodsAfterOpening.getText().toString().isEmpty()) {
                 ((AddProductActivity) activity).addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
             }
-            if(mImageUrl!=null){
+            if (mImageUrl != null) {
                 ((AddProductActivity) activity).addToMap("imageUrl", mImageUrl);
             }
             Boolean cbEatingChecked = cbEating.isChecked();
@@ -856,7 +830,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         linkParent.setVisibility(visibility);
         linkHint.setVisibility(visibility);
         linkHint2.setVisibility(visibility);
-
     }
 
     @OnClick(R.id.section_purchasing_details)
@@ -880,9 +853,9 @@ public class AddProductOverviewFragment extends BaseFragment {
     @OnClick(R.id.hint_emb_code)
     void toastEmbCodeHint() {
         new MaterialDialog.Builder(activity)
-                .content(R.string.hint_emb_codes)
-                .positiveText(R.string.ok_button)
-                .show();
+            .content(R.string.hint_emb_codes)
+            .positiveText(R.string.ok_button)
+            .show();
     }
 
     @OnClick(R.id.hint_link)
@@ -928,18 +901,18 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
         }
         new MaterialDialog.Builder(activity)
-                .title(R.string.preference_choose_language_dialog_title)
-                .items(finalLocalLabels)
-                .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
-                    name.setText(null);
-                    if (activity instanceof AddProductActivity) {
-                        ((AddProductActivity) activity).setIngredients("set", null);
-                    }
-                    setProductLanguage(finalLocalValues.get(which));
-                    return true;
-                })
-                .positiveText(R.string.ok_button)
-                .show();
+            .title(R.string.preference_choose_language_dialog_title)
+            .items(finalLocalLabels)
+            .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
+                name.setText(null);
+                if (activity instanceof AddProductActivity) {
+                    ((AddProductActivity) activity).setIngredients("set", null);
+                }
+                setProductLanguage(finalLocalValues.get(which));
+                return true;
+            })
+            .positiveText(R.string.ok_button)
+            .show();
     }
 
     public boolean areRequiredFieldsEmpty() {
@@ -975,7 +948,6 @@ public class AddProductOverviewFragment extends BaseFragment {
                 if (activity instanceof AddProductActivity) {
                     ((AddProductActivity) activity).addToPhotoMap(image, position);
                 }
-
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Log.e("Crop image error", result.getError().toString());
             }
@@ -995,10 +967,10 @@ public class AddProductOverviewFragment extends BaseFragment {
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
                 CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                        .setAllowFlipping(false)
-                        .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                        .setOutputUri(Utils.getOutputPicUri(getContext()))
-                        .start(activity.getApplicationContext(), AddProductOverviewFragment.this);
+                    .setAllowFlipping(false)
+                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                    .setOutputUri(Utils.getOutputPicUri(getContext()))
+                    .start(activity.getApplicationContext(), AddProductOverviewFragment.this);
             }
         });
     }
@@ -1007,7 +979,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageFront.setVisibility(View.INVISIBLE);
-
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
@@ -1016,10 +987,10 @@ public class AddProductOverviewFragment extends BaseFragment {
         imageFront.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
             Picasso.with(activity)
-                    .load(photoFile)
-                    .resize(dpsToPixels(), dpsToPixels())
-                    .centerInside()
-                    .into(imageFront);
+                .load(photoFile)
+                .resize(dpsToPixels(), dpsToPixels())
+                .centerInside()
+                .into(imageFront);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();

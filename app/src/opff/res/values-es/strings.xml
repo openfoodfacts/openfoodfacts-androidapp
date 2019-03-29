@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-es.openpetfoodfacts.org/contribuyente/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/términos-de-uso</string>
-    <string name="txtHomeOnline">Open Pet Food Facts es una base de datos de más de %1$d de productos de alimento para mascotas (más los que tu/usted contribuya) con ingredientes, alérgenos, rasgos distintivos y todos los pedacitos de información que podamos encontrar en las etiquetas de producto de alimento para mascotas. Guau. Guau.</string>
-    <string name="txtHome">Open Pet Food Facts es una base de datos de productos alimenticios para mascotas con ingredientes, alérgenos, indicios y toda la información que podemos encontrar en las etiquetas de los alimentos para mascotas. Guau. Guau.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts es una base de datos de más de %1$d productos de alimento para mascotas (más los que tu/usted contribuya) Guau. Guau.</string>
+    <string name="txtHome">Open Pet Food Facts es una base de datos de productos de alimento para mascotas con ingredientes, datos nutricionales... Guau. Guau.</string>
     <string name="slide_1_title">Contribuye a la transparencia en la alimentación de las mascotas</string>
     <string name="slide_1_desc">Escanea productos, capturalos en foto y has que la transparencia de la comida suceda</string>
     <string name="slide_2_title">Obtener los datos</string>
