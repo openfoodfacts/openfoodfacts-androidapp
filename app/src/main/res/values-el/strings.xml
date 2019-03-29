@@ -25,6 +25,7 @@
     <string name="text_barcode">Πληκτρολογήστε το barcode:</string>
     <string name="message_in_activity_save_product_offline">Μόνο μία φωτογραφία είναι υποχρεωτική για να στείλετε ένα νέο προϊόν.</string>
     <string name="product_incomplete_message">Αυτό το προϊόν δεν έχει ολοκληρωθεί. Ως αποτέλεσμα, δεν μπορούσαμε να κάνουμε τον έλεγχο των αλλεργιογόνων.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Είστε έτοιμοι</string>
     <string name="first_offline">Τα προϊόντα που προστέθηκαν εκτός σύνδεσης θα εμφανιστούν εδώ</string>
     <!-- Image Upload -->
@@ -435,7 +436,7 @@
     <string name="cocoa">Κακάο</string>
     <string name="chlorophyl">Χλωροφύλλη</string>
     <string name="take_picture_ingredients">Φωτογραφήστε τα συστατικά</string>
-    <string name="take_picture_front">Take a picture of the front</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Τραβήξτε περισσότερες φωτογραφίες</string>
     <string name="txtSaturatedFat">Κορεσμένα λιπαρά</string>
@@ -480,6 +481,7 @@
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Προτιμήσεις</string>
     <string name="device_on_mobile_data_warning_negative">Αποστολή με Δεδομένα</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Επιλογή γλώσσας</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
@@ -488,7 +490,7 @@
     <string name="please_check_your_connection">Παρακαλώ ελέγξτε τη σύνδεσή σας στο internet.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Σύνθετη αναζήτηση &amp; Σχεδιαγράμματα</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Παρακαλώ ελέγξτε τη σύνδεσή σας στο internet</string>
     <string name="dismiss">Απόρριψη</string>
     <string name="Terms">Όροι</string>
@@ -552,7 +554,7 @@
     <string name="by_time">Πρόσφατα προβεβλημένα</string>
     <string name="sort">Ταξινόμηση</string>
     <string name="by_nutrition_grade">Διατροφική αξιολόγηση</string>
-    <string name="sort_by">Ταξινόμηση κατά</string>
+    <string name="sort_by">Ταξινομήστε ανά</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Shake phone to scan products</string>
@@ -653,7 +655,7 @@
     <string name="nutrition_facts_not_specified">Τα διατροφικά δεδομένα δεν αναγράφονται σε αυτό το προϊόν</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">Για 100γρ/100ml</string>
-    <string name="per_serving">Ανά Μερίδα</string>
+    <string name="per_serving">Ανά μερίδα</string>
     <string name="serving_size">Μέγεθος μερίδας</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Προσθέστε ένα θρεπτικό συστατικό</string>
@@ -790,7 +792,19 @@
     <string name="txt_no_nutrition_data">Το προϊόν αυτό δεν περιέχει πληροφορίες διατροφής στη συσκευασία. Αν αυτό Δεν ισχύει, μπορείτε να επεξεργαστείτε το προϊόν.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Επεξεργασία</string>
+    <string name="product_summary_action_share_button_label">Κοινοποίηση</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Ναι</string>
+    <string name="product_question_negative_response">Όχι</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

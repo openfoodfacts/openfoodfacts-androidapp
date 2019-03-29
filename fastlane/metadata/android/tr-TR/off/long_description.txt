@@ -1,35 +1,76 @@
 İçerikler, katkı maddeleri ve beslenme gerçekleriyle ilgili bilgi almak için gıda ürünlerini veya barkodlarını okutun.
 
-Uygulama, hali hazırda ücretsiz ve açık veritabanı olan Open Food Facts'teki 547.000 ürünü (175.000 ABD ürünü dahil) görüntülemeyi ve eksik olan ürünler için fotoğraf ve bilgi eklemeyi sağlıyor.
+▶ Find & Compare more than 800.000 products
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
 
 
-Gıda Şeffaflığına Katkıda Bulunun
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
+▶ Choose the products that are good for you
+- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
+- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+- You can easily compare as many products as you want, side by side by simply scanning them. 
+
+▶ And good for the planet!
+- The carbon impact of your food
+- Get a sense of how much of your daily carbon quota you're using for food
+- Based on the footprints computed for France by ADEME.
+- Join us and help us to bring the Carbon Impact to your country!
+- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+
+
+▶ Contribute to Food Transparency
 -Open Food Facts, herkes tarafından herkes için oluşturulan bir gıda ürünleri veritabanıdır.
 -Daha iyi gıda tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
--Open Food Facts dünyanın dört bir yanından, binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
--Bugün gıda dolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz. 
+-Open Food Facts dünyanın dört bir yanından, binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta.
+- You can start contributing today by adding a product from your fridge.
 
-***Gerçekleri Öğrenin***
--Open Food Facts size, ürün etiketlerindeki satır aralarını daha iyi anlayabilmenizde yardımcı olur. Bulabilecekleriniz (ürünlerin üzerinde belirtilenlere göre) şunlardır:
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
+
+▶ Get the Facts
+-Open Food Facts size, ürün etiketlerindeki satır aralarını daha iyi anlayabilmenizde yardımcı olur. You will be able to find:
 -karbon ayakizi (CO2 salınımı) ve paketleme (geri dönüşüm talimatları vb.),
 -Nutriscore (besleyicilik değeri), besinler, yağ/yağ içeriği, doymuş yağ asitleri, karbonhidratlar, şekerler, lif, protein ve tuz ve sodyum.
 - markalar, alerjenler, etiketler (biyo, glutensiz, vegan, vejetaryen, helal, koşer...), izlenebilirlik bilgileri (ambalaj kodları, malzemelerin kaynağı)
 -Şaraplarda ve biralarda alkol içeriğini bulacaksınız.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your food, your data ***
+▶ Based on Science, helping back Science!
+
+- We don't make up things. We rely on peer-reviewed science.
+- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+- You can get a synthesis of EFSA exposure levels on food additives.
+- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+
+
+▶ Offline Scan: Scan in ANY condition! (coming soon)
+Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+
+- The whole planet, in your pocket !
+- You can add new products, even if you don't have an Internet connection right now.
+- The app loads only the strict necessary to reduce data and battery consumption.
+
+▶ Your food, your data
 - Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
+▶ Set up allergen alerts on products
+- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+
+
+▶ Say hello and/or join us!
+
+
 Open Food Facts aynı zamanda https://world.openfoodfacts.org internet adresinde mevcuttur.
+
+
 Sorular, geri bildirim : contact@openfoodfacts.org
+
 
 Kozmetik için Open Beauty Facts, evcil hayvan gıdaları için Open Pet Food Facts yüklenebilir. Geri kalan her şey için, Open Products Facts.

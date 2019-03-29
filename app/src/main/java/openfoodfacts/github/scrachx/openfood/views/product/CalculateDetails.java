@@ -7,7 +7,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -22,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.CalculateAdapter;
@@ -182,38 +182,9 @@ public class CalculateDetails extends BaseActivity {
     }
 
     private String calculateCalories(float weight, String unit) {
-        float caloriePer100g, weightInG;
-        caloriePer100g = Float.valueOf(Utils.getEnergy(p.getNutriments().get(Nutriments.ENERGY).getFor100gInUnits()));
-        switch (unit) {
-            case "mg":
-                weightInG = weight / 1000;
-                break;
-            case "kg":
-                weightInG = weight * 1000;
-                break;
-            case "l":
-                weightInG = weight * 1000;
-                break;
-            case "cl":
-                weightInG = weight * 10;
-                break;
-            default:
-                weightInG = weight;
-                break;
-        }
-        String snew = Float.toString(((caloriePer100g / 100) * weightInG));
-        return snew;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem share_item = menu.findItem(R.id.menu_item_share);
-        share_item.setVisible(false);
-        MenuItem edit_product = menu.findItem(R.id.action_edit_product);
-        edit_product.setVisible(false);
-        MenuItem calculate = menu.findItem(R.id.action_facts);
-        calculate.setVisible(false);
-        return true;
+        float caloriePer100g = Float.valueOf(Utils.getEnergy(p.getNutriments().get(Nutriments.ENERGY).getFor100gInUnits()));
+        float weightInG= UnitUtils.convertToGrams(weight,unit);
+        return Float.toString(((caloriePer100g / 100) * weightInG));
     }
 
 
@@ -229,12 +200,6 @@ public class CalculateDetails extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_product, menu);
-        return true;
     }
 }
 

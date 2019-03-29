@@ -25,6 +25,7 @@
     <string name="text_barcode">Idatzi barra-kodea :</string>
     <string name="message_in_activity_save_product_offline">Argazki bakarra da beharrezkoa produktu berri bat bidaltzeko.</string>
     <string name="product_incomplete_message">Produktu hau ez dago osatuta. Ondorioz, ezin izan dugu alergenoen egiaztapena egin.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Bukatu duzu</string>
     <string name="first_offline">Offline gehitutako produktuak hemen agertuko dira</string>
     <!-- Image Upload -->
@@ -435,7 +436,7 @@
     <string name="cocoa">Kokoa</string>
     <string name="chlorophyl">Klorofila</string>
     <string name="take_picture_ingredients">Atera osagaien argazki bat</string>
-    <string name="take_picture_front">Atera aurrearen argazki bat</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Atera elikagai-taularen argazki bat</string>
     <string name="take_more_pictures">Atera argazki gehiago</string>
     <string name="txtSaturatedFat">Gantz saturatua</string>
@@ -480,6 +481,7 @@
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Hobespenak</string>
     <string name="device_on_mobile_data_warning_negative">Igo hala ere</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Aukeratu hizkuntza</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Ohiko galderak</string>
@@ -488,7 +490,7 @@
     <string name="please_check_your_connection">Egiaztatu zure konexioa.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Please check your internet connection</string>
     <string name="dismiss">Baztertu</string>
     <string name="Terms">Baldintzak</string>
@@ -552,7 +554,7 @@
     <string name="by_time">Ikusitako azkenak</string>
     <string name="sort">Ordenatu</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Ordenatzeko irizpidea</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Astindu telefonoa produktuak eskaneatzeko</string>
@@ -653,7 +655,7 @@
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="per_serving">Per serving</string>
     <string name="serving_size">Serving size</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
@@ -790,7 +792,19 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Editatu</string>
+    <string name="product_summary_action_share_button_label">Partekatu</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Bai</string>
+    <string name="product_question_negative_response">Ez</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

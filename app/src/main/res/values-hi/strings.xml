@@ -25,6 +25,7 @@
     <string name="text_barcode">बारकोड</string>
     <string name="message_in_activity_save_product_offline">एक नया उत्पाद भेजने के लिए केवल एक फोटो अनिवार्य है</string>
     <string name="product_incomplete_message">यह उत्पाद पूर्ण नहीं है। नतीजतन, हम एलर्जी की जांच नहीं कर सके</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">आप सब कर चुके हैं</string>
     <string name="first_offline">ऑफ़लाइन ऐड किये गए उत्पाद यहां दिखाई देंगे</string>
     <!-- Image Upload -->
@@ -435,7 +436,7 @@
     <string name="cocoa">कोकोआ</string>
     <string name="chlorophyl">क्लोरोफिल</string>
     <string name="take_picture_ingredients">सामग्रियों की एक छायाचित्र लीजिए</string>
-    <string name="take_picture_front">सामने की तस्वीर ले</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">पोषण तालिका की एक तस्वीर लें</string>
     <string name="take_more_pictures">और तस्वीरें लें</string>
     <string name="txtSaturatedFat">संतृप्त वसा</string>
@@ -480,6 +481,7 @@
     <string name="device_on_mobile_data_warning_message">मोबाइल डेटा पर अपलोड अक्षम है, कृपया वाईफाई से कनेक्ट करें या वरीयताओं में इसे बदलें</string>
     <string name="device_on_mobile_data_warning_positive">प्राथमिकताएँ</string>
     <string name="device_on_mobile_data_warning_negative">ऐसे ही अपलोड करें</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">भाषा चुनें</string>
     <string name="FAQ">ऍफ़ ऐ क्यू</string>
     <string name="FrequentlyAskedQuestions">अक्सर पूछे जाने वाले सवाल</string>
@@ -488,7 +490,7 @@
     <string name="please_check_your_connection">कृपया अपना कनेक्शन जाँचें</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">उन्नत खोज और चार्ट्स</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">कृपया अपना इंटरनेट कनेक्शन जाँचें।</string>
     <string name="dismiss">ख़ारिज करें</string>
     <string name="Terms">शर्तें</string>
@@ -552,7 +554,7 @@
     <string name="by_time">हाल ही में देखे गए</string>
     <string name="sort">क्रम</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Sort By</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Shake phone to scan products</string>
@@ -790,7 +792,14 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">संपादित करें</string>
+    <string name="product_summary_action_share_button_label">शेयर</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

@@ -29,6 +29,7 @@
     <string name="text_barcode">Ievadi svītrkodu:</string>
     <string name="message_in_activity_save_product_offline">Vismaz viens attēls ir nepieciešams, lai pievienotu jaunu produktu.</string>
     <string name="product_incomplete_message">Visa nepieciešamā informācija par šo produktu nav pieejama, tāpēc nav iespējams veikt alergēnu pārbaudi.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Viss gatavs</string>
     <string name="first_offline">Šeit parādīsies produkti, kuri pievienoti bezsaistē</string>
     <!-- Image Upload -->
@@ -439,7 +440,7 @@
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Hlorofils</string>
     <string name="take_picture_ingredients">Nofotografēt sastāvdaļas</string>
-    <string name="take_picture_front">Nofotografēt iepakojumu</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Fotografēt uzturvērtības tabulu</string>
     <string name="take_more_pictures">Uzņemt papildus fotogrāfijas</string>
     <string name="txtSaturatedFat">Piesātinātie tauki</string>
@@ -484,6 +485,7 @@
     <string name="device_on_mobile_data_warning_message">Augšupielāde mobilajos datos ir atspējota, lūdzu, izveidojiet savienojumu ar WiFi vai mainiet to preferencēs</string>
     <string name="device_on_mobile_data_warning_positive">Iestatījumi</string>
     <string name="device_on_mobile_data_warning_negative">Vienmēr augšupielādēt</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Izvēlies valodu</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Bieži uzdotie jautājumi</string>
@@ -492,7 +494,7 @@
     <string name="please_check_your_connection">Lūdzu, pārbaudiet savu savienojumu.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Izvērstā meklēšana &amp; Diagrammas</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Salīdzināt produktus</string>
     <string name="connectivity_check">Lūdzu, pārbaudiet savu interneta savienojumu</string>
     <string name="dismiss">Atcelt</string>
     <string name="Terms">Noteikumi</string>
@@ -556,7 +558,7 @@
     <string name="by_time">Nesen skatīts</string>
     <string name="sort">Kārtot</string>
     <string name="by_nutrition_grade">Uztura pakāpe</string>
-    <string name="sort_by">Kārtot pēc</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Lai produktu skenētu, sakratiet tālruni</string>
@@ -657,7 +659,7 @@
     <string name="nutrition_facts_not_specified">Uz produkta nav norādīti uztura fakti.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per Serving</string>
+    <string name="per_serving">Uz porciju</string>
     <string name="serving_size">Porcijas lielums</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
@@ -794,7 +796,14 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Pievienot produktu</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Rediģēt</string>
+    <string name="product_summary_action_share_button_label">Dalīties</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

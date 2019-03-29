@@ -5,6 +5,7 @@ import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
@@ -24,6 +25,7 @@ public class ProductRepository implements IProductRepository {
 
     private ProductApiService productApi;
     private OpenFoodAPIService openFooApi;
+    private RobotoffAPIService robotoffApi;
 
     private Database db;
     private LabelDao labelDao;
@@ -49,6 +51,7 @@ public class ProductRepository implements IProductRepository {
     private ProductRepository() {
         productApi = CommonApiManager.getInstance().getProductApiService();
         openFooApi = CommonApiManager.getInstance().getOpenFoodApiService();
+        robotoffApi = CommonApiManager.getInstance().getRobotoffApiService();
 
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         db = daoSession.getDatabase();
@@ -143,7 +146,7 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Category>> getCategories(Boolean refresh) {
-        if (refresh || tableIsEmpty(countryDao)) {
+        if (refresh || tableIsEmpty(categoryDao)) {
             return productApi.getCategories()
                     .map(CategoriesWrapper::map);
         } else {
@@ -554,5 +557,22 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Boolean additivesIsEmpty() {
         return tableIsEmpty(additiveDao);
+    }
+
+    @Override
+    public Single<Question> getSingleProductQuestion(String code, String lang) {
+        return robotoffApi.getProductQuestion(code, lang, 1)
+                .map(QuestionsState::getQuestions)
+                .map(questions -> {
+                    if (!questions.isEmpty()) {
+                        return questions.get(0);
+                    }
+                    return null;
+                });
+    }
+
+    @Override
+    public Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation) {
+        return robotoffApi.annotateInsight(insightId, annotation);
     }
 }

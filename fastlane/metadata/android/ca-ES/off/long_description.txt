@@ -1,35 +1,76 @@
 Escanegeu productes alimentaris o el seu codi de barres per conèixer els seus ingredients, additius i dades nutricionals.
 
-L'aplicació permet visualitzar els 547.000 productes (incloent-hi 175.000 als Estats Units) que ja figuren a la base de dades Open Food Facts i també afegir imatges i dades dels productes que falten.
+▶ Find & Compare more than 800.000 products
 
-Per descobrir el projecte Open Food Facts, visiteu https://es-ca.openfoodfacts.org
+The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
 
 
-*** Contribuïu a la Transparència alimentària ***
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
+▶ Choose the products that are good for you
+- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
+- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+- You can easily compare as many products as you want, side by side by simply scanning them. 
+
+▶ And good for the planet!
+- The carbon impact of your food
+- Get a sense of how much of your daily carbon quota you're using for food
+- Based on the footprints computed for France by ADEME.
+- Join us and help us to bring the Carbon Impact to your country!
+- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+
+
+▶ Contribute to Food Transparency
 - Open Food Facts és una base de dades de productes alimentaris creada per tothom, per a tothom.
 - Podeu utilitzar-la per a millorar la vostra selecció alimentària i, com que les dades són obertes, qualsevol persona pot tornar-la a utilitzar per a qualsevol propòsit.
-- Open Food Facts és un projecte sense ànim de lucre, desenvolupat per milers de persones voluntàries de tot el món. Tenim molts projectes interessants en els que hi podeu contribuir de moltes maneres diferents. 
-- Podeu començar a contribuir avui mateix, afegint un producte del vostre rebost. 
+- Open Food Facts és un projecte sense ànim de lucre, desenvolupat per milers de persones voluntàries de tot el món. Tenim molts projectes interessants en els que hi podeu contribuir de moltes maneres diferents.
+- You can start contributing today by adding a product from your fridge.
 
-*** Obteniu les Dades ***
-- Open Food Facts us ajuda a entendre la lletra petita que hi ha en les etiquetes dels productes. Podreu trobar-hi (d'acord amb les indicacions existents en els productes):
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
+
+▶ Get the Facts
+- Open Food Facts us ajuda a entendre la lletra petita que hi ha en les etiquetes dels productes. You will be able to find:
 - l'empremta de carboni (emissions de CO2) i envasos (així com les instruccions per al reciclatge),
 - Nutriscore (la puntuació nutricional), nutrients, greixos / contingut en greixos, àcids grassos saturats, carbohidrats, sucres, fibra, proteïnes, sal i sodi.
 - marques, al·lergògens, etiquetes (bio, sense gluten, vegana, vegetariana, halal, kosher ...), informació de traçabilitat (codis d'embalatge, orígens dels ingredients)
 - En vins i cerveses, hi podreu trobar el contingut en alcohol.
 
-*** Funciona bé en qualsevol condició ***
-- Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet.
-- L'aplicació només carrega l'estrictament necessari per a reduir les dades i el consum de la bateria
-- No necessiteu una càmera per buscar un producte. També podeu escriure el codi de barres si no teniu cap càmera o no us funciona.
 
-*** El vostre menjar, les vostres dades ***
+▶ Based on Science, helping back Science!
+
+- We don't make up things. We rely on peer-reviewed science.
+- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+- You can get a synthesis of EFSA exposure levels on food additives.
+- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+
+
+▶ Offline Scan: Scan in ANY condition! (coming soon)
+Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+
+- The whole planet, in your pocket !
+- Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet.
+- The app loads only the strict necessary to reduce data and battery consumption.
+
+▶ Your food, your data
 - Les vostres dades són vostres i mai no s'envien a Internet
 - Podeu utilitzar l'aplicació de forma anònima
 - Podeu exportar el vostre historial d'escaneig
 
+▶ Set up allergen alerts on products
+- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+
+
+▶ Say hello and/or join us!
+
+
 Open Food Facts també està disponible a internet, a l'adreça https://world.openfoodfacts.org
+
+
 Preguntes, comentaris : contact@openfoodfacts.org
+
 
 Per a cosmètics, podeu instal·lar Open Beauty Facts, per al menjar per a animals domèstics, Open Pet Food Facts i per a tots els altres productes, Open Products Facts.

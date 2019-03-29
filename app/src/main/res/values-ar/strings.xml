@@ -10,9 +10,9 @@
         <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في Open Food Facts</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="zero">منذ d% دقيقة مضت</item>
+        <item quantity="zero">%d minutes ago</item>
         <item quantity="one">قبل دقيقة</item>
-        <item quantity="two">قبل دقيقة</item>
+        <item quantity="two">منذ %d دقيقة</item>
         <item quantity="few">قبل دقيقة</item>
         <item quantity="many">قبل دقيقة</item>
         <item quantity="other">%d minutes ago</item>
@@ -20,7 +20,7 @@
     <plurals name="hours">
         <item quantity="zero">قبل ساعة</item>
         <item quantity="one">قبل ساعة</item>
-        <item quantity="two">قبل ساعة</item>
+        <item quantity="two">%d منذ ساعات</item>
         <item quantity="few">%d hours ago</item>
         <item quantity="many">%d hours ago</item>
         <item quantity="other">%d منذ ساعات</item>
@@ -28,9 +28,9 @@
     <plurals name="days">
         <item quantity="zero">منذ %d يوم</item>
         <item quantity="one">منذ يوم</item>
-        <item quantity="two">منذ يومان</item>
-        <item quantity="few">منذ بضع ايام</item>
-        <item quantity="many">منذ عدة ايام</item>
+        <item quantity="two">منذ %d يوم</item>
+        <item quantity="few">منذ %d يوم</item>
+        <item quantity="many">منذ %d يوم</item>
         <item quantity="other">%d منذ أيام</item>
     </plurals>
     <string name="action_settings">الإعدادات</string>
@@ -41,6 +41,7 @@
     <string name="text_barcode">اكتب الرمز الشريطي:</string>
     <string name="message_in_activity_save_product_offline">صورة واحدة فقط إلزامية لإرسال منتج جديد.</string>
     <string name="product_incomplete_message">هذا المنتج غير كامل. ونتيجة لذلك، لم نتمكن من القيام بفحص المواد المسببة للحساسية.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">لقد انتهيت</string>
     <string name="first_offline">ستظهر هنا المنتجات المضافة بلا اتصال بالإنترنت</string>
     <!-- Image Upload -->
@@ -453,7 +454,7 @@
     <string name="cocoa">الكاكاو</string>
     <string name="chlorophyl">الكلوروفيل</string>
     <string name="take_picture_ingredients">التقط صورة للمكونات</string>
-    <string name="take_picture_front">التقط صورة للأمام</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">التقط صورة لجدول الحقائق الغذائية</string>
     <string name="take_more_pictures">التقط المزيد من الصور</string>
     <string name="txtSaturatedFat">الدهون المشبعة</string>
@@ -498,6 +499,7 @@
     <string name="device_on_mobile_data_warning_message">التحميل على بيانات الجوال غير مفعل، يرجى الاتصال بشبكة WiFi أو تغيير هذا في التفضيلات</string>
     <string name="device_on_mobile_data_warning_positive">الخيارات</string>
     <string name="device_on_mobile_data_warning_negative">تحميل على أي حال</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">اختر اللغة</string>
     <string name="FAQ">الأسئلة المتكررة</string>
     <string name="FrequentlyAskedQuestions">‮الأسئلة المتكررة</string>
@@ -506,7 +508,7 @@
     <string name="please_check_your_connection">يرجى التحقق من اتصالك.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">بحث متقدم &amp;</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">الرجاء التحقق من اتصالك بالإنترنت</string>
     <string name="dismiss">تجاهل</string>
     <string name="Terms">الشروط</string>
@@ -570,7 +572,7 @@
     <string name="by_time">شوهدت مؤخرًا</string>
     <string name="sort">التصنيف</string>
     <string name="by_nutrition_grade">درجة التغذية</string>
-    <string name="sort_by">تصنيف حسب</string>
+    <string name="sort_by">Sort by</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">قم بهز الهاتف لمسح المنتجات</string>
@@ -808,7 +810,19 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">أضف المنتجات</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">تعديل</string>
+    <string name="product_summary_action_share_button_label">مشاركة</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">نعم</string>
+    <string name="product_question_negative_response">لا</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

@@ -4,16 +4,16 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
     <string name="website">https://world-pl.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
-    <string name="website_contribute">https://world.openpetfoodfacts.org/contribute</string>
+    <string name="website_contribute">https://world-pl.openpetfoodfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openpetfoodfacts.org/discover</string>
+    <string name="website_discover">https://world-pl.openpetfoodfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
-    <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
+    <string name="website_product">https://world-pl.openpetfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-    <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts to baza danych zawierająca ponad %1$d produktów żywnościowych dla zwierząt domowych (plus te, które sam dodasz) z podanymi składnikami, alergenami, oznaczeniami oraz innymi ciekawymi informacjami, które możemy znaleźć na etykietach produktów dla zwierząt domowych. Hau. Hau.</string>
-    <string name="txtHome">Open Pet Food to baza danych karmy dla zwierząt oraz składników, alergenów, oznaczeń i powiązanych informacji które znajdujemy na etykietach. Hau. Hau.</string>
+    <string name="website_contributor">https://world-pl.openpetfoodfacts.org/contributor/</string>
+    <string name="terms_url">https://world-pl.openpetfoodfacts.org/terms-of-use</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Przyczyń się do przezroczystości Pet Food</string>
     <string name="slide_1_desc">Skanuj produkty, rób im zdjęcia, niech przejrzystość karmy dla zwierząt domowych dzieje się</string>
     <string name="slide_2_title">Poznaj fakty</string>
@@ -24,7 +24,7 @@
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
     <string name="txtDialogsContent">Zeskanowany produkt jeszcze nie nie został wprowadzony do bazy Open Pet Food Facts. Dodaj go.</string>
     <string name="txtDialogsContentPowerMode">Zeskanowany produkt już jest w Open Pet Food Facts.</string>
-    <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
+    <string name="msg_share">Zobacz produkt w Open Food Facts :</string>
     <string name="not_support_books">Open Food Facts obecnie nie obsługuje książek</string>
     <string name="txt_broaden_search">rozszerzenie zakresu wyszukiwania \n - zeskanuj i dodaj do Open Food Facts</string>
     <string name="Donation">Kliknij tu, by przekazać darowiznę na rzecz Open Food Facts</string>
@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Skanuj produkty nawet w trybie offline, aby później dodać je do Open Pet Food Facts. Zeskanowane produkty pojawią się tutaj i będziesz mógł je wysłać za pomocą przycisku poniżej.</string>
     <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie mogą nie być dokładne, a wykrycie ich też nie może być pewne. Zatem, sprawdzaj dwa razy! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="tagline">free pet food products database</string>
+    <string name="tagline">ogólnodostępna baza danych o produktach żywnościowych dla zwierząt domowych</string>
     <string name="product_not_found">Zeskanowany produkt %1$s, jeszcze nie znajduje się w Open Pet Food Facts. Czy możesz go dodać?</string>
     <string name="currently_on_version">Aktualnie na Open Pet Food Facts</string>
     <string name="category_game_btn">Pomóż kategoryzować produkty</string>

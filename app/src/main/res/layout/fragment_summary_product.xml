@@ -18,259 +18,245 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/nav_bar_height"
             android:orientation="vertical"
-            android:paddingBottom="65dp">
+            >
 
-            <!--The linear layout of the prompt for the front image has been replicated and
-            all three have been placed in a parent RelativeLayout and the sizes of the prompts have
-            been adjusted accordingly-->
-
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/product_allergen_alert_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:visibility="gone"
+                android:background="@color/orange_800"
+                >
 
-                <LinearLayout
-                    android:id="@+id/ingredient_image_prompt_layout"
+                <TextView
+                    android:id="@+id/product_allergen_alert_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@id/front_picture_layout"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    android:padding="@dimen/spacing_large"
+                    android:text="@string/product_incomplete_message"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
 
-                    <ImageButton
-                        android:id="@+id/imageViewIngredients"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:adjustViewBounds="true"
-                        android:background="?android:selectableItemBackground"
-                        android:maxHeight="120dp"
-                        android:scaleType="fitCenter"
-                        android:transitionName="@string/product_transition"
-                        app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
-
-                    <TextView
-                        android:id="@+id/add_ingredient_photo_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/ingredient_image_prompt_text"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/front_picture_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/imageViewFront"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:adjustViewBounds="true"
-                        android:background="?android:selectableItemBackground"
-                        android:maxHeight="120dp"
-                        android:scaleType="fitCenter"
-                        android:transitionName="@string/product_transition"
-                        app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
-
-                    <TextView
-                        android:id="@+id/addPhotoLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/take_picture_front"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/nutrition_image_prompt_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/front_picture_layout"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <ImageButton
-                        android:id="@+id/imageViewNutrition"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:adjustViewBounds="true"
-                        android:background="?android:selectableItemBackground"
-                        android:maxHeight="120dp"
-                        android:scaleType="fitCenter"
-                        android:transitionName="@string/product_transition"
-                        app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
-
-                    <TextView
-                        android:id="@+id/add_nutrition_photo_label"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/nutrition_image_prompt_text"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <Button
-                android:id="@+id/btn_eating"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:padding="8dp"
-                android:background="@drawable/button_grey_border"
-                android:drawableLeft="@drawable/ic_add_24dp"
-                android:text="@string/txt_im_eating_this" />
-
-            <Button
-                android:id="@+id/btn_eating_ticked"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/rounded_button"
-                android:drawableLeft="@drawable/ic_check_white_24dp"
-                android:padding="8dp"
-                android:text="@string/txt_im_eating_this"
-                android:textColor="@color/white"
-                android:visibility="gone" />
-
-            <Button
-                android:drawableLeft="@drawable/ic_compare_arrows_black_18dp"
-                android:drawablePadding="5dp"
-                android:id="@+id/compare_product_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="8dp"
-                android:background="@drawable/button_grey_border"
-                android:text="@string/compare_product_prompt" />
-          
             <android.support.v7.widget.CardView
-                android:id="@+id/product_incomplete_warning_view_container"
+                android:id="@+id/product_header_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_small"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="@dimen/spacing_small"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:visibility="gone">
+                app:cardElevation="3dp">
 
                 <RelativeLayout
+                    android:id="@+id/product_header_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="#EEE"
-                    android:gravity="center"
-                    android:padding="4dp">
+                    android:padding="@dimen/padding_normal">
 
-                    <ImageView
-                        android:id="@+id/message_icon"
-                        android:layout_width="@dimen/button_height_normal"
-                        android:layout_height="@dimen/button_height_normal"
-                        android:padding="@dimen/padding_too_short"
-                        app:srcCompat="@drawable/warning_icon" />
+                    <LinearLayout
+                        android:id="@+id/header_product_details_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_normal"
+                        android:layout_toStartOf="@id/front_picture_layout"
+                        android:layout_toLeftOf="@id/front_picture_layout"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/product_incomplete_message"
+                        <TextView
+                            android:id="@+id/textNameProduct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_tiny"
+                            android:layout_marginBottom="@dimen/spacing_tiny"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true"
+                            android:textStyle="bold"
+                            tools:text="Product name" />
+
+                        <TextView
+                            android:id="@+id/textBrandProduct"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_tiny"
+                            android:textColorLink="@color/tag_link"
+                            android:textIsSelectable="true"
+                            android:textSize="@dimen/font_normal"
+                            tools:text="Brands: ..." />
+                        <TextView
+                            android:id="@+id/textQuantityProduct"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_tiny"
+                            android:textSize="@dimen/font_normal"
+                            tools:text="Quantity" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/front_picture_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toStartOf="@+id/message_dismiss_icon"
-                        android:layout_toLeftOf="@+id/message_dismiss_icon"
-                        android:layout_toRightOf="@+id/message_icon"
-                        android:gravity="center"
-                        android:paddingLeft="4dp"
-                        android:paddingTop="4dp"
-                        android:paddingRight="24dp"
-                        android:paddingBottom="4dp"
-                        android:text="@string/product_incomplete_message"
-                        android:textAlignment="center"
-                        android:textColor="@color/md_black_1000" />
-
-                    <ImageButton
-                        android:id="@+id/product_incomplete_message_dismiss_icon"
-                        android:layout_width="@dimen/button_height_too_much_short"
-                        android:layout_height="@dimen/button_height_too_much_short"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_margin="4dp"
-                        android:background="#EEE"
-                        app:srcCompat="@drawable/ic_action_cross" />
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/imageViewFront"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/spacing_tiny"
+                            android:adjustViewBounds="true"
+                            android:background="?android:selectableItemBackground"
+                            android:maxHeight="120dp"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+                        <TextView
+                            android:id="@+id/addPhotoLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/take_picture_front"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/action_buttons_layout"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="@color/white"
+                >
+
+                <LinearLayout
+                    android:id="@+id/action_compare_button_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/action_add_to_list_button_layout"
+                    style="@style/ActionButtonLayout"
+                    >
+
+                    <ImageButton
+                        android:id="@+id/action_compare_button"
+                        app:srcCompat="@drawable/ic_compare_arrows_circle_24dp"
+                        style="@style/ActionButton"
+                        />
+
+                    <TextView
+                        android:id="@+id/action_compare_button_label"
+                        android:text="@string/product_summary_action_compare_button_label"
+                        style="@style/ActionButtonLabel"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/action_add_to_list_button_layout"
+                    app:layout_constraintStart_toEndOf="@id/action_compare_button_layout"
+                    app:layout_constraintEnd_toStartOf="@id/action_edit_button_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/ActionButtonLayout"
+                    >
+
+                    <ImageButton
+                        android:id="@+id/action_add_to_list_button"
+                        app:srcCompat="@drawable/ic_bookmark_circle_24dp"
+                        style="@style/ActionButton"
+                        />
+
+                    <TextView
+                        android:id="@+id/action_add_to_list_button_label"
+                        android:text="@string/product_summary_action_add_to_list_button_label"
+                        style="@style/ActionButtonLabel"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/action_edit_button_layout"
+                    app:layout_constraintStart_toEndOf="@id/action_add_to_list_button_layout"
+                    app:layout_constraintEnd_toStartOf="@id/action_share_button_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/ActionButtonLayout"
+                    >
+
+                    <ImageButton
+                        android:id="@+id/action_edit_button"
+                        app:srcCompat="@drawable/ic_edit_circle_24dp"
+                        style="@style/ActionButton"
+                        />
+
+                    <TextView
+                        android:id="@+id/action_edit_button_label"
+                        android:text="@string/product_summary_action_edit_button_label"
+                        style="@style/ActionButtonLabel"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/action_share_button_layout"
+                    style="@style/ActionButtonLayout"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/action_edit_button_layout"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/action_share_button"
+                        style="@style/ActionButton"
+                        app:srcCompat="@drawable/ic_share_circle_24dp" />
+
+                    <TextView
+                        android:id="@+id/action_share_button_label"
+                        style="@style/ActionButtonLabel"
+                        android:text="@string/product_summary_action_share_button_label" />
+                </LinearLayout>
 
 
-            <TextView
-                android:id="@+id/listname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
-                android:layout_marginVertical="@dimen/spacing_tiny"
-                android:textStyle="bold" />
+            </android.support.constraint.ConstraintLayout>
+            <View style="@style/HorizontalLineSeparator" />
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/scores_layout"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="120dp"
+                android:background="@color/white"
+                >
 
                 <ImageView
                     android:id="@+id/imageGrade"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin"
-                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:clickable="true"
-                    android:maxWidth="180dp"
+                    android:focusable="true"
+                    android:maxHeight="90dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/nova_group"
                     tools:src="@drawable/nnc_a" />
 
                 <ImageView
                     android:id="@+id/nova_group"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/horizontal_margin"
-                    android:layout_marginEnd="@dimen/horizontal_margin"
-                    android:layout_marginRight="@dimen/horizontal_margin"
-                    android:layout_marginBottom="@dimen/horizontal_margin"
-                    android:maxWidth="20dp"
-                    android:paddingStart="0dp"
-                    android:paddingLeft="0dp"
-                    android:paddingTop="@dimen/activity_horizontal_margin"
-                    android:paddingEnd="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="80dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/co2_icon"
                     app:layout_constraintStart_toEndOf="@id/imageGrade"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@drawable/ic_nova_group_1" />
@@ -278,18 +264,9 @@
                 <ImageView
                     android:id="@+id/co2_icon"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/horizontal_margin"
-                    android:layout_marginEnd="@dimen/horizontal_margin"
-                    android:layout_marginRight="@dimen/horizontal_margin"
-                    android:layout_marginBottom="@dimen/horizontal_margin"
-                    android:maxWidth="20dp"
-                    android:paddingStart="0dp"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="@dimen/activity_horizontal_margin"
-                    android:paddingRight="16dp"
-                    android:paddingBottom="8dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="60dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -298,105 +275,88 @@
                     tools:srcCompat="@drawable/ic_co2_high_24dp" />
 
                 <Button
-                        android:id="@+id/add_nutriscore_prompt"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="@dimen/activity_horizontal_margin"
-                        android:layout_margin="16dp"
-                        android:drawableLeft="@drawable/ic_add_box_black_18dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:paddingVertical="16dp"
-                        tools:text="@string/add_nutrition_facts_for_nutriscore"
-                        android:visibility="gone"
-                />
+                    android:id="@+id/add_nutriscore_prompt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    android:drawableLeft="@drawable/ic_add_box_blue_18dp"
+                    android:drawableStart="@drawable/ic_add_box_blue_18dp"
+                    tools:text="@string/add_nutrition_facts_for_nutriscore"
+                    android:visibility="gone"
+                    style="@style/BorderButton"/>
 
             </android.support.constraint.ConstraintLayout>
+            <View style="@style/HorizontalLineSeparator" />
 
+            <RelativeLayout
+                android:id="@+id/product_question_layout"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/spacing_tiny"
+                android:paddingTop="@dimen/spacing_tiny"
+                android:background="@color/primary_dark"
+                android:visibility="gone"
+                >
 
+                <ImageView
+                    android:id="@+id/product_question_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_forum_white_24dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@id/product_question_icon"
+                    android:layout_toEndOf="@id/product_question_icon"
+                    android:id="@+id/bottom_sheet_linear_layout"
+                    android:layout_centerVertical="true"
+                    >
                     <TextView
-                        android:id="@+id/textNameProduct"
+                        android:id="@+id/product_question_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:textColor="@android:color/white"
+                        android:paddingRight="@dimen/spacing_small"
+                        android:paddingLeft="@dimen/spacing_small"
+                        android:paddingTop="@dimen/spacing_small"
+                        tools:text="Does the product belong to this category?"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/product_question_prompt"
+                        android:textColor="@android:color/darker_gray"
+                        android:paddingLeft="@dimen/spacing_small"
+                        android:paddingStart="@dimen/spacing_small"
+                        android:paddingRight="@dimen/spacing_tiny"
+                        android:paddingEnd="@dimen/spacing_tiny"
                         android:paddingBottom="@dimen/spacing_small"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:textIsSelectable="true"
-                        android:textStyle="bold" />
-
-
-                    <TextView
-                        android:id="@+id/textGenericNameProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:paddingBottom="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-                    <TextView
-                        android:drawableLeft="@drawable/barcode_grey_24dp"
-                        android:id="@+id/textBarcodeProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textQuantityProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-                    <TextView
-                        android:id="@+id/textBrandProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <Button
-                        android:drawableLeft="@drawable/ic_compare_arrows_black_18dp"
-                        android:drawablePadding="5dp"
-                        android:id="@+id/compare_product_button"
-                        android:layout_width="match_parent"
-                        android:layout_margin="16dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginVertical="@dimen/spacing_tiny"
-                        android:paddingVertical="16dp"
-                        android:text="@string/compare_product_prompt"/>
-
-
+                        />
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/product_question_dismiss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/spacing_normal"
+                    app:srcCompat="@drawable/ic_clear_white_24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cvNutritionLights"
@@ -404,7 +364,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -418,7 +378,6 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginRight="@dimen/spacing_normal"
-                        android:background="@drawable/textview_full"
                         android:padding="@dimen/spacing_small"
                         android:text="@string/txtNutrientLevel100g"
                         android:textIsSelectable="true"
@@ -432,7 +391,6 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:background="@drawable/textview_full"
                         android:divider="@color/white"
                         android:dividerHeight="0dp"
                         android:padding="@dimen/spacing_small"
@@ -445,43 +403,32 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/cvTextAdditiveProduct"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:visibility="gone"
-                app:cardElevation="4dp">
-
-                <TextView
-                    android:id="@+id/textAdditiveProduct"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
-                    android:padding="@dimen/spacing_small"
-                    android:textColorLink="@color/light_blue_A700"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/font_normal" />
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
                 android:id="@+id/cvProductDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:layout_marginBottom="@dimen/spacing_tiny"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/textAdditiveProduct"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/tag_link"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Additives: ..."
+                        />
 
                     <TextView
                         android:id="@+id/textCategoryProduct"
@@ -492,9 +439,11 @@
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
+                        android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Categories: ..."
+                        />
 
                     <TextView
                         android:id="@+id/textLabelProduct"
@@ -505,66 +454,11 @@
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textPackagingProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/cvProductDetailsGeo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        app:cardElevation="4dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-
-                    <TextView
-                        android:id="@+id/textManufacturingProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textIngredientsOriginProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
+                        android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal"
-                        android:visibility="gone" />
-
+                        tools:text="Labels: ..."
+                        />
                     <TextView
                         android:id="@+id/textEmbCode"
                         android:layout_width="fill_parent"
@@ -574,141 +468,13 @@
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
+                        android:textColorLink="@color/tag_link"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textManufactureUrl"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textStoreProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textCountryProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                        </LinearLayout>
-                    </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cvProductDetailsOther"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textOtherInfo"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textConservationCond"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textRecyclingInstructionToRecycle"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textRecyclingInstructionToDiscard"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/light_blue_A700"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textWarning"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textSize="@dimen/font_normal" />
-
-                    <TextView
-                        android:id="@+id/textCustomerService"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/padding_too_short"
-                        android:textSize="@dimen/font_normal" />
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Packager codes: ..."
+                        />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -739,16 +505,15 @@
             </LinearLayout>
 
             <Button
-                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
-                android:drawablePadding="5dp"
                 android:id="@+id/buttonMorePictures"
                 android:layout_width="match_parent"
-                android:layout_margin="16dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:paddingVertical="16dp"
-                android:text="@string/take_more_pictures" />
+                android:layout_margin="@dimen/spacing_normal"
+                android:text="@string/take_more_pictures"
+                android:drawableStart="@drawable/ic_add_a_photo_blue_18dp"
+                android:drawableLeft="@drawable/ic_add_a_photo_blue_18dp"
+                style="@style/BorderButton"/>
 
         </LinearLayout>
 

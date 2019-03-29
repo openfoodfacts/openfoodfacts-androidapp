@@ -25,6 +25,7 @@
     <string name="text_barcode">Introduïu el codi de barres:</string>
     <string name="message_in_activity_save_product_offline">Amb una foto és suficient per enviar un producte nou.</string>
     <string name="product_incomplete_message">Aquest producte no està complet. Per això no hem pogut fer el control d\'al·lèrgens.</string>
+    <string name="product_allergen_prompt">Aquest producte conté:</string>
     <string name="no_offline_data">Enllestit</string>
     <string name="first_offline">Els productes afegits fora de línia apareixeran aquí</string>
     <!-- Image Upload -->
@@ -131,9 +132,9 @@
         <item>Vitamina B6 (Piridoxina)</item>
         <item>Vitamina B9 (Àcid fòlic)</item>
         <item>Vitamina C (Àcid ascòrbic)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
+        <item>Vitamina D</item>
+        <item>Vitamina E</item>
+        <item>Vitamina K</item>
         <item>Zinc</item>
     </string-array>
     <!-- Text units -->
@@ -294,7 +295,7 @@
     <string name="scan_history_drawer">Historial</string>
     <string name="clear_history">Neteja l\'historial</string>
     <string name="title_clear_history_dialog">Esborra</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Vol esborrar tot l\'historial d\'escaneig?</string>
     <string name="export_csv_history">Exporta CSV</string>
     <string name="txt_exporting_history">Exportant historial…</string>
     <string name="txt_history_exported">Historial exportat</string>
@@ -341,9 +342,9 @@
     <string name="nutriment_serving_size">Per porció :</string>
     <string name="action_manage_account">Gestiona el compte</string>
     <string name="action_contributes">Les vostres aportacions</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
+    <string name="choose_energy_unit">Tria les unitats d\'energia que vols fer servir per a la taula d\'informació nutricional</string>
     <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
+    <string name="choose_volume_unit">Tria les unitats de volum que vols fer servir per a la taula d\'informació nutricional</string>
     <string name="volume_pref_title">Preferred volume unit</string>
     <string name="logout_drawer">Tanca la sessió</string>
     <string name="contribution_without_account">Podeu iniciar la sessió o crear un compte per mantenir les vostres aportacions</string>
@@ -480,6 +481,7 @@
     <string name="device_on_mobile_data_warning_message">La càrrega amb dades mòbils està desactivada, connecteu-vos a la Wi-Fi o canvieu la configuració</string>
     <string name="device_on_mobile_data_warning_positive">Preferències</string>
     <string name="device_on_mobile_data_warning_negative">Carrega igualment</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Trieu la llengua</string>
     <string name="FAQ">PMF</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
@@ -488,7 +490,7 @@
     <string name="please_check_your_connection">Si us plau, comproveu la connexió a internet.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Cerca avançada &amp; Gràfics</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Si us plau, comproveu la connexió a internet</string>
     <string name="dismiss">Omet</string>
     <string name="Terms">Condicions</string>
@@ -601,7 +603,7 @@
     <string name="trouble_scanning">Teniu problemes escanejant?</string>
     <string name="barcode_hint">Teniu problemes escanejant? Escriviu el codi de barres</string>
     <string name="switch_camera">Canvia la càmera</string>
-    <string name="autofocus">Autofocus</string>
+    <string name="autofocus">Autoenfocament</string>
     <string name="initial_loading">Càrrega inicial</string>
     <string name="preferences">Preferències</string>
     <string name="OFFlogo">Logo d\'Open Food Facts</string>
@@ -613,7 +615,7 @@
     <string name="choose_nutrient">Trieu un nutrient</string>
     <string name="error_adding_product_details">Alguna cosa ha sortit malament mentre s\'intentaven afegir detalls del producte</string>
     <string name="hint_product_URL">Enllaç de la pàgina oficial del producte</string>
-    <string name="product_language">Llengua del producte: </string>
+    <string name="product_language">Llengua d\'etiquetat: </string>
     <string name="hint_emb_codes">Exemples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Lloc web oficial</string>
     <string name="scan_QR_code">Escaneja el codi QR del lloc web del producte</string>
@@ -653,7 +655,7 @@
     <string name="nutrition_facts_not_specified">Les dades nutricionals no s\'especifiquen en el producte.</string>
     <string name="nutrition_facts_picture">Imatge de la Informació Nutricional</string>
     <string name="for_100g_100ml">Per 100 g/100 ml</string>
-    <string name="per_serving">Per porció</string>
+    <string name="per_serving">Per ració</string>
     <string name="serving_size">Mida de la porció</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Afegir un nutrient</string>
@@ -790,7 +792,19 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Afegiu productes</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Afegiu informació nutricional per calcular el Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Edita</string>
+    <string name="product_summary_action_share_button_label">Comparteix</string>
+    <string name="product_question_prompt">Toca per contestar</string>
+    <string name="product_question_positive_response">Si</string>
+    <string name="product_question_negative_response">No</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Gràcies per la teva aportació</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

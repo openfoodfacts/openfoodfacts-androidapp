@@ -18,8 +18,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/nav_bar_height"
             android:orientation="vertical"
-            android:paddingBottom="65dp">
+            >
 
             <ImageView
                 android:id="@+id/imageViewIngredients"
@@ -47,12 +48,13 @@
                 android:id="@+id/extract_ingredients_prompt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_normal"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="16dp"
-                android:drawableLeft="@drawable/ic_add_box_black_18dp"
                 android:text="@string/extract_ingredients_prompt"
-                android:visibility="gone" />
-
+                android:drawableStart="@drawable/ic_add_box_blue_18dp"
+                android:drawableLeft="@drawable/ic_add_box_blue_18dp"
+                android:visibility="gone"
+                style="@style/BorderButton"/>
 
             <LinearLayout
                 android:id="@+id/novaLayout"
@@ -89,7 +91,7 @@
                     android:gravity="center_horizontal"
                     android:paddingTop="@dimen/activity_horizontal_margin"
                     android:paddingBottom="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/blue"/>
+                    android:textColor="@color/url_link"/>
 
             </LinearLayout>
 
@@ -100,46 +102,33 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
+                <LinearLayout
+                    android:id="@+id/ingredientLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textIngredientProduct"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cvTextSubstanceProduct"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:visibility="gone"
-                >
-
                 <TextView
                     android:id="@+id/textSubstanceProduct"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
-                    android:textColorLink="@color/light_blue_A700"
+                    android:textColorLink="@color/tag_link"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
-
+                </LinearLayout>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -149,7 +138,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/textTraceProduct"
@@ -159,9 +148,8 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
-                    android:textColorLink="@color/light_blue_A700"
+                    android:textColorLink="@color/tag_link"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
@@ -174,7 +162,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/textAdditiveProduct"
@@ -184,9 +172,8 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
-                    android:textColorLink="@color/light_blue_A700"
+                    android:textColorLink="@color/tag_link"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
@@ -199,7 +186,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/textPalmOilProduct"
@@ -209,7 +196,6 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
@@ -222,7 +208,6 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
@@ -236,7 +221,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/vitaminsTagsText"
@@ -246,7 +231,6 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
@@ -260,7 +244,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/mineralTagsText"
@@ -270,7 +254,6 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
@@ -284,7 +267,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/aminoAcidTagsText"
@@ -294,7 +277,6 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
@@ -308,7 +290,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <TextView
                     android:id="@+id/otherNutritionTags"
@@ -318,22 +300,21 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
             </android.support.v7.widget.CardView>
-
             <Button
-                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
-                android:drawablePadding="5dp"
                 android:id="@+id/change_ing_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_normal"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="16dp"
-                android:text="@string/update_image" />
+                android:text="@string/update_image"
+                android:drawableStart="@drawable/ic_add_a_photo_blue_18dp"
+                android:drawableLeft="@drawable/ic_add_a_photo_blue_18dp"
+                style="@style/BorderButton"/>
 
         </LinearLayout>
 

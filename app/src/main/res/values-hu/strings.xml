@@ -25,6 +25,7 @@
     <string name="text_barcode">Vonalkód begépelése:</string>
     <string name="message_in_activity_save_product_offline">Csak egy fénykép kötelező egy új termék elküldéséhez.</string>
     <string name="product_incomplete_message">Ez a termékoldal nem teljes. Ennek eredményeként nem tudtuk elvégezni az allergén ellenőrzést.</string>
+    <string name="product_allergen_prompt">Ez a termék a következőket tartalmazza:</string>
     <string name="no_offline_data">Mindennel elkészült</string>
     <string name="first_offline">A kapcsolat nélküli módban hozzáadott termékek itt fognak megjelenni</string>
     <!-- Image Upload -->
@@ -435,7 +436,7 @@
     <string name="cocoa">Kakaó</string>
     <string name="chlorophyl">Klorofill</string>
     <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
-    <string name="take_picture_front">Kép készítése a termék csomagolásáról</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
     <string name="take_more_pictures">Készítsen további képeket</string>
     <string name="txtSaturatedFat">Telített zsír</string>
@@ -480,6 +481,7 @@
     <string name="device_on_mobile_data_warning_message">A feltöltés mobilinterneten le van tiltva, kérjük, csatlakozzon WiFi-hez vagy módosítsa a beállításokat</string>
     <string name="device_on_mobile_data_warning_positive">Tulajdonságok</string>
     <string name="device_on_mobile_data_warning_negative">Feltöltés mindenképpen</string>
+    <string name="changes_saved">A módosítások sikeresen mentésre kerültek</string>
     <string name="preference_choose_language_dialog_title">Válasszon nyelvet</string>
     <string name="FAQ">GYIK</string>
     <string name="FrequentlyAskedQuestions">Gyakran Ismételt Kérdések</string>
@@ -488,7 +490,7 @@
     <string name="please_check_your_connection">Kérjük, ellenőrizze a hálózati kapcsolatát.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Részletes Keresés &amp; Diagramok</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Termékek összehasonlítása</string>
     <string name="connectivity_check">Kérjük, ellenőrizze az internet kapcsolatát</string>
     <string name="dismiss">Elutasít</string>
     <string name="Terms">Feltételek</string>
@@ -792,7 +794,14 @@
     <string name="txt_no_nutrition_data">Ez a termék nem tartalmaz tápértéketadatokat a csomagoláson. Ha ez megváltozott, akkor szerkessze a terméket.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Termékek hozzáadása</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Szerkesztés</string>
+    <string name="product_summary_action_share_button_label">Megosztás</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

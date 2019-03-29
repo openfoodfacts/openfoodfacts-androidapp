@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Beauty Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche versenden.</string>
     <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Beauty Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">the free cosmetics database</string>
+    <string name="tagline">die freie Datenbank für Kosmetika</string>
     <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Beauty Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="currently_on_version">Aktuell auf Open Beauty Facts</string>
     <string name="category_game_btn">Helfen, Produkte zu kategorisieren</string>

@@ -71,8 +71,10 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Objects;
 
@@ -453,9 +455,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                     if (fragment != null) {
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
-                    } else {
-                        // error in creating fragment
-                        Log.e("MainActivity", "Error in creating fragment");
                     }
 
                     return false;
@@ -902,7 +901,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         Uri selectedImage = null;
         ArrayList<Uri> selectedImagesArray = new ArrayList<>();
         selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-        boolean isBarCodePresent = false;
         if (selectedImage != null) {
             selectedImagesArray.add(selectedImage);
             chooseDialog(selectedImagesArray);
@@ -912,6 +910,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void handleSendMultipleImages(Intent intent) {
         ArrayList<Uri> selectedImagesArray = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
         if (selectedImagesArray != null) {
+            selectedImagesArray.removeAll(Collections.singleton(null));
             chooseDialog(selectedImagesArray);
         }
     }
@@ -927,44 +926,40 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     private boolean detectBarCodeInImage(ArrayList<Uri> selectedImages) {
-        InputStream imageStream = null;
         for (Uri uri : selectedImages) {
-            try {
-                imageStream = getContentResolver().openInputStream(uri);
+            Bitmap bMap = null;
+            try (InputStream imageStream = getContentResolver().openInputStream(uri)) {
+                bMap = BitmapFactory.decodeStream(imageStream);
             } catch (FileNotFoundException e) {
+                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString());
                 e.printStackTrace();
+            } catch (IOException e) {
+                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage());
             }
             //decoding bitmap
-            Bitmap bMap = BitmapFactory.decodeStream(imageStream);
-            int[] intArray = new int[bMap.getWidth() * bMap.getHeight()];
-            bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(), bMap.getHeight());
-            LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(), bMap.getHeight(), intArray);
-            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-            Reader reader = new MultiFormatReader();
-            try {
-                Hashtable<DecodeHintType, Object> decodeHints = new Hashtable<DecodeHintType, Object>();
-                decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-                decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
-                Result result = reader.decode(bitmap, decodeHints);
-                if (result != null) {
-                    mBarcode = result.getText();
+            if (bMap != null) {
+                int[] intArray = new int[bMap.getWidth() * bMap.getHeight()];
+                bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(), bMap.getHeight());
+                LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(), bMap.getHeight(), intArray);
+                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+                Reader reader = new MultiFormatReader();
+                try {
+                    Hashtable<DecodeHintType, Object> decodeHints = new Hashtable<DecodeHintType, Object>();
+                    decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+                    decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
+                    Result result = reader.decode(bitmap, decodeHints);
+                    if (result != null) {
+                        mBarcode = result.getText();
+                    }
+                    if (mBarcode != null) {
+                        return true;
+                    }
+                } catch (FormatException e) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.format_error), Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    Log.e(MainActivity.class.getSimpleName(), "Error decoding bitmap into barcode: " + e.getMessage());
                 }
-                if (mBarcode != null) {
-                    return true;
-                }
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-
-            } catch (ChecksumException e) {
-                e.printStackTrace();
-
-            } catch (FormatException e) {
-                Toast.makeText(getApplicationContext(), getString(R.string.format_error), Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
-
-            } catch (NullPointerException e) {
-
-                e.printStackTrace();
             }
         }
         return false;

@@ -5,17 +5,17 @@
 Группа NOVA:
 
 Группа 1
-Group 1 - Unprocessed or minimally processed foods
-Unprocessed or minimally processed foods
+Группа 1 - Непереработанные или минимально переработанные пищевые продукты
+Непереработанные или минимально переработанные пищевые продукты
 
 Группа 2
-Group 2 - Processed culinary ingredients
-Processed culinary ingredients
+Группа 2 - Переработанные кулинарные ингредиенты
+Переработанные кулинарные ингредиенты
 
 Группа 3
-Group 3 - Processed foods
-Processed foods
+Группа 3 - Переработанные продукты
+Переработанные пищевые продукты
 
 Группа 4
-Group 4 - Ultra-processed food and drink products
+Группа 4 - Ультра-трансформированные продукты питания и напитки
 Ультра-обработанные продукты питания и напитки

@@ -25,6 +25,7 @@
     <string name="text_barcode">Angiv stregkoden:</string>
     <string name="message_in_activity_save_product_offline">Kun ét foto kræves for at indsende et nyt produkt.</string>
     <string name="product_incomplete_message">Dette produkt er ikke komplet. Der kan derforikke foretages et allergentjek.</string>
+    <string name="product_allergen_prompt">Dette produkt indeholder:</string>
     <string name="no_offline_data">Du er helt færdig</string>
     <string name="first_offline">Produkter tilføjet offline vil fremgå her</string>
     <!-- Image Upload -->
@@ -472,7 +473,7 @@
     <string name="device_offline_dialog_positive">Indstillinger</string>
     <string name="saving">Gemmer…</string>
     <string name="scan_first_product">Skan første produkt</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Historik er slettet</string>
     <string name="preference_enable_mobile_data_title">Upload via mobildata</string>
     <string name="preference_enable_mobile_data_summary_on">Upload nye produkter via mobildata og Wi-Fi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload nye produkter alene via Wi-Fi</string>
@@ -480,6 +481,7 @@
     <string name="device_on_mobile_data_warning_message">Upload via mobildata er inaktiv. Opret forbindelse til Wi-Fi eller ændr indstillingen i præferencer</string>
     <string name="device_on_mobile_data_warning_positive">Præferencer</string>
     <string name="device_on_mobile_data_warning_negative">Upload alligevel</string>
+    <string name="changes_saved">Ændring er gemt</string>
     <string name="preference_choose_language_dialog_title">Vælg sprog</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Ofte stillede spørgsmål</string>
@@ -792,5 +794,17 @@
     <string name="empty"></string>
     <string name="add_product">Tilføj produkter</string>
     <string name="add_another_product">Tilføj et produkt mere</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Sammenlign</string>
+    <string name="product_summary_action_add_to_list_button_label">Føj til liste</string>
+    <string name="product_summary_action_edit_button_label">Rediger</string>
+    <string name="product_summary_action_share_button_label">Del</string>
+    <string name="product_question_prompt">Tryk her for at besvare</string>
+    <string name="product_question_positive_response">Ja</string>
+    <string name="product_question_negative_response">Nej</string>
+    <string name="product_question_ambiguous_response">Ikke sikker</string>
+    <string name="product_question_submit_message">Tak for dit bidrag!</string>
+    <string name="error_nutrient_entry">Værdien skal være numerisk og kan starte med &lt;, &gt; eller ~, f.eks. &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_serving_data">Portionsstørrelsen skal udgøre en positiv værdi</string>
+    <string name="error_in_nutrient_data">Nogle næringsværdier er ugyldige. Korrigér venligst ovenstående fejlmarkerede felter</string>
 </resources>

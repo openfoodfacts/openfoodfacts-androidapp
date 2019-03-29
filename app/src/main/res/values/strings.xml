@@ -25,6 +25,7 @@
     <string name="text_barcode">Type the barcode :</string>
     <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
     <string name="product_incomplete_message">The ingredient list of this product is not complete. As a result, the allergen alert is not shown.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">You\'re all done</string>
     <string name="first_offline">Products added offline will appear here</string>
 
@@ -993,4 +994,16 @@
     <string name="add_product">Add Products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Edit</string>
+    <string name="product_summary_action_share_button_label">Share</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Yes</string>
+    <string name="product_question_negative_response">No</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;>1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
 </resources>

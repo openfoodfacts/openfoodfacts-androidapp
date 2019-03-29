@@ -82,18 +82,15 @@
 
             <Button
                 android:id="@+id/get_nutriscore_prompt"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/spacing_tiny"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                android:layout_marginRight="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_normal"
-                android:gravity="center"
-                android:drawableLeft="@drawable/ic_add_box_black_18dp"
+                android:layout_margin="@dimen/spacing_normal"
+                android:drawableLeft="@drawable/ic_add_box_blue_18dp"
+                android:drawableStart="@drawable/ic_add_box_blue_18dp"
                 android:text="@string/add_nutrient_prompt_text"
-                android:visibility="gone"/>
-
+                android:visibility="gone"
+                style="@style/BorderButton"
+                />
 
             <TextView
                 android:id="@+id/textCarbonFootprint"
@@ -103,7 +100,6 @@
                 android:layout_marginLeft="@dimen/spacing_normal"
                 android:layout_marginRight="@dimen/spacing_normal"
                 android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@drawable/textview_full"
                 android:padding="@dimen/spacing_small"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/font_normal" />
@@ -126,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -140,7 +136,6 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginRight="@dimen/spacing_normal"
-                        android:background="@drawable/textview_full"
                         android:padding="@dimen/spacing_small"
                         android:text="@string/txtNutrientLevel100g"
                         android:textIsSelectable="true"
@@ -154,7 +149,6 @@
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:background="@drawable/textview_full"
                         android:divider="@color/white"
                         android:dividerHeight="0dp"
                         android:padding="@dimen/spacing_small"
@@ -184,7 +178,8 @@
                 android:id="@+id/calculateNutritionFacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/spacing_normal"
+                style="@style/BorderButton"
                 android:text="@string/calculate_nutrition_facts" />
 
             <android.support.v7.widget.CardView
@@ -192,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                app:cardElevation="4dp"
+                app:cardElevation="@dimen/card_elevation"
                 android:visibility="gone">
 
                 <TextView
@@ -203,7 +198,6 @@
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
@@ -215,6 +209,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:cardElevation="@dimen/card_elevation"
                 android:id="@+id/nutrimentsCardView">
 
                 <RelativeLayout
@@ -235,10 +230,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@id/textPerPortion"
-                        android:paddingBottom="70dp"
+                        android:paddingBottom="@dimen/nav_bar_height"
                         android:scrollbars="vertical"
                         tools:listheader="@layout/nutriment_item_list_header"
-                        tools:listitem="@layout/nutriment_item_list" />
+                        tools:listitem="@layout/nutriment_item_list"
+                        />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
