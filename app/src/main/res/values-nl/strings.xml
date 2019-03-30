@@ -35,7 +35,7 @@
         <item>Ingrediënten</item>
         <item>Voedingswaarde</item>
         <item>Voedingswaarde</item>
-        <item>Environment</item>
+        <item>Duurzaamheid</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -52,7 +52,7 @@
         <item>mg</item>
         <item>kg</item>
         <item>μg</item>
-        <item>% DV</item>
+        <item>% DH</item>
         <item>IE</item>
     </string-array>
     <!-- nutrients list
@@ -68,7 +68,7 @@
         <item>Boterzuur (4:0)</item>
         <item>Caffeïne</item>
         <item>Calcium</item>
-        <item>Capric acid (10:0)</item>
+        <item>Caprinezuur (10: 0)</item>
         <item>Capronzuur (6:0)</item>
         <item>Caprylzuur (8: 0)</item>
         <item>Caseïne</item>
@@ -117,7 +117,7 @@
         <item>Enkelvoudige onverzadigde vetzuren</item>
         <item>Kalium</item>
         <item>Seleen</item>
-        <item>Serum proteins</item>
+        <item>Serumproteïnen</item>
         <item>Silicium</item>
         <item>Zetmeel</item>
         <item>Stearic acid (18:0)</item>
@@ -255,10 +255,10 @@
     <string name="toggle_flash">Flash</string>
     <string name="flash_on">Flash [AAN]</string>
     <string name="flash_off">Flash [UIT]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
+    <string name="ring_on">Alarm [AAN]</string>
+    <string name="ring_off">Alarm [UIT]</string>
+    <string name="auto_focus_on">Auto Focus [AAN]</string>
+    <string name="auto_focus_off">Auto Focus [UIT]</string>
     <string name="formats">Formaten</string>
     <string name="choose_formats">Kies een format</string>
     <string name="select_camera">Selecteer een camera</string>
@@ -295,7 +295,7 @@
     <string name="scan_history_drawer">Geschiedenis</string>
     <string name="clear_history">Geschiedenis wissen</string>
     <string name="title_clear_history_dialog">Wissen</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Wilt je de hele scangeschiedenis wissen?</string>
     <string name="export_csv_history">CSV exporteren</string>
     <string name="txt_exporting_history">Geschiedenis exporteren…</string>
     <string name="txt_history_exported">Geschiedenis geëxporteerd</string>
@@ -308,7 +308,7 @@
     <string name="check_facts">Controleer</string>
     <string name="nutrition">Voedingswaarde</string>
     <string name="calculated_nutrition">Berekende voedingswaarde</string>
-    <string name="please_enter_weight">Please type the product weight</string>
+    <string name="please_enter_weight">Typ het gewicht van het product</string>
     <string name="enter_weight">Typ het gewicht van het product</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
@@ -342,10 +342,10 @@
     <string name="nutriment_serving_size">Per portie:</string>
     <string name="action_manage_account">Account beheren</string>
     <string name="action_contributes">Uw bijdragen</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="choose_energy_unit">Kies de gewenste energie-eenheid voor de voedingstabel</string>
+    <string name="energy_pref_title">Gewenste volume-eenheid</string>
+    <string name="choose_volume_unit">Kies de gewenste volume-eenheid voor de voedingstabel</string>
+    <string name="volume_pref_title">Gewenste volume-eenheid</string>
     <string name="logout_drawer">Afmelden</string>
     <string name="contribution_without_account">U kunt zich aanmelden of een account aanmaken om uw bijdragen te bewaren</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2-uitstoot: </string>
@@ -358,19 +358,19 @@
     <string name="number_of_products">Aantal producten: </string>
     <string name="txt_no_results">Geen resultaten gevonden</string>
     <string name="txt_extend_search">Probeer uw zoekopdracht te verbreden of voeg het product toe</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
-    <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="txt_no_matching__category_products">We hebben geen enkel product in deze categorie, producten toevoegen?</string>
+    <string name="txt_no_matching_allergen_products">We hebben geen enkel product met deze allergeen, producten toevoegen?</string>
+    <string name="txt_no_matching_label_products">We hebben geen enkel product met deze term, producten toevoegen?</string>
+    <string name="txt_no_matching_additive_products">We hebben geen enkel product met deze toevoeging, producten toevoegen?</string>
+    <string name="txt_no_matching_country_products">We hebben geen enkel product uit dit land, producten toevoegen?</string>
+    <string name="txt_no_matching_store_products">We hebben geen enkel product van deze winkel, producten toevoegen?</string>
+    <string name="txt_no_matching_packaging_products">We hebben geen enkel product met deze verpakking, producten toevoegen?</string>
+    <string name="txt_no_matching_brand_products">We hebben geen enkel product van dit merk, producten toevoegen?</string>
+    <string name="txt_no_matching_state_products">We hebben geen enkel product uit deze provincie, producten toevoegen?</string>
+    <string name="txt_no_matching_incomplete_products">We hebben geen incomplete producten, producten toevoegen?</string>
+    <string name="txt_no_matching_contributor_products">We hebben geen enkel product van deze persoon, producten toevoegen?</string>
+    <string name="txt_no_matching_products">Geen overeenkomstige producten gevonden.\nProbeer :</string>
+    <string name="txt_broaden_search">-zoekopdracht uitbreiden \n-scan een product en voeg het toe aan Open Food Facts</string>
     <string name="txt_cant_load_search_results">Kan zoekresultaten niet laden</string>
     <string name="something_went_wrong">Sorry, er ging iets fout…</string>
     <string name="txt_try_again">Probeer het opnieuw</string>
@@ -442,7 +442,7 @@
     <string name="txtSaturatedFat">Verzadigd vet</string>
     <string name="nutriscore_info_msg">Meer informatie over de Nutri-Score</string>
     <string name="nova_info_msg">Meer informatie over Nova</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp1_msg">Groep 1 - Onverwerkte of minimaal verwerkte levensmiddelen</string>
     <string name="nova_grp2_msg">Groep 2 - Bewerkte ingrediënten</string>
     <string name="nova_grp3_msg">Groep 3 - Bewerkte levensmiddelen</string>
     <string name="nova_grp4_msg">Groep 4 - Ultra-bewerkte levensmiddelen en dranken</string>
@@ -501,7 +501,7 @@
     <string name="preference_header_network">Netwerk</string>
     <string name="preference_header_contributing">Bijdragen</string>
     <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Food Facts</string>
-    <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+    <string name="scan_first_string">De geschiedenis van bekeken producten wordt hier getoond.\nJij kunt alleen de geschiedenis zien, deze wordt lokaal opgeslagen.</string>
     <string name="log_in">Inloggen</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
@@ -509,15 +509,15 @@
     <string name="dialog_cancel">Annuleer</string>
     <string name="dialog_create">Aanmaken</string>
     <string name="choose_resolution">Kies resolutie</string>
-    <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-    <string name="image_upload_resolution">Image upload resolution</string>
-    <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
-    <string name="wikidata_information">Going further</string>
+    <string name="pref_resolution_summary">Kies een resolutie voor de afbeelding</string>
+    <string name="image_upload_resolution">Afbeeldingsresolutie</string>
+    <string name="can_add_barcode">Problemen met scannen?\nSleep omhoog om een streepjescode in te voeren</string>
+    <string name="wikidata_information">Ga verder</string>
     <string name="wikidata_unavailable">Er is nog geen Wikipedia-pagina in uw taal.</string>
     <string name="description">Beschrijving: </string>
     <string name="title">Titel: </string>
     <string name="Wikipedia">Bekijk op Wikipedia</string>
-    <string name="Browse_Products">Browse Products</string>
+    <string name="Browse_Products">Blader door producten</string>
     <string name="swipe_down">Naar beneden swipen</string>
     <string name="brand_string">Merk</string>
     <string name="additive_string">Additief</string>
@@ -553,41 +553,41 @@
     <string name="by_barcode">Barcode</string>
     <string name="by_time">Recent bekeken</string>
     <string name="sort">Sorteer</string>
-    <string name="by_nutrition_grade">Nutrition Grade</string>
+    <string name="by_nutrition_grade">Voedingsgraad</string>
     <string name="sort_by">Ordenen volgens</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world-nl.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Schud telefoon om producten te scannen</string>
     <string name="shake_title">Schud om te scannen</string>
     <!-- strings related to share images -->
-    <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-    <string name="no_barcode">We have not detected any barcode</string>
-    <string name="enter_barcode">Please type the barcode below</string>
+    <string name="sorry_msg">Foto\'s zonder streepjescode kunnen nog niet met de app worden toegevoegd. Probeer de mobiele webversie.</string>
+    <string name="no_barcode">We hebben geen streepjescode gedetecteerd</string>
+    <string name="enter_barcode">Typ hieronder de streepjescode</string>
     <string name="format_error">Verkeerde Streepjescode-/QR-format</string>
     <string name="code_detected">We hebben de streepjescode gedetecteerd</string>
-    <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
+    <string name="do_you_want_to">Wil je foto\'s toevoegen aan deze streepjescode?</string>
     <string name="bottomNav_history">Geschiedenis</string>
     <string name="bottomNav_search">Zoeken</string>
     <string name="products_added">De producten die je toegevoegd of aangepast hebt</string>
     <string name="products_incomplete">Producten die je toegevoegd hebt en nog onvolledig zijn</string>
-    <string name="product_pictures_contributed">Products you took pictures for</string>
-    <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-    <string name="product_info_added">Products you added information for</string>
-    <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+    <string name="product_pictures_contributed">Producten waarvoor je foto\'s hebt gemaakt</string>
+    <string name="picture_contributed_incomplete">Onvoltooide producten waarvoor je foto\'s hebt gemaakt</string>
+    <string name="product_info_added">Producten waar je informatie aan hebt toegevoegd</string>
+    <string name="product_info_tocomplete">Onvoltooide producten waar je informatie aan hebt toegevoegd</string>
     <string name="show_by">Weergeven</string>
     <string name="notify_title">Exporteren voltooid</string>
-    <string name="notify_content">Click to view exported products</string>
-    <string name="notification_channel_name">Export Notifications</string>
-    <string name="notify_channel_description">Notification to show exported file\'s location</string>
-    <string name="products_to_be_completed">Products to be completed</string>
-    <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
-    <string name="offline_notification_title">Offline contributions you need to send</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
-    <string name="other_editors">Product page also edited by </string>
+    <string name="notify_content">Klik om geëxporteerd producten te bekijken</string>
+    <string name="notification_channel_name">Exportmeldingen</string>
+    <string name="notify_channel_description">Melding om de locatie van het geëxporteerde bestand te tonen</string>
+    <string name="products_to_be_completed">Onvoltooide producten</string>
+    <string name="modified_history">Product toegevoegd op %1$s om %2$s door %3$s. Laatste bewerking van productpagina op %4$s om %5$s door %6$s. Ook bijgewerkt door %7$s</string>
+    <string name="offline_notification_title">Offline bijdragen die nog niet zijn verzonden</string>
+    <string name="creator_history">Product toegevoegd op %1$s om %2$s CET door</string>
+    <string name="last_editor_history">Laatste bewerking van productpagina op %1$s om %2$s CET door </string>
+    <string name="other_editors">Productpagina ook bewerkt door </string>
     <string name="contribution_tab">Bijdragen</string>
-    <string name="contribution_tab_summary">Show user contributions tab with products</string>
-    <string name="contribution_tab_title">Show contribution tab</string>
+    <string name="contribution_tab_summary">Bijdragen tonen bij producten</string>
+    <string name="contribution_tab_title">Bijdrage tabblad weergeven</string>
     <string name="product">Bewerken</string>
     <string name="txtDialogsTitle">Opmerking</string>
     <string name="preference_show_all_product_photos_title">Weergeef alle productfoto\'s</string>
@@ -596,32 +596,32 @@
     <string name="productNameNull">Naam onbekend</string>
     <string name="productBrandNull">Merk onbekend</string>
     <string name="productQuantityNull">Hoeveelheid onbekend</string>
-    <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+    <string name="product_not_complete">Dit product is nog niet compleet. \nWil je details toevoegen?</string>
     <string name="addProductOffline">Je lijkt offline te zijn. Het product %s toevoegen met behulp van de offlinemodus?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_found">Product %1$s door jou gescand, bestaat nog niet. Wil je het toevoegen?</string>
     <string name="scan_sound">Scangeluid</string>
     <string name="trouble_scanning">Problemen met scannen?</string>
     <string name="barcode_hint">Problemen met scannen? Voer de barcode in</string>
     <string name="switch_camera">Wissel camera</string>
     <string name="autofocus">Autofocus</string>
-    <string name="initial_loading">Initial loading</string>
+    <string name="initial_loading">Bezig met laden</string>
     <string name="preferences">Voorkeuren</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Product %s wordt geladen</string>
-    <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
-    <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
-    <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
-    <string name="choose_nutrient">Choose a nutrient</string>
-    <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
-    <string name="hint_product_URL">Link of the official page of the product</string>
+    <string name="error_adding_ingredients">Er is iets fout gegaan bij het toevoegen van ingrediënten</string>
+    <string name="unable_to_extract_ingredients">Kan geen ingrediënten detecteren in de afbeelding</string>
+    <string name="error_adding_nutrition_facts">Er is iets fout gegaan bij het toevoegen van voedingsinformatie</string>
+    <string name="error_in_carbohydrate_value">Het aantal koolhydraten kan niet kleiner zijn dan de som van suiker en zetmeel</string>
+    <string name="choose_nutrient">Kies een voedingsstof</string>
+    <string name="error_adding_product_details">Er is iets fout gegaan bij het toevoegen van details</string>
+    <string name="hint_product_URL">Link naar de officiële pagina van het product</string>
     <string name="product_language">Producttaal: </string>
     <string name="hint_emb_codes">Voorbeelden: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Officiële website</string>
     <string name="scan_QR_code">QR-code scannen voor productwebsite</string>
-    <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
-    <string name="image_uploaded_successfully">Image uploaded successfully</string>
-    <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
+    <string name="add_at_least_one_picture">Voeg ten minste één foto van dit product toe voordat je doorgaat</string>
+    <string name="image_uploaded_successfully">Afbeelding met succes geüpload</string>
+    <string name="error_adding_product_photos">Er is iets fout gegaan bij het uploaden van een productafbeelding</string>
     <string name="ingredients_overwrite">Ingrediënten overschrijven</string>
     <string name="choose_mine">Kies mijn</string>
     <string name="keep_previous_version">Behoud de vorige versie</string>
@@ -631,7 +631,7 @@
     <string name="quantity_overwrite">Grootte overschrijven</string>
     <string name="link_overwrite">Link overschrijven</string>
     <string name="save_product">Wilt u het product opslaan?</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">Er is iets fout gegaan bij het toevoegen van een product</string>
     <string name="photos">Foto’s</string>
     <string name="please_wait">Een ogenblik geduld</string>
     <string name="product_uploaded_successfully">Product succesvol verzonden</string>
@@ -645,7 +645,7 @@
     <string name="ingredients_picture">Foto van de ingrediëntenlijst</string>
     <string name="take_ingredients_picture_to_extract">(Maak een foto van de ingrediënten om ze automatisch te herkennen)</string>
     <string name="ingredients_list">Ingrediëntenlijst</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+    <string name="ingredients_hint">Behoud de volgorde, geef het percentage indien vermeld, gescheiden met komma\'s of \'-\', gebruik () voor de ingrediënten van een ingrediënt, vermeld allergenen tussen \'_\' zoals bijvoorbeeld _melk_</string>
     <string name="extract_ingredients">Herken de ingrediënten</string>
     <string name="extracting_ingredients">Bezig de ingrediënten te detecteren</string>
     <string name="looksGood">Ziet er goed uit</string>
@@ -712,34 +712,34 @@
     <string name="risk_of_exposure">Risico op overmatig gebruik</string>
     <string name="efsa_warning_moderate_risk">De Europese Autoriteit voor voedselveiligheid (EFSA) heeft vastgesteld dat sommige bevolkingsgroepen een matig risico lopen om te veel %1$s te consumeren.</string>
     <string name="efsa_warning_high_risk">De Europese Autoriteit voor voedselveiligheid (EFSA) heeft vastgesteld dat sommige bevolkingsgroepen een hoog risico lopen om te veel %1$s te consumeren.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="legend_noael">boven dosis met waargenomen schadelijk effect (NOAEL)</string>
+    <string name="legend_adi">boven acceptabele dagelijkse inname (ADI)</string>
     <string name="max_energy_val_msg">Deze waarde is boven 2000 kcal per 100g. Kun je het corrigeren?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="max_nutrient_val_msg">De ingevoerde waarde is groter dan opgegeven per portie</string>
     <string name="update_image">Stuur een bijgewerkte afbeelding</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Je dieet</string>
     <string name="diet_name">Dietnaam</string>
     <string name="diets_dialog_warning_title">Let op</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">Je dieetgegevens blijven op je apparaat. Niets zal worden geüpload.</string>
     <string name="EditDiet_Name">Naam</string>
     <string name="EditDiet_Description">Beschrijving</string>
     <string name="EditDiet_Enabled_Disabled">In-/uitschakelen</string>
     <string name="EditDiet_Authorised_Ingredients">Toegestane ingrediënten</string>
     <string name="EditDiet_Hint_Ingredient_Authorised">Lijst de toegestane ingrediënten die in groen moeten worden weergegeven. Bijvoorbeeld: appel, paddestoel, tomaat… U kunt deze lijst later invullen.</string>
     <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Unauthorized ingredients</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="EditDiet_Hint_So_So_Ingredient">Markeer ingrediënten die problemen kunnen geven en in oranje moeten worden weergegeven. Bijvoorbeeld: appel, paddenstoel of tomaat. Je kunt de lijst later aanvullen.</string>
+    <string name="EditDiet_Unauthorised_Ingredients">Niet toegestane ingrediënten</string>
+    <string name="EditDiet_Hint_Unauthorised_Ingredient">Markeer niet toegestane ingrediënten die in rood moeten worden getoond. Bijvoorbeeld: gluten, melk, palm olie of suiker. Je kunt de lijst later uitbreiden.</string>
     <string name="extract_ingredients_prompt">Herken de ingrediënten</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
+    <string name="add_nutrient_prompt_text">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
+    <string name="add_category_prompt_text">Voeg een categorie toe om de Nutri-Score te berekenen</string>
+    <string name="add_nutrient_category_prompt_text">Voeg voedingsfeiten en een categorie toe om de Nutri-Score te berekenen</string>
+    <string name="no_nutrition_data_prompt">Dit product bevat geen voedingsfeiten</string>
     <string name="nutrition_image_prompt_text">Neem een foto van de voedingstabel</string>
     <string name="ingredient_image_prompt_text">Maak een foto van de ingrediënten</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="category_game_btn">Help producten te categoriseren om de Nutri-Score te berekenen</string>
     <string name="version_string">Open Food Facts Android-app</string>
     <string name="version">Versie</string>
     <string name="txtOtherInfo">Overige Informatie: </string>
@@ -755,9 +755,9 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Rapporteer afbeelding</string>
     <string name="detected_ingredients">Gedetecteerde ingrediënten</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
-    <string name="txtLoaded">Translations were downloaded successfully</string>
-    <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
+    <string name="txtDownloading">Taxonomieën downloaden…</string>
+    <string name="txtLoaded">Vertalingen zijn succesvol gedownload</string>
+    <string name="txtConnectionError">We kunnen bepaalde gegevens niet downloaden. Dit kan te wijten zijn aan een verbindingsfout.</string>
     <string name="set_image_name">Afbeelding succesvol ingesteld als</string>
     <string name="warning">Waarschuwing:</string>
     <string name="customer_service">Klantenservice :</string>
@@ -767,20 +767,20 @@
     <string name="additives">Additieven</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Voeg toe aan jouw lijsten</string>
-    <string name="txt_create_new_list">Create a new list</string>
-    <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="txt_create_new_list">Maak een nieuwe lijst</string>
+    <string name="txt_add_to_new_list">Voeg toe aan een nieuwe lijst</string>
     <string name="create_new_list_list_name">Lijstnaam</string>
     <string name="txt_eaten_products">Gegeten producten</string>
-    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="txt_products_to_buy">Producten om te kopen</string>
     <string name="export_csv_your_listed_products">CSV exporteren</string>
-    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
-    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="txt_exporting_your_listed_products">Bezig je producten te exporteren…</string>
+    <string name="txt_your_listed_products_exported">Je producten zijn geëxporteerd</string>
     <string name="txt_discard">Negeren</string>
     <string name="txt_save">Opslaan</string>
-    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="write_external_storage_your_listed_products">Toestemming om te schrijven naar extern opslag is vereist om gegevens te exporteren.</string>
+    <string name="txt_info_eaten_products">Je kunt producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \'Ik eet dit\' te tikken.
+        Je kunt ook producten aan deze lijst toevoegen door ze te zoeken en te klikken op de knop + in de rechterbovenhoek van de productpagina.</string>
+    <string name="txt_info_your_listed_products">Je kunt producten aan deze lijst toevoegen door ze te zoeken en op de knop + te klikken in de rechterbovenhoek van de productpagina.</string>
     <string name="txt_i_m_eating_this">Ik eet dit</string>
     <string name="compare_product_prompt">Vergelijk dit Product</string>
     <string name="search_history_pref_title">Lokale zoekgeschiedenis verwijderen</string>
@@ -789,25 +789,25 @@
     <string name="settings_country_summary">Jouw geselecteerde land wijzigen</string>
     <string name="settings_country_title">Land</string>
     <string name="list_text">Toegevoegd in:\u0020</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="txt_no_nutrition_data">Dit product biedt geen voedingsinformatie op de verpakking. Als dit veranderd is, kunt je het product bewerken.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
     <string name="add_another_product">Nog een product toevoegen</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
     <string name="product_summary_action_compare_button_label">Vergelijken</string>
     <string name="product_summary_action_add_to_list_button_label">Toevoegen aan lijst</string>
     <string name="product_summary_action_edit_button_label">Bewerken</string>
     <string name="product_summary_action_share_button_label">Delen</string>
-    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_prompt">Klik hier om te antwoorden</string>
     <string name="product_question_positive_response">Ja</string>
     <string name="product_question_negative_response">Nee</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
-    <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
-    <string name="go_to_full_product_page">Go to full product page</string>
-    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
-    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="product_question_ambiguous_response">Ik weet het niet zeker</string>
+    <string name="product_question_submit_message">Bedankt voor je bijdrage!</string>
+    <string name="error_nutrient_entry">De waarde moet numeriek zijn en kan beginnen met &lt;, &gt; of ~. Bijvoorbeeld: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_serving_data">De portie grootte moet positief zijn</string>
+    <string name="error_in_nutrient_data">Sommige voedingswaarden zijn niet geldig. Corrigeer bovenstaande velden met een foutmarkering</string>
+    <string name="go_to_full_product_page">Ga naar de volledige productpagina</string>
+    <string name="no_additive_data_available_for_this_product">Er zijn geen gegevens over toevoegingen beschikbaar voor dit product</string>
+    <string name="no_nutrient_information_available_for_this_product">Geen voedingsinformatie beschikbaar voor dit product</string>
 </resources>
