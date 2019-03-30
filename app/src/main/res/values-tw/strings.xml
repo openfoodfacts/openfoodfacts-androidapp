@@ -304,7 +304,7 @@
     <string name="no_brand">No Brand</string>
     <string name="no_title">No Title</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Table for nutrition facts of %1$s of %2$s</string>
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Check</string>
     <string name="nutrition">Nutrition</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
