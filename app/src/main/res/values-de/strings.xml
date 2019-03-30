@@ -807,4 +807,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="error_nutrient_entry">Der Wert sollte numerisch sein und kann mit &lt;, &gt; oder ~ beginnen. Beispiel: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">Die Portionsgröße muss ein positiver Wert sein</string>
     <string name="error_in_nutrient_data">Einige Nährstoffwerte sind ungültig. Die oben als fehlerhaft markierten Felder müssen ausgefüllt werden.</string>
+    <string name="go_to_full_product_page">Zur vollständigen Produktseite wechseln</string>
+    <string name="no_additive_data_available_for_this_product">Für dieses Produkt sind keine zusätzlichen Daten verfügbar</string>
+    <string name="no_nutrient_information_available_for_this_product">Für dieses Produkt sind keine Nährstoffinformationen verfügbar</string>
 </resources>
