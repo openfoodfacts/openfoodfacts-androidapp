@@ -28,7 +28,7 @@ public class LoadTaxonomiesService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         productRepository = ProductRepository.getInstance();
         settings = getSharedPreferences("prefs", 0);
-        doTask(intent);
+        doTask();
     }
 
     private void doTask() {
