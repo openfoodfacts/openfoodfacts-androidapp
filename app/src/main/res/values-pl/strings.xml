@@ -615,8 +615,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
  </string>
     <string name="other_editors">Strona edytowana także przez </string>
     <string name="contribution_tab">Wkład</string>
-    <string name="contribution_tab_summary">Pokaż kartę wkładu użytkowników i produktów</string>
-    <string name="contribution_tab_title">Pokaż zakładkę kontrybucji</string>
+    <string name="contribution_tab_summary">Pokaż kartę wkładu użytkowników wraz z dodanymi produktami</string>
+    <string name="contribution_tab_title">Pokaż zakładkę wkładu użytkownika</string>
     <string name="product">Edytuj</string>
     <string name="txtDialogsTitle">Informacje</string>
     <string name="preference_show_all_product_photos_title">Pokaż wszystkie zdjęcia produktu</string>
@@ -647,7 +647,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="product_language">Język produktu: </string>
     <string name="hint_emb_codes">Przykłady: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Oficjalna strona internetowa</string>
-    <string name="scan_QR_code">Zeskanuj kod QR do strony produktu</string>
+    <string name="scan_QR_code">Zeskanuj kod QR odsyłający do strony produktu</string>
     <string name="add_at_least_one_picture">Przed kontynuowaniem, dodaj co najmniej jedno zdjęcie produktu</string>
     <string name="image_uploaded_successfully">Zdjęcie zostało przesłane pomyślnie</string>
     <string name="error_adding_product_photos">Coś poszło nie tak podczas próby dodania zdjęć produktu</string>
