@@ -788,7 +788,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtLoaded">Pomyślnie pobrano tłumaczenia</string>
     <string name="txtConnectionError">Nie pobrano niektórych danych. Może to być spowodowane błędem połączenia.</string>
     <string name="set_image_name">Pomyślnie ustawiono obraz jako</string>
-    <string name="warning">Uwaga :</string>
+    <string name="warning">Ostrzeżenie :</string>
     <string name="customer_service">Obsługa klienta :</string>
     <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
     <string name="fast_addition_mode">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
@@ -803,7 +803,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txt_products_to_buy">Produkty do kupienia</string>
     <string name="export_csv_your_listed_products">Eksport CSV</string>
     <string name="txt_exporting_your_listed_products">Eksportowanie twoich produktów…</string>
-    <string name="txt_your_listed_products_exported">Twój profil został eksportowany</string>
+    <string name="txt_your_listed_products_exported">Twoje produkty zostały wyeksportowane</string>
     <string name="txt_discard">Odrzuć</string>
     <string name="txt_save">Zapisz</string>
     <string name="write_external_storage_your_listed_products">Napisz, że potrzebne jest zewnętrzne zezwolenie na eksport danych.</string>
