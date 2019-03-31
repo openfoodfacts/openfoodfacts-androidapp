@@ -502,11 +502,11 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="saving">Zapisywanie…</string>
     <string name="scan_first_product">Zeskanuj pierwszy produkt</string>
     <string name="preference_delete_search_history">Historia została usunięta</string>
-    <string name="preference_enable_mobile_data_title">Prześlij używając danyme mobilne</string>
-    <string name="preference_enable_mobile_data_summary_on">Wyślij nowe produkty używając dane mobilne &amp; WiFi</string>
+    <string name="preference_enable_mobile_data_title">Prześlij za pomocą mobilnej transmisji danych</string>
+    <string name="preference_enable_mobile_data_summary_on">Wyślij nowe produkty używając mobilnej transmisji danych &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Prześlij nowe produkty tylko przez WiFi</string>
     <string name="device_on_mobile_data_warning_title">Informacje</string>
-    <string name="device_on_mobile_data_warning_message">Dane mobilne są wyłączone, połącz się z WiFi lub zmień ustawienia</string>
+    <string name="device_on_mobile_data_warning_message">Mobilna transmisja danych jest wyłączona, połącz się z WiFi lub zmień ustawienia</string>
     <string name="device_on_mobile_data_warning_positive">Ustawienia</string>
     <string name="device_on_mobile_data_warning_negative">Przesyłaj mimo to</string>
     <string name="changes_saved">Zmiany zostały zapisane</string>
