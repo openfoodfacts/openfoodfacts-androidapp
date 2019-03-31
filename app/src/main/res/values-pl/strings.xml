@@ -314,7 +314,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="error_field_required">Wypełnienie tego pola jest wymagane.</string>
     <string name="action_preferences">Ustawienia</string>
     <string name="prefs_scan_startup">Skanuj przy uruchomieniu</string>
-    <string name="prefs_scan_startup_summary">Jeśli wybrano tę opcję, skanowanie rozpocznie się gdy jest uruchomiona.</string>
+    <string name="prefs_scan_startup_summary">Jeśli ta opcja jest zaznaczona, skanowanie rozpocznie się niezwłocznie po uruchomieniu aplikacji.</string>
     <string name="prefs_power_mode">Skanowanie w trybie zasilania</string>
     <string name="prefs_power_mode_summary">Szybko skanuj produkty w supermarkecie by sprawdzić które z nich nie znajdują siew bazie danych.</string>
     <string name="prefs_language">Język</string>
@@ -838,5 +838,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="error_in_nutrient_data">Niektóre wartości odżywcze nie są prawidłowe. Proszę poprawić pola oznaczone jako nieprawidłowe</string>
     <string name="go_to_full_product_page">Przejdź do pełnej strony produktu</string>
     <string name="no_additive_data_available_for_this_product">Dodatkowe dane dla tego produktu nie są dostępne</string>
-    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="no_nutrient_information_available_for_this_product">Brak informacji o wartości odżywczej dla tego produktu</string>
 </resources>
