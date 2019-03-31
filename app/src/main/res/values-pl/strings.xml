@@ -579,7 +579,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="by_title">Tytuł</string>
     <string name="by_brand">Marka</string>
     <string name="by_barcode">Kod kreskowy</string>
-    <string name="by_time">Ostatnio odwiedzone</string>
+    <string name="by_time">Ostatnio oglądane</string>
     <string name="sort">Sortuj</string>
     <string name="by_nutrition_grade">Stopień odżywienia</string>
     <string name="sort_by">Sortuj wg</string>
@@ -592,7 +592,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="no_barcode">Nie odnaleziono kodu kreskowego</string>
     <string name="enter_barcode">Wprowadź poniżej kod kreskowy</string>
     <string name="format_error">Błędny kod kreskowy/QR</string>
-    <string name="code_detected">Wykryliśmy kod kreskowy</string>
+    <string name="code_detected">Wykryto kod kreskowy</string>
     <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
     <string name="bottomNav_history">Historia</string>
     <string name="bottomNav_search">Poszukiwanie</string>
@@ -605,7 +605,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="show_by">Pokaż</string>
     <string name="notify_title">Zakończono eksport</string>
     <string name="notify_content">Naciśnij by zobaczyć wyeksportowane produkty</string>
-    <string name="notification_channel_name">Ekspotruj powiadomienia</string>
+    <string name="notification_channel_name">Eksportuj powiadomienia</string>
     <string name="notify_channel_description">Powiadomienie wskazujące lokalizację wyeksportowanego pliku</string>
     <string name="products_to_be_completed">Produkty do uzupełnienia</string>
     <string name="modified_history">Produkty dodane dnia %1$s o godzinie %2$s przez %3$s.  Ostatnia zmiana strony produktu w dniu %4$s o %5$s przez %6$s.  Także zmieniona przez %7$s</string>
