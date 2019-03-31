@@ -330,9 +330,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="permision_write_external_storage">Aby uzyskać historię eksportu, konieczne jest zapisanie zewnętrznej pamięci masowej.</string>
     <string name="txt_nutrition_not_found">Nie dotyczy</string>
     <string name="no_brand">Brak marki</string>
-    <string name="no_title">Bez tytułu</string>
+    <string name="no_title">Brak tytułu</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Tabela faktów żywieniowych dla %1$s tego produktu</string>
+    <string name="display_fact">Tabela wartości odżywczych dla %1$s tego produktu</string>
     <string name="check_facts">Sprawdź</string>
     <string name="nutrition">Odżywianie</string>
     <string name="calculated_nutrition">Obliczone wartości odżywcze</string>
@@ -353,7 +353,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_header">Wartości odżywcze</string>
     <string name="nutrition_no_data_message">Brak danych o produkcie</string>
     <string name="nutrition_per_quantity">W 100g/100ml</string>
-    <string name="nutrition_proteins">Proteiny</string>
+    <string name="nutrition_proteins">Białko</string>
     <string name="nutrition_proteins_short_name">Białko (g)</string>
     <string name="nutrition_salt">Sól</string>
     <string name="nutrition_salt_short_name">Sól (g)</string>
@@ -415,8 +415,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_chlore">Chlor</string>
     <string name="nutrition_magnesium">Magnez</string>
     <string name="nutrition_taurine">Tauryna</string>
-    <string name="nutrition_monounsaturatedFat">Tłuszcz jednonienasycony</string>
-    <string name="nutrition_polyunsaturatedFat">Tłuszcz wielonienasycony</string>
+    <string name="nutrition_monounsaturatedFat">Tłuszcze jednonienasycone</string>
+    <string name="nutrition_polyunsaturatedFat">Tłuszcze wielonienasycone</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
