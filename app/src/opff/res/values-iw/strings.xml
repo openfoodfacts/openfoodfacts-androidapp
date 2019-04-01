@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-he.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts הוא מסד נתונים פתוח המכיל למעלה מ־%1$d מוצרי מזון לחיות מחמד (כולל אלו שתרמת) הב. הב.</string>
-    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts הוא מסד נתונים המכיל למעלה מ־%1$d מוצרי מזון לחיות מחמד (כולל אלו שתרמת) הב. הב.</string>
+    <string name="txtHome">Open Pet Food Facts הוא מסד נתונים של מוצרי מזון לחיות מחמד המכיל רכיבים, עובדות תזונתיות… הב. הב.</string>
     <string name="slide_1_title">תרומה לשקיפות המזון לחיות מחמד</string>
     <string name="slide_1_desc">ניתן לסרוק מוצרים, לצלם אותם ולהפוך את השקיפות בתחום המזון לחיות מחמד למציאות</string>
     <string name="slide_2_title">קבלת העובדות</string>
