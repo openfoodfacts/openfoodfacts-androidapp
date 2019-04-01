@@ -812,9 +812,9 @@
     <string name="product_question_negative_response">לא</string>
     <string name="product_question_ambiguous_response">לא בטוח</string>
     <string name="product_question_submit_message">תודה לך על תרומתך!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="error_nutrient_entry">הערך אמור להיות מספרי ולהתחיל ב־&lt;, &gt; או ~. לדוגמה: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">גודל ההגשה חייב להיות ערך חיובי</string>
+    <string name="error_in_nutrient_data">חלק מערכי ההזנה אינם תקינים. נא לתקן את השדות להלן שמסומנים כשגויים</string>
     <string name="go_to_full_product_page">מעבר לעמוד המוצר המלא</string>
     <string name="no_additive_data_available_for_this_product">אין נתוני תוספים זמינים עבור המוצר הזה</string>
     <string name="no_nutrient_information_available_for_this_product">אין נתוני חומרי הזנה זמינים עבור המוצר הזה</string>
