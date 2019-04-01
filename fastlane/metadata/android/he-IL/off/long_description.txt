@@ -60,7 +60,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 
 ◀ הגדרת התראות חומרים מעוררי רגישות על מוצרים
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+- שיפור מהירות הקניות שלך על ידי סריקה ראשונית של המזון שלך עם Open Food Facts.
 - Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
 

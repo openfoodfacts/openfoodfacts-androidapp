@@ -95,7 +95,7 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-
+        mState = state;
     }
 
 }

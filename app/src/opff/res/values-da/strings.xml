@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/bidragsydere/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts er en åben database med flere end %1$d kæledyrsfoderprodukter (plus dem, du vil bidrage med) indeholdende oplysninger om ingredienser, allergener, indicier og alle de øvrige informationer, som fremgår af produktetiketterne.</string>
-    <string name="txtHome">Open Pet Food Facts er en åben database over kæledyrsfoderprodukter indeholdende oplysninger om ingredienser, allergener, indicier og alle de øvrige informationer, som fremgår af produktetiketterne.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts er en database med flere end %1$d kæledyrsfoderprodukter (plus dem du vil bidrage med).</string>
+    <string name="txtHome">Open Pet Food Facts er en database over kæledyrsfoderprodukter med ingredienser, ernæringsfakta…</string>
     <string name="slide_1_title">Bidrag til Pet Food-gennemsigtighed</string>
     <string name="slide_1_desc">Skan produkter, tilføj billeder, gør kæledyrsfodergennemsigtighed til virkelighed</string>
     <string name="slide_2_title">Få fat i fakta</string>

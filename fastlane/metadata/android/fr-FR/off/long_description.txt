@@ -39,7 +39,7 @@ Créez des listes de courses, suivez ce que vous avez mangé, partagez et export
 
 ▶ Basé sur la science, et qui aide la science!
 
-- We don't make up things. Nous nous appuyons sur de la science evaluée par des pairs.
+- On ne fabrique pas de choses. Nous nous appuyons sur de la science evaluée par des pairs.
 - Le Nutri-Score a été créé par l'équipe française indépendante dirigée par le professeur Hercberg.
 - Les groupes NOVA sur la transformation des aliments ont été conçus par l'équipe internationale du professeur Monteiro.
 - Vous pouvez obtenir une synthèse des niveaux d'exposition de l'EFSA sur les additifs alimentaires.
@@ -61,7 +61,7 @@ Scannez à la vitesse de la lumière (même si vous êtes dans un avion, sous-ma
 ▶ Configurer des alertes allergènes sur les produits
 - Lait, gluten, œufs, soja, noix, poisson, céleri, moutarde, anhydride sulfureux et sulfites, arachides, graines de sésame, crustacés, mollusques ou lupin ?
 - Accélérez vos achats en faisant une première sélection de vos aliments avec Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. Donc, vérifiez toujours vous-même, avec l'emballage.
+- Veillez noter que les informations ne sont pas précises à 100% et que la détection n'est pas précise à 100%. Donc, vérifiez toujours vous-même, avec l'emballage.
 
 
 ▶ Dites bonjour et / ou rejoignez nous!
