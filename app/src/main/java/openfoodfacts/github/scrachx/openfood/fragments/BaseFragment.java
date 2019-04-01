@@ -10,7 +10,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -64,10 +63,10 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         }
     }
 
-    protected State getStateFromActivityIntent(){
+    protected State getStateFromActivityIntent() {
         Intent intent = getActivity().getIntent();
-        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null) {
-            return  (State) intent.getExtras().getSerializable("state");
+        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
+            return (State) intent.getExtras().getSerializable("state");
         }
         return ProductFragment.mState;
     }
