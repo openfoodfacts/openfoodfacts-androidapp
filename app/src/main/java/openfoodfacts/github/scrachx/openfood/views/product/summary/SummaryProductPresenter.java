@@ -33,7 +33,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     public void loadAdditives() {
         List<String> additivesTags = product.getAdditivesTags();
         if (additivesTags != null && !additivesTags.isEmpty()) {
-            final String languageCode = LocaleHelper.getLanguageTrimmed(OFFApplication.getInstance());
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
                 Observable.fromArray(additivesTags.toArray(new String[0]))
                     .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
@@ -67,7 +67,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
 
     @Override
     public void loadAllergens() {
-        final String languageCode = LocaleHelper.getLanguageTrimmed(OFFApplication.getInstance());
+        final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
         disposable.add(
             repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .subscribeOn(Schedulers.io())
@@ -82,7 +82,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     public void loadCategories() {
         List<String> categoriesTags = product.getCategoriesTags();
         if (categoriesTags != null && !categoriesTags.isEmpty()) {
-            final String languageCode = LocaleHelper.getLanguageTrimmed(OFFApplication.getInstance());
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
                 Observable.fromArray(categoriesTags.toArray(new String[0]))
                     .flatMapSingle(tag -> repository.getCategoryByTagAndLanguageCode(tag, languageCode)
@@ -117,7 +117,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     public void loadLabels() {
         List<String> labelsTags = product.getLabelsTags();
         if (labelsTags != null && !labelsTags.isEmpty()) {
-            final String languageCode = LocaleHelper.getLanguageTrimmed(OFFApplication.getInstance());
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
                 Observable.fromArray(labelsTags.toArray(new String[labelsTags.size()]))
                     .flatMapSingle(tag -> repository.getLabelByTagAndLanguageCode(tag, languageCode)
@@ -151,7 +151,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
 
     @Override
     public void loadProductQuestion() {
-        final String languageCode = LocaleHelper.getLanguageTrimmed(OFFApplication.getInstance());
+        final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
         disposable.add(
             repository.getSingleProductQuestion(product.getCode(), languageCode)
                 .subscribeOn(Schedulers.io())

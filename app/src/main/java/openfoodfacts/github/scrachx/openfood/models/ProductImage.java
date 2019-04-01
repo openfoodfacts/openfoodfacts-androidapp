@@ -30,7 +30,7 @@ public class ProductImage {
 
     public ProductImage(String code, ProductImageField field, File image) {
         this.code = RequestBody.create(MediaType.parse("text/plain"), code);
-        this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString() + '_' + LocaleHelper.getLanguageTrimmed(OFFApplication.getInstance()));
+        this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString() + '_' + LocaleHelper.getLanguage(OFFApplication.getInstance()));
 
         switch (field) {
             case FRONT:

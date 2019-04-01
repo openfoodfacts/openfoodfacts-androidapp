@@ -137,7 +137,7 @@ public class OpenFoodAPIClient {
                     new HistoryTask().doInBackground(s.getProduct());
                     Intent intent = new Intent(activity, ProductActivity.class);
                     Bundle bundle = new Bundle();
-                    String langCode = LocaleHelper.getLanguageTrimmed(activity.getApplicationContext());
+                    String langCode = LocaleHelper.getLanguage(activity.getApplicationContext());
                     String fieldsArray[] = activity.getResources().getStringArray(R.array.fields_array);
                     ArrayList<String> fieldsList = new ArrayList<>();
                     for (int i = 0; i < fieldsArray.length; i++) {
@@ -499,7 +499,7 @@ public class OpenFoodAPIClient {
     }
 
     private Map<String, RequestBody> getUploadableMap(ProductImage image, Context context) {
-        final String lang =  LocaleHelper.getLanguageTrimmed(context);
+        final String lang =  LocaleHelper.getLanguage(context);
 
         Map<String, RequestBody> imgMap = new HashMap<>();
         imgMap.put("code", image.getCode());

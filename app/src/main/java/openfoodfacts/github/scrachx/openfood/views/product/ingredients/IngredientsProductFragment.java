@@ -206,7 +206,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void refreshView(State state) {
         super.refreshView(state);
         mState = state;
-        String langCode = LocaleHelper.getLanguageTrimmed(getContext());
+        String langCode = LocaleHelper.getLanguage(getContext());
         if (getArguments() != null) {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         }
@@ -328,7 +328,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         presenter.loadAllergens();
 
         if (!isBlank(product.getTraces())) {
-            String language=LocaleHelper.getLanguageTrimmed(getContext());
+            String language=LocaleHelper.getLanguage(getContext());
             textTraceProductCardView.setVisibility(View.VISIBLE);
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
             traceProduct.setText(bold(getString(R.string.txtTraces)));

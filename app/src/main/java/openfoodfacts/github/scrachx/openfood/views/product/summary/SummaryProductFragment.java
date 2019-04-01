@@ -230,7 +230,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
         barcode = product.getCode();
-        String langCode = LocaleHelper.getLanguageTrimmed(getContext());
+        String langCode = LocaleHelper.getLanguage(getContext());
 
         if (isNotBlank(product.getImageUrl())) {
             addPhotoLabel.setVisibility(View.GONE);
