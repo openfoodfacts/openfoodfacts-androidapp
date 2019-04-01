@@ -159,6 +159,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             addValidListener(editText);
             checkValue(editText);
         }
+        if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
+            getAllDetails(((AddProductActivity) getActivity()).getInitialValues());
+        }
     }
 
     private void checkAllValues() {
@@ -613,27 +616,27 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    public void getAllDetails() {
+    public void getAllDetails(Map<String,String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (noNutritionData.isChecked()) {
-                ((AddProductActivity) activity).addToMap(PARAM_NO_NUTRITION_DATA, "on");
+                targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
             } else {
                 if (isDataPer100()) {
-                    ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, Nutriments.DEFAULT_NUTRITION_SIZE);
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, Nutriments.DEFAULT_NUTRITION_SIZE);
                 } else if (isDataPerServing()) {
-                    ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, "serving");
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
                 if (serving_size.getText().toString().isEmpty()) {
-                    ((AddProductActivity) activity).addToMap(PARAM_SERVING_SIZE, "");
+                    targetMap.put(PARAM_SERVING_SIZE, "");
                 } else {
                     String servingSize = serving_size.getText().toString() + UNIT[serving_size.getAttachedSpinner().getSelectedItemPosition()];
-                    ((AddProductActivity) activity).addToMap(PARAM_SERVING_SIZE, servingSize);
+                    targetMap.put(PARAM_SERVING_SIZE, servingSize);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
                     if (serving_size.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
-                    addNutrientToMap(editTextView);
+                    addNutrientToMap(editTextView,targetMap);
                 }
             }
         }
@@ -651,38 +654,37 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     /**
      * adds only those fields to the query map which are not empty.
      */
-    public void getDetails() {
+    public void getDetails(Map<String,String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (noNutritionData.isChecked()) {
-                ((AddProductActivity) activity).addToMap(PARAM_NO_NUTRITION_DATA, "on");
+                targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
             } else {
                 if (isDataPer100()) {
-                    ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, Nutriments.DEFAULT_NUTRITION_SIZE);
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, Nutriments.DEFAULT_NUTRITION_SIZE);
                 } else if (isDataPerServing()) {
-                    ((AddProductActivity) activity).addToMap(PARAM_NUTRITION_DATA_PER, "serving");
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
                 if (!serving_size.getText().toString().isEmpty()) {
                     String servingSize = serving_size.getText().toString() + UNIT[serving_size.getAttachedSpinner().getSelectedItemPosition()];
-                    ((AddProductActivity) activity).addToMap(PARAM_SERVING_SIZE, servingSize);
+                    targetMap.put(PARAM_SERVING_SIZE, servingSize);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
                     if (serving_size.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
                     if (!editTextView.getText().toString().isEmpty()) {
-                        addNutrientToMap(editTextView);
+                        addNutrientToMap(editTextView,targetMap);
                     }
                 }
             }
         }
     }
 
-    private void addNutrientToMap(CustomValidatingEditTextView editTextView) {
+    private void addNutrientToMap(CustomValidatingEditTextView editTextView,Map<String,String> targetMap) {
         String completeName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
-        ((AddProductActivity) activity).addToMap(completeName, editTextView.getText().toString());
+        targetMap.put(completeName, editTextView.getText().toString());
         if (hasUnit(editTextView) && editTextView.getAttachedSpinner() != null) {
-            ((AddProductActivity) activity)
-                .addToMap(completeName + AddProductNutritionFactsData.SUFFIX_UNIT,
+            targetMap.put(completeName + AddProductNutritionFactsData.SUFFIX_UNIT,
                     getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition()));
         }
     }

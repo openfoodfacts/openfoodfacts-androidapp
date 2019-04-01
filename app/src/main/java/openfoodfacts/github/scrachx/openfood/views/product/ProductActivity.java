@@ -163,10 +163,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 			intent.putExtra( "edit_product", mState.getProduct() );
 			startActivity( intent );
 		}
-		if( requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK)
-		{
-			onRefresh();
-		}
+
 	}
 
     public static void onScanButtonClicked(Activity activity) {

@@ -10,4 +10,6 @@ public interface ICommonApiManager {
 
     OpenFoodAPIService getOpenFoodApiService();
 
+    RobotoffAPIService getRobotoffApiService();
+
 }

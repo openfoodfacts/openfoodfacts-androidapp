@@ -760,7 +760,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            boolean uploadedToServer = data.getBooleanExtra("uploadedToServer", true);
+            boolean uploadedToServer = data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, true);
             if (uploadedToServer) {
                 findProduct(lastText, true);
             } else {
