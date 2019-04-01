@@ -51,14 +51,7 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
@@ -99,6 +92,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private static final int EDIT_REQUEST_CODE = 2;
     @BindView(R.id.textIngredientProduct)
     TextView ingredientsProduct;
+    private AllergenNameDao mAllergenNameDao;
     @BindView(R.id.textSubstanceProduct)
     TextView substanceProduct;
     @BindView(R.id.textTraceProduct)
@@ -218,6 +212,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
 
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
+        mAllergenNameDao = Utils.getAppDaoSession(getActivity()).getAllergenNameDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -333,21 +328,20 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         presenter.loadAllergens();
 
         if (!isBlank(product.getTraces())) {
+            String language=LocaleHelper.getLanguageTrimmed(getContext());
             textTraceProductCardView.setVisibility(View.VISIBLE);
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
             traceProduct.setText(bold(getString(R.string.txtTraces)));
             traceProduct.append(" ");
 
-            String trace;
-            String traces[] = product.getTraces().split(",");
-            for (int i = 0; i < traces.length - 1; i++) {
-                trace = traces[i];
-                traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
-                traceProduct.append(", ");
+            String[] traces = product.getTraces().split(",");
+            for (int i = 0; i < traces.length; i++) {
+                String   trace = traces[i];
+                if(i>0){
+                    traceProduct.append(", ");
+                }
+                traceProduct.append(Utils.getClickableText(getTracesName(language,trace), trace, SearchType.TRACE, getActivity(), customTabsIntent));
             }
-
-            trace = traces[traces.length - 1];
-            traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
         } else {
             textTraceProductCardView.setVisibility(View.GONE);
         }
@@ -383,6 +377,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         } else {
             novaLayout.setVisibility(View.GONE);
         }
+    }
+
+    private String getTracesName(String languageCode, String tag) {
+        AllergenName allergenName = mAllergenNameDao.queryBuilder().where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        if (allergenName != null) return allergenName.getName();
+        return tag;
     }
 
     private CharSequence getAdditiveTag(AdditiveName additive) {

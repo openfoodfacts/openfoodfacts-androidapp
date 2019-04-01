@@ -40,7 +40,8 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
-
+import openfoodfacts.github.scrachx.openfood.utils.*;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
@@ -77,10 +78,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
-import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import com.mikepenz.materialize.util.UIUtils;
 
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -101,8 +98,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     private boolean isLowBatteryMode = false;
     private IProductRepository repository = ProductRepository.getInstance();
     private CompositeDisposable disposable = new CompositeDisposable();
-    private String languageCode = Locale.getDefault().getLanguage();
-    private Button addProductButton = null;
+    private Button addProductButton;
     private OpenFoodAPIClient api;
     private ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
     public static Integer ON_PHOTO_RETURN_POSITION;
@@ -431,6 +427,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         StringBuilder additivesBuilder = new StringBuilder();
         List<String> additivesTags = product.getAdditivesTags();
         if (additivesTags != null && !additivesTags.isEmpty()) {
+            final String languageCode = LocaleHelper.getLanguage(v.getContext());
             disposable.add(
                     Observable.fromArray(additivesTags.toArray(new String[additivesTags.size()]))
                             .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
@@ -461,9 +458,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                                     ((TextView) v).setText(additivesBuilder.toString());
                                     setMaxCardHeight();
                                 }
-                            }, e -> {
-                                e.printStackTrace();
-                            })
+                            }, e -> Log.e(ProductComparisonAdapter.class.getSimpleName(),"loadAdditives",e))
             );
         }
     }
@@ -488,7 +483,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     }
 
     public void setImageOnPhotoReturn(File file) {
-        ProductComparisonViewHolder holder = viewHolders.get(ON_PHOTO_RETURN_POSITION);
         Product product = productsToCompare.get(ON_PHOTO_RETURN_POSITION);
         ProductImage image = new ProductImage(product.getCode(), FRONT, file);
         image.setFilePath(file.getAbsolutePath());

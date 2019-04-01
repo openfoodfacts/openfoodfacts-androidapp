@@ -29,7 +29,7 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 
@@ -132,7 +132,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         Bundle b = getArguments();
         if (b != null) {
             mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
-            appLanguageCode = Locale.getDefault().getLanguage();
+            appLanguageCode = LocaleHelper.getLanguage(activity);
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             edit_product = b.getBoolean("edit_product");
