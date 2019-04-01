@@ -866,7 +866,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.action_compare_button)
     public void onCompareProductButtonClick() {
-        Intent intent = new Intent(getContext(), ProductComparisonActivity.class);
+        Intent intent = new Intent(getActivity(), ProductComparisonActivity.class);
         intent.putExtra("product_found", true);
         ArrayList<Product> productsToCompare = new ArrayList<>();
         productsToCompare.add(product);
