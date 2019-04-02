@@ -647,15 +647,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showProductQuestion(Question question) {
-        if(question==null|| question.isEmpty()){
-            productQuestionLayout.setVisibility(View.GONE);
-            productQuestion=null;
-        }else{
+        if(Utils.isUserLoggedIn(getContext()) && question!=null && !question.isEmpty()){
             productQuestion = question;
             productQuestionText.setText(String.format("%s\n%s",
                 question.getQuestion(), question.getValue()));
             productQuestionLayout.setVisibility(View.VISIBLE);
             hasCategoryInsightQuestion = question.getInsightType().equals("category");
+        }else{
+            productQuestionLayout.setVisibility(View.GONE);
+            productQuestion=null;
         }
         refreshNutriscorePrompt();
         refreshScoresLayout();
@@ -663,7 +663,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.product_question_layout)
     public void onProductQuestionClick() {
-        if(productQuestion==null){
+        if(productQuestion==null && !Utils.isUserLoggedIn(getContext())){
             return;
         }
         new QuestionDialog(getActivity())
