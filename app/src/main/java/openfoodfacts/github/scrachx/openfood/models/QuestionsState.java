@@ -7,6 +7,8 @@ import java.util.List;
 
 public class QuestionsState implements Serializable {
 
+    public static final  Question EMPTY_QUESTION=new Question();
+
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("questions")

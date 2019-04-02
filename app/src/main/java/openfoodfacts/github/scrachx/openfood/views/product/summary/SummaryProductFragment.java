@@ -46,12 +46,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
-import openfoodfacts.github.scrachx.openfood.utils.QuestionActionListeners;
-import openfoodfacts.github.scrachx.openfood.utils.QuestionDialog;
-import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
@@ -77,7 +72,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.*;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
-import static org.apache.commons.lang3.StringUtils.*;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
     @BindView(R.id.product_allergen_alert_layout)
@@ -652,17 +647,25 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showProductQuestion(Question question) {
-        productQuestion = question;
-        productQuestionText.setText(String.format("%s\n%s",
-            question.getQuestion(), question.getValue()));
-        productQuestionLayout.setVisibility(View.VISIBLE);
-        hasCategoryInsightQuestion = question.getInsightType().equals("category");
+        if(question==null|| question.isEmpty()){
+            productQuestionLayout.setVisibility(View.GONE);
+            productQuestion=null;
+        }else{
+            productQuestion = question;
+            productQuestionText.setText(String.format("%s\n%s",
+                question.getQuestion(), question.getValue()));
+            productQuestionLayout.setVisibility(View.VISIBLE);
+            hasCategoryInsightQuestion = question.getInsightType().equals("category");
+        }
         refreshNutriscorePrompt();
         refreshScoresLayout();
     }
 
     @OnClick(R.id.product_question_layout)
     public void onProductQuestionClick() {
+        if(productQuestion==null){
+            return;
+        }
         new QuestionDialog(getActivity())
             .setBackgroundColor(R.color.colorPrimaryDark)
             .setQuestion(productQuestion.getQuestion())
