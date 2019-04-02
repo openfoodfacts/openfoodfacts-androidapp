@@ -395,17 +395,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void refreshNutriscore() {
-        if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+        int nutritionGradeResource =Utils.getImageGrade(product);
+        if (nutritionGradeResource!=Utils.NO_DRAWABLE_RESOURCE) {
             nutriscoreImage.setVisibility(View.VISIBLE);
-            Context context = this.getContext();
-            nutriscoreImage.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+            nutriscoreImage.setImageResource(nutritionGradeResource);
+            nutriscoreImage.setOnClickListener(view1 -> {
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+            });
         } else {
             nutriscoreImage.setVisibility(View.GONE);
         }
-        nutriscoreImage.setOnClickListener(view1 -> {
-            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-            CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
-        });
     }
 
     private void refreshNovaIcon() {
@@ -424,20 +424,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void refreshCo2Icon() {
-        co2Icon.setVisibility(View.GONE);
-        if (product.getEnvironmentImpactLevelTags() != null) {
-            List<String> tags = product.getEnvironmentImpactLevelTags();
-            if (tags.size() > 0) {
-                String tag = tags.get(0).replace("\"", "");
-                co2Icon.setVisibility(View.VISIBLE);
-                if (tag.equals("en:high")) {
-                    co2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
-                } else if (tag.equals("en:low")) {
-                    co2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
-                } else if (tag.equals("en:medium")) {
-                    co2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
-                }
-            }
+        int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
+        if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+            co2Icon.setVisibility(View.VISIBLE);
+            co2Icon.setImageResource(environmentImpactResource);
+        }else{
+            co2Icon.setVisibility(View.GONE);
         }
     }
 
