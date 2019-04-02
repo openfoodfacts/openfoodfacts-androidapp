@@ -56,13 +56,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
-        State state;
-        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-            state = (State) intent.getExtras().getSerializable("state");
-        } else {
-            state = ProductFragment.mState;
-        }
+        State state=getStateFromActivityIntent();
         product = state.getProduct();
         mFragment = this;
         // initialize the arraylist

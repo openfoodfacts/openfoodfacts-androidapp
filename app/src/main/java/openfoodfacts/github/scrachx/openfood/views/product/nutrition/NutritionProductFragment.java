@@ -128,15 +128,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-            refreshView((State) intent.getExtras().getSerializable("state"));
-        } else {
-            refreshView(ProductFragment.mState);
-        }
+        refreshView(getStateFromActivityIntent());
     }
 
     @Override
