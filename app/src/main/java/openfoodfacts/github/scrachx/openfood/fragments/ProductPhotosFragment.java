@@ -71,7 +71,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
                 try {
                     images = jsonObject.getJSONObject("product").getJSONObject("images");
                 } catch (JSONException e) {
-                    Log.w(ProductPhotosFragment.class.getSimpleName(), "can get product / images in jon", e);
+                    Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
                 }
                 if (images != null) {
                     final JSONArray names = images.names();
@@ -91,7 +91,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
                                 }
                                 imageNames.add(namesString);
                             } catch (JSONException e) {
-                                Log.w(ProductPhotosFragment.class.getSimpleName(), "can get product / images in jon", e);
+                                Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
                             }
                         }
                     }
