@@ -143,7 +143,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                     try {
                         htmlNoParsed = response.body().string();
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        Log.e(HomeFragment.class.getSimpleName(),"signin",e);
                     }
                     if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
                             || htmlNoParsed.contains("See you soon!"))) {
@@ -173,7 +173,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
         super.onResume();
 
-        String txtHomeOnline = OFFApplication.getInstance().getResources().getString(R.string.txtHomeOnline);
+
         int productCount = sp.getInt("productCount", 0);
         apiClient.getTotalProductCount()
                 .subscribeOn(Schedulers.io())
@@ -181,30 +181,26 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                 .subscribe(new SingleObserver<Search>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        if (productCount != 0) {
-                            textHome.setText(String.format(txtHomeOnline, productCount));
-                        } else {
-                            textHome.setText(R.string.txtHome);
-                        }
+                        updateTextHome(productCount);
                     }
 
                     @Override
                     public void onSuccess(Search search) {
-                        SharedPreferences.Editor editor;
-                        int totalProductCount = Integer.parseInt(search.getCount());
-                        textHome.setText(String.format(txtHomeOnline, totalProductCount));
-                        editor = sp.edit();
+                        int totalProductCount = productCount;
+                        try {
+                            totalProductCount =Integer.parseInt(search.getCount());
+                        } catch (NumberFormatException e) {
+                            Log.w(HomeFragment.class.getSimpleName(),"can parse "+search.getCount()+" as int",e);
+                        }
+                        updateTextHome(totalProductCount);
+                        SharedPreferences.Editor editor = sp.edit();
                         editor.putInt("productCount", totalProductCount);
                         editor.apply();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        if (productCount != 0) {
-                            textHome.setText(String.format(txtHomeOnline, productCount));
-                        } else {
-                            textHome.setText(R.string.txtHome);
-                        }
+                        updateTextHome(productCount);
                     }
                 });
 
@@ -217,6 +213,18 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
             }
         }
 
+    }
+
+    private void updateTextHome(int totalProductCount){
+        textHome.setText(R.string.txtHome);
+        if(totalProductCount!=0) {
+            String txtHomeOnline = OFFApplication.getInstance().getResources().getString(R.string.txtHomeOnline);
+            try {
+                textHome.setText(String.format(txtHomeOnline, totalProductCount));
+            } catch (Exception e) {
+                Log.w(HomeFragment.class.getSimpleName(),"can format text for home",e);
+            }
+        }
     }
 
     @Override
