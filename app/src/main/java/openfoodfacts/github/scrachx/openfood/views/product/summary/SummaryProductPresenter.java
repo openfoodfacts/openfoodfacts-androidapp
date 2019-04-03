@@ -149,42 +149,6 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     }
 
     @Override
-    public void loadCountries() {
-        List<String> countriesTags = product.getCountriesTags();
-        if (countriesTags != null && !countriesTags.isEmpty()) {
-            disposable.add(
-                    Observable.fromArray(countriesTags.toArray(new String[countriesTags.size()]))
-                            .flatMapSingle(tag -> repository.getCountryByTagAndLanguageCode(tag, languageCode)
-                                    .flatMap(countryName -> {
-                                        if (countryName.isNull()) {
-                                            return repository.getCountryByTagAndDefaultLanguageCode(tag);
-                                        } else {
-                                            return Single.just(countryName);
-                                        }
-                                    }))
-                            .filter(countryName -> countryName.isNotNull())
-                            .toList()
-                            .doOnSubscribe(d -> view.showCountriesState(ProductInfoState.LOADING))
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(countries -> {
-                                if (countries.isEmpty()) {
-                                    view.showCountriesState(ProductInfoState.EMPTY);
-                                } else {
-                                    view.showCountries(countries);
-                                }
-                            }, e -> {
-                                e.printStackTrace();
-                                view.showCountriesState(ProductInfoState.EMPTY);
-                            })
-            );
-        } else {
-            view.showCountriesState(ProductInfoState.EMPTY);
-        }
-
-    }
-
-    @Override
     public void dispose() {
         if (!disposable.isDisposed()) {
             disposable.clear();

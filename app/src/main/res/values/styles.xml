@@ -66,4 +66,13 @@
         <item name="android:shadowRadius">1</item>
     </style>
 
+    <style name="BorderButton">
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:textColor">@color/button_link</item>
+        <item name="android:paddingLeft">@dimen/spacing_small</item>
+        <item name="android:paddingRight">@dimen/spacing_small</item>
+        <item name="android:paddingTop">@dimen/spacing_tiny</item>
+        <item name="android:paddingBottom">@dimen/spacing_tiny</item>
+    </style>
+
 </resources>

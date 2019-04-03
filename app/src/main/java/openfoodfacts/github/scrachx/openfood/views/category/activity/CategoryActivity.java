@@ -67,7 +67,7 @@ public class CategoryActivity extends BaseActivity {
 
         // chrome custom tab for category hunger game
         game_button.setOnClickListener(v -> {
-            String url = "https://world.openfoodfacts.org/hunger-game";
+            String url = getString(R.string.hunger_game_url);
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
             CustomTabsIntent customTabsIntent = builder.build();
             customTabsIntent.launchUrl(getBaseContext(), Uri.parse(url));

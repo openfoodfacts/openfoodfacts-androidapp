@@ -23,8 +23,6 @@ public interface ISummaryProductPresenter {
 
         void loadLabels();
 
-        void loadCountries();
-
         void dispose();
 
         void loadAdditives();
@@ -37,13 +35,9 @@ public interface ISummaryProductPresenter {
 
         void showLabels(List<LabelName> labels);
 
-        void showCountries(List<CountryName> countries);
-
         void showCategoriesState(@ProductInfoState String state);
 
         void showLabelsState(@ProductInfoState String state);
-
-        void showCountriesState(@ProductInfoState String state);
 
         void showAdditives(List<AdditiveName> additives);
 
