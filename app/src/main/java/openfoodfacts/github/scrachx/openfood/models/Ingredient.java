@@ -23,6 +23,7 @@ import java.util.List;
 public class Ingredient {
     @Id(autoincrement = true)
     private Long id;
+
     @Unique
     private String tag;
 
@@ -56,6 +57,7 @@ public Ingredient(Long id, String tag, String wikiDataId) {
     this.tag = tag;
     this.wikiDataId = wikiDataId;
 }
+
 @Keep
 public Ingredient(String tag, List<IngredientName> names, List<IngredientsRelation> parents, List<IngredientsRelation> children, String wikiDataId) {
     this.tag = tag;
@@ -64,6 +66,7 @@ public Ingredient(String tag, List<IngredientName> names, List<IngredientsRelati
     this.children = children;
     this.wikiDataId = wikiDataId;
 }
+
 @Keep
 public Ingredient(String tag, List<IngredientName> names, List<IngredientsRelation> parents, List<IngredientsRelation> children) {
     this.tag = tag;

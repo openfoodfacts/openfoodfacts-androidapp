@@ -33,7 +33,6 @@ public class SplashPresenter implements ISplashPresenter.Actions {
 
     @Override
     public void refreshData() {
-        //if (BuildConfig.FLAVOR.equals("off")) {
             boolean firstRun = settings.getBoolean("firstRun", true);
             if (firstRun) {
                 settings.edit()
@@ -54,9 +53,6 @@ public class SplashPresenter implements ISplashPresenter.Actions {
             } else {
                 view.navigateToMainActivity();
             }
-        //} else {
-        //    view.navigateToMainActivity();
-        //}
     }
 
     /*
