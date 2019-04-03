@@ -171,12 +171,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        Intent intent = getActivity().getIntent();
-        if (intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-            state = (State) intent.getExtras().getSerializable("state");
-        } else {
-            state = ProductFragment.mState;
-        }
+        state=getStateFromActivityIntent();
 
         presenter = new SummaryProductPresenter(product, this);
     }
