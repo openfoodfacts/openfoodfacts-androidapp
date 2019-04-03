@@ -108,6 +108,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
             FragmentActivity activity = PreferencesFragment.this.getActivity();
             Configuration configuration = activity.getResources().getConfiguration();
+            Toast.makeText(getContext(),getString(R.string.changes_saved),Toast.LENGTH_SHORT).show();
+
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
@@ -152,6 +154,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                    SharedPreferences.Editor editor = settings.edit();
                    editor.putString(preference.getKey(), country);
                    editor.apply();
+                   Toast.makeText(getContext(),getString(R.string.changes_saved),Toast.LENGTH_SHORT).show();
                }
             }
             return true;
