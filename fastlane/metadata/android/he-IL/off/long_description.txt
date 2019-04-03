@@ -10,7 +10,7 @@
 ◀ נא לבחור את המוצרים שטובים לך
 - ציון תזונתי מ־„A” עד „E” >> איכות תזונתית
 - קבוצת NOVA מ־„1” עד „4” >> איתור מוצרי מזון מעובדים בהגזמה
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+- ניתן להשוות בקלות בין כמה מוצרים שרק מעניין אותך להשוות ביניהם, זה לצד זה פשוט בזכות סריקתם. 
 
 ◀ ולטובת כדור הארץ!
 - ההשפעה הפחמנית של האוכל שלך
@@ -26,8 +26,8 @@
 - Open Food Facts הוא מיזם ללא כוונת רווח שפותח על ידי אלפי מתנדבים מכל רחבי העולם. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים.
 - ניתן להתחיל לתרום עוד היום על ידי הוספת מוצר מהמקרר שלך.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+◀ יצירת רשימות
+יצירת רשימות קניות, מעקב אחר המזון הנצרך עם אפשרות לשיתוף ולייצוא של הרשימות שלך.
 
 ◀ קבלת העובדות
 - עם Open Food Facts סוף סוף אפשר להבין את כל הקשקושים שכתובים על תוויות המזון. יתאפשר לך למצוא:
@@ -59,9 +59,9 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - ניתן לייצא את היסטוריית הסריקות שלך
 
 ◀ הגדרת התראות חומרים מעוררי רגישות על מוצרים
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+- יש לך רגישות לחלב, גלוטן, ביצים, פולי סויה, אגוזים, דגים, סלרי, חרדל, גופרית דו־חמצנית וסולפיטים, בוטנים, זרעי שומשום, סרטנים, רכיכות או תורמוס?
 - שיפור מהירות הקניות שלך על ידי סריקה ראשונית של המזון שלך עם Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+- נא לשים לב כי המידע אינו מדויק ב־100% והזיהוי אינו מדויק ב־100%. לכן, תמיד כדאי לבדוק היטב באופן עצמאי ולקרוא בעיון את האריזה.
 
 
 ◀ מזמינים אותך לומר שלום או להצטרף אלינו!
