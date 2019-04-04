@@ -262,11 +262,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             brandProduct.setText("");
 
             String[] brands = product.getBrands().split(",");
-            for (int i = 0; i < brands.length - 1; i++) {
+            for (int i = 0; i < brands.length; i++) {
+                if(i>0){
+                    brandProduct.append(", ");
+                }
                 brandProduct.append(Utils.getClickableText(brands[i].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
-                brandProduct.append(", ");
             }
-            brandProduct.append(Utils.getClickableText(brands[brands.length - 1].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
         } else {
             brandProduct.setVisibility(View.GONE);
         }
@@ -276,16 +277,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             embCode.setText(bold(getString(R.string.txtEMB)));
             embCode.append(" ");
 
-            String embTag;
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
-            for (int i = 0; i < embTags.length - 1; i++) {
-                embTag = embTags[i];
+            for (int i = 0; i < embTags.length; i++) {
+                if(i>0){
+                    embCode.append(", ");
+                }
+                String  embTag = embTags[i];
                 embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
-                embCode.append(", ");
             }
-
-            embTag = embTags[embTags.length - 1];
-            embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
         } else {
             embCode.setVisibility(View.GONE);
         }
