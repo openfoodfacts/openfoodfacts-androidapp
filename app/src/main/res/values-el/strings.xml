@@ -755,7 +755,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Αναφορά εικόνας</string>
     <string name="detected_ingredients">Detected Ingredients</string>
-    <string name="txtDownloading">Λήψη ταξινομιών…</string>
     <string name="txtLoaded">Οι μεταφράσεις κατεβάστηκαν με επιτυχία</string>
     <string name="txtConnectionError">Δεν ήταν δυνατή η λήψη ορισμένων δεδομένων. Mπορεί να οφείλεται σε σφάλμα σύνδεσης.</string>
     <string name="set_image_name">Successfully set the image as</string>
