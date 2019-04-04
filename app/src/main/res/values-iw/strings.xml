@@ -763,7 +763,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">דיווח על תמונה</string>
     <string name="detected_ingredients">הרכיבים שזוהו</string>
-    <string name="txtDownloading">טקסונומיות מתקבלות…</string>
     <string name="txtLoaded">התרגומים התקבלו בהצלחה</string>
     <string name="txtConnectionError">לא הצלחנו להוריד נתונים מסוימים. יכול להיות שמדובר בשגיאת חיבור.</string>
     <string name="set_image_name">התמונה הוגדרה בהצלחה בתור</string>
