@@ -755,7 +755,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Denunciar imagem</string>
     <string name="detected_ingredients">Ingredientes Detectados</string>
-    <string name="txtDownloading">Descarregar taxonomias…</string>
     <string name="txtLoaded">Traduções foram descarregadas com sucesso</string>
     <string name="txtConnectionError">Não foi possível descarregar certos dados. Isso pode ser devido a um erro de conexão.</string>
     <string name="set_image_name">Imagem definida com sucesso como</string>
