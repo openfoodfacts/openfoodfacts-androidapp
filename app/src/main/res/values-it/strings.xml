@@ -723,15 +723,16 @@
     <string name="diet_name">Nome della dieta</string>
     <string name="diets_dialog_warning_title">Attenzione</string>
     <string name="warning_diets_data">I tuoi dati sulla dieta rimangono sul tuo dispositivo. Nulla verrà caricato da qualche parte.</string>
-    <string name="EditDiet_Name">Nome</string>
-    <string name="EditDiet_Description">Descrizione</string>
-    <string name="EditDiet_Enabled_Disabled">Attivato/Disattivato</string>
-    <string name="EditDiet_Authorised_Ingredients">Ingredienti autorizzati</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Elenca gli ingredienti autorizzati che dovrebbero apparire in verde. Ad esempio: mele, funghi, pomodori… Puoi completare questa lista più tardi.</string>
-    <string name="EditDiet_So_So_Ingredients">Ingredienti così cosi</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Elenca gli ingredienti problematici che dovrebbero apparire in arancione. Ad esempio: uova, pesce… Puoi completare questa lista più tardi.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Ingredienti non autorizzati</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Elenca gli ingredienti non autorizzati che dovrebbero apparire in rosso. Ad esempio: glutine, latte, olio di palma, zucchero… Puoi completare questa lista più tardi.</string>
+    <string name="edit_diet_name">Nome</string>
+    <string name="edit_diet_description">Descrizione</string>
+    <string name="edit_diet_enabled_disabled">Attivato/Disattivato</string>
+    <string name="edit_diet_authorised_ingredients">Ingredienti autorizzati</string>
+    <string name="edit_diet_hint_ingredient_authorised">Elenca gli ingredienti autorizzati che dovrebbero apparire in verde. Ad esempio: mele, funghi, pomodori… Puoi completare questa lista più tardi.</string>
+    <string name="edit_diet_so_so_ingredients">Ingredienti così cosi</string>
+    <string name="edit_diet_hint_so_so_ingredient">Elenca gli ingredienti problematici che dovrebbero apparire in arancione. Ad esempio: uova, pesce… Puoi completare questa lista più tardi.</string>
+    <string name="edit_diet_unauthorised_ingredients">Ingredienti non autorizzati</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Elenca gli ingredienti non autorizzati che dovrebbero apparire in rosso. Ad esempio: glutine, latte, olio di palma, zucchero… Puoi completare questa lista più tardi.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
     <string name="add_nutrient_prompt_text">Aggiungi i dati nutrizionali per calcolare il punteggio-Nutri</string>
     <string name="add_category_prompt_text">Aggiungi una categoria per calcolare il punteggio-Nutri</string>
@@ -790,7 +791,6 @@
     <string name="settings_country_title">Paese</string>
     <string name="list_text">Aggiunto in:\u0020</string>
     <string name="txt_no_nutrition_data">Questo prodotto non ha alcuna informazione nutrizionale sulla confezione. Se questo è cambiato, puoi modificare il prodotto.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Inserisci prodotti</string>
     <string name="add_another_product">Aggiungi un altro prodotto</string>

@@ -723,15 +723,16 @@
     <string name="diet_name">Dietnaam</string>
     <string name="diets_dialog_warning_title">Let op</string>
     <string name="warning_diets_data">Je dieetgegevens blijven op uw apparaat. Niets zal worden geüpload.</string>
-    <string name="EditDiet_Name">Naam:</string>
-    <string name="EditDiet_Description">Omschrijving</string>
-    <string name="EditDiet_Enabled_Disabled">In-/uitschakelen</string>
-    <string name="EditDiet_Authorised_Ingredients">Geautoriseerde ingrediënten</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Lijst de toegestane ingrediënten die in groen moeten worden weergegeven. Bijvoorbeeld: appel, paddestoel, tomaat… U kunt deze lijst later invullen.</string>
-    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Markeer ingrediënten die problemen kunnen geven en in oranje moeten worden weergegeven. Bijvoorbeeld: appel, paddenstoel of tomaat. Je kunt de lijst later aanvullen.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Niet-geautoriseerde ingrediënten</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Maak een lijst van de ongeautoriseerde ingrediënten die in rood zouden moeten verschijnen. Voorbeeld: gluten, melk, palmolie, suiker… U kunt deze lijst later invullen.</string>
+    <string name="edit_diet_name">Naam:</string>
+    <string name="edit_diet_description">Omschrijving</string>
+    <string name="edit_diet_enabled_disabled">In-/uitschakelen</string>
+    <string name="edit_diet_authorised_ingredients">Geautoriseerde ingrediënten</string>
+    <string name="edit_diet_hint_ingredient_authorised">Lijst de toegestane ingrediënten die in groen moeten worden weergegeven. Bijvoorbeeld: appel, paddestoel, tomaat… U kunt deze lijst later invullen.</string>
+    <string name="edit_diet_so_so_ingredients">So so ingredients</string>
+    <string name="edit_diet_hint_so_so_ingredient">Markeer ingrediënten die problemen kunnen geven en in oranje moeten worden weergegeven. Bijvoorbeeld: appel, paddenstoel of tomaat. Je kunt de lijst later aanvullen.</string>
+    <string name="edit_diet_unauthorised_ingredients">Niet-geautoriseerde ingrediënten</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Maak een lijst van de ongeautoriseerde ingrediënten die in rood zouden moeten verschijnen. Voorbeeld: gluten, melk, palmolie, suiker… U kunt deze lijst later invullen.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingrediënten</string>
     <string name="add_nutrient_prompt_text">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
     <string name="add_category_prompt_text">Voeg een categorie toe om de Nutri-Score te berekenen</string>
@@ -790,7 +791,6 @@
     <string name="settings_country_title">Land</string>
     <string name="list_text">Toegevoegd in:\u0020</string>
     <string name="txt_no_nutrition_data">Dit product bevat geen voedingswaarde-informatie op de verpakking. Als dit is veranderd, kan je het product bewerken.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
     <string name="add_another_product">Voeg een nieuw product toe</string>

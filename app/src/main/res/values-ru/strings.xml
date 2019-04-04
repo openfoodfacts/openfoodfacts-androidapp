@@ -731,15 +731,16 @@
     <string name="diet_name">Название диеты</string>
     <string name="diets_dialog_warning_title">Предупреждение</string>
     <string name="warning_diets_data">Данные о вашей диете(ах) остаются на вашем устройстве. Ничего не будет загружено куда-либо.</string>
-    <string name="EditDiet_Name">Название</string>
-    <string name="EditDiet_Description">Описание</string>
-    <string name="EditDiet_Enabled_Disabled">Включить/Выключить</string>
-    <string name="EditDiet_Authorised_Ingredients">Разрешённые ингредиенты</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Перечислите разрешенные ингредиенты, которые будут отображаться зеленым цветом. Наример: яблоки, грибы, помидоры... Вы можете дополнить список позже.</string>
-    <string name="EditDiet_So_So_Ingredients">Нежелательные ингредиенты</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Запрещенные ингредиенты</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Список неавторизованных ингредиентов, которые должны появиться красным. Например: глютен, молоко, пальмовое масло, сахар… Вы можете дополнить этот список позже.</string>
+    <string name="edit_diet_name">Название</string>
+    <string name="edit_diet_description">Описание</string>
+    <string name="edit_diet_enabled_disabled">Включить/Выключить</string>
+    <string name="edit_diet_authorised_ingredients">Разрешённые ингредиенты</string>
+    <string name="edit_diet_hint_ingredient_authorised">Перечислите разрешенные ингредиенты, которые будут отображаться зеленым цветом. Наример: яблоки, грибы, помидоры... Вы можете дополнить список позже.</string>
+    <string name="edit_diet_so_so_ingredients">Нежелательные ингредиенты</string>
+    <string name="edit_diet_hint_so_so_ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
+    <string name="edit_diet_unauthorised_ingredients">Запрещенные ингредиенты</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Список неавторизованных ингредиентов, которые должны появиться красным. Например: глютен, молоко, пальмовое масло, сахар… Вы можете дополнить этот список позже.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
     <string name="add_nutrient_prompt_text">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>
     <string name="add_category_prompt_text">Добавьте категорию для вычисления Nutri-Score</string>
@@ -798,7 +799,6 @@
     <string name="settings_country_title">Страна</string>
     <string name="list_text">Добавлено в:\u0020</string>
     <string name="txt_no_nutrition_data">Этот продукт не имеет никакой информации о питании на упаковке. Если это изменилось, вы можете отредактировать продукт.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Добавить продукты</string>
     <string name="add_another_product">Добавить другой продукт</string>
