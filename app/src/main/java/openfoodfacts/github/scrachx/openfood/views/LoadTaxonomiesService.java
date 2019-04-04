@@ -86,18 +86,8 @@ public class LoadTaxonomiesService extends IntentService {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .toCompletable()
-                    //.doOnSubscribe(d -> view.showLoading())
                     .subscribe(() -> {
-                        //view.hideLoading(false);
-                      //   builder.setContentText(getString(R.string.txtLoaded));
-                     //    builder.setOngoing(false);
-                     //    notificationManager.notify(17, builder.build());
                     }, e -> {
-                       //  e.printStackTrace();
-                        //view.hideLoading(true);
-                       // builder.setContentText(getString(R.string.txtConnectionError))
-                        //        .setOngoing(false);
-                        // notificationManager.notify(17, builder.build());
                     });
         } else if (BuildConfig.FLAVOR.equals("obf")) {
             Single.zip(
@@ -126,18 +116,8 @@ public class LoadTaxonomiesService extends IntentService {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .toCompletable()
-                    //.doOnSubscribe(d -> view.showLoading())
                     .subscribe(() -> {
-                        //view.hideLoading(false);
-                      //   builder.setContentText(getString(R.string.txtLoaded));
-                     //    builder.setOngoing(false);
-                     //    notificationManager.notify(17, builder.build());
                     }, e -> {
-                       //  e.printStackTrace();
-                        //view.hideLoading(true);
-                       // builder.setContentText(getString(R.string.txtConnectionError))
-                        //        .setOngoing(false);
-                        // notificationManager.notify(17, builder.build());
                     });
         } else if (BuildConfig.FLAVOR.equals("opf") || BuildConfig.FLAVOR.equals("opff")) {
             Single.zip(
@@ -158,18 +138,8 @@ public class LoadTaxonomiesService extends IntentService {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .toCompletable()
-                    //.doOnSubscribe(d -> view.showLoading())
                     .subscribe(() -> {
-                        //view.hideLoading(false);
-                      //   builder.setContentText(getString(R.string.txtLoaded));
-                     //    builder.setOngoing(false);
-                     //    notificationManager.notify(17, builder.build());
                     }, e -> {
-                       //  e.printStackTrace();
-                        //view.hideLoading(true);
-                       // builder.setContentText(getString(R.string.txtConnectionError))
-                        //        .setOngoing(false);
-                        // notificationManager.notify(17, builder.build());
                     });
         }
     }
