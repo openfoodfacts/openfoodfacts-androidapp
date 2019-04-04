@@ -1,21 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.IntentService;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
-
 import java.util.Arrays;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
@@ -34,29 +28,10 @@ public class LoadTaxonomiesService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         productRepository = ProductRepository.getInstance();
         settings = getSharedPreferences("prefs", 0);
-        doTask(intent);
+        doTask();
     }
 
-    private void doTask(Intent intent) {
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            String channelId = "export_channel";
-            CharSequence channelName = getString(R.string.notification_channel_name);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
-            notificationChannel.setDescription(getString(R.string.notify_channel_description));
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
-                .setContentTitle(getString(R.string.app_name))
-                .setContentText(getString(R.string.txtDownloading))
-                .setOngoing(true)
-                .setSmallIcon(R.mipmap.ic_launcher);
-
-        notificationManager.notify(17, builder.build());
-
+    private void doTask() {
         if (BuildConfig.FLAVOR.equals("off")) {
             Single.zip(
                     productRepository.getLabels(true),
@@ -86,9 +61,7 @@ public class LoadTaxonomiesService extends IntentService {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .toCompletable()
-                    .subscribe(() -> {
-                    }, e -> {
-                    });
+                    .subscribe();
         } else if (BuildConfig.FLAVOR.equals("obf")) {
             Single.zip(
                     productRepository.getLabels(true),
@@ -116,9 +89,7 @@ public class LoadTaxonomiesService extends IntentService {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .toCompletable()
-                    .subscribe(() -> {
-                    }, e -> {
-                    });
+                    .subscribe();
         } else if (BuildConfig.FLAVOR.equals("opf") || BuildConfig.FLAVOR.equals("opff")) {
             Single.zip(
                     productRepository.getTags(true),
@@ -138,9 +109,7 @@ public class LoadTaxonomiesService extends IntentService {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .toCompletable()
-                    .subscribe(() -> {
-                    }, e -> {
-                    });
+                    .subscribe();
         }
     }
 
