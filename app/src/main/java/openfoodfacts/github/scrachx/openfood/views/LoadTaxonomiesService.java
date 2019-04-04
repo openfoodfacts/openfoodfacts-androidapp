@@ -1,14 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.IntentService;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
-
 import java.util.Arrays;
 
 import io.reactivex.Completable;
@@ -33,30 +28,11 @@ public class LoadTaxonomiesService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         productRepository = ProductRepository.getInstance();
         settings = getSharedPreferences("prefs", 0);
-        doTask(intent);
+        doTask();
     }
 
-    private void doTask(Intent intent) {
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            String channelId = "export_channel";
-            CharSequence channelName = getString(R.string.notification_channel_name);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
-            notificationChannel.setDescription(getString(R.string.notify_channel_description));
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
-                .setContentTitle(getString(R.string.app_name))
-                .setContentText(getString(R.string.txtDownloading))
-                .setOngoing(true)
-                .setSmallIcon(R.mipmap.ic_launcher);
-
-        notificationManager.notify(17, builder.build());
-
-        Single.zip(
+    private void doTask() {
+               Single.zip(
                 productRepository.getLabels(true),
                 productRepository.getTags(true),
                 productRepository.getAllergens(true),
@@ -84,19 +60,7 @@ public class LoadTaxonomiesService extends IntentService {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .toCompletable()
-                //.doOnSubscribe(d -> view.showLoading())
-                 .subscribe(() -> {
-                    //view.hideLoading(false);
-                  //   builder.setContentText(getString(R.string.txtLoaded));
-                 //    builder.setOngoing(false);
-                 //    notificationManager.notify(17, builder.build());
-                }, e -> {
-                   //  e.printStackTrace();
-                    //view.hideLoading(true);
-                   //  builder.setContentText(getString(R.string.txtConnectionError))
-                    //         .setOngoing(false);
-                    // notificationManager.notify(17, builder.build());
-                 });
+                 .subscribe();
     }
 
 }
