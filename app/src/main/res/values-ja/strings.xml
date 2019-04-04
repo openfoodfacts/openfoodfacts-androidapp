@@ -751,7 +751,6 @@
     <string name="set_img_front">正面画像として設定</string>
     <string name="report_img">レポート画像</string>
     <string name="detected_ingredients">検出された原材料</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
     <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">画像に設定しました</string>
