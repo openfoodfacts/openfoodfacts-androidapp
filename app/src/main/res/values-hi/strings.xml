@@ -35,7 +35,7 @@
         <item>सामग्री</item>
         <item>पोषण</item>
         <item>पोषण प्रबंधन/सूची</item>
-        <item>Environment</item>
+        <item>वातावरण</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
