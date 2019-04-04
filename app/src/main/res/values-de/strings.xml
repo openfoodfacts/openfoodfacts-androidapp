@@ -755,7 +755,6 @@
     <string name="set_img_front">Als Vorderansicht verwenden</string>
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
-    <string name="txtDownloading">Lade Taxonomien herunter…</string>
     <string name="txtLoaded">Übersetzungen wurden erfolgreich heruntergeladen</string>
     <string name="txtConnectionError">Wir konnten bestimmte Daten nicht herunterladen. Dies kann auf einen Verbindungsfehler zurückzuführen sein.</string>
     <string name="set_image_name">Foto erfolgreich festgelegt als</string>
