@@ -53,6 +53,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="text_barcode">Wprowadź kod kreskowy:</string>
     <string name="message_in_activity_save_product_offline">Tylko jedno zdjęcie jest obowiązkowe, by wysłać nowy produkt.</string>
     <string name="product_incomplete_message">Produkt jest niekompletny. W wyniku tego nie mogliśmy sktontrolować alergeny.</string>
+    <string name="product_allergen_prompt">Produkt zawiera:</string>
     <string name="no_offline_data">Wszystko gotowe</string>
     <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
     <!-- Image Upload -->
@@ -152,13 +153,13 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
         <item>Tauryna</item>
         <item>Tłuszcze trans</item>
         <item>Witamina A</item>
-        <item>Witamina B1 (Tiamina)</item>
-        <item>Witamina B12 (Kobalamina)</item>
-        <item>Witamina B2 (Ryboflawina)</item>
-        <item>Witamina B3 / Witamina PP (Niacyna)</item>
-        <item>Witamina B6 (Pirydoksyna)</item>
-        <item>Witamina B9 (Kwas foliowy)</item>
-        <item>Witamina C</item>
+        <item>Witamina B1 (tiamina)</item>
+        <item>Witamina B12 (kobalamina)</item>
+        <item>Witamina B2 (ryboflawina)</item>
+        <item>Witamina B3 / Witamina PP (niacyna)</item>
+        <item>Witamina B6 (pirydoksyna)</item>
+        <item>Witamina B9 (kwas foliowy)</item>
+        <item>Witamina C (kwas askorbinowy)</item>
         <item>Witamina D</item>
         <item>Witamina E</item>
         <item>Witamina K</item>
@@ -177,10 +178,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="no_products">Nie odnaleziono produktów</string>
     <string name="desc_list_item_icon">Ikona przedmiotu</string>
     <string name="alert_dialog_warning_title">Ostrzeżenie</string>
-    <string name="alert_dialog_warning_msg_user">Zmieniono nazwę użytkownika/hasło, zaktualizuj informacje</string>
+    <string name="alert_dialog_warning_msg_user">Zmieniono nazwę użytkownika/hasło. Proszę zaktualizuj informacje</string>
     <string name="alert_dialog_product_error_msg">Produkt nieznaleziony, spróbuj ponownie</string>
     <string name="toast_retrieving">Ładowanie…</string>
-    <string name="txtGenericName">Potoczna nazwa :</string>
+    <string name="txtGenericName">Nazwa potoczna :</string>
     <string name="txtBarcode">Kod kreskowy :</string>
     <string name="txtQuantity">Ilość :</string>
     <string name="txtPackaging">Opakowanie :</string>
@@ -189,7 +190,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtLabels">Etykiety, certyfikaty, nagrody :</string>
     <string name="txtManufacturing">Miejsca produkcji lub przetworzenia :</string>
     <string name="txtIngredientsOrigins">Pochodzenie składników :</string>
-    <string name="txtCity">Miasto, stan i kraj zakupu :</string>
+    <string name="txtCity">Miasto, rejon i kraj zakupu :</string>
     <string name="txtEMB">Kod EMB:</string>
     <string name="txtManufactureUrl">Link do strony produktu na oficjalnej stronie producenta:</string>
     <string name="txtStores">Sklepy :</string>
@@ -203,7 +204,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtMayBeFromPalmOilProduct">Składniki pochodzące z oleju palmowego :</string>
     <string name="txtPalmOilProduct">Składniki z oleju palmowego :</string>
     <string name="txtServingSize">Porcja :</string>
-    <string name="txtNutrientLevel100g">Poziom składników odżywczych na 100g :</string>
+    <string name="txtNutrientLevel100g">Wartość odżywcza w 100g :</string>
     <string name="txtNutritionLevelLow">niska zawartość</string>
     <string name="txtNutritionLevelModerate">umiarkowana zawartość</string>
     <string name="txtNutritionLevelHigh">wysoka zawartość</string>
@@ -231,7 +232,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtYes">Tak</string>
     <string name="txtNo">Nie</string>
     <string name="hintNameProduct">Nazwa</string>
-    <string name="hintEnergy">Energia w kilodżulach na porcję</string>
+    <string name="hintEnergy">Energia w kJ na porcję</string>
     <string name="hintEnergyUnit">Jednostka energii</string>
     <string name="hintWeight">Waga</string>
     <string name="hintStores">Sklep</string>
@@ -254,13 +255,13 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtOk">Dobrze</string>
     <string name="txtContentDialogUploading">Proszę nie wychodzić w czasie procesu…</string>
     <string name="txtAbout">Publikujesz przesłane przez siebie obrazy na wolnej licencji reative Commons Attribution and ShareAlike.</string>
-    <string name="txtAllsent">Wysłano produkty</string>
+    <string name="txtAllsent">Produkty zostały wysłane</string>
     <string name="txtPalm">Produkt nie zawiera oleju palmowego</string>
     <string name="txtBarcodeNotValid">Nieważny kod kreskowy</string>
     <string name="try_it_scan_now">Skanuj produkt</string>
     <string name="share">Udostępnij</string>
     <string name="translate">Przetłumacz</string>
-    <string name="msg_share">Spójrz na produkt w Open Food Facts :</string>
+    <string name="msg_share">Zobacz produkt w Open Food Facts :</string>
     <string name="create_account">Zarejestruj się</string>
     <string name="home_drawer">Strona główna</string>
     <string name="search_drawer">Poszukiwanie</string>
@@ -313,7 +314,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="error_field_required">Wypełnienie tego pola jest wymagane.</string>
     <string name="action_preferences">Ustawienia</string>
     <string name="prefs_scan_startup">Skanuj przy uruchomieniu</string>
-    <string name="prefs_scan_startup_summary">Jeśli wybrano tę opcję, skanowanie rozpocznie się gdy jest uruchomiona.</string>
+    <string name="prefs_scan_startup_summary">Jeśli ta opcja jest zaznaczona, skanowanie rozpocznie się niezwłocznie po uruchomieniu aplikacji.</string>
     <string name="prefs_power_mode">Skanowanie w trybie zasilania</string>
     <string name="prefs_power_mode_summary">Szybko skanuj produkty w supermarkecie by sprawdzić które z nich nie znajdują siew bazie danych.</string>
     <string name="prefs_language">Język</string>
@@ -329,9 +330,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="permision_write_external_storage">Aby uzyskać historię eksportu, konieczne jest zapisanie zewnętrznej pamięci masowej.</string>
     <string name="txt_nutrition_not_found">Nie dotyczy</string>
     <string name="no_brand">Brak marki</string>
-    <string name="no_title">Bez tytułu</string>
+    <string name="no_title">Brak tytułu</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Tabela faktów żywieniowych dla %1$s tego produktu</string>
+    <string name="display_fact">Tabela wartości odżywczych dla %1$s tego produktu</string>
     <string name="check_facts">Sprawdź</string>
     <string name="nutrition">Odżywianie</string>
     <string name="calculated_nutrition">Obliczone wartości odżywcze</string>
@@ -348,16 +349,16 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_fat">Tłuszcz</string>
     <string name="nutrition_fat_short_name">Tłuszcz (g)</string>
     <string name="nutrition_fiber">Błonnik pokarmowy</string>
-    <string name="nutrition_fiber_short_name">Błonnik pokarmowy (g)</string>
+    <string name="nutrition_fiber_short_name">Błonnik (g)</string>
     <string name="nutrition_header">Wartości odżywcze</string>
     <string name="nutrition_no_data_message">Brak danych o produkcie</string>
-    <string name="nutrition_per_quantity">Na 100g/100ml</string>
-    <string name="nutrition_proteins">Proteiny</string>
-    <string name="nutrition_proteins_short_name">Proteiny (g)</string>
+    <string name="nutrition_per_quantity">W 100g/100ml</string>
+    <string name="nutrition_proteins">Białko</string>
+    <string name="nutrition_proteins_short_name">Białko (g)</string>
     <string name="nutrition_salt">Sól</string>
     <string name="nutrition_salt_short_name">Sól (g)</string>
     <string name="nutrition_satured_fat">Tłuszcze nasycone</string>
-    <string name="nutrition_satured_fat_short_name">Tłuszcz nasycony (g)</string>
+    <string name="nutrition_satured_fat_short_name">Tłuszcze nasycone (g)</string>
     <string name="nutrition_serving">Na porcję</string>
     <string name="nutrition_serving_size">Porcja :</string>
     <string name="nutrition_sodium">Sód</string>
@@ -375,7 +376,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="volume_pref_title">Preferowana jednostka objętości</string>
     <string name="logout_drawer">Wyloguj</string>
     <string name="contribution_without_account">Możesz zalogować się lub utworzyć konto by zachować swój wkład</string>
-    <string name="textCarbonFootprint">Ślad węglowy / emisjie dwutlenku węgla: </string>
+    <string name="textCarbonFootprint">Ślad węglowy / emisja CO₂: </string>
     <string name="txtDialogPowerMode">Szybki podgląd</string>
     <string name="txtSeeMore">Więcej</string>
     <string name="action_search">Poszukiwanie</string>
@@ -414,8 +415,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_chlore">Chlor</string>
     <string name="nutrition_magnesium">Magnez</string>
     <string name="nutrition_taurine">Tauryna</string>
-    <string name="nutrition_monounsaturatedFat">Tłuszcz jednonienasycony</string>
-    <string name="nutrition_polyunsaturatedFat">Tłuszcz wielonienasycony</string>
+    <string name="nutrition_monounsaturatedFat">Tłuszcze jednonienasycone</string>
+    <string name="nutrition_polyunsaturatedFat">Tłuszcze wielonienasycone</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -469,10 +470,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtSaturatedFat">Tłuszcze nasycone</string>
     <string name="nutriscore_info_msg">Dowiedz się więcej o Nutri-Score</string>
     <string name="nova_info_msg">Dowiedz się więcej o Nova</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_grp1_msg">Grupa 1 - Żywność nieprzetworzona lub minimalnie przetworzona</string>
+    <string name="nova_grp2_msg">Grupa 2 - Przetworzone składniki kulinarne</string>
+    <string name="nova_grp3_msg">Grupa 3 - Żywność przetworzona</string>
+    <string name="nova_grp4_msg">Grupa 4 - Żywność wysoko przetworzona</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Skrót niedostępny</string>
     <string name="scan_shortcut_short_label">Skan</string>
@@ -501,11 +502,11 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="saving">Zapisywanie…</string>
     <string name="scan_first_product">Zeskanuj pierwszy produkt</string>
     <string name="preference_delete_search_history">Historia została usunięta</string>
-    <string name="preference_enable_mobile_data_title">Prześlij używając danyme mobilne</string>
-    <string name="preference_enable_mobile_data_summary_on">Wyślij nowe produkty używając dane mobilne &amp; WiFi</string>
+    <string name="preference_enable_mobile_data_title">Prześlij za pomocą mobilnej transmisji danych</string>
+    <string name="preference_enable_mobile_data_summary_on">Wyślij nowe produkty używając mobilnej transmisji danych &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Prześlij nowe produkty tylko przez WiFi</string>
     <string name="device_on_mobile_data_warning_title">Informacje</string>
-    <string name="device_on_mobile_data_warning_message">Dane mobilne są wyłączone, połącz się z WiFi lub zmień ustawienia</string>
+    <string name="device_on_mobile_data_warning_message">Mobilna transmisja danych jest wyłączona, połącz się z WiFi lub zmień ustawienia</string>
     <string name="device_on_mobile_data_warning_positive">Ustawienia</string>
     <string name="device_on_mobile_data_warning_negative">Przesyłaj mimo to</string>
     <string name="changes_saved">Zmiany zostały zapisane</string>
@@ -517,7 +518,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="please_check_your_connection">Sprawdź połączenie.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Wyszukiwanie zaawansowane &amp; wykresy</string>
-    <string name="compare_products">Compare products</string>
+    <string name="compare_products">Porównaj artykuły spożywcze</string>
     <string name="connectivity_check">Sprawdź łączność z Internetem</string>
     <string name="dismiss">Odrzuć</string>
     <string name="Terms">Warunki</string>
@@ -578,7 +579,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="by_title">Tytuł</string>
     <string name="by_brand">Marka</string>
     <string name="by_barcode">Kod kreskowy</string>
-    <string name="by_time">Ostatnio odwiedzone</string>
+    <string name="by_time">Ostatnio oglądane</string>
     <string name="sort">Sortuj</string>
     <string name="by_nutrition_grade">Stopień odżywienia</string>
     <string name="sort_by">Sortuj wg</string>
@@ -591,7 +592,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="no_barcode">Nie odnaleziono kodu kreskowego</string>
     <string name="enter_barcode">Wprowadź poniżej kod kreskowy</string>
     <string name="format_error">Błędny kod kreskowy/QR</string>
-    <string name="code_detected">Wykryliśmy kod kreskowy</string>
+    <string name="code_detected">Wykryto kod kreskowy</string>
     <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
     <string name="bottomNav_history">Historia</string>
     <string name="bottomNav_search">Poszukiwanie</string>
@@ -604,7 +605,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="show_by">Pokaż</string>
     <string name="notify_title">Zakończono eksport</string>
     <string name="notify_content">Naciśnij by zobaczyć wyeksportowane produkty</string>
-    <string name="notification_channel_name">Ekspotruj powiadomienia</string>
+    <string name="notification_channel_name">Eksportuj powiadomienia</string>
     <string name="notify_channel_description">Powiadomienie wskazujące lokalizację wyeksportowanego pliku</string>
     <string name="products_to_be_completed">Produkty do uzupełnienia</string>
     <string name="modified_history">Produkty dodane dnia %1$s o godzinie %2$s przez %3$s.  Ostatnia zmiana strony produktu w dniu %4$s o %5$s przez %6$s.  Także zmieniona przez %7$s</string>
@@ -614,8 +615,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
  </string>
     <string name="other_editors">Strona edytowana także przez </string>
     <string name="contribution_tab">Wkład</string>
-    <string name="contribution_tab_summary">Pokaż kartę wkładu użytkowników i produktów</string>
-    <string name="contribution_tab_title">Pokaż zakładkę kontrybucji</string>
+    <string name="contribution_tab_summary">Pokaż kartę wkładu użytkowników wraz z dodanymi produktami</string>
+    <string name="contribution_tab_title">Pokaż zakładkę wkładu użytkownika</string>
     <string name="product">Edytuj</string>
     <string name="txtDialogsTitle">Informacje</string>
     <string name="preference_show_all_product_photos_title">Pokaż wszystkie zdjęcia produktu</string>
@@ -646,7 +647,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="product_language">Język produktu: </string>
     <string name="hint_emb_codes">Przykłady: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Oficjalna strona internetowa</string>
-    <string name="scan_QR_code">Zeskanuj kod QR do strony produktu</string>
+    <string name="scan_QR_code">Zeskanuj kod QR odsyłający do strony produktu</string>
     <string name="add_at_least_one_picture">Przed kontynuowaniem, dodaj co najmniej jedno zdjęcie produktu</string>
     <string name="image_uploaded_successfully">Zdjęcie zostało przesłane pomyślnie</string>
     <string name="error_adding_product_photos">Coś poszło nie tak podczas próby dodania zdjęć produktu</string>
@@ -681,8 +682,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="traces">Ślady</string>
     <string name="traces_hint">Wskaż składniki z wzmianek pokroju \'Może zawierać śladowe ilości\', \'Wyprodukowano w fabryce które również stosuje\' itd. \nPrzykłady: Mleko, Gluten, Orzechy</string>
     <string name="nutrition_facts_not_specified">Nie podano wartości odżywczych dla tego produktu.</string>
-    <string name="nutrition_facts_picture">Obraz faktów odżywieniowych</string>
-    <string name="for_100g_100ml">Na 100 g / 100 ml</string>
+    <string name="nutrition_facts_picture">Zdjęcie informacji o wartości odżywczej</string>
+    <string name="for_100g_100ml">W 100 g / 100 ml</string>
     <string name="per_serving">Na porcję</string>
     <string name="serving_size">Porcja</string>
     <string name="alcohol_unit" formatted="false">% obj / °</string>
@@ -720,19 +721,19 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="description_activity_product">opis</string>
     <string name="intent_filter_share_label">Dodaj do Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="overexposure_high">Wysokie ryzyko nadmiernego narażenia</string>
+    <string name="overexposure_moderate">Umiarkowane ryzyko nadmiernego narażenia</string>
+    <string name="infants">Niemowlęta</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="toddlers">Małe dzieci</string>
+    <string name="toddlers_age">1 do 2 lat</string>
+    <string name="children">Dzieci</string>
+    <string name="children_age">3 do 9 lat</string>
+    <string name="adolescents">Nastolatkowie</string>
+    <string name="adolescents_age">10 do 17 lat</string>
+    <string name="adults">Dorośli</string>
+    <string name="adults_age">18 do 64 lat</string>
+    <string name="elderly">Seniorzy</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Większość populacji\n(ponad 50%)</string>
     <string name="some_people">Część populacji\n(ponad 5%)</string>
@@ -751,21 +752,22 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="diet_name">Nazwa diety</string>
     <string name="diets_dialog_warning_title">Ostrzeżenie</string>
     <string name="warning_diets_data">Dane dietetyczne pozostają na urządzeniu. Nic nie zostanie nigdzie przesłane.</string>
-    <string name="EditDiet_Name">Nazwa</string>
-    <string name="EditDiet_Description">Opis</string>
-    <string name="EditDiet_Enabled_Disabled">Aktywne i nieaktywne</string>
-    <string name="EditDiet_Authorised_Ingredients">Zatwierdzone składniki</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Lista dopuszczonych składników, które powinny zostać wyświetlone w kolorze zielonym. Przykład: jabłka, pieczarki, pomidory... Tę listę można uzupełnić później.</string>
-    <string name="EditDiet_So_So_Ingredients">Takie składniki jak</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Niezatwierdzone składniki</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Lista niedopuszczony składników, które powinny zostać wyświetlone na czerwono. Przykład: gluten, mleko, olej palmowy, cukier... Możesz później uzupełnić listę.</string>
+    <string name="edit_diet_name">Nazwa</string>
+    <string name="edit_diet_description">Opis</string>
+    <string name="edit_diet_enabled_disabled">Aktywne i nieaktywne</string>
+    <string name="edit_diet_authorised_ingredients">Zatwierdzone składniki</string>
+    <string name="edit_diet_hint_ingredient_authorised">Lista dopuszczonych składników, które powinny zostać wyświetlone w kolorze zielonym. Przykład: jabłka, pieczarki, pomidory... Tę listę można uzupełnić później.</string>
+    <string name="edit_diet_so_so_ingredients">Takie składniki jak</string>
+    <string name="edit_diet_hint_so_so_ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
+    <string name="edit_diet_unauthorised_ingredients">Niezatwierdzone składniki</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Lista niedopuszczony składników, które powinny zostać wyświetlone na czerwono. Przykład: gluten, mleko, olej palmowy, cukier... Możesz później uzupełnić listę.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Wyodrębnij składniki</string>
     <string name="add_nutrient_prompt_text">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
     <string name="add_category_prompt_text">W celu obliczenia Nutri-Score wpisz kategorię produktu</string>
     <string name="add_nutrient_category_prompt_text">Aby obliczyć Nutri-Score uzupełnij informacje o wartości odżywczej oraz kategorię produktu</string>
     <string name="no_nutrition_data_prompt">Nie ma informacji o wartości odżywczej tego produktu</string>
-    <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
+    <string name="nutrition_image_prompt_text">Zrób zdjęcie tabeli żywieniowej</string>
     <string name="ingredient_image_prompt_text">Zrób zdjęcie składników</string>
     <string name="category_game_btn">Pomóż obliczyć Nutri-Score. przez właściwe kategoryzowanie produktów</string>
     <string name="version_string">Aplikacja na Androida Open Food Facts</string>
@@ -787,7 +789,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtLoaded">Pomyślnie pobrano tłumaczenia</string>
     <string name="txtConnectionError">Nie pobrano niektórych danych. Może to być spowodowane błędem połączenia.</string>
     <string name="set_image_name">Pomyślnie ustawiono obraz jako</string>
-    <string name="warning">Uwaga :</string>
+    <string name="warning">Ostrzeżenie :</string>
     <string name="customer_service">Obsługa klienta :</string>
     <string name="fast_addition_mode_title">Tryb szybkiego dodawania</string>
     <string name="fast_addition_mode">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
@@ -802,7 +804,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txt_products_to_buy">Produkty do kupienia</string>
     <string name="export_csv_your_listed_products">Eksport CSV</string>
     <string name="txt_exporting_your_listed_products">Eksportowanie twoich produktów…</string>
-    <string name="txt_your_listed_products_exported">Twój profil został eksportowany</string>
+    <string name="txt_your_listed_products_exported">Twoje produkty zostały wyeksportowane</string>
     <string name="txt_discard">Odrzuć</string>
     <string name="txt_save">Zapisz</string>
     <string name="write_external_storage_your_listed_products">Napisz, że potrzebne jest zewnętrzne zezwolenie na eksport danych.</string>
@@ -818,16 +820,23 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="settings_country_title">Kraj</string>
     <string name="list_text">Dodano w:\u0020</string>
     <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Dodaj produkty</string>
     <string name="add_another_product">Dodaj kolejny produkt</string>
     <string name="add_nutrition_facts_for_nutriscore">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">Porównaj</string>
+    <string name="product_summary_action_add_to_list_button_label">Dodaj do listy</string>
     <string name="product_summary_action_edit_button_label">Edytuj</string>
     <string name="product_summary_action_share_button_label">Udostępnij</string>
+    <string name="product_question_prompt">Naciśnij tutaj, aby odpowiedzieć</string>
+    <string name="product_question_positive_response">Tak</string>
+    <string name="product_question_negative_response">Nie</string>
+    <string name="product_question_ambiguous_response">Nie jestem pewien</string>
+    <string name="product_question_submit_message">Dziękuję za Twoją pomoc!</string>
     <string name="error_nutrient_entry">Wartość musi być liczbą i może zacząć się: &lt;, &gt; lub ~. Przykład: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Wartość rozmiar porcji musi być wartością dodatnią</string>
     <string name="error_in_nutrient_data">Niektóre wartości odżywcze nie są prawidłowe. Proszę poprawić pola oznaczone jako nieprawidłowe</string>
+    <string name="go_to_full_product_page">Przejdź do pełnej strony produktu</string>
+    <string name="no_additive_data_available_for_this_product">Dodatkowe dane dla tego produktu nie są dostępne</string>
+    <string name="no_nutrient_information_available_for_this_product">Brak informacji o wartości odżywczej dla tego produktu</string>
 </resources>

@@ -41,11 +41,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductLists;
-import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -104,14 +100,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             String barcode=p.getCode();
             String productName=p.getProductName();
 
-            StringBuilder stringBuilder = new StringBuilder();
-            if (isNotEmpty(p.getBrands())) {
-                stringBuilder.append(capitalize(p.getBrands().split(",")[0].trim()));
-            }
-            if (isNotEmpty(p.getQuantity())) {
-                stringBuilder.append(" - ").append(p.getQuantity());
-            }
-            String productDetails=stringBuilder.toString();
+            String productDetails = getProductBrandsQuantityDetails(p);
             String imageUrl=p.getImageSmallUrl();
             YourListedProduct product=new YourListedProduct();
             product.setBarcode(barcode);
@@ -151,6 +140,24 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
                 }
             });
         }
+    }
+
+    public static String getProductBrandsQuantityDetails(Product p) {
+        return  getProductBrandsQuantityDetails(p.getBrands(),p.getQuantity());
+    }
+    public static String getProductBrandsQuantityDetails(HistoryItem p) {
+        return  getProductBrandsQuantityDetails(p.getBrands(),p.getQuantity());
+    }
+
+    public static String getProductBrandsQuantityDetails(String  brands,String quantity) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (isNotEmpty(brands)) {
+            stringBuilder.append(capitalize(brands.split(",")[0].trim()));
+        }
+        if (isNotEmpty(quantity)) {
+            stringBuilder.append(" - ").append(quantity);
+        }
+        return stringBuilder.toString();
     }
 
     @Override

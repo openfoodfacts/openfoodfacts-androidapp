@@ -33,6 +33,7 @@
     <string name="text_barcode">נא להזין את הברקוד:</string>
     <string name="message_in_activity_save_product_offline">נדרשת לפחות תמונה אחת לטובת שליחת מוצר חדש.</string>
     <string name="product_incomplete_message">המפרט של מוצר זה לוקה בחסר. כתוצאה מכך, לא הצלחנו לבדוק מה הם מעוררי הרגישות.</string>
+    <string name="product_allergen_prompt">מוצר זה מכיל:</string>
     <string name="no_offline_data">סיימת</string>
     <string name="first_offline">מוצרים שהוספת ללא חיבור לאינטרנט יופיעו כאן</string>
     <!-- Image Upload -->
@@ -730,15 +731,16 @@
     <string name="diet_name">שם סוג תזונה</string>
     <string name="diets_dialog_warning_title">אזהרה</string>
     <string name="warning_diets_data">נתוני התזונה נשמרים במכשיר שלך. שום דבר לא יועבר לאף מקום.</string>
-    <string name="EditDiet_Name">שם</string>
-    <string name="EditDiet_Description">תיאור</string>
-    <string name="EditDiet_Enabled_Disabled">פעיל/מושבת</string>
-    <string name="EditDiet_Authorised_Ingredients">רכיבים מורשים</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">באפשרותך להכין רשימת רכיבים מורשים שאמורים להופיע בירוק. למשל: תפוח, פטרייה, עגבנייה… ניתן להשלים את הרשימה הזאת בהמשך.</string>
-    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">באפשרותך להכין רשימת רכיבים בעייתיים שאמורים להופיע בכתום. למשל: ביצה, דג… ניתן להשלים את הרשימה הזאת בהמשך.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">רכיבים לא מורשים</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">באפשרותך להכין רשימת רכיבים בלתי מורשים שאמורים להופיע באדום. למשל: גלוטן, חלב, שמן דקלים, סוכר… ניתן להשלים את הרשימה הזאת בהמשך.</string>
+    <string name="edit_diet_name">שם</string>
+    <string name="edit_diet_description">תיאור</string>
+    <string name="edit_diet_enabled_disabled">פעיל/מושבת</string>
+    <string name="edit_diet_authorised_ingredients">רכיבים מורשים</string>
+    <string name="edit_diet_hint_ingredient_authorised">באפשרותך להכין רשימת רכיבים מורשים שאמורים להופיע בירוק. למשל: תפוח, פטרייה, עגבנייה… ניתן להשלים את הרשימה הזאת בהמשך.</string>
+    <string name="edit_diet_so_so_ingredients">So so ingredients</string>
+    <string name="edit_diet_hint_so_so_ingredient">באפשרותך להכין רשימת רכיבים בעייתיים שאמורים להופיע בכתום. למשל: ביצה, דג… ניתן להשלים את הרשימה הזאת בהמשך.</string>
+    <string name="edit_diet_unauthorised_ingredients">רכיבים לא מורשים</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">באפשרותך להכין רשימת רכיבים בלתי מורשים שאמורים להופיע באדום. למשל: גלוטן, חלב, שמן דקלים, סוכר… ניתן להשלים את הרשימה הזאת בהמשך.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">חילוץ רכיבים</string>
     <string name="add_nutrient_prompt_text">יש להוסיף מפרט תזונתי כדי לחשב ציון תזונתי</string>
     <string name="add_category_prompt_text">יש להוסיף קטגוריה כדי לחשב את הציון התזונתי</string>
@@ -797,16 +799,23 @@
     <string name="settings_country_title">מדינה</string>
     <string name="list_text">מועד הוספה:\u0020</string>
     <string name="txt_no_nutrition_data">למוצר זה אינו פירוט תזונתי על האריזה. אם מצב זה השתנה, ניתן לערוך את המוצר.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">הוספת מוצרים</string>
     <string name="add_another_product">הוספת מוצר נוסף</string>
     <string name="add_nutrition_facts_for_nutriscore">יש להוסיף מפרט תזונתי כדי לחשב ציון תזונתי</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">השוואה</string>
+    <string name="product_summary_action_add_to_list_button_label">הוספה לרשימה</string>
     <string name="product_summary_action_edit_button_label">עריכה</string>
     <string name="product_summary_action_share_button_label">שיתוף</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="product_question_prompt">יש לגעת כאן כדי לענות</string>
+    <string name="product_question_positive_response">כן</string>
+    <string name="product_question_negative_response">לא</string>
+    <string name="product_question_ambiguous_response">לא בטוח</string>
+    <string name="product_question_submit_message">תודה לך על תרומתך!</string>
+    <string name="error_nutrient_entry">הערך אמור להיות מספרי ולהתחיל ב־&lt;, &gt; או ~. לדוגמה: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">גודל ההגשה חייב להיות ערך חיובי</string>
+    <string name="error_in_nutrient_data">חלק מערכי ההזנה אינם תקינים. נא לתקן את השדות להלן שמסומנים כשגויים</string>
+    <string name="go_to_full_product_page">מעבר לעמוד המוצר המלא</string>
+    <string name="no_additive_data_available_for_this_product">אין נתוני תוספים זמינים עבור המוצר הזה</string>
+    <string name="no_nutrient_information_available_for_this_product">אין נתוני חומרי הזנה זמינים עבור המוצר הזה</string>
 </resources>

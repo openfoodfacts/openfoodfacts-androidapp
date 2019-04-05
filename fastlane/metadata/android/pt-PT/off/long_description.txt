@@ -1,8 +1,8 @@
 Digitalize produtos alimentares para obter dados sobre ingredientes, aditivos e informação nutricional.
 
-▶ Find & Compare more than 800.000 products
+▶ Encontre e compare mais de 800.000 produtos
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+A aplicação permite visualizar os 800.000 produtos (incluindo 175.000 nos EUA) já contidos no banco de dados aberto e gratuito dos Open Food Facts e de adicionar fotos e dados de produtos novos.
 
 
 Para descobrir o projeto Open Food Facts realizado por voluntários, visite https://world-pt.openfoodfacts.org
@@ -10,14 +10,14 @@ Para descobrir o projeto Open Food Facts realizado por voluntários, visite http
 ▶ Escolha os produtos que são bons para você
 - A classificação Nutri-Score, de "A" a "E" >> Qualidade nutricional
 - O grupo NOVA, de "1" a "4" >> Encontre o alimento ultraprocessado
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+- Você pode facilmente comparar quantos produtos quiser, lado a lado simplesmente digitalizando-os. 
 
 ▶ E bom para o planeta!
 - O impacto de carbono de sua comida
-- Get a sense of how much of your daily carbon quota you're using for food
-- Based on the footprints computed for France by ADEME.
+- Tenha uma noção de quanto de sua quota diária de carbono está usando para alimentar
+- Com base nas pegadas calculadas para a França pela ADEME.
 - Junte-se a nós e ajude-nos a levar o Carbon Impact ao seu país!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+- Para exibir um Impacto de Carbono, um produto deve ter uma lista completa de ingredientes com % de carne ou peixe e uma quantidade
 
 
 ▶ Contribuir para a transparência alimentar
@@ -26,8 +26,8 @@ Para descobrir o projeto Open Food Facts realizado por voluntários, visite http
 - Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras.
 - Você pode começar a contribuir hoje adicionando um produto de sua geladeira.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+Criar listas
+Crie listas de compras, controle o que você comeu e compartilhe facilmente e exporte suas listas.
 
 ▶ Obtenha os Factos
 - Open Food Facts ajuda a entender as letras miúdas dos rótulos dos produtos. Você será capaz de encontrar:
@@ -46,8 +46,8 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - A comunidade Open Food Facts está colaborando com equipes de pesquisa em todo o planeta para melhorar a pesquisa nutricional que beneficia a todos.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+▶ Off-line Scan: digitalizar em qualquer condição! (brevemente)
+Digitalize à velocidade da luz (mesmo se você estiver num avião, submarino ou supermercado)
 
 - O planeta inteiro, no seu bolso!
 - Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento.
@@ -59,7 +59,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - Pode exportar seu histórico de digitalizações
 
 ▶ Configurar alertas de alérgenos em produtos
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+- Leite, glúten, ovos, soja, nozes, peixe, aipo, mostarda, dióxido de enxofre e sulfitos, amendoim, sementes de gergelim, crustáceos, moluscos ou alergia de tremoços?
 - Acelere suas compras fazendo uma triagem inicial de sua comida com o Open Food Facts.
 - Tenha cuidado para que as informações não sejam 100% precisas e a detecção não seja 100% precisa. Portanto, verifique sempre por si mesmo, com a embalagem.
 

@@ -20,7 +20,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -74,7 +73,7 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPager
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
+import org.apache.commons.lang3.StringUtils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -177,11 +176,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        Intent intent = getActivity().getIntent();
-        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null)
-            mState = (State) intent.getExtras().getSerializable("state");
-        else
-            mState = ProductFragment.mState;
+        mState=getStateFromActivityIntent();
         product = mState.getProduct();
 
         presenter = new IngredientsProductPresenter(product, this);
@@ -200,11 +195,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
-        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null)
-            mState = (State) intent.getExtras().getSerializable("state");
-        else
-            mState = ProductFragment.mState;
+        mState=getStateFromActivityIntent();
         refreshView(mState);
     }
 
@@ -233,57 +224,29 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         List<String> aminoAcidTagsList = product.getAminoAcidTags();
         List<String> mineralTags = product.getMineralTags();
         List<String> otherNutritionTags = product.getOtherNutritionTags();
-        String prefix = " ";
 
         if (!vitaminTagsList.isEmpty()) {
-            StringBuilder vitaminStringBuilder = new StringBuilder();
             vitaminsTagsTextCardView.setVisibility(View.VISIBLE);
             vitaminTagsTextView.setText(bold(getString(R.string.vitamin_tags_text)));
-            for (String vitamins : vitaminTagsList) {
-                vitaminStringBuilder.append(prefix);
-                prefix = ", ";
-                vitaminStringBuilder.append(trimLanguagePartFromString(vitamins));
-            }
-            vitaminTagsTextView.append(vitaminStringBuilder.toString());
+            vitaminTagsTextView.append(buildStringBuilder(vitaminTagsList, StringUtils.SPACE));
         }
 
         if (!aminoAcidTagsList.isEmpty()) {
-            String aminoPrefix = " ";
-            StringBuilder aminoAcidStringBuilder = new StringBuilder();
             aminoAcidTagsTextCardView.setVisibility(View.VISIBLE);
             aminoAcidTagsTextView.setText(bold(getString(R.string.amino_acid_tags_text)));
-            for (String aminoAcid : aminoAcidTagsList) {
-                aminoAcidStringBuilder.append(aminoPrefix);
-                aminoPrefix = ", ";
-                aminoAcidStringBuilder.append(trimLanguagePartFromString(aminoAcid));
-            }
-            aminoAcidTagsTextView.append(aminoAcidStringBuilder.toString());
+            aminoAcidTagsTextView.append(buildStringBuilder(aminoAcidTagsList, StringUtils.SPACE));
         }
 
         if (!mineralTags.isEmpty()) {
-            String mineralPrefix = " ";
-            StringBuilder mineralsStringBuilder = new StringBuilder();
             mineralTagsTextCardView.setVisibility(View.VISIBLE);
             mineralTagsTextView.setText(bold(getString(R.string.mineral_tags_text)));
-            for (String mineral : mineralTags) {
-                mineralsStringBuilder.append(mineralPrefix);
-                mineralPrefix = ", ";
-                mineralsStringBuilder.append(trimLanguagePartFromString(mineral));
-            }
-            mineralTagsTextView.append(mineralsStringBuilder);
+            mineralTagsTextView.append(buildStringBuilder(mineralTags, StringUtils.SPACE));
         }
 
         if (!otherNutritionTags.isEmpty()) {
-            String otherNutritionPrefix = " ";
-            StringBuilder otherNutritionStringBuilder = new StringBuilder();
             otherNutritionTagTextView.setVisibility(View.VISIBLE);
             otherNutritionTagTextView.setText(bold(getString(R.string.other_tags_text)));
-            for (String otherSubstance : otherNutritionTags) {
-                otherNutritionStringBuilder.append(otherNutritionPrefix);
-                otherNutritionPrefix = ", ";
-                otherNutritionStringBuilder.append(trimLanguagePartFromString(otherSubstance));
-            }
-            otherNutritionTagTextView.append(otherNutritionStringBuilder.toString());
+            otherNutritionTagTextView.append(buildStringBuilder(otherNutritionTags, StringUtils.SPACE));
         }
 
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
@@ -339,7 +302,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             traceProduct.append(" ");
 
             String trace;
-            String traces[] = product.getTraces().split(",");
+            String[] traces = product.getTraces().split(",");
             for (int i = 0; i < traces.length - 1; i++) {
                 trace = traces[i];
                 traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
@@ -383,6 +346,16 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         } else {
             novaLayout.setVisibility(View.GONE);
         }
+    }
+
+    private StringBuilder buildStringBuilder(List<String> stringList, String prefix) {
+        StringBuilder otherNutritionStringBuilder = new StringBuilder();
+        for (String otherSubstance : stringList) {
+            otherNutritionStringBuilder.append(prefix);
+            prefix = ", ";
+            otherNutritionStringBuilder.append(trimLanguagePartFromString(otherSubstance));
+        }
+        return otherNutritionStringBuilder;
     }
 
     private CharSequence getAdditiveTag(AdditiveName additive) {
@@ -532,9 +505,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         return ssb;
     }
 
-    private SpannableString buildAdditivesList(List<AdditiveName> additives) {
-        return null;
-    }
 
     @Override
     public void showAdditives(List<AdditiveName> additives) {
@@ -610,7 +580,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             }
             else
             {
-                mState = (State) getActivity().getIntent().getExtras().getSerializable( "state" );
+                mState = getStateFromActivityIntent();
                 Intent intent = new Intent( getContext(), AddProductActivity.class );
                 intent.putExtra("send_updated", sendUpdatedIngredientsImage);
                 intent.putExtra( "edit_product", mState.getProduct() );
@@ -714,7 +684,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
             } else {
                 EasyImage.openCamera(this, 0);
-//                EasyImage.openGallery(this);
             }
         }
     }

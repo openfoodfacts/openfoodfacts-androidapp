@@ -25,6 +25,7 @@
     <string name="text_barcode">Angiv stregkoden:</string>
     <string name="message_in_activity_save_product_offline">Kun ét foto kræves for at indsende et nyt produkt.</string>
     <string name="product_incomplete_message">Dette produkt er ikke komplet. Der kan derforikke foretages et allergentjek.</string>
+    <string name="product_allergen_prompt">Dette produkt indeholder:</string>
     <string name="no_offline_data">Du er helt færdig</string>
     <string name="first_offline">Produkter tilføjet offline vil fremgå her</string>
     <!-- Image Upload -->
@@ -722,15 +723,16 @@
     <string name="diet_name">Diætnavn</string>
     <string name="diets_dialog_warning_title">Advarsel</string>
     <string name="warning_diets_data">Kostens data bliver på din enhed. Intet bliver uploadet.</string>
-    <string name="EditDiet_Name">Navn</string>
-    <string name="EditDiet_Description">Beskrivelse</string>
-    <string name="EditDiet_Enabled_Disabled">Aktivér/Deaktivér</string>
-    <string name="EditDiet_Authorised_Ingredients">Godkendte ingredienser</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Angiv de godkendte ingredienser, som skal vises med grønt. Eksempel: Æble, champignon, tomat... Du kan færdiggøre listen senere.</string>
-    <string name="EditDiet_So_So_Ingredients">-</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de uønskede ingredienser, der skal vises med rød skrift. Eksempel: Gluten, mælk, palmeolie, sukker… Du kan færdiggøre denne liste senere.</string>
+    <string name="edit_diet_name">Navn</string>
+    <string name="edit_diet_description">Beskrivelse</string>
+    <string name="edit_diet_enabled_disabled">Aktivér/Deaktivér</string>
+    <string name="edit_diet_authorised_ingredients">Godkendte ingredienser</string>
+    <string name="edit_diet_hint_ingredient_authorised">Angiv de godkendte ingredienser, som skal vises med grønt. Eksempel: Æble, champignon, tomat... Du kan færdiggøre listen senere.</string>
+    <string name="edit_diet_so_so_ingredients">-</string>
+    <string name="edit_diet_hint_so_so_ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
+    <string name="edit_diet_unauthorised_ingredients">Ikke-godkendte ingredienser</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Angiv de uønskede ingredienser, der skal vises med rød skrift. Eksempel: Gluten, mælk, palmeolie, sukker… Du kan færdiggøre denne liste senere.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
@@ -789,16 +791,23 @@
     <string name="settings_country_title">Land</string>
     <string name="list_text">Føjet til:\u0020</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Tilføj produkter</string>
     <string name="add_another_product">Tilføj et produkt mere</string>
     <string name="add_nutrition_facts_for_nutriscore">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">Sammenlign</string>
+    <string name="product_summary_action_add_to_list_button_label">Føj til liste</string>
     <string name="product_summary_action_edit_button_label">Rediger</string>
     <string name="product_summary_action_share_button_label">Del</string>
+    <string name="product_question_prompt">Tryk her for at besvare</string>
+    <string name="product_question_positive_response">Ja</string>
+    <string name="product_question_negative_response">Nej</string>
+    <string name="product_question_ambiguous_response">Ikke sikker</string>
+    <string name="product_question_submit_message">Tak for dit bidrag!</string>
     <string name="error_nutrient_entry">Værdien skal være numerisk og kan starte med &lt;, &gt; eller ~, f.eks. &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Portionsstørrelsen skal udgøre en positiv værdi</string>
     <string name="error_in_nutrient_data">Nogle næringsværdier er ugyldige. Korrigér venligst ovenstående fejlmarkerede felter</string>
+    <string name="go_to_full_product_page">Gå til fuld produktside</string>
+    <string name="no_additive_data_available_for_this_product">Ingen data om tilsætningsstoffer tilgængelig for dette produkt</string>
+    <string name="no_nutrient_information_available_for_this_product">Ingen information om næringsstoffer tilgængelig for dette produkt</string>
 </resources>

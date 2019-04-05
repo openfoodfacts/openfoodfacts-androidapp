@@ -21,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.CalculateAdapter;
@@ -181,27 +182,9 @@ public class CalculateDetails extends BaseActivity {
     }
 
     private String calculateCalories(float weight, String unit) {
-        float caloriePer100g, weightInG;
-        caloriePer100g = Float.valueOf(Utils.getEnergy(p.getNutriments().get(Nutriments.ENERGY).getFor100gInUnits()));
-        switch (unit) {
-            case "mg":
-                weightInG = weight / 1000;
-                break;
-            case "kg":
-                weightInG = weight * 1000;
-                break;
-            case "l":
-                weightInG = weight * 1000;
-                break;
-            case "cl":
-                weightInG = weight * 10;
-                break;
-            default:
-                weightInG = weight;
-                break;
-        }
-        String snew = Float.toString(((caloriePer100g / 100) * weightInG));
-        return snew;
+        float caloriePer100g = Float.valueOf(Utils.getEnergy(p.getNutriments().get(Nutriments.ENERGY).getFor100gInUnits()));
+        float weightInG= UnitUtils.convertToGrams(weight,unit);
+        return Float.toString(((caloriePer100g / 100) * weightInG));
     }
 
 

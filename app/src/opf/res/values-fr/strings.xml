@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
     <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Products Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
     <!-- OPF tagline in different languages -->
-    <string name="tagline">the free product database</string>
+    <string name="tagline">l\'information produit ouverte</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Products Facts. Pouvez-vous l\'ajouter ?</string>
     <string name="currently_on_version">Actuellement sur Open Products Facts</string>
     <string name="category_game_btn">Aidez à classer les produits</string>

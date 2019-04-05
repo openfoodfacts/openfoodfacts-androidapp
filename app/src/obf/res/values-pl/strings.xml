@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Skanuj nawet w trybie offline, dodasz je później do Open Food Facts. Zeskanowane produkty pojawią się tutaj i będziesz mogła wysłać je poniższym przyciskiem.</string>
     <string name="warning_alert_data">Informacja o twoich uczuleniach nie trafi na serwer Open Beaty Facts. Uważaj na niedokładne dane produktów oraz niedoskonałość wykrywania. Sprawdzaj dwa razy! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">the free cosmetics database</string>
+    <string name="tagline">ogólnodostępna baza danych o kosmetykach</string>
     <string name="product_not_found">Zeskanowany produkt %1$s, jeszcze nie figuruje w Open Beauty Facts. Dodać go?</string>
     <string name="currently_on_version">Aktualnie na Otwartych faktach o piękności</string>
     <string name="category_game_btn">Pomóż kategoryzować produkty</string>

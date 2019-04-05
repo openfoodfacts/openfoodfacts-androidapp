@@ -25,6 +25,7 @@
     <string name="text_barcode">crwdns112912:0crwdne112912:0</string>
     <string name="message_in_activity_save_product_offline">crwdns112914:0crwdne112914:0</string>
     <string name="product_incomplete_message">crwdns115918:0crwdne115918:0</string>
+    <string name="product_allergen_prompt">crwdns116168:0crwdne116168:0</string>
     <string name="no_offline_data">crwdns112918:0crwdne112918:0</string>
     <string name="first_offline">crwdns112920:0crwdne112920:0</string>
     <!-- Image Upload -->
@@ -722,15 +723,16 @@
     <string name="diet_name">crwdns114464:0crwdne114464:0</string>
     <string name="diets_dialog_warning_title">crwdns114466:0crwdne114466:0</string>
     <string name="warning_diets_data">crwdns115732:0crwdne115732:0</string>
-    <string name="EditDiet_Name">crwdns114470:0crwdne114470:0</string>
-    <string name="EditDiet_Description">crwdns114472:0crwdne114472:0</string>
-    <string name="EditDiet_Enabled_Disabled">crwdns114474:0crwdne114474:0</string>
-    <string name="EditDiet_Authorised_Ingredients">crwdns114476:0crwdne114476:0</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">crwdns114478:0crwdne114478:0</string>
-    <string name="EditDiet_So_So_Ingredients">crwdns114480:0crwdne114480:0</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">crwdns114482:0crwdne114482:0</string>
-    <string name="EditDiet_Unauthorised_Ingredients">crwdns114484:0crwdne114484:0</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">crwdns115734:0crwdne115734:0</string>
+    <string name="edit_diet_name">crwdns114470:0crwdne114470:0</string>
+    <string name="edit_diet_description">crwdns114472:0crwdne114472:0</string>
+    <string name="edit_diet_enabled_disabled">crwdns114474:0crwdne114474:0</string>
+    <string name="edit_diet_authorised_ingredients">crwdns114476:0crwdne114476:0</string>
+    <string name="edit_diet_hint_ingredient_authorised">crwdns114478:0crwdne114478:0</string>
+    <string name="edit_diet_so_so_ingredients">crwdns114480:0crwdne114480:0</string>
+    <string name="edit_diet_hint_so_so_ingredient">crwdns114482:0crwdne114482:0</string>
+    <string name="edit_diet_unauthorised_ingredients">crwdns114484:0crwdne114484:0</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">crwdns115734:0crwdne115734:0</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">crwdns114488:0crwdne114488:0</string>
     <string name="add_nutrient_prompt_text">crwdns114490:0crwdne114490:0</string>
     <string name="add_category_prompt_text">crwdns114492:0crwdne114492:0</string>
@@ -788,7 +790,6 @@
     <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
     <string name="list_text">crwdns115878:0crwdne115878:0</string>
     <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">crwdns115984:0crwdne115984:0</string>
     <string name="add_another_product">crwdns115748:0crwdne115748:0</string>
@@ -797,7 +798,15 @@
     <string name="product_summary_action_add_to_list_button_label">crwdns116162:0crwdne116162:0</string>
     <string name="product_summary_action_edit_button_label">crwdns116164:0crwdne116164:0</string>
     <string name="product_summary_action_share_button_label">crwdns116166:0crwdne116166:0</string>
+    <string name="product_question_prompt">crwdns116170:0crwdne116170:0</string>
+    <string name="product_question_positive_response">crwdns116172:0crwdne116172:0</string>
+    <string name="product_question_negative_response">crwdns116174:0crwdne116174:0</string>
+    <string name="product_question_ambiguous_response">crwdns116176:0crwdne116176:0</string>
+    <string name="product_question_submit_message">crwdns116178:0crwdne116178:0</string>
     <string name="error_nutrient_entry">crwdns116154:0crwdne116154:0</string>
     <string name="error_nutrient_serving_data">crwdns116156:0crwdne116156:0</string>
     <string name="error_in_nutrient_data">crwdns116158:0crwdne116158:0</string>
+    <string name="go_to_full_product_page">crwdns116184:0crwdne116184:0</string>
+    <string name="no_additive_data_available_for_this_product">crwdns116186:0crwdne116186:0</string>
+    <string name="no_nutrient_information_available_for_this_product">crwdns116188:0crwdne116188:0</string>
 </resources>

@@ -33,6 +33,7 @@
     <string name="text_barcode">Введите штрихкод:</string>
     <string name="message_in_activity_save_product_offline">Для отправки продукта обязательна только одна фотография.</string>
     <string name="product_incomplete_message">Этот продукт не является полным. В результате мы не смогли выполнить проверку аллергена.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Всё готово</string>
     <string name="first_offline">Продукты, добавленные в автономном режиме, появятся здесь</string>
     <!-- Image Upload -->
@@ -730,15 +731,16 @@
     <string name="diet_name">Название диеты</string>
     <string name="diets_dialog_warning_title">Предупреждение</string>
     <string name="warning_diets_data">Данные о вашей диете(ах) остаются на вашем устройстве. Ничего не будет загружено куда-либо.</string>
-    <string name="EditDiet_Name">Название</string>
-    <string name="EditDiet_Description">Описание</string>
-    <string name="EditDiet_Enabled_Disabled">Включить/Выключить</string>
-    <string name="EditDiet_Authorised_Ingredients">Разрешённые ингредиенты</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Перечислите разрешенные ингредиенты, которые будут отображаться зеленым цветом. Наример: яблоки, грибы, помидоры... Вы можете дополнить список позже.</string>
-    <string name="EditDiet_So_So_Ingredients">Нежелательные ингредиенты</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Запрещенные ингредиенты</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Список неавторизованных ингредиентов, которые должны появиться красным. Например: глютен, молоко, пальмовое масло, сахар… Вы можете дополнить этот список позже.</string>
+    <string name="edit_diet_name">Название</string>
+    <string name="edit_diet_description">Описание</string>
+    <string name="edit_diet_enabled_disabled">Включить/Выключить</string>
+    <string name="edit_diet_authorised_ingredients">Разрешённые ингредиенты</string>
+    <string name="edit_diet_hint_ingredient_authorised">Перечислите разрешенные ингредиенты, которые будут отображаться зеленым цветом. Наример: яблоки, грибы, помидоры... Вы можете дополнить список позже.</string>
+    <string name="edit_diet_so_so_ingredients">Нежелательные ингредиенты</string>
+    <string name="edit_diet_hint_so_so_ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
+    <string name="edit_diet_unauthorised_ingredients">Запрещенные ингредиенты</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Список неавторизованных ингредиентов, которые должны появиться красным. Например: глютен, молоко, пальмовое масло, сахар… Вы можете дополнить этот список позже.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
     <string name="add_nutrient_prompt_text">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>
     <string name="add_category_prompt_text">Добавьте категорию для вычисления Nutri-Score</string>
@@ -797,7 +799,6 @@
     <string name="settings_country_title">Страна</string>
     <string name="list_text">Добавлено в:\u0020</string>
     <string name="txt_no_nutrition_data">Этот продукт не имеет никакой информации о питании на упаковке. Если это изменилось, вы можете отредактировать продукт.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Добавить продукты</string>
     <string name="add_another_product">Добавить другой продукт</string>
@@ -806,7 +807,15 @@
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Изменить</string>
     <string name="product_summary_action_share_button_label">Поделиться</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Да</string>
+    <string name="product_question_negative_response">Нет</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="go_to_full_product_page">Перейти на полную страницу продукта</string>
+    <string name="no_additive_data_available_for_this_product">Дополнительных данные не доступны для этого продукта</string>
+    <string name="no_nutrient_information_available_for_this_product">Нет информации о питательной ценности для этого продукта</string>
 </resources>

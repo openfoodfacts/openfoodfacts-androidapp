@@ -25,6 +25,7 @@
     <string name="text_barcode">Saisissez le code-barre :</string>
     <string name="message_in_activity_save_product_offline">Une seule photo est obligatoire pour envoyer un nouveau produit.</string>
     <string name="product_incomplete_message">Ce produit n\'est pas complet. En conséquence, nous n\'avons pas pu faire le test d\'allergène.</string>
+    <string name="product_allergen_prompt">Ce produit contient:</string>
     <string name="no_offline_data">C\'est bon :)</string>
     <string name="first_offline">Les produits ajoutés hors ligne apparaîtront ici</string>
     <!-- Image Upload -->
@@ -722,15 +723,16 @@
     <string name="diet_name">Nom du régime</string>
     <string name="diets_dialog_warning_title">Attention</string>
     <string name="warning_diets_data">Les données de votre régime restent sur votre appareil. Rien ne sort de votre appareil.</string>
-    <string name="EditDiet_Name">Nom</string>
-    <string name="EditDiet_Description">Description</string>
-    <string name="EditDiet_Enabled_Disabled">Activé/Désactivé</string>
-    <string name="EditDiet_Authorised_Ingredients">Ingrédients autorisés</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Énumérez les ingrédients autorisés qui devraient être en vert. Exemple : pomme, champignon, tomate… Vous pourrez remplir cette liste plus tard.</string>
-    <string name="EditDiet_So_So_Ingredients">Ingrédients peu recommandés</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Ingrédients non autorisés</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Énumérez les ingrédients non autorisés devant apparaître en rouge. Exemple: gluten, lait, huile de palme, sucre… Vous pourrez compléter cette liste ultérieurement.</string>
+    <string name="edit_diet_name">Nom</string>
+    <string name="edit_diet_description">Description</string>
+    <string name="edit_diet_enabled_disabled">Activé/Désactivé</string>
+    <string name="edit_diet_authorised_ingredients">Ingrédients autorisés</string>
+    <string name="edit_diet_hint_ingredient_authorised">Énumérez les ingrédients autorisés qui devraient être en vert. Exemple : pomme, champignon, tomate… Vous pourrez remplir cette liste plus tard.</string>
+    <string name="edit_diet_so_so_ingredients">Ingrédients peu recommandés</string>
+    <string name="edit_diet_hint_so_so_ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
+    <string name="edit_diet_unauthorised_ingredients">Ingrédients non autorisés</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Énumérez les ingrédients non autorisés devant apparaître en rouge. Exemple: gluten, lait, huile de palme, sucre… Vous pourrez compléter cette liste ultérieurement.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
     <string name="add_category_prompt_text">Ajouter la catégorie pour calculer le Nutri-Score</string>
@@ -789,7 +791,6 @@
     <string name="settings_country_title">Pays</string>
     <string name="list_text">Ajouté : \u0020</string>
     <string name="txt_no_nutrition_data">Ce produit ne contient aucune information nutritionnelle sur l\'emballage. Si cela a changé, vous pouvez modifier le produit.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Ajouter des produits</string>
     <string name="add_another_product">Ajouter un autre produit</string>
@@ -798,7 +799,15 @@
     <string name="product_summary_action_add_to_list_button_label">Ajouter à une liste</string>
     <string name="product_summary_action_edit_button_label">Modifier</string>
     <string name="product_summary_action_share_button_label">Partager</string>
+    <string name="product_question_prompt">Appuyez ici pour répondre</string>
+    <string name="product_question_positive_response">Oui</string>
+    <string name="product_question_negative_response">Non</string>
+    <string name="product_question_ambiguous_response">Pas sûr(e)</string>
+    <string name="product_question_submit_message">Un grand merci pour votre contribution !</string>
     <string name="error_nutrient_entry">La valeur doit être numérique et peut commencer par &lt;, &gt; or ~. Exemple: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">La valeur de la taille de la portion doit être une valeur positive</string>
     <string name="error_in_nutrient_data">Certaines valeurs nutritives ne sont pas valides. Veuillez corriger les champs ci-dessus avec un marqueur d\'erreur</string>
+    <string name="go_to_full_product_page">Aller à la page complète du produit</string>
+    <string name="no_additive_data_available_for_this_product">Aucune donnée sur les additifs n\'est disponible pour ce produit</string>
+    <string name="no_nutrient_information_available_for_this_product">Aucune information nutritionnelle n\'est disponible pour ce produit</string>
 </resources>
