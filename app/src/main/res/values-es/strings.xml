@@ -756,7 +756,6 @@
     <string name="set_img_front">Establecer como imagen frontal</string>
     <string name="report_img">Reportar imagen</string>
     <string name="detected_ingredients">Ingredientes detectados</string>
-    <string name="txtDownloading">Descargando taxonomías…</string>
     <string name="txtLoaded">Las traducciones se han descargado correctamente</string>
     <string name="txtConnectionError">No pudimos descargar ciertos datos. Esto puede deberse a un error de conexión.</string>
     <string name="set_image_name">Establecer correctamente la imagen como</string>

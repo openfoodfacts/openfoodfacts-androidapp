@@ -764,7 +764,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Сообщить об изображении</string>
     <string name="detected_ingredients">Обнаруженные ингредиенты</string>
-    <string name="txtDownloading">Загрузка таксономий…</string>
     <string name="txtLoaded">Переводы успешно загружены</string>
     <string name="txtConnectionError">Не удалось загрузить некоторые данные. Это может быть вызвано ошибкой соединения.</string>
     <string name="set_image_name">Изображение установлено как</string>

@@ -756,7 +756,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Rapporteer afbeelding</string>
     <string name="detected_ingredients">Gedetecteerde ingrediënten</string>
-    <string name="txtDownloading">Taxonomieën downloaden…</string>
     <string name="txtLoaded">Vertalingen zijn succesvol gedownload</string>
     <string name="txtConnectionError">We kunnen bepaalde gegevens niet downloaden. Dit kan te wijten zijn aan een verbindingsfout.</string>
     <string name="set_image_name">Afbeelding succesvol ingesteld als</string>

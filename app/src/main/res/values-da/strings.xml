@@ -756,7 +756,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
-    <string name="txtDownloading">Downloader taxonomier…</string>
     <string name="txtLoaded">Oversættelser blev korrekt downloadet</string>
     <string name="txtConnectionError">Visse data kunne ikke downloades. Dette kan skyldes en forbindelsesfejl.</string>
     <string name="set_image_name">Foto angivet som</string>
