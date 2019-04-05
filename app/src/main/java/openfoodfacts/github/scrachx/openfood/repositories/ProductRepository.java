@@ -1,19 +1,57 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.database.Cursor;
-
-import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
-import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
-import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Single;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Category;
+import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Country;
+import openfoodfacts.github.scrachx.openfood.models.CountryDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientName;
+import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.Label;
+import openfoodfacts.github.scrachx.openfood.models.LabelDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Question;
+import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
@@ -241,9 +279,10 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Single<List<Ingredient>> getIngredients(Boolean refresh) {
         if (refresh) {
-//            deleteIngredientCascade();
+            deleteIngredientCascade();
             return productApi.getIngredients()
                     .map(IngredientsWrapper::map);
+            //Check ingredient from other tables
         } else if (tableIsEmpty(ingredientDao)) {
             return productApi.getIngredients()
                     .map(IngredientsWrapper::map);

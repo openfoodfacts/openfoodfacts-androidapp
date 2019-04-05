@@ -729,7 +729,7 @@
     <string name="edit_diet_authorised_ingredients">Geautoriseerde ingrediënten</string>
     <string name="edit_diet_hint_ingredient_authorised">Lijst de toegestane ingrediënten die in groen moeten worden weergegeven. Bijvoorbeeld: appel, paddestoel, tomaat… U kunt deze lijst later invullen.</string>
     <string name="edit_diet_so_so_ingredients">So so ingredients</string>
-    <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
+    <string name="edit_diet_hint_so_so_ingredient">Markeer ingrediënten die problemen kunnen geven en in oranje moeten worden weergegeven. Bijvoorbeeld: appel, paddenstoel of tomaat. Je kunt de lijst later aanvullen.</string>
     <string name="edit_diet_unauthorised_ingredients">Niet-geautoriseerde ingrediënten</string>
     <string name="edit_diet_hint_unauthorised_ingredient">Maak een lijst van de ongeautoriseerde ingrediënten die in rood zouden moeten verschijnen. Voorbeeld: gluten, melk, palmolie, suiker… U kunt deze lijst later invullen.</string>
     <!-- End of used for diets AddOn -->

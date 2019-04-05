@@ -722,16 +722,16 @@
     <string name="your_diets">Je dieet</string>
     <string name="diet_name">Dietnaam</string>
     <string name="diets_dialog_warning_title">Let op</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">Je dieetgegevens blijven op je apparaat. Niets zal worden geüpload.</string>
     <string name="edit_diet_name">Naam</string>
     <string name="edit_diet_description">Beschrijving</string>
     <string name="edit_diet_enabled_disabled">In-/uitschakelen</string>
     <string name="edit_diet_authorised_ingredients">Toegestane ingrediënten</string>
     <string name="edit_diet_hint_ingredient_authorised">Lijst de toegestane ingrediënten die in groen moeten worden weergegeven. Bijvoorbeeld: appel, paddestoel, tomaat… U kunt deze lijst later invullen.</string>
     <string name="edit_diet_so_so_ingredients">So so ingredients</string>
-    <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_hint_so_so_ingredient">Markeer ingrediënten die problemen kunnen geven en in oranje moeten worden weergegeven. Bijvoorbeeld: appel, paddenstoel of tomaat. Je kunt de lijst later aanvullen.</string>
+    <string name="edit_diet_unauthorised_ingredients">Niet toegestane ingrediënten</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Markeer niet toegestane ingrediënten die in rood moeten worden getoond. Bijvoorbeeld: gluten, melk, palm olie of suiker. Je kunt de lijst later uitbreiden.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Herken de ingrediënten</string>
     <string name="add_nutrient_prompt_text">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
