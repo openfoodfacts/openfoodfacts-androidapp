@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.database.Cursor;
+
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
@@ -51,48 +52,6 @@ import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
 import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-
-import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Category;
-import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Country;
-import openfoodfacts.github.scrachx.openfood.models.CountryDao;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.Ingredient;
-import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientName;
-import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Label;
-import openfoodfacts.github.scrachx.openfood.models.LabelDao;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
-import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
-import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
@@ -440,6 +399,11 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public void saveIngredients(List<Ingredient> ingredients) {
+        boolean complete = false;
+        if (tableIsEmpty(ingredientDao)) {
+            //If table ingredient is empty then it has probably been deleted so we have to complete it after saving.
+            complete = true;
+        }
         db.beginTransaction();
         try {
             for (Ingredient ingredient : ingredients) {
@@ -461,54 +425,38 @@ public class ProductRepository implements IProductRepository {
         } finally {
             db.endTransaction();
         }
-    }
-
-    /**
-     * Ingredients saving to local database
-     * <p>
-     * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
-     *
-     * @param ingredients       list of the ingredients to be saved
-     * @param truncate          true, tha table is truncate before the list of ingredients is saved and then the ingredients from other tables are recovered
-     */
-    @Override
-    public void saveIngredients(List<Ingredient> ingredients, boolean truncate) {
-        if (truncate) {
-            deleteIngredientCascade();
-        }
-        saveIngredients(ingredients);
-        if (truncate) {
-             //Check ingredient from other tables (DietIngredients for the moment)
-             DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
-             //Query this result of a list of IngredientTag not in Ingredient table and ingredientTag that may be the new correspondance.
-             String SQL = "select ITTF.INGREDIENT_TAG TAGTF, INGREDIENT_NAME.INGREDIENT_TAG TAGTR from (select DIET_INGREDIENTS.INGREDIENT_TAG from DIET_INGREDIENTS left join INGREDIENT on DIET_INGREDIENTS.INGREDIENT_TAG=INGREDIENT.TAG where INGREDIENT.TAG is null) ITTF left join INGREDIENT_NAME on lower(ITTF.INGREDIENT_TAG)=INGREDIENT_NAME.LANGUAGE_CODE||':'||lower(replace(INGREDIENT_NAME.NAME,' ','-'))";
-             ArrayList<String> result = new ArrayList<String>();
-             //execute sql via a cursor
-             Cursor c = daoSession.getDatabase().rawQuery(SQL, null);
-             try {
-                 if (c.moveToFirst()) {
-                     do {
-                         if (c.getString(1) == null) {
-                             //TAGTR is null (no correspondance found) create a new ingredient
-                             String tag = c.getString(0);
-                             String[] tagSplit = tag.split(":");
-                             IngredientName ingredientName = new IngredientName(tag, tagSplit[0], tagSplit[1]);
-                             List<IngredientName> ingredientNames = new ArrayList<>();
-                             ingredientNames.add(ingredientName);
-                             Ingredient ingredient = new Ingredient(tag, ingredientNames, null, null);
-                             saveIngredient(ingredient);
-                         } else {
-                             //replace TAGTF by TAGTR in Table
-                             daoSession.getDatabase().execSQL("update DIET_INGREDIENTS set INGREDIENT_TAG='" + c.getString(1) + "' where INGREDIENT_TAG='" + c.getString(0) + "'");
-                         }
-                     } while (c.moveToNext());
-                 }
-             }
-             catch (Exception e) {
-                 e.printStackTrace();
-             } finally {
-                 c.close();
-             }
+        if (complete) {
+            //Check ingredient from other tables (DietIngredients for the moment)
+            DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+            //Query this result of a list of IngredientTag not in Ingredient table and ingredientTag that may be the new correspondance.
+            String SQL = "select ITTF.INGREDIENT_TAG TAGTF, INGREDIENT_NAME.INGREDIENT_TAG TAGTR from (select DIET_INGREDIENTS.INGREDIENT_TAG from DIET_INGREDIENTS left join INGREDIENT on DIET_INGREDIENTS.INGREDIENT_TAG=INGREDIENT.TAG where INGREDIENT.TAG is null) ITTF left join INGREDIENT_NAME on lower(ITTF.INGREDIENT_TAG)=INGREDIENT_NAME.LANGUAGE_CODE||':'||lower(replace(INGREDIENT_NAME.NAME,' ','-'))";
+            ArrayList<String> result = new ArrayList<String>();
+            //execute sql via a cursor
+            Cursor c = daoSession.getDatabase().rawQuery(SQL, null);
+            try {
+                if (c.moveToFirst()) {
+                    do {
+                        if (c.getString(1) == null) {
+                            //TAGTR is null (no correspondance found) create a new ingredient
+                            String tag = c.getString(0);
+                            String[] tagSplit = tag.split(":");
+                            IngredientName ingredientName = new IngredientName(tag, tagSplit[0], tagSplit[1]);
+                            List<IngredientName> ingredientNames = new ArrayList<>();
+                            ingredientNames.add(ingredientName);
+                            Ingredient ingredient = new Ingredient(tag, ingredientNames, null, null);
+                            saveIngredient(ingredient);
+                        } else {
+                            //replace TAGTF by TAGTR in Table
+                            daoSession.getDatabase().execSQL("update DIET_INGREDIENTS set INGREDIENT_TAG='" + c.getString(1) + "' where INGREDIENT_TAG='" + c.getString(0) + "'");
+                        }
+                    } while (c.moveToNext());
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                c.close();
+            }
         }
     }
 

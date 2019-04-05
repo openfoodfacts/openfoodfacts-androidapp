@@ -55,8 +55,6 @@ public interface IProductRepository {
 
     void saveIngredients(List<Ingredient> ingredients);
 
-    void saveIngredients(List<Ingredient> ingredients, boolean truncate);
-
     void saveIngredient(Ingredient ingredient);
 
     void setAllergenEnabled(String allergenTag, Boolean isEnabled);
