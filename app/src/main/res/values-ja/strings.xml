@@ -719,15 +719,16 @@
     <string name="diet_name">既定食名</string>
     <string name="diets_dialog_warning_title">警告</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
-    <string name="EditDiet_Name">名前</string>
-    <string name="EditDiet_Description">説明</string>
-    <string name="EditDiet_Enabled_Disabled">有効/無効</string>
-    <string name="EditDiet_Authorised_Ingredients">承認された原材料</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">緑色で表示すべき承認された原材料を一覧表示します。例 : りんご、きのこ、トマト… 後でこの一覧を完成させることができます。</string>
-    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">オレンジ色で表示すべき問題のある原材料を一覧表示します。例 : 卵、魚… この一覧は後で完成させることができます。</string>
-    <string name="EditDiet_Unauthorised_Ingredients">未承認の原材料</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_name">名前</string>
+    <string name="edit_diet_description">説明</string>
+    <string name="edit_diet_enabled_disabled">有効/無効</string>
+    <string name="edit_diet_authorised_ingredients">承認された原材料</string>
+    <string name="edit_diet_hint_ingredient_authorised">緑色で表示すべき承認された原材料を一覧表示します。例 : りんご、きのこ、トマト… 後でこの一覧を完成させることができます。</string>
+    <string name="edit_diet_so_so_ingredients">So so ingredients</string>
+    <string name="edit_diet_hint_so_so_ingredient">オレンジ色で表示すべき問題のある原材料を一覧表示します。例 : 卵、魚… この一覧は後で完成させることができます。</string>
+    <string name="edit_diet_unauthorised_ingredients">未承認の原材料</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">原材料を抽出</string>
     <string name="add_nutrient_prompt_text">栄養成分を追加してニュートリスコアを計算する</string>
     <string name="add_category_prompt_text">カテゴリーを追加してニュートリスコアを計算する</string>
@@ -751,7 +752,6 @@
     <string name="set_img_front">正面画像として設定</string>
     <string name="report_img">レポート画像</string>
     <string name="detected_ingredients">検出された原材料</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
     <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">画像に設定しました</string>
@@ -786,7 +786,6 @@
     <string name="settings_country_title">国</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>

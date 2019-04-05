@@ -36,6 +36,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import org.apache.commons.lang3.StringUtils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -411,12 +412,16 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     void addNutritionFactsImage() {
         if (imagePath != null) {
             // nutrition facts image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImage.class);
+            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
             Bundle bundle = new Bundle();
             if (edit_product && !newImageSelected) {
                 bundle.putString("imageurl", imagePath);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "nutrition_en");
             } else {
                 bundle.putString("imageurl", "file://" + imagePath);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "nutrition_en");
             }
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

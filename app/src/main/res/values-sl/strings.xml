@@ -731,15 +731,16 @@
     <string name="diet_name">Ime diete</string>
     <string name="diets_dialog_warning_title">Opozorilo</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
-    <string name="EditDiet_Name">Ime</string>
-    <string name="EditDiet_Description">Opis</string>
-    <string name="EditDiet_Enabled_Disabled">Omogočeno / Onemogočeno</string>
-    <string name="EditDiet_Authorised_Ingredients">Odobrene sestavine</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Seznam odobrenih sestavin, ki naj bodo zelene barve. Primer: jabolko, gobe, paradižnik… Seznam lahko dopolnite pozneje.</string>
-    <string name="EditDiet_So_So_Ingredients">Sestavine tako, tako</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Seznam problematičnih sestavin, ki naj se prikaže v oranžni barvi. Primer: jajce, ribe ... Ta seznam lahko dokončate kasneje.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Neodobrene sestavine</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_name">Ime</string>
+    <string name="edit_diet_description">Opis</string>
+    <string name="edit_diet_enabled_disabled">Omogočeno / Onemogočeno</string>
+    <string name="edit_diet_authorised_ingredients">Odobrene sestavine</string>
+    <string name="edit_diet_hint_ingredient_authorised">Seznam odobrenih sestavin, ki naj bodo zelene barve. Primer: jabolko, gobe, paradižnik… Seznam lahko dopolnite pozneje.</string>
+    <string name="edit_diet_so_so_ingredients">Sestavine tako, tako</string>
+    <string name="edit_diet_hint_so_so_ingredient">Seznam problematičnih sestavin, ki naj se prikaže v oranžni barvi. Primer: jajce, ribe ... Ta seznam lahko dokončate kasneje.</string>
+    <string name="edit_diet_unauthorised_ingredients">Neodobrene sestavine</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Preberi sestavine</string>
     <string name="add_nutrient_prompt_text">Dodajte prehranska dejstva za izračun Nutri-Score</string>
     <string name="add_category_prompt_text">Dodaj kategorijo za izračun Nutri-Score</string>
@@ -763,7 +764,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Prijavi sliko</string>
     <string name="detected_ingredients">Prepoznane sestavine</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
     <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
@@ -798,7 +798,6 @@
     <string name="settings_country_title">Država</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>

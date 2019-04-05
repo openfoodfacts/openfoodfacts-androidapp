@@ -15,6 +15,20 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.firebase.jobdispatcher.JobParameters;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -22,7 +36,18 @@ import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
+import openfoodfacts.github.scrachx.openfood.models.Search;
+import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
+import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -31,7 +56,6 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 import org.apache.commons.lang3.StringUtils;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,11 +64,9 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.*;
-
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.*;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 
 public class OpenFoodAPIClient {
@@ -447,6 +469,41 @@ public class OpenFoodAPIClient {
                 }
             });
         }
+
+    }
+
+    public void rotImg(String productCode, String productId, int angle, Activity activity) {
+
+        apiService.getImages(productCode)
+                .enqueue(new Callback<JsonNode>() {
+                    @Override
+                    public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                        Log.d("RESPONSE IMAGES", response.body().findPath("front_en").findValue("imgid").toString().replace("\"", ""));
+                        String imgid = response.body().findPath(productId).findValue("imgid").toString().replace("\"","");
+                        int currentRotation = response.body().findPath(productId).findValue("angle").asInt();
+                        apiService.rotateImage(productCode, productId, imgid, Integer.toString(angle + currentRotation))
+                                .enqueue(new Callback<JsonNode>() {
+                                    @Override
+                                    public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                                        Log.d("TAG", response.isSuccessful()+"");
+                                        Toast.makeText(activity, "Image rotated successfully.", Toast.LENGTH_SHORT).show();
+                                        activity.finish();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<JsonNode> call, Throwable t) {
+                                        Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
+                                        activity.finish();
+                                    }
+                                });
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonNode> call, Throwable t) {
+                        Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
+                        activity.finish();
+                    }
+                });
 
     }
 
