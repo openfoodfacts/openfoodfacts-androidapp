@@ -915,18 +915,32 @@ public class DietRepository implements IDietRepository {
         String languageCode = "";
         //List of the ingredients of the product in text
         String ingredients = ssbIngredients.toString();
+        //Let have 2 ingredients list, one with only rank>1 and one with rank0 (in other words, one without anything between parenthesis and one qith only things between parenthesis)
+        String ingredients0 = ingredients;
+        start = ingredients.indexOf("(", fromIndex);
+        while (start>0) {
+            end = ingredients.indexOf(")", fromIndex);
+            ingredients = ingredients.substring(0,start) + new String(new char[end-start]).replace('\0', ' ') + ingredients.substring(end);
+            ingredients0 = ingredients0.substring(0,fromIndex) + new String(new char[start-fromIndex]).replace('\0', ' ') + ingredients0.substring(start);
+            fromIndex = end;
+            start = ingredients.indexOf("(", fromIndex);
+        }
+        ingredients0 = ingredients0.substring(0,end) + new String(new char[ingredients0.length()-end]).replace('\0', ' ');
+        fromIndex = 0;
         //List of productIngredient of the product
         List<ProductIngredient> productIngredients = product.getIngredients();
+        //For each productIngredient
         for (int i = 0; i < productIngredients.size(); i++) {
-            //For each productIngredient
             ProductIngredient productIngredient = productIngredients.get(i);
             //Looking for the state of the tag
             state = minStateForEnabledDietFromIngredientTag(productIngredient.getId());
             //Suppress underscore from the getText string cause there is no underscore in ssbIngredients
             ingredient = productIngredient.getText().replaceAll("_","");
-            if (productIngredient.getRank() == 0) {
+            if (productIngredient.getRank() == 0 && ingredients0 != null) {
                 //This ingredient is part of another, for example "sucre" in "..., chocolat noir 6.1% [pâte de cacao, sucre, cacao maigre en poudre, émulsifiant (lécithine de soja), arôme]..."
                 //We already have treated the other which have a rank>1, so we have to get back to the beginning to treat this ingredient.
+                ingredients = ingredients0;
+                ingredients0 = null;
                 fromIndex=0;
             }
             start = ingredients.indexOf(ingredient, fromIndex);
