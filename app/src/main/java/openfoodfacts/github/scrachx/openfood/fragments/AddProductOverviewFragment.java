@@ -44,7 +44,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAutoCompleteAdapter;
@@ -623,12 +623,16 @@ public class AddProductOverviewFragment extends BaseFragment {
     void addFrontImage() {
         if (mImageUrl != null) {
             // front image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImage.class);
+            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
             Bundle bundle = new Bundle();
             if (edit_product && !newImageSelected) {
                 bundle.putString("imageurl", mImageUrl);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "front_en");
             } else {
                 bundle.putString("imageurl", "file://" + mImageUrl);
+                bundle.putString("code", product.getCode());
+                bundle.putString("id", "front_en");
             }
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -931,6 +935,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 link.requestFocus();
             }
         }
+
         EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {

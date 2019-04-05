@@ -760,7 +760,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="edit_diet_so_so_ingredients">Takie składniki jak</string>
     <string name="edit_diet_hint_so_so_ingredient">Lista kłopotliwych składników, które powinny zostać wyświetlone w kolorze pomarańczowym. Przykład : jajka, ryby.... Tę listę można uzupełnić później.</string>
     <string name="edit_diet_unauthorised_ingredients">Niezatwierdzone składniki</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Lista niedopuszczony składników, które powinny zostać wyświetlone na czerwono. Przykład: gluten, mleko, olej palmowy, cukier... Możesz później uzupełnić listę.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Wyodrębnij składniki</string>
     <string name="add_nutrient_prompt_text">W celu obliczenia Nutri-Score dodaj informacje o wartości odżywczej</string>

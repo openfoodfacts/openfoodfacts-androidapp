@@ -739,7 +739,7 @@
     <string name="edit_diet_so_so_ingredients">Нежелательные ингредиенты</string>
     <string name="edit_diet_hint_so_so_ingredient">Перечислите нежелательные ингредиенты, которые будут отображаться оранжевым цветом. Наример: яйца, рыба... Вы можете дополнить список позже.</string>
     <string name="edit_diet_unauthorised_ingredients">Запрещенные ингредиенты</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Список неавторизованных ингредиентов, которые должны появиться красным. Например: глютен, молоко, пальмовое масло, сахар… Вы можете дополнить этот список позже.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
     <string name="add_nutrient_prompt_text">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>

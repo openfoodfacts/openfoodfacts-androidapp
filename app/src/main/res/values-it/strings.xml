@@ -731,7 +731,7 @@
     <string name="edit_diet_so_so_ingredients">Ingredienti così cosi</string>
     <string name="edit_diet_hint_so_so_ingredient">Elenca gli ingredienti problematici che dovrebbero apparire in arancione. Ad esempio: uova, pesce… Puoi completare questa lista più tardi.</string>
     <string name="edit_diet_unauthorised_ingredients">Ingredienti non autorizzati</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Elenca gli ingredienti non autorizzati che dovrebbero apparire in rosso. Ad esempio: glutine, latte, olio di palma, zucchero… Puoi completare questa lista più tardi.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
     <string name="add_nutrient_prompt_text">Aggiungi i dati nutrizionali per calcolare il punteggio-Nutri</string>
