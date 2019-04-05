@@ -477,12 +477,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             SwipeController swipeController = new SwipeController(ctx, HistoryScanActivity.this);
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
             itemTouchhelper.attachToRecyclerView(recyclerHistoryScanView);
-//            recyclerHistoryScanView.addItemDecoration(new RecyclerView.ItemDecoration() {
-//                @Override
-//                public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-//                    swipeController.onDraw(c);
-//                }
-//            });
         }
     }
 
