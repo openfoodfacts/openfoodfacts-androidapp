@@ -249,20 +249,25 @@ public class OpenFoodAPIClient {
     }
 
     public void getIngredients(String barcode, final OnIngredientListCallback ingredientListCallback) {
-        ArrayList<ProductIngredient> ProductIngredients = new ArrayList<>();
+
         apiService.getIngredientsByBarcode(barcode).enqueue(new Callback<JsonNode>() {
             @Override
             public void onResponse(@NonNull Call<JsonNode> call, Response<JsonNode> response) {
                 final JsonNode node = response.body();
                 final JsonNode ingredientsJsonNode = node.findValue("ingredients");
-                for (int i = 0; i < ingredientsJsonNode.size(); i++) {
-                    ProductIngredient ProductIngredient = new ProductIngredient();
-                    ProductIngredient.setId(ingredientsJsonNode.get(i).findValue("id").toString());
-                    ProductIngredient.setText(ingredientsJsonNode.get(i).findValue("text").toString());
-                    ProductIngredient.setRank(Long.valueOf(ingredientsJsonNode.get(i).findValue("rank").toString()));
-                    ProductIngredients.add(ProductIngredient);
+                if(ingredientsJsonNode!=null) {
+                    ArrayList<ProductIngredient> ProductIngredients = new ArrayList<>();
+                    final int nbIngredient = ingredientsJsonNode.size();
+                    for (int i = 0; i < nbIngredient; i++) {
+                        ProductIngredient ProductIngredient = new ProductIngredient();
+                        final JsonNode ingredient = ingredientsJsonNode.get(i);
+                        ProductIngredient.setId(ingredient.findValue("id").toString());
+                        ProductIngredient.setText(ingredient.findValue("text").toString());
+                        ProductIngredient.setRank(Long.valueOf(ingredient.findValue("rank").toString()));
+                        ProductIngredients.add(ProductIngredient);
+                    }
+                    ingredientListCallback.onIngredientListResponse(true, ProductIngredients);
                 }
-                ingredientListCallback.onIngredientListResponse(true, ProductIngredients);
 
             }
 
