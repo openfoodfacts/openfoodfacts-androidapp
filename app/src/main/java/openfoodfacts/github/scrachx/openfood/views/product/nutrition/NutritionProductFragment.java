@@ -96,6 +96,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView textNutriScoreInfo;
     @BindView(R.id.nutrient_levels_card_view)
     CardView nutrientLevelsCardView;
+    @BindView(R.id.newAdd)
+    Button img1;
     @BindView(R.id.calculateNutritionFacts)
     Button calculateNutritionFacts;
     @BindView(R.id.nutrimentsCardView)
@@ -323,6 +325,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         if (isNotBlank(product.getImageNutritionUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
+            img1.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
@@ -620,6 +623,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                     EasyImage.openCamera(this, 0);
                 }
             }
+        }
+    }
+    @OnClick(R.id.newAdd)
+    public void openNew(View v) {
+        // take a picture
+        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
         }
     }
 
