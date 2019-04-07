@@ -44,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/update_image"
                 android:layout_gravity="center_horizontal"
+                style="@style/BorderButton"
                 android:visibility="gone"/>
             <TextView
                 android:id="@+id/addPhotoLabel"
