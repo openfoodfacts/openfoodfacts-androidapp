@@ -27,10 +27,10 @@ public class SwipeController extends Callback {
     public SwipeController(Context context, SwipeControllerActions buttonsActions) {
         this.buttonsActions = buttonsActions;
         mBackground = new ColorDrawable();
-        backgroundColor = context.getResources().getColor(R.color.red_900);
+        backgroundColor = context.getResources().getColor(R.color.material_red);
         mClearPaint = new Paint();
         mClearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        deleteDrawable = ContextCompat.getDrawable(context, R.drawable.ic_delete_black_24dp);
+        deleteDrawable = ContextCompat.getDrawable(context, R.drawable.ic_delete_white_24dp);
         intrinsicWidth = deleteDrawable.getIntrinsicWidth();
         intrinsicHeight = deleteDrawable.getIntrinsicHeight();
     }

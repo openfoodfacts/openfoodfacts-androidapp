@@ -124,7 +124,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
         setInfo(infoView);
-        new HistoryScanActivity.FillAdapter(this).execute(this);
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
@@ -148,6 +147,13 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             swipeRefreshLayout.setRefreshing(false);
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //to fill the view in any case even if the user scans products from History screen...
+        new HistoryScanActivity.FillAdapter(this).execute(this);
     }
 
     @Override
