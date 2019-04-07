@@ -504,8 +504,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             }
         } else {
-            // productsRecyclerView.setVisibility(View.INVISIBLE);
-
             swipeRefreshLayout.setRefreshing(false);
             productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);

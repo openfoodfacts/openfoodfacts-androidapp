@@ -1,17 +1,56 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
-import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
-import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
-import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Single;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Category;
+import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Country;
+import openfoodfacts.github.scrachx.openfood.models.CountryDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientName;
+import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.Label;
+import openfoodfacts.github.scrachx.openfood.models.LabelDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Question;
+import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -39,6 +78,9 @@ public class ProductRepository implements IProductRepository {
     private CountryNameDao countryNameDao;
     private CategoryDao categoryDao;
     private CategoryNameDao categoryNameDao;
+    private IngredientDao ingredientDao;
+    private IngredientNameDao ingredientNameDao;
+    private IngredientsRelationDao ingredientsRelationDao;
 
     public static IProductRepository getInstance() {
         if (instance == null) {
@@ -66,6 +108,9 @@ public class ProductRepository implements IProductRepository {
         countryNameDao = daoSession.getCountryNameDao();
         categoryDao = daoSession.getCategoryDao();
         categoryNameDao = daoSession.getCategoryNameDao();
+        ingredientDao = daoSession.getIngredientDao();
+        ingredientNameDao = daoSession.getIngredientNameDao();
+        ingredientsRelationDao = daoSession.getIngredientsRelationDao();
     }
 
     /**
@@ -176,6 +221,30 @@ public class ProductRepository implements IProductRepository {
                     .map(AdditivesWrapper::map);
         } else {
             return Single.fromCallable(() -> additiveDao.loadAll());
+        }
+    }
+
+    /**
+     * Load ingredients from (the server or) local database
+     *
+     * @param refresh defines the source of data.
+     *                If refresh is true (or local database is empty) than load it from the server,
+     *                else from the local database.
+     * @return The ingredients in the product.
+     * Pour le moment, pas de question a se poser, les données ne sont que locales.
+     */
+    @Override
+    public Single<List<Ingredient>> getIngredients(Boolean refresh) {
+        if (refresh) {
+            deleteIngredientCascade();
+            return productApi.getIngredients()
+                    .map(IngredientsWrapper::map);
+            //Check ingredient from other tables
+        } else if (tableIsEmpty(ingredientDao)) {
+            return productApi.getIngredients()
+                    .map(IngredientsWrapper::map);
+        } else {
+            return Single.fromCallable(() -> ingredientDao.loadAll());
         }
     }
 
@@ -306,6 +375,59 @@ public class ProductRepository implements IProductRepository {
         } finally {
             db.endTransaction();
         }
+    }
+
+    /**
+     * Delete rows from Ingredient, IngredientName and IngredientsRelation
+     * set the autoincrement to 0
+     */
+    @Override
+    public void deleteIngredientCascade(){
+        ingredientDao.deleteAll();
+        ingredientNameDao.deleteAll();
+        ingredientsRelationDao.deleteAll();
+        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        daoSession.getDatabase().execSQL("update sqlite_sequence set seq=0 where name in ('" + ingredientDao.getTablename() + "', '" + ingredientNameDao.getTablename() + "', '" + ingredientsRelationDao.getTablename() + "')");
+    }
+
+    /**
+     * Ingredients saving to local database
+     * <p>
+     * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
+     */
+    @Override
+    public void saveIngredients(List<Ingredient> ingredients) {
+        db.beginTransaction();
+        try {
+            for (Ingredient ingredient : ingredients) {
+                ingredientDao.insertOrReplace(ingredient);
+                for (IngredientName ingredientName : ingredient.getNames()) {
+                    ingredientNameDao.insertOrReplace(ingredientName);
+                }
+                for (IngredientsRelation ingredientsRelation : ingredient.getParents()) {
+                    ingredientsRelationDao.insertOrReplace(ingredientsRelation);
+                }
+                for (IngredientsRelation ingredientsRelation : ingredient.getChildren()) {
+                    ingredientsRelationDao.insertOrReplace(ingredientsRelation);
+                }
+            }
+
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    /**
+     * Ingredient saving to local database
+     */
+    @Override
+    public void saveIngredient(Ingredient ingredient) {
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(ingredient);
+        saveIngredients(ingredients);
     }
 
     /**

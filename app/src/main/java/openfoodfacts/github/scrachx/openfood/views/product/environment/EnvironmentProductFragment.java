@@ -49,11 +49,7 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
-        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null)
-            mState = (State) intent.getExtras().getSerializable("state");
-        else
-            mState = ProductFragment.mState;
+        mState=getStateFromActivityIntent();
 
         final Product product = mState.getProduct();
         Nutriments nutriments = product.getNutriments();

@@ -25,7 +25,7 @@
     <string name="text_barcode">Escribe el código de barras:</string>
     <string name="message_in_activity_save_product_offline">Solo se necesita una foto para poder enviar un nuevo producto.</string>
     <string name="product_incomplete_message">Este producto no está completo. Como resultado, no pudimos hacer la comprobación de los alérgenos.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Este producto contiene:</string>
     <string name="no_offline_data">Ya has terminado</string>
     <string name="first_offline">Los productos añadidos sin conexión a internet aparecerán aquí</string>
     <!-- Image Upload -->
@@ -723,15 +723,16 @@
     <string name="diet_name">Nombre de la dieta</string>
     <string name="diets_dialog_warning_title">Aviso</string>
     <string name="warning_diets_data">Los datos de su dieta(s) permanecen en su dispositivo. Nada será subido a ningún lado.</string>
-    <string name="EditDiet_Name">Nombre</string>
-    <string name="EditDiet_Description">Descripción</string>
-    <string name="EditDiet_Enabled_Disabled">Activado/Desactivado</string>
-    <string name="EditDiet_Authorised_Ingredients">Ingredientes autorizados</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Listar los ingredientes autorizados que deben aparecer en verde. Ejemplo: manzana, champiñones, tomate ... Puede completar esta lista más adelante.</string>
-    <string name="EditDiet_So_So_Ingredients">Ingredientes poco recomendables</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Haz una lista de los ingredientes problemáticos que deberían aparecer en naranja. Ejemplo: huevo, pescado ... Puedes completar esta lista más adelante.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Ingredientes no autorizados</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Listar los ingredientes no autorizados que deben aparecer en rojo. Ejemplo: gluten, leche, aceite de palma, azúcar ... Puede completar esta lista más adelante.</string>
+    <string name="edit_diet_name">Nombre</string>
+    <string name="edit_diet_description">Descripción</string>
+    <string name="edit_diet_enabled_disabled">Activado/Desactivado</string>
+    <string name="edit_diet_authorised_ingredients">Ingredientes autorizados</string>
+    <string name="edit_diet_hint_ingredient_authorised">Listar los ingredientes autorizados que deben aparecer en verde. Ejemplo: manzana, champiñones, tomate ... Puede completar esta lista más adelante.</string>
+    <string name="edit_diet_so_so_ingredients">Ingredientes poco recomendables</string>
+    <string name="edit_diet_hint_so_so_ingredient">Haz una lista de los ingredientes problemáticos que deberían aparecer en naranja. Ejemplo: huevo, pescado ... Puedes completar esta lista más adelante.</string>
+    <string name="edit_diet_unauthorised_ingredients">Ingredientes no autorizados</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Listar los ingredientes no autorizados que deben aparecer en rojo. Ejemplo: gluten, leche, aceite de palma, azúcar ... Puede completar esta lista más adelante.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extraer ingredientes</string>
     <string name="add_nutrient_prompt_text">Añadir información nutricional para calcular la puntuación de Nutri-Score</string>
     <string name="add_category_prompt_text">Añadir una categoría para calcular el Nutri-Score</string>
@@ -755,7 +756,6 @@
     <string name="set_img_front">Establecer como imagen frontal</string>
     <string name="report_img">Reportar imagen</string>
     <string name="detected_ingredients">Ingredientes detectados</string>
-    <string name="txtDownloading">Descargando taxonomías…</string>
     <string name="txtLoaded">Las traducciones se han descargado correctamente</string>
     <string name="txtConnectionError">No pudimos descargar ciertos datos. Esto puede deberse a un error de conexión.</string>
     <string name="set_image_name">Establecer correctamente la imagen como</string>
@@ -790,24 +790,23 @@
     <string name="settings_country_title">País</string>
     <string name="list_text">Añadido en:\u0020</string>
     <string name="txt_no_nutrition_data">Este producto no tiene ninguna información nutricional en el envase. Si esto ha cambiado, puede editar el producto.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Agregar productos</string>
     <string name="add_another_product">Añadir otro producto</string>
     <string name="add_nutrition_facts_for_nutriscore">Añadir información nutricional para calcular la puntuación de Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">Comparar</string>
+    <string name="product_summary_action_add_to_list_button_label">Añadir a la lista</string>
     <string name="product_summary_action_edit_button_label">Editar</string>
     <string name="product_summary_action_share_button_label">Compartir</string>
-    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_prompt">Toque aquí para responder</string>
     <string name="product_question_positive_response">Sí</string>
     <string name="product_question_negative_response">No</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
-    <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
-    <string name="go_to_full_product_page">Go to full product page</string>
-    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
-    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="product_question_ambiguous_response">No estoy seguro</string>
+    <string name="product_question_submit_message">¡Gracias por su contribución!</string>
+    <string name="error_nutrient_entry">El valor debe ser numérico y puede empezar con &lt;, &gt; o ~. Ejemplo: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">El valor de tamaño de porción debe ser un valor positivo</string>
+    <string name="error_in_nutrient_data">Algunos valores nutricionales no son válidos. Por favor, corrija los campos anteriores con marcador de error</string>
+    <string name="go_to_full_product_page">Ir a la página completa del producto</string>
+    <string name="no_additive_data_available_for_this_product">No hay datos de aditivos disponibles para este producto</string>
+    <string name="no_nutrient_information_available_for_this_product">No hay información nutricional disponible para este producto</string>
 </resources>

@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,16 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
+
+import java.util.List;
 
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
@@ -98,17 +97,13 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
 
             String brandsQuantityDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
 
-            if (isNotEmpty(product.getNutritionGradeFr())) {
-                if(Utils.getSmallImageGrade(product.getNutritionGradeFr()) != 0) {
-                    productHolder.vProductGrade.setImageDrawable(ContextCompat.getDrawable(context, Utils.getSmallImageGrade(product
-                            .getNutritionGradeFr())));
-                } else {
-                    productHolder.vProductGrade.setVisibility(View.INVISIBLE);
-                }
-            } else {
+            final int gradeResource = Utils.getSmallImageGrade(product);
+            if(gradeResource!=0){
+                productHolder.vProductGrade.setVisibility(View.VISIBLE);
+                productHolder.vProductGrade.setImageResource(gradeResource);
+            }else{
                 productHolder.vProductGrade.setVisibility(View.INVISIBLE);
             }
-
             productHolder.vProductDetails.setText(brandsQuantityDetails);
         }
 

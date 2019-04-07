@@ -61,7 +61,8 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.*;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
@@ -128,15 +129,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-            refreshView((State) intent.getExtras().getSerializable("state"));
-        } else {
-            refreshView(ProductFragment.mState);
-        }
+        refreshView(getStateFromActivityIntent());
     }
 
     @Override
@@ -226,7 +222,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat),saturatedFatNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatNutriment.getDisplayStringFor100g(),
                     saturatedFatLocalize,
                     saturatedFat.getImageLevel()));
             }
@@ -234,7 +230,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
             if (sugars != null && sugarsNutriment != null) {
                 String sugarsLocalize = sugars.getLocalize(context);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars),sugarsNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsNutriment.getDisplayStringFor100g(),
                     sugarsLocalize,
                     sugars.getImageLevel()));
             }
@@ -242,21 +238,17 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
             if (salt != null && saltNutriment != null) {
                 String saltLocalize = salt.getLocalize(context);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt),saltNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltNutriment.getDisplayStringFor100g(),
                     saltLocalize,
                     salt.getImageLevel()));
             }
 
-            if (product.getNutritionGradeFr() != null && !product.getNutritionGradeFr().isEmpty()) {
-                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
-                    imageGradeLayout.setVisibility(View.VISIBLE);
-                    img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
-                } else {
-                    img.setVisibility(View.INVISIBLE);
-                }
+            int nutritionGrade = Utils.getImageGrade(product);
+            if (nutritionGrade != Utils.NO_DRAWABLE_RESOURCE) {
+                imageGradeLayout.setVisibility(View.VISIBLE);
+                img.setImageResource(nutritionGrade);
                 img.setOnClickListener(view1 -> {
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-
                     CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
                 });
             } else {

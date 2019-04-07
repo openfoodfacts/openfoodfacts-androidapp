@@ -166,12 +166,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        Intent intent = getActivity().getIntent();
-        if (intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-            state = (State) intent.getExtras().getSerializable("state");
-        } else {
-            state = ProductFragment.mState;
-        }
+        state=getStateFromActivityIntent();
 
         presenter = new SummaryProductPresenter(product, this);
     }
@@ -262,11 +257,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             brandProduct.setText("");
 
             String[] brands = product.getBrands().split(",");
-            for (int i = 0; i < brands.length - 1; i++) {
+            for (int i = 0; i < brands.length; i++) {
+                if(i>0){
+                    brandProduct.append(", ");
+                }
                 brandProduct.append(Utils.getClickableText(brands[i].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
-                brandProduct.append(", ");
             }
-            brandProduct.append(Utils.getClickableText(brands[brands.length - 1].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
         } else {
             brandProduct.setVisibility(View.GONE);
         }
@@ -276,16 +272,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             embCode.setText(bold(getString(R.string.txtEMB)));
             embCode.append(" ");
 
-            String embTag;
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
-            for (int i = 0; i < embTags.length - 1; i++) {
-                embTag = embTags[i];
+            for (int i = 0; i < embTags.length; i++) {
+                if(i>0){
+                    embCode.append(", ");
+                }
+                String  embTag = embTags[i];
                 embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
-                embCode.append(", ");
             }
-
-            embTag = embTags[embTags.length - 1];
-            embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
         } else {
             embCode.setVisibility(View.GONE);
         }
@@ -390,17 +384,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void refreshNutriscore() {
-        if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+        int nutritionGradeResource =Utils.getImageGrade(product);
+        if (nutritionGradeResource!=Utils.NO_DRAWABLE_RESOURCE) {
             nutriscoreImage.setVisibility(View.VISIBLE);
-            Context context = this.getContext();
-            nutriscoreImage.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
+            nutriscoreImage.setImageResource(nutritionGradeResource);
+            nutriscoreImage.setOnClickListener(view1 -> {
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+            });
         } else {
             nutriscoreImage.setVisibility(View.GONE);
         }
-        nutriscoreImage.setOnClickListener(view1 -> {
-            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-            CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
-        });
     }
 
     private void refreshNovaIcon() {
@@ -419,20 +413,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void refreshCo2Icon() {
-        co2Icon.setVisibility(View.GONE);
-        if (product.getEnvironmentImpactLevelTags() != null) {
-            List<String> tags = product.getEnvironmentImpactLevelTags();
-            if (tags.size() > 0) {
-                String tag = tags.get(0).replace("\"", "");
-                co2Icon.setVisibility(View.VISIBLE);
-                if (tag.equals("en:high")) {
-                    co2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
-                } else if (tag.equals("en:low")) {
-                    co2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
-                } else if (tag.equals("en:medium")) {
-                    co2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
-                }
-            }
+        int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
+        if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+            co2Icon.setVisibility(View.VISIBLE);
+            co2Icon.setImageResource(environmentImpactResource);
+        }else{
+            co2Icon.setVisibility(View.GONE);
         }
     }
 
@@ -869,7 +855,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.action_compare_button)
     public void onCompareProductButtonClick() {
-        Intent intent = new Intent(getContext(), ProductComparisonActivity.class);
+        Intent intent = new Intent(getActivity(), ProductComparisonActivity.class);
         intent.putExtra("product_found", true);
         ArrayList<Product> productsToCompare = new ArrayList<>();
         productsToCompare.add(product);
