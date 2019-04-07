@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +11,6 @@ public class NutrimentsTest {
 
     // TODO: in Nutriments, there is confusion between name and value when turning it into a Nutriment
     // TODO: in Nutriments, make the key endings public Strings, or at least turn them into variables
-
     private static final String NUTRIMENT_NAME_KEY = "a nutriment";
     private static final String NUTRIMENT_NAME = "a nutriment";
     private static final String NUTRIMENT_VALUE_KEY = NUTRIMENT_NAME_KEY + "_value";
@@ -20,7 +21,6 @@ public class NutrimentsTest {
     private static final String NUTRIMENT_SERVING = "70%";
     private static final String NUTRIMENT_UNIT_KEY = NUTRIMENT_NAME_KEY + "_unit";
     private static final String NUTRIMENT_UNIT = "mg";
-
     private Nutriments nutriments;
 
     @Before
@@ -35,26 +35,21 @@ public class NutrimentsTest {
     }
 
     @Test
+    public void getForAnyValue() {
+        float valueInGramFor100Gram = 30;
+        float valueInGramFor200Gram = 60;
+        Nutriments.Nutriment nutriment = new Nutriments.Nutriment("test", Double.toString(valueInGramFor100Gram), Double.toString(valueInGramFor200Gram), UnitUtils.UNIT_MILLIGRAM,
+            "");
+        assertEquals(Utils.getRoundNumber(30 * 1000) + " mg", nutriment.getDisplayStringFor100g());
+        assertEquals(Utils.getRoundNumber(UnitUtils.convertFromGram(valueInGramFor100Gram * 10, nutriment.getUnit())), nutriment.getForAnyValue(1, UnitUtils.UNIT_KILOGRAM));
+        assertEquals(Utils.getRoundNumber(UnitUtils.convertFromGram(valueInGramFor100Gram / 100, nutriment.getUnit())), nutriment.getForAnyValue(1, UnitUtils.UNIT_GRAM));
+    }
+
+    @Test
     public void getUnit_returnsUnit() {
         nutriments.setAdditionalProperty(NUTRIMENT_UNIT_KEY, NUTRIMENT_UNIT);
         assertEquals(NUTRIMENT_UNIT, nutriments.getUnit(NUTRIMENT_NAME_KEY));
     }
-
-/*
-    // TODO: can't run the following tests because Nutriments.getUnit() uses android.text.TextUtils.isEmpty()
-    // Change it to the apache commons isEmpty()
-    @Test
-    public void getUnitWithNullUnit_returnsNull() {
-        assertNull(nutriments.getUnit(NUTRIMENT_NAME_KEY));
-    }
-
-    @Test
-    public void getUnitWithEmptyUnit_returnsDefaultUnit() {
-        // TODO: in Nutriments, should probably make DEFAULT_UNIT public
-        nutriments.setAdditionalProperty(NUTRIMENT_UNIT_KEY, "");
-        assertEquals("g", nutriments.getUnit(NUTRIMENT_NAME_KEY));
-    }
-*/
 
     @Test
     public void getServing_returnsServing() {
@@ -83,9 +78,7 @@ public class NutrimentsTest {
         Nutriments.Nutriment nutriment = nutriments.get(NUTRIMENT_NAME_KEY);
 
         // See note about confusion between value and name above
-        assertEquals(NUTRIMENT_NAME, nutriment.getValue());
-        assertEquals(NUTRIMENT_100G, nutriment.getFor100g());
-        assertEquals(NUTRIMENT_SERVING, nutriment.getForServing());
+        assertEquals(NUTRIMENT_NAME, nutriment.getName());
         assertEquals(NUTRIMENT_UNIT, nutriment.getUnit());
     }
 

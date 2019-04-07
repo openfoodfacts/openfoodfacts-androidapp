@@ -25,6 +25,7 @@
     <string name="text_barcode">Escribe el código de barras:</string>
     <string name="message_in_activity_save_product_offline">Solo se necesita una foto para poder enviar un nuevo producto.</string>
     <string name="product_incomplete_message">Este producto no está completo. Como resultado, no pudimos hacer la comprobación de los alérgenos.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Ya has terminado</string>
     <string name="first_offline">Los productos añadidos sin conexión a internet aparecerán aquí</string>
     <!-- Image Upload -->
@@ -435,7 +436,7 @@
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Clorofila</string>
     <string name="take_picture_ingredients">Haz una foto de los ingredientes</string>
-    <string name="take_picture_front">Haz una foto de la parte frontal</string>
+    <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Haz una foto de la tabla nutricional</string>
     <string name="take_more_pictures">Haz más fotos</string>
     <string name="txtSaturatedFat">Grasa saturada</string>
@@ -472,7 +473,7 @@
     <string name="device_offline_dialog_positive">Configuración</string>
     <string name="saving">Guardando…</string>
     <string name="scan_first_product">Escanear el primer producto</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Historial eliminado con éxito</string>
     <string name="preference_enable_mobile_data_title">Enviar con datos móviles</string>
     <string name="preference_enable_mobile_data_summary_on">Enviar nuevos productos usando datos móviles &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Enviar nuevos productos usando solo WiFi</string>
@@ -480,6 +481,7 @@
     <string name="device_on_mobile_data_warning_message">El envío con datos móviles está deshabilitado, por favor conéctese mediante WiFi o cámbielo en sus preferencias</string>
     <string name="device_on_mobile_data_warning_positive">Preferencias</string>
     <string name="device_on_mobile_data_warning_negative">Enviar de todas formas</string>
+    <string name="changes_saved">Cambios guardados correctamente</string>
     <string name="preference_choose_language_dialog_title">Elegir idioma</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Preguntas frecuentes</string>
@@ -721,15 +723,16 @@
     <string name="diet_name">Nombre de la dieta</string>
     <string name="diets_dialog_warning_title">Aviso</string>
     <string name="warning_diets_data">Los datos de su dieta(s) permanecen en su dispositivo. Nada será subido a ningún lado.</string>
-    <string name="EditDiet_Name">Nombre</string>
-    <string name="EditDiet_Description">Descripción</string>
-    <string name="EditDiet_Enabled_Disabled">Activado/Desactivado</string>
-    <string name="EditDiet_Authorised_Ingredients">Ingredientes autorizados</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Listar los ingredientes autorizados que deben aparecer en verde. Ejemplo: manzana, champiñones, tomate ... Puede completar esta lista más adelante.</string>
-    <string name="EditDiet_So_So_Ingredients">Ingredientes poco recomendables</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Haz una lista de los ingredientes problemáticos que deberían aparecer en naranja. Ejemplo: huevo, pescado ... Puedes completar esta lista más adelante.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Ingredientes no autorizados</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Listar los ingredientes no autorizados que deben aparecer en rojo. Ejemplo: gluten, leche, aceite de palma, azúcar ... Puede completar esta lista más adelante.</string>
+    <string name="edit_diet_name">Nombre</string>
+    <string name="edit_diet_description">Descripción</string>
+    <string name="edit_diet_enabled_disabled">Activado/Desactivado</string>
+    <string name="edit_diet_authorised_ingredients">Ingredientes autorizados</string>
+    <string name="edit_diet_hint_ingredient_authorised">Listar los ingredientes autorizados que deben aparecer en verde. Ejemplo: manzana, champiñones, tomate ... Puede completar esta lista más adelante.</string>
+    <string name="edit_diet_so_so_ingredients">Ingredientes poco recomendables</string>
+    <string name="edit_diet_hint_so_so_ingredient">Haz una lista de los ingredientes problemáticos que deberían aparecer en naranja. Ejemplo: huevo, pescado ... Puedes completar esta lista más adelante.</string>
+    <string name="edit_diet_unauthorised_ingredients">Ingredientes no autorizados</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Listar los ingredientes no autorizados que deben aparecer en rojo. Ejemplo: gluten, leche, aceite de palma, azúcar ... Puede completar esta lista más adelante.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extraer ingredientes</string>
     <string name="add_nutrient_prompt_text">Añadir información nutricional para calcular la puntuación de Nutri-Score</string>
     <string name="add_category_prompt_text">Añadir una categoría para calcular el Nutri-Score</string>
@@ -753,7 +756,6 @@
     <string name="set_img_front">Establecer como imagen frontal</string>
     <string name="report_img">Reportar imagen</string>
     <string name="detected_ingredients">Ingredientes detectados</string>
-    <string name="txtDownloading">Descargando taxonomías…</string>
     <string name="txtLoaded">Las traducciones se han descargado correctamente</string>
     <string name="txtConnectionError">No pudimos descargar ciertos datos. Esto puede deberse a un error de conexión.</string>
     <string name="set_image_name">Establecer correctamente la imagen como</string>
@@ -788,9 +790,23 @@
     <string name="settings_country_title">País</string>
     <string name="list_text">Añadido en:\u0020</string>
     <string name="txt_no_nutrition_data">Este producto no tiene ninguna información nutricional en el envase. Si esto ha cambiado, puede editar el producto.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Añadir Productos</string>
+    <string name="add_product">Agregar productos</string>
     <string name="add_another_product">Añadir otro producto</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Añadir información nutricional para calcular la puntuación de Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Editar</string>
+    <string name="product_summary_action_share_button_label">Compartir</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Sí</string>
+    <string name="product_question_negative_response">No</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="go_to_full_product_page">Go to full product page</string>
+    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
+    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
 </resources>

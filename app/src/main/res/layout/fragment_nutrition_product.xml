@@ -230,10 +230,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@id/textPerPortion"
-                        android:paddingBottom="70dp"
+                        android:paddingBottom="@dimen/nav_bar_height"
                         android:scrollbars="vertical"
                         tools:listheader="@layout/nutriment_item_list_header"
-                        tools:listitem="@layout/nutriment_item_list" />
+                        tools:listitem="@layout/nutriment_item_list"
+                        />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>

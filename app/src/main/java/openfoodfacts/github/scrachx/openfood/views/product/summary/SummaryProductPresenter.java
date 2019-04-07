@@ -149,6 +149,26 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     }
 
     @Override
+    public void loadProductQuestion() {
+        disposable.add(
+                repository.getSingleProductQuestion(product.getCode(), Locale.getDefault().getLanguage())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(view::showProductQuestion, Throwable::printStackTrace)
+        );
+    }
+
+    @Override
+    public void annotateInsight(String insightId, int annotation) {
+        disposable.add(
+            repository.annotateInsight(insightId, annotation)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(view::showAnnotatedInsightToast, Throwable::printStackTrace)
+        );
+    }
+
+    @Override
     public void dispose() {
         if (!disposable.isDisposed()) {
             disposable.clear();

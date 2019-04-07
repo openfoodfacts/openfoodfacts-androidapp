@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/black"
+              android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:id="@+id/rotate_image_left_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:srcCompat="@drawable/ic_rotate_left_white_24dp"/>
+
+        <ImageView
+                android:id="@+id/rotate_image_right_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:srcCompat="@drawable/ic_rotate_right_white_24dp"/>
+
+        <ImageView
+                android:id="@+id/check_upload_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:srcCompat="@drawable/ic_check_white_24dp"/>
+
+    </LinearLayout>
+
+    <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/imageViewFullScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            android:scaleType="fitCenter"
+            android:transitionName="@string/product_transition"/>
+
+</LinearLayout>

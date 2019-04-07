@@ -33,6 +33,7 @@ import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -53,6 +54,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -288,6 +290,20 @@ public class Utils {
                 return "";
         }
 
+    }
+
+    public static <T extends View> ArrayList<T> getViewsByType(ViewGroup root, Class<T> tClass) {
+        final ArrayList<T> result = new ArrayList<>();
+        int childCount = root.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View child = root.getChildAt(i);
+            if (child instanceof ViewGroup)
+                result.addAll(getViewsByType((ViewGroup) child, tClass));
+
+            if (tClass.isInstance(child))
+                result.add(tClass.cast(child));
+        }
+        return result;
     }
 
     public static int getNovaGroupDrawable(String novaGroup) {
