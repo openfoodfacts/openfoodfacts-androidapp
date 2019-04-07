@@ -67,6 +67,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
+import org.apache.commons.collections.CollectionUtils;
 
 public class HistoryScanActivity extends BaseActivity implements SwipeControllerActions {
 
@@ -90,7 +91,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @BindView(R.id.buttonScan)
     FloatingActionButton mButtonScan;
 
-    private Context context;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     private static String SORT_TYPE = "none";
@@ -104,7 +104,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = HistoryScanActivity.this;
+        Context context = HistoryScanActivity.this;
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -124,7 +124,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
         productItems = new ArrayList<>();
         setInfo(infoView);
-        new HistoryScanActivity.FillAdapter(this).execute(this);
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
@@ -134,31 +133,32 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         mShakeDetector = new ShakeDetector();
 
 
-        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
-            @Override
-            public void onShake(int count) {
-                if (scanOnShake) {
-                    Utils.scan(HistoryScanActivity.this);
-                }
+        mShakeDetector.setOnShakeListener(count -> {
+            if (scanOnShake) {
+                Utils.scan(HistoryScanActivity.this);
             }
         });
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mHistoryProductDao = Utils.getAppDaoSession(context).getHistoryProductDao();
-                productItems = new ArrayList<>();
-                setInfo(infoView);
-                new HistoryScanActivity.FillAdapter(HistoryScanActivity.this).execute(context);
-                swipeRefreshLayout.setRefreshing(false);
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            mHistoryProductDao = Utils.getAppDaoSession(context).getHistoryProductDao();
+            productItems = new ArrayList<>();
+            setInfo(infoView);
+            new FillAdapter(HistoryScanActivity.this).execute(context);
+            swipeRefreshLayout.setRefreshing(false);
         });
 
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        //to fill the view in any case even if the user scans products from History screen...
+        new HistoryScanActivity.FillAdapter(this).execute(this);
+    }
+
+    @Override
     public void onRightClicked(int position) {
-        if (listHistoryProducts != null && listHistoryProducts.size() > 0) {
+        if (CollectionUtils.isNotEmpty(listHistoryProducts)) {
             mHistoryProductDao.delete(listHistoryProducts.get(position));
         }
         adapter.remove(productItems.get(position));
@@ -166,10 +166,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         adapter.notifyItemRangeChanged(position, adapter.getItemCount());
 
         if (adapter.getItemCount() == 0) {
-
             infoView.setVisibility(View.VISIBLE);
             scanFirst.setVisibility(View.VISIBLE);
-
         }
     }
 
@@ -197,23 +195,23 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
     public void exportCSV() {
         boolean isDownload = false;
-        String folder_main = " ";
-        String appname = " ";
+        String folderMain;
+        String appname;
         if ((BuildConfig.FLAVOR.equals("off"))) {
-            folder_main = " Open Food Facts ";
+            folderMain = " Open Food Facts ";
             appname = "OFF";
         } else if ((BuildConfig.FLAVOR.equals("opff"))) {
-            folder_main = " Open Pet Food Facts ";
+            folderMain = " Open Pet Food Facts ";
             appname = "OPFF";
         } else if ((BuildConfig.FLAVOR.equals("opf"))) {
-            folder_main = " Open Products Facts ";
+            folderMain = " Open Products Facts ";
             appname = "OPF";
         } else {
-            folder_main = " Open Beauty Facts ";
+            folderMain = " Open Beauty Facts ";
             appname = "OBF";
         }
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
-        File baseDir = new File(Environment.getExternalStorageDirectory(), folder_main);
+        File baseDir = new File(Environment.getExternalStorageDirectory(), folderMain);
         if (!baseDir.exists()) {
             baseDir.mkdirs();
         }
@@ -221,27 +219,17 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         String fileName = appname + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
         String filePath = baseDir + File.separator + fileName;
         File f = new File(filePath);
-        CSVWriter writer;
-        FileWriter fileWriter;
-        try {
-            if (f.exists() && !f.isDirectory()) {
-                fileWriter = new FileWriter(filePath, false);
-                writer = new CSVWriter(fileWriter);
-            } else {
-                writer = new CSVWriter(new FileWriter(filePath));
-            }
+        try(CSVWriter writer=getCsvWriter(filePath, f)) {
             String[] headers = getResources().getStringArray(R.array.headers);
             writer.writeNext(headers);
-            List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
-            for (HistoryProduct hp : listHistoryProducts) {
+            for (HistoryProduct hp : mHistoryProductDao.loadAll()) {
                 String[] line = {hp.getBarcode(), hp.getTitle(), hp.getBrands()};
                 writer.writeNext(line);
             }
-            writer.close();
             Toast.makeText(this, R.string.txt_history_exported, Toast.LENGTH_LONG).show();
             isDownload = true;
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(HistoryScanActivity.class.getSimpleName(),"can export to "+filePath,e);
         }
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -276,6 +264,18 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         if (isDownload) {
             notificationManager.notify(7, builder.build());
         }
+    }
+
+    private CSVWriter getCsvWriter(String filePath, File f) throws IOException {
+        FileWriter fileWriter;
+        CSVWriter writer;
+        if (f.exists() && !f.isDirectory()) {
+            fileWriter = new FileWriter(filePath, false);
+            writer = new CSVWriter(fileWriter);
+        } else {
+            writer = new CSVWriter(new FileWriter(filePath));
+        }
+        return writer;
     }
 
     @Override
@@ -483,12 +483,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             SwipeController swipeController = new SwipeController(ctx, HistoryScanActivity.this);
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
             itemTouchhelper.attachToRecyclerView(recyclerHistoryScanView);
-            recyclerHistoryScanView.addItemDecoration(new RecyclerView.ItemDecoration() {
-                @Override
-                public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-                    swipeController.onDraw(c);
-                }
-            });
         }
     }
 
