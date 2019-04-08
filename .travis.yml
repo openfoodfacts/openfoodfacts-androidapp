@@ -60,7 +60,6 @@ before_script:
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
 
-
 before_install:
   - yes | sdkmanager "platforms;android-27"
 
@@ -69,19 +68,22 @@ jobs:
   - stage: test
     script:
       - ./gradlew testObfDebugUnitTest connectedObfDebugAndroidTest assembleObfDebug --stacktrace
+      - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
 
   - stage: test
     script:
       - ./gradlew testOffDebugUnitTest connectedOffDebugAndroidTest assembleOffDebug --stacktrace
+      - mv app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
 
   - stage: test
     script:
       - ./gradlew testOpfDebugUnitTest connectedOpfDebugAndroidTest assembleOpfDebug --stacktrace
+      - mv app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
 
   - stage: test
     script:
       - ./gradlew testOpffDebugUnitTest connectedOpffDebugAndroidTest assembleOpffDebug --stacktrace
-
+      - mv app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
 
 sudo: required
 
@@ -92,10 +94,6 @@ notifications:
 before_deploy:
    # no GIT tag for debug apk
   - export TRAVIS_TAG=UNTAGGED
-  - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
-  - mv app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
-  - mv app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
-  - mv app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
   
 deploy:
   provider: releases
