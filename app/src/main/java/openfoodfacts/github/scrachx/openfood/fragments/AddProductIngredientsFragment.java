@@ -23,9 +23,20 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import org.apache.commons.lang3.StringUtils;
+import org.greenrobot.greendao.async.AsyncSession;
+
+import java.io.File;
+import java.util.*;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnLongClick;
+import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
