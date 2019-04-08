@@ -58,9 +58,7 @@ before_script:
   - emulator -avd test -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
-  
-script:
-  - ./gradlew clean check 
+
 
 before_install:
   - yes | sdkmanager "platforms;android-27"
@@ -69,19 +67,19 @@ jobs:
  include:
   - stage: test
     script:
-      - ./gradlew connectedObfDebugAndroidTest --stacktrace
+      - ./gradlew testObfDebugUnitTest connectedObfDebugAndroidTest --stacktrace
 
   - stage: test
     script:
-      - ./gradlew connectedOffDebugAndroidTest --stacktrace
+      - ./gradlew testOffDebugUnitTest connectedOffDebugAndroidTest --stacktrace
 
   - stage: test
     script:
-      - ./gradlew connectedOpfDebugAndroidTest --stacktrace
+      - ./gradlew testOpfDebugUnitTest connectedOpfDebugAndroidTest --stacktrace
 
   - stage: test
     script:
-      - ./gradlew connectedOpffDebugAndroidTest --stacktrace
+      - ./gradlew testOpffDebugUnitTest connectedOpffDebugAndroidTest --stacktrace
 
 branches:
   only:
