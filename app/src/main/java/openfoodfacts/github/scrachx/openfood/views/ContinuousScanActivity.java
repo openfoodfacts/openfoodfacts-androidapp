@@ -318,7 +318,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 co2Icon.setVisibility(View.VISIBLE);
                                 co2Icon.setImageResource(environmentImpactResource);
                             }else{
-                                co2Icon.setVisibility(View.GONE);
+                                co2Icon.setVisibility(View.INVISIBLE);
                             }
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fm.beginTransaction();
