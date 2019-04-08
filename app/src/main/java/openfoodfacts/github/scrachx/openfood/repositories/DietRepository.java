@@ -1147,7 +1147,6 @@ public class DietRepository implements IDietRepository {
             //Remove blank (or so) lines
             for (int i = ingredientsList.size()-1; i >= 0; i--) {
                 String s =  ingredientsList.get(i);
-                //Log.i("SUPPRBLANK", "D"+s+"F");
                 if (s.matches("^\\s*$")) {
                     ingredientsList.remove(i);
                 }
