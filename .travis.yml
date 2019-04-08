@@ -40,14 +40,14 @@ android:
 
   before_cache:
     # Do not cache a few Gradle files/directories (see https://docs.travis-ci.com/user/languages/java/#Caching)
-    - rm -f  ${TRAVIS_BUILD_DIR}/gradle/caches/modules-2/modules-2.lock
-    - rm -fr ${TRAVIS_BUILD_DIR}/gradle/caches/*/plugin-resolution/
+    - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+    - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
 cache:
   directories:
     # Gradle dependencies
-    - ${TRAVIS_BUILD_DIR}/gradle/caches/
-    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
+    - $HOME/gradle/caches/
+    - $HOME/gradle/wrapper/dists/
 
     # Cache maven
     - $HOME/.m2
