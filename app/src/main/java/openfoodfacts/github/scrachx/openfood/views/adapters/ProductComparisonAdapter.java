@@ -17,6 +17,7 @@ import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -44,7 +46,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -59,8 +60,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     private boolean isLowBatteryMode = false;
     private IProductRepository repository = ProductRepository.getInstance();
     private CompositeDisposable disposable = new CompositeDisposable();
-    private String languageCode = Locale.getDefault().getLanguage();
-    private Button addProductButton = null;
+    private Button addProductButton;
     private OpenFoodAPIClient api;
     private ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
     public static Integer ON_PHOTO_RETURN_POSITION;
@@ -361,6 +361,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         StringBuilder additivesBuilder = new StringBuilder();
         List<String> additivesTags = product.getAdditivesTags();
         if (additivesTags != null && !additivesTags.isEmpty()) {
+            final String languageCode = LocaleHelper.getLanguage(v.getContext());
             disposable.add(
                 Observable.fromArray(additivesTags.toArray(new String[additivesTags.size()]))
                     .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
@@ -392,9 +393,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                             ((TextView) v).setText(additivesBuilder.toString());
                             setMaxCardHeight();
                         }
-                    }, e -> {
-                        e.printStackTrace();
-                    })
+                            }, e -> Log.e(ProductComparisonAdapter.class.getSimpleName(),"loadAdditives",e))
             );
         }
     }
@@ -419,7 +418,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     }
 
     public void setImageOnPhotoReturn(File file) {
-        ProductComparisonViewHolder holder = viewHolders.get(ON_PHOTO_RETURN_POSITION);
         Product product = productsToCompare.get(ON_PHOTO_RETURN_POSITION);
         ProductImage image = new ProductImage(product.getCode(), FRONT, file);
         image.setFilePath(file.getAbsolutePath());
