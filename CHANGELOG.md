@@ -2,6 +2,7 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 
 Upcoming:
 - Fix for that nasty opening bug. Sorry about that.
+- Fix "Don't allow user to create multiple product lists with same name" (#2512)
 
 To get a pardon, we threw in additional fixes:
 - Better looking profile picture
@@ -13,6 +14,7 @@ To get a pardon, we threw in additional fixes:
 - Ensure Nutriscore in Search and History are disabled for OBF and OPFF
 - Fix add photo not clickable in no results screen (#1071)
 - Moar translations :)
+- Migrate to a recent version of MaterialDialog
 
 0.8.3 - Mar 1
 
