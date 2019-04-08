@@ -249,6 +249,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
+            updateImageBtn.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
@@ -331,7 +332,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (product.getNovaGroups() != null) {
             novaLayout.setVisibility(View.VISIBLE);
             novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups(), getContext()));
-            novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+            novaGroup.setImageResource(Utils.getNovaGroupDrawable(product));
             novaGroup.setOnClickListener((View v) -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
