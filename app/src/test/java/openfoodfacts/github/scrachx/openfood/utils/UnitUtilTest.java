@@ -9,7 +9,7 @@ import org.junit.Test;
 public class UnitUtilTest {
     @Test
     public void testConvertFromGram() {
-        Assert.assertEquals(1.001, UnitUtils.convertFromGram(1, UnitUtils.UNIT_KILOGRAM), 1e-5);
+        Assert.assertEquals(0.001, UnitUtils.convertFromGram(1, UnitUtils.UNIT_KILOGRAM), 1e-5);
         Assert.assertEquals(1, UnitUtils.convertFromGram(1, UnitUtils.UNIT_GRAM), 1e-5);
         Assert.assertEquals(1000, UnitUtils.convertFromGram(1, UnitUtils.UNIT_MILLIGRAM), 1e-5);
         Assert.assertEquals(1000*1000, UnitUtils.convertFromGram(1, UnitUtils.UNIT_MICROGRAM), 1e-5);
