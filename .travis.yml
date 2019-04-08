@@ -68,31 +68,43 @@ jobs:
  include:
   - stage: test
     script:
-      - ./gradlew testObfDebugUnitTest connectedObfDebugAndroidTest --stacktrace
+      - ./gradlew testObfDebugUnitTest connectedObfDebugAndroidTest assembleObfDebug --stacktrace
 
   - stage: test
     script:
-      - ./gradlew testOffDebugUnitTest connectedOffDebugAndroidTest --stacktrace
+      - ./gradlew testOffDebugUnitTest connectedOffDebugAndroidTest assembleOffDebug --stacktrace
 
   - stage: test
     script:
-      - ./gradlew testOpfDebugUnitTest connectedOpfDebugAndroidTest --stacktrace
+      - ./gradlew testOpfDebugUnitTest connectedOpfDebugAndroidTest assembleOpfDebug --stacktrace
 
   - stage: test
     script:
-      - ./gradlew testOpffDebugUnitTest connectedOpffDebugAndroidTest --stacktrace
+      - ./gradlew testOpffDebugUnitTest connectedOpffDebugAndroidTest assembleOpffDebug --stacktrace
 
-branches:
-  only:
-    - master
+
+sudo: required
 
 notifications:
   email: false
   slack: openfoodfacts:mXLLSlWjBKA9e03ELQ83rNvB
-
-sudo: required
-
-addons:
-  artifacts: true
-  paths:
-    - my_path
+  
+before_deploy:
+   # no GIT tag for debug apk
+  - export TRAVIS_TAG=UNTAGGED
+  - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
+  - mv app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
+  - mv app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
+  - mv app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
+  
+deploy:
+  provider: releases
+  skip_cleanup: true
+  overwrite: true
+  draft: true
+  file_glob: true
+  api_key:
+    secure: SUmOSYZdP6YIC4nL5ElMECTQH6C84sKBByRW0/rvbTrcJGOpxHlUySnwKCLB4p5kazUk1gxTWVb+BLliDI17KZ+yBHP247S4Nl0ipXfWd/tLCEIro0TS/UkJMQyJuBCXw8x46qUpUeBcIG76Bfu8aOi2o/glml6+N7v/g7YQc9TGp4cLoTsEvjY00/l9DwT8/7w8Sc83hjhpAUcmx5AMKmBS9oihTrwdFDcCeDT3KI2cX54uwGrRkHBj+AJmAXmhisGrWsJ/P4U301PnpI7qU92NsU5hZqSZieaw/9LJIYvFyAkmhGslHX2jZwJVqTw46RoFvFfxQOfUl/Qa49RCaQIrd2ZrRJi0D5ngLv8NCZZ6Nk3CQQfsfwZQ9gDFlM64IzrVuPArmSKgSM3/6vHqylyyppAREGxJtHk/7ryQB8rXJruK8a/kJNIHWjUPM3p3Qlq04Ox/hkHExnbDPXZU+KLvgXhbbSmT2OQ1B7QwrXYUk7HRUDh1XwU1XOC3/JYMl3KKP3ZLPBBEWltqAQg/yTIKeRTKzQkPfhHoLgXe6IEGJjmdXmvO5i7I/188w5XQf1xvnGVTlOWChL8QzPBaj1DKL9NCSbHcEvRsmA1xQcECJrD+DGHRthVWearjVr+26Am4RY38Hqq3B1mgwavh3YEwEkIsW/yLRI1POAp3nL8=
+  file: app/build/outputs/apk/*.apk
+  on:
+    all_branches: true
