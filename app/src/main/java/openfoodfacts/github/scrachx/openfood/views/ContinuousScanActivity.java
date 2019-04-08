@@ -16,16 +16,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -294,9 +291,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 productImage.setImageResource(R.drawable.placeholder_thumb);
                                 imageProgress.setVisibility(View.GONE);
                             }
-                            // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
+                            // Hide nutriScore from quickView if app flavour is OFF or there is no nutriscore
                             if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
-                                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                                if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
+                                    nutriScore.setVisibility(View.VISIBLE);
                                     nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
                                 } else {
                                     nutriScore.setVisibility(View.INVISIBLE);
@@ -306,29 +304,21 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             }
                             // Hide nova group from quickView if app flavour is not OFF or there is no nova group
                             if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
-                                if (Utils.getNovaGroupDrawable(product.getNovaGroups()) != 0) {
-                                    novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                                final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
+                                if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
+                                    novaGroup.setImageResource(novaGroupDrawable);
                                 } else {
                                     novaGroup.setVisibility(View.INVISIBLE);
                                 }
                             } else {
                                 novaGroup.setVisibility(View.GONE);
                             }
-                            if(product.getEnvironmentImpactLevelTags()!=null) {
-                                List<String> tags=product.getEnvironmentImpactLevelTags();
-                                if(tags.size() > 0) {
-                                    String tag=tags.get(0).replace("\"","");
-                                    co2Icon.setVisibility(View.VISIBLE);
-                                    if(tag.equals("en:high")){
-                                        co2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
-                                    } else if(tag.equals("en:low")){
-                                        co2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
-                                    } else if(tag.equals("en:medium")){
-                                        co2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
-                                    } else {
-                                        co2Icon.setVisibility(View.GONE);
-                                    }
-                                }
+                            int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
+                            if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+                                co2Icon.setVisibility(View.VISIBLE);
+                                co2Icon.setImageResource(environmentImpactResource);
+                            }else{
+                                co2Icon.setVisibility(View.INVISIBLE);
                             }
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fm.beginTransaction();

@@ -314,7 +314,8 @@
                 android:text="@string/update_image"
                 android:drawableStart="@drawable/ic_add_a_photo_blue_18dp"
                 android:drawableLeft="@drawable/ic_add_a_photo_blue_18dp"
-                style="@style/BorderButton"/>
+                style="@style/BorderButton"
+                android:visibility="gone"/>
 
         </LinearLayout>
 

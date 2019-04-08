@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 
@@ -56,5 +58,10 @@ public class Question implements Serializable {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    @JsonIgnore
+    public boolean isEmpty(){
+        return StringUtils.isEmpty(question);
     }
 }

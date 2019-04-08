@@ -729,7 +729,7 @@ public class ProductRepository implements IProductRepository {
                     if (!questions.isEmpty()) {
                         return questions.get(0);
                     }
-                    return null;
+                    return QuestionsState.EMPTY_QUESTION;
                 });
     }
 

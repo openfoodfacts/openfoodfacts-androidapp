@@ -785,7 +785,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="set_img_front">Głownie zdjęcie produktu</string>
     <string name="report_img">Zgłoś zdjęcie</string>
     <string name="detected_ingredients">Wykryte składniki</string>
-    <string name="txtDownloading">Pobieranie taksonomii…</string>
     <string name="txtLoaded">Pomyślnie pobrano tłumaczenia</string>
     <string name="txtConnectionError">Nie pobrano niektórych danych. Może to być spowodowane błędem połączenia.</string>
     <string name="set_image_name">Pomyślnie ustawiono obraz jako</string>

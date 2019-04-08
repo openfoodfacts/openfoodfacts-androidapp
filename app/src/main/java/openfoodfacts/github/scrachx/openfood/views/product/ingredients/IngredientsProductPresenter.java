@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients;
 
+import android.util.Log;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -8,7 +9,9 @@ import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import java.util.List;
 import java.util.Locale;
@@ -24,7 +27,7 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
     private IIngredientsProductPresenter.View view;
 
     private Product product;
-    private String languageCode = Locale.getDefault().getLanguage();
+
 
     public IngredientsProductPresenter(Product product, IIngredientsProductPresenter.View view) {
         this.product = product;
@@ -35,8 +38,9 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
     public void loadAdditives() {
         List<String> additivesTags = product.getAdditivesTags();
         if (additivesTags != null && !additivesTags.isEmpty()) {
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
-                    Observable.fromArray(additivesTags.toArray(new String[additivesTags.size()]))
+                    Observable.fromArray(additivesTags.toArray(new String[0]))
                             .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
                                     .flatMap(categoryName -> {
                                         if (categoryName.isNull()) {
@@ -57,7 +61,7 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
                                     view.showAdditives(additives);
                                 }
                             }, e -> {
-                                e.printStackTrace();
+                                Log.e(IngredientsProductPresenter.class.getSimpleName(),"loadAdditives",e);
                                 view.showAdditivesState(ProductInfoState.EMPTY);
                             })
             );
@@ -70,6 +74,7 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
     public void loadAllergens() {
         List<String> allergenTags = product.getAllergensTags();
         if (allergenTags != null && !allergenTags.isEmpty()) {
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
                     Observable.fromArray(allergenTags.toArray(new String[allergenTags.size()]))
                               .flatMapSingle(tag -> repository.getAllergenByTagAndLanguageCode(tag, languageCode)
@@ -91,7 +96,7 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
                                       view.showAllergens(allergens);
                                   }
                               }, e -> {
-                                  e.printStackTrace();
+                                  Log.e(IngredientsProductPresenter.class.getSimpleName(),"loadAllergens",e);
                                   view.showAllergensState(ProductInfoState.EMPTY);
                               })
             );

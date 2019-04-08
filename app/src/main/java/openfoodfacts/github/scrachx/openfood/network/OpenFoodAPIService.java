@@ -210,6 +210,14 @@ public interface OpenFoodAPIService {
     Single<JsonNode> editImageSingle(@Query("code") String code,
                                      @QueryMap Map<String, String> fields);
 
+    @GET("/cgi/product_image_crop.pl")
+    Call<JsonNode> rotateImage(@Query("code") String code,
+                                 @Query("id") String id,
+                                 @Query("imgid") String imgid,
+                                 @Query("angle") String angle);
+    @GET("/api/v0/product/{barcode}.json?fields=images")
+    Call<JsonNode> getImages(@Path("barcode") String barcode);
+
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
     Single<JsonNode> getIngredients(@Query("code") String code,
                                     @Query("id") String id);

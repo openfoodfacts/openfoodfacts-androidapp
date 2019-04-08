@@ -756,7 +756,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Segnala immagine</string>
     <string name="detected_ingredients">Ingredienti rilevati</string>
-    <string name="txtDownloading">Download delle tassonomie…</string>
     <string name="txtLoaded">Le traduzioni sono state scaricate con successo</string>
     <string name="txtConnectionError">Non è stato possibile scaricare determinati dati. Ciò potrebbe essere dovuto a un errore di connessione.</string>
     <string name="set_image_name">Imposta correttamente l\'immagine come</string>
