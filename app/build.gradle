@@ -15,13 +15,6 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     
-    test {
-      testLogging {
-        events "passed", "skipped", "failed"
-        exceptionFormat "full"
-      }
-    }
-    
     buildTypes {
         release {
             crunchPngs true
