@@ -46,8 +46,8 @@ android:
 cache:
   directories:
     # Gradle dependencies
-    - $HOME/gradle/caches/
-    - $HOME/gradle/wrapper/dists/
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
 
     # Cache maven
