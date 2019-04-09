@@ -13,11 +13,12 @@
         android:id="@+id/tvAddToNewList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="@dimen/padding_short"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-        android:textSize="22sp"
+        android:textSize="@dimen/font_large"
         android:text="@string/txt_add_to_new_list"
         android:drawableLeft="@drawable/plus"
+        android:drawableStart="@drawable/plus"
         app:layout_constraintTop_toBottomOf="@id/rv_dialogAddToList"/>
 
 </android.support.constraint.ConstraintLayout>

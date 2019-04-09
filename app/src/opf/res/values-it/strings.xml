@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Scansione i prodotti anche quando sei offline così che possano essere aggiunti a Open Products Facts successivamente. I prodotti scansionati appariranno qui e potrai inviarli utilizzando il pulsante sottostante.</string>
     <string name="warning_alert_data">Le informazioni sulle tue allergie non saranno mai inviate al server di Oper Products Facts. Inoltre, fai attenzione perché le informazioni sui prodotti potrebbero non essere accurate al 100%, quindi ricorda sempre di controllare! </string>
     <!-- OPF tagline in different languages -->
-    <string name="tagline">the free product database</string>
+    <string name="tagline">il database aperto dei prodotti</string>
     <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Products Facts. Puoi aggiungerlo?</string>
     <string name="currently_on_version">Attualmente su Open Products Facts</string>
     <string name="category_game_btn">Aiuta a categorizzare i prodotti</string>

@@ -49,11 +49,7 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
-        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null)
-            mState = (State) intent.getExtras().getSerializable("state");
-        else
-            mState = ProductFragment.mState;
+        mState=getStateFromActivityIntent();
 
         final Product product = mState.getProduct();
         Nutriments nutriments = product.getNutriments();
@@ -61,7 +57,7 @@ public class EnvironmentProductFragment extends BaseFragment {
         if(nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
             Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
             carbonFootprint.setText(bold(getString(R.string.textCarbonFootprint)));
-            carbonFootprint.append(carbonFootprintNutriment.getFor100g());
+            carbonFootprint.append(carbonFootprintNutriment.getFor100gInUnits());
             carbonFootprint.append(carbonFootprintNutriment.getUnit());
         } else {
             carbonFootprintCardView.setVisibility(View.GONE);
@@ -95,7 +91,7 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-
+        mState = state;
     }
 
 }

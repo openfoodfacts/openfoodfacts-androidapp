@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.ProductComparisonActivity">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/product_comparison_rv"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:scrollbars="horizontal"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/coordinator_layout_product"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+    <include layout="@layout/toolbar" />
+    <HorizontalScrollView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toEndOf="@id/product_comparison_rv"
-            android:layout_toRightOf="@id/product_comparison_rv">
-            <Button
-                android:id="@+id/product_comparison_button"
+    >
+        <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_margin="16dp"
-                android:text="@string/add_product"
-                style="@style/BorderButton"/>
+                android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/product_comparison_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:scrollbars="horizontal"/>
+
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toEndOf="@id/product_comparison_rv"
+                    android:layout_toRightOf="@id/product_comparison_rv">
+                <Button
+                        android:id="@+id/product_comparison_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="16dp"
+                        android:text="@string/add_product"
+                        style="@style/BorderButton"/>
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
-</HorizontalScrollView>
+    </HorizontalScrollView>
+</LinearLayout>

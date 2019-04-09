@@ -14,7 +14,7 @@
     <string name="txtHomeOnline">Open Food Facts ist eine offene Datenbank mit mehr als %1$d Lebensmittelprodukten (und denjenigen, die Sie beitragen werden).</string>
     <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln. </string>
     <string name="slide_1_title">Beitrag zur Transparenz von Lebensmittelprodukten leisten</string>
-    <string name="slide_1_desc">Produkte erfassen und Fotos hinzufügen ermöglichen das Verständnis über Lebensmittelprodukte</string>
+    <string name="slide_1_desc">Produkte erfassen und Fotos von diesen hinzuzufügen ermöglicht Transparenz über Lebensmittelprodukte zu erhöhen</string>
     <string name="slide_2_title">Holen Sie sich die Fakten</string>
     <string name="slide_2_desc">Umfassende Informationen über das erfasste Produkt wurden für Sie entschlüsselt</string>
     <string name="slide_3_title">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Food Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche versenden.</string>
     <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
+    <string name="tagline">die freie Datenbank für Produkte</string>
     <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Food Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="currently_on_version">Aktuell auf Open Food Facts</string>
 </resources>
