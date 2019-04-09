@@ -109,20 +109,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Roasted Dalia" />
 
-            <ImageButton
-                android:id="@+id/button_add_to_list"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@color/zxing_transparent"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="@+id/quickView_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/quickView_name"
-                app:srcCompat="@drawable/plus" />
-
-
             <RelativeLayout
                 android:id="@+id/quickView_details"
                 android:layout_marginTop="@dimen/spacing_small"
@@ -177,6 +163,7 @@
 
                 <ImageView
                     android:layout_toRightOf="@id/quickView_quantity"
+                    android:layout_toLeftOf="@+id/quickView_novaGroup"
                     android:layout_alignTop="@id/quickView_brand"
                     android:id="@+id/quickView_nutriScore"
                     android:layout_width="match_parent"
@@ -184,7 +171,6 @@
                     android:layout_margin="@dimen/spacing_small"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:layout_toLeftOf="@+id/quickView_novaGroup"
                     tools:src="@drawable/nnc_a" />
 
                 <ImageView

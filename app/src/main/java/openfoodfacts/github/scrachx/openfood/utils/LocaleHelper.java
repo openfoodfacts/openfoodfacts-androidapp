@@ -32,12 +32,7 @@ public class LocaleHelper {
     }
 
     public static String getLanguage(Context context) {
-        return getPersistedData(context, Locale.getDefault().getLanguage());
-    }
-
-    //removes country specific code in the language code eg: nl-BE and returns the lang
-    public static String getLanguageTrimmed(Context context) {
-        String lang = LocaleHelper.getLanguage(context);
+        String lang= getPersistedData(context, Locale.getDefault().getLanguage());
         if (lang.contains("-")) {
             String langSplit[] = lang.split("-");
             lang = langSplit[0];

@@ -38,6 +38,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -60,7 +61,8 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.*;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
@@ -94,6 +96,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView textNutriScoreInfo;
     @BindView(R.id.nutrient_levels_card_view)
     CardView nutrientLevelsCardView;
+    @BindView(R.id.newAdd)
+    Button img1;
     @BindView(R.id.calculateNutritionFacts)
     Button calculateNutritionFacts;
     @BindView(R.id.nutrimentsCardView)
@@ -127,15 +131,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-            refreshView((State) intent.getExtras().getSerializable("state"));
-        } else {
-            refreshView(ProductFragment.mState);
-        }
+        refreshView(getStateFromActivityIntent());
     }
 
     @Override
@@ -143,7 +142,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         super.refreshView(state);
         mState = state;
         product = state.getProduct();
-        String langCode = LocaleHelper.getLanguageTrimmed(getContext());
+        String langCode = LocaleHelper.getLanguage(getContext());
         //checks the product states_tags to determine which prompt to be shown
         List<String> statesTags = product.getStatesTags();
         if (statesTags.contains("en:categories-to-be-completed")) {
@@ -216,11 +215,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
             if (fat != null && fatNutriment != null) {
                 String fatNutrimentLevel = fat.getLocalize(context);
-                String modifier = nutriments.getModifier(Nutriments.FAT);
                 levelItem.add(new NutrientLevelItem(getString(R.string.txtFat),
-                    (modifier == null ? "" : modifier)
-                        + getRoundNumber(fatNutriment.getFor100g())
-                        + " " + fatNutriment.getUnit(),
+                    fatNutriment.getDisplayStringFor100g(),
                     fatNutrimentLevel,
                     fat.getImageLevel()));
             }
@@ -228,10 +224,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                String saturatedFatValue = getRoundNumber(saturatedFatNutriment.getFor100g()) + " " + saturatedFatNutriment.getUnit();
-                String modifier = nutriments.getModifier(Nutriments.SATURATED_FAT);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat),
-                    (modifier == null ? "" : modifier) + saturatedFatValue,
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatNutriment.getDisplayStringFor100g(),
                     saturatedFatLocalize,
                     saturatedFat.getImageLevel()));
             }
@@ -239,10 +232,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
             if (sugars != null && sugarsNutriment != null) {
                 String sugarsLocalize = sugars.getLocalize(context);
-                String sugarsValue = getRoundNumber(sugarsNutriment.getFor100g()) + " " + sugarsNutriment.getUnit();
-                String modifier = nutriments.getModifier(Nutriments.SUGARS);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars),
-                    (modifier == null ? "" : modifier) + sugarsValue,
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsNutriment.getDisplayStringFor100g(),
                     sugarsLocalize,
                     sugars.getImageLevel()));
             }
@@ -250,24 +240,17 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
             if (salt != null && saltNutriment != null) {
                 String saltLocalize = salt.getLocalize(context);
-                String saltValue = getRoundNumber(saltNutriment.getFor100g()) + " " + saltNutriment.getUnit();
-                String modifier = nutriments.getModifier(Nutriments.SALT);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt),
-                    (modifier == null ? "" : modifier) + saltValue,
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltNutriment.getDisplayStringFor100g(),
                     saltLocalize,
                     salt.getImageLevel()));
             }
 
-            if (product.getNutritionGradeFr() != null && !product.getNutritionGradeFr().isEmpty()) {
-                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
-                    imageGradeLayout.setVisibility(View.VISIBLE);
-                    img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
-                } else {
-                    img.setVisibility(View.INVISIBLE);
-                }
+            int nutritionGrade = Utils.getImageGrade(product);
+            if (nutritionGrade != Utils.NO_DRAWABLE_RESOURCE) {
+                imageGradeLayout.setVisibility(View.VISIBLE);
+                img.setImageResource(nutritionGrade);
                 img.setOnClickListener(view1 -> {
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-
                     CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
                 });
             } else {
@@ -342,6 +325,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         if (isNotBlank(product.getImageNutritionUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
+            img1.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
@@ -385,19 +369,19 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
-        if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kcal")) {
+        if (energy != null && settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL).equals(UnitUtils.ENERGY_KCAL)) {
             nutrimentItems.add(
                 new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                     Utils.getEnergy(energy.getFor100gInUnits()),
                     Utils.getEnergy(energy.getForServingInUnits()),
-                    "kcal",
+                    UnitUtils.ENERGY_KCAL,
                     nutriments.getModifier(ENERGY)));
-        } else if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kJ")) {
+        } else if (energy != null && settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL).equals(UnitUtils.ENERGY_KJ.toLowerCase())) {
             nutrimentItems.add(
                 new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                     energy.getFor100gInUnits(),
                     energy.getForServingInUnits(),
-                    "kJ",
+                    UnitUtils.ENERGY_KJ.toLowerCase(),
                     nutriments.getModifier(ENERGY)));
         }
 
@@ -639,6 +623,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                     EasyImage.openCamera(this, 0);
                 }
             }
+        }
+    }
+    @OnClick(R.id.newAdd)
+    public void openNew(View v) {
+        // take a picture
+        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
         }
     }
 
