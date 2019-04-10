@@ -44,17 +44,18 @@ public class QuantityParserUtil {
         return getModifier(text.getText().toString());
     }
 
-
-    public static  boolean isModifierEqualsToGreaterThan(TextView text){
+    public static boolean isModifierEqualsToGreaterThan(TextView text) {
         return isModifierEqualsToGreaterThan(text.getText().toString());
     }
-    public static  boolean isModifierEqualsToGreaterThan(String text){
+
+    public static boolean isModifierEqualsToGreaterThan(String text) {
         return ">".equals(getModifier(text));
     }
 
     public static boolean isBlank(TextView editText) {
         return StringUtils.isBlank(editText.getText().toString());
     }
+
     public static boolean isNotBlank(TextView editText) {
         return !isBlank(editText);
     }
@@ -71,6 +72,11 @@ public class QuantityParserUtil {
         }
         final String text = editText.getText().toString();
         return getFloatValue(text, entryFormat);
+    }
+
+    public static float getFloatValueOrDefault(TextView editText, EntryFormat entryFormat, float defaultValue) {
+        Float res = getFloatValue(editText, entryFormat);
+        return res == null ? defaultValue : res;
     }
 
     /**

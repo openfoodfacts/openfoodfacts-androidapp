@@ -16,16 +16,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -69,17 +66,11 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductLists;
-import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
-
-import static org.apache.commons.lang3.StringUtils.capitalize;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
 
@@ -131,8 +122,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     EditText searchByBarcode;
     @BindView(R.id.quickView_details)
     RelativeLayout details;
-    @BindView(R.id.button_add_to_list)
-    ImageButton addToList;
     @Inject
     OpenFoodAPIService client;
 
@@ -203,7 +192,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         progressBar.setVisibility(View.GONE);
                         progressText.setVisibility(View.GONE);
                         if (state.getStatus() == 0) {
-                            addToList.setVisibility(View.GONE);
                             hideAllViews();
                             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                             quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
@@ -303,9 +291,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 productImage.setImageResource(R.drawable.placeholder_thumb);
                                 imageProgress.setVisibility(View.GONE);
                             }
-                            // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
+                            // Hide nutriScore from quickView if app flavour is OFF or there is no nutriscore
                             if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
-                                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
+                                if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
+                                    nutriScore.setVisibility(View.VISIBLE);
                                     nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
                                 } else {
                                     nutriScore.setVisibility(View.INVISIBLE);
@@ -315,69 +304,22 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             }
                             // Hide nova group from quickView if app flavour is not OFF or there is no nova group
                             if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
-                                if (Utils.getNovaGroupDrawable(product.getNovaGroups()) != 0) {
-                                    novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+                                final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
+                                if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
+                                    novaGroup.setImageResource(novaGroupDrawable);
                                 } else {
                                     novaGroup.setVisibility(View.INVISIBLE);
                                 }
                             } else {
                                 novaGroup.setVisibility(View.GONE);
                             }
-                            if(product.getEnvironmentImpactLevelTags()!=null) {
-                                List<String> tags=product.getEnvironmentImpactLevelTags();
-                                if(tags.size() > 0) {
-                                    String tag=tags.get(0).replace("\"","");
-                                    co2Icon.setVisibility(View.VISIBLE);
-                                    if(tag.equals("en:high")){
-                                        co2Icon.setImageResource(R.drawable.ic_co2_high_24dp);
-                                    } else if(tag.equals("en:low")){
-                                        co2Icon.setImageResource(R.drawable.ic_co2_low_24dp);
-                                    } else if(tag.equals("en:medium")){
-                                        co2Icon.setImageResource(R.drawable.ic_co2_medium_24dp);
-                                    } else {
-                                        co2Icon.setVisibility(View.GONE);
-                                    }
-                                }
+                            int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
+                            if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+                                co2Icon.setVisibility(View.VISIBLE);
+                                co2Icon.setImageResource(environmentImpactResource);
+                            }else{
+                                co2Icon.setVisibility(View.INVISIBLE);
                             }
-                            final Product p = product;
-                            addToList.setOnClickListener(view -> {
-                                String barcode = p.getCode();
-                                String productName = p.getProductName();
-                                String imageUrl = p.getImageSmallUrl();
-                                StringBuilder stringBuilder = new StringBuilder();
-                                if (isNotEmpty(p.getBrands())) {
-                                    stringBuilder.append(capitalize(p.getBrands().split(",")[0].trim()));
-                                }
-                                if (isNotEmpty(p.getQuantity())) {
-                                    stringBuilder.append(" - ").append(p.getQuantity());
-                                }
-                                String productDetails = stringBuilder.toString();
-
-                                MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(ContinuousScanActivity.this)
-                                        .title(R.string.add_to_product_lists)
-                                        .customView(R.layout.dialog_add_to_list, true);
-                                MaterialDialog addToListDialog = addToListBuilder.build();
-                                addToListDialog.show();
-                                View addToListView = addToListDialog.getCustomView();
-                                if (addToListView != null) {
-                                    ProductListsDao productListsDao = Utils.getDaoSession(ContinuousScanActivity.this).getProductListsDao();
-                                    List<ProductLists> productLists = productListsDao.loadAll();
-
-                                    RecyclerView addToListRecyclerView =
-                                            addToListView.findViewById(R.id.rv_dialogAddToList);
-                                    DialogAddToListAdapter addToListAdapter =
-                                            new DialogAddToListAdapter(ContinuousScanActivity.this, productLists, barcode, productName, productDetails, imageUrl);
-                                    addToListRecyclerView.setLayoutManager(new LinearLayoutManager(ContinuousScanActivity.this));
-                                    addToListRecyclerView.setAdapter(addToListAdapter);
-                                    TextView tvAddToList = addToListView.findViewById(R.id.tvAddToNewList);
-                                    tvAddToList.setOnClickListener((View view1) -> {
-                                        Intent intent = new Intent(ContinuousScanActivity.this, ProductListsActivity.class);
-                                        intent.putExtra("product", p);
-                                        startActivity(intent);
-                                    });
-                                }
-                            });
-
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fm.beginTransaction();
                             ContinuousScanActivity.this.productFragment = new ProductFragment();
@@ -393,7 +335,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
                     @Override
                     public void onError(Throwable e) {
-                        addToList.setVisibility(View.GONE);
                         try {
                             // A network error happened
                             if (e instanceof IOException) {
@@ -501,7 +442,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         fab_status.setVisibility(View.GONE);
         imageProgress.setVisibility(View.GONE);
         txtProductIncomplete.setVisibility(View.GONE);
-        addToList.setVisibility(View.GONE);
     }
 
     @Override
@@ -628,16 +568,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         }
                     }
                     if (slideOffset > 0.01f) {
-                        if (name.getVisibility() == View.VISIBLE) {
-                            addToList.setVisibility(View.VISIBLE);
-                        }
                         details.setVisibility(View.GONE);
                         barcodeView.pause();
                         if (slideDelta > 0 && productFragment != null) {
                             productFragment.bottomSheetWillGrow();
                         }
                     } else {
-                        addToList.setVisibility(View.GONE);
                         barcodeView.resume();
                         details.setVisibility(View.VISIBLE);
                     }
@@ -814,7 +750,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            boolean uploadedToServer = data.getBooleanExtra("uploadedToServer", true);
+            boolean uploadedToServer = data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, true);
             if (uploadedToServer) {
                 findProduct(lastText, true);
             } else {

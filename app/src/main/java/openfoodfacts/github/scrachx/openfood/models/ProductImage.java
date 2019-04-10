@@ -5,6 +5,8 @@ import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class ProductImage {
 
@@ -28,7 +30,7 @@ public class ProductImage {
 
     public ProductImage(String code, ProductImageField field, File image) {
         this.code = RequestBody.create(MediaType.parse("text/plain"), code);
-        this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString() + '_' + Locale.getDefault().getLanguage());
+        this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString() + '_' + LocaleHelper.getLanguage(OFFApplication.getInstance()));
 
         switch (field) {
             case FRONT:

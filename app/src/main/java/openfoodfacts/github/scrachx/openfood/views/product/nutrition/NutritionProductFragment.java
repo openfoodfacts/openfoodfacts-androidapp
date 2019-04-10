@@ -33,13 +33,13 @@ import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
@@ -63,7 +63,8 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.*;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
@@ -98,6 +99,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     TextView textNutriScoreInfo;
     @BindView(R.id.nutrient_levels_card_view)
     CardView nutrientLevelsCardView;
+    @BindView(R.id.newAdd)
+    Button img1;
     @BindView(R.id.calculateNutritionFacts)
     Button calculateNutritionFacts;
     @BindView(R.id.nutrimentsCardView)
@@ -131,15 +134,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-            refreshView((State) intent.getExtras().getSerializable("state"));
-        } else {
-            refreshView(ProductFragment.mState);
-        }
+        refreshView(getStateFromActivityIntent());
     }
 
     @Override
@@ -147,7 +145,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         super.refreshView(state);
         mState = state;
         product = state.getProduct();
-        String langCode = LocaleHelper.getLanguageTrimmed(getContext());
+        String langCode = LocaleHelper.getLanguage(getContext());
         //checks the product states_tags to determine which prompt to be shown
         List<String> statesTags = product.getStatesTags();
         if (statesTags.contains("en:categories-to-be-completed")) {
@@ -220,58 +218,42 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
             if (fat != null && fatNutriment != null) {
                 String fatNutrimentLevel = fat.getLocalize(context);
-                String modifier = nutriments.getModifier(Nutriments.FAT);
                 levelItem.add(new NutrientLevelItem(getString(R.string.txtFat),
-                        (modifier == null ? "" : modifier)
-                                + getRoundNumber(fatNutriment.getFor100g())
-                                + " " + fatNutriment.getUnit(),
-                        fatNutrimentLevel,
-                        fat.getImageLevel()));
+                    fatNutriment.getDisplayStringFor100g(),
+                    fatNutrimentLevel,
+                    fat.getImageLevel()));
             }
 
             Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                String saturatedFatValue = getRoundNumber(saturatedFatNutriment.getFor100g()) + " " + saturatedFatNutriment.getUnit();
-                String modifier = nutriments.getModifier(Nutriments.SATURATED_FAT);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat),
-                        (modifier == null ? "" : modifier) + saturatedFatValue,
-                        saturatedFatLocalize,
-                        saturatedFat.getImageLevel()));
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatNutriment.getDisplayStringFor100g(),
+                    saturatedFatLocalize,
+                    saturatedFat.getImageLevel()));
             }
 
             Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
             if (sugars != null && sugarsNutriment != null) {
                 String sugarsLocalize = sugars.getLocalize(context);
-                String sugarsValue = getRoundNumber(sugarsNutriment.getFor100g()) + " " + sugarsNutriment.getUnit();
-                String modifier = nutriments.getModifier(Nutriments.SUGARS);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars),
-                        (modifier == null ? "" : modifier) + sugarsValue,
-                        sugarsLocalize,
-                        sugars.getImageLevel()));
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars), sugarsNutriment.getDisplayStringFor100g(),
+                    sugarsLocalize,
+                    sugars.getImageLevel()));
             }
 
             Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
             if (salt != null && saltNutriment != null) {
                 String saltLocalize = salt.getLocalize(context);
-                String saltValue = getRoundNumber(saltNutriment.getFor100g()) + " " + saltNutriment.getUnit();
-                String modifier = nutriments.getModifier(Nutriments.SALT);
-                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt),
-                        (modifier == null ? "" : modifier) + saltValue,
-                        saltLocalize,
-                        salt.getImageLevel()));
+                levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt), saltNutriment.getDisplayStringFor100g(),
+                    saltLocalize,
+                    salt.getImageLevel()));
             }
 
-            if (product.getNutritionGradeFr() != null && !product.getNutritionGradeFr().isEmpty()) {
-                if (Utils.getImageGrade(product.getNutritionGradeFr()) != 0) {
-                    imageGradeLayout.setVisibility(View.VISIBLE);
-                    img.setImageDrawable(ContextCompat.getDrawable(context, Utils.getImageGrade(product.getNutritionGradeFr())));
-                } else {
-                    img.setVisibility(View.INVISIBLE);
-                }
+            int nutritionGrade = Utils.getImageGrade(product);
+            if (nutritionGrade != Utils.NO_DRAWABLE_RESOURCE) {
+                imageGradeLayout.setVisibility(View.VISIBLE);
+                img.setImageResource(nutritionGrade);
                 img.setOnClickListener(view1 -> {
                     CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-
                     CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
                 });
             } else {
@@ -346,19 +328,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         if (isNotBlank(product.getImageNutritionUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
+            img1.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.with(getContext())
-                        .load(product.getImageNutritionUrl(langCode))
-                        .into(mImageNutrition);
+                    .load(product.getImageNutritionUrl(langCode))
+                    .into(mImageNutrition);
             } else {
 
                 mImageNutrition.setVisibility(View.GONE);
             }
             Picasso.with(getContext())
-                    .load(product.getImageNutritionUrl(langCode))
-                    .into(mImageNutrition);
+                .load(product.getImageNutritionUrl(langCode))
+                .into(mImageNutrition);
 
             mUrlImage = product.getImageNutritionUrl(langCode);
         }
@@ -389,20 +372,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
-        if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kcal")) {
+        if (energy != null && settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL).equals(UnitUtils.ENERGY_KCAL)) {
             nutrimentItems.add(
-                    new NutrimentItem(getString(R.string.nutrition_energy_short_name),
-                            Utils.getEnergy(energy.getFor100gInUnits()),
-                            Utils.getEnergy(energy.getForServingInUnits()),
-                            "kcal",
-                            nutriments.getModifier(ENERGY)));
-        } else if (energy != null && settingsPreference.getString("energyUnitPreference", "kcal").equals("kJ")) {
+                new NutrimentItem(getString(R.string.nutrition_energy_short_name),
+                    Utils.getEnergy(energy.getFor100gInUnits()),
+                    Utils.getEnergy(energy.getForServingInUnits()),
+                    UnitUtils.ENERGY_KCAL,
+                    nutriments.getModifier(ENERGY)));
+        } else if (energy != null && settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL).equals(UnitUtils.ENERGY_KJ.toLowerCase())) {
             nutrimentItems.add(
-                    new NutrimentItem(getString(R.string.nutrition_energy_short_name),
-                            energy.getFor100gInUnits(),
-                            energy.getForServingInUnits(),
-                            "kJ",
-                            nutriments.getModifier(ENERGY)));
+                new NutrimentItem(getString(R.string.nutrition_energy_short_name),
+                    energy.getFor100gInUnits(),
+                    energy.getForServingInUnits(),
+                    UnitUtils.ENERGY_KJ.toLowerCase(),
+                    nutriments.getModifier(ENERGY)));
         }
 
         // Fat
@@ -410,10 +393,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (fat2 != null) {
             String modifier = nutriments.getModifier(FAT);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat),
-                    fat2.getFor100gInUnits(),
-                    fat2.getForServingInUnits(),
-                    fat2.getUnit(),
-                    modifier == null ? "" : modifier));
+                fat2.getFor100gInUnits(),
+                fat2.getForServingInUnits(),
+                fat2.getUnit(),
+                modifier == null ? "" : modifier));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
         }
@@ -423,10 +406,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (carbohydrates != null) {
             String modifier = nutriments.getModifier(CARBOHYDRATES);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_carbohydrate),
-                    carbohydrates.getFor100gInUnits(),
-                    carbohydrates.getForServingInUnits(),
-                    carbohydrates.getUnit(),
-                    modifier == null ? "" : modifier));
+                carbohydrates.getFor100gInUnits(),
+                carbohydrates.getForServingInUnits(),
+                carbohydrates.getUnit(),
+                modifier == null ? "" : modifier));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
         }
@@ -439,10 +422,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (proteins != null) {
             String modifier = nutriments.getModifier(PROTEINS);
             nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_proteins),
-                    proteins.getFor100gInUnits(),
-                    proteins.getForServingInUnits(),
-                    proteins.getUnit(),
-                    modifier == null ? "" : modifier));
+                proteins.getFor100gInUnits(),
+                proteins.getForServingInUnits(),
+                proteins.getUnit(),
+                modifier == null ? "" : modifier));
 
             nutrimentItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
         }
@@ -478,10 +461,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             Nutriments.Nutriment nutriment = nutriments.get(entry.getKey());
             if (nutriment != null) {
                 items.add(new NutrimentItem(getString(entry.getValue()),
-                        nutriment.getFor100gInUnits(),
-                        nutriment.getForServingInUnits(),
-                        entry.getValue().equals(R.string.ph) ? "" : nutriment.getUnit(),
-                        nutriments.getModifier(entry.getKey())));
+                    nutriment.getFor100gInUnits(),
+                    nutriment.getForServingInUnits(),
+                    entry.getValue().equals(R.string.ph) ? "" : nutriment.getUnit(),
+                    nutriments.getModifier(entry.getKey())));
             }
         }
 
@@ -505,8 +488,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(getActivity(), (View) mImageNutrition,
-                                getActivity().getString(R.string.product_transition));
+                    makeSceneTransitionAnimation(getActivity(), (View) mImageNutrition,
+                        getActivity().getString(R.string.product_transition));
                 startActivity(intent, options.toBundle());
             } else {
                 startActivity(intent);
@@ -524,9 +507,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @OnClick(R.id.calculateNutritionFacts)
     public void calculateNutritionFacts(View v) {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(getActivity())
-                .title(R.string.calculate_nutrition_facts)
-                .customView(R.layout.dialog_calculate_calories, false)
-                .dismissListener(dialogInterface -> Utils.hideKeyboard(getActivity()));
+            .title(R.string.calculate_nutrition_facts)
+            .customView(R.layout.dialog_calculate_calories, false)
+            .dismissListener(dialogInterface -> Utils.hideKeyboard(getActivity()));
         MaterialDialog dialog = builder.build();
         dialog.show();
         View view = dialog.getCustomView();
@@ -574,9 +557,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         mUrlImage = photoFile.getAbsolutePath();
 
         Picasso.with(getContext())
-                .load(photoFile)
-                .fit()
-                .into(mImageNutrition);
+            .load(photoFile)
+            .fit()
+            .into(mImageNutrition);
     }
 
     @Override
@@ -602,10 +585,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
                 CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                        .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                        .setAllowFlipping(false)
-                        .setOutputUri(Utils.getOutputPicUri(getContext()))
-                        .start(getContext(), mFragment);
+                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                    .setAllowFlipping(false)
+                    .setOutputUri(Utils.getOutputPicUri(getContext()))
+                    .start(getContext(), mFragment);
             }
 
             @Override
@@ -627,22 +610,31 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             case MY_PERMISSIONS_REQUEST_CAMERA: {
                 if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
                     new MaterialDialog.Builder(getActivity())
-                            .title(R.string.permission_title)
-                            .content(R.string.permission_denied)
-                            .negativeText(R.string.txtNo)
-                            .positiveText(R.string.txtYes)
-                            .onPositive((dialog, which) -> {
-                                Intent intent = new Intent();
-                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
-                                intent.setData(uri);
-                                startActivity(intent);
-                            })
-                            .show();
+                        .title(R.string.permission_title)
+                        .content(R.string.permission_denied)
+                        .negativeText(R.string.txtNo)
+                        .positiveText(R.string.txtYes)
+                        .onPositive((dialog, which) -> {
+                            Intent intent = new Intent();
+                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
+                            intent.setData(uri);
+                            startActivity(intent);
+                        })
+                        .show();
                 } else {
                     EasyImage.openCamera(this, 0);
                 }
             }
+        }
+    }
+    @OnClick(R.id.newAdd)
+    public void openNew(View v) {
+        // take a picture
+        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
         }
     }
 

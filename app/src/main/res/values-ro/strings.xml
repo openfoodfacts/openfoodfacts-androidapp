@@ -29,6 +29,7 @@
     <string name="text_barcode">Introduceți codul de bare</string>
     <string name="message_in_activity_save_product_offline">Doar o singură fotografie este obligatorie pentru a trimite un produs nou.</string>
     <string name="product_incomplete_message">Acest produs nu este complet. Ca urmare, nu am putut verifica alergenii.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Aţi terminat tot</string>
     <string name="first_offline">Produsele adăugate offline vor apărea aici</string>
     <!-- Image Upload -->
@@ -484,6 +485,7 @@
     <string name="device_on_mobile_data_warning_message">Încărcarea prin datelre mobile este dezactivată, vă rugăm conectați-vă la WiFi sau modificați opțiunile în setări</string>
     <string name="device_on_mobile_data_warning_positive">Preferinţe</string>
     <string name="device_on_mobile_data_warning_negative">Încărcați oricum</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Alegeți limba</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Întrebări Frecvente</string>
@@ -492,7 +494,7 @@
     <string name="please_check_your_connection">Te rog verifică conexiunea ta.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Cautare avansată &amp; Grafice</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Te rog verifică conexiunea ta la internet</string>
     <string name="dismiss">Renunță</string>
     <string name="Terms">Termeni</string>
@@ -556,7 +558,7 @@
     <string name="by_time">Vizualizat recent</string>
     <string name="sort">Sortează</string>
     <string name="by_nutrition_grade">Notă nutrițională</string>
-    <string name="sort_by">Sortează după</string>
+    <string name="sort_by">Ordonează după</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Scutură telefonul pentru a scana produse</string>
@@ -725,15 +727,16 @@
     <string name="diet_name">Numele dietei</string>
     <string name="diets_dialog_warning_title">Atenţie</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
-    <string name="EditDiet_Name">Nume</string>
-    <string name="EditDiet_Description">Descriere</string>
-    <string name="EditDiet_Enabled_Disabled">Activare/Dezactivare</string>
-    <string name="EditDiet_Authorised_Ingredients">Componente autorizate</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Listează ingredientele autorizate care ar trebui să apară în verde. Exemplu: măr, ciuperci, roșii… Puteți completa această listă mai târziu.</string>
-    <string name="EditDiet_So_So_Ingredients">So so ingredients</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Listează ingredientelelor problematice care ar trebui să apară în portocaliu. Exemplu: ou, pește… Puteți completa această listă mai târziu.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Componente neautorizate</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_name">Nume</string>
+    <string name="edit_diet_description">Descriere</string>
+    <string name="edit_diet_enabled_disabled">Activare/Dezactivare</string>
+    <string name="edit_diet_authorised_ingredients">Componente autorizate</string>
+    <string name="edit_diet_hint_ingredient_authorised">Listează ingredientele autorizate care ar trebui să apară în verde. Exemplu: măr, ciuperci, roșii… Puteți completa această listă mai târziu.</string>
+    <string name="edit_diet_so_so_ingredients">So so ingredients</string>
+    <string name="edit_diet_hint_so_so_ingredient">Listează ingredientelelor problematice care ar trebui să apară în portocaliu. Exemplu: ou, pește… Puteți completa această listă mai târziu.</string>
+    <string name="edit_diet_unauthorised_ingredients">Componente neautorizate</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extrageți ingredientele</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
@@ -757,7 +760,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
     <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Successfully set the image as</string>
@@ -792,9 +794,23 @@
     <string name="settings_country_title">Țara</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Modificare</string>
+    <string name="product_summary_action_share_button_label">Distribuiți</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Da</string>
+    <string name="product_question_negative_response">Nu</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="go_to_full_product_page">Go to full product page</string>
+    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
+    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
 </resources>
