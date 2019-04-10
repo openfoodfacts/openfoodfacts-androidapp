@@ -333,7 +333,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
+                        new PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
@@ -472,37 +472,22 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (BuildConfig.FLAVOR.equals("obf")) {
             result.removeItem(ITEM_ALERT);
             result.removeItem(ITEM_ADDITIVES);
-            if(!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
-                result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install_food_drawer)));
-            } else {
-                result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
-            }
         }
 
         if (BuildConfig.FLAVOR.equals("opff")) {
             result.removeItem(ITEM_ALERT);
-            if(!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
-                result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install_food_drawer)));
-            } else {
-                result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
-            }
         }
 
         if (BuildConfig.FLAVOR.equals("opf")) {
             result.removeItem(ITEM_ALERT);
             result.removeItem(ITEM_ADDITIVES);
             result.removeItem(ITEM_ADVANCED_SEARCH);
-            if(!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
-                result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install_food_drawer)));
-            } else {
-                result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
-            }
         }
 
-        if(BuildConfig.FLAVOR.equals("off")) {
-            if(!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
-                result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install_beauty_drawer)));
-            }
+        if(!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install) + " " + getString(R.string.open_other_flavor_drawer)));
+        } else {
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
         }
 
         // Remove scan item if the device does not have a camera, for example, Chromebooks or
@@ -905,11 +890,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if(Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
-            if(BuildConfig.FLAVOR.equals("off")) {
-                result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_beauty_drawer)));
-            } else {
-                result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
-            }
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
 
             result.getAdapter().notifyDataSetChanged();
         }

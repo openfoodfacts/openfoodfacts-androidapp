@@ -393,10 +393,7 @@
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Home</string>
-    <string name="open_beauty_drawer" translatable="false">Open Beauty Facts</string>
-    <string name="install_beauty_drawer" translatable="false">Install Open Beauty Facts</string>
-    <string name="open_food_drawer" translatable="false">Open Food Facts</string>
-    <string name="install_food_drawer" translatable="false">Install Open Food Facts</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="category_drawer">Categories</string>
