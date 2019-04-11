@@ -919,10 +919,10 @@ public class DietRepository implements IDietRepository {
         String ingredients0 = ingredients;
         start = ingredients.indexOf("(", fromIndex);
         while (start>0) {
-            end = ingredients.indexOf(")", fromIndex);
+            end = ingredients.indexOf(")", start);
             ingredients = ingredients.substring(0,start) + new String(new char[end-start]).replace('\0', ' ') + ingredients.substring(end);
             ingredients0 = ingredients0.substring(0,fromIndex) + new String(new char[start-fromIndex]).replace('\0', ' ') + ingredients0.substring(start);
-            fromIndex = end;
+            fromIndex = end + 1;
             start = ingredients.indexOf("(", fromIndex);
         }
         ingredients0 = ingredients0.substring(0,end) + new String(new char[ingredients0.length()-end]).replace('\0', ' ');
