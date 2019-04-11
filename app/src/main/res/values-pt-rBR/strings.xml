@@ -277,9 +277,9 @@
     <string name="permission_denied">Por favor active a permissão nas definições</string>
     <string name="permission_storage">A permissão de armazenamento é necessária para tirar ou seleccionar fotos</string>
     <string name="info_download_data">É necessário descarregar alguns dados para activar esta funcionalidade, por favor pressione \"Sim\" para descarregar.</string>
-    <string name="info_download_data_connection">É necessário descarregar alguns dados para activar esta funcionalidade. Por favor active a ligação à Internet.</string>
+    <string name="info_download_data_connection">Você precisa baixar alguns dados para ativar esta funcionalidade. Por favor, ative sua conexão com a internet.</string>
     <string name="msg_input_empty">Por favor, preencha os campos primeiro.</string>
-    <string name="new_offline_info">Por favor tire uma foto ao produto, aos ingredientes, à tabela nutricional e a qualquer outra informação relevante, na embalagem. Obrigado!</string>
+    <string name="new_offline_info">Por favor, tire uma foto do produto, ingredientes, tabela de fatos nutricionais e qualquer outra informação no rótulo. Obrigado!</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">A senha deve ter no mínimo 6 caracteres.</string>
     <string name="user">usuário</string>
