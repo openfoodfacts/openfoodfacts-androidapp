@@ -1,9 +1,24 @@
 apply plugin: 'com.android.application'
 apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
+def obtainTestBuildType() {
+    //to activate  screenshots buildType in IDE; uncomment next line and comment other
+    //otherwise the folder androidTestScreenshots is not recognized as a test folder.
+    def result="screenshots"
+//    def result = "debug";
+
+    if (project.hasProperty("testBuildType")) {
+        result = project.getProperties().get("testBuildType")
+    }
+
+    result
+}
+
 android {
     compileSdkVersion 27
     buildToolsVersion '28.0.3'
+
+    testBuildType obtainTestBuildType()
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
@@ -14,11 +29,21 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
-    
+
     buildTypes {
         release {
             crunchPngs true
         }
+
+        screenshots {
+            //to generate screenshots launch the grade task connectedOffScreenshotsAndroidTest -PtestBuildType=screenshots
+
+            initWith debug
+            defaultConfig.minSdkVersion 18
+        }
+
+
+
     }
 
     dataBinding {
@@ -35,6 +60,7 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
+
 
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
@@ -105,6 +131,8 @@ android {
         execution 'ANDROID_TEST_ORCHESTRATOR'
     }
 }
+
+
 
 buildscript {
     repositories {
@@ -254,6 +282,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'design'
         exclude module: 'recyclerview-v7'
     }
+    androidTestImplementation 'tools.fastlane:screengrab:1.2.0'
     resourcePlaceholders {
         files = ['xml/shortcuts.xml']
     }

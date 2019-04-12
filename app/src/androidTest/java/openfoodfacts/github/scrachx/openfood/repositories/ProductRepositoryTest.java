@@ -1,7 +1,17 @@
+package openfoodfacts.github.scrachx.openfood.repositories;
+
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
-
-import org.junit.Before;
+import android.util.Log;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import org.greenrobot.greendao.database.Database;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -9,32 +19,44 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Created by Lobster on 05.03.18.
  */
-
 @SmallTest
 @RunWith(AndroidJUnit4.class)
 public class ProductRepositoryTest {
+    private static final String TEST_ALLERGEN_TAG = "en:lupin";
+    private static final String TEST_LANGUAGE_CODE = "es";
+    private static final String TEST_ALLERGEN_NAME = "Altramuces";
+    private static IProductRepository productRepository;
 
-    private final String TEST_ALLERGEN_TAG = "en:lupin";
-    private final String TEST_LANGUAGE_CODE = "es";
-    private final String TEST_ALLERGEN_NAME = "Altramuces";
-
-    private IProductRepository productRepository;
-
-    @Before
-    public void setup() {
+    @BeforeClass
+    public static void setup() {
+        //to be sure we start from a clean state:
+        cleanAllergens();
         productRepository = ProductRepository.getInstance();
         productRepository.saveAllergens(createAllergens());
+    }
+
+    @AfterClass
+    public static void close() {
+        cleanAllergens();
+    }
+
+    private static void cleanAllergens() {
+        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        Database db = daoSession.getDatabase();
+        db.beginTransaction();
+        try {
+            daoSession.getAllergenDao().deleteAll();
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.e("openfoodfacts.github.scrachx.openfood.repositories.ProductRepositoryTest", "error in transaction", e);
+        } finally {
+            db.endTransaction();
+        }
     }
 
     @Test
@@ -42,18 +64,18 @@ public class ProductRepositoryTest {
         List<Allergen> allergens = productRepository.getAllergens(false).blockingGet();
 
         assertNotNull(allergens);
-        assertEquals(allergens.size(), 2);
+        assertEquals(2, allergens.size());
 
         Allergen allergen = allergens.get(0);
-        assertEquals(allergen.getTag(), TEST_ALLERGEN_TAG);
+        assertEquals(TEST_ALLERGEN_TAG, allergen.getTag());
 
         List<AllergenName> allergenNames = allergen.getNames();
-        assertEquals(allergenNames.size(), 3);
+        assertEquals(3, allergenNames.size());
 
         AllergenName allergenName = allergenNames.get(0);
         assertEquals(allergenName.getAllergenTag(), allergen.getTag());
-        assertEquals(allergenName.getLanguageCode(), TEST_LANGUAGE_CODE);
-        assertEquals(allergenName.getName(), TEST_ALLERGEN_NAME);
+        assertEquals(TEST_LANGUAGE_CODE, allergenName.getLanguageCode());
+        assertEquals(TEST_ALLERGEN_NAME, allergenName.getName());
     }
 
     @Test
@@ -61,8 +83,8 @@ public class ProductRepositoryTest {
         List<Allergen> allergens = productRepository.getEnabledAllergens();
 
         assertNotNull(allergens);
-        assertEquals(allergens.size(), 1);
-        assertEquals(allergens.get(0).getTag(), TEST_ALLERGEN_TAG);
+        assertEquals(1, allergens.size());
+        assertEquals(TEST_ALLERGEN_TAG, allergens.get(0).getTag());
     }
 
     @Test
@@ -73,11 +95,11 @@ public class ProductRepositoryTest {
         assertNotNull(enabledAllergenNames);
         assertNotNull(notEnabledAllergenNames);
 
-        assertEquals(enabledAllergenNames.size(), 1);
-        assertEquals(notEnabledAllergenNames.size(), 1);
+        assertEquals(1, enabledAllergenNames.size());
+        assertEquals(1, notEnabledAllergenNames.size());
 
-        assertEquals(enabledAllergenNames.get(0).getName(), TEST_ALLERGEN_NAME);
-        assertEquals(notEnabledAllergenNames.get(0).getName(), "Molluschi");
+        assertEquals(TEST_ALLERGEN_NAME, enabledAllergenNames.get(0).getName());
+        assertEquals("Molluschi", notEnabledAllergenNames.get(0).getName());
     }
 
     @Test
@@ -85,10 +107,10 @@ public class ProductRepositoryTest {
         List<AllergenName> allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).blockingGet();
 
         assertNotNull(allergenNames);
-        assertEquals(allergenNames.size(), 2);
+        assertEquals(2,allergenNames.size());
     }
 
-    private List<Allergen> createAllergens() {
+    private static List<Allergen> createAllergens() {
         Allergen allergen1 = new Allergen(TEST_ALLERGEN_TAG, new ArrayList<>());
         allergen1.setEnabled(true);
         allergen1.getNames().add(new AllergenName(allergen1.getTag(), TEST_LANGUAGE_CODE, TEST_ALLERGEN_NAME));
