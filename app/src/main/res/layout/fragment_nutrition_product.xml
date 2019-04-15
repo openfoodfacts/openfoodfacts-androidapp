@@ -37,13 +37,14 @@
                 app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
             <Button
-                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
-                android:drawablePadding="5dp"
                 android:id="@+id/newAdd"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/update_image"
                 android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/spacing_normal"
+                android:text="@string/update_image"
+                android:drawableStart="@drawable/ic_add_a_photo_blue_18dp"
+                android:drawableLeft="@drawable/ic_add_a_photo_blue_18dp"
                 style="@style/BorderButton"
                 android:visibility="gone"/>
             <TextView
