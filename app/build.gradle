@@ -4,8 +4,8 @@ apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 def obtainTestBuildType() {
     //to activate  screenshots buildType in IDE; uncomment next line and comment other
     //otherwise the folder androidTestScreenshots is not recognized as a test folder.
-    def result="screenshots"
-//    def result = "debug";
+//    def result="screenshots"
+    def result = "debug"
 
     if (project.hasProperty("testBuildType")) {
         result = project.getProperties().get("testBuildType")
