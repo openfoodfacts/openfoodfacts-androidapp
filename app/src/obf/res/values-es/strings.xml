@@ -11,12 +11,12 @@
     <string name="website_product">https://world-es.openbeautyfacts.org/producto/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-es.openbeautyfacts.org/contribuyente/</string>
-    <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openbeautyfacts.org/terminos-de-uso</string>
     <string name="txtHomeOnline">Open Beauty Facts es una base de datos abierta con más de %1$d productos cosméticos (además de los que contribuirá) con ingredientes, alérgenos, indicios y toda la información que podemos encontrar en las etiquetas de los productos.</string>
     <string name="txtHome">Open Beauty Facts es una base de datos de productos cosméticos con ingredientes, alérgenos, indicios y todos los fragmentos de información que podemos encontrar en las etiquetas de los productos.</string>
     <string name="slide_1_title">Contribuya a la transparencia de la Cosmética</string>
-    <string name="slide_1_desc">Escanee productos, tome una fotografía, haga que la transparencia de la cosmética suceda</string>
-    <string name="slide_2_title">Obtener los datos</string>
+    <string name="slide_1_desc">Escanee los productos, tomeles una foto, hagamos que la transparencia de la cosmética suceda</string>
+    <string name="slide_2_title">Conoce lo que te interesa</string>
     <string name="slide_2_desc">Información extensiva acerca del producto que has escaneado, descifrada para ti</string>
     <string name="slide_3_title">Guarda registro del producto o vídeo que uses o te guste</string>
     <string name="slide_3_desc">Todo el cosmetico que usa, en una lista a practica que pueda exportar</string>
@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Escanea productos incluso cuando estés sin conexión para agregarlos posteriormente a Open Beauty Facts. Los productos escaneados aparecerán aquí y podrás enviarlo usando el botón de abajo.</string>
     <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Beauty Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">the free cosmetics database</string>
+    <string name="tagline">base de datos de cosméticos gratis</string>
     <string name="product_not_found">El producto %1$s que escaneaste aún no existe en Open Beauty Facts. ¿Puedes agregarla?</string>
     <string name="currently_on_version">Actualmente en Open Beauty Facts</string>
     <string name="category_game_btn">Ayuda a categorizar productos</string>
