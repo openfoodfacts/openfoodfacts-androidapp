@@ -41,7 +41,7 @@
     <string name="text_barcode">اكتب الرمز الشريطي:</string>
     <string name="message_in_activity_save_product_offline">صورة واحدة فقط إلزامية لإرسال منتج جديد.</string>
     <string name="product_incomplete_message">هذا المنتج غير كامل. ونتيجة لذلك، لم نتمكن من القيام بفحص المواد المسببة للحساسية.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">هذا المنتج يحتوي على:</string>
     <string name="no_offline_data">لقد انتهيت</string>
     <string name="first_offline">ستظهر هنا المنتجات المضافة بلا اتصال بالإنترنت</string>
     <!-- Image Upload -->
@@ -51,12 +51,12 @@
         <item>المكونات</item>
         <item>التغذية</item>
         <item>حقائق غذائية</item>
-        <item>Environment</item>
+        <item>البيئة</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>صور المنتج</item>
+        <item>تحليل المكونات</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -209,7 +209,7 @@
     <string name="txtFat">الدهون</string>
     <string name="txtSugars">السكريات</string>
     <string name="hintBarcode">الرمز الشريطي</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">تعلم المزيد عن المستويات الغذائية</string>
     <string name="hintLogin">تسجيل الدخول</string>
     <string name="hintPass">كلمة المرور</string>
     <string name="errorLogin">خطأ في تسجيل الدخول أو كلمة المرور</string>
@@ -267,23 +267,23 @@
     <string name="delete_txt">حذف</string>
     <string name="sign_in_drawer">تسجيل الدخول</string>
     <string name="alert_drawer">تنبيه مسببات الحساسية</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">قوائمك</string>
     <string name="warning_allergens">يحتوي على المواد المسببة للحساسية</string>
     <string name="title_dialog_alert">إضافة تنبيه</string>
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="toggle_flash">وميض</string>
+    <string name="flash_on">تشغيل الفلاش [ON]</string>
+    <string name="flash_off">إطفاء الفلاش [OFF]</string>
+    <string name="ring_on">الرنّة [ON]</string>
+    <string name="ring_off">الرنّة [OFF]</string>
+    <string name="auto_focus_on">تشغيل التركيز التلقائي [ON]</string>
+    <string name="auto_focus_off">إطفاء التركيز التلقائي [OFF]</string>
+    <string name="formats">تنسيقات</string>
+    <string name="choose_formats">اختر التنسيقات</string>
+    <string name="select_camera">اختر الكاميرا</string>
     <string name="ok_button">موافق</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">إلغاء</string>
     <string name="login_button">تسجيل الدخول</string>
-    <string name="create_account_button">Create Account</string>
+    <string name="create_account_button">إنشاء حساب</string>
     <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <string name="from_gallery">من معرض الصور</string>
     <string name="product_sent">تم إرسال المنتج بنجاح</string>
@@ -313,7 +313,7 @@
     <string name="scan_history_drawer">السجل</string>
     <string name="clear_history">محو السجل</string>
     <string name="title_clear_history_dialog">محو</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">هل تريد مسح كافة سجل المسح الضوءي؟</string>
     <string name="export_csv_history">تصدير CSV</string>
     <string name="txt_exporting_history">جار تصدير السجل…</string>
     <string name="txt_history_exported">تم تصدير السجل</string>
@@ -326,8 +326,8 @@
     <string name="check_facts">تحقق</string>
     <string name="nutrition">التغذية</string>
     <string name="calculated_nutrition">التغذية المحسوبة</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="please_enter_weight">يرجى كتابة وزن المنتج</string>
+    <string name="enter_weight">اكتب وزن المنتج</string>
     <string name="calculate_nutrition_facts">احسب حقائق التغذية</string>
     <string name="txt_calories_result">%1$s سعرة حرارية في %2$s %3$s</string>
     <string name="nutrition_carbohydrate">كربوهيدرات</string>
