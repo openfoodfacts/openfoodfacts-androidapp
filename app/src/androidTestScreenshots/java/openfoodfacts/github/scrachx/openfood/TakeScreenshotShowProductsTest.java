@@ -6,6 +6,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter;
+import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import org.junit.Rule;
@@ -22,6 +23,8 @@ import java.util.List;
 public class TakeScreenshotShowProductsTest extends AbstractScreenshotTest {
     @Rule
     public ScreenshotActivityTestRule<ProductActivity> activityShowProductRule = new ScreenshotActivityTestRule<>(ProductActivity.class);
+    @Rule
+    public ScreenshotActivityTestRule<HistoryScanActivity> historyTestRule = new ScreenshotActivityTestRule<>(HistoryScanActivity.class);
 
     private static Intent createProductIntent(String productCode) {
         Intent intent = new Intent(OFFApplication.getInstance(), ProductActivity.class);
@@ -38,11 +41,11 @@ public class TakeScreenshotShowProductsTest extends AbstractScreenshotTest {
     public void testTakeScreenshot() {
         for (ScreenshotParameter screenshotParameter : localeProvider.getParameters()) {
             List<Intent> intents = new ArrayList<>();
-            intents.add(createProductIntent(screenshotParameter.getMainProductCode()));
-            for (String product : screenshotParameter.getOtherProductCodes()) {
+            for (String product : screenshotParameter.getProductCodes()) {
                 intents.add(createProductIntent(product));
             }
             startScreenshotActivityTestRules(screenshotParameter, activityShowProductRule, intents);
+            startScreenshotActivityTestRules(screenshotParameter, historyTestRule);
         }
     }
 }

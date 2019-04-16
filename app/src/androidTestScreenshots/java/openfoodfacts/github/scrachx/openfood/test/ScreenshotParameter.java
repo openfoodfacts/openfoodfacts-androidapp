@@ -6,8 +6,7 @@ import java.util.Locale;
 public class ScreenshotParameter {
     private String countryTag;
     private Locale locale;
-    private String mainProductCode;
-    private List<String> otherProductCodes;
+    private List<String> productCodes;
 
     public ScreenshotParameter(String countryTag, Locale language) {
         this.countryTag = countryTag;
@@ -31,19 +30,12 @@ public class ScreenshotParameter {
         return "country: " + countryTag + "; language: " + locale;
     }
 
-    public String getMainProductCode() {
-        return mainProductCode;
+
+    public List<String> getProductCodes() {
+        return productCodes;
     }
 
-    public void setMainProductCode(String mainProductCode) {
-        this.mainProductCode = mainProductCode;
-    }
-
-    public List<String> getOtherProductCodes() {
-        return otherProductCodes;
-    }
-
-    public void setOtherProductCodes(List<String> otherProductCodes) {
-        this.otherProductCodes = otherProductCodes;
+    public void setProductCodes(List<String> productCodes) {
+        this.productCodes = productCodes;
     }
 }
