@@ -586,7 +586,7 @@
     <string name="do_you_want_to">هل تريد إضافة صور لهذا الباركود؟</string>
     <string name="bottomNav_history">السجل</string>
     <string name="bottomNav_search">بحث</string>
-    <string name="products_added">Products you added or edited</string>
+    <string name="products_added">المنتجات التي قمت بإضافتها أو تحريرها</string>
     <string name="products_incomplete">المنتجات التي أضفتها وتحتاج إلى إكمالها</string>
     <string name="product_pictures_contributed">المنتجات التي التقطت صور لها</string>
     <string name="picture_contributed_incomplete">المنتجات التي إلتقط صور لها تحتاج إلى إكمالها</string>
@@ -665,7 +665,7 @@
     <string name="ingredients_list">قائمة المكونات</string>
     <string name="ingredients_hint">حافظ على الترتيب ، أو حدد النسبة المئوية عند تحديدها ، أو افصلها باستخدام فاصلة أو استخدام \"-\" أو استخدم \"()\" لمكون أحد المكونات ، أو احاطة المواد المسببة للحساسية مع _</string>
     <string name="extract_ingredients">استخراج المكونات</string>
-    <string name="extracting_ingredients">Extracting ingredients</string>
+    <string name="extracting_ingredients">استخراج المكونات</string>
     <string name="looksGood">يبدو جيداً</string>
     <string name="skip_ingredients">سيئ جدًا \n تخطي المكونات</string>
     <string name="traces">آثار</string>
@@ -676,7 +676,7 @@
     <string name="per_serving">لكل وجبة</string>
     <string name="serving_size">حجم الحصة</string>
     <string name="alcohol_unit" formatted="false">٪ الحجم / °</string>
-    <string name="add_a_nutrient">Add a nutrient</string>
+    <string name="add_a_nutrient">إضافة مادة غذائية</string>
     <string name="add_this_product">إضافة منتج</string>
     <string name="product_picture">صورة المنتج</string>
     <string name="one_photo_compulsory">(صورة واحدة فقط إلزامية لإضافة منتج جديد)</string>
