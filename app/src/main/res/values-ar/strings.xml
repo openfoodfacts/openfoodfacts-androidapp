@@ -572,7 +572,7 @@
     <string name="by_time">شوهدت مؤخرًا</string>
     <string name="sort">التصنيف</string>
     <string name="by_nutrition_grade">درجة التغذية</string>
-    <string name="sort_by">Sort by</string>
+    <string name="sort_by">ترتيب حسب</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">قم بهز الهاتف لمسح المنتجات</string>
