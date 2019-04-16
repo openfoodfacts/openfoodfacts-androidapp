@@ -367,7 +367,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             //Also add the country set by the user in preferences
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String savedCountry = sharedPref.getString("user_country", "");
+            String savedCountry = sharedPref.getString(PreferencesFragment.USER_COUNTRY_PREFERENCE_KEY, "");
             if (!savedCountry.isEmpty()) {
                 chipValues.add(savedCountry);
             }

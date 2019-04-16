@@ -1,12 +1,10 @@
-package openfoodfacts.github.scrachx.openfood;//
+package openfoodfacts.github.scrachx.openfood.test;//
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Environment;
 import android.util.Log;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import tools.fastlane.screengrab.file.Chmod;
 
 import java.io.BufferedOutputStream;
@@ -16,20 +14,24 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
+/**
+ * Write screennshot files.
+ */
 public class FileWritingScreenshotCallback implements tools.fastlane.screengrab.ScreenshotCallback {
     private static final String LOG_TAG = FileWritingScreenshotCallback.class.getSimpleName();
-    private DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd-HHmm");
+    private DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd-HHmmss");
+    private ScreenshotParameter screenshotParameter;
 
     public FileWritingScreenshotCallback() {
     }
 
+    @Override
     public void screenshotCaptured(String screenshotName, Bitmap screenshot) {
         try {
-            final Locale locale = LocaleHelper.getLocale();
-            File screenshotDirectory = getFilesDirectory(locale);
-            File screenshotFile = this.getScreenshotFile(screenshotDirectory, localeToDirName(locale) + "-" + screenshotName);
+            File screenshotDirectory = getFilesDirectory();
+            File screenshotFile = this.getScreenshotFile(screenshotDirectory,
+                screenshotParameter.getCountryTag() + "_" + screenshotParameter.getLanguage() + "-" + screenshotName);
             try (BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(screenshotFile))) {
                 screenshot.compress(CompressFormat.PNG, 100, fos);
                 Chmod.chmodPlusR(screenshotFile);
@@ -57,7 +59,7 @@ public class FileWritingScreenshotCallback implements tools.fastlane.screengrab.
         return false;
     }
 
-    private File getFilesDirectory(Locale locale) throws IOException {
+    private File getFilesDirectory() throws IOException {
 
         if (!isExternalStorageWritable()) {
             Log.e(LOG_TAG, "Can't write to external storage check your installation");
@@ -66,8 +68,7 @@ public class FileWritingScreenshotCallback implements tools.fastlane.screengrab.
 
         File targetDirectory = new File(Environment.getExternalStoragePublicDirectory(
             Environment.DIRECTORY_PICTURES), BuildConfig.FLAVOR + "Screenshots");
-        Log.w(LOG_TAG, "Screenshots created in " + targetDirectory.getAbsolutePath());
-        File internalDir = new File(targetDirectory, localeToDirName(locale));
+        File internalDir = new File(targetDirectory, screenshotParameter.getCountryTag());
         File directory = initializeDirectory(internalDir);
 
         if (directory == null) {
@@ -92,19 +93,15 @@ public class FileWritingScreenshotCallback implements tools.fastlane.screengrab.
         return null;
     }
 
-    private static String localeToDirName(Locale locale) {
-        String localeCountry = locale.getCountry();
-        if (localeCountry != null && localeCountry.length() != 0) {
-            return locale.getLanguage() + "-" + localeCountry;
-        }
-        return locale.getLanguage();
-    }
-
     private static void createPathTo(File dir) throws IOException {
         if (!dir.exists() && !dir.mkdirs()) {
             throw new IOException("Unable to create output dir: " + dir.getAbsolutePath());
         } else {
             Chmod.chmodPlusRWX(dir);
         }
+    }
+
+    public void setScreenshotParameter(ScreenshotParameter screenshotParameter) {
+        this.screenshotParameter = screenshotParameter;
     }
 }

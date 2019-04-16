@@ -311,7 +311,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
+    public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
         mState = (State) intent.getExtras().getSerializable("state");

@@ -48,7 +48,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
-    private static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
+    public static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
     private Context context;
 
     @Override
