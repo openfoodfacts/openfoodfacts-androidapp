@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.util.Log;
+import junit.framework.Assert;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.PrefManager;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.function.Consumer;
@@ -13,10 +16,15 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
     String name;
     private Intent activityIntent;
     private ScreenshotParameter screenshotParameter;
-    Consumer<ScreenshotActivityTestRule> postActivityStartedAction;
+    Consumer<ScreenshotActivityTestRule> afterActivityLaunchedAction;
+    Consumer<ScreenshotActivityTestRule> beforeActivityStartedAction;
 
     public ScreenshotActivityTestRule(Class<T> activityClass) {
         this(activityClass, activityClass.getSimpleName(), null);
+    }
+
+    public void setBeforeActivityStartedAction(Consumer<ScreenshotActivityTestRule> beforeActivityStartedAction) {
+        this.beforeActivityStartedAction = beforeActivityStartedAction;
     }
 
     public ScreenshotParameter getScreenshotParameter() {
@@ -45,12 +53,32 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         this.screenshotParameter = screenshotParameter;
     }
 
-    public void setPostActivityStartedAction(Consumer<ScreenshotActivityTestRule> postActivityStartedAction) {
-        this.postActivityStartedAction = postActivityStartedAction;
+    public void setAfterActivityLaunchedAction(Consumer<ScreenshotActivityTestRule> afterActivityLaunchedAction) {
+        this.afterActivityLaunchedAction = afterActivityLaunchedAction;
     }
 
     public void setActivityIntent(Intent activityIntent) {
         this.activityIntent = activityIntent;
+    }
+
+    private boolean firstTimeLaunched = false;
+
+    public void setFirstTimeLaunched(boolean firstTimeLaunched) {
+        this.firstTimeLaunched = firstTimeLaunched;
+    }
+
+    @Override
+    protected void beforeActivityLaunched() {
+        try {
+            runOnUiThread(() -> {
+                new PrefManager(OFFApplication.getInstance()).setFirstTimeLaunch(firstTimeLaunched);
+            });
+        } catch (Throwable throwable) {
+            Assert.fail(throwable.getMessage());
+        }
+        if (beforeActivityStartedAction != null) {
+            beforeActivityStartedAction.accept(this);
+        }
     }
 
     @Override
@@ -58,8 +86,8 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         try {
             Thread.sleep(5000);
             InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-            if (postActivityStartedAction != null) {
-                postActivityStartedAction.accept(this);
+            if (afterActivityLaunchedAction != null) {
+                afterActivityLaunchedAction.accept(this);
             }
             takeScreenshot();
             this.finishActivity();
