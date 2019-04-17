@@ -176,7 +176,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         ListPreference energyUnitPreference = (ListPreference) findPreference("energyUnitPreference");
         String[] energyUnits = getActivity().getResources().getStringArray(R.array.energy_units);
-        ;
         energyUnitPreference.setEntries(energyUnits);
         energyUnitPreference.setEntryValues(energyUnits);
         energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {

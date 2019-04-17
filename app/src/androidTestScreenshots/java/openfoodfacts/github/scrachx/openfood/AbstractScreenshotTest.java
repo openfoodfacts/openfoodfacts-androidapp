@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.test.rule.GrantPermissionRule;
@@ -11,7 +12,6 @@ import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotsLocaleProvider;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.PrefManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -45,8 +45,10 @@ public abstract class AbstractScreenshotTest {
 
     protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule activityRule,
                                                     Collection<Intent> intents) {
+
         changeLocale(screenshotParameter);
         for (Intent intent : intents) {
+            activityRule.finishActivity();
             String title = intent.getStringExtra(ACTION_NAME);
             if (title != null) {
                 activityRule.setName(title);
@@ -58,8 +60,12 @@ public abstract class AbstractScreenshotTest {
     }
 
     protected void changeLocale(ScreenshotParameter parameter) {
+        changeLocale(parameter, OFFApplication.getInstance());
+    }
+
+    protected void changeLocale(ScreenshotParameter parameter, Context context) {
         Log.d(LOG_TAG, "Change parameters to " + parameter);
-        LocaleHelper.setLocale(parameter.getLocale());
+        LocaleHelper.setLocale(context, parameter.getLocale());
         final String countryName = parameter.getCountryTag();
         setCountyInPrefs(countryName);
     }

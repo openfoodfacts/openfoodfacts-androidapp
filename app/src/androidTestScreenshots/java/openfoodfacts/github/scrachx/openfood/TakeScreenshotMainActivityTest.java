@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood;
 import android.support.test.runner.AndroidJUnit4;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
+import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,8 +16,12 @@ public class TakeScreenshotMainActivityTest extends AbstractScreenshotTest {
     @Rule
     public ScreenshotActivityTestRule<MainActivity> activityRule = new ScreenshotActivityTestRule<>(MainActivity.class);
 
+    @Rule
+    public ScreenshotActivityTestRule<WelcomeActivity> welcomeActivityRule = new ScreenshotActivityTestRule<>(WelcomeActivity.class);
+
     @Test
     public void testTakeScreenshotMainActivity() {
-        startForAllLocales(activityRule);
+        welcomeActivityRule.setFirstTimeLaunched(true);
+        startForAllLocales(welcomeActivityRule,activityRule);
     }
 }

@@ -35,8 +35,8 @@ public class LocaleHelper {
         return getLocale(OFFApplication.getInstance());
     }
 
-    public static void setLocale(Locale locale) {
-        setLocale(OFFApplication.getInstance(), locale);
+    public static Context setLocale(Locale locale) {
+        return setLocale(OFFApplication.getInstance(), locale);
     }
 
     public static String getLanguage(Context context) {
@@ -55,25 +55,17 @@ public class LocaleHelper {
         return locale == null ? Locale.getDefault() : locale;
     }
 
-    public static void setLocale(Context context, String language) {
+    public static Context setLocale(Context context, String language) {
         PreferenceManager.getDefaultSharedPreferences(context)
             .edit()
             .putString(SELECTED_LANGUAGE, language)
             .apply();
 
         Locale locale = getLocale(language);
-
-        Locale.setDefault(locale);
-
-        Resources resources = context.getResources();
-
-        Configuration configuration = resources.getConfiguration();
-        configuration.locale = locale;
-
-        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+       return setLocale(context,locale);
     }
 
-    public static void setLocale(Context context, Locale locale) {
+    public static Context  setLocale(Context context, Locale locale) {
         PreferenceManager.getDefaultSharedPreferences(context)
             .edit()
             .putString(SELECTED_LANGUAGE, locale.getLanguage())
@@ -84,9 +76,15 @@ public class LocaleHelper {
         Resources resources = context.getResources();
 
         Configuration configuration = resources.getConfiguration();
-        configuration.locale = locale;
-
+        if (Build.VERSION.SDK_INT >= 17) {
+            configuration.setLocale(locale);
+            context=context.createConfigurationContext(configuration);
+        } else {
+            configuration.locale = locale;
+        }
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        return context;
+
     }
 
     /**

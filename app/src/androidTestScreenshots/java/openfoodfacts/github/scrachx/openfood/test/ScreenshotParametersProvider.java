@@ -24,7 +24,7 @@ public class ScreenshotParametersProvider {
             "30005501", "5412971096664", "9311627010183"};
 
         res.add(create("brazil", new Locale("pt", "BR"), productCodes));
-        res.add(create("france", Locale.FRANCE, "3017760002707", "3387390326574", "3179142054664"));
+//        res.add(create("france", Locale.FRANCE, "3017760002707", "3387390326574", "3179142054664"));
         res.add(create("united-kingdom", Locale.ENGLISH, "3017760002707", "3387390326574", "3179142054664"));
 
         return res;

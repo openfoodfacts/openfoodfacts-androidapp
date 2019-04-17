@@ -6,6 +6,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.util.Log;
 import junit.framework.Assert;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.PrefManager;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.function.Consumer;
 
 public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTestRule<T> {
+    public static final int MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY = 5000;
     String name;
     private Intent activityIntent;
     private ScreenshotParameter screenshotParameter;
@@ -72,8 +74,10 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         try {
             runOnUiThread(() -> {
                 new PrefManager(OFFApplication.getInstance()).setFirstTimeLaunch(firstTimeLaunched);
+                LocaleHelper.setLocale(InstrumentationRegistry.getInstrumentation().getTargetContext(),screenshotParameter.getLocale());
             });
         } catch (Throwable throwable) {
+            throwable.printStackTrace();
             Assert.fail(throwable.getMessage());
         }
         if (beforeActivityStartedAction != null) {
@@ -84,10 +88,15 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
     @Override
     protected void afterActivityLaunched() {
         try {
-            Thread.sleep(5000);
-            InstrumentationRegistry.getInstrumentation().waitForIdleSync();
+
             if (afterActivityLaunchedAction != null) {
                 afterActivityLaunchedAction.accept(this);
+                Thread.sleep(MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY);
+                InstrumentationRegistry.getInstrumentation().waitForIdleSync();
+            }
+            else{
+                Thread.sleep(MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY);
+                InstrumentationRegistry.getInstrumentation().waitForIdleSync();
             }
             takeScreenshot();
             this.finishActivity();
