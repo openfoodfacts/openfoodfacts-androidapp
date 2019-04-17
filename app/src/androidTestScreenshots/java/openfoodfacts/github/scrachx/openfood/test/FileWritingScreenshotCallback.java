@@ -23,7 +23,7 @@ public class FileWritingScreenshotCallback implements tools.fastlane.screengrab.
     private DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd-HHmmss");
     private ScreenshotParameter screenshotParameter;
 
-    public FileWritingScreenshotCallback() {
+    FileWritingScreenshotCallback() {
     }
 
     @Override
@@ -53,10 +53,7 @@ public class FileWritingScreenshotCallback implements tools.fastlane.screengrab.
     /* Checks if external storage is available for read and write */
     private static boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            return true;
-        }
-        return false;
+        return Environment.MEDIA_MOUNTED.equals(state);
     }
 
     private File getFilesDirectory() throws IOException {
@@ -101,7 +98,7 @@ public class FileWritingScreenshotCallback implements tools.fastlane.screengrab.
         }
     }
 
-    public void setScreenshotParameter(ScreenshotParameter screenshotParameter) {
+    void setScreenshotParameter(ScreenshotParameter screenshotParameter) {
         this.screenshotParameter = screenshotParameter;
     }
 }

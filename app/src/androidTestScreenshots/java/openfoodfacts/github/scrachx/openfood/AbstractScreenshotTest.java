@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.test.rule.GrantPermissionRule;
@@ -25,16 +24,16 @@ import java.util.Locale;
  * Take screenshots...
  */
 @RunWith(JUnit4.class)
-public class AbstractScreenshotTest {
-    public static final String ACTION_NAME = "actionNmae";
+public abstract class AbstractScreenshotTest {
+    public static final String ACTION_NAME = "actionName";
     private static final String LOG_TAG = AbstractScreenshotTest.class.getSimpleName();
     @Rule
     public GrantPermissionRule permissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CHANGE_CONFIGURATION);
     private static Locale initLocale;
     private static String initCountry;
-    protected ScreenshotsLocaleProvider localeProvider = new ScreenshotsLocaleProvider();
+    ScreenshotsLocaleProvider localeProvider = new ScreenshotsLocaleProvider();
 
-    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<? extends Activity>... activityRules) {
+    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule... activityRules) {
         changeLocale(screenshotParameter);
         for (ScreenshotActivityTestRule activityRule : activityRules) {
             activityRule.finishActivity();
@@ -43,7 +42,7 @@ public class AbstractScreenshotTest {
         }
     }
 
-    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<? extends Activity> activityRule,
+    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule activityRule,
                                                     Collection<Intent> intents) {
         changeLocale(screenshotParameter);
         for (Intent intent : intents) {
@@ -71,7 +70,7 @@ public class AbstractScreenshotTest {
         editor.apply();
     }
 
-    public void startForAllLocales(ScreenshotActivityTestRule<? extends Activity>... activityRule) {
+    public void startForAllLocales(ScreenshotActivityTestRule... activityRule) {
         for (ScreenshotParameter screenshotParameter : localeProvider.getParameters()) {
             startScreenshotActivityTestRules(screenshotParameter, activityRule);
         }

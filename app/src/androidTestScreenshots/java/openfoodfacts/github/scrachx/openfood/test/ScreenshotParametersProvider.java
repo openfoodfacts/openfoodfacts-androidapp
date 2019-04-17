@@ -8,17 +8,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class ScreenshotParametersProvider {
-    /**
-     * @param countryTag see https://static.openfoodfacts.org/data/taxonomies/countries.json. the county tag is en:countryTag
-     */
     public static ScreenshotParameter create(String countryTag, String languageCode, String... otherProductsCode) {
         return create(countryTag, LocaleHelper.getLocale(languageCode), otherProductsCode);
     }
 
-    /**
-     * @param countryTag see https://static.openfoodfacts.org/data/taxonomies/countries.json. the county tag is en:countryTag
-     */
-    public static ScreenshotParameter create(String countryTag, Locale locale, String... otherProductsCode) {
+    private static ScreenshotParameter create(String countryTag, Locale locale, String... otherProductsCode) {
         ScreenshotParameter parameter = new ScreenshotParameter(countryTag, locale);
         parameter.setProductCodes(Arrays.asList(otherProductsCode));
         return parameter;

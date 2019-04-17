@@ -13,7 +13,7 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
     String name;
     private Intent activityIntent;
     private ScreenshotParameter screenshotParameter;
-    Consumer<ScreenshotActivityTestRule> action;
+    Consumer<ScreenshotActivityTestRule> postActivityStartedAction;
 
     public ScreenshotActivityTestRule(Class<T> activityClass) {
         this(activityClass, activityClass.getSimpleName(), null);
@@ -45,8 +45,8 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         this.screenshotParameter = screenshotParameter;
     }
 
-    public void setAction(Consumer<ScreenshotActivityTestRule> action) {
-        this.action = action;
+    public void setPostActivityStartedAction(Consumer<ScreenshotActivityTestRule> postActivityStartedAction) {
+        this.postActivityStartedAction = postActivityStartedAction;
     }
 
     public void setActivityIntent(Intent activityIntent) {
@@ -58,11 +58,10 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         try {
             Thread.sleep(5000);
             InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-            if (action != null) {
-                action.accept(this);
-            } else {
-                takeScreenshot();
+            if (postActivityStartedAction != null) {
+                postActivityStartedAction.accept(this);
             }
+            takeScreenshot();
             this.finishActivity();
         } catch (Throwable throwable) {
             Log.e(ScreenshotActivityTestRule.class.getSimpleName(), "run on ui", throwable);

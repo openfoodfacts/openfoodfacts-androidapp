@@ -1,13 +1,11 @@
 package openfoodfacts.github.scrachx.openfood;
 
-import android.support.test.annotation.UiThreadTest;
 import android.support.test.runner.AndroidJUnit4;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 /**
  * Take screenshots...
