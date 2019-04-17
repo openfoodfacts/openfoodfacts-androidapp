@@ -10,7 +10,6 @@ import tools.fastlane.screengrab.Screengrab;
 /**
  * Take screenshots...
  */
-@RunWith(JUnit4.class)
 public class ScreenshotTaker {
     private static final String LOG_TAG = ScreenshotTaker.class.getSimpleName();
     private FileWritingScreenshotCallback callback = new FileWritingScreenshotCallback();
