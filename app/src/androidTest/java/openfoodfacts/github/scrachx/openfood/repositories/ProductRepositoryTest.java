@@ -6,13 +6,9 @@ import android.util.Log;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.greenrobot.greendao.database.Database;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
@@ -32,20 +28,9 @@ public class ProductRepositoryTest {
     private static final String TEST_ALLERGEN_NAME = "Altramuces";
     private static IProductRepository productRepository;
 
-    @BeforeClass
-    public static void setup() {
-        //to be sure we start from a clean state:
-        cleanAllergens();
-        productRepository = ProductRepository.getInstance();
-        productRepository.saveAllergens(createAllergens());
-    }
 
-    @AfterClass
-    public static void close() {
-        cleanAllergens();
-    }
-
-    private static void cleanAllergens() {
+    @Before
+    public void cleanAllergens() {
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         Database db = daoSession.getDatabase();
         db.beginTransaction();
@@ -57,6 +42,13 @@ public class ProductRepositoryTest {
         } finally {
             db.endTransaction();
         }
+        productRepository = ProductRepository.getInstance();
+        productRepository.saveAllergens(createAllergens());
+    }
+
+    @After
+    public void close() {
+        cleanAllergens();
     }
 
     @Test
@@ -107,7 +99,7 @@ public class ProductRepositoryTest {
         List<AllergenName> allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).blockingGet();
 
         assertNotNull(allergenNames);
-        assertEquals(2,allergenNames.size());
+        assertEquals(2, allergenNames.size());
     }
 
     private static List<Allergen> createAllergens() {
