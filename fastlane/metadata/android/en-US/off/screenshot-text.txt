@@ -1,5 +1,4 @@
 Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
 
 =====================
 V2 screenshots
