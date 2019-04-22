@@ -2,7 +2,7 @@ Det er overskrifterne vist ovenover skærmfotoene i Google Play. Hold dem korte 
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=da
 
 =====================
-V2 screenshots
+V2-skærmfotos
 =====================
 
 Skan produkter
@@ -38,14 +38,14 @@ Kraftfuld
 Ernæringsfakta
 
 =====================
-V3 screenshots
+V3-skærmfotos
 =====================
 
 Vælg de produkter, som er gode for dig og for 🌍 planeten!
 
-✔ Ultra-fast barcode scan
+✔ Ultra-hurtig stregkodeskanning
 
-✔ A global supermarket in your pocket
+✔ Et globalt supermarked i din lomme
 
 Ernæringsmæssig kvalitet
 
@@ -53,9 +53,9 @@ Ultraforarbejdede fødevarer
 
 CO2-fodaftryk
 
-Compare easily before you buy
+Sammenlign nemt, inden du køber
 
-Create shopping lists, intake lists…
+Opret indkøbslister, indtagslister…
 
 Find og sammenlign flere end 750.000 produkter.
 
@@ -63,7 +63,7 @@ Find og sammenlign flere end 750.000 produkter.
 
 Ubegrænset og 100% privat skanningshistorik
 
-Swipe for even more details
+Stryg for endnu flere detaljer
 
 Indstil allergenadvarsler
 
