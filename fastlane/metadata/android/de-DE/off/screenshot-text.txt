@@ -2,7 +2,7 @@ Das sind die Beschriftungen, die über den Screenshots im Playstore angezeigt we
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=de
 
 ════════════════
-V2 screenshots
+V2 Bildschirmfotos
 ════════════════
 
 Produkte erfassen
@@ -38,7 +38,7 @@ Leistungsfähig
 Nährwertangaben
 
 ════════════════
-V3 screenshots
+V3 Bildschirmfotos
 ════════════════
 
 Wählen Sie die Produkte, die gut für Sie und für den 🌍 Planeten sind!
@@ -55,7 +55,7 @@ CO₂-Einfluss
 
 Vergleichen Sie leicht, bevor Sie kaufen
 
-Create shopping lists, intake lists…
+Erstellen Sie Einkaufslisten, Eingangslisten …
 
 Mehr als 750.000 Produkte finden & vergleichen.
 
@@ -63,7 +63,7 @@ Mehr als 750.000 Produkte finden & vergleichen.
 
 Unbegrenzter und vollständig privater Verlauf der erfassten Produkte
 
-Swipe for even more details
+Wischen, um weitere Details anzuzeigen
 
 Allergenwarnungen festlegen
 
