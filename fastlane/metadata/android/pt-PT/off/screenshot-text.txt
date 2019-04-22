@@ -1,45 +1,72 @@
 Esses são os slogans mostrados acima das capturas de tela no playstore. Mantenha-os curtos e atraentes.
-Não mude o nome do ficheiro.
----
-scan_pt.png
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+
+=====================
+V2 screenshots
+=====================
+
 Digitalizar produto
 
-quickview_pt.png
 Obtenha o Nutriscore
 
-history_pt.png
 Seu histórico completo de digitalizações, totalmente privado e exportável
 
-product_view_wikipedia_pt.png
 Mais na Wikipedia
 
-allergen_alert_pt.png
 Definir alertas de alérgenos
 
-home_pt.png
-product_view_nutrition_summary_pt.png
 Nutrição simplificada
 
-product_view_allergen_alert_pt.png
 Alerta de alergénio
 
-categories_pt.png
 Obtenha alternativas para seus alimentos favoritos
 
-foodtransparency_en.png
 Torne-se um ator da transparência alimentar
 
-product_view_summary_pt.png
 Wikipedia para comida
+
 Wikipedia para Cosméticos
+
 Wikipedia para comida para animais
+
 Wikipedia de produtos
 
-product_view_ingredients_pt.png
 Ingredientes
 
-menu_pt.png
 Poderoso
 
-product_view_nutrition_table_pt.png
 Informação nutricional
+
+=====================
+V3 screenshots
+=====================
+
+Escolha os produtos que são bons para você e para o 🌍 planeta!
+
+✔ Ultra-fast barcode scan
+
+✔ A global supermarket in your pocket
+
+Qualidade nutricional
+
+Alimentos ultraprocessados
+
+Impacto de carbono
+
+Compare easily before you buy
+
+Create shopping lists, intake lists…
+
+Encontre e compare mais de 750 000 produtos.
+
+
+
+Histórico de digitalizações ilimitado e totalmente privado
+
+Swipe for even more details
+
+Definir alertas de alérgenos
+
+Junte-se ao nosso movimento global para a transparência alimentar
+
+world.openfoodfacts.org/contribute
