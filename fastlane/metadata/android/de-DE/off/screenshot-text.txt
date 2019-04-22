@@ -1,9 +1,9 @@
 Das sind die Beschriftungen, die über den Screenshots im Playstore angezeigt werden. Halten Sie sie kurz und attraktiv.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=de
 
-=====================
+════════════════
 V2 screenshots
-=====================
+════════════════
 
 Produkte erfassen
 
@@ -37,15 +37,15 @@ Leistungsfähig
 
 Nährwertangaben
 
-=====================
+════════════════
 V3 screenshots
-=====================
+════════════════
 
 Wählen Sie die Produkte, die gut für Sie und für den 🌍 Planeten sind!
 
-✔ Ultra-fast barcode scan
+✔ Ultraschnelles Einlesen von Strichcodes
 
-✔ A global supermarket in your pocket
+✔ Ein weltumspannender Supermarkt in der Tasche
 
 Nahrungsqualität
 
@@ -53,7 +53,7 @@ Sehr hoch verarbeitete Lebensmittel
 
 CO₂-Einfluss
 
-Compare easily before you buy
+Vergleichen Sie leicht, bevor Sie kaufen
 
 Create shopping lists, intake lists…
 
