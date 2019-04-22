@@ -249,7 +249,7 @@
     <string name="delete_txt">Törlés</string>
     <string name="sign_in_drawer">Bejelentkezés</string>
     <string name="alert_drawer">Allergén riasztás</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">A listád</string>
     <string name="warning_allergens">Allergéneket tartalmaz</string>
     <string name="title_dialog_alert">Figyelmeztetés hozzáadása</string>
     <string name="toggle_flash">Vaku</string>
@@ -359,11 +359,11 @@
     <string name="txt_no_results">Nincs találat</string>
     <string name="txt_extend_search">Próbálja meg bővíteni a keresést vagy adja hozzá a terméket</string>
     <string name="txt_no_matching__category_products">Ó ne! Nincs termékünk ebben a kategóriában. Hozzá akar adni egyet?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching_allergen_products">Jaj ne, nincs semmilyen termékünk ezzel az allergénnel. Hozzá tudsz adni egyet?</string>
+    <string name="txt_no_matching_label_products">Jaj ne, nincsen termék ezzel az allergénnel. Tudsz hozzáadni?</string>
+    <string name="txt_no_matching_additive_products">Jaj ne, nincsen termék ezzel az allergénnel. Tudsz hozzáadni?</string>
+    <string name="txt_no_matching_country_products">Jaj ne, nincs termékünk ebből az országból. Tudsz hozzáadni egyet?</string>
+    <string name="txt_no_matching_store_products">Jaj ne, nincs termékünk ebből az üzletből. Tudsz hozzáadni egyet?</string>
     <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
     <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
     <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
