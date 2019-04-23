@@ -265,7 +265,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         periodsAfterOpeningParent.setVisibility(visibility);
         changeVisibilityManufacturingSectionTo(visibility);
         changePurchasingSectionVisibilityTo(visibility);
-        otherImage.setVisibility(visibility);
         greyLine2.setVisibility(visibility);
         greyLine3.setVisibility(visibility);
         greyLine4.setVisibility(visibility);
