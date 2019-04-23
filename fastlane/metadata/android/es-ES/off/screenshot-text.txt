@@ -2,7 +2,7 @@ Esos son los eslóganes que se muestran arriba de las capturas de pantalla en la
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
-V2 screenshots
+Capturas de pantalla versión 2
 =====================
 
 Escanea productos
@@ -38,14 +38,14 @@ Poderoso
 Información nutricional
 
 =====================
-V3 screenshots
+Capturas de pantalla versión 3
 =====================
 
 ¡Elija los productos que son buenos para usted y para el planeta 🌍!
 
-✔ Ultra-fast barcode scan
+Escaner código de barras ultrarrápido
 
-✔ A global supermarket in your pocket
+Un supermercado global en tu bolsillo
 
 Calidad nutricional
 
@@ -53,7 +53,7 @@ Alimentos ultraprocesados
 
 Impacto de carbono
 
-Compare easily before you buy
+Compara fácilmente antes de comprar
 
 Create shopping lists, intake lists…
 
