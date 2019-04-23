@@ -55,7 +55,7 @@ Impacto de carbono
 
 Compara fácilmente antes de comprar
 
-Create shopping lists, intake lists…
+Crea listas de compra, registros de ingesta,…
 
 Encuentra y compara más de 750 000 productos.
 
@@ -63,10 +63,10 @@ Encuentra y compara más de 750 000 productos.
 
 Historial de escaneo ilimitado y completamente privado
 
-Swipe for even more details
+Desliza para más detalles
 
 Configurar alertas de Allergen
 
 Únete a nuestro movimiento global para la transparencia alimentaria
 
-world.openfoodfacts.org/contribute
+https://es.openfoodfacts.org/contribuir
