@@ -342,6 +342,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         } else {
             radioGroup.check(R.id.per_serving);
         }
+        radioGroup.jumpDrawablesToCurrentState();
     }
 
     private void loadNutritionsImage(String path) {
