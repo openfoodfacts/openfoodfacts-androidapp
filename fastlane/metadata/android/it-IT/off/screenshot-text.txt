@@ -2,7 +2,7 @@ Quelle sono le tagline mostrate sopra gli screenshot nel playstore. Tienili cort
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=it
 
 =====================
-V2 screenshots
+Screenshot V2
 =====================
 
 Scansiona prodotti
@@ -38,14 +38,14 @@ Potente
 Informazioni nutrizionali
 
 =====================
-V3 screenshots
+Screenshot V3
 =====================
 
 Scegli i prodotti che fanno bene per te e per il 🌍 pianeta!
 
-✔ Ultra-fast barcode scan
+☆ Scansione codice a barre ultra-veloce
 
-✔ A global supermarket in your pocket
+✔ Un supermercato globale in tasca
 
 Qualità nutrizionale
 
@@ -53,9 +53,9 @@ Prodotti alimentari ultra-elaborati
 
 Impatto carbonio
 
-Compare easily before you buy
+Confronta facilmente prima di acquistare
 
-Create shopping lists, intake lists…
+Crea liste della spesa, liste di assunzione…
 
 Trova e confronta oltre 750 000 prodotti.
 
@@ -63,7 +63,7 @@ Trova e confronta oltre 750 000 prodotti.
 
 Cronologia di scansione illimitata e completamente privata
 
-Swipe for even more details
+Scorri per ulteriori dettagli
 
 Imposta avvisi allergeni
 
