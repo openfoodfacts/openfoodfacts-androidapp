@@ -1,28 +1,35 @@
 apply plugin: 'com.android.application'
 apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
+apply plugin: 'org.greenrobot.greendao'
+
+greendao {
+    schemaVersion 12
+}
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 311
         versionName "3.1.1"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+        // jackOptions.enabled = true
         vectorDrawables.useSupportLibrary = true
-    }
-    
-    buildTypes {
-        release {
-            crunchPngs true
-        }
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    dataBinding {
-        enabled true
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            crunchPngs true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 
     flavorDimensions "versionCode"
@@ -62,21 +69,19 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
-
     }
 
+    dataBinding {
+        enabled true
+    }
 
     dexOptions {
         preDexLibraries = false
         javaMaxHeapSize "4g"
     }
 
-    defaultConfig {
-        multiDexEnabled true
-        // jackOptions.enabled = true
-    }
-
     compileOptions {
+        encoding = 'UTF-8'
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -87,16 +92,7 @@ android {
     }
 
     packagingOptions {
-        exclude 'META-INF/DEPENDENCIES.txt'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/notice.txt'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/dependencies.txt'
-        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/*'
     }
 
     testOptions {
@@ -106,154 +102,150 @@ android {
     }
 }
 
-buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
-        maven { url "https://jitpack.io" }
-    }
+ext {
+    supportLibraryVersion = '28.0.0'
+    daggerVersion = '2.13' //2.22.1
+    retrofitVersion = '2.3.0' //2.5.0
+    // gsonVersion = '2.8.5'
+    jacksonVersion = '2.8.11' //2.9.9
+    butterknifeVersion = '8.8.1' //10.1.0
+    espressoVersion = '3.0.2'
 }
 
-apply plugin: 'org.greenrobot.greendao'
-
-greendao {
-    schemaVersion 12
-}
-android {
-    // Other settings
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
 dependencies {
-
-    //Android
-    implementation "com.android.support:customtabs:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:preference-v14:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation "com.android.support:multidex:$rootProject.multidexVersion"
+//Android
+    implementation "com.android.support:customtabs:$supportLibraryVersion"
+    implementation "com.android.support:design:$supportLibraryVersion"
+    implementation "com.android.support:exifinterface:$supportLibraryVersion"
+    implementation "com.android.support:support-v4:$supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    implementation "com.android.support:preference-v14:$supportLibraryVersion"
+    implementation "com.android.support:support-annotations:$supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3' //2.0.0-alpha4
+    implementation 'com.android.support:multidex:1.0.3'
 
     //DI
-    implementation 'com.android.support:support-v4:27.1.1'
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    compileOnly 'javax.annotation:jsr250-api:1.0'
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    compileOnly 'javax.annotation:jsr250-api:1.0' //OLD
+    // compileOnly 'javax.annotation:javax.annotation-api:1.3.4'
+    //https://github.com/javaee/javax.annotation
+    //https://github.com/eclipse-ee4j/common-annotations-api
 
     //Rx
-    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //Networking
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-jackson:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-jackson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1' //3.14.1
 
-    //scheduling jobs
-    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+    //Scheduling jobs
+    //TODO: Deprecated; replace with WorkManager
+    //https://developer.android.com/topic/libraries/architecture/workmanager/migrating-fb
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5' //0.8.6
 
     //Serialization/Deserialization
-    implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
-    implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
-    implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
 
-    //    compile 'io.rest-assured:json-path:3.0.7'
+    //implementation 'io.rest-assured:json-path:3.3.0'
 
     //CSV Serialization/Deserialization
-    implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
+    implementation 'com.opencsv:opencsv:4.1' //4.5
 
     //Database
     implementation "org.greenrobot:greendao:$rootProject.greenDaoVersion"
 
     //Image Loading
-    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+    implementation 'com.squareup.picasso:picasso:2.5.2' //2.71828
+    //implementation 'com.squareup.picasso3:picasso:3.0.0-SNAPSHOT'
 
     //Image from gallery or camera
-    implementation "com.github.jkwiecien:EasyImage:$rootProject.easyImageVersion"
+    //DO NOT UPDATE : saveInAppExternalFilesDir() removed
+    implementation 'com.github.jkwiecien:EasyImage:1.4.0' //3.0.1
 
     //Binding
-    implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+    implementation "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 
     //Barcode and QR Scanner
-    implementation("com.journeyapps:zxing-android-embedded:$rootProject.journeyappsZxingScannerVersion") {
+    implementation('com.journeyapps:zxing-android-embedded:3.6.0', {
         transitive = false
-    }
-    implementation "com.google.zxing:core:$rootProject.zxingCoreVersion"
+    })
+    //For Android 14+ support zxing:core should be 3.3.0 or earlier
+    implementation 'com.google.zxing:core:3.3.0' //3.3.3
 
     //HTML Dom
-    implementation "org.jsoup:jsoup:$rootProject.htmlDomVersion"
+    implementation 'org.jsoup:jsoup:1.11.3'
 
     //Apache
-    implementation "org.apache.commons:commons-collections4:$rootProject.apacheCollectionsVersion"
-    implementation "commons-validator:commons-validator:$rootProject.apacheValidatorVersion"
+    implementation 'org.apache.commons:commons-collections4:4.1' //4.3
+    implementation 'commons-validator:commons-validator:1.6'
 
-    //UI Component : Custom Toast
-    implementation "net.steamcrafted:load-toast:$rootProject.loadToastVersion"
 
-    //UI Component : ImageView with Zooming
-    implementation "com.github.chrisbanes:PhotoView:$rootProject.zoomingImgVersion"
+// UI Components
 
-    //UI Component : Material Dialog
-    implementation("com.afollestad.material-dialogs:core:$rootProject.materialDialogVersion") {
+    //Custom toast
+    implementation 'net.steamcrafted:load-toast:1.0.12'
+
+    //ImageView with zooming
+    implementation 'com.github.chrisbanes:PhotoView:2.1.3' //2.3.0
+
+    //Material Dialog
+    implementation('com.afollestad.material-dialogs:core:0.9.6.0', { //2.8.1 (kotlin)
         transitive = true
-    }
+    })
 
-    //UI Component : Material Drawer
-    implementation('com.mikepenz:materialdrawer:6.0.3@aar') {
+    //Material Drawer
+    implementation('com.mikepenz:materialdrawer:6.0.9@aar', { //6.1.2, 7.0.0-alpha2
         transitive = true
-    }
+    })
 
-    //UI Component : Adapters
-
+    //Adapters
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
-    implementation 'com.mikepenz:fastadapter-commons:2.1.0@aar'
+    implementation 'com.mikepenz:fastadapter-commons:2.1.0@aar' //3.3.1, 4.0.0-rc04
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0' //2.5.0
 
-    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    //Floating Action Button
+    implementation 'com.github.clans:fab:1.6.4'
 
-    //UI Component : Fab
-    implementation "com.github.clans:fab:$rootProject.fabVersion"
-
-    //UI Component : Font Icons
-    implementation "com.mikepenz:iconics-core:$rootProject.fontIconCoreVersion"
-    implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
-    implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
-    implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
-    implementation('com.theartofdev.edmodo:android-image-cropper:2.6.0') {
+    //Font Icons
+    implementation 'com.mikepenz:iconics-core:3.0.4@aar' //4.0.0-rc01
+    implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar' //3.0.1.3.original
+    implementation 'com.mikepenz:material-design-iconic-typeface:2.2.0.4@aar'
+    //2.2.0.5, 2.2.0.6-kotlin
+    implementation 'com.mikepenz:fontawesome-typeface:5.0.6.0@aar' //5.3.1.1, 5.3.1.2-kotlin
+    implementation('com.theartofdev.edmodo:android-image-cropper:2.7.0', { //2.8.0
         exclude group: 'com.android.support', module: 'appcompat-v7'
-    }
+    })
 
-    //UI Component : Chips Input
-    implementation "com.hootsuite.android:nachos:1.1.1"
+    //Chips Input
+    implementation 'com.hootsuite.android:nachos:1.1.2' //1.2.0
 
-    //Testing
+
+//Testing
     androidTestUtil 'com.android.support.test:orchestrator:1.0.2'
-    testImplementation "junit:junit:$rootProject.jUnitVersion"
-    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
-    testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.27.0'
+    testImplementation 'net.javacrumbs.json-unit:json-unit-fluent:1.27.0' //2.6.1
 
     // Required for instrumented tests
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.2'
-    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:3.0.1') {
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-web:$espressoVersion"
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:$espressoVersion", {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'
         exclude module: 'recyclerview-v7'
-    }
+    })
     resourcePlaceholders {
         files = ['xml/shortcuts.xml']
     }

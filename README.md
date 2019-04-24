@@ -1,4 +1,4 @@
-Open Food Facts - the Android application
+Open Food Facts
 ===================================
 [![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp)
@@ -18,23 +18,28 @@ Open Food Facts is a database of food products with ingredients, allergens, nutr
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-8000+ contributors like you have added 700 000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+8,000+ contributors like you have added 700,000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
-Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
+Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check out the cool reuses or make your own!
 - <https://world.openfoodfacts.org>
 
 ### Open Food Facts on Google Play
 ------------------
 
-<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"></a>
+<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner">
+    <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
+    alt="Get it on Google Play" height="80">
+</a>
 
 ### Open Food Facts on [F-Droid](https://f-droid.org/)
 ------------------
 
-<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://f-droid.org/badge/get-it-on.png" height="80"></a>
-
+<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/">
+    <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+    alt="Get it on F-Droid" height="80">
+</a>
 
 ### Screenshots
 ------------------
