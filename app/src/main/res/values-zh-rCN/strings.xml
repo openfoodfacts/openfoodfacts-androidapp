@@ -552,7 +552,7 @@
     <string name="by_nutrition_grade">营养等级</string>
     <string name="sort_by">排序方式</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://world-zh.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">摇动手机以扫描产品</string>
     <string name="shake_title">摇动扫描</string>
     <!-- strings related to share images -->
