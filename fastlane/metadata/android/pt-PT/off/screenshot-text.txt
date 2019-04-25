@@ -2,7 +2,7 @@ Esses são os slogans mostrados acima das capturas de tela no playstore. Mantenh
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
-V2 screenshots
+V2 capturas de ecrã
 =====================
 
 Digitalizar produto
@@ -38,12 +38,12 @@ Poderoso
 Informação nutricional
 
 =====================
-V3 screenshots
+V3 capturas de ecrã
 =====================
 
 Escolha os produtos que são bons para você e para o 🌍 planeta!
 
-✔ Ultra-fast barcode scan
+✔ Digitalização de código de barras ultra-rápida
 
 ✔ A global supermarket in your pocket
 
