@@ -283,7 +283,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:paddingHorizontal="@dimen/spacing_small"
-                android:text="(Required to calculate the Nutri-Score)"
+                android:text="@string/required_to_compute_nutriscore"
                 android:textColor="@color/grey_500"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/categories_til"
