@@ -16,6 +16,6 @@ v2.8! Após o grande V2, todos os voluntários da OFF continuaram trabalhando du
 5. Coreano e Indiano
 
 2.8.8 ! Pensou que pararíamos em adição de produtos? Todos os voluntários da OFF continuaram trabalhando duro. Quinhentos e noventa mil produtos, 182 países, mais de 10 ml contribuintes, incl. você
-1. Agora você pode editar qualquer produto com sua conta OFF. Clique em ✏️ na página do produto para editar.
-2. 🌍 eslovaco, hebraico, espanhol, árabe, holandês, húngaro e vietnamita (translate.openfoodfacts.org para ajudar)
-3. Open Food Facts é um esforço totalmente voluntário: você pode doar tempo (world.openfoodfacts.org/contribute) ou dinheiro (donate.openfoodfacts.org)
+1. Agora você pode editar qualquer produto com sua conta OFF. Clique em ✏️ em uma página de produto para editar.
+2. Eslováquio, hebraico, espanhol, árabe, holandês, húngaro e vietnamita (traduzir.fatosopenfood.org para ajuda)
+3. Open Food Facts é um esforço feito completamente pot voluntários: Você pode doar tempo (world.openfood.facts.org/contribute) ou dinheiro (donate.openfoodfacts.org)
