@@ -817,4 +817,5 @@
     <string name="go_to_full_product_page">Перейти на полную страницу продукта</string>
     <string name="no_additive_data_available_for_this_product">Дополнительных данные не доступны для этого продукта</string>
     <string name="no_nutrient_information_available_for_this_product">Нет информации о питательной ценности для этого продукта</string>
+    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>
