@@ -809,4 +809,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="go_to_full_product_page">Zur vollständigen Produktseite wechseln</string>
     <string name="no_additive_data_available_for_this_product">Für dieses Produkt sind keine zusätzlichen Daten verfügbar</string>
     <string name="no_nutrient_information_available_for_this_product">Für dieses Produkt sind keine Nährstoffinformationen verfügbar</string>
+    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>
