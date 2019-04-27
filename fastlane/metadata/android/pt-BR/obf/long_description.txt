@@ -13,15 +13,15 @@
 - Você pode digitalizar: loção pós-barba, loção corporal, cremes, desodorante, delineador, base, fragrância, batom, maquiagem, máscara, perfume, xampu, sabonete, gel de banho, esmalte e muito mais…
 - Achamos que pode ser útil para pessoas com condições de pele como acne, psoríase, eczema… para fazer melhores escolhas cosméticas.
 
-*** Funciona bem em qualquer condição ***
-- Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet.
-- A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
-- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
+*** Funciona bem em qualquer condição***
+- Você pode adicionar novos produtos, mesmo se você não estiver conectado à Internet.
+- O aplicativo abre apenas o estritamente necessário para reduzir o consumo de bateria e dados
+- Não precisa de uma câmera para procurar um produto. Você pode digitar o código de barras se não tiver uma câmera ou caso esteja com problemas.
 
 *** Seus cosméticos, seus dados ***
-- Seus dados são seus e nunca são enviados on-line
-- Pode usar o aplicativo anonimamente
-- Pode exportar seu histórico de digitalizações
+- Seus dados são seus e nunca é enviado online
+- Você pode usar o aplicativo anonimamente
+- Você pode exportar seu histórico
 
 Nota: O Open Beauty Facts está sendo construído, o site e o aplicativo são baseados em Open Food Facts e serão feitas alterações para levar em conta as especificidades dos cosméticos.
 
