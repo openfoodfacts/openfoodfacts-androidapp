@@ -2,7 +2,7 @@
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 =====================
-V2 screenshots
+Скриншоты V2
 =====================
 
 Сканируйте продукты
@@ -43,7 +43,7 @@ V3 screenshots
 
 Выбирайте продукты, которые хороши для вас и для планеты 🌍!
 
-✔ Ultra-fast barcode scan
+✔ Сверхбыстрое сканирование штрих-кода
 
 ✔ A global supermarket in your pocket
 
