@@ -649,15 +649,16 @@ public class Utils {
         }
 
         try {
-            int energyKcal = convertKjToKcal(Integer.parseInt(value));
+            int energyKcal = convertKjToKcal(Double.parseDouble(value));
             return String.valueOf(energyKcal);
         } catch (NumberFormatException e) {
             return defaultValue;
         }
     }
 
-    private static int convertKjToKcal(int kj) {
-        return kj != 0 ? Double.valueOf(((double) kj) / 4.1868d).intValue() : -1;
+
+    private static int convertKjToKcal(double kj) {
+        return kj != 0 ? Double.valueOf(kj / 4.1868d).intValue() : -1;
     }
 
     /**

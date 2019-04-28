@@ -241,8 +241,6 @@ public class AddProductOverviewFragment extends BaseFragment {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
-        link.setHint(Html.fromHtml("<small><small>" +
-            getString(R.string.hint_product_URL) + "</small></small>"));
         initializeChips();
         loadAutoSuggestions();
         if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
@@ -267,7 +265,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         periodsAfterOpeningParent.setVisibility(visibility);
         changeVisibilityManufacturingSectionTo(visibility);
         changePurchasingSectionVisibilityTo(visibility);
-        otherImage.setVisibility(visibility);
         greyLine2.setVisibility(visibility);
         greyLine3.setVisibility(visibility);
         greyLine4.setVisibility(visibility);

@@ -39,11 +39,11 @@ Open Beauty Facts также доступны в Интернете на https:/
 
 Поэтому мы настроены на создание не 1-ой, а целых 77000 отдельных новых баз данных! 
 
-Open Products Facts будут чрезвычайно амбициозным проектом. Here are a few of them: 
+Open Products Facts будут чрезвычайно амбициозным проектом. Вот несколько из них: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - Крупнейшая открытая база данных цветных карандашей
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - Крупнейшая открытая база данных миниатюрных продуктов питания
 
 Open ??? Facts - Крупнейшая открытая база данных ???
 

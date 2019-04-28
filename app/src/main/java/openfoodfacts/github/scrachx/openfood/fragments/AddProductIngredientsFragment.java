@@ -23,6 +23,18 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import org.apache.commons.lang3.StringUtils;
+import org.greenrobot.greendao.async.AsyncSession;
+
+import java.io.File;
+import java.util.*;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnLongClick;
+import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -87,7 +99,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     private boolean edit_product;
     private Product product;
     private boolean newImageSelected;
-    private String appLanguageCode;
+
     private final int ROTATE_RESULT = 100;
 
     @Override
@@ -114,7 +126,6 @@ public class AddProductIngredientsFragment extends BaseFragment {
         Bundle b = getArguments();
         if (b != null) {
             mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
-            appLanguageCode = Locale.getDefault().getLanguage();
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             edit_product = b.getBoolean("edit_product");
@@ -186,6 +197,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         if (product.getTracesTags() != null && !product.getTracesTags().isEmpty()) {
             List<String> tracesTags = product.getTracesTags();
             final List<String> chipValues = new ArrayList<>();
+            final String  appLanguageCode = LocaleHelper.getLanguage(activity);
             for (String tag : tracesTags) {
                 chipValues.add(getTracesName(appLanguageCode, tag));
             }
@@ -262,7 +274,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         AsyncSession asyncSessionAllergens = daoSession.startAsyncSession();
         AllergenNameDao allergenNameDao = daoSession.getAllergenNameDao();
-
+        final String  appLanguageCode = LocaleHelper.getLanguage(activity);
         asyncSessionAllergens.queryList(allergenNameDao.queryBuilder()
             .where(AllergenNameDao.Properties.LanguageCode.eq(appLanguageCode))
             .orderDesc(AllergenNameDao.Properties.Name).build());

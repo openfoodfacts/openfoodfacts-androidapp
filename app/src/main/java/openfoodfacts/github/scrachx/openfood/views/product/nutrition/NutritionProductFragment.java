@@ -142,7 +142,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         super.refreshView(state);
         mState = state;
         product = state.getProduct();
-        String langCode = LocaleHelper.getLanguageTrimmed(getContext());
+        String langCode = LocaleHelper.getLanguage(getContext());
         //checks the product states_tags to determine which prompt to be shown
         List<String> statesTags = product.getStatesTags();
         if (statesTags.contains("en:categories-to-be-completed")) {

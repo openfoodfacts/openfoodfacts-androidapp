@@ -52,6 +52,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 import org.apache.commons.lang3.StringUtils;
@@ -158,7 +159,7 @@ public class OpenFoodAPIClient {
                     new HistoryTask().doInBackground(s.getProduct());
                     Intent intent = new Intent(activity, ProductActivity.class);
                     Bundle bundle = new Bundle();
-                    String langCode = LocaleHelper.getLanguageTrimmed(activity.getApplicationContext());
+                    String langCode = LocaleHelper.getLanguage(activity.getApplicationContext());
                     String fieldsArray[] = activity.getResources().getStringArray(R.array.fields_array);
                     ArrayList<String> fieldsList = new ArrayList<>();
                     for (int i = 0; i < fieldsArray.length; i++) {
@@ -306,7 +307,6 @@ public class OpenFoodAPIClient {
 
     public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Context activity, final OnProductSentCallback productSentCallback, SendProduct product) {
         if (!response.isSuccessful() || response.body().getStatus() == 0) {
-            //lt.error();
             productSentCallback.onProductSentResponse(false);
             return;
         }
@@ -556,13 +556,12 @@ public class OpenFoodAPIClient {
                         ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
                         mToUploadProductDao.insertOrReplace(product);
                         Toast.makeText(context, context.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
-                        // lt.error();
                     }
                 });
     }
 
     private Map<String, RequestBody> getUploadableMap(ProductImage image, Context context) {
-        String lang = Locale.getDefault().getLanguage();
+        final String lang =  LocaleHelper.getLanguage(context);
 
         Map<String, RequestBody> imgMap = new HashMap<>();
         imgMap.put("code", image.getCode());
@@ -673,7 +672,6 @@ public class OpenFoodAPIClient {
 
     public void uploadOfflineImages(Context context, boolean cancel, JobParameters job, SavedProductUploadJob service) {
         if (!cancel) {
-//            Toast.makeText(context, "called function", Toast.LENGTH_SHORT).show();
             task.job = job;
             task.service = new WeakReference<>(service);
             task.execute(context);

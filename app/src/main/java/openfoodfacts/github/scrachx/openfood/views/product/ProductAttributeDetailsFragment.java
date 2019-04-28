@@ -18,8 +18,10 @@ import android.widget.Toast;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -299,7 +301,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 	private String getDescription( JSONObject description )
 	{
 		String descriptionString = "";
-		String languageCode = Locale.getDefault().getLanguage();
+		final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
 		if( description.has( languageCode ) )
 		{
 			try
@@ -334,7 +336,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 	private String getWikiLink( JSONObject sitelinks )
 	{
 		String link = "";
-		String languageCode = Locale.getDefault().getLanguage();
+		String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
 		languageCode = languageCode + "wiki";
 		if( sitelinks.has( languageCode ) )
 		{
