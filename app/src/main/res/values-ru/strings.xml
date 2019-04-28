@@ -33,7 +33,7 @@
     <string name="text_barcode">Введите штрихкод:</string>
     <string name="message_in_activity_save_product_offline">Для отправки продукта обязательна только одна фотография.</string>
     <string name="product_incomplete_message">Этот продукт не является полным. В результате мы не смогли выполнить проверку аллергена.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Этот продукт содержит:</string>
     <string name="no_offline_data">Всё готово</string>
     <string name="first_offline">Продукты, добавленные в автономном режиме, появятся здесь</string>
     <!-- Image Upload -->
@@ -802,15 +802,15 @@
     <string name="add_product">Добавить продукты</string>
     <string name="add_another_product">Добавить другой продукт</string>
     <string name="add_nutrition_facts_for_nutriscore">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">Сравнить</string>
+    <string name="product_summary_action_add_to_list_button_label">Добавить в список</string>
     <string name="product_summary_action_edit_button_label">Изменить</string>
     <string name="product_summary_action_share_button_label">Поделиться</string>
     <string name="product_question_prompt">Tap here to answer</string>
     <string name="product_question_positive_response">Да</string>
     <string name="product_question_negative_response">Нет</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
-    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="product_question_ambiguous_response">Не уверен</string>
+    <string name="product_question_submit_message">Спасибо за Ваш вклад!</string>
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
