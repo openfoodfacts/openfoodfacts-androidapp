@@ -806,16 +806,16 @@
     <string name="product_summary_action_add_to_list_button_label">Добавить в список</string>
     <string name="product_summary_action_edit_button_label">Изменить</string>
     <string name="product_summary_action_share_button_label">Поделиться</string>
-    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_prompt">Нажмите здесь, чтобы ответить</string>
     <string name="product_question_positive_response">Да</string>
     <string name="product_question_negative_response">Нет</string>
     <string name="product_question_ambiguous_response">Не уверен</string>
     <string name="product_question_submit_message">Спасибо за Ваш вклад!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="error_nutrient_entry">Значение должно быть числовым и может начинаться с &lt;, &gt; или ~. Пример: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">Размер порции должен быть положительным</string>
+    <string name="error_in_nutrient_data">Некоторые значения питательных веществ не допустимы. Исправьте поля выше с маркером ошибки</string>
     <string name="go_to_full_product_page">Перейти на полную страницу продукта</string>
     <string name="no_additive_data_available_for_this_product">Дополнительных данные не доступны для этого продукта</string>
     <string name="no_nutrient_information_available_for_this_product">Нет информации о питательной ценности для этого продукта</string>
-    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
+    <string name="required_to_compute_nutriscore">(Требуется для вычисления Nutri-Score)</string>
 </resources>
