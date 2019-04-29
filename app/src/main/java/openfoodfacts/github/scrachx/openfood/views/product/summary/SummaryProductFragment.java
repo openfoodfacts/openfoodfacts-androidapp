@@ -692,7 +692,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     public void showAnnotatedInsightToast(InsightAnnotationResponse response) {
-        if (response.getStatus().equals("updated")) {
+        if (response.getStatus().equals("updated") && getActivity()!=null) {
             Toast toast = Toast.makeText(getActivity(), R.string.product_question_submit_message, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.setDuration(Toast.LENGTH_SHORT);
@@ -1147,6 +1147,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onFailure(String message) {
         uploadingImageProgress.setVisibility(View.GONE);
         uploadingImageProgressText.setVisibility(View.GONE);
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        Context context = getContext();
+        if(context==null){
+            context=OFFApplication.getInstance();
+        }
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 }
