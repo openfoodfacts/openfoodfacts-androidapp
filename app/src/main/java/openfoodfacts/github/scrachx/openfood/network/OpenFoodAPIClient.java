@@ -298,7 +298,9 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                if(activity!=null && !activity.isFinishing()) {
+                    Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                }
                 productsCallback.onProductsResponse(false, null, -1);
             }
         });
