@@ -393,7 +393,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                             ((TextView) v).setText(additivesBuilder.toString());
                             setMaxCardHeight();
                         }
-                            }, e -> Log.e(ProductComparisonAdapter.class.getSimpleName(),"loadAdditives",e))
+                    }, e -> Log.e(ProductComparisonAdapter.class.getSimpleName(), "loadAdditives", e))
             );
         }
     }
