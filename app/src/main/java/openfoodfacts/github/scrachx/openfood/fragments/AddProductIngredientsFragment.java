@@ -434,17 +434,21 @@ public class AddProductIngredientsFragment extends BaseFragment {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                imagePath = resultUri.getPath();
-                newImageSelected = true;
-                photoFile = new File((resultUri.getPath()));
-                ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
-                image.setFilePath(resultUri.getPath());
-                if (activity instanceof AddProductActivity) {
-                    ((AddProductActivity) activity).addToPhotoMap(image, 1);
+                if(result!=null && result.getUri().getPath()!=null) {
+                    Uri resultUri = result.getUri();
+                    imagePath = resultUri.getPath();
+                    newImageSelected = true;
+                    photoFile = new File((resultUri.getPath()));
+                    ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
+                    image.setFilePath(resultUri.getPath());
+                    if (activity instanceof AddProductActivity) {
+                        ((AddProductActivity) activity).addToPhotoMap(image, 1);
+                    }
+                }else{
+                    Log.e(AddProductIngredientsFragment.class.getSimpleName(),"Crop image result path not found "+result.getUri());
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Log.e("Crop image error", result.getError().toString());
+                Log.e(AddProductIngredientsFragment.class.getSimpleName(),"Crop image error: "+ result.getError().toString());
             }
         }
 
