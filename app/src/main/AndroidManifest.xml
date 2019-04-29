@@ -42,7 +42,7 @@
             android:value="2.1" />
         
         <provider
-            android:authorities="openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider"
+            android:authorities="${applicationId}.utils.SearchSuggestionProvider"
             android:name=".utils.SearchSuggestionProvider" />
 
         <activity
