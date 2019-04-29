@@ -60,7 +60,7 @@ public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> 
 
                                 @Override
                                 public void onError(Throwable e) {
-                                    Log.e(PeriodAfterOpeningAutoCompleteAdapter.class.getSimpleName(), e.getMessage());
+                                    Log.e(PeriodAfterOpeningAutoCompleteAdapter.class.getSimpleName(), e.getMessage(),e);
                                 }
                             });
 

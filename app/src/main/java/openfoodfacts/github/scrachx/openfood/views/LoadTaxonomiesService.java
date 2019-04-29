@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import java.util.Arrays;
 
+import android.util.Log;
+import android.widget.Toast;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -55,14 +57,14 @@ public class LoadTaxonomiesService extends IntentService {
                         ).subscribeOn(Schedulers.computation())
                                 .subscribe(() -> {
                                     settings.edit().putLong(Utils.LAST_REFRESH_DATE, System.currentTimeMillis()).apply();
-                                }, Throwable::printStackTrace);
+                                }, throwable ->handleError(throwable));
 
                         return true;
                     })
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .toCompletable()
-                    .subscribe();
+                    .subscribe(()->{},throwable -> handleError(throwable));
         } else if (BuildConfig.FLAVOR.equals("obf")) {
             Single.zip(
                     productRepository.getLabels(true),
@@ -83,14 +85,14 @@ public class LoadTaxonomiesService extends IntentService {
                         ).subscribeOn(Schedulers.computation())
                                 .subscribe(() -> {
                                     settings.edit().putLong(Utils.LAST_REFRESH_DATE, System.currentTimeMillis()).apply();
-                                }, Throwable::printStackTrace);
+                                }, throwable ->handleError(throwable));
 
                         return true;
                     })
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .toCompletable()
-                    .subscribe();
+                    .subscribe(()->{},throwable ->handleError(throwable));
         } else if (BuildConfig.FLAVOR.equals("opf") || BuildConfig.FLAVOR.equals("opff")) {
             Single.zip(
                     productRepository.getTags(true),
@@ -110,8 +112,12 @@ public class LoadTaxonomiesService extends IntentService {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .toCompletable()
-                    .subscribe();
+                    .subscribe(()->{},throwable ->handleError(throwable));
         }
     }
 
+    private void handleError(Throwable throwable) {
+        Toast.makeText(OFFApplication.getInstance(),R.string.errorWeb,Toast.LENGTH_LONG).show();
+        Log.e(LoadTaxonomiesService.class.getSimpleName(),"can't load products",throwable);
+    }
 }

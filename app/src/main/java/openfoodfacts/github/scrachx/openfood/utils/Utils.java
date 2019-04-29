@@ -438,6 +438,9 @@ public class Utils {
      * @return true if installed, false otherwise.
      */
     public static boolean isHardwareCameraInstalled(Context context) {
+        if(context==null){
+            return false;
+        }
         try {
             if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
                 return true;
@@ -520,6 +523,9 @@ public class Utils {
     }
 
     public static  boolean isUserLoggedIn(Context context){
+        if(context==null){
+            return false;
+        }
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         return StringUtils.isNotEmpty(login);
