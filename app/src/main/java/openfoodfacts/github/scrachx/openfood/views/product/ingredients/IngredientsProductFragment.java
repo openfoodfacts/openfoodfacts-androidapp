@@ -34,19 +34,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -70,6 +62,12 @@ import org.apache.commons.lang3.StringUtils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
+import java.io.File;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -77,9 +75,7 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.jsoup.helper.StringUtil.isBlank;
 
@@ -559,7 +555,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void change_ing_image(View v) {
         sendUpdatedIngredientsImage = true;
 
-
+        if (getActivity() == null) {
+            return;
+        }
         ViewPager viewPager = (ViewPager) getActivity().findViewById(
                 R.id.pager);
         if (BuildConfig.FLAVOR.equals("off")) {
@@ -582,10 +580,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             else
             {
                 mState = getStateFromActivityIntent();
-                Intent intent = new Intent( getContext(), AddProductActivity.class );
-                intent.putExtra("send_updated", sendUpdatedIngredientsImage);
-                intent.putExtra( "edit_product", mState.getProduct() );
-                startActivityForResult( intent, EDIT_REQUEST_CODE );
+                if(mState!=null) {
+                    Intent intent = new Intent(getContext(), AddProductActivity.class);
+                    intent.putExtra("send_updated", sendUpdatedIngredientsImage);
+                    intent.putExtra("edit_product", mState.getProduct());
+                    startActivityForResult(intent, EDIT_REQUEST_CODE);
+                }
             }
         }
         if (BuildConfig.FLAVOR.equals("opff")) {
