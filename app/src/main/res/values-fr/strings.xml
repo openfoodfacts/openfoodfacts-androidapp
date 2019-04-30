@@ -773,8 +773,8 @@
     <string name="txt_eaten_products">Produits consommés</string>
     <string name="txt_products_to_buy">Produits à acheter</string>
     <string name="export_csv_your_listed_products">Exporter en CSV</string>
-    <string name="txt_exporting_your_listed_products">Exporter vos produits…</string>
-    <string name="txt_your_listed_products_exported">Vos produits ont été délivrés</string>
+    <string name="txt_exporting_your_listed_products">Exportation de vos produits…</string>
+    <string name="txt_your_listed_products_exported">Vos produits ont été exportés</string>
     <string name="txt_discard">Annuler</string>
     <string name="txt_save">Enregistrer</string>
     <string name="write_external_storage_your_listed_products">Les droits d\'accès en écriture sur le support de stockage externe sont nécessaires pour exporter les données.</string>

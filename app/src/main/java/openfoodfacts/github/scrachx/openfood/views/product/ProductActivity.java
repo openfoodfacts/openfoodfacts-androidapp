@@ -99,7 +99,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
 		api = new OpenFoodAPIClient( this );
 
-		mState = (State) getIntent().getExtras().getSerializable( "state" );
+		mState = (State) getIntent().getSerializableExtra("state" );
 
 		setupViewPager( viewPager );
 
@@ -314,7 +314,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        mState = (State) intent.getExtras().getSerializable("state");
+        mState = (State) intent.getSerializableExtra("state");
         adapterResult.refresh(mState);
     }
 

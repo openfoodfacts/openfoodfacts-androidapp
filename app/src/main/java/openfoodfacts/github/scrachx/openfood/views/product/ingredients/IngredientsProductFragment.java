@@ -638,7 +638,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @OnClick(R.id.extract_ingredients_prompt)
     public void extractIngredients() {
         extractIngredients = true;
-
         final SharedPreferences settings = getActivity().getSharedPreferences( "login", 0 );
         final String login = settings.getString( "user", "" );
         if( login.isEmpty() )
@@ -657,7 +656,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
         else
         {
-            mState = (State) getActivity().getIntent().getExtras().getSerializable( "state" );
+            mState = getStateFromActivityIntent();
             Intent intent = new Intent( getContext(), AddProductActivity.class );
             intent.putExtra( "edit_product", mState.getProduct() );
             intent.putExtra("perform_ocr", extractIngredients);
