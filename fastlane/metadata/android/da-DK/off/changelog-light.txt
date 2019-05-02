@@ -1,10 +1,10 @@
 VERSION 3
 ====
-1. It's easier to contribute new products, and get the Nutri-Score
-2. Create (and export) your product lists (shopping, eating…)
-3. Compare products side by side by scanning them one after the other.
-4. Completely redesigned product page, slide the carp up to discover it
-5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+1. Det er nemmere at bidrage med nye produkter og få Nutri-Score
+2. Opret (og eksportér) dine produktlister (shopping, spise…)
+3. Sammenlign produkter side ved side ved at skanne dem én efter én.
+4. Helt omdesignet produktside, skub karpen op for at opleve den
+5. Open Food Facts er fuldstændig baseret på frivillige: Du kan donere tid (world.openfoodfacts.org/contribute) eller penge (donate.openfoodfacts.org)
 
 
 ======
