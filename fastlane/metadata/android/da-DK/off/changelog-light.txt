@@ -1,3 +1,13 @@
+VERSION 3
+====
+1. It's easier to contribute new products, and get the Nutri-Score
+2. Create (and export) your product lists (shopping, eating…)
+3. Compare products side by side by scanning them one after the other.
+4. Completely redesigned product page, slide the carp up to discover it
+5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+
+
+======
 v2! Alle OFF-frivillige har arbejdet hårdt på baggrund af dine forslag. Vi er en mere global bevægelse end nogensinde. 500k produkter frigivet, 182 lande, 10k+ bidragydere, inkl. dig :-)
 1. NutriScore for alle produkter i verden
 2. Eksporterbar historik, kun for dine øjne
@@ -19,3 +29,6 @@ v2.8 ! Efter den massive V2 blev alle OFF-frivillige ved med at arbejdet hårdt 
 1. Du kan nu redigere ethvert produkt med din OFF-konto. Klik ✏️ på en produktside for at redigere.
 2. 🌍 Arabisk, Hebraisk, Hollandsk, Slovakisk, Spansk, Ungarsk og Vietnamesisk (translate.openfoodfacts.org for at hjælpe)
 3. Open Food Facts er en fuldstændig frivilligbaseret indsats: Du kan donere tid (world.openfoodfacts.org/contribute) eller penge (donate.openfoodfacts.org)
+
+
+
