@@ -2,7 +2,7 @@
 ====
 1. Проще вносить новые продукты и получать Nutri-Score
 2. Создавайте (и экспортируйте) свои списки продуктов (покупки, питание…)
-3. Compare products side by side by scanning them one after the other.
+3. Сравнивайте продукты, сканируя их один за другим.
 4. Completely redesigned product page, slide the carp up to discover it
 5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
