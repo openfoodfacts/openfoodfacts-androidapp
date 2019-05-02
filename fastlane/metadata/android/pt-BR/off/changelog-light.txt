@@ -1,3 +1,13 @@
+VERSION 3
+====
+1. It's easier to contribute new products, and get the Nutri-Score
+2. Create (and export) your product lists (shopping, eating…)
+3. Compare products side by side by scanning them one after the other.
+4. Completely redesigned product page, slide the carp up to discover it
+5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+
+
+======
 v2 ! Todos os voluntários OFF trabalharam duro, baseando-se em suas sugestões. Somos um movimento global mais do que nunca. Quinhentos mil produtos libertados, 182 países, mais de 10 mil contribuintes, incl. você :-)
 1. O NutriSocre para todos os produtos no mundo
 2. Histórias exportáveis, apenas para seus olhos
@@ -19,3 +29,6 @@ v2.8! Após o grande V2, todos os voluntários da OFF continuaram trabalhando du
 1. Agora você pode editar qualquer produto com sua conta OFF. Clique em ✏️ em uma página de produto para editar.
 2. Eslováquio, hebraico, espanhol, árabe, holandês, húngaro e vietnamita (traduzir.fatosopenfood.org para ajuda)
 3. Open Food Facts é um esforço feito completamente pot voluntários: Você pode doar tempo (world.openfood.facts.org/contribute) ou dinheiro (donate.openfoodfacts.org)
+
+
+
