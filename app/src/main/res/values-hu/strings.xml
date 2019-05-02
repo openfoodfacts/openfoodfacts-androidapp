@@ -710,39 +710,39 @@
     <string name="elderly_age">65+</string>
     <string name="most_people">A legtöbb ember \n (több mint 50%)</string>
     <string name="some_people">Néhány ember \n (több mint 5%)</string>
-    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
+    <string name="safety_and_exposure_assessment">Biztonsági és kitettségi értékelés</string>
     <string name="risk_of_exposure">Kitettség veszély</string>
     <string name="efsa_warning_moderate_risk">Az Európai Élelmiszerbiztonsági Hatóság (EFSA) megállapította, hogy egyes népességcsoportokat mérsékelten veszélyezteti a túl sok  %1$s fogyasztása.</string>
     <string name="efsa_warning_high_risk">Az Európai Élelmiszerbiztonsági Hatóság (EFSA) megállapította, hogy egyes népességcsoportokat nagyon veszélyezteti a túl sok  %1$s fogyasztása.</string>
     <string name="legend_noael">a fenti dózis a megfigyelt káros hatással (NOAEL)</string>
     <string name="legend_adi">ajánlott napi bevitel (ADI)</string>
     <string name="max_energy_val_msg">Az érték 2000 kcal/100g felett van. Ki tudod javítani?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="max_nutrient_val_msg">A megadott érték nagyobb, mint egy adag mérete</string>
     <string name="update_image">Frissített kép küldése</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Az Ön étrendje(i)</string>
     <string name="diet_name">Diéta neve</string>
     <string name="diets_dialog_warning_title">Figyelmeztetés</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">Az Ön étrendjének adatai az eszközén maradnak. Semmi sem lesz feltöltve sehova.</string>
     <string name="edit_diet_name">Név</string>
     <string name="edit_diet_description">Leírás</string>
     <string name="edit_diet_enabled_disabled">Engedélyezés/Tiltás</string>
     <string name="edit_diet_authorised_ingredients">Engedélyezett összetevők</string>
-    <string name="edit_diet_hint_ingredient_authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
+    <string name="edit_diet_hint_ingredient_authorised">Sorolja fel az engedélyezett összetevőket, melyeknek zölddel kell megjelenniük. Példa : alma, gomba, paradicsom… Ezt a listát később is kiegészítheti.</string>
     <string name="edit_diet_so_so_ingredients">Elfogadható hozzávalók</string>
-    <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
+    <string name="edit_diet_hint_so_so_ingredient">Sorolja fel a problémás összetevőket, melyeknek narancssárgáknak kell megjelenniük. Példa: tojás, hal… Ezt a listát később is kiegészítheti.</string>
     <string name="edit_diet_unauthorised_ingredients">Nem engedélyezett összetevők</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Sorolja fel a tiltott összetevőket, melyeknek pirossal kell megjelenniük. Példa : glutén, tej, pálmaolaj, cukor… Ezt a listát később is kiegészítheti.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Összetevők kiolvasása</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="add_nutrient_prompt_text">Adjon hozzá táplálkozási tényeket a Nutri-Score kiszámításához</string>
+    <string name="add_category_prompt_text">Adjon hozzá egy kategóriát a Nutri-Score kiszámításához</string>
+    <string name="add_nutrient_category_prompt_text">Adjon hozzá táplálkozási tényeket és egy kategóriát a Nutri-Score kiszámításához</string>
     <string name="no_nutrition_data_prompt">Ez a termék nem rendelkezik tápérték adatokkal</string>
     <string name="nutrition_image_prompt_text">call-to-action.nutrition</string>
     <string name="ingredient_image_prompt_text">Kép készítése az összetevőkről</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="category_game_btn">Segítsen kategorizálni a termékeket a Nutri-Score kiszámításához</string>
     <string name="version_string">Nyissa meg az Open Food Factcs Android-alkalmazását</string>
     <string name="version">Verzió</string>
     <string name="txtOtherInfo">Egyéb információ: </string>
@@ -764,7 +764,7 @@
     <string name="warning">Figyelmeztetés:</string>
     <string name="customer_service">Ügyfélszolgálat:</string>
     <string name="fast_addition_mode_title">Gyors hozzáadása mód</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Lehetővé teszi a kevesebb attribútumú termékek gyors hozzáadását</string>
     <string name="addtive_search">Egy dalékanyag keresése</string>
     <string name="additives">Adalékanyagok</string>
     <!--used for product_lists implementation-->
