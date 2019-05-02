@@ -51,9 +51,9 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAu
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.greenrobot.greendao.async.AsyncSession;
+import org.jsoup.helper.StringUtil;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -193,6 +193,8 @@ public class AddProductOverviewFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        otherImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp,0,0,0);
+
         //checks the information about the prompt clicked and takes action accordingly
         if (getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
             categories.requestFocus();
@@ -782,7 +784,7 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     private String getValues(NachoTextView nachoTextView) {
         List<String> list = nachoTextView.getChipValues();
-        return StringUtils.join(list, ',');
+        return StringUtil.join(list,",");
     }
 
     @OnClick(R.id.section_manufacturing_details)
@@ -837,7 +839,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         String url = "https://www.google.com/search?q=" + code;
         if (!brand.getChipAndTokenValues().isEmpty()) {
             List<String> brandNames = brand.getChipAndTokenValues();
-            url = url + " " + StringUtils.join(brandNames, ' ');
+            url = url + " " + StringUtil.join(brandNames, " ");
         }
         if (!name.getText().toString().isEmpty()) {
             url = url + " " + name.getText().toString();

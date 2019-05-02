@@ -134,6 +134,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
+        nutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp,0,0,0);
+        img1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp,0,0,0);
         refreshView(getStateFromActivityIntent());
     }
 

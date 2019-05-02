@@ -178,6 +178,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         api = new OpenFoodAPIClient(getActivity());
         apiClientForWikiData = new WikidataApiClient();
         mFragment = this;
+
         return createView(inflater, container, R.layout.fragment_ingredients_product);
 
     }
@@ -186,6 +187,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mState=getStateFromActivityIntent();
+        extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp,0,0,0);
+        updateImageBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp,0,0,0);
         refreshView(mState);
     }
 

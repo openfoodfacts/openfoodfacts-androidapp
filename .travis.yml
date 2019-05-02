@@ -47,7 +47,6 @@ cache:
     # Gradle dependencies
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-    - $HOME/.android/build-cache
 
     # Cache maven
     - $HOME/.m2
