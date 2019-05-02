@@ -499,16 +499,20 @@ public class OpenFoodAPIClient {
 
                                     @Override
                                     public void onFailure(Call<JsonNode> call, Throwable t) {
-                                        Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
-                                        activity.finish();
+                                        if(activity!=null) {
+                                            Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
+                                            activity.finish();
+                                        }
                                     }
                                 });
                     }
 
                     @Override
                     public void onFailure(Call<JsonNode> call, Throwable t) {
-                        Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
-                        activity.finish();
+                        if(activity!=null){
+                            Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
+                            activity.finish();
+                        }
                     }
                 });
 
