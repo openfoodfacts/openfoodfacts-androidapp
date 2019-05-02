@@ -43,6 +43,7 @@ import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.apache.commons.lang3.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
+import org.jsoup.helper.StringUtil;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -118,6 +119,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        extractIngredients.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_compare_arrows_black_18dp,0,0,0);
         if (getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
             if (!getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
                 ((AddProductActivity) getActivity()).proceed();
@@ -404,7 +406,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
             targetMap.put(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
             List<String> list = traces.getChipValues();
-            String string = StringUtils.join(list, ',');
+            String string = StringUtil.join(list, ",");
             targetMap.put(PARAM_TRACES.substring(4), string);
         }
     }
@@ -422,7 +424,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             }
             if (!traces.getChipValues().isEmpty()) {
                 List<String> list = traces.getChipValues();
-                String string = StringUtils.join(list, ',');
+                String string = StringUtil.join(list, ",");
                 ((AddProductActivity) activity).addToMap(PARAM_TRACES, string);
             }
         }
