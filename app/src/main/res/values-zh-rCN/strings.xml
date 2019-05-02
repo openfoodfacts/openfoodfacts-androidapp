@@ -113,7 +113,7 @@
         <item>Polyunsaturated fat</item>
         <item>钾</item>
         <item>硒</item>
-        <item>Serum proteins</item>
+        <item>血清蛋白</item>
         <item>二氧化硅</item>
         <item>淀粉</item>
         <item>Stearic acid (18:0)</item>
@@ -210,7 +210,7 @@
     <string name="txtNoData">无数据</string>
     <string name="txtPictureNeeded">等待…</string>
     <string name="txtPictureNeededDialogContent">在提交此产品前你应该至少添加一张图片</string>
-    <string name="txtPictureNeededDialogYes">Stay</string>
+    <string name="txtPictureNeededDialogYes">留在此页</string>
     <string name="txtPictureNeededDialogNo">舍弃</string>
     <string name="toastSending">正在上传</string>
     <string name="dataSaved">保存在您的本地设备中</string>
@@ -248,11 +248,11 @@
     <string name="your_lists">Your lists</string>
     <string name="warning_allergens">含有过敏原</string>
     <string name="title_dialog_alert">添加提醒</string>
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
+    <string name="toggle_flash">闪光灯</string>
+    <string name="flash_on">闪光 [ON]</string>
+    <string name="flash_off">闪光 [OFF]</string>
+    <string name="ring_on">铃声 [ON]</string>
+    <string name="ring_off">铃声 [OFF]</string>
     <string name="auto_focus_on">自动对焦 [ON]</string>
     <string name="auto_focus_off">自动对焦 [OFF]</string>
     <string name="formats">格式</string>
