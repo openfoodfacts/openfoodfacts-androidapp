@@ -1,3 +1,13 @@
+VERSION 3
+====
+1. It's easier to contribute new products, and get the Nutri-Score
+2. Create (and export) your product lists (shopping, eating…)
+3. Compare products side by side by scanning them one after the other.
+4. Completely redesigned product page, slide the carp up to discover it
+5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+
+
+======
 v2! Wonke amavolontiya ase-OFF asebenze kanzima, ngokusekelwe kuziphakamiso zakho. Singumnyakaza womhlaba wonke kunanini ngaphambili. Imikhiqizo ye-500k ikhululiwe, amazwe angu-182, abanikeli abangu-10K, kuhlanganise. wena :-)
 1. The NutriScore for all products in the world
 2. Exportable history, for your eyes only
@@ -19,3 +29,6 @@ v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your
 1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
 2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
 3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+
+
+
