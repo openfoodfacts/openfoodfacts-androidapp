@@ -1,4 +1,4 @@
-VERSION 3
+ВЕРСИЯ 3
 ====
 1. It's easier to contribute new products, and get the Nutri-Score
 2. Create (and export) your product lists (shopping, eating…)
