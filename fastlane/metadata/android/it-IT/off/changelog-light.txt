@@ -3,7 +3,7 @@ VERSIONE 3
 1. È più facile contribuire con nuovi prodotti e ottenere il Nutri-Score
 2. Crea (ed esporta) i tuoi elenchi di prodotti (acquisti, pasti…)
 3. Confronta i prodotti fianco a fianco scansionandoli uno dopo l'altro.
-4. Pagina del prodotto completamente ridisegnata, fai scorrere la carpa per scoprirla
+4. Completely redesigned product page, slide the card up to discover it
 5. Open Food Facts è interamente gestito da volontari: puoi contribuire con il tempo (world.openfoodfacts.org/contribute) o con il denaro (donate.openfoodfacts.org)
 
 
