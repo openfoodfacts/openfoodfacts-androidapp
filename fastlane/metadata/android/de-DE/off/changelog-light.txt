@@ -3,7 +3,7 @@ Version 3
 1. Es ist einfacher, neue Produkte hinzuzufügen und den Nutri-Score zu erhalten.
 2. Erstellen (und exportieren) Sie Ihre Produktlisten (Einkaufen, Essen …)
 3. Vergleichen Sie Produkte nebeneinander, indem Sie sie nacheinander einlesen.
-4. Completely redesigned product page, slide the carp up to discover it
+4. Completely redesigned product page, slide the card up to discover it
 5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
 
