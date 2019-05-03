@@ -3,7 +3,7 @@
 1. קל יותר לתרום מוצרים חדשים ולקבל את הציון התזונתי
 2. יצירה (וייצוא) של רשימות המוצרים שלך (קניות, אכילה…)
 3. השוואת מוצרים זה לצד זה על ידי סריקתם אחד לאחר השני.
-4. Completely redesigned product page, slide the carp up to discover it
+4. דף המוצר עוצב מחדש לחלוטין, יש לגלול את החלונית כלפי מעלה כדי לחשוף אותו
 5. Open Food Facts מופעל לחלוטין על ידי מתנדבים: ניתן לתרום מזמנך (world.openfoodfacts.org/contribute) או מכספך (donate.openfoodfacts.org)
 
 
