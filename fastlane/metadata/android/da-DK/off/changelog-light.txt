@@ -3,7 +3,7 @@ VERSION 3
 1. Det er nemmere at bidrage med nye produkter og få Nutri-Score
 2. Opret (og eksportér) dine produktlister (shopping, spise…)
 3. Sammenlign produkter side ved side ved at skanne dem én efter én.
-4. Completely redesigned product page, slide the card up to discover it
+4. Omdesignet produktside, swipe op for at udforske det
 5. Open Food Facts er fuldstændig baseret på frivillige: Du kan donere tid (world.openfoodfacts.org/contribute) eller penge (donate.openfoodfacts.org)
 
 
