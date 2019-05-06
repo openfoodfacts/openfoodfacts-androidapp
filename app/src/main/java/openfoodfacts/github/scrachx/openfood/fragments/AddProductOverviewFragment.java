@@ -14,7 +14,6 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -196,9 +195,9 @@ public class AddProductOverviewFragment extends BaseFragment {
         otherImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp,0,0,0);
 
         //checks the information about the prompt clicked and takes action accordingly
-        if (getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
+        if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
             categories.requestFocus();
-        } else if (getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
+        } else if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
             ((AddProductActivity) getActivity()).proceed();
         }
         Bundle b = getArguments();

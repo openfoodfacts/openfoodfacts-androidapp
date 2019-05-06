@@ -43,14 +43,12 @@ import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -68,7 +66,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
-    private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
+    private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
     @BindView(R.id.imageGrade)
     ImageView img;
     @BindView(R.id.imageGradeLayout)
@@ -137,8 +135,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        nutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp,0,0,0);
-        img1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp,0,0,0);
+        nutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
+        img1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
         refreshView(getStateFromActivityIntent());
     }
 
@@ -604,6 +602,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                 }
             }
         });
+        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == RESULT_OK && isUserLoggedIn()) {
+                startEditProduct();
+        }
     }
 
     @Override
@@ -630,6 +631,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             }
         }
     }
+
     @OnClick(R.id.newAdd)
     public void openNew(View v) {
         // take a picture
@@ -657,28 +659,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @OnClick(R.id.get_nutriscore_prompt)
     public void onNutriscoreButtonClick() {
         if (BuildConfig.FLAVOR.equals("off")) {
-            final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
-            final String login = settings.getString("user", "");
-            if (login.isEmpty()) {
-                new MaterialDialog.Builder(getContext())
-                        .title(R.string.sign_in_to_edit)
-                        .positiveText(R.string.txtSignIn)
-                        .negativeText(R.string.dialog_cancel)
-                        .onPositive((dialog, which) -> {
-                            Intent intent = new Intent(getContext(), LoginActivity.class);
-                            startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
-                            dialog.dismiss();
-                        })
-                        .onNegative((dialog, which) -> dialog.dismiss())
-                        .build().show();
+            if (isUserNotLoggedIn()) {
+                startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE);
             } else {
-                Intent intent = new Intent(getActivity(), AddProductActivity.class);
-                intent.putExtra("edit_product", product);
-                //adds the information about the prompt when navigating the user to the edit the product
-                intent.putExtra("modify_category_prompt", showCategoryPrompt);
-                intent.putExtra("modify_nutrition_prompt", showNutritionPrompt);
-                startActivity(intent);
+                startEditProduct();
             }
         }
+    }
+
+    private void startEditProduct() {
+        Intent intent = new Intent(getActivity(), AddProductActivity.class);
+        intent.putExtra("edit_product", product);
+        //adds the information about the prompt when navigating the user to the edit the product
+        intent.putExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, showCategoryPrompt);
+        intent.putExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, showNutritionPrompt);
+        startActivity(intent);
     }
 }

@@ -11,14 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
+import com.afollestad.materialdialogs.MaterialDialog;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
+import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshView;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 public abstract class BaseFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
-
     private SwipeRefreshLayout swipeRefreshLayout;
     private OnRefreshListener refreshListener;
 
@@ -47,6 +49,28 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         if (swipeRefreshLayout != null) {
             swipeRefreshLayout.setOnRefreshListener(this);
         }
+    }
+
+    protected boolean isUserLoggedIn() {
+        return BaseActivity.isUserLoggedIn(getActivity());
+    }
+
+    protected boolean isUserNotLoggedIn() {
+        return !isUserLoggedIn();
+    }
+
+    protected void startLoginToEditAnd(int requestCode) {
+        new MaterialDialog.Builder(getContext())
+            .title(R.string.sign_in_to_edit)
+            .positiveText(R.string.txtSignIn)
+            .negativeText(R.string.dialog_cancel)
+            .onPositive((dialog, which) -> {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivityForResult(intent, requestCode);
+                dialog.dismiss();
+            })
+            .onNegative((dialog, which) -> dialog.dismiss())
+            .build().show();
     }
 
     @Override

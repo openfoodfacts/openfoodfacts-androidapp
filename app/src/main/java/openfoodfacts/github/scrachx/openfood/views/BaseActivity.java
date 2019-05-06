@@ -1,20 +1,21 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-
 import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.dagger.component.ActivityComponent;
 import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import org.apache.commons.lang3.StringUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
-
     private ActivityComponent activityComponent;
 
     static {
@@ -40,5 +41,42 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public ActivityComponent getActivityComponent() {
         return activityComponent;
+    }
+
+    boolean isUserLoggedIn() {
+        return isUserLoggedIn(this);
+    }
+
+    boolean isUserNotLoggedIn() {
+        return !isUserLoggedIn();
+    }
+
+    String getUserLogin() {
+        SharedPreferences preferences = getLoginPreferences();
+        return preferences == null ? null : preferences.getString("user", null);
+    }
+
+    private SharedPreferences getLoginPreferences() {
+        return getLoginPreferences(this);
+    }
+
+    private static SharedPreferences getLoginPreferences(Activity activity) {
+        if (activity == null) {
+            return null;
+        }
+        return activity.getSharedPreferences("login", 0);
+    }
+
+    String getUserSession() {
+        SharedPreferences preferences = getLoginPreferences();
+        return preferences.getString("user_session", null);
+    }
+
+    public static boolean isUserLoggedIn(Activity activity) {
+        if (activity == null) {
+            return false;
+        }
+        final String login = getLoginPreferences(activity).getString("user", "");
+        return StringUtils.isNotBlank(login);
     }
 }
