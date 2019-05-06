@@ -110,6 +110,7 @@
                         android:id="@+id/for100g_100ml"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="true"
                         android:text="@string/for_100g_100ml"/>
 
                 <RadioButton

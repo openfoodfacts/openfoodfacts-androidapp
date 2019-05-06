@@ -151,6 +151,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValuesFromOffline();
+            }else{
+                radioGroup.jumpDrawablesToCurrentState();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show();
