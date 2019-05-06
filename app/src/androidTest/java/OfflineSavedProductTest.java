@@ -1,6 +1,6 @@
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
-import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -79,7 +79,7 @@ public class OfflineSavedProductTest {
         productDetails.put("ingredients_text", INGREDIENTS);
         productDetails.put("traces", TRACES);
         productDetails.put("serving_size", SERVING_SIZE);
-        productDetails.put("nutrition_data_per", Nutriments.DEFAULT_NUTRITION_SIZE);
+        productDetails.put("nutrition_data_per", ProductUtils.DEFAULT_NUTRITION_SIZE);
         productDetails.put("nutriment_energy", ENERGY);
         productDetails.put("nutriment_energy_unit", ENERGY_UNIT);
         productDetails.put("nutriment_fat", FAT);

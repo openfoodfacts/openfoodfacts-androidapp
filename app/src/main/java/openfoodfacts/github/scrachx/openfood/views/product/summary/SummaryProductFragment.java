@@ -316,6 +316,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 salt = nutrientLevels.getSalt();
             }
 
+            final boolean inVolume = ProductUtils.isPerServingInLiter(product);
+            textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
+
             if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
                 // prefetch the uri
                 // currently only available in french translations

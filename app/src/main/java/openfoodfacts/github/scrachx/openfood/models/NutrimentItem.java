@@ -9,10 +9,18 @@ public class NutrimentItem {
     private final CharSequence servingValue;
     private final CharSequence unit;
     private final CharSequence modifier;
+    private final boolean headerPerVolume;
 
-    /**
-     * @see #NutrimentItem(String, String, String, String, String)
-     */
+
+    public NutrimentItem(boolean headerPerVolume){
+        title=null;
+        value=null;
+        servingValue=null;
+        unit=null;
+        modifier=null;
+        this.headerPerVolume = headerPerVolume;
+    }
+
     public NutrimentItem(CharSequence title, CharSequence value, CharSequence servingValue,
                          CharSequence unit, CharSequence modifier) {
         this.title = title;
@@ -20,6 +28,11 @@ public class NutrimentItem {
         this.servingValue = servingValue;
         this.unit = unit;
         this.modifier = modifier;
+        this.headerPerVolume = false;
+    }
+
+    public boolean isHeaderPerVolume() {
+        return headerPerVolume;
     }
 
     /**
@@ -37,6 +50,7 @@ public class NutrimentItem {
         this.servingValue = getRoundNumber(servingValue);
         this.unit = unit;
         this.modifier = modifier;
+        this.headerPerVolume = false;
     }
 
     public CharSequence getTitle() {

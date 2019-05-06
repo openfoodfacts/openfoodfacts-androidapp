@@ -39,6 +39,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -202,6 +203,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             salt = nutrientLevels.getSalt();
         }
 
+
+
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
             nutrientLevelsCardView.setVisibility(View.GONE);
             levelItem.add(new NutrientLevelItem("", "", "", 0));
@@ -320,6 +323,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         barcode = product.getCode();
         List<NutrimentItem> nutrimentItems = new ArrayList<>();
 
+        final boolean inVolume= ProductUtils.isPerServingInLiter(product);
+        textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
         if (isNotBlank(product.getServingSize())) {
             mTextPerPortion.setText(getString(R.string.nutriment_serving_size) + " " + product.getServingSize());
         } else {
@@ -368,7 +373,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         nutrimentsRecyclerView.setNestedScrollingEnabled(false);
 
         // Header hack
-        nutrimentItems.add(new NutrimentItem(null, null, null, null, null));
+        nutrimentItems.add(new NutrimentItem(inVolume));
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);

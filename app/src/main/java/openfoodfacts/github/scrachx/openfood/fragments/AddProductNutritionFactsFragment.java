@@ -37,7 +37,6 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import org.apache.commons.lang3.StringUtils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -53,6 +52,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 
 public class AddProductNutritionFactsFragment extends BaseFragment {
     private static final String[] ALL_UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_DV, UnitUtils.UNIT_IU};
+    private static final String[] ALL_UNIT_SERVING = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_LITER, UnitUtils.UNIT_MILLILITRE};
     private static final String[] UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM};
     private static final String PARAM_NO_NUTRITION_DATA = "no_nutrition_data";
     private static final String PARAM_NUTRITION_DATA_PER = "nutrition_data_per";
@@ -278,7 +278,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         String[] part = servingSize.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
         serving_size.setText(part[0]);
         if (part.length > 1) {
-            serving_size.getAttachedSpinner().setSelection(getPositionInAllUnitArray(part[1].trim()));
+            serving_size.getAttachedSpinner().setSelection(getPositionInServingUnitArray(part[1].trim()));
         }
     }
 
@@ -342,7 +342,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
     private void updateSelectedDataSize(String s) {
         radioGroup.clearCheck();
-        if (s.equals(Nutriments.DEFAULT_NUTRITION_SIZE)) {
+        if (s.equals(ProductUtils.DEFAULT_NUTRITION_SIZE)) {
             radioGroup.check(R.id.for100g_100ml);
         } else {
             radioGroup.check(R.id.per_serving);
@@ -397,6 +397,15 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private int getPositionInAllUnitArray(String unit) {
         for (int i = 0; i < AddProductNutritionFactsFragment.ALL_UNIT.length; i++) {
             if (ALL_UNIT[i].equalsIgnoreCase(unit)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private int getPositionInServingUnitArray(String unit) {
+        for (int i = 0; i < AddProductNutritionFactsFragment.ALL_UNIT_SERVING.length; i++) {
+            if (ALL_UNIT_SERVING[i].equalsIgnoreCase(unit)) {
                 return i;
             }
         }
@@ -502,6 +511,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     }
 
     private ValueState checkAsGram(CustomValidatingEditTextView text, float value) {
+        if(isReferenceValueInVolume()){
+            //if serving is set in ml or l we can't check as gram...
+            return ValueState.VALID;
+        }
         float reference = getReferenceValueInGram();
         boolean valid = convertToGrams(value, text.getAttachedSpinner().getSelectedItemPosition()) <= reference;
         if (!valid) {
@@ -633,14 +646,14 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
             } else {
                 if (isDataPer100()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, Nutriments.DEFAULT_NUTRITION_SIZE);
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
                 if (serving_size.getText().toString().isEmpty()) {
                     targetMap.put(PARAM_SERVING_SIZE, "");
                 } else {
-                    String servingSize = serving_size.getText().toString() + UNIT[serving_size.getAttachedSpinner().getSelectedItemPosition()];
+                    String servingSize = serving_size.getText().toString() + ALL_UNIT_SERVING[serving_size.getAttachedSpinner().getSelectedItemPosition()];
                     targetMap.put(PARAM_SERVING_SIZE, servingSize);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
@@ -671,7 +684,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
             } else {
                 if (isDataPer100()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, Nutriments.DEFAULT_NUTRITION_SIZE);
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
@@ -721,6 +734,14 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 }
             })
             .show();
+    }
+
+    private boolean isReferenceValueInVolume(){
+        if (radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
+            int selectedUnit=serving_size.getAttachedSpinner().getSelectedItemPosition();
+            return ALL_UNIT_SERVING[selectedUnit].toLowerCase().contains(UnitUtils.UNIT_LITER);
+        }
+        return  false;
     }
 
     private float getReferenceValueInGram() {
@@ -877,6 +898,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
     private ValueState checkEnergy(CustomValidatingEditTextView editTextView, float value) {
         if (energy.getEntryName().equals(editTextView.getEntryName())) {
+            if(isReferenceValueInVolume()){
+                return ValueState.VALID;
+            }
             float energyInKcal = UnitUtils.convertToKiloCalories(value, getSelectedEnergyUnit());
             if (radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
                 energyInKcal *= (100.0f / getReferenceValueInGram());
