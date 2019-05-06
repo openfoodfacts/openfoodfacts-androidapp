@@ -40,6 +40,7 @@ import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -74,6 +75,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
+    private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     @BindView(R.id.product_allergen_alert_layout)
     LinearLayout productAllergenAlertLayout;
     @BindView(R.id.product_allergen_alert_text)
@@ -153,7 +155,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean addingIngredientsImage = false;
     //boolean to indicate if the image clicked was that of nutrition
     private boolean addingNutritionImage = false;
-    private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     private static final int EDIT_REQUEST_CODE = 2;
     private Question productQuestion = null;
     private boolean hasCategoryInsightQuestion = false;
@@ -848,12 +849,30 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.add_nutriscore_prompt)
     public void onAddNutriScorePromptClick() {
-        Intent intent = new Intent(getActivity(), AddProductActivity.class);
-        intent.putExtra("edit_product", product);
-        //adds the information about the prompt when navigating the user to the edit the product
-        intent.putExtra("modify_category_prompt", showCategoryPrompt);
-        intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
-        startActivityForResult(intent, EDIT_REQUEST_CODE);
+        if (BuildConfig.FLAVOR.equals("off")) {
+            final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
+            final String login = settings.getString("user", "");
+            if (login.isEmpty()) {
+                new MaterialDialog.Builder(getContext())
+                        .title(R.string.sign_in_to_edit)
+                        .positiveText(R.string.txtSignIn)
+                        .negativeText(R.string.dialog_cancel)
+                        .onPositive((dialog, which) -> {
+                            Intent intent = new Intent(getContext(), LoginActivity.class);
+                            startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
+                            dialog.dismiss();
+                        })
+                        .onNegative((dialog, which) -> dialog.dismiss())
+                        .build().show();
+            } else {
+                Intent intent = new Intent(getActivity(), AddProductActivity.class);
+                intent.putExtra("edit_product", product);
+                //adds the information about the prompt when navigating the user to the edit the product
+                intent.putExtra("modify_category_prompt", showCategoryPrompt);
+                intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
+                startActivity(intent);
+            }
+        }
     }
 
     @OnClick(R.id.action_compare_button)
