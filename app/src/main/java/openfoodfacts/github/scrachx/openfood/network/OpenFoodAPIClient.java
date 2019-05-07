@@ -298,7 +298,9 @@ public class OpenFoodAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                if(activity!=null && !activity.isFinishing()) {
+                    Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                }
                 productsCallback.onProductsResponse(false, null, -1);
             }
         });
@@ -497,16 +499,20 @@ public class OpenFoodAPIClient {
 
                                     @Override
                                     public void onFailure(Call<JsonNode> call, Throwable t) {
-                                        Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
-                                        activity.finish();
+                                        if(activity!=null) {
+                                            Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
+                                            activity.finish();
+                                        }
                                     }
                                 });
                     }
 
                     @Override
                     public void onFailure(Call<JsonNode> call, Throwable t) {
-                        Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
-                        activity.finish();
+                        if(activity!=null){
+                            Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
+                            activity.finish();
+                        }
                     }
                 });
 

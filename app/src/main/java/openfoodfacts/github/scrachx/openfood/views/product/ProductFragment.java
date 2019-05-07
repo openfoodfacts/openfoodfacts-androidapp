@@ -87,7 +87,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
         setupViewPager(viewPager);
 
-        viewPager.setNestedScrollingEnabled(true);
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+            viewPager.setNestedScrollingEnabled(true);
+        }
 
         tabLayout.setupWithViewPager(viewPager);
 

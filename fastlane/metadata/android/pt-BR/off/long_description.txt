@@ -50,13 +50,13 @@ Crie listas de compras, controle o que você comeu e compartilhe facilmente e ex
 Digitalize à velocidade da luz (mesmo se você estiver num avião, submarino ou supermercado)
 
 - O planeta inteiro, no seu bolso!
-- Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet.
+- Você pode adicionar novos produtos, mesmo se você não estiver conectado à Internet.
 - O aplicativo carrega apenas o estrito necessário para reduzir o consumo de dados e bateria.
 
 ▶ Sua comida, seus dados
-- Seus dados são seus e nunca são enviados on-line
-- Pode usar o aplicativo anonimamente
-- Pode exportar seu histórico de digitalizações
+- Seus dados são seus e nunca é enviado online
+- Você pode usar o aplicativo anonimamente
+- Você pode exportar seu histórico
 
 ▶ Configurar alertas de alérgenos em produtos
 - Leite, glúten, ovos, soja, nozes, peixe, aipo, mostarda, dióxido de enxofre e sulfitos, amendoim, sementes de gergelim, crustáceos, moluscos ou alergia de tremoços?

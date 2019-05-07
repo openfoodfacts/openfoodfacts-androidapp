@@ -9,11 +9,12 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 298
-        versionName "2.9.8"
+        versionCode 312
+        versionName "3.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+    
     buildTypes {
         release {
             crunchPngs true
@@ -116,7 +117,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 12
+    schemaVersion 13
 }
 android {
     // Other settings

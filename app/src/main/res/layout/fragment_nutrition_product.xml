@@ -95,8 +95,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_normal"
-                android:drawableLeft="@drawable/ic_add_box_blue_18dp"
-                android:drawableStart="@drawable/ic_add_box_blue_18dp"
                 android:text="@string/add_nutrient_prompt_text"
                 android:visibility="gone"
                 style="@style/BorderButton"

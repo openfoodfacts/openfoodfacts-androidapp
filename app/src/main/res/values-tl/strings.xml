@@ -6,16 +6,16 @@
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minute ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="one">isang minuto ang nakalipas</item>
+        <item quantity="other">%d mga minuto ang nakalipas</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="one">isang oras na ang nakalipas</item>
+        <item quantity="other">%d oras na ang nakalipas</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="one">isang araw na ang nakalipas</item>
+        <item quantity="other">%d araw na ang nakalipas</item>
     </plurals>
     <string name="action_settings">Mga Setting</string>
     <string name="action_about">Tungkol sa</string>
@@ -23,11 +23,11 @@
     <string name="contribute">Paano ang mag ambag</string>
     <string name="action_find">Hanapin</string>
     <string name="text_barcode">I-type ang barcode:</string>
-    <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+    <string name="message_in_activity_save_product_offline">Isang larawan lamang ang kinakailangan upang makapagpadala ng isang produkto.</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
-    <string name="no_offline_data">You\'re all done</string>
-    <string name="first_offline">Products added offline will appear here</string>
+    <string name="product_allergen_prompt">Ang produktong ito ay naglalaman ng:</string>
+    <string name="no_offline_data">Ikaw ay tapos na</string>
+    <string name="first_offline">Ang mga produktong naidagdag habang naka-offline ay lilitaw dito</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -35,12 +35,12 @@
         <item>Mga Sangkap</item>
         <item>Nutrisyon</item>
         <item>Talahanayan ng nutrisyon</item>
-        <item>Environment</item>
+        <item>Kapaligiran</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Mga Larawan ng Produkto</item>
+        <item>Pagsusuri sa Sangkap</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -59,29 +59,29 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Asidong alpha-linolenic / ALA (18:3 n-3)</item>
+        <item>Asidong arachidic (20:0)</item>
+        <item>Asidong arachidonic / AA / ARA (20:4 n-6)</item>
+        <item>Asidong behenic (22:0)</item>
         <item>Bicarbonate</item>
         <item>Biotin</item>
-        <item>Butyric acid (4:0)</item>
+        <item>Asidong butyric (4:0)</item>
         <item>Caffeine</item>
         <item>Calcium</item>
-        <item>Capric acid (10:0)</item>
-        <item>Caproic acid (6:0)</item>
-        <item>Caprylic acid (8:0)</item>
+        <item>Asidong capric (10:0)</item>
+        <item>Asidong caproic (6:0)</item>
+        <item>Asidong caprylic (8:0)</item>
         <item>Casein</item>
-        <item>Cerotic acid (26:0)</item>
+        <item>Asidong cerotic (26:0)</item>
         <item>Chloride</item>
         <item>Kolesterol</item>
         <item>Chromium</item>
         <item>Copper</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>Asidong dihomo-gamma-linolenic / DGLA (20:3 n-6)</item>
+        <item>Asidong docosahexaenoic / DHA (22:6 n-3)</item>
+        <item>Asidong eicosapentaenoic / EPA (20:5 n-3)</item>
+        <item>Asidong elaidic (18:1 n-9)</item>
+        <item>Asidong erucic (22:1 n-9)</item>
         <item>Fluoride</item>
         <item>Fructose</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
@@ -260,17 +260,17 @@
     <string name="auto_focus_on">Auto Focus [ON]</string>
     <string name="auto_focus_off">Auto Focus [OFF]</string>
     <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="choose_formats">Pumili ng mga Format</string>
+    <string name="select_camera">Pumili ng Kamera</string>
     <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Kanselahin</string>
     <string name="login_button">Login</string>
-    <string name="create_account_button">Create Account</string>
+    <string name="create_account_button">Lumikha ng Akawnt</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="from_gallery">Mula sa gallery</string>
     <string name="product_sent">Matagumpay na naipadala ang produkto</string>
     <string name="action_edit_product">I-edit ang produkto</string>
-    <string name="title_info_dialog">How does it work?</string>
+    <string name="title_info_dialog">Paano ito gumagana?</string>
     <string name="text_offline_info_dialog">Maaari mong i-scan ang mga produkto kapag offline ka upang idagdag ang mga ito sa Open Food Fact sa ibang pagkakataon. Ang lahat ng mga produkto na iyong i-scan ay lilitaw dito, at magagawa mong ipadala ang mga ito gamit ang pindutan sa ibaba.</string>
     <string name="permission_camera">Kinakailangan ang pahintulot ng kamera upang i-scan ang mga barcode at kumuha ng mga larawan.</string>
     <string name="permission_title">Pahintulot ng impormasyon</string>
@@ -282,7 +282,7 @@
     <string name="new_offline_info">Mangyaring kumuha ng larawan ng produkto, mga sangkap, talahanayan ng nutrisyon at anumang iba pang impormasyon sa etiketa. Salamat!</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Dapat hindi bumaba sa 6 na mga karakter ang haba ng iyong password.</string>
-    <string name="user">user</string>
+    <string name="user">gumagamit</string>
     <string name="error_field_required">Kailangan ang patlang na ito.</string>
     <string name="action_preferences">Mga preperensiya</string>
     <string name="prefs_scan_startup">I-scan sa startup</string>
@@ -295,23 +295,23 @@
     <string name="scan_history_drawer">Kasaysayan</string>
     <string name="clear_history">Burahin ang kasaysayan</string>
     <string name="title_clear_history_dialog">Burahin</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Gusto mo bang burahin lahat ng kasaysayan sa iyong pag-scan?</string>
     <string name="export_csv_history">Export CSV</string>
     <string name="txt_exporting_history">Kasaysayan ng pag export…</string>
     <string name="txt_history_exported">Na export na ang kasaysayan</string>
     <string name="permision_write_external_storage">Magsulat ng external na permiso ng storage ito ay kailangan para ma export ang kasaysayan.</string>
     <string name="txt_nutrition_not_found">N/A</string>
-    <string name="no_brand">No Brand</string>
-    <string name="no_title">No Title</string>
+    <string name="no_brand">Walang Tatak</string>
+    <string name="no_title">Walang Pamagat</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">Nutrition facts table for %1$s of this product</string>
-    <string name="check_facts">Check</string>
+    <string name="check_facts">Suriin</string>
     <string name="nutrition">Nutrisyon</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="calculated_nutrition">Nakalkulang Nutrisyon</string>
+    <string name="please_enter_weight">Mangyaring ilagay ang timbang ng produkto</string>
+    <string name="enter_weight">Ilagay ang timbang ng produkto</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
-    <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+    <string name="txt_calories_result">%1$s kcal sa %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
@@ -342,10 +342,10 @@
     <string name="nutriment_serving_size">Kada bahagi: </string>
     <string name="action_manage_account">Pamahalaan ang account</string>
     <string name="action_contributes">Ang iyong mga kontribusyon</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="choose_energy_unit">Piliin ang iyong nagustuhang mga yunit ng enerhiya para sa talahanayan ng nutrisyon</string>
+    <string name="energy_pref_title">Nagustuhang yunit ng enerhiya</string>
+    <string name="choose_volume_unit">Piliin ang iyong nagustuhang mga yunit ng dami para sa talahanayan ng nutrisyon</string>
+    <string name="volume_pref_title">Nagustuhang yunit ng dami</string>
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">Pwede kang mag sign-in o gumawa ng account para mapanatili ang iyong mga kontribusyon</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
@@ -358,11 +358,11 @@
     <string name="number_of_products">Bilang ng mga produkto: </string>
     <string name="txt_no_results">Walang nahanap na resulta</string>
     <string name="txt_extend_search">Subukang palawakin ng iyong paghahanap o idagdag ang produkto</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
+    <string name="txt_no_matching__category_products">Oh hindi, wala kaming ni-isang produkto sa kategoriyang ito, maaari ka bang magdagdag ng isa?</string>
+    <string name="txt_no_matching_allergen_products">Oh sayang, wala kaming mga produkto sa alerdyen na ito, maaari ka bang magdagdag ng isa?</string>
+    <string name="txt_no_matching_label_products">Oh sayang, wala kaming mga produkto na may tatak na ito, maaari ka bang magdagdag ng isa?</string>
+    <string name="txt_no_matching_additive_products">Oh sayang, wala kaming mga produkto na may additive na ito, maaari ka bang magdagdag ng isa?</string>
+    <string name="txt_no_matching_country_products">Oh sayang, wala kaming mga produkto na mula sa bansang ito, maaari ka bang magdagdag ng isa?</string>
     <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
     <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
     <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
@@ -448,7 +448,7 @@
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
-    <string name="scan_shortcut_short_label">Scan</string>
+    <string name="scan_shortcut_short_label">I-scan</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">Maghanap</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
@@ -809,4 +809,5 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

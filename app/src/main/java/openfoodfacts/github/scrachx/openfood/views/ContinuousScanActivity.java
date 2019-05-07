@@ -353,9 +353,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 fab_status.setVisibility(View.VISIBLE);
                                 quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
                                 fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
+                            }else{
+                                Log.i(this.getClass().getSimpleName(), e.getMessage(),e);
                             }
                         } catch (Exception e1) {
-                            Log.i(this.getClass().getSimpleName(), e1.getMessage());
+                            Log.i(this.getClass().getSimpleName(), e1.getMessage(),e1);
                         }
                     }
                 });

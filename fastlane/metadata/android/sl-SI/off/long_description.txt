@@ -21,9 +21,9 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov.
+- Odprta dejstva o hrani je zbirka podatkov o živilskih izdelkih, ki so jo pripravili vsi, za vse.
+- Uporabite jo lahko za boljšo izbiro hrane in ker je to odprta zbirka podatkov, jo lahko kdorkoli ponovno uporabiti za kateri koli namen.
+- Odprta dejstva o hrani je neprofitni projekt, ki ga je razvilo na tisoče prostovoljcev iz vsega sveta. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
