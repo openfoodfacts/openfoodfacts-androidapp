@@ -129,7 +129,7 @@ public class OpenFoodAPIClient {
                     Intent intent = new Intent(activity, ProductActivity.class);
                     Bundle bundle = new Bundle();
                     String langCode = LocaleHelper.getLanguage(activity.getApplicationContext());
-                    String fieldsArray[] = activity.getResources().getStringArray(R.array.fields_array);
+                    String[] fieldsArray = activity.getResources().getStringArray(R.array.fields_array);
                     ArrayList<String> fieldsList = new ArrayList<>();
                     for (int i = 0; i < fieldsArray.length; i++) {
                         if (!langCode.equals("en")) {
@@ -249,7 +249,7 @@ public class OpenFoodAPIClient {
 
     public void searchProduct(final String name, final int page, final Activity activity, final OnProductsCallback productsCallback) {
         String productNameLocale = getLocaleProductNameField();
-        String fields = "image_small_url,product_name,brands,quantity,code,nutrition_grade_fr," + productNameLocale;
+        String fields = "selected_images,image_small_url,product_name,brands,quantity,code,nutrition_grade_fr," + productNameLocale;
 
         apiService.searchProductByName(fields, name, page).enqueue(new Callback<Search>() {
             @Override
@@ -633,7 +633,7 @@ public class OpenFoodAPIClient {
                 hp = historyProducts.get(0);
                 hp.setLastSeen(new Date());
             } else {
-                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(), product.getCode(), product
+                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())), product.getCode(), product
                     .getQuantity(), product.getNutritionGradeFr());
             }
             mHistoryProductDao.insertOrReplace(hp);
@@ -787,7 +787,7 @@ public class OpenFoodAPIClient {
 
                         if (s.getStatus() != 0) {
                             Product product = s.getProduct();
-                            HistoryProduct hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(),
+                            HistoryProduct hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
                                 product.getCode(), product.getQuantity(), product.getNutritionGradeFr());
                             Log.d("syncOldHistory", hp.toString());
 

@@ -226,19 +226,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         barcode = product.getCode();
         String langCode = LocaleHelper.getLanguage(getContext());
 
-        if (isNotBlank(product.getImageUrl())) {
+        final String imageUrl = product.getImageUrl(langCode);
+        if (isNotBlank(imageUrl)) {
             addPhotoLabel.setVisibility(View.GONE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.with(getContext())
-                    .load(product.getImageUrl())
+                    .load(imageUrl)
                     .into(mImageFront);
             } else {
                 mImageFront.setVisibility(View.GONE);
             }
 
-            mUrlImage = product.getImageUrl();
+            mUrlImage = imageUrl;
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
@@ -928,7 +929,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         String barcode = product.getCode();
         String productName = product.getProductName();
-        String imageUrl = product.getImageSmallUrl();
+        String imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(getContext()));
         String productDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
 
         MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(activity)

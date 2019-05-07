@@ -45,6 +45,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
@@ -251,9 +252,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         } else {
                             quantity.setText(product.getQuantity());
                         }
-                        if (product.getImageUrl() != null) {
+                        final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(getBaseContext()));
+                        if (imageUrl != null) {
                             Picasso.with(ContinuousScanActivity.this)
-                                .load(product.getImageUrl())
+                                .load(imageUrl)
                                 .error(R.drawable.placeholder_thumb)
                                 .into(productImage, new Callback() {
                                     @Override
@@ -780,7 +782,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 hp = historyProducts.get(0);
                 hp.setLastSeen(new Date());
             } else {
-                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(), product.getCode(), product
+                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())), product.getCode(), product
                     .getQuantity(), product.getNutritionGradeFr());
             }
             mHistoryProductDao.insertOrReplace(hp);

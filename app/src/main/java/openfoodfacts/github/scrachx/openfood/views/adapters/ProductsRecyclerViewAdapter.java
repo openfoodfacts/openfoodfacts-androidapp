@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
 import org.apache.commons.lang3.StringUtils;
@@ -60,14 +61,15 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
         if (holder instanceof ProductViewHolder) {
             ProductViewHolder productHolder = (ProductViewHolder) holder;
             productHolder.vProductImageProgressbar.setVisibility(View.VISIBLE);
-            if (products.get(position).getImageSmallUrl() == null) {
+            final String imageSmallUrl = products.get(position).getImageSmallUrl(LocaleHelper.getLanguage(ProductsRecyclerViewAdapter.this.context));
+            if (imageSmallUrl == null) {
                 productHolder.vProductImageProgressbar.setVisibility(View.GONE);
             }
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.with(context)
-                    .load(products.get(position).getImageSmallUrl())
+                    .load(imageSmallUrl)
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.error_image)
                     .fit()
