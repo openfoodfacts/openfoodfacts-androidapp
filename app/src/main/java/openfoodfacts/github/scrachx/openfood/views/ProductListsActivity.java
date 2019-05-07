@@ -3,11 +3,18 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
 import butterknife.BindView;
+
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -20,6 +27,7 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 import org.apache.commons.collections.CollectionUtils;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
@@ -65,29 +73,39 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         if (bundle != null) {
             Product p = (Product) bundle.get("product");
 
-            new MaterialDialog.Builder(this)
-                .title(R.string.txt_create_new_list)
-                .input(R.string.create_new_list_list_name,
-                    R.string.empty, false, (dialog, input) -> {
-                        ProductLists productList = new ProductLists(input.toString(), 0);
+            MaterialDialog dialog = new MaterialDialog.Builder(this)
+                    .title(R.string.txt_create_new_list)
+                    .input(R.string.create_new_list_list_name,
+                            R.string.empty, false, (d, input) -> {
+                               // do nothing
+                            }
+                    )
+                    .positiveText(R.string.txtSave)
+                    .negativeText(R.string.txt_discard)
+                    .show();
+            // this enable to avoid dismissing dalog if list name already exist
+            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("Positive", "Positive clicked");
+                    String listName = dialog.getInputEditText().getText().toString();
+                    boolean isAlreadyIn = checkListNameExist(listName);
+                    if (!isAlreadyIn) {
+                        ProductLists productList = new ProductLists(listName, 0);
                         productLists.add(productList);
                         productListsDao.insert(productList);
-                        String listName = input.toString();
                         Long id = productList.getId();
-                        Intent intent = new Intent(this, YourListedProducts.class);
+                        Intent intent = new Intent(ProductListsActivity.this, YourListedProducts.class);
                         intent.putExtra("listId", id);
                         intent.putExtra("listName", listName);
                         intent.putExtra("product", p);
                         startActivityForResult(intent, 1);
+                    } else {
+                        Toast.makeText(ProductListsActivity.this, R.string.error_duplicate_listname, Toast.LENGTH_SHORT).show();
                     }
-                )
-                .positiveText(R.string.txtSave)
-                .negativeText(R.string.txt_discard)
-                .onPositive((dialog, which) -> {
-                    dialog.dismiss();
-                    adapter.notifyDataSetChanged();
-                })
-                .show();
+                }
+            });
+
         }
 
         recyclerView.addOnItemTouchListener(
@@ -105,21 +123,51 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
         itemTouchhelper.attachToRecyclerView(recyclerView);
 
-        fabAdd.setOnClickListener(view -> new MaterialDialog.Builder(this)
-            .title(R.string.txt_create_new_list)
-            .input("List name", "", false, (dialog, input) -> {
-                    ProductLists productList = new ProductLists(input.toString(), 0);
-                    productLists.add(productList);
-                    productListsDao.insert(productList);
+        fabAdd.setOnClickListener(view -> {
+            MaterialDialog dialog = new MaterialDialog.Builder(this)
+                    .title(R.string.txt_create_new_list)
+                    .input("List name", "", false, new MaterialDialog.InputCallback() {
+                        @Override
+                        public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                        }
+                    })
+                    .positiveText(R.string.dialog_create)
+                    .negativeText(R.string.dialog_cancel)
+                    .show();
+            // this enable to avoid dismissing dalog if list name already exist
+            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("Positive", "Positive clicked");
+                    String listName = dialog.getInputEditText().getText().toString();
+                    boolean isAlreadyIn = checkListNameExist(listName);
+                    if (!isAlreadyIn) {
+                        ProductLists productList = new ProductLists(listName, 0);
+                        productLists.add(productList);
+                        productListsDao.insert(productList);
+                        dialog.dismiss();
+                        adapter.notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(ProductListsActivity.this, R.string.error_duplicate_listname, Toast.LENGTH_SHORT).show();
+                    }
                 }
-            )
-            .positiveText(R.string.dialog_create)
-            .negativeText(R.string.dialog_cancel)
-            .onPositive((dialog, which) -> {
-                dialog.dismiss();
-                adapter.notifyDataSetChanged();
-            })
-            .show());
+            });
+        });
+    }
+
+
+    /**
+     * Check if listname already in products lists.
+     * @param listName
+     * @return
+     */
+    private boolean checkListNameExist(String listName) {
+        for (Iterator<ProductLists> i = productLists.iterator(); i.hasNext();) {
+            if (i.next().getListName().equals(listName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
