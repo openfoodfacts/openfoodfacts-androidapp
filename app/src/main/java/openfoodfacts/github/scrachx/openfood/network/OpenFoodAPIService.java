@@ -67,6 +67,9 @@ public interface OpenFoodAPIService {
     @GET("cgi/search.pl?search_simple=1&json=1&action=process&fields=image_small_url,product_name,brands,quantity,code,nutrition_grade_fr")
     Call<Search> searchProductByName(@Query("search_terms") String name, @Query("page") int page);
 
+    @GET("cgi/search.pl?search_simple=1&json=1&action=process")
+    Call<Search> searchProductByName(@Query("fields") String fields,@Query("search_terms") String name,@Query("page") int page);
+
     @FormUrlEncoded
     @POST("/cgi/session.pl")
     Call<ResponseBody> signIn(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit);
