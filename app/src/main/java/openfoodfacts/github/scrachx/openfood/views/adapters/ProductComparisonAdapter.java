@@ -36,6 +36,7 @@ import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -126,15 +127,17 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         if (!productsToCompare.isEmpty()) {
 
             //support synchronous scrolling
-            holder.listItemLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(View view, int i, int i1, int i2, int i3) {
-                    for (ProductComparisonViewHolder viewHolder : viewHolders) {
-                        viewHolder.listItemLayout.setScrollX(i);
-                        viewHolder.listItemLayout.setScrollY(i1);
+            if(CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
+                holder.listItemLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                    @Override
+                    public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+                        for (ProductComparisonViewHolder viewHolder : viewHolders) {
+                            viewHolder.listItemLayout.setScrollX(i);
+                            viewHolder.listItemLayout.setScrollY(i1);
+                        }
                     }
-                }
-            });
+                });
+            }
 
             Product product = productsToCompare.get(position);
 
