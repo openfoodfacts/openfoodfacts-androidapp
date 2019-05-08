@@ -1259,7 +1259,7 @@ public class AddProductActivity extends AppCompatActivity {
                         Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
                             .setAction(R.string.txt_try_again, v -> performOCR(code, imageField)).show();
                     } else {
-                        Log.i(this.getClass().getSimpleName(), e.getMessage());
+                        Log.i(this.getClass().getSimpleName(), e.getMessage(),e);
                         Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }

@@ -438,6 +438,9 @@ public class Utils {
      * @return true if installed, false otherwise.
      */
     public static boolean isHardwareCameraInstalled(Context context) {
+        if(context==null){
+            return false;
+        }
         try {
             if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
                 return true;
@@ -520,6 +523,9 @@ public class Utils {
     }
 
     public static  boolean isUserLoggedIn(Context context){
+        if(context==null){
+            return false;
+        }
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         return StringUtils.isNotEmpty(login);
@@ -649,15 +655,16 @@ public class Utils {
         }
 
         try {
-            int energyKcal = convertKjToKcal(Integer.parseInt(value));
+            int energyKcal = convertKjToKcal(Double.parseDouble(value));
             return String.valueOf(energyKcal);
         } catch (NumberFormatException e) {
             return defaultValue;
         }
     }
 
-    private static int convertKjToKcal(int kj) {
-        return kj != 0 ? Double.valueOf(((double) kj) / 4.1868d).intValue() : -1;
+
+    private static int convertKjToKcal(double kj) {
+        return kj != 0 ? Double.valueOf(kj / 4.1868d).intValue() : -1;
     }
 
     /**

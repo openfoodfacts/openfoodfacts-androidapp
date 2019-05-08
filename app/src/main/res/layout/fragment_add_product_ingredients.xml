@@ -121,7 +121,6 @@
             app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list" />
 
         <Button
-            android:drawableLeft="@drawable/ic_file_download_black_18dp"
             android:drawablePadding="5dp"
             android:id="@+id/btn_extract_ingredients"
             android:layout_width="wrap_content"
@@ -129,6 +128,7 @@
             android:text="@string/extract_ingredients"
             android:textColor="@color/md_black_1000"
             android:visibility="gone"
+            style="@style/BorderButton"
             app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
             app:layout_constraintEnd_toEndOf="@id/ingredients_list"
             app:layout_constraintStart_toStartOf="@id/ingredients_list"

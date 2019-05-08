@@ -283,7 +283,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:paddingHorizontal="@dimen/spacing_small"
-                android:text="(Required to calculate the Nutri-Score)"
+                android:text="@string/required_to_compute_nutriscore"
                 android:textColor="@color/grey_500"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/categories_til"
@@ -687,12 +687,13 @@
                 tools:visibility="visible"/>
 
         <Button
-                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
                 android:drawablePadding="5dp"
                 android:id="@+id/btn_other_pictures"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_normal"
                 android:text="@string/take_more_pictures"
+                style="@style/BorderButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/other_image_progress_text"/>

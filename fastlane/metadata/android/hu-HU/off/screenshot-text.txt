@@ -1,45 +1,72 @@
 Ezek a feliratok a playstore-ban szereplő képernyőképek felett láthatóak. Legyenek rövidek és lényegretörőek.
-Ne változtassa meg a fájl nevét.
----
-scan_en.png
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+
+=====================
+V2 screenshots
+=====================
+
 Termékek beolvasása
 
-quickview_en.png
 Kapja meg a Nutriscore-t
 
-history_en.png
 Az ön teljes beolvasási előzményei, teljesen magán és exportálható
 
-product_view_wikipedia_en.png
 Továbblépés a Wikipedia-val
 
-allergen_alert_en.png
 Allergén riasztások beállítása
 
-home_en.png
-product_view_nutrition_summary_en.png
 Tápanyag, egyszerűsített
 
-product_view_allergen_alert_en.png
 Allergén riasztás
 
-categories_en.png
 Kapjon alternatívát a kedvenc élelmiszereire
 
-foodtransparency_en.png
 Legyen egy szereplője az élelmiszer átláthatóságnak
 
-product_view_summary_en.png
 Wikipedia az Élelmiszerekhez
+
 Wikipedia a Kozmetikumokhoz
+
 Wikipedia az Állateledelekhez
+
 Wikipedia a Termékekhez
 
-product_view_ingredients_en.png
 Összetevők
 
-menu_en.png
 Erős
 
-product_view_nutrition_table_en.png
 Tápértékadatok
+
+=====================
+V3 screenshots
+=====================
+
+Choose the products that are good for you and for the 🌍 planet !
+
+✔ Ultra-fast barcode scan
+
+✔ A global supermarket in your pocket
+
+Nutritional quality
+
+Ultra-processed foods
+
+Carbon impact
+
+Compare easily before you buy
+
+Create shopping lists, intake lists…
+
+Find and compare over 750 000 products.
+
+
+
+Unlimited and fully-private scan history
+
+Swipe for even more details
+
+Set Allergen Alerts
+
+Join our global movement for food transparency
+
+world.openfoodfacts.org/contribute

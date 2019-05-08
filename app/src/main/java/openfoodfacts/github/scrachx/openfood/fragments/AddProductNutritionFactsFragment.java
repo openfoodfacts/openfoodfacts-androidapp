@@ -107,6 +107,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     TextView globalValidationMsg;
     @BindView(R.id.btn_add)
     Button buttonAdd;
+    @BindView(R.id.btn_add_a_nutrient)
+    Button buttonAddNutrient;
     //index list stores the index of other nutrients which are used.
     private Set<Integer> index = new HashSet<>();
     private Activity activity;
@@ -132,6 +134,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        buttonAddNutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp,0,0,0);
         Bundle b = getArguments();
         lastEditText = alcohol;
         if (b != null) {
@@ -342,6 +345,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         } else {
             radioGroup.check(R.id.per_serving);
         }
+        radioGroup.jumpDrawablesToCurrentState();
     }
 
     private void loadNutritionsImage(String path) {

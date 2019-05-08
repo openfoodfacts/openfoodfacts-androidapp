@@ -21,7 +21,7 @@
     <string name="text_barcode">输入条形码：</string>
     <string name="message_in_activity_save_product_offline">至少需要一张照片来创建新的产品。</string>
     <string name="product_incomplete_message">该产品还未完成。因此，我们无法做过敏原检查。</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">本产品包含:</string>
     <string name="no_offline_data">你已经全部完成</string>
     <string name="first_offline">离线添加的产品将显示在此处</string>
     <!-- Image Upload -->
@@ -94,12 +94,12 @@
         <item>麦芽糖</item>
         <item>锰</item>
         <item>米德酸 (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>蜂花酸(30:0)</item>
         <item>钼</item>
         <item>单元不饱和脂肪</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>褐煤酸(28:0)</item>
+        <item>肉豆蔻酸 (14:0)</item>
+        <item>神经酸 (24:1 n-9)</item>
         <item>核苷酸</item>
         <item>Oleic acid (18:1 n-9)</item>
         <item>Omega 3 fatty acids</item>
@@ -113,18 +113,18 @@
         <item>Polyunsaturated fat</item>
         <item>钾</item>
         <item>硒</item>
-        <item>Serum proteins</item>
+        <item>血清蛋白</item>
         <item>二氧化硅</item>
-        <item>Starch</item>
+        <item>淀粉</item>
         <item>Stearic acid (18:0)</item>
         <item>蔗糖</item>
         <item>牛磺酸</item>
         <item>反式脂肪</item>
         <item>维生素 A</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
+        <item>维生素B1(硫胺素)</item>
+        <item>维生素B12(钴胺素)</item>
+        <item>维生素B2(核黄素)</item>
+        <item>维生素B3 / 维生素PP (烟酸)</item>
         <item>Vitamin B6 (Pyridoxin)</item>
         <item>Vitamin B9 (Folic acid)</item>
         <item>Vitamin C (Ascorbic acid)</item>
@@ -187,7 +187,7 @@
     <string name="txtFat">脂肪</string>
     <string name="txtSugars">糖</string>
     <string name="hintBarcode">条形码</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">了解有关营养水平的更多信息</string>
     <string name="hintLogin">登录</string>
     <string name="hintPass">密码</string>
     <string name="errorLogin">用户名或密码错误</string>
@@ -210,7 +210,7 @@
     <string name="txtNoData">无数据</string>
     <string name="txtPictureNeeded">等待…</string>
     <string name="txtPictureNeededDialogContent">在提交此产品前你应该至少添加一张图片</string>
-    <string name="txtPictureNeededDialogYes">Stay</string>
+    <string name="txtPictureNeededDialogYes">留在此页</string>
     <string name="txtPictureNeededDialogNo">舍弃</string>
     <string name="toastSending">正在上传</string>
     <string name="dataSaved">保存在您的本地设备中</string>
@@ -248,11 +248,11 @@
     <string name="your_lists">Your lists</string>
     <string name="warning_allergens">含有过敏原</string>
     <string name="title_dialog_alert">添加提醒</string>
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
+    <string name="toggle_flash">闪光灯</string>
+    <string name="flash_on">闪光 [ON]</string>
+    <string name="flash_off">闪光 [OFF]</string>
+    <string name="ring_on">铃声 [ON]</string>
+    <string name="ring_off">铃声 [OFF]</string>
     <string name="auto_focus_on">自动对焦 [ON]</string>
     <string name="auto_focus_off">自动对焦 [OFF]</string>
     <string name="formats">格式</string>
@@ -303,9 +303,9 @@
     <string name="display_fact">此产品的营养成分表 %1$s</string>
     <string name="check_facts">检查</string>
     <string name="nutrition">营养</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="calculated_nutrition">计算营养</string>
+    <string name="please_enter_weight">请输入产品重量</string>
+    <string name="enter_weight">输入产品重量</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="txt_calories_result">在 %2$s %3$s 中含有 %1$s 卡路里</string>
     <string name="nutrition_carbohydrate">碳水化合物</string>
@@ -326,7 +326,7 @@
     <string name="nutrition_salt">盐</string>
     <string name="nutrition_salt_short_name">盐（g）</string>
     <string name="nutrition_satured_fat">饱和脂肪</string>
-    <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+    <string name="nutrition_satured_fat_short_name">饱和脂肪 (g)</string>
     <string name="nutrition_serving">每份</string>
     <string name="nutrition_serving_size">份量：</string>
     <string name="nutrition_sodium">钠</string>
@@ -338,10 +338,10 @@
     <string name="nutriment_serving_size">每部分：</string>
     <string name="action_manage_account">管理账户</string>
     <string name="action_contributes">您的贡献</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="choose_energy_unit">选择您的营养表首选能量单位</string>
+    <string name="energy_pref_title">首选能量单位</string>
+    <string name="choose_volume_unit">选择您的营养表首选容积单位</string>
+    <string name="volume_pref_title">首选容积单位</string>
     <string name="logout_drawer">注销</string>
     <string name="contribution_without_account">尽可以登录或者创建一个账号来保存您的贡献</string>
     <string name="textCarbonFootprint">碳足迹 / CO2 排放：</string>
@@ -354,16 +354,16 @@
     <string name="number_of_products">产品数量：</string>
     <string name="txt_no_results">没有找到任何结果</string>
     <string name="txt_extend_search">尝试扩大搜索范围或者添加产品</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
+    <string name="txt_no_matching__category_products">哦, 不, 我们没有任何产品在这个类别中, 你能添加一个吗？</string>
+    <string name="txt_no_matching_allergen_products">哦, 不, 我们没有任何产品含有该过敏原, 你能添加一个吗？</string>
+    <string name="txt_no_matching_label_products">哦, 不, 我们没有任何产品带有该标签, 你能添加一个吗？</string>
+    <string name="txt_no_matching_additive_products">哦, 不, 我们没有任何产品含有该添加剂, 你能添加一个吗？</string>
+    <string name="txt_no_matching_country_products">哦, 不, 我们没有任何产品来自该国家, 你能添加一个吗？</string>
+    <string name="txt_no_matching_store_products">哦, 不, 我们没有任何产品来自此商店, 你能添加一个吗？</string>
+    <string name="txt_no_matching_packaging_products">哦, 不, 我们没有任何产品带有该包装, 你能添加一个吗？</string>
+    <string name="txt_no_matching_brand_products">哦, 不, 我们没有任何产品来自该品牌, 你能添加一个吗？</string>
+    <string name="txt_no_matching_state_products">哦, 不, 我们没有任何产品来自这个州, 你能添加一个吗？</string>
+    <string name="txt_no_matching_incomplete_products">我们没有任何不完整的产品！要添加新产品吗？</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">我们还没有找到任何匹配的产品。\n您可以尝试：</string>
     <string name="txt_broaden_search">- 扩大您的搜索 \n- 扫描并将其添加到 Open Food Facts</string>
@@ -552,7 +552,7 @@
     <string name="by_nutrition_grade">营养等级</string>
     <string name="sort_by">排序方式</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://world-zh.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">摇动手机以扫描产品</string>
     <string name="shake_title">摇动扫描</string>
     <!-- strings related to share images -->
@@ -604,7 +604,7 @@
     <string name="preferences">偏好</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">加载产品 %s</string>
-    <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
+    <string name="error_adding_ingredients">试图添加产品成分时出错</string>
     <string name="unable_to_extract_ingredients">无法从图像中提取成分</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
@@ -805,4 +805,5 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

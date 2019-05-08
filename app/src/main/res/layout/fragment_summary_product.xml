@@ -284,8 +284,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toStartOf="parent"
-                    android:drawableLeft="@drawable/ic_add_box_blue_18dp"
-                    android:drawableStart="@drawable/ic_add_box_blue_18dp"
                     tools:text="@string/add_nutrition_facts_for_nutriscore"
                     android:visibility="gone"
                     style="@style/BorderButton"/>
@@ -513,8 +511,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/spacing_normal"
                 android:text="@string/take_more_pictures"
-                android:drawableStart="@drawable/ic_add_a_photo_blue_18dp"
-                android:drawableLeft="@drawable/ic_add_a_photo_blue_18dp"
                 style="@style/BorderButton"/>
 
         </LinearLayout>
