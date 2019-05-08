@@ -598,10 +598,27 @@ public class DietRepository implements IDietRepository {
     public List<Ingredient> getIngredientsLinkedToDietByDietTagAndState(String dietTag, long state) {
         List<DietIngredients> dietIngredientsList = getDietIngredientsListByDietTagAndState(dietTag, state);
         if (dietIngredientsList != null) {
+            DietIngredients dietIngredients;
+            Ingredient ingredient;
             List<Ingredient> ingredients = new ArrayList<>();
             for (int i = 0; i < dietIngredientsList.size(); i++) {
-                DietIngredients dietIngredients = dietIngredientsList.get(i);
-                ingredients.add(getIngredientByTag(dietIngredients.getIngredientTag()));
+                dietIngredients = dietIngredientsList.get(i);
+                ingredient = getIngredientByTag(dietIngredients.getIngredientTag());
+                if (ingredient.getTag() == null) {
+                    //The ingredient was created by an association of a diet and a ingredient of a product.
+                    //But it is no more in ingredient table (propably because of a new import of taxonomy.
+                    //Add the ingredient :
+                    String[] ingredientNT = dietIngredients.getIngredientTag().split(":");
+                    addIngredient(ingredientNT[1],ingredientNT[0]);
+                    ingredient = getIngredientByNameAndLanguageCode(ingredientNT[1],ingredientNT[0]);
+                    if (ingredient.getTag() != null) {
+                        if (ingredient.getTag() != dietIngredients.getIngredientTag()) {
+                            dietIngredients.setIngredientTag(ingredient.getTag());
+                            saveDietIngredients(dietIngredients);
+                        }
+                    }
+                }
+                ingredients.add(ingredient);
             }
             return ingredients;
         }
@@ -666,7 +683,9 @@ public class DietRepository implements IDietRepository {
         if (ingredients != null) {
             for (int i = 0; i < ingredients.size(); i++) {
                 Ingredient ingredient = ingredients.get(i);
-                ingredientNames.add(getIngredientNameByIngredientTagAndLanguageCode(ingredient.getTag(), languageCode));
+                if (ingredient.getTag() != null) {
+                    ingredientNames.add(getIngredientNameByIngredientTagAndLanguageCode(ingredient.getTag(), languageCode));
+                }
             }
         }
         return ingredientNames;
@@ -729,7 +748,7 @@ public class DietRepository implements IDietRepository {
             for (int j = 0; j < ingredients.size(); j++) {
                 Ingredient ingredient = ingredients.get(j);
                 if (ingredient.getTag().equals("en:")) {
-                    //In earlyer test, some dietIngredient where create without name. Here is the cleanup. Is it still usefull ?
+                    //In earlyer test, some dietIngredient where created without name. Here is the cleanup. Is it still usefull ?
                     List<DietIngredients> dietIngredientsList = dietIngredientsDao.queryBuilder()
                             .where(DietIngredientsDao.Properties.IngredientTag.eq(ingredient.getTag()))
                             .list();
@@ -917,7 +936,7 @@ public class DietRepository implements IDietRepository {
         String ingredients = ssbIngredients.toString();
         //Let have 2 ingredients list, one with only rank>1 and one with rank0 (in other words, one without anything between parenthesis and one qith only things between parenthesis)
         String ingredients0 = ingredients;
-        start = ingredients.indexOf("(", fromIndex);
+        start = ingredients.indexOf("(");
         while (start>0) {
             end = ingredients.indexOf(")", start);
             ingredients = ingredients.substring(0,start) + new String(new char[end-start]).replace('\0', ' ') + ingredients.substring(end);
@@ -926,7 +945,7 @@ public class DietRepository implements IDietRepository {
             start = ingredients.indexOf("(", fromIndex);
         }
         ingredients0 = ingredients0.substring(0,end) + new String(new char[ingredients0.length()-end]).replace('\0', ' ');
-        fromIndex = 0;
+        //fromIndex = 0;
         //List of productIngredient of the product
         List<ProductIngredient> productIngredients = product.getIngredients();
         //For each productIngredient
@@ -941,11 +960,11 @@ public class DietRepository implements IDietRepository {
                 //We already have treated the other which have a rank>1, so we have to get back to the beginning to treat this ingredient.
                 ingredients = ingredients0;
                 ingredients0 = null;
-                fromIndex=0;
+                //fromIndex=0;
             }
-            start = ingredients.indexOf(ingredient, fromIndex);
+            start = ingredients.indexOf(ingredient);
             if (start >= 0) {
-                //found ingredient in ingredients from fromIndex
+                //found ingredient in ingredients
                 end = start + ingredient.length();
                 fromIndex = start;
                 //Replace ingredient by white spaces in ingredients.
@@ -974,16 +993,14 @@ public class DietRepository implements IDietRepository {
                             state = minStateForEnabledDietFromIngredient(ingredientWord, languageCode);
                             if (state != 2) {
                                 //This word must be colored
-                                start = ssbIngredients.toString().indexOf(ingredientWord, fromIndex);
+                                start = ssbIngredients.toString().indexOf(ingredientWord);
                                 end = start + ingredientWord.length();
-                                fromIndex = end;
                                 ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state);
                             }
                         }
                     }
                 } else {
                     //The Tag or the complete sentence has been found and must be colored
-                    fromIndex = end;
                     ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state); // .setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))),0,24,SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
             } else {
