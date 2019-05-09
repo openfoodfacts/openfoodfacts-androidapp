@@ -2,20 +2,17 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
-import org.apache.commons.lang3.StringUtils;
-
-import static android.text.TextUtils.isEmpty;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 /**
@@ -202,7 +199,7 @@ public class Nutriments implements Serializable {
     private boolean containsMinerals;
 
     public Nutriment get(String nutrimentName){
-        if (nutrimentName.isEmpty() || !additionalProperties.containsKey(nutrimentName)) {
+        if (nutrimentName.isEmpty() || additionalProperties.get(nutrimentName)==null) {
             return null;
         }
 
@@ -218,31 +215,34 @@ public class Nutriments implements Serializable {
     }
 
     public String getUnit(String nutrimentName){
-        String unit = ((String) additionalProperties.get(nutrimentName + "_unit"));
-        return isEmpty(unit) ? DEFAULT_UNIT : unit;
+        return getAdditionalProperty(nutrimentName,"_unit",DEFAULT_UNIT);
     }
 
     public String getServing(String nutrimentName){
-        return additionalProperties.get(nutrimentName + "_serving").toString();
+        return getAdditionalProperty(nutrimentName,"_serving");
     }
 
+    private String getAdditionalProperty(String nutrimentName,String suffix){
+        return getAdditionalProperty(nutrimentName,suffix,StringUtils.EMPTY);
+    }
+
+    private String getAdditionalProperty(String nutrimentName,String suffix,String defaultValue){
+        final Object value = additionalProperties.get(nutrimentName + suffix);
+        return value==null?defaultValue:value.toString();
+    }
+
+
     public String get100g(String nutrimentName){
-        return additionalProperties.get(nutrimentName + "_100g").toString();
+        return getAdditionalProperty(nutrimentName,"_100g");
     }
 
     public String getValue(String nutrimentName) {
-        if (additionalProperties.get(nutrimentName + "_value") != null) {
-            return additionalProperties.get(nutrimentName + "_value").toString();
-        }
-        return null;
+        return getAdditionalProperty(nutrimentName,"_value",null);
     }
 
     @Nullable
     public String getModifier(String nutrimentName) {
-        if (additionalProperties.get(nutrimentName + "_modifier") != null) {
-            return additionalProperties.get(nutrimentName + "_modifier").toString();
-        }
-        return null;
+        return getAdditionalProperty(nutrimentName,"_modifier",null);
     }
 
     public boolean contains(String nutrimentName){
@@ -332,6 +332,9 @@ public class Nutriments implements Serializable {
         }
 
         private String getValueInUnits(String valueInGramOrMl, String unit) {
+            if(valueInGramOrMl==null){
+                return StringUtils.EMPTY;
+            }
             if (valueInGramOrMl.isEmpty() || unit.equals(UnitUtils.UNIT_GRAM)) {
                 return valueInGramOrMl;
             }

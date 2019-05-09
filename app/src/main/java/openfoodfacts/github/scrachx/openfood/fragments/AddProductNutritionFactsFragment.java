@@ -265,13 +265,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     }
 
     private String getValueFromShortName(Nutriments nutriments, String nutrientShortName) {
-        String value;
-        if (nutriments.getModifier(nutrientShortName) != null) {
-            value = nutriments.getModifier(nutrientShortName) + nutriments.getValue(nutrientShortName);
+        final String modifier = nutriments.getModifier(nutrientShortName);
+        if (modifier != null) {
+            return modifier + nutriments.getValue(nutrientShortName);
         } else {
-            value = nutriments.getValue(nutrientShortName);
+            return nutriments.getValue(nutrientShortName);
         }
-        return value;
     }
 
     private void updateServingSizeFrom(String servingSize) {
