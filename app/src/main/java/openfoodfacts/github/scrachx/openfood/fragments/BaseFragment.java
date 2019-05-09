@@ -36,6 +36,10 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         }
     }
 
+    int dpsToPixels(int dps) {
+        return BaseActivity.dpsToPixel(dps, getActivity());
+    }
+
     public View createView(LayoutInflater inflater, ViewGroup container, int layoutId) {
         View view = inflater.inflate(layoutId, container, false);
         ButterKnife.bind(this, view);
@@ -60,7 +64,11 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
     }
 
     protected void startLoginToEditAnd(int requestCode) {
-        new MaterialDialog.Builder(getContext())
+        final Context context = getContext();
+        if(context==null){
+            return;
+        }
+        new MaterialDialog.Builder(context)
             .title(R.string.sign_in_to_edit)
             .positiveText(R.string.txtSignIn)
             .negativeText(R.string.dialog_cancel)
@@ -88,9 +96,11 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
     }
 
     protected State getStateFromActivityIntent() {
-        Intent intent = getActivity().getIntent();
-        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-            return (State) intent.getExtras().getSerializable("state");
+        if (getActivity() != null) {
+            Intent intent = getActivity().getIntent();
+            if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
+                return (State) intent.getExtras().getSerializable("state");
+            }
         }
         return ProductFragment.mState;
     }

@@ -172,7 +172,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             imagePath = product.getImageIngredientsUrl();
             Picasso.with(getContext())
                 .load(product.getImageIngredientsUrl())
-                .resize(dpsToPixels(), dpsToPixels())
+                .resize(dps50ToPixels(), dps50ToPixels())
                 .centerInside()
                 .into(imageIngredients, new Callback() {
                     @Override
@@ -238,7 +238,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 imageProgress.setVisibility(View.VISIBLE);
                 Picasso.with(getContext())
                     .load("file://" + productDetails.get("image_ingredients"))
-                    .resize(dpsToPixels(), dpsToPixels())
+                    .resize(dps50ToPixels(), dps50ToPixels())
                     .centerInside()
                     .into(imageIngredients, new Callback() {
                         @Override
@@ -477,7 +477,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         if (!errorInUploading) {
             Picasso.with(activity)
                 .load(photoFile)
-                .resize(dpsToPixels(), dpsToPixels())
+                .resize(dps50ToPixels(), dps50ToPixels())
                 .centerInside()
                 .into(imageIngredients);
             imageProgressText.setText(message);
@@ -517,9 +517,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         ocrProgressText.setVisibility(View.GONE);
     }
 
-    private int dpsToPixels() {
-        // converts 50dp to equivalent pixels.
-        final float scale = activity.getResources().getDisplayMetrics().density;
-        return (int) (50 * scale + 0.5f);
+    private int dps50ToPixels() {
+        return dpsToPixels(50);
     }
 }

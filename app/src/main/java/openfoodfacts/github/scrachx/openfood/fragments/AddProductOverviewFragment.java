@@ -284,7 +284,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             imageProgress.setVisibility(View.VISIBLE);
             Picasso.with(getContext())
                 .load(product.getImageFrontUrl())
-                .resize(dpsToPixels(), dpsToPixels())
+                .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
                 .into(imageFront, new Callback() {
                     @Override
@@ -434,7 +434,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 mImageUrl = productDetails.get("image_front");
                 Picasso.with(getContext())
                     .load("file://" + mImageUrl)
-                    .resize(dpsToPixels(), dpsToPixels())
+                    .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
                     .into(imageFront, new Callback() {
                         @Override
@@ -964,7 +964,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (!errorInUploading) {
             Picasso.with(activity)
                 .load(photoFile)
-                .resize(dpsToPixels(), dpsToPixels())
+                .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
                 .into(imageFront);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
@@ -987,11 +987,5 @@ public class AddProductOverviewFragment extends BaseFragment {
         } else {
             otherImageProgressText.setText(R.string.image_uploaded_successfully);
         }
-    }
-
-    private int dpsToPixels() {
-        // converts 50dp to equivalent pixels.
-        final float scale = activity.getResources().getDisplayMetrics().density;
-        return (int) (50 * scale + 0.5f);
     }
 }

@@ -56,6 +56,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         return preferences == null ? null : preferences.getString("user", null);
     }
 
+    //Helper Function
+    protected int dpsToPixel(int dps) {
+        return dpsToPixel(dps,this);
+    }
+
+    public  static  int dpsToPixel(int dps,Activity activity) {
+        if(activity==null){
+            return 0;
+        }
+        final float scale = activity.getResources().getDisplayMetrics().density;
+        return (int) (dps * scale + 0.5f);
+    }
+
     private SharedPreferences getLoginPreferences() {
         return getLoginPreferences(this);
     }

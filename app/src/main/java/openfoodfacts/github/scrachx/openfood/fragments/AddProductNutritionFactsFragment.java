@@ -134,7 +134,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        buttonAddNutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp,0,0,0);
+        buttonAddNutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp, 0, 0, 0);
         Bundle b = getArguments();
         lastEditText = alcohol;
         if (b != null) {
@@ -151,7 +151,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValuesFromOffline();
-            }else{
+            } else {
                 radioGroup.jumpDrawablesToCurrentState();
             }
         } else {
@@ -511,10 +511,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     }
 
     private ValueState checkAsGram(CustomValidatingEditTextView text, float value) {
-        if(isReferenceValueInVolume()){
-            //if serving is set in ml or l we can't check as gram...
-            return ValueState.VALID;
-        }
         float reference = getReferenceValueInGram();
         boolean valid = convertToGrams(value, text.getAttachedSpinner().getSelectedItemPosition()) <= reference;
         if (!valid) {
@@ -640,7 +636,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    public void getAllDetails(Map<String,String> targetMap) {
+    public void getAllDetails(Map<String, String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (noNutritionData.isChecked()) {
                 targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
@@ -660,7 +656,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                     if (serving_size.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
-                    addNutrientToMap(editTextView,targetMap);
+                    addNutrientToMap(editTextView, targetMap);
                 }
             }
         }
@@ -678,7 +674,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     /**
      * adds only those fields to the query map which are not empty.
      */
-    public void getDetails(Map<String,String> targetMap) {
+    public void getDetails(Map<String, String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (noNutritionData.isChecked()) {
                 targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
@@ -697,19 +693,19 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                         continue;
                     }
                     if (!editTextView.getText().toString().isEmpty()) {
-                        addNutrientToMap(editTextView,targetMap);
+                        addNutrientToMap(editTextView, targetMap);
                     }
                 }
             }
         }
     }
 
-    private void addNutrientToMap(CustomValidatingEditTextView editTextView,Map<String,String> targetMap) {
+    private void addNutrientToMap(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
         String completeName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
         targetMap.put(completeName, editTextView.getText().toString());
         if (hasUnit(editTextView) && editTextView.getAttachedSpinner() != null) {
             targetMap.put(completeName + AddProductNutritionFactsData.SUFFIX_UNIT,
-                    getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition()));
+                getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition()));
         }
     }
 
@@ -736,19 +732,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             .show();
     }
 
-    private boolean isReferenceValueInVolume(){
-        if (radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
-            int selectedUnit=serving_size.getAttachedSpinner().getSelectedItemPosition();
-            return ALL_UNIT_SERVING[selectedUnit].toLowerCase().contains(UnitUtils.UNIT_LITER);
-        }
-        return  false;
-    }
 
     private float getReferenceValueInGram() {
         float reference = 100;
         if (radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
             reference = QuantityParserUtil.getFloatValueOrDefault(serving_size, QuantityParserUtil.EntryFormat.NO_PREFIX, reference);
-            reference = convertToGrams(reference, serving_size.getAttachedSpinner().getSelectedItemPosition());
+            reference = UnitUtils.convertToGrams(reference, ALL_UNIT_SERVING[serving_size.getAttachedSpinner().getSelectedItemPosition()]);
         }
         return reference;
     }
@@ -898,9 +887,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
     private ValueState checkEnergy(CustomValidatingEditTextView editTextView, float value) {
         if (energy.getEntryName().equals(editTextView.getEntryName())) {
-            if(isReferenceValueInVolume()){
-                return ValueState.VALID;
-            }
             float energyInKcal = UnitUtils.convertToKiloCalories(value, getSelectedEnergyUnit());
             if (radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
                 energyInKcal *= (100.0f / getReferenceValueInGram());
@@ -939,10 +925,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         return starchEditText.getAttachedSpinner().getSelectedItemPosition();
     }
 
-    private int dpsToPixels(int dps) {
-        final float scale = activity.getResources().getDisplayMetrics().density;
-        return (int) (dps * scale + 0.5f);
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
