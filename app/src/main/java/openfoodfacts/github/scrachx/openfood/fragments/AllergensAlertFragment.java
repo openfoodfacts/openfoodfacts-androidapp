@@ -1,12 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +33,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -38,7 +42,13 @@ import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
+import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_ALERT;
 
@@ -56,6 +66,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     private View mView;
     private LinearLayout mEmptyMessageView;                                         // Empty View containing the message that will be shown if the list is empty
     private DataObserver mDataObserver;
+    private BottomNavigationView bottomNavigationView;
     public static Integer getKey(HashMap<Integer, String> map, String value) {
         Integer key = null;
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
@@ -86,6 +97,34 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         mEmptyMessageView = (LinearLayout) view.findViewById(R.id.emptyAllergensView);
         productRepository = ProductRepository.getInstance();
         mDataObserver = new DataObserver();
+        bottomNavigationView  =(BottomNavigationView) view.findViewById((R.id.bottom_navigation));
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch(item.getItemId()){
+                case R.id.compare_products:
+                    startActivity((new Intent(getActivity(), ProductComparisonActivity.class)));
+                    break;
+                case R.id.home_page:
+                    startActivity((new Intent(getActivity(),WelcomeActivity.class)));
+                    break;
+                case R.id.history_bottom_nav:
+                    Intent intent  = new Intent(getActivity(), HistoryScanActivity.class);
+                    startActivity(intent);
+
+                    break;
+                case R.id.my_lists:
+                    startActivity(new Intent(getActivity(), ProductListsActivity.class));
+                    break;
+
+                default:
+                    return true;
+            }
+
+
+
+        return true;
+        });
+
         productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

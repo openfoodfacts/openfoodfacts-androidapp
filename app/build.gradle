@@ -3,7 +3,8 @@ apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '28.0.3'
+
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
@@ -33,8 +34,8 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+            minSdkVersion 24
         }
-
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
             resValue "string", "app_name", "OpenBeautyFacts"
@@ -43,7 +44,6 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
-
         opff {
             applicationId "org.openpetfoodfacts.scanner"
             resValue "string", "app_name", "OpenPetFoodFacts"
@@ -52,7 +52,6 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
-
         opf {
             applicationId "org.openproductsfacts.scanner"
             resValue "string", "app_name", "OpenProductsFacts"
@@ -61,7 +60,6 @@ android {
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
         }
-
     }
 
 
@@ -218,7 +216,6 @@ dependencies {
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation 'com.mikepenz:fastadapter-commons:2.1.0@aar'
-
     implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
 
     //UI Component : Fab
@@ -234,7 +231,7 @@ dependencies {
     }
 
     //UI Component : Chips Input
-    implementation "com.hootsuite.android:nachos:1.1.1"
+    implementation 'com.hootsuite.android:nachos:1.1.1'
 
     //Testing
     androidTestUtil 'com.android.support.test:orchestrator:1.0.2'

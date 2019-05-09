@@ -74,4 +74,6 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
 
         return mAllergens.size();
     }
+    /////////////////////////////////////////////
+
 }
