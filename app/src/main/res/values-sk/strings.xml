@@ -55,6 +55,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -185,6 +186,7 @@
     <string name="txtPalmOilProduct">Ingrediencie z palmového oleja:</string>
     <string name="txtServingSize">Veľkosť porcie:</string>
     <string name="txtNutrientLevel100g">Výživové hodnoty na 100g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">v malom množstve</string>
     <string name="txtNutritionLevelModerate">v miernom množstve</string>
     <string name="txtNutritionLevelHigh">vo veľkom množstve</string>
@@ -388,6 +390,7 @@
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">For 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="minerals">Minerals</string>
     <string name="nutrition_calcium">Calcium</string>
