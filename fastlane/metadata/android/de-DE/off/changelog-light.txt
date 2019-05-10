@@ -4,7 +4,7 @@ Version 3
 2. Erstellen (und exportieren) Sie Ihre Produktlisten (Einkaufen, Essen …)
 3. Vergleichen Sie Produkte nebeneinander, indem Sie sie nacheinander einlesen.
 4. Komplett neu gestaltete Produktseite. Wischen Sie die Karte nach oben, um sie zu entdecken.
-5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+5. Open Food Facts ist vollständig freiwillig: Sie können Zeit (de.openfoodfacts.org/contribute) oder Geld (donate.openfoodfacts.org) beitragen
 
 
 ═════

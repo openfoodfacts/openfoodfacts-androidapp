@@ -1,13 +1,13 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Escanee los productos alimenticios para mascotas o sus códigos de barras para obtener información sobre los ingredientes, los aditivos y la información nutricional.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+La aplicación permite visualizar más de 600 productos alimenticios para mascotas que se encuentran en la base de datos de libre acceso "Open Pet Food Facts", y también permite añadir imágenes e información de los productos no presentes en la misma.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Para saber más sobre el proyecto Open Pet Food Facts, por favor, visite https://world.openpetfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+***Contribuye a la transparencia sobre productos alimenticios para mascotas***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+Open Pet Food Facts es una base de datos sobre productos alimenticios para mascotas hecha por todos y para todos.
+Puedes utilizarla para tomar mejores decisiones a la hora de comprar productos alimenticios para sus mascotas, y al ser de libre acceso, puede ser utilizada para cualquier propósito.
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 

@@ -25,7 +25,7 @@
     <string name="text_barcode">Skriv streckkoden :</string>
     <string name="message_in_activity_save_product_offline">Bara ett foto behövs för att skicka en ny produkt.</string>
     <string name="product_incomplete_message">Denna produkt är inte komplett. På grund av detta kunde vi inte göra allergenkontrollen.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Den här produkten innehåller:</string>
     <string name="no_offline_data">Du är klar</string>
     <string name="first_offline">Produkter som läggs till offline visas här</string>
     <!-- Image Upload -->
@@ -35,12 +35,12 @@
         <item>Ingredienser</item>
         <item>Näring</item>
         <item>Näringstabell</item>
-        <item>Environment</item>
+        <item>Miljö</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Produktbilder</item>
+        <item>Ingrediens Analys</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -249,15 +249,15 @@
     <string name="delete_txt">Radera</string>
     <string name="sign_in_drawer">Logga in</string>
     <string name="alert_drawer">Allergenvarning</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Dina listor</string>
     <string name="warning_allergens">Innehåller allergener</string>
     <string name="title_dialog_alert">Lägg till varning</string>
-    <string name="toggle_flash">Flash</string>
+    <string name="toggle_flash">Blixt</string>
     <string name="flash_on">Flash [ON]</string>
     <string name="flash_off">Flash [OFF]</string>
     <string name="ring_on">Ring [ON]</string>
     <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
+    <string name="auto_focus_on">Autofokus [PÅ]</string>
     <string name="auto_focus_off">Auto Focus [OFF]</string>
     <string name="formats">Formats</string>
     <string name="choose_formats">Choose Formats</string>
@@ -809,5 +809,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

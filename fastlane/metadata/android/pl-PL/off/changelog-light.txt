@@ -1,10 +1,10 @@
-VERSION 3
+Wersja 3
 ====
-1. It's easier to contribute new products, and get the Nutri-Score
-2. Create (and export) your product lists (shopping, eating…)
-3. Compare products side by side by scanning them one after the other.
-4. Completely redesigned product page, slide the card up to discover it
-5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+1. Łatwiej jest dodawać nowe produkty i poznać Nutri-Score
+2. Twórz (także eksportuj) swoje listy produktów (zakupy, jedzenie…)
+3. Skanując produkty jeden po drugim możesz porównać je na jednej stronie.
+4. Całkowicie przeprojektowana strona produktu, przesuń kartę, aby ją zobaczyć
+5. Open Food Facts jest projektem w pełni funkcjonującym na zasadzie wolontariatu: możesz nas wspomóc: czasem (world.openfoodfacts.org/contribute) lub pieniądzmi (donate.openfoodfacts.org)
 
 
 ======
