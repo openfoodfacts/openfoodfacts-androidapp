@@ -55,6 +55,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -185,6 +186,7 @@
     <string name="txtPalmOilProduct">Sestavine iz palmovega olja:</string>
     <string name="txtServingSize">Velikost serviranja :</string>
     <string name="txtNutrientLevel100g">Vsebnost hranil za 100 g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">v majhni količini</string>
     <string name="txtNutritionLevelModerate">v zmerni količini</string>
     <string name="txtNutritionLevelHigh">v veliki količini</string>
@@ -388,6 +390,7 @@
     <string name="nutrition_serum_proteins">Beljakovine v serumu</string>
     <string name="nutrition_nucleotides">Nukleotidi</string>
     <string name="for_100g">Za 100g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Na porcijo</string>
     <string name="minerals">Minerali</string>
     <string name="nutrition_calcium">Kalcij</string>
