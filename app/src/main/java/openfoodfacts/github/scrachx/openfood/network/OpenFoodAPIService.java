@@ -58,14 +58,18 @@ public interface OpenFoodAPIService {
     @POST("cgi/product_jqm2.pl")
     Single<State> saveProductSingle(@Field("code") String code,
                                     @FieldMap Map<String, String> parameters,
-                                    @Field("comment") String comment);
+                                    @Field("comment") String comment,
+                                    @Header("User-Agent") String header
+                                   );
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
     Call<State> getShortProductByBarcode(@Path("barcode") String barcode,
                                          @Header("User-Agent") String header);
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process&fields=image_small_url,product_name,brands,quantity,code,nutrition_grade_fr")
-    Call<Search> searchProductByName(@Query("search_terms") String name, @Query("page") int page);
+    Call<Search> searchProductByName(@Query("search_terms") String name, 
+                                     @Query("page") int page,
+                                     @Header("User-Agent") String header);
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
@@ -216,13 +220,17 @@ public interface OpenFoodAPIService {
     Call<JsonNode> rotateImage(@Query("code") String code,
                                  @Query("id") String id,
                                  @Query("imgid") String imgid,
-                                 @Query("angle") String angle);
+                                 @Query("angle") String angle,
+                                 @Header("User-Agent") String header
+                              );
     @GET("/api/v0/product/{barcode}.json?fields=images")
     Call<JsonNode> getImages(@Path("barcode") String barcode);
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
     Single<JsonNode> getIngredients(@Query("code") String code,
-                                    @Query("id") String id);
+                                    @Query("id") String id,
+                                    @Header("User-Agent") String header
+                                   );
 
     @GET("cgi/suggest.pl?tagtype=emb_codes")
     Single<ArrayList<String>> getEMBCodeSuggestions(@Query("term") String term);
