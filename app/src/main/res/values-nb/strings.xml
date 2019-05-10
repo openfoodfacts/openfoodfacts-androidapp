@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Ingredienser fra palmeolje:</string>
     <string name="txtServingSize">Porsjonsstørrelse:</string>
     <string name="txtNutrientLevel100g">Ernæringsinnhold per 100 g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">i liten mengde</string>
     <string name="txtNutritionLevelModerate">i moderat mengde</string>
     <string name="txtNutritionLevelHigh">i høy mengde</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Serumproteiner</string>
     <string name="nutrition_nucleotides">Nukleotider</string>
     <string name="for_100g">For 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per porsjon</string>
     <string name="minerals">Mineraler</string>
     <string name="nutrition_calcium">Kalsium</string>
