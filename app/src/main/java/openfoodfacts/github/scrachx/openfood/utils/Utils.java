@@ -78,6 +78,9 @@ public class Utils {
     public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
+    public static final String HEADER_USER_AGENT_HISTORY = "History";
+    public static final String HEADER_USER_AGENT_LISTS = "Lists";
+    public static final String HEADER_USER_AGENT_FACET = "Facet Explorer";
     public static final int NO_DRAWABLE_RESOURCE = 0;
 
     /**
