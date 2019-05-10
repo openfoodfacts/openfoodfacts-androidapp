@@ -166,7 +166,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        state=getStateFromActivityIntent();
+        state = getStateFromActivityIntent();
 
         presenter = new SummaryProductPresenter(product, this);
     }
@@ -263,7 +263,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             String[] brands = product.getBrands().split(",");
             for (int i = 0; i < brands.length; i++) {
-                if(i>0){
+                if (i > 0) {
                     brandProduct.append(", ");
                 }
                 brandProduct.append(Utils.getClickableText(brands[i].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
@@ -279,10 +279,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
             for (int i = 0; i < embTags.length; i++) {
-                if(i>0){
+                if (i > 0) {
                     embCode.append(", ");
                 }
-                String  embTag = embTags[i];
+                String embTag = embTags[i];
                 embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
             }
         } else {
@@ -375,6 +375,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         } else {
             scoresLayout.setVisibility(View.GONE);
         }
+        //to be sure that top of the product view is visible at start
+        nameProduct.requestFocus();
+        nameProduct.clearFocus();
     }
 
     private void refreshScoresLayout() {
@@ -389,8 +392,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void refreshNutriscore() {
-        int nutritionGradeResource =Utils.getImageGrade(product);
-        if (nutritionGradeResource!=Utils.NO_DRAWABLE_RESOURCE) {
+        int nutritionGradeResource = Utils.getImageGrade(product);
+        if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
             nutriscoreImage.setVisibility(View.VISIBLE);
             nutriscoreImage.setImageResource(nutritionGradeResource);
             nutriscoreImage.setOnClickListener(view1 -> {
@@ -422,7 +425,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
             co2Icon.setVisibility(View.VISIBLE);
             co2Icon.setImageResource(environmentImpactResource);
-        }else{
+        } else {
             co2Icon.setVisibility(View.GONE);
         }
     }
@@ -638,15 +641,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showProductQuestion(Question question) {
-        if(Utils.isUserLoggedIn(getContext()) && question!=null && !question.isEmpty()){
+        if (Utils.isUserLoggedIn(getContext()) && question != null && !question.isEmpty()) {
             productQuestion = question;
             productQuestionText.setText(String.format("%s\n%s",
                 question.getQuestion(), question.getValue()));
             productQuestionLayout.setVisibility(View.VISIBLE);
             hasCategoryInsightQuestion = question.getInsightType().equals("category");
-        }else{
+        } else {
             productQuestionLayout.setVisibility(View.GONE);
-            productQuestion=null;
+            productQuestion = null;
         }
         refreshNutriscorePrompt();
         refreshScoresLayout();
@@ -654,7 +657,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.product_question_layout)
     public void onProductQuestionClick() {
-        if(productQuestion==null && !Utils.isUserLoggedIn(getContext())){
+        if (productQuestion == null && !Utils.isUserLoggedIn(getContext())) {
             return;
         }
         new QuestionDialog(getActivity())
@@ -886,7 +889,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         startActivity(intent);
     }
 
-
     @OnClick(R.id.action_share_button)
     public void onShareProductButtonClick() {
         String shareUrl = " " + getString(R.string.website_product) + product.getCode();
@@ -939,7 +941,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         addToListDialog.show();
         View addToListView = addToListDialog.getCustomView();
         if (addToListView != null) {
-            ProductListsDao productListsDao =ProductListsActivity.getProducListsDaoWithDefaultList(this.getContext());
+            ProductListsDao productListsDao = ProductListsActivity.getProducListsDaoWithDefaultList(this.getContext());
             List<ProductLists> productLists = productListsDao.loadAll();
 
             RecyclerView addToListRecyclerView =

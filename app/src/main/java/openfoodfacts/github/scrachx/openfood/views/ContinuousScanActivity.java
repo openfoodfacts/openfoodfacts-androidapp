@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -38,6 +39,22 @@ import com.journeyapps.barcodescanner.DefaultDecoderFactory;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -67,6 +84,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     ConstraintLayout quickView;
     @BindView(R.id.barcode_scanner)
     DecoratedBarcodeView barcodeView;
+    @BindView(R.id.imageForScreenshotGenerationOnly)
+    ImageView imageForScreenshotGenerationOnly;
     @BindView(R.id.toggle_flash)
     ImageView toggleFlash;
     @BindView(R.id.button_more)
@@ -142,6 +161,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
         }
     };
+
+    private boolean productShowing=false;
+
+    public void showProduct(String text){
+        productShowing=true;
+        barcodeView.setVisibility(View.GONE);
+        barcodeView.pause();
+        imageForScreenshotGenerationOnly.setVisibility(View.VISIBLE);
+        findProduct(text,false);
+    }
 
     /**
      * Makes network call and search for the product in the database
@@ -525,6 +554,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
         handler = new Handler();
         runnable = () -> {
+            if(productShowing){
+                return;
+            }
             hideAllViews();
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             searchByBarcode.setVisibility(View.VISIBLE);
@@ -646,6 +678,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             return false;
         });
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase,LocaleHelper.getLocale()));
+    }
+
 
     private boolean isProductIncomplete() {
         return product != null && (product.getImageFrontUrl() == null || product.getImageFrontUrl().equals("") ||
