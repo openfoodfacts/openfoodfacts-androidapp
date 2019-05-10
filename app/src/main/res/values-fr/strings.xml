@@ -809,5 +809,6 @@
     <string name="go_to_full_product_page">Aller à la page complète du produit</string>
     <string name="no_additive_data_available_for_this_product">Aucune donnée sur les additifs n\'est disponible pour ce produit</string>
     <string name="no_nutrient_information_available_for_this_product">Aucune information nutritionnelle n\'est disponible pour ce produit</string>
+    <string name="error_duplicate_listname">Vous avez déjà une liste portant ce nom</string>
     <string name="required_to_compute_nutriscore">(Nécessaire pour calculer le Nutri-Score)</string>
 </resources>

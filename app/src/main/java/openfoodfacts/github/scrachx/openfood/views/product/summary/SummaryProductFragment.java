@@ -377,6 +377,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         } else {
             scoresLayout.setVisibility(View.GONE);
         }
+        //to be sure that top of the product view is visible at start
+        nameProduct.requestFocus();
+        nameProduct.clearFocus();
     }
 
     private void refreshScoresLayout() {

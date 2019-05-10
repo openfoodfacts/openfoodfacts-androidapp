@@ -1,3 +1,5 @@
+package openfoodfacts.github.scrachx.openfood.models;
+
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
