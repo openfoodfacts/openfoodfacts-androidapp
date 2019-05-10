@@ -649,7 +649,7 @@ public class Utils {
      * @return energy in kcal.
      */
     public static String getEnergy(String value) {
-        String defaultValue = "0";
+        String defaultValue = StringUtils.EMPTY;
         if (defaultValue.equals(value) || isEmpty(value)) {
             return defaultValue;
         }

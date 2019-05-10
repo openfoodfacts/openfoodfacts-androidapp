@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import org.apache.commons.lang3.StringUtils;
+
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 public class NutrimentItem {
@@ -47,7 +49,7 @@ public class NutrimentItem {
                           String modifier){
         this.title = title;
         this.value = getRoundNumber(value);
-        this.servingValue = getRoundNumber(servingValue);
+        this.servingValue = StringUtils.isBlank(servingValue)?StringUtils.EMPTY:getRoundNumber(servingValue);
         this.unit = unit;
         this.modifier = modifier;
         this.headerPerVolume = false;

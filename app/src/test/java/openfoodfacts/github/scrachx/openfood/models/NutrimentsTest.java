@@ -38,7 +38,7 @@ public class NutrimentsTest {
     public void getForAnyValue() {
         float valueInGramFor100Gram = 30;
         float valueInGramFor200Gram = 60;
-        Nutriments.Nutriment nutriment = new Nutriments.Nutriment("test", Double.toString(valueInGramFor100Gram), Double.toString(valueInGramFor200Gram), UnitUtils.UNIT_MILLIGRAM,
+        Nutriments.Nutriment nutriment = new Nutriments.Nutriment("test","test", Double.toString(valueInGramFor100Gram), Double.toString(valueInGramFor200Gram), UnitUtils.UNIT_MILLIGRAM,
             "");
         assertEquals(Utils.getRoundNumber(30 * 1000) + " mg", nutriment.getDisplayStringFor100g());
         assertEquals(Utils.getRoundNumber(UnitUtils.convertFromGram(valueInGramFor100Gram * 10, nutriment.getUnit())), nutriment.getForAnyValue(1, UnitUtils.UNIT_KILOGRAM));

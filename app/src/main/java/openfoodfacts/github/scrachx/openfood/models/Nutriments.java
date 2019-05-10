@@ -204,7 +204,7 @@ public class Nutriments implements Serializable {
         }
 
         try{
-            return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName),
+            return new Nutriment(nutrimentName,additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName),
                 getModifier(nutrimentName));
         }catch (NullPointerException e){
             // In case one of the getters was unable to get data as string
@@ -274,13 +274,15 @@ public class Nutriments implements Serializable {
     }
 
     public static class Nutriment {
+        private final String key;
         private final String name;
         private final String for100g;
         private final String forServing;
         private final String unit;
         private final String modifier;
 
-        Nutriment(String name, String for100g, String forServing, String unit, String modifier) {
+        Nutriment(String key, String name, String for100g, String forServing, String unit, String modifier) {
+            this.key = key;
             this.name = name;
             this.for100g = for100g;
             this.forServing = forServing;
@@ -332,7 +334,7 @@ public class Nutriments implements Serializable {
         }
 
         private String getValueInUnits(String valueInGramOrMl, String unit) {
-            if(valueInGramOrMl==null){
+            if(StringUtils.isBlank(valueInGramOrMl)){
                 return StringUtils.EMPTY;
             }
             if (valueInGramOrMl.isEmpty() || unit.equals(UnitUtils.UNIT_GRAM)) {
@@ -341,6 +343,10 @@ public class Nutriments implements Serializable {
             float value = Float.valueOf(valueInGramOrMl);
             value = UnitUtils.convertFromGram(value, unit);
             return getRoundNumber(value);
+        }
+
+        public String getKey() {
+            return key;
         }
 
         /**
