@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Mga sangkap mula sa palm oil :</string>
     <string name="txtServingSize">Sukat ng serving :</string>
     <string name="txtNutrientLevel100g">Nakapagpapalusog na antas para sa 100g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">kaunti lamang</string>
     <string name="txtNutritionLevelModerate">katamtamang dami</string>
     <string name="txtNutritionLevelHigh">madami</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">Para sa 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Bawat serving</string>
     <string name="minerals">Mga mineral</string>
     <string name="nutrition_calcium">Calcium</string>
