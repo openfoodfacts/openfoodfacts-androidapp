@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>crwdns112978:0crwdne112978:0</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">crwdns113390:0crwdne113390:0</string>
     <string name="txtServingSize">crwdns113392:0crwdne113392:0</string>
     <string name="txtNutrientLevel100g">crwdns113394:0crwdne113394:0</string>
+    <string name="txtNutrientLevel100ml">crwdns117604:0crwdne117604:0</string>
     <string name="txtNutritionLevelLow">crwdns113396:0crwdne113396:0</string>
     <string name="txtNutritionLevelModerate">crwdns113398:0crwdne113398:0</string>
     <string name="txtNutritionLevelHigh">crwdns113400:0crwdne113400:0</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">crwdns113792:0crwdne113792:0</string>
     <string name="nutrition_nucleotides">crwdns113794:0crwdne113794:0</string>
     <string name="for_100g">crwdns113796:0crwdne113796:0</string>
+    <string name="for_100ml">crwdns117606:0crwdne117606:0</string>
     <string name="serving">crwdns113798:0crwdne113798:0</string>
     <string name="minerals">crwdns113800:0crwdne113800:0</string>
     <string name="nutrition_calcium">crwdns113802:0crwdne113802:0</string>
