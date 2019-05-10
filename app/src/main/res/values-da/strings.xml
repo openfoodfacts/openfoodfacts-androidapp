@@ -809,5 +809,6 @@
     <string name="go_to_full_product_page">Gå til fuld produktside</string>
     <string name="no_additive_data_available_for_this_product">Ingen data om tilsætningsstoffer tilgængelig for dette produkt</string>
     <string name="no_nutrient_information_available_for_this_product">Ingen information om næringsstoffer tilgængelig for dette produkt</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Nødvendig til beregning af Nutri-Score)</string>
 </resources>
