@@ -502,11 +502,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         }
     }
 
-    //Helper Function
-    private int dpsToPixel(int dps) {
-        final float scale = getResources().getDisplayMetrics().density;
-        return (int) (dps * scale + 0.5f);
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -558,11 +554,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     lastText = null;
                 }
                 if (searchByBarcode.getVisibility() == View.VISIBLE) {
-                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_SMALL));
+                    bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_SMALL,ContinuousScanActivity.this));
                     bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
                     bottomSheet.requestLayout();
                 } else {
-                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_LARGE));
+                    bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_LARGE,ContinuousScanActivity.this));
                     bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
                     bottomSheet.requestLayout();
                 }

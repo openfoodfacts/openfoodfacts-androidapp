@@ -5,20 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.List;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.List;
 
 /**
  * @author herau
  */
 public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
-
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-
     private final List<NutrimentItem> nutrimentItems;
 
     public NutrimentsRecyclerViewAdapter(List<NutrimentItem> nutrimentItems) {
@@ -38,6 +36,11 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof NutrimentHeaderViewHolder) {
+            NutrimentItem item = nutrimentItems.get(position);
+            NutrimentHeaderViewHolder nutrimentViewHolder = (NutrimentHeaderViewHolder) holder;
+            nutrimentViewHolder.vNutrimentValue.setText(item.isHeaderPerVolume() ? R.string.for_100ml : R.string.for_100g);
+        }
         if (!(holder instanceof NutrimentViewHolder)) {
             return;
         }
@@ -52,10 +55,15 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
         nutrimentViewHolder.vNutrimentValue.append(" ");
         nutrimentViewHolder.vNutrimentValue.append(item.getUnit());
 
-        nutrimentViewHolder.vNutrimentServingValue.append(item.getModifier());
-        nutrimentViewHolder.vNutrimentServingValue.append(item.getServingValue());
-        nutrimentViewHolder.vNutrimentServingValue.append(" ");
-        nutrimentViewHolder.vNutrimentServingValue.append(item.getUnit());
+        final CharSequence servingValue = item.getServingValue();
+        if(StringUtils.isBlank(servingValue)){
+            nutrimentViewHolder.vNutrimentServingValue.setText(StringUtils.EMPTY);
+        }else {
+            nutrimentViewHolder.vNutrimentServingValue.append(item.getModifier());
+            nutrimentViewHolder.vNutrimentServingValue.append(servingValue);
+            nutrimentViewHolder.vNutrimentServingValue.append(" ");
+            nutrimentViewHolder.vNutrimentServingValue.append(item.getUnit());
+        }
     }
 
     @Override
@@ -86,8 +94,11 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
     }
 
     class NutrimentHeaderViewHolder extends RecyclerView.ViewHolder {
+        TextView vNutrimentValue;
+
         public NutrimentHeaderViewHolder(View itemView) {
             super(itemView);
+            vNutrimentValue = itemView.findViewById(R.id.nutriment_value);
         }
     }
 }

@@ -121,9 +121,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
                 }
 
                 //Check if user is logged in
-                SharedPreferences preferences = getActivity().getSharedPreferences("login", 0);
-                String login = preferences.getString("user", null);
-                adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick, product, login != null);
+                adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick, product, isUserLoggedIn());
                 imagesRecycler.setAdapter(adapter);
                 imagesRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
             }
