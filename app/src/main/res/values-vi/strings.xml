@@ -43,6 +43,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -173,6 +174,7 @@
     <string name="txtPalmOilProduct">Thành phần từ dầu cọ:</string>
     <string name="txtServingSize">Kích thước phục vụ :</string>
     <string name="txtNutrientLevel100g">Mức dinh dưỡng cho 100g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">hơi ít quá</string>
     <string name="txtNutritionLevelModerate">vừa phải rồi</string>
     <string name="txtNutritionLevelHigh">nhiều quá đấy</string>
@@ -376,6 +378,7 @@
     <string name="nutrition_serum_proteins">Protein huyết thanh</string>
     <string name="nutrition_nucleotides">Nucleotides (nu-clê-ô-tit)</string>
     <string name="for_100g">Cho 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Mỗi khẩu</string>
     <string name="minerals">Khoáng chất</string>
     <string name="nutrition_calcium">Canxi</string>
