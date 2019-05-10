@@ -55,6 +55,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>мг</item>
@@ -185,6 +186,7 @@
     <string name="txtPalmOilProduct">Ингредиенты из пальмового масла:</string>
     <string name="txtServingSize">Размер порции:</string>
     <string name="txtNutrientLevel100g">Пищевая ценность на 100 г:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">в малом количестве</string>
     <string name="txtNutritionLevelModerate">в умеренном количестве</string>
     <string name="txtNutritionLevelHigh">в большом количестве</string>
@@ -388,6 +390,7 @@
     <string name="nutrition_serum_proteins">Сывороточный протеин</string>
     <string name="nutrition_nucleotides">Нуклеотиды</string>
     <string name="for_100g">На 100 г</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">На порцию</string>
     <string name="minerals">Минералы</string>
     <string name="nutrition_calcium">Кальций</string>
