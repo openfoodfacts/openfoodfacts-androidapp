@@ -63,6 +63,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>ج</item>
@@ -195,6 +196,7 @@
     <string name="txtPalmOilProduct">مكونات من زيت النخيل:</string>
     <string name="txtServingSize">حجم الحصة:</string>
     <string name="txtNutrientLevel100g">مستويات المواد الغذائية لـ 100غ:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">في كمية المخزون</string>
     <string name="txtNutritionLevelModerate">كمية معتدلة</string>
     <string name="txtNutritionLevelHigh">كمية عالية</string>
@@ -398,6 +400,7 @@
     <string name="nutrition_serum_proteins">بروتينات المصل</string>
     <string name="nutrition_nucleotides">النيوكليوتيدات</string>
     <string name="for_100g">ل 100 غرام</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">لكل وجبة</string>
     <string name="minerals">المعادن</string>
     <string name="nutrition_calcium">الكالسيوم</string>
