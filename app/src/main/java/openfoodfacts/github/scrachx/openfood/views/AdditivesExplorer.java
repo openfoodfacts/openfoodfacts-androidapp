@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import org.greenrobot.greendao.async.AsyncSession;
 
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
         AsyncSession asyncSessionAdditives = daoSession.startAsyncSession();
         AdditiveNameDao additiveNameDao = daoSession.getAdditiveNameDao();
 
-        String languageCode = Locale.getDefault().getLanguage();
+        String languageCode = LocaleHelper.getLanguage(this);
         asyncSessionAdditives.queryList(additiveNameDao.queryBuilder()
                 .where(AdditiveNameDao.Properties.LanguageCode.eq(languageCode))
                 .where(AdditiveNameDao.Properties.Name.like("E%")).build());

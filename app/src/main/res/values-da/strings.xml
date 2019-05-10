@@ -25,6 +25,7 @@
     <string name="text_barcode">Angiv stregkoden:</string>
     <string name="message_in_activity_save_product_offline">Kun ét foto kræves for at indsende et nyt produkt.</string>
     <string name="product_incomplete_message">Dette produkt er ikke komplet. Der kan derforikke foretages et allergentjek.</string>
+    <string name="product_allergen_prompt">Dette produkt indeholder:</string>
     <string name="no_offline_data">Du er helt færdig</string>
     <string name="first_offline">Produkter tilføjet offline vil fremgå her</string>
     <!-- Image Upload -->
@@ -472,6 +473,7 @@
     <string name="device_offline_dialog_positive">Indstillinger</string>
     <string name="saving">Gemmer…</string>
     <string name="scan_first_product">Skan første produkt</string>
+    <string name="preference_delete_search_history">Historik er slettet</string>
     <string name="preference_enable_mobile_data_title">Upload via mobildata</string>
     <string name="preference_enable_mobile_data_summary_on">Upload nye produkter via mobildata og Wi-Fi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload nye produkter alene via Wi-Fi</string>
@@ -479,6 +481,7 @@
     <string name="device_on_mobile_data_warning_message">Upload via mobildata er inaktiv. Opret forbindelse til Wi-Fi eller ændr indstillingen i præferencer</string>
     <string name="device_on_mobile_data_warning_positive">Præferencer</string>
     <string name="device_on_mobile_data_warning_negative">Upload alligevel</string>
+    <string name="changes_saved">Ændring er gemt</string>
     <string name="preference_choose_language_dialog_title">Vælg sprog</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Ofte stillede spørgsmål</string>
@@ -487,7 +490,7 @@
     <string name="please_check_your_connection">Tjek Internetforbindelsen.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Avanceret søgning og Diagrammer</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Sammenlign produkter</string>
     <string name="connectivity_check">Tjek Internetforbindelsen</string>
     <string name="dismiss">Afvis</string>
     <string name="Terms">Vilkår</string>
@@ -720,15 +723,16 @@
     <string name="diet_name">Diætnavn</string>
     <string name="diets_dialog_warning_title">Advarsel</string>
     <string name="warning_diets_data">Kostens data bliver på din enhed. Intet bliver uploadet.</string>
-    <string name="EditDiet_Name">Navn</string>
-    <string name="EditDiet_Description">Beskrivelse</string>
-    <string name="EditDiet_Enabled_Disabled">Aktivér/Deaktivér</string>
-    <string name="EditDiet_Authorised_Ingredients">Godkendte ingredienser</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Angiv de godkendte ingredienser, som skal vises med grønt. Eksempel: Æble, champignon, tomat... Du kan færdiggøre listen senere.</string>
-    <string name="EditDiet_So_So_Ingredients">-</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Ikke-godkendte ingredienser</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">Angiv de uønskede ingredienser, der skal vises med rød skrift. Eksempel: Gluten, mælk, palmeolie, sukker… Du kan færdiggøre denne liste senere.</string>
+    <string name="edit_diet_name">Navn</string>
+    <string name="edit_diet_description">Beskrivelse</string>
+    <string name="edit_diet_enabled_disabled">Aktivér/Deaktivér</string>
+    <string name="edit_diet_authorised_ingredients">Godkendte ingredienser</string>
+    <string name="edit_diet_hint_ingredient_authorised">Angiv de godkendte ingredienser, som skal vises med grønt. Eksempel: Æble, champignon, tomat... Du kan færdiggøre listen senere.</string>
+    <string name="edit_diet_so_so_ingredients">-</string>
+    <string name="edit_diet_hint_so_so_ingredient">Angiv de problematiske ingredienser, som skal vises med orange. Eksempel: Æg, fisk... Du kan færdiggøre listen senere.</string>
+    <string name="edit_diet_unauthorised_ingredients">Ikke-godkendte ingredienser</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Angiv de uønskede ingredienser, der skal vises med rød skrift. Eksempel: Gluten, mælk, palmeolie, sukker… Du kan færdiggøre denne liste senere.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
@@ -752,7 +756,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
-    <string name="txtDownloading">Downloader taxonomier…</string>
     <string name="txtLoaded">Oversættelser blev korrekt downloadet</string>
     <string name="txtConnectionError">Visse data kunne ikke downloades. Dette kan skyldes en forbindelsesfejl.</string>
     <string name="set_image_name">Foto angivet som</string>
@@ -766,7 +769,7 @@
     <string name="add_to_product_lists">Føj til dine lister</string>
     <string name="txt_create_new_list">Opret en ny liste</string>
     <string name="txt_add_to_new_list">Føj til en ny lliste</string>
-    <string name="create_new_list_list_name">List Name</string>
+    <string name="create_new_list_list_name">Listens navn</string>
     <string name="txt_eaten_products">Spiste produkter</string>
     <string name="txt_products_to_buy">Produkter at købe</string>
     <string name="export_csv_your_listed_products">Eksport CSV</string>
@@ -785,9 +788,26 @@
     <string name="settings_country_dialog_title">Vælg dit land</string>
     <string name="settings_country_summary">Skift dit valgte land</string>
     <string name="settings_country_title">Land</string>
+    <string name="list_text">Føjet til:\u0020</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_product">Tilføj produkter</string>
+    <string name="add_another_product">Tilføj et produkt mere</string>
+    <string name="add_nutrition_facts_for_nutriscore">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Sammenlign</string>
+    <string name="product_summary_action_add_to_list_button_label">Føj til liste</string>
+    <string name="product_summary_action_edit_button_label">Rediger</string>
+    <string name="product_summary_action_share_button_label">Del</string>
+    <string name="product_question_prompt">Tryk her for at besvare</string>
+    <string name="product_question_positive_response">Ja</string>
+    <string name="product_question_negative_response">Nej</string>
+    <string name="product_question_ambiguous_response">Ikke sikker</string>
+    <string name="product_question_submit_message">Tak for dit bidrag!</string>
+    <string name="error_nutrient_entry">Værdien skal være numerisk og kan starte med &lt;, &gt; eller ~, f.eks. &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_serving_data">Portionsstørrelsen skal udgøre en positiv værdi</string>
+    <string name="error_in_nutrient_data">Nogle næringsværdier er ugyldige. Korrigér venligst ovenstående fejlmarkerede felter</string>
+    <string name="go_to_full_product_page">Gå til fuld produktside</string>
+    <string name="no_additive_data_available_for_this_product">Ingen data om tilsætningsstoffer tilgængelig for dette produkt</string>
+    <string name="no_nutrient_information_available_for_this_product">Ingen information om næringsstoffer tilgængelig for dette produkt</string>
+    <string name="required_to_compute_nutriscore">(Nødvendig til beregning af Nutri-Score)</string>
 </resources>

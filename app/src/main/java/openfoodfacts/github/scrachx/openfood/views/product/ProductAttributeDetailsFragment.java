@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,20 +14,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Locale;
 
 public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment implements CustomTabActivityHelper.ConnectionCallback
 {
@@ -296,37 +294,34 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 	{
 	}
 
-	private String getDescription( JSONObject description )
-	{
+	private String getDescription(JSONObject description) {
 		String descriptionString = "";
-		String languageCode = Locale.getDefault().getLanguage();
-		if( description.has( languageCode ) )
-		{
-			try
-			{
-				description = description.getJSONObject( languageCode );
-				descriptionString = description.getString( "value" );
-			}
-			catch( JSONException e )
-			{
-				e.printStackTrace();
+		if(description==null){
+			return descriptionString;
+		}
+		final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
+		if (languageCode!=null && description.has(languageCode)) {
+			try {
+				description = description.getJSONObject(languageCode);
+				if (description != null) {
+					descriptionString = description.getString("value");
+				}
+			} catch (JSONException e) {
+				Log.e(ProductAttributeDetailsFragment.class.getSimpleName(),e.getMessage(),e);
 			}
 		}
-		else if( description.has( "en" ) )
-		{
-			try
-			{
-				description = description.getJSONObject( "en" );
-				descriptionString = description.getString( "value" );
-			}
-			catch( JSONException e )
-			{
-				e.printStackTrace();
+		if (StringUtils.isEmpty(descriptionString) && description.has("en")) {
+			try {
+				description = description.getJSONObject("en");
+				if (description != null) {
+					descriptionString = description.getString("value");
+				}
+			} catch (JSONException e) {
+				Log.e(ProductAttributeDetailsFragment.class.getSimpleName(),e.getMessage(),e);
 			}
 		}
-		else
-		{
-			Log.i( "ProductActivity", "Result for description is not found in native or english language." );
+		if (StringUtils.isEmpty(descriptionString)) {
+			Log.i("ProductActivity", "Result for description is not found in native or english language.");
 		}
 		return descriptionString;
 	}
@@ -334,7 +329,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 	private String getWikiLink( JSONObject sitelinks )
 	{
 		String link = "";
-		String languageCode = Locale.getDefault().getLanguage();
+		String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
 		languageCode = languageCode + "wiki";
 		if( sitelinks.has( languageCode ) )
 		{

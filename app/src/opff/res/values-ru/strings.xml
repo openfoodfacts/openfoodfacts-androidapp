@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ru.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world-ru.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts - это база данных, содержащая более %1$d кормов для домашних животных (плюс те, о которых напишете вы) с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках продуктов для домашних животных. Гав. Гав.</string>
-    <string name="txtHome">Open Pet Food Facts - это база данных продуктов для домашних животных с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках продуктов для домашних животных. Гав. Гав.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts - это база данных, содержащая более %1$d кормов для домашних животных (плюс те, о которых напишете вы) Woof. Woof.</string>
+    <string name="txtHome">Open Pet Food Facts - база данных кормов для домашних животных, включающая ингредиенты, питательную ценность… Woof. Woof.</string>
     <string name="slide_1_title">Способствовать прозрачности кормов для животных</string>
     <string name="slide_1_desc">Сканируйте продукты, фотографируйте их, способствуйте прозрачности кормов для животных</string>
     <string name="slide_2_title">Узнать</string>
@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Сканируйте продукты, когда вы не подключены к сети, чтобы добавить их в Open Pet Food Facts позже. Все продукты, которые вы отсканируете, будут отображаться здесь, и вы сможете отправить их, используя кнопку ниже.</string>
     <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="tagline">free pet food products database</string>
+    <string name="tagline">свободная база данных кормов для домашних животных</string>
     <string name="product_not_found">Отсканированного продукта %1$s ещё нет в базе Open Pet Food Facts. Вы можете добавить его?</string>
     <string name="currently_on_version">В настоящее время на Open Pet Food Facts</string>
     <string name="category_game_btn">Помогите классифицировать продукты</string>

@@ -1,8 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
-import java.util.List;
-import java.util.Locale;
-
+import android.util.Log;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -11,20 +9,20 @@ import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
+import java.util.List;
 
 /**
  * Created by Lobster on 17.03.18.
  */
-
 public class SummaryProductPresenter implements ISummaryProductPresenter.Actions {
-
     private IProductRepository repository = ProductRepository.getInstance();
     private CompositeDisposable disposable = new CompositeDisposable();
     private ISummaryProductPresenter.View view;
-
     private Product product;
-    private String languageCode = Locale.getDefault().getLanguage();
 
     public SummaryProductPresenter(Product product, ISummaryProductPresenter.View view) {
         this.product = product;
@@ -35,47 +33,48 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     public void loadAdditives() {
         List<String> additivesTags = product.getAdditivesTags();
         if (additivesTags != null && !additivesTags.isEmpty()) {
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
-                    Observable.fromArray(additivesTags.toArray(new String[additivesTags.size()]))
-                            .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
-                                    .flatMap(categoryName -> {
-                                        if (categoryName.isNull()) {
-                                            return repository.getAdditiveByTagAndDefaultLanguageCode(tag);
-                                        } else {
-                                            return Single.just(categoryName);
-                                        }
-                                    }))
-                            .filter(additiveName -> additiveName.isNotNull())
-                            .toList()
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .doOnSubscribe(d -> view.showAdditivesState(ProductInfoState.LOADING))
-                            .subscribe(additives -> {
-                                if (additives.isEmpty()) {
-                                    view.showAdditivesState(ProductInfoState.EMPTY);
-                                } else {
-                                    view.showAdditives(additives);
-                                }
-                            }, e -> {
-                                e.printStackTrace();
-                                view.showAdditivesState(ProductInfoState.EMPTY);
-                            })
+                Observable.fromArray(additivesTags.toArray(new String[0]))
+                    .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
+                        .flatMap(categoryName -> {
+                            if (categoryName.isNull()) {
+                                return repository.getAdditiveByTagAndDefaultLanguageCode(tag);
+                            } else {
+                                return Single.just(categoryName);
+                            }
+                        }))
+                    .filter(additiveName -> additiveName.isNotNull())
+                    .toList()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSubscribe(d -> view.showAdditivesState(ProductInfoState.LOADING))
+                    .subscribe(additives -> {
+                        if (additives.isEmpty()) {
+                            view.showAdditivesState(ProductInfoState.EMPTY);
+                        } else {
+                            view.showAdditives(additives);
+                        }
+                    }, e -> {
+                        Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAdditives", e);
+                        view.showAdditivesState(ProductInfoState.EMPTY);
+                    })
             );
         } else {
             view.showAdditivesState(ProductInfoState.EMPTY);
         }
     }
 
-
     @Override
     public void loadAllergens() {
+        final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
         disposable.add(
-                repository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage())
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(allergens -> {
-                            view.showAllergens(allergens);
-                        }, Throwable::printStackTrace)
+            repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(allergens -> {
+                    view.showAllergens(allergens);
+                }, e -> Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAllergens", e))
         );
     }
 
@@ -83,30 +82,31 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     public void loadCategories() {
         List<String> categoriesTags = product.getCategoriesTags();
         if (categoriesTags != null && !categoriesTags.isEmpty()) {
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
-                    Observable.fromArray(categoriesTags.toArray(new String[categoriesTags.size()]))
-                            .flatMapSingle(tag -> repository.getCategoryByTagAndLanguageCode(tag, languageCode)
-                                    .flatMap(categoryName -> {
-                                        if (categoryName.isNull()) {
-                                            return repository.getCategoryByTagAndDefaultLanguageCode(tag);
-                                        } else {
-                                            return Single.just(categoryName);
-                                        }
-                                    }))
-                            .toList()
-                            .doOnSubscribe(d -> view.showCategoriesState(ProductInfoState.LOADING))
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(categories -> {
-                                if (categories.isEmpty()) {
-                                    view.showCategoriesState(ProductInfoState.EMPTY);
-                                } else {
-                                    view.showCategories(categories);
-                                }
-                            }, e -> {
-                                e.printStackTrace();
-                                view.showCategoriesState(ProductInfoState.EMPTY);
-                            })
+                Observable.fromArray(categoriesTags.toArray(new String[0]))
+                    .flatMapSingle(tag -> repository.getCategoryByTagAndLanguageCode(tag, languageCode)
+                        .flatMap(categoryName -> {
+                            if (categoryName.isNull()) {
+                                return repository.getCategoryByTagAndDefaultLanguageCode(tag);
+                            } else {
+                                return Single.just(categoryName);
+                            }
+                        }))
+                    .toList()
+                    .doOnSubscribe(d -> view.showCategoriesState(ProductInfoState.LOADING))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(categories -> {
+                        if (categories.isEmpty()) {
+                            view.showCategoriesState(ProductInfoState.EMPTY);
+                        } else {
+                            view.showCategories(categories);
+                        }
+                    }, e -> {
+                        Log.e(SummaryProductPresenter.class.getSimpleName(), "loadCategories", e);
+                        view.showCategoriesState(ProductInfoState.EMPTY);
+                    })
             );
         } else {
             view.showCategoriesState(ProductInfoState.EMPTY);
@@ -117,31 +117,32 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     public void loadLabels() {
         List<String> labelsTags = product.getLabelsTags();
         if (labelsTags != null && !labelsTags.isEmpty()) {
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
-                    Observable.fromArray(labelsTags.toArray(new String[labelsTags.size()]))
-                            .flatMapSingle(tag -> repository.getLabelByTagAndLanguageCode(tag, languageCode)
-                                    .flatMap(labelName -> {
-                                        if (labelName.isNull()) {
-                                            return repository.getLabelByTagAndDefaultLanguageCode(tag);
-                                        } else {
-                                            return Single.just(labelName);
-                                        }
-                                    }))
-                            .filter(labelName -> labelName.isNotNull())
-                            .toList()
-                            .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(labels -> {
-                                if (labels.isEmpty()) {
-                                    view.showLabelsState(ProductInfoState.EMPTY);
-                                } else {
-                                    view.showLabels(labels);
-                                }
-                            }, e -> {
-                                e.printStackTrace();
-                                view.showLabelsState(ProductInfoState.EMPTY);
-                            })
+                Observable.fromArray(labelsTags.toArray(new String[labelsTags.size()]))
+                    .flatMapSingle(tag -> repository.getLabelByTagAndLanguageCode(tag, languageCode)
+                        .flatMap(labelName -> {
+                            if (labelName.isNull()) {
+                                return repository.getLabelByTagAndDefaultLanguageCode(tag);
+                            } else {
+                                return Single.just(labelName);
+                            }
+                        }))
+                    .filter(labelName -> labelName.isNotNull())
+                    .toList()
+                    .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(labels -> {
+                        if (labels.isEmpty()) {
+                            view.showLabelsState(ProductInfoState.EMPTY);
+                        } else {
+                            view.showLabels(labels);
+                        }
+                    }, e -> {
+                        Log.e(SummaryProductPresenter.class.getSimpleName(), "loadLabels", e);
+                        view.showLabelsState(ProductInfoState.EMPTY);
+                    })
             );
         } else {
             view.showLabelsState(ProductInfoState.EMPTY);
@@ -149,39 +150,24 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     }
 
     @Override
-    public void loadCountries() {
-        List<String> countriesTags = product.getCountriesTags();
-        if (countriesTags != null && !countriesTags.isEmpty()) {
-            disposable.add(
-                    Observable.fromArray(countriesTags.toArray(new String[countriesTags.size()]))
-                            .flatMapSingle(tag -> repository.getCountryByTagAndLanguageCode(tag, languageCode)
-                                    .flatMap(countryName -> {
-                                        if (countryName.isNull()) {
-                                            return repository.getCountryByTagAndDefaultLanguageCode(tag);
-                                        } else {
-                                            return Single.just(countryName);
-                                        }
-                                    }))
-                            .filter(countryName -> countryName.isNotNull())
-                            .toList()
-                            .doOnSubscribe(d -> view.showCountriesState(ProductInfoState.LOADING))
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(countries -> {
-                                if (countries.isEmpty()) {
-                                    view.showCountriesState(ProductInfoState.EMPTY);
-                                } else {
-                                    view.showCountries(countries);
-                                }
-                            }, e -> {
-                                e.printStackTrace();
-                                view.showCountriesState(ProductInfoState.EMPTY);
-                            })
-            );
-        } else {
-            view.showCountriesState(ProductInfoState.EMPTY);
-        }
+    public void loadProductQuestion() {
+        final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
+        disposable.add(
+            repository.getSingleProductQuestion(product.getCode(), languageCode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(view::showProductQuestion, Throwable::printStackTrace)
+        );
+    }
 
+    @Override
+    public void annotateInsight(String insightId, int annotation) {
+        disposable.add(
+            repository.annotateInsight(insightId, annotation)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(view::showAnnotatedInsightToast, Throwable::printStackTrace)
+        );
     }
 
     @Override

@@ -20,7 +20,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -35,34 +34,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -73,9 +58,15 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPager
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
+import org.apache.commons.lang3.StringUtils;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
+
+import java.io.File;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
@@ -84,9 +75,7 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.jsoup.helper.StringUtil.isBlank;
 
@@ -98,6 +87,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private static final int EDIT_REQUEST_CODE = 2;
     @BindView(R.id.textIngredientProduct)
     TextView ingredientsProduct;
+    private AllergenNameDao mAllergenNameDao;
     @BindView(R.id.textSubstanceProduct)
     TextView substanceProduct;
     @BindView(R.id.textTraceProduct)
@@ -130,8 +120,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     TextView otherNutritionTagTextView;
     @BindView(R.id.cvTextIngredientProduct)
     CardView textIngredientProductCardView;
-    @BindView(R.id.cvTextSubstanceProduct)
-    CardView textSubstanceProductCardView;
     @BindView(R.id.cvTextTraceProduct)
     CardView textTraceProductCardView;
     @BindView(R.id.cvTextAdditiveProduct)
@@ -178,11 +166,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        Intent intent = getActivity().getIntent();
-        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null)
-            mState = (State) intent.getExtras().getSerializable("state");
-        else
-            mState = ProductFragment.mState;
+        mState=getStateFromActivityIntent();
         product = mState.getProduct();
 
         presenter = new IngredientsProductPresenter(product, this);
@@ -194,6 +178,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         api = new OpenFoodAPIClient(getActivity());
         apiClientForWikiData = new WikidataApiClient();
         mFragment = this;
+
         return createView(inflater, container, R.layout.fragment_ingredients_product);
 
     }
@@ -201,11 +186,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Intent intent = getActivity().getIntent();
-        if(intent!=null && intent.getExtras()!=null && intent.getExtras().getSerializable("state")!=null)
-            mState = (State) intent.getExtras().getSerializable("state");
-        else
-            mState = ProductFragment.mState;
+        mState=getStateFromActivityIntent();
+        extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp,0,0,0);
+        updateImageBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp,0,0,0);
         refreshView(mState);
     }
 
@@ -213,12 +196,13 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void refreshView(State state) {
         super.refreshView(state);
         mState = state;
-
+        String langCode = LocaleHelper.getLanguage(getContext());
         if (getArguments() != null) {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         }
 
         mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
+        mAllergenNameDao = Utils.getAppDaoSession(getActivity()).getAllergenNameDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -234,75 +218,48 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         List<String> aminoAcidTagsList = product.getAminoAcidTags();
         List<String> mineralTags = product.getMineralTags();
         List<String> otherNutritionTags = product.getOtherNutritionTags();
-        String prefix = " ";
 
         if (!vitaminTagsList.isEmpty()) {
-            StringBuilder vitaminStringBuilder = new StringBuilder();
             vitaminsTagsTextCardView.setVisibility(View.VISIBLE);
             vitaminTagsTextView.setText(bold(getString(R.string.vitamin_tags_text)));
-            for (String vitamins : vitaminTagsList) {
-                vitaminStringBuilder.append(prefix);
-                prefix = ", ";
-                vitaminStringBuilder.append(trimLanguagePartFromString(vitamins));
-            }
-            vitaminTagsTextView.append(vitaminStringBuilder.toString());
+            vitaminTagsTextView.append(buildStringBuilder(vitaminTagsList, StringUtils.SPACE));
         }
 
         if (!aminoAcidTagsList.isEmpty()) {
-            String aminoPrefix = " ";
-            StringBuilder aminoAcidStringBuilder = new StringBuilder();
             aminoAcidTagsTextCardView.setVisibility(View.VISIBLE);
             aminoAcidTagsTextView.setText(bold(getString(R.string.amino_acid_tags_text)));
-            for (String aminoAcid : aminoAcidTagsList) {
-                aminoAcidStringBuilder.append(aminoPrefix);
-                aminoPrefix = ", ";
-                aminoAcidStringBuilder.append(trimLanguagePartFromString(aminoAcid));
-            }
-            aminoAcidTagsTextView.append(aminoAcidStringBuilder.toString());
+            aminoAcidTagsTextView.append(buildStringBuilder(aminoAcidTagsList, StringUtils.SPACE));
         }
 
         if (!mineralTags.isEmpty()) {
-            String mineralPrefix = " ";
-            StringBuilder mineralsStringBuilder = new StringBuilder();
             mineralTagsTextCardView.setVisibility(View.VISIBLE);
             mineralTagsTextView.setText(bold(getString(R.string.mineral_tags_text)));
-            for (String mineral : mineralTags) {
-                mineralsStringBuilder.append(mineralPrefix);
-                mineralPrefix = ", ";
-                mineralsStringBuilder.append(trimLanguagePartFromString(mineral));
-            }
-            mineralTagsTextView.append(mineralsStringBuilder);
+            mineralTagsTextView.append(buildStringBuilder(mineralTags, StringUtils.SPACE));
         }
 
         if (!otherNutritionTags.isEmpty()) {
-            String otherNutritionPrefix = " ";
-            StringBuilder otherNutritionStringBuilder = new StringBuilder();
             otherNutritionTagTextView.setVisibility(View.VISIBLE);
             otherNutritionTagTextView.setText(bold(getString(R.string.other_tags_text)));
-            for (String otherSubstance : otherNutritionTags) {
-                otherNutritionStringBuilder.append(otherNutritionPrefix);
-                otherNutritionPrefix = ", ";
-                otherNutritionStringBuilder.append(trimLanguagePartFromString(otherSubstance));
-            }
-            otherNutritionTagTextView.append(otherNutritionStringBuilder.toString());
+            otherNutritionTagTextView.append(buildStringBuilder(otherNutritionTags, StringUtils.SPACE));
         }
 
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
 
-        if (isNotBlank(product.getImageIngredientsUrl())) {
+        if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
+            updateImageBtn.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.with(getContext())
-                        .load(product.getImageIngredientsUrl())
+                        .load(product.getImageIngredientsUrl(langCode))
                         .into(mImageIngredients);
             } else {
                 mImageIngredients.setVisibility(View.GONE);
             }
 
-            mUrlImage = product.getImageIngredientsUrl();
+            mUrlImage = product.getImageIngredientsUrl(langCode);
         }
 
         //useful when this fragment is used in offline saving
@@ -314,11 +271,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         List<String> allergens = getAllergens();
 
-        if (mState != null && product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
+        if (mState != null && product.getIngredientsText(langCode) != null && !product.getIngredientsText(langCode).isEmpty()) {
             textIngredientProductCardView.setVisibility(View.VISIBLE);
-            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText().replace("_", ""));
+            SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText(langCode).replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
-            if (TextUtils.isEmpty(product.getIngredientsText())) {
+            if (TextUtils.isEmpty(product.getIngredientsText(langCode))) {
                extractIngredientsPrompt.setVisibility(View.VISIBLE);
             }
             int ingredientsListAt = Math.max(0, txtIngredients.toString().indexOf(":"));
@@ -327,28 +284,27 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             }
         } else {
             textIngredientProductCardView.setVisibility(View.GONE);
-            if (isNotBlank(product.getImageIngredientsUrl())) {
+            if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
                 extractIngredientsPrompt.setVisibility(View.VISIBLE);
             }
         }
         presenter.loadAllergens();
 
         if (!isBlank(product.getTraces())) {
+            String language=LocaleHelper.getLanguage(getContext());
             textTraceProductCardView.setVisibility(View.VISIBLE);
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
             traceProduct.setText(bold(getString(R.string.txtTraces)));
             traceProduct.append(" ");
 
-            String trace;
-            String traces[] = product.getTraces().split(",");
-            for (int i = 0; i < traces.length - 1; i++) {
-                trace = traces[i];
-                traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
-                traceProduct.append(", ");
+            String[] traces = product.getTraces().split(",");
+            for (int i = 0; i < traces.length; i++) {
+                String   trace = traces[i];
+                if(i>0){
+                    traceProduct.append(", ");
+                }
+                traceProduct.append(Utils.getClickableText(getTracesName(language,trace), trace, SearchType.TRACE, getActivity(), customTabsIntent));
             }
-
-            trace = traces[traces.length - 1];
-            traceProduct.append(Utils.getClickableText(trace, trace, SearchType.TRACE, getActivity(), customTabsIntent));
         } else {
             textTraceProductCardView.setVisibility(View.GONE);
         }
@@ -375,7 +331,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (product.getNovaGroups() != null) {
             novaLayout.setVisibility(View.VISIBLE);
             novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups(), getContext()));
-            novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+            novaGroup.setImageResource(Utils.getNovaGroupDrawable(product));
             novaGroup.setOnClickListener((View v) -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
@@ -384,6 +340,22 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         } else {
             novaLayout.setVisibility(View.GONE);
         }
+    }
+
+    private String getTracesName(String languageCode, String tag) {
+        AllergenName allergenName = mAllergenNameDao.queryBuilder().where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        if (allergenName != null) return allergenName.getName();
+        return tag;
+    }
+
+    private StringBuilder buildStringBuilder(List<String> stringList, String prefix) {
+        StringBuilder otherNutritionStringBuilder = new StringBuilder();
+        for (String otherSubstance : stringList) {
+            otherNutritionStringBuilder.append(prefix);
+            prefix = ", ";
+            otherNutritionStringBuilder.append(trimLanguagePartFromString(otherSubstance));
+        }
+        return otherNutritionStringBuilder;
     }
 
     private CharSequence getAdditiveTag(AdditiveName additive) {
@@ -533,9 +505,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         return ssb;
     }
 
-    private SpannableString buildAdditivesList(List<AdditiveName> additives) {
-        return null;
-    }
 
     @Override
     public void showAdditives(List<AdditiveName> additives) {
@@ -589,7 +558,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void change_ing_image(View v) {
         sendUpdatedIngredientsImage = true;
 
-
+        if (getActivity() == null) {
+            return;
+        }
         ViewPager viewPager = (ViewPager) getActivity().findViewById(
                 R.id.pager);
         if (BuildConfig.FLAVOR.equals("off")) {
@@ -611,11 +582,13 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             }
             else
             {
-                mState = (State) getActivity().getIntent().getExtras().getSerializable( "state" );
-                Intent intent = new Intent( getContext(), AddProductActivity.class );
-                intent.putExtra("send_updated", sendUpdatedIngredientsImage);
-                intent.putExtra( "edit_product", mState.getProduct() );
-                startActivityForResult( intent, EDIT_REQUEST_CODE );
+                mState = getStateFromActivityIntent();
+                if(mState!=null) {
+                    Intent intent = new Intent(getContext(), AddProductActivity.class);
+                    intent.putExtra("send_updated", sendUpdatedIngredientsImage);
+                    intent.putExtra("edit_product", mState.getProduct());
+                    startActivityForResult(intent, EDIT_REQUEST_CODE);
+                }
             }
         }
         if (BuildConfig.FLAVOR.equals("opff")) {
@@ -636,12 +609,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void showAllergensState(String state) {
         switch (state) {
             case LOADING: {
-                textSubstanceProductCardView.setVisibility(View.VISIBLE);
+                substanceProduct.setVisibility(View.VISIBLE);
                 substanceProduct.append(getString(R.string.txtLoading));
                 break;
             }
             case EMPTY: {
-                textSubstanceProductCardView.setVisibility(View.GONE);
+                substanceProduct.setVisibility(View.GONE);
                 break;
             }
         }
@@ -668,7 +641,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @OnClick(R.id.extract_ingredients_prompt)
     public void extractIngredients() {
         extractIngredients = true;
-
         final SharedPreferences settings = getActivity().getSharedPreferences( "login", 0 );
         final String login = settings.getString( "user", "" );
         if( login.isEmpty() )
@@ -687,7 +659,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
         else
         {
-            mState = (State) getActivity().getIntent().getExtras().getSerializable( "state" );
+            mState = getStateFromActivityIntent();
             Intent intent = new Intent( getContext(), AddProductActivity.class );
             intent.putExtra( "edit_product", mState.getProduct() );
             intent.putExtra("perform_ocr", extractIngredients);
@@ -715,7 +687,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
             } else {
                 EasyImage.openCamera(this, 0);
-//                EasyImage.openGallery(this);
             }
         }
     }

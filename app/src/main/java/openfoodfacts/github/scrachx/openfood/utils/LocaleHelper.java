@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import java.util.Locale;
 
@@ -18,7 +19,6 @@ import java.util.Locale;
  * Created by gunhansancar on 07/10/15.
  */
 public class LocaleHelper {
-
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
 
     public static void onCreate(Context context) {
@@ -31,26 +31,60 @@ public class LocaleHelper {
         setLocale(context, lang);
     }
 
-    public static String getLanguage(Context context) {
-        return getPersistedData(context, Locale.getDefault().getLanguage());
+    public static Locale getLocale() {
+        return getLocale(OFFApplication.getInstance());
     }
 
-    public static void setLocale(Context context, String language) {
+    public static Context setLocale(Locale locale) {
+        return setLocale(OFFApplication.getInstance(), locale);
+    }
+
+    public static String getLanguage(Context context) {
+        String lang = getPersistedData(context, Locale.getDefault().getLanguage());
+        if (lang.contains("-")) {
+            String langSplit[] = lang.split("-");
+            lang = langSplit[0];
+        }
+        return lang;
+    }
+
+    public static Locale getLocale(Context context) {
+        Resources resources = context.getResources();
+        Configuration configuration = resources.getConfiguration();
+        final Locale locale = configuration.locale;
+        return locale == null ? Locale.getDefault() : locale;
+    }
+
+    public static Context setLocale(Context context, String language) {
         PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putString(SELECTED_LANGUAGE, language)
-                .apply();
+            .edit()
+            .putString(SELECTED_LANGUAGE, language)
+            .apply();
 
         Locale locale = getLocale(language);
+       return setLocale(context,locale);
+    }
+
+    public static Context  setLocale(Context context, Locale locale) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+            .edit()
+            .putString(SELECTED_LANGUAGE, locale.getLanguage())
+            .apply();
 
         Locale.setDefault(locale);
 
         Resources resources = context.getResources();
 
         Configuration configuration = resources.getConfiguration();
-        configuration.locale = locale;
-
+        if (Build.VERSION.SDK_INT >= 17) {
+            configuration.setLocale(locale);
+            context=context.createConfigurationContext(configuration);
+        } else {
+            configuration.locale = locale;
+        }
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        return context;
+
     }
 
     /**
@@ -63,7 +97,7 @@ public class LocaleHelper {
         String[] localeParts = locale.split("-");
         String language = localeParts[0];
         String country = localeParts.length == 2 ? localeParts[1] : "";
-        Locale localeObj=null;
+        Locale localeObj = null;
         if (locale.contains("+")) {
             localeParts = locale.split("\\+");
             language = localeParts[1];
@@ -77,9 +111,8 @@ public class LocaleHelper {
             } else {
                 localeObj = new Locale.Builder().setLanguage(language).setRegion(country).setScript(script).build();
             }
-
-        }else {
-            localeObj = new Locale(language,country);
+        } else {
+            localeObj = new Locale(language, country);
         }
         return localeObj;
     }
@@ -88,5 +121,4 @@ public class LocaleHelper {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
     }
-
 }

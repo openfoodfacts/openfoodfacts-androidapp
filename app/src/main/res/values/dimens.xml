@@ -63,4 +63,13 @@
     <dimen name="photo_height">180dp</dimen>
     <dimen name="photo_width">180dp</dimen>
 
+    <dimen name="card_elevation">1dp</dimen>
+
+
+    <dimen name="floating_hint_margin">6dp</dimen>
+    <dimen name="floating_hint_margin_nacho">8dp</dimen>
+    <dimen name="top_margin_spinner_hint">18dp</dimen>
+
+    <dimen name="nav_bar_height">65dp</dimen>
+
 </resources>

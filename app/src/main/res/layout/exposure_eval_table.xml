@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical"
@@ -34,20 +35,20 @@
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
-        <TextView
+        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:drawableLeft="@drawable/yellow_circle_24dp"
+            app:drawableLeftCompat="@drawable/yellow_circle_24dp"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="@string/legend_adi"
             android:textSize="@dimen/font_small"/>
 
-        <TextView
+        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/red_circle_24dp"
+            app:drawableLeftCompat="@drawable/red_circle_24dp"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="@string/legend_noael"

@@ -33,6 +33,7 @@
     <string name="text_barcode">Vnesite črtno kodo :</string>
     <string name="message_in_activity_save_product_offline">Za pošiljanje novega izdelka je obvezno le ena fotografija.</string>
     <string name="product_incomplete_message">Ta izdelek ni popoln. Zaradi tega ni moče preveriti vsebnost alergenov.</string>
+    <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Pripravljeni ste</string>
     <string name="first_offline">Tukaj bodo prikazani izdelki, ki so bili dodani brez povezave</string>
     <!-- Image Upload -->
@@ -480,6 +481,7 @@
     <string name="device_offline_dialog_positive">Nastavitve</string>
     <string name="saving">Shranjevanje…</string>
     <string name="scan_first_product">Skenirajte prvi izdelek</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Naloži z uporabo mobilnih podatkov</string>
     <string name="preference_enable_mobile_data_summary_on">Nove izdelke naloži z mobilnimi podatki in WiFi-jem</string>
     <string name="preference_enable_mobile_data_summary_off">Nove izdelke naloži samo z uporabo WiFi-ja</string>
@@ -487,15 +489,16 @@
     <string name="device_on_mobile_data_warning_message">Nalaganje v mobilnih podatkih je onemogočeno. Povežite se z WiFi ali spremenite nastavitve</string>
     <string name="device_on_mobile_data_warning_positive">Nastavitve</string>
     <string name="device_on_mobile_data_warning_negative">Vseeno naloži</string>
+    <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Izberi jezik</string>
     <string name="FAQ">Pogosta vprašanja</string>
-    <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+    <string name="FrequentlyAskedQuestions">Pogosto zastavljena vprašanja</string>
     <string name="translate_help_title">Pomagajte prevesti Open Products Facts</string>
     <string name="translate_help_summary">Prevedite Open Facts Facts zbirko podatkov v vaš jezik - tehnično znanje ni potrebno</string>
     <string name="please_check_your_connection">Prosim, preverite povezavo.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Napredno iskanje &amp; Grafikoni</string>
-    <string name="compare_products">Compare Products</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Prosim preverite svojo internetno povezavo</string>
     <string name="dismiss">Opusti</string>
     <string name="Terms">Pogoji uporabe</string>
@@ -728,15 +731,16 @@
     <string name="diet_name">Ime diete</string>
     <string name="diets_dialog_warning_title">Opozorilo</string>
     <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
-    <string name="EditDiet_Name">Ime</string>
-    <string name="EditDiet_Description">Opis</string>
-    <string name="EditDiet_Enabled_Disabled">Omogočeno / Onemogočeno</string>
-    <string name="EditDiet_Authorised_Ingredients">Odobrene sestavine</string>
-    <string name="EditDiet_Hint_Ingredient_Authorised">Seznam odobrenih sestavin, ki naj bodo zelene barve. Primer: jabolko, gobe, paradižnik… Seznam lahko dopolnite pozneje.</string>
-    <string name="EditDiet_So_So_Ingredients">Sestavine tako, tako</string>
-    <string name="EditDiet_Hint_So_So_Ingredient">Seznam problematičnih sestavin, ki naj se prikaže v oranžni barvi. Primer: jajce, ribe ... Ta seznam lahko dokončate kasneje.</string>
-    <string name="EditDiet_Unauthorised_Ingredients">Neodobrene sestavine</string>
-    <string name="EditDiet_Hint_Unauthorised_Ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_name">Ime</string>
+    <string name="edit_diet_description">Opis</string>
+    <string name="edit_diet_enabled_disabled">Omogočeno / Onemogočeno</string>
+    <string name="edit_diet_authorised_ingredients">Odobrene sestavine</string>
+    <string name="edit_diet_hint_ingredient_authorised">Seznam odobrenih sestavin, ki naj bodo zelene barve. Primer: jabolko, gobe, paradižnik… Seznam lahko dopolnite pozneje.</string>
+    <string name="edit_diet_so_so_ingredients">Sestavine tako, tako</string>
+    <string name="edit_diet_hint_so_so_ingredient">Seznam problematičnih sestavin, ki naj se prikaže v oranžni barvi. Primer: jajce, ribe ... Ta seznam lahko dokončate kasneje.</string>
+    <string name="edit_diet_unauthorised_ingredients">Neodobrene sestavine</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Preberi sestavine</string>
     <string name="add_nutrient_prompt_text">Dodajte prehranska dejstva za izračun Nutri-Score</string>
     <string name="add_category_prompt_text">Dodaj kategorijo za izračun Nutri-Score</string>
@@ -760,7 +764,6 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Prijavi sliko</string>
     <string name="detected_ingredients">Prepoznane sestavine</string>
-    <string name="txtDownloading">Downloading taxonomies…</string>
     <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
@@ -793,9 +796,26 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Država</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add Products</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
+    <string name="add_nutrition_facts_for_nutriscore">Dodajte prehranska dejstva za izračun Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_edit_button_label">Uredi</string>
+    <string name="product_summary_action_share_button_label">Deli</string>
+    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_positive_response">Da</string>
+    <string name="product_question_negative_response">Ne</string>
+    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="go_to_full_product_page">Go to full product page</string>
+    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
+    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

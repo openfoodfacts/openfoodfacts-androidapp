@@ -250,7 +250,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
                         @Override
                         public void onError(Throwable e) {
-                            Log.e(LOG_TAG, e.getMessage());
+                            Log.e(LOG_TAG, e.getMessage(),e);
                         }
                     });
         }
@@ -517,7 +517,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
                                             @Override
                                             public void onError(Throwable e) {
-                                                Log.e(LOG_TAG, e.getMessage());
+                                                Log.e(LOG_TAG, e.getMessage(),e);
                                             }
                                         });
                             }
@@ -525,7 +525,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
                         @Override
                         public void onError(Throwable e) {
-                            Log.e(LOG_TAG, e.getMessage());
+                            Log.e(LOG_TAG, e.getMessage(),e);
                         }
                     });
         } else {
@@ -613,7 +613,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
                         @Override
                         public void onError(Throwable e) {
-                            Log.e(LOG_TAG, e.getMessage());
+                            Log.e(LOG_TAG, e.getMessage(),e);
                         }
                     });
         } else {
@@ -693,7 +693,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
                                             @Override
                                             public void onError(Throwable e) {
-                                                Log.e(LOG_TAG, e.getMessage());
+                                                Log.e(LOG_TAG, e.getMessage(),e);
                                             }
                                         });
                             }
@@ -701,7 +701,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
                         @Override
                         public void onError(Throwable e) {
-                            Log.e(LOG_TAG, e.getMessage());
+                            Log.e(LOG_TAG, e.getMessage(),e);
                         }
                     });
         } else {
@@ -769,7 +769,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(LOG_TAG, e.getMessage());
+                        Log.e(LOG_TAG, e.getMessage(),e);
                     }
                 });
     }

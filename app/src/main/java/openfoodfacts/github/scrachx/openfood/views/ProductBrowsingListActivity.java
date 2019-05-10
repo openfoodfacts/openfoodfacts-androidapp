@@ -53,7 +53,7 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickLi
 
 public class ProductBrowsingListActivity extends BaseActivity {
 
-    private static String SEARCH_INFO = "search_info";
+    public static String SEARCH_INFO = "search_info";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -504,8 +504,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             }
         } else {
-            // productsRecyclerView.setVisibility(View.INVISIBLE);
-
             swipeRefreshLayout.setRefreshing(false);
             productsRecyclerView.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.INVISIBLE);

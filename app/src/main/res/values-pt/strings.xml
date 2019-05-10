@@ -266,4 +266,5 @@
   <string name="take_picture_front">Tirar foto frontal</string>
   <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
   <string name="take_more_pictures">Tirar mais fotos</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

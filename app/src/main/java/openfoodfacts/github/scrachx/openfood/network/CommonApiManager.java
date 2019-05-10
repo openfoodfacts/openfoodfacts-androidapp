@@ -16,6 +16,7 @@ public class CommonApiManager implements ICommonApiManager {
     private static CommonApiManager instance;
     private ProductApiService productApiService;
     private OpenFoodAPIService openFoodApiService;
+    private RobotoffAPIService robotoffApiService;
     private JacksonConverterFactory jacksonConverterFactory;
 
     public static ICommonApiManager getInstance() {
@@ -48,6 +49,15 @@ public class CommonApiManager implements ICommonApiManager {
         return openFoodApiService;
     }
 
+    @Override
+    public RobotoffAPIService getRobotoffApiService() {
+        if (robotoffApiService == null) {
+            robotoffApiService = createRobotoffApiService();
+        }
+
+        return robotoffApiService;
+    }
+
     private ProductApiService createProductApiService() {
         productApiService = new Retrofit.Builder()
                 .baseUrl(BuildConfig.HOST)
@@ -58,6 +68,18 @@ public class CommonApiManager implements ICommonApiManager {
                 .create(ProductApiService.class);
 
         return productApiService;
+    }
+
+    private RobotoffAPIService createRobotoffApiService() {
+        robotoffApiService = new Retrofit.Builder()
+                .baseUrl("https://robotoff.openfoodfacts.org")
+                .client(Utils.HttpClientBuilder())
+                .addConverterFactory(jacksonConverterFactory)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+                .create(RobotoffAPIService.class);
+
+        return robotoffApiService;
     }
 
     private OpenFoodAPIService createOpenFoodApiService() {

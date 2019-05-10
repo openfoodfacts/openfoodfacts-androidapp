@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 class ProductStringConverter extends StdConverter<String, String> {
     public String convert(String value) {
         return StringEscapeUtils.unescapeHtml4(value).replace("\\'", "'").replace("&quot", "'");
@@ -160,21 +162,138 @@ public class Product implements Serializable {
     }
 
     public String getProductName(String languageCode) {
-        if (additionalProperties.get("product_name_" + languageCode) != null) {
-            return additionalProperties.get("product_name_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+        String result = getFieldHelper("product_name", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getProductName();
         }
-        return null;
+
+    }
+
+    public String getGenericName(String languageCode) {
+        String result = getFieldHelper("generic_name", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getGenericName();
+        }
+
     }
 
     public String getIngredientsText(String languageCode) {
-        if (additionalProperties.get("ingredients_text_" + languageCode) != null) {
-            return additionalProperties.get("ingredients_text_" + languageCode).toString();
+        String result = getFieldHelper("ingredients_text", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getIngredientsText();
         }
-        return null;
+
     }
+
+    public String getOtherInformation(String languageCode) {
+        String result = getFieldHelper("other_information", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getOtherInformation();
+        }
+
+    }
+
+    public String getConservationConditions(String languageCode) {
+        String result = getFieldHelper("conservation_conditions", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getConservationConditions();
+        }
+
+    }
+
+    public String getRecyclingInstructionsToDiscard(String languageCode) {
+        String result = getFieldHelper("recycling_instructions_to_discard", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getRecyclingInstructionsToDiscard();
+        }
+    }
+
+    public String getRecyclingInstructionsToRecycle(String languageCode) {
+        String result = getFieldHelper("recycling_instructions_to_recycle", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getRecyclingInstructionsToRecycle();
+        }
+    }
+
+    public String getWarning(String languageCode) {
+        String result = getFieldHelper("warning", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getWarning();
+        }
+    }
+
+    public String getCustomerService(String languageCode) {
+        String result = getFieldHelper("customer_service", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getCustomerService();
+        }
+    }
+
+    public String getImageFrontUrl(String languageCode) {
+        String result = getFieldHelper("image_front_url", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getImageFrontUrl();
+        }
+    }
+
+    public String getImageIngredientsUrl(String languageCode) {
+        String result = getFieldHelper("image_ingredient_url", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getImageIngredientsUrl();
+        }
+    }
+
+    public String getImageNutritionUrl(String languageCode) {
+        String result = getFieldHelper("image_nutrition_url", languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getImageNutritionUrl();
+        }
+    }
+
+    public String getFieldHelper(String field, String languageCode) {
+
+        if (!languageCode.equals("en") && additionalProperties.get(field + "_" + languageCode) != null
+                && isNotBlank(additionalProperties.get(field + "_" + languageCode).toString())) {
+            return additionalProperties.get(field + "_" + languageCode)
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else if (additionalProperties.get(field + "_en") != null
+                && isNotBlank(additionalProperties.get(field + "_en").toString())) {
+            return additionalProperties.get(field + "_en")
+                    .toString()
+                    .replace("\\'", "'")
+                    .replace("&quot", "'");
+        } else {
+            return null;
+        }
+
+    }
+
 
     /**
      * @return The statesTags
@@ -191,6 +310,7 @@ public class Product implements Serializable {
     public String getCustomerService() {
         return customerService;
     }
+
     public String getWarning() {
         return warning;
     }
@@ -546,6 +666,7 @@ public class Product implements Serializable {
     public String getNovaGroups() {
         return novaGroups;
     }
+
     public List<String> getEnvironmentImpactLevelTags() {
         return environmentImpactLevelTags;
     }
@@ -569,11 +690,11 @@ public class Product implements Serializable {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-  
+
     public String getEnvironmentInfocard() {
-      return environmentInfocard;
+        return environmentInfocard;
     }
-      
+
     /**
      * @return Other information
      */
@@ -607,7 +728,7 @@ public class Product implements Serializable {
         return new ToStringBuilder(this)
                 .append("code", code)
                 .append("productName", productName)
-                .append("additional_properties",additionalProperties)
+                .append("additional_properties", additionalProperties)
                 .toString();
     }
 }
