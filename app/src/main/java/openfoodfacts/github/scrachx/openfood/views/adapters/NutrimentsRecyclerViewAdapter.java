@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -54,10 +55,15 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
         nutrimentViewHolder.vNutrimentValue.append(" ");
         nutrimentViewHolder.vNutrimentValue.append(item.getUnit());
 
-        nutrimentViewHolder.vNutrimentServingValue.append(item.getModifier());
-        nutrimentViewHolder.vNutrimentServingValue.append(item.getServingValue());
-        nutrimentViewHolder.vNutrimentServingValue.append(" ");
-        nutrimentViewHolder.vNutrimentServingValue.append(item.getUnit());
+        final CharSequence servingValue = item.getServingValue();
+        if(StringUtils.isBlank(servingValue)){
+            nutrimentViewHolder.vNutrimentServingValue.setText(StringUtils.EMPTY);
+        }else {
+            nutrimentViewHolder.vNutrimentServingValue.append(item.getModifier());
+            nutrimentViewHolder.vNutrimentServingValue.append(servingValue);
+            nutrimentViewHolder.vNutrimentServingValue.append(" ");
+            nutrimentViewHolder.vNutrimentServingValue.append(item.getUnit());
+        }
     }
 
     @Override
