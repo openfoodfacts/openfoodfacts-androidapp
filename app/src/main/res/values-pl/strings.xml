@@ -75,6 +75,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -205,6 +206,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="txtPalmOilProduct">Składniki z oleju palmowego :</string>
     <string name="txtServingSize">Porcja :</string>
     <string name="txtNutrientLevel100g">Wartość odżywcza w 100g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">niska zawartość</string>
     <string name="txtNutritionLevelModerate">umiarkowana zawartość</string>
     <string name="txtNutritionLevelHigh">wysoka zawartość</string>
@@ -408,6 +410,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts</item>
     <string name="nutrition_serum_proteins">Białka surowicy</string>
     <string name="nutrition_nucleotides">Nukleotydy</string>
     <string name="for_100g">W 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Na porcję</string>
     <string name="minerals">Minerały</string>
     <string name="nutrition_calcium">Wapń</string>

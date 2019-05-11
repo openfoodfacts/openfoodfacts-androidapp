@@ -43,6 +43,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -173,6 +174,7 @@
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">ที่ให้บริการขนาด :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">ในปริมาณที่ต่ำ</string>
     <string name="txtNutritionLevelModerate">ปริมาณปานกลาง</string>
     <string name="txtNutritionLevelHigh">ในปริมาณมาก</string>
@@ -376,6 +378,7 @@
     <string name="nutrition_serum_proteins">โปรตีนในซีรัม</string>
     <string name="nutrition_nucleotides">นิวคลีโอ</string>
     <string name="for_100g">สำหรับ 100 กรัม</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">ต่อการให้บริการ</string>
     <string name="minerals">แร่ธาตุ</string>
     <string name="nutrition_calcium">แคลเซียม</string>

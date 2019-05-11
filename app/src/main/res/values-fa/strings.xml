@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">مواد اولیه ای که از روغن پالم هستند:</string>
     <string name="txtServingSize">اندازه وعده:</string>
     <string name="txtNutrientLevel100g">سطح مواد مغذي در 100 گرم:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">در مقدار کم</string>
     <string name="txtNutritionLevelModerate">در مقدار متوسط</string>
     <string name="txtNutritionLevelHigh">در مقدار بالا</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">پروتئین های سرم</string>
     <string name="nutrition_nucleotides">نوکلئوتید</string>
     <string name="for_100g">در 100 گرم</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">در هر وعده</string>
     <string name="minerals">مواد معدنی</string>
     <string name="nutrition_calcium">کلسیم</string>

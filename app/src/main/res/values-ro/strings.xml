@@ -51,6 +51,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -181,6 +182,7 @@
     <string name="txtPalmOilProduct">Ingrediente provenind din ulei de palmier:</string>
     <string name="txtServingSize">Cantitatea unei porții:</string>
     <string name="txtNutrientLevel100g">Informații nutriționale pentru 100g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">în cantitate mică</string>
     <string name="txtNutritionLevelModerate">în cantitate moderată</string>
     <string name="txtNutritionLevelHigh">în cantitate ridicată</string>
@@ -384,6 +386,7 @@
     <string name="nutrition_serum_proteins">Proteine sangvine</string>
     <string name="nutrition_nucleotides">Nucleotide</string>
     <string name="for_100g">per 100g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per porție</string>
     <string name="minerals">Minerale</string>
     <string name="nutrition_calcium">Calciu</string>

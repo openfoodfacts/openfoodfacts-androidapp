@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Ingredients d\'oli de palma :</string>
     <string name="txtServingSize">Mida de la porció :</string>
     <string name="txtNutrientLevel100g">Nivells de nutrients per a 100 g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">en petites quantitats</string>
     <string name="txtNutritionLevelModerate">en quantitats moderades</string>
     <string name="txtNutritionLevelHigh">en grans quantitats</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Proteïnes sèriques</string>
     <string name="nutrition_nucleotides">Nucleòtids</string>
     <string name="for_100g">For 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per ració</string>
     <string name="minerals">Minerals</string>
     <string name="nutrition_calcium">Calci</string>

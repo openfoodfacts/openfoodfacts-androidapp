@@ -55,6 +55,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>מ״ג</item>
@@ -185,6 +186,7 @@
     <string name="txtPalmOilProduct">רכיבים משמן דקלים :</string>
     <string name="txtServingSize">גודל ההגשה :</string>
     <string name="txtNutrientLevel100g">טבלת ערכים תזונתיים ל־100 ג׳ :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">בכמות נמוכה</string>
     <string name="txtNutritionLevelModerate">בכמות מתונה</string>
     <string name="txtNutritionLevelHigh">בכמות גדולה</string>
@@ -388,6 +390,7 @@
     <string name="nutrition_serum_proteins">חלבון בסרום</string>
     <string name="nutrition_nucleotides">נוקלאוטידים</string>
     <string name="for_100g">ל־100 ג׳</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">להגשה</string>
     <string name="minerals">מינרלים</string>
     <string name="nutrition_calcium">סידן</string>
@@ -817,6 +820,6 @@
     <string name="go_to_full_product_page">מעבר לעמוד המוצר המלא</string>
     <string name="no_additive_data_available_for_this_product">אין נתוני תוספים זמינים עבור המוצר הזה</string>
     <string name="no_nutrient_information_available_for_this_product">אין נתוני חומרי הזנה זמינים עבור המוצר הזה</string>
-    <string name="error_duplicate_listname">You already have a list with this name</string>
+    <string name="error_duplicate_listname">כבר יש לך רשימה בשם הזה</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

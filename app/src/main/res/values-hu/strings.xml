@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Összetevők pálmaolajból:</string>
     <string name="txtServingSize">Adag:</string>
     <string name="txtNutrientLevel100g">Átlagos tápérték 100 g termékben:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">kis mennyiségben</string>
     <string name="txtNutritionLevelModerate">mérsékelt mennyiségben</string>
     <string name="txtNutritionLevelHigh">nagy mennyiségben</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Szérum fehérje</string>
     <string name="nutrition_nucleotides">Nukleotidok</string>
     <string name="for_100g">100 g-ra</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Adagonként</string>
     <string name="minerals">Ásványi anyagok</string>
     <string name="nutrition_calcium">Kalcium</string>

@@ -44,6 +44,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>ក្រាម</item>
@@ -174,6 +175,7 @@
     <string name="txtPalmOilProduct">គ្រឿងផ្សំពីប្រេងដូង:</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
@@ -377,6 +379,7 @@
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">For 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="minerals">Minerals</string>
     <string name="nutrition_calcium">Calcium</string>

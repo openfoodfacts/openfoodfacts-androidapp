@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Ji palmiyeya dihewînin:</string>
     <string name="txtServingSize">Mezın xizmeta:</string>
     <string name="txtNutrientLevel100g">Nirxa Jan Axin bo 100g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">asta nizm</string>
     <string name="txtNutritionLevelModerate">pirr nerm</string>
     <string name="txtNutritionLevelHigh">mîqdarê bilind yên</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Serum xwînav</string>
     <string name="nutrition_nucleotides">Nükleotidler</string>
     <string name="for_100g">100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per di xizmeta</string>
     <string name="minerals">Mîneralên</string>
     <string name="nutrition_calcium">Kalsîyum</string>

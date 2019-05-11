@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Συστατικά προερχόμενα από φοινικέλαιο :</string>
     <string name="txtServingSize">Μέγεθος μερίδας :</string>
     <string name="txtNutrientLevel100g">Διατροφικοί δείκτες ανά 100 g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">σε μικρή ποσότητα</string>
     <string name="txtNutritionLevelModerate">σε μέτρια ποσότητα</string>
     <string name="txtNutritionLevelHigh">σε υψηλή ποσότητα</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Πρωτεΐνες ορού</string>
     <string name="nutrition_nucleotides">Νουκλεοτίδια</string>
     <string name="for_100g">Για 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Ανά μερίδα</string>
     <string name="minerals">Μεταλλικά στοιχεία</string>
     <string name="nutrition_calcium">Ασβέστιο</string>
