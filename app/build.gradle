@@ -60,7 +60,7 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
-            minSdkVersion 24
+
         }
 
         obf {

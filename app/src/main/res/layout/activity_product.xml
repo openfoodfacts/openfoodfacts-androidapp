@@ -42,10 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-
-        app:elevation="0dp"
-
-
         app:itemBackground="@color/blue_500"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"

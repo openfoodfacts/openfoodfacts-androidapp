@@ -3,7 +3,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -86,18 +86,6 @@
 
 </android.support.design.widget.CoordinatorLayout>
 
-        <!--android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:tint="@android:color/white"
-        fab:backgroundTint="@color/red"
-        fab:fabSize="normal"
-        fab:srcCompat="@drawable/plus"-->
 
 
 
