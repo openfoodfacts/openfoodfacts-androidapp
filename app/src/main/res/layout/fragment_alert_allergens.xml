@@ -27,7 +27,6 @@
         android:textSize="18sp"
         android:background="@drawable/rounded_button"
         fab:backgroundTint="@color/white"
-
          />
 
     <RelativeLayout
