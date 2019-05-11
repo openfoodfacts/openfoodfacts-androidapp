@@ -178,7 +178,7 @@
     <string name="txtPalmOilProduct">Ingredienti derivanti dall\'olio di palma:</string>
     <string name="txtServingSize">Grandezza porzione:</string>
     <string name="txtNutrientLevel100g">Nutrienti per 100g:</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Livelli di nutrienti per 100 ml:</string>
     <string name="txtNutritionLevelLow">in basse quantità</string>
     <string name="txtNutritionLevelModerate">in moderate quantità</string>
     <string name="txtNutritionLevelHigh">in grandi quantità</string>
@@ -382,7 +382,7 @@
     <string name="nutrition_serum_proteins">Proteine del siero</string>
     <string name="nutrition_nucleotides">Nucleotidi</string>
     <string name="for_100g">Per 100g</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">Per 100 ml</string>
     <string name="serving">Per porzione</string>
     <string name="minerals">Minerali</string>
     <string name="nutrition_calcium">Calcio</string>
@@ -812,6 +812,6 @@
     <string name="go_to_full_product_page">Vai alla pagina completa del prodotto</string>
     <string name="no_additive_data_available_for_this_product">Nessuna informazione disponibile sugli additivi per questo prodotto</string>
     <string name="no_nutrient_information_available_for_this_product">Nessuna informazione disponibile sui nutrienti per questo prodotto</string>
-    <string name="error_duplicate_listname">You already have a list with this name</string>
+    <string name="error_duplicate_listname">Hai già una lista con questo nome</string>
     <string name="required_to_compute_nutriscore">(Necessario per calcolare il Nutri-Score)</string>
 </resources>
