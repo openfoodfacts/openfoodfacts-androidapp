@@ -249,7 +249,7 @@
     <string name="search_drawer">Iskanje</string>
     <string name="search_by_barcode_drawer">Vnesite črtno kodo</string>
     <string name="category_drawer">Kategorije</string>
-    <string name="search_by_category">Kategorijo</string>
+    <string name="search_by_category">Kategorija</string>
     <string name="search_by_name_drawer">Iskanje po imenu</string>
     <string name="scan_search">Skeniraj črtno kodo</string>
     <string name="user_drawer">Uporabnik</string>
@@ -353,9 +353,9 @@
     <string name="action_manage_account">Upravljajte račun</string>
     <string name="action_contributes">Vaši prispevki</string>
     <string name="choose_energy_unit">Izberite želeno enoto za energijo za tabelo prehranjevanja</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="energy_pref_title">Prednostna enota za energijo</string>
     <string name="choose_volume_unit">Izberite želeno enoto za volumen za tabelo prehranjevanja</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="volume_pref_title">Prednostna enota za prostornino</string>
     <string name="logout_drawer">Odjava</string>
     <string name="contribution_without_account">Prijavite se lahko ali ustvarite račun, s katerim boste ohranili svoje prispevke</string>
     <string name="textCarbonFootprint">Ogljični odtis / emisije CO2: </string>
@@ -484,7 +484,7 @@
     <string name="device_offline_dialog_positive">Nastavitve</string>
     <string name="saving">Shranjevanje…</string>
     <string name="scan_first_product">Skenirajte prvi izdelek</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Zgodovina je bila uspešno izbrisana</string>
     <string name="preference_enable_mobile_data_title">Naloži z uporabo mobilnih podatkov</string>
     <string name="preference_enable_mobile_data_summary_on">Nove izdelke naloži z mobilnimi podatki in WiFi-jem</string>
     <string name="preference_enable_mobile_data_summary_off">Nove izdelke naloži samo z uporabo WiFi-ja</string>
@@ -541,7 +541,7 @@
     <string name="store_string">Trgovina</string>
     <string name="packaging_string">Pakiranje</string>
     <string name="label_string">Oznaka</string>
-    <string name="category_string">Kategorijo</string>
+    <string name="category_string">Kategorija</string>
     <string name="connection">Povezano</string>
     <string name="contributor_string">Sodelavec</string>
     <string name="Rate_Us">Pokaži svojo podporo</string>
