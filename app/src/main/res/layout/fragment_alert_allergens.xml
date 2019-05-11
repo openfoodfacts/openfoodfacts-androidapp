@@ -1,8 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -69,13 +73,14 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_gravity="bottom"
-        fab:elevation="22dp"
-        fab:itemBackground="@color/white"
-        fab:itemIconTint="@drawable/nav_item_state"
-        fab:itemTextColor="@drawable/nav_item_state"
+        fab:elevation="0dp"
+        fab:itemBackground="@color/blue_500"
+        fab:itemIconTint="@color/white"
+        fab:itemTextColor="@color/white"
+
         fab:menu="@menu/navigation">
+
 
     </android.support.design.widget.BottomNavigationView>
 
@@ -92,7 +97,11 @@
         android:tint="@android:color/white"
         fab:backgroundTint="@color/red"
         fab:fabSize="normal"
-        fab:srcCompat="@drawable/plus" />
+        fab:srcCompat="@drawable/plus"-->
+
+
+
+
 
 
 

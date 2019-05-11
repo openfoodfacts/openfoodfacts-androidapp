@@ -1,8 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -10,6 +12,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,7 +33,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import butterknife.BindView;
 
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -42,15 +45,23 @@ import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
 import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+
 
 import java.util.*;
+
+import android.annotation.SuppressLint;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
+
+import android.util.Log;
+import java.lang.reflect.Field;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_ALERT;
 
@@ -91,6 +102,31 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
+    /*
+    public method in order to disable shift mode in the bottom navigation bar
+    Can also be resolved by using : app:labelVisibilityMode="labeled" on xml fragment
+    if using the library com.android.support:design.28.0.0-alpha1
+     */
+    @SuppressLint("RestrictedApi")
+    public static void disableShiftMode(BottomNavigationView view) {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
+        try {
+            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+            shiftingMode.setAccessible(true);
+            shiftingMode.setBoolean(menuView, false);
+            shiftingMode.setAccessible(false);
+            for (int i = 0; i < menuView.getChildCount(); i++) {
+                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+                item.setShiftingMode(false);
+
+                item.setChecked(item.getItemData().isChecked());
+            }
+        } catch (NoSuchFieldException e) {
+
+        } catch (IllegalAccessException e) {
+
+        }
+    }
 
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
@@ -100,10 +136,30 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         productRepository = ProductRepository.getInstance();
         mDataObserver = new DataObserver();
 
-        bottomNavigationView  =(BottomNavigationView) view.findViewById((R.id.bottom_navigation));
-
+        bottomNavigationView  = view.findViewById((R.id.bottom_navigation));
+        try{disableShiftMode(bottomNavigationView);}catch(Exception ew){}
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch(item.getItemId()){
+                case R.id.scan_bottom_nav:
+                   if (Utils.isHardwareCameraInstalled(getContext())) {
+                        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+                                new MaterialDialog.Builder(getContext())
+                                        .title(R.string.action_about)
+                                        .content(R.string.permission_camera)
+                                        .neutralText(R.string.txtOk)
+                                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                                        .show();
+                            } else {
+                                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                            }
+                        } else {
+                            Intent intent_test = new Intent(getActivity(), ContinuousScanActivity.class);
+                            intent_test.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent_test);
+                        }
+                    }
+                    break;
                 case R.id.compare_products:
                     startActivity((new Intent(getActivity(), ProductComparisonActivity.class)));
                     break;
