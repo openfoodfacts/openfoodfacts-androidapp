@@ -8,6 +8,28 @@
     android:layout_height="match_parent">
 
 
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginHorizontal="10dp"
+        android:clickable="true"
+        android:drawableStart="@drawable/plus_blue"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:drawablePadding="-20dp"
+        android:focusable="true"
+        android:layout_marginTop="10dp"
+        android:text="Add an allergen"
+        android:textAllCaps="false"
+        android:textColor="@color/blue_500"
+        android:textSize="18sp"
+        android:background="@drawable/rounded_button"
+        fab:backgroundTint="@color/white"
+
+         />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -40,17 +62,17 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/allergens_recycle"
             android:layout_width="match_parent"
-            android:layout_height="613dp"
+            android:layout_height="617dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="57dp"
             android:clipChildren="true"
             android:clipToPadding="false"
             android:paddingBottom="100dp"
             tools:listitem="@layout/item_allergens" />
 
-        <android.support.design.widget.FloatingActionButton
+        <!--<android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +87,7 @@
             android:tint="@android:color/white"
             fab:backgroundTint="@color/blue"
             fab:fabSize="normal"
-            fab:srcCompat="@drawable/plus" />
+            fab:srcCompat="@drawable/plus" />-->
 
     </RelativeLayout>
 

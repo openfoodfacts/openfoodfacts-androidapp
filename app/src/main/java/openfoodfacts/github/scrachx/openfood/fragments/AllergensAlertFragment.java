@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -135,7 +134,6 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         mEmptyMessageView = view.findViewById(R.id.emptyAllergensView);
         productRepository = ProductRepository.getInstance();
         mDataObserver = new DataObserver();
-
         bottomNavigationView  = view.findViewById((R.id.bottom_navigation));
         try{disableShiftMode(bottomNavigationView);}catch(Exception ew){}
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -216,7 +214,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     /**
      * Add an allergen to be checked for when browsing products.
      */
-    @OnClick(R.id.fab)
+    @OnClick(R.id.btn_add)
     protected void onAddAllergens() {
         if (mAllergensEnabled != null && mAllergensFromDao != null && mAllergensFromDao.size() > 0) {
             productRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(getContext()))
