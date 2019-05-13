@@ -435,8 +435,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         frameLayout.setVisibility(View.VISIBLE);
         brand.setVisibility(View.VISIBLE);
         quantity.setVisibility(View.VISIBLE);
-        nutriScore.setVisibility(View.VISIBLE);
-        novaGroup.setVisibility(View.VISIBLE);
         imageProgress.setVisibility(View.VISIBLE);
         fab_status.setVisibility(View.VISIBLE);
     }
@@ -453,6 +451,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         quantity.setVisibility(View.GONE);
         nutriScore.setVisibility(View.GONE);
         novaGroup.setVisibility(View.GONE);
+        co2Icon.setVisibility(View.GONE);
         productNotFound.setVisibility(View.GONE);
         fab_status.setVisibility(View.GONE);
         imageProgress.setVisibility(View.GONE);
