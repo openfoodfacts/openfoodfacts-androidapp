@@ -22,14 +22,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.ResultPoint;
@@ -41,37 +37,22 @@ import com.journeyapps.barcodescanner.DefaultDecoderFactory;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.inject.Inject;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
-import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
+import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
+
+import javax.inject.Inject;
+import java.io.IOException;
+import java.util.*;
 
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
 
@@ -335,14 +316,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             }
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                            ContinuousScanActivity.this.productFragment = new ProductFragment();
+                            ProductFragment newProductFragment = new ProductFragment();
 
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("state", state);
-                            productFragment.setArguments(bundle);
-                            fragmentTransaction.replace(R.id.frame_layout, productFragment);
+
+                            newProductFragment.setArguments(bundle);
+                            fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
                             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                             fragmentTransaction.commit();
+                            productFragment=newProductFragment;
                         }
                     }
 
