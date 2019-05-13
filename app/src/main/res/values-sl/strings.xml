@@ -55,6 +55,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -185,6 +186,7 @@
     <string name="txtPalmOilProduct">Sestavine iz palmovega olja:</string>
     <string name="txtServingSize">Velikost serviranja :</string>
     <string name="txtNutrientLevel100g">Vsebnost hranil za 100 g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">v majhni količini</string>
     <string name="txtNutritionLevelModerate">v zmerni količini</string>
     <string name="txtNutritionLevelHigh">v veliki količini</string>
@@ -247,7 +249,7 @@
     <string name="search_drawer">Iskanje</string>
     <string name="search_by_barcode_drawer">Vnesite črtno kodo</string>
     <string name="category_drawer">Kategorije</string>
-    <string name="search_by_category">Kategorijo</string>
+    <string name="search_by_category">Kategorija</string>
     <string name="search_by_name_drawer">Iskanje po imenu</string>
     <string name="scan_search">Skeniraj črtno kodo</string>
     <string name="user_drawer">Uporabnik</string>
@@ -351,9 +353,9 @@
     <string name="action_manage_account">Upravljajte račun</string>
     <string name="action_contributes">Vaši prispevki</string>
     <string name="choose_energy_unit">Izberite želeno enoto za energijo za tabelo prehranjevanja</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="energy_pref_title">Prednostna enota za energijo</string>
     <string name="choose_volume_unit">Izberite želeno enoto za volumen za tabelo prehranjevanja</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="volume_pref_title">Prednostna enota za prostornino</string>
     <string name="logout_drawer">Odjava</string>
     <string name="contribution_without_account">Prijavite se lahko ali ustvarite račun, s katerim boste ohranili svoje prispevke</string>
     <string name="textCarbonFootprint">Ogljični odtis / emisije CO2: </string>
@@ -388,6 +390,7 @@
     <string name="nutrition_serum_proteins">Beljakovine v serumu</string>
     <string name="nutrition_nucleotides">Nukleotidi</string>
     <string name="for_100g">Za 100g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Na porcijo</string>
     <string name="minerals">Minerali</string>
     <string name="nutrition_calcium">Kalcij</string>
@@ -450,10 +453,10 @@
     <string name="txtSaturatedFat">Nasičena maščoba</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about Nova</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_grp1_msg">Skupina 1 - Nepredelana ali minimalno predelana živila</string>
+    <string name="nova_grp2_msg">Skupina 2 - predelane kulinarične sestavine</string>
+    <string name="nova_grp3_msg">Skupina 3 - Predelana živila</string>
+    <string name="nova_grp4_msg">Skupina 4 - Ultra predelani izdelki hrane in pijače</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Bližnjica ni na voljo</string>
     <string name="scan_shortcut_short_label">Preberi</string>
@@ -481,7 +484,7 @@
     <string name="device_offline_dialog_positive">Nastavitve</string>
     <string name="saving">Shranjevanje…</string>
     <string name="scan_first_product">Skenirajte prvi izdelek</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Zgodovina je bila uspešno izbrisana</string>
     <string name="preference_enable_mobile_data_title">Naloži z uporabo mobilnih podatkov</string>
     <string name="preference_enable_mobile_data_summary_on">Nove izdelke naloži z mobilnimi podatki in WiFi-jem</string>
     <string name="preference_enable_mobile_data_summary_off">Nove izdelke naloži samo z uporabo WiFi-ja</string>
@@ -538,7 +541,7 @@
     <string name="store_string">Trgovina</string>
     <string name="packaging_string">Pakiranje</string>
     <string name="label_string">Oznaka</string>
-    <string name="category_string">Kategorijo</string>
+    <string name="category_string">Kategorija</string>
     <string name="connection">Povezano</string>
     <string name="contributor_string">Sodelavec</string>
     <string name="Rate_Us">Pokaži svojo podporo</string>
@@ -791,10 +794,10 @@
     <string name="txt_info_your_listed_products">Na ta seznam lahko dodajate izdelke tako, da jih iščete in kliknete gumb + v zgornjem desnem kotu strani izdelka.</string>
     <string name="txt_i_m_eating_this">To jem</string>
     <string name="compare_product_prompt">Compare this product</string>
-    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_title">Počistite lokalno zgodovino iskanja</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_dialog_title">Izberite vašo državo</string>
+    <string name="settings_country_summary">Spremenite izbrano državo</string>
     <string name="settings_country_title">Država</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
@@ -817,5 +820,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

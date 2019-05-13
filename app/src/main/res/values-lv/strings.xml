@@ -51,6 +51,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -181,6 +182,7 @@
     <string name="txtPalmOilProduct">Sastāvdaļas, no palmu eļļas:</string>
     <string name="txtServingSize">Porcijas lielums :</string>
     <string name="txtNutrientLevel100g">Uzturvielu līmenis uz 100 g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">mazā daudzumā</string>
     <string name="txtNutritionLevelModerate">mērenā daudzumā</string>
     <string name="txtNutritionLevelHigh">lielā daudzumā</string>
@@ -384,6 +386,7 @@
     <string name="nutrition_serum_proteins">Seruma proteīni</string>
     <string name="nutrition_nucleotides">Nukleotīdi</string>
     <string name="for_100g">100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Uz porciju</string>
     <string name="minerals">Minerālvielas</string>
     <string name="nutrition_calcium">Kalcijs</string>
@@ -813,5 +816,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

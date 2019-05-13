@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">পাম তেল থেকে উপকরণ:</string>
     <string name="txtServingSize">পরিবেশন পরিমাপ :</string>
     <string name="txtNutrientLevel100g">100gএর জন্য পুষ্টির মাত্রা :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">কম পরিমাণে </string>
     <string name="txtNutritionLevelModerate">মাঝারি পরিমাণে</string>
     <string name="txtNutritionLevelHigh">উচ্চ মাত্রায়</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">সিরাম প্রোটিন</string>
     <string name="nutrition_nucleotides">নিউক্লিওটাইডস</string>
     <string name="for_100g">100 গ্রামের জন্য</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">প্রতি পরিবেশনে</string>
     <string name="minerals">খনিজ পদার্থ</string>
     <string name="nutrition_calcium">ক্যালসিয়াম</string>
@@ -809,5 +812,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

@@ -55,6 +55,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -185,6 +186,7 @@
     <string name="txtPalmOilProduct">Suroviny z palmového oleje :</string>
     <string name="txtServingSize">Velikost porce :</string>
     <string name="txtNutrientLevel100g">Nutriční hodnoty na 100 g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">v malém množství</string>
     <string name="txtNutritionLevelModerate">v mírném množství</string>
     <string name="txtNutritionLevelHigh">ve velkém množství</string>
@@ -388,6 +390,7 @@
     <string name="nutrition_serum_proteins">Sérové ​​proteiny</string>
     <string name="nutrition_nucleotides">Nukleotidy</string>
     <string name="for_100g">Ve 100g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">V jedné porci</string>
     <string name="minerals">Minerály</string>
     <string name="nutrition_calcium">Vápník</string>
@@ -817,5 +820,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

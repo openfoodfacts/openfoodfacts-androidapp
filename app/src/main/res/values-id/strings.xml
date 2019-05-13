@@ -43,6 +43,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -173,6 +174,7 @@
     <string name="txtPalmOilProduct">Bahan dari minyak kelapa sawit :</string>
     <string name="txtServingSize">Porsi penyajian :</string>
     <string name="txtNutrientLevel100g">Tingkat nutrisi untuk 100 g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">kualitas jumlah rendah</string>
     <string name="txtNutritionLevelModerate">dalam jumlah sedang</string>
     <string name="txtNutritionLevelHigh">kualitas hasil rendah</string>
@@ -376,6 +378,7 @@
     <string name="nutrition_serum_proteins">protein serum</string>
     <string name="nutrition_nucleotides">Nukleotidaa</string>
     <string name="for_100g">untuk100g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">porsi</string>
     <string name="minerals">Mineral</string>
     <string name="nutrition_calcium">Kalsium</string>
@@ -805,5 +808,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

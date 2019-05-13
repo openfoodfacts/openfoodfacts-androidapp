@@ -21,7 +21,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Odprta dejstva o hrani je zbirka podatkov o živilskih izdelkih, ki so jo pripravili vsi, za vse.
+- Open Food Facts je zbirka podatkov o živilskih izdelkih, ki so jo pripravili vsi, za vse.
 - Uporabite jo lahko za boljšo izbiro hrane in ker je to odprta zbirka podatkov, jo lahko kdorkoli ponovno uporabiti za kateri koli namen.
 - Odprta dejstva o hrani je neprofitni projekt, ki ga je razvilo na tisoče prostovoljcev iz vsega sveta. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov.
 - You can start contributing today by adding a product from your fridge.
@@ -32,7 +32,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 ▶ Get the Facts
 - Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- Nutriscore (hranilna vrednost), hranila, vsebnost maščobe, nasičene maščobne kisline, ogljikovi hidrati, sladkorji, vlaknine, beljakovine in sol ter natrij.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - On wines and beers, you will find the alcohol content.
 

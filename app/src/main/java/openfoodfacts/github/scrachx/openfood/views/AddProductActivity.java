@@ -42,7 +42,6 @@ import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.inject.Inject;
 import java.io.File;
@@ -52,14 +51,14 @@ import java.util.Map;
 
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
-import static org.apache.commons.lang3.StringUtils.capitalize;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class AddProductActivity extends AppCompatActivity {
-    public static final String KEY_USER_ID = "user_id";
-    public static final String KEY_PASSWORD = "password";
-    public static final String ADD_TAG = AddProductActivity.class.getSimpleName();
+    private static final String KEY_USER_ID = "user_id";
+    private static final String KEY_PASSWORD = "password";
+    private static final String ADD_TAG = AddProductActivity.class.getSimpleName();
     public static final String UPLOADED_TO_SERVER = "uploadedToServer";
+    public static final String MODIFY_NUTRITION_PROMPT = "modify_nutrition_prompt";
+    public static final String MODIFY_CATEGORY_PROMPT = "modify_category_prompt";
     private final Map<String, String> productDetails = new HashMap<>();
     @Inject
     OpenFoodAPIService client;
@@ -73,10 +72,10 @@ public class AddProductActivity extends AppCompatActivity {
     TextView nutritionFactsIndicatorText;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
-    AddProductOverviewFragment addProductOverviewFragment = new AddProductOverviewFragment();
-    AddProductIngredientsFragment addProductIngredientsFragment = new AddProductIngredientsFragment();
-    AddProductNutritionFactsFragment addProductNutritionFactsFragment = new AddProductNutritionFactsFragment();
-    AddProductPhotosFragment addProductPhotosFragment = new AddProductPhotosFragment();
+    private AddProductOverviewFragment addProductOverviewFragment = new AddProductOverviewFragment();
+    private AddProductIngredientsFragment addProductIngredientsFragment = new AddProductIngredientsFragment();
+    private AddProductNutritionFactsFragment addProductNutritionFactsFragment = new AddProductNutritionFactsFragment();
+    private AddProductPhotosFragment addProductPhotosFragment = new AddProductPhotosFragment();
     private Product mProduct;
     private ToUploadProductDao mToUploadProductDao;
     private OfflineSavedProductDao mOfflineSavedProductDao;
@@ -151,39 +150,21 @@ public class AddProductActivity extends AppCompatActivity {
      */
     private void updateTimelineIndicator(int overviewStage, int ingredientsStage, int nutritionFactsStage) {
 
-        switch (overviewStage) {
-            case 0:
-                overviewIndicator.setBackgroundResource(R.drawable.stage_inactive);
-                break;
-            case 1:
-                overviewIndicator.setBackgroundResource(R.drawable.stage_active);
-                break;
-            case 2:
-                overviewIndicator.setBackgroundResource(R.drawable.stage_complete);
-                break;
-        }
+        updateTimeLine(overviewStage, overviewIndicator);
+        updateTimeLine(ingredientsStage, ingredientsIndicator);
+        updateTimeLine(nutritionFactsStage, nutritionFactsIndicator);
+    }
 
-        switch (ingredientsStage) {
+    private static void updateTimeLine(int stage, View view) {
+        switch (stage) {
             case 0:
-                ingredientsIndicator.setBackgroundResource(R.drawable.stage_inactive);
+                view.setBackgroundResource(R.drawable.stage_inactive);
                 break;
             case 1:
-                ingredientsIndicator.setBackgroundResource(R.drawable.stage_active);
+                view.setBackgroundResource(R.drawable.stage_active);
                 break;
             case 2:
-                ingredientsIndicator.setBackgroundResource(R.drawable.stage_complete);
-                break;
-        }
-
-        switch (nutritionFactsStage) {
-            case 0:
-                nutritionFactsIndicator.setBackgroundResource(R.drawable.stage_inactive);
-                break;
-            case 1:
-                nutritionFactsIndicator.setBackgroundResource(R.drawable.stage_active);
-                break;
-            case 2:
-                nutritionFactsIndicator.setBackgroundResource(R.drawable.stage_complete);
+                view.setBackgroundResource(R.drawable.stage_complete);
                 break;
         }
     }
@@ -357,13 +338,12 @@ public class AddProductActivity extends AppCompatActivity {
                     }
                 }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        dialog.dismiss();
-                        saveProductOffline();
-                    }
-                });
-
+                @Override
+                public void onError(Throwable e) {
+                    dialog.dismiss();
+                    saveProductOffline();
+                }
+            });
     }
 
     /**
@@ -1078,8 +1058,6 @@ public class AddProductActivity extends AppCompatActivity {
         checkFrontImageUploadStatus();
     }
 
-
-
     @OnClick(R.id.overview_indicator)
     void switchToOverviewPage() {
         viewPager.setCurrentItem(0, true);
@@ -1259,7 +1237,7 @@ public class AddProductActivity extends AppCompatActivity {
                         Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
                             .setAction(R.string.txt_try_again, v -> performOCR(code, imageField)).show();
                     } else {
-                        Log.i(this.getClass().getSimpleName(), e.getMessage(),e);
+                        Log.i(this.getClass().getSimpleName(), e.getMessage(), e);
                         Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }

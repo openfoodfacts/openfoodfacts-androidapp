@@ -45,8 +45,6 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -54,7 +52,6 @@ import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -140,20 +137,17 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     Button extractIngredientsPrompt;
     @BindView(R.id.change_ing_img)
     Button updateImageBtn;
-    private Product product;
+
     private OpenFoodAPIClient api;
     private String mUrlImage;
     private State mState;
     private String barcode;
-    private AdditiveDao mAdditiveDao;
-    private IProductRepository productRepository;
     private IngredientsProductFragment mFragment;
     private SendProduct mSendProduct;
     private WikidataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     private IIngredientsProductPresenter.Actions presenter;
-    private ProductFragmentPagerAdapter pagerAdapter;
     private boolean extractIngredients = false;
     private boolean sendUpdatedIngredientsImage = false;
     //boolean to determine if image should be loaded or not
@@ -162,14 +156,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        productRepository = ProductRepository.getInstance();
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        mState = getStateFromActivityIntent();
-        product = mState.getProduct();
+        mState=getStateFromActivityIntent();
 
-        presenter = new IngredientsProductPresenter(product, this);
     }
 
     @Override
@@ -199,7 +190,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         }
 
-        mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
         mAllergenNameDao = Utils.getAppDaoSession(getActivity()).getAllergenNameDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
@@ -269,7 +259,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         List<String> allergens = getAllergens();
 
-        if (mState != null && product.getIngredientsText(langCode) != null && !product.getIngredientsText(langCode).isEmpty()) {
+        if (mState != null && StringUtils.isNotEmpty(product.getIngredientsText(langCode))) {
             textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText(langCode).replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
@@ -628,7 +618,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @OnClick(R.id.novaMethodLink)
     void novaMethodLinkDisplay() {
-        if (product.getNovaGroups() != null) {
+        if(mState!=null && mState.getProduct()!=null &&mState.getProduct().getNovaGroups() != null) {
             Uri uri = Uri.parse(getString(R.string.url_nova_groups));
             CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
             CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
@@ -754,7 +744,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_CAMERA: {
                 if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
@@ -784,7 +774,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @Override
     public void onDestroyView() {
-        presenter.dispose();
+        if(presenter!=null) {
+            presenter.dispose();
+        }
         super.onDestroyView();
     }
 }

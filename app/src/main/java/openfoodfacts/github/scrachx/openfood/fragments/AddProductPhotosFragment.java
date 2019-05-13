@@ -194,8 +194,4 @@ public class AddProductPhotosFragment extends BaseFragment {
         tableLayout.addView(image);
     }
 
-    private int dpsToPixels(int dps) {
-        final float scale = activity.getResources().getDisplayMetrics().density;
-        return (int) (dps * scale + 0.5f);
-    }
 }

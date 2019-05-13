@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">déif Quantitéit</string>
     <string name="txtNutritionLevelModerate">an moderater Quantitéit</string>
     <string name="txtNutritionLevelHigh">Héigh Quantitéit</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Serum Proteinen</string>
     <string name="nutrition_nucleotides">Nukleotiden</string>
     <string name="for_100g">Fir 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">pro Portioun</string>
     <string name="minerals">Mineralien</string>
     <string name="nutrition_calcium">Kalzium</string>
@@ -809,5 +812,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

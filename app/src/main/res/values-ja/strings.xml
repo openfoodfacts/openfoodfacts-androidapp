@@ -43,6 +43,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -173,6 +174,7 @@
     <string name="txtPalmOilProduct">パーム油を原材料とするもの :</string>
     <string name="txtServingSize">分量 :</string>
     <string name="txtNutrientLevel100g">100g 当たりの栄養成分:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">少量</string>
     <string name="txtNutritionLevelModerate">適量</string>
     <string name="txtNutritionLevelHigh">多量</string>
@@ -376,6 +378,7 @@
     <string name="nutrition_serum_proteins">血清タンパク質</string>
     <string name="nutrition_nucleotides">ヌクレオチド</string>
     <string name="for_100g">100 g 当たり</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">一食当たり</string>
     <string name="minerals">ミネラル</string>
     <string name="nutrition_calcium">カルシウム</string>
@@ -805,5 +808,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

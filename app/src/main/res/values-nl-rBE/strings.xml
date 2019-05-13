@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Ingrediënten bevatten palmolie</string>
     <string name="txtServingSize">Per portie</string>
     <string name="txtNutrientLevel100g">Voedingsstoffen per 100g</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">kleine hoeveelheid</string>
     <string name="txtNutritionLevelModerate">matige hoeveelheid</string>
     <string name="txtNutritionLevelHigh">grote hoeveelheid</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Serumproteïnen</string>
     <string name="nutrition_nucleotides">Nucleotiden</string>
     <string name="for_100g">Per 100g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per portie</string>
     <string name="minerals">Mineralen</string>
     <string name="nutrition_calcium">Calcium</string>
@@ -809,5 +812,6 @@
     <string name="go_to_full_product_page">Ga naar de volledige productpagina</string>
     <string name="no_additive_data_available_for_this_product">Er zijn geen gegevens over toevoegingen beschikbaar voor dit product</string>
     <string name="no_nutrient_information_available_for_this_product">Geen voedingsinformatie beschikbaar voor dit product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

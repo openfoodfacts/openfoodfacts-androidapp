@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>ग्राम</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">ताड़ के तेल से सामग्री:</string>
     <string name="txtServingSize">सेवारत परिमाण:</string>
     <string name="txtNutrientLevel100g">100 ग्राम के लिए पोषक तत्वों का स्तर</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">कम मात्रा में</string>
     <string name="txtNutritionLevelModerate">मध्यम मात्रा में</string>
     <string name="txtNutritionLevelHigh">अधिक मात्रा में</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">सीरम प्रोटीन</string>
     <string name="nutrition_nucleotides">न्यूक्लियोटाइड</string>
     <string name="for_100g">१०० g के लिए</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">प्रत्येक हिस्सा</string>
     <string name="minerals">खनिज</string>
     <string name="nutrition_calcium">केल्शियम</string>
@@ -809,5 +812,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

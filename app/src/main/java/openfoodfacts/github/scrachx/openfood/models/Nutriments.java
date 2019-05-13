@@ -2,20 +2,17 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
-import org.apache.commons.lang3.StringUtils;
-
-import static android.text.TextUtils.isEmpty;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 /**
@@ -127,8 +124,6 @@ public class Nutriments implements Serializable {
     public static final String PHOSPHORUS = "phosphorus";
     public static final String IRON = "iron";
     public static final String MAGNESIUM = "magnesium";
-    public static final String DEFAULT_NUTRITION_SIZE = "100g";
-
     public static final Map<String, Integer> MINERALS_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.SILICA, R.string.silica);
         put(Nutriments.BICARBONATE, R.string.bicarbonate);
@@ -204,12 +199,12 @@ public class Nutriments implements Serializable {
     private boolean containsMinerals;
 
     public Nutriment get(String nutrimentName){
-        if (nutrimentName.isEmpty() || !additionalProperties.containsKey(nutrimentName)) {
+        if (nutrimentName.isEmpty() || additionalProperties.get(nutrimentName)==null) {
             return null;
         }
 
         try{
-            return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName),
+            return new Nutriment(nutrimentName,additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName),
                 getModifier(nutrimentName));
         }catch (NullPointerException e){
             // In case one of the getters was unable to get data as string
@@ -220,31 +215,34 @@ public class Nutriments implements Serializable {
     }
 
     public String getUnit(String nutrimentName){
-        String unit = ((String) additionalProperties.get(nutrimentName + "_unit"));
-        return isEmpty(unit) ? DEFAULT_UNIT : unit;
+        return getAdditionalProperty(nutrimentName,"_unit",DEFAULT_UNIT);
     }
 
     public String getServing(String nutrimentName){
-        return additionalProperties.get(nutrimentName + "_serving").toString();
+        return getAdditionalProperty(nutrimentName,"_serving");
     }
 
+    private String getAdditionalProperty(String nutrimentName,String suffix){
+        return getAdditionalProperty(nutrimentName,suffix,StringUtils.EMPTY);
+    }
+
+    private String getAdditionalProperty(String nutrimentName,String suffix,String defaultValue){
+        final Object value = additionalProperties.get(nutrimentName + suffix);
+        return value==null?defaultValue:value.toString();
+    }
+
+
     public String get100g(String nutrimentName){
-        return additionalProperties.get(nutrimentName + "_100g").toString();
+        return getAdditionalProperty(nutrimentName,"_100g");
     }
 
     public String getValue(String nutrimentName) {
-        if (additionalProperties.get(nutrimentName + "_value") != null) {
-            return additionalProperties.get(nutrimentName + "_value").toString();
-        }
-        return null;
+        return getAdditionalProperty(nutrimentName,"_value",null);
     }
 
     @Nullable
     public String getModifier(String nutrimentName) {
-        if (additionalProperties.get(nutrimentName + "_modifier") != null) {
-            return additionalProperties.get(nutrimentName + "_modifier").toString();
-        }
-        return null;
+        return getAdditionalProperty(nutrimentName,"_modifier",null);
     }
 
     public boolean contains(String nutrimentName){
@@ -276,13 +274,15 @@ public class Nutriments implements Serializable {
     }
 
     public static class Nutriment {
+        private final String key;
         private final String name;
         private final String for100g;
         private final String forServing;
         private final String unit;
         private final String modifier;
 
-        Nutriment(String name, String for100g, String forServing, String unit, String modifier) {
+        Nutriment(String key, String name, String for100g, String forServing, String unit, String modifier) {
+            this.key = key;
             this.name = name;
             this.for100g = for100g;
             this.forServing = forServing;
@@ -334,12 +334,19 @@ public class Nutriments implements Serializable {
         }
 
         private String getValueInUnits(String valueInGramOrMl, String unit) {
+            if(StringUtils.isBlank(valueInGramOrMl)){
+                return StringUtils.EMPTY;
+            }
             if (valueInGramOrMl.isEmpty() || unit.equals(UnitUtils.UNIT_GRAM)) {
                 return valueInGramOrMl;
             }
             float value = Float.valueOf(valueInGramOrMl);
             value = UnitUtils.convertFromGram(value, unit);
             return getRoundNumber(value);
+        }
+
+        public String getKey() {
+            return key;
         }
 
         /**

@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -67,6 +68,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     ConstraintLayout quickView;
     @BindView(R.id.barcode_scanner)
     DecoratedBarcodeView barcodeView;
+    @BindView(R.id.imageForScreenshotGenerationOnly)
+    ImageView imageForScreenshotGenerationOnly;
     @BindView(R.id.toggle_flash)
     ImageView toggleFlash;
     @BindView(R.id.button_more)
@@ -142,6 +145,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
         }
     };
+
+    private boolean productShowing=false;
+
+    public void showProduct(String text){
+        productShowing=true;
+        barcodeView.setVisibility(View.GONE);
+        barcodeView.pause();
+        imageForScreenshotGenerationOnly.setVisibility(View.VISIBLE);
+        findProduct(text,false);
+    }
 
     /**
      * Makes network call and search for the product in the database
@@ -357,7 +370,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             Rect gvr = new Rect();
             fab_status.getRootView().getGlobalVisibleRect(gvr);
             ViewGroup.MarginLayoutParams params=(ViewGroup.MarginLayoutParams) fab_status.getLayoutParams();
-            firstScanMessage.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, params.bottomMargin-dpsToPixel(50));
+            firstScanMessage.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, params.bottomMargin-BaseActivity.dpsToPixel(50,this));
             firstScanMessage.show();
         }
     }
@@ -488,11 +501,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         }
     }
 
-    //Helper Function
-    private int dpsToPixel(int dps) {
-        final float scale = getResources().getDisplayMetrics().density;
-        return (int) (dps * scale + 0.5f);
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -525,6 +534,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
         handler = new Handler();
         runnable = () -> {
+            if(productShowing){
+                return;
+            }
             hideAllViews();
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             searchByBarcode.setVisibility(View.VISIBLE);
@@ -541,11 +553,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     lastText = null;
                 }
                 if (searchByBarcode.getVisibility() == View.VISIBLE) {
-                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_SMALL));
+                    bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_SMALL,ContinuousScanActivity.this));
                     bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
                     bottomSheet.requestLayout();
                 } else {
-                    bottomSheetBehavior.setPeekHeight(dpsToPixel(PEEK_LARGE));
+                    bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_LARGE,ContinuousScanActivity.this));
                     bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
                     bottomSheet.requestLayout();
                 }
@@ -646,6 +658,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             return false;
         });
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase,LocaleHelper.getLocale()));
+    }
+
 
     private boolean isProductIncomplete() {
         return product != null && (product.getImageFrontUrl() == null || product.getImageFrontUrl().equals("") ||
