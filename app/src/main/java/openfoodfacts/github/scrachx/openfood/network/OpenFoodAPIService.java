@@ -7,7 +7,6 @@ import java.util.Map;
 
 import io.reactivex.Single;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.Search;
