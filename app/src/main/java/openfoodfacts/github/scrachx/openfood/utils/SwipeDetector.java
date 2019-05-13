@@ -120,7 +120,7 @@ public class SwipeDetector implements View.OnTouchListener{
     }
     public interface onSwipeEvent
     {
-        public void SwipeEventDetected(View v, SwipeTypeEnum SwipeType);
+        void SwipeEventDetected(View v, SwipeTypeEnum SwipeType);
     }
 
     public SwipeDetector setMinDistanceInPixels(int min_distance)
