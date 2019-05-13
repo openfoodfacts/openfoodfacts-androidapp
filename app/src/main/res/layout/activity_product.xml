@@ -45,7 +45,8 @@
         app:itemBackground="@color/blue_500"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
+
         app:menu="@menu/my_navigation_items"
-        tools:layout_editor_absoluteY="503dp"/>
+        tools:layout_editor_absoluteY="503dp" />
 
 </android.support.design.widget.CoordinatorLayout>

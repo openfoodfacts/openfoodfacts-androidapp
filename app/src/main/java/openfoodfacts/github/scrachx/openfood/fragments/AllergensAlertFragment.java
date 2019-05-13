@@ -1,17 +1,38 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.*;
 import android.widget.LinearLayout;
+
+
+import com.afollestad.materialdialogs.MaterialDialog;
+
+import net.steamcrafted.loadtoast.LoadToast;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -23,9 +44,23 @@ import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
+import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
+
 import java.util.*;
+
+import android.annotation.SuppressLint;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
+
+import android.util.Log;
+import java.lang.reflect.Field;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_ALERT;
 
@@ -43,6 +78,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     private View mView;
     private LinearLayout mEmptyMessageView;                                         // Empty View containing the message that will be shown if the list is empty
     private DataObserver mDataObserver;
+    private BottomNavigationView bottomNavigationView;
     public static Integer getKey(HashMap<Integer, String> map, String value) {
         Integer key = null;
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
@@ -65,6 +101,31 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
+    /*
+    public method in order to disable shift mode in the bottom navigation bar
+    Can also be resolved by using : app:labelVisibilityMode="labeled" on xml fragment
+    if using the library com.android.support:design.28.0.0-alpha1
+     */
+    @SuppressLint("RestrictedApi")
+    public static void disableShiftMode(BottomNavigationView view) {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
+        try {
+            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+            shiftingMode.setAccessible(true);
+            shiftingMode.setBoolean(menuView, false);
+            shiftingMode.setAccessible(false);
+            for (int i = 0; i < menuView.getChildCount(); i++) {
+                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+                item.setShiftingMode(false);
+
+                item.setChecked(item.getItemData().isChecked());
+            }
+        } catch (NoSuchFieldException e) {
+
+        } catch (IllegalAccessException e) {
+
+        }
+    }
 
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
@@ -73,8 +134,59 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         mEmptyMessageView = view.findViewById(R.id.emptyAllergensView);
         productRepository = ProductRepository.getInstance();
         mDataObserver = new DataObserver();
+        bottomNavigationView  = view.findViewById((R.id.bottom_navigation));
+        try{disableShiftMode(bottomNavigationView);}catch(Exception ew){}
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch(item.getItemId()){
+                case R.id.scan_bottom_nav:
+                   if (Utils.isHardwareCameraInstalled(getContext())) {
+                        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+                                new MaterialDialog.Builder(getContext())
+                                        .title(R.string.action_about)
+                                        .content(R.string.permission_camera)
+                                        .neutralText(R.string.txtOk)
+                                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                                        .show();
+                            } else {
+                                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                            }
+                        } else {
+                            Intent intent_test = new Intent(getActivity(), ContinuousScanActivity.class);
+                            intent_test.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent_test);
+                        }
+                    }
+                    break;
+                case R.id.compare_products:
+                    startActivity((new Intent(getActivity(), ProductComparisonActivity.class)));
+                    break;
+                case R.id.home_page:
+                    startActivity((new Intent(getActivity(),WelcomeActivity.class)));
+                    break;
+                case R.id.history_bottom_nav:
+                    Intent intent  = new Intent(getActivity(), HistoryScanActivity.class);
+                    startActivity(intent);
+
+                    break;
+                case R.id.my_lists:
+                    startActivity(new Intent(getActivity(), ProductListsActivity.class));
+                    break;
+
+                default:
+                    return true;
+            }
+
+
+
+        return true;
+        });
+
+        productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
+
         final String language = LocaleHelper.getLanguage(getContext());
         productRepository.getAllergensByEnabledAndLanguageCode(true, language)
+
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allergens -> {
@@ -102,7 +214,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     /**
      * Add an allergen to be checked for when browsing products.
      */
-    @OnClick(R.id.fab)
+    @OnClick(R.id.btn_add)
     protected void onAddAllergens() {
         if (mAllergensEnabled != null && mAllergensFromDao != null && mAllergensFromDao.size() > 0) {
             productRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(getContext()))
