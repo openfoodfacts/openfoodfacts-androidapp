@@ -21,7 +21,7 @@
         android:drawablePadding="-20dp"
         android:focusable="true"
         android:layout_marginTop="10dp"
-        android:text="Add an allergen"
+        android:text="@string/add_an_allergen"
         android:textAllCaps="false"
         android:textColor="@color/blue_500"
         android:textSize="18sp"

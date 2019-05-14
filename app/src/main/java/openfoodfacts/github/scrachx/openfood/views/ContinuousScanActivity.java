@@ -274,14 +274,19 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                     @Override
                                     public void onSuccess() {
                                         imageProgress.setVisibility(View.GONE);
+                                        showFirstScanTooltipIfNeeded();
+
                                     }
 
                                     @Override
                                     public void onError() {
                                         imageProgress.setVisibility(View.GONE);
+                                        showFirstScanTooltipIfNeeded();
+
                                     }
                                 });
                         } else {
+                            showFirstScanTooltipIfNeeded();
                             productImage.setImageResource(R.drawable.placeholder_thumb);
                             imageProgress.setVisibility(View.GONE);
                         }
@@ -324,7 +329,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         fragmentTransaction.replace(R.id.frame_layout, productFragment);
                         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                         fragmentTransaction.commit();
-                        showFirstScanTooltipIfNeeded();
+
+
                     }
                 }
 
@@ -349,6 +355,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
                             fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                         } else {
+                            progressBar.setVisibility(View.GONE);
+                            progressText.setVisibility(View.GONE);
+                            final Toast errorMessage = Toast.makeText(ContinuousScanActivity.this.getBaseContext(), R.string.txtConnectionError, Toast.LENGTH_LONG);
+                            errorMessage.setGravity(Gravity.CENTER,0,0);
+                            errorMessage.show();
                             Log.i(this.getClass().getSimpleName(), e.getMessage(), e);
                         }
                     } catch (Exception e1) {
@@ -368,7 +379,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
             final Toast firstScanMessage = Toast.makeText(ContinuousScanActivity.this.getBaseContext(), R.string.first_scan_tooltip, Toast.LENGTH_LONG);
             Rect gvr = new Rect();
-            fab_status.getRootView().getGlobalVisibleRect(gvr);
+            quickView.getRootView().getGlobalVisibleRect(gvr);
             ViewGroup.MarginLayoutParams params=(ViewGroup.MarginLayoutParams) fab_status.getLayoutParams();
             firstScanMessage.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, params.bottomMargin-BaseActivity.dpsToPixel(50,this));
             firstScanMessage.show();
