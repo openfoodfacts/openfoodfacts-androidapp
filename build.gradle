@@ -77,6 +77,19 @@ ext {
 
     jUnitVersion = '4.12'
     jsonUnitVersion = '1.27.0'
-    espressoVersion = '3.0.1'
+    espressoVersion = '3.0.2'
+    espressoContribVersion = '3.0.1'
     mockitoVersion = '2.13.0'
+
+    constraintLayout = '1.1.3'
+    support = '27.1.1'
+    jsr250api = '1.0'
+    jobDispatcher = '0.8.5'
+    fastAdapterCommons = '2.1.0@aar'
+    converterScalars = '2.1.0'
+    materialDrawer = '6.0.3@aar'
+    imageCropper = '2.6.0'
+    orchestrator = '1.0.2'
+    nachos = '1.1.1'
+    testRunnerVersion = '1.0.2'
 }
