@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -55,7 +55,7 @@ public class ProductsListAdapter extends BaseAdapter {
         TextView txtTitle = convertView.findViewById(R.id.nameProduct);
 
         Picasso.with(context)
-                .load(products.get(position).getImageSmallUrl())
+                .load(products.get(position).getImageSmallUrl(LocaleHelper.getLanguage(context)))
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.error_image)
                 .fit()

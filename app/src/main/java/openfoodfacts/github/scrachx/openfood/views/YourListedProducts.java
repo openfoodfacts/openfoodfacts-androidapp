@@ -32,6 +32,7 @@ import com.opencsv.CSVWriter;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -90,14 +91,15 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             setTitle(listName);
             p = (Product) bundle.get("product");
         }
+        String locale= LocaleHelper.getLanguage(getBaseContext());
         if (p != null && p.getCode() != null && p.getProductName() != null
-            && p.getImageSmallUrl() != null) {
+            && p.getImageSmallUrl(locale) != null) {
 
             String barcode = p.getCode();
             String productName = p.getProductName();
 
             String productDetails = getProductBrandsQuantityDetails(p);
-            String imageUrl = p.getImageSmallUrl();
+            String imageUrl = p.getImageSmallUrl(locale);
             YourListedProduct product = new YourListedProduct();
             product.setBarcode(barcode);
             product.setListId(id);

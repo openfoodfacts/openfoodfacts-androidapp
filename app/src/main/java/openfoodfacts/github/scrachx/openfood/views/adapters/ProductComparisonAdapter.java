@@ -36,6 +36,7 @@ import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -126,15 +127,17 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         if (!productsToCompare.isEmpty()) {
 
             //support synchronous scrolling
-            holder.listItemLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(View view, int i, int i1, int i2, int i3) {
-                    for (ProductComparisonViewHolder viewHolder : viewHolders) {
-                        viewHolder.listItemLayout.setScrollX(i);
-                        viewHolder.listItemLayout.setScrollY(i1);
+            if(CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
+                holder.listItemLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                    @Override
+                    public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+                        for (ProductComparisonViewHolder viewHolder : viewHolders) {
+                            viewHolder.listItemLayout.setScrollX(i);
+                            viewHolder.listItemLayout.setScrollY(i1);
+                        }
                     }
-                }
-            });
+                });
+            }
 
             Product product = productsToCompare.get(position);
 
@@ -148,13 +151,14 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 addProductButton.setText(R.string.add_another_product);
             }
 
+            final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(context));
             holder.productComparisonImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (product.getImageUrl() != null) {
+                    if (imageUrl != null) {
                         Intent intent = new Intent(context, FullScreenImage.class);
                         Bundle bundle = new Bundle();
-                        bundle.putString("imageurl", product.getImageUrl());
+                        bundle.putString("imageurl", imageUrl);
                         intent.putExtras(bundle);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -180,7 +184,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 }
             });
 
-            if (isNotBlank(product.getImageUrl())) {
+            if (isNotBlank(imageUrl)) {
                 holder.productComparisonLabel.setVisibility(View.INVISIBLE);
 
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -191,7 +195,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 // Load Image if isLowBatteryMode is false
                 if (!isLowBatteryMode) {
                     Picasso.with(context)
-                        .load(product.getImageUrl())
+                        .load(imageUrl)
                         .into(holder.productComparisonImage);
                 } else {
                     holder.productComparisonImage.setVisibility(View.GONE);

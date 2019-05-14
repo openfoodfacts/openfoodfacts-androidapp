@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -19,6 +20,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -55,13 +57,11 @@ import java.io.IOException;
 import java.util.*;
 
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
-
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
     private static HistoryProductDao mHistoryProductDao;
     private static final int PEEK_SMALL = 120;
     private static final int PEEK_LARGE = 150;
-
     @BindView(R.id.fab_status)
     FloatingActionButton fab_status;
     @BindView(R.id.quick_view)
@@ -108,7 +108,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     RelativeLayout details;
     @Inject
     OpenFoodAPIService client;
-
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private Product product;
     private ProductFragment productFragment;
@@ -160,162 +159,163 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     /**
      * Makes network call and search for the product in the database
      *
-     * @param lastText   Barcode to be searched
+     * @param lastText Barcode to be searched
      * @param newlyAdded true if the product is added using the product addition just now
      */
     private void findProduct(String lastText, boolean newlyAdded) {
         client.getFullProductByBarcodeSingle(lastText, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SCAN))
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(a -> {
-                    hideAllViews();
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    fab_status.setVisibility(View.GONE);
-                    quickView.setOnClickListener(null);
-                    progressBar.setVisibility(View.VISIBLE);
-                    progressText.setVisibility(View.VISIBLE);
-                    progressText.setText(getString(R.string.loading_product, lastText));
-                })
-                .subscribe(new SingleObserver<State>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        disposable = d;
-                    }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe(a -> {
+                hideAllViews();
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                fab_status.setVisibility(View.GONE);
+                quickView.setOnClickListener(null);
+                progressBar.setVisibility(View.VISIBLE);
+                progressText.setVisibility(View.VISIBLE);
+                progressText.setText(getString(R.string.loading_product, lastText));
+            })
+            .subscribe(new SingleObserver<State>() {
+                @Override
+                public void onSubscribe(Disposable d) {
+                    disposable = d;
+                }
 
-                    @Override
-                    public void onSuccess(State state) {
-                        progressBar.setVisibility(View.GONE);
-                        progressText.setVisibility(View.GONE);
-                        if (state.getStatus() == 0) {
-                            hideAllViews();
-                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                            quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
-                            String s = getString(R.string.product_not_found, lastText);
-                            productNotFound.setText(s);
-                            productNotFound.setVisibility(View.VISIBLE);
-                            fab_status.setVisibility(View.VISIBLE);
-                            fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                            fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
-                            fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
-                        } else {
-                            product = state.getProduct();
-                            if (getIntent().getBooleanExtra("compare_product", false)) {
-                                Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
-                                intent.putExtra("product_found", true);
-                                ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
-                                if (productsToCompare.contains(product)) {
-                                    intent.putExtra("product_already_exists", true);
-                                } else {
-                                    productsToCompare.add(product);
-                                }
-                                intent.putExtra("products_to_compare", productsToCompare);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(intent);
+                @Override
+                public void onSuccess(State state) {
+                    progressBar.setVisibility(View.GONE);
+                    progressText.setVisibility(View.GONE);
+                    if (state.getStatus() == 0) {
+                        hideAllViews();
+                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
+                        String s = getString(R.string.product_not_found, lastText);
+                        productNotFound.setText(s);
+                        productNotFound.setVisibility(View.VISIBLE);
+                        fab_status.setVisibility(View.VISIBLE);
+                        fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                        fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
+                        fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
+                    } else {
+                        product = state.getProduct();
+                        if (getIntent().getBooleanExtra("compare_product", false)) {
+                            Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
+                            intent.putExtra("product_found", true);
+                            ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
+                            if (productsToCompare.contains(product)) {
+                                intent.putExtra("product_already_exists", true);
+                            } else {
+                                productsToCompare.add(product);
                             }
-                            new HistoryTask().doInBackground(product);
-                            showAllViews();
-                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                            productNotFound.setVisibility(View.GONE);
-                            if (newlyAdded) {
-                                txtProductIncomplete.setVisibility(View.INVISIBLE);
-                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_thumb_up_white_24dp));
-                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_500)));
-                                fab_status.setOnClickListener(null);
-                            } else if (isProductIncomplete()) {
-                                txtProductIncomplete.setVisibility(View.VISIBLE);
-                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
-                                fab_status.setOnClickListener(v -> {
-                                    final SharedPreferences settings = getSharedPreferences("login", 0);
-                                    final String login = settings.getString("user", "");
-                                    if (login.isEmpty()) {
-                                        new MaterialDialog.Builder(ContinuousScanActivity.this)
-                                                .title(R.string.sign_in_to_edit)
-                                                .positiveText(R.string.txtSignIn)
-                                                .negativeText(R.string.dialog_cancel)
-                                                .onPositive((dialog, which) -> {
-                                                    Intent intent = new Intent(ContinuousScanActivity.this, LoginActivity.class);
-                                                    startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
-                                                    dialog.dismiss();
-                                                })
-                                                .onNegative((dialog, which) -> dialog.dismiss())
-                                                .build().show();
-                                    } else {
-                                        Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
-                                        intent.putExtra("edit_product", product);
-                                        startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
+                            intent.putExtra("products_to_compare", productsToCompare);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                        }
+                        new HistoryTask().doInBackground(product);
+                        showAllViews();
+                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        productNotFound.setVisibility(View.GONE);
+                        if (newlyAdded) {
+                            txtProductIncomplete.setVisibility(View.INVISIBLE);
+                            fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_thumb_up_white_24dp));
+                            fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_500)));
+                            fab_status.setOnClickListener(null);
+                        } else if (isProductIncomplete()) {
+                            txtProductIncomplete.setVisibility(View.VISIBLE);
+                            fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                            fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
+                            fab_status.setOnClickListener(v -> {
+                                final SharedPreferences settings = getSharedPreferences("login", 0);
+                                final String login = settings.getString("user", "");
+                                if (login.isEmpty()) {
+                                    new MaterialDialog.Builder(ContinuousScanActivity.this)
+                                        .title(R.string.sign_in_to_edit)
+                                        .positiveText(R.string.txtSignIn)
+                                        .negativeText(R.string.dialog_cancel)
+                                        .onPositive((dialog, which) -> {
+                                            Intent intent = new Intent(ContinuousScanActivity.this, LoginActivity.class);
+                                            startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
+                                            dialog.dismiss();
+                                        })
+                                        .onNegative((dialog, which) -> dialog.dismiss())
+                                        .build().show();
+                                } else {
+                                    Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
+                                    intent.putExtra("edit_product", product);
+                                    startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
+                                }
+                            });
+                        } else {
+                            txtProductIncomplete.setVisibility(View.INVISIBLE);
+                            fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                            fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_check_white_24dp));
+                            fab_status.setOnClickListener(null);
+                        }
+                        if (product.getProductName() == null || product.getProductName().equals("")) {
+                            name.setText(R.string.productNameNull);
+                        } else {
+                            name.setText(product.getProductName());
+                        }
+                        if (product.getBrands() == null || product.getBrands().equals("")) {
+                            brand.setText(R.string.productBrandNull);
+                        } else {
+                            brand.setText(product.getBrands());
+                        }
+                        if (product.getQuantity() == null || product.getQuantity().equals("")) {
+                            quantity.setText(R.string.productQuantityNull);
+                        } else {
+                            quantity.setText(product.getQuantity());
+                        }
+                        final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(getBaseContext()));
+                        if (imageUrl != null) {
+                            Picasso.with(ContinuousScanActivity.this)
+                                .load(imageUrl)
+                                .error(R.drawable.placeholder_thumb)
+                                .into(productImage, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        imageProgress.setVisibility(View.GONE);
+                                    }
+
+                                    @Override
+                                    public void onError() {
+                                        imageProgress.setVisibility(View.GONE);
                                     }
                                 });
+                        } else {
+                            productImage.setImageResource(R.drawable.placeholder_thumb);
+                            imageProgress.setVisibility(View.GONE);
+                        }
+                        // Hide nutriScore from quickView if app flavour is OFF or there is no nutriscore
+                        if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
+                            if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
+                                nutriScore.setVisibility(View.VISIBLE);
+                                nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
                             } else {
-                                txtProductIncomplete.setVisibility(View.INVISIBLE);
-                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_check_white_24dp));
-                                fab_status.setOnClickListener(null);
+                                nutriScore.setVisibility(View.INVISIBLE);
                             }
-                            if (product.getProductName() == null || product.getProductName().equals("")) {
-                                name.setText(R.string.productNameNull);
+                        } else {
+                            nutriScore.setVisibility(View.GONE);
+                        }
+                        // Hide nova group from quickView if app flavour is not OFF or there is no nova group
+                        if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
+                            final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
+                            if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
+                                novaGroup.setImageResource(novaGroupDrawable);
                             } else {
-                                name.setText(product.getProductName());
+                                novaGroup.setVisibility(View.INVISIBLE);
                             }
-                            if (product.getBrands() == null || product.getBrands().equals("")) {
-                                brand.setText(R.string.productBrandNull);
-                            } else {
-                                brand.setText(product.getBrands());
-                            }
-                            if (product.getQuantity() == null || product.getQuantity().equals("")) {
-                                quantity.setText(R.string.productQuantityNull);
-                            } else {
-                                quantity.setText(product.getQuantity());
-                            }
-                            if (product.getImageUrl() != null) {
-                                Picasso.with(ContinuousScanActivity.this)
-                                        .load(product.getImageUrl())
-                                        .error(R.drawable.placeholder_thumb)
-                                        .into(productImage, new Callback() {
-                                            @Override
-                                            public void onSuccess() {
-                                                imageProgress.setVisibility(View.GONE);
-                                            }
-
-                                            @Override
-                                            public void onError() {
-                                                imageProgress.setVisibility(View.GONE);
-                                            }
-                                        });
-                            } else {
-                                productImage.setImageResource(R.drawable.placeholder_thumb);
-                                imageProgress.setVisibility(View.GONE);
-                            }
-                            // Hide nutriScore from quickView if app flavour is OFF or there is no nutriscore
-                            if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
-                                if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
-                                    nutriScore.setVisibility(View.VISIBLE);
-                                    nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
-                                } else {
-                                    nutriScore.setVisibility(View.INVISIBLE);
-                                }
-                            } else {
-                                nutriScore.setVisibility(View.GONE);
-                            }
-                            // Hide nova group from quickView if app flavour is not OFF or there is no nova group
-                            if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
-                                final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
-                                if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
-                                    novaGroup.setImageResource(novaGroupDrawable);
-                                } else {
-                                    novaGroup.setVisibility(View.INVISIBLE);
-                                }
-                            } else {
-                                novaGroup.setVisibility(View.GONE);
-                            }
-                            int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
-                            if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
-                                co2Icon.setVisibility(View.VISIBLE);
-                                co2Icon.setImageResource(environmentImpactResource);
-                            }else{
-                                co2Icon.setVisibility(View.INVISIBLE);
-                            }
-                            FragmentManager fm = getSupportFragmentManager();
-                            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                        } else {
+                            novaGroup.setVisibility(View.GONE);
+                        }
+                        int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
+                        if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+                            co2Icon.setVisibility(View.VISIBLE);
+                            co2Icon.setImageResource(environmentImpactResource);
+                        } else {
+                            co2Icon.setVisibility(View.INVISIBLE);
+                        }
+                        FragmentManager fm = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fm.beginTransaction();
                             ProductFragment newProductFragment = new ProductFragment();
 
                             Bundle bundle = new Bundle();
@@ -326,37 +326,55 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                             fragmentTransaction.commit();
                             productFragment=newProductFragment;
-                        }
+                        showFirstScanTooltipIfNeeded();
                     }
+                }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        try {
-                            // A network error happened
-                            if (e instanceof IOException) {
-                                hideAllViews();
-                                OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastText)).unique();
-                                if (offlineSavedProduct != null) {
-                                    showOfflineSavedDetails(offlineSavedProduct);
-                                    fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                                    fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
-                                } else {
-                                    productNotFound.setText(getString(R.string.addProductOffline, lastText));
-                                    productNotFound.setVisibility(View.VISIBLE);
-                                    fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                                    fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.fab_add));
-                                }
-                                fab_status.setVisibility(View.VISIBLE);
-                                quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
-                                fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
-                            }else{
-                                Log.i(this.getClass().getSimpleName(), e.getMessage(),e);
+                @Override
+                public void onError(Throwable e) {
+                    try {
+                        // A network error happened
+                        if (e instanceof IOException) {
+                            hideAllViews();
+                            OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastText)).unique();
+                            if (offlineSavedProduct != null) {
+                                showOfflineSavedDetails(offlineSavedProduct);
+                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
+                            } else {
+                                productNotFound.setText(getString(R.string.addProductOffline, lastText));
+                                productNotFound.setVisibility(View.VISIBLE);
+                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.fab_add));
                             }
-                        } catch (Exception e1) {
-                            Log.i(this.getClass().getSimpleName(), e1.getMessage(),e1);
+                            fab_status.setVisibility(View.VISIBLE);
+                            quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
+                            fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
+                        } else {
+                            Log.i(this.getClass().getSimpleName(), e.getMessage(), e);
                         }
+                    } catch (Exception e1) {
+                        Log.i(this.getClass().getSimpleName(), e1.getMessage(), e1);
                     }
-                });
+                }
+            });
+    }
+
+    private void showFirstScanTooltipIfNeeded() {
+        final SharedPreferences sharedPreferences = getSharedPreferences(getClass().getSimpleName(), 0);
+        boolean firstScan=sharedPreferences.getBoolean("firstScan",true);
+        if(firstScan) {
+            SharedPreferences.Editor firstScanEditor = sharedPreferences.edit();
+            firstScanEditor.putBoolean("firstScan",false);
+            firstScanEditor.apply();
+
+            final Toast firstScanMessage = Toast.makeText(ContinuousScanActivity.this.getBaseContext(), R.string.first_scan_tooltip, Toast.LENGTH_LONG);
+            Rect gvr = new Rect();
+            fab_status.getRootView().getGlobalVisibleRect(gvr);
+            ViewGroup.MarginLayoutParams params=(ViewGroup.MarginLayoutParams) fab_status.getLayoutParams();
+            firstScanMessage.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, params.bottomMargin-BaseActivity.dpsToPixel(50,this));
+            firstScanMessage.show();
+        }
     }
 
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
@@ -382,19 +400,19 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         }
         if (productDetails.get("image_front") != null) {
             Picasso.with(ContinuousScanActivity.this)
-                    .load("file://" + productDetails.get("image_front"))
-                    .error(R.drawable.placeholder_thumb)
-                    .into(productImage, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            imageProgress.setVisibility(View.GONE);
-                        }
+                .load("file://" + productDetails.get("image_front"))
+                .error(R.drawable.placeholder_thumb)
+                .into(productImage, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        imageProgress.setVisibility(View.GONE);
+                    }
 
-                        @Override
-                        public void onError() {
-                            imageProgress.setVisibility(View.GONE);
-                        }
-                    });
+                    @Override
+                    public void onError() {
+                        imageProgress.setVisibility(View.GONE);
+                    }
+                });
         } else {
             productImage.setImageResource(R.drawable.placeholder_thumb);
             imageProgress.setVisibility(View.GONE);
@@ -473,7 +491,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         View decorView = getWindow().getDecorView();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             decorView.setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_FULLSCREEN
+                View.SYSTEM_UI_FLAG_FULLSCREEN
             );
         } else {
             decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
@@ -508,12 +526,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
         View decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener
-                (visibility -> {
-                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
-                        // The system bars are visible.
-                        hideSystemUI();
-                    }
-                });
+            (visibility -> {
+                if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                    // The system bars are visible.
+                    hideSystemUI();
+                }
+            });
 
         handler = new Handler();
         runnable = () -> {
@@ -591,9 +609,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
 
         Collection<BarcodeFormat> formats = Arrays.asList(BarcodeFormat.UPC_A,
-                BarcodeFormat.UPC_E, BarcodeFormat.EAN_13, BarcodeFormat.EAN_8,
-                BarcodeFormat.RSS_14, BarcodeFormat.CODE_39, BarcodeFormat.CODE_93,
-                BarcodeFormat.CODE_128, BarcodeFormat.ITF);
+            BarcodeFormat.UPC_E, BarcodeFormat.EAN_13, BarcodeFormat.EAN_8,
+            BarcodeFormat.RSS_14, BarcodeFormat.CODE_39, BarcodeFormat.CODE_93,
+            BarcodeFormat.CODE_128, BarcodeFormat.ITF);
         barcodeView.getBarcodeView().setDecoderFactory(new DefaultDecoderFactory(formats));
         barcodeView.setStatusText(null);
         CameraSettings settings = barcodeView.getBarcodeView().getCameraSettings();
@@ -625,7 +643,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     if (barcodeText.length() <= 2) {
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                     } else {
-                        if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") || !barcodeText.substring(0, 3).contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
+                        if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") || !barcodeText.substring(0, 3)
+                            .contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
                             lastText = barcodeText;
                             searchByBarcode.setVisibility(View.GONE);
                             findProduct(barcodeText, false);
@@ -649,10 +668,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
     private boolean isProductIncomplete() {
         return product != null && (product.getImageFrontUrl() == null || product.getImageFrontUrl().equals("") ||
-                product.getQuantity() == null || product.getQuantity().equals("") ||
-                product.getProductName() == null || product.getProductName().equals("") ||
-                product.getBrands() == null || product.getBrands().equals("") ||
-                product.getIngredientsText() == null || product.getIngredientsText().equals(""));
+            product.getQuantity() == null || product.getQuantity().equals("") ||
+            product.getProductName() == null || product.getProductName().equals("") ||
+            product.getBrands() == null || product.getBrands().equals("") ||
+            product.getIngredientsText() == null || product.getIngredientsText().equals(""));
     }
 
     void toggleCamera() {
@@ -668,7 +687,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         }
         settings.setRequestedCameraId(cameraState);
         barcodeView.getBarcodeView().setCameraSettings(settings);
-        editor.putInt("cameraState",cameraState);
+        editor.putInt("cameraState", cameraState);
         editor.apply();
         barcodeView.resume();
     }
@@ -782,8 +801,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 hp = historyProducts.get(0);
                 hp.setLastSeen(new Date());
             } else {
-                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(), product.getCode(), product
-                        .getQuantity(), product.getNutritionGradeFr());
+                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())), product.getCode(), product
+                    .getQuantity(), product.getNutritionGradeFr());
             }
             mHistoryProductDao.insertOrReplace(hp);
             return null;
