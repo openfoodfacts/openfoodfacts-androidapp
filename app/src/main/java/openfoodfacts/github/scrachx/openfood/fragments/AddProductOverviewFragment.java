@@ -14,7 +14,6 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -196,9 +195,9 @@ public class AddProductOverviewFragment extends BaseFragment {
         otherImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp,0,0,0);
 
         //checks the information about the prompt clicked and takes action accordingly
-        if (getActivity().getIntent().getBooleanExtra("modify_category_prompt", false)) {
+        if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
             categories.requestFocus();
-        } else if (getActivity().getIntent().getBooleanExtra("modify_nutrition_prompt", false)) {
+        } else if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
             ((AddProductActivity) getActivity()).proceed();
         }
         Bundle b = getArguments();
@@ -285,7 +284,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             imageProgress.setVisibility(View.VISIBLE);
             Picasso.with(getContext())
                 .load(product.getImageFrontUrl())
-                .resize(dpsToPixels(), dpsToPixels())
+                .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
                 .into(imageFront, new Callback() {
                     @Override
@@ -366,7 +365,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             //Also add the country set by the user in preferences
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String savedCountry = sharedPref.getString("user_country", "");
+            String savedCountry = sharedPref.getString(PreferencesFragment.USER_COUNTRY_PREFERENCE_KEY, "");
             if (!savedCountry.isEmpty()) {
                 chipValues.add(savedCountry);
             }
@@ -435,7 +434,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 mImageUrl = productDetails.get("image_front");
                 Picasso.with(getContext())
                     .load("file://" + mImageUrl)
-                    .resize(dpsToPixels(), dpsToPixels())
+                    .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
                     .into(imageFront, new Callback() {
                         @Override
@@ -965,7 +964,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (!errorInUploading) {
             Picasso.with(activity)
                 .load(photoFile)
-                .resize(dpsToPixels(), dpsToPixels())
+                .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
                 .into(imageFront);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
@@ -988,11 +987,5 @@ public class AddProductOverviewFragment extends BaseFragment {
         } else {
             otherImageProgressText.setText(R.string.image_uploaded_successfully);
         }
-    }
-
-    private int dpsToPixels() {
-        // converts 50dp to equivalent pixels.
-        final float scale = activity.getResources().getDisplayMetrics().density;
-        return (int) (50 * scale + 0.5f);
     }
 }

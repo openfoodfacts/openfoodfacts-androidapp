@@ -43,6 +43,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -173,6 +174,7 @@
     <string name="txtPalmOilProduct">來自棕櫚油的成分：</string>
     <string name="txtServingSize">份量：</string>
     <string name="txtNutrientLevel100g">每100公克的營養等級：</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">库存量</string>
     <string name="txtNutritionLevelModerate">中等数量</string>
     <string name="txtNutritionLevelHigh">最高含量</string>
@@ -376,6 +378,7 @@
     <string name="nutrition_serum_proteins">血浆蛋白</string>
     <string name="nutrition_nucleotides">核苷酸</string>
     <string name="for_100g">每 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">每份</string>
     <string name="minerals">矿物质</string>
     <string name="nutrition_calcium">钙</string>
@@ -805,5 +808,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

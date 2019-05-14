@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Ingredientes con aceite de palma:</string>
     <string name="txtServingSize">Tamaño de la ración:</string>
     <string name="txtNutrientLevel100g">Niveles de nutrientes por cada 100g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">En bajas cantidades</string>
     <string name="txtNutritionLevelModerate">En cantidades moderadadas</string>
     <string name="txtNutritionLevelHigh">En altas cantidades</string>
@@ -292,7 +294,7 @@
     <string name="prefs_language">Idioma</string>
     <string name="prefs_language_summary">Cambiar idioma</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">Historia</string>
+    <string name="scan_history_drawer">Historial</string>
     <string name="clear_history">Limpiar historial</string>
     <string name="title_clear_history_dialog">Limpiar</string>
     <string name="text_clear_history_dialog">¿Desea eliminar todo el historial de escáner?</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Proteínas Séricas</string>
     <string name="nutrition_nucleotides">Nuclotidos</string>
     <string name="for_100g">Por cada 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Por porción</string>
     <string name="minerals">Minerales</string>
     <string name="nutrition_calcium">Calcio</string>
@@ -452,8 +455,8 @@
     <string name="scan_shortcut_long_label">Escanear producto</string>
     <string name="barcode_shortcut_short_label">Buscar</string>
     <string name="barcode_shortcut_long_label">Buscar por código de barras</string>
-    <string name="history_shortcut_short_label">Historia</string>
-    <string name="history_shortcut_long_label">Historia</string>
+    <string name="history_shortcut_short_label">Historial</string>
+    <string name="history_shortcut_long_label">Historial</string>
     <string name="contributions_shortcut_short_label">Contribuciones</string>
     <string name="contributions_shortcut_long_label">Mis contribuciones</string>
     <string name="forgot_password">Olvidé mi contraseña</string>
@@ -566,7 +569,7 @@
     <string name="format_error">Código de barras/QR con formato incorrecto</string>
     <string name="code_detected">Hemos detectado el código de barras</string>
     <string name="do_you_want_to">¿Quieres añadir fotos a este código de barras?</string>
-    <string name="bottomNav_history">Historia</string>
+    <string name="bottomNav_history">Historial</string>
     <string name="bottomNav_search">Buscar</string>
     <string name="products_added">Productos que has añadido o modificado</string>
     <string name="products_incomplete">Productos añadidos por usted que necesitan ser completados</string>
@@ -809,5 +812,6 @@
     <string name="go_to_full_product_page">Ir a la página completa del producto</string>
     <string name="no_additive_data_available_for_this_product">No hay datos de aditivos disponibles para este producto</string>
     <string name="no_nutrient_information_available_for_this_product">No hay información nutricional disponible para este producto</string>
-    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
+    <string name="required_to_compute_nutriscore">(Requerido para calcular el Nutri-Score)</string>
 </resources>

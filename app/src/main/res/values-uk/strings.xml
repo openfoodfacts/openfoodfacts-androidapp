@@ -55,6 +55,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>г</item>
@@ -185,6 +186,7 @@
     <string name="txtPalmOilProduct">Інгредієнти з пальмової олії:</string>
     <string name="txtServingSize">Розмір порції:</string>
     <string name="txtNutrientLevel100g">Харчова цінність 100г продукту:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">мала кількість</string>
     <string name="txtNutritionLevelModerate">помірна кількість</string>
     <string name="txtNutritionLevelHigh">велика кількість</string>
@@ -388,6 +390,7 @@
     <string name="nutrition_serum_proteins">Сироваткові білки</string>
     <string name="nutrition_nucleotides">Нуклеотиди</string>
     <string name="for_100g">У 100г</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">В одній порції</string>
     <string name="minerals">Мінерали</string>
     <string name="nutrition_calcium">Кальцій</string>
@@ -817,5 +820,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

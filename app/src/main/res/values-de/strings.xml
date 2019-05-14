@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Inhaltsstoffe aus Palmöl:</string>
     <string name="txtServingSize">Portionsgröße:</string>
     <string name="txtNutrientLevel100g">Nährwertgehalt pro 100g:</string>
+    <string name="txtNutrientLevel100ml">Nährwertangaben für 100ml:</string>
     <string name="txtNutritionLevelLow">in geringer Menge</string>
     <string name="txtNutritionLevelModerate">in mäßiger Menge</string>
     <string name="txtNutritionLevelHigh">in großen Mengen</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Serumproteine</string>
     <string name="nutrition_nucleotides">Nukleotide</string>
     <string name="for_100g">je 100 g</string>
+    <string name="for_100ml">je 100ml</string>
     <string name="serving">je Portion</string>
     <string name="minerals">Mineralien</string>
     <string name="nutrition_calcium">Kalzium</string>
@@ -809,5 +812,6 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="go_to_full_product_page">Zur vollständigen Produktseite wechseln</string>
     <string name="no_additive_data_available_for_this_product">Für dieses Produkt sind keine zusätzlichen Daten verfügbar</string>
     <string name="no_nutrient_information_available_for_this_product">Für dieses Produkt sind keine Nährstoffinformationen verfügbar</string>
+    <string name="error_duplicate_listname">Es existiert bereits eine Liste mit diesem Namen</string>
     <string name="required_to_compute_nutriscore">(Wird benötigt um den Nutri-Score zu berechnen)</string>
 </resources>

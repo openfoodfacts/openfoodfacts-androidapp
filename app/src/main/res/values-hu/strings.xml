@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Összetevők pálmaolajból:</string>
     <string name="txtServingSize">Adag:</string>
     <string name="txtNutrientLevel100g">Átlagos tápérték 100 g termékben:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">kis mennyiségben</string>
     <string name="txtNutritionLevelModerate">mérsékelt mennyiségben</string>
     <string name="txtNutritionLevelHigh">nagy mennyiségben</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Szérum fehérje</string>
     <string name="nutrition_nucleotides">Nukleotidok</string>
     <string name="for_100g">100 g-ra</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Adagonként</string>
     <string name="minerals">Ásványi anyagok</string>
     <string name="nutrition_calcium">Kalcium</string>
@@ -811,5 +814,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

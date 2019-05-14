@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Ingredients d\'oli de palma :</string>
     <string name="txtServingSize">Mida de la porció :</string>
     <string name="txtNutrientLevel100g">Nivells de nutrients per a 100 g:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">en petites quantitats</string>
     <string name="txtNutritionLevelModerate">en quantitats moderades</string>
     <string name="txtNutritionLevelHigh">en grans quantitats</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Proteïnes sèriques</string>
     <string name="nutrition_nucleotides">Nucleòtids</string>
     <string name="for_100g">For 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per ració</string>
     <string name="minerals">Minerals</string>
     <string name="nutrition_calcium">Calci</string>
@@ -809,5 +812,6 @@
     <string name="go_to_full_product_page">Ves a la pàgina completa del producte</string>
     <string name="no_additive_data_available_for_this_product">No hi ha cap informació disponible sobre els additius d\'aquest producte</string>
     <string name="no_nutrient_information_available_for_this_product">No hi ha informació nutricional disponible per a aquest producte</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

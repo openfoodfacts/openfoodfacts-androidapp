@@ -43,6 +43,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>mg</item>
@@ -173,6 +174,7 @@
     <string name="txtPalmOilProduct">야자 기름에서 나온 성분:</string>
     <string name="txtServingSize">서빙 사이즈 :</string>
     <string name="txtNutrientLevel100g">100g에 들어있는 영향 레벨:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">소량일시</string>
     <string name="txtNutritionLevelModerate">적당량</string>
     <string name="txtNutritionLevelHigh">대량일시</string>
@@ -376,6 +378,7 @@
     <string name="nutrition_serum_proteins">혈청 단백질</string>
     <string name="nutrition_nucleotides">뉴클레오타이드</string>
     <string name="for_100g">100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">인분</string>
     <string name="minerals">탄산수</string>
     <string name="nutrition_calcium">칼슘</string>
@@ -805,5 +808,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

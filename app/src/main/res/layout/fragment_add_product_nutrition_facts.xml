@@ -110,6 +110,7 @@
                         android:id="@+id/for100g_100ml"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="true"
                         android:text="@string/for_100g_100ml"/>
 
                 <RadioButton
@@ -159,7 +160,7 @@
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
-                    android:entries="@array/nutrition_weight_units"
+                    android:entries="@array/nutrition_serving_weight_units"
                     android:spinnerMode="dropdown"
                     app:layout_constraintTop_toTopOf="@id/serving_size_til"
                     app:layout_constraintEnd_toEndOf="parent"

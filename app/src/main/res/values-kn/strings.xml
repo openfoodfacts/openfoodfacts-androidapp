@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>ಗ್ರಾಂ</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">ಪಾಮ್ ಎಣ್ಣೆಯಿಂದ ಬೇಕಾಗುವ ಪದಾರ್ಥಗಳು:</string>
     <string name="txtServingSize">ವಿತರಣೆಯ ಗಾತ್ರ :</string>
     <string name="txtNutrientLevel100g">100 ಗ್ರಾಂ ಪೋಷಕಾಂಶದ ಮಟ್ಟಗಳು:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">ಕಡಿಮೆ ಪ್ರಮಾಣದಲ್ಲಿ</string>
     <string name="txtNutritionLevelModerate">ಮಧ್ಯಮ ಪ್ರಮಾಣದಲ್ಲಿ</string>
     <string name="txtNutritionLevelHigh">ಹೆಚ್ಚಿನ ಪ್ರಮಾಣದಲ್ಲಿ</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">ರಕ್ತಸಾರ ಪ್ರೋಟೀನ್ಗಳು</string>
     <string name="nutrition_nucleotides">ನ್ಯೂಕ್ಲಿಯೋಟೈಡ್ಗಳು</string>
     <string name="for_100g">100 ಗ್ರಾಂ</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">ಪ್ರತಿ ಸೇವೆಗೆ</string>
     <string name="minerals">ಖನಿಜಗಳು</string>
     <string name="nutrition_calcium">ಕ್ಯಾಲ್ಸಿಯಂ</string>
@@ -809,5 +812,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

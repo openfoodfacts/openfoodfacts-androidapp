@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -132,9 +133,9 @@
         <item>Vitamin B6 (Pyridoxin)</item>
         <item>Vitamin B9 (Folic acid)</item>
         <item>Vitamin C (Ascorbic acid)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
+        <item>Витамин D</item>
+        <item>Витамин Е</item>
+        <item>Витамин К</item>
         <item>Цинк</item>
     </string-array>
     <!-- Text units -->
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Съставки от палмово масло :</string>
     <string name="txtServingSize">Големина на порцията :</string>
     <string name="txtNutrientLevel100g">Нива на хранителните вещества за 100g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">в ниско количество</string>
     <string name="txtNutritionLevelModerate">в умерено количество</string>
     <string name="txtNutritionLevelHigh">във високо количество</string>
@@ -329,7 +331,7 @@
     <string name="nutrition_proteins_short_name">Протеини (g)</string>
     <string name="nutrition_salt">Сол</string>
     <string name="nutrition_salt_short_name">Сол (g)</string>
-    <string name="nutrition_satured_fat">Saturated fat</string>
+    <string name="nutrition_satured_fat">Наситени мазнини</string>
     <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
     <string name="nutrition_serving">На порция</string>
     <string name="nutrition_serving_size">Големина на порцията :</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Серумни протеини</string>
     <string name="nutrition_nucleotides">Нуклеотиди</string>
     <string name="for_100g">За 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">На порция</string>
     <string name="minerals">Минерали</string>
     <string name="nutrition_calcium">Калций</string>
@@ -399,9 +402,9 @@
     <string name="nutrition_alcohol">Алкохол</string>
     <string name="nutrition_vitamins">Витамини</string>
     <string name="vitamin_a">Витамин А</string>
-    <string name="vitamin_d">Vitamin D</string>
-    <string name="vitamin_e">Vitamin E</string>
-    <string name="vitamin_k">Vitamin K</string>
+    <string name="vitamin_d">Витамин D</string>
+    <string name="vitamin_e">Витамин Е</string>
+    <string name="vitamin_k">Витамин К</string>
     <string name="vitamin_c">Витамин C</string>
     <string name="vitamin_b1">Витамин В1</string>
     <string name="vitamin_b2">Витамин В2</string>
@@ -439,7 +442,7 @@
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Направете снимка на таблицата с хранителните стойности</string>
     <string name="take_more_pictures">Направете още снимки</string>
-    <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="txtSaturatedFat">Наситени мазнини</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
@@ -811,5 +814,6 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
 </resources>

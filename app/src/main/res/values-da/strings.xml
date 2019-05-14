@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Ingrediænser fra palmeolie:</string>
     <string name="txtServingSize">Portionsstørrelse :</string>
     <string name="txtNutrientLevel100g">Næringsstoffer pr. 100 g :</string>
+    <string name="txtNutrientLevel100ml">Næringsstofniveauer pr. 100 ml:</string>
     <string name="txtNutritionLevelLow">i lavt kvantum</string>
     <string name="txtNutritionLevelModerate">i moderat kvantum</string>
     <string name="txtNutritionLevelHigh">i højt kvantum</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Serumproteiner</string>
     <string name="nutrition_nucleotides">Nukleotider</string>
     <string name="for_100g">Pr. 100 g</string>
+    <string name="for_100ml">Pr. 100 ml</string>
     <string name="serving">Pr. portion</string>
     <string name="minerals">Mineraler</string>
     <string name="nutrition_calcium">Calcium</string>
@@ -809,5 +812,6 @@
     <string name="go_to_full_product_page">Gå til fuld produktside</string>
     <string name="no_additive_data_available_for_this_product">Ingen data om tilsætningsstoffer tilgængelig for dette produkt</string>
     <string name="no_nutrient_information_available_for_this_product">Ingen information om næringsstoffer tilgængelig for dette produkt</string>
+    <string name="error_duplicate_listname">Du har allerede en liste med dette navn</string>
     <string name="required_to_compute_nutriscore">(Nødvendig til beregning af Nutri-Score)</string>
 </resources>

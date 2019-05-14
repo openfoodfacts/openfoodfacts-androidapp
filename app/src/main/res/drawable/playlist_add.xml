@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<!-- drawable/playlist_plus.xml -->
+
+    <vector android:viewportHeight="24" android:viewportWidth="24" android:width="24dp" android:height="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <path android:pathData="M2,16H10V14H2M18,14V10H16V14H12V16H16V20H18V16H22V14M14,6H2V8H14M14,10H2V12H14V10Z" android:fillColor="#000"/>
+
+</vector>

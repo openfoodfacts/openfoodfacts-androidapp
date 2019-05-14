@@ -48,7 +48,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
-    private static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
+    public static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
     private Context context;
 
     @Override
@@ -176,7 +176,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         ListPreference energyUnitPreference = (ListPreference) findPreference("energyUnitPreference");
         String[] energyUnits = getActivity().getResources().getStringArray(R.array.energy_units);
-        ;
         energyUnitPreference.setEntries(energyUnits);
         energyUnitPreference.setEntryValues(energyUnits);
         energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {
