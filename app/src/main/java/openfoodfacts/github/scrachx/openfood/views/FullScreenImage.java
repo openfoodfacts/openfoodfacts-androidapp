@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.ImageView;
 
 
 import com.github.chrisbanes.photoview.PhotoView;
