@@ -493,7 +493,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(getActivity(), (View) mImageNutrition,
+                    makeSceneTransitionAnimation(getActivity(), mImageNutrition,
                         getActivity().getString(R.string.product_transition));
                 startActivity(intent, options.toBundle());
             } else {
