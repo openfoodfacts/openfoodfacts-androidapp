@@ -814,4 +814,6 @@
     <string name="no_nutrient_information_available_for_this_product">Ingen information om næringsstoffer tilgængelig for dette produkt</string>
     <string name="error_duplicate_listname">Du har allerede en liste med dette navn</string>
     <string name="required_to_compute_nutriscore">(Nødvendig til beregning af Nutri-Score)</string>
+    <string name="first_scan_tooltip">You can slide up the card for more details</string>
+    <string name="add_an_allergen">Add an allergen</string>
 </resources>
