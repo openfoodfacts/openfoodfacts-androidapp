@@ -781,8 +781,8 @@
     <string name="txt_discard">Descartar</string>
     <string name="txt_save">Guardar</string>
     <string name="write_external_storage_your_listed_products">Se necesita permiso de escritura en almacenamiento externo para exportar los datos.</string>
-    <string name="txt_info_eaten_products">Podrá agregar productos a esta lista escaneando productos, arrastrando la tarjeta del producto hacia arriba y pulsando \"Me estoy comiendo esto\".
-        También podrá agregar productos a esta lista buscándolos y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
+    <string name="txt_info_eaten_products">"Podrá agregar productos a esta lista escaneando productos, arrastrando la tarjeta del producto hacia arriba y pulsando \"Me estoy comiendo esto\".
+        También podrá agregar productos a esta lista buscándolos y haciendo clic en el botón + en la parte superior derecha de la página del producto."</string>
     <string name="txt_info_your_listed_products">Podrá agregar productos a esta lista buscándolos y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
     <string name="txt_i_m_eating_this">Estoy comiendo esto</string>
     <string name="compare_product_prompt">Comparar este producto</string>
