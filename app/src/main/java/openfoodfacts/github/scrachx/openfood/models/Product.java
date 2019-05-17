@@ -3,15 +3,14 @@ package openfoodfacts.github.scrachx.openfood.models;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.util.StdConverter;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.text.StringEscapeUtils;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -309,11 +308,25 @@ public class Product implements Serializable {
         return null;
     }
 
+
+    public boolean isLanguageSupported(String languageCode) {
+        Map<String, Map> languagesCodes = (Map<String, Map>) additionalProperties.get("languages_codes");
+        return languageCode!=null && languagesCodes!=null && languagesCodes.containsKey(languageCode.toLowerCase());
+    }
+
     /**
      * @return The imageFrontUrl
      */
     public String getImageFrontUrl() {
         return imageFrontUrl;
+    }
+
+    public String getImageFrontUrl(String languageCode) {
+        String image = getImage(languageCode, ImageRole.FRONT, ImageSize.DISPLAY);
+        if (StringUtils.isNotBlank(image)) {
+            return image;
+        }
+        return getImageFrontUrl();
     }
 
     /**

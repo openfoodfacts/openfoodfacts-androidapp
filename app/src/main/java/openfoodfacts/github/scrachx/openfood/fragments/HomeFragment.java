@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -44,6 +45,7 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,14 +53,15 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 
-    @BindView(R.id.buttonScan)
-    FloatingActionButton mButtonScan;
 
     @BindView(R.id.tvDailyFoodFact)
     TextView tvDailyFoodFact;
 
     @BindView(R.id.textHome)
     TextView textHome;
+
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
 
     private OpenFoodAPIService apiClient;
     private SharedPreferences sp;
@@ -76,37 +79,12 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
         getTagline();
+        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-    }
-
-    @OnClick(R.id.buttonScan)
-    protected void OnScan() {
-        if (Utils.isHardwareCameraInstalled(getContext())) {
-            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(getActivity())
-                            .title(R.string.action_about)
-                            .content(R.string.permission_camera)
-                            .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                            .show();
-                } else {
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                }
-            } else {
-                Intent intent = new Intent(getActivity(), ContinuousScanActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        } else {
-            if (getContext() instanceof MainActivity) {
-                ((MainActivity) getContext()).moveToBarcodeEntry();
-            }
-        }
     }
 
     @OnClick(R.id.tvDailyFoodFact)

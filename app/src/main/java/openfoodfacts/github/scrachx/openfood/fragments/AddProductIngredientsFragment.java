@@ -3,70 +3,51 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnLongClick;
-import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import org.greenrobot.greendao.async.AsyncSession;
-
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import org.greenrobot.greendao.async.AsyncSession;
 import org.jsoup.helper.StringUtil;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.net.URI;
+import java.util.*;
 
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
-
-import static android.Manifest.permission.CAMERA;
-import static android.app.Activity.RESULT_OK;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
-public class AddProductIngredientsFragment extends BaseFragment {
+public class AddProductIngredientsFragment extends BaseFragment implements PhotoReceiver {
     private static final String PARAM_INGREDIENTS = "ingredients_text";
     private static final String PARAM_TRACES = "add_traces";
     private static final String PARAM_LANGUAGE = "lang";
     @BindView(R.id.btnAddImageIngredients)
     ImageView imageIngredients;
+    @BindView(R.id.btnEditImageIngredients)
+    View btnEditImageIngredients;
     @BindView(R.id.imageProgress)
     ProgressBar imageProgress;
     @BindView(R.id.imageProgressText)
@@ -85,6 +66,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     Button btnLooksGood;
     @BindView(R.id.btn_skip_ingredients)
     Button btnSkipIngredients;
+    private PhotoReceiverHandler photoReceiverHandler;
     @BindView(R.id.traces)
     NachoTextView traces;
     @BindView(R.id.section_traces)
@@ -93,7 +75,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     TextView tracesHint;
     @BindView(R.id.grey_line2)
     View greyLine2;
-    AllergenNameDao mAllergenNameDao;
+    private AllergenNameDao mAllergenNameDao;
     private Activity activity;
     private File photoFile;
     private String code;
@@ -105,7 +87,6 @@ public class AddProductIngredientsFragment extends BaseFragment {
     private Product product;
     private boolean newImageSelected;
 
-    private final int ROTATE_RESULT = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -123,9 +104,11 @@ public class AddProductIngredientsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        extractIngredients.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_compare_arrows_black_18dp,0,0,0);
-        if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
-            if (!getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
+        photoReceiverHandler = new PhotoReceiverHandler(this);
+        extractIngredients.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_compare_arrows_black_18dp, 0, 0, 0);
+        final Intent intent = getActivity() == null ? null : getActivity().getIntent();
+        if (intent != null && intent.getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
+            if (!intent.getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
                 ((AddProductActivity) getActivity()).proceed();
             }
         }
@@ -134,7 +117,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            edit_product = b.getBoolean("edit_product");
+            edit_product = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
             if (product != null) {
                 code = product.getCode();
             }
@@ -143,7 +126,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 preFillProductValues();
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
-                preFillValues();
+                preFillValuesForOffline();
             } else {
                 //addition
                 if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false)) {
@@ -156,15 +139,15 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 extractIngredients();
             }
             if (b.getBoolean("send_updated")) {
-                newIngredientsImage();
+                btnEditImageIngredients();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
-        if (ingredients.getText().toString().isEmpty() && productDetails.get("image_ingredients") != null && !productDetails.get("image_ingredients").isEmpty()) {
+        if (ingredients.getText().toString().isEmpty() && getImageIngredients() != null && !getImageIngredients().isEmpty()) {
             extractIngredients.setVisibility(View.VISIBLE);
-            imagePath = productDetails.get("image_ingredients");
+            imagePath = getImageIngredients();
         } else if (edit_product && ingredients.getText().toString().isEmpty() && product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
             extractIngredients.setVisibility(View.VISIBLE);
         }
@@ -174,41 +157,60 @@ public class AddProductIngredientsFragment extends BaseFragment {
         }
     }
 
+    private String getImageIngredients() {
+        return productDetails.get("image_ingredients");
+    }
+
+    @Nullable
+    public AddProductActivity getAddProductActivity() {
+        return (AddProductActivity) getActivity();
+    }
+
     /**
      * Pre fill the fields of the product which are already present on the server.
      */
     private void preFillProductValues() {
-        if (product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
-            imageProgress.setVisibility(View.VISIBLE);
-            imagePath = product.getImageIngredientsUrl();
-            Picasso.with(getContext())
-                .load(product.getImageIngredientsUrl())
-                .resize(dps50ToPixels(), dps50ToPixels())
-                .centerInside()
-                .into(imageIngredients, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        imageProgress.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onError() {
-                        imageProgress.setVisibility(View.GONE);
-                    }
-                });
-        }
+        loadIngredientsImage();
         if (product.getIngredientsText() != null && !product.getIngredientsText().isEmpty()) {
             ingredients.setText(product.getIngredientsText());
         }
         if (product.getTracesTags() != null && !product.getTracesTags().isEmpty()) {
             List<String> tracesTags = product.getTracesTags();
             final List<String> chipValues = new ArrayList<>();
-            final String  appLanguageCode = LocaleHelper.getLanguage(activity);
+            final String appLanguageCode = LocaleHelper.getLanguage(activity);
             for (String tag : tracesTags) {
                 chipValues.add(getTracesName(appLanguageCode, tag));
             }
             traces.setText(chipValues);
         }
+    }
+
+    public void loadIngredientsImage() {
+        final String newImageIngredientsUrl = product.getImageIngredientsUrl(getAddProductActivity().getProductLanguageForEdition());
+        if (newImageIngredientsUrl != null && !newImageIngredientsUrl.isEmpty()) {
+            imageProgress.setVisibility(View.VISIBLE);
+            imagePath = newImageIngredientsUrl;
+            Picasso.with(getContext())
+                .load(newImageIngredientsUrl)
+                .resize(dps50ToPixels(), dps50ToPixels())
+                .centerInside()
+                .into(imageIngredients, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        imageLoaded();
+                    }
+
+                    @Override
+                    public void onError() {
+                        imageLoaded();
+                    }
+                });
+        }
+    }
+
+    private void imageLoaded() {
+        btnEditImageIngredients.setVisibility(View.VISIBLE);
+        imageProgress.setVisibility(View.GONE);
     }
 
     private String getTracesName(String languageCode, String tag) {
@@ -242,13 +244,13 @@ public class AddProductIngredientsFragment extends BaseFragment {
     /**
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
-    private void preFillValues() {
+    private void preFillValuesForOffline() {
         productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
-            if (productDetails.get("image_ingredients") != null) {
+            if (getImageIngredients() != null) {
                 imageProgress.setVisibility(View.VISIBLE);
                 Picasso.with(getContext())
-                    .load("file://" + productDetails.get("image_ingredients"))
+                    .load("file://" + getImageIngredients())
                     .resize(dps50ToPixels(), dps50ToPixels())
                     .centerInside()
                     .into(imageIngredients, new Callback() {
@@ -280,7 +282,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         AsyncSession asyncSessionAllergens = daoSession.startAsyncSession();
         AllergenNameDao allergenNameDao = daoSession.getAllergenNameDao();
-        final String  appLanguageCode = LocaleHelper.getLanguage(activity);
+        final String appLanguageCode = LocaleHelper.getLanguage(activity);
         asyncSessionAllergens.queryList(allergenNameDao.queryBuilder()
             .where(AllergenNameDao.Properties.LanguageCode.eq(appLanguageCode))
             .orderDesc(AllergenNameDao.Properties.Name).build());
@@ -319,12 +321,12 @@ public class AddProductIngredientsFragment extends BaseFragment {
             Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
             Bundle bundle = new Bundle();
             if (edit_product && !newImageSelected) {
-                bundle.putString("imageurl", imagePath);
+                bundle.putString(FullScreenImageRotate.KEY_IMAGE_URL, imagePath);
             } else {
-                bundle.putString("imageurl", "file://" + imagePath);
+                bundle.putString(FullScreenImageRotate.KEY_IMAGE_URL, "file://" + imagePath);
             }
-            bundle.putString("code", product.getCode());
-            bundle.putString("id", "ingredients_en");
+            bundle.putString(FullScreenImageRotate.KEY_CODE, product.getCode());
+            bundle.putString(FullScreenImageRotate.KEY_ID, "ingredients_en");
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -335,30 +337,25 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 startActivityForResult(intent, ROTATE_RESULT);
             }
         } else {
-            // add ingredients image.
-            if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-            } else {
-                EasyImage.openCamera(this, 0);
-            }
+            btnEditImageIngredients();
         }
     }
 
-    @OnLongClick(R.id.btnAddImageIngredients)
-    boolean newIngredientsImage() {
-        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-        } else {
-            EasyImage.openCamera(this, 0);
-        }
-        return true;
+    @OnClick(R.id.btnEditImageIngredients)
+    void btnEditImageIngredients() {
+        doChooseOrTakePhotos(getString(R.string.ingredients_picture));
+    }
+
+    @Override
+    protected void doOnPhotosPermissionGranted() {
+        btnEditImageIngredients();
     }
 
     @OnClick(R.id.btn_next)
     void next() {
-        Activity activity = getActivity();
-        if (activity instanceof AddProductActivity) {
-            ((AddProductActivity) activity).proceed();
+        Activity fragmentActivity = getActivity();
+        if (fragmentActivity instanceof AddProductActivity) {
+            ((AddProductActivity) fragmentActivity).proceed();
         }
     }
 
@@ -386,7 +383,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
                 image.setFilePath(imagePath);
                 ((AddProductActivity) activity).addToPhotoMap(image, 1);
             } else if (imagePath != null) {
-                ((AddProductActivity) activity).performOCR(code, "ingredients_" + ((AddProductActivity) activity).getProductLanguage());
+                ((AddProductActivity) activity).performOCR(code, "ingredients_" + ((AddProductActivity) activity).getProductLanguageForEdition());
             }
         }
     }
@@ -406,7 +403,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
     public void getAllDetails(Map<String, String> targetMap) {
         traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
-            String languageCode = ((AddProductActivity) activity).getProductLanguage();
+            String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
             targetMap.put(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
             List<String> list = traces.getChipValues();
@@ -422,7 +419,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
             if (!ingredients.getText().toString().isEmpty()) {
-                String languageCode = ((AddProductActivity) activity).getProductLanguage();
+                String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
                 String lc = (!languageCode.isEmpty()) ? languageCode : "en";
                 ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
             }
@@ -435,43 +432,23 @@ public class AddProductIngredientsFragment extends BaseFragment {
     }
 
     @Override
+    public void onPhotoReturned(File newPhotoFile) {
+        final URI uri = newPhotoFile.toURI();
+        imagePath = uri.getPath();
+        newImageSelected = true;
+        this.photoFile = newPhotoFile;
+        ProductImage image = new ProductImage(code, INGREDIENTS, newPhotoFile);
+        image.setFilePath(uri.getPath());
+        if (activity instanceof AddProductActivity) {
+            ((AddProductActivity) activity).addToPhotoMap(image, 1);
+        }
+        hideImageProgress(false, getString(R.string.image_uploaded_successfully));
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                if(result!=null && result.getUri().getPath()!=null) {
-                    Uri resultUri = result.getUri();
-                    imagePath = resultUri.getPath();
-                    newImageSelected = true;
-                    photoFile = new File((resultUri.getPath()));
-                    ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
-                    image.setFilePath(resultUri.getPath());
-                    if (activity instanceof AddProductActivity) {
-                        ((AddProductActivity) activity).addToPhotoMap(image, 1);
-                    }
-                }else{
-                    Log.e(AddProductIngredientsFragment.class.getSimpleName(),"Crop image result path not found "+result.getUri());
-                }
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Log.e(AddProductIngredientsFragment.class.getSimpleName(),"Crop image error: "+ result.getError().toString());
-            }
-        }
-
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
-            @Override
-            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-            }
-
-            @Override
-            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                    .setAllowFlipping(false)
-                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                    .setOutputUri(Utils.getOutputPicUri(getContext()))
-                    .start(activity.getApplicationContext(), AddProductIngredientsFragment.this);
-            }
-        });
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
 
     public void showImageProgress() {
@@ -479,30 +456,30 @@ public class AddProductIngredientsFragment extends BaseFragment {
         imageProgressText.setVisibility(View.VISIBLE);
         imageProgressText.setText(R.string.toastSending);
         imageIngredients.setVisibility(View.INVISIBLE);
+        btnEditImageIngredients.setVisibility(View.INVISIBLE);
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
         imageProgress.setVisibility(View.INVISIBLE);
         imageProgressText.setVisibility(View.GONE);
         imageIngredients.setVisibility(View.VISIBLE);
+        btnEditImageIngredients.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
             Picasso.with(activity)
                 .load(photoFile)
                 .resize(dps50ToPixels(), dps50ToPixels())
                 .centerInside()
                 .into(imageIngredients);
-            imageProgressText.setText(message);
-            imageProgressText.setVisibility(View.VISIBLE);
-        } else {
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         }
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     public void setIngredients(String status, String ocrResult) {
-        if (getActivity()!= null && !getActivity().isFinishing()) {
+        if (getActivity() != null && !getActivity().isFinishing()) {
             switch (status) {
                 case "set":
                     ingredients.setText(ocrResult);
+                    loadIngredientsImage();
                     break;
                 case "0":
                     ingredients.setText(ocrResult);

@@ -638,20 +638,22 @@ public class OpenFoodAPIClient {
         @Override
         protected Void doInBackground(Product... products) {
             Product product = products[0];
-
-            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
-            HistoryProduct hp;
-            if (historyProducts.size() == 1) {
-                hp = historyProducts.get(0);
-                hp.setLastSeen(new Date());
-            } else {
-                hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())), product.getCode(), product
-                    .getQuantity(), product.getNutritionGradeFr());
-            }
-            mHistoryProductDao.insertOrReplace(hp);
-
+            addToHistory(mHistoryProductDao, product);
             return null;
         }
+    }
+
+    public static void addToHistory(HistoryProductDao mHistoryProductDao, Product product) {
+        List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
+        HistoryProduct hp;
+        if (historyProducts.size() == 1) {
+            hp = historyProducts.get(0);
+            hp.setLastSeen(new Date());
+        } else {
+            hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())), product.getCode(), product
+                .getQuantity(), product.getNutritionGradeFr());
+        }
+        mHistoryProductDao.insertOrReplace(hp);
     }
 
     public void uploadOfflineImages(Context context, boolean cancel, JobParameters job, SavedProductUploadJob service) {

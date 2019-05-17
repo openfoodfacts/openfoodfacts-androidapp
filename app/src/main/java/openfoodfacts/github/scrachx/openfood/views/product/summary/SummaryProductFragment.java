@@ -9,12 +9,10 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -39,11 +37,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
@@ -55,29 +53,28 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static android.Manifest.permission.*;
 import static android.app.Activity.RESULT_OK;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.*;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
+public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener, PhotoReceiver {
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
+    private PhotoReceiverHandler photoReceiverHandler;
     @BindView(R.id.product_allergen_alert_layout)
     LinearLayout productAllergenAlertLayout;
     @BindView(R.id.product_allergen_alert_text)
@@ -145,7 +142,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
     private TagDao mTagDao;
-    private SummaryProductFragment mFragment;
     private ISummaryProductPresenter.Actions presenter;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
@@ -153,10 +149,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean showNutrientPrompt = false;
     //boolean to determine if category prompt should be shown
     private boolean showCategoryPrompt = false;
-    //boolean to indicate if the image clicked was that of ingredients
-    private boolean addingIngredientsImage = false;
-    //boolean to indicate if the image clicked was that of nutrition
-    private boolean addingNutritionImage = false;
     private Question productQuestion = null;
     private boolean hasCategoryInsightQuestion = false;
 
@@ -176,7 +168,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
         apiClientForWikiData = new WikidataApiClient();
-        mFragment = this;
         return createView(inflater, container, R.layout.fragment_summary_product);
     }
 
@@ -187,6 +178,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //a better solution could be to use https://developer.android.com/jetpack/androidx/releases/ but weird issue with it..
         addNutriScorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
         addMorePicture.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
+        photoReceiverHandler = new PhotoReceiverHandler(this);
         refreshView(state);
     }
 
@@ -868,7 +860,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private void editProductNutriscore() {
         Intent intent = new Intent(getActivity(), AddProductActivity.class);
-        intent.putExtra("edit_product", product);
+        intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
         //adds the information about the prompt when navigating the user to the edit the product
         intent.putExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, showCategoryPrompt);
         intent.putExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, showNutrientPrompt);
@@ -909,7 +901,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private void editProduct() {
         Intent intent = new Intent(getActivity(), AddProductActivity.class);
-        intent.putExtra("edit_product", product);
+        intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
         startActivityForResult(intent, EDIT_REQUEST_CODE);
     }
 
@@ -959,42 +951,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.buttonMorePictures)
     public void takeMorePicture() {
-        try {
-            if (Utils.isHardwareCameraInstalled(getContext())) {
-                if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-                } else {
-                    sendOther = true;
-                    EasyImage.openCamera(this, 0);
-                }
-            } else {
-                if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
-                } else {
-                    sendOther = true;
-                    EasyImage.openGallery(this, 0, false);
-                }
-            }
-
-            if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), READ_EXTERNAL_STORAGE)
-                    || ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), WRITE_EXTERNAL_STORAGE)) {
-                    new MaterialDialog.Builder(this.getContext())
-                        .title(R.string.action_about)
-                        .content(R.string.permission_storage)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat
-                            .requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
-                        .show();
-                } else {
-                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
-                }
-            }
-        } catch (NullPointerException e) {
-            Log.i(getClass().getSimpleName(), e.toString());
-        }
+        sendOther = true;
+        doChooseOrTakePhotos(getString(R.string.take_more_pictures));
     }
 
     @OnClick(R.id.imageViewFront)
@@ -1014,20 +972,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
         } else {
             // take a picture
-            if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-            } else {
-                sendOther = false;
-                if (Utils.isHardwareCameraInstalled(getContext())) {
-                    EasyImage.openCamera(this, 0);
-                } else {
-                    EasyImage.openGallery(getActivity(), 0, false);
-                }
-            }
+            newFrontImage();
         }
     }
 
-    private void onPhotoReturned(File photoFile) {
+    void newFrontImage() {
+        // add front image.
+        sendOther = false;
+        doChooseOrTakePhotos(getString(R.string.set_img_front));
+    }
+
+    private void loadPhoto(File photoFile) {
         ProductImage image = new ProductImage(barcode, FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image, this);
@@ -1043,68 +998,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-
-                //the booleans are checked to determine if the picture uploaded was due to a prompt click
-                //the pictures are uploaded with the correct path
-                if (addingIngredientsImage) {
-                    ProductImage image = new ProductImage(barcode, INGREDIENTS, new File(resultUri.getPath()));
-                    image.setFilePath(resultUri.getPath());
-                    showOtherImageProgress();
-                    api.postImg(getContext(), image, this);
-                    addingIngredientsImage = false;
-                }
-
-                if (addingNutritionImage) {
-                    ProductImage image = new ProductImage(barcode, NUTRITION, new File(resultUri.getPath()));
-                    image.setFilePath(resultUri.getPath());
-                    showOtherImageProgress();
-                    api.postImg(getContext(), image, this);
-                    addingNutritionImage = false;
-                }
-
-                if (!sendOther) {
-                    onPhotoReturned(new File(resultUri.getPath()));
-                } else {
-                    ProductImage image = new ProductImage(barcode, OTHER, new File(resultUri.getPath()));
-                    image.setFilePath(resultUri.getPath());
-                    showOtherImageProgress();
-                    api.postImg(getContext(), image, this);
-                }
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
-            }
-        }
-
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
-            @Override
-            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-                //Some error handling
-            }
-
-            @Override
-            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                    .setAllowFlipping(false)
-                    .start(getContext(), mFragment);
-            }
-
-            @Override
-            public void onCanceled(EasyImage.ImageSource source, int type) {
-                //Cancel handling, you might wanna remove taken photo if it was canceled
-                if (source == EasyImage.ImageSource.CAMERA) {
-                    File photoFile = EasyImage.lastlyTakenButCanceledPhoto(getContext());
-                    if (photoFile != null) {
-                        photoFile.delete();
-                    }
-                }
-            }
-        });
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
         if (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK && data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, false)) {
             if (getActivity() instanceof ProductActivity) {
                 ((ProductActivity) getActivity()).onRefresh();
@@ -1120,30 +1014,26 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
+    public void onPhotoReturned(File newPhotoFile) {
+        URI resultUri = newPhotoFile.toURI();
+        //the booleans are checked to determine if the picture uploaded was due to a prompt click
+        //the pictures are uploaded with the correct path
+        if (!sendOther) {
+            loadPhoto(new File(resultUri.getPath()));
+        } else {
+            ProductImage image = new ProductImage(barcode, OTHER, newPhotoFile);
+            image.setFilePath(resultUri.getPath());
+            showOtherImageProgress();
+            api.postImg(getContext(), image, this);
+        }
+    }
+
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
-                                           @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_CAMERA: {
-                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
-                    new MaterialDialog.Builder(getActivity())
-                        .title(R.string.permission_title)
-                        .content(R.string.permission_denied)
-                        .negativeText(R.string.txtNo)
-                        .positiveText(R.string.txtYes)
-                        .onPositive((dialog, which) -> {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                        })
-                        .show();
-                } else {
-                    sendOther = false;
-                    EasyImage.openCamera(this, 0);
-                }
-            }
+    protected void doOnPhotosPermissionGranted() {
+        if (sendOther) {
+            takeMorePicture();
+        } else {
+            newFrontImage();
         }
     }
 
@@ -1163,6 +1053,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onSuccess() {
         uploadingImageProgress.setVisibility(View.GONE);
         uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
 
     @Override

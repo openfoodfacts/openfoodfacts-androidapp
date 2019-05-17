@@ -42,6 +42,7 @@ import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,10 +57,13 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorag
 public class AddProductActivity extends AppCompatActivity {
     private static final String KEY_USER_ID = "user_id";
     private static final String KEY_PASSWORD = "password";
+    public static final String PARAM_LANGUAGE = "lang";
     private static final String ADD_TAG = AddProductActivity.class.getSimpleName();
     public static final String UPLOADED_TO_SERVER = "uploadedToServer";
     public static final String MODIFY_NUTRITION_PROMPT = "modify_nutrition_prompt";
     public static final String MODIFY_CATEGORY_PROMPT = "modify_category_prompt";
+    public static final String KEY_EDIT_PRODUCT = "edit_product";
+    public static final String KEY_IS_EDITION = "is_edition";
     private final Map<String, String> productDetails = new HashMap<>();
     @Inject
     OpenFoodAPIService client;
@@ -89,7 +93,7 @@ public class AddProductActivity extends AppCompatActivity {
     private boolean image_front_uploaded;
     private boolean image_ingredients_uploaded;
     private boolean image_nutrition_facts_uploaded;
-    private boolean edit_product;
+    private boolean editionMode;
     // These fields are used to compare the existing values of a product already present on the server with the product which was saved offline and is being uploaded.
     private String ingredientsTextOnServer;
     private String productNameOnServer;
@@ -218,7 +222,7 @@ public class AddProductActivity extends AppCompatActivity {
         mOfflineSavedProductDao = Utils.getAppDaoSession(this).getOfflineSavedProductDao();
         final State state = (State) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
-        Product mEditProduct = (Product) getIntent().getSerializableExtra("edit_product");
+        Product mEditProduct = (Product) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT);
 
         if (getIntent().getBooleanExtra("perform_ocr", false)) {
             bundle.putBoolean("perform_ocr", true);
@@ -236,8 +240,8 @@ public class AddProductActivity extends AppCompatActivity {
         if (mEditProduct != null) {
             setTitle(R.string.edit_product_title);
             mProduct = mEditProduct;
-            edit_product = true;
-            bundle.putBoolean("edit_product", true);
+            editionMode = true;
+            bundle.putBoolean(KEY_IS_EDITION, true);
             initialValues = new HashMap<>();
         } else if (offlineSavedProduct != null) {
             bundle.putSerializable("edit_offline_product", offlineSavedProduct);
@@ -306,7 +310,7 @@ public class AddProductActivity extends AppCompatActivity {
             productDetails.put(KEY_PASSWORD, password);
         }
         String code = productDetails.get("code");
-        String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguage() + ",product_name_" + getProductLanguage();
+        String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguageForEdition() + ",product_name_" + getProductLanguageForEdition();
         client.getExistingProductDetails(code, fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -330,8 +334,8 @@ public class AddProductActivity extends AppCompatActivity {
                         checkFrontImageUploadStatus();
                     } else {
                         // Product already exists on the server. Compare values saved locally with the values existing on server.
-                        ingredientsTextOnServer = state.getProduct().getIngredientsText(getProductLanguage());
-                        productNameOnServer = state.getProduct().getProductName(getProductLanguage());
+                        ingredientsTextOnServer = state.getProduct().getIngredientsText(getProductLanguageForEdition());
+                        productNameOnServer = state.getProduct().getProductName(getProductLanguageForEdition());
                         quantityOnServer = state.getProduct().getQuantity();
                         linkOnServer = state.getProduct().getManufactureUrl();
                         ingredientsImageOnServer = state.getProduct().getImageIngredientsUrl();
@@ -351,7 +355,7 @@ public class AddProductActivity extends AppCompatActivity {
      * Checks if ingredients already exist on server and compare it with the ingredients stored locally.
      */
     private void checkForExistingIngredients() {
-        String lc = productDetails.get("lang") != null ? productDetails.get("lang") : "en";
+        String lc = getLanguageFromDetails();
         if (ingredientsTextOnServer != null && !ingredientsTextOnServer.isEmpty() && productDetails.get("ingredients_text" + "_" + lc) != null) {
             MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
                 .title(R.string.ingredients_overwrite)
@@ -445,11 +449,15 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
+    private String getLanguageFromDetails() {
+        return productDetails.get(PARAM_LANGUAGE) != null ? productDetails.get(PARAM_LANGUAGE) : "en";
+    }
+
     /**
      * Checks if product name already exist on server and compare it with the product name stored locally.
      */
     private void checkForExistingProductName() {
-        String lc = productDetails.get("lang") != null ? productDetails.get("lang") : "en";
+        String lc = getLanguageFromDetails();
         if (productNameOnServer != null && !productNameOnServer.isEmpty() && productDetails.get("product_name" + "_" + lc) != null) {
             new MaterialDialog.Builder(AddProductActivity.this)
                 .title(R.string.product_name_overwrite)
@@ -535,11 +543,11 @@ public class AddProductActivity extends AppCompatActivity {
             File photoFile = new File(imagesFilePath[0]);
             Map<String, RequestBody> imgMap = new HashMap<>();
             RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
-            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.FRONT.toString() + '_' + getProductLanguage());
+            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.FRONT.toString() + '_' + getProductLanguageForEdition());
             RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
-            imgMap.put("imgupload_front\"; filename=\"front_" + getProductLanguage() + ".png\"", image);
+            imgMap.put("imgupload_front\"; filename=\"front_" + getProductLanguageForEdition() + ".png\"", image);
 
             // Attribute the upload to the connected user
             final SharedPreferences settings = getSharedPreferences("login", 0);
@@ -600,7 +608,7 @@ public class AddProductActivity extends AppCompatActivity {
                                     @Override
                                     public void onError(Throwable e) {
                                         dialog.dismiss();
-                                        if (!edit_product) {
+                                        if (!editionMode) {
                                             saveProductOffline();
                                         } else {
                                             MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
@@ -620,7 +628,7 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {
                         dialog.dismiss();
-                        if (!edit_product) {
+                        if (!editionMode) {
                             saveProductOffline();
                         } else {
                             MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
@@ -650,11 +658,11 @@ public class AddProductActivity extends AppCompatActivity {
             File photoFile = new File(imagesFilePath[1]);
             Map<String, RequestBody> imgMap = new HashMap<>();
             RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
-            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.INGREDIENTS.toString() + '_' + getProductLanguage());
+            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.INGREDIENTS.toString() + '_' + getProductLanguageForEdition());
             RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
-            imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + getProductLanguage() + ".png\"", image);
+            imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + getProductLanguageForEdition() + ".png\"", image);
 
             // Attribute the upload to the connected user
             final SharedPreferences settings = getSharedPreferences("login", 0);
@@ -715,7 +723,7 @@ public class AddProductActivity extends AppCompatActivity {
                                     @Override
                                     public void onError(Throwable e) {
                                         dialog.dismiss();
-                                        if (!edit_product) {
+                                        if (!editionMode) {
                                             saveProductOffline();
                                         } else {
                                             MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
@@ -735,7 +743,7 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {
                         dialog.dismiss();
-                        if (!edit_product) {
+                        if (!editionMode) {
                             saveProductOffline();
                         } else {
                             MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
@@ -765,11 +773,11 @@ public class AddProductActivity extends AppCompatActivity {
             File photoFile = new File(imagesFilePath[2]);
             Map<String, RequestBody> imgMap = new HashMap<>();
             RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
-            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.NUTRITION.toString() + '_' + getProductLanguage());
+            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.NUTRITION.toString() + '_' + getProductLanguageForEdition());
             RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
-            imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + getProductLanguage() + ".png\"", image);
+            imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + getProductLanguageForEdition() + ".png\"", image);
 
             // Attribute the upload to the connected user
             final SharedPreferences settings = getSharedPreferences("login", 0);
@@ -830,7 +838,7 @@ public class AddProductActivity extends AppCompatActivity {
                                     @Override
                                     public void onError(Throwable e) {
                                         dialog.dismiss();
-                                        if (!edit_product) {
+                                        if (!editionMode) {
                                             saveProductOffline();
                                         } else {
                                             MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
@@ -850,7 +858,7 @@ public class AddProductActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {
                         dialog.dismiss();
-                        if (!edit_product) {
+                        if (!editionMode) {
                             saveProductOffline();
                         } else {
                             MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
@@ -888,7 +896,7 @@ public class AddProductActivity extends AppCompatActivity {
             comment += " ( Added by " + Installation.id(this) + " )";
         }
         boolean productHasChange = true;
-        if (edit_product && initialValues != null) {
+        if (editionMode && initialValues != null) {
             Map<String, String> newValues = new HashMap<>(productDetails);
             newValues.remove(KEY_USER_ID);
             newValues.remove(KEY_PASSWORD);
@@ -905,7 +913,12 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void saveProductToServer(String code, String comment) {
-        client.saveProductSingle(code, productDetails, comment)
+        Map<String, String> productValues=new HashMap<>(productDetails);
+        //the default language should not be changed: we keep the original one:
+        if(editionMode && StringUtils.isNotBlank(mProduct.getLang())){
+            productValues.put(PARAM_LANGUAGE,mProduct.getLang());
+        }
+        client.saveProductSingle(code, productValues, comment)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<State>() {
                 @Override
@@ -944,7 +957,7 @@ public class AddProductActivity extends AppCompatActivity {
                     Log.e(ADD_TAG, e.getMessage());
                     // A network error happened
                     if (e instanceof IOException) {
-                        if (!edit_product) {
+                        if (!editionMode) {
                             saveProductOffline();
                         } else {
                             MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
@@ -959,7 +972,7 @@ public class AddProductActivity extends AppCompatActivity {
                     }
                     // Not a network error
                     else {
-                        if (!edit_product) {
+                        if (!editionMode) {
                             Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             saveProductOffline();
                         } else {
@@ -1021,7 +1034,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void checkFields() {
-        if (!edit_product) {
+        if (!editionMode) {
             if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
                 viewPager.setCurrentItem(0, true);
             } else if (isNutritionDataAvailable() && addProductNutritionFactsFragment.containsInvalidValue()) {
@@ -1079,7 +1092,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public void addToPhotoMap(ProductImage image, int position) {
-        String lang = getProductLanguage();
+        String lang = getProductLanguageForEdition();
         boolean ocr = false;
         Map<String, RequestBody> imgMap = new HashMap<>();
         imgMap.put("code", image.getCode());
@@ -1129,7 +1142,7 @@ public class AddProductActivity extends AppCompatActivity {
                         String error = jsonNode.get("error").asText();
                         if (error.equals("This picture has already been sent.") && ocr) {
                             hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
-                            performOCR(image.getBarcode(), "ingredients_" + getProductLanguage());
+                            performOCR(image.getBarcode(), "ingredients_" + getProductLanguageForEdition());
                         } else {
                             hideImageProgress(position, true, error);
                         }
@@ -1283,11 +1296,23 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
-    public String getProductLanguage() {
-        return productDetails.get("lang");
+    public String getProductLanguageForEdition() {
+        return productDetails.get(PARAM_LANGUAGE);
     }
+
+
+    public void setProductLanguage(String languageCode) {
+        addToMap(PARAM_LANGUAGE, languageCode);
+    }
+
+    public void updateLanguage(){
+        addProductIngredientsFragment.loadIngredientsImage();
+        addProductNutritionFactsFragment.loadNutritionImage();
+    }
+
 
     public void setIngredients(String status, String ingredients) {
         addProductIngredientsFragment.setIngredients(status, ingredients);
+
     }
 }

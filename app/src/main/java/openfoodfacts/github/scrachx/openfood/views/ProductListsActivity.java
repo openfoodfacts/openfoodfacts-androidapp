@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,9 +12,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import butterknife.BindView;
-
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -24,6 +23,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 import org.apache.commons.collections.CollectionUtils;
 
@@ -35,6 +35,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     FloatingActionButton fabAdd;
     @BindView(R.id.product_lists_recycler_view)
     RecyclerView recyclerView;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
     ProductListsAdapter adapter;
     List<ProductLists> productLists;
     ProductListsDao productListsDao;
@@ -61,7 +63,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         setSupportActionBar(findViewById(R.id.toolbar));
         setTitle(R.string.your_lists);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
         productListsDao = getProducListsDaoWithDefaultList(this);
         productLists = productListsDao.loadAll();
 
@@ -74,15 +76,15 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
             Product p = (Product) bundle.get("product");
 
             MaterialDialog dialog = new MaterialDialog.Builder(this)
-                    .title(R.string.txt_create_new_list)
-                    .input(R.string.create_new_list_list_name,
-                            R.string.empty, false, (d, input) -> {
-                               // do nothing
-                            }
-                    )
-                    .positiveText(R.string.txtSave)
-                    .negativeText(R.string.txt_discard)
-                    .show();
+                .title(R.string.txt_create_new_list)
+                .input(R.string.create_new_list_list_name,
+                    R.string.empty, false, (d, input) -> {
+                        // do nothing
+                    }
+                )
+                .positiveText(R.string.txtSave)
+                .negativeText(R.string.txt_discard)
+                .show();
             // this enable to avoid dismissing dalog if list name already exist
             dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -105,7 +107,6 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                     }
                 }
             });
-
         }
 
         recyclerView.addOnItemTouchListener(
@@ -125,15 +126,15 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
         fabAdd.setOnClickListener(view -> {
             MaterialDialog dialog = new MaterialDialog.Builder(this)
-                    .title(R.string.txt_create_new_list)
-                    .input("List name", "", false, new MaterialDialog.InputCallback() {
-                        @Override
-                        public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                        }
-                    })
-                    .positiveText(R.string.dialog_create)
-                    .negativeText(R.string.dialog_cancel)
-                    .show();
+                .title(R.string.txt_create_new_list)
+                .input("List name", "", false, new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                    }
+                })
+                .positiveText(R.string.dialog_create)
+                .negativeText(R.string.dialog_cancel)
+                .show();
             // this enable to avoid dismissing dalog if list name already exist
             dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -155,14 +156,13 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         });
     }
 
-
     /**
      * Check if listname already in products lists.
+     *
      * @param listName
-     * @return
      */
     private boolean checkListNameExist(String listName) {
-        for (Iterator<ProductLists> i = productLists.iterator(); i.hasNext();) {
+        for (Iterator<ProductLists> i = productLists.iterator(); i.hasNext(); ) {
             if (i.next().getListName().equals(listName)) {
                 return true;
             }

@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
@@ -37,6 +38,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.YourListedProductsAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.io.File;
@@ -56,6 +58,8 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
     TextView tvInfo;
     @BindView(R.id.scanFirstYourListedProduct)
     Button btnScanFirst;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
     private ProductListsDao productListsDao;
     private ProductLists thisProductList;
     private List<YourListedProduct> products;
@@ -132,6 +136,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
             itemTouchhelper.attachToRecyclerView(recyclerView);
         }
+        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 
     public static String getProductBrandsQuantityDetails(Product p) {
