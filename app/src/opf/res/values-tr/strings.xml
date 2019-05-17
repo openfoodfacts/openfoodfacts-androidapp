@@ -11,7 +11,8 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">"https://world.openproductsfacts.org/terms-of-use
+"</string>
     <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$d products (plus the ones you will contribute) in the world.</string>
     <string name="txtHome">Open Beauty Facts, içerdikleri maddeler, allerjenler, işaretler ve ürün etiketleri üzerinde bulabileceğimiz tüm bilgi çılgınlığı ürünleriyle dolu bir kozmetik ürünlerinden oluşan bir veritabanıdır.</string>
     <string name="slide_1_title">Besin şeffaflığına katkıda bulun</string>
