@@ -652,11 +652,11 @@
     <string name="extract_ingredients">Összetevők kiolvasása</string>
     <string name="extracting_ingredients">Összetevők kiolvasása</string>
     <string name="looksGood">Jónak tűnik</string>
-    <string name="skip_ingredients">Túl rossz\n
-Összetevők kihagyása</string>
+    <string name="skip_ingredients">"Túl rossz\n
+Összetevők kihagyása"</string>
     <string name="traces">Nyomokban</string>
-    <string name="traces_hint">Adja hozzá az összetevőket, amelyek a következőképpen vannak megemlítve: \"Nyomokban tartalmazhat\", \"... (is) felhasználó üzemben készült\" stb.
-\nPéldák: Tej, Glutén, Diófélék</string>
+    <string name="traces_hint">"Adja hozzá az összetevőket, amelyek a következőképpen vannak megemlítve: \"Nyomokban tartalmazhat\", \"... (is) felhasználó üzemben készült\" stb.
+\nPéldák: Tej, Glutén, Diófélék"</string>
     <string name="nutrition_facts_not_specified">Nincsenek megadva tápértékadatok a termékhez.</string>
     <string name="nutrition_facts_picture">Tápértékadatok képe</string>
     <string name="for_100g_100ml">100 g / 100 ml-ben</string>
@@ -783,8 +783,8 @@
     <string name="txt_discard">Elvet</string>
     <string name="txt_save">Mentés</string>
     <string name="write_external_storage_your_listed_products">Külső tárhelyre való írási engedély szükséges az adatok exportálásához.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">"You'll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I'm eating this\".
+        You'll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page."</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_i_m_eating_this">Ezt eszem</string>
     <string name="compare_product_prompt">Termék összehasonlítása</string>
