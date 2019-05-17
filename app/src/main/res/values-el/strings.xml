@@ -781,8 +781,8 @@
     <string name="txt_discard">Ακύρωση</string>
     <string name="txt_save">Αποθήκευση</string>
     <string name="write_external_storage_your_listed_products">Απαιτούνται δικαιώματα αποθήκευσης για την εξαγωγή των δεδομένων.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">"You'll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I'm eating this\".
+        You'll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page."</string>
     <string name="txt_info_your_listed_products">Θα μπορείτε να προσθέσετε προϊόντα σε αυτήν τη λίστα, αναζητώντας τα και κάνοντας κλικ στο κουμπί + στην επάνω δεξιά γωνία της σελίδας του προϊόντος.</string>
     <string name="txt_i_m_eating_this">Το τρώω αυτό</string>
     <string name="compare_product_prompt">Συγκρίνετε αυτό το Προϊόν</string>
