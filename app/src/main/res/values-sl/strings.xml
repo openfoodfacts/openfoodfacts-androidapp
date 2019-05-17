@@ -789,8 +789,8 @@
     <string name="txt_discard">Zavrzi</string>
     <string name="txt_save">Shrani</string>
     <string name="write_external_storage_your_listed_products">Za izvoz podatkov je potrebno odobriti dovoljenje za pisanje v zunanji pomnilnik.</string>
-    <string name="txt_info_eaten_products">Na ta seznam lahko dodate izdelek tako, da skenirate izdelke, povlečete kartico izdelka in se dotaknete možnosti »To jem«.
-        Na ta seznam lahko dodate tudi izdelke, tako da jih poiščete in kliknete gumb + v zgornjem desnem kotu strani izdelka.</string>
+    <string name="txt_info_eaten_products">"Na ta seznam lahko dodate izdelek tako, da skenirate izdelke, povlečete kartico izdelka in se dotaknete možnosti »To jem«.
+        Na ta seznam lahko dodate tudi izdelke, tako da jih poiščete in kliknete gumb + v zgornjem desnem kotu strani izdelka."</string>
     <string name="txt_info_your_listed_products">Na ta seznam lahko dodajate izdelke tako, da jih iščete in kliknete gumb + v zgornjem desnem kotu strani izdelka.</string>
     <string name="txt_i_m_eating_this">To jem</string>
     <string name="compare_product_prompt">Compare this product</string>
