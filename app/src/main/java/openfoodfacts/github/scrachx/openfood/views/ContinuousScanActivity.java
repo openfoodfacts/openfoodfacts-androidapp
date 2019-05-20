@@ -155,6 +155,18 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     private boolean productShowing = false;
 
     /**
+     * Used by screenshot tests.
+     * @param text
+     */
+    public void showProduct(String text){
+        productShowing=true;
+        barcodeView.setVisibility(View.GONE);
+        barcodeView.pause();
+        imageForScreenshotGenerationOnly.setVisibility(View.VISIBLE);
+        findProduct(text,false);
+    }
+
+    /**
      * Makes network call and search for the product in the database
      *
      * @param lastText Barcode to be searched
