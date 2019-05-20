@@ -302,8 +302,7 @@ public class OpenFoodAPIClient {
 
         String imguploadFront = product.getImgupload_front();
         if (StringUtils.isNotEmpty(imguploadFront)) {
-            ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-            postImg(activity, image, null);
+            postImg(activity, new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront)), null);
         }
 
         String imguploadIngredients = product.getImgupload_ingredients();
@@ -462,43 +461,7 @@ public class OpenFoodAPIClient {
         }
     }
 
-    public void rotImg(String productCode, String productId, int angle, Activity activity) {
 
-        apiService.getImages(productCode)
-            .enqueue(new Callback<JsonNode>() {
-                @Override
-                public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
-                    Log.d("RESPONSE IMAGES", response.body().findPath("front_en").findValue("imgid").toString().replace("\"", ""));
-                    String imgid = response.body().findPath(productId).findValue("imgid").toString().replace("\"", "");
-                    int currentRotation = response.body().findPath(productId).findValue("angle").asInt();
-                    apiService.rotateImage(productCode, productId, imgid, Integer.toString(angle + currentRotation))
-                        .enqueue(new Callback<JsonNode>() {
-                            @Override
-                            public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
-                                Log.d("TAG", response.isSuccessful() + "");
-                                Toast.makeText(activity, "Image rotated successfully.", Toast.LENGTH_SHORT).show();
-                                activity.finish();
-                            }
-
-                            @Override
-                            public void onFailure(Call<JsonNode> call, Throwable t) {
-                                if (activity != null) {
-                                    Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
-                                    activity.finish();
-                                }
-                            }
-                        });
-                }
-
-                @Override
-                public void onFailure(Call<JsonNode> call, Throwable t) {
-                    if (activity != null) {
-                        Toast.makeText(activity, "Unable to rotate Image.", Toast.LENGTH_SHORT).show();
-                        activity.finish();
-                    }
-                }
-            });
-    }
 
     public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
         /**  final LoadToast lt = new LoadToast(context);
@@ -529,9 +492,7 @@ public class OpenFoodAPIClient {
                         //lt.error();
                     } else if (body.get("status").asText().contains("status not ok")) {
                         Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
-                        // lt.error();
                     } else {
-                        //lt.success();
                     }
                 }
 

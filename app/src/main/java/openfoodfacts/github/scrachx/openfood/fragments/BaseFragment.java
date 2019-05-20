@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.theartofdev.edmodo.cropper.CropImage;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
@@ -24,12 +25,13 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshView;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
-import static android.Manifest.permission.*;
+import java.io.File;
+
+import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public abstract class BaseFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
-
     protected static final int ROTATE_RESULT = 100;
     private SwipeRefreshLayout swipeRefreshLayout;
     private OnRefreshListener refreshListener;
@@ -116,10 +118,9 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
     }
 
     protected void doChooseOrTakePhotos(String title) {
-        if (!canChooseOrTakePhotos()) {
-            requestPermissionToChooseOrTakePhotos();
+        if (!canTakePhotos()) {
+            requestPermissionTakePhotos();
         } else {
-//            EasyImage.openChooserWithGallery(this, title, 0);
             EasyImage.openCamera(this, 0);
         }
     }
@@ -165,31 +166,24 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
 
     }
 
-//    protected void warnUserAboutPhotoPermissions() {
-//        if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
-//            && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-//            if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), READ_EXTERNAL_STORAGE)
-//                || ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), WRITE_EXTERNAL_STORAGE)) {
-//                new MaterialDialog.Builder(this.getContext())
-//                    .title(R.string.action_about)
-//                    .content(R.string.permission_storage)
-//                    .neutralText(R.string.txtOk)
-//                    .onNeutral((dialog, which) -> ActivityCompat
-//                        .requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
-//                    .show();
-//            }
-//        }
-//    }
-
-    protected boolean canChooseOrTakePhotos() {
-        return
-            ContextCompat.checkSelfPermission(getContext(), CAMERA) == PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(getContext(), READ_EXTERNAL_STORAGE) == PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(getContext(), WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED;
+    protected void cropRotateImage(File image, String title) {
+        Uri uri = Uri.fromFile(image);
+        CropImage.activity(uri)
+            .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+            .setInitialCropWindowPaddingRatio(0)
+            .setAllowFlipping(false)
+            .setAllowRotation(true)
+            .setAllowCounterRotation(true)
+            .setActivityTitle(title)
+            .start(getContext(), this);
     }
 
-    protected void requestPermissionToChooseOrTakePhotos() {
-        requestPermissions( new String[]{CAMERA,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_CAMERA);
+    protected boolean canTakePhotos() {
+        return
+            ContextCompat.checkSelfPermission(getContext(), CAMERA) == PERMISSION_GRANTED;
+    }
 
+    protected void requestPermissionTakePhotos() {
+        requestPermissions(new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
     }
 }

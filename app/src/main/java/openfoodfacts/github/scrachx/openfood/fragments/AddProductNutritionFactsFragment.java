@@ -3,13 +3,11 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -25,6 +23,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
@@ -33,7 +32,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -111,9 +109,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private String code;
     private OfflineSavedProduct mOfflineSavedProduct;
     private String imagePath;
-    private boolean edit_product;
+    private boolean productEdited;
     private Product product;
-    private boolean newImageSelected;
     private EditText lastEditText;
     private CustomValidatingEditTextView starchEditText;
     private Set<CustomValidatingEditTextView> allEditViews = Collections.emptySet();
@@ -136,11 +133,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (b != null) {
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            edit_product = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
+            productEdited = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
             if (product != null) {
                 code = product.getCode();
             }
-            if (edit_product && product != null) {
+            if (productEdited && product != null) {
                 code = product.getCode();
                 buttonAdd.setText(R.string.save_edits);
                 preFillProductValues();
@@ -245,9 +242,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void loadNutritionImage() {
-        if(getAddProductActivity()==null){
+        if (getAddProductActivity() == null) {
             return;
         }
+        photoFile=null;
         final String newImageNutritionUrl = product.getImageNutritionUrl(getAddProductActivity().getProductLanguageForEdition());
         if (newImageNutritionUrl != null && !newImageNutritionUrl.isEmpty()) {
             imageProgress.setVisibility(View.VISIBLE);
@@ -439,24 +437,13 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     @OnClick(R.id.btnAddImageNutritionFacts)
     void addNutritionFactsImage() {
         if (imagePath != null) {
-            // nutrition facts image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
-            Bundle bundle = new Bundle();
-            if (edit_product && !newImageSelected) {
-                bundle.putString(FullScreenImageRotate.KEY_IMAGE_URL, imagePath);
+            if (photoFile != null) {
+                cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture));
             } else {
-                bundle.putString(FullScreenImageRotate.KEY_IMAGE_URL, "file://" + imagePath);
-            }
-            bundle.putString(FullScreenImageRotate.KEY_CODE, product.getCode());
-            bundle.putString(FullScreenImageRotate.KEY_ID, "nutrition_en");
-            intent.putExtras(bundle);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(activity, imageNutritionFacts,
-                        activity.getString(R.string.product_transition));
-                startActivityForResult(intent, ROTATE_RESULT, options.toBundle());
-            } else {
-                startActivityForResult(intent, ROTATE_RESULT);
+                new FileDownloader(getContext()).download(imagePath, file -> {
+                    photoFile = file;
+                    cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture));
+                });
             }
         } else {
             newNutritionFactsImage();
@@ -935,7 +922,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         URI resultUri = newPhotoFile.toURI();
         imagePath = resultUri.getPath();
 
-        newImageSelected = true;
         photoFile = newPhotoFile;
         ProductImage image = new ProductImage(code, NUTRITION, newPhotoFile);
         image.setFilePath(resultUri.getPath());

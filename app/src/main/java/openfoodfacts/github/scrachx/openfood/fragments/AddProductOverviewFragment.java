@@ -5,13 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,12 +24,14 @@ import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
@@ -40,7 +40,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAutoCompleteAdapter;
@@ -65,7 +64,6 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     private static final String PARAM_BARCODE = "code";
     private static final String PARAM_QUANTITY = "quantity";
     private static final String PARAM_BRAND = "add_brands";
-
     private static final String PARAM_INTERFACE_LANGUAGE = "lc";
     private static final String PARAM_PACKAGING = "add_packaging";
     private static final String PARAM_CATEGORIES = "add_categories";
@@ -213,9 +211,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             }
             if (editionMode && product != null) {
                 code = product.getCode();
-                String languageToUse=product.getLang();
-                if(product.isLanguageSupported(appLanguageCode)){
-                    languageToUse=appLanguageCode;
+                String languageToUse = product.getLang();
+                if (product.isLanguageSupported(appLanguageCode)) {
+                    languageToUse = appLanguageCode;
                 }
                 preFillProductValues(languageToUse);
             } else if (mOfflineSavedProduct != null) {
@@ -355,6 +353,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     private void loadFrontImage(String language) {
+        photoFile=null;
         final String imageFrontUrl = product.getImageFrontUrl(language);
         if (imageFrontUrl != null && !imageFrontUrl.isEmpty()) {
 
@@ -637,23 +636,14 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     @OnClick(R.id.btnAddImageFront)
     void addFrontImage() {
         if (mImageUrl != null) {
-            // front image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
-            Bundle bundle = new Bundle();
-            if(photoFile!=null){
-                bundle.putSerializable(FullScreenImageRotate.KEY_IMAGE_FILE,photoFile);
-            }
-            bundle.putString(FullScreenImageRotate.KEY_IMAGE_URL, mImageUrl);
-            bundle.putString(FullScreenImageRotate.KEY_CODE, product.getCode());
-            bundle.putString(FullScreenImageRotate.KEY_ID, "front_en");
-            intent.putExtras(bundle);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(activity, imageFront,
-                        activity.getString(R.string.product_transition));
-                startActivityForResult(intent, ROTATE_RESULT, options.toBundle());
+            frontImage = true;
+            if (photoFile != null) {
+                cropRotateImage(photoFile, getString(R.string.set_img_front));
             } else {
-                startActivityForResult(intent, ROTATE_RESULT);
+                new FileDownloader(getContext()).download(mImageUrl, file -> {
+                    photoFile = file;
+                    cropRotateImage(photoFile, getString(R.string.set_img_front));
+                });
             }
         } else {
             newFrontImage();
@@ -939,6 +929,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                 link.setText(result.getContents());
                 link.requestFocus();
             }
+        }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            frontImage = true;
         }
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }

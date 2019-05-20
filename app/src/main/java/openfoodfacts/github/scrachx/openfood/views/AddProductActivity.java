@@ -582,14 +582,13 @@ public class AddProductActivity extends AppCompatActivity {
                             if (error.equals("This picture has already been sent.")) {
                                 image_front_uploaded = true;
                                 checkIngredientsImageUploadStatus();
+                            }else{
+                                new MaterialDialog.Builder(AddProductActivity.this).title(R.string.uploading_front_image)
+                                    .content(error).show();
                             }
                         } else {
                             image_front_uploaded = true;
-                            String imagefield = jsonNode.get("imagefield").asText();
-                            String imgid = jsonNode.get("image").get("imgid").asText();
-                            Map<String, String> queryMap = new HashMap<>();
-                            queryMap.put("imgid", imgid);
-                            queryMap.put("id", imagefield);
+                            Map<String, String> queryMap = fillQueryMapFromJson(jsonNode);
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -607,19 +606,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onError(Throwable e) {
-                                        dialog.dismiss();
-                                        if (!editionMode) {
-                                            saveProductOffline();
-                                        } else {
-                                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
-                                                .title(R.string.device_offline_dialog_title)
-                                                .positiveText(R.string.txt_try_again)
-                                                .negativeText(R.string.dialog_cancel)
-                                                .onPositive((dialog, which) -> checkFrontImageUploadStatus())
-                                                .onNegative((dialog, which) -> dialog.dismiss());
-                                            dialog = builder.build();
-                                            dialog.show();
-                                        }
+                                        dialogNetworkIssueWhileUploadingImages();
                                     }
                                 });
                         }
@@ -627,19 +614,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        dialog.dismiss();
-                        if (!editionMode) {
-                            saveProductOffline();
-                        } else {
-                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
-                                .title(R.string.device_offline_dialog_title)
-                                .positiveText(R.string.txt_try_again)
-                                .negativeText(R.string.dialog_cancel)
-                                .onPositive((dialog, which) -> checkFrontImageUploadStatus())
-                                .onNegative((dialog, which) -> dialog.dismiss());
-                            dialog = builder.build();
-                            dialog.show();
-                        }
+                        dialogNetworkIssueWhileUploadingImages();
                     }
                 });
         } else {
@@ -698,13 +673,13 @@ public class AddProductActivity extends AppCompatActivity {
                                 image_ingredients_uploaded = true;
                                 checkNutritionFactsImageUploadStatus();
                             }
+                            else{
+                                new MaterialDialog.Builder(AddProductActivity.this).title(R.string.uploading_ingredients_image)
+                                    .content(error).show();
+                            }
                         } else {
                             image_ingredients_uploaded = true;
-                            String imagefield = jsonNode.get("imagefield").asText();
-                            String imgid = jsonNode.get("image").get("imgid").asText();
-                            Map<String, String> queryMap = new HashMap<>();
-                            queryMap.put("imgid", imgid);
-                            queryMap.put("id", imagefield);
+                            Map<String, String> queryMap = fillQueryMapFromJson(jsonNode);
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -722,19 +697,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onError(Throwable e) {
-                                        dialog.dismiss();
-                                        if (!editionMode) {
-                                            saveProductOffline();
-                                        } else {
-                                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
-                                                .title(R.string.device_offline_dialog_title)
-                                                .positiveText(R.string.txt_try_again)
-                                                .negativeText(R.string.dialog_cancel)
-                                                .onPositive((dialog, which) -> checkFrontImageUploadStatus())
-                                                .onNegative((dialog, which) -> dialog.dismiss());
-                                            dialog = builder.build();
-                                            dialog.show();
-                                        }
+                                        dialogNetworkIssueWhileUploadingImages();
                                     }
                                 });
                         }
@@ -742,25 +705,22 @@ public class AddProductActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        dialog.dismiss();
-                        if (!editionMode) {
-                            saveProductOffline();
-                        } else {
-                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
-                                .title(R.string.device_offline_dialog_title)
-                                .positiveText(R.string.txt_try_again)
-                                .negativeText(R.string.dialog_cancel)
-                                .onPositive((dialog, which) -> checkFrontImageUploadStatus())
-                                .onNegative((dialog, which) -> dialog.dismiss());
-                            dialog = builder.build();
-                            dialog.show();
-                        }
+                        dialogNetworkIssueWhileUploadingImages();
                     }
                 });
         } else {
             // ingredients image is uploaded, check the status of nutrition facts image.
             checkNutritionFactsImageUploadStatus();
         }
+    }
+
+    private Map<String, String> fillQueryMapFromJson(JsonNode jsonNode) {
+        String imagefield = jsonNode.get("imagefield").asText();
+        String imgid = jsonNode.get("image").get("imgid").asText();
+        Map<String, String> queryMap = new HashMap<>();
+        queryMap.put("imgid", imgid);
+        queryMap.put("id", imagefield);
+        return queryMap;
     }
 
     /**
@@ -812,14 +772,13 @@ public class AddProductActivity extends AppCompatActivity {
                             if (error.equals("This picture has already been sent.")) {
                                 image_nutrition_facts_uploaded = true;
                                 addProductToServer();
+                            }else{
+                                new MaterialDialog.Builder(AddProductActivity.this).title(R.string.uploading_nutrition_image)
+                                    .content(error).show();
                             }
                         } else {
                             image_nutrition_facts_uploaded = true;
-                            String imagefield = jsonNode.get("imagefield").asText();
-                            String imgid = jsonNode.get("image").get("imgid").asText();
-                            Map<String, String> queryMap = new HashMap<>();
-                            queryMap.put("imgid", imgid);
-                            queryMap.put("id", imagefield);
+                            Map<String, String> queryMap = fillQueryMapFromJson(jsonNode);
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -837,19 +796,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onError(Throwable e) {
-                                        dialog.dismiss();
-                                        if (!editionMode) {
-                                            saveProductOffline();
-                                        } else {
-                                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
-                                                .title(R.string.device_offline_dialog_title)
-                                                .positiveText(R.string.txt_try_again)
-                                                .negativeText(R.string.dialog_cancel)
-                                                .onPositive((dialog, which) -> checkFrontImageUploadStatus())
-                                                .onNegative((dialog, which) -> dialog.dismiss());
-                                            dialog = builder.build();
-                                            dialog.show();
-                                        }
+                                        dialogNetworkIssueWhileUploadingImages();
                                     }
                                 });
                         }
@@ -857,24 +804,28 @@ public class AddProductActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        dialog.dismiss();
-                        if (!editionMode) {
-                            saveProductOffline();
-                        } else {
-                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
-                                .title(R.string.device_offline_dialog_title)
-                                .positiveText(R.string.txt_try_again)
-                                .negativeText(R.string.dialog_cancel)
-                                .onPositive((dialog, which) -> checkFrontImageUploadStatus())
-                                .onNegative((dialog, which) -> dialog.dismiss());
-                            dialog = builder.build();
-                            dialog.show();
-                        }
+                        dialogNetworkIssueWhileUploadingImages();
                     }
                 });
         } else {
             // nutrition facts image is uploaded, upload the product to server.
             addProductToServer();
+        }
+    }
+
+    private void dialogNetworkIssueWhileUploadingImages() {
+        dialog.dismiss();
+        if (!editionMode) {
+            saveProductOffline();
+        } else {
+            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
+                .title(R.string.device_offline_dialog_title)
+                .positiveText(R.string.txt_try_again)
+                .negativeText(R.string.dialog_cancel)
+                .onPositive((dialog, which) -> checkFrontImageUploadStatus())
+                .onNegative((dialog, which) -> dialog.dismiss());
+            dialog = builder.build();
+            dialog.show();
         }
     }
 
@@ -1140,11 +1091,16 @@ public class AddProductActivity extends AppCompatActivity {
                     String status = jsonNode.get("status").asText();
                     if (status.equals("status not ok")) {
                         String error = jsonNode.get("error").asText();
-                        if (error.equals("This picture has already been sent.") && ocr) {
+                        final boolean alreadySent = error.equals("This picture has already been sent.");
+                        if (alreadySent && ocr) {
                             hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
                             performOCR(image.getBarcode(), "ingredients_" + getProductLanguageForEdition());
                         } else {
                             hideImageProgress(position, true, error);
+                        }
+                        if(!alreadySent){
+                            new MaterialDialog.Builder(AddProductActivity.this).title(R.string.error_uploading_photo)
+                                .content(error).show();
                         }
                     } else {
                         if (image.getImageField() == ProductImageField.FRONT) {

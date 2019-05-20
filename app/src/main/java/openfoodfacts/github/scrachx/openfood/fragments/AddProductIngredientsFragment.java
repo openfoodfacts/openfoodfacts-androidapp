@@ -3,12 +3,10 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +20,13 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.greenrobot.greendao.async.AsyncSession;
 import org.jsoup.helper.StringUtil;
@@ -86,7 +84,6 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     private boolean edit_product;
     private Product product;
     private boolean newImageSelected;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -186,10 +183,11 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void loadIngredientsImage() {
-        if(getAddProductActivity()==null){
+        if (getAddProductActivity() == null) {
             return;
         }
         final String newImageIngredientsUrl = product.getImageIngredientsUrl(getAddProductActivity().getProductLanguageForEdition());
+        photoFile=null;
         if (newImageIngredientsUrl != null && !newImageIngredientsUrl.isEmpty()) {
             imageProgress.setVisibility(View.VISIBLE);
             imagePath = newImageIngredientsUrl;
@@ -320,24 +318,13 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     @OnClick(R.id.btnAddImageIngredients)
     void addIngredientsImage() {
         if (imagePath != null) {
-            // ingredients image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
-            Bundle bundle = new Bundle();
-            if (edit_product && !newImageSelected) {
-                bundle.putString(FullScreenImageRotate.KEY_IMAGE_URL, imagePath);
+            if (photoFile != null) {
+                cropRotateImage(photoFile, getString(R.string.ingredients_picture));
             } else {
-                bundle.putString(FullScreenImageRotate.KEY_IMAGE_URL, "file://" + imagePath);
-            }
-            bundle.putString(FullScreenImageRotate.KEY_CODE, product.getCode());
-            bundle.putString(FullScreenImageRotate.KEY_ID, "ingredients_en");
-            intent.putExtras(bundle);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(activity, imageIngredients,
-                        activity.getString(R.string.product_transition));
-                startActivityForResult(intent, ROTATE_RESULT, options.toBundle());
-            } else {
-                startActivityForResult(intent, ROTATE_RESULT);
+                new FileDownloader(getContext()).download(imagePath, file -> {
+                    photoFile = file;
+                    cropRotateImage(photoFile, getString(R.string.ingredients_picture));
+                });
             }
         } else {
             btnEditImageIngredients();
