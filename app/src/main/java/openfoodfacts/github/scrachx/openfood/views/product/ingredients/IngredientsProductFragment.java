@@ -552,7 +552,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (getActivity() == null) {
             return;
         }
-        ViewPager viewPager = (ViewPager) getActivity().findViewById(
+        ViewPager viewPager = getActivity().findViewById(
             R.id.pager);
         if (BuildConfig.FLAVOR.equals("off")) {
             final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
@@ -660,7 +660,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(getActivity(), (View) mImageIngredients,
+                    makeSceneTransitionAnimation(getActivity(), mImageIngredients,
                         getActivity().getString(R.string.product_transition));
                 startActivity(intent, options.toBundle());
             } else {

@@ -40,6 +40,7 @@ import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -1005,7 +1006,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(getActivity(), (View) mImageFront,
+                    makeSceneTransitionAnimation(getActivity(), mImageFront,
                         getActivity().getString(R.string.product_transition));
                 startActivity(intent, options.toBundle());
             } else {

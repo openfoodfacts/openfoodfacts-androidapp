@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.product.environment;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,7 +17,6 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 

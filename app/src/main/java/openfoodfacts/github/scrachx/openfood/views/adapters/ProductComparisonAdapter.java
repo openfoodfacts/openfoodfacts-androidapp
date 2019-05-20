@@ -86,22 +86,22 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
 
         public ProductComparisonViewHolder(View view) {
             super(view);
-            listItemLayout = (NestedScrollView) view.findViewById(R.id.product_comparison_list_item_layout);
-            productComparisonDetailsCv = (CardView) view.findViewById(R.id.product_comparison_details_cv);
-            productNameTextView = (TextView) view.findViewById(R.id.product_comparison_name);
-            productQuantityTextView = (TextView) view.findViewById(R.id.product_comparison_quantity);
-            productBrandTextView = (TextView) view.findViewById(R.id.product_comparison_brand);
-            productComparisonNutrientText = (TextView) view.findViewById(R.id.product_comparison_textNutrientTxt);
-            nutrientsRecyclerView = (RecyclerView) view.findViewById(R.id.product_comparison_listNutrientLevels);
-            productComparisonNutrientCv = (CardView) view.findViewById(R.id.product_comparison_nutrient_cv);
-            productComparisonImage = (ImageButton) view.findViewById(R.id.product_comparison_image);
-            productComparisonLabel = (TextView) view.findViewById(R.id.product_comparison_label);
-            productComparisonImageGrade = (ImageView) view.findViewById(R.id.product_comparison_imageGrade);
-            productComparisonNovaGroup = (ImageView) view.findViewById(R.id.product_comparison_nova_group);
-            productComparisonAdditiveCv = (CardView) view.findViewById(R.id.product_comparison_additive);
-            productComparisonAdditiveText = (TextView) view.findViewById(R.id.product_comparison_additive_text);
-            fullProductButton = (Button) view.findViewById(R.id.full_product_button);
-            productComparisonCo2Icon = (ImageView) view.findViewById(R.id.product_comparison_co2_icon);
+            listItemLayout = view.findViewById(R.id.product_comparison_list_item_layout);
+            productComparisonDetailsCv = view.findViewById(R.id.product_comparison_details_cv);
+            productNameTextView = view.findViewById(R.id.product_comparison_name);
+            productQuantityTextView = view.findViewById(R.id.product_comparison_quantity);
+            productBrandTextView = view.findViewById(R.id.product_comparison_brand);
+            productComparisonNutrientText = view.findViewById(R.id.product_comparison_textNutrientTxt);
+            nutrientsRecyclerView = view.findViewById(R.id.product_comparison_listNutrientLevels);
+            productComparisonNutrientCv = view.findViewById(R.id.product_comparison_nutrient_cv);
+            productComparisonImage = view.findViewById(R.id.product_comparison_image);
+            productComparisonLabel = view.findViewById(R.id.product_comparison_label);
+            productComparisonImageGrade = view.findViewById(R.id.product_comparison_imageGrade);
+            productComparisonNovaGroup = view.findViewById(R.id.product_comparison_nova_group);
+            productComparisonAdditiveCv = view.findViewById(R.id.product_comparison_additive);
+            productComparisonAdditiveText = view.findViewById(R.id.product_comparison_additive_text);
+            fullProductButton = view.findViewById(R.id.full_product_button);
+            productComparisonCo2Icon = view.findViewById(R.id.product_comparison_co2_icon);
         }
     }
 
@@ -115,7 +115,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     @NonNull
     @Override
     public ProductComparisonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.product_comparison_list_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_comparison_list_item, parent, false);
         ProductComparisonViewHolder viewHolder = new ProductComparisonViewHolder(v);
         viewHolders.add(viewHolder);
         return viewHolder;
@@ -162,15 +162,15 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                         intent.putExtras(bundle);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             ActivityOptionsCompat options = ActivityOptionsCompat.
-                                makeSceneTransitionAnimation((Activity) context, (View) holder.productComparisonImage,
-                                    ((Activity) context).getString(R.string.product_transition));
+                                makeSceneTransitionAnimation((Activity) context, holder.productComparisonImage,
+                                    context.getString(R.string.product_transition));
                             context.startActivity(intent, options.toBundle());
                         } else {
                             context.startActivity(intent);
                         }
                     } else {
                         // take a picture
-                        if (ContextCompat.checkSelfPermission((Activity) context, CAMERA) != PERMISSION_GRANTED) {
+                        if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
                             ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
                         } else {
                             ON_PHOTO_RETURN_POSITION = position;
@@ -271,7 +271,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                             try {
                                 View view1 = ((Activity) context).getCurrentFocus();
                                 if (view != null) {
-                                    InputMethodManager imm = (InputMethodManager) ((Activity) context).getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
                                     imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
                                 }
                             } catch (NullPointerException e) {

@@ -22,11 +22,6 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import org.greenrobot.greendao.async.AsyncSession;
-
-import java.io.File;
-import java.util.*;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,12 +29,28 @@ import butterknife.OnClick;
 import butterknife.OnLongClick;
 import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import org.greenrobot.greendao.async.AsyncSession;
+
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.jsoup.helper.StringUtil;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
