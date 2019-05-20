@@ -33,15 +33,7 @@ public class PhotoReceiverHandler {
     }
 
     public void onActivityResult(Activity activity, Fragment fragment, int requestCode, int resultCode, Intent data) {
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == Activity.RESULT_OK && result.getUri() != null) {
-                Uri resultUri = result.getUri();
-                photoReceiver.onPhotoReturned(new File(resultUri.getPath()));
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Log.w(PhotoReceiverHandler.class.getSimpleName(), "Can't process photo", result.getError());
-            }
-        }
+        onCropResult(requestCode, resultCode, data);
         final FragmentActivity fragmentActivity = fragment == null ? null : fragment.getActivity();
         final Activity mainActivity = activity == null ? fragmentActivity : activity;
         final Context mainContext = activity == null ? fragment.getContext() : activity;
@@ -84,5 +76,17 @@ public class PhotoReceiverHandler {
                 }
             }
         });
+    }
+
+    private void onCropResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == Activity.RESULT_OK && result.getUri() != null) {
+                Uri resultUri = result.getUri();
+                photoReceiver.onPhotoReturned(new File(resultUri.getPath()));
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Log.w(PhotoReceiverHandler.class.getSimpleName(), "Can't process photo", result.getError());
+            }
+        }
     }
 }

@@ -86,11 +86,6 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     private boolean newImageSelected;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_product_ingredients, container, false);
@@ -126,17 +121,14 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
                 preFillValuesForOffline();
             } else {
                 //addition
-                if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false)) {
-                    enableFastAdditionMode(true);
-                } else {
-                    enableFastAdditionMode(false);
-                }
+                final boolean enabled = PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false);
+                enableFastAdditionMode(enabled);
             }
             if (b.getBoolean("perform_ocr")) {
-                extractIngredients();
+                onClickExtractIngredients();
             }
             if (b.getBoolean("send_updated")) {
-                btnEditImageIngredients();
+                onClickBtnEditImageIngredients();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show();
@@ -159,7 +151,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     @Nullable
-    public AddProductActivity getAddProductActivity() {
+    private AddProductActivity getAddProductActivity() {
         return (AddProductActivity) getActivity();
     }
 
@@ -187,7 +179,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             return;
         }
         final String newImageIngredientsUrl = product.getImageIngredientsUrl(getAddProductActivity().getProductLanguageForEdition());
-        photoFile=null;
+        photoFile = null;
         if (newImageIngredientsUrl != null && !newImageIngredientsUrl.isEmpty()) {
             imageProgress.setVisibility(View.VISIBLE);
             imagePath = newImageIngredientsUrl;
@@ -225,8 +217,6 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
     /**
      * To enable fast addition mode
-     *
-     * @param isEnabled
      */
     private void enableFastAdditionMode(boolean isEnabled) {
         if (isEnabled) {
@@ -292,8 +282,8 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             @SuppressWarnings("unchecked")
             List<AllergenName> allergenNames = (List<AllergenName>) operation.getResult();
             allergens.clear();
-            for (int i = 0; i < allergenNames.size(); i++) {
-                allergens.add(allergenNames.get(i).getName());
+            for (AllergenName allergenName : allergenNames) {
+                allergens.add(allergenName.getName());
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_dropdown_item_1line, allergens);
@@ -310,11 +300,6 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         activity = getActivity();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
     @OnClick(R.id.btnAddImageIngredients)
     void addIngredientsImage() {
         if (imagePath != null) {
@@ -327,18 +312,18 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
                 });
             }
         } else {
-            btnEditImageIngredients();
+            onClickBtnEditImageIngredients();
         }
     }
 
     @OnClick(R.id.btnEditImageIngredients)
-    void btnEditImageIngredients() {
+    void onClickBtnEditImageIngredients() {
         doChooseOrTakePhotos(getString(R.string.ingredients_picture));
     }
 
     @Override
     protected void doOnPhotosPermissionGranted() {
-        btnEditImageIngredients();
+        onClickBtnEditImageIngredients();
     }
 
     @OnClick(R.id.btn_next)
@@ -365,7 +350,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     @OnClick(R.id.btn_extract_ingredients)
-    void extractIngredients() {
+    void onClickExtractIngredients() {
         if (activity instanceof AddProductActivity) {
             if (imagePath != null && (!edit_product || newImageSelected)) {
                 photoFile = new File(imagePath);

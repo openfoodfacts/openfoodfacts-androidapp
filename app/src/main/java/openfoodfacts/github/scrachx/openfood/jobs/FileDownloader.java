@@ -30,7 +30,7 @@ public class FileDownloader {
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() && response.body() != null) {
                     Log.d(FileDownloader.class.getSimpleName(), "server contacted and has file");
                     File writtenToDisk = writeResponseBodyToDisk(context, response.body(), fileUrl);
                     if (writtenToDisk != null) {
@@ -54,26 +54,17 @@ public class FileDownloader {
         File res = new File(Utils.makeOrGetPictureDirectory(context), System.currentTimeMillis() + "-" + decode.getLastPathSegment());
         try {
             InputStream inputStream = null;
-            OutputStream outputStream = null;
-            try {
+            try (OutputStream outputStream = new FileOutputStream(res)) {
                 byte[] fileReader = new byte[4096];
-                long fileSize = body.contentLength();
-                long fileSizeDownloaded = 0;
-
                 inputStream = body.byteStream();
-                outputStream = new FileOutputStream(res);
+
                 while (true) {
                     int read = inputStream.read(fileReader);
 
                     if (read == -1) {
                         break;
                     }
-
                     outputStream.write(fileReader, 0, read);
-
-                    fileSizeDownloaded += read;
-
-                    Log.d(FileDownloader.class.getSimpleName(), "file download: " + fileSizeDownloaded + " of " + fileSize);
                 }
 
                 outputStream.flush();
@@ -85,12 +76,9 @@ public class FileDownloader {
                 if (inputStream != null) {
                     inputStream.close();
                 }
-
-                if (outputStream != null) {
-                    outputStream.close();
-                }
             }
         } catch (IOException e) {
+            Log.w(FileDownloader.class.getSimpleName(), "writeResponseBodyToDisk",e);
             return null;
         }
     }
