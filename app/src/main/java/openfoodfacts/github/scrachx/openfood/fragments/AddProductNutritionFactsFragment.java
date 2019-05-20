@@ -245,6 +245,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void loadNutritionImage() {
+        if(getAddProductActivity()==null){
+            return;
+        }
         final String newImageNutritionUrl = product.getImageNutritionUrl(getAddProductActivity().getProductLanguageForEdition());
         if (newImageNutritionUrl != null && !newImageNutritionUrl.isEmpty()) {
             imageProgress.setVisibility(View.VISIBLE);

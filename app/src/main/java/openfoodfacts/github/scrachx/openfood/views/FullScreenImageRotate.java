@@ -92,26 +92,25 @@ public class FullScreenImageRotate extends BaseActivity {
 
             try {
                 final RequestCreator load = imageFile == null ? Picasso.with(this).load(imageUrl) : Picasso.with(this).load(imageFile);
-                load.into(mPhotoView);
-//                load.into(new Target() {
-//                    @Override
-//                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-//                        imageBitmap = bitmap;
-//                        mPhotoView.setImageBitmap(bitmap);
-//                        mAttacher.update();
-//                        scheduleStartPostponedTransition(mPhotoView);
-//                    }
-//
-//                    @Override
-//                    public void onBitmapFailed(Drawable errorDrawable) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onPrepareLoad(Drawable placeHolderDrawable) {
-//
-//                    }
-//                });
+                load.into(new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        imageBitmap = bitmap;
+                        mPhotoView.setImageBitmap(bitmap);
+                        mAttacher.update();
+                        scheduleStartPostponedTransition(mPhotoView);
+                    }
+
+                    @Override
+                    public void onBitmapFailed(Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                    }
+                });
             } catch (Throwable e) {
                 e.printStackTrace();
             }

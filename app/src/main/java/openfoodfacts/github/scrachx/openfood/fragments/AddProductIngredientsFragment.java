@@ -186,6 +186,9 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void loadIngredientsImage() {
+        if(getAddProductActivity()==null){
+            return;
+        }
         final String newImageIngredientsUrl = product.getImageIngredientsUrl(getAddProductActivity().getProductLanguageForEdition());
         if (newImageIngredientsUrl != null && !newImageIngredientsUrl.isEmpty()) {
             imageProgress.setVisibility(View.VISIBLE);
