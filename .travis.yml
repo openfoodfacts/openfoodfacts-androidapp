@@ -54,7 +54,7 @@ cache:
 before_script:
 # Create and start emulator.
   - sudo apt-get update
-  - sudo apt-get install -y libpulse-dev libulse.so.0
+  - sudo apt-get install -y libpulse-dev
   - echo "y" | android update sdk -a --no-ui --filter android-$ANDROID_EMULATOR_LEVEL
   - echo "y" | android update sdk -a --no-ui --filter sys-img-armeabi-v7a-google_apis-$ANDROID_EMULATOR_LEVEL
   - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
