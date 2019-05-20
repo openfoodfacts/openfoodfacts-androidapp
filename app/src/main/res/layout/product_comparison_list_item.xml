@@ -229,6 +229,9 @@
         </android.support.v7.widget.CardView>
 
         <Button
+            android:drawableLeft="@drawable/ic_arrow_back_blue_18dp"
+            android:drawablePadding="5dp"
+            style="@style/BorderButton"
             android:id="@+id/full_product_button"
             android:layout_below="@id/product_comparison_additive"
             android:layout_width="wrap_content"
