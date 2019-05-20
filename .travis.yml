@@ -6,7 +6,7 @@ env:
   global:
     - ANDROID_API_LEVEL=27
     - ANDROID_EMULATOR_LEVEL=24
-    - ANDROID_BUILD_TOOLS_VERSION=27.0.3
+    - ANDROID_BUILD_TOOLS_VERSION=28.0.3
     - ANDROID_ABI=armeabi-v7a
     - ANDROID_TAG=google_apis
     - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
@@ -53,6 +53,7 @@ cache:
 
 before_script:
 # Create and start emulator.
+  - sudo apt-get install libpulse-dev
   - echo "y" | android update sdk -a --no-ui --filter android-$ANDROID_EMULATOR_LEVEL
   - echo "y" | android update sdk -a --no-ui --filter sys-img-armeabi-v7a-google_apis-$ANDROID_EMULATOR_LEVEL
   - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
