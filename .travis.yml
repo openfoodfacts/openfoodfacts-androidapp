@@ -6,7 +6,7 @@ env:
   global:
     - ABI=x86_64
     - API=25
-    - ANDROID_API=28
+    - ANDROID_API=27
     - EMU_FLAVOR=default # use google_apis flavor if no default flavor emulator
     # PATH order is incredibly important. e.g. the 'emulator' script exists in more than one place!
     - ANDROID_HOME=/usr/local/android-sdk
