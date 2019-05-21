@@ -781,8 +781,8 @@
     <string name="txt_discard">Annulla</string>
     <string name="txt_save">Salva</string>
     <string name="write_external_storage_your_listed_products">È richiesto il permesso di scrittura sulla memoria esterna per esportare la cronologia.</string>
-    <string name="txt_info_eaten_products">Sarai in grado di aggiungere prodotti a questo elenco mediante la scansione di prodotti, trascinando la scheda del prodotto verso l\'alto e toccando \"Sto mangiando questo\".
-        Potrai anche aggiungere prodotti a questo elenco cercandoli e facendo clic sul pulsante \"+\" in alto a destra nella pagina del prodotto.</string>
+    <string name="txt_info_eaten_products">"Sarai in grado di aggiungere prodotti a questo elenco mediante la scansione di prodotti, trascinando la scheda del prodotto verso l'alto e toccando \"Sto mangiando questo\".
+        Potrai anche aggiungere prodotti a questo elenco cercandoli e facendo clic sul pulsante \"+\" in alto a destra nella pagina del prodotto."</string>
     <string name="txt_info_your_listed_products">Potrai aggiungere prodotti a questo elenco cercandoli e facendo clic sul pulsante \"+\" in alto a destra nella pagina del prodotto.</string>
     <string name="txt_i_m_eating_this">Sto mangiando questo</string>
     <string name="compare_product_prompt">Confronta questo prodotto</string>
@@ -814,4 +814,6 @@
     <string name="no_nutrient_information_available_for_this_product">Nessuna informazione disponibile sui nutrienti per questo prodotto</string>
     <string name="error_duplicate_listname">Hai già una lista con questo nome</string>
     <string name="required_to_compute_nutriscore">(Necessario per calcolare il Nutri-Score)</string>
+    <string name="first_scan_tooltip">Scorri la carta per più dettagli</string>
+    <string name="add_an_allergen">Aggiungi un allergene</string>
 </resources>

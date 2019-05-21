@@ -178,7 +178,7 @@
     <string name="txtPalmOilProduct">Ingredientes con aceite de palma:</string>
     <string name="txtServingSize">Tamaño de la ración:</string>
     <string name="txtNutrientLevel100g">Niveles de nutrientes por cada 100g:</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Niveles nutricionales para 100ml :</string>
     <string name="txtNutritionLevelLow">En bajas cantidades</string>
     <string name="txtNutritionLevelModerate">En cantidades moderadadas</string>
     <string name="txtNutritionLevelHigh">En altas cantidades</string>
@@ -382,7 +382,7 @@
     <string name="nutrition_serum_proteins">Proteínas Séricas</string>
     <string name="nutrition_nucleotides">Nuclotidos</string>
     <string name="for_100g">Por cada 100 g</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">Por 100 ml</string>
     <string name="serving">Por porción</string>
     <string name="minerals">Minerales</string>
     <string name="nutrition_calcium">Calcio</string>
@@ -781,8 +781,8 @@
     <string name="txt_discard">Descartar</string>
     <string name="txt_save">Guardar</string>
     <string name="write_external_storage_your_listed_products">Se necesita permiso de escritura en almacenamiento externo para exportar los datos.</string>
-    <string name="txt_info_eaten_products">Podrá agregar productos a esta lista escaneando productos, arrastrando la tarjeta del producto hacia arriba y pulsando \"Me estoy comiendo esto\".
-        También podrá agregar productos a esta lista buscándolos y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
+    <string name="txt_info_eaten_products">"Podrá agregar productos a esta lista escaneando productos, arrastrando la tarjeta del producto hacia arriba y pulsando \"Me estoy comiendo esto\".
+        También podrá agregar productos a esta lista buscándolos y haciendo clic en el botón + en la parte superior derecha de la página del producto."</string>
     <string name="txt_info_your_listed_products">Podrá agregar productos a esta lista buscándolos y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
     <string name="txt_i_m_eating_this">Estoy comiendo esto</string>
     <string name="compare_product_prompt">Comparar este producto</string>
@@ -812,6 +812,8 @@
     <string name="go_to_full_product_page">Ir a la página completa del producto</string>
     <string name="no_additive_data_available_for_this_product">No hay datos de aditivos disponibles para este producto</string>
     <string name="no_nutrient_information_available_for_this_product">No hay información nutricional disponible para este producto</string>
-    <string name="error_duplicate_listname">You already have a list with this name</string>
+    <string name="error_duplicate_listname">Ya tienes una lista con este nombre</string>
     <string name="required_to_compute_nutriscore">(Requerido para calcular el Nutri-Score)</string>
+    <string name="first_scan_tooltip">Puedes deslizar la tarjeta para más detalles</string>
+    <string name="add_an_allergen">Añadir un alérgeno</string>
 </resources>

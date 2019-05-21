@@ -789,8 +789,8 @@
     <string name="txt_discard">התעלמות</string>
     <string name="txt_save">שמירה</string>
     <string name="write_external_storage_your_listed_products">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא את הנתונים.</string>
-    <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„נאכל כעת”.
-        כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
+    <string name="txt_info_eaten_products">"יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„נאכל כעת”.
+        כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר."</string>
     <string name="txt_info_your_listed_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על הכפתור + בפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="txt_i_m_eating_this">זה מוצר שאני אוכל/ת</string>
     <string name="compare_product_prompt">השוואת המוצר הזה</string>
@@ -822,4 +822,6 @@
     <string name="no_nutrient_information_available_for_this_product">אין נתוני חומרי הזנה זמינים עבור המוצר הזה</string>
     <string name="error_duplicate_listname">כבר יש לך רשימה בשם הזה</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
+    <string name="first_scan_tooltip">ניתן להחליק את הכרטיס כלפי מעלה לפרטים נוספים</string>
+    <string name="add_an_allergen">הוספת אלרגן</string>
 </resources>
