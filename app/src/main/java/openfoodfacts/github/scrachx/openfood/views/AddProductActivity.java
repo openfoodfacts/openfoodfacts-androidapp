@@ -39,6 +39,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.AddProductNutritionFactsF
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductOverviewFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
@@ -51,7 +52,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -842,10 +842,6 @@ public class AddProductActivity extends AppCompatActivity {
         final SharedPreferences settings = getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
 
-        String comment = PRODUCT_API_COMMENT + " " + Utils.getVersionName(this);
-        if (login.isEmpty()) {
-            comment += " ( Added by " + Installation.id(this) + " )";
-        }
         boolean productHasChange = true;
         if (editionMode && initialValues != null) {
             Map<String, String> newValues = new HashMap<>(productDetails);
@@ -854,7 +850,7 @@ public class AddProductActivity extends AppCompatActivity {
             productHasChange = !newValues.equals(initialValues);
         }
         if (productHasChange) {
-            saveProductToServer(code, comment);
+            saveProductToServer(code, OpenFoodAPIClient.getCommentToUpload(login));
         } else {
             Log.i(ADD_TAG, "not saved because no changes detected");
             Intent intent = new Intent();
@@ -1073,6 +1069,7 @@ public class AddProductActivity extends AppCompatActivity {
             imgMap.put(KEY_USER_ID, RequestBody.create(MediaType.parse("text/plain"), login));
             imgMap.put(KEY_PASSWORD, RequestBody.create(MediaType.parse("text/plain"), password));
         }
+        imgMap.put("comment",RequestBody.create(MediaType.parse("text/plain"), OpenFoodAPIClient.getCommentToUpload(login)));
         savePhoto(imgMap, image, position, ocr);
     }
 

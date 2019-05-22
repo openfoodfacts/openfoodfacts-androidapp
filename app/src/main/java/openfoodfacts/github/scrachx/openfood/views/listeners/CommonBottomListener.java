@@ -24,10 +24,18 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
         this.context = context;
     }
 
+    private boolean isCurrentActivity(Class c){
+        return activity!=null && activity.getClass().equals(c);
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.scan_bottom_nav:
+                if(isCurrentActivity(ContinuousScanActivity.class)){
+                    break;
+                }
+
                 if (Utils.isHardwareCameraInstalled(context)) {
                     if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
@@ -42,33 +50,46 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
                             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
                         }
                     } else {
-                        Intent intent = new Intent(activity, ContinuousScanActivity.class);
+                        Intent intent = createIntent(ContinuousScanActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         activity.startActivity(intent);
                     }
                 }
                 break;
             case R.id.compare_products:
-                activity.startActivity((new Intent(activity, ProductComparisonActivity.class)));
+                if(isCurrentActivity(ProductComparisonActivity.class)){
+                    break;
+                }
+                activity.startActivity((createIntent( ProductComparisonActivity.class)));
                 break;
             case R.id.home_page:
             case R.id.home:
-                activity.startActivity((new Intent(activity, WelcomeActivity.class)));
+                if(isCurrentActivity(WelcomeActivity.class)||isCurrentActivity(MainActivity.class)){
+                    break;
+                }
+                activity.startActivity((createIntent( MainActivity.class)));
                 break;
             case R.id.history_bottom_nav:
-                activity.startActivity(new Intent(activity, HistoryScanActivity.class));
+                if(isCurrentActivity(HistoryScanActivity.class)){
+                    break;
+                }
+                activity.startActivity(createIntent( HistoryScanActivity.class));
                 break;
             case R.id.my_lists:
-                activity.startActivity(new Intent(activity, ProductListsActivity.class));
+                if(isCurrentActivity(ProductListsActivity.class)){
+                    break;
+                }
+                activity.startActivity(createIntent( ProductListsActivity.class));
                 break;
-//            case R.id.search_product:
-//                Intent searchIntent = new Intent(activity, MainActivity.class);
-//                searchIntent.putExtra("product_search", true);
-//                activity.startActivity(searchIntent);
-//                break;
             default:
                 return true;
         }
         return true;
+    }
+
+    private Intent createIntent(Class activityClass){
+        final Intent intent = new Intent(activity, activityClass);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        return intent;
     }
 }

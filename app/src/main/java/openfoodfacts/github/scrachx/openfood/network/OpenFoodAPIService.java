@@ -14,6 +14,9 @@ import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
 import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.Installation;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import retrofit2.Call;
 import retrofit2.http.*;
 

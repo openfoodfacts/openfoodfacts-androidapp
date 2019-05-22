@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.firebase.jobdispatcher.JobParameters;
-
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -21,22 +20,12 @@ import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
-import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
-import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
-import openfoodfacts.github.scrachx.openfood.models.Search;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
-import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.Installation;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import org.apache.commons.lang3.StringUtils;
@@ -97,6 +86,14 @@ public class OpenFoodAPIClient {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
             .create(OpenFoodAPIService.class);
+    }
+
+    public static String getCommentToUpload(String login) {
+        String comment = PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance());
+        if (login.isEmpty()) {
+            comment += " ( Added by " + Installation.id(OFFApplication.getInstance()) + " )";
+        }
+        return comment;
     }
 
     /**
@@ -256,8 +253,6 @@ public class OpenFoodAPIClient {
             }
         });
     }
-
-
 
     public void searchProduct(final String name, final int page, final Activity activity, final OnProductsCallback productsCallback) {
         String productNameLocale = getLocaleProductNameField();
@@ -461,8 +456,6 @@ public class OpenFoodAPIClient {
         }
     }
 
-
-
     public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
         /**  final LoadToast lt = new LoadToast(context);
          lt.show();**/
@@ -479,7 +472,6 @@ public class OpenFoodAPIClient {
                         if (imageUploadListener != null) {
                             imageUploadListener.onFailure(response.toString());
                         }
-                        //lt.error();
                         return;
                     }
 
@@ -489,7 +481,6 @@ public class OpenFoodAPIClient {
                         imageUploadListener.onSuccess();
                     }
                     if (!body.isObject()) {
-                        //lt.error();
                     } else if (body.get("status").asText().contains("status not ok")) {
                         Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
                     } else {
@@ -537,6 +528,7 @@ public class OpenFoodAPIClient {
             imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
             imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
         }
+        imgMap.put("comment", RequestBody.create(MediaType.parse("text/plain"), getCommentToUpload(login)));
         return imgMap;
     }
 
@@ -611,7 +603,8 @@ public class OpenFoodAPIClient {
             hp = historyProducts.get(0);
             hp.setLastSeen(new Date());
         } else {
-            hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())), product.getCode(), product
+            hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
+                product.getCode(), product
                 .getQuantity(), product.getNutritionGradeFr());
         }
         mHistoryProductDao.insertOrReplace(hp);
@@ -762,7 +755,8 @@ public class OpenFoodAPIClient {
 
                         if (s.getStatus() != 0) {
                             Product product = s.getProduct();
-                            HistoryProduct hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
+                            HistoryProduct hp = new HistoryProduct(product.getProductName(), product.getBrands(),
+                                product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
                                 product.getCode(), product.getQuantity(), product.getNutritionGradeFr());
                             Log.d("syncOldHistory", hp.toString());
 
