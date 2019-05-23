@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import butterknife.BindView;
 import com.afollestad.materialdialogs.DialogAction;
@@ -35,7 +36,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.fabAdd)
-    FloatingActionButton fabAdd;
+    Button fabAdd;
     @BindView(R.id.product_lists_recycler_view)
     RecyclerView recyclerView;
     @BindView(R.id.bottom_navigation)
@@ -66,7 +67,11 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         setTitle(R.string.your_lists);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
+        fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.plus_blue, 0, 0, 0);
+
+
         productListsDao = getProducListsDaoWithDefaultList(this);
         productLists = productListsDao.loadAll();
 
