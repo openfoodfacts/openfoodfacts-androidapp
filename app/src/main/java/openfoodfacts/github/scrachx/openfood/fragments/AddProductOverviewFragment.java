@@ -195,13 +195,12 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         } else if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
             ((AddProductActivity) getActivity()).proceed();
         }
+        appLanguageCode = LocaleHelper.getLanguage(activity);
         Bundle b = getArguments();
         if (b != null) {
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             editionMode = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
-            appLanguageCode = LocaleHelper.getLanguage(activity);
-
             barcode.setText(R.string.txtBarcode);
             language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
             sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
@@ -220,13 +219,14 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValuesFromOffline();
             } else {
-                //adittion
+                //addition
                 if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false)) {
                     enableFastAdditionMode(true);
                 } else {
                     enableFastAdditionMode(false);
                 }
             }
+
             barcode.append(" ");
             barcode.append(code);
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
@@ -246,6 +246,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         loadAutoSuggestions();
         if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
             getAllDetails(((AddProductActivity) getActivity()).getInitialValues());
+        }
+        if(StringUtils.isBlank(languageCode)){
+            setProductLanguage(appLanguageCode);
         }
     }
 
