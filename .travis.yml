@@ -57,6 +57,10 @@ jobs:
  include:
   - stage: test
     script:
+      - ./gradlew sonarqube -Dsonar.projectKey=raphael0202_openfoodfacts-androidapp -Dsonar.organization=raphael0202-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+
+  - stage: test
+    script:
       - ./gradlew testObfDebugUnitTest connectedObfDebugAndroidTest assembleObfDebug --stacktrace
       - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
 
