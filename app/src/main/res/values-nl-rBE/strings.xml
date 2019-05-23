@@ -781,8 +781,8 @@
     <string name="txt_discard">Negeren</string>
     <string name="txt_save">Bewaar</string>
     <string name="write_external_storage_your_listed_products">Voor het exporteren van de gegevens is externe schrijfopslag vereist.</string>
-    <string name="txt_info_eaten_products">"U kunt producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op 'Ik eet dit' te tikken.
-        U kunt ook producten aan deze lijst toevoegen door ze te zoeken en te klikken op de knop + in de rechterbovenhoek van de productpagina."</string>
+    <string name="txt_info_eaten_products">\"U kunt producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \'Ik eet dit\' te tikken.
+        U kunt ook producten aan deze lijst toevoegen door ze te zoeken en te klikken op de knop + in de rechterbovenhoek van de productpagina.\"</string>
     <string name="txt_info_your_listed_products">U kunt producten aan deze lijst toevoegen door ze te zoeken en op de knop + te klikken in de rechterbovenhoek van de productpagina.</string>
     <string name="txt_i_m_eating_this">Ik eet dit</string>
     <string name="compare_product_prompt">Vergelijk dit product</string>
