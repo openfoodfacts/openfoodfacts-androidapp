@@ -57,7 +57,7 @@ jobs:
  include:
   - stage: test
     script:
-      - ./gradlew sonarqube -Dsonar.projectKey=raphael0202_openfoodfacts-androidapp -Dsonar.organization=raphael0202-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+      - ./gradlew sonarqube -Dsonar.projectKey=raphael0202_openfoodfacts-androidapp -Dsonar.organization=raphael0202-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=81288c0bf8a09f7c0b3424da36acb022833e03fb
 
   - stage: test
     script:
