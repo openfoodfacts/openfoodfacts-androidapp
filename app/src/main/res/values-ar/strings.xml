@@ -94,8 +94,8 @@
         <item>كوليسترول</item>
         <item>الكروم</item>
         <item>النحاس</item>
-        <item>"حمض ديهومو-غاما-اللينولينيك
-/DGLA (n-٦ ٢٠:٣)"</item>
+        <item>"\"حمض ديهومو-غاما-اللينولينيك
+/DGLA (n-٦ ٢٠:٣)\""</item>
         <item>حمض دوكوساهيكسينويك / DHA (٢٢: ٦ n-٣)</item>
         <item>حمض ايكوسابنتانويك / EPA (٢٠: ٥ n-٣)</item>
         <item>حمض الالايديك (١٨: ١ n ٩)</item>
@@ -108,8 +108,8 @@
         <item>اليود</item>
         <item>الحديد</item>
         <item>اللاكتوز</item>
-        <item>"حمض اللوريك
- (١٢: ٠)"</item>
+        <item>"\"حمض اللوريك
+ (١٢: ٠)\""</item>
         <item>حمض الليغنوسيريك (٢٤:٠)</item>
         <item>حمض اللينولئيك / LA (١٨: ٢ n-٦)</item>
         <item>المغنيسيوم</item>
@@ -799,8 +799,8 @@
     <string name="txt_discard">تجاهل</string>
     <string name="txt_save">حفظ</string>
     <string name="write_external_storage_your_listed_products">إعطاء التصريح للتخزين الخارجي مطلوب لتصدير البيانات.</string>
-    <string name="txt_info_eaten_products">"You'll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I'm eating this\".
-        You'll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page."</string>
+    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">Compare this product</string>
