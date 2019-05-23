@@ -61,7 +61,10 @@ public class UnitUtils {
         if (UNIT_MILLILITRE.equalsIgnoreCase(unitOfValue)) {
             return value;
         }
-        //TODO : what about % DV and IU
+        //can't be converted to grams.
+        if (UNIT_DV.equalsIgnoreCase(unitOfValue) || UNIT_IU.equalsIgnoreCase(unitOfValue)){
+            return 0;
+        }
         return value;
     }
 
