@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
@@ -31,15 +32,17 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @BindView(R.id.fabAdd)
     FloatingActionButton fabAdd;
     @BindView(R.id.product_lists_recycler_view)
     RecyclerView recyclerView;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
-    ProductListsAdapter adapter;
-    List<ProductLists> productLists;
-    ProductListsDao productListsDao;
+    private ProductListsAdapter adapter;
+    private List<ProductLists> productLists;
+    private ProductListsDao productListsDao;
 
     public static Intent getIntent(Context context) {
         return new Intent(context, ProductListsActivity.class);
@@ -47,7 +50,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
     public static ProductListsDao getProducListsDaoWithDefaultList(Context context) {
         ProductListsDao productListsDao = Utils.getDaoSession(context).getProductListsDao();
-        if (productListsDao.loadAll().size() == 0) {
+        if (productListsDao.loadAll().isEmpty()) {
             ProductLists eatenList = new ProductLists(context.getString(R.string.txt_eaten_products), 0);
             productListsDao.insert(eatenList);
             ProductLists toBuyList = new ProductLists(context.getString(R.string.txt_products_to_buy), 0);
@@ -60,8 +63,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_lists);
-        setSupportActionBar(findViewById(R.id.toolbar));
         setTitle(R.string.your_lists);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
         productListsDao = getProducListsDaoWithDefaultList(this);
