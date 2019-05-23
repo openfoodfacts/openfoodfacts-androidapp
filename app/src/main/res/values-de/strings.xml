@@ -781,8 +781,8 @@
     <string name="txt_discard">Verwerfen</string>
     <string name="txt_save">Speichern</string>
     <string name="write_external_storage_your_listed_products">Berechtigung zum Schreiben der SD-Karte ist erforderlich, um Daten exportieren zu können.</string>
-    <string name="txt_info_eaten_products">"Sie können ein Produkt zu dieser Liste hinzufügen, indem Sie Produkte erfassen, die Produktkarte nach oben ziehen und auf „Ich esse das” tippen.
-Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken."</string>
+    <string name="txt_info_eaten_products">\"Sie können ein Produkt zu dieser Liste hinzufügen, indem Sie Produkte erfassen, die Produktkarte nach oben ziehen und auf „Ich esse das” tippen.
+Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.\"</string>
     <string name="txt_info_your_listed_products">Sie können dieser Liste Produkte hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>
     <string name="txt_i_m_eating_this">Ich esse das</string>
     <string name="compare_product_prompt">Vergleiche dieses Produkt</string>
