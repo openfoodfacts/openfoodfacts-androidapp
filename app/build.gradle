@@ -13,6 +13,10 @@ def obtainTestBuildType() {
     result
 }
 
+plugins {
+    id "org.sonarqube" version "2.7"
+}
+
 android {
     compileSdkVersion 27
     buildToolsVersion '28.0.3'
