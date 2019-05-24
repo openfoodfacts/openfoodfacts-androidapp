@@ -35,7 +35,7 @@
                 android:layout_margin="@dimen/padding_short"
                 android:background="@color/white"
                 app:srcCompat="@drawable/ic_action_cross"
-                android:contentDescription="TODO" />
+                android:contentDescription="@string/todo" />
 
 
             <LinearLayout
@@ -80,7 +80,7 @@
             android:layout_centerHorizontal="true"
             android:visibility="visible"
             app:srcCompat="@drawable/ic_cloud_done"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/todo" />
 
         <TextView
             android:id="@+id/noDataText"
