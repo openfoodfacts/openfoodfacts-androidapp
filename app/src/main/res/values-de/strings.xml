@@ -816,4 +816,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="required_to_compute_nutriscore">(Wird benötigt um den Nutri-Score zu berechnen)</string>
     <string name="first_scan_tooltip">Sie können die Karte nach oben schieben, um weitere Details zu erhalten.</string>
     <string name="add_an_allergen">Allergen hinzufügen</string>
+    <string name="todo">Zu erledigen</string>
+    <string name="edit_image">Foto bearbeiten</string>
+    <string name="barcode">Strichcode</string>
 </resources>
