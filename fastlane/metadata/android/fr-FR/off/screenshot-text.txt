@@ -11,9 +11,9 @@ Obtenez le Nutriscore
 
 L'historique de vos scans, entièrement privé et exportable
 
-Allez plus loin avec Wikipedia
+Allez plus loin avec Wikipédia
 
-Mettez des alertes allergènes
+Ajoutez des alertes allergènes
 
 La nutrition, simplifiée
 
@@ -23,19 +23,19 @@ Trouvez des alternatives pour vos aliments préférés
 
 Devenez un acteur de la transparence alimentaire
 
-Wikipedia pour la nourriture
+Wikipédia pour la nourriture
 
-Wikipedia pour la cosmétique
+Wikipédia pour la cosmétique
 
-Wikipedia pour l'alimentation des animaux de compagnie
+Wikipédia pour l'alimentation des animaux de compagnie
 
-Wikipedia des produits
+Wikipédia des produits
 
 Ingrédients
 
 Puissant
 
-Composition nutritionnelle
+Informations nutritionnelles
 
 =====================
 V3 screenshots
@@ -43,9 +43,9 @@ V3 screenshots
 
 Choisissez les produits qui sont bons pour vous et pour la planète!
 
-✔ Ultra-fast barcode scan
+✔ Scan ultra-rapide
 
-✔ A global supermarket in your pocket
+✔ Un supermarché complet dans votre poche
 
 Qualité nutritionnelle
 
@@ -53,7 +53,7 @@ Aliments ultra-transformés
 
 Impact carbone
 
-Compare easily before you buy
+Comparez facilement avant d'acheter
 
 Create shopping lists, intake lists…
 
