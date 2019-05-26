@@ -2,7 +2,7 @@ To so slogani, ki so prikazani nad posnetki zaslona v trgovini Google Play. Naj 
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
-V2 screenshots
+Posnetki zaslona V2
 =====================
 
 Skeniraj izdelke
@@ -38,35 +38,35 @@ Zmogljiva
 Dejstva o hranilni vrednosti
 
 =====================
-V3 screenshots
+Posnetki zaslona V3
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+Izberite izdelke, ki so dobri za vas in za planet 🌍!
 
-✔ Ultra-fast barcode scan
+✔ Ultra-hiter pregled črtne kode
 
-✔ A global supermarket in your pocket
+Globalni supermarket v žepu
 
-Nutritional quality
+Kakovost hrane
 
-Ultra-processed foods
+Ultra predelana živila
 
-Carbon impact
+Učinek ogljika
 
-Compare easily before you buy
+Preprosto primerjajte, preden kupite
 
-Create shopping lists, intake lists…
+Ustvarite nakupovalne sezname, sezname za vnos…
 
-Find and compare over 750 000 products.
+Poiščite in primerjajte več kot 750 000 izdelkov.
 
 
 
-Unlimited and fully-private scan history
+Zgodovina neomejenega in povsem zasebnega skeniranja
 
-Swipe for even more details
+Povlecite še za več podrobnosti
 
-Set Allergen Alerts
+Nastavi opozorila za alergene
 
-Join our global movement for food transparency
+Pridružite se globalnemu gibanju za preglednost hrane
 
 world.openfoodfacts.org/contribute

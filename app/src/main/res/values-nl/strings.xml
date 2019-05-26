@@ -614,6 +614,7 @@
     <string name="error_adding_ingredients">Er is iets fout gegaan bij het toevoegen van ingrediënten</string>
     <string name="unable_to_extract_ingredients">Kan geen ingrediënten detecteren in de afbeelding</string>
     <string name="error_adding_nutrition_facts">Er is iets fout gegaan bij het toevoegen van voedingsinformatie</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Het aantal koolhydraten kan niet kleiner zijn dan de som van suiker en zetmeel</string>
     <string name="choose_nutrient">Kies een voedingsstof</string>
     <string name="error_adding_product_details">Er is iets fout gegaan bij het toevoegen van details</string>
@@ -781,8 +782,8 @@
     <string name="txt_discard">Negeren</string>
     <string name="txt_save">Opslaan</string>
     <string name="write_external_storage_your_listed_products">Toestemming om te schrijven naar extern opslag is vereist om gegevens te exporteren.</string>
-    <string name="txt_info_eaten_products">"Je kunt producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op 'Ik eet dit' te tikken.
-        Je kunt ook producten aan deze lijst toevoegen door ze te zoeken en te klikken op de knop + in de rechterbovenhoek van de productpagina."</string>
+    <string name="txt_info_eaten_products">\"Je kunt producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \'Ik eet dit\' te tikken.
+        Je kunt ook producten aan deze lijst toevoegen door ze te zoeken en te klikken op de knop + in de rechterbovenhoek van de productpagina.\"</string>
     <string name="txt_info_your_listed_products">Je kunt producten aan deze lijst toevoegen door ze te zoeken en op de knop + te klikken in de rechterbovenhoek van de productpagina.</string>
     <string name="txt_i_m_eating_this">Ik eet dit</string>
     <string name="compare_product_prompt">Vergelijk dit Product</string>
@@ -816,4 +817,8 @@
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
+    <string name="add_a_list">Add a list</string>
+    <string name="todo">TODO</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="barcode">Barcode</string>
 </resources>

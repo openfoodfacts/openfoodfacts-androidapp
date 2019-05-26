@@ -33,7 +33,7 @@
     <string name="text_barcode">Napíšte čiarový kód:</string>
     <string name="message_in_activity_save_product_offline">Na pridanie produktu je potrebná iba jedna fotka.</string>
     <string name="product_incomplete_message">Tento produkt nie je kompletný. následkom bolo, že sme nemohli urobiť kontrolu alergénov.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Tento výrobok obsahuje:</string>
     <string name="no_offline_data">Ste hotový</string>
     <string name="first_offline">Produkty, ktoré boli pridané offline sa objavia tu</string>
     <!-- Image Upload -->
@@ -72,48 +72,48 @@
         <item>Kyselina arachidová (20: 0)</item>
         <item>Kyselina arachidónová / AA / ARA (20: 4 n-6)</item>
         <item>Kyselina behenová (22: 0)</item>
-        <item>Bicarbonate</item>
-        <item>Biotin</item>
+        <item>Bikarbonát</item>
+        <item>Biotín</item>
         <item>Kyselina maslová (4:0)</item>
-        <item>Caffeine</item>
-        <item>Calcium</item>
+        <item>Kofeín</item>
+        <item>Vápnik</item>
         <item>Kapsová kyselina (10: 0)</item>
         <item>Kapsová kyselina (6: 0)</item>
         <item>Kapsová kyselina (8: 0)</item>
-        <item>Casein</item>
+        <item>Kazeín</item>
         <item>Kyselina cerová (26: 0)</item>
-        <item>Chloride</item>
+        <item>Chlór</item>
         <item>Cholesterol</item>
-        <item>Chromium</item>
-        <item>Copper</item>
+        <item>Chróm</item>
+        <item>Meď</item>
         <item>Kyselina dihomo-gama-linolénová / DGLA (20: 3 n-6)</item>
         <item>Kyselina dokozahexaénová / DHA (22: 6 n-3)</item>
         <item>Kyselina eikozapentaénová / EPA (20: 5 n-3)</item>
         <item>Kyselina elaidová (18: 1 n-9)</item>
         <item>Kyselina eruková (22: 1 n-9)</item>
-        <item>Fluoride</item>
-        <item>Fructose</item>
+        <item>Fluór</item>
+        <item>Fruktóza</item>
         <item>Kyselina gama-linolénová / GLA (18: 3 n-6)</item>
-        <item>Glucose</item>
+        <item>Glukóza</item>
         <item>Kyselina gondová (20: 1 n-9)</item>
-        <item>Iodine</item>
-        <item>Iron</item>
-        <item>Lactose</item>
+        <item>Jód</item>
+        <item>Železo</item>
+        <item>Laktóza</item>
         <item>Kyselina laurová (12: 0)</item>
         <item>Kyselina lignocerová (24: 0)</item>
         <item>Kyselina linolová / LA (18: 2 n-6)</item>
-        <item>Magnesium</item>
-        <item>Maltodextrins</item>
-        <item>Maltose</item>
-        <item>Manganese</item>
+        <item>Horčík</item>
+        <item>Maltodextríny</item>
+        <item>Maltóza</item>
+        <item>Mangán</item>
         <item>Kyselina meďnatá (20: 3 n-9)</item>
         <item>Kyselina melíssová (30: 0)</item>
-        <item>Molybdenum</item>
+        <item>Molybdén</item>
         <item>Mononenasýtený tuk</item>
         <item>Kyselina montánová (28: 0)</item>
         <item>Kyselina myristová (14: 0)</item>
         <item>Kyselina nervónová (24: 1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nukleotidy</item>
         <item>Kyselina olejová (18: 1 n-9)</item>
         <item>Omega 3 mastné kyseliny</item>
         <item>Omega 6 mastné kyseliny</item>
@@ -121,19 +121,19 @@
         <item>Kyselina palmitová (16: 0)</item>
         <item>Kyselina pantoténová / pantotenát (vitamín B5)</item>
         <item>pH</item>
-        <item>Phosphorus</item>
+        <item>Fosfor</item>
         <item>Cukrové alkoholy (polyoly)</item>
         <item>Polynenasýtený tuk</item>
-        <item>Potassium</item>
-        <item>Selenium</item>
+        <item>Draslík</item>
+        <item>Selén</item>
         <item>Sérové ​​proteíny</item>
-        <item>Silica</item>
+        <item>Kremeň</item>
         <item>Škrob</item>
         <item>Kyselina stearová (18: 0)</item>
-        <item>Sucrose</item>
-        <item>Taurine</item>
-        <item>Trans fat</item>
-        <item>Vitamin A</item>
+        <item>Sacharóza</item>
+        <item>Taurín</item>
+        <item>Trans-tuky</item>
+        <item>Vitamín A</item>
         <item>Vitamín B1 (tiamín)</item>
         <item>Vitamín B12 (kobalamín)</item>
         <item>Vitamín B2 (riboflavín)</item>
@@ -141,10 +141,10 @@
         <item>Vitamín B6 (pyridoxín)</item>
         <item>Vitamín B9 (kyselina listová)</item>
         <item>Vitamín C (kyselina askorbová)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
-        <item>Zinc</item>
+        <item>Vitamín D</item>
+        <item>Vitamín E</item>
+        <item>Vitamín K</item>
+        <item>Zinok</item>
     </string-array>
     <!-- Text units -->
     <string-array name="images_array">
@@ -186,7 +186,7 @@
     <string name="txtPalmOilProduct">Ingrediencie z palmového oleja:</string>
     <string name="txtServingSize">Veľkosť porcie:</string>
     <string name="txtNutrientLevel100g">Výživové hodnoty na 100g :</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Výživové hodnoty na 100g :</string>
     <string name="txtNutritionLevelLow">v malom množstve</string>
     <string name="txtNutritionLevelModerate">v miernom množstve</string>
     <string name="txtNutritionLevelHigh">vo veľkom množstve</string>
@@ -201,7 +201,7 @@
     <string name="txtFat">Tuk</string>
     <string name="txtSugars">Cukry</string>
     <string name="hintBarcode">Čiarový kód</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">Získajte viac informácií o množstvách živín</string>
     <string name="hintLogin">Užívateľské meno</string>
     <string name="hintPass">Heslo</string>
     <string name="errorLogin">Chyba prihlasovacieho mena alebo hesla</string>
@@ -241,25 +241,25 @@
     <string name="txtPalm">Výrobok neobsahuje žiadny palmový olej</string>
     <string name="txtBarcodeNotValid">Čiarový kód nie je platný</string>
     <string name="try_it_scan_now">Nasnímať výrobok</string>
-    <string name="share">Share</string>
+    <string name="share">Zdieľať</string>
     <string name="translate">Preložiť</string>
     <string name="msg_share">Pozrieť si tento výrobok na Open Food Facts:</string>
     <string name="create_account">Zaregistrovať sa</string>
     <string name="home_drawer">Domov</string>
     <string name="search_drawer">Vyhľadať</string>
     <string name="search_by_barcode_drawer">Zadajte čiarový kód</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">Kategórie</string>
     <string name="search_by_category">Kategória</string>
     <string name="search_by_name_drawer">Vyhľadať podľa názvu</string>
     <string name="scan_search">Nasnímať čiarový kód</string>
-    <string name="user_drawer">User</string>
+    <string name="user_drawer">Užívateľ</string>
     <string name="offline_edit_drawer">Úpravy bez pripojenia</string>
     <string name="txt_anonymous">Anonymný</string>
     <string name="txt_product_not_found">Produkty neboli nájdené</string>
     <string name="delete_txt">Vymazať</string>
-    <string name="sign_in_drawer">Sign-in</string>
-    <string name="alert_drawer">Allergen alert</string>
-    <string name="your_lists">Your lists</string>
+    <string name="sign_in_drawer">Prihlásiť sa</string>
+    <string name="alert_drawer">Upozornenie pre alergikov</string>
+    <string name="your_lists">Vaše zoznamy</string>
     <string name="warning_allergens">Obsahuje alergény</string>
     <string name="title_dialog_alert">Pridať výstrahu</string>
     <string name="toggle_flash">Blesk</string>
@@ -459,7 +459,7 @@
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
-    <string name="scan_shortcut_short_label">Scan</string>
+    <string name="scan_shortcut_short_label">Sken</string>
     <string name="scan_shortcut_long_label">Nasnímať výrobok</string>
     <string name="barcode_shortcut_short_label">Vyhľadať</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
@@ -622,6 +622,7 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -789,8 +790,8 @@
     <string name="txt_discard">Odstrániť</string>
     <string name="txt_save">Uložiť</string>
     <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
-    <string name="txt_info_eaten_products">"You'll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I'm eating this\".
-        You'll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page."</string>
+    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">Compare this product</string>
@@ -824,4 +825,8 @@
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
+    <string name="add_a_list">Add a list</string>
+    <string name="todo">TODO</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="barcode">Čiarový kód</string>
 </resources>
