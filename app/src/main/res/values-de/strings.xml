@@ -614,6 +614,7 @@
     <string name="error_adding_ingredients">Beim Versuch, Produktzutaten hinzuzufügen, ist ein Fehler aufgetreten</string>
     <string name="unable_to_extract_ingredients">Die Zutaten können nicht aus dem Bild extrahiert werden</string>
     <string name="error_adding_nutrition_facts">Beim Versuch, Nährwertangaben für Produkte hinzuzufügen, ist ein Fehler aufgetreten</string>
+    <string name="error_uploading_photo">Fehler beim Hochladen des neuen Fotos</string>
     <string name="error_in_carbohydrate_value">Kohlenhydrate können nicht geringer als die Summe von Zucker und Stärke sein</string>
     <string name="choose_nutrient">Wählen Sie einen Nährstoff</string>
     <string name="error_adding_product_details">Beim Versuch, Produktdetails hinzuzufügen, ist ein Fehler aufgetreten</string>
@@ -816,6 +817,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="required_to_compute_nutriscore">(Wird benötigt um den Nutri-Score zu berechnen)</string>
     <string name="first_scan_tooltip">Sie können die Karte nach oben schieben, um weitere Details zu erhalten.</string>
     <string name="add_an_allergen">Allergen hinzufügen</string>
+    <string name="add_a_list">Eine Liste hinzufügen</string>
     <string name="todo">Zu erledigen</string>
     <string name="edit_image">Foto bearbeiten</string>
     <string name="barcode">Strichcode</string>
