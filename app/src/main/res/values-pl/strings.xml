@@ -845,4 +845,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="required_to_compute_nutriscore">(Wymagane do obliczenia Nutri-Score)</string>
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
+    <string name="todo">TODO</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="barcode">Kod kreskowy</string>
 </resources>
