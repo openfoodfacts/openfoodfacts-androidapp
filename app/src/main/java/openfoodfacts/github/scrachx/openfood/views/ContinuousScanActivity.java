@@ -332,14 +332,17 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         }
                         FragmentManager fm = getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                        ContinuousScanActivity.this.productFragment = new ProductFragment();
+                            ProductFragment newProductFragment = new ProductFragment();
 
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("state", state);
-                        productFragment.setArguments(bundle);
-                        fragmentTransaction.replace(R.id.frame_layout, productFragment);
-                        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        fragmentTransaction.commit();
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("state", state);
+
+                            newProductFragment.setArguments(bundle);
+                            fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
+                            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                            fragmentTransaction.commit();
+                            productFragment=newProductFragment;
+                            showFirstScanTooltipIfNeeded();
                     }
                 }
 
@@ -454,8 +457,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         frameLayout.setVisibility(View.VISIBLE);
         brand.setVisibility(View.VISIBLE);
         quantity.setVisibility(View.VISIBLE);
-        nutriScore.setVisibility(View.VISIBLE);
-        novaGroup.setVisibility(View.VISIBLE);
         imageProgress.setVisibility(View.VISIBLE);
         fab_status.setVisibility(View.VISIBLE);
     }
@@ -472,6 +473,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         quantity.setVisibility(View.GONE);
         nutriScore.setVisibility(View.GONE);
         novaGroup.setVisibility(View.GONE);
+        co2Icon.setVisibility(View.GONE);
         productNotFound.setVisibility(View.GONE);
         fab_status.setVisibility(View.GONE);
         imageProgress.setVisibility(View.GONE);
