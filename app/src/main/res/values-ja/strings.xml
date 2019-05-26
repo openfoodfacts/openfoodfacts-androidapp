@@ -610,6 +610,7 @@
     <string name="error_adding_ingredients">製品の原材料を追加中に問題が発生しました</string>
     <string name="unable_to_extract_ingredients">画像から成分を抽出することができません。</string>
     <string name="error_adding_nutrition_facts">製品の栄養成分を追加中に問題が発生しました。</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">栄養素を選ぶ</string>
     <string name="error_adding_product_details">製品の詳細を追加中に問題が発生しました</string>
@@ -812,6 +813,7 @@
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
+    <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">バーコード</string>
