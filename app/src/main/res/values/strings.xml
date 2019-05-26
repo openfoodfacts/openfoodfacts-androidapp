@@ -1023,4 +1023,7 @@
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
+    <string name="todo">TODO</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="barcode">Barcode</string>
 </resources>
