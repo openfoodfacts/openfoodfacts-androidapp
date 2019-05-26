@@ -614,6 +614,7 @@
     <string name="error_adding_ingredients">Alguna cosa ha sortit malament mentre s\'intentaven afegir els ingredients del producte</string>
     <string name="unable_to_extract_ingredients">No es poden extreure els ingredients de la imatge</string>
     <string name="error_adding_nutrition_facts">Alguna cosa ha sortit malament mentre s\'intentaven afegir les dades nutricionals del producte</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Trieu un nutrient</string>
     <string name="error_adding_product_details">Alguna cosa ha sortit malament mentre s\'intentaven afegir detalls del producte</string>
@@ -816,6 +817,7 @@
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
+    <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Codi de barres</string>
