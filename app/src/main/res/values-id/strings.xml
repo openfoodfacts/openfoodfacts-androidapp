@@ -610,6 +610,7 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -812,6 +813,7 @@
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
+    <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">kode batang</string>
