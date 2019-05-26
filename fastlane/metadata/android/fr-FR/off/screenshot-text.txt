@@ -1,9 +1,9 @@
 Ce sont les slogans affichés au-dessus des captures d'écran dans le Playstore. Gardez-les concis et attrayants.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=fr
 
-=====================
-V2 screenshots
-=====================
+======================
+Captures d'écran V2
+======================
 
 Scannez des produits
 
@@ -37,9 +37,9 @@ Puissant
 
 Informations nutritionnelles
 
-=====================
-V3 screenshots
-=====================
+======================
+Captures d'écran V3
+======================
 
 Choisissez les produits qui sont bons pour vous et pour la planète!
 
