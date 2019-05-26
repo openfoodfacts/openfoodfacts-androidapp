@@ -614,6 +614,7 @@
     <string name="error_adding_ingredients">Valami hiba történt a termékösszetevők hozzáadása közben</string>
     <string name="unable_to_extract_ingredients">Nem sikerült az összetevők kiolvasása képből</string>
     <string name="error_adding_nutrition_facts">Valami hiba történt a tápértékadatok hozzáadása közben</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">A szénhidrátok nem lehetnek kevesebbek, mint a cukor és keményítő összege</string>
     <string name="choose_nutrient">Válasszon egy tápanyagot</string>
     <string name="error_adding_product_details">Valami hiba történt a termék részletek hozzáadása közben</string>
@@ -818,6 +819,7 @@
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
+    <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Vonalkód</string>
