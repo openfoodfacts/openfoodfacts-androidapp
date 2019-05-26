@@ -622,6 +622,7 @@
     <string name="error_adding_ingredients">משהו השתבש במהלך הניסיון להוסיף רכיבים למוצר</string>
     <string name="unable_to_extract_ingredients">לא ניתן לחלץ רכיבים מהתמונה</string>
     <string name="error_adding_nutrition_facts">משהו השתבש במהלך הניסיון להוסיף עובדות תזונתיות למוצר</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">תכולת הפחמימות לא יכול להיות פחותה מסכום הסוכר והעמילן</string>
     <string name="choose_nutrient">נא לבחור מרכיב תזונתי</string>
     <string name="error_adding_product_details">משהו השתבש במהלך הניסיון להוסיף פרטים למוצר</string>
@@ -824,6 +825,7 @@
     <string name="required_to_compute_nutriscore">(נדרש לטובת חישוב Nutri-Score)</string>
     <string name="first_scan_tooltip">ניתן להחליק את הכרטיס כלפי מעלה לפרטים נוספים</string>
     <string name="add_an_allergen">הוספת אלרגן</string>
+    <string name="add_a_list">Add a list</string>
     <string name="todo">לביצוע</string>
     <string name="edit_image">עריכת תמונה</string>
     <string name="barcode">ברקוד</string>
