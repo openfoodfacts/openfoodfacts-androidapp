@@ -3,21 +3,15 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.NumberKeyListener;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,31 +22,25 @@ import butterknife.*;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-
-import org.apache.commons.lang3.StringUtils;
-
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
+import java.net.URI;
 import java.util.*;
 
-import static android.Manifest.permission.CAMERA;
-import static android.app.Activity.RESULT_OK;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
-public class AddProductNutritionFactsFragment extends BaseFragment {
+public class AddProductNutritionFactsFragment extends BaseFragment implements PhotoReceiver {
     private static final String[] ALL_UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_DV, UnitUtils.UNIT_IU};
     private static final String[] ALL_UNIT_SERVING = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_LITER, UnitUtils.UNIT_MILLILITRE};
     private static final String[] UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM};
@@ -75,10 +63,13 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     ConstraintLayout nutritionFactsLayout;
     @BindView(R.id.btnAddImageNutritionFacts)
     ImageView imageNutritionFacts;
+    @BindView(R.id.btnEditImageNutritionFacts)
+    View btnEditImageNutritionFacts;
     @BindView(R.id.imageProgress)
     ProgressBar imageProgress;
     @BindView(R.id.imageProgressText)
     TextView imageProgressText;
+    private PhotoReceiverHandler photoReceiverHandler;
     @BindView(R.id.radio_group)
     RadioGroup radioGroup;
     @BindView(R.id.serving_size)
@@ -118,9 +109,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private String code;
     private OfflineSavedProduct mOfflineSavedProduct;
     private String imagePath;
-    private boolean edit_product;
+    private boolean productEdited;
     private Product product;
-    private boolean newImageSelected;
     private EditText lastEditText;
     private CustomValidatingEditTextView starchEditText;
     private Set<CustomValidatingEditTextView> allEditViews = Collections.emptySet();
@@ -136,17 +126,18 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        photoReceiverHandler = new PhotoReceiverHandler(this);
         buttonAddNutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp, 0, 0, 0);
         Bundle b = getArguments();
         lastEditText = alcohol;
         if (b != null) {
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            edit_product = b.getBoolean("edit_product");
+            productEdited = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
             if (product != null) {
                 code = product.getCode();
             }
-            if (edit_product && product != null) {
+            if (productEdited && product != null) {
                 code = product.getCode();
                 buttonAdd.setText(R.string.save_edits);
                 preFillProductValues();
@@ -197,15 +188,16 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         return !isAllValuesValid();
     }
 
+    @Nullable
+    public AddProductActivity getAddProductActivity() {
+        return (AddProductActivity) getActivity();
+    }
+
     /**
      * Pre fill the fields of the product which are already present on the server.
      */
     private void preFillProductValues() {
-        if (product.getImageNutritionUrl() != null && !product.getImageNutritionUrl().isEmpty()) {
-            imageProgress.setVisibility(View.VISIBLE);
-            imagePath = product.getImageNutritionUrl();
-            loadNutritionsImage(imagePath);
-        }
+        loadNutritionImage();
         if (product.getNoNutritionData() != null && product.getNoNutritionData().equalsIgnoreCase("on")) {
             noNutritionData.setChecked(true);
             nutritionFactsLayout.setVisibility(View.GONE);
@@ -219,7 +211,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             updateServingSizeFrom(servingSize);
         }
         Nutriments nutriments = product.getNutriments();
-        if (nutriments != null) {
+        if (nutriments != null && getView() != null) {
             final ArrayList<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
             for (CustomValidatingEditTextView view : editViews) {
                 final String nutrientShortName = view.getEntryName();
@@ -246,6 +238,19 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                     addNutrientRow(i, nutrients[i], true, value, unitSelectedIndex);
                 }
             }
+        }
+    }
+
+    public void loadNutritionImage() {
+        if (getAddProductActivity() == null) {
+            return;
+        }
+        photoFile=null;
+        final String newImageNutritionUrl = product.getImageNutritionUrl(getAddProductActivity().getProductLanguageForEdition());
+        if (newImageNutritionUrl != null && !newImageNutritionUrl.isEmpty()) {
+            imageProgress.setVisibility(View.VISIBLE);
+            imagePath = newImageNutritionUrl;
+            loadNutritionsImage(imagePath);
         }
     }
 
@@ -359,14 +364,19 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             .into(imageNutritionFacts, new Callback() {
                 @Override
                 public void onSuccess() {
-                    imageProgress.setVisibility(View.GONE);
+                    nutritionImageLoaded();
                 }
 
                 @Override
                 public void onError() {
-                    imageProgress.setVisibility(View.GONE);
+                    nutritionImageLoaded();
                 }
             });
+    }
+
+    private void nutritionImageLoaded() {
+        imageProgress.setVisibility(View.GONE);
+        btnEditImageNutritionFacts.setVisibility(View.VISIBLE);
     }
 
     private int getSelectedEnergyUnitIndex(String unit) {
@@ -427,52 +437,34 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     @OnClick(R.id.btnAddImageNutritionFacts)
     void addNutritionFactsImage() {
         if (imagePath != null) {
-            // nutrition facts image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
-            Bundle bundle = new Bundle();
-            if (edit_product && !newImageSelected) {
-                bundle.putString("imageurl", imagePath);
-                bundle.putString("code", product.getCode());
-                bundle.putString("id", "nutrition_en");
+            if (photoFile != null) {
+                cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture));
             } else {
-                bundle.putString("imageurl", "file://" + imagePath);
-                bundle.putString("code", product.getCode());
-                bundle.putString("id", "nutrition_en");
-            }
-            intent.putExtras(bundle);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(activity, imageNutritionFacts,
-                        activity.getString(R.string.product_transition));
-                startActivity(intent, options.toBundle());
-            } else {
-                startActivity(intent);
+                new FileDownloader(getContext()).download(imagePath, file -> {
+                    photoFile = file;
+                    cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture));
+                });
             }
         } else {
-            // add nutrition facts image.
-            openCamera();
+            newNutritionFactsImage();
         }
     }
 
-    private void openCamera() {
-        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-        } else {
-            EasyImage.openCamera(this, 0);
-        }
+    @OnClick(R.id.btnEditImageNutritionFacts)
+    void newNutritionFactsImage() {
+        doChooseOrTakePhotos(getString(R.string.nutrition_facts_picture));
     }
 
-    @OnLongClick(R.id.btnAddImageNutritionFacts)
-    boolean newNutritionFactsImage() {
-        openCamera();
-        return true;
+    @Override
+    protected void doOnPhotosPermissionGranted() {
+        newNutritionFactsImage();
     }
 
     @OnClick(R.id.btn_add)
     void next() {
-        Activity activity = getActivity();
-        if (activity instanceof AddProductActivity) {
-            ((AddProductActivity) activity).proceed();
+        Activity fragmentActivity = getActivity();
+        if (fragmentActivity instanceof AddProductActivity) {
+            ((AddProductActivity) fragmentActivity).proceed();
         }
     }
 
@@ -733,7 +725,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             .show();
     }
 
-
     private float getReferenceValueInGram() {
         float reference = 100;
         if (radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
@@ -926,63 +917,45 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         return starchEditText.getAttachedSpinner().getSelectedItemPosition();
     }
 
+    @Override
+    public void onPhotoReturned(File newPhotoFile) {
+        URI resultUri = newPhotoFile.toURI();
+        imagePath = resultUri.getPath();
 
+        photoFile = newPhotoFile;
+        ProductImage image = new ProductImage(code, NUTRITION, newPhotoFile);
+        image.setFilePath(resultUri.getPath());
+        if (activity instanceof AddProductActivity) {
+            ((AddProductActivity) activity).addToPhotoMap(image, 2);
+        }
+        hideImageProgress(false, getString(R.string.image_uploaded_successfully));
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                imagePath = resultUri.getPath();
-                newImageSelected = true;
-                photoFile = new File((resultUri.getPath()));
-                ProductImage image = new ProductImage(code, NUTRITION, photoFile);
-                image.setFilePath(resultUri.getPath());
-                if (activity instanceof AddProductActivity) {
-                    ((AddProductActivity) activity).addToPhotoMap(image, 2);
-                }
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Log.e("Crop image error", result.getError().toString());
-            }
-        }
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
-            @Override
-            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-                //nothing to do
-            }
-
-            @Override
-            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                    .setAllowFlipping(false)
-                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                    .setOutputUri(Utils.getOutputPicUri(getContext()))
-                    .start(activity.getApplicationContext(), AddProductNutritionFactsFragment.this);
-            }
-        });
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
 
     public void showImageProgress() {
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageNutritionFacts.setVisibility(View.INVISIBLE);
+        btnEditImageNutritionFacts.setVisibility(View.INVISIBLE);
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
         imageProgress.setVisibility(View.GONE);
         imageProgressText.setVisibility(View.GONE);
         imageNutritionFacts.setVisibility(View.VISIBLE);
+        btnEditImageNutritionFacts.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
             Picasso.with(activity)
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
                 .into(imageNutritionFacts);
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         }
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 }

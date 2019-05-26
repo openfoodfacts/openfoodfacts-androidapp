@@ -67,14 +67,7 @@
             android:layout_gravity="center"
             android:visibility="visible"/>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/buttonScan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            android:contentDescription="@string/try_it_scan_now"
-            app:srcCompat="@drawable/barcode_white_24dp" />
+        <include layout="@layout/navigation_bottom" />
 
     </FrameLayout>
 

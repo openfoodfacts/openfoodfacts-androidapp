@@ -1,10 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +18,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
@@ -31,6 +30,8 @@ public class FindProductFragment extends NavigationBaseFragment {
     EditText mBarCodeText;
     @BindView(R.id.buttonBarcode)
     Button mLaunchButton;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
     private OpenFoodAPIClient api;
     private Toast mToast;
 
@@ -50,13 +51,9 @@ public class FindProductFragment extends NavigationBaseFragment {
                 searchBarcode(barCode);
             }
         }
+        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
     }
 
-    public static Intent createIntentToFindProduct(Context context, String barcode) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(BARCODE, barcode);
-        return intent;
-    }
 
     @OnClick(R.id.buttonBarcode)
     protected void onSearchBarcodeProduct() {

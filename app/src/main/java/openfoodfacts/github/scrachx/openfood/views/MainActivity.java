@@ -140,11 +140,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         setShakePreferences();
 
-        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
+        fragmentManager.addOnBackStackChangedListener(() -> {
 
-            }
         });
 
         boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
@@ -185,14 +182,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     return false;
                 }
             })
-            .withOnAccountHeaderSelectionViewClickListener(new AccountHeader.OnAccountHeaderSelectionViewClickListener() {
-                @Override
-                public boolean onClick(View view, IProfile profile) {
-                    if (isUserNotLoggedIn()) {
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    }
-                    return false;
+            .withOnAccountHeaderSelectionViewClickListener((view, profile12) -> {
+                if (isUserNotLoggedIn()) {
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }
+                return false;
             })
             .withSelectionListEnabledForSingleProfile(false)
             .withOnAccountHeaderListener((view, profile1, current) -> {
@@ -431,7 +425,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         // to get a better scroll performance
         //make sure to init the cache after the DrawerBuilder was created as this will first
         // clear the cache to make sure no old elements are in
-        //RecyclerViewCacheUtil.getInstance().withCacheSize(2).init(result);
         new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
             result.getDrawerItems());
 
@@ -627,10 +620,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
             @Override
             public boolean onMenuItemActionCollapse(MenuItem menuItem) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                Fragment currentFragment = fragmentManager.findFragmentById(R.id
-                    .fragment_container);
-
                 return true;
             }
         });
@@ -864,10 +853,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             try (InputStream imageStream = getContentResolver().openInputStream(uri)) {
                 bMap = BitmapFactory.decodeStream(imageStream);
             } catch (FileNotFoundException e) {
-                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString());
-                e.printStackTrace();
+                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString(),e);
             } catch (IOException e) {
-                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage());
+                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage(),e);
             }
             //decoding bitmap
             if (bMap != null) {
@@ -905,15 +893,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         View dialogView = inflater.inflate(R.layout.alert_barcode, null);
         alertDialogBuilder.setView(dialogView);
 
-        final EditText barcode_edittext = dialogView.findViewById(R.id.barcode);
-        final RecyclerView product_images = dialogView.findViewById(R.id.product_image);
+        final EditText barcodeEditText = dialogView.findViewById(R.id.barcode);
+        final RecyclerView productImages = dialogView.findViewById(R.id.product_image);
         LinearLayoutManager layoutManager
             = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        product_images.setLayoutManager(layoutManager);
-        product_images.setAdapter(new PhotosAdapter(uri));
+        productImages.setLayoutManager(layoutManager);
+        productImages.setAdapter(new PhotosAdapter(uri));
 
         if (hasEditText) {
-            barcode_edittext.setVisibility(View.VISIBLE);
+            barcodeEditText.setVisibility(View.VISIBLE);
             alertDialogBuilder.setTitle(getString(R.string.no_barcode));
             alertDialogBuilder.setMessage(getString(R.string.enter_barcode));
         } else {
@@ -924,50 +912,44 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         // set dialog message
         alertDialogBuilder
             .setCancelable(false)
-            .setPositiveButton(R.string.txtYes, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    String temp_barcode = "";
-                    for (Uri selected : uri) {
-                        OpenFoodAPIClient api = new OpenFoodAPIClient(MainActivity.this);
-                        ProductImage image = null;
-                        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            .setPositiveButton(R.string.txtYes, (dialog, id) -> {
+                String temp_barcode = "";
+                for (Uri selected : uri) {
+                    OpenFoodAPIClient api = new OpenFoodAPIClient(MainActivity.this);
+                    ProductImage image = null;
+                    ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
-                        if (hasEditText) {
+                    if (hasEditText) {
 
-                            temp_barcode = barcode_edittext.getText().toString();
+                        temp_barcode = barcodeEditText.getText().toString();
+                    } else {
+                        temp_barcode = barcode;
+                    }
+
+                    if (temp_barcode.length() > 0) {
+                        dialog.cancel();
+                        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+                            File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
+                            image = new ProductImage(temp_barcode, OTHER, imageFile);
+                            api.postImg(MainActivity.this, image, null);
                         } else {
-                            temp_barcode = barcode;
+                            Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
+                            State st = new State();
+                            Product pd = new Product();
+                            pd.setCode(temp_barcode);
+                            st.setProduct(pd);
+                            intent.putExtra("state", st);
+                            startActivity(intent);
                         }
-
-                        if (temp_barcode.length() > 0) {
-                            dialog.cancel();
-                            if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
-                                File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
-                                image = new ProductImage(temp_barcode, OTHER, imageFile);
-                                api.postImg(MainActivity.this, image, null);
-                            } else {
-                                Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
-                                State st = new State();
-                                Product pd = new Product();
-                                pd.setCode(temp_barcode);
-                                st.setProduct(pd);
-                                intent.putExtra("state", st);
-                                startActivity(intent);
-                            }
-                        } else {
-                            Toast.makeText(MainActivity.this, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show();
-                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show();
                     }
                 }
             })
 
             .setNegativeButton(R.string.txtNo,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                (dialog, id) -> dialog.cancel());
 
         AlertDialog alertDialog = alertDialogBuilder.create();
 
@@ -983,12 +965,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void setShakePreferences() {
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
         Log.i("Shake", String.valueOf(scanOnShake));
-        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
-            @Override
-            public void onShake(int count) {
-                if (scanOnShake) {
-                    Utils.scan(MainActivity.this);
-                }
+        mShakeDetector.setOnShakeListener(count -> {
+            if (scanOnShake) {
+                Utils.scan(MainActivity.this);
             }
         });
     }
