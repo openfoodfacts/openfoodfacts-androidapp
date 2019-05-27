@@ -70,7 +70,8 @@
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
                     android:clickable="true"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:focusable="true" />
 
                 <TextView
                     android:id="@+id/nutriscoreLink"
