@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class NutrientLevelsTest {
 
     @Test
-    public void jsonSerialization_ok() throws Exception {
+    public void jsonSerialization_ok() {
         NutrientLevels nutrientLevels = new NutrientLevels();
 
         nutrientLevels.setFat(NutrimentLevel.LOW);

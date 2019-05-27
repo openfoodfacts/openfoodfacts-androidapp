@@ -33,7 +33,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     private OpenFoodAPIService serviceWrite;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY);
 
