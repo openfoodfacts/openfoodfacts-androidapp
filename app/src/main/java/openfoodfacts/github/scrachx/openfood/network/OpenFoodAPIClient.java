@@ -28,6 +28,7 @@ import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.Installation;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -152,8 +153,10 @@ public class OpenFoodAPIClient {
                         for (HashMap.Entry<String, String> fieldEntry : result.entrySet()) {
                             if (fieldEntry.getValue() != null) {
                                 String fieldValue = fieldEntry.getValue();
-                                fieldValue = fieldValue.replace("\"", "");
-                                product.setAdditionalProperty(fieldEntry.getKey(), fieldValue);
+                                if (fieldValue != null) {
+                                    fieldValue = fieldValue.replace("\"", "");
+                                    product.setAdditionalProperty(fieldEntry.getKey(), fieldValue);
+                                }
                             }
                         }
                         s.setProduct(product);
@@ -205,13 +208,17 @@ public class OpenFoodAPIClient {
                 JsonNode responseNode = response.body();
                 if (responseNode != null) {
                     HashMap<String, String> resultMap = new HashMap<>();
-                    for (String field : fields) {
-                        if (responseNode.findValue("product").findValue(field) != null &&
-                            (!responseNode.findValue("product").findValue(field).toString().equals(""))) {
-                            String value = responseNode.findValue("product").findValue(field).toString();
-                            resultMap.put(field, value);
-                        } else {
-                            resultMap.put(field, null);
+                    final JsonNode product = responseNode.findValue("product");
+                    if (product != null) {
+                        for (String field : fields) {
+                            final JsonNode productValue = product.findValue(field);
+                            if (productValue != null &&
+                                (!productValue.toString().equals(""))) {
+                                String value = productValue.toString();
+                                resultMap.put(field, value);
+                            } else {
+                                resultMap.put(field, null);
+                            }
                         }
                     }
                     fieldByLanguageCallback.onFieldByLanguageResponse(true, resultMap);
@@ -238,10 +245,12 @@ public class OpenFoodAPIClient {
                     for (int i = 0; i < nbIngredient; i++) {
                         ProductIngredient ProductIngredient = new ProductIngredient();
                         final JsonNode ingredient = ingredientsJsonNode.get(i);
-                        ProductIngredient.setId(ingredient.findValue("id").toString());
-                        ProductIngredient.setText(ingredient.findValue("text").toString());
-                        ProductIngredient.setRank(Long.valueOf(ingredient.findValue("rank").toString()));
-                        ProductIngredients.add(ProductIngredient);
+                        if(ingredient!=null) {
+                            ProductIngredient.setId(ingredient.findValue("id").toString());
+                            ProductIngredient.setText(ingredient.findValue("text").toString());
+                            ProductIngredient.setRank(Long.valueOf(ingredient.findValue("rank").toString()));
+                            ProductIngredients.add(ProductIngredient);
+                        }
                     }
                     ingredientListCallback.onIngredientListResponse(true, ProductIngredients);
                 }
@@ -267,7 +276,7 @@ public class OpenFoodAPIClient {
                 }
 
                 Search s = response.body();
-                if (Integer.valueOf(s.getCount()) == 0) {
+                if (s==null|| Integer.valueOf(s.getCount()) == 0) {
                     productsCallback.onProductsResponse(false, null, -2);
                 } else {
                     productsCallback.onProductsResponse(true, s, Integer.parseInt(s.getCount()));
@@ -364,7 +373,6 @@ public class OpenFoodAPIClient {
      * and write new product's data over that.
      */
     public void post(final Context activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
-        // final LoadToast lt = new LoadToast(activity);
         ProgressDialog dialog = new ProgressDialog(activity, ProgressDialog.STYLE_SPINNER);
         dialog.setIndeterminate(true);
         dialog.setMessage(activity.getString(R.string.toastSending));
@@ -381,7 +389,6 @@ public class OpenFoodAPIClient {
 
                     @Override
                     public void onFailure(Call<State> call, Throwable t) {
-                        // lt.error();
                         productSentCallback.onProductSentResponse(false);
                         dialog.dismiss();
                     }
@@ -432,7 +439,6 @@ public class OpenFoodAPIClient {
 
                     @Override
                     public void onFailure(Call<State> call, Throwable t) {
-                        // lt.error();
                         productSentCallback.onProductSentResponse(false);
                         dialog.dismiss();
                     }
@@ -448,7 +454,6 @@ public class OpenFoodAPIClient {
 
                 @Override
                 public void onFailure(Call<State> call, Throwable t) {
-                    // lt.error();
                     productSentCallback.onProductSentResponse(false);
                     dialog.dismiss();
                 }
@@ -457,9 +462,6 @@ public class OpenFoodAPIClient {
     }
 
     public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
-        /**  final LoadToast lt = new LoadToast(context);
-         lt.show();**/
-
         apiService.saveImage(getUploadableMap(image, context))
             .enqueue(new Callback<JsonNode>() {
                 @Override
@@ -590,8 +592,10 @@ public class OpenFoodAPIClient {
     private class HistoryTask extends AsyncTask<Product, Void, Void> {
         @Override
         protected Void doInBackground(Product... products) {
-            Product product = products[0];
-            addToHistory(mHistoryProductDao, product);
+            if(ArrayUtils.isNotEmpty(products)) {
+                Product product = products[0];
+                addToHistory(mHistoryProductDao, product);
+            }
             return null;
         }
     }
