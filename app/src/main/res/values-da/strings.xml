@@ -614,7 +614,7 @@
     <string name="error_adding_ingredients">Noget gik galt under forsøget på at tilføje produktingredienser</string>
     <string name="unable_to_extract_ingredients">Kunne ikke udtrække ingredienser fra fotoet</string>
     <string name="error_adding_nutrition_facts">Noget gik galt under forsøget på at tilføje produktingrediensfakta</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="error_uploading_photo">Noget gik galt under upload af et nyt foto</string>
     <string name="error_in_carbohydrate_value">Indhold af kulhydrater kan ikke være mindre end summen af sukker og stivelse</string>
     <string name="choose_nutrient">Vælg et næringsstof</string>
     <string name="error_adding_product_details">Noget gik galt under forsøget på at tilføje produktoplysninger</string>
