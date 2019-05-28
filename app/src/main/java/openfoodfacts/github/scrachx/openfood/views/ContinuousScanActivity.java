@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.hardware.Camera;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -553,6 +555,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (!isNetworkAvailable() && newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                } else {
                 if (newState == BottomSheetBehavior.STATE_HIDDEN) {
                     lastText = null;
                 }
@@ -566,36 +571,37 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     bottomSheet.requestLayout();
                 }
             }
+            }
 
             float previousSlideOffset = 0;
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                float slideDelta = slideOffset - previousSlideOffset;
-                if (searchByBarcode.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
-                    if (slideOffset > 0.01f || slideOffset < -0.01f) {
-                        fab_status.setVisibility(View.GONE);
-                        txtProductIncomplete.setVisibility(View.GONE);
-                    } else {
-                        fab_status.setVisibility(View.VISIBLE);
-                        if (searchByBarcode.getVisibility() != View.VISIBLE && productNotFound.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
-                            if (isProductIncomplete()) {
-                                txtProductIncomplete.setVisibility(View.VISIBLE);
+                    float slideDelta = slideOffset - previousSlideOffset;
+                    if (searchByBarcode.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
+                        if (slideOffset > 0.01f || slideOffset < -0.01f) {
+                            fab_status.setVisibility(View.GONE);
+                            txtProductIncomplete.setVisibility(View.GONE);
+                        } else {
+                            fab_status.setVisibility(View.VISIBLE);
+                            if (searchByBarcode.getVisibility() != View.VISIBLE && productNotFound.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
+                                if (isProductIncomplete()) {
+                                    txtProductIncomplete.setVisibility(View.VISIBLE);
+                                }
                             }
                         }
-                    }
-                    if (slideOffset > 0.01f) {
-                        details.setVisibility(View.GONE);
-                        barcodeView.pause();
-                        if (slideDelta > 0 && productFragment != null) {
-                            productFragment.bottomSheetWillGrow();
+                        if (slideOffset > 0.01f) {
+                            details.setVisibility(View.GONE);
+                            barcodeView.pause();
+                            if (slideDelta > 0 && productFragment != null) {
+                                productFragment.bottomSheetWillGrow();
+                            }
+                        } else {
+                            barcodeView.resume();
+                            details.setVisibility(View.VISIBLE);
                         }
-                    } else {
-                        barcodeView.resume();
-                        details.setVisibility(View.VISIBLE);
                     }
-                }
-                previousSlideOffset = slideOffset;
+                    previousSlideOffset = slideOffset;
             }
         });
 
@@ -612,9 +618,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
 
         Collection<BarcodeFormat> formats = Arrays.asList(BarcodeFormat.UPC_A,
-            BarcodeFormat.UPC_E, BarcodeFormat.EAN_13, BarcodeFormat.EAN_8,
-            BarcodeFormat.RSS_14, BarcodeFormat.CODE_39, BarcodeFormat.CODE_93,
-            BarcodeFormat.CODE_128, BarcodeFormat.ITF);
+                BarcodeFormat.UPC_E, BarcodeFormat.EAN_13, BarcodeFormat.EAN_8,
+                BarcodeFormat.RSS_14, BarcodeFormat.CODE_39, BarcodeFormat.CODE_93,
+                BarcodeFormat.CODE_128, BarcodeFormat.ITF);
         barcodeView.getBarcodeView().setDecoderFactory(new DefaultDecoderFactory(formats));
         barcodeView.setStatusText(null);
         CameraSettings settings = barcodeView.getBarcodeView().getCameraSettings();
@@ -647,7 +653,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                     } else {
                         if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") || !barcodeText.substring(0, 3)
-                            .contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
+                                .contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
                             lastText = barcodeText;
                             searchByBarcode.setVisibility(View.GONE);
                             findProduct(barcodeText, false);
@@ -661,7 +667,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             }
             return false;
         });
-    }
+            }
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -810,5 +816,17 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             mHistoryProductDao.insertOrReplace(hp);
             return null;
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager manager =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable = false;
+        if (networkInfo != null && networkInfo.isConnected()) {
+            // Network is present and connected
+            isAvailable = true;
+        }
+        return isAvailable;
     }
 }
