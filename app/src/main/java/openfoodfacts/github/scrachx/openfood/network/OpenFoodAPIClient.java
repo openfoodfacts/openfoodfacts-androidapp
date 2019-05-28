@@ -635,7 +635,7 @@ public class OpenFoodAPIClient {
                 try {
                     imageFile = new File(uploadProduct.getImageFilePath());
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e("OfflineUploadingTask","doInBackground",e);
                     continue;
                 }
                 ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),

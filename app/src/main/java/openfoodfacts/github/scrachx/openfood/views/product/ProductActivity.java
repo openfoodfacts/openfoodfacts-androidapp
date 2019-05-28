@@ -7,12 +7,9 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
@@ -20,7 +17,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import butterknife.BindView;
-import com.afollestad.materialdialogs.MaterialDialog;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
@@ -41,13 +37,9 @@ import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-
 public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
 	private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-	private static final int EDIT_REQUEST_CODE = 2;
 	@BindView( R.id.pager )
 	ViewPager viewPager;
 	@BindView( R.id.toolbar )
@@ -154,7 +146,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             {
                 adapterResult.addFragment(new EnvironmentProductFragment(), "Environment");
             }
-            if( PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false ) )
+            if(isPhotoMode(activity))
             {
                 adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
             }
@@ -162,7 +154,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         if( BuildConfig.FLAVOR.equals( "opff" ) )
         {
             adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
-            if( PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false ) )
+            if(isPhotoMode(activity))
             {
                 adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
             }
@@ -170,7 +162,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         if( BuildConfig.FLAVOR.equals( "obf" ) )
         {
-            if( PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false ) )
+            if(isPhotoMode(activity))
             {
                 adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
             }
@@ -190,22 +182,21 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         return adapterResult;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return onOptionsItemSelected(item, mState, this);
+    private static boolean isPhotoMode(Activity activity) {
+        return PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false );
     }
 
-    public static boolean onOptionsItemSelected(MenuItem item, State mState, Activity activity) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-//                NavUtils.navigateUpFromSameTask(this);
-                activity.finish();
-                return true;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return onOptionsItemSelected(item, this);
+    }
 
-            default:
-                return true;
+    public static boolean onOptionsItemSelected(MenuItem item, Activity activity) {
+        // Respond to the action bar's Up/Home button
+        if (item.getItemId() == android.R.id.home) {
+            activity.finish();
         }
+        return true;
     }
 
 

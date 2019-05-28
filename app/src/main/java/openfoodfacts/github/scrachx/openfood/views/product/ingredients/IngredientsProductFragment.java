@@ -9,15 +9,12 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -57,7 +54,6 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
 import java.util.Collections;
@@ -65,20 +61,18 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.jsoup.helper.StringUtil.isBlank;
 
 public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View, PhotoReceiver {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
-    public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}]+[\\p{L}\\p{Nd}\\p{Z}\\p{P}&&[^,]]*");
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     private static final int EDIT_REQUEST_CODE = 2;
     @BindView(R.id.textIngredientProduct)
@@ -136,10 +130,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     Button extractIngredientsPrompt;
     @BindView(R.id.change_ing_img)
     Button updateImageBtn;
-
     private OpenFoodAPIClient api;
     private String mUrlImage;
-    private State mState;
+    private State activityState;
     private String barcode;
     private SendProduct mSendProduct;
     private WikidataApiClient apiClientForWikiData;
@@ -158,8 +151,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        mState=getStateFromActivityIntent();
-
+        activityState = getStateFromActivityIntent();
     }
 
     @Override
@@ -173,17 +165,17 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mState = getStateFromActivityIntent();
+        activityState = getStateFromActivityIntent();
         extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
         updateImageBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
-        photoReceiverHandler=new PhotoReceiverHandler(this);
-        refreshView(mState);
+        photoReceiverHandler = new PhotoReceiverHandler(this);
+        refreshView(activityState);
     }
 
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-        mState = state;
+        activityState = state;
         String langCode = LocaleHelper.getLanguage(getContext());
         if (getArguments() != null) {
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
@@ -192,13 +184,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         mAllergenNameDao = Utils.getAppDaoSession(getActivity()).getAllergenNameDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
-        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
             isLowBatteryMode = true;
         }
 
-        final Product product = mState.getProduct();
+        final Product product = activityState.getProduct();
         presenter = new IngredientsProductPresenter(product, this);
         barcode = product.getCode();
         List<String> vitaminTagsList = product.getVitaminTags();
@@ -258,7 +248,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         List<String> allergens = getAllergens();
 
-        if (mState != null && StringUtils.isNotEmpty(product.getIngredientsText(langCode))) {
+        if (activityState != null && StringUtils.isNotEmpty(product.getIngredientsText(langCode))) {
             textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText(langCode).replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
@@ -321,8 +311,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             novaGroup.setImageResource(Utils.getNovaGroupDrawable(product));
             novaGroup.setOnClickListener((View v) -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
+                CustomTabsIntent tabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), tabsIntent, uri, new WebViewFallback());
             });
         } else {
             novaLayout.setVisibility(View.GONE);
@@ -516,15 +506,14 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public void showAdditivesState(String state) {
         switch (state) {
-            case LOADING: {
+            case LOADING:
                 textAdditiveProductCardView.setVisibility(View.VISIBLE);
                 additiveProduct.append(getString(R.string.txtLoading));
                 break;
-            }
-            case EMPTY: {
+
+            case EMPTY:
                 textAdditiveProductCardView.setVisibility(View.GONE);
                 break;
-            }
         }
     }
 
@@ -569,11 +558,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                     .onNegative((dialog, which) -> dialog.dismiss())
                     .build().show();
             } else {
-                mState = getStateFromActivityIntent();
-                if (mState != null) {
+                activityState = getStateFromActivityIntent();
+                if (activityState != null) {
                     Intent intent = new Intent(getContext(), AddProductActivity.class);
                     intent.putExtra("send_updated", sendUpdatedIngredientsImage);
-                    intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
+                    intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, activityState.getProduct());
                     startActivityForResult(intent, EDIT_REQUEST_CODE);
                 }
             }
@@ -594,21 +583,20 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public void showAllergensState(String state) {
         switch (state) {
-            case LOADING: {
+            case LOADING:
                 substanceProduct.setVisibility(View.VISIBLE);
                 substanceProduct.append(getString(R.string.txtLoading));
                 break;
-            }
-            case EMPTY: {
+
+            case EMPTY:
                 substanceProduct.setVisibility(View.GONE);
                 break;
-            }
         }
     }
 
     private List<String> getAllergens() {
-        List<String> allergens = mState.getProduct().getAllergensTags();
-        if (mState.getProduct() == null || allergens == null || allergens.isEmpty()) {
+        List<String> allergens = activityState.getProduct().getAllergensTags();
+        if (activityState.getProduct() == null || allergens == null || allergens.isEmpty()) {
             return Collections.emptyList();
         } else {
             return allergens;
@@ -617,10 +605,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @OnClick(R.id.novaMethodLink)
     void novaMethodLinkDisplay() {
-        if(mState!=null && mState.getProduct()!=null &&mState.getProduct().getNovaGroups() != null) {
+        if (activityState != null && activityState.getProduct() != null && activityState.getProduct().getNovaGroups() != null) {
             Uri uri = Uri.parse(getString(R.string.url_nova_groups));
-            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-            CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
+            CustomTabsIntent tabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), tabsIntent, uri, new WebViewFallback());
         }
     }
 
@@ -642,9 +630,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 .onNegative((dialog, which) -> dialog.dismiss())
                 .build().show();
         } else {
-            mState = getStateFromActivityIntent();
+            activityState = getStateFromActivityIntent();
             Intent intent = new Intent(getContext(), AddProductActivity.class);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, activityState.getProduct());
             intent.putExtra("perform_ocr", extractIngredients);
             startActivityForResult(intent, EDIT_REQUEST_CODE);
         }
@@ -666,12 +654,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 startActivity(intent);
             }
         } else {
-           newIngredientImage();
+            newIngredientImage();
         }
     }
 
-
-    public void newIngredientImage(){
+    public void newIngredientImage() {
         doChooseOrTakePhotos(getString(R.string.ingredients_picture));
     }
 
@@ -702,17 +689,15 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             Intent intent = new Intent(getContext(), AddProductActivity.class);
             intent.putExtra("send_updated", sendUpdatedIngredientsImage);
             intent.putExtra("perform_ocr", extractIngredients);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, activityState.getProduct());
             startActivity(intent);
         }
         if (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK) {
             onRefresh();
         }
 
-        photoReceiverHandler.onActivityResult(this, requestCode,resultCode,data);
-
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
-
 
     public String getIngredients() {
         return mUrlImage;
@@ -720,7 +705,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @Override
     public void onDestroyView() {
-        if(presenter!=null) {
+        if (presenter != null) {
             presenter.dispose();
         }
         super.onDestroyView();

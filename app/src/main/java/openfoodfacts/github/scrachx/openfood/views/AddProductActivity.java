@@ -45,12 +45,11 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.inject.Inject;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
 
@@ -84,15 +83,15 @@ public class AddProductActivity extends AppCompatActivity {
     private Product mProduct;
     private ToUploadProductDao mToUploadProductDao;
     private OfflineSavedProductDao mOfflineSavedProductDao;
-    private Disposable disposable;
+    private Disposable mainDisposable;
     private String[] imagesFilePath = new String[3];
     private OfflineSavedProduct offlineSavedProduct;
     private Map<String, String> initialValues;
-    private Bundle bundle = new Bundle();
-    private MaterialDialog dialog;
-    private boolean image_front_uploaded;
-    private boolean image_ingredients_uploaded;
-    private boolean image_nutrition_facts_uploaded;
+    private Bundle mainBundle = new Bundle();
+    private MaterialDialog materialDialog;
+    private boolean imageFrontUploaded;
+    private boolean imageIngredientsUploaded;
+    private boolean imageNutritionFactsUploaded;
     private boolean editionMode;
     // These fields are used to compare the existing values of a product already present on the server with the product which was saved offline and is being uploaded.
     private String ingredientsTextOnServer;
@@ -225,11 +224,11 @@ public class AddProductActivity extends AppCompatActivity {
         Product mEditProduct = (Product) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT);
 
         if (getIntent().getBooleanExtra("perform_ocr", false)) {
-            bundle.putBoolean("perform_ocr", true);
+            mainBundle.putBoolean("perform_ocr", true);
         }
 
         if (getIntent().getBooleanExtra("send_updated", false)) {
-            bundle.putBoolean("send_updated", true);
+            mainBundle.putBoolean("send_updated", true);
         }
 
         if (state != null) {
@@ -241,18 +240,18 @@ public class AddProductActivity extends AppCompatActivity {
             setTitle(R.string.edit_product_title);
             mProduct = mEditProduct;
             editionMode = true;
-            bundle.putBoolean(KEY_IS_EDITION, true);
+            mainBundle.putBoolean(KEY_IS_EDITION, true);
             initialValues = new HashMap<>();
         } else if (offlineSavedProduct != null) {
-            bundle.putSerializable("edit_offline_product", offlineSavedProduct);
+            mainBundle.putSerializable("edit_offline_product", offlineSavedProduct);
             // Save the already existing images in productDetails for UI
             imagesFilePath[0] = offlineSavedProduct.getProductDetailsMap().get("image_front");
             imagesFilePath[1] = offlineSavedProduct.getProductDetailsMap().get("image_ingredients");
             imagesFilePath[2] = offlineSavedProduct.getProductDetailsMap().get("image_nutrition_facts");
             // get the status of images from productDetailsMap, whether uploaded or not
-            image_front_uploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get("image_front_uploaded"));
-            image_ingredients_uploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get("image_ingredients_uploaded"));
-            image_nutrition_facts_uploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get("image_nutrition_facts_uploaded"));
+            imageFrontUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get("image_front_uploaded"));
+            imageIngredientsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get("image_ingredients_uploaded"));
+            imageNutritionFactsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get("image_nutrition_facts_uploaded"));
         }
         if (state == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show();
@@ -268,28 +267,28 @@ public class AddProductActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
+        if (materialDialog != null && materialDialog.isShowing()) {
+            materialDialog.dismiss();
         }
-        if (disposable != null && !disposable.isDisposed()) {
-            disposable.dispose();
+        if (mainDisposable != null && !mainDisposable.isDisposed()) {
+            mainDisposable.dispose();
         }
         clearCachedCameraPic(this);
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
-        bundle.putSerializable("product", mProduct);
-        addProductOverviewFragment.setArguments(bundle);
-        addProductIngredientsFragment.setArguments(bundle);
+        mainBundle.putSerializable("product", mProduct);
+        addProductOverviewFragment.setArguments(mainBundle);
+        addProductIngredientsFragment.setArguments(mainBundle);
         adapterResult.addFragment(addProductOverviewFragment, "Overview");
         adapterResult.addFragment(addProductIngredientsFragment, "Ingredients");
         if (isNutritionDataAvailable()) {
-            addProductNutritionFactsFragment.setArguments(bundle);
+            addProductNutritionFactsFragment.setArguments(mainBundle);
             adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
         } else if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
             nutritionFactsIndicatorText.setText(R.string.photos);
-            addProductPhotosFragment.setArguments(bundle);
+            addProductPhotosFragment.setArguments(mainBundle);
             adapterResult.addFragment(addProductPhotosFragment, "Photos");
         }
         viewPager.setOffscreenPageLimit(2);
@@ -322,13 +321,13 @@ public class AddProductActivity extends AppCompatActivity {
                         .content(R.string.please_wait)
                         .cancelable(false)
                         .progress(true, 0);
-                    dialog = builder.build();
-                    dialog.show();
+                    materialDialog = builder.build();
+                    materialDialog.show();
                 }
 
                 @Override
                 public void onSuccess(State state) {
-                    dialog.dismiss();
+                    materialDialog.dismiss();
                     if (state.getStatus() == 0) {
                         // Product doesn't exist yet on the server. Add as it is.
                         checkFrontImageUploadStatus();
@@ -345,7 +344,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                 @Override
                 public void onError(Throwable e) {
-                    dialog.dismiss();
+                    materialDialog.dismiss();
                     saveProductOffline();
                 }
             });
@@ -538,12 +537,12 @@ public class AddProductActivity extends AppCompatActivity {
      */
     private void checkFrontImageUploadStatus() {
         String code = productDetails.get("code");
-        if (!image_front_uploaded && imagesFilePath[0] != null && !imagesFilePath[0].isEmpty()) {
+        if (!imageFrontUploaded && imagesFilePath[0] != null && !imagesFilePath[0].isEmpty()) {
             // front image is not yet uploaded.
             File photoFile = new File(imagesFilePath[0]);
             Map<String, RequestBody> imgMap = new HashMap<>();
-            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
-            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.FRONT.toString() + '_' + getProductLanguageForEdition());
+            RequestBody barcode = createTextPlain(code);
+            RequestBody imageField = createTextPlain(ProductImageField.FRONT.toString() + '_' + getProductLanguageForEdition());
             RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
@@ -554,8 +553,8 @@ public class AddProductActivity extends AppCompatActivity {
             final String login = settings.getString("user", "");
             final String password = settings.getString("pass", "");
             if (!login.isEmpty() && !password.isEmpty()) {
-                imgMap.put(KEY_USER_ID, RequestBody.create(MediaType.parse("text/plain"), login));
-                imgMap.put(KEY_PASSWORD, RequestBody.create(MediaType.parse("text/plain"), password));
+                imgMap.put(KEY_USER_ID, createTextPlain(login));
+                imgMap.put(KEY_PASSWORD, createTextPlain(password));
             }
 
             client.saveImageSingle(imgMap)
@@ -569,25 +568,25 @@ public class AddProductActivity extends AppCompatActivity {
                             .content(R.string.please_wait)
                             .cancelable(false)
                             .progress(true, 0);
-                        dialog = builder.build();
-                        dialog.show();
+                        materialDialog = builder.build();
+                        materialDialog.show();
                     }
 
                     @Override
                     public void onSuccess(JsonNode jsonNode) {
                         String status = jsonNode.get("status").asText();
                         if (status.equals("status not ok")) {
-                            dialog.dismiss();
+                            materialDialog.dismiss();
                             String error = jsonNode.get("error").asText();
                             if (error.equals("This picture has already been sent.")) {
-                                image_front_uploaded = true;
+                                imageFrontUploaded = true;
                                 checkIngredientsImageUploadStatus();
-                            }else{
+                            } else {
                                 new MaterialDialog.Builder(AddProductActivity.this).title(R.string.uploading_front_image)
                                     .content(error).show();
                             }
                         } else {
-                            image_front_uploaded = true;
+                            imageFrontUploaded = true;
                             Map<String, String> queryMap = fillQueryMapFromJson(jsonNode);
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
@@ -600,7 +599,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onSuccess(JsonNode jsonNode) {
-                                        dialog.dismiss();
+                                        materialDialog.dismiss();
                                         checkIngredientsImageUploadStatus();
                                     }
 
@@ -623,17 +622,21 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
+    private RequestBody createTextPlain(String code) {
+        return RequestBody.create(MediaType.parse("text/plain"), code);
+    }
+
     /**
      * Upload and set the ingredients image if it is not uploaded already.
      */
     private void checkIngredientsImageUploadStatus() {
         String code = productDetails.get("code");
-        if (!image_ingredients_uploaded && imagesFilePath[1] != null && !imagesFilePath[1].isEmpty()) {
+        if (!imageIngredientsUploaded && imagesFilePath[1] != null && !imagesFilePath[1].isEmpty()) {
             // ingredients image is not yet uploaded.
             File photoFile = new File(imagesFilePath[1]);
             Map<String, RequestBody> imgMap = new HashMap<>();
-            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
-            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.INGREDIENTS.toString() + '_' + getProductLanguageForEdition());
+            RequestBody barcode = createTextPlain(code);
+            RequestBody imageField = createTextPlain(ProductImageField.INGREDIENTS.toString() + '_' + getProductLanguageForEdition());
             RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
@@ -644,8 +647,8 @@ public class AddProductActivity extends AppCompatActivity {
             final String login = settings.getString("user", "");
             final String password = settings.getString("pass", "");
             if (!login.isEmpty() && !password.isEmpty()) {
-                imgMap.put(KEY_USER_ID, RequestBody.create(MediaType.parse("text/plain"), login));
-                imgMap.put(KEY_PASSWORD, RequestBody.create(MediaType.parse("text/plain"), password));
+                imgMap.put(KEY_USER_ID, createTextPlain(login));
+                imgMap.put(KEY_PASSWORD, createTextPlain(password));
             }
 
             client.saveImageSingle(imgMap)
@@ -659,26 +662,25 @@ public class AddProductActivity extends AppCompatActivity {
                             .content(R.string.please_wait)
                             .cancelable(false)
                             .progress(true, 0);
-                        dialog = builder.build();
-                        dialog.show();
+                        materialDialog = builder.build();
+                        materialDialog.show();
                     }
 
                     @Override
                     public void onSuccess(JsonNode jsonNode) {
                         String status = jsonNode.get("status").asText();
                         if (status.equals("status not ok")) {
-                            dialog.dismiss();
+                            materialDialog.dismiss();
                             String error = jsonNode.get("error").asText();
                             if (error.equals("This picture has already been sent.")) {
-                                image_ingredients_uploaded = true;
+                                imageIngredientsUploaded = true;
                                 checkNutritionFactsImageUploadStatus();
-                            }
-                            else{
+                            } else {
                                 new MaterialDialog.Builder(AddProductActivity.this).title(R.string.uploading_ingredients_image)
                                     .content(error).show();
                             }
                         } else {
-                            image_ingredients_uploaded = true;
+                            imageIngredientsUploaded = true;
                             Map<String, String> queryMap = fillQueryMapFromJson(jsonNode);
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
@@ -691,7 +693,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onSuccess(JsonNode jsonNode) {
-                                        dialog.dismiss();
+                                        materialDialog.dismiss();
                                         checkNutritionFactsImageUploadStatus();
                                     }
 
@@ -728,12 +730,12 @@ public class AddProductActivity extends AppCompatActivity {
      */
     private void checkNutritionFactsImageUploadStatus() {
         String code = productDetails.get("code");
-        if (!image_nutrition_facts_uploaded && imagesFilePath[2] != null && !imagesFilePath[2].isEmpty()) {
+        if (!imageNutritionFactsUploaded && imagesFilePath[2] != null && !imagesFilePath[2].isEmpty()) {
             // nutrition facts image is not yet uploaded.
             File photoFile = new File(imagesFilePath[2]);
             Map<String, RequestBody> imgMap = new HashMap<>();
-            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
-            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.NUTRITION.toString() + '_' + getProductLanguageForEdition());
+            RequestBody barcode = createTextPlain(code);
+            RequestBody imageField = createTextPlain(ProductImageField.NUTRITION.toString() + '_' + getProductLanguageForEdition());
             RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
@@ -744,8 +746,8 @@ public class AddProductActivity extends AppCompatActivity {
             final String login = settings.getString("user", "");
             final String password = settings.getString("pass", "");
             if (!login.isEmpty() && !password.isEmpty()) {
-                imgMap.put(KEY_USER_ID, RequestBody.create(MediaType.parse("text/plain"), login));
-                imgMap.put(KEY_PASSWORD, RequestBody.create(MediaType.parse("text/plain"), password));
+                imgMap.put(KEY_USER_ID, createTextPlain(login));
+                imgMap.put(KEY_PASSWORD, createTextPlain(password));
             }
 
             client.saveImageSingle(imgMap)
@@ -759,25 +761,25 @@ public class AddProductActivity extends AppCompatActivity {
                             .content(R.string.please_wait)
                             .cancelable(false)
                             .progress(true, 0);
-                        dialog = builder.build();
-                        dialog.show();
+                        materialDialog = builder.build();
+                        materialDialog.show();
                     }
 
                     @Override
                     public void onSuccess(JsonNode jsonNode) {
                         String status = jsonNode.get("status").asText();
                         if (status.equals("status not ok")) {
-                            dialog.dismiss();
+                            materialDialog.dismiss();
                             String error = jsonNode.get("error").asText();
                             if (error.equals("This picture has already been sent.")) {
-                                image_nutrition_facts_uploaded = true;
+                                imageNutritionFactsUploaded = true;
                                 addProductToServer();
-                            }else{
+                            } else {
                                 new MaterialDialog.Builder(AddProductActivity.this).title(R.string.uploading_nutrition_image)
                                     .content(error).show();
                             }
                         } else {
-                            image_nutrition_facts_uploaded = true;
+                            imageNutritionFactsUploaded = true;
                             Map<String, String> queryMap = fillQueryMapFromJson(jsonNode);
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
@@ -790,7 +792,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onSuccess(JsonNode jsonNode) {
-                                        dialog.dismiss();
+                                        materialDialog.dismiss();
                                         addProductToServer();
                                     }
 
@@ -814,7 +816,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void dialogNetworkIssueWhileUploadingImages() {
-        dialog.dismiss();
+        materialDialog.dismiss();
         if (!editionMode) {
             saveProductOffline();
         } else {
@@ -824,8 +826,8 @@ public class AddProductActivity extends AppCompatActivity {
                 .negativeText(R.string.dialog_cancel)
                 .onPositive((dialog, which) -> checkFrontImageUploadStatus())
                 .onNegative((dialog, which) -> dialog.dismiss());
-            dialog = builder.build();
-            dialog.show();
+            materialDialog = builder.build();
+            materialDialog.show();
         }
     }
 
@@ -860,29 +862,29 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void saveProductToServer(String code, String comment) {
-        Map<String, String> productValues=new HashMap<>(productDetails);
+        Map<String, String> productValues = new HashMap<>(productDetails);
         //the default language should not be changed: we keep the original one:
-        if(editionMode && StringUtils.isNotBlank(mProduct.getLang())){
-            productValues.put(PARAM_LANGUAGE,mProduct.getLang());
+        if (editionMode && StringUtils.isNotBlank(mProduct.getLang())) {
+            productValues.put(PARAM_LANGUAGE, mProduct.getLang());
         }
         client.saveProductSingle(code, productValues, comment)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<State>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    disposable = d;
+                    mainDisposable = d;
                     MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
                         .title(R.string.toastSending)
                         .content(R.string.please_wait)
                         .progress(true, 0)
                         .cancelable(false);
-                    dialog = builder.build();
-                    dialog.show();
+                    materialDialog = builder.build();
+                    materialDialog.show();
                 }
 
                 @Override
                 public void onSuccess(State state) {
-                    dialog.dismiss();
+                    materialDialog.dismiss();
                     Toast toast = Toast.makeText(OFFApplication.getInstance(), R.string.product_uploaded_successfully, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     View view = toast.getView();
@@ -900,7 +902,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                 @Override
                 public void onError(Throwable e) {
-                    dialog.dismiss();
+                    materialDialog.dismiss();
                     Log.e(ADD_TAG, e.getMessage());
                     // A network error happened
                     if (e instanceof IOException) {
@@ -913,8 +915,8 @@ public class AddProductActivity extends AppCompatActivity {
                                 .negativeText(R.string.dialog_cancel)
                                 .onPositive((dialog, which) -> checkFrontImageUploadStatus())
                                 .onNegative((dialog, which) -> dialog.dismiss());
-                            dialog = builder.build();
-                            dialog.show();
+                            materialDialog = builder.build();
+                            materialDialog.show();
                         }
                     }
                     // Not a network error
@@ -929,8 +931,8 @@ public class AddProductActivity extends AppCompatActivity {
                                 .negativeText(R.string.dialog_cancel)
                                 .onPositive((dialog, which) -> checkFrontImageUploadStatus())
                                 .onNegative((dialog, which) -> dialog.dismiss());
-                            dialog = builder.build();
-                            dialog.show();
+                            materialDialog = builder.build();
+                            materialDialog.show();
                         }
                     }
                 }
@@ -946,13 +948,13 @@ public class AddProductActivity extends AppCompatActivity {
         productDetails.put("image_ingredients", imagesFilePath[1]);
         productDetails.put("image_nutrition_facts", imagesFilePath[2]);
         // Add the status of images to the productDetails, whether uploaded or not
-        if (image_front_uploaded) {
+        if (imageFrontUploaded) {
             productDetails.put("image_front_uploaded", "true");
         }
-        if (image_ingredients_uploaded) {
+        if (imageIngredientsUploaded) {
             productDetails.put("image_ingredients_uploaded", "true");
         }
-        if (image_nutrition_facts_uploaded) {
+        if (imageNutritionFactsUploaded) {
             productDetails.put("image_nutrition_facts_uploaded", "true");
         }
         OfflineSavedProduct offlineSavedProduct = new OfflineSavedProduct();
@@ -1043,7 +1045,7 @@ public class AddProductActivity extends AppCompatActivity {
         boolean ocr = false;
         Map<String, RequestBody> imgMap = new HashMap<>();
         imgMap.put("code", image.getCode());
-        RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), image.getImageField().toString() + '_' + lang);
+        RequestBody imageField = createTextPlain(image.getImageField().toString() + '_' + lang);
         imgMap.put("imagefield", imageField);
         if (image.getImguploadFront() != null) {
             imagesFilePath[0] = image.getFilePath();
@@ -1066,10 +1068,10 @@ public class AddProductActivity extends AppCompatActivity {
         final String login = settings.getString("user", "");
         final String password = settings.getString("pass", "");
         if (!login.isEmpty() && !password.isEmpty()) {
-            imgMap.put(KEY_USER_ID, RequestBody.create(MediaType.parse("text/plain"), login));
-            imgMap.put(KEY_PASSWORD, RequestBody.create(MediaType.parse("text/plain"), password));
+            imgMap.put(KEY_USER_ID, createTextPlain(login));
+            imgMap.put(KEY_PASSWORD, createTextPlain(password));
         }
-        imgMap.put("comment",RequestBody.create(MediaType.parse("text/plain"), OpenFoodAPIClient.getCommentToUpload(login)));
+        imgMap.put("comment", createTextPlain(OpenFoodAPIClient.getCommentToUpload(login)));
         savePhoto(imgMap, image, position, ocr);
     }
 
@@ -1080,7 +1082,7 @@ public class AddProductActivity extends AppCompatActivity {
             .subscribe(new SingleObserver<JsonNode>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    disposable = d;
+                    mainDisposable = d;
                 }
 
                 @Override
@@ -1095,17 +1097,17 @@ public class AddProductActivity extends AppCompatActivity {
                         } else {
                             hideImageProgress(position, true, error);
                         }
-                        if(!alreadySent){
+                        if (!alreadySent) {
                             new MaterialDialog.Builder(AddProductActivity.this).title(R.string.error_uploading_photo)
                                 .content(error).show();
                         }
                     } else {
                         if (image.getImageField() == ProductImageField.FRONT) {
-                            image_front_uploaded = true;
+                            imageFrontUploaded = true;
                         } else if (image.getImageField() == ProductImageField.INGREDIENTS) {
-                            image_ingredients_uploaded = true;
+                            imageIngredientsUploaded = true;
                         } else if (image.getImageField() == ProductImageField.NUTRITION) {
-                            image_nutrition_facts_uploaded = true;
+                            imageNutritionFactsUploaded = true;
                         }
                         hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
                         String imagefield = jsonNode.get("imagefield").asText();
@@ -1151,10 +1153,8 @@ public class AddProductActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(JsonNode jsonNode) {
                     String status = jsonNode.get("status").asText();
-                    if (status.equals("status ok")) {
-                        if (ocr) {
-                            performOCR(image.getBarcode(), imagefield);
-                        }
+                    if (ocr && status.equals("status ok")) {
+                        performOCR(image.getBarcode(), imagefield);
                     }
                 }
 
@@ -1253,19 +1253,16 @@ public class AddProductActivity extends AppCompatActivity {
         return productDetails.get(PARAM_LANGUAGE);
     }
 
-
     public void setProductLanguage(String languageCode) {
         addToMap(PARAM_LANGUAGE, languageCode);
     }
 
-    public void updateLanguage(){
+    public void updateLanguage() {
         addProductIngredientsFragment.loadIngredientsImage();
         addProductNutritionFactsFragment.loadNutritionImage();
     }
 
-
     public void setIngredients(String status, String ingredients) {
         addProductIngredientsFragment.setIngredients(status, ingredients);
-
     }
 }

@@ -14,30 +14,26 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by prajwalm on 10/09/18.
  */
 
-public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder> {
+public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomViewHolder> {
 
     private Context context;
-    private ArrayList<String> images;
+    private List<String> images;
     private String barcode;
     private final OnImageClickInterface onImageClick;
     private HashMap<String, String> imgMap;
@@ -50,7 +46,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
         void onImageClick(int position);
     }
 
-    public ImagesAdapter(Context context, ArrayList<String> images, String barcode, OnImageClickInterface onImageClick, Product product, boolean isLoggedin) {
+    public ImagesAdapter(Context context, List<String> images, String barcode, OnImageClickInterface onImageClick, Product product, boolean isLoggedin) {
         this.context = context;
         this.images = images;
         this.barcode = barcode;
@@ -64,13 +60,13 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.images_item, parent, false));
+        return new CustomViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.images_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
 
 
         String imageName = images.get(position);
@@ -89,7 +85,6 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
 
 
         String finalUrlString = baseUrlString + barcodePattern + "/" + imageName + ".400" + ".jpg";
-        //String finalUrlString = baseUrlString + barcodePattern + "/" + imageName +".jpg";
 
         Picasso.with(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView);
         Log.i("URL", finalUrlString);
@@ -107,10 +102,11 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
+                        final String imgIdKey = "imgid";
                         switch (item.getItemId()) {
 
                             case R.id.set_ingredient_image:
-                                imgMap.put("imgid", images.get(position));
+                                imgMap.put(imgIdKey, images.get(position));
                                 imgMap.put("code", barcode);
                                 imgMap.put("id", ProductImageField.INGREDIENTS.toString() + '_' + product.getLang());
 
@@ -124,7 +120,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
                                 break;
 
                             case R.id.set_nutrition_image:
-                                imgMap.put("imgid", images.get(position));
+                                imgMap.put(imgIdKey, images.get(position));
                                 imgMap.put("code", barcode);
                                 imgMap.put("id", ProductImageField.NUTRITION.toString() + '_' + product.getLang());
 
@@ -138,7 +134,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
                                 break;
 
                             case R.id.set_front_image:
-                                imgMap.put("imgid", images.get(position));
+                                imgMap.put(imgIdKey, images.get(position));
                                 imgMap.put("code", barcode);
                                 imgMap.put("id", ProductImageField.FRONT.toString() + '_' + product.getLang());
 
@@ -194,12 +190,12 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
         return images.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView productImage;
         Button menuButton;
 
-        public ViewHolder(View itemView) {
+        public CustomViewHolder(View itemView) {
             super(itemView);
             productImage = itemView.findViewById(R.id.img);
             menuButton = itemView.findViewById(R.id.buttonOptions);

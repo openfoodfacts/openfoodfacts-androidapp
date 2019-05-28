@@ -199,9 +199,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         nameProduct.setVisibility(View.VISIBLE);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
-        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext())&& Utils.getBatteryLevel(getContext())) {
             isLowBatteryMode = true;
         }
 
