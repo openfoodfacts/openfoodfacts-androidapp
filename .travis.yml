@@ -64,7 +64,7 @@ jobs:
   - stage: test
     script:
       #launch
-      - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+      - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN fi
 
   - stage: test
     script:
