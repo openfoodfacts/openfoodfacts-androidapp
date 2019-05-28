@@ -38,8 +38,16 @@ Data about food is of public interest and has to be open. The complete database 
 
 ### Screenshots
 ------------------
-
+<!--
 <img src="https://lh3.googleusercontent.com/PYEw9fMLJ5ETPqB2mxeekfVTTNOkJHscs4MRHo546GJzwgIoj3SiJFsZDx4_D-EAUA=w720-h310" height="300"><img src="https://lh3.googleusercontent.com/q7NWz-hc4x39q8N7EW0cz5GZDHN5-F0ttZPHFPvf8-cTG2RImWi_C2J7zCY1Wtc_qZw=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/HXGodB99lZDp3lusX4ZdnkKJxcKiFv5ohfvaiMB7iX-i_QrcvWzUXPxmlSp8nq8SkBc=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/t_AWYLEzr2O4n7KVli8GV_gpT_N1FKhq5EwReUvJjXdJNoPTBTwD-3cKTfZUrkyQAMM=w1280-h636" height="300">
+-->
+<img src="https://lh3.googleusercontent.com/VBZ5CfBYqVLpcdRF8TqZmcZaPWo4Ieghp6LmTJ51nU0FbobPXr_C-w3wmWJiYNxn6A=w1260-h646" alt="Choose the products that are good for you and for the planet" height="300">
+<img src="https://lh3.googleusercontent.com/lycMGukSk-OOF5oI4Pg8yCVvoKJ7FgTh_jjMTnAPYJoUWelSKxu8wkRAHkCr0sJKYHrc=w1260-h646" alt="Food scores" height="300">
+<img src="https://lh3.googleusercontent.com/VB-BSrbx2he7s7O1tGVfCLZNCGiWLy5SvuVpkrAP-Ay9PlLHPnXznyZr2w-0M8XzsA=w1260-h646" alt="Compare" height="300">
+<img src="https://lh3.googleusercontent.com/6Xcs8mxG3x724y5vcTo-M2ujC0QoktyiyUNNd5OzUwruLTZroYXnedY36Q1JgvdK5lA=w1260-h646" alt="Additives" height="300">
+<img src="https://lh3.googleusercontent.com/Ls9vfN5aMKMXR672ArFc-RPLQBqwPAUbPn5gNwkDA-w36CZ7hNOEZke9WIxqYAZbfA=w1260-h646" alt="Find and compare over 750000 products" height="300">
+<img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" alt="Join our movement" height="300">
+
 
 To generate screenshot on local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots`
 
