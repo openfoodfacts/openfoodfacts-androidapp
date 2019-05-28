@@ -64,7 +64,7 @@ jobs:
   - stage: test
     script:
       #launch
-      - ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io
+      - if [ $TRAVIS_BRANCH = "master" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io
 
   - stage: test
     script:
