@@ -36,17 +36,6 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        app:itemBackground="@color/blue_500"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-
-        app:menu="@menu/my_navigation_items"
-        tools:layout_editor_absoluteY="503dp" />
+    <include layout="@layout/navigation_bottom" />
 
 </android.support.design.widget.CoordinatorLayout>

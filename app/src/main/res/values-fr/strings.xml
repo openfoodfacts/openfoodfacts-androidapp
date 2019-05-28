@@ -178,7 +178,7 @@
     <string name="txtPalmOilProduct">Ingrédients issus de l\'huile de palme :</string>
     <string name="txtServingSize">Taille d\'une portion :</string>
     <string name="txtNutrientLevel100g">Repères nutritionnels pour 100g :</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Repères nutritionnels pour 100 ml :</string>
     <string name="txtNutritionLevelLow">en faible quantité</string>
     <string name="txtNutritionLevelModerate">en quantité modérée</string>
     <string name="txtNutritionLevelHigh">en quantité élevée</string>
@@ -382,7 +382,7 @@
     <string name="nutrition_serum_proteins">Protéines du sérum</string>
     <string name="nutrition_nucleotides">Nucléotides</string>
     <string name="for_100g">Pour 100 g</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">Pour 100 ml</string>
     <string name="serving">Par portion</string>
     <string name="minerals">Minéraux</string>
     <string name="nutrition_calcium">Calcium</string>
@@ -614,6 +614,7 @@
     <string name="error_adding_ingredients">Une erreur s\'est produite lors de l\'ajout des ingrédients du produit</string>
     <string name="unable_to_extract_ingredients">Impossible d\'extraire les ingrédients de l\'image</string>
     <string name="error_adding_nutrition_facts">Une erreur s\'est produite lors de la tentative d\'ajout de données nutritionnelles sur le produit</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Les glucides ne peuvent pas être inférieurs à la somme du sucre et de l\'amidon</string>
     <string name="choose_nutrient">Choisir un nutriment</string>
     <string name="error_adding_product_details">Une erreur s\'est produite lors de la tentative d\'ajout des détails du produit</string>
@@ -781,8 +782,8 @@
     <string name="txt_discard">Annuler</string>
     <string name="txt_save">Enregistrer</string>
     <string name="write_external_storage_your_listed_products">Les droits d\'accès en écriture sur le support de stockage externe sont nécessaires pour exporter les données.</string>
-    <string name="txt_info_eaten_products">Vous pourrez ajouter un produit à cette liste en scannant les produits, en faisant glisser la carte du produit vers le haut et en appuyant sur \"je vais manger ça\".
-        Vous pourrez également ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.</string>
+    <string name="txt_info_eaten_products">\"Vous pourrez ajouter un produit à cette liste en scannant les produits, en faisant glisser la carte du produit vers le haut et en appuyant sur \"je vais manger ça\".
+        Vous pourrez également ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.\"</string>
     <string name="txt_info_your_listed_products">Vous pourrez ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.</string>
     <string name="txt_i_m_eating_this">Je vais manger ça</string>
     <string name="compare_product_prompt">Comparer ce produit</string>
@@ -814,4 +815,10 @@
     <string name="no_nutrient_information_available_for_this_product">Aucune information nutritionnelle n\'est disponible pour ce produit</string>
     <string name="error_duplicate_listname">Vous avez déjà une liste portant ce nom</string>
     <string name="required_to_compute_nutriscore">(Nécessaire pour calculer le Nutri-Score)</string>
+    <string name="first_scan_tooltip">Vous pouvez glisser vers le haut pour voir plus de détails</string>
+    <string name="add_an_allergen">Ajouter un allergène</string>
+    <string name="add_a_list">Add a list</string>
+    <string name="todo">À FAIRE</string>
+    <string name="edit_image">Modifier l\'image</string>
+    <string name="barcode">Code barre</string>
 </resources>

@@ -20,14 +20,15 @@ import java.util.Locale;
  */
 public class LocaleHelper {
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
+    public static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
 
     public static void onCreate(Context context) {
-        String lang = getPersistedData(context, Locale.getDefault().getLanguage());
+        String lang = getLanguageInPreferences(context, Locale.getDefault().getLanguage());
         setLocale(context, lang);
     }
 
     public static void onCreate(Context context, String defaultLanguage) {
-        String lang = getPersistedData(context, defaultLanguage);
+        String lang = getLanguageInPreferences(context, defaultLanguage);
         setLocale(context, lang);
     }
 
@@ -35,12 +36,14 @@ public class LocaleHelper {
         return getLocale(OFFApplication.getInstance());
     }
 
+
     public static Context setLocale(Locale locale) {
         return setLocale(OFFApplication.getInstance(), locale);
     }
 
+
     public static String getLanguage(Context context) {
-        String lang = getPersistedData(context, Locale.getDefault().getLanguage());
+        String lang = getLanguageInPreferences(context, Locale.getDefault().getLanguage());
         if (lang.contains("-")) {
             String langSplit[] = lang.split("-");
             lang = langSplit[0];
@@ -117,8 +120,13 @@ public class LocaleHelper {
         return localeObj;
     }
 
-    private static String getPersistedData(Context context, String defaultLanguage) {
+    private static String getLanguageInPreferences(Context context, String defaultLanguage) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
+    }
+
+    private static String getCountryInPreferences(Context context, String defaultLanguage) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(USER_COUNTRY_PREFERENCE_KEY, defaultLanguage);
     }
 }

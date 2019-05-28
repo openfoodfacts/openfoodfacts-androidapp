@@ -33,7 +33,7 @@
     <string name="text_barcode">Vnesite črtno kodo :</string>
     <string name="message_in_activity_save_product_offline">Za pošiljanje novega izdelka je obvezno le ena fotografija.</string>
     <string name="product_incomplete_message">Ta izdelek ni popoln. Zaradi tega ni moče preveriti vsebnost alergenov.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Ta izdelek vsebuje:</string>
     <string name="no_offline_data">Pripravljeni ste</string>
     <string name="first_offline">Tukaj bodo prikazani izdelki, ki so bili dodani brez povezave</string>
     <!-- Image Upload -->
@@ -451,8 +451,8 @@
     <string name="take_picture_nutrition_table">Naredi posnetek iz tabele sestavin</string>
     <string name="take_more_pictures">Naredite več slik</string>
     <string name="txtSaturatedFat">Nasičena maščoba</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nutriscore_info_msg">Več o rezultatu Nutri-Score</string>
+    <string name="nova_info_msg">Več o Nova</string>
     <string name="nova_grp1_msg">Skupina 1 - Nepredelana ali minimalno predelana živila</string>
     <string name="nova_grp2_msg">Skupina 2 - predelane kulinarične sestavine</string>
     <string name="nova_grp3_msg">Skupina 3 - Predelana živila</string>
@@ -492,7 +492,7 @@
     <string name="device_on_mobile_data_warning_message">Nalaganje v mobilnih podatkih je onemogočeno. Povežite se z WiFi ali spremenite nastavitve</string>
     <string name="device_on_mobile_data_warning_positive">Nastavitve</string>
     <string name="device_on_mobile_data_warning_negative">Vseeno naloži</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Spremembe so uspešno shranjene</string>
     <string name="preference_choose_language_dialog_title">Izberi jezik</string>
     <string name="FAQ">Pogosta vprašanja</string>
     <string name="FrequentlyAskedQuestions">Pogosto zastavljena vprašanja</string>
@@ -501,7 +501,7 @@
     <string name="please_check_your_connection">Prosim, preverite povezavo.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Napredno iskanje &amp; Grafikoni</string>
-    <string name="compare_products">Compare products</string>
+    <string name="compare_products">Primerjava izdelkov</string>
     <string name="connectivity_check">Prosim preverite svojo internetno povezavo</string>
     <string name="dismiss">Opusti</string>
     <string name="Terms">Pogoji uporabe</string>
@@ -622,7 +622,8 @@
     <string name="error_adding_ingredients">Nekaj je šlo narobe med poskusom dodajanja sestavin izdelka</string>
     <string name="unable_to_extract_ingredients">Iz slike ne morem razbrati sestavin</string>
     <string name="error_adding_nutrition_facts">Nekaj je šlo narobe med poskusom dodajanja prehranskih dejstev</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="error_in_carbohydrate_value">Ogljikovi hidrati ne morejo biti manjši od vsote sladkorja in škroba</string>
     <string name="choose_nutrient">Izberite hranilo</string>
     <string name="error_adding_product_details">Nekaj je šlo narobe med poskusom dodajanja podrobnosti izdelka</string>
     <string name="hint_product_URL">Povezava na uradno stran izdelka</string>
@@ -642,7 +643,7 @@
     <string name="quantity_overwrite">Prepiši količine</string>
     <string name="link_overwrite">Prepiši povezavo</string>
     <string name="save_product">Želite shraniti ta izdelek?</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">Pri dodajanju izdelka je prišlo do napake</string>
     <string name="photos">Fotografije</string>
     <string name="please_wait">Prosim, počakajte</string>
     <string name="product_uploaded_successfully">Izdelek je uspešno naložen</string>
@@ -703,19 +704,19 @@
     <string name="description_activity_product">opis</string>
     <string name="intent_filter_share_label">Dodaj k Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_high">Visoka stopnja tveganja za prekomerno izpostavljenost</string>
     <string name="overexposure_moderate">Zmerno tveganje prekomerne izpostavljenosti</string>
-    <string name="infants">Infants</string>
+    <string name="infants">Dojenčki</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
+    <string name="toddlers">Malčki</string>
     <string name="toddlers_age">1 do 2</string>
-    <string name="children">Children</string>
+    <string name="children">Otroci</string>
     <string name="children_age">3 do 9</string>
-    <string name="adolescents">Adolescents</string>
+    <string name="adolescents">Mladostniki</string>
     <string name="adolescents_age">10 do 17</string>
     <string name="adults">Odrasli</string>
     <string name="adults_age">18 do 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="elderly">Starejši</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Večina ljudi \n (več kot 50%)</string>
     <string name="some_people">Nekateri ljudje \n (več kot 5%)</string>
@@ -733,7 +734,7 @@
     <string name="your_diets">Vaše diete</string>
     <string name="diet_name">Ime diete</string>
     <string name="diets_dialog_warning_title">Opozorilo</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
+    <string name="warning_diets_data">Podatki o dieti ostanejo samo na vaši napravi. Ničesar se ne bo preneslo.</string>
     <string name="edit_diet_name">Ime</string>
     <string name="edit_diet_description">Opis</string>
     <string name="edit_diet_enabled_disabled">Omogočeno / Onemogočeno</string>
@@ -742,7 +743,7 @@
     <string name="edit_diet_so_so_ingredients">Sestavine tako, tako</string>
     <string name="edit_diet_hint_so_so_ingredient">Seznam problematičnih sestavin, ki naj se prikaže v oranžni barvi. Primer: jajce, ribe ... Ta seznam lahko dokončate kasneje.</string>
     <string name="edit_diet_unauthorised_ingredients">Neodobrene sestavine</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
+    <string name="edit_diet_hint_unauthorised_ingredient">Seznam neodobrenih sestavin, ki naj se prikaže v rdeči barvi. Primer: gluten, mleko, palmovo olje, sladkor... Ta seznam lahko dokončate pozneje.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Preberi sestavine</string>
     <string name="add_nutrient_prompt_text">Dodajte prehranska dejstva za izračun Nutri-Score</string>
@@ -767,8 +768,8 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Prijavi sliko</string>
     <string name="detected_ingredients">Prepoznane sestavine</string>
-    <string name="txtLoaded">Translations were downloaded successfully</string>
-    <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
+    <string name="txtLoaded">Prevodi so bili uspešno preneseni</string>
+    <string name="txtConnectionError">Ne moremo prenesti določenih podatkov. To je lahko posledica napake v povezavi.</string>
     <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
     <string name="warning">Opozorilo:</string>
     <string name="customer_service">Podpora uporabnikom:</string>
@@ -780,7 +781,7 @@
     <string name="add_to_product_lists">Dodaj v vaš seznam</string>
     <string name="txt_create_new_list">Ustvari nov seznam</string>
     <string name="txt_add_to_new_list">Dodaj na nov seznam</string>
-    <string name="create_new_list_list_name">List Name</string>
+    <string name="create_new_list_list_name">Ime seznama</string>
     <string name="txt_eaten_products">Pojedeni izdelki</string>
     <string name="txt_products_to_buy">Izdelki za nakup</string>
     <string name="export_csv_your_listed_products">Izvoz CSV</string>
@@ -789,11 +790,11 @@
     <string name="txt_discard">Zavrzi</string>
     <string name="txt_save">Shrani</string>
     <string name="write_external_storage_your_listed_products">Za izvoz podatkov je potrebno odobriti dovoljenje za pisanje v zunanji pomnilnik.</string>
-    <string name="txt_info_eaten_products">Na ta seznam lahko dodate izdelek tako, da skenirate izdelke, povlečete kartico izdelka in se dotaknete možnosti »To jem«.
-        Na ta seznam lahko dodate tudi izdelke, tako da jih poiščete in kliknete gumb + v zgornjem desnem kotu strani izdelka.</string>
+    <string name="txt_info_eaten_products">\"Na ta seznam lahko dodate izdelek tako, da skenirate izdelke, povlečete kartico izdelka in se dotaknete možnosti »To jem«.
+        Na ta seznam lahko dodate tudi izdelke, tako da jih poiščete in kliknete gumb + v zgornjem desnem kotu strani izdelka.\"</string>
     <string name="txt_info_your_listed_products">Na ta seznam lahko dodajate izdelke tako, da jih iščete in kliknete gumb + v zgornjem desnem kotu strani izdelka.</string>
     <string name="txt_i_m_eating_this">To jem</string>
-    <string name="compare_product_prompt">Compare this product</string>
+    <string name="compare_product_prompt">Primerjaj ta izdelek</string>
     <string name="search_history_pref_title">Počistite lokalno zgodovino iskanja</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
     <string name="settings_country_dialog_title">Izberite vašo državo</string>
@@ -822,4 +823,10 @@
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
+    <string name="first_scan_tooltip">You can slide up the card for more details</string>
+    <string name="add_an_allergen">Dodaj alergen</string>
+    <string name="add_a_list">Add a list</string>
+    <string name="todo">TODO</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="barcode">Črtna koda</string>
 </resources>

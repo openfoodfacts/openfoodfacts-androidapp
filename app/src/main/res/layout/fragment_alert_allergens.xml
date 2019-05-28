@@ -70,40 +70,15 @@
             android:clipToPadding="false"
             android:paddingBottom="100dp"
             tools:listitem="@layout/item_allergens" />
+        <include layout="@layout/navigation_bottom"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentBottom="true"
 
-        <!--<android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="34dp"
-            android:layout_marginRight="34dp"
-            android:layout_marginBottom="62dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:tint="@android:color/white"
-            fab:backgroundTint="@color/blue"
-            fab:fabSize="normal"
-            fab:srcCompat="@drawable/plus" />-->
-
+        />
     </RelativeLayout>
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        fab:elevation="0dp"
-        fab:itemBackground="@color/blue_500"
-        fab:itemIconTint="@color/white"
-        fab:itemTextColor="@color/white"
 
-        fab:menu="@menu/navigation">
-
-
-    </android.support.design.widget.BottomNavigationView>
 
 </android.support.design.widget.CoordinatorLayout>
 

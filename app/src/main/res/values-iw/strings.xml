@@ -622,6 +622,7 @@
     <string name="error_adding_ingredients">משהו השתבש במהלך הניסיון להוסיף רכיבים למוצר</string>
     <string name="unable_to_extract_ingredients">לא ניתן לחלץ רכיבים מהתמונה</string>
     <string name="error_adding_nutrition_facts">משהו השתבש במהלך הניסיון להוסיף עובדות תזונתיות למוצר</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">תכולת הפחמימות לא יכול להיות פחותה מסכום הסוכר והעמילן</string>
     <string name="choose_nutrient">נא לבחור מרכיב תזונתי</string>
     <string name="error_adding_product_details">משהו השתבש במהלך הניסיון להוסיף פרטים למוצר</string>
@@ -745,13 +746,13 @@
     <string name="edit_diet_hint_unauthorised_ingredient">באפשרותך להכין רשימת רכיבים בלתי מורשים שאמורים להופיע באדום. למשל: גלוטן, חלב, שמן דקלים, סוכר… ניתן להשלים את הרשימה הזאת בהמשך.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">חילוץ רכיבים</string>
-    <string name="add_nutrient_prompt_text">יש להוסיף מפרט תזונתי כדי לחשב ציון תזונתי</string>
-    <string name="add_category_prompt_text">יש להוסיף קטגוריה כדי לחשב את הציון התזונתי</string>
+    <string name="add_nutrient_prompt_text">יש להוסיף מפרט תזונתי כדי לחשב Nutri-Score</string>
+    <string name="add_category_prompt_text">יש להוסיף קטגוריה כדי לחשב Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">יש להוסיף מפרט תזונתי וקטגוריה כדי לחשב ציון תזונתי</string>
     <string name="no_nutrition_data_prompt">למוצר זה אין מפרט תזונתי</string>
     <string name="nutrition_image_prompt_text">צילום העובדות התזונתיות</string>
     <string name="ingredient_image_prompt_text">צילום תמונה של הרכיבים</string>
-    <string name="category_game_btn">נא לסייע לסדר את המוצרים בקטגוריות כדי לחשב את הציון התזונתי</string>
+    <string name="category_game_btn">נא לסייע לסדר את המוצרים בקטגוריות כדי לחשב Nutri-Score</string>
     <string name="version_string">יישומון ה־Android של Open Food Facts</string>
     <string name="version">גרסה</string>
     <string name="txtOtherInfo">מידע נוסף:</string>
@@ -789,8 +790,8 @@
     <string name="txt_discard">התעלמות</string>
     <string name="txt_save">שמירה</string>
     <string name="write_external_storage_your_listed_products">נדרשת הרשאת כתיבה לאחסון חיצוני כדי לייצא את הנתונים.</string>
-    <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„נאכל כעת”.
-        כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
+    <string name="txt_info_eaten_products">\"יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„נאכל כעת”.
+        כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.\"</string>
     <string name="txt_info_your_listed_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על הכפתור + בפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="txt_i_m_eating_this">זה מוצר שאני אוכל/ת</string>
     <string name="compare_product_prompt">השוואת המוצר הזה</string>
@@ -804,7 +805,7 @@
     <string name="empty"></string>
     <string name="add_product">הוספת מוצרים</string>
     <string name="add_another_product">הוספת מוצר נוסף</string>
-    <string name="add_nutrition_facts_for_nutriscore">יש להוסיף מפרט תזונתי כדי לחשב ציון תזונתי</string>
+    <string name="add_nutrition_facts_for_nutriscore">יש להוסיף מפרט תזונתי כדי לחשב Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">השוואה</string>
     <string name="product_summary_action_add_to_list_button_label">הוספה לרשימה</string>
     <string name="product_summary_action_edit_button_label">עריכה</string>
@@ -821,5 +822,11 @@
     <string name="no_additive_data_available_for_this_product">אין נתוני תוספים זמינים עבור המוצר הזה</string>
     <string name="no_nutrient_information_available_for_this_product">אין נתוני חומרי הזנה זמינים עבור המוצר הזה</string>
     <string name="error_duplicate_listname">כבר יש לך רשימה בשם הזה</string>
-    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
+    <string name="required_to_compute_nutriscore">(נדרש לטובת חישוב Nutri-Score)</string>
+    <string name="first_scan_tooltip">ניתן להחליק את הכרטיס כלפי מעלה לפרטים נוספים</string>
+    <string name="add_an_allergen">הוספת אלרגן</string>
+    <string name="add_a_list">Add a list</string>
+    <string name="todo">לביצוע</string>
+    <string name="edit_image">עריכת תמונה</string>
+    <string name="barcode">ברקוד</string>
 </resources>

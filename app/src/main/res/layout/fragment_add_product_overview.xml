@@ -47,6 +47,20 @@
                 app:layout_constraintStart_toStartOf="@id/section_product_picture"
                 app:layout_constraintTop_toBottomOf="@id/hint_image_front"
                 app:srcCompat="@drawable/ic_add_a_photo_black_48dp"/>
+        <Button
+                android:id="@+id/btnEditImageFront"
+                android:text="@string/update_image"
+                style="@style/BorderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginRight="@dimen/padding_large"
+                android:layout_marginLeft="@dimen/padding_large"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@id/btnAddImageFront"
+                app:layout_constraintBottom_toBottomOf="@id/btnAddImageFront"
+                app:layout_constraintStart_toEndOf="@id/btnAddImageFront"
+
+        />
 
         <ProgressBar
                 android:id="@+id/imageProgress"
@@ -347,7 +361,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     tools:visibility="visible"/>
         </android.support.design.widget.TextInputLayout>
-
 
 
         <View

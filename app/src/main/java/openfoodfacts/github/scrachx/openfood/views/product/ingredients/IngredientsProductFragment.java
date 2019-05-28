@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
@@ -38,10 +37,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
@@ -57,7 +57,6 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
@@ -77,7 +76,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.jsoup.helper.StringUtil.isBlank;
 
-public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View {
+public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View, PhotoReceiver {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
     public static final Pattern ALLERGEN_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}]+[\\p{L}\\p{Nd}\\p{Z}\\p{P}&&[^,]]*");
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
@@ -142,7 +141,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private String mUrlImage;
     private State mState;
     private String barcode;
-    private IngredientsProductFragment mFragment;
     private SendProduct mSendProduct;
     private WikidataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
@@ -152,6 +150,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private boolean sendUpdatedIngredientsImage = false;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
+    private PhotoReceiverHandler photoReceiverHandler;
 
     @Override
     public void onAttach(Context context) {
@@ -167,7 +166,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
         apiClientForWikiData = new WikidataApiClient();
-        mFragment = this;
 
         return createView(inflater, container, R.layout.fragment_ingredients_product);
     }
@@ -178,6 +176,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         mState = getStateFromActivityIntent();
         extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
         updateImageBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
+        photoReceiverHandler=new PhotoReceiverHandler(this);
         refreshView(mState);
     }
 
@@ -574,7 +573,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 if (mState != null) {
                     Intent intent = new Intent(getContext(), AddProductActivity.class);
                     intent.putExtra("send_updated", sendUpdatedIngredientsImage);
-                    intent.putExtra("edit_product", mState.getProduct());
+                    intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
                     startActivityForResult(intent, EDIT_REQUEST_CODE);
                 }
             }
@@ -645,7 +644,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         } else {
             mState = getStateFromActivityIntent();
             Intent intent = new Intent(getContext(), AddProductActivity.class);
-            intent.putExtra("edit_product", mState.getProduct());
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
             intent.putExtra("perform_ocr", extractIngredients);
             startActivityForResult(intent, EDIT_REQUEST_CODE);
         }
@@ -667,24 +666,29 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 startActivity(intent);
             }
         } else {
-            // take a picture
-            if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-            } else {
-                EasyImage.openCamera(this, 0);
-            }
+           newIngredientImage();
         }
     }
 
-    private void onPhotoReturned(File photoFile) {
-        ProductImage image = new ProductImage(barcode, INGREDIENTS, photoFile);
-        image.setFilePath(photoFile.getAbsolutePath());
+
+    public void newIngredientImage(){
+        doChooseOrTakePhotos(getString(R.string.ingredients_picture));
+    }
+
+    @Override
+    protected void doOnPhotosPermissionGranted() {
+        newIngredientImage();
+    }
+
+    public void onPhotoReturned(File newPhotoFile) {
+        ProductImage image = new ProductImage(barcode, INGREDIENTS, newPhotoFile);
+        image.setFilePath(newPhotoFile.getAbsolutePath());
         api.postImg(getContext(), image, null);
         addPhotoLabel.setVisibility(View.GONE);
-        mUrlImage = photoFile.getAbsolutePath();
+        mUrlImage = newPhotoFile.getAbsolutePath();
 
         Picasso.with(getContext())
-            .load(photoFile)
+            .load(newPhotoFile)
             .fit()
             .into(mImageIngredients);
     }
@@ -698,75 +702,17 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             Intent intent = new Intent(getContext(), AddProductActivity.class);
             intent.putExtra("send_updated", sendUpdatedIngredientsImage);
             intent.putExtra("perform_ocr", extractIngredients);
-            intent.putExtra("edit_product", mState.getProduct());
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
             startActivity(intent);
         }
         if (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK) {
             onRefresh();
         }
 
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                onPhotoReturned(new File(resultUri.getPath()));
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
-            }
-        }
+        photoReceiverHandler.onActivityResult(this, requestCode,resultCode,data);
 
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
-            @Override
-            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-                //Some error handling
-            }
-
-            @Override
-            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                    .setAllowFlipping(false)
-                    .setOutputUri(Utils.getOutputPicUri(getContext()))
-                    .start(getContext(), mFragment);
-            }
-
-            @Override
-            public void onCanceled(EasyImage.ImageSource source, int type) {
-                //Cancel handling, you might wanna remove taken photo if it was canceled
-                if (source == EasyImage.ImageSource.CAMERA) {
-                    File photoFile = EasyImage.lastlyTakenButCanceledPhoto(getContext());
-                    if (photoFile != null) {
-                        photoFile.delete();
-                    }
-                }
-            }
-        });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_CAMERA: {
-                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
-                    new MaterialDialog.Builder(getActivity())
-                        .title(R.string.permission_title)
-                        .content(R.string.permission_denied)
-                        .negativeText(R.string.txtNo)
-                        .positiveText(R.string.txtYes)
-                        .onPositive((dialog, which) -> {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                        })
-                        .show();
-                } else {
-                    EasyImage.openCamera(this, 0);
-                }
-            }
-        }
-    }
 
     public String getIngredients() {
         return mUrlImage;

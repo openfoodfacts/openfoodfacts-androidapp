@@ -4,8 +4,8 @@ apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 def obtainTestBuildType() {
     //to activate  screenshots buildType in IDE; uncomment next line and comment other
     //otherwise the folder androidTestScreenshots is not recognized as a test folder.
-    def result="screenshots"
-//    def result = "debug"
+//    def result="screenshots"
+    def result = "debug"
     if (project.hasProperty("testBuildType")) {
         result = project.getProperties().get("testBuildType")
     }
@@ -25,8 +25,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 312
-        versionName "3.1.2"
+        versionCode 316
+        versionName "3.1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

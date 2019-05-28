@@ -38,7 +38,7 @@ public class UploadService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
 
-        if (intent.getAction().equals("UploadJob")) {
+        if (intent!=null && "UploadJob".equals(intent.getAction())) {
 
 
             NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
