@@ -72,8 +72,6 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 * Select 'OFF' as the flavor (OBF is Open Beauty Facts, OPF: Open Products Facts, OPFF: Open Pet Food Facts)
 <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 
-## Waffle Throughput Graph
- [![Throughput Graph](https://graphs.waffle.io/openfoodfacts/openfoodfacts-androidapp/throughput.svg)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp/metrics/throughput)
 
 ## Libraries used
 We use the following libraries, and we're not closed to changes where relevant :-) 
