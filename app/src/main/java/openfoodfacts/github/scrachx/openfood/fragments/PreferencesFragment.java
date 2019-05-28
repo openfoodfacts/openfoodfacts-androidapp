@@ -48,7 +48,6 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
-    public static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
     private Context context;
 
     @Override
@@ -108,8 +107,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        ListPreference countryPreference = ((ListPreference) findPreference(USER_COUNTRY_PREFERENCE_KEY));
+        ListPreference countryPreference = ((ListPreference) findPreference(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY));
         List<String> countryLabels = new ArrayList<>();
+        List<String> countryTags = new ArrayList<>();
 
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
@@ -120,9 +120,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             List<CountryName> countryNames = (List<CountryName>) operation.getResult();
             for (int i = 0; i < countryNames.size(); i++) {
                 countryLabels.add(countryNames.get(i).getName());
+                countryTags.add(countryNames.get(i).getCountyTag());
             }
             countryPreference.setEntries(countryLabels.toArray(new String[0]));
-            countryPreference.setEntryValues(countryLabels.toArray(new String[0]));
+            countryPreference.setEntryValues(countryTags.toArray(new String[0]));
         });
 
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
@@ -131,7 +132,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         countryPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
             if (preference instanceof ListPreference) {
-               if (preference.getKey().equals(USER_COUNTRY_PREFERENCE_KEY)) {
+               if (preference.getKey().equals(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)) {
                    String country = (String) newValue;
                    SharedPreferences.Editor editor = settings.edit();
                    editor.putString(preference.getKey(), country);
@@ -158,16 +159,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
 
         Preference rateus = findPreference("RateUs");
-        rateus.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + context.getPackageName())));
-                } catch (android.content.ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));
-                }
-                return true;
+        rateus.setOnPreferenceClickListener(preference -> {
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + context.getPackageName())));
+            } catch (android.content.ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));
             }
+            return true;
         });
 
         findPreference("FAQ").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.faq_url));

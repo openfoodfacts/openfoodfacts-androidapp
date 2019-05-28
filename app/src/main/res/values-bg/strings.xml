@@ -25,7 +25,7 @@
     <string name="text_barcode">Въведете баркода :</string>
     <string name="message_in_activity_save_product_offline">За изпращане на нов продукт е задължителна само една снимка.</string>
     <string name="product_incomplete_message">Този продукт не е завършен. В резултат на това не можем да направим проверката на алергените.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Продуктът съдържа:</string>
     <string name="no_offline_data">Всичко е готово</string>
     <string name="first_offline">Продуктите добавени офлайн ще се показват тук</string>
     <!-- Image Upload -->
@@ -35,12 +35,12 @@
         <item>Съставки</item>
         <item>Хранене</item>
         <item>Хранителна таблица</item>
-        <item>Environment</item>
+        <item>Околна среда</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Снимки на продукта</item>
+        <item>Анализ на съставките</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -52,7 +52,7 @@
     <string-array name="weight_all_units">
         <item>g</item>
         <item>mg</item>
-        <item>µg</item>
+        <item>мкг</item>
         <item>% DV</item>
         <item>IU</item>
     </string-array>
@@ -126,13 +126,13 @@
         <item>Таурин</item>
         <item>Транс-мазнини</item>
         <item>Витамин А</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>Витамин В1 (Тиамин)</item>
+        <item>Витамин В12 (кобаламин)</item>
+        <item>Витамин В2 (рибофлавин)</item>
+        <item>Витамин В3 / Витамин РР (Ниацин)</item>
+        <item>Витамин В6 (Пиридоксин)</item>
+        <item>Витамин В9 (Фолиева киселина)</item>
+        <item>Витамин С (аскорбинова киселина)</item>
         <item>Витамин D</item>
         <item>Витамин Е</item>
         <item>Витамин К</item>
@@ -193,7 +193,7 @@
     <string name="txtFat">Мазнини</string>
     <string name="txtSugars">Захар</string>
     <string name="hintBarcode">Баркод</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">Научете повече за нивата на хранителните вещества</string>
     <string name="hintLogin">Вход</string>
     <string name="hintPass">Парола</string>
     <string name="errorLogin">Грешно име или парола</string>
@@ -240,7 +240,7 @@
     <string name="home_drawer">Начало</string>
     <string name="search_drawer">Търсене</string>
     <string name="search_by_barcode_drawer">Въведете баркод</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">Категории</string>
     <string name="search_by_category">Категория</string>
     <string name="search_by_name_drawer">Търсене по име</string>
     <string name="scan_search">Сканирай баркод</string>
@@ -251,28 +251,28 @@
     <string name="delete_txt">Изтрий</string>
     <string name="sign_in_drawer">Вход</string>
     <string name="alert_drawer">Предупреждение за алергени</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Твоят списък</string>
     <string name="warning_allergens">Съдържа алергени</string>
     <string name="title_dialog_alert">Добави предупреждение</string>
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="toggle_flash">Светкавица</string>
+    <string name="flash_on">Светкавица [ON]</string>
+    <string name="flash_off">Светкавица [OFF]</string>
+    <string name="ring_on">Позвъняване [ON]</string>
+    <string name="ring_off">Позвъняване [OFF]</string>
+    <string name="auto_focus_on">Автофокус [ON]</string>
+    <string name="auto_focus_off">Автофокус [OFF]</string>
+    <string name="formats">Формати</string>
+    <string name="choose_formats">Изберете формат</string>
+    <string name="select_camera">Изберете камера</string>
     <string name="ok_button">ОК</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Отмени</string>
     <string name="login_button">Вход</string>
-    <string name="create_account_button">Create Account</string>
+    <string name="create_account_button">Създай профил</string>
     <string name="warning_alert_data">Вашата информация за алергиите никога няма да бъде изпратена на сървъра на Open Food Facts. Също така бъдете внимателни с това, че данните за продукта може да не са точни и откриването може да не е 100% точно, затова моля, проверете повторно сами! </string>
     <string name="from_gallery">От галерията</string>
     <string name="product_sent">Продуктът е изпратен успешно</string>
     <string name="action_edit_product">Редактирай продукт</string>
-    <string name="title_info_dialog">How does it work?</string>
+    <string name="title_info_dialog">Как работи това?</string>
     <string name="text_offline_info_dialog">Можете да сканирате продукти, когато сте офлайн, за да ги добавите към Open Food Facts по-късно. Всички продукти, които сканирате, ще се показват тук и ще можете да ги изпратите, като използвате бутона по-долу.</string>
     <string name="permission_camera">Необходимо е разрешение за камерата за сканиране на баркодове и заснемане на снимки.</string>
     <string name="permission_title">Информация за разрешението</string>
@@ -284,7 +284,7 @@
     <string name="new_offline_info">Направете снимка на продукта, съставките, таблицата с факти за хранителните стойности и всяка друга информация на етикета. Благодаря ви!</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Паролата трябва да бъде дълга най-малко 6 символа.</string>
-    <string name="user">user</string>
+    <string name="user">потребител</string>
     <string name="error_field_required">Това поле е задължително.</string>
     <string name="action_preferences">Предпочитания</string>
     <string name="prefs_scan_startup">Сканиране при стартиране</string>
@@ -297,21 +297,21 @@
     <string name="scan_history_drawer">История</string>
     <string name="clear_history">Изчисти историята</string>
     <string name="title_clear_history_dialog">Изчистване</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Искате ли да изчистите цялата си история на сканирането?</string>
     <string name="export_csv_history">Изнасяне в CSV</string>
     <string name="txt_exporting_history">Изнасяне на историята…</string>
     <string name="txt_history_exported">Историята е изнесена</string>
     <string name="permision_write_external_storage">За изнасяне на историята е необходимо разрешение за запис във външното хранилище.</string>
     <string name="txt_nutrition_not_found">не е налично</string>
-    <string name="no_brand">No Brand</string>
-    <string name="no_title">No Title</string>
+    <string name="no_brand">Няма марка</string>
+    <string name="no_title">Без заглавие</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">Таблица с факти за хранителните стойности за %1$s от този продукт</string>
-    <string name="check_facts">Check</string>
+    <string name="check_facts">Проверяване</string>
     <string name="nutrition">Хранене</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="calculated_nutrition">Изчислена хранителна стойност</string>
+    <string name="please_enter_weight">Моля, въведете теглото на продукта</string>
+    <string name="enter_weight">Въведете теглото на продукта</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="txt_calories_result">%1$s kcal в %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Въглехидрати</string>
@@ -332,7 +332,7 @@
     <string name="nutrition_salt">Сол</string>
     <string name="nutrition_salt_short_name">Сол (g)</string>
     <string name="nutrition_satured_fat">Наситени мазнини</string>
-    <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+    <string name="nutrition_satured_fat_short_name">Наситени мазнини (г)</string>
     <string name="nutrition_serving">На порция</string>
     <string name="nutrition_serving_size">Големина на порцията :</string>
     <string name="nutrition_sodium">Натрий</string>
@@ -345,7 +345,7 @@
     <string name="action_manage_account">Управление на профил</string>
     <string name="action_contributes">Вашите приноси</string>
     <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="energy_pref_title">Предпочитана енергийна единица</string>
     <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="volume_pref_title">Preferred volume unit</string>
     <string name="logout_drawer">Изход</string>
@@ -360,7 +360,7 @@
     <string name="number_of_products">Брой продукти: </string>
     <string name="txt_no_results">Няма намерени резултати</string>
     <string name="txt_extend_search">Опитайте да разширите търсенето си или да добавите продукта</string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
+    <string name="txt_no_matching__category_products">Нямаме продукти в тази категория, искате ли да добавите нов?</string>
     <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
     <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
     <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
@@ -603,10 +603,10 @@
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Scan sound</string>
-    <string name="trouble_scanning">Trouble Scanning?</string>
-    <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
-    <string name="switch_camera">Switch camera</string>
-    <string name="autofocus">Autofocus</string>
+    <string name="trouble_scanning">Проблем със сканирането?</string>
+    <string name="barcode_hint">Проблем със сканирането? Въведете баркода</string>
+    <string name="switch_camera">Превключване на камера</string>
+    <string name="autofocus">Автофокусиране</string>
     <string name="initial_loading">Първоначално зареждане</string>
     <string name="preferences">Предпочитания</string>
     <string name="OFFlogo">Open Food Facts лого</string>
@@ -614,6 +614,7 @@
     <string name="error_adding_ingredients">Нещо се обърка, докато се опитвахме да добавим съставките на продукта</string>
     <string name="unable_to_extract_ingredients">Невъзможно е да се извлекат съставки от изображението</string>
     <string name="error_adding_nutrition_facts">Нещо се обърка, докато се опитвахме да добавим хранителна информация за продукта</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Изберете хранително вещество</string>
     <string name="error_adding_product_details">Нещо се обърка, докато се опитвахме да добавим детайли за продукта</string>
@@ -634,7 +635,7 @@
     <string name="quantity_overwrite">Презаписване на количеството</string>
     <string name="link_overwrite">Презаписване на връзката</string>
     <string name="save_product">Искате ли да запазите продукта?</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">Нещо се обърка при добавяне на продукт</string>
     <string name="photos">Снимки</string>
     <string name="please_wait">Моля, изчакайте</string>
     <string name="product_uploaded_successfully">Продуктът бе качен успешно</string>
@@ -645,23 +646,23 @@
     <string name="ingredients">Съставки</string>
     <string name="nutrition_facts">Хранителна информация</string>
     <string name="your_version">Yours</string>
-    <string name="ingredients_picture">Ingredients Picture</string>
+    <string name="ingredients_picture">Изображение на съставките</string>
     <string name="take_ingredients_picture_to_extract">(Моля, направете снимка на съставките, за да ги извлечете автоматично)</string>
     <string name="ingredients_list">Списък на съставките</string>
     <string name="ingredients_hint">Запазете поръчката, посочете % (процент), когато е нужно, отделете със , (запетая) или използвайте - (тире), използвайте () (скоби) за подсъставките на дадена съставка, оградете алергените с _ (долна черта)</string>
     <string name="extract_ingredients">Извлечете съставките</string>
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Изглежда добре</string>
-    <string name="skip_ingredients">Не изглежда добре
-Пропускане на съставките</string>
-    <string name="traces">Traces</string>
-    <string name="traces_hint">Посочете съставки от коментари като \"Може да съдържат следи от\", \"Произведени в завод, който също използва\" и т.н. 
-Приложения: Мляко, глутен, ядки</string>
-    <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
+    <string name="skip_ingredients">\"Не изглежда добре
+Пропускане на съставките\"</string>
+    <string name="traces">Следи</string>
+    <string name="traces_hint">\"Посочете съставки от коментари като \"Може да съдържат следи от\", \"Произведени в завод, който също използва\" и т.н. 
+Приложения: Мляко, глутен, ядки\"</string>
+    <string name="nutrition_facts_not_specified">Хранителните факти не са посочени върху продукта.</string>
     <string name="nutrition_facts_picture">Картина на хранителните факти</string>
     <string name="for_100g_100ml">За 100 г / 100 мл</string>
     <string name="per_serving">На порция</string>
-    <string name="serving_size">Serving size</string>
+    <string name="serving_size">Големина на порцията</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
     <string name="add_this_product">Add this product</string>
@@ -783,8 +784,8 @@
     <string name="txt_discard">Отказ</string>
     <string name="txt_save">Запис</string>
     <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">Compare this product</string>
@@ -816,4 +817,10 @@
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
+    <string name="first_scan_tooltip">You can slide up the card for more details</string>
+    <string name="add_an_allergen">Add an allergen</string>
+    <string name="add_a_list">Add a list</string>
+    <string name="todo">TODO</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="barcode">Баркод</string>
 </resources>

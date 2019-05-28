@@ -31,7 +31,6 @@ public abstract class AbstractScreenshotTest {
     @Rule
     public GrantPermissionRule permissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CHANGE_CONFIGURATION);
     private static Locale initLocale;
-    private static String initCountry;
     ScreenshotsLocaleProvider localeProvider = new ScreenshotsLocaleProvider();
 
     protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule... activityRules) {
@@ -67,15 +66,8 @@ public abstract class AbstractScreenshotTest {
         Log.d(LOG_TAG, "Change parameters to " + parameter);
         LocaleHelper.setLocale(context, parameter.getLocale());
         final String countryName = parameter.getCountryTag();
-        setCountyInPrefs(countryName);
     }
 
-    private static void setCountyInPrefs(String countryName) {
-        SharedPreferences settings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString(PreferencesFragment.USER_COUNTRY_PREFERENCE_KEY, countryName);
-        editor.apply();
-    }
 
     public void startForAllLocales(ScreenshotActivityTestRule... activityRule) {
         for (ScreenshotParameter screenshotParameter : localeProvider.getParameters()) {
@@ -86,19 +78,11 @@ public abstract class AbstractScreenshotTest {
     @AfterClass
     public static void resetLanguage() {
         LocaleHelper.setLocale(initLocale);
-        if (initCountry != null) {
-            setCountyInPrefs(initCountry);
-        }
     }
 
     @BeforeClass
     public static void initLanguage() {
         initLocale = LocaleHelper.getLocale();
-        initCountry = getCountryInPrefs();
     }
 
-    public static String getCountryInPrefs() {
-        SharedPreferences settings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        return settings.getString(PreferencesFragment.USER_COUNTRY_PREFERENCE_KEY, null);
-    }
 }

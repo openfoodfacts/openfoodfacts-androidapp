@@ -103,7 +103,6 @@
                 android:value=".views.MainActivity" />
         </activity>
         <activity android:name=".views.FullScreenImage" />
-        <activity android:name=".views.FullScreenImageRotate"/>
         <activity
             android:name=".views.HistoryScanActivity"
             android:parentActivityName=".views.MainActivity"

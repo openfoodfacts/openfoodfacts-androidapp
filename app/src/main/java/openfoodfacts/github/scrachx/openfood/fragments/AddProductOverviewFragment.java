@@ -5,16 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +17,6 @@ import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnLongClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -37,42 +31,39 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAutoCompleteAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 import org.jsoup.helper.StringUtil;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
+import java.net.URI;
 import java.util.*;
 
-import static android.Manifest.permission.CAMERA;
-import static android.app.Activity.RESULT_OK;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
-public class AddProductOverviewFragment extends BaseFragment {
+public class AddProductOverviewFragment extends BaseFragment implements PhotoReceiver {
     private static final String PARAM_NAME = "product_name";
     private static final String PARAM_BARCODE = "code";
     private static final String PARAM_QUANTITY = "quantity";
     private static final String PARAM_BRAND = "add_brands";
-    private static final String PARAM_LANGUAGE = "lang";
     private static final String PARAM_INTERFACE_LANGUAGE = "lc";
     private static final String PARAM_PACKAGING = "add_packaging";
     private static final String PARAM_CATEGORIES = "add_categories";
@@ -86,10 +77,13 @@ public class AddProductOverviewFragment extends BaseFragment {
     private static final String PARAM_STORE = "add_stores";
     private static final String PARAM_COUNTRIES = "add_countries";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
+    private PhotoReceiverHandler photoReceiverHandler;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
     @BindView(R.id.btnAddImageFront)
     ImageView imageFront;
+    @BindView(R.id.btnEditImageFront)
+    View editImageFront;
     @BindView(R.id.imageProgress)
     ProgressBar imageProgress;
     @BindView(R.id.imageProgressText)
@@ -168,7 +162,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private String code;
     private String mImageUrl;
     private boolean frontImage;
-    private boolean edit_product;
+    private boolean editionMode;
     private File photoFile;
     private List<String> countries = new ArrayList<>();
     private List<String> labels = new ArrayList<>();
@@ -192,7 +186,8 @@ public class AddProductOverviewFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        otherImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp,0,0,0);
+        photoReceiverHandler = new PhotoReceiverHandler(this);
+        otherImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
 
         //checks the information about the prompt clicked and takes action accordingly
         if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
@@ -200,13 +195,12 @@ public class AddProductOverviewFragment extends BaseFragment {
         } else if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
             ((AddProductActivity) getActivity()).proceed();
         }
+        appLanguageCode = LocaleHelper.getLanguage(activity);
         Bundle b = getArguments();
         if (b != null) {
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            edit_product = b.getBoolean("edit_product");
-            appLanguageCode = LocaleHelper.getLanguage(activity);
-            setProductLanguage(appLanguageCode);
+            editionMode = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
             barcode.setText(R.string.txtBarcode);
             language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
             sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
@@ -214,29 +208,35 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (product != null) {
                 code = product.getCode();
             }
-            if (edit_product && product != null) {
+            if (editionMode && product != null) {
                 code = product.getCode();
-                preFillProductValues();
+                String languageToUse = product.getLang();
+                if (product.isLanguageSupported(appLanguageCode)) {
+                    languageToUse = appLanguageCode;
+                }
+                preFillProductValues(languageToUse);
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
-                preFillValues();
+                preFillValuesFromOffline();
             } else {
-                //adittion
+                //addition
                 if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false)) {
                     enableFastAdditionMode(true);
                 } else {
                     enableFastAdditionMode(false);
                 }
             }
-            barcode.append(" " + code);
+
+            barcode.append(" ");
+            barcode.append(code);
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
                 otherImage.setVisibility(View.GONE);
             }
             if (b.getBoolean("perform_ocr")) {
-                ((AddProductActivity) activity).proceed();
+                (getAddProductActivity()).proceed();
             }
             if (b.getBoolean("send_updated")) {
-                ((AddProductActivity) activity).proceed();
+                (getAddProductActivity()).proceed();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();
@@ -246,6 +246,9 @@ public class AddProductOverviewFragment extends BaseFragment {
         loadAutoSuggestions();
         if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
             getAllDetails(((AddProductActivity) getActivity()).getInitialValues());
+        }
+        if(StringUtils.isBlank(languageCode)){
+            setProductLanguage(appLanguageCode);
         }
     }
 
@@ -274,33 +277,11 @@ public class AddProductOverviewFragment extends BaseFragment {
     /**
      * Pre fill the fields of the product which are already present on the server.
      */
-    private void preFillProductValues() {
+    private void preFillProductValues(String lang) {
         mTagDao = Utils.getAppDaoSession(activity).getTagDao();
         mCategoryNameDao = Utils.getAppDaoSession(activity).getCategoryNameDao();
         mLabelNameDao = Utils.getAppDaoSession(activity).getLabelNameDao();
         mCountryNameDao = Utils.getAppDaoSession(activity).getCountryNameDao();
-        if (product.getImageFrontUrl() != null && !product.getImageFrontUrl().isEmpty()) {
-            mImageUrl = product.getImageFrontUrl();
-            imageProgress.setVisibility(View.VISIBLE);
-            Picasso.with(getContext())
-                .load(product.getImageFrontUrl())
-                .resize(dpsToPixels(50), dpsToPixels(50))
-                .centerInside()
-                .into(imageFront, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        imageProgress.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onError() {
-                        imageProgress.setVisibility(View.GONE);
-                    }
-                });
-        }
-        if (product.getLang() != null && !product.getLang().isEmpty()) {
-            setProductLanguage(product.getLang());
-        }
         if (product.getProductName() != null && !product.getProductName().isEmpty()) {
             name.setText(product.getProductName());
         }
@@ -365,13 +346,39 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             //Also add the country set by the user in preferences
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String savedCountry = sharedPref.getString(PreferencesFragment.USER_COUNTRY_PREFERENCE_KEY, "");
+            String savedCountry = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "");
             if (!savedCountry.isEmpty()) {
                 chipValues.add(savedCountry);
             }
             countriesWhereSold.setText(chipValues);
         }
+        setProductLanguage(lang);
+    }
 
+    private void loadFrontImage(String language) {
+        photoFile=null;
+        final String imageFrontUrl = product.getImageFrontUrl(language);
+        if (imageFrontUrl != null && !imageFrontUrl.isEmpty()) {
+
+            mImageUrl = imageFrontUrl;
+            imageProgress.setVisibility(View.VISIBLE);
+            editImageFront.setVisibility(View.INVISIBLE);
+            Picasso.with(getContext())
+                .load(imageFrontUrl)
+                .resize(dpsToPixels(50), dpsToPixels(50))
+                .centerInside()
+                .into(imageFront, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        frontImageLoaded();
+                    }
+
+                    @Override
+                    public void onError() {
+                        frontImageLoaded();
+                    }
+                });
+        }
     }
 
     /**
@@ -426,11 +433,12 @@ public class AddProductOverviewFragment extends BaseFragment {
     /**
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
-    private void preFillValues() {
+    private void preFillValuesFromOffline() {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
             if (productDetails.get("image_front") != null) {
                 imageProgress.setVisibility(View.VISIBLE);
+                editImageFront.setVisibility(View.INVISIBLE);
                 mImageUrl = productDetails.get("image_front");
                 Picasso.with(getContext())
                     .load("file://" + mImageUrl)
@@ -439,19 +447,19 @@ public class AddProductOverviewFragment extends BaseFragment {
                     .into(imageFront, new Callback() {
                         @Override
                         public void onSuccess() {
-                            imageProgress.setVisibility(View.GONE);
+                            frontImageLoaded();
                         }
 
                         @Override
                         public void onError() {
-                            imageProgress.setVisibility(View.GONE);
+                            frontImageLoaded();
                         }
                     });
             }
-            if (productDetails.get(PARAM_LANGUAGE) != null) {
-                setProductLanguage(productDetails.get(PARAM_LANGUAGE));
+            if (productDetails.get(AddProductActivity.PARAM_LANGUAGE) != null) {
+                setProductLanguage(productDetails.get(AddProductActivity.PARAM_LANGUAGE));
             }
-            String lc = productDetails.get(PARAM_LANGUAGE) != null ? productDetails.get(PARAM_LANGUAGE) : "en";
+            String lc = productDetails.get(AddProductActivity.PARAM_LANGUAGE) != null ? productDetails.get(AddProductActivity.PARAM_LANGUAGE) : "en";
             if (productDetails.get(PARAM_NAME + "_" + lc) != null) {
                 name.setText(productDetails.get(PARAM_NAME + "_" + lc));
             } else if (productDetails.get(PARAM_NAME + "_" + "en") != null) {
@@ -476,6 +484,11 @@ public class AddProductOverviewFragment extends BaseFragment {
             addChipsText(productDetails, PARAM_STORE, stores);
             addChipsText(productDetails, PARAM_COUNTRIES, countriesWhereSold);
         }
+    }
+
+    private void frontImageLoaded() {
+        editImageFront.setVisibility(View.VISIBLE);
+        imageProgress.setVisibility(View.GONE);
     }
 
     private void addChipsText(HashMap<String, String> productDetails, String paramName, NachoTextView nachoTextView) {
@@ -563,9 +576,10 @@ public class AddProductOverviewFragment extends BaseFragment {
         language.setText(R.string.product_language);
         language.append(WordUtils.capitalize(current.getDisplayName(current)));
         if (activity instanceof AddProductActivity) {
-            ((AddProductActivity) activity).addToMap(PARAM_LANGUAGE, languageCode);
+            getAddProductActivity().setProductLanguage(languageCode);
         }
-        if (edit_product) {
+        if (editionMode) {
+            loadFrontImage(lang);
             OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
             client.getExistingProductDetails(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
@@ -584,13 +598,14 @@ public class AddProductOverviewFragment extends BaseFragment {
                                 if (languageCode.equals(lang)) {
                                     name.setText(state.getProduct().getProductName(lang));
                                     if (activity instanceof AddProductActivity) {
-                                        ((AddProductActivity) activity).setIngredients("set", state.getProduct().getIngredientsText(lang));
+                                        getAddProductActivity().setIngredients("set", state.getProduct().getIngredientsText(lang));
+                                        getAddProductActivity().updateLanguage();
                                     }
                                 }
                             } else {
                                 name.setText(null);
                                 if (activity instanceof AddProductActivity) {
-                                    ((AddProductActivity) activity).setIngredients("set", null);
+                                    (getAddProductActivity()).setIngredients("set", null);
                                 }
                             }
                         }
@@ -604,6 +619,10 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
     }
 
+    private AddProductActivity getAddProductActivity() {
+        return (AddProductActivity) activity;
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -613,64 +632,46 @@ public class AddProductOverviewFragment extends BaseFragment {
     @OnClick(R.id.btn_next)
     void next() {
         if (!areRequiredFieldsEmpty() && activity instanceof AddProductActivity) {
-            ((AddProductActivity) activity).proceed();
+            (getAddProductActivity()).proceed();
         }
     }
 
     @OnClick(R.id.btnAddImageFront)
     void addFrontImage() {
         if (mImageUrl != null) {
-            // front image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
-            Bundle bundle = new Bundle();
-            if (edit_product && !newImageSelected) {
-                bundle.putString("imageurl", mImageUrl);
-                bundle.putString("code", product.getCode());
-                bundle.putString("id", "front_en");
+            frontImage = true;
+            if (photoFile != null) {
+                cropRotateImage(photoFile, getString(R.string.set_img_front));
             } else {
-                bundle.putString("imageurl", "file://" + mImageUrl);
-                bundle.putString("code", product.getCode());
-                bundle.putString("id", "front_en");
-            }
-            intent.putExtras(bundle);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(activity, imageFront,
-                        activity.getString(R.string.product_transition));
-                startActivity(intent, options.toBundle());
-            } else {
-                startActivity(intent);
+                new FileDownloader(getContext()).download(mImageUrl, file -> {
+                    photoFile = file;
+                    cropRotateImage(photoFile, getString(R.string.set_img_front));
+                });
             }
         } else {
-            // add front image.
-            frontImage = true;
-            if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-            } else {
-                EasyImage.openCamera(this, 0);
-            }
+            newFrontImage();
         }
     }
 
-    @OnLongClick(R.id.btnAddImageFront)
-    boolean newFrontImage() {
+    @OnClick(R.id.btnEditImageFront)
+    void newFrontImage() {
         // add front image.
         frontImage = true;
-        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-        } else {
-            EasyImage.openCamera(this, 0);
-        }
-        return true;
+        doChooseOrTakePhotos(getString(R.string.set_img_front));
     }
 
     @OnClick(R.id.btn_other_pictures)
     void addOtherImage() {
         frontImage = false;
-        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        doChooseOrTakePhotos(getString(R.string.take_more_pictures));
+    }
+
+    @Override
+    protected void doOnPhotosPermissionGranted() {
+        if (frontImage) {
+            addOtherImage();
         } else {
-            EasyImage.openCamera(this, 0);
+            addFrontImage();
         }
     }
 
@@ -681,7 +682,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
             targetMap.put(PARAM_BARCODE, code);
-            targetMap.put(PARAM_LANGUAGE, languageCode);
+            targetMap.put(AddProductActivity.PARAM_LANGUAGE, languageCode);
             targetMap.put(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
             targetMap.put(PARAM_NAME + "_" + lc, name.getText().toString());
@@ -720,7 +721,7 @@ public class AddProductOverviewFragment extends BaseFragment {
                 addProductActivity.addToMap(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
             }
             if (!languageCode.isEmpty()) {
-                addProductActivity.addToMap(PARAM_LANGUAGE, languageCode);
+                addProductActivity.addToMap(AddProductActivity.PARAM_LANGUAGE, languageCode);
             }
             if (!name.getText().toString().isEmpty()) {
                 String lc = (!languageCode.isEmpty()) ? languageCode : "en";
@@ -744,7 +745,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (!periodsAfterOpening.getText().toString().isEmpty()) {
                 addProductActivity.addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
             }
-            if(mImageUrl!=null){
+            if (mImageUrl != null) {
                 addProductActivity.addToMap("imageUrl", mImageUrl);
             }
             if (!originOfIngredients.getChipValues().isEmpty()) {
@@ -783,7 +784,7 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     private String getValues(NachoTextView nachoTextView) {
         List<String> list = nachoTextView.getChipValues();
-        return StringUtil.join(list,",");
+        return StringUtil.join(list, ",");
     }
 
     @OnClick(R.id.section_manufacturing_details)
@@ -881,7 +882,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
                 name.setText(null);
                 if (activity instanceof AddProductActivity) {
-                    ((AddProductActivity) activity).setIngredients("set", null);
+                    (getAddProductActivity()).setIngredients("set", null);
                 }
                 setProductLanguage(finalLocalValues.get(which));
                 return true;
@@ -901,76 +902,63 @@ public class AddProductOverviewFragment extends BaseFragment {
     }
 
     @Override
+    public void onPhotoReturned(File newPhotoFile) {
+        URI resultUri = newPhotoFile.toURI();
+        this.photoFile = newPhotoFile;
+        ProductImage image;
+        int position;
+        if (frontImage) {
+            image = new ProductImage(code, FRONT, newPhotoFile);
+            mImageUrl = newPhotoFile.getAbsolutePath();
+            newImageSelected = true;
+            position = 0;
+        } else {
+            image = new ProductImage(code, OTHER, newPhotoFile);
+            position = 3;
+        }
+        image.setFilePath(resultUri.getPath());
+        if (activity instanceof AddProductActivity) {
+            (getAddProductActivity()).addToPhotoMap(image, position);
+        }
+        hideImageProgress(false, StringUtils.EMPTY);
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                photoFile = new File((resultUri.getPath()));
-                ProductImage image;
-                int position;
-                if (frontImage) {
-                    image = new ProductImage(code, FRONT, photoFile);
-                    mImageUrl = photoFile.getAbsolutePath();
-                    newImageSelected = true;
-                    position = 0;
-                } else {
-                    image = new ProductImage(code, OTHER, photoFile);
-                    position = 3;
-                }
-                image.setFilePath(resultUri.getPath());
-                if (activity instanceof AddProductActivity) {
-                    ((AddProductActivity) activity).addToPhotoMap(image, position);
-                }
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Log.e("Crop image error", result.getError().toString());
-            }
-        } else if (requestCode == INTENT_INTEGRATOR_REQUEST_CODE) {
+        if (requestCode == INTENT_INTEGRATOR_REQUEST_CODE) {
             IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
             if (result.getContents() != null) {
                 link.setText(result.getContents());
                 link.requestFocus();
             }
         }
-
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
-            @Override
-            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-                //nothing to do here...
-            }
-
-            @Override
-            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                    .setAllowFlipping(false)
-                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                    .setOutputUri(Utils.getOutputPicUri(getContext()))
-                    .start(activity.getApplicationContext(), AddProductOverviewFragment.this);
-            }
-        });
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            frontImage = true;
+        }
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
 
     public void showImageProgress() {
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageFront.setVisibility(View.INVISIBLE);
+        editImageFront.setVisibility(View.INVISIBLE);
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
         imageProgress.setVisibility(View.GONE);
         imageProgressText.setVisibility(View.GONE);
         imageFront.setVisibility(View.VISIBLE);
+        editImageFront.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
             Picasso.with(activity)
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
                 .into(imageFront);
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         }
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     public void showOtherImageProgress() {
