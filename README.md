@@ -49,15 +49,15 @@ Data about food is of public interest and has to be open. The complete database 
 <img src="https://lh3.googleusercontent.com/VBZ5CfBYqVLpcdRF8TqZmcZaPWo4Ieghp6LmTJ51nU0FbobPXr_C-w3wmWJiYNxn6A=w1260-h646" alt="Choose the products that are good for you and for the planet" height="300"><img src="https://lh3.googleusercontent.com/VB-BSrbx2he7s7O1tGVfCLZNCGiWLy5SvuVpkrAP-Ay9PlLHPnXznyZr2w-0M8XzsA=w1260-h646" alt="Compare" height="300">
 <img src="https://lh3.googleusercontent.com/6Xcs8mxG3x724y5vcTo-M2ujC0QoktyiyUNNd5OzUwruLTZroYXnedY36Q1JgvdK5lA=w1260-h646" alt="Additives" height="300"><img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" alt="Join our movement" height="300">
 
-
-To generate screenshot on local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots`
-
 ## Translations
 
 ### Translate Open Food Facts in your language
 
 You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
 https://translate.openfoodfacts.org
+
+## Screenshot generation
+To generate basic screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots`
 
 ## Bugs and feature requests
 
