@@ -96,6 +96,7 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Pierre Slamich](https://github.com/teolemon)
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
+- [Fred Deniger](https://github.com/deniger)
 - [Full list of the Open Food Facts Android developpers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
 
 ### Who do I talk to?
@@ -117,7 +118,7 @@ If you don't have time to contribute code, you're very welcome to scan new produ
 
 ## Copyright and License
 
-    Copyright 2016-2018 Open Food Facts
+    Copyright 2016-2019 Open Food Facts
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
