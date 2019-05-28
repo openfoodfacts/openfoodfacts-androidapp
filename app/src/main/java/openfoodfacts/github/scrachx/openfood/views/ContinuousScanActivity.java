@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.hardware.Camera;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -569,17 +571,21 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-                    lastText = null;
-                }
-                if (searchByBarcode.getVisibility() == View.VISIBLE) {
-                    bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_SMALL, ContinuousScanActivity.this));
-                    bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
-                    bottomSheet.requestLayout();
+                if (!isNetworkAvailable() && newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 } else {
-                    bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_LARGE, ContinuousScanActivity.this));
-                    bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
-                    bottomSheet.requestLayout();
+                    if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                        lastText = null;
+                    }
+                    if (searchByBarcode.getVisibility() == View.VISIBLE) {
+                        bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_SMALL, ContinuousScanActivity.this));
+                        bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
+                        bottomSheet.requestLayout();
+                    } else {
+                        bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_LARGE, ContinuousScanActivity.this));
+                        bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+                        bottomSheet.requestLayout();
+                    }
                 }
             }
 
@@ -820,5 +826,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             OpenFoodAPIClient.addToHistory(mHistoryProductDao, products[0]);
             return null;
         }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager manager =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable = false;
+        if (networkInfo != null && networkInfo.isConnected()) {
+            // Network is present and connected
+            isAvailable = true;
+        }
+        return isAvailable;
     }
 }
