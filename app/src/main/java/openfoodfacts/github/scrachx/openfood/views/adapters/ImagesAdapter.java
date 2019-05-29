@@ -151,7 +151,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
 
                                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                                 emailIntent.setData(Uri.parse("mailto:"));
-                                emailIntent.setType("text/plain");
+                                emailIntent.setType(OpenFoodAPIClient.TEXT_PLAIN);
                                 emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"contact@openfoodfacts.org"});
                                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Photo report for product " + barcode);
                                 emailIntent.putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product " + barcode);

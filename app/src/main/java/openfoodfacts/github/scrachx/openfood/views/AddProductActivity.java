@@ -301,13 +301,7 @@ public class AddProductActivity extends AppCompatActivity {
         if (isNutritionDataAvailable()) {
             addProductNutritionFactsFragment.getDetails(productDetails);
         }
-        final SharedPreferences settings = getSharedPreferences("login", 0);
-        final String login = settings.getString("user", "");
-        final String password = settings.getString("pass", "");
-        if (!login.isEmpty() && !password.isEmpty()) {
-            productDetails.put(KEY_USER_ID, login);
-            productDetails.put(KEY_PASSWORD, password);
-        }
+        addLoginInfoInProductDetails();
         String code = productDetails.get("code");
         String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguageForEdition() + ",product_name_" + getProductLanguageForEdition();
         client.getExistingProductDetails(code, fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
@@ -393,18 +387,7 @@ public class AddProductActivity extends AppCompatActivity {
                             imageProgressServer.setVisibility(View.GONE);
                             // Add option to zoom image.
                             imageServer.setOnClickListener(v -> {
-                                Intent intent = new Intent(AddProductActivity.this, FullScreenImage.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("imageurl", ingredientsImageOnServer);
-                                intent.putExtras(bundle);
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                    ActivityOptionsCompat options = ActivityOptionsCompat.
-                                        makeSceneTransitionAnimation(AddProductActivity.this, imageServer,
-                                            getString(R.string.product_transition));
-                                    startActivity(intent, options.toBundle());
-                                } else {
-                                    startActivity(intent);
-                                }
+                                showFullscreen(ingredientsImageOnServer, imageServer);
                             });
                         }
 
@@ -422,18 +405,7 @@ public class AddProductActivity extends AppCompatActivity {
                             imageProgressLocal.setVisibility(View.GONE);
                             // Add option to zoom image.
                             imageLocal.setOnClickListener(v -> {
-                                Intent intent = new Intent(AddProductActivity.this, FullScreenImage.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("imageurl", "file://" + imagesFilePath[1]);
-                                intent.putExtras(bundle);
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                    ActivityOptionsCompat options = ActivityOptionsCompat.
-                                        makeSceneTransitionAnimation(AddProductActivity.this, imageLocal,
-                                            getString(R.string.product_transition));
-                                    startActivity(intent, options.toBundle());
-                                } else {
-                                    startActivity(intent);
-                                }
+                                showFullscreen("file://" + imagesFilePath[1], imageLocal);
                             });
                         }
 
@@ -445,6 +417,21 @@ public class AddProductActivity extends AppCompatActivity {
             }
         } else {
             checkForExistingProductName();
+        }
+    }
+
+    public void showFullscreen(String s, ImageView imageLocal) {
+        Intent intent = new Intent(AddProductActivity.this, FullScreenImage.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("imageurl", s);
+        intent.putExtras(bundle);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(AddProductActivity.this, imageLocal,
+                    getString(R.string.product_transition));
+            startActivity(intent, options.toBundle());
+        } else {
+            startActivity(intent);
         }
     }
 
@@ -543,19 +530,13 @@ public class AddProductActivity extends AppCompatActivity {
             Map<String, RequestBody> imgMap = new HashMap<>();
             RequestBody barcode = createTextPlain(code);
             RequestBody imageField = createTextPlain(ProductImageField.FRONT.toString() + '_' + getProductLanguageForEdition());
-            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
+            RequestBody image =OpenFoodAPIClient.createImageRequest(photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
             imgMap.put("imgupload_front\"; filename=\"front_" + getProductLanguageForEdition() + ".png\"", image);
 
             // Attribute the upload to the connected user
-            final SharedPreferences settings = getSharedPreferences("login", 0);
-            final String login = settings.getString("user", "");
-            final String password = settings.getString("pass", "");
-            if (!login.isEmpty() && !password.isEmpty()) {
-                imgMap.put(KEY_USER_ID, createTextPlain(login));
-                imgMap.put(KEY_PASSWORD, createTextPlain(password));
-            }
+            addLoginPasswordInfo(imgMap);
 
             client.saveImageSingle(imgMap)
                 .subscribeOn(Schedulers.io())
@@ -587,7 +568,7 @@ public class AddProductActivity extends AppCompatActivity {
                             }
                         } else {
                             imageFrontUploaded = true;
-                            Map<String, String> queryMap = fillQueryMapFromJson(jsonNode);
+                            Map<String, String> queryMap = buildImageQueryMap(jsonNode);
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -623,7 +604,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private RequestBody createTextPlain(String code) {
-        return RequestBody.create(MediaType.parse("text/plain"), code);
+        return RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
     }
 
     /**
@@ -634,22 +615,12 @@ public class AddProductActivity extends AppCompatActivity {
         if (!imageIngredientsUploaded && imagesFilePath[1] != null && !imagesFilePath[1].isEmpty()) {
             // ingredients image is not yet uploaded.
             File photoFile = new File(imagesFilePath[1]);
-            Map<String, RequestBody> imgMap = new HashMap<>();
-            RequestBody barcode = createTextPlain(code);
-            RequestBody imageField = createTextPlain(ProductImageField.INGREDIENTS.toString() + '_' + getProductLanguageForEdition());
-            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
-            imgMap.put("code", barcode);
-            imgMap.put("imagefield", imageField);
+            Map<String, RequestBody> imgMap = createRequestBodyMap(code, ProductImageField.INGREDIENTS);
+            RequestBody image = OpenFoodAPIClient.createImageRequest(photoFile);
             imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + getProductLanguageForEdition() + ".png\"", image);
 
             // Attribute the upload to the connected user
-            final SharedPreferences settings = getSharedPreferences("login", 0);
-            final String login = settings.getString("user", "");
-            final String password = settings.getString("pass", "");
-            if (!login.isEmpty() && !password.isEmpty()) {
-                imgMap.put(KEY_USER_ID, createTextPlain(login));
-                imgMap.put(KEY_PASSWORD, createTextPlain(password));
-            }
+            addLoginPasswordInfo(imgMap);
 
             client.saveImageSingle(imgMap)
                 .subscribeOn(Schedulers.io())
@@ -681,7 +652,7 @@ public class AddProductActivity extends AppCompatActivity {
                             }
                         } else {
                             imageIngredientsUploaded = true;
-                            Map<String, String> queryMap = fillQueryMapFromJson(jsonNode);
+                            Map<String, String> queryMap = buildImageQueryMap(jsonNode);
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -716,7 +687,18 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
-    private Map<String, String> fillQueryMapFromJson(JsonNode jsonNode) {
+    private void addLoginPasswordInfo(Map<String, RequestBody> imgMap) {
+        final SharedPreferences settings = getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
+        final String password = settings.getString("pass", "");
+        if (!login.isEmpty() && !password.isEmpty()) {
+            imgMap.put(KEY_USER_ID, createTextPlain(login));
+            imgMap.put(KEY_PASSWORD, createTextPlain(password));
+        }
+        imgMap.put("comment", createTextPlain(OpenFoodAPIClient.getCommentToUpload(login)));
+    }
+
+    public static Map<String, String> buildImageQueryMap(JsonNode jsonNode) {
         String imagefield = jsonNode.get("imagefield").asText();
         String imgid = jsonNode.get("image").get("imgid").asText();
         Map<String, String> queryMap = new HashMap<>();
@@ -733,22 +715,12 @@ public class AddProductActivity extends AppCompatActivity {
         if (!imageNutritionFactsUploaded && imagesFilePath[2] != null && !imagesFilePath[2].isEmpty()) {
             // nutrition facts image is not yet uploaded.
             File photoFile = new File(imagesFilePath[2]);
-            Map<String, RequestBody> imgMap = new HashMap<>();
-            RequestBody barcode = createTextPlain(code);
-            RequestBody imageField = createTextPlain(ProductImageField.NUTRITION.toString() + '_' + getProductLanguageForEdition());
-            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
-            imgMap.put("code", barcode);
-            imgMap.put("imagefield", imageField);
+            Map<String, RequestBody> imgMap = createRequestBodyMap(code, ProductImageField.NUTRITION);
+            RequestBody image = OpenFoodAPIClient.createImageRequest( photoFile);
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + getProductLanguageForEdition() + ".png\"", image);
 
             // Attribute the upload to the connected user
-            final SharedPreferences settings = getSharedPreferences("login", 0);
-            final String login = settings.getString("user", "");
-            final String password = settings.getString("pass", "");
-            if (!login.isEmpty() && !password.isEmpty()) {
-                imgMap.put(KEY_USER_ID, createTextPlain(login));
-                imgMap.put(KEY_PASSWORD, createTextPlain(password));
-            }
+            addLoginPasswordInfo(imgMap);
 
             client.saveImageSingle(imgMap)
                 .subscribeOn(Schedulers.io())
@@ -780,7 +752,7 @@ public class AddProductActivity extends AppCompatActivity {
                             }
                         } else {
                             imageNutritionFactsUploaded = true;
-                            Map<String, String> queryMap = fillQueryMapFromJson(jsonNode);
+                            Map<String, String> queryMap = buildImageQueryMap(jsonNode);
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -813,6 +785,13 @@ public class AddProductActivity extends AppCompatActivity {
             // nutrition facts image is uploaded, upload the product to server.
             addProductToServer();
         }
+    }
+
+    private Map<String, RequestBody> createRequestBodyMap(String code, ProductImageField nutrition) {
+        Map<String, RequestBody> imgMap = new HashMap<>();
+        imgMap.put("code", createTextPlain(code));
+        imgMap.put("imagefield", createTextPlain(nutrition.toString() + '_' + getProductLanguageForEdition()));
+        return imgMap;
     }
 
     private void dialogNetworkIssueWhileUploadingImages() {
@@ -906,18 +885,7 @@ public class AddProductActivity extends AppCompatActivity {
                     Log.e(ADD_TAG, e.getMessage());
                     // A network error happened
                     if (e instanceof IOException) {
-                        if (!editionMode) {
-                            saveProductOffline();
-                        } else {
-                            MaterialDialog.Builder builder = new MaterialDialog.Builder(AddProductActivity.this)
-                                .title(R.string.device_offline_dialog_title)
-                                .positiveText(R.string.txt_try_again)
-                                .negativeText(R.string.dialog_cancel)
-                                .onPositive((dialog, which) -> checkFrontImageUploadStatus())
-                                .onNegative((dialog, which) -> dialog.dismiss());
-                            materialDialog = builder.build();
-                            materialDialog.show();
-                        }
+                        dialogNetworkIssueWhileUploadingImages();
                     }
                     // Not a network error
                     else {
@@ -1011,6 +979,11 @@ public class AddProductActivity extends AppCompatActivity {
         if (isNutritionDataAvailable()) {
             addProductNutritionFactsFragment.getAllDetails(productDetails);
         }
+        addLoginInfoInProductDetails();
+        checkFrontImageUploadStatus();
+    }
+
+    private void addLoginInfoInProductDetails() {
         final SharedPreferences settings = getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         final String password = settings.getString("pass", "");
@@ -1018,7 +991,6 @@ public class AddProductActivity extends AppCompatActivity {
             productDetails.put(KEY_USER_ID, login);
             productDetails.put(KEY_PASSWORD, password);
         }
-        checkFrontImageUploadStatus();
     }
 
     @OnClick(R.id.overview_indicator)
@@ -1064,14 +1036,7 @@ public class AddProductActivity extends AppCompatActivity {
             imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
         }
         // Attribute the upload to the connected user
-        final SharedPreferences settings = getSharedPreferences("login", 0);
-        final String login = settings.getString("user", "");
-        final String password = settings.getString("pass", "");
-        if (!login.isEmpty() && !password.isEmpty()) {
-            imgMap.put(KEY_USER_ID, createTextPlain(login));
-            imgMap.put(KEY_PASSWORD, createTextPlain(password));
-        }
-        imgMap.put("comment", createTextPlain(OpenFoodAPIClient.getCommentToUpload(login)));
+        addLoginPasswordInfo(imgMap);
         savePhoto(imgMap, image, position, ocr);
     }
 

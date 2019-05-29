@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,15 +12,12 @@ import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +32,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
@@ -67,7 +64,6 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.jsoup.helper.StringUtil.isBlank;
 
@@ -338,76 +334,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         return otherNutritionStringBuilder;
     }
 
-    private CharSequence getAdditiveTag(AdditiveName additive) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                if (additive.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        FragmentActivity activity = getActivity();
-                        if (value) {
-                            if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, additive,
-                                    activity.getSupportFragmentManager());
-                            }
-                        } else {
-                            if (additive.hasOverexposureData()) {
-                                if (activity != null && !activity.isFinishing()) {
-                                    BottomScreenCommon.showBottomScreen(result, additive,
-                                        activity.getSupportFragmentManager());
-                                }
-                            } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                            }
-                        }
-                    });
-                } else {
-                    FragmentActivity activity = getActivity();
-                    if (additive.hasOverexposureData()) {
-                        if (activity != null && !activity.isFinishing()) {
-                            BottomScreenCommon.showBottomScreen(null, additive,
-                                activity.getSupportFragmentManager());
-                        }
-                    } else {
-                        ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                    }
-                }
-            }
-        };
-
-        spannableStringBuilder.append(additive.getName());
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        // if the additive has an overexposure risk ("high" or "moderate") then append the warning message to it
-        if (additive.hasOverexposureData()) {
-            boolean isHighRisk = "high".equalsIgnoreCase(additive.getOverexposureRisk());
-            Drawable riskIcon;
-            String riskWarningStr;
-            int riskWarningColor;
-            if (isHighRisk) {
-                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_high_risk);
-                riskWarningStr = getString(R.string.overexposure_high);
-                riskWarningColor = getColor(getContext(), R.color.overexposure_high);
-            } else {
-                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_moderate_risk);
-                riskWarningStr = getString(R.string.overexposure_moderate);
-                riskWarningColor = getColor(getContext(), R.color.overexposure_moderate);
-            }
-            riskIcon.setBounds(0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight());
-            ImageSpan iconSpan = new ImageSpan(riskIcon, ImageSpan.ALIGN_BOTTOM);
-
-            spannableStringBuilder.append(" - "); // this will be replaced with the risk icon
-            spannableStringBuilder.setSpan(iconSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-
-            spannableStringBuilder.append(riskWarningStr);
-            spannableStringBuilder.setSpan(new ForegroundColorSpan(riskWarningColor), spannableStringBuilder.length() - riskWarningStr.length(), spannableStringBuilder.length(),
-                SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
-        return spannableStringBuilder;
-    }
 
     private CharSequence getAllergensTag(AllergenName allergen) {
         SpannableStringBuilder ssb = new SpannableStringBuilder();
@@ -488,19 +414,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @Override
     public void showAdditives(List<AdditiveName> additives) {
-        additiveProduct.setText(bold(getString(R.string.txtAdditives)));
-        additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
-        additiveProduct.append(" ");
-        additiveProduct.append("\n");
-        additiveProduct.setClickable(true);
-        additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
-
-        for (int i = 0; i < additives.size() - 1; i++) {
-            additiveProduct.append(getAdditiveTag(additives.get(i)));
-            additiveProduct.append("\n");
-        }
-
-        additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
+        AdditiveFragmentHelper.showAdditives(additives,additiveProduct,apiClientForWikiData,this);
     }
 
     @Override
@@ -546,17 +460,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
             final String login = settings.getString("user", "");
             if (login.isEmpty()) {
-                new MaterialDialog.Builder(getContext())
-                    .title(R.string.sign_in_to_edit)
-                    .positiveText(R.string.txtSignIn)
-                    .negativeText(R.string.dialog_cancel)
-                    .onPositive((dialog, which) -> {
-                        Intent intent = new Intent(getContext(), LoginActivity.class);
-                        startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
-                        dialog.dismiss();
-                    })
-                    .onNegative((dialog, which) -> dialog.dismiss())
-                    .build().show();
+                showSignInDialog();
             } else {
                 activityState = getStateFromActivityIntent();
                 if (activityState != null) {
@@ -618,17 +522,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         if (login.isEmpty()) {
-            new MaterialDialog.Builder(getContext())
-                .title(R.string.sign_in_to_edit)
-                .positiveText(R.string.txtSignIn)
-                .negativeText(R.string.dialog_cancel)
-                .onPositive((dialog, which) -> {
-                    Intent intent = new Intent(getContext(), LoginActivity.class);
-                    startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
-                    dialog.dismiss();
-                })
-                .onNegative((dialog, which) -> dialog.dismiss())
-                .build().show();
+
+            showSignInDialog();
         } else {
             activityState = getStateFromActivityIntent();
             Intent intent = new Intent(getContext(), AddProductActivity.class);
@@ -636,6 +531,20 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             intent.putExtra("perform_ocr", extractIngredients);
             startActivityForResult(intent, EDIT_REQUEST_CODE);
         }
+    }
+
+    private void showSignInDialog() {
+        new MaterialDialog.Builder(getContext())
+            .title(R.string.sign_in_to_edit)
+            .positiveText(R.string.txtSignIn)
+            .negativeText(R.string.dialog_cancel)
+            .onPositive((dialog, which) -> {
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
+                dialog.dismiss();
+            })
+            .onNegative((dialog, which) -> dialog.dismiss())
+            .build().show();
     }
 
     @OnClick(R.id.imageViewIngredients)

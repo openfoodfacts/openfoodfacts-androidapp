@@ -39,6 +39,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
@@ -453,93 +454,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    private CharSequence getAdditiveTag(AdditiveName additive) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                if (additive.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        FragmentActivity activity = getActivity();
-                        if (value) {
-                            if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, additive,
-                                    activity.getSupportFragmentManager());
-                            }
-                        } else {
-                            if (additive.hasOverexposureData()) {
-                                if (activity != null && !activity.isFinishing()) {
-                                    BottomScreenCommon.showBottomScreen(result, additive,
-                                        activity.getSupportFragmentManager());
-                                }
-                            } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                            }
-                        }
-                    });
-                } else {
-                    FragmentActivity activity = getActivity();
-                    if (additive.hasOverexposureData()) {
-                        if (activity != null && !activity.isFinishing()) {
-                            BottomScreenCommon.showBottomScreen(null, additive,
-                                activity.getSupportFragmentManager());
-                        }
-                    } else {
-                        ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                    }
-                }
-            }
-        };
-
-        spannableStringBuilder.append(additive.getName());
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        // if the additive has an overexposure risk ("high" or "moderate") then append the warning message to it
-        if (additive.hasOverexposureData()) {
-            boolean isHighRisk = "high".equalsIgnoreCase(additive.getOverexposureRisk());
-            Drawable riskIcon;
-            String riskWarningStr;
-            int riskWarningColor;
-            if (isHighRisk) {
-                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_high_risk);
-                riskWarningStr = getString(R.string.overexposure_high);
-                riskWarningColor = getColor(getContext(), R.color.overexposure_high);
-            } else {
-                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_moderate_risk);
-                riskWarningStr = getString(R.string.overexposure_moderate);
-                riskWarningColor = getColor(getContext(), R.color.overexposure_moderate);
-            }
-            riskIcon.setBounds(0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight());
-            ImageSpan iconSpan = new ImageSpan(riskIcon, ImageSpan.ALIGN_BOTTOM);
-
-            spannableStringBuilder.append(" - "); // this will be replaced with the risk icon
-            spannableStringBuilder.setSpan(iconSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-
-            spannableStringBuilder.append(riskWarningStr);
-            spannableStringBuilder
-                .setSpan(new ForegroundColorSpan(riskWarningColor), spannableStringBuilder.length() - riskWarningStr.length(), spannableStringBuilder.length(),
-                    SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
-        return spannableStringBuilder;
-    }
 
     @Override
     public void showAdditives(List<AdditiveName> additives) {
-        additiveProduct.setText(bold(getString(R.string.txtAdditives)));
-        additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
-        additiveProduct.append(" ");
-        additiveProduct.append("\n");
-        additiveProduct.setClickable(true);
-        additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
-
-        for (int i = 0; i < additives.size() - 1; i++) {
-            additiveProduct.append(getAdditiveTag(additives.get(i)));
-            additiveProduct.append("\n");
-        }
-
-        additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
+        AdditiveFragmentHelper.showAdditives(additives,additiveProduct,apiClientForWikiData,this);
     }
 
     @Override
@@ -880,7 +798,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String shareUrl = " " + getString(R.string.website_product) + product.getCode();
         Intent sharingIntent = new Intent();
         sharingIntent.setAction(Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
+        sharingIntent.setType(OpenFoodAPIClient.TEXT_PLAIN);
         String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
         String shareSub = "\n\n";
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);

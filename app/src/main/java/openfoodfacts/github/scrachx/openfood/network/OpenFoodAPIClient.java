@@ -45,7 +45,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.*;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 
 public class OpenFoodAPIClient {
-    private AllergenDao mAllergenDao;
+    public static final String TEXT_PLAIN = "text/plain";
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
     private OfflineUploadingTask task = new OfflineUploadingTask();
@@ -57,7 +57,6 @@ public class OpenFoodAPIClient {
 
     public OpenFoodAPIClient(Activity activity) {
         this(BuildConfig.HOST);
-        mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
         mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
         mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
         mActivity = activity;
@@ -72,7 +71,6 @@ public class OpenFoodAPIClient {
 
     public OpenFoodAPIClient(Activity activity, String url) {
         this(url);
-        mAllergenDao = Utils.getAppDaoSession(activity).getAllergenDao();
         mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
         mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
     }
@@ -96,6 +94,10 @@ public class OpenFoodAPIClient {
         return comment;
     }
 
+    public static RequestBody createImageRequest(File image) {
+        return RequestBody.create(MediaType.parse("image/*"), image);
+    }
+
     /**
      * Open the product activity if the barcode exist.
      * Also add it in the history if the product exist.
@@ -114,23 +116,7 @@ public class OpenFoodAPIClient {
 
                 final State s = response.body();
                 if (s.getStatus() == 0) {
-                    new MaterialDialog.Builder(activity)
-                        .title(R.string.txtDialogsTitle)
-                        .content(R.string.txtDialogsContent)
-                        .positiveText(R.string.txtYes)
-                        .negativeText(R.string.txtNo)
-                        .onPositive((dialog, which) -> {
-                            if (!activity.isFinishing()) {
-                                Intent intent = new Intent(activity, AddProductActivity.class);
-                                State st = new State();
-                                Product pd = new Product();
-                                pd.setCode(barcode);
-                                st.setProduct(pd);
-                                intent.putExtra("state", st);
-                                activity.startActivity(intent);
-                                activity.finish();
-                            }
-                        })
+                    productNotFoundDialogBuilder(activity, barcode)
                         .onNegative((dialog, which) -> activity.onBackPressed())
                         .show();
                 } else {
@@ -171,26 +157,30 @@ public class OpenFoodAPIClient {
                     return;
                 }
 
-                new MaterialDialog.Builder(activity)
-                    .title(R.string.txtDialogsTitle)
-                    .content(R.string.txtDialogsContent)
-                    .positiveText(R.string.txtYes)
-                    .negativeText(R.string.txtNo)
-                    .onPositive((dialog, which) -> {
-                        if (!activity.isFinishing()) {
-                            Intent intent = new Intent(activity, AddProductActivity.class);
-                            State st = new State();
-                            Product pd = new Product();
-                            pd.setCode(barcode);
-                            st.setProduct(pd);
-                            intent.putExtra("state", st);
-                            activity.startActivity(intent);
-                            activity.finish();
-                        }
-                    })
+                productNotFoundDialogBuilder(activity, barcode)
                     .show();
             }
         });
+    }
+
+    public MaterialDialog.Builder productNotFoundDialogBuilder(Activity activity, String barcode) {
+        return new MaterialDialog.Builder(activity)
+            .title(R.string.txtDialogsTitle)
+            .content(R.string.txtDialogsContent)
+            .positiveText(R.string.txtYes)
+            .negativeText(R.string.txtNo)
+            .onPositive((dialog, which) -> {
+                if (!activity.isFinishing()) {
+                    Intent intent = new Intent(activity, AddProductActivity.class);
+                    State st = new State();
+                    Product pd = new Product();
+                    pd.setCode(barcode);
+                    st.setProduct(pd);
+                    intent.putExtra("state", st);
+                    activity.startActivity(intent);
+                    activity.finish();
+                }
+            });
     }
 
     public void getFieldByLanguage(String barcode, ArrayList<String> fields, final OnFieldByLanguageCallback fieldByLanguageCallback) {
@@ -233,17 +223,17 @@ public class OpenFoodAPIClient {
                 final JsonNode node = response.body();
                 final JsonNode ingredientsJsonNode = node.findValue("ingredients");
                 if (ingredientsJsonNode != null) {
-                    ArrayList<ProductIngredient> ProductIngredients = new ArrayList<>();
+                    ArrayList<ProductIngredient> productIngredients = new ArrayList<>();
                     final int nbIngredient = ingredientsJsonNode.size();
                     for (int i = 0; i < nbIngredient; i++) {
-                        ProductIngredient ProductIngredient = new ProductIngredient();
+                        ProductIngredient productIngredient = new ProductIngredient();
                         final JsonNode ingredient = ingredientsJsonNode.get(i);
-                        ProductIngredient.setId(ingredient.findValue("id").toString());
-                        ProductIngredient.setText(ingredient.findValue("text").toString());
-                        ProductIngredient.setRank(Long.valueOf(ingredient.findValue("rank").toString()));
-                        ProductIngredients.add(ProductIngredient);
+                        productIngredient.setId(ingredient.findValue("id").toString());
+                        productIngredient.setText(ingredient.findValue("text").toString());
+                        productIngredient.setRank(Long.valueOf(ingredient.findValue("rank").toString()));
+                        productIngredients.add(productIngredient);
                     }
-                    ingredientListCallback.onIngredientListResponse(true, ProductIngredients);
+                    ingredientListCallback.onIngredientListResponse(true, productIngredients);
                 }
             }
 
@@ -521,15 +511,20 @@ public class OpenFoodAPIClient {
 
         // Attribute the upload to the connected user
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
+        fillWithUserLoginInfo(imgMap, settings);
+        return imgMap;
+    }
+
+    public static String fillWithUserLoginInfo(Map<String, RequestBody> imgMap, SharedPreferences settings) {
         final String login = settings.getString("user", "");
         final String password = settings.getString("pass", "");
 
         if (!login.isEmpty() && !password.isEmpty()) {
-            imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
-            imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+            imgMap.put("user_id", RequestBody.create(MediaType.parse(TEXT_PLAIN), login));
+            imgMap.put("password", RequestBody.create(MediaType.parse(TEXT_PLAIN), password));
         }
-        imgMap.put("comment", RequestBody.create(MediaType.parse("text/plain"), getCommentToUpload(login)));
-        return imgMap;
+        imgMap.put("comment", RequestBody.create(MediaType.parse(TEXT_PLAIN), getCommentToUpload(login)));
+        return login;
     }
 
     public interface OnProductsCallback {
@@ -635,7 +630,7 @@ public class OpenFoodAPIClient {
                 try {
                     imageFile = new File(uploadProduct.getImageFilePath());
                 } catch (Exception e) {
-                    Log.e("OfflineUploadingTask","doInBackground",e);
+                    Log.e("OfflineUploadingTask", "doInBackground", e);
                     continue;
                 }
                 ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
