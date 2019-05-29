@@ -156,14 +156,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
     /**
      * Used by screenshot tests.
+     *
      * @param text
      */
-    public void showProduct(String text){
-        productShowing=true;
+    @SuppressWarnings("unused")
+    public void showProduct(String text) {
+        productShowing = true;
         barcodeView.setVisibility(View.GONE);
         barcodeView.pause();
         imageForScreenshotGenerationOnly.setVisibility(View.VISIBLE);
-        findProduct(text,false);
+        findProduct(text, false);
     }
 
     /**
@@ -226,6 +228,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         new HistoryTask().doInBackground(product);
                         showAllViews();
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        productShownInBottomView();
                         productNotFound.setVisibility(View.GONE);
                         if (newlyAdded) {
                             txtProductIncomplete.setVisibility(View.INVISIBLE);
@@ -332,17 +335,17 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         }
                         FragmentManager fm = getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                            ProductFragment newProductFragment = new ProductFragment();
+                        ProductFragment newProductFragment = new ProductFragment();
 
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("state", state);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("state", state);
 
-                            newProductFragment.setArguments(bundle);
-                            fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
-                            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                            fragmentTransaction.commit();
-                            productFragment=newProductFragment;
-                            showFirstScanTooltipIfNeeded();
+                        newProductFragment.setArguments(bundle);
+                        fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
+                        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        fragmentTransaction.commit();
+                        productFragment = newProductFragment;
+                        showFirstScanTooltipIfNeeded();
                     }
                 }
 
@@ -381,6 +384,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             });
     }
 
+    private void productShownInBottomView() {
+        bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_LARGE, ContinuousScanActivity.this));
+        quickView.getLayoutParams().height =  ViewGroup.LayoutParams.MATCH_PARENT;
+        quickView.requestLayout();
+        quickView.getRootView().requestLayout();
+    }
+
     private void showFirstScanTooltipIfNeeded() {
         final SharedPreferences sharedPreferences = getSharedPreferences(getClass().getSimpleName(), 0);
         boolean firstScan = sharedPreferences.getBoolean("firstScan", true);
@@ -396,6 +406,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             firstScanMessage.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, params.bottomMargin - BaseActivity.dpsToPixel(50, this));
             firstScanMessage.show();
         }
+
     }
 
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {

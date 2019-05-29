@@ -6,8 +6,7 @@ addons:
   sonarcloud:
     organization: "openfoodfacts"
     token:
-      secure: "qdeTCiBRaZgxDPoupMwYInX3x1xM/FlcBMiYrcuPuuTf7zSQFU+qNwXN3jH29h797MKQPGChjWvjvNcSnLn+gq2HaTAfCeUqXcTRpXqLZXgXqdSqgQW7qt9+uAcoE4mSdJSgsSedP+UEcOm0sy6/FAfqjc3gK2vtfc+MitiyV9bZPJWUPBBwNPCsGeBJQKgPR0UxUAcW8+5S764N5QjIn9EblsDmu4ciirzbZfi2t6pMp5M3/oUfIQgOjpaUEA2Z9F05i1/sqRK5FddlgCuHqPI3s7QMxztI1ffgaYu4Myya5Dkai7orS3fOrWkquBTbHDEHaM1H+5thcYu1nlNCjVgNE8hvx/L1WrIw010Qesl3uKUjb9iRM5c0PfdlacIn0geHBiDaRtfMGjAZCLfIImgHgoYdvXdTdvsLd5rQpNtjMXIuyTVe64mkgmlDUTgsHV8gNDu1qLmCtF74qIO6j3Wdh0agX8DffowPy+hJ2O+II5445DQJPXOD08PSrvf1IaaRt7qL42Jkrus0QW3RZ+h3lGu+q/47KpoCQg2ebhMB3rqpdI1QoH+u8On2gYhex13P1jadkMnWyqgwEA8RmSc837mZnW6XY9Kr3VTelStdgCHf4AdAmxKQaF/lLhcM/Sax1Lj12kB4NzMIISMVfWD8weRjICRxfurzHuvKCjg="
-
+      secure: "udnAl59g5+n6rz2/m4j6aQj8cNR2wQQhd0SHdU7792p52mqxHhoNV1Z717VN1oYBmdKruE0R0/bUi3L0t34BZGEDunC4RkyyG2AiQ7LtnMaBs+Gs+ht3WQ7etKVYhm0gk4yFItcVMYuDp6ArzWenOIY6kTXpoXJq3AX4EFwy0fqDasB3FkdN3h0mAimxHZC+LEFC7jL2Cgq8ct2yu8TofQraH0792dWWGXFLQVGIwZSy4q73jzwH12iXWgwYJF+9e4vsa9HdGFIMFdNXOkyyMw6VSkU8VPjQq3U2uox0ELUFfNcMMcTObQ3YgVhTNR1PnLsnuK+JLNcBj4OHbkH/0uiVyqkFLbjI18aZLZo2F2XVEz4n6dse+D8RF+qH9qDuAJKqL2SgWE/4yhUztO4IJ+Yhc1neX85bP6PYAdf3cfwTun0KdvhUzoBlsFBOkPYMajXBaUGi7GNaxXk4fxnz6N/b3hu+8GRQTac5WJ9/D49aJCeE5q5DvI/enh7xVaT4JaSt1B9ISkhk3iW+hSYO+OQN+NwQjErnqm/75XTVGSD64E09cDAc68nR5hqhuOijhaozq3OgWFR/M9lyr/NlsbmPuEskCpEuNJFk15yHN1urja8HT3Amo8BE+TK7w8X56wvJoJpfJvSC4NxyxRStJRDZgIntAf7dXQXh1jnpgUs="
 
 env:
   global:
@@ -65,7 +64,7 @@ jobs:
   - stage: test
     script:
       #launch
-      - ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io
+      - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN; fi
 
   - stage: test
     script:
