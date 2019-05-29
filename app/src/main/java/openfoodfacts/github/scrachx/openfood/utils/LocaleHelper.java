@@ -125,8 +125,4 @@ public class LocaleHelper {
         return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
     }
 
-    private static String getCountryInPreferences(Context context, String defaultLanguage) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getString(USER_COUNTRY_PREFERENCE_KEY, defaultLanguage);
-    }
 }

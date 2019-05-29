@@ -34,6 +34,8 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
+    
+        sonarqube { properties { property 'sonar.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*,**/*.xml" } }
 
 }
 
