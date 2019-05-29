@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +29,7 @@ import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.Installation;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -138,8 +140,10 @@ public class OpenFoodAPIClient {
                         for (HashMap.Entry<String, String> fieldEntry : result.entrySet()) {
                             if (fieldEntry.getValue() != null) {
                                 String fieldValue = fieldEntry.getValue();
-                                fieldValue = fieldValue.replace("\"", "");
-                                product.setAdditionalProperty(fieldEntry.getKey(), fieldValue);
+                                if (fieldValue != null) {
+                                    fieldValue = fieldValue.replace("\"", "");
+                                    product.setAdditionalProperty(fieldEntry.getKey(), fieldValue);
+                                }
                             }
                         }
                         s.setProduct(product);
@@ -195,13 +199,17 @@ public class OpenFoodAPIClient {
                 JsonNode responseNode = response.body();
                 if (responseNode != null) {
                     HashMap<String, String> resultMap = new HashMap<>();
-                    for (String field : fields) {
-                        if (responseNode.findValue("product").findValue(field) != null &&
-                            (!responseNode.findValue("product").findValue(field).toString().equals(""))) {
-                            String value = responseNode.findValue("product").findValue(field).toString();
-                            resultMap.put(field, value);
-                        } else {
-                            resultMap.put(field, null);
+                    final JsonNode product = responseNode.findValue("product");
+                    if (product != null) {
+                        for (String field : fields) {
+                            final JsonNode productValue = product.findValue(field);
+                            if (productValue != null &&
+                                (!productValue.toString().equals(""))) {
+                                String value = productValue.toString();
+                                resultMap.put(field, value);
+                            } else {
+                                resultMap.put(field, null);
+                            }
                         }
                     }
                     fieldByLanguageCallback.onFieldByLanguageResponse(true, resultMap);
@@ -221,6 +229,9 @@ public class OpenFoodAPIClient {
             @Override
             public void onResponse(@NonNull Call<JsonNode> call, Response<JsonNode> response) {
                 final JsonNode node = response.body();
+                if(node==null){
+                    return;
+                }
                 final JsonNode ingredientsJsonNode = node.findValue("ingredients");
                 if (ingredientsJsonNode != null) {
                     ArrayList<ProductIngredient> productIngredients = new ArrayList<>();
@@ -228,10 +239,12 @@ public class OpenFoodAPIClient {
                     for (int i = 0; i < nbIngredient; i++) {
                         ProductIngredient productIngredient = new ProductIngredient();
                         final JsonNode ingredient = ingredientsJsonNode.get(i);
-                        productIngredient.setId(ingredient.findValue("id").toString());
-                        productIngredient.setText(ingredient.findValue("text").toString());
-                        productIngredient.setRank(Long.valueOf(ingredient.findValue("rank").toString()));
-                        productIngredients.add(productIngredient);
+                        if (ingredient != null) {
+                            productIngredient.setId(ingredient.findValue("id").toString());
+                            productIngredient.setText(ingredient.findValue("text").toString());
+                            productIngredient.setRank(Long.valueOf(ingredient.findValue("rank").toString()));
+                            productIngredients.add(productIngredient);
+                        }
                     }
                     ingredientListCallback.onIngredientListResponse(true, productIngredients);
                 }
@@ -257,7 +270,7 @@ public class OpenFoodAPIClient {
                 }
 
                 Search s = response.body();
-                if (Integer.valueOf(s.getCount()) == 0) {
+                if (s == null || Integer.valueOf(s.getCount()) == 0) {
                     productsCallback.onProductsResponse(false, null, -2);
                 } else {
                     productsCallback.onProductsResponse(true, s, Integer.parseInt(s.getCount()));
@@ -280,28 +293,7 @@ public class OpenFoodAPIClient {
     }
 
     public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Context activity, final OnProductSentCallback productSentCallback, SendProduct product) {
-        if (!response.isSuccessful() || response.body().getStatus() == 0) {
-            productSentCallback.onProductSentResponse(false);
-            return;
-        }
-
-        String imguploadFront = product.getImgupload_front();
-        if (StringUtils.isNotEmpty(imguploadFront)) {
-            postImg(activity, new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront)), null);
-        }
-
-        String imguploadIngredients = product.getImgupload_ingredients();
-        if (StringUtils.isNotEmpty(imguploadIngredients)) {
-            postImg(activity, new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)), null);
-        }
-
-        String imguploadNutrition = product.getImgupload_nutrition();
-        if (StringUtils.isNotBlank(imguploadNutrition)) {
-            postImg(activity, new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)), null);
-        }
-
-        //lt.success();
-        productSentCallback.onProductSentResponse(true);
+        postImages(response, activity, productSentCallback, product);
     }
 
     /**
@@ -354,102 +346,48 @@ public class OpenFoodAPIClient {
      * and write new product's data over that.
      */
     public void post(final Context activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
-        // final LoadToast lt = new LoadToast(activity);
         ProgressDialog dialog = new ProgressDialog(activity, ProgressDialog.STYLE_SPINNER);
         dialog.setIndeterminate(true);
         dialog.setMessage(activity.getString(R.string.toastSending));
-//        lt.show();
 
         if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
             apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(Call<State> call, Response<State> response) {
-                        onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                        dialog.dismiss();
-                    }
-
-                    @Override
-                    public void onFailure(Call<State> call, Throwable t) {
-                        // lt.error();
-                        productSentCallback.onProductSentResponse(false);
-                        dialog.dismiss();
-                    }
-                });
+                .enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
         } else if (product.getName().equals("") && product.getBrands().equals("")) {
             apiService
                 .saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(Call<State> call, Response<State> response) {
-                        onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                        dialog.dismiss();
-                    }
-
-                    @Override
-                    public void onFailure(Call<State> call, Throwable t) {
-                        // lt.error();
-                        productSentCallback.onProductSentResponse(false);
-                        dialog.dismiss();
-                    }
-                });
+                .enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
         } else if (product.getName().equals("") && product.getQuantity() == null) {
             apiService
                 .saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(Call<State> call, Response<State> response) {
-                        onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                        dialog.dismiss();
-                    }
-
-                    @Override
-                    public void onFailure(Call<State> call, Throwable t) {
-                        //lt.error();
-                        productSentCallback.onProductSentResponse(false);
-                        dialog.dismiss();
-                    }
-                });
+                .enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
         } else if (product.getBrands().equals("") && product.getQuantity() == null) {
             apiService
                 .saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(Call<State> call, Response<State> response) {
-                        onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                        dialog.dismiss();
-                    }
-
-                    @Override
-                    public void onFailure(Call<State> call, Throwable t) {
-                        // lt.error();
-                        productSentCallback.onProductSentResponse(false);
-                        dialog.dismiss();
-                    }
-                });
+                .enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
         } else {
             apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
-                .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
-                @Override
-                public void onResponse(Call<State> call, Response<State> response) {
-                    onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                    dialog.dismiss();
-                }
-
-                @Override
-                public void onFailure(Call<State> call, Throwable t) {
-                    // lt.error();
-                    productSentCallback.onProductSentResponse(false);
-                    dialog.dismiss();
-                }
-            });
+                .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
         }
     }
 
-    public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
-        /**  final LoadToast lt = new LoadToast(context);
-         lt.show();**/
+    private Callback<State> createProductCallBack(Context activity, SendProduct product, OnProductSentCallback productSentCallback, Dialog dialog) {
+        return new Callback<State>() {
+            @Override
+            public void onResponse(Call<State> call, Response<State> response) {
+                onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
+                dialog.dismiss();
+            }
 
+            @Override
+            public void onFailure(Call<State> call, Throwable t) {
+                productSentCallback.onProductSentResponse(false);
+                dialog.dismiss();
+            }
+        };
+    }
+
+    public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
         apiService.saveImage(getUploadableMap(image, context))
             .enqueue(new Callback<JsonNode>() {
                 @Override
@@ -585,8 +523,10 @@ public class OpenFoodAPIClient {
     private class HistoryTask extends AsyncTask<Product, Void, Void> {
         @Override
         protected Void doInBackground(Product... products) {
-            Product product = products[0];
-            addToHistory(mHistoryProductDao, product);
+            if (ArrayUtils.isNotEmpty(products)) {
+                Product product = products[0];
+                addToHistory(mHistoryProductDao, product);
+            }
             return null;
         }
     }
@@ -646,13 +586,15 @@ public class OpenFoodAPIClient {
                             }
 
                             JsonNode body = response.body();
-                            Log.d("onResponse", body.toString());
-                            if (!body.isObject()) {
+                            if (body != null) {
+                                Log.d("onResponse", body.toString());
+                                if (!body.isObject()) {
 
-                            } else if (body.get("status").asText().contains("status not ok")) {
-                                mToUploadProductDao.delete(uploadProduct);
-                            } else {
-                                mToUploadProductDao.delete(uploadProduct);
+                                } else if (body.get("status").asText().contains("status not ok")) {
+                                    mToUploadProductDao.delete(uploadProduct);
+                                } else {
+                                    mToUploadProductDao.delete(uploadProduct);
+                                }
                             }
                         }
 
@@ -748,7 +690,7 @@ public class OpenFoodAPIClient {
                     public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
                         final State s = response.body();
 
-                        if (s.getStatus() != 0) {
+                        if (s != null && s.getStatus() != 0) {
                             Product product = s.getProduct();
                             HistoryProduct hp = new HistoryProduct(product.getProductName(), product.getBrands(),
                                 product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
@@ -779,25 +721,15 @@ public class OpenFoodAPIClient {
     }
 
     public void getProductsByStore(final String store, final int page, final OnStoreCallback onStoreCallback) {
-        apiService.getProductByStores(store, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onStoreCallback.onStoreResponse(true, response.body());
-                } else {
-                    onStoreCallback.onStoreResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onStoreCallback.onStoreResponse(false, null);
-            }
-        });
+        apiService.getProductByStores(store, page).enqueue(createStoreCallback(onStoreCallback));
     }
 
     public void getProductsByOrigin(final String origin, final int page, final OnStoreCallback onStoreCallback) {
-        apiService.getProductsByOrigin(origin, page).enqueue(new Callback<Search>() {
+        apiService.getProductsByOrigin(origin, page).enqueue(createStoreCallback(onStoreCallback));
+    }
+
+    public Callback<Search> createStoreCallback(OnStoreCallback onStoreCallback) {
+        return new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
@@ -811,25 +743,11 @@ public class OpenFoodAPIClient {
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
                 onStoreCallback.onStoreResponse(false, null);
             }
-        });
+        };
     }
 
     public void getProductsByManufacturingPlace(final String manufacturingPlace, final int page, final OnStoreCallback onStoreCallback) {
-        apiService.getProductsByManufacturingPlace(manufacturingPlace, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onStoreCallback.onStoreResponse(true, response.body());
-                } else {
-                    onStoreCallback.onStoreResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onStoreCallback.onStoreResponse(false, null);
-            }
-        });
+        apiService.getProductsByManufacturingPlace(manufacturingPlace, page).enqueue(createStoreCallback(onStoreCallback));
     }
 
     public void getProductsByCountry(String country, final int page, final onCountryCallback onCountryCallback) {
@@ -925,7 +843,11 @@ public class OpenFoodAPIClient {
     }
 
     public void getProductsByContributor(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.searchProductsByContributor(contributor, page).enqueue(new Callback<Search>() {
+        apiService.searchProductsByContributor(contributor, page).enqueue(createCallback(onContributorCallback));
+    }
+
+    private Callback<Search> createCallback(onContributorCallback onContributorCallback) {
+        return new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
@@ -939,7 +861,7 @@ public class OpenFoodAPIClient {
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
                 onContributorCallback.onContributorResponse(false, null);
             }
-        });
+        };
     }
 
     public interface OnIncompleteCallback {
@@ -966,93 +888,23 @@ public class OpenFoodAPIClient {
     }
 
     public void getToBeCompletedProductsByContributor(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.getToBeCompletedProductsByContributor(contributor, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(true, response.body());
-                } else {
-                    onContributorCallback.onContributorResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onContributorCallback.onContributorResponse(false, null);
-            }
-        });
+        apiService.getToBeCompletedProductsByContributor(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
     public void getPicturesContributedProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.getPicturesContributedProducts(contributor, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(true, response.body());
-                } else {
-                    onContributorCallback.onContributorResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onContributorCallback.onContributorResponse(false, null);
-            }
-        });
+        apiService.getPicturesContributedProducts(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
     public void getPicturesContributedIncompleteProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.getPicturesContributedIncompleteProducts(contributor, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(true, response.body());
-                } else {
-                    onContributorCallback.onContributorResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onContributorCallback.onContributorResponse(false, null);
-            }
-        });
+        apiService.getPicturesContributedIncompleteProducts(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
     public void getInfoAddedProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.getInfoAddedProducts(contributor, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(true, response.body());
-                } else {
-                    onContributorCallback.onContributorResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onContributorCallback.onContributorResponse(false, null);
-            }
-        });
+        apiService.getInfoAddedProducts(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
     public void getInfoAddedIncompleteProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.getInfoAddedIncompleteProducts(contributor, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(true, response.body());
-                } else {
-                    onContributorCallback.onContributorResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onContributorCallback.onContributorResponse(false, null);
-            }
-        });
+        apiService.getInfoAddedIncompleteProducts(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
     public interface onStateCallback {
@@ -1082,6 +934,10 @@ public class OpenFoodAPIClient {
      */
     public void onResponseCallForNotificationPostFunction(Call<State> call, Response<State> response, Context context, final OnProductSentCallback productSentCallback,
                                                           SendProduct product) {
+        postImages(response, context, productSentCallback, product);
+    }
+
+    private void postImages(Response<State> response, Context context, OnProductSentCallback productSentCallback, SendProduct product) {
         if (!response.isSuccessful() || response.body().getStatus() == 0) {
 
             productSentCallback.onProductSentResponse(false);
@@ -1090,8 +946,7 @@ public class OpenFoodAPIClient {
 
         String imguploadFront = product.getImgupload_front();
         if (StringUtils.isNotEmpty(imguploadFront)) {
-            ProductImage image = new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront));
-            postImg(context, image, null);
+            postImg(context, new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront)), null);
         }
 
         String imguploadIngredients = product.getImgupload_ingredients();
@@ -1114,77 +969,37 @@ public class OpenFoodAPIClient {
 
         if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
             apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(Call<State> call, Response<State> response) {
-                        onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
-                    }
-
-                    @Override
-                    public void onFailure(Call<State> call, Throwable t) {
-
-                        productSentCallback.onProductSentResponse(false);
-                    }
-                });
+                .enqueue(createNotifcationCallback(context, product, productSentCallback));
         } else if (product.getName().equals("") && product.getBrands().equals("")) {
             apiService
                 .saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(Call<State> call, Response<State> response) {
-                        onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
-                    }
-
-                    @Override
-                    public void onFailure(Call<State> call, Throwable t) {
-
-                        productSentCallback.onProductSentResponse(false);
-                    }
-                });
+                .enqueue(createNotifcationCallback(context, product, productSentCallback));
         } else if (product.getName().equals("") && product.getQuantity() == null) {
             apiService
                 .saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(Call<State> call, Response<State> response) {
-                        onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
-                    }
-
-                    @Override
-                    public void onFailure(Call<State> call, Throwable t) {
-
-                        productSentCallback.onProductSentResponse(false);
-                    }
-                });
+                .enqueue(createNotifcationCallback(context, product, productSentCallback));
         } else if (product.getBrands().equals("") && product.getQuantity() == null) {
             apiService
                 .saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(Call<State> call, Response<State> response) {
-                        onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
-                    }
-
-                    @Override
-                    public void onFailure(Call<State> call, Throwable t) {
-
-                        productSentCallback.onProductSentResponse(false);
-                    }
-                });
+                .enqueue(createNotifcationCallback(context, product, productSentCallback));
         } else {
             apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
-                .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(new Callback<State>() {
-                @Override
-                public void onResponse(Call<State> call, Response<State> response) {
-                    onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
-                }
-
-                @Override
-                public void onFailure(Call<State> call, Throwable t) {
-
-                    productSentCallback.onProductSentResponse(false);
-                }
-            });
+                .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(createNotifcationCallback(context, product, productSentCallback));
         }
+    }
+
+    public Callback<State> createNotifcationCallback(Context context, SendProduct product, OnProductSentCallback productSentCallback) {
+        return new Callback<State>() {
+            @Override
+            public void onResponse(Call<State> call, Response<State> response) {
+                onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
+            }
+
+            @Override
+            public void onFailure(Call<State> call, Throwable t) {
+
+                productSentCallback.onProductSentResponse(false);
+            }
+        };
     }
 }
