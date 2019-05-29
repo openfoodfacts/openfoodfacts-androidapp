@@ -2,11 +2,6 @@
 package openfoodfacts.github.scrachx.openfood.network.deserializers;
 
 
-import android.util.Log;
-import org.json.JSONObject;
-
-import java.lang.reflect.Type;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;

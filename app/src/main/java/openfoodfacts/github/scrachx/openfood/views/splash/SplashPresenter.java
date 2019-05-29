@@ -8,8 +8,6 @@ import android.os.Handler;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 
-;
-
 /**
  * Created by Lobster on 03.03.18.
  */

@@ -18,7 +18,7 @@ Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składn
 
 ***Działa dobrze w każdej sytuacji***
 - Możesz dodać nowe produkty, nawet nie mając teraz połączenia.
--Aplikacja ładuje tylko ściśle potrzebne elementy, aby zaoszczędzić pamięć i baterię
+-W celu ograniczenia zużycia danych, jak i lepszego zarządzania energią aplikacja ładuje tylko absolutnie niezbędne elementy
 -Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
 
 *** Your products, your data ***

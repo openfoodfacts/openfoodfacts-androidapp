@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
@@ -32,10 +33,12 @@ import com.opencsv.CSVWriter;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.YourListedProductsAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.io.File;
@@ -55,6 +58,8 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
     TextView tvInfo;
     @BindView(R.id.scanFirstYourListedProduct)
     Button btnScanFirst;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
     private ProductListsDao productListsDao;
     private ProductLists thisProductList;
     private List<YourListedProduct> products;
@@ -90,14 +95,15 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             setTitle(listName);
             p = (Product) bundle.get("product");
         }
+        String locale= LocaleHelper.getLanguage(getBaseContext());
         if (p != null && p.getCode() != null && p.getProductName() != null
-            && p.getImageSmallUrl() != null) {
+            && p.getImageSmallUrl(locale) != null) {
 
             String barcode = p.getCode();
             String productName = p.getProductName();
 
             String productDetails = getProductBrandsQuantityDetails(p);
-            String imageUrl = p.getImageSmallUrl();
+            String imageUrl = p.getImageSmallUrl(locale);
             YourListedProduct product = new YourListedProduct();
             product.setBarcode(barcode);
             product.setListId(id);
@@ -130,6 +136,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
             itemTouchhelper.attachToRecyclerView(recyclerView);
         }
+        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 
     public static String getProductBrandsQuantityDetails(Product p) {

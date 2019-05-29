@@ -24,6 +24,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,21 +37,22 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -67,14 +69,15 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
-    private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
+public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, PhotoReceiver {
+    private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
     @BindView(R.id.imageGrade)
     ImageView img;
     @BindView(R.id.imageGradeLayout)
     LinearLayout imageGradeLayout;
     @BindView(R.id.nutriscoreLink)
     TextView nutriscoreLink;
+    private PhotoReceiverHandler photoReceiverHandler;
     @BindView(R.id.listNutrientLevels)
     RecyclerView rv;
     @BindView(R.id.textServingSize)
@@ -134,11 +137,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        photoReceiverHandler=new PhotoReceiverHandler(this);
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        nutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp,0,0,0);
-        img1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp,0,0,0);
+        nutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
+        img1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
         refreshView(getStateFromActivityIntent());
     }
 
@@ -203,6 +207,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             sugars = nutrientLevels.getSugars();
             salt = nutrientLevels.getSalt();
         }
+
+
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
             nutrientLevelsCardView.setVisibility(View.GONE);
@@ -322,6 +328,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         barcode = product.getCode();
         List<NutrimentItem> nutrimentItems = new ArrayList<>();
 
+        final boolean inVolume= ProductUtils.isPerServingInLiter(product);
+        textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
         if (isNotBlank(product.getServingSize())) {
             mTextPerPortion.setText(getString(R.string.nutriment_serving_size) + " " + product.getServingSize());
         } else {
@@ -370,18 +378,18 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         nutrimentsRecyclerView.setNestedScrollingEnabled(false);
 
         // Header hack
-        nutrimentItems.add(new NutrimentItem(null, null, null, null, null));
+        nutrimentItems.add(new NutrimentItem(inVolume));
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
-        if (energy != null && settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL).equals(UnitUtils.ENERGY_KCAL)) {
+        if (energy != null && UnitUtils.ENERGY_KCAL.equalsIgnoreCase(settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL))) {
             nutrimentItems.add(
                 new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                     Utils.getEnergy(energy.getFor100gInUnits()),
                     Utils.getEnergy(energy.getForServingInUnits()),
                     UnitUtils.ENERGY_KCAL,
                     nutriments.getModifier(ENERGY)));
-        } else if (energy != null && settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL).equals(UnitUtils.ENERGY_KJ.toLowerCase())) {
+        } else if (energy != null && UnitUtils.ENERGY_KJ.equalsIgnoreCase(settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL))) {
             nutrimentItems.add(
                 new NutrimentItem(getString(R.string.nutrition_energy_short_name),
                     energy.getFor100gInUnits(),
@@ -490,7 +498,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             intent.putExtras(bundle);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(getActivity(), (View) mImageNutrition,
+                    makeSceneTransitionAnimation(getActivity(), mImageNutrition,
                         getActivity().getString(R.string.product_transition));
                 startActivity(intent, options.toBundle());
             } else {
@@ -551,7 +559,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
     }
 
-    private void onPhotoReturned(File photoFile) {
+    public void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image, null);
@@ -568,76 +576,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                onPhotoReturned(new File(resultUri.getPath()));
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
-            }
+        photoReceiverHandler.onActivityResult(this,requestCode,resultCode,data);
+        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == RESULT_OK && isUserLoggedIn()) {
+                startEditProduct();
         }
+    }
 
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
-            @Override
-            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-                //Some error handling
-            }
-
-            @Override
-            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                    .setAllowFlipping(false)
-                    .setOutputUri(Utils.getOutputPicUri(getContext()))
-                    .start(getContext(), mFragment);
-            }
-
-            @Override
-            public void onCanceled(EasyImage.ImageSource source, int type) {
-                //Cancel handling, you might wanna remove taken photo if it was canceled
-                if (source == EasyImage.ImageSource.CAMERA) {
-                    File photoFile = EasyImage.lastlyTakenButCanceledPhoto(getContext());
-                    if (photoFile != null) {
-                        photoFile.delete();
-                    }
-                }
-            }
-        });
+    @OnClick(R.id.newAdd)
+    public void newNutritionImage() {
+        doChooseOrTakePhotos(getString(R.string.nutrition_facts_picture));
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_CAMERA: {
-                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
-                    new MaterialDialog.Builder(getActivity())
-                        .title(R.string.permission_title)
-                        .content(R.string.permission_denied)
-                        .negativeText(R.string.txtNo)
-                        .positiveText(R.string.txtYes)
-                        .onPositive((dialog, which) -> {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                        })
-                        .show();
-                } else {
-                    EasyImage.openCamera(this, 0);
-                }
-            }
-        }
-    }
-    @OnClick(R.id.newAdd)
-    public void openNew(View v) {
-        // take a picture
-        if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-        } else {
-            EasyImage.openCamera(this, 0);
-        }
+    protected void doOnPhotosPermissionGranted() {
+        newNutritionImage();
     }
 
     public String getNutrients() {
@@ -657,28 +609,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @OnClick(R.id.get_nutriscore_prompt)
     public void onNutriscoreButtonClick() {
         if (BuildConfig.FLAVOR.equals("off")) {
-            final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
-            final String login = settings.getString("user", "");
-            if (login.isEmpty()) {
-                new MaterialDialog.Builder(getContext())
-                        .title(R.string.sign_in_to_edit)
-                        .positiveText(R.string.txtSignIn)
-                        .negativeText(R.string.dialog_cancel)
-                        .onPositive((dialog, which) -> {
-                            Intent intent = new Intent(getContext(), LoginActivity.class);
-                            startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
-                            dialog.dismiss();
-                        })
-                        .onNegative((dialog, which) -> dialog.dismiss())
-                        .build().show();
+            if (isUserNotLoggedIn()) {
+                startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE);
             } else {
-                Intent intent = new Intent(getActivity(), AddProductActivity.class);
-                intent.putExtra("edit_product", product);
-                //adds the information about the prompt when navigating the user to the edit the product
-                intent.putExtra("modify_category_prompt", showCategoryPrompt);
-                intent.putExtra("modify_nutrition_prompt", showNutritionPrompt);
-                startActivity(intent);
+                startEditProduct();
             }
         }
+    }
+
+    private void startEditProduct() {
+        Intent intent = new Intent(getActivity(), AddProductActivity.class);
+        intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
+        //adds the information about the prompt when navigating the user to the edit the product
+        intent.putExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, showCategoryPrompt);
+        intent.putExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, showNutritionPrompt);
+        startActivity(intent);
     }
 }

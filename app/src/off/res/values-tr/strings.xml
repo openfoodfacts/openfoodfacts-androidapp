@@ -34,5 +34,5 @@
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
     <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
-    <string name="currently_on_version">Currently on Open Food Facts</string>
+    <string name="currently_on_version">Open Food Facts\' de mevcut olan</string>
 </resources>

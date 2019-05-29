@@ -5,8 +5,8 @@
         <item quantity="other"> អ្នកមានផលិតផលក្រៅបណ្ដាញ %d ដែលកំពុងរង់ចាំដើម្បីដាក់ចូលទៅក្នុង ការពង្រីកការពិតនៃអាហារ</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">1 នាទីកន្លងទៅ
-%d នាទីកន្លងទៅ</item>
+        <item quantity="other">\"1 នាទីកន្លងទៅ
+%d នាទីកន្លងទៅ\"</item>
     </plurals>
     <plurals name="hours">
         <item quantity="other">%d ម៉ោងមុន</item>
@@ -43,6 +43,7 @@
     <!-- weight units -->
     <!-- nutrition energy units -->
     <!-- volume units -->
+    <!-- nutrition weight units -->
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
@@ -174,6 +175,7 @@
     <string name="txtPalmOilProduct">គ្រឿងផ្សំពីប្រេងដូង:</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
@@ -377,6 +379,7 @@
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">For 100 g</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="minerals">Minerals</string>
     <string name="nutrition_calcium">Calcium</string>
@@ -608,6 +611,7 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -775,8 +779,8 @@
     <string name="txt_discard">Discard</string>
     <string name="txt_save">Save</string>
     <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">Compare this product</string>
@@ -806,5 +810,12 @@
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
+    <string name="first_scan_tooltip">You can slide up the card for more details</string>
+    <string name="add_an_allergen">Add an allergen</string>
+    <string name="add_a_list">Add a list</string>
+    <string name="todo">TODO</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="barcode">Barcode</string>
 </resources>

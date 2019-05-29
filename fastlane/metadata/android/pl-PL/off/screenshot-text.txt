@@ -1,8 +1,8 @@
-Oto slogany nad screenshotami w playstore. Niech będą krótkie i atrakcyjne.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+Teksty widoczne nad zrzutami ekranu w sklepie z aplikacjami. Niech będą krótkie i atrakcyjne.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=pl
 
 =====================
-V2 screenshots
+V2 zrzuty ekranów
 =====================
 
 Skanuj produkty
@@ -38,35 +38,35 @@ Potężny
 Wartości odżywcze
 
 =====================
-V3 screenshots
+V3 zrzuty ekranu
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+Wybierz produkty, które są dobre dla Ciebie i 🌍planety!
 
-✔ Ultra-fast barcode scan
+✔ Bardzo szybki skan kodów kreskowych
 
-✔ A global supermarket in your pocket
+✔ Globalny supermarket w twojej kieszeni
 
-Nutritional quality
+Jakość żywności
 
-Ultra-processed foods
+Żywność wysoko przetworzona
 
-Carbon impact
+Wpływ dwutlenku węgla
 
-Compare easily before you buy
+Porównaj w łatwy sposób przed zakupem
 
-Create shopping lists, intake lists…
+Twórz listy zakupów, listy spożywanych produktów…
 
-Find and compare over 750 000 products.
+Ponad 750000 produktów możliwych do znalezienia i porównania.
 
 
 
-Unlimited and fully-private scan history
+Nieograniczona i w pełni prywatna historia skanowania
 
-Swipe for even more details
+Przesuń, aby uzyskać więcej szczegółów
 
-Set Allergen Alerts
+Stwórz ostrzeżenia o alergenach
 
-Join our global movement for food transparency
+Dołącz do naszego ruchu na rzecz globalnej przejrzystości żywności
 
 world.openfoodfacts.org/contribute

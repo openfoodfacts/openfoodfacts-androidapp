@@ -9,12 +9,22 @@ buildscript {
     }
     dependencies {
 
+
+
+
+
+
         classpath 'com.android.tools.build:gradle:3.3.2'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
         classpath 'com.github.timfreiheit:ResourcePlaceholdersPlugin:0.2'
     }
+}
+
+plugins {
+    id "org.sonarqube" version "2.7"
 }
 
 allprojects {
@@ -24,6 +34,7 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
+
 }
 
 ext {
@@ -71,6 +82,19 @@ ext {
 
     jUnitVersion = '4.12'
     jsonUnitVersion = '1.27.0'
-    espressoVersion = '3.0.1'
+    espressoVersion = '3.0.2'
+    espressoContribVersion = '3.0.1'
     mockitoVersion = '2.13.0'
+
+    constraintLayout = '1.1.3'
+    support = '27.1.1'
+    jsr250api = '1.0'
+    jobDispatcher = '0.8.5'
+    fastAdapterCommons = '2.1.0@aar'
+    converterScalars = '2.1.0'
+    materialDrawer = '6.0.3@aar'
+    imageCropper = '2.6.0'
+    orchestrator = '1.0.2'
+    nachos = '1.1.1'
+    testRunnerVersion = '1.0.2'
 }

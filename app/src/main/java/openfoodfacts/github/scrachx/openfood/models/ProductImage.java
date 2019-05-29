@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import java.io.File;
-import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;

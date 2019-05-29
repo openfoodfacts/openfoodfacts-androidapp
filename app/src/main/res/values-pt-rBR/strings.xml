@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">Ingredientes que advêm do óleo de palma :</string>
     <string name="txtServingSize">Porção :</string>
     <string name="txtNutrientLevel100g">Valores nutricionais por 100g :</string>
+    <string name="txtNutrientLevel100ml">Níveis nutricionais para 100ml :</string>
     <string name="txtNutritionLevelLow">em quantidade baixa</string>
     <string name="txtNutritionLevelModerate">em quantidade moderada</string>
     <string name="txtNutritionLevelHigh">em quantidade elevada</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">Proteínas Séricas</string>
     <string name="nutrition_nucleotides">Nucleótidos</string>
     <string name="for_100g">Por 100 g</string>
+    <string name="for_100ml">Para 100 ml</string>
     <string name="serving">Por porção</string>
     <string name="minerals">Minerais</string>
     <string name="nutrition_calcium">Cálcio</string>
@@ -611,6 +614,7 @@
     <string name="error_adding_ingredients">Algo errou ao tentar adicionar ingredientes do produto</string>
     <string name="unable_to_extract_ingredients">Não é possível extrair ingredientes da imagem</string>
     <string name="error_adding_nutrition_facts">Algo errou ao tentar adicionar fatos de nutrição do produto</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carboidratos não podem ser menos que a soma de açúcar e amido</string>
     <string name="choose_nutrient">Escolha um nutriente</string>
     <string name="error_adding_product_details">Algo errou ao tentar adicionar detalhes do produto</string>
@@ -778,8 +782,8 @@
     <string name="txt_discard">Descartar</string>
     <string name="txt_save">Salvar</string>
     <string name="write_external_storage_your_listed_products">A permissão de gravação de armazenamento externo é necessária para exportar os dados.</string>
-    <string name="txt_info_eaten_products">Você poderá adicionar produtos a essa lista, digitalizando produtos, arrastando o cartão do produto para cima e tocando em \"Estou comendo isso\".
-        Você também poderá adicionar produtos a essa lista procurando-os e clicando no botão + no canto superior direito da página do produto.</string>
+    <string name="txt_info_eaten_products">\"Você poderá adicionar produtos a essa lista, digitalizando produtos, arrastando o cartão do produto para cima e tocando em \"Estou comendo isso\".
+        Você também poderá adicionar produtos a essa lista procurando-os e clicando no botão + no canto superior direito da página do produto.\"</string>
     <string name="txt_info_your_listed_products">Você poderá adicionar produtos a essa lista procrando-os e clicando no botão + no canto superior direito da página do produto.</string>
     <string name="txt_i_m_eating_this">Estou comendo isto</string>
     <string name="compare_product_prompt">Comparar este produto</string>
@@ -809,5 +813,12 @@
     <string name="go_to_full_product_page">Ir para a página completa do produto</string>
     <string name="no_additive_data_available_for_this_product">Não há dados adicionais disponíveis para este produto</string>
     <string name="no_nutrient_information_available_for_this_product">Nenhuma informação nutricional disponível para este produto</string>
-    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
+    <string name="error_duplicate_listname">Você já tem uma lista com esse nome</string>
+    <string name="required_to_compute_nutriscore">(Necessário para calcular o Nutri-Score)</string>
+    <string name="first_scan_tooltip">Você pode deslizar o cartão para mais detalhes</string>
+    <string name="add_an_allergen">Adicione um alérgeno</string>
+    <string name="add_a_list">Add a list</string>
+    <string name="todo">TODO</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="barcode">Código de barras</string>
 </resources>

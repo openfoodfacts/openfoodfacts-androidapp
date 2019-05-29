@@ -54,6 +54,20 @@
                     app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts_picture"
                     app:srcCompat="@drawable/ic_add_a_photo_black_48dp"/>
 
+            <Button
+                    android:id="@+id/btnEditImageNutritionFacts"
+                    android:text="@string/update_image"
+                    style="@style/BorderButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="@dimen/padding_large"
+                    android:layout_marginLeft="@dimen/padding_large"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="@id/btnAddImageNutritionFacts"
+                    app:layout_constraintBottom_toBottomOf="@id/btnAddImageNutritionFacts"
+                    app:layout_constraintStart_toEndOf="@id/btnAddImageNutritionFacts"
+            />
+
             <ProgressBar
                     android:id="@+id/imageProgress"
                     android:layout_width="50dp"
@@ -110,6 +124,7 @@
                         android:id="@+id/for100g_100ml"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="true"
                         android:text="@string/for_100g_100ml"/>
 
                 <RadioButton
@@ -159,7 +174,7 @@
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
-                    android:entries="@array/nutrition_weight_units"
+                    android:entries="@array/nutrition_serving_weight_units"
                     android:spinnerMode="dropdown"
                     app:layout_constraintTop_toTopOf="@id/serving_size_til"
                     app:layout_constraintEnd_toEndOf="parent"

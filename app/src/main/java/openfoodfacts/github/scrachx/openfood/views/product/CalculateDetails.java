@@ -21,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
@@ -83,8 +84,7 @@ public class CalculateDetails extends BaseActivity {
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Header hack
-        nutrimentItems.add(new NutrimentItem(null, null, null,
-                                             null, null));
+        nutrimentItems.add(new NutrimentItem(ProductUtils.isPerServingInLiter(p)));
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);

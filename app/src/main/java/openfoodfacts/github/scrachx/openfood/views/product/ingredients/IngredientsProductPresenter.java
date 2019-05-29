@@ -14,7 +14,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Lobster on 17.03.18.

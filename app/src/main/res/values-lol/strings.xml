@@ -47,6 +47,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>crwdns112978:0crwdne112978:0</item>
@@ -177,6 +178,7 @@
     <string name="txtPalmOilProduct">crwdns113390:0crwdne113390:0</string>
     <string name="txtServingSize">crwdns113392:0crwdne113392:0</string>
     <string name="txtNutrientLevel100g">crwdns113394:0crwdne113394:0</string>
+    <string name="txtNutrientLevel100ml">crwdns117604:0crwdne117604:0</string>
     <string name="txtNutritionLevelLow">crwdns113396:0crwdne113396:0</string>
     <string name="txtNutritionLevelModerate">crwdns113398:0crwdne113398:0</string>
     <string name="txtNutritionLevelHigh">crwdns113400:0crwdne113400:0</string>
@@ -380,6 +382,7 @@
     <string name="nutrition_serum_proteins">crwdns113792:0crwdne113792:0</string>
     <string name="nutrition_nucleotides">crwdns113794:0crwdne113794:0</string>
     <string name="for_100g">crwdns113796:0crwdne113796:0</string>
+    <string name="for_100ml">crwdns117606:0crwdne117606:0</string>
     <string name="serving">crwdns113798:0crwdne113798:0</string>
     <string name="minerals">crwdns113800:0crwdne113800:0</string>
     <string name="nutrition_calcium">crwdns113802:0crwdne113802:0</string>
@@ -611,6 +614,7 @@
     <string name="error_adding_ingredients">crwdns114246:0crwdne114246:0</string>
     <string name="unable_to_extract_ingredients">crwdns114248:0crwdne114248:0</string>
     <string name="error_adding_nutrition_facts">crwdns114250:0crwdne114250:0</string>
+    <string name="error_uploading_photo">crwdns118274:0crwdne118274:0</string>
     <string name="error_in_carbohydrate_value">crwdns115726:0crwdne115726:0</string>
     <string name="choose_nutrient">crwdns114254:0crwdne114254:0</string>
     <string name="error_adding_product_details">crwdns114256:0crwdne114256:0</string>
@@ -808,5 +812,12 @@
     <string name="go_to_full_product_page">crwdns116184:0crwdne116184:0</string>
     <string name="no_additive_data_available_for_this_product">crwdns116186:0crwdne116186:0</string>
     <string name="no_nutrient_information_available_for_this_product">crwdns116188:0crwdne116188:0</string>
+    <string name="error_duplicate_listname">crwdns117592:0crwdne117592:0</string>
     <string name="required_to_compute_nutriscore">crwdns117042:0crwdne117042:0</string>
+    <string name="first_scan_tooltip">crwdns117698:0crwdne117698:0</string>
+    <string name="add_an_allergen">crwdns117700:0crwdne117700:0</string>
+    <string name="add_a_list">crwdns118276:0crwdne118276:0</string>
+    <string name="todo">crwdns118216:0crwdne118216:0</string>
+    <string name="edit_image">crwdns118218:0crwdne118218:0</string>
+    <string name="barcode">crwdns118220:0crwdne118220:0</string>
 </resources>

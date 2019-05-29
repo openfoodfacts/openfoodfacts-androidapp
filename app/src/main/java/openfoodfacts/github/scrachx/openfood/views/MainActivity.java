@@ -54,7 +54,10 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.*;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
@@ -73,17 +76,14 @@ import java.util.Hashtable;
 import java.util.Objects;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
     private static final int LOGIN_REQUEST = 1;
+    private static final int SHOW_CONTRIBUTION_AFTER_LOGIN = 2;
     private static final long USER_ID = 500;
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
-    private static final String IS_USER_LOGIN = "user";
-    private static final String IS_USER_SESSION = "user_session";
-    boolean isConnected;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     PrimaryDrawerItem primaryDrawerItem;
@@ -97,7 +97,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri discoverUri;
     private Uri userContributeUri;
     private OfflineSavedProductDao mOfflineSavedProductDao;
-    private LabelNameDao labelNameDao;
     private int numberOFSavedProducts;
     private SharedPreferences mSharedPref;
     private int positionOfOfflineBadeItem;
@@ -105,7 +104,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
-    String userLogin;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
@@ -119,10 +117,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         setContentView(R.layout.activity_main);
 
         shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-
-        /*
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-        */
 
         Utils.hideKeyboard(this);
 
@@ -144,27 +138,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
         mShakeDetector = new ShakeDetector();
 
-        /*
-        Log.i("Shake", String.valueOf(scanOnShake));
-        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
-            @Override
-            public void onShake(int count) {
-
-                if (scanOnShake) {
-                    Utils.scan(MainActivity.this);
-                }
-
-            }
-        });
-        */
-
         setShakePreferences();
 
-        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
+        fragmentManager.addOnBackStackChangedListener(() -> {
 
-            }
         });
 
         boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
@@ -194,10 +171,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 @Override
                 public boolean onProfileImageClick(View view, IProfile profile, boolean current) {
 
-                    SharedPreferences preferences = getSharedPreferences("login", 0);
-                    String userLogin = preferences.getString("user", null);
-                    boolean isConnected = userLogin != null;
-                    if (!isConnected) {
+                    if (isUserNotLoggedIn()) {
                         startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     }
                     return false;
@@ -208,17 +182,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     return false;
                 }
             })
-            .withOnAccountHeaderSelectionViewClickListener(new AccountHeader.OnAccountHeaderSelectionViewClickListener() {
-                @Override
-                public boolean onClick(View view, IProfile profile) {
-                    SharedPreferences preferences = getSharedPreferences("login", 0);
-                    String userLogin = preferences.getString("user", null);
-                    boolean isConnected = userLogin != null;
-                    if (!isConnected) {
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    }
-                    return false;
+            .withOnAccountHeaderSelectionViewClickListener((view, profile12) -> {
+                if (isUserNotLoggedIn()) {
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }
+                return false;
             })
             .withSelectionListEnabledForSingleProfile(false)
             .withOnAccountHeaderListener((view, profile1, current) -> {
@@ -237,17 +205,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // Add Manage Account profile if the user is connected
         SharedPreferences preferences = getSharedPreferences("login", 0);
-        String userLogin = preferences.getString("user", null);
+
         String userSession = preferences.getString("user_session", null);
-        boolean isUserConnected = userLogin != null && userSession != null;
-        isConnected = userLogin != null;
+        final boolean isUserLoggedIn = isUserLoggedIn();
+        boolean isUserConnected = isUserLoggedIn && userSession != null;
+        boolean isConnected = isUserLoggedIn;
 
         if (isUserConnected) {
-            userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
-                "&user_session=" + userSession);
-            customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
-
-            headerResult.addProfiles(getProfileSettingDrawerItem());
+            updateProfileForCurrentUser();
         }
         primaryDrawerItem = createOfflineEditDrawerItem();
         //Create the drawer
@@ -464,7 +429,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         // to get a better scroll performance
         //make sure to init the cache after the DrawerBuilder was created as this will first
         // clear the cache to make sure no old elements are in
-        //RecyclerViewCacheUtil.getInstance().withCacheSize(2).init(result);
         new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
             result.getDrawerItems());
 
@@ -488,7 +452,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         // prefetch uris
         contributeUri = Uri.parse(getString(R.string.website_contribute));
         discoverUri = Uri.parse(getString(R.string.website_discover));
-        userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
+        userContributeUri = Uri.parse(getString(R.string.website_contributor) + getUserLogin());
 
         customTabActivityHelper.mayLaunchUrl(contributeUri, null, null);
         customTabActivityHelper.mayLaunchUrl(discoverUri, null, null);
@@ -543,13 +507,22 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
     }
 
-    private void myContributions() {
-        SharedPreferences preferences1 = getSharedPreferences("login", 0);
-        String userLogin1 = preferences1.getString("user", null);
-        userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin1);
-        if (isNotEmpty(userLogin1)) {
+    private void updateProfileForCurrentUser() {
+        headerResult.updateProfile(getUserProfile());
+        final boolean userLoggedIn = isUserLoggedIn();
+        if (userLoggedIn) {
+            if (headerResult.getProfiles().size() < 2) {
+                headerResult.addProfiles(getProfileSettingDrawerItem());
+            }
+        } else {
+            headerResult.removeProfileByIdentifier(ITEM_MANAGE_ACCOUNT);
+        }
+    }
 
-            ProductBrowsingListActivity.startActivity(this, userLogin1, SearchType.CONTRIBUTOR);
+    private void myContributions() {
+
+        if (isUserLoggedIn()) {
+            showMyContributions();
         } else {
             new MaterialDialog.Builder(MainActivity.this)
                 .title(R.string.contribute)
@@ -558,15 +531,21 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 .neutralText(R.string.login_button)
                 .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R
                     .string.website) + "cgi/user.pl"), new WebViewFallback()))
-                .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGIN_REQUEST))
+                .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), SHOW_CONTRIBUTION_AFTER_LOGIN))
                 .show();
         }
     }
 
+    private void showMyContributions() {
+        String userLogin = getUserLogin();
+        userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
+        ProductBrowsingListActivity.startActivity(this, userLogin, SearchType.CONTRIBUTOR);
+    }
+
     private IProfile<ProfileSettingDrawerItem> getProfileSettingDrawerItem() {
-        SharedPreferences preferences = getSharedPreferences("login", 0);
-        String userLogin = preferences.getString("user", null);
-        String userSession = preferences.getString("user_session", null);
+
+        String userLogin = getUserLogin();
+        String userSession = getUserSession();
         userAccountUri = Uri.parse(getString(R.string.website) + "cgi/user.pl?type=edit&userid=" + userLogin + "&user_id=" + userLogin +
             "&user_session=" + userSession);
         customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null);
@@ -585,25 +564,17 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      */
     private void logout() {
         getSharedPreferences("login", MODE_PRIVATE).edit().clear().apply();
-        headerResult.removeProfileByIdentifier(ITEM_MANAGE_ACCOUNT);
-        headerResult.updateProfile(getUserProfile());
-        result.addItemAtPosition(getLoginDrawerItem(), result.getPosition(ITEM_MY_CONTRIBUTIONS));
-        result.removeItem(ITEM_LOGOUT);
+        updateConnectedState();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case LOGIN_REQUEST:
-                if (resultCode == RESULT_OK) {
-                    result.removeItem(ITEM_LOGIN);
-                    headerResult.updateProfile(getUserProfile());
-                    headerResult.addProfiles(getProfileSettingDrawerItem());
-                }
-                break;
-            default:
-                // do nothing
-                break;
+        // do nothing
+        if (requestCode == LOGIN_REQUEST && resultCode == RESULT_OK) {
+            updateConnectedState();
+        }
+        if (requestCode == SHOW_CONTRIBUTION_AFTER_LOGIN && resultCode == RESULT_OK && isUserLoggedIn()) {
+            showMyContributions();
         }
     }
 
@@ -653,10 +624,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
             @Override
             public boolean onMenuItemActionCollapse(MenuItem menuItem) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                Fragment currentFragment = fragmentManager.findFragmentById(R.id
-                    .fragment_container);
-
                 return true;
             }
         });
@@ -778,7 +745,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         changeFragment(fragment, getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
     }
 
-
     /**
      * This moves the main activity to the preferences fragment.
      */
@@ -841,12 +807,20 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void onResume() {
         super.onResume();
 
+        updateConnectedState();
         shakePreference.registerOnSharedPreferenceChangeListener(this);
         if (scanOnShake) {
 
             //register the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
+    }
+
+    private void updateConnectedState() {
+        updateProfileForCurrentUser();
+        result.removeItem(ITEM_LOGIN);
+        result.removeItem(ITEM_LOGOUT);
+        result.addItemAtPosition(super.isUserLoggedIn() ? getLogoutDrawerItem() : getLoginDrawerItem(), result.getPosition(ITEM_MY_CONTRIBUTIONS));
     }
 
     private void handleSendImage(Intent intent) {
@@ -883,10 +857,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             try (InputStream imageStream = getContentResolver().openInputStream(uri)) {
                 bMap = BitmapFactory.decodeStream(imageStream);
             } catch (FileNotFoundException e) {
-                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString());
-                e.printStackTrace();
+                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString(),e);
             } catch (IOException e) {
-                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage());
+                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage(),e);
             }
             //decoding bitmap
             if (bMap != null) {
@@ -924,15 +897,15 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         View dialogView = inflater.inflate(R.layout.alert_barcode, null);
         alertDialogBuilder.setView(dialogView);
 
-        final EditText barcode_edittext = dialogView.findViewById(R.id.barcode);
-        final RecyclerView product_images = dialogView.findViewById(R.id.product_image);
+        final EditText barcodeEditText = dialogView.findViewById(R.id.barcode);
+        final RecyclerView productImages = dialogView.findViewById(R.id.product_image);
         LinearLayoutManager layoutManager
             = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        product_images.setLayoutManager(layoutManager);
-        product_images.setAdapter(new PhotosAdapter(uri));
+        productImages.setLayoutManager(layoutManager);
+        productImages.setAdapter(new PhotosAdapter(uri));
 
         if (hasEditText) {
-            barcode_edittext.setVisibility(View.VISIBLE);
+            barcodeEditText.setVisibility(View.VISIBLE);
             alertDialogBuilder.setTitle(getString(R.string.no_barcode));
             alertDialogBuilder.setMessage(getString(R.string.enter_barcode));
         } else {
@@ -943,50 +916,44 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         // set dialog message
         alertDialogBuilder
             .setCancelable(false)
-            .setPositiveButton(R.string.txtYes, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    String temp_barcode = "";
-                    for (Uri selected : uri) {
-                        OpenFoodAPIClient api = new OpenFoodAPIClient(MainActivity.this);
-                        ProductImage image = null;
-                        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            .setPositiveButton(R.string.txtYes, (dialog, id) -> {
+                String temp_barcode = "";
+                for (Uri selected : uri) {
+                    OpenFoodAPIClient api = new OpenFoodAPIClient(MainActivity.this);
+                    ProductImage image = null;
+                    ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
-                        if (hasEditText) {
+                    if (hasEditText) {
 
-                            temp_barcode = barcode_edittext.getText().toString();
+                        temp_barcode = barcodeEditText.getText().toString();
+                    } else {
+                        temp_barcode = barcode;
+                    }
+
+                    if (temp_barcode.length() > 0) {
+                        dialog.cancel();
+                        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
+                            File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
+                            image = new ProductImage(temp_barcode, OTHER, imageFile);
+                            api.postImg(MainActivity.this, image, null);
                         } else {
-                            temp_barcode = barcode;
+                            Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
+                            State st = new State();
+                            Product pd = new Product();
+                            pd.setCode(temp_barcode);
+                            st.setProduct(pd);
+                            intent.putExtra("state", st);
+                            startActivity(intent);
                         }
-
-                        if (temp_barcode.length() > 0) {
-                            dialog.cancel();
-                            if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
-                                File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
-                                image = new ProductImage(temp_barcode, OTHER, imageFile);
-                                api.postImg(MainActivity.this, image, null);
-                            } else {
-                                Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
-                                State st = new State();
-                                Product pd = new Product();
-                                pd.setCode(temp_barcode);
-                                st.setProduct(pd);
-                                intent.putExtra("state", st);
-                                startActivity(intent);
-                            }
-                        } else {
-                            Toast.makeText(MainActivity.this, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show();
-                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show();
                     }
                 }
             })
 
             .setNegativeButton(R.string.txtNo,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                (dialog, id) -> dialog.cancel());
 
         AlertDialog alertDialog = alertDialogBuilder.create();
 
@@ -1002,12 +969,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void setShakePreferences() {
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
         Log.i("Shake", String.valueOf(scanOnShake));
-        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
-            @Override
-            public void onShake(int count) {
-                if (scanOnShake) {
-                    Utils.scan(MainActivity.this);
-                }
+        mShakeDetector.setOnShakeListener(count -> {
+            if (scanOnShake) {
+                Utils.scan(MainActivity.this);
             }
         });
     }

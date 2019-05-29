@@ -10,6 +10,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.StringRes;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -48,6 +49,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
@@ -73,8 +75,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
     TextView textExtendSearch;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
-    @BindView(R.id.buttonScan)
-    FloatingActionButton mButtonScan;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
     private SearchInfo mSearchInfo;
     private EndlessRecyclerViewScrollListener scrollListener;
     private List<Product> mProducts;
@@ -261,7 +263,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (scanOnShake) {
             mShakeDetector.setOnShakeListener(count -> Utils.scan(ProductBrowsingListActivity.this));
         }
-
+        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 
     protected void newSearchQuery() {
@@ -559,28 +561,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
             showEmptySearch(getResources().getString(emptyMessage), null);
         } else {
             loadData(isResponseSuccessful, response);
-        }
-    }
-
-    @OnClick(R.id.buttonScan)
-    protected void onButtonScanClick() {
-        if (Utils.isHardwareCameraInstalled(this)) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(this)
-                            .title(R.string.action_about)
-                            .content(R.string.permission_camera)
-                            .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                            .show();
-                } else {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                }
-            } else {
-                Intent intent = new Intent(this, ContinuousScanActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
         }
     }
 

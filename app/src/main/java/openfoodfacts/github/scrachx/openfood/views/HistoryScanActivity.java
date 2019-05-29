@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Canvas;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
@@ -21,6 +20,7 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
@@ -67,6 +67,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import org.apache.commons.collections.CollectionUtils;
 
 public class HistoryScanActivity extends BaseActivity implements SwipeControllerActions {
@@ -88,8 +89,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     ProgressBar historyProgressbar;
     @BindView(R.id.srRefreshHistoryScanList)
     SwipeRefreshLayout swipeRefreshLayout;
-    @BindView(R.id.buttonScan)
-    FloatingActionButton mButtonScan;
+    @BindView( R.id.bottom_navigation )
+    BottomNavigationView bottomNavigationView;
 
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
@@ -146,6 +147,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             new FillAdapter(HistoryScanActivity.this).execute(context);
             swipeRefreshLayout.setRefreshing(false);
         });
+        BottomNavigationListenerInstaller.install(bottomNavigationView,this,this);
 
     }
 
@@ -168,28 +170,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         if (adapter.getItemCount() == 0) {
             infoView.setVisibility(View.VISIBLE);
             scanFirst.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @OnClick(R.id.buttonScan)
-    protected void OnScan() {
-        if (Utils.isHardwareCameraInstalled(this)) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(this)
-                            .title(R.string.action_about)
-                            .content(R.string.permission_camera)
-                            .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                            .show();
-                } else {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                }
-            } else {
-                Intent intent = new Intent(this, ContinuousScanActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
         }
     }
 

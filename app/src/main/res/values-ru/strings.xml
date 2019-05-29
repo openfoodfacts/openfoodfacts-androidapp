@@ -55,6 +55,7 @@
     <!-- nutrition energy units -->
     <!-- volume units -->
     <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>мг</item>
@@ -185,6 +186,7 @@
     <string name="txtPalmOilProduct">Ингредиенты из пальмового масла:</string>
     <string name="txtServingSize">Размер порции:</string>
     <string name="txtNutrientLevel100g">Пищевая ценность на 100 г:</string>
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">в малом количестве</string>
     <string name="txtNutritionLevelModerate">в умеренном количестве</string>
     <string name="txtNutritionLevelHigh">в большом количестве</string>
@@ -388,6 +390,7 @@
     <string name="nutrition_serum_proteins">Сывороточный протеин</string>
     <string name="nutrition_nucleotides">Нуклеотиды</string>
     <string name="for_100g">На 100 г</string>
+    <string name="for_100ml">For 100 ml</string>
     <string name="serving">На порцию</string>
     <string name="minerals">Минералы</string>
     <string name="nutrition_calcium">Кальций</string>
@@ -619,6 +622,7 @@
     <string name="error_adding_ingredients">Что-то пошло не так при попытке добавления ингредиентов продукта</string>
     <string name="unable_to_extract_ingredients">Не удалось извлечь ингредиенты из изображения</string>
     <string name="error_adding_nutrition_facts">Что-то пошло не так при попытке добавить пищевую ценность продукта</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Углеводы не могут быть меньше суммы сахара и крахмала</string>
     <string name="choose_nutrient">Выберите питательное вещество</string>
     <string name="error_adding_product_details">Что-то пошло не так, когда вы пытались добавить сведения о продукте</string>
@@ -786,8 +790,8 @@
     <string name="txt_discard">Отменить</string>
     <string name="txt_save">Сохранить</string>
     <string name="write_external_storage_your_listed_products">Для экспорта данных требуется разрешение на запись во внешнее хранилище.</string>
-    <string name="txt_info_eaten_products">Вы сможете добавить продукт в этот список, сканируя продукты, перетаскиванием карточки продукта вверх и постучав по  \"Я ем это\".
-        Вы также сможете добавить продукты в этот список, найдя их и кликнув на кнопку \"+\", в верхнем правом углу страницы продукта.</string>
+    <string name="txt_info_eaten_products">\"Вы сможете добавить продукт в этот список, сканируя продукты, перетаскиванием карточки продукта вверх и постучав по  \"Я ем это\".
+        Вы также сможете добавить продукты в этот список, найдя их и кликнув на кнопку \"+\", в верхнем правом углу страницы продукта.\"</string>
     <string name="txt_info_your_listed_products">Вы сможете добавлять товары в этот список, выполнив их поиск и кликнув кнопку \"+\" в правом верхнем углу страницы товара.</string>
     <string name="txt_i_m_eating_this">Я ем это</string>
     <string name="compare_product_prompt">Сравнить этот продукт</string>
@@ -817,5 +821,12 @@
     <string name="go_to_full_product_page">Перейти на полную страницу продукта</string>
     <string name="no_additive_data_available_for_this_product">Дополнительных данные не доступны для этого продукта</string>
     <string name="no_nutrient_information_available_for_this_product">Нет информации о питательной ценности для этого продукта</string>
+    <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Требуется для вычисления Nutri-Score)</string>
+    <string name="first_scan_tooltip">You can slide up the card for more details</string>
+    <string name="add_an_allergen">Add an allergen</string>
+    <string name="add_a_list">Add a list</string>
+    <string name="todo">TODO</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="barcode">Штрих-код</string>
 </resources>

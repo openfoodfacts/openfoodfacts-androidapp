@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.SpannableStringBuilder;
@@ -20,7 +19,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
