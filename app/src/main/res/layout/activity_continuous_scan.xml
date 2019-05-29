@@ -127,7 +127,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Roasted Dalia" />
 
-            <RelativeLayout
+            <android.support.constraint.ConstraintLayout
                 android:id="@+id/quickView_details"
                 android:layout_width="match_parent"
                 android:layout_height="97dp"
@@ -140,70 +140,87 @@
                 <ImageView
                     android:id="@+id/quickView_image"
                     android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/quickView_nutriScore"
+                    app:layout_constraintHorizontal_bias="0.52"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_constraintStart_toStartOf="parent"
                     tools:src="@drawable/img_scan" />
 
                 <ProgressBar
                     android:id="@+id/quickView_imageProgress"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/horizontal_margin"
                     android:padding="@dimen/activity_horizontal_margin"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="gone" />
 
 
                 <ImageView
                     android:id="@+id/quickView_nutriScore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="65dp"
-                    android:layout_marginStart="@dimen/spacing_normal"
-                    android:layout_marginEnd="@dimen/spacing_normal"
-                    android:layout_toStartOf="@+id/quickView_novaGroup"
-                    android:layout_toEndOf="@+id/quickView_imageProgress"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitStart"
+                    app:layout_constraintBottom_toTopOf="@id/quickView_additives"
+                    app:layout_constraintEnd_toStartOf="@+id/quickView_novaGroup"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/quickView_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4"
                     tools:src="@drawable/nnc_a" />
 
                 <ImageView
                     android:id="@+id/quickView_novaGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@id/quickView_nutriScore"
-                    android:layout_marginStart="@dimen/spacing_normal"
-                    android:layout_marginEnd="@dimen/spacing_small"
-                    android:layout_toStartOf="@id/quickView_co2_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/quickView_co2_icon"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/quickView_nutriScore"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@drawable/ic_nova_group_1" />
 
                 <ImageView
                     android:id="@+id/quickView_co2_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@id/quickView_nutriScore"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="@dimen/spacing_small"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:adjustViewBounds="true"
-                    android:paddingTop="8dp"
+                    android:paddingTop="@dimen/horizontal_margin"
                     android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/quickView_novaGroup"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@drawable/ic_co2_high_24dp" />
 
                 <TextView
                     android:id="@+id/quickView_additives"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/quickView_nutriScore"
-                    android:layout_alignStart="@id/quickView_nutriScore"
-                    android:layout_alignEnd="@+id/quickView_nutriScore"
-                    android:layout_alignBottom="@id/quickView_image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/quickView_nutriScore"
+                    app:layout_constraintTop_toBottomOf="@id/quickView_nutriScore"
                     tools:text="3 additives" />
 
 
-            </RelativeLayout>
+            </android.support.constraint.ConstraintLayout>
 
             <ProgressBar
 
@@ -215,8 +232,7 @@
                 android:padding="32dp"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/quickView_details"
-                app:layout_constraintTop_toTopOf="@+id/quickView_slideUpIndicator"
-                tools:visibility="visible" />
+                app:layout_constraintTop_toTopOf="@+id/quickView_slideUpIndicator" />
 
             <TextView
                 android:id="@+id/quickView_progressText"
@@ -231,7 +247,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/quickView_progress"
                 app:layout_constraintTop_toTopOf="@+id/quickView_progress"
-                tools:visibility="visible" />
+                tools:visibility="gone" />
 
             <TextView
                 android:id="@+id/quickView_productNotFound"

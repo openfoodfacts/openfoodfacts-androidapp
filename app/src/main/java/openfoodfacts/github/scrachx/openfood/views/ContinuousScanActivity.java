@@ -29,7 +29,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -127,7 +126,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     @BindView(R.id.quickView_searchByBarcode)
     EditText searchByBarcode;
     @BindView(R.id.quickView_details)
-    RelativeLayout details;
+    ConstraintLayout details;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
     @Inject
@@ -248,7 +247,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             showAllViews();
                             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                             productShownInBottomView();
-                        productNotFound.setVisibility(GONE);
+                            productNotFound.setVisibility(GONE);
                             if (newlyAdded) {
                                 txtProductIncomplete.setVisibility(View.INVISIBLE);
                                 fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_thumb_up_white_24dp));
@@ -291,10 +290,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 name.setText(product.getProductName());
                             }
                             List<String> addTags = product.getAdditivesTags();
-                            if (addTags == null || addTags.isEmpty()) {
-                                additives.setText(R.string.productAdditivesNull);
-                            } else {
+                            if (!addTags.isEmpty()) {
                                 additives.setText(getString(R.string.productAdditivesTemplate, addTags.size()));
+                            } else if (product.getStatesTags().contains("en:ingredients-completed")) {
+                                additives.setText(getString(R.string.productAdditivesNone));
+                            } else {
+                                additives.setText(getString(R.string.productAdditivesUnknown));
                             }
 
                             final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(getBaseContext()));
@@ -335,6 +336,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
                                 final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
                                 if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
+                                    novaGroup.setVisibility(VISIBLE);
                                     novaGroup.setImageResource(novaGroupDrawable);
                                 } else {
                                     novaGroup.setVisibility(View.INVISIBLE);
@@ -351,17 +353,17 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             }
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                        ProductFragment newProductFragment = new ProductFragment();
+                            ProductFragment newProductFragment = new ProductFragment();
 
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("state", state);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("state", state);
 
-                        newProductFragment.setArguments(bundle);
-                        fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
-                        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        fragmentTransaction.commit();
-                        productFragment = newProductFragment;
-                        showFirstScanTooltipIfNeeded();
+                            newProductFragment.setArguments(bundle);
+                            fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
+                            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                            fragmentTransaction.commit();
+                            productFragment = newProductFragment;
+                            showFirstScanTooltipIfNeeded();
                         }
                     }
 
@@ -402,7 +404,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
     private void productShownInBottomView() {
         bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_LARGE, ContinuousScanActivity.this));
-        quickView.getLayoutParams().height =  ViewGroup.LayoutParams.MATCH_PARENT;
+        quickView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
         quickView.requestLayout();
         quickView.getRootView().requestLayout();
     }
