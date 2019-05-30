@@ -134,12 +134,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
-        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
-            @Override
-            public void onShake(int count) {
-                if (scanOnShake) {
-                    Utils.scan(LoginActivity.this);
-                }
+        mShakeDetector.setOnShakeListener(count -> {
+            if (scanOnShake) {
+                Utils.scan(LoginActivity.this);
             }
         });
 

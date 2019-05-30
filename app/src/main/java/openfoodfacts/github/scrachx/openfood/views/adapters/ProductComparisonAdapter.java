@@ -128,13 +128,10 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
 
             //support synchronous scrolling
             if(CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
-                holder.listItemLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                    @Override
-                    public void onScrollChange(View view, int i, int i1, int i2, int i3) {
-                        for (ProductComparisonViewHolder viewHolder : viewHolders) {
-                            viewHolder.listItemLayout.setScrollX(i);
-                            viewHolder.listItemLayout.setScrollY(i1);
-                        }
+                holder.listItemLayout.setOnScrollChangeListener((View.OnScrollChangeListener) (view, i, i1, i2, i3) -> {
+                    for (ProductComparisonViewHolder viewHolder : viewHolders) {
+                        viewHolder.listItemLayout.setScrollX(i);
+                        viewHolder.listItemLayout.setScrollY(i1);
                     }
                 });
             }
@@ -152,33 +149,30 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             }
 
             final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(context));
-            holder.productComparisonImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (imageUrl != null) {
-                        Intent intent = new Intent(context, FullScreenImage.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("imageurl", imageUrl);
-                        intent.putExtras(bundle);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            ActivityOptionsCompat options = ActivityOptionsCompat.
-                                makeSceneTransitionAnimation((Activity) context, holder.productComparisonImage,
-                                    context.getString(R.string.product_transition));
-                            context.startActivity(intent, options.toBundle());
-                        } else {
-                            context.startActivity(intent);
-                        }
+            holder.productComparisonImage.setOnClickListener(view -> {
+                if (imageUrl != null) {
+                    Intent intent = new Intent(context, FullScreenImage.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("imageurl", imageUrl);
+                    intent.putExtras(bundle);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation((Activity) context, holder.productComparisonImage,
+                                context.getString(R.string.product_transition));
+                        context.startActivity(intent, options.toBundle());
                     } else {
-                        // take a picture
-                        if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+                        context.startActivity(intent);
+                    }
+                } else {
+                    // take a picture
+                    if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+                    } else {
+                        ON_PHOTO_RETURN_POSITION = position;
+                        if (Utils.isHardwareCameraInstalled(context)) {
+                            EasyImage.openCamera(((Activity) context), 0);
                         } else {
-                            ON_PHOTO_RETURN_POSITION = position;
-                            if (Utils.isHardwareCameraInstalled(context)) {
-                                EasyImage.openCamera(((Activity) context), 0);
-                            } else {
-                                EasyImage.openGallery(((Activity) context), 0, false);
-                            }
+                            EasyImage.openGallery(((Activity) context), 0, false);
                         }
                     }
                 }
@@ -261,37 +255,34 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 loadAdditives(product, holder.productComparisonAdditiveText);
             }
 
-            holder.fullProductButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (product != null) {
-                        String barcode = product.getCode();
-                        if (Utils.isNetworkConnected(context)) {
-                            api.getProduct(barcode, (Activity) context);
-                            try {
-                                View view1 = ((Activity) context).getCurrentFocus();
-                                if (view != null) {
-                                    InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                    imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
-                                }
-                            } catch (NullPointerException e) {
-                                e.printStackTrace();
+            holder.fullProductButton.setOnClickListener(view -> {
+                if (product != null) {
+                    String barcode = product.getCode();
+                    if (Utils.isNetworkConnected(context)) {
+                        api.getProduct(barcode, (Activity) context);
+                        try {
+                            View view1 = ((Activity) context).getCurrentFocus();
+                            if (view != null) {
+                                InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
                             }
-                        } else {
-                            new MaterialDialog.Builder(context)
-                                .title(R.string.device_offline_dialog_title)
-                                .content(R.string.connectivity_check)
-                                .positiveText(R.string.txt_try_again)
-                                .negativeText(R.string.dismiss)
-                                .onPositive((dialog, which) -> {
-                                    if (Utils.isNetworkConnected(context)) {
-                                        api.getProduct(barcode, (Activity) context);
-                                    } else {
-                                        Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                .show();
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
                         }
+                    } else {
+                        new MaterialDialog.Builder(context)
+                            .title(R.string.device_offline_dialog_title)
+                            .content(R.string.connectivity_check)
+                            .positiveText(R.string.txt_try_again)
+                            .negativeText(R.string.dismiss)
+                            .onPositive((dialog, which) -> {
+                                if (Utils.isNetworkConnected(context)) {
+                                    api.getProduct(barcode, (Activity) context);
+                                } else {
+                                    Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .show();
                     }
                 }
             });

@@ -48,20 +48,17 @@ public class OpenFoodAPIServiceTest implements APIUtils {
 
         OkHttpClient httpClientWithAuth = new OkHttpClient.Builder()
                 .addInterceptor(logging)
-                .addInterceptor(new Interceptor() {
-                    @Override
-                    public okhttp3.Response intercept(Chain chain) throws IOException {
-                        Request original = chain.request();
+                .addInterceptor(chain -> {
+                    Request original = chain.request();
 
-                        Request.Builder requestBuilder = original.newBuilder()
-                                // not works Base64.encodeToString("off:off".getBytes(), Base64.NO_WRAP);
-                                .header("Authorization", "Basic b2ZmOm9mZg==")
-                                .header("Accept", "application/json")
-                                .method(original.method(), original.body());
+                    Request.Builder requestBuilder = original.newBuilder()
+                            // not works Base64.encodeToString("off:off".getBytes(), Base64.NO_WRAP);
+                            .header("Authorization", "Basic b2ZmOm9mZg==")
+                            .header("Accept", "application/json")
+                            .method(original.method(), original.body());
 
-                        Request request = requestBuilder.build();
-                        return chain.proceed(request);
-                    }
+                    Request request = requestBuilder.build();
+                    return chain.proceed(request);
                 }).build();
 
         serviceWrite = new Retrofit.Builder()

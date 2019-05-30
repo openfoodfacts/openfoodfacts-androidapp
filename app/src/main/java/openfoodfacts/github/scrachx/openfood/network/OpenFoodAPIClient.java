@@ -46,6 +46,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.*;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 
 public class OpenFoodAPIClient {
+    public static final String TEXT_PLAIN = "text/plain";
     private AllergenDao mAllergenDao;
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;

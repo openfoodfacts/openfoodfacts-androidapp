@@ -319,50 +319,47 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_time), getString(R.string.by_barcode)};
                 }
                 builder.items(sortTypes);
-                builder.itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                builder.itemsCallback((dialog, itemView, position, text) -> {
 
-                        switch (position) {
+                    switch (position) {
 
-                            case 0:
-                                SORT_TYPE = "title";
-                                callTask();
-                                break;
+                        case 0:
+                            SORT_TYPE = "title";
+                            callTask();
+                            break;
 
-                            case 1:
-                                SORT_TYPE = "brand";
-                                callTask();
-                                break;
+                        case 1:
+                            SORT_TYPE = "brand";
+                            callTask();
+                            break;
 
 
-                            case 2:
+                        case 2:
 
-                                if (BuildConfig.FLAVOR.equals("off")) {
-                                    SORT_TYPE = "grade";
-                                } else {
-                                    SORT_TYPE = "time";
-                                }
-                                callTask();
-                                break;
-
-
-                            case 3:
-                                SORT_TYPE = "barcode";
-                                callTask();
-                                break;
-
-
-                            default:
+                            if (BuildConfig.FLAVOR.equals("off")) {
+                                SORT_TYPE = "grade";
+                            } else {
                                 SORT_TYPE = "time";
-                                callTask();
-                                break;
+                            }
+                            callTask();
+                            break;
 
 
-                        }
+                        case 3:
+                            SORT_TYPE = "barcode";
+                            callTask();
+                            break;
+
+
+                        default:
+                            SORT_TYPE = "time";
+                            callTask();
+                            break;
 
 
                     }
+
+
                 });
                 builder.show();
                 return true;
@@ -516,19 +513,16 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
             case "title":
 
-                Collections.sort(productItems, new Comparator<HistoryItem>() {
-                    @Override
-                    public int compare(HistoryItem historyItem, HistoryItem t1) {
-                        if(TextUtils.isEmpty(historyItem.getTitle()))
-                        {
-                            historyItem.setTitle(getResources().getString(R.string.no_title));
-                        }
-                        if(TextUtils.isEmpty(t1.getTitle()))
-                        {
-                            t1.setTitle(getResources().getString(R.string.no_title));
-                        }
-                        return historyItem.getTitle().compareToIgnoreCase(t1.getTitle());
+                Collections.sort(productItems, (historyItem, t1) -> {
+                    if(TextUtils.isEmpty(historyItem.getTitle()))
+                    {
+                        historyItem.setTitle(getResources().getString(R.string.no_title));
                     }
+                    if(TextUtils.isEmpty(t1.getTitle()))
+                    {
+                        t1.setTitle(getResources().getString(R.string.no_title));
+                    }
+                    return historyItem.getTitle().compareToIgnoreCase(t1.getTitle());
                 });
 
                 break;
@@ -536,52 +530,40 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
             case "brand":
 
-                Collections.sort(productItems, new Comparator<HistoryItem>() {
-                    @Override
-                    public int compare(HistoryItem historyItem, HistoryItem t1) {
-                        if(TextUtils.isEmpty(historyItem.getBrands()))
-                        {
-                            historyItem.setBrands(getResources().getString(R.string.no_brand));
-                        }
-                        if(TextUtils.isEmpty(t1.getBrands()))
-                        {
-                            t1.setBrands(getResources().getString(R.string.no_brand));
-                        }
-                        return historyItem.getBrands().compareToIgnoreCase(t1.getBrands());
+                Collections.sort(productItems, (historyItem, t1) -> {
+                    if(TextUtils.isEmpty(historyItem.getBrands()))
+                    {
+                        historyItem.setBrands(getResources().getString(R.string.no_brand));
                     }
+                    if(TextUtils.isEmpty(t1.getBrands()))
+                    {
+                        t1.setBrands(getResources().getString(R.string.no_brand));
+                    }
+                    return historyItem.getBrands().compareToIgnoreCase(t1.getBrands());
                 });
 
                 break;
 
             case "barcode":
 
-                Collections.sort(productItems, new Comparator<HistoryItem>() {
-                    @Override
-                    public int compare(HistoryItem historyItem, HistoryItem t1) {
-                        return historyItem.getBarcode().compareTo(t1.getBarcode());
-                    }
-                });
+                Collections.sort(productItems, (historyItem, t1) -> historyItem.getBarcode().compareTo(t1.getBarcode()));
                 break;
 
             case "grade":
-                Collections.sort(productItems, new Comparator<HistoryItem>() {
-
-                    @Override
-                    public int compare(HistoryItem historyItem, HistoryItem t1) {
-                        String nGrade1;
-                        String nGrade2;
-                        if (historyItem.getNutritionGrade() == null) {
-                            nGrade1 = "E";
-                        } else {
-                            nGrade1 = historyItem.getNutritionGrade();
-                        }
-                        if (t1.getNutritionGrade() == null) {
-                            nGrade2 = "E";
-                        } else {
-                            nGrade2 = t1.getNutritionGrade();
-                        }
-                        return nGrade1.compareToIgnoreCase(nGrade2);
+                Collections.sort(productItems, (historyItem, t1) -> {
+                    String nGrade1;
+                    String nGrade2;
+                    if (historyItem.getNutritionGrade() == null) {
+                        nGrade1 = "E";
+                    } else {
+                        nGrade1 = historyItem.getNutritionGrade();
                     }
+                    if (t1.getNutritionGrade() == null) {
+                        nGrade2 = "E";
+                    } else {
+                        nGrade2 = t1.getNutritionGrade();
+                    }
+                    return nGrade1.compareToIgnoreCase(nGrade2);
                 });
 
                 break;
@@ -589,12 +571,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
             default:
 
-                Collections.sort(productItems, new Comparator<HistoryItem>() {
-                    @Override
-                    public int compare(HistoryItem historyItem, HistoryItem t1) {
-                        return 0;
-                    }
-                });
+                Collections.sort(productItems, (historyItem, t1) -> 0);
 
 
         }

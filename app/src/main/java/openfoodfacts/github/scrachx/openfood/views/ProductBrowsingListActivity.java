@@ -183,44 +183,41 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     getString(R.string.product_info_tocomplete)};
 
             builder.items(contributionTypes);
-            builder.itemsCallback(new MaterialDialog.ListCallback() {
-                @Override
-                public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+            builder.itemsCallback((dialog, itemView, position, text) -> {
 
-                    switch (position) {
+                switch (position) {
 
-                        case 0:
-                            contributionType = 0;
-                            newSearchQuery();
-                            break;
-                        case 1:
-                            contributionType = 1;
-                            newSearchQuery();
-                            break;
-                        case 2:
-                            contributionType = 2;
-                            newSearchQuery();
-                            break;
-                        case 3:
-                            contributionType = 3;
-                            newSearchQuery();
-                            break;
-                        case 4:
-                            contributionType = 4;
-                            newSearchQuery();
-                            break;
-                        case 5:
-                            contributionType = 5;
-                            newSearchQuery();
-                            break;
-                        default:
-                            contributionType = 0;
-                            newSearchQuery();
-                            break;
-
-                    }
+                    case 0:
+                        contributionType = 0;
+                        newSearchQuery();
+                        break;
+                    case 1:
+                        contributionType = 1;
+                        newSearchQuery();
+                        break;
+                    case 2:
+                        contributionType = 2;
+                        newSearchQuery();
+                        break;
+                    case 3:
+                        contributionType = 3;
+                        newSearchQuery();
+                        break;
+                    case 4:
+                        contributionType = 4;
+                        newSearchQuery();
+                        break;
+                    case 5:
+                        contributionType = 5;
+                        newSearchQuery();
+                        break;
+                    default:
+                        contributionType = 0;
+                        newSearchQuery();
+                        break;
 
                 }
+
             });
             builder.show();
 
@@ -633,18 +630,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     })
             );
 
-            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
+            swipeRefreshLayout.setOnRefreshListener(() -> {
 
-                    mProducts.clear();
-                    adapter.notifyDataSetChanged();
-                    countProductsView.setText(getResources().getString(R.string.number_of_results));
-                    pageAddress = 1;
-                    setup();
-                    if (swipeRefreshLayout.isRefreshing()) {
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
+                mProducts.clear();
+                adapter.notifyDataSetChanged();
+                countProductsView.setText(getResources().getString(R.string.number_of_results));
+                pageAddress = 1;
+                setup();
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             });
         }
