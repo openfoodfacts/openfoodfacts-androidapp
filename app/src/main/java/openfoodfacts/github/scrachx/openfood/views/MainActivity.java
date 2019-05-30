@@ -865,7 +865,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
                 Reader reader = new MultiFormatReader();
                 try {
-                    Hashtable<DecodeHintType, Object> decodeHints = new Hashtable<DecodeHintType, Object>();
+                    Hashtable<DecodeHintType, Object> decodeHints = new Hashtable<>();
                     decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
                     decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
                     Result result = reader.decode(bitmap, decodeHints);

@@ -69,7 +69,7 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.View
     @Override
     public int getItemCount() {
         if (mAllergens == null) {
-            mAllergens = new ArrayList<AllergenName>();
+            mAllergens = new ArrayList<>();
         }
 
         return mAllergens.size();

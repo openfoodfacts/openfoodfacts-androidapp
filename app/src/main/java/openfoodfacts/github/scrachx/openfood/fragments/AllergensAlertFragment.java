@@ -119,7 +119,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe((List<AllergenName> allergens) -> {
                         Collections.sort(allergens, (a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
-                        List<String> allergensNames = new ArrayList<String>();
+                        List<String> allergensNames = new ArrayList<>();
                         for (AllergenName allergenName : allergens) {
                             allergensNames.add(allergenName.getName());
                         }
