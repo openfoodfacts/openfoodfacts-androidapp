@@ -828,7 +828,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private ValueState checkCarbohydrate(CustomValidatingEditTextView editText, float value) {
-        if (!carbohydrate.getEntryName().equals(editText)) {
+        if (!carbohydrate.getEntryName().equals(editText.toString())) {
             return ValueState.NOT_TESTED;
         }
         ValueState res = checkAsGram(editText, value);

@@ -92,7 +92,7 @@ public class ContributorsFragment extends BaseFragment {
             otherEditorsText.setVisibility(View.INVISIBLE);
         }
 
-        if (!product.getStatesTags().equals("")) {
+        if (!product.getStatesTags().toString().equals("")) {
 
             statesText.setMovementMethod(LinkMovementMethod.getInstance());
             statesText.setText("");
