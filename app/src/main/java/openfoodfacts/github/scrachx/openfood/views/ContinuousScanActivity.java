@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.hardware.Camera;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -580,6 +582,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (!Utils.isNetworkConnected(getBaseContext()) && newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                } else {
                 if (newState == BottomSheetBehavior.STATE_HIDDEN) {
                     lastText = null;
                 }
@@ -592,6 +597,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
                     bottomSheet.requestLayout();
                 }
+            }
             }
 
             float previousSlideOffset = 0;
