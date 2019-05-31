@@ -4,7 +4,6 @@ import java.io.File;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
@@ -29,30 +28,30 @@ public class ProductImage {
     private ProductImageField imageField;
 
     public ProductImage(String code, ProductImageField field, File image) {
-        this.code = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
-        this.field = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), field.toString() + '_' + LocaleHelper.getLanguage(OFFApplication.getInstance()));
+        this.code = RequestBody.create(MediaType.parse("text/plain"), code);
+        this.field = RequestBody.create(MediaType.parse("text/plain"), field.toString() + '_' + LocaleHelper.getLanguage(OFFApplication.getInstance()));
 
         switch (field) {
             case FRONT:
-                this.imguploadFront = OpenFoodAPIClient.createImageRequest(image);
+                this.imguploadFront = RequestBody.create(MediaType.parse("image/*"), image);
                 this.imguploadIngredients = null;
                 this.imguploadNutrition = null;
                 this.imguploadOther = null;
                 break;
             case INGREDIENTS:
-                this.imguploadIngredients = OpenFoodAPIClient.createImageRequest(image);
+                this.imguploadIngredients = RequestBody.create(MediaType.parse("image/*"), image);
                 this.imguploadFront = null;
                 this.imguploadNutrition = null;
                 this.imguploadOther = null;
                 break;
             case NUTRITION:
-                this.imguploadNutrition = OpenFoodAPIClient.createImageRequest(image);
+                this.imguploadNutrition = RequestBody.create(MediaType.parse("image/*"), image);
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;
                 this.imguploadOther = null;
                 break;
             case OTHER:
-                this.imguploadOther = OpenFoodAPIClient.createImageRequest(image);
+                this.imguploadOther = RequestBody.create(MediaType.parse("image/*"), image);
                 this.imguploadNutrition = null;
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;

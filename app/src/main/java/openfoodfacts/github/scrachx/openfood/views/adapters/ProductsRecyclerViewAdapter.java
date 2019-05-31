@@ -141,9 +141,11 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
     }
 
     static class ProgressViewHolder extends RecyclerView.ViewHolder {
+        public ProgressBar progressBar;
 
         public ProgressViewHolder(View v) {
             super(v);
+            progressBar = v.findViewById(R.id.progressBar1);
         }
     }
 }

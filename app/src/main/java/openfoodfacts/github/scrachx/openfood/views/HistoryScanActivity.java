@@ -116,7 +116,9 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(HistoryScanActivity.this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
            isLowBatteryMode = true;
         }
 

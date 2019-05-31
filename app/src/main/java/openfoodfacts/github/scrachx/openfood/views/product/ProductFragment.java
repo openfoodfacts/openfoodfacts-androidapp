@@ -43,7 +43,7 @@ import static android.app.Activity.RESULT_OK;
 public class ProductFragment extends Fragment implements OnRefreshListener {
 
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    public static State productState;
+    public static State mState;
     @BindView(R.id.pager)
     ViewPager viewPager;
     @BindView(R.id.toolbar)
@@ -71,7 +71,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
         ButterKnife.bind(this, view);
         toolbar.setVisibility(View.GONE);
-        productState = (State) getArguments().getSerializable("state");
+        mState = (State) getArguments().getSerializable("state");
 
         setupViewPager(viewPager);
 
@@ -106,18 +106,18 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Intent intent = new Intent(getActivity(), AddProductActivity.class);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, productState.getProduct());
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
             startActivity(intent);
         }
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(getChildFragmentManager()), productState, getActivity());
+        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(getChildFragmentManager()), mState, getActivity());
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return ProductActivity.onOptionsItemSelected(item, getActivity());
+        return ProductActivity.onOptionsItemSelected(item, mState, getActivity());
     }
 
     // Call to update the share intent
@@ -130,17 +130,17 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @Override
     public void onRefresh() {
-        api.getAPIService().getFullProductByBarcode(productState.getProduct().getCode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
+        api.getAPIService().getFullProductByBarcode(mState.getProduct().getCode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
                 final State s = response.body();
-                productState = s;
+                mState = s;
                 adapterResult.refresh(s);
             }
 
             @Override
             public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
-                adapterResult.refresh(productState);
+                adapterResult.refresh(mState);
             }
         });
     }

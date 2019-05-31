@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import android.util.Base64;
-import android.util.Log;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -58,10 +58,10 @@ public class OfflineSavedProduct implements Serializable {
                     HashMap<String, String> hashMap = (HashMap<String, String>) in.readObject();
                     return hashMap;
                 } catch (ClassNotFoundException e) {
-                    Log.e(OfflineSavedProduct.class.getSimpleName(),"getProductDetailsMap",e);
+                    e.printStackTrace();
                 }
             } catch (IOException e) {
-                Log.e(OfflineSavedProduct.class.getSimpleName(),"getProductDetailsMap",e);
+                e.printStackTrace();
             }
         }
         return null;
@@ -75,7 +75,7 @@ public class OfflineSavedProduct implements Serializable {
             out.flush();
             this.productDetails = Base64.encodeToString(bos.toByteArray(), Base64.DEFAULT);
         } catch (IOException e) {
-            Log.e(OfflineSavedProduct.class.getSimpleName(),"setProductDetailsMap",e);
+            e.printStackTrace();
         }
     }
 

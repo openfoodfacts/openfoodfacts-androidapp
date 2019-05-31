@@ -20,7 +20,6 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -61,6 +60,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
     Button btnScanFirst;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
+    private ProductListsDao productListsDao;
     private ProductLists thisProductList;
     private List<YourListedProduct> products;
     private YourListedProductDao yourListedProductDao;
@@ -80,10 +80,12 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(YourListedProducts.this);
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(this)) {
             isLowBatteryMode = true;
         }
-        ProductListsDao  productListsDao = Utils.getDaoSession(this).getProductListsDao();
+        productListsDao = Utils.getDaoSession(this).getProductListsDao();
         yourListedProductDao = Utils.getAppDaoSession(this).getYourListedProductDao();
 
         Bundle bundle = getIntent().getExtras();
@@ -93,7 +95,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             setTitle(listName);
             p = (Product) bundle.get("product");
         }
-        String locale = LocaleHelper.getLanguage(getBaseContext());
+        String locale= LocaleHelper.getLanguage(getBaseContext());
         if (p != null && p.getCode() != null && p.getProductName() != null
             && p.getImageSmallUrl(locale) != null) {
 
@@ -119,7 +121,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         products = thisProductList.getProducts();
-        if (products.isEmpty()) {
+        if (products.size() == 0) {
             emptyList = true;
             tvInfo.setVisibility(View.VISIBLE);
             btnScanFirst.setVisibility(View.VISIBLE);
@@ -228,23 +230,23 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
 
     public void exportCSV() {
         boolean isDownload = false;
-        String folderMain = " ";
+        String folder_main = " ";
         String appname = " ";
         if ((BuildConfig.FLAVOR.equals("off"))) {
-            folderMain = " Open Food Facts ";
+            folder_main = " Open Food Facts ";
             appname = "OFF";
         } else if ((BuildConfig.FLAVOR.equals("opff"))) {
-            folderMain = " Open Pet Food Facts ";
+            folder_main = " Open Pet Food Facts ";
             appname = "OPFF";
         } else if ((BuildConfig.FLAVOR.equals("opf"))) {
-            folderMain = " Open Products Facts ";
+            folder_main = " Open Products Facts ";
             appname = "OPF";
         } else {
-            folderMain = " Open Beauty Facts ";
+            folder_main = " Open Beauty Facts ";
             appname = "OBF";
         }
         Toast.makeText(this, R.string.txt_exporting_your_listed_products, Toast.LENGTH_LONG).show();
-        File baseDir = new File(Environment.getExternalStorageDirectory(), folderMain);
+        File baseDir = new File(Environment.getExternalStorageDirectory(), folder_main);
         if (!baseDir.exists()) {
             baseDir.mkdirs();
         }
@@ -252,7 +254,15 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         String fileName = appname + "-" + productListName + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
         String filePath = baseDir + File.separator + fileName;
         File f = new File(filePath);
-        try (CSVWriter writer = createCsvWriter(filePath, f)) {
+        CSVWriter writer;
+        FileWriter fileWriter;
+        try {
+            if (f.exists() && !f.isDirectory()) {
+                fileWriter = new FileWriter(filePath, false);
+                writer = new CSVWriter(fileWriter);
+            } else {
+                writer = new CSVWriter(new FileWriter(filePath));
+            }
             String[] headers = getResources().getStringArray(R.array.your_products_headers);
             writer.writeNext(headers);
             List<YourListedProduct> listProducts = thisProductList.getProducts();
@@ -260,11 +270,11 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
                 String[] line = {product.getBarcode(), product.getProductName(), product.getListName(), product.getProductDetails()};
                 writer.writeNext(line);
             }
+            writer.close();
             Toast.makeText(this, R.string.txt_your_listed_products_exported, Toast.LENGTH_LONG).show();
             isDownload = true;
         } catch (IOException e) {
-            isDownload = false;
-            Log.e(YourListedProducts.class.getSimpleName(), "exportCSV", e);
+            e.printStackTrace();
         }
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -290,25 +300,15 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             notificationManager.createNotificationChannel(notificationChannel);
         }
 
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
+            .setContentTitle(getString(R.string.notify_title))
+            .setContentText(getString(R.string.notify_content))
+            .setContentIntent(PendingIntent.getActivity(this, 4, downloadIntent, 0))
+            .setSmallIcon(R.mipmap.ic_launcher);
+
         if (isDownload) {
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
-                .setContentTitle(getString(R.string.notify_title))
-                .setContentText(getString(R.string.notify_content))
-                .setContentIntent(PendingIntent.getActivity(this, 4, downloadIntent, 0))
-                .setSmallIcon(R.mipmap.ic_launcher);
             notificationManager.notify(8, builder.build());
         }
-    }
-
-    private CSVWriter createCsvWriter(String filePath, File f) throws IOException {
-        CSVWriter writer;
-        if (f.exists() && !f.isDirectory()) {
-            FileWriter fileWriter = new FileWriter(filePath, false);
-            writer = new CSVWriter(fileWriter);
-        } else {
-            writer = new CSVWriter(new FileWriter(filePath));
-        }
-        return writer;
     }
 
     @Override

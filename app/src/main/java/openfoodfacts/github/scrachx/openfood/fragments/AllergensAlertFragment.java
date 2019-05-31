@@ -88,7 +88,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allergens -> {
                     mAllergensEnabled = allergens;
-                    mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled);
+                    mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled, getActivity());
                     mRvAllergens.setAdapter(mAdapter);
                     mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
                     mRvAllergens.setHasFixedSize(true);

@@ -134,9 +134,12 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
-        mShakeDetector.setOnShakeListener(count -> {
-            if (scanOnShake) {
-                Utils.scan(LoginActivity.this);
+        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
+            @Override
+            public void onShake(int count) {
+                if (scanOnShake) {
+                    Utils.scan(LoginActivity.this);
+                }
             }
         });
 
@@ -235,7 +238,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
 
                 Utils.hideKeyboard(context);
-                Log.e(getClass().getSimpleName(),"onFailure",t);
+                t.printStackTrace();
             }
         });
 

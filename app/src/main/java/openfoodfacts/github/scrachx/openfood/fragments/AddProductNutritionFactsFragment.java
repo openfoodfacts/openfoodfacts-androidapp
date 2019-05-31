@@ -73,7 +73,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     @BindView(R.id.radio_group)
     RadioGroup radioGroup;
     @BindView(R.id.serving_size)
-    CustomValidatingEditTextView servingSize;
+    CustomValidatingEditTextView serving_size;
     @BindView(R.id.energy)
     CustomValidatingEditTextView energy;
     @BindView(R.id.fat)
@@ -206,16 +206,16 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             updateSelectedDataSize(product.getNutritionDataPer());
         }
         if (product.getServingSize() != null && !product.getServingSize().isEmpty()) {
-            String servingSizeValue = product.getServingSize();
+            String servingSize = product.getServingSize();
             // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
-            updateServingSizeFrom(servingSizeValue);
+            updateServingSizeFrom(servingSize);
         }
         Nutriments nutriments = product.getNutriments();
         if (nutriments != null && getView() != null) {
-            final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
+            final ArrayList<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
             for (CustomValidatingEditTextView view : editViews) {
                 final String nutrientShortName = view.getEntryName();
-                if (nutrientShortName.equals(servingSize.getEntryName())) {
+                if (nutrientShortName.equals(serving_size.getEntryName())) {
                     continue;
                 }
                 String value = getValueFromShortName(nutriments, nutrientShortName);
@@ -282,9 +282,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     private void updateServingSizeFrom(String servingSize) {
         String[] part = servingSize.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-        this.servingSize.setText(part[0]);
+        serving_size.setText(part[0]);
         if (part.length > 1) {
-            this.servingSize.getAttachedSpinner().setSelection(getPositionInServingUnitArray(part[1].trim()));
+            serving_size.getAttachedSpinner().setSelection(getPositionInServingUnitArray(part[1].trim()));
         }
     }
 
@@ -309,14 +309,14 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 updateSelectedDataSize(s);
             }
             if (productDetails.get(PARAM_SERVING_SIZE) != null) {
-                String servingSizeValue = productDetails.get(PARAM_SERVING_SIZE);
+                String servingSize = productDetails.get(PARAM_SERVING_SIZE);
                 // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
-                updateServingSizeFrom(servingSizeValue);
+                updateServingSizeFrom(servingSize);
             }
-            final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
+            final ArrayList<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
             for (CustomValidatingEditTextView view : editViews) {
                 final String nutrientShortName = view.getEntryName();
-                if (nutrientShortName.equals(servingSize.getEntryName())) {
+                if (nutrientShortName.equals(serving_size.getEntryName())) {
                     continue;
                 }
                 final String nutrientCompleteName = AddProductNutritionFactsData.getCompleteEntryName(view);
@@ -429,6 +429,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         activity = getActivity();
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
 
     @OnClick(R.id.btnAddImageNutritionFacts)
     void addNutritionFactsImage() {
@@ -536,7 +540,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (isCarbohydrateRelated(text)) {
             checkValue(carbohydrate);
         }
-        if (servingSize.getEntryName().equals(text.getEntryName())) {
+        if (serving_size.getEntryName().equals(text.getEntryName())) {
             checkAllValues();
         }
     }
@@ -635,14 +639,14 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (servingSize.getText().toString().isEmpty()) {
+                if (serving_size.getText().toString().isEmpty()) {
                     targetMap.put(PARAM_SERVING_SIZE, "");
                 } else {
-                    String servingSizeValue = this.servingSize.getText().toString() + ALL_UNIT_SERVING[this.servingSize.getAttachedSpinner().getSelectedItemPosition()];
-                    targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
+                    String servingSize = serving_size.getText().toString() + ALL_UNIT_SERVING[serving_size.getAttachedSpinner().getSelectedItemPosition()];
+                    targetMap.put(PARAM_SERVING_SIZE, servingSize);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
-                    if (servingSize.getEntryName().equals(editTextView.getEntryName())) {
+                    if (serving_size.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
                     addNutrientToMap(editTextView, targetMap);
@@ -673,12 +677,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (!servingSize.getText().toString().isEmpty()) {
-                    String servingSizeValue = this.servingSize.getText().toString() + UNIT[this.servingSize.getAttachedSpinner().getSelectedItemPosition()];
-                    targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
+                if (!serving_size.getText().toString().isEmpty()) {
+                    String servingSize = serving_size.getText().toString() + UNIT[serving_size.getAttachedSpinner().getSelectedItemPosition()];
+                    targetMap.put(PARAM_SERVING_SIZE, servingSize);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
-                    if (servingSize.getEntryName().equals(editTextView.getEntryName())) {
+                    if (serving_size.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
                     if (!editTextView.getText().toString().isEmpty()) {
@@ -724,8 +728,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private float getReferenceValueInGram() {
         float reference = 100;
         if (radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
-            reference = QuantityParserUtil.getFloatValueOrDefault(servingSize, QuantityParserUtil.EntryFormat.NO_PREFIX, reference);
-            reference = UnitUtils.convertToGrams(reference, ALL_UNIT_SERVING[servingSize.getAttachedSpinner().getSelectedItemPosition()]);
+            reference = QuantityParserUtil.getFloatValueOrDefault(serving_size, QuantityParserUtil.EntryFormat.NO_PREFIX, reference);
+            reference = UnitUtils.convertToGrams(reference, ALL_UNIT_SERVING[serving_size.getAttachedSpinner().getSelectedItemPosition()]);
         }
         return reference;
     }
@@ -824,7 +828,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private ValueState checkCarbohydrate(CustomValidatingEditTextView editText, float value) {
-        if (!carbohydrate.getEntryName().equals(editText.getEntryName())) {
+        if (!carbohydrate.getEntryName().equals(editText)) {
             return ValueState.NOT_TESTED;
         }
         ValueState res = checkAsGram(editText, value);
@@ -839,6 +843,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         sugarValue = convertToGrams(sugarValue, sugar.getAttachedSpinner().getSelectedItemPosition());
         double newStarch = convertToGrams(getStarchValue(), getStarchUnitSelectedIndex());
         if ((sugarValue + newStarch) > carbsValue) {
+            carbohydrate.requestFocus();
             carbohydrate.showError(getString(R.string.error_in_carbohydrate_value));
             return ValueState.NOT_VALID;
         } else {
@@ -858,11 +863,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private ValueState checkPerServing(CustomValidatingEditTextView editText) {
-        if (servingSize.getEntryName().equals(editText.getEntryName())) {
+        if (serving_size.getEntryName().equals(editText.getEntryName())) {
             if (isDataPer100()) {
                 return ValueState.VALID;
             }
-            float value = QuantityParserUtil.getFloatValueOrDefault(servingSize, QuantityParserUtil.EntryFormat.NO_PREFIX, 0);
+            float value = QuantityParserUtil.getFloatValueOrDefault(serving_size, QuantityParserUtil.EntryFormat.NO_PREFIX, 0);
             if (value <= 0) {
                 editText.showError(getString(R.string.error_nutrient_serving_data));
                 return ValueState.NOT_VALID;

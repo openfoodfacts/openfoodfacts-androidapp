@@ -56,17 +56,17 @@ public class WikidataApiClient {
                     onWikiResponse.onresponse(true, jsonObject);
                 } catch (JsonProcessingException e) {
                     onWikiResponse.onresponse(false, null);
-                    Log.e("WikidataApiClient","doSomeThing",e);
+                    e.printStackTrace();
                 } catch (JSONException e) {
                     onWikiResponse.onresponse(false, null);
-                    Log.e("WikidataApiClient","doSomeThing",e);
+                    e.printStackTrace();
                 }
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
                 onWikiResponse.onresponse(false, null);
-                Log.i("wikidataApiClient", "failure",t);
+                Log.i("wikidataApiClient", "failure");
             }
         });
     }

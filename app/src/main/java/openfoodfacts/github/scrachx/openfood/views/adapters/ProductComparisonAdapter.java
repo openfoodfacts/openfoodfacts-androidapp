@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -54,7 +56,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder> implements ImageUploadListener {
-    private List<Product> productsToCompare;
+    private ArrayList<Product> productsToCompare;
     private Context context;
     private boolean isLowBatteryMode = false;
     private IProductRepository repository = ProductRepository.getInstance();
@@ -62,25 +64,25 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     private Button addProductButton;
     private OpenFoodAPIClient api;
     private ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
-    private Integer onPhotoReturnPosition;
+    public static Integer ON_PHOTO_RETURN_POSITION;
 
-    static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
-        NestedScrollView listItemLayout;
-        CardView productComparisonDetailsCv;
-        TextView productNameTextView;
-        TextView productQuantityTextView;
-        TextView productBrandTextView;
-        TextView productComparisonNutrientText;
-        RecyclerView nutrientsRecyclerView;
-        CardView productComparisonNutrientCv;
-        ImageButton productComparisonImage;
-        TextView productComparisonLabel;
-        ImageView productComparisonImageGrade;
-        ImageView productComparisonNovaGroup;
-        CardView productComparisonAdditiveCv;
-        TextView productComparisonAdditiveText;
-        Button fullProductButton;
-        ImageView productComparisonCo2Icon;
+    public static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
+        public NestedScrollView listItemLayout;
+        public CardView productComparisonDetailsCv;
+        public TextView productNameTextView;
+        public TextView productQuantityTextView;
+        public TextView productBrandTextView;
+        public TextView productComparisonNutrientText;
+        public RecyclerView nutrientsRecyclerView;
+        public CardView productComparisonNutrientCv;
+        public ImageButton productComparisonImage;
+        public TextView productComparisonLabel;
+        public ImageView productComparisonImageGrade;
+        public ImageView productComparisonNovaGroup;
+        public CardView productComparisonAdditiveCv;
+        public TextView productComparisonAdditiveText;
+        public Button fullProductButton;
+        public ImageView productComparisonCo2Icon;
 
         public ProductComparisonViewHolder(View view) {
             super(view);
@@ -103,7 +105,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         }
     }
 
-    public ProductComparisonAdapter(List<Product> productsToCompare, Context context) {
+    public ProductComparisonAdapter(ArrayList<Product> productsToCompare, Context context) {
         this.productsToCompare = productsToCompare;
         this.context = context;
         this.addProductButton = ((Activity) context).findViewById(R.id.product_comparison_button);
@@ -125,7 +127,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         if (!productsToCompare.isEmpty()) {
 
             //support synchronous scrolling
-            if (CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
+            if(CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
                 holder.listItemLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
                     @Override
                     public void onScrollChange(View view, int i, int i1, int i2, int i3) {
@@ -171,7 +173,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                         if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
                             ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
                         } else {
-                            onPhotoReturnPosition = position;
+                            ON_PHOTO_RETURN_POSITION = position;
                             if (Utils.isHardwareCameraInstalled(context)) {
                                 EasyImage.openCamera(((Activity) context), 0);
                             } else {
@@ -185,7 +187,9 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             if (isNotBlank(imageUrl)) {
                 holder.productComparisonLabel.setVisibility(View.INVISIBLE);
 
-                if (Utils.isDisableImageLoad(context) && Utils.getBatteryLevel(context)) {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+                if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(context)) {
                     isLowBatteryMode = true;
                 }
                 // Load Image if isLowBatteryMode is false
@@ -257,34 +261,37 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 loadAdditives(product, holder.productComparisonAdditiveText);
             }
 
-            holder.fullProductButton.setOnClickListener(view -> {
-                if (product != null) {
-                    String barcode = product.getCode();
-                    if (Utils.isNetworkConnected(context)) {
-                        api.getProduct(barcode, (Activity) context);
-                        try {
-                            View view1 = ((Activity) context).getCurrentFocus();
-                            if (view != null) {
-                                InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
-                            }
-                        } catch (NullPointerException e) {
-                            Log.e(ProductComparisonAdapter.class.getSimpleName(), "setOnClickListener", e);
-                        }
-                    } else {
-                        new MaterialDialog.Builder(context)
-                            .title(R.string.device_offline_dialog_title)
-                            .content(R.string.connectivity_check)
-                            .positiveText(R.string.txt_try_again)
-                            .negativeText(R.string.dismiss)
-                            .onPositive((dialog, which) -> {
-                                if (Utils.isNetworkConnected(context)) {
-                                    api.getProduct(barcode, (Activity) context);
-                                } else {
-                                    Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
+            holder.fullProductButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (product != null) {
+                        String barcode = product.getCode();
+                        if (Utils.isNetworkConnected(context)) {
+                            api.getProduct(barcode, (Activity) context);
+                            try {
+                                View view1 = ((Activity) context).getCurrentFocus();
+                                if (view != null) {
+                                    InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
                                 }
-                            })
-                            .show();
+                            } catch (NullPointerException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            new MaterialDialog.Builder(context)
+                                .title(R.string.device_offline_dialog_title)
+                                .content(R.string.connectivity_check)
+                                .positiveText(R.string.txt_try_again)
+                                .negativeText(R.string.dismiss)
+                                .onPositive((dialog, which) -> {
+                                    if (Utils.isNetworkConnected(context)) {
+                                        api.getProduct(barcode, (Activity) context);
+                                    } else {
+                                        Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .show();
+                        }
                     }
                 }
             });
@@ -314,38 +321,41 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             salt = nutrientLevels.getSalt();
         }
 
-        if (nutriments != null  && !(fat == null && salt == null && saturatedFat == null && sugars == null)) {
+        if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
 
-            Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
-            if (fat != null && fatNutriment != null) {
-                String fatNutrimentLevel = fat.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Fat", fatNutriment.getDisplayStringFor100g(),
-                    fatNutrimentLevel,
-                    fat.getImageLevel()));
-            }
+            if (nutriments != null) {
 
-            Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
-            if (saturatedFat != null && saturatedFatNutriment != null) {
-                String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Saturated fat", saturatedFatNutriment.getDisplayStringFor100g(),
-                    saturatedFatLocalize,
-                    saturatedFat.getImageLevel()));
-            }
+                Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
+                if (fat != null && fatNutriment != null) {
+                    String fatNutrimentLevel = fat.getLocalize(context);
+                    levelItem.add(new NutrientLevelItem("Fat", fatNutriment.getDisplayStringFor100g(),
+                        fatNutrimentLevel,
+                        fat.getImageLevel()));
+                }
 
-            Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
-            if (sugars != null && sugarsNutriment != null) {
-                String sugarsLocalize = sugars.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Sugars", sugarsNutriment.getDisplayStringFor100g(),
-                    sugarsLocalize,
-                    sugars.getImageLevel()));
-            }
+                Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
+                if (saturatedFat != null && saturatedFatNutriment != null) {
+                    String saturatedFatLocalize = saturatedFat.getLocalize(context);
+                    levelItem.add(new NutrientLevelItem("Saturated fat", saturatedFatNutriment.getDisplayStringFor100g(),
+                        saturatedFatLocalize,
+                        saturatedFat.getImageLevel()));
+                }
 
-            Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
-            if (salt != null && saltNutriment != null) {
-                String saltLocalize = salt.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Salt", saltNutriment.getDisplayStringFor100g(),
-                    saltLocalize,
-                    salt.getImageLevel()));
+                Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
+                if (sugars != null && sugarsNutriment != null) {
+                    String sugarsLocalize = sugars.getLocalize(context);
+                    levelItem.add(new NutrientLevelItem("Sugars", sugarsNutriment.getDisplayStringFor100g(),
+                        sugarsLocalize,
+                        sugars.getImageLevel()));
+                }
+
+                Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
+                if (salt != null && saltNutriment != null) {
+                    String saltLocalize = salt.getLocalize(context);
+                    levelItem.add(new NutrientLevelItem("Salt", saltNutriment.getDisplayStringFor100g(),
+                        saltLocalize,
+                        salt.getImageLevel()));
+                }
             }
         }
         return levelItem;
@@ -366,7 +376,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                                 return Single.just(categoryName);
                             }
                         }))
-                    .filter(AdditiveName::isNotNull)
+                    .filter(additiveName -> additiveName.isNotNull())
                     .toList()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -412,13 +422,13 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     }
 
     public void setImageOnPhotoReturn(File file) {
-        Product product = productsToCompare.get(onPhotoReturnPosition);
+        Product product = productsToCompare.get(ON_PHOTO_RETURN_POSITION);
         ProductImage image = new ProductImage(product.getCode(), FRONT, file);
         image.setFilePath(file.getAbsolutePath());
         api.postImg(context, image, this);
         String mUrlImage = file.getAbsolutePath();
         product.setImageUrl(mUrlImage);
-        onPhotoReturnPosition = null;
+        ON_PHOTO_RETURN_POSITION = null;
         notifyDataSetChanged();
     }
 

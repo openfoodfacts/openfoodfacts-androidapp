@@ -37,7 +37,7 @@ public class EnvironmentProductFragment extends BaseFragment {
     @BindView(R.id.carbon_footprint_cv)
     CardView carbonFootprintCardView;
 
-    private State activityState;
+    private State mState;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,11 +45,11 @@ public class EnvironmentProductFragment extends BaseFragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activityState =getStateFromActivityIntent();
+        mState=getStateFromActivityIntent();
 
-        final Product product = activityState.getProduct();
+        final Product product = mState.getProduct();
         Nutriments nutriments = product.getNutriments();
 
         if(nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
@@ -83,13 +83,13 @@ public class EnvironmentProductFragment extends BaseFragment {
             recyclingInstructionsToRecycleCv.setVisibility(View.GONE);
         }
 
-        refreshView(activityState);
+        refreshView(mState);
     }
 
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-        activityState = state;
+        mState = state;
     }
 
 }

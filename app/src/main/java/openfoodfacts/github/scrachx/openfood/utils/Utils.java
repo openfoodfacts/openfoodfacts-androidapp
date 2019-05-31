@@ -20,7 +20,6 @@ import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.DrawableRes;
 import android.support.customtabs.CustomTabsIntent;
@@ -75,6 +74,7 @@ public class Utils {
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
     public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
     public static boolean isUploadJobInitialised;
+    public static boolean DISABLE_IMAGE_LOAD = false;
     public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
@@ -208,7 +208,7 @@ public class Utils {
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
         } catch (FileNotFoundException e) {
-            Log.e(Utils.class.getSimpleName(), "decodeFile " + f, e);
+            e.printStackTrace();
         }
         return null;
     }
@@ -281,7 +281,7 @@ public class Utils {
         }
     }
 
-    public static <T extends View> List<T> getViewsByType(ViewGroup root, Class<T> tClass) {
+    public static <T extends View> ArrayList<T> getViewsByType(ViewGroup root, Class<T> tClass) {
         final ArrayList<T> result = new ArrayList<>();
         int childCount = root.getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -298,7 +298,8 @@ public class Utils {
     }
 
     public static int getNovaGroupDrawable(Product product) {
-        return getNovaGroupDrawable(product == null ? null : product.getNovaGroups());
+        return getNovaGroupDrawable(product==null?null:product.getNovaGroups());
+
     }
 
     public static int getNovaGroupDrawable(String novaGroup) {
@@ -339,7 +340,7 @@ public class Utils {
             return drawable;
         }
         List<String> tags = product.getEnvironmentImpactLevelTags();
-        if (CollectionUtils.isEmpty(tags)) {
+        if(CollectionUtils.isEmpty(tags)){
             return drawable;
         }
         String tag = tags.get(0).replace("\"", "");
@@ -437,7 +438,7 @@ public class Utils {
      * @return true if installed, false otherwise.
      */
     public static boolean isHardwareCameraInstalled(Context context) {
-        if (context == null) {
+        if(context==null){
             return false;
         }
         try {
@@ -456,7 +457,7 @@ public class Utils {
     /**
      * Schedules job to download when network is available
      */
-    public static synchronized void scheduleProductUploadJob(Context context) {
+    public synchronized static void scheduleProductUploadJob(Context context) {
         if (isUploadJobInitialised) {
             return;
         }
@@ -521,8 +522,8 @@ public class Utils {
         }
     }
 
-    public static boolean isUserLoggedIn(Context context) {
-        if (context == null) {
+    public static  boolean isUserLoggedIn(Context context){
+        if(context==null){
             return false;
         }
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
@@ -661,6 +662,7 @@ public class Utils {
         }
     }
 
+
     private static int convertKjToKcal(double kj) {
         return kj != 0 ? Double.valueOf(kj / 4.1868d).intValue() : -1;
     }
@@ -732,11 +734,6 @@ public class Utils {
         return (int) ((batteryPct) * 100) <= 15;
     }
 
-    public static boolean isDisableImageLoad(Context context) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getBoolean("disableImageLoad", false);
-    }
-
     /*
      * Function to open ContinuousScanActivity to facilitate scanning
      * @param activity
@@ -783,13 +780,12 @@ public class Utils {
      * @return Returns the header to be put in network call
      */
     public static String getUserAgent(String type) {
-        final String prefix = "Official Android App ";
         if (type.equals(HEADER_USER_AGENT_SCAN)) {
-            return prefix + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
+            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
         } else if (type.equals(HEADER_USER_AGENT_SEARCH)) {
-            return prefix + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
+            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
         }
-        return prefix + BuildConfig.VERSION_NAME;
+        return "Official Android App " + BuildConfig.VERSION_NAME;
     }
 
      /*

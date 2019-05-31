@@ -7,12 +7,14 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +24,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +33,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -49,6 +53,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
@@ -108,6 +113,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     private String mUrlImage;
     private String barcode;
     private OpenFoodAPIClient api;
+    private NutritionProductFragment mFragment;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     private SendProduct mSendProduct;
@@ -119,11 +125,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     //boolean to determine if nutrition data should be shown
     private boolean showNutritionData = true;
     private Product product;
-    private State activityState;
+    private State mState;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
+        mFragment = this;
         return createView(inflater, container, R.layout.fragment_nutrition_product);
     }
 
@@ -142,7 +149,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-        activityState = state;
+        mState = state;
         product = state.getProduct();
         String langCode = LocaleHelper.getLanguage(getContext());
         //checks the product states_tags to determine which prompt to be shown
@@ -308,7 +315,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             serving.append(servingSize);
         }
 
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
+        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
             isLowBatteryMode = true;
         }
 
@@ -526,12 +535,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                         public void onClick(View v) {
                             if (!TextUtils.isEmpty(etWeight.getText().toString())) {
 
-                                String spinnerValue = (String) spinner.getSelectedItem();
+                                String SpinnerValue = (String) spinner.getSelectedItem();
                                 String weight = etWeight.getText().toString();
-                                Product p = activityState.getProduct();
+                                Product p = mState.getProduct();
                                 Intent intent = new Intent(getContext(), CalculateDetails.class);
                                 intent.putExtra("sampleObject", p);
-                                intent.putExtra("spinnervalue", spinnerValue);
+                                intent.putExtra("spinnervalue", SpinnerValue);
                                 intent.putExtra("weight", weight);
                                 startActivity(intent);
                                 dialog.dismiss();

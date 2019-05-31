@@ -62,11 +62,11 @@ import java.util.*;
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
-    private  HistoryProductDao mHistoryProductDao;
+    private static HistoryProductDao mHistoryProductDao;
     private static final int PEEK_SMALL = 120;
     private static final int PEEK_LARGE = 150;
     @BindView(R.id.fab_status)
-    FloatingActionButton fabStatus;
+    FloatingActionButton fab_status;
     @BindView(R.id.quick_view)
     ConstraintLayout quickView;
     @BindView(R.id.barcode_scanner)
@@ -74,7 +74,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     @BindView(R.id.imageForScreenshotGenerationOnly)
     ImageView imageForScreenshotGenerationOnly;
     @BindView(R.id.toggle_flash)
-    ImageView toggleFlashView;
+    ImageView toggleFlash;
     @BindView(R.id.button_more)
     ImageView moreOptions;
     @BindView(R.id.frame_layout)
@@ -183,7 +183,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             .doOnSubscribe(a -> {
                 hideAllViews();
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                fabStatus.setVisibility(View.GONE);
+                fab_status.setVisibility(View.GONE);
                 quickView.setOnClickListener(null);
                 progressBar.setVisibility(View.VISIBLE);
                 progressText.setVisibility(View.VISIBLE);
@@ -206,10 +206,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         String s = getString(R.string.product_not_found, lastText);
                         productNotFound.setText(s);
                         productNotFound.setVisibility(View.VISIBLE);
-                        fabStatus.setVisibility(View.VISIBLE);
-                        fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                        fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
-                        fabStatus.setOnClickListener(v -> navigateToProductAddition(lastText));
+                        fab_status.setVisibility(View.VISIBLE);
+                        fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                        fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
+                        fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                     } else {
                         product = state.getProduct();
                         if (getIntent().getBooleanExtra("compare_product", false)) {
@@ -225,21 +225,21 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
-                        new HistoryTask(mHistoryProductDao).doInBackground(product);
+                        new HistoryTask().doInBackground(product);
                         showAllViews();
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         productShownInBottomView();
                         productNotFound.setVisibility(View.GONE);
                         if (newlyAdded) {
                             txtProductIncomplete.setVisibility(View.INVISIBLE);
-                            fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_thumb_up_white_24dp));
-                            fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_500)));
-                            fabStatus.setOnClickListener(null);
+                            fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_thumb_up_white_24dp));
+                            fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_500)));
+                            fab_status.setOnClickListener(null);
                         } else if (isProductIncomplete()) {
                             txtProductIncomplete.setVisibility(View.VISIBLE);
-                            fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                            fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
-                            fabStatus.setOnClickListener(v -> {
+                            fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                            fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
+                            fab_status.setOnClickListener(v -> {
                                 final SharedPreferences settings = getSharedPreferences("login", 0);
                                 final String login = settings.getString("user", "");
                                 if (login.isEmpty()) {
@@ -262,9 +262,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             });
                         } else {
                             txtProductIncomplete.setVisibility(View.INVISIBLE);
-                            fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                            fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_check_white_24dp));
-                            fabStatus.setOnClickListener(null);
+                            fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                            fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_check_white_24dp));
+                            fab_status.setOnClickListener(null);
                         }
                         if (product.getProductName() == null || product.getProductName().equals("")) {
                             name.setText(R.string.productNameNull);
@@ -358,17 +358,17 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastText)).unique();
                             if (offlineSavedProduct != null) {
                                 showOfflineSavedDetails(offlineSavedProduct);
-                                fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                                fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
+                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
                             } else {
                                 productNotFound.setText(getString(R.string.addProductOffline, lastText));
                                 productNotFound.setVisibility(View.VISIBLE);
-                                fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                                fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.fab_add));
+                                fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                                fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.fab_add));
                             }
-                            fabStatus.setVisibility(View.VISIBLE);
+                            fab_status.setVisibility(View.VISIBLE);
                             quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
-                            fabStatus.setOnClickListener(v -> navigateToProductAddition(lastText));
+                            fab_status.setOnClickListener(v -> navigateToProductAddition(lastText));
                         } else {
                             progressBar.setVisibility(View.GONE);
                             progressText.setVisibility(View.GONE);
@@ -402,7 +402,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             final Toast firstScanMessage = Toast.makeText(ContinuousScanActivity.this.getBaseContext(), R.string.first_scan_tooltip, Toast.LENGTH_LONG);
             Rect gvr = new Rect();
             quickView.getRootView().getGlobalVisibleRect(gvr);
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) fabStatus.getLayoutParams();
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) fab_status.getLayoutParams();
             firstScanMessage.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, params.bottomMargin - BaseActivity.dpsToPixel(50, this));
             firstScanMessage.show();
         }
@@ -420,17 +420,15 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         } else {
             name.setText(R.string.productNameNull);
         }
-        final String addBrands = productDetails.get("add_brands");
-        if (addBrands == null || addBrands.equals("")) {
+        if (productDetails.get("add_brands") == null || productDetails.get("add_brands").equals("")) {
             brand.setText(R.string.productBrandNull);
         } else {
-            brand.setText(addBrands);
+            brand.setText(productDetails.get("add_brands"));
         }
-        final String quantity = productDetails.get("quantity");
-        if (quantity == null || quantity.equals("")) {
-            this.quantity.setText(R.string.productQuantityNull);
+        if (productDetails.get("quantity") == null || productDetails.get("quantity").equals("")) {
+            quantity.setText(R.string.productQuantityNull);
         } else {
-            this.quantity.setText(quantity);
+            quantity.setText(productDetails.get("quantity"));
         }
         if (productDetails.get("image_front") != null) {
             Picasso.with(ContinuousScanActivity.this)
@@ -471,7 +469,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         brand.setVisibility(View.VISIBLE);
         quantity.setVisibility(View.VISIBLE);
         imageProgress.setVisibility(View.VISIBLE);
-        fabStatus.setVisibility(View.VISIBLE);
+        fab_status.setVisibility(View.VISIBLE);
     }
 
     private void hideAllViews() {
@@ -488,7 +486,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         novaGroup.setVisibility(View.GONE);
         co2Icon.setVisibility(View.GONE);
         productNotFound.setVisibility(View.GONE);
-        fabStatus.setVisibility(View.GONE);
+        fab_status.setVisibility(View.GONE);
         imageProgress.setVisibility(View.GONE);
         txtProductIncomplete.setVisibility(View.GONE);
     }
@@ -603,10 +601,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 float slideDelta = slideOffset - previousSlideOffset;
                 if (searchByBarcode.getVisibility() != View.VISIBLE && progressBar.getVisibility() != View.VISIBLE) {
                     if (slideOffset > 0.01f || slideOffset < -0.01f) {
-                        fabStatus.setVisibility(View.GONE);
+                        fab_status.setVisibility(View.GONE);
                         txtProductIncomplete.setVisibility(View.GONE);
                     } else {
-                        fabStatus.setVisibility(View.VISIBLE);
+                        fab_status.setVisibility(View.VISIBLE);
                         if (productNotFound.getVisibility() != View.VISIBLE && isProductIncomplete()) {
                             txtProductIncomplete.setVisibility(View.VISIBLE);
                         }
@@ -621,7 +619,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     } else {
                         barcodeView.resume();
                         details.setVisibility(View.VISIBLE);
-                        fabStatus.setVisibility(View.VISIBLE);
+                        fab_status.setVisibility(View.VISIBLE);
                         bottomNavigationView.setVisibility(View.VISIBLE);
                         if (productNotFound.getVisibility() != View.VISIBLE && isProductIncomplete()) {
                             txtProductIncomplete.setVisibility(View.VISIBLE);
@@ -654,7 +652,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         settings.setRequestedCameraId(cameraState);
         if (mFlash) {
             barcodeView.setTorchOn();
-            toggleFlashView.setImageResource(R.drawable.ic_flash_on_white_24dp);
+            toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
         }
         if (mRing) {
             popup.getMenu().findItem(R.id.toggleBeep).setChecked(true);
@@ -734,12 +732,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         if (mFlash) {
             barcodeView.setTorchOff();
             mFlash = false;
-            toggleFlashView.setImageResource(R.drawable.ic_flash_off_white_24dp);
+            toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp);
             editor.putBoolean("flash", false);
         } else {
             barcodeView.setTorchOn();
             mFlash = true;
-            toggleFlashView.setImageResource(R.drawable.ic_flash_on_white_24dp);
+            toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
             editor.putBoolean("flash", true);
         }
         editor.apply();
@@ -816,8 +814,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 if (offlineSavedProduct != null) {
                     hideAllViews();
                     showOfflineSavedDetails(offlineSavedProduct);
-                    fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                    fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
+                    fab_status.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+                    fab_status.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_mode_edit_black));
                 }
             }
         } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
@@ -828,13 +826,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     }
 
     private static class HistoryTask extends AsyncTask<Product, Void, Void> {
-
-        private  final HistoryProductDao mHistoryProductDao;
-
-        private HistoryTask(HistoryProductDao mHistoryProductDao) {
-            this.mHistoryProductDao = mHistoryProductDao;
-        }
-
         @Override
         protected Void doInBackground(Product... products) {
             OpenFoodAPIClient.addToHistory(mHistoryProductDao, products[0]);

@@ -30,7 +30,7 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
 public class ContributorsFragment extends BaseFragment {
 
-    private State stateFromActivity;
+    private State mState;
     @BindView(R.id.creator)
     TextView creatorText;
     @BindView(R.id.last_editor)
@@ -48,16 +48,16 @@ public class ContributorsFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        stateFromActivity =getStateFromActivityIntent();
-        refreshView(stateFromActivity);
+        mState=getStateFromActivityIntent();
+        refreshView(mState);
     }
 
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-        stateFromActivity = state;
+        mState = state;
 
-        final Product product = stateFromActivity.getProduct();
+        final Product product = mState.getProduct();
         if (isNotBlank(product.getCreator())) {
             String[] createdDate = getDateTime(product.getCreatedDateTime());
             String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1]);
@@ -79,13 +79,12 @@ public class ContributorsFragment extends BaseFragment {
             lastEditorText.setVisibility(View.INVISIBLE);
         }
 
-        if (!product.getEditors().isEmpty()) {
+        if (product.getStatesTags().size() != 0) {
             String otherEditorsTxt = getString(R.string.other_editors);
             otherEditorsText.setMovementMethod(LinkMovementMethod.getInstance());
             otherEditorsText.setText(otherEditorsTxt + " ");
             for (int i = 0; i < product.getEditors().size() - 1; i++) {
-                final String editor = product.getEditors().get(i);
-                otherEditorsText.append(getContributorsTag(editor).subSequence(0, editor.length()));
+                otherEditorsText.append(getContributorsTag(product.getEditors().get(i)).subSequence(0, product.getEditors().get(i).length()));
                 otherEditorsText.append(", ");
             }
             otherEditorsText.append(getContributorsTag(product.getEditors().get(product.getEditors().size() - 1)));
@@ -93,7 +92,8 @@ public class ContributorsFragment extends BaseFragment {
             otherEditorsText.setVisibility(View.INVISIBLE);
         }
 
-        if (!product.getStatesTags().isEmpty()) {
+        if (!product.getStatesTags().equals("")) {
+
             statesText.setMovementMethod(LinkMovementMethod.getInstance());
             statesText.setText("");
             for (int i = 0; i < product.getStatesTags().size(); i++) {
@@ -105,12 +105,13 @@ public class ContributorsFragment extends BaseFragment {
     }
 
     private String[] getDateTime(String dateTime) {
-        long unixSeconds = Long.parseLong(dateTime);
+        long unixSeconds = Long.valueOf(dateTime);
         Date date = new java.util.Date(unixSeconds * 1000L);
         SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMMM dd, yyyy");
         SimpleDateFormat sdf2 = new java.text.SimpleDateFormat("HH:mm:ss a");
         sdf2.setTimeZone(java.util.TimeZone.getTimeZone("CET"));
-        return new String[]{sdf.format(date), sdf2.format(date)};
+        String[] formattedDates = new String[]{sdf.format(date), sdf2.format(date)};
+        return formattedDates;
     }
 
     private CharSequence getContributorsTag(String contributor) {

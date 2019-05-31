@@ -4,14 +4,16 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CountryResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CountryResponse;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -20,7 +22,7 @@ import java.util.Map;
 public class CountriesWrapperDeserializer extends StdDeserializer<CountriesWrapper> {
 
 
-
+    private static final String NAMES_KEY = "name";
 
     public CountriesWrapperDeserializer() {
         super(CountriesWrapper.class);
@@ -35,9 +37,17 @@ public class CountriesWrapperDeserializer extends StdDeserializer<CountriesWrapp
 
         while (mainNodeIterator.hasNext()) {
             Map.Entry<String, JsonNode> subNode = mainNodeIterator.next();
-            JsonNode namesNode = subNode.getValue().get(DeserializerHelper.NAMES_KEY);
+            JsonNode namesNode = subNode.getValue().get(NAMES_KEY);
             if (namesNode != null) {
-                Map<String, String> names = DeserializerHelper.extractNames(namesNode);
+                Map<String, String> names = new HashMap<>();  /* Entry<Language Code, Product Name> */
+                Iterator<Map.Entry<String, JsonNode>> nameNodeIterator = namesNode.fields();
+                while (nameNodeIterator.hasNext()) {
+                    Map.Entry<String, JsonNode> nameNode = nameNodeIterator.next();
+                    String name = nameNode.getValue().asText();
+                    names.put(nameNode.getKey(), name);
+
+                }
+
                 countries.add(new CountryResponse(subNode.getKey(), names));
             }
         }

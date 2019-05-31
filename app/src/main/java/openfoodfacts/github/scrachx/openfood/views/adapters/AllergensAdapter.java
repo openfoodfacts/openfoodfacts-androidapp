@@ -1,40 +1,43 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
+import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.CustomViewHolder> {
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
+
+public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.ViewHolder> {
 
     private IProductRepository mProductRepository;
     private List<AllergenName> mAllergens;
+    private Activity mActivity;
 
-    public AllergensAdapter(IProductRepository productRepository, List<AllergenName> allergens) {
+    public AllergensAdapter(IProductRepository productRepository, List<AllergenName> allergens, Activity activity) {
         mProductRepository = productRepository;
         mAllergens = allergens;
+        mActivity = activity;
     }
 
     public void setAllergens(List<AllergenName> allergens) {
         mAllergens = allergens;
     }
 
-    public static class CustomViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nameTextView;
-        Button messageButton;
+        public TextView nameTextView;
+        public Button messageButton;
 
-        public CustomViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.allergen_name);
             messageButton = itemView.findViewById(R.id.delete_button);
@@ -42,18 +45,18 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.Cust
     }
 
     @Override
-    public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View contactView = inflater.inflate(R.layout.item_allergens, parent, false);
-        return new CustomViewHolder(contactView);
+        return new ViewHolder(contactView);
     }
 
     @Override
-    public void onBindViewHolder(final CustomViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final AllergenName allergen = mAllergens.get(position);
         TextView textView = holder.nameTextView;
-        textView.setText(allergen.getName().substring(allergen.getName().indexOf(':') + 1));
+        textView.setText(allergen.getName().substring(allergen.getName().indexOf(":") + 1));
         Button button = holder.messageButton;
         button.setText(R.string.delete_txt);
         button.setOnClickListener(v -> {
@@ -66,7 +69,7 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.Cust
     @Override
     public int getItemCount() {
         if (mAllergens == null) {
-            mAllergens = new ArrayList<>();
+            mAllergens = new ArrayList<AllergenName>();
         }
 
         return mAllergens.size();

@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.models;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,11 +10,15 @@ import java.util.Map;
  *
  * @author dobriseb 2018-12-21 inspired by IngredientResponse
  */
+
 public class IngredientResponse {
+
     private String uniqueIngredientID;
+
     private Map<String, String> names;
-    private List<String> parents;
-    private List<String> children;
+    private Map<String, String> parents;
+    private Map<String, String> children;
+
     private String wikiDataCode;
     private Boolean isWikiDataIdPresent;
 
@@ -23,11 +26,11 @@ public class IngredientResponse {
      * Constructor.
      *
      * @param uniqueIngredientId Unique ID of the ingredient
-     * @param names Map of key: Country code, value: Translated name of ingredient.
-     * @param wikiDataCode Code to look up ingredient in wikidata
+     * @param names              Map of key: Country code, value: Translated name of ingredient.
+     * @param wikiDataCode       Code to look up ingredient in wikidata
      */
-    public IngredientResponse(String uniqueIngredientId, Map<String, String> names, List<String> parents, List<String> children, String wikiDataCode) {
-        Log.i("INFO", "IngredientResponse(" + uniqueIngredientId + ", " + names.toString() + ", " + wikiDataCode + ")");
+    public IngredientResponse(String uniqueIngredientId, Map<String, String> names, Map<String, String> parents, Map<String, String> children, String wikiDataCode) {
+        Log.i("INFO", "IngredientResponse("+ uniqueIngredientId + ", " + names.toString() + ", " + wikiDataCode + ")");
         this.uniqueIngredientID = uniqueIngredientId;
         this.names = names;
         this.parents = parents;
@@ -37,12 +40,27 @@ public class IngredientResponse {
     }
 
     /**
+     * Constructor.
+     *
+     * @param uniqueIngredientId Unique ID of the ingredient
+     * @param names              Map of key: Country code, value: Translated name of ingredient.
+     */
+    public IngredientResponse(String uniqueIngredientId, Map<String, String> names, Map<String, String> parents, Map<String, String> children) {
+        Log.i("INFO", "IngredientResponse("+ uniqueIngredientId + ", " + names.toString() + ")");
+        this.uniqueIngredientID = uniqueIngredientId;
+        this.names = names;
+        this.parents = parents;
+        this.children = children;
+        this.isWikiDataIdPresent = false;
+    }
+
+    /**
      * Converts an IngredientResponse object into a new Ingredient object.
      *
      * @return The newly constructed Ingredient object.
      */
     public Ingredient map() {
-        Log.i("INFO", "IngredientResponse.map()");
+        Log.i("INFO","IngredientResponse.map()");
         Ingredient ingredient;
         if (isWikiDataIdPresent) {
             ingredient = new Ingredient(uniqueIngredientID, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), wikiDataCode);
@@ -51,15 +69,15 @@ public class IngredientResponse {
         }
         for (Map.Entry<String, String> name : names.entrySet()) {
             ingredient.getNames()
-                .add(new IngredientName(ingredient.getTag(), name.getKey(), name.getValue()));
+                    .add(new IngredientName(ingredient.getTag(), name.getKey(), name.getValue()));
         }
-        for (String parentValue : parents) {
+        for (Map.Entry<String, String> parent : parents.entrySet()) {
             ingredient.getParents()
-                .add(new IngredientsRelation(parentValue, ingredient.getTag()));
+                    .add(new IngredientsRelation(parent.getValue(), ingredient.getTag()));
         }
-        for (String childValue : children) {
+        for (Map.Entry<String, String> child : children.entrySet()) {
             ingredient.getChildren()
-                .add(new IngredientsRelation(ingredient.getTag(), childValue));
+                    .add(new IngredientsRelation(ingredient.getTag(), child.getValue()));
         }
         return ingredient;
     }
@@ -80,19 +98,20 @@ public class IngredientResponse {
         this.names = names;
     }
 
-    public List<String> getParents() {
+    public Map<String, String> getParents() {
         return parents;
     }
 
-    public void setParents(List<String> parents) {
+    public void setParents(Map<String, String> parents) {
         this.parents = parents;
     }
 
-    public List<String> getChildren() {
+    public Map<String, String> getChildren() {
         return children;
     }
 
-    public void setChildren(List<String> children) {
+    public void setChildren(Map<String, String> children) {
         this.children = children;
     }
+
 }

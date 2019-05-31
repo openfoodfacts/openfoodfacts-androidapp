@@ -120,7 +120,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     @OnClick(R.id.message_dismiss_icon)
-    protected void onClickMessageDismissalIcon() {
+    protected void OnClickMessageDismissalIcon() {
         mCardView.setVisibility(View.GONE);
         final SharedPreferences settingsUsage = activity.getBaseContext().getSharedPreferences("usage", 0);
         settingsUsage.edit().putBoolean("is_offline_msg_dismissed", true).apply();
@@ -290,7 +290,18 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                             imageProgressServer.setVisibility(View.GONE);
                             // Add option to zoom image.
                             imageServer.setOnClickListener(v -> {
-                                showFullscreenView(existingValuesOnServer.get(INGREDIENTS_IMAGE_ON_SERVER), imageServer);
+                                Intent intent = new Intent(getContext(), FullScreenImage.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("imageurl", existingValuesOnServer.get(INGREDIENTS_IMAGE_ON_SERVER));
+                                intent.putExtras(bundle);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                                        makeSceneTransitionAnimation(activity, imageServer,
+                                            getString(R.string.product_transition));
+                                    startActivity(intent, options.toBundle());
+                                } else {
+                                    startActivity(intent);
+                                }
                             });
                         }
 
@@ -308,7 +319,18 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                             imageProgressLocal.setVisibility(View.GONE);
                             // Add option to zoom image.
                             imageLocal.setOnClickListener(v -> {
-                                showFullscreenView("file://" + productDetails.get("image_ingredients"), imageLocal);
+                                Intent intent = new Intent(getContext(), FullScreenImage.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("imageurl", "file://" + productDetails.get("image_ingredients"));
+                                intent.putExtras(bundle);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                                        makeSceneTransitionAnimation(activity, imageLocal,
+                                            getString(R.string.product_transition));
+                                    startActivity(intent, options.toBundle());
+                                } else {
+                                    startActivity(intent);
+                                }
                             });
                         }
 
@@ -320,21 +342,6 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             }
         } else {
             checkForExistingProductName(product, existingValuesOnServer);
-        }
-    }
-
-    private void showFullscreenView(String s, ImageView imageServer) {
-        Intent intent = new Intent(getContext(), FullScreenImage.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("imageurl", s);
-        intent.putExtras(bundle);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(activity, imageServer,
-                    getString(R.string.product_transition));
-            startActivity(intent, options.toBundle());
-        } else {
-            startActivity(intent);
         }
     }
 
@@ -434,17 +441,29 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     private void checkFrontImageUploadStatus(OfflineSavedProduct product) {
         String code = product.getBarcode();
         HashMap<String, String> productDetails = product.getProductDetailsMap();
-        String frontUploaded = productDetails.get("image_front_uploaded");
+        String image_front_status = productDetails.get("image_front_uploaded");
         String imageFrontFilePath = productDetails.get("image_front");
-        boolean imageFrontUploaded = frontUploaded != null && frontUploaded.equals("true");
-        if (!imageFrontUploaded && imageFrontFilePath != null && !imageFrontFilePath.isEmpty()) {
+        boolean image_front_uploaded = image_front_status != null && image_front_status.equals("true");
+        if (!image_front_uploaded && imageFrontFilePath != null && !imageFrontFilePath.isEmpty()) {
             // front image is not yet uploaded.
-            Map<String, RequestBody> imgMap = createRequestBodyMap(code, productDetails, ProductImageField.FRONT);
-            RequestBody image = OpenFoodAPIClient.createImageRequest(new File(imageFrontFilePath));
+            File photoFile = new File(imageFrontFilePath);
+            Map<String, RequestBody> imgMap = new HashMap<>();
+            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
+            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.FRONT.toString() + '_' + productDetails.get("lang"));
+            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
+            imgMap.put("code", barcode);
+            imgMap.put("imagefield", imageField);
             imgMap.put("imgupload_front\"; filename=\"front_" + productDetails.get("lang") + ".png\"", image);
 
             // Attribute the upload to the connected user
-            String login = fillWithUserLoginInfo(imgMap);
+            final SharedPreferences settings = activity.getBaseContext().getSharedPreferences("login", 0);
+            final String login = settings.getString("user", "");
+            final String password = settings.getString("pass", "");
+            if (!login.isEmpty() && !password.isEmpty()) {
+                imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+                imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+            }
+            imgMap.put("comment", RequestBody.create(MediaType.parse("text/plain"), OpenFoodAPIClient.getCommentToUpload(login)));
 
             client.saveImageSingle(imgMap)
                 .subscribeOn(Schedulers.io())
@@ -467,7 +486,12 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         } else {
                             productDetails.put("image_front_uploaded", "true");
                             product.setProductDetailsMap(productDetails);
-                            Map<String, String> queryMap = buildQueryMap(jsonNode, login);
+                            String imagefield = jsonNode.get("imagefield").asText();
+                            String imgid = jsonNode.get("image").get("imgid").asText();
+                            Map<String, String> queryMap = new HashMap<>();
+                            queryMap.put("imgid", imgid);
+                            queryMap.put("id", imagefield);
+                            queryMap.put("comment", OpenFoodAPIClient.getCommentToUpload(login));
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -501,32 +525,35 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         }
     }
 
-    private Map<String, RequestBody> createRequestBodyMap(String code, HashMap<String, String> productDetails, ProductImageField front) {
-        Map<String, RequestBody> imgMap = new HashMap<>();
-        RequestBody barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
-        RequestBody imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), front.toString() + '_' + productDetails.get("lang"));
-        imgMap.put("code", barcode);
-        imgMap.put("imagefield", imageField);
-        return imgMap;
-    }
-
     /**
      * Upload and set the ingredients image if it is not uploaded already.
      */
     private void checkIngredientsImageUploadStatus(OfflineSavedProduct product) {
         String code = product.getBarcode();
         HashMap<String, String> productDetails = product.getProductDetailsMap();
-        String imageIngredientsUploadedAsString = productDetails.get("image_ingredients_uploaded");
+        String image_ingredients_status = productDetails.get("image_ingredients_uploaded");
         String imageIngredientsFilePath = productDetails.get("image_ingredients");
-        boolean imageIngredientsUploaded = "true".equals(imageIngredientsUploadedAsString);
-        if (!imageIngredientsUploaded && imageIngredientsFilePath != null && !imageIngredientsFilePath.isEmpty()) {
+        boolean image_ingredients_uploaded = image_ingredients_status != null && image_ingredients_status.equals("true");
+        if (!image_ingredients_uploaded && imageIngredientsFilePath != null && !imageIngredientsFilePath.isEmpty()) {
             // ingredients image is not yet uploaded.
-            Map<String, RequestBody> imgMap = createRequestBodyMap(code, productDetails, ProductImageField.INGREDIENTS);
-            RequestBody image = OpenFoodAPIClient.createImageRequest(new File(imageIngredientsFilePath));
+            File photoFile = new File(imageIngredientsFilePath);
+            Map<String, RequestBody> imgMap = new HashMap<>();
+            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
+            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.INGREDIENTS.toString() + '_' + productDetails.get("lang"));
+            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
+            imgMap.put("code", barcode);
+            imgMap.put("imagefield", imageField);
             imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + productDetails.get("lang") + ".png\"", image);
 
             // Attribute the upload to the connected user
-            String login=fillWithUserLoginInfo(imgMap);
+            final SharedPreferences settings = activity.getBaseContext().getSharedPreferences("login", 0);
+            final String login = settings.getString("user", "");
+            final String password = settings.getString("pass", "");
+            if (!login.isEmpty() && !password.isEmpty()) {
+                imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+                imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+            }
+            imgMap.put("comment", RequestBody.create(MediaType.parse("text/plain"), OpenFoodAPIClient.getCommentToUpload(login)));
 
             client.saveImageSingle(imgMap)
                 .subscribeOn(Schedulers.io())
@@ -549,7 +576,12 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         } else {
                             productDetails.put("image_ingredients_uploaded", "true");
                             product.setProductDetailsMap(productDetails);
-                            Map<String, String> queryMap = buildQueryMap(jsonNode, login);
+                            String imagefield = jsonNode.get("imagefield").asText();
+                            String imgid = jsonNode.get("image").get("imgid").asText();
+                            Map<String, String> queryMap = new HashMap<>();
+                            queryMap.put("imgid", imgid);
+                            queryMap.put("id", imagefield);
+                            queryMap.put("comment", OpenFoodAPIClient.getCommentToUpload(login));
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -583,32 +615,35 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         }
     }
 
-    private String fillWithUserLoginInfo(Map<String, RequestBody> imgMap) {
-        final SharedPreferences settings = activity.getBaseContext().getSharedPreferences("login", 0);
-        return OpenFoodAPIClient.fillWithUserLoginInfo(imgMap,settings);
-    }
-
     /**
      * Upload and set the nutrition facts image if it is not uploaded already.
      */
     private void checkNutritionFactsImageUploadStatus(OfflineSavedProduct product) {
         String code = product.getBarcode();
         HashMap<String, String> productDetails = product.getProductDetailsMap();
+        String image_nutrition_facts_status = productDetails.get("image_nutrition_facts_uploaded");
         String imageNutritionFactsFilePath = productDetails.get("image_nutrition_facts");
-        boolean imageNutritionFactsUploaded = "true".equals(productDetails.get("image_nutrition_facts_uploaded"));
-        if (!imageNutritionFactsUploaded && imageNutritionFactsFilePath != null && !imageNutritionFactsFilePath.isEmpty()) {
+        boolean image_nutrition_facts_uploaded = image_nutrition_facts_status != null && image_nutrition_facts_status.equals("true");
+        if (!image_nutrition_facts_uploaded && imageNutritionFactsFilePath != null && !imageNutritionFactsFilePath.isEmpty()) {
             // nutrition facts image is not yet uploaded.
             File photoFile = new File(imageNutritionFactsFilePath);
             Map<String, RequestBody> imgMap = new HashMap<>();
-            RequestBody barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
-            RequestBody imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), ProductImageField.NUTRITION.toString() + '_' + productDetails.get("lang"));
-            RequestBody image = OpenFoodAPIClient.createImageRequest(photoFile);
+            RequestBody barcode = RequestBody.create(MediaType.parse("text/plain"), code);
+            RequestBody imageField = RequestBody.create(MediaType.parse("text/plain"), ProductImageField.NUTRITION.toString() + '_' + productDetails.get("lang"));
+            RequestBody image = RequestBody.create(MediaType.parse("image/*"), photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + productDetails.get("lang") + ".png\"", image);
 
             // Attribute the upload to the connected user
-            String login=fillWithUserLoginInfo(imgMap);
+            final SharedPreferences settings = activity.getBaseContext().getSharedPreferences("login", 0);
+            final String login = settings.getString("user", "");
+            final String password = settings.getString("pass", "");
+            if (!login.isEmpty() && !password.isEmpty()) {
+                imgMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), login));
+                imgMap.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+            }
+            imgMap.put("comment", RequestBody.create(MediaType.parse("text/plain"), OpenFoodAPIClient.getCommentToUpload(login)));
             client.saveImageSingle(imgMap)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -630,7 +665,12 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         } else {
                             productDetails.put("image_nutrition_facts_uploaded", "true");
                             product.setProductDetailsMap(productDetails);
-                            Map<String, String> queryMap = buildQueryMap(jsonNode, login);
+                            String imagefield = jsonNode.get("imagefield").asText();
+                            String imgid = jsonNode.get("image").get("imgid").asText();
+                            Map<String, String> queryMap = new HashMap<>();
+                            queryMap.put("imgid", imgid);
+                            queryMap.put("id", imagefield);
+                            queryMap.put("comment", OpenFoodAPIClient.getCommentToUpload(login));
                             client.editImageSingle(code, queryMap)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -662,12 +702,6 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             // nutrition facts image is uploaded, upload the product to server.
             addProductToServer(product);
         }
-    }
-
-    private Map<String, String> buildQueryMap(JsonNode jsonNode, String login) {
-        Map<String, String> queryMap = AddProductActivity.buildImageQueryMap(jsonNode);
-        queryMap.put("comment", OpenFoodAPIClient.getCommentToUpload(login));
-        return queryMap;
     }
 
     /**
@@ -710,7 +744,20 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         SharedPreferences settingsUsage = activity.getBaseContext().getSharedPreferences("usage", 0);
                         boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
                         boolean msgdismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
-                        updateDataViews(firstUpload, msgdismissed);
+                        if (msgdismissed) {
+                            noDataImage.setVisibility(View.VISIBLE);
+                            mRecyclerView.setVisibility(View.GONE);
+                            noDataText.setVisibility(View.VISIBLE);
+                            noDataText.setText(R.string.no_offline_data);
+                            buttonSend.setVisibility(View.GONE);
+                            if (!firstUpload) {
+                                noDataImage.setImageResource(R.drawable.ic_cloud_upload);
+                                noDataText.setText(R.string.first_offline);
+                            }
+                        } else {
+                            noDataImage.setVisibility(View.INVISIBLE);
+                            noDataText.setVisibility(View.INVISIBLE);
+                        }
                     }
                 }
 
@@ -758,8 +805,21 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             SharedPreferences settingsUsage = activity.getBaseContext().getSharedPreferences("usage", 0);
             boolean firstUpload = settingsUsage.getBoolean("firstUpload", false);
             boolean msgdismissed = settingsUsage.getBoolean("is_offline_msg_dismissed", false);
-            if (offlineSavedProducts.isEmpty()) {
-                updateDataViews(firstUpload, msgdismissed);
+            if (offlineSavedProducts.size() == 0) {
+                if (msgdismissed) {
+                    noDataImage.setVisibility(View.VISIBLE);
+                    mRecyclerView.setVisibility(View.GONE);
+                    noDataText.setVisibility(View.VISIBLE);
+                    noDataText.setText(R.string.no_offline_data);
+                    buttonSend.setVisibility(View.GONE);
+                    if (!firstUpload) {
+                        noDataImage.setImageResource(R.drawable.ic_cloud_upload);
+                        noDataText.setText(R.string.first_offline);
+                    }
+                } else {
+                    noDataImage.setVisibility(View.INVISIBLE);
+                    noDataText.setVisibility(View.INVISIBLE);
+                }
             } else {
                 noDataImage.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);
@@ -802,23 +862,6 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 mRecyclerView.getAdapter().notifyDataSetChanged();
             }
         });
-    }
-
-    private void updateDataViews(boolean firstUpload, boolean msgdismissed) {
-        if (msgdismissed) {
-            noDataImage.setVisibility(View.VISIBLE);
-            mRecyclerView.setVisibility(View.GONE);
-            noDataText.setVisibility(View.VISIBLE);
-            noDataText.setText(R.string.no_offline_data);
-            buttonSend.setVisibility(View.GONE);
-            if (!firstUpload) {
-                noDataImage.setImageResource(R.drawable.ic_cloud_upload);
-                noDataText.setText(R.string.first_offline);
-            }
-        } else {
-            noDataImage.setVisibility(View.INVISIBLE);
-            noDataText.setVisibility(View.INVISIBLE);
-        }
     }
 
     @Override
