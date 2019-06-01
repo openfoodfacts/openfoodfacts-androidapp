@@ -623,6 +623,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
                 CategoryName category = categories.get(i);
                 CharSequence categoryName = getCategoriesTag(category);
+                if (category.getCategoryTag() != null && category.getCategoryTag().equals("en:non-food-products")) {
+                    novaGroup.setVisibility(View.GONE);
+                    nutriscoreImage.setVisibility(View.GONE);
+                }
                 if (categoryName != null) {
                     // Add category name to text view
                     categoryProduct.append(categoryName);
