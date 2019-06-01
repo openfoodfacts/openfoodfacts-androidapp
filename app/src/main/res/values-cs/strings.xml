@@ -206,7 +206,7 @@
     <string name="hintPass">Heslo</string>
     <string name="errorLogin">Přihlašovací jméno nebo heslo je chybné</string>
     <string name="errorWeb">Nelze se připojit k internetu. Zkontrolujte, prosím, připojení k síti.</string>
-    <string name="uploadLater">Obrázek se nahraje po připojení k síti</string>
+    <string name="uploadLater">Obrázek se nahraje, až bude síť k dispozici</string>
     <string name="txtInfoLoginOk">Uživatel byl uložen</string>
     <string name="txtInfoLoginNo">Uživatel nebyl uložen</string>
     <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Food Facts. Přidejte jej prosím.</string>
@@ -613,11 +613,11 @@
     <string name="scan_sound">Zvuk skenování</string>
     <string name="trouble_scanning">Potíže se skenováním?</string>
     <string name="barcode_hint">Potíže se skenováním? Zadejte čárový kód</string>
-    <string name="switch_camera">Switch camera</string>
+    <string name="switch_camera">Přepnout fotoaparát</string>
     <string name="autofocus">Aut. zaost.</string>
     <string name="initial_loading">Načítám</string>
     <string name="preferences">Předvolby</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Open Food Facts</string>
     <string name="loading_product">Načítání produktu %s</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
@@ -646,7 +646,7 @@
     <string name="photos">Fotky</string>
     <string name="please_wait">Čekejte prosím</string>
     <string name="product_uploaded_successfully">Produkt byl úspěšně nahrán</string>
-    <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
+    <string name="no_internet_connection">Zdá se, že nemáte připojení k internetu. Obrázky budou nahrány, až bude síť k dispozici</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Přehled</string>
