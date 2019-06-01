@@ -489,7 +489,7 @@
     <string name="preference_enable_mobile_data_summary_on">Nahrajte nové produkty pomocí mobilních dat &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Nahrajte nové produkty pouze přes WiFi</string>
     <string name="device_on_mobile_data_warning_title">Informace</string>
-    <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+    <string name="device_on_mobile_data_warning_message">Nahrávání přes mobilní data je zakázáno, prosím připojte se k WiFI, nebo jejich využití povolte v předvolbách aplikace</string>
     <string name="device_on_mobile_data_warning_positive">Předvolby</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Změny byly úspěšně uloženy</string>
