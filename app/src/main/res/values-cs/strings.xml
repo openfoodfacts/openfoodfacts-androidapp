@@ -619,7 +619,7 @@
     <string name="preferences">Předvolby</string>
     <string name="OFFlogo">Open Food Facts</string>
     <string name="loading_product">Načítání produktu %s</string>
-    <string name="error_adding_ingredients">Při pokusu o přidání složek výrobku, se něco pokazilo</string>
+    <string name="error_adding_ingredients">Při pokusu o přidání složení, se něco pokazilo</string>
     <string name="unable_to_extract_ingredients">Nepodařilo se rozpoznat složení z obrázku</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
     <string name="error_in_carbohydrate_value">Sacharidů nemůže být méně, než je součet cukru a škrobu</string>
@@ -630,10 +630,10 @@
     <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Oficiální web</string>
     <string name="scan_QR_code">Naskenujte QR kód pro webové stránky produktu</string>
-    <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
+    <string name="add_at_least_one_picture">Před pokračováním přidejte alespoň jeden obrázek tohoto výrobku</string>
     <string name="image_uploaded_successfully">Obrázek byl úspěšně nahrán</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
+    <string name="ingredients_overwrite">Přepsání složení</string>
     <string name="choose_mine">Zvolit mou</string>
     <string name="keep_previous_version">Ponechat stávající verzi</string>
     <string name="product_name_overwrite">Přepsat název produktu</string>
@@ -737,11 +737,11 @@
     <string name="edit_diet_name">Jméno</string>
     <string name="edit_diet_description">Popis</string>
     <string name="edit_diet_enabled_disabled">Povoleno/zakázáno</string>
-    <string name="edit_diet_authorised_ingredients">Authorized ingredients</string>
+    <string name="edit_diet_authorised_ingredients">Povolené přísady</string>
     <string name="edit_diet_hint_ingredient_authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
     <string name="edit_diet_so_so_ingredients">So so ingredients</string>
     <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
+    <string name="edit_diet_unauthorised_ingredients">Nepovolené přísady</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Aut. rozpoznat složení</string>
