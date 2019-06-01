@@ -296,7 +296,7 @@
     <string name="error_field_required">Toto pole je povinné.</string>
     <string name="action_preferences">Předvolby</string>
     <string name="prefs_scan_startup">Skenovat při spuštění</string>
-    <string name="prefs_scan_startup_summary">Tato volba, pokud je vybrána, spustí skenování při otevření aplikace.</string>
+    <string name="prefs_scan_startup_summary">Pokud je vybrána tato volba, při otevření aplikace se spustí skenovaní.</string>
     <string name="prefs_power_mode">Turboskenování</string>
     <string name="prefs_power_mode_summary">Rychle skenujete jeden produkt za druhým (např. v supermarketu), abyste zjistili, které z nich nejsou v databázi.</string>
     <string name="prefs_language">Jazyk</string>
@@ -512,7 +512,7 @@
     <string name="preference_header_network">Síť</string>
     <string name="preference_header_contributing">Přispívání</string>
     <string name="not_support_books">Knihy nejsou aktuálně podporovány Open Food Facts</string>
-    <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
+    <string name="scan_first_string">Historie prohlédnutých výrobků se zobrazí tady.\nTato historie je důvěrná, data zůstávají pouze ve vašem zařízení.</string>
     <string name="log_in">Přihlašovací jméno</string>
     <string name="login_true">Již přihlášeno!</string>
     <string name="confirm_logout">Potvrdit odhlášení</string>
@@ -568,8 +568,8 @@
     <string name="sort_by">Seřadit podle</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
-    <string name="shake_summary">Shake phone to scan products</string>
-    <string name="shake_title">Shake to scan</string>
+    <string name="shake_summary">Pokud zatřesete telefonem, spustíte se skenování</string>
+    <string name="shake_title">Zatřeste a skenujte</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">Nezjistili jsme žádný čárový kód</string>
