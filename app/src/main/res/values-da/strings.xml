@@ -437,7 +437,7 @@
     <string name="fruits_vegetables_nuts">Frugter, grøntsager, nødder</string>
     <string name="collagen_meat_protein_ratio">Kollagenkødproteinforhold</string>
     <string name="cocoa">Kakao</string>
-    <string name="chlorophyl">Chlorophyl</string>
+    <string name="chlorophyl">Klorofyl</string>
     <string name="take_picture_ingredients">Tag et foto af ingredienserne</string>
     <string name="take_picture_front">Tag et foto af forsiden</string>
     <string name="take_picture_nutrition_table">Tag et foto af ernæringsoversigten</string>
@@ -614,7 +614,6 @@
     <string name="error_adding_ingredients">Noget gik galt under forsøget på at tilføje produktingredienser</string>
     <string name="unable_to_extract_ingredients">Kunne ikke udtrække ingredienser fra fotoet</string>
     <string name="error_adding_nutrition_facts">Noget gik galt under forsøget på at tilføje produktingrediensfakta</string>
-    <string name="error_uploading_photo">Noget gik galt under upload af et nyt foto</string>
     <string name="error_in_carbohydrate_value">Indhold af kulhydrater kan ikke være mindre end summen af sukker og stivelse</string>
     <string name="choose_nutrient">Vælg et næringsstof</string>
     <string name="error_adding_product_details">Noget gik galt under forsøget på at tilføje produktoplysninger</string>
@@ -821,4 +820,5 @@
     <string name="todo">AT GØRE</string>
     <string name="edit_image">Rediger billede</string>
     <string name="barcode">Stregkode</string>
+    <string name="error_uploading_photo">Noget gik galt under upload af et nyt foto</string>
 </resources>
