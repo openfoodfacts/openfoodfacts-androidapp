@@ -8,17 +8,17 @@
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - يمكنك استخدامه لاتخاذ خيارات أفضل لأغذية الحيوانات الأليفة ، ولأنها بيانات مفتوحة ، يمكن لأي شخص إعادة استخدامها لأي غرض من الأغراض.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open pet Food Facts هو مشروع غير ربحي تم تطويره بواسطه الآلاف من المتطوعين من جميع أنحاء العالم. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة. 
+- يمكنك البدء في المساهمة اليوم بإضافة منتج من خزانة حيوانك الأليف. 
 
 
 *** احصل على الحقائق ***
 
-You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
+يمكنك أيضاً العثور على (وفقاً للمؤشرات الموجودة على المنتجات):
+- قائمة المكونات (بما في ذلك محتوى الرماد)
 - nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- العلامات التجارية والمواد المثيرة للحساسية والملصقات(العضوية ، نباتي...)
+- انها مناسبة ل (طعام الكلاب الجافة وأطعمة الكلاب المبتلة) ، طعام القطط ، طعام الأرانب ، طعام الثعابين ، طعام السمك ، طعام الطيور ، طعام الحصان أو أي طعام للحيوانات المفضلة لديك.
 
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
