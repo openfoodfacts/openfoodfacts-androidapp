@@ -88,9 +88,9 @@
         <item>Měď</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
         <item>Kyselina dokosahexaenová / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>Kyselina eikosapentaenová / EPA (20:5 ω3)</item>
+        <item>Elaidová kyselina (18:1 ω9)</item>
+        <item>Kyselina eruková (22:1 ω9)</item>
         <item>Fluorid</item>
         <item>Fruktóza</item>
         <item>Kyselina gama-linolenová / GLA (18: 3 n-6)</item>
@@ -447,7 +447,7 @@
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Chlorofyl</string>
     <string name="take_picture_ingredients">Vyfotit složení produktu</string>
-    <string name="take_picture_front">Take a photo of the front</string>
+    <string name="take_picture_front">Vyfoťte přední stranu výrobku</string>
     <string name="take_picture_nutrition_table">Vyfotit nutriční tabulku</string>
     <string name="take_more_pictures">Vyfotit další obrázky</string>
     <string name="txtSaturatedFat">Nasycené tuky</string>
@@ -500,7 +500,7 @@
     <string name="translate_help_summary">Přineste databázi Open Food Facts do vašeho jazyka - nejsou na to třeba žádné technické znalosti</string>
     <string name="please_check_your_connection">Zkontrolujte připojení k Internetu.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
-    <string name="advanced_search_title">Advanced Search &amp; Charts</string>
+    <string name="advanced_search_title">Rozšířené vyhledávání &amp; Grafy</string>
     <string name="compare_products">Porovnat výrobky</string>
     <string name="connectivity_check">Zkontrolujte připojení k internetu</string>
     <string name="dismiss">Zamítnout</string>
@@ -725,7 +725,7 @@
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
+    <string name="max_energy_val_msg">Hodnota je vyšší než 2000 kcal na 100 g. Můžete to opravit?</string>
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
