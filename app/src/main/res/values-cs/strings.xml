@@ -71,7 +71,7 @@
         <item>Kyselina alfa-linolenová/ALA (18:3 n-3)</item>
         <item>Kyselina arachidová (20: 0)</item>
         <item>Kyselina arachidonová / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Kyselina behenová (22:0)</item>
         <item>Jedlá soda</item>
         <item>Biotin</item>
         <item>Kyselina máselná (4:0)</item>
@@ -99,8 +99,8 @@
         <item>Jód</item>
         <item>Železo</item>
         <item>Laktóza</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
+        <item>Kyselina laurová (12:0)</item>
+        <item>Kyselina lignocerová (24:0)</item>
         <item>Kyselina linolová / LA (18:2 n-6)</item>
         <item>Hořčík</item>
         <item>Maltodextriny</item>
@@ -111,7 +111,7 @@
         <item>Molybden</item>
         <item>Mononenasycený tuk</item>
         <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
+        <item>Kyselina myristová (14:0)</item>
         <item>Kyselina nervonová (24: 1 n-9)</item>
         <item>Nukleotidy</item>
         <item>Kyselina olejová (18: 1 n-9)</item>
@@ -119,10 +119,10 @@
         <item>Omega 6 mastné kyseliny</item>
         <item>Omega 9 mastné kyseliny</item>
         <item>Kyselina palmitová (16: 0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>Kyselina pantothenová (Vitamin B5)</item>
         <item>pH</item>
         <item>Fosfor</item>
-        <item>Sugar alcohols (Polyols)</item>
+        <item>Cukerné alkoholy (polyoly)</item>
         <item>Poly nenasycený tuk</item>
         <item>Draslík</item>
         <item>Selen</item>
