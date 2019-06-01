@@ -196,7 +196,7 @@
     <string name="txtPalmOilProduct">مكونات من زيت النخيل:</string>
     <string name="txtServingSize">حجم الحصة:</string>
     <string name="txtNutrientLevel100g">مستويات المواد الغذائية لـ 100غ:</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">مستويات العناصر الغذائية ل ١٠٠ ميللي جرام:</string>
     <string name="txtNutritionLevelLow">في كمية المخزون</string>
     <string name="txtNutritionLevelModerate">كمية معتدلة</string>
     <string name="txtNutritionLevelHigh">كمية عالية</string>
@@ -400,7 +400,7 @@
     <string name="nutrition_serum_proteins">بروتينات المصل</string>
     <string name="nutrition_nucleotides">النيوكليوتيدات</string>
     <string name="for_100g">ل 100 غرام</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">ل ١٠٠ ميللي جرام</string>
     <string name="serving">لكل وجبة</string>
     <string name="minerals">المعادن</string>
     <string name="nutrition_calcium">الكالسيوم</string>
@@ -534,7 +534,7 @@
     <string name="image_upload_resolution">نقاء الصورة</string>
     <string name="can_add_barcode">هل تواجه مشكلة في المسح؟ \n اسحب لأعلى لكتابة الرمز الشريطي</string>
     <string name="wikidata_information">الذهاب إلى أبعد من ذلك</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
+    <string name="wikidata_unavailable">لا يوجد صفحة ويكيبيديا بلغتكم بعد.</string>
     <string name="description">الوصف: </string>
     <string name="title">العنوان: </string>
     <string name="Wikipedia">عرض على ويكيبيديا</string>
@@ -542,7 +542,7 @@
     <string name="swipe_down">السحب للأسفل</string>
     <string name="brand_string">العلامة التجارية</string>
     <string name="additive_string">المواد المضافة</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">حساسية</string>
     <string name="search_string">بحث</string>
     <string name="country_string">بلدان بيع</string>
     <string name="store_subtitle">المتجر</string>
@@ -632,8 +632,7 @@
     <string name="error_adding_ingredients">حدث خطأ ما أثناء محاولة إضافة مكونات المنتج</string>
     <string name="unable_to_extract_ingredients">غير قادر على استخراج المكونات من الصورة</string>
     <string name="error_adding_nutrition_facts">حدث خطأ ما أثناء محاولة إضافة الحقائق الغذائية للمنتج</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
+    <string name="error_in_carbohydrate_value">الكربوهيدرات لا يمكن ان تكون اقل من مجموع السكر والنشا</string>
     <string name="choose_nutrient">اختيار المواد المغذية</string>
     <string name="error_adding_product_details">حدث خطأ ما أثناء محاولة إضافة تفاصيل المنتج</string>
     <string name="hint_product_URL">رابط الصفحة الرسمية للمنتج</string>
@@ -653,7 +652,7 @@
     <string name="quantity_overwrite">إعادة كتابة الكمية</string>
     <string name="link_overwrite">إعادة كتابة الرابط</string>
     <string name="save_product">هل تريد حفظ المنتج؟</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">حدث خطأ ما عند إضافة المنتج</string>
     <string name="photos">صور</string>
     <string name="please_wait">يُرجى الانتظار</string>
     <string name="product_uploaded_successfully">تم إرسال المنتج بنجاح</string>
@@ -709,30 +708,30 @@
     <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s موجود بالفعل ضمن المعلومات التغذية</string>
     <string name="save_edits">حفظ التعديلات</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="contribution_by">مساهمة من قبل</string>
     <string name="title_activity_product">العنوان</string>
     <string name="description_activity_product">وصف</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="intent_filter_share_label">أضف إلى حقائق الطعام المفتوح</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="infants">الرُضَّع</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
+    <string name="toddlers">الأطفال الصغار</string>
+    <string name="toddlers_age">١ إلى ٢</string>
+    <string name="children">الأطفال</string>
+    <string name="children_age">٣ إلى ٩</string>
     <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
-    <string name="elderly_age">65+</string>
-    <string name="most_people">Most people\n(over 50%)</string>
-    <string name="some_people">Some people\n(over 5%)</string>
+    <string name="adolescents_age">١٠ إلى ١٧</string>
+    <string name="adults">البالغين</string>
+    <string name="adults_age">١٨ إلى ٦٤</string>
+    <string name="elderly">بشيخوخة</string>
+    <string name="elderly_age">+٦٥</string>
+    <string name="most_people">معظم الناس\n(أكثر من ٥٠ ٪)</string>
+    <string name="some_people">بعض الناس\n(أكثر من ٥ ٪)</string>
     <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
     <string name="risk_of_exposure">Risk of exposure</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
+    <string name="efsa_warning_moderate_risk">هيئة سلامة الأغذية الأوروبية (EFSA) قررت أن بعض فئات السكان لديهم مخاطر معتدلة من كثرة الإستهلاك %1$s.</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
@@ -839,4 +838,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">الرمز الشريطي</string>
+    <string name="error_uploading_photo">حدث خطأ ما اثناء تحميل صورة جديدة</string>
 </resources>
