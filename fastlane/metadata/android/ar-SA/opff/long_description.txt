@@ -1,13 +1,13 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+قم بالمسح الضوئي لمنتجات أغذية الحيوانات الأليفة أو الباركود الخاص بهم للحصول على بيانات عن المكونات والمواد المضافة وحقائق التغذية.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+يسمح التطبيق بعرض أكثر من ٦٠٠ من منتجات أغذية الحيوانات الأليفة الموجودة بالفعل في قاعدة البيانات المجانية والمفتوحة Open Pet Food Facts ، وكذلك لإضافة صور وبيانات للمنتجات المفقودة.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+لاكتشاف مشروع Open Pet Food Facts ، يرجى زيارة https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+- يمكنك استخدامه لاتخاذ خيارات أفضل لأغذية الحيوانات الأليفة ، ولأنها بيانات مفتوحة ، يمكن لأي شخص إعادة استخدامها لأي غرض من الأغراض.
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 
