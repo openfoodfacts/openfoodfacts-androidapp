@@ -751,7 +751,7 @@
     <string name="no_nutrition_data_prompt">Na tomto výrobku není výživová tabulka</string>
     <string name="nutrition_image_prompt_text">Vyfotit výživovou tabulku</string>
     <string name="ingredient_image_prompt_text">Vyfotit složení produktu</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="category_game_btn">Roztříděním výrobků umožníte výpočet Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Verze</string>
     <string name="txtOtherInfo">Other Information: </string>
@@ -775,7 +775,7 @@
     <string name="fast_addition_mode_title">Režim rychlého přidávání</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="addtive_search">Search for a additive</string>
-    <string name="additives">Přísady</string>
+    <string name="additives">Aditiva</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
@@ -805,7 +805,7 @@
     <string name="add_product">Přidat produkty</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_compare_button_label">Porovnat</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Upravit</string>
     <string name="product_summary_action_share_button_label">Sdílet</string>
