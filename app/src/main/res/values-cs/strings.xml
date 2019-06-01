@@ -33,7 +33,7 @@
     <string name="text_barcode">Zadejte čárový kód:</string>
     <string name="message_in_activity_save_product_offline">K odeslání nového produktu je povinná jedna fotografie.</string>
     <string name="product_incomplete_message">Tento produkt není kompletní. V důsledku toho jsme nemohli provést kontrolu alergenů.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Tento výrobek obsahuje:</string>
     <string name="no_offline_data">Hotovo</string>
     <string name="first_offline">Zde se zobrazí produkty přidané offline</string>
     <!-- Image Upload -->
@@ -60,8 +60,8 @@
     <string-array name="weight_all_units">
         <item>mg</item>
         <item>kg</item>
-        <item>µg</item>
-        <item>% DV</item>
+        <item>μg</item>
+        <item>% DDD</item>
         <item>IU</item>
     </string-array>
     <!-- nutrients list
@@ -141,9 +141,9 @@
         <item>Vitamin B6 (Pyridoxin)</item>
         <item>Vitamín B9 (kyselina listová)</item>
         <item>Vitamin C (kyselina askorbová)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
+        <item>Vitamín D</item>
+        <item>Vitamín E</item>
+        <item>Vitamín K</item>
         <item>Zinek</item>
     </string-array>
     <!-- Text units -->
@@ -186,7 +186,7 @@
     <string name="txtPalmOilProduct">Suroviny z palmového oleje :</string>
     <string name="txtServingSize">Velikost porce :</string>
     <string name="txtNutrientLevel100g">Nutriční hodnoty na 100 g :</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Výživová hodnota ve 100 ml :</string>
     <string name="txtNutritionLevelLow">v malém množství</string>
     <string name="txtNutritionLevelModerate">v mírném množství</string>
     <string name="txtNutritionLevelHigh">ve velkém množství</string>
@@ -259,7 +259,7 @@
     <string name="delete_txt">Odstranit</string>
     <string name="sign_in_drawer">Přihlásit se</string>
     <string name="alert_drawer">Hlídání alergenů</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Vaše seznamy</string>
     <string name="warning_allergens">Obsahuje alergeny</string>
     <string name="title_dialog_alert">Přidat upozornění</string>
     <string name="toggle_flash">Blesk</string>
@@ -305,7 +305,7 @@
     <string name="scan_history_drawer">Historie</string>
     <string name="clear_history">Smazat historii</string>
     <string name="title_clear_history_dialog">Vymazat</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Opravdu chcete vymazat celou historii skenování?</string>
     <string name="export_csv_history">Exportovat ve formátu CSV</string>
     <string name="txt_exporting_history">Exportuji historii…</string>
     <string name="txt_history_exported">Historie byla exportována</string>
@@ -318,8 +318,8 @@
     <string name="check_facts">Zkontrolovat</string>
     <string name="nutrition">Nutriční hodnoty</string>
     <string name="calculated_nutrition">Vypočtené nutriční hodnoty</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="please_enter_weight">Zadejte hmotnost produktu, prosím</string>
+    <string name="enter_weight">Zadejte hmotnost produktu</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="txt_calories_result">%1$s kcal v %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Sacharidy</string>
@@ -352,10 +352,10 @@
     <string name="nutriment_serving_size">Na jednu porci : </string>
     <string name="action_manage_account">Spravovat účet</string>
     <string name="action_contributes">Vaše příspěvky</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="choose_energy_unit">Vyberte jednotky energie pro výživovou tabulku</string>
+    <string name="energy_pref_title">Preferovaná energetická jednotka</string>
+    <string name="choose_volume_unit">Vyberte požadované jednotky objemu pro výživovou tabulku</string>
+    <string name="volume_pref_title">Preferovaná jednotka objemu</string>
     <string name="logout_drawer">Odhlásit se</string>
     <string name="contribution_without_account">Můžete se přihlásit nebo vytvořit účet pro zachování vašich příspěvků</string>
     <string name="textCarbonFootprint">Uhlíková stopa / emise CO2: </string>
@@ -374,12 +374,12 @@
     <string name="txt_no_matching_additive_products">Ale ne, nemáme žádný produkt s touto přísadou, můžete ho přidat?</string>
     <string name="txt_no_matching_country_products">Ale ne, nemáme žádný produkt z této země, můžete ho přidat?</string>
     <string name="txt_no_matching_store_products">Ale ne, nemáme žádný produkt z tohoto obchodu, můžete ho přidat?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
-    <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
+    <string name="txt_no_matching_packaging_products">Ach jo, nemáme žádný výrobek s tímto druhem balení, můžete ho přidat?</string>
+    <string name="txt_no_matching_brand_products">Ach jo, nemáme žádný výrobek této značky, můžete ho přidat?</string>
+    <string name="txt_no_matching_state_products">Ach jo, nemáme žádný výrobek z této země, můžete ho přidat?</string>
+    <string name="txt_no_matching_incomplete_products">Nemáme žádné nedokončené výrobky! Chcete přidat nový produkt?</string>
+    <string name="txt_no_matching_contributor_products">Ach jo, od tohoto přispěvatele nemáme žádné výrobky. Můžete nějaký přidat?</string>
+    <string name="txt_no_matching_products">Nenašli jsme žádný odpovídající výrobek. \n Můžete zkusit:</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="txt_cant_load_search_results">Nelze načíst výsledky vyhledávání</string>
     <string name="something_went_wrong">Omlouváme se, něco se pokazilo…</string>
@@ -410,9 +410,9 @@
     <string name="nutrition_alcohol">Alkohol</string>
     <string name="nutrition_vitamins">Vitamíny</string>
     <string name="vitamin_a">Vitamín A</string>
-    <string name="vitamin_d">Vitamin D</string>
-    <string name="vitamin_e">Vitamin E</string>
-    <string name="vitamin_k">Vitamin K</string>
+    <string name="vitamin_d">Vitamín D</string>
+    <string name="vitamin_e">Vitamín E</string>
+    <string name="vitamin_k">Vitamín K</string>
     <string name="vitamin_c">Vitamín C</string>
     <string name="vitamin_b1">Vitamín B1</string>
     <string name="vitamin_b2">Vitamín B2</string>
@@ -451,12 +451,12 @@
     <string name="take_picture_nutrition_table">Vyfotit nutriční tabulku</string>
     <string name="take_more_pictures">Vyfotit další obrázky</string>
     <string name="txtSaturatedFat">Nasycené tuky</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nutriscore_info_msg">Další informace o Nutri-Score</string>
+    <string name="nova_info_msg">Další informace o stupnici Nova</string>
+    <string name="nova_grp1_msg">Skupina 1 - Čerstvé nebo minimálně zpracované potraviny</string>
+    <string name="nova_grp2_msg">Skupina 2 - Běžně zpracované kuchyňské přísady</string>
+    <string name="nova_grp3_msg">Skupina 3 - Běžně zpracované potraviny</string>
+    <string name="nova_grp4_msg">Skupina 4 - Průmyslově vysoce zpracované potraviny a nápoje</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Zástupce není k dispozici</string>
     <string name="scan_shortcut_short_label">Skenovat</string>
@@ -484,7 +484,7 @@
     <string name="device_offline_dialog_positive">Nastavení</string>
     <string name="saving">Ukládání…</string>
     <string name="scan_first_product">Skenovat první produkt</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Historie byla úspěšně smazána</string>
     <string name="preference_enable_mobile_data_title">Nahrávání přes mobilní data</string>
     <string name="preference_enable_mobile_data_summary_on">Nahrajte nové produkty pomocí mobilních dat &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Nahrajte nové produkty pouze přes WiFi</string>
@@ -492,7 +492,7 @@
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Předvolby</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-    <string name="changes_saved">Changes saved successfully</string>
+    <string name="changes_saved">Změny byly úspěšně uloženy</string>
     <string name="preference_choose_language_dialog_title">Zvolit jazyk</string>
     <string name="FAQ">FAQ - často kladené dotazy</string>
     <string name="FrequentlyAskedQuestions">Často Kladené Otázky</string>
@@ -501,7 +501,7 @@
     <string name="please_check_your_connection">Zkontrolujte připojení k Internetu.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-    <string name="compare_products">Compare products</string>
+    <string name="compare_products">Porovnat výrobky</string>
     <string name="connectivity_check">Zkontrolujte připojení k internetu</string>
     <string name="dismiss">Zamítnout</string>
     <string name="Terms">Podmínky</string>
@@ -518,7 +518,7 @@
     <string name="confirm_logout">Potvrdit odhlášení</string>
     <string name="logout_dialog_content">Opravdu se chcete odhlásit?</string>
     <string name="dialog_cancel">Zrušit</string>
-    <string name="dialog_create">Create</string>
+    <string name="dialog_create">Vytvořit</string>
     <string name="choose_resolution">Zvolte rozlišení</string>
     <string name="pref_resolution_summary">Vyberte rozlišení pro nahrání obrázků</string>
     <string name="image_upload_resolution">Rozlišení snímku</string>
@@ -565,7 +565,7 @@
     <string name="by_time">Nedávno zobrazené</string>
     <string name="sort">Řazení</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Sort by</string>
+    <string name="sort_by">Seřadit podle</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Shake phone to scan products</string>
@@ -614,19 +614,18 @@
     <string name="trouble_scanning">Trouble Scanning?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
     <string name="switch_camera">Switch camera</string>
-    <string name="autofocus">Autofocus</string>
-    <string name="initial_loading">Initial loading</string>
+    <string name="autofocus">Aut. zaost.</string>
+    <string name="initial_loading">Načítám</string>
     <string name="preferences">Předvolby</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Načítání produktu %s</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
-    <string name="choose_nutrient">Choose a nutrient</string>
+    <string name="choose_nutrient">Vyberte živinu</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
-    <string name="hint_product_URL">Link of the official page of the product</string>
+    <string name="hint_product_URL">Odkaz na oficiální stránku výrobku</string>
     <string name="product_language">Jazyk produktu: </string>
     <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Oficiální web</string>
@@ -655,22 +654,22 @@
     <string name="nutrition_facts">Nutriční hodnoty</string>
     <string name="your_version">Vaše</string>
     <string name="ingredients_picture">Obrázek složení</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Vyfotografujte prosím složení výrobku, aby mohlo být aut. rozpoznáno.)</string>
     <string name="ingredients_list">Složení</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
-    <string name="extract_ingredients">Extract ingredients</string>
-    <string name="extracting_ingredients">Extracting ingredients</string>
+    <string name="ingredients_hint">Zachovejte pořadí složek. Pokud je uveden, tak nezapomeňte uvést podíl složky v %. Jednotlivé složky oddělte čárkou. Pokud je složka z více přísad, uveďte je do závorky (). Alergeny oddělte z obou stran podtržítkem _</string>
+    <string name="extract_ingredients">Aut. rozpoznat složení</string>
+    <string name="extracting_ingredients">Rozpoznávám složení</string>
     <string name="looksGood">Vypadá dobře</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
     <string name="traces">Stopy</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
-    <string name="for_100g_100ml">For 100g / 100ml</string>
+    <string name="nutrition_facts_picture">Snímek tabulky výživových údajů</string>
+    <string name="for_100g_100ml">Na 100 g / 100 ml</string>
     <string name="per_serving">V jedné porci</string>
     <string name="serving_size">Velikost porce</string>
-    <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Add a nutrient</string>
+    <string name="alcohol_unit" formatted="false">% obj.</string>
+    <string name="add_a_nutrient">Přidejte živinu</string>
     <string name="add_this_product">Přidat tento produkt</string>
     <string name="product_picture">Obrázek produktu</string>
     <string name="one_photo_compulsory">(K odeslání nového produktu je povinné odeslání jedné fotografie)</string>
@@ -704,19 +703,19 @@
     <string name="description_activity_product">popis</string>
     <string name="intent_filter_share_label">Přidat do Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
-    <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="overexposure_high">Vysoké riziko nepřiměřeného příjmu</string>
+    <string name="overexposure_moderate">Střední riziko nepřiměřeného příjmu</string>
+    <string name="infants">Kojenci</string>
+    <string name="infants_age">&lt; %s</string>
+    <string name="toddlers">Batolata</string>
+    <string name="toddlers_age">1 - 2</string>
+    <string name="children">Děti</string>
+    <string name="children_age">3 - 9</string>
+    <string name="adolescents">Dospívající</string>
+    <string name="adolescents_age">10 - 17</string>
+    <string name="adults">Dospělí</string>
+    <string name="adults_age">18 - 64</string>
+    <string name="elderly">Senioři</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
@@ -745,7 +744,7 @@
     <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
     <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <!-- End of used for diets AddOn -->
-    <string name="extract_ingredients_prompt">Extract ingredients</string>
+    <string name="extract_ingredients_prompt">Aut. rozpoznat složení</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
@@ -827,6 +826,7 @@
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
-    <string name="edit_image">Edit Image</string>
+    <string name="edit_image">Upravit obrázek</string>
     <string name="barcode">Čárový kód</string>
+    <string name="error_uploading_photo">Při nahrávání nové fotografie došlo k chybě</string>
 </resources>
