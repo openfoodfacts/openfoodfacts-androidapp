@@ -25,10 +25,10 @@
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+*** طعام حيوانك الأليف، بياناتك ***
+- بياناتك الشخصية تخصك وحدك ، ولا يتم إرسالها أبدًا عبر الإنترنت
 - You can use the app anonymously
 - You can export your scan history
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+للأغذية البشرية ، يمكنك تثبيت Open Food Facts ، لمستحضرات التجميل ، Open Beauty Facts ، ولكل المنتجات الأخرى ، Open Products Facts.
