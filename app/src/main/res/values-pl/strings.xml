@@ -643,7 +643,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="error_adding_ingredients">Coś poszło nie tak podczas próby dodania składników produktu</string>
     <string name="unable_to_extract_ingredients">Nie można wydobyć składników z obrazu</string>
     <string name="error_adding_nutrition_facts">Coś poszło nie tak podczas próby dodania faktów żywieniowych produktu</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Węglowodany nie mogą wynosić mniej niż suma cukru i skrobi</string>
     <string name="choose_nutrient">Wybierz składnik odżywczy</string>
     <string name="error_adding_product_details">Coś poszło nie tak podczas próby dodania szczegółów produktu</string>
@@ -850,4 +849,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Kod kreskowy</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>
