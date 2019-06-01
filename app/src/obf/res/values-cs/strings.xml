@@ -22,7 +22,7 @@
     <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
     <string name="slide_4_title">Pracuje offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
+    <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Beauty Facts. Přidejte jej prosím.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Beauty Facts.</string>
     <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
     <string name="not_support_books">Books are not currently supported by Open Beauty Facts</string>
@@ -33,8 +33,8 @@
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">the free cosmetics database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Beauty Facts. Can you add it?</string>
+    <string name="tagline">svobodná databáze kosmetických výrobků</string>
+    <string name="product_not_found">Produkt %1$s, který jste naskenovali, ještě neexistuje v databázi Open Beauty Facts. Můžete jej prosím přidat?</string>
     <string name="currently_on_version">Currently on Open Beauty Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Pomozte roztřídit produkty</string>
 </resources>
