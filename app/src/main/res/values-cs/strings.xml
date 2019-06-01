@@ -112,9 +112,9 @@
         <item>Mononenasycený tuk</item>
         <item>Montanic acid (28:0)</item>
         <item>Kyselina myristová (14:0)</item>
-        <item>Kyselina nervonová (24: 1 n-9)</item>
+        <item>Kyselina nervonová (24: 1 ω9)</item>
         <item>Nukleotidy</item>
-        <item>Kyselina olejová (18: 1 n-9)</item>
+        <item>Kyselina olejová (18: 1 ω9)</item>
         <item>Omega 3 mastné kyseliny</item>
         <item>Omega 6 mastné kyseliny</item>
         <item>Omega 9 mastné kyseliny</item>
@@ -149,7 +149,7 @@
     <!-- Text units -->
     <string-array name="images_array">
         <item>Výchozí</item>
-        <item>Nutriční hodnoty</item>
+        <item>Výživové hodnoty</item>
         <item>Složení</item>
     </string-array>
     <!-- Content Description -->
@@ -604,8 +604,8 @@
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Přidat nový produkt</string>
-    <string name="productNameNull">Name unknown</string>
-    <string name="productBrandNull">Brand unknown</string>
+    <string name="productNameNull">Neznámé jméno</string>
+    <string name="productBrandNull">Neznámá značka</string>
     <string name="productQuantityNull">Neznámé množství</string>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
