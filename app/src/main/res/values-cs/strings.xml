@@ -218,7 +218,7 @@
     <string name="hintEnergyUnit">Energetická jednotka</string>
     <string name="hintWeight">Hmotnost</string>
     <string name="hintStores">Prodejna</string>
-    <string name="hintBrand">Značka</string>
+    <string name="hintBrand">Výrobce</string>
     <string name="txtTakePicture">Vyfotit</string>
     <string name="txtSendAll">Nahrát vše</string>
     <string name="txtNoData">Žádná data</string>
@@ -311,7 +311,7 @@
     <string name="txt_history_exported">Historie byla exportována</string>
     <string name="permision_write_external_storage">Pro export historie je zapotřebí práva zapisovat do externího úložiště.</string>
     <string name="txt_nutrition_not_found">Není k dispozici</string>
-    <string name="no_brand">Žádná značka</string>
+    <string name="no_brand">Chybí výrobce</string>
     <string name="no_title">Bez názvu</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">Nutriční tabulka %1$s tohoto přípravku</string>
@@ -364,7 +364,7 @@
     <string name="action_search">Vyhledat</string>
     <string name="search_hint">Vyhledat produkt</string>
     <string name="number_of_results">Počet výsledků: </string>
-    <string name="brand">Značka :</string>
+    <string name="brand">Výrobce :</string>
     <string name="number_of_products">Počet výrobků: </string>
     <string name="txt_no_results">Nebyly nalezeny žádné výsledky</string>
     <string name="txt_extend_search">Pokuste se rozšířit vyhledávání nebo produkt přidejte</string>
@@ -530,7 +530,7 @@
     <string name="Wikipedia">Zobrazit na Wikipedii</string>
     <string name="Browse_Products">Procházet produkty</string>
     <string name="swipe_down">Přejeďte prstem dolů</string>
-    <string name="brand_string">Značka</string>
+    <string name="brand_string">Výrobce</string>
     <string name="additive_string">Přísada</string>
     <string name="allergen_string">Alergen</string>
     <string name="search_string">Vyhledat</string>
@@ -560,7 +560,7 @@
     <string name="txtGallery">Galerie</string>
     <string name="txtOptions">Nastavení</string>
     <string name="by_title">Název</string>
-    <string name="by_brand">Značka</string>
+    <string name="by_brand">Výrobce</string>
     <string name="by_barcode">Čárový kód</string>
     <string name="by_time">Nedávno zobrazené</string>
     <string name="sort">Řazení</string>
@@ -605,7 +605,7 @@
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Přidat nový produkt</string>
     <string name="productNameNull">Neznámé jméno</string>
-    <string name="productBrandNull">Neznámá značka</string>
+    <string name="productBrandNull">Neznámý výrobce</string>
     <string name="productQuantityNull">Neznámé množství</string>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
@@ -680,10 +680,10 @@
     <string name="period_of_time_after_opening">Doba od otevření</string>
     <string name="manufacturing_details">Výrobní informace</string>
     <string name="origin_of_ingredients">Původ přísad</string>
-    <string name="manufacturing_place">Místo výroby</string>
+    <string name="manufacturing_place">Země původu</string>
     <string name="emb_code">Kód EMB</string>
     <string name="purchasing_details">Podrobnosti o nákupu</string>
-    <string name="country_where_purchased">Země, kde byly zakoupeny</string>
+    <string name="country_where_purchased">Země nákupu</string>
     <string name="stores">Prodejny</string>
     <string name="additional_pictures">Další obrázky</string>
     <string name="hint_product_pictures">(Přidejte další fotky produktu, jako pokyny pro recyklaci, štítky apod.)</string>
