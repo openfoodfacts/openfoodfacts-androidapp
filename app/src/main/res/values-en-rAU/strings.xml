@@ -31,7 +31,7 @@
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>Summary</item>
+        <item>Overview</item>
         <item>Ingredients</item>
         <item>Nutrition</item>
         <item>Nutrition Facts</item>
@@ -65,7 +65,7 @@
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
         <item>Bicarbonate</item>
-        <item>Biotin</item>
+        <item>Vitamin B7</item>
         <item>Butyric acid (4:0)</item>
         <item>Caffeine</item>
         <item>Calcium</item>
@@ -112,7 +112,7 @@
         <item>Omega 9 fatty acids</item>
         <item>Palmitic acid (16:0)</item>
         <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
-        <item>pH</item>
+        <item>Ph</item>
         <item>Phosphorus</item>
         <item>Sugar alcohols (Polyols)</item>
         <item>Polyunsaturated fat</item>
@@ -318,11 +318,11 @@
     <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
-    <string name="nutrition_energy">Energy</string>
-    <string name="nutrition_energy_short_name">Energy</string>
+    <string name="nutrition_energy">Calories</string>
+    <string name="nutrition_energy_short_name">Calories</string>
     <string name="nutrition_fat">Fat</string>
     <string name="nutrition_fat_short_name">Fat (g)</string>
-    <string name="nutrition_fiber">Dietary fiber</string>
+    <string name="nutrition_fiber">Dietary fibre</string>
     <string name="nutrition_fiber_short_name">Dietary fibre (g)</string>
     <string name="nutrition_header">Nutrition facts</string>
     <string name="nutrition_no_data_message">No data is available for this product</string>
@@ -381,7 +381,7 @@
     <string name="nutrition_maltodextrins">Maltodextrins</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
-    <string name="for_100g">For 100 g</string>
+    <string name="for_100g">Per 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="minerals">Minerals</string>
@@ -390,8 +390,8 @@
     <string name="nutrition_chlore">Chlorine</string>
     <string name="nutrition_magnesium">Magnesium</string>
     <string name="nutrition_taurine">Taurine</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -408,12 +408,12 @@
     <string name="vitamin_c">Vitamin C</string>
     <string name="vitamin_b1">Vitamin B1</string>
     <string name="vitamin_b2">Vitamin B2</string>
-    <string name="vitamin_pp">Vitamin PP</string>
+    <string name="vitamin_pp">Vitamin B3</string>
     <string name="vitamin_b6">Vitamin B6</string>
     <string name="vitamin_b9">Vitamin B9</string>
     <string name="vitamin_b12">Vitamin B12</string>
-    <string name="biotin">Biotin</string>
-    <string name="pantothenic_acid">Pantothenic acid</string>
+    <string name="biotin">Vitamin B7</string>
+    <string name="pantothenic_acid">Vitamin B5</string>
     <string name="nutrition_minerals">Minerals</string>
     <string name="silica">Silica</string>
     <string name="bicarbonate">Bicarbonate</string>
@@ -433,11 +433,11 @@
     <string name="iodine">Iodine</string>
     <string name="caffeine">Caffeine</string>
     <string name="taurine">Taurine</string>
-    <string name="ph">pH</string>
+    <string name="ph">Ph</string>
     <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
-    <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
+    <string name="collagen_meat_protein_ratio">Collagen/Meat Protein Ratio</string>
     <string name="cocoa">Cocoa</string>
-    <string name="chlorophyl">Chlorophyl</string>
+    <string name="chlorophyl">Chlorophyll</string>
     <string name="take_picture_ingredients">Take a picture of the ingredients</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
@@ -614,7 +614,6 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -821,4 +820,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Barcode</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

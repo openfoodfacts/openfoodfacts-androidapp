@@ -618,7 +618,6 @@
     <string name="error_adding_ingredients">Au apărut probleme în timp ce încercaţi să adăugaţi ingredientele produsului</string>
     <string name="unable_to_extract_ingredients">Imposibil de detectat ingredientele din imagine</string>
     <string name="error_adding_nutrition_facts">A apărut o problemă în timp ce încercați să adăugați detaliile produsului</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Alege un nutrient</string>
     <string name="error_adding_product_details">A apărut o problemă în timp ce încercați să adăugați detaliile produsului</string>
@@ -825,4 +824,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Cod de bare</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>
