@@ -1026,8 +1026,8 @@
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Barcode</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="import_csv_to_list">Import CSV</string>
-    <string name="toast_import_csv_error">Error in importing csv file</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
     <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
