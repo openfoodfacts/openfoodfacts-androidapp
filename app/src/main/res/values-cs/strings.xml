@@ -175,7 +175,7 @@
     <string name="txtEMB">Kód EMB:</string>
     <string name="txtManufactureUrl">Odkaz na stránku produktu na oficiálních stránkách výrobce:</string>
     <string name="txtStores">Prodejny :</string>
-    <string name="txtCountries">Země prodeje :</string>
+    <string name="txtCountries">Země, kde je v prodeji :</string>
     <string name="txtIngredients">Složení :</string>
     <string name="Donate">Podpořit</string>
     <string name="Donation">Kliknutím sem podpoříte Open Food Facts</string>
@@ -534,7 +534,7 @@
     <string name="additive_string">Přísada</string>
     <string name="allergen_string">Alergen</string>
     <string name="search_string">Vyhledat</string>
-    <string name="country_string">Země prodeje</string>
+    <string name="country_string">Země, kde je v prodeji</string>
     <string name="store_subtitle">Prodejna</string>
     <string name="packaging_subtitle">Obal</string>
     <string name="last_seen_string">%1$d %2$s před</string>
@@ -693,9 +693,9 @@
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Pro úpravu produktu se musíte přihlásit.</string>
-    <string name="hint_quantity">Příklady: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 libra</string>
+    <string name="hint_quantity">Například: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 libra</string>
     <string name="edit_product_title">Upravit produkt</string>
-    <string name="hint_serving_size">Příklady: 60 g, 12 oz, 20cl, 2 fl oz</string>
+    <string name="hint_serving_size">Například: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s je již ve výživových faktech</string>
     <string name="save_edits">Uložit úpravy</string>
     <string name="contribution_by">Contribution by</string>
