@@ -162,7 +162,7 @@
     <string name="alert_dialog_warning_msg_user">Uživatelské jméno / heslo se změnilo, aktualizujte prosím informace</string>
     <string name="alert_dialog_product_error_msg">Produkt nebyl nalezen, zkuste to prosím znovu</string>
     <string name="toast_retrieving">Načítá se…</string>
-    <string name="txtGenericName">Běžné jméno :</string>
+    <string name="txtGenericName">Obecné označení :</string>
     <string name="txtBarcode">Čárový kód :</string>
     <string name="txtQuantity">Množství :</string>
     <string name="txtPackaging">Balení:</string>
