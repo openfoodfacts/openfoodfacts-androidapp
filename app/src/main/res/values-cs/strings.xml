@@ -390,7 +390,7 @@
     <string name="nutrition_serum_proteins">Sérové ​​proteiny</string>
     <string name="nutrition_nucleotides">Nukleotidy</string>
     <string name="for_100g">Ve 100g</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">Na 100 ml</string>
     <string name="serving">V jedné porci</string>
     <string name="minerals">Minerály</string>
     <string name="nutrition_calcium">Vápník</string>
@@ -491,7 +491,7 @@
     <string name="device_on_mobile_data_warning_title">Informace</string>
     <string name="device_on_mobile_data_warning_message">Nahrávání přes mobilní data je zakázáno, prosím připojte se k WiFI, nebo jejich využití povolte v předvolbách aplikace</string>
     <string name="device_on_mobile_data_warning_positive">Předvolby</string>
-    <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
+    <string name="device_on_mobile_data_warning_negative">Přesto nahrát</string>
     <string name="changes_saved">Změny byly úspěšně uloženy</string>
     <string name="preference_choose_language_dialog_title">Zvolit jazyk</string>
     <string name="FAQ">FAQ - často kladené dotazy</string>
@@ -507,7 +507,7 @@
     <string name="Terms">Podmínky</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://world-cs.openfoodfacts.org/hunger-game</string>
     <string name="preference_header_general">Hlavní nastavení</string>
     <string name="preference_header_network">Síť</string>
     <string name="preference_header_contributing">Přispívání</string>
@@ -564,10 +564,10 @@
     <string name="by_barcode">Čárový kód</string>
     <string name="by_time">Nedávno zobrazené</string>
     <string name="sort">Řazení</string>
-    <string name="by_nutrition_grade">Nutrition Grade</string>
+    <string name="by_nutrition_grade">Výživová hodnota</string>
     <string name="sort_by">Seřadit podle</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://world-cs.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Pokud zatřesete telefonem, spustíte se skenování</string>
     <string name="shake_title">Zatřeste a skenujte</string>
     <!-- strings related to share images -->
@@ -721,8 +721,8 @@
     <string name="some_people">Some people\n(over 5%)</string>
     <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
     <string name="risk_of_exposure">Risk of exposure</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
-    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
+    <string name="efsa_warning_moderate_risk">Evropský úřad pro bezpečnost potravin (EFSA) stanovil, že nadměrná konzumace %1$s je mírně riziková pro některé skupiny obyvatel.</string>
+    <string name="efsa_warning_high_risk">Evropský úřad pro bezpečnost potravin (EFSA) stanovil, že nadměrná konzumace %1$s je velmi riziková pro některé skupiny obyvatel.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
     <string name="max_energy_val_msg">Hodnota je vyšší než 2000 kcal na 100 g. Můžete ji opravit?</string>
