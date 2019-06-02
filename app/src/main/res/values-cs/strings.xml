@@ -718,7 +718,7 @@
     <string name="elderly">Senioři</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
-    <string name="some_people">Some people\n(over 5%)</string>
+    <string name="some_people">Část populce\n(více než 5 %)</string>
     <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
     <string name="risk_of_exposure">Risk of exposure</string>
     <string name="efsa_warning_moderate_risk">Evropský úřad pro bezpečnost potravin (EFSA) stanovil, že nadměrná konzumace %1$s je mírně riziková pro některé skupiny obyvatel.</string>
