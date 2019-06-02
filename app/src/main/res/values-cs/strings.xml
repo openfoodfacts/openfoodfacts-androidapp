@@ -721,8 +721,8 @@
     <string name="some_people">Část populce\n(více než 5 %)</string>
     <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
     <string name="risk_of_exposure">Risk of exposure</string>
-    <string name="efsa_warning_moderate_risk">Evropský úřad pro bezpečnost potravin (EFSA) stanovil, že nadměrná konzumace %1$s je mírně riziková pro některé skupiny obyvatel.</string>
-    <string name="efsa_warning_high_risk">Evropský úřad pro bezpečnost potravin (EFSA) stanovil, že nadměrná konzumace %1$s je velmi riziková pro některé skupiny obyvatel.</string>
+    <string name="efsa_warning_moderate_risk">Evropský úřad pro bezpečnost potravin (EFSA) zjistil, že nadměrná konzumace %1$s je mírně riziková pro některé skupiny obyvatel.</string>
+    <string name="efsa_warning_high_risk">Evropský úřad pro bezpečnost potravin (EFSA) zjistil, že nadměrná konzumace %1$s je velmi riziková pro některé skupiny obyvatel.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
     <string name="max_energy_val_msg">Hodnota je vyšší než 2000 kcal na 100 g. Můžete ji opravit?</string>
