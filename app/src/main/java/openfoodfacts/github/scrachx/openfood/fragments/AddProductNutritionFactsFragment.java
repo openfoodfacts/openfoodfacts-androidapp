@@ -109,7 +109,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private String code;
     private OfflineSavedProduct mOfflineSavedProduct;
     private String imagePath;
-    private boolean productEdited;
     private Product product;
     private EditText lastEditText;
     private CustomValidatingEditTextView starchEditText;
@@ -131,6 +130,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         Bundle b = getArguments();
         lastEditText = alcohol;
         if (b != null) {
+            boolean productEdited;
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             productEdited = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
