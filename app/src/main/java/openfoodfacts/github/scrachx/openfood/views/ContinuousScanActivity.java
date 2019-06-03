@@ -77,6 +77,7 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 
 import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
@@ -249,7 +250,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             productShownInBottomView();
                             productNotFound.setVisibility(GONE);
                             if (newlyAdded) {
-                                txtProductIncomplete.setVisibility(View.INVISIBLE);
+                                txtProductIncomplete.setVisibility(INVISIBLE);
                                 fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_thumb_up_white_24dp));
                                 fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_500)));
                                 fabStatus.setOnClickListener(null);
@@ -279,7 +280,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                     }
                                 });
                             } else {
-                                txtProductIncomplete.setVisibility(View.INVISIBLE);
+                                txtProductIncomplete.setVisibility(INVISIBLE);
                                 fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
                                 fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.ic_check_white_24dp));
                                 fabStatus.setOnClickListener(null);
@@ -321,13 +322,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 productImage.setImageResource(R.drawable.placeholder_thumb);
                                 imageProgress.setVisibility(GONE);
                             }
-                            // Hide nutriScore from quickView if app flavour is OFF or there is no nutriscore
+                            // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
                             if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
                                 if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
                                     nutriScore.setVisibility(VISIBLE);
                                     nutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
                                 } else {
-                                    nutriScore.setVisibility(View.INVISIBLE);
+                                    nutriScore.setVisibility(INVISIBLE);
                                 }
                             } else {
                                 nutriScore.setVisibility(GONE);
@@ -337,9 +338,11 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
                                 if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
                                     novaGroup.setVisibility(VISIBLE);
+                                    additives.setVisibility(VISIBLE);
                                     novaGroup.setImageResource(novaGroupDrawable);
                                 } else {
-                                    novaGroup.setVisibility(View.INVISIBLE);
+                                    additives.setVisibility(INVISIBLE);
+                                    novaGroup.setVisibility(INVISIBLE);
                                 }
                             } else {
                                 novaGroup.setVisibility(GONE);
@@ -349,7 +352,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 co2Icon.setVisibility(VISIBLE);
                                 co2Icon.setImageResource(environmentImpactResource);
                             } else {
-                                co2Icon.setVisibility(View.INVISIBLE);
+                                co2Icon.setVisibility(INVISIBLE);
                             }
                             FragmentManager fm = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -793,7 +796,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     quickView.setOnClickListener(null);
                     searchByBarcode.setText(null);
                     searchByBarcode.setVisibility(VISIBLE);
-                    quickView.setVisibility(View.INVISIBLE);
+                    quickView.setVisibility(INVISIBLE);
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                     handler.postDelayed(() -> quickView.setVisibility(VISIBLE), 500);
                     searchByBarcode.requestFocus();
