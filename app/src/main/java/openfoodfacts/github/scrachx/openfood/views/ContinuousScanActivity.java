@@ -341,7 +341,6 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                     additives.setVisibility(VISIBLE);
                                     novaGroup.setImageResource(novaGroupDrawable);
                                 } else {
-                                    additives.setVisibility(INVISIBLE);
                                     novaGroup.setVisibility(INVISIBLE);
                                 }
                             } else {
