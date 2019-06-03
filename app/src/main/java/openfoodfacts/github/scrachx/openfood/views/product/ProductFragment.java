@@ -43,7 +43,7 @@ import static android.app.Activity.RESULT_OK;
 public class ProductFragment extends Fragment implements OnRefreshListener {
 
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    public static State productState;
+    public static State productState;//NOSONAR To be changed ASAP !
     @BindView(R.id.pager)
     ViewPager viewPager;
     @BindView(R.id.toolbar)
