@@ -614,7 +614,6 @@
     <string name="error_adding_ingredients">Нещо се обърка, докато се опитвахме да добавим съставките на продукта</string>
     <string name="unable_to_extract_ingredients">Невъзможно е да се извлекат съставки от изображението</string>
     <string name="error_adding_nutrition_facts">Нещо се обърка, докато се опитвахме да добавим хранителна информация за продукта</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Изберете хранително вещество</string>
     <string name="error_adding_product_details">Нещо се обърка, докато се опитвахме да добавим детайли за продукта</string>
@@ -823,4 +822,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Баркод</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

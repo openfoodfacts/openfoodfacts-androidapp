@@ -7,7 +7,7 @@ Neue native Version von Open Food Facts. Alle Freiwilligen von Open Food Facts h
 Was gibt es Neues?
 ═══════════════
 1. Sie erhalten einen vollständigen Überblick: Ernährung, Zutaten und alle Fakten zu Lebensmitteln, sauber und übersichtlich dargestellt.
-2. Den „NutriScore”-Nährwert für alle Produkte der Welt abrufen. Produkte einfach vergleichen. Einfacher als das Entziffern von Ernährungstabellen.
+2. „NutriScore”-Nährwertqualität für alle Produkte der Welt abrufen. Produkte einfach vergleichen. Einfacher als das Entziffern von Ernährungstabellen.
 3. Zusätzliche Informationen von Wikipedia abrufen. Klicken Sie auf eine Lebensmittelkategorie, einen Zusatzstoff …, um mehr zu erfahren und ähnliche Produkte anzuzeigen.
 4. Sie können Warnhinweise zu Allergenen festlegen (überprüfen Sie aber immer selbst das aktuelle Etikett!).
 5. Sie erhalten nun einen Verlauf der erfassten Produkte, den Sie exportieren können und der nie Ihr Handy verlässt

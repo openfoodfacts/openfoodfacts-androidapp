@@ -1026,4 +1026,5 @@
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Barcode</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
 </resources>

@@ -1,4 +1,4 @@
-Ce sont les slogans affichés au-dessus des captures d'écran dans le Playstore. Gardez-les concis et attrayants.
+Ceci sont les slogans affichés au-dessus des captures d'écran dans le Playstore. Gardez-les concis et attrayants.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=fr
 
 ======================
@@ -55,7 +55,7 @@ Impact carbone
 
 Comparez facilement avant d'acheter
 
-Create shopping lists, intake lists…
+Créer des listes de courses, des listes de consommation…
 
 Recherchez et comparez plus de 750 000 produits.
 

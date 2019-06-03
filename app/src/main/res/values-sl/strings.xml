@@ -109,7 +109,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molibden</item>
-        <item>Monounsaturated fat</item>
+        <item>Mono nenasičene maščobe</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -120,7 +120,7 @@
         <item>Omega 9 maščobne kisline</item>
         <item>Palmitic acid (16:0)</item>
         <item>Pantotenska kislina / pantotenat (vitamin B5)</item>
-        <item>pH</item>
+        <item>ph</item>
         <item>Fosfor</item>
         <item>Sladkorni alkoholi (polioli)</item>
         <item>Polinenasičene maščobe</item>
@@ -441,7 +441,7 @@
     <string name="iodine">Jod</string>
     <string name="caffeine">Kofein</string>
     <string name="taurine">Tavrin</string>
-    <string name="ph">pH</string>
+    <string name="ph">ph</string>
     <string name="fruits_vegetables_nuts">Sadje, zelenjava, oreščki</string>
     <string name="collagen_meat_protein_ratio">Razmerje beljakovin v kolagenskem mesu</string>
     <string name="cocoa">Kakav</string>
@@ -622,7 +622,6 @@
     <string name="error_adding_ingredients">Nekaj je šlo narobe med poskusom dodajanja sestavin izdelka</string>
     <string name="unable_to_extract_ingredients">Iz slike ne morem razbrati sestavin</string>
     <string name="error_adding_nutrition_facts">Nekaj je šlo narobe med poskusom dodajanja prehranskih dejstev</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Ogljikovi hidrati ne morejo biti manjši od vsote sladkorja in škroba</string>
     <string name="choose_nutrient">Izberite hranilo</string>
     <string name="error_adding_product_details">Nekaj je šlo narobe med poskusom dodajanja podrobnosti izdelka</string>
@@ -829,4 +828,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Črtna koda</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

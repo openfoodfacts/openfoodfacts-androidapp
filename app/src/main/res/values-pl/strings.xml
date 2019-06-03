@@ -643,7 +643,6 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="error_adding_ingredients">Coś poszło nie tak podczas próby dodania składników produktu</string>
     <string name="unable_to_extract_ingredients">Nie można wydobyć składników z obrazu</string>
     <string name="error_adding_nutrition_facts">Coś poszło nie tak podczas próby dodania faktów żywieniowych produktu</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Węglowodany nie mogą wynosić mniej niż suma cukru i skrobi</string>
     <string name="choose_nutrient">Wybierz składnik odżywczy</string>
     <string name="error_adding_product_details">Coś poszło nie tak podczas próby dodania szczegółów produktu</string>
@@ -844,10 +843,11 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="no_nutrient_information_available_for_this_product">Brak informacji o wartości odżywczej dla tego produktu</string>
     <string name="error_duplicate_listname">Masz już listę o tej nazwie</string>
     <string name="required_to_compute_nutriscore">(Wymagane do obliczenia Nutri-Score)</string>
-    <string name="first_scan_tooltip">You can slide up the card for more details</string>
-    <string name="add_an_allergen">Add an allergen</string>
-    <string name="add_a_list">Add a list</string>
-    <string name="todo">TODO</string>
-    <string name="edit_image">Edit Image</string>
+    <string name="first_scan_tooltip">Możesz przesunąć kartę, aby uzyskać więcej szczegółów</string>
+    <string name="add_an_allergen">Dodaj alergen</string>
+    <string name="add_a_list">Dodaj listę</string>
+    <string name="todo">DO ZROBIENIA</string>
+    <string name="edit_image">Edytuj zdjęcie</string>
     <string name="barcode">Kod kreskowy</string>
+    <string name="error_uploading_photo">W czasie przesyłania nowego zdjęcia wystąpił błąd</string>
 </resources>
