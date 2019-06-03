@@ -73,7 +73,10 @@ public class PhotoReceiverHandler {
                 if (source == EasyImage.ImageSource.CAMERA) {
                     File photoFile = EasyImage.lastlyTakenButCanceledPhoto(mainContext);
                     if (photoFile != null) {
-                        photoFile.delete();
+                       boolean deleted= photoFile.delete();
+                       if(!deleted){
+                           Log.w(PhotoReceiverHandler.class.getSimpleName(),"photo file not deleted "+photoFile.getAbsolutePath());
+                       }
                     }
                 }
             }

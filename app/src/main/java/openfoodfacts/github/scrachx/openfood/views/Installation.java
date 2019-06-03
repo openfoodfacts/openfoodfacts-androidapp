@@ -42,6 +42,7 @@ public class Installation {
         }
     }
 
+    @SuppressWarnings("squid:S2119")
     private static void writeInstallationFile(File installation) throws IOException {
         try(  FileOutputStream out = new FileOutputStream(installation)) {
             String id = UUID.randomUUID().toString();
