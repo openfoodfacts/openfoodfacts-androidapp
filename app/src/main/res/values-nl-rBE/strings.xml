@@ -118,7 +118,7 @@
         <item>Enkelvoudige onverzadigde vetzuren</item>
         <item>Kalium</item>
         <item>Seleen</item>
-        <item>Serum proteins</item>
+        <item>Serumproteïnen</item>
         <item>Silicium</item>
         <item>Zetmeel</item>
         <item>Stearinezuur (18:0)</item>
@@ -614,7 +614,6 @@
     <string name="error_adding_ingredients">Er is iets misgegaan tijdens het proberen ingrediënten voor het product toe te voegen</string>
     <string name="unable_to_extract_ingredients">Kan ingrediënten niet uit afbeelding extraheren</string>
     <string name="error_adding_nutrition_facts">Er is iets fout gegaan bij het toevoegen van voedingsinformatie</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Koolhydraten kunnen niet minder zijn dan de som van suiker en zetmeel</string>
     <string name="choose_nutrient">Kies een voedingsstof</string>
     <string name="error_adding_product_details">Er is iets fout gegaan bij het toevoegen van details</string>
@@ -821,4 +820,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Streepjescode</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

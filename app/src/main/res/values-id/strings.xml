@@ -90,14 +90,14 @@
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
-        <item>Magnesium</item>
+        <item>magnesium</item>
         <item>Maltodekstrin</item>
         <item>Maltose</item>
         <item>Mangan</item>
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molibdenum</item>
-        <item>Monounsaturated fat</item>
+        <item>Lemak tak jenuh Mono</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -111,7 +111,7 @@
         <item>pH</item>
         <item>Fosfor</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>Poly unsaturated fat</item>
         <item>poKaliium</item>
         <item>senium</item>
         <item>Serum proteins</item>
@@ -384,13 +384,13 @@
     <string name="nutrition_calcium">Kalsium</string>
     <string name="nutrition_potassium">poKaliium</string>
     <string name="nutrition_chlore">kolorin</string>
-    <string name="nutrition_magnesium">Magnesium</string>
+    <string name="nutrition_magnesium">magnesium</string>
     <string name="nutrition_taurine">taurin</string>
     <string name="nutrition_monounsaturatedFat">Lemak tak jenuh Mono</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
-    <string name="nutrition_omega3">Omega 3</string>
+    <string name="nutrition_polyunsaturatedFat">Poli tidak jenuh lemak</string>
+    <string name="nutrition_omega3">Omega3</string>
     <string name="nutrition_omega6">Omega 6</string>
-    <string name="nutrition_omega9">Omega 9</string>
+    <string name="nutrition_omega9">Omega9</string>
     <string name="nutrition_sucrose">Sukrosa</string>
     <string name="nutrition_glucose">Glukosa,,</string>
     <string name="nutrition_fructose">Fruktosa</string>
@@ -418,7 +418,7 @@
     <string name="calcium">Kalsium</string>
     <string name="phosphorus">Fosfor</string>
     <string name="iron">Besi</string>
-    <string name="magnesium">Magnesium</string>
+    <string name="magnesium">magnesium</string>
     <string name="zinc">zat</string>
     <string name="copper">Tembaga</string>
     <string name="manganese">Mangan</string>
@@ -610,7 +610,6 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -817,4 +816,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">kode batang</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

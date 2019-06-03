@@ -5,38 +5,38 @@
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d นาทีที่แล้ว</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d ชั่วโมงที่แล้ว</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d วันที่แล้ว</item>
     </plurals>
     <string name="action_settings">การตั้งค่า</string>
-    <string name="action_about">About</string>
+    <string name="action_about">เกี่ยวกับ</string>
     <string name="action_discover">ค้นพบ</string>
-    <string name="contribute">How to contribute</string>
-    <string name="action_find">Find</string>
-    <string name="text_barcode">Type the barcode :</string>
-    <string name="message_in_activity_save_product_offline">Only one photo is compulsory to send a new product.</string>
+    <string name="contribute">วิธีการมีส่วนร่วม</string>
+    <string name="action_find">ค้นหา</string>
+    <string name="text_barcode">พิมพ์เลขบาร์โค้ด:</string>
+    <string name="message_in_activity_save_product_offline">ต้องการรูปภาพอย่างน้อยหนึ่งรูปเพื่อสร้างผลิตภัณฑ์ใหม่</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
-    <string name="no_offline_data">You\'re all done</string>
-    <string name="first_offline">Products added offline will appear here</string>
+    <string name="product_allergen_prompt">ผลิตภัณฑ์นี้ประกอบด้วย:</string>
+    <string name="no_offline_data">เรียบร้อย</string>
+    <string name="first_offline">ผลิตภัณฑ์ที่เก็บออฟไลน์จะปรากฏที่นี่</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>สรุป</item>
         <item>ส่วนผสม</item>
         <item>อาหารการกิน</item>
-        <item>Nutrition Table</item>
+        <item>ฉลากโภชนาการ</item>
         <item>Environment</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>รูปถ่ายผลิตภัณฑ์</item>
+        <item>ผลวิเคราะห์ส่วนประกอบ</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -46,9 +46,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>g</item>
-        <item>mg</item>
-        <item>µg</item>
+        <item>ก.</item>
+        <item>มก.</item>
+        <item>มคก.</item>
         <item>% DV</item>
         <item>IU</item>
     </string-array>
@@ -97,7 +97,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>โมลิบดีนัม</item>
-        <item>Monounsaturated fat</item>
+        <item>ไขมันไม่อิ่มตัวโมโน</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -111,7 +111,7 @@
         <item>พีเอช</item>
         <item>ฟอสฟอรัส</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>ไขมันไม่อิ่มตัวโพลี</item>
         <item>โพแทสเซียม</item>
         <item>ซีลีเนียม</item>
         <item>Serum proteins</item>
@@ -610,7 +610,6 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -817,4 +816,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">บาร์โค้ด</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

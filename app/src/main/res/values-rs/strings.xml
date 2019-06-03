@@ -36,7 +36,7 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Summary</item>
-        <item>Ingredients</item>
+        <item>Sastojci</item>
         <item>Nutrition</item>
         <item>Nutrition Table</item>
         <item>Environment</item>
@@ -146,7 +146,7 @@
     <string-array name="images_array">
         <item>Default</item>
         <item>Nutrition</item>
-        <item>Ingredients</item>
+        <item>Sastojci</item>
     </string-array>
     <!-- Content Description -->
     <string name="bookmark">Bookmark</string>
@@ -196,7 +196,7 @@
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">Barkod</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Lozinka</string>
@@ -328,7 +328,7 @@
     <string name="nutrition_fat_short_name">Fat (g)</string>
     <string name="nutrition_fiber">Dietary fiber</string>
     <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
-    <string name="nutrition_header">Nutrition facts</string>
+    <string name="nutrition_header">Hranljiva vrednost</string>
     <string name="nutrition_no_data_message">No data is available for this product</string>
     <string name="nutrition_per_quantity">For 100g/100ml</string>
     <string name="nutrition_proteins">Proteins</string>
@@ -530,7 +530,7 @@
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Pretraživanje</string>
-    <string name="country_string">Countries where sold</string>
+    <string name="country_string">Државе у којима се продаје</string>
     <string name="store_subtitle">Store</string>
     <string name="packaging_subtitle">Packaging</string>
     <string name="last_seen_string">%1$d %2$s ago</string>
@@ -557,7 +557,7 @@
     <string name="txtOptions">Options</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
-    <string name="by_barcode">Barcode</string>
+    <string name="by_barcode">Barkod</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
@@ -618,7 +618,6 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -647,7 +646,7 @@
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Overview</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="ingredients">Sastojci</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
@@ -824,5 +823,6 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
-    <string name="barcode">Barcode</string>
+    <string name="barcode">Barkod</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

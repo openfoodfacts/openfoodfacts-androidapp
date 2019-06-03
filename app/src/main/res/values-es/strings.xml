@@ -392,9 +392,9 @@
     <string name="nutrition_taurine">Taurina</string>
     <string name="nutrition_monounsaturatedFat">Grasas mono insaturadas</string>
     <string name="nutrition_polyunsaturatedFat">Grasas polisaturadas</string>
-    <string name="nutrition_omega3">Omega 3</string>
-    <string name="nutrition_omega6">Omega 6</string>
-    <string name="nutrition_omega9">Omega 9</string>
+    <string name="nutrition_omega3">Omega-3</string>
+    <string name="nutrition_omega6">Omega-6</string>
+    <string name="nutrition_omega9">Omega-9</string>
     <string name="nutrition_sucrose">Sacarosa</string>
     <string name="nutrition_glucose">Glucosa</string>
     <string name="nutrition_fructose">Fructosa</string>
@@ -614,7 +614,6 @@
     <string name="error_adding_ingredients">Algo salió mal al tratar de agregar los ingredientes del producto</string>
     <string name="unable_to_extract_ingredients">No se pueden extraer los ingredientes de la imagen</string>
     <string name="error_adding_nutrition_facts">Algo salió mal al tratar de agregar la información nutricional del producto</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Los carbohidratos no pueden ser menos que la suma de azúcar y almidón</string>
     <string name="choose_nutrient">Elija un nutriente</string>
     <string name="error_adding_product_details">Algo salió mal al tratar de agregar los detalles del producto</string>
@@ -817,8 +816,9 @@
     <string name="required_to_compute_nutriscore">(Requerido para calcular el Nutri-Score)</string>
     <string name="first_scan_tooltip">Puedes deslizar la tarjeta para más detalles</string>
     <string name="add_an_allergen">Añadir un alérgeno</string>
-    <string name="add_a_list">Add a list</string>
-    <string name="todo">TODO</string>
-    <string name="edit_image">Edit Image</string>
+    <string name="add_a_list">Añadir una lista</string>
+    <string name="todo">POR HACER</string>
+    <string name="edit_image">Editar imagen</string>
     <string name="barcode">Código de barras</string>
+    <string name="error_uploading_photo">Algo salió mal al subir una nueva foto</string>
 </resources>

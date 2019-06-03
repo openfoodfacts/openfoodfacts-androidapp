@@ -622,7 +622,6 @@
     <string name="error_adding_ingredients">Что-то пошло не так при попытке добавления ингредиентов продукта</string>
     <string name="unable_to_extract_ingredients">Не удалось извлечь ингредиенты из изображения</string>
     <string name="error_adding_nutrition_facts">Что-то пошло не так при попытке добавить пищевую ценность продукта</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Углеводы не могут быть меньше суммы сахара и крахмала</string>
     <string name="choose_nutrient">Выберите питательное вещество</string>
     <string name="error_adding_product_details">Что-то пошло не так, когда вы пытались добавить сведения о продукте</string>
@@ -829,4 +828,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Штрих-код</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

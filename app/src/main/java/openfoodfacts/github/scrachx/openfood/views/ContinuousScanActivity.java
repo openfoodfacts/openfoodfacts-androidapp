@@ -83,7 +83,7 @@ import static android.view.View.VISIBLE;
 public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
-    private static HistoryProductDao mHistoryProductDao;
+    private  HistoryProductDao mHistoryProductDao;
     private static final int PEEK_SMALL = 120;
     private static final int PEEK_LARGE = 150;
     @BindView(R.id.fab_status)
@@ -95,7 +95,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     @BindView(R.id.imageForScreenshotGenerationOnly)
     ImageView imageForScreenshotGenerationOnly;
     @BindView(R.id.toggle_flash)
-    ImageView toggleFlashBtn;
+    ImageView toggleFlashView;
     @BindView(R.id.button_more)
     ImageView moreOptions;
     @BindView(R.id.frame_layout)
@@ -244,7 +244,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                             }
-                            new HistoryTask().doInBackground(product);
+                            new HistoryTask(mHistoryProductDao).doInBackground(product);
                             showAllViews();
                             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                             productShownInBottomView();
@@ -661,7 +661,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         settings.setRequestedCameraId(cameraState);
         if (mFlash) {
             barcodeView.setTorchOn();
-            toggleFlashBtn.setImageResource(R.drawable.ic_flash_on_white_24dp);
+            toggleFlashView.setImageResource(R.drawable.ic_flash_on_white_24dp);
         }
         if (mRing) {
             popup.getMenu().findItem(R.id.toggleBeep).setChecked(true);
@@ -741,12 +741,12 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         if (mFlash) {
             barcodeView.setTorchOff();
             mFlash = false;
-            toggleFlashBtn.setImageResource(R.drawable.ic_flash_off_white_24dp);
+            toggleFlashView.setImageResource(R.drawable.ic_flash_off_white_24dp);
             editor.putBoolean("flash", false);
         } else {
             barcodeView.setTorchOn();
             mFlash = true;
-            toggleFlashBtn.setImageResource(R.drawable.ic_flash_on_white_24dp);
+            toggleFlashView.setImageResource(R.drawable.ic_flash_on_white_24dp);
             editor.putBoolean("flash", true);
         }
         editor.apply();
@@ -837,6 +837,13 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     }
 
     private static class HistoryTask extends AsyncTask<Product, Void, Void> {
+
+        private  final HistoryProductDao mHistoryProductDao;
+
+        private HistoryTask(HistoryProductDao mHistoryProductDao) {
+            this.mHistoryProductDao = mHistoryProductDao;
+        }
+
         @Override
         protected Void doInBackground(Product... products) {
             OpenFoodAPIClient.addToHistory(mHistoryProductDao, products[0]);

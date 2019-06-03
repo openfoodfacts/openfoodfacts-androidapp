@@ -10,10 +10,6 @@ buildscript {
     dependencies {
 
 
-
-
-
-
         classpath 'com.android.tools.build:gradle:3.3.2'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -36,6 +32,8 @@ allprojects {
     }
     
         sonarqube { properties { property 'sonar.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*,**/*.xml" } }
+
+    sonarqube { properties { property 'sonar.coverage.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*" } }
 
 }
 

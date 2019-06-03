@@ -97,7 +97,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>钼</item>
-        <item>Monounsaturated fat</item>
+        <item>單不飽和脂肪</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -111,7 +111,7 @@
         <item>pH值</item>
         <item>磷</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>多不飽和脂肪</item>
         <item>钾</item>
         <item>硒</item>
         <item>Serum proteins</item>
@@ -610,7 +610,6 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -817,4 +816,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">条形码</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>
