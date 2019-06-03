@@ -19,6 +19,10 @@ import java.util.Locale;
  * Created by gunhansancar on 07/10/15.
  */
 public class LocaleHelper {
+
+    private LocaleHelper(){
+        //Helper class
+    }
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
     public static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
 
@@ -36,17 +40,14 @@ public class LocaleHelper {
         return getLocale(OFFApplication.getInstance());
     }
 
-
     public static Context setLocale(Locale locale) {
         return setLocale(OFFApplication.getInstance(), locale);
     }
 
-
     public static String getLanguage(Context context) {
         String lang = getLanguageInPreferences(context, Locale.getDefault().getLanguage());
         if (lang.contains("-")) {
-            String langSplit[] = lang.split("-");
-            lang = langSplit[0];
+            lang = lang.split("-")[0];
         }
         return lang;
     }
@@ -65,10 +66,13 @@ public class LocaleHelper {
             .apply();
 
         Locale locale = getLocale(language);
-       return setLocale(context,locale);
+        return setLocale(context, locale);
     }
 
-    public static Context  setLocale(Context context, Locale locale) {
+    public static Context setLocale(Context context, Locale locale) {
+        if (locale == null) {
+            return context;
+        }
         PreferenceManager.getDefaultSharedPreferences(context)
             .edit()
             .putString(SELECTED_LANGUAGE, locale.getLanguage())
@@ -81,13 +85,12 @@ public class LocaleHelper {
         Configuration configuration = resources.getConfiguration();
         if (Build.VERSION.SDK_INT >= 17) {
             configuration.setLocale(locale);
-            context=context.createConfigurationContext(configuration);
+            context = context.createConfigurationContext(configuration);
         } else {
             configuration.locale = locale;
         }
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
         return context;
-
     }
 
     /**

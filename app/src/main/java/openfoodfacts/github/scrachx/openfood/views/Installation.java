@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -12,12 +13,16 @@ import java.util.Random;
 import java.util.UUID;
 
 public class Installation {
-    private static final String INSTALLATION = "INSTALLATION";
+    private static final String KEY_INSTALLATION = "INSTALLATION";
     private static String sID = null;
 
-    public synchronized static String id(Context context) {
+    private Installation(){
+        //Helper class
+    }
+
+    public static synchronized String id(Context context) {
         if (sID == null || sID.isEmpty()) {
-            File installation = new File(context.getFilesDir(), INSTALLATION);
+            File installation = new File(context.getFilesDir(), KEY_INSTALLATION);
             try {
                 if (!installation.exists())
                     writeInstallationFile(installation);
@@ -30,22 +35,22 @@ public class Installation {
     }
 
     private static String readInstallationFile(File installation) throws IOException {
-        RandomAccessFile f = new RandomAccessFile(installation, "r");
-        byte[] bytes = new byte[(int) f.length()];
-        f.readFully(bytes);
-        f.close();
-        return new String(bytes);
+        try(RandomAccessFile f = new RandomAccessFile(installation, "r")) {
+            byte[] bytes = new byte[(int) f.length()];
+            f.readFully(bytes);
+            return new String(bytes);
+        }
     }
 
     private static void writeInstallationFile(File installation) throws IOException {
-        FileOutputStream out = new FileOutputStream(installation);
-        String id = UUID.randomUUID().toString();
-        Random random = new Random();
-        random.setSeed(1000);
-        id = id + random.nextInt();
-        id = getHashedString(id);
-        out.write(id.getBytes());
-        out.close();
+        try(  FileOutputStream out = new FileOutputStream(installation)) {
+            String id = UUID.randomUUID().toString();
+            Random random = new Random();//NO-SONAR ok here
+            random.setSeed(1000);
+            id = id + random.nextInt();
+            id = getHashedString(id);
+            out.write(id.getBytes());
+        }
     }
 
     public static String getHashedString(String s) {
@@ -53,16 +58,15 @@ public class Installation {
             // Create MD5 Hash
             MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
             digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
+            byte[] messageDigest = digest.digest();
 
             // Create Hex String
-            StringBuffer hexString = new StringBuffer();
-            for (int i = 0; i < messageDigest.length; i++)
-                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : messageDigest) hexString.append(Integer.toHexString(0xFF & b));
             return hexString.toString();
 
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            Log.e(Installation.class.getSimpleName(),"getHashedString "+s,e);
         }
         return "";
     }

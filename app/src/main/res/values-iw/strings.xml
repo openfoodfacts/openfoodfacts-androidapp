@@ -622,7 +622,6 @@
     <string name="error_adding_ingredients">משהו השתבש במהלך הניסיון להוסיף רכיבים למוצר</string>
     <string name="unable_to_extract_ingredients">לא ניתן לחלץ רכיבים מהתמונה</string>
     <string name="error_adding_nutrition_facts">משהו השתבש במהלך הניסיון להוסיף עובדות תזונתיות למוצר</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">תכולת הפחמימות לא יכול להיות פחותה מסכום הסוכר והעמילן</string>
     <string name="choose_nutrient">נא לבחור מרכיב תזונתי</string>
     <string name="error_adding_product_details">משהו השתבש במהלך הניסיון להוסיף פרטים למוצר</string>
@@ -829,4 +828,5 @@
     <string name="todo">לביצוע</string>
     <string name="edit_image">עריכת תמונה</string>
     <string name="barcode">ברקוד</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

@@ -114,7 +114,7 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
                 return (State) intent.getExtras().getSerializable("state");
             }
         }
-        return ProductFragment.mState;
+        return ProductFragment.productState;
     }
 
     protected void doChooseOrTakePhotos(String title) {

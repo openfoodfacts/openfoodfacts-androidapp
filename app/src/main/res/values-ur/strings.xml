@@ -18,7 +18,7 @@
         <item quantity="one">1 دن پہلے</item>
         <item quantity="other">%d days ago</item>
     </plurals>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">ترتیبات</string>
     <string name="action_about">کے بارے میں</string>
     <string name="action_discover">انکشاف کریں</string>
     <string name="contribute">کیسے تعاون کریں</string>
@@ -65,68 +65,68 @@
         <item>اریکی ڈونک ایسڈ (20:0)</item>
         <item>اریکی ڈونک ایسڈ/اے اے/اے آراے (20:4 6-n)</item>
         <item>بھینیک ایسڈ (22:0)</item>
-        <item>Bicarbonate</item>
-        <item>Biotin</item>
+        <item>بائی کاربونیٹ</item>
+        <item>بائیوٹن</item>
         <item>بترک ایسڈ (4:0)</item>
-        <item>Caffeine</item>
-        <item>Calcium</item>
+        <item>کیفین</item>
+        <item>کیلشیم</item>
         <item>کپرک ایسڈ (10:0)</item>
         <item>کپراوک ایسڈ (6:0)</item>
         <item>کیپری لک ایسڈ (8:0)</item>
-        <item>Casein</item>
+        <item>کیسین</item>
         <item>سیروٹک ایسڈ (26:0)</item>
-        <item>Chloride</item>
-        <item>Cholesterol</item>
-        <item>Chromium</item>
-        <item>Copper</item>
+        <item>کلورائیڈ</item>
+        <item>کولیسٹرول</item>
+        <item>کرومیم</item>
+        <item>کاپر</item>
         <item>دیہومو-گاما-لائنولینک ایسڈ /ڈی جی ایل اے (20:3 n-6)</item>
         <item>ڈوکوسینوایک ہیگسانک ایسڈ/ڈی ایچ اے (22:6 n-3)</item>
         <item>ایکسانک پینسانک ایسڈ/ای پی اے (20:5 3-n)</item>
         <item>ایلاڈک ایسڈ (18:1 n-9)</item>
         <item>ایروسک ایسڈ (22:1 n-9)</item>
-        <item>Fluoride</item>
-        <item>Fructose</item>
+        <item>فلورائیڈ</item>
+        <item>فرکٹوس</item>
         <item>گاما-لنولینک ایسڈ/جی ایل اے (18:3 n-6)</item>
-        <item>Glucose</item>
+        <item>گلوکوز</item>
         <item>گونڈواک ایسڈ (20:1 n-9)</item>
-        <item>Iodine</item>
-        <item>Iron</item>
-        <item>Lactose</item>
+        <item>آئیوڈین</item>
+        <item>آئرن</item>
+        <item>لیکٹوس</item>
         <item>لارک ایسڈ (12:0)</item>
         <item>لگنوسرک ایسڈ (24:0)</item>
         <item>لائنولک ایسڈ/ایل اے (18:2 n-6)</item>
-        <item>Magnesium</item>
-        <item>Maltodextrins</item>
-        <item>Maltose</item>
-        <item>Manganese</item>
+        <item>میگنیشیم</item>
+        <item>مالٹوڈیکسٹرنس</item>
+        <item>مالٹوس</item>
+        <item>مینگنیز</item>
         <item>میڈ ایسڈ (20:3 n-9)</item>
         <item>ملیسک ایسڈ (30:0)</item>
-        <item>Molybdenum</item>
+        <item>مولبڈینم</item>
         <item>مونونسیچوریٹڈ فیٹ</item>
         <item>مونٹینک ایسڈ (28:0)</item>
         <item>مائی رسٹک ایسڈ (14:0)</item>
         <item>نیروانک ایسڈ (24:1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>نیوکلیوٹائیڈز</item>
         <item>اولک ایسڈ (18:1 n-9)</item>
         <item>اومیگا 3 فیٹی ایسڈز</item>
         <item>اومیگا 6 فیٹی ایسڈز</item>
         <item>اومیگا 9 فیٹی ایسڈز</item>
         <item>پلمیٹک ایسڈ (16:0)</item>
         <item>پینتھوتھنیک ایسڈ/پینتھوتھینیٹ (وٹامن بی 5)</item>
-        <item>pH</item>
-        <item>Phosphorus</item>
+        <item>پی ایچ</item>
+        <item>فاسفورس</item>
         <item>شکر الکوحل (پولیولس)</item>
         <item>پولی انسیچوریٹڈ فیٹ</item>
-        <item>Potassium</item>
-        <item>Selenium</item>
+        <item>پوٹاشیم</item>
+        <item>سلینیم</item>
         <item>سیرم پروٹیز</item>
-        <item>Silica</item>
+        <item>سلیکا</item>
         <item>سٹارچ/نشاستہ</item>
         <item>اسٹیرک ایسڈ (18:0)</item>
-        <item>Sucrose</item>
-        <item>Taurine</item>
-        <item>Trans fat</item>
-        <item>Vitamin A</item>
+        <item>سکروز</item>
+        <item>ٹاورین</item>
+        <item>ٹرانس فیٹ</item>
+        <item>وٹامن اے</item>
         <item>وٹامن بی1 (تھائی من)</item>
         <item>وٹامن بی 12 (کوبلامن)</item>
         <item>وٹامن بی 2 (ریبوفلاون)</item>
@@ -134,10 +134,10 @@
         <item>وٹامن بی 6 (پائیری ڈاکسن)</item>
         <item>وٹامن بی 9 (فولک ایسڈ)</item>
         <item>وٹامن سی (اسکاربک ایسڈ)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
-        <item>Zinc</item>
+        <item>وٹامن ڈی</item>
+        <item>وٹامن ای</item>
+        <item>وٹامن کے</item>
+        <item>زنک</item>
     </string-array>
     <!-- Text units -->
     <string-array name="images_array">
@@ -317,7 +317,7 @@
     <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
-    <string name="nutrition_cholesterol">Cholesterol</string>
+    <string name="nutrition_cholesterol">کولیسٹرول</string>
     <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
     <string name="nutrition_energy">Energy</string>
     <string name="nutrition_energy_short_name">Energy</string>
@@ -340,7 +340,7 @@
     <string name="nutrition_sodium_short_name">Sodium (g)</string>
     <string name="nutrition_sugars">Sugars</string>
     <string name="nutrition_sugars_short_name">Sugars (g)</string>
-    <string name="nutrition_trans_fat">Trans fat</string>
+    <string name="nutrition_trans_fat">ٹرانس فیٹ</string>
     <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
@@ -377,35 +377,35 @@
     <string name="txt_cant_load_search_results">Can\'t load search results</string>
     <string name="something_went_wrong">Sorry, something went wrong…</string>
     <string name="txt_try_again">Try again</string>
-    <string name="nutrition_lactose">Lactose</string>
-    <string name="nutrition_casein">Casein</string>
-    <string name="nutrition_maltodextrins">Maltodextrins</string>
+    <string name="nutrition_lactose">لیکٹوس</string>
+    <string name="nutrition_casein">کیسین</string>
+    <string name="nutrition_maltodextrins">مالٹوڈیکسٹرنس</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="nutrition_nucleotides">نیوکلیوٹائیڈز</string>
     <string name="for_100g">For 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="minerals">Minerals</string>
-    <string name="nutrition_calcium">Calcium</string>
-    <string name="nutrition_potassium">Potassium</string>
+    <string name="nutrition_calcium">کیلشیم</string>
+    <string name="nutrition_potassium">پوٹاشیم</string>
     <string name="nutrition_chlore">Chlorine</string>
-    <string name="nutrition_magnesium">Magnesium</string>
-    <string name="nutrition_taurine">Taurine</string>
+    <string name="nutrition_magnesium">میگنیشیم</string>
+    <string name="nutrition_taurine">ٹاورین</string>
     <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
     <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
-    <string name="nutrition_sucrose">Sucrose</string>
-    <string name="nutrition_glucose">Glucose</string>
-    <string name="nutrition_fructose">Fructose</string>
-    <string name="nutrition_maltose">Maltose</string>
+    <string name="nutrition_sucrose">سکروز</string>
+    <string name="nutrition_glucose">گلوکوز</string>
+    <string name="nutrition_fructose">فرکٹوس</string>
+    <string name="nutrition_maltose">مالٹوس</string>
     <string name="nutrition_alcohol">Alcohol</string>
     <string name="nutrition_vitamins">Vitamins</string>
-    <string name="vitamin_a">Vitamin A</string>
-    <string name="vitamin_d">Vitamin D</string>
-    <string name="vitamin_e">Vitamin E</string>
-    <string name="vitamin_k">Vitamin K</string>
+    <string name="vitamin_a">وٹامن اے</string>
+    <string name="vitamin_d">وٹامن ڈی</string>
+    <string name="vitamin_e">وٹامن ای</string>
+    <string name="vitamin_k">وٹامن کے</string>
     <string name="vitamin_c">Vitamin C</string>
     <string name="vitamin_b1">Vitamin B1</string>
     <string name="vitamin_b2">Vitamin B2</string>
@@ -413,28 +413,28 @@
     <string name="vitamin_b6">Vitamin B6</string>
     <string name="vitamin_b9">Vitamin B9</string>
     <string name="vitamin_b12">Vitamin B12</string>
-    <string name="biotin">Biotin</string>
+    <string name="biotin">بائیوٹن</string>
     <string name="pantothenic_acid">Pantothenic acid</string>
     <string name="nutrition_minerals">Minerals</string>
-    <string name="silica">Silica</string>
-    <string name="bicarbonate">Bicarbonate</string>
-    <string name="potassium">Potassium</string>
-    <string name="chloride">Chloride</string>
-    <string name="calcium">Calcium</string>
-    <string name="phosphorus">Phosphorus</string>
-    <string name="iron">Iron</string>
-    <string name="magnesium">Magnesium</string>
-    <string name="zinc">Zinc</string>
-    <string name="copper">Copper</string>
-    <string name="manganese">Manganese</string>
-    <string name="fluoride">Fluoride</string>
-    <string name="selenium">Selenium</string>
-    <string name="chromium">Chromium</string>
-    <string name="molybdenum">Molybdenum</string>
-    <string name="iodine">Iodine</string>
-    <string name="caffeine">Caffeine</string>
-    <string name="taurine">Taurine</string>
-    <string name="ph">pH</string>
+    <string name="silica">سلیکا</string>
+    <string name="bicarbonate">بائی کاربونیٹ</string>
+    <string name="potassium">پوٹاشیم</string>
+    <string name="chloride">کلورائیڈ</string>
+    <string name="calcium">کیلشیم</string>
+    <string name="phosphorus">فاسفورس</string>
+    <string name="iron">آئرن</string>
+    <string name="magnesium">میگنیشیم</string>
+    <string name="zinc">زنک</string>
+    <string name="copper">کاپر</string>
+    <string name="manganese">مینگنیز</string>
+    <string name="fluoride">فلورائیڈ</string>
+    <string name="selenium">سلینیم</string>
+    <string name="chromium">کرومیم</string>
+    <string name="molybdenum">مولبڈینم</string>
+    <string name="iodine">آئیوڈین</string>
+    <string name="caffeine">کیفین</string>
+    <string name="taurine">ٹاورین</string>
+    <string name="ph">پی ایچ</string>
     <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Cocoa</string>
@@ -470,11 +470,11 @@
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
     <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
     <string name="airplane_mode_active_dialog_negative">Dismiss</string>
-    <string name="airplane_mode_active_dialog_positive">Settings</string>
+    <string name="airplane_mode_active_dialog_positive">ترتیبات</string>
     <string name="device_offline_dialog_title">Network unavailable</string>
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Dismiss</string>
-    <string name="device_offline_dialog_positive">Settings</string>
+    <string name="device_offline_dialog_positive">ترتیبات</string>
     <string name="saving">Saving…</string>
     <string name="scan_first_product">Scan First Product</string>
     <string name="preference_delete_search_history">Successfully deleted history</string>
@@ -615,7 +615,6 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -822,4 +821,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Barcode</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

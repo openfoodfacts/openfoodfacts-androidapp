@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
+import android.util.Log;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
@@ -59,6 +60,7 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 public class ProductRepository implements IProductRepository {
 
     private static final String DEFAULT_LANGUAGE = "en";
+    private static final String TAG= ProductRepository.class.getSimpleName();
 
     private static IProductRepository instance;
 
@@ -266,7 +268,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveLabels",e);
         } finally {
             db.endTransaction();
         }
@@ -299,7 +301,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveAllergens",e);
         } finally {
             db.endTransaction();
         }
@@ -323,7 +325,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveAdditives",e);
         } finally {
             db.endTransaction();
         }
@@ -347,7 +349,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveCountries",e);
         } finally {
             db.endTransaction();
         }
@@ -371,7 +373,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveCategories",e);
         } finally {
             db.endTransaction();
         }
@@ -414,7 +416,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveIngredients",e);
         } finally {
             db.endTransaction();
         }
@@ -664,14 +666,6 @@ public class ProductRepository implements IProductRepository {
         return dao.count() == 0;
     }
 
-    /**
-     * Checks whether table is not empty
-     *
-     * @param dao checks records count of any table
-     */
-    private Boolean tableIsNotEmpty(AbstractDao dao) {
-        return dao.count() != 0;
-    }
 
     /**
      * Checks whether table of additives is empty
