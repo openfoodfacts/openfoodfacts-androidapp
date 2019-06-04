@@ -18,7 +18,7 @@ Open Food Facts is a database of food products with ingredients, allergens, nutr
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-8000+ contributors like you have added 700 000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+25000+ contributors like you have added 868 000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
@@ -33,15 +33,21 @@ Data about food is of public interest and has to be open. The complete database 
 ### Open Food Facts on [F-Droid](https://f-droid.org/)
 ------------------
 
-<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://f-droid.org/badge/get-it-on.png" height="80"></a>
+<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank">Get it on F-Droid</a>
 
 
 ### Screenshots
 ------------------
-
+<!--
 <img src="https://lh3.googleusercontent.com/PYEw9fMLJ5ETPqB2mxeekfVTTNOkJHscs4MRHo546GJzwgIoj3SiJFsZDx4_D-EAUA=w720-h310" height="300"><img src="https://lh3.googleusercontent.com/q7NWz-hc4x39q8N7EW0cz5GZDHN5-F0ttZPHFPvf8-cTG2RImWi_C2J7zCY1Wtc_qZw=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/HXGodB99lZDp3lusX4ZdnkKJxcKiFv5ohfvaiMB7iX-i_QrcvWzUXPxmlSp8nq8SkBc=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/t_AWYLEzr2O4n7KVli8GV_gpT_N1FKhq5EwReUvJjXdJNoPTBTwD-3cKTfZUrkyQAMM=w1280-h636" height="300">
-
-To generate screenshot on local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots`
+-->
+<!--
+<!--
+<img src="https://lh3.googleusercontent.com/lycMGukSk-OOF5oI4Pg8yCVvoKJ7FgTh_jjMTnAPYJoUWelSKxu8wkRAHkCr0sJKYHrc=w1260-h646" alt="Food scores" height="300">
+<img src="https://lh3.googleusercontent.com/Ls9vfN5aMKMXR672ArFc-RPLQBqwPAUbPn5gNwkDA-w36CZ7hNOEZke9WIxqYAZbfA=w1260-h646" alt="Find and compare over 750000 products" height="300">
+-->
+<img src="https://lh3.googleusercontent.com/VBZ5CfBYqVLpcdRF8TqZmcZaPWo4Ieghp6LmTJ51nU0FbobPXr_C-w3wmWJiYNxn6A=w1260-h646" alt="Choose the products that are good for you and for the planet" height="300"><img src="https://lh3.googleusercontent.com/VB-BSrbx2he7s7O1tGVfCLZNCGiWLy5SvuVpkrAP-Ay9PlLHPnXznyZr2w-0M8XzsA=w1260-h646" alt="Compare" height="300">
+<img src="https://lh3.googleusercontent.com/6Xcs8mxG3x724y5vcTo-M2ujC0QoktyiyUNNd5OzUwruLTZroYXnedY36Q1JgvdK5lA=w1260-h646" alt="Additives" height="300"><img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" alt="Join our movement" height="300">
 
 ## Translations
 
@@ -49,6 +55,9 @@ To generate screenshot on local computer, launch the command `gradlew connectedO
 
 You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
 https://translate.openfoodfacts.org
+
+## Screenshot generation
+To generate basic screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots`
 
 ## Bugs and feature requests
 
@@ -63,8 +72,6 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 * Select 'OFF' as the flavor (OBF is Open Beauty Facts, OPF: Open Products Facts, OPFF: Open Pet Food Facts)
 <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 
-## Waffle Throughput Graph
- [![Throughput Graph](https://graphs.waffle.io/openfoodfacts/openfoodfacts-androidapp/throughput.svg)](https://waffle.io/openfoodfacts/openfoodfacts-androidapp/metrics/throughput)
 
 ## Libraries used
 We use the following libraries, and we're not closed to changes where relevant :-) 
@@ -89,6 +96,7 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Pierre Slamich](https://github.com/teolemon)
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
+- [Fred Deniger](https://github.com/deniger)
 - [Full list of the Open Food Facts Android developpers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
 
 ### Who do I talk to?
@@ -110,7 +118,7 @@ If you don't have time to contribute code, you're very welcome to scan new produ
 
 ## Copyright and License
 
-    Copyright 2016-2018 Open Food Facts
+    Copyright 2016-2019 Open Food Facts
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

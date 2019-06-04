@@ -43,7 +43,8 @@
                         android:clickable="true"
                         android:gravity="center"
                         android:padding="@dimen/spacing_small"
-                        android:textColorLink="@color/light_blue_A700" />
+                        android:textColorLink="@color/light_blue_A700"
+                        android:focusable="true" />
 
                     <TextView
                         android:id="@+id/last_editor"
@@ -57,7 +58,8 @@
                         android:clickable="true"
                         android:gravity="center"
                         android:padding="@dimen/spacing_small"
-                        android:textColorLink="@color/light_blue_A700" />
+                        android:textColorLink="@color/light_blue_A700"
+                        android:focusable="true" />
 
                     <TextView
                         android:id="@+id/other_editors"
@@ -71,7 +73,8 @@
                         android:clickable="true"
                         android:gravity="center"
                         android:padding="@dimen/spacing_small"
-                        android:textColorLink="@color/light_blue_A700" />
+                        android:textColorLink="@color/light_blue_A700"
+                        android:focusable="true" />
 
                 </LinearLayout>
 
@@ -97,7 +100,8 @@
                     android:clickable="true"
                     android:gravity="center"
                     android:padding="@dimen/spacing_small"
-                    android:textColorLink="@color/light_blue_A700" />
+                    android:textColorLink="@color/light_blue_A700"
+                    android:focusable="true" />
 
             </android.support.v7.widget.CardView>
         </LinearLayout>

@@ -64,7 +64,7 @@
         <item>Αραχιδονικό οξύ (20:0)</item>
         <item>Αραχιδονικό οξύ / AA / ARA (20: 4 n-6)</item>
         <item>Βεχενικό οξύ (22:0)</item>
-        <item>Bicarbonate</item>
+        <item>Διττανθρακικά</item>
         <item>Βιοτίνη</item>
         <item>Βουτυρικό οξύ (4:0)</item>
         <item>Καφεΐνη</item>
@@ -416,7 +416,7 @@
     <string name="pantothenic_acid">Παντοθενικό οξύ</string>
     <string name="nutrition_minerals">Μεταλλικά στοιχεία</string>
     <string name="silica">Silica</string>
-    <string name="bicarbonate">Bicarbonate</string>
+    <string name="bicarbonate">Διττανθρακικά</string>
     <string name="potassium">Κάλιο</string>
     <string name="chloride">Χλωριούχο</string>
     <string name="calcium">Ασβέστιο</string>
@@ -614,7 +614,6 @@
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Δεν είναι δυνατή η εξαγωγή συστατικών από την εικόνα</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Επιλέξτε ένα θρεπτικό συστατικό</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -821,4 +820,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Barcode</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

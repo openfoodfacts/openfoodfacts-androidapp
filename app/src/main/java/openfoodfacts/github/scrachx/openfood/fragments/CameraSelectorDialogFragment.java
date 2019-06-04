@@ -30,7 +30,6 @@ public class CameraSelectorDialogFragment extends DialogFragment {
         return fragment;
     }
 
-    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         if(mListener == null) {

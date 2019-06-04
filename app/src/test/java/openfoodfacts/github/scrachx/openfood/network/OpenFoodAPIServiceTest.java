@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     private OpenFoodAPIService serviceWrite;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -286,6 +287,6 @@ public class OpenFoodAPIServiceTest implements APIUtils {
         Search search = response.body();
         List<Product> products = search.getProducts();
         assertTrue(products.isEmpty());
-        assertTrue(Integer.valueOf(search.getCount()) == 0);
+        assertEquals(0, (int) Integer.valueOf(search.getCount()));
     }
 }

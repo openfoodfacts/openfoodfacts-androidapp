@@ -2,13 +2,6 @@ language: android
 
 jdk: oraclejdk8
 
-addons:
-  sonarcloud:
-    organization: "openfoodfacts"
-    token:
-      secure: "qdeTCiBRaZgxDPoupMwYInX3x1xM/FlcBMiYrcuPuuTf7zSQFU+qNwXN3jH29h797MKQPGChjWvjvNcSnLn+gq2HaTAfCeUqXcTRpXqLZXgXqdSqgQW7qt9+uAcoE4mSdJSgsSedP+UEcOm0sy6/FAfqjc3gK2vtfc+MitiyV9bZPJWUPBBwNPCsGeBJQKgPR0UxUAcW8+5S764N5QjIn9EblsDmu4ciirzbZfi2t6pMp5M3/oUfIQgOjpaUEA2Z9F05i1/sqRK5FddlgCuHqPI3s7QMxztI1ffgaYu4Myya5Dkai7orS3fOrWkquBTbHDEHaM1H+5thcYu1nlNCjVgNE8hvx/L1WrIw010Qesl3uKUjb9iRM5c0PfdlacIn0geHBiDaRtfMGjAZCLfIImgHgoYdvXdTdvsLd5rQpNtjMXIuyTVe64mkgmlDUTgsHV8gNDu1qLmCtF74qIO6j3Wdh0agX8DffowPy+hJ2O+II5445DQJPXOD08PSrvf1IaaRt7qL42Jkrus0QW3RZ+h3lGu+q/47KpoCQg2ebhMB3rqpdI1QoH+u8On2gYhex13P1jadkMnWyqgwEA8RmSc837mZnW6XY9Kr3VTelStdgCHf4AdAmxKQaF/lLhcM/Sax1Lj12kB4NzMIISMVfWD8weRjICRxfurzHuvKCjg="
-
-
 env:
   global:
     - ABI=x86_64
@@ -65,7 +58,7 @@ jobs:
   - stage: test
     script:
       #launch
-      - ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io
+      - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN; fi
 
   - stage: test
     script:

@@ -610,7 +610,6 @@
     <string name="error_adding_ingredients">试图添加产品成分时出错</string>
     <string name="unable_to_extract_ingredients">无法从图像中提取成分</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -817,4 +816,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">条形码</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

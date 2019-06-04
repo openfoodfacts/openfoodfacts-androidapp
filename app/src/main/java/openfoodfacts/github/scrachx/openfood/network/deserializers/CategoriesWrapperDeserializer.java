@@ -1,31 +1,22 @@
 package openfoodfacts.github.scrachx.openfood.network.deserializers;
 
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-
+import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CategoryResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CategoryResponse;
-
 /**
  * Created by Lobster on 03.03.18.
  */
-
 public class CategoriesWrapperDeserializer extends StdDeserializer<CategoriesWrapper> {
-
-
-    private static final String NAMES_KEY = "name";
-    private static final String WIKIDATA_KEY = "wikidata";
 
 
     public CategoriesWrapperDeserializer() {
@@ -41,31 +32,19 @@ public class CategoriesWrapperDeserializer extends StdDeserializer<CategoriesWra
 
         while (mainNodeIterator.hasNext()) {
             Map.Entry<String, JsonNode> subNode = mainNodeIterator.next();
-            JsonNode namesNode = subNode.getValue().get(NAMES_KEY);
-            Boolean isWikiNodePresent = subNode.getValue().has(WIKIDATA_KEY);
-
+            JsonNode namesNode = subNode.getValue().get(DeserializerHelper.NAMES_KEY);
             if (namesNode != null) {
-                Map<String, String> names = new HashMap<>();  /* Entry<Language Code, Product Name> */
-                Iterator<Map.Entry<String, JsonNode>> nameNodeIterator = namesNode.fields();
-                while (nameNodeIterator.hasNext()) {
-                    Map.Entry<String, JsonNode> nameNode = nameNodeIterator.next();
-                    String name = nameNode.getValue().asText();
-                    names.put(nameNode.getKey(), name);
-
-                }
-
-                if (isWikiNodePresent) {
-                    categories.add(new CategoryResponse(subNode.getKey(), names, subNode.getValue().get(WIKIDATA_KEY).toString()));
+                Map<String, String> names = DeserializerHelper.extractNames(namesNode);
+                if (subNode.getValue().has(DeserializerHelper.WIKIDATA_KEY)) {
+                    categories.add(new CategoryResponse(subNode.getKey(), names, subNode.getValue().get(DeserializerHelper.WIKIDATA_KEY).toString()));
                 } else {
                     categories.add(new CategoryResponse(subNode.getKey(), names));
                 }
-
             }
         }
 
         CategoriesWrapper wrapper = new CategoriesWrapper();
         wrapper.setCategories(categories);
-
         return wrapper;
     }
 }

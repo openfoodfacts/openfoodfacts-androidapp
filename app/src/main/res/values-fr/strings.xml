@@ -614,7 +614,6 @@
     <string name="error_adding_ingredients">Une erreur s\'est produite lors de l\'ajout des ingrédients du produit</string>
     <string name="unable_to_extract_ingredients">Impossible d\'extraire les ingrédients de l\'image</string>
     <string name="error_adding_nutrition_facts">Une erreur s\'est produite lors de la tentative d\'ajout de données nutritionnelles sur le produit</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Les glucides ne peuvent pas être inférieurs à la somme du sucre et de l\'amidon</string>
     <string name="choose_nutrient">Choisir un nutriment</string>
     <string name="error_adding_product_details">Une erreur s\'est produite lors de la tentative d\'ajout des détails du produit</string>
@@ -821,4 +820,5 @@
     <string name="todo">À FAIRE</string>
     <string name="edit_image">Modifier l\'image</string>
     <string name="barcode">Code barre</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

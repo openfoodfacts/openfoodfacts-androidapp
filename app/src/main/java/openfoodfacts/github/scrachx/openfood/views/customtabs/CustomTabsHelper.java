@@ -51,12 +51,6 @@ public class CustomTabsHelper {
     private CustomTabsHelper() {
     }
 
-    public static void addKeepAliveExtra(Context context, Intent intent) {
-        Intent keepAliveIntent = new Intent().setClassName(
-                context.getPackageName(), KeepAliveService.class.getCanonicalName());
-        intent.putExtra(EXTRA_CUSTOM_TABS_KEEP_ALIVE, keepAliveIntent);
-    }
-
     /**
      * Create a custom tabs intent configured
      * @param context to fetch drawables, colors...

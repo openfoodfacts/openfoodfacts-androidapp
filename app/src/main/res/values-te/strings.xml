@@ -101,7 +101,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molybdenum</item>
-        <item>Monounsaturated fat</item>
+        <item>Mono unsaturated fat</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -115,7 +115,7 @@
         <item>pH</item>
         <item>Phosphorus</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>Poly unsaturated fat</item>
         <item>Potassium</item>
         <item>Selenium</item>
         <item>Serum proteins</item>
@@ -614,7 +614,6 @@
     <string name="error_adding_ingredients">ఉత్పత్తి పదార్ధాలను జోడించడానికి ప్రయత్నిస్తున్నప్పుడు ఏదో తప్పు జరిగింది</string>
     <string name="unable_to_extract_ingredients">చిత్రం నుండి పదార్ధాలను సేకరించడం సాధ్యం కాదు</string>
     <string name="error_adding_nutrition_facts">ఉత్పత్తి పోషణ వాస్తవాలను జోడించడానికి ప్రయత్నిస్తున్నప్పుడు ఏదో తప్పు జరిగింది</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">ఉత్పత్తి వివరాలను జోడించడానికి ప్రయత్నిస్తున్నప్పుడు ఏదో తప్పు జరిగింది</string>
@@ -821,4 +820,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Barcode</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>
