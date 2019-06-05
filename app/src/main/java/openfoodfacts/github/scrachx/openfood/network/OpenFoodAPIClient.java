@@ -53,6 +53,7 @@ import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.P
 
 public class OpenFoodAPIClient {
     public static final String TEXT_PLAIN = "text/plain";
+    public static final String USER_ID = "user_id";
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
     private OfflineUploadingTask task = new OfflineUploadingTask();
@@ -361,37 +362,6 @@ public class OpenFoodAPIClient {
         });
     }
 
-    /**
-     * This method is used to upload products.
-     * Conditional statements in this method ensures that data which is being sent on server is correct
-     * and if the product is already present with more information then the server doesn't assume to delete that
-     * and write new product's data over that.
-     */
-    public void post(final Context activity, final SendProduct product, final OnProductSentCallback productSentCallback) {
-        ProgressDialog dialog = new ProgressDialog(activity, ProgressDialog.STYLE_SPINNER);
-        dialog.setIndeterminate(true);
-        dialog.setMessage(activity.getString(R.string.toastSending));
-
-        if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
-            apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
-        } else if (product.getName().equals("") && product.getBrands().equals("")) {
-            apiService
-                .saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
-        } else if (product.getName().equals("") && product.getQuantity() == null) {
-            apiService
-                .saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
-        } else if (product.getBrands().equals("") && product.getQuantity() == null) {
-            apiService
-                .saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
-                .enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
-        } else {
-            apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
-                .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(createProductCallBack(activity, product, productSentCallback, dialog));
-        }
-    }
 
     private Callback<State> createProductCallBack(Context activity, SendProduct product, OnProductSentCallback productSentCallback, Dialog dialog) {
         return new Callback<State>() {
@@ -414,7 +384,7 @@ public class OpenFoodAPIClient {
     }
 
     public void postImg(final Context context, final ProductImage image, boolean setAsDefault, ImageUploadListener imageUploadListener) {
-        apiService.saveImage(getUploadableMap(image, context))
+        apiService.saveImage(getUploadableMap(image))
             .enqueue(new Callback<JsonNode>() {
                 @Override
                 public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
@@ -449,6 +419,7 @@ public class OpenFoodAPIClient {
                     Map<String, String> queryMap = new HashMap<>();
                     queryMap.put("imgid", body.get("image").get("imgid").asText());
                     queryMap.put("id", body.get("imagefield").asText());
+                    addUserInfo(queryMap);
                     apiService.editImageSingle(image.getBarcode(), queryMap)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new SingleObserver<JsonNode>() {
@@ -489,7 +460,7 @@ public class OpenFoodAPIClient {
             });
     }
 
-    private Map<String, RequestBody> getUploadableMap(ProductImage image, Context context) {
+    private Map<String, RequestBody> getUploadableMap(ProductImage image) {
         final String lang = image.getLanguage();
 
         Map<String, RequestBody> imgMap = new HashMap<>();
@@ -509,21 +480,8 @@ public class OpenFoodAPIClient {
         }
 
         // Attribute the upload to the connected user
-        final SharedPreferences settings = context.getSharedPreferences("login", 0);
-        fillWithUserLoginInfo(imgMap, settings);
+        fillWithUserLoginInfo(imgMap);
         return imgMap;
-    }
-
-    public static String fillWithUserLoginInfo(Map<String, RequestBody> imgMap, SharedPreferences settings) {
-        final String login = settings.getString("user", "");
-        final String password = settings.getString("pass", "");
-
-        if (!login.isEmpty() && !password.isEmpty()) {
-            imgMap.put("user_id", RequestBody.create(MediaType.parse(TEXT_PLAIN), login));
-            imgMap.put("password", RequestBody.create(MediaType.parse(TEXT_PLAIN), password));
-        }
-        imgMap.put("comment", RequestBody.create(MediaType.parse(TEXT_PLAIN), getCommentToUpload(login)));
-        return login;
     }
 
     public interface OnProductsCallback {
@@ -641,7 +599,7 @@ public class OpenFoodAPIClient {
                 ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
                     uploadProduct.getProductField(), imageFile);
 
-                apiService.saveImage(getUploadableMap(productImage, context[0]))
+                apiService.saveImage(getUploadableMap(productImage))
                     .enqueue(new Callback<JsonNode>() {
                         @Override
                         public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
@@ -703,7 +661,30 @@ public class OpenFoodAPIClient {
         void onEditResponse(boolean value, String response);
     }
 
+    public static Map<String, String> addUserInfo(Map<String, String> imgMap) {
+        final SharedPreferences settings = OFFApplication.getInstance().getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
+        imgMap.put("comment", OpenFoodAPIClient.getCommentToUpload(login));
+        if (StringUtils.isNotBlank(login)) {
+            imgMap.put(USER_ID, login);
+        }
+        final String password = settings.getString("pass", "");
+        if (StringUtils.isNotBlank(password)) {
+            imgMap.put("password", password);
+        }
+        return imgMap;
+    }
+
+    public static String fillWithUserLoginInfo(Map<String, RequestBody> imgMap) {
+        Map<String, String> values = addUserInfo(new HashMap<>());
+        for (Map.Entry<String, String> entry : values.entrySet()) {
+            imgMap.put(entry.getKey(), RequestBody.create(MediaType.parse(TEXT_PLAIN), entry.getValue()));
+        }
+        return values.get(USER_ID);
+    }
+
     public void editImage(String code, Map<String, String> imgMap, OnEditImageCallback onEditImageCallback) {
+        addUserInfo(imgMap);
         apiService.editImages(code, imgMap).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

@@ -586,8 +586,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     private String fillWithUserLoginInfo(Map<String, RequestBody> imgMap) {
-        final SharedPreferences settings = activity.getBaseContext().getSharedPreferences("login", 0);
-        return OpenFoodAPIClient.fillWithUserLoginInfo(imgMap,settings);
+        return OpenFoodAPIClient.fillWithUserLoginInfo(imgMap);
     }
 
     /**

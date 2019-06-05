@@ -6,6 +6,7 @@ import android.graphics.RectF;
 import android.util.Log;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
+import openfoodfacts.github.scrachx.openfood.utils.NumberParserUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
@@ -246,40 +247,17 @@ public class ImageTransformation {
      * @return the angle in degree from the map.
      */
     private static int getImageRotation(Map<String, ?> imgDetails) {
-        int rotation = 0;
-        String rotationAsString = (String) imgDetails.get(ANGLE);
-        if (rotationAsString != null) {
-            try {
-                rotation = Integer.parseInt(rotationAsString);
-            } catch (NumberFormatException e) {
-                Log.e(ImageKeyHelper.class.getSimpleName(), "can parse rotate info", e);
-            }
-        }
-        return rotation;
+        return NumberParserUtils.getAsInt(imgDetails, ANGLE, 0);
     }
 
     private static RectF getImageCropRect(Map<String, ?> imgDetails) {
-        String x1AsString = (String) imgDetails.get(LEFT);
-        String x2AsString = (String) imgDetails.get(RIGHT);
-        String y1AsString = (String) imgDetails.get(TOP);
-        String y2AsString = (String) imgDetails.get(BOTTOM);
-        try {
-            if (x1AsString != null && x2AsString != null && y1AsString != null && y2AsString != null) {
-                float x1 = getAsFloat(x1AsString);
-                float x2 = getAsFloat(x2AsString);
-                float y1 = getAsFloat(y1AsString);
-                float y2 = getAsFloat(y2AsString);
-                if (x2 > x1 && y2 > y1) {
-                    return new RectF(x1, y1, x2, y2);
-                }
-            }
-        } catch (Exception e) {
-            Log.e(ImageKeyHelper.class.getSimpleName(), "can parse crop  info", e);
+        float x1 = NumberParserUtils.getAsFloat(imgDetails, LEFT, Float.NaN);
+        float x2 = NumberParserUtils.getAsFloat(imgDetails, RIGHT, Float.NaN);
+        float y1 = NumberParserUtils.getAsFloat(imgDetails, TOP, Float.NaN);
+        float y2 = NumberParserUtils.getAsFloat(imgDetails, BOTTOM, Float.NaN);
+        if (!Float.isNaN(x1) && !Float.isNaN(x2) && !Float.isNaN(y1) && !Float.isNaN(y2) && x2 > x1 && y2 > y1) {
+            return new RectF(x1, y1, x2, y2);
         }
         return null;
-    }
-
-    private static float getAsFloat(String valueAsString) {
-        return (float) Double.parseDouble(valueAsString);
     }
 }
