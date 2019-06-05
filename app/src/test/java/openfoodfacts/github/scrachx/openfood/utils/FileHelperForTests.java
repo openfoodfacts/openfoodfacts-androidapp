@@ -1,14 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.Charset;
 
-public final class FileHelper {
-
+public final class FileHelperForTests {
     public static String readTextFileFromResources(String filepath, ClassLoader classLoader) throws IOException {
         InputStream is = null;
         BufferedReader reader = null;

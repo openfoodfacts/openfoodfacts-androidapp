@@ -38,10 +38,12 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -300,7 +302,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         }
                     });
                 Picasso.with(getContext())
-                    .load("file://" + productDetails.get("image_ingredients"))
+                    .load(FileUtils.LOCALE_FILE_SCHEME + productDetails.get("image_ingredients"))
                     .error(R.drawable.placeholder_thumb)
                     .into(imageLocal, new Callback() {
                         @Override
@@ -308,7 +310,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                             imageProgressLocal.setVisibility(View.GONE);
                             // Add option to zoom image.
                             imageLocal.setOnClickListener(v -> {
-                                showFullscreenView("file://" + productDetails.get("image_ingredients"), imageLocal);
+                                showFullscreenView(FileUtils.LOCALE_FILE_SCHEME + productDetails.get("image_ingredients"), imageLocal);
                             });
                         }
 
@@ -440,7 +442,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         if (!imageFrontUploaded && imageFrontFilePath != null && !imageFrontFilePath.isEmpty()) {
             // front image is not yet uploaded.
             Map<String, RequestBody> imgMap = createRequestBodyMap(code, productDetails, ProductImageField.FRONT);
-            RequestBody image = OpenFoodAPIClient.createImageRequest(new File(imageFrontFilePath));
+            RequestBody image = ProductImage.createImageRequest(new File(imageFrontFilePath));
             imgMap.put("imgupload_front\"; filename=\"front_" + productDetails.get("lang") + ".png\"", image);
 
             // Attribute the upload to the connected user
@@ -522,7 +524,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         if (!imageIngredientsUploaded && imageIngredientsFilePath != null && !imageIngredientsFilePath.isEmpty()) {
             // ingredients image is not yet uploaded.
             Map<String, RequestBody> imgMap = createRequestBodyMap(code, productDetails, ProductImageField.INGREDIENTS);
-            RequestBody image = OpenFoodAPIClient.createImageRequest(new File(imageIngredientsFilePath));
+            RequestBody image = ProductImage.createImageRequest(new File(imageIngredientsFilePath));
             imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + productDetails.get("lang") + ".png\"", image);
 
             // Attribute the upload to the connected user
@@ -602,7 +604,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             Map<String, RequestBody> imgMap = new HashMap<>();
             RequestBody barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
             RequestBody imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), ProductImageField.NUTRITION.toString() + '_' + productDetails.get("lang"));
-            RequestBody image = OpenFoodAPIClient.createImageRequest(photoFile);
+            RequestBody image = ProductImage.createImageRequest(photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + productDetails.get("lang") + ".png\"", image);

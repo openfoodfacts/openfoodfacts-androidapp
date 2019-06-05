@@ -5,13 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
@@ -33,15 +31,14 @@ import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
@@ -49,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
@@ -130,7 +128,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler=new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(this);
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
@@ -200,8 +198,6 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             sugars = nutrientLevels.getSugars();
             salt = nutrientLevels.getSalt();
         }
-
-
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
             nutrientLevelsCardView.setVisibility(View.GONE);
@@ -319,7 +315,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         barcode = product.getCode();
         List<NutrimentItem> nutrimentItems = new ArrayList<>();
 
-        final boolean inVolume= ProductUtils.isPerServingInLiter(product);
+        final boolean inVolume = ProductUtils.isPerServingInLiter(product);
         textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
         if (isNotBlank(product.getServingSize())) {
             mTextPerPortion.setText(getString(R.string.nutriment_serving_size) + " " + product.getServingSize());
@@ -351,7 +347,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_nutrition())) {
             addPhotoLabel.setVisibility(View.GONE);
             mUrlImage = mSendProduct.getImgupload_nutrition();
-            Picasso.with(getContext()).load("file://" + mUrlImage).config(Bitmap.Config.RGB_565).into(mImageNutrition);
+            Picasso.with(getContext()).load(FileUtils.LOCALE_FILE_SCHEME + mUrlImage).config(Bitmap.Config.RGB_565).into(mImageNutrition);
         }
 
         if (nutriments == null) {
@@ -483,18 +479,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @OnClick(R.id.imageViewNutrition)
     public void openFullScreen(View v) {
         if (mUrlImage != null) {
-            Intent intent = new Intent(v.getContext(), FullScreenImage.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("imageurl", mUrlImage);
-            intent.putExtras(bundle);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(getActivity(), mImageNutrition,
-                        getActivity().getString(R.string.product_transition));
-                startActivity(intent, options.toBundle());
-            } else {
-                startActivity(intent);
-            }
+            FullScreenActivityOpener.openForUrl(this, product, NUTRITION, mUrlImage, mImageNutrition);
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
@@ -567,9 +552,14 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        photoReceiverHandler.onActivityResult(this,requestCode,resultCode,data);
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
         if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == RESULT_OK && isUserLoggedIn()) {
-                startEditProduct();
+            startEditProduct();
+        }
+        if (FullScreenImage.isImageModified(requestCode, resultCode)) {
+            if (getActivity() instanceof ProductActivity) {
+                ((ProductActivity) getActivity()).onRefresh();
+            }
         }
     }
 

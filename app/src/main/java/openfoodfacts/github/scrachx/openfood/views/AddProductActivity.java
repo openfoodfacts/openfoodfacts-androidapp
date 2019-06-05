@@ -38,9 +38,11 @@ import openfoodfacts.github.scrachx.openfood.fragments.AddProductIngredientsFrag
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductNutritionFactsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductOverviewFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductPhotosFragment;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import org.apache.commons.lang3.StringUtils;
@@ -397,7 +399,7 @@ public class AddProductActivity extends AppCompatActivity {
                         }
                     });
                 Picasso.with(this)
-                    .load("file://" + imagesFilePath[1])
+                    .load(FileUtils.LOCALE_FILE_SCHEME + imagesFilePath[1])
                     .error(R.drawable.placeholder_thumb)
                     .into(imageLocal, new Callback() {
                         @Override
@@ -405,7 +407,7 @@ public class AddProductActivity extends AppCompatActivity {
                             imageProgressLocal.setVisibility(View.GONE);
                             // Add option to zoom image.
                             imageLocal.setOnClickListener(v -> {
-                                showFullscreen("file://" + imagesFilePath[1], imageLocal);
+                                showFullscreen(FileUtils.LOCALE_FILE_SCHEME + imagesFilePath[1], imageLocal);
                             });
                         }
 
@@ -530,7 +532,7 @@ public class AddProductActivity extends AppCompatActivity {
             Map<String, RequestBody> imgMap = new HashMap<>();
             RequestBody barcode = createTextPlain(code);
             RequestBody imageField = createTextPlain(ProductImageField.FRONT.toString() + '_' + getProductLanguageForEdition());
-            RequestBody image =OpenFoodAPIClient.createImageRequest(photoFile);
+            RequestBody image = ProductImage.createImageRequest(photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
             imgMap.put("imgupload_front\"; filename=\"front_" + getProductLanguageForEdition() + ".png\"", image);
@@ -616,7 +618,7 @@ public class AddProductActivity extends AppCompatActivity {
             // ingredients image is not yet uploaded.
             File photoFile = new File(imagesFilePath[1]);
             Map<String, RequestBody> imgMap = createRequestBodyMap(code, ProductImageField.INGREDIENTS);
-            RequestBody image = OpenFoodAPIClient.createImageRequest(photoFile);
+            RequestBody image = ProductImage.createImageRequest(photoFile);
             imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + getProductLanguageForEdition() + ".png\"", image);
 
             // Attribute the upload to the connected user
@@ -716,7 +718,7 @@ public class AddProductActivity extends AppCompatActivity {
             // nutrition facts image is not yet uploaded.
             File photoFile = new File(imagesFilePath[2]);
             Map<String, RequestBody> imgMap = createRequestBodyMap(code, ProductImageField.NUTRITION);
-            RequestBody image = OpenFoodAPIClient.createImageRequest( photoFile);
+            RequestBody image = ProductImage.createImageRequest( photoFile);
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + getProductLanguageForEdition() + ".png\"", image);
 
             // Attribute the upload to the connected user

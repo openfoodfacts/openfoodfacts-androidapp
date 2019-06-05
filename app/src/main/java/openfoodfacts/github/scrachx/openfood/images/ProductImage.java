@@ -1,12 +1,13 @@
-package openfoodfacts.github.scrachx.openfood.models;
-
-import java.io.File;
+package openfoodfacts.github.scrachx.openfood.images;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
+import java.io.File;
 
 public class ProductImage {
 
@@ -25,34 +26,40 @@ public class ProductImage {
     private String filePath;
 
     private String barcode;
+    private String language;
 
     private ProductImageField imageField;
 
     public ProductImage(String code, ProductImageField field, File image) {
+        this(code,field,image, LocaleHelper.getLanguage(OFFApplication.getInstance()));
+
+    }
+    public ProductImage(String code, ProductImageField field, File image,String language) {
         this.code = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
-        this.field = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), field.toString() + '_' + LocaleHelper.getLanguage(OFFApplication.getInstance()));
+        this.language=language;
+        this.field = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), field.toString() + '_' + language);
 
         switch (field) {
             case FRONT:
-                this.imguploadFront = OpenFoodAPIClient.createImageRequest(image);
+                this.imguploadFront = createImageRequest(image);
                 this.imguploadIngredients = null;
                 this.imguploadNutrition = null;
                 this.imguploadOther = null;
                 break;
             case INGREDIENTS:
-                this.imguploadIngredients = OpenFoodAPIClient.createImageRequest(image);
+                this.imguploadIngredients = createImageRequest(image);
                 this.imguploadFront = null;
                 this.imguploadNutrition = null;
                 this.imguploadOther = null;
                 break;
             case NUTRITION:
-                this.imguploadNutrition = OpenFoodAPIClient.createImageRequest(image);
+                this.imguploadNutrition = createImageRequest(image);
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;
                 this.imguploadOther = null;
                 break;
             case OTHER:
-                this.imguploadOther = OpenFoodAPIClient.createImageRequest(image);
+                this.imguploadOther = createImageRequest(image);
                 this.imguploadNutrition = null;
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;
@@ -67,6 +74,14 @@ public class ProductImage {
 
         barcode = code;
         imageField = field;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public static RequestBody createImageRequest(File image) {
+        return RequestBody.create(MediaType.parse("image/*"), image);
     }
 
     public RequestBody getCode() {

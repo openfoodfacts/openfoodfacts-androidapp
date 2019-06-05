@@ -24,12 +24,12 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import org.apache.commons.lang3.StringUtils;
@@ -296,7 +296,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (productDetails != null) {
             if (productDetails.get("image_nutrition_facts") != null) {
                 imagePath = productDetails.get("image_nutrition_facts");
-                final String path = "file://" + imagePath;
+                final String path = FileUtils.LOCALE_FILE_SCHEME + imagePath;
                 imageProgress.setVisibility(View.VISIBLE);
                 loadNutritionsImage(path);
             }
