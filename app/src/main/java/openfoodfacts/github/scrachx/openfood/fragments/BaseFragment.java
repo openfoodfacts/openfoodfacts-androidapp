@@ -13,9 +13,13 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import butterknife.ButterKnife;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import java.io.File;
+
+import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
@@ -24,8 +28,6 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshView;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.EasyImage;
-
-import java.io.File;
 
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;

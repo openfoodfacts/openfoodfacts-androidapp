@@ -7,15 +7,17 @@ import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import java.io.File;
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
-
-import java.io.File;
-import java.util.List;
 
 public class PhotoReceiverHandler {
     private final PhotoReceiver photoReceiver;

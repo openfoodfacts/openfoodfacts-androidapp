@@ -17,11 +17,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.*;
-import butterknife.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.File;
+import java.net.URI;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
@@ -30,13 +61,13 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.utils.*;
+import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
+import openfoodfacts.github.scrachx.openfood.utils.QuantityParserUtil;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.ValueState;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import org.apache.commons.lang3.StringUtils;
-
-import java.io.File;
-import java.net.URI;
-import java.util.*;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 
