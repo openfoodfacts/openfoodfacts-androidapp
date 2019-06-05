@@ -9,10 +9,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.text.StringEscapeUtils;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -332,7 +329,7 @@ public class Product implements Serializable {
                 return new ArrayList<>(imagesByLocale.keySet());
             }
         }
-        return null;
+        return Collections.emptyList();
     }
 
     public Map<String, ?> getImageDetails(String imageKey) {

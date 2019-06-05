@@ -288,6 +288,9 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
                         stopRefresh();
                     }
                 });
+        }else{
+            mPhotoView.setImageDrawable(null);
+            stopRefresh();
         }
     }
 
