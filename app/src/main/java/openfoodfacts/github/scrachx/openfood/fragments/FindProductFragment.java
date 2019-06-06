@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,9 +52,8 @@ public class FindProductFragment extends NavigationBaseFragment {
                 searchBarcode(barCode);
             }
         }
-        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
+        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
-
 
     @OnClick(R.id.buttonBarcode)
     protected void onSearchBarcodeProduct() {
@@ -95,13 +95,10 @@ public class FindProductFragment extends NavigationBaseFragment {
     }
 
     public void onResume() {
-
         super.onResume();
-
-        try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.search_by_barcode_drawer));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        final ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setTitle(getString(R.string.search_by_barcode_drawer));
         }
     }
 

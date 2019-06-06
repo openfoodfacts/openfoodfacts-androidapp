@@ -519,26 +519,20 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be
-        accurate, and detection might not be 100% accurate, so please double-check by yourself!
-    </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="from_gallery">From gallery</string>
     <string name="product_sent">Product sent successfully</string>
     <string name="action_edit_product">Edit product</string>
     <string name="title_info_dialog">How does it work?</string>
-    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will
-        appear here, and you\'ll be able to send them using the button below.
-    </string>
+    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
     <string name="permission_title">Permission information</string>
     <string name="permission_denied">Please activate permission in the settings</string>
     <string name="permission_storage">Storage permission is needed to take or select photos</string>
     <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
-    <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate your internet connection.
-    </string>
+    <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate your internet connection.</string>
     <string name="msg_input_empty">Please fill the fields first.</string>
-    <string name="new_offline_info">Please take a photo of the product, ingredients, nutrition facts table and any other information on the label. Thank you!
-    </string>
+    <string name="new_offline_info">Please take a photo of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
 
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
@@ -601,7 +595,7 @@
     <string name="nutrition_sugars_short_name">Sugars (g)</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
-    <string name="nutriment_serving_size">Per portion :</string>
+    <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
     <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
@@ -611,14 +605,14 @@
 
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an Open Food Facts account to keep your contributions</string>
-    <string name="textCarbonFootprint">Carbon footprint / CO2 emissions:</string>
+    <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="txtDialogPowerMode">Quick view</string>
     <string name="txtSeeMore">See more</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Search a product</string>
-    <string name="number_of_results">Number of results:</string>
+    <string name="number_of_results">Number of results: </string>
     <string name="brand">Brand :</string>
-    <string name="number_of_products">Number of products:</string>
+    <string name="number_of_products">Number of products: </string>
     <string name="txt_no_results">No results found</string>
     <string name="txt_extend_search">Try broadening your search or add the product</string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
@@ -800,8 +794,8 @@
     <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
     <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
-    <string name="description">Description:</string>
-    <string name="title">Title:</string>
+    <string name="description">Description: </string>
+    <string name="title">Title: </string>
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
     <string name="swipe_down">Swipe down</string>
@@ -877,12 +871,11 @@
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Products to be completed</string>
-    <string name="modified_history">Product added on %1$s at %2$s by %3$s. Last edit of product page on %4$s at %5$s by %6$s. Product page also edited by %7$s
-    </string>
+    <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
     <string name="offline_notification_title">Offline contributions you need to send</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by</string>
-    <string name="other_editors">Product page also edited by</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+    <string name="other_editors">Product page also edited by </string>
     <string name="contribution_tab">Contributions</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
@@ -916,7 +909,7 @@
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
     <string name="hint_product_URL">Link of the official page of the product</string>
-    <string name="product_language">Product language :</string>
+    <string name="product_language">Product language : </string>
     <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Official website</string>
     <string name="scan_QR_code">Scan QR Code for product website</string>
@@ -927,8 +920,8 @@
     <string name="choose_mine">Choose mine</string>
     <string name="keep_previous_version">Keep previous version</string>
     <string name="product_name_overwrite">Product name overwrite</string>
-    <string name="yours">Yours:</string>
-    <string name="currently_on">Currently on %s:</string>
+    <string name="yours">Yours: </string>
+    <string name="currently_on">Currently on %s: </string>
     <string name="quantity_overwrite">Quantity overwrite</string>
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
@@ -946,17 +939,13 @@
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient,
-        surround allergens with _
-    </string>
+    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
     <string name="traces">Traces</string>
-    <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk,
-        Gluten, Nuts
-    </string>
+    <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="front_picture">Front Picture</string>
@@ -1025,12 +1014,8 @@
     <string name="some_people">Some people\n(over 5%)</string>
     <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
     <string name="risk_of_exposure">Risk of exposure</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of
-        consuming too much %1$s.
-    </string>
-    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too
-        much %1$s.
-    </string>
+    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
+    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
@@ -1046,17 +1031,11 @@
     <string name="edit_diet_description">Description</string>
     <string name="edit_diet_enabled_disabled">Enabled/Disabled</string>
     <string name="edit_diet_authorised_ingredients">Authorized ingredients</string>
-    <string name="edit_diet_hint_ingredient_authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can
-        complete this list later.
-    </string>
+    <string name="edit_diet_hint_ingredient_authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
     <string name="edit_diet_so_so_ingredients">So so ingredients</string>
-    <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this
-        list later.
-    </string>
+    <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
     <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar…
-        You can complete this list later.
-    </string>
+    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
@@ -1068,10 +1047,10 @@
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android app</string>
     <string name="version">Version</string>
-    <string name="txtOtherInfo">Additional information:</string>
-    <string name="txtConservationCond">Conservation conditions:</string>
-    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle:</string>
-    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard:</string>
+    <string name="txtOtherInfo">Additional information: </string>
+    <string name="txtConservationCond">Conservation conditions: </string>
+    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
+    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
     <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
     <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
     <string name="conservationCond">Conservation Conditions</string>
@@ -1092,7 +1071,7 @@
     <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
-
+  
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
@@ -1106,13 +1085,9 @@
     <string name="txt_discard">Discard</string>
     <string name="txt_save">Save</string>
     <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on "I'm
-        eating this".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.
-    </string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of
-        the product page.
-    </string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on "I'm eating this".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_i_m_eating_this">I\'m eating this</string>
     <string name="compare_product_prompt">Compare this product</string>
     <string name="search_history_pref_title">Delete local search history</string>
@@ -1121,9 +1096,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
     <string name="list_text">Added in:\u0020</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.
-    </string>
-    <string name="empty"/>
+    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="empty" />
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
@@ -1153,5 +1127,6 @@
     <string name="barcode">Barcode</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please, wait the end of the uploading task</string>
 </resources>

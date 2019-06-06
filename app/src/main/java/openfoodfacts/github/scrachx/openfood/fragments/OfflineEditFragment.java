@@ -149,7 +149,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                             intentAirplaneMode.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intentAirplaneMode);
                         } catch (ActivityNotFoundException e) {
-                            e.printStackTrace();
+                            Log.e(OfflineEditFragment.class.getSimpleName(),"onSendAllProducts",e);
                         }
                     } else {
                         Intent intent1 = new Intent(Settings.ACTION_WIRELESS_SETTINGS);

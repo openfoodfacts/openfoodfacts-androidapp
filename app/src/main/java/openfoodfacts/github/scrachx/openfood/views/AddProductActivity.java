@@ -57,6 +57,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorag
 
 public class AddProductActivity extends AppCompatActivity {
     private static final String KEY_USER_ID = "user_id";
+    @SuppressWarnings("squid:S2068")
     private static final String KEY_PASSWORD = "password";
     public static final String PARAM_LANGUAGE = "lang";
     private static final String ADD_TAG = AddProductActivity.class.getSimpleName();
