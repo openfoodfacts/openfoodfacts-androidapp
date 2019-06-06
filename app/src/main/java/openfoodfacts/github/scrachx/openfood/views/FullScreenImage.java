@@ -117,6 +117,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         loadLanguage();
 
         comboImageType.setSelection(TYPE_IMAGE.indexOf(getSelectedType()));
+        updateProductImagesInfo(null);
         onRefresh(false);
     }
 
@@ -298,6 +299,26 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         }
     }
 
+    /**
+     * The additional field "images" is not loaded by default by OFF as it's only used to edit an image.
+     * So we load the product images in background.
+     * Could be improved by loading only the field "images".
+     */
+    private void updateProductImagesInfo(Runnable toDoAfter) {
+        Product product = getProduct();
+        if (product != null) {
+            client.getProductImages(product.getCode(), newState -> {
+                final Product newStateProduct = newState.getProduct();
+                if (newStateProduct != null) {
+                    getIntent().putExtra(ImageKeyHelper.PRODUCT, newStateProduct);
+                }
+                if (toDoAfter != null) {
+                    toDoAfter.run();
+                }
+            });
+        }
+    }
+
     private String getImageUrlToDisplay(Product product) {
         return product.getSelectedImage(getCurrentLanguage(), getSelectedType(),
             ImageSize.DISPLAY);
@@ -388,7 +409,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
     }
 
     private void updateSelectDefaultLanguageAction() {
-        boolean isDefault = getProduct().getLang()!=null && getCurrentLanguage().equals(LocaleHelper.getLocale(getProduct().getLang()).getLanguage());
+        boolean isDefault = getProduct().getLang() != null && getCurrentLanguage().equals(LocaleHelper.getLocale(getProduct().getLang()).getLanguage());
         btnChooseDefaultLanguage.setVisibility(isDefault ? View.INVISIBLE : View.VISIBLE);
     }
 
@@ -401,7 +422,15 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         final ProductImageField productImageField = getSelectedType();
         String language = getCurrentLanguage();
         //the rotation/crop set on the server
-        final ImageTransformation transformation = ImageTransformation.getScreenTransformation(product, productImageField, language);
+        ImageTransformation transformation = ImageTransformation.getScreenTransformation(product, productImageField, language);
+        //the first time, the images properties are not loaded...
+        if (transformation.isEmpty()) {
+            updateProductImagesInfo(() -> editPhoto(productImageField, ImageTransformation.getScreenTransformation(product, productImageField, language)));
+        }
+        editPhoto(productImageField, transformation);
+    }
+
+    private void editPhoto(ProductImageField productImageField, ImageTransformation transformation) {
         if (transformation.isNotEmpty()) {
             new FileDownloader(getBaseContext()).download(transformation.getInitImageUrl(), file -> {
                 //to delete the file after:
