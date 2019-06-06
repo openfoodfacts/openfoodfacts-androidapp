@@ -306,7 +306,7 @@ public class AddProductActivity extends AppCompatActivity {
         addLoginInfoInProductDetails();
         String code = productDetails.get("code");
         String fields = "link,quantity,image_ingredients_url,ingredients_text_" + getProductLanguageForEdition() + ",product_name_" + getProductLanguageForEdition();
-        client.getExistingProductDetails(code, fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+        client.getProductByBarcodeSingle(code, fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<State>() {

@@ -23,10 +23,6 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageActivity;
-import io.reactivex.SingleObserver;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.images.*;
@@ -34,13 +30,10 @@ import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.LanguageDataAdapter;
 import org.apache.commons.lang3.StringUtils;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -122,9 +115,9 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         }
 
         loadLanguage();
-        updateToolbarTitle(getProduct());
-        onRefresh(false);
+
         comboImageType.setSelection(TYPE_IMAGE.indexOf(getSelectedType()));
+        onRefresh(false);
     }
 
     private List<String> generateImageTypeNames() {
@@ -219,43 +212,18 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
 
     private void updateToolbarTitle(Product product) {
         if (product != null) {
-            final String languageCode = getCurrentLanguage();
-            changeToolBarTitle(product.getProductName(languageCode));
-            //if the name in the selected language is not present, we try to download it...
-            if (!product.hasProductNameIn(languageCode)) {
-                final String key = "product_name_" + languageCode;
-                CommonApiManager.getInstance().getOpenFoodApiService()
-                    .getExistingProductDetails(product.getCode(), key, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new SingleObserver<State>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-                            //nothing to do
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            //nothing to do
-                        }
-
-                        @Override
-                        public void onSuccess(State state) {
-                            if (state.getStatus() == 1) {
-                                final String productName = state.getProduct().getProductName(languageCode);
-                                if (StringUtils.isNotBlank(productName)) {
-                                    product.getAdditionalProperties().put(key, productName);
-                                    changeToolBarTitle(productName);
-                                }
-                            }
-                        }
-                    });
-            }
+            changeToolBarTitle(product.getProductName(LocaleHelper.getLanguage(this)));
         }
     }
 
     private void changeToolBarTitle(String productName) {
         toolbar.setTitle(productName + " / " + comboImageType.getSelectedItem().toString());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateToolbarTitle(getProduct());
     }
 
     private void onRefresh(boolean reloadProduct) {
@@ -288,7 +256,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
                         stopRefresh();
                     }
                 });
-        }else{
+        } else {
             mPhotoView.setImageDrawable(null);
             stopRefresh();
         }
@@ -304,7 +272,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         Product product = getProduct();
         if (product != null) {
             startRefresh(getString(R.string.loading_product, "..."));
-            client.getProduct(product.getCode(), this, newState -> {
+            client.getProductImages(product.getCode(), newState -> {
                 final Product newStateProduct = newState.getProduct();
                 boolean imageReloaded = false;
                 if (newStateProduct != null) {
@@ -420,7 +388,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
     }
 
     private void updateSelectDefaultLanguageAction() {
-        boolean isDefault = getCurrentLanguage().equals(LocaleHelper.getLocale(getProduct().getLang()).getLanguage());
+        boolean isDefault = getProduct().getLang()!=null && getCurrentLanguage().equals(LocaleHelper.getLocale(getProduct().getLang()).getLanguage());
         btnChooseDefaultLanguage.setVisibility(isDefault ? View.INVISIBLE : View.VISIBLE);
     }
 
