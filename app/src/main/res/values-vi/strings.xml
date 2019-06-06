@@ -610,7 +610,6 @@
     <string name="error_adding_ingredients">Đã xảy ra sự cố khi cố gắng thêm thành phần sản phẩm</string>
     <string name="unable_to_extract_ingredients">Không thể trích xuất thành phần từ hình ảnh</string>
     <string name="error_adding_nutrition_facts">Đã xảy ra sự cố khi cố gắng thêm các thông tin dinh dưỡng của sản phẩm</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Chọn một chất dinh dưỡng</string>
     <string name="error_adding_product_details">Đã xảy ra sự cố khi cố thêm chi tiết sản phẩm</string>
@@ -817,4 +816,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">Mã vạch</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

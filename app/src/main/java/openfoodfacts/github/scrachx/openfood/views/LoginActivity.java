@@ -235,7 +235,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
 
                 Utils.hideKeyboard(context);
-                t.printStackTrace();
+                Log.e(getClass().getSimpleName(),"onFailure",t);
             }
         });
 

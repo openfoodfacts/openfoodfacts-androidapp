@@ -20,9 +20,8 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
-
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * Created by prajwalm on 14/04/18.
@@ -30,7 +29,7 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
 public class ContributorsFragment extends BaseFragment {
 
-    private State mState;
+    private State stateFromActivity;
     @BindView(R.id.creator)
     TextView creatorText;
     @BindView(R.id.last_editor)
@@ -48,16 +47,16 @@ public class ContributorsFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mState=getStateFromActivityIntent();
-        refreshView(mState);
+        stateFromActivity =getStateFromActivityIntent();
+        refreshView(stateFromActivity);
     }
 
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-        mState = state;
+        stateFromActivity = state;
 
-        final Product product = mState.getProduct();
+        final Product product = stateFromActivity.getProduct();
         if (isNotBlank(product.getCreator())) {
             String[] createdDate = getDateTime(product.getCreatedDateTime());
             String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1]);
@@ -79,12 +78,13 @@ public class ContributorsFragment extends BaseFragment {
             lastEditorText.setVisibility(View.INVISIBLE);
         }
 
-        if (product.getStatesTags().size() != 0) {
+        if (!product.getEditors().isEmpty()) {
             String otherEditorsTxt = getString(R.string.other_editors);
             otherEditorsText.setMovementMethod(LinkMovementMethod.getInstance());
             otherEditorsText.setText(otherEditorsTxt + " ");
             for (int i = 0; i < product.getEditors().size() - 1; i++) {
-                otherEditorsText.append(getContributorsTag(product.getEditors().get(i)).subSequence(0, product.getEditors().get(i).length()));
+                final String editor = product.getEditors().get(i);
+                otherEditorsText.append(getContributorsTag(editor).subSequence(0, editor.length()));
                 otherEditorsText.append(", ");
             }
             otherEditorsText.append(getContributorsTag(product.getEditors().get(product.getEditors().size() - 1)));
@@ -92,8 +92,7 @@ public class ContributorsFragment extends BaseFragment {
             otherEditorsText.setVisibility(View.INVISIBLE);
         }
 
-        if (!product.getStatesTags().equals("")) {
-
+        if (!product.getStatesTags().isEmpty()) {
             statesText.setMovementMethod(LinkMovementMethod.getInstance());
             statesText.setText("");
             for (int i = 0; i < product.getStatesTags().size(); i++) {
@@ -105,13 +104,12 @@ public class ContributorsFragment extends BaseFragment {
     }
 
     private String[] getDateTime(String dateTime) {
-        long unixSeconds = Long.valueOf(dateTime);
+        long unixSeconds = Long.parseLong(dateTime);
         Date date = new java.util.Date(unixSeconds * 1000L);
         SimpleDateFormat sdf = new java.text.SimpleDateFormat("MMMM dd, yyyy");
         SimpleDateFormat sdf2 = new java.text.SimpleDateFormat("HH:mm:ss a");
         sdf2.setTimeZone(java.util.TimeZone.getTimeZone("CET"));
-        String[] formattedDates = new String[]{sdf.format(date), sdf2.format(date)};
-        return formattedDates;
+        return new String[]{sdf.format(date), sdf2.format(date)};
     }
 
     private CharSequence getContributorsTag(String contributor) {

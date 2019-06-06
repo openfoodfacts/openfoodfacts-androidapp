@@ -7,14 +7,17 @@ import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+
 import com.theartofdev.edmodo.cropper.CropImage;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
 import java.util.List;
+
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class PhotoReceiverHandler {
     private final PhotoReceiver photoReceiver;
@@ -36,7 +39,8 @@ public class PhotoReceiverHandler {
         onCropResult(requestCode, resultCode, data);
         final FragmentActivity fragmentActivity = fragment == null ? null : fragment.getActivity();
         final Activity mainActivity = activity == null ? fragmentActivity : activity;
-        final Context mainContext = activity == null ? fragment.getContext() : activity;
+        final Context fragmentContext = fragment==null? OFFApplication.getInstance():fragment.getContext();
+        final Context mainContext = activity == null ? fragmentContext : activity;
         EasyImage.handleActivityResult(requestCode, resultCode, data, mainActivity, new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
@@ -71,7 +75,10 @@ public class PhotoReceiverHandler {
                 if (source == EasyImage.ImageSource.CAMERA) {
                     File photoFile = EasyImage.lastlyTakenButCanceledPhoto(mainContext);
                     if (photoFile != null) {
-                        photoFile.delete();
+                       boolean deleted= photoFile.delete();
+                       if(!deleted){
+                           Log.w(PhotoReceiverHandler.class.getSimpleName(),"photo file not deleted "+photoFile.getAbsolutePath());
+                       }
                     }
                 }
             }

@@ -4,18 +4,18 @@ Nova groups
 
 Nova group:
 
-Group 1
-Group 1 - Unprocessed or minimally processed foods
-Unprocessed or minimally processed foods
+Skupina 1
+Skupina 1 - Čerstvé nebo minimálně zpracované potraviny
+Čerstvé nebo minimálně zpracované potraviny
 
-Group 2
-Group 2 - Processed culinary ingredients
-Processed culinary ingredients
+Skupina 2
+Skupina 2 - Běžně zpracované kuchyňské přísady
+Běžně zpracované kuchyňské přísady
 
-Group 3
-Group 3 - Processed foods
-Processed foods
+Skupina 3
+Skupina 3 - Běžně zpracované potraviny
+Běžně zpracované potraviny
 
-Group 4
-Group 4 - Ultra-processed food and drink products
-Ultra-processed food and drink products
+Skupina 4
+Skupina 4 - Průmyslově vysoce zpracované potraviny a nápoje
+Průmyslově vysoce zpracované potraviny a nápoje

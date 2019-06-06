@@ -610,7 +610,6 @@
     <string name="error_adding_ingredients">製品の原材料を追加中に問題が発生しました</string>
     <string name="unable_to_extract_ingredients">画像から成分を抽出することができません。</string>
     <string name="error_adding_nutrition_facts">製品の栄養成分を追加中に問題が発生しました。</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">栄養素を選ぶ</string>
     <string name="error_adding_product_details">製品の詳細を追加中に問題が発生しました</string>
@@ -817,4 +816,5 @@
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
     <string name="barcode">バーコード</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
 </resources>

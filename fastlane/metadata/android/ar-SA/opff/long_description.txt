@@ -1,34 +1,34 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+قم بالمسح الضوئي لمنتجات أغذية الحيوانات الأليفة أو الباركود الخاص بهم للحصول على بيانات عن المكونات والمواد المضافة وحقائق التغذية.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+يسمح التطبيق بعرض أكثر من ٦٠٠ من منتجات أغذية الحيوانات الأليفة الموجودة بالفعل في قاعدة البيانات المجانية والمفتوحة Open Pet Food Facts ، وكذلك لإضافة صور وبيانات للمنتجات المفقودة.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+لاكتشاف مشروع Open Pet Food Facts ، يرجى زيارة https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- يمكنك استخدامه لاتخاذ خيارات أفضل لأغذية الحيوانات الأليفة ، ولأنها بيانات مفتوحة ، يمكن لأي شخص إعادة استخدامها لأي غرض من الأغراض.
+- Open pet Food Facts هو مشروع غير ربحي تم تطويره بواسطه الآلاف من المتطوعين من جميع أنحاء العالم. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة. 
+- يمكنك البدء في المساهمة اليوم بإضافة منتج من خزانة حيوانك الأليف. 
 
 
 *** احصل على الحقائق ***
 
-You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
+يمكنك أيضاً العثور على (وفقاً للمؤشرات الموجودة على المنتجات):
+- قائمة المكونات (بما في ذلك محتوى الرماد)
 - nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- العلامات التجارية والمواد المثيرة للحساسية والملصقات(العضوية ، نباتي...)
+- انها مناسبة ل (طعام الكلاب الجافة وأطعمة الكلاب المبتلة) ، طعام القطط ، طعام الأرانب ، طعام الثعابين ، طعام السمك ، طعام الطيور ، طعام الحصان أو أي طعام للحيوانات المفضلة لديك.
 
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+*** طعام حيوانك الأليف، بياناتك ***
+- بياناتك الشخصية تخصك وحدك ، ولا يتم إرسالها أبدًا عبر الإنترنت
 - You can use the app anonymously
 - You can export your scan history
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+للأغذية البشرية ، يمكنك تثبيت Open Food Facts ، لمستحضرات التجميل ، Open Beauty Facts ، ولكل المنتجات الأخرى ، Open Products Facts.
