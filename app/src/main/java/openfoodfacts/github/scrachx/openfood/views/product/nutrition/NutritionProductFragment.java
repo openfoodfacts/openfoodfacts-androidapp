@@ -526,7 +526,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
                             String spinnerValue = (String) spinner.getSelectedItem();
                             String weight = etWeight.getText().toString();
-                            Product p = mState.getProduct();
+                            Product p = activityState.getProduct();
                             Intent intent = new Intent(getContext(), CalculateDetails.class);
                             intent.putExtra("sampleObject", p);
                             intent.putExtra("spinnervalue", spinnerValue);
