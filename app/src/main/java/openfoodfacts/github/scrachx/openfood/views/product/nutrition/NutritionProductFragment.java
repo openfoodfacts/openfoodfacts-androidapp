@@ -521,23 +521,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
-                    btn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (!TextUtils.isEmpty(etWeight.getText().toString())) {
+                    btn.setOnClickListener(v1 -> {
+                        if (!TextUtils.isEmpty(etWeight.getText().toString())) {
 
-                                String spinnerValue = (String) spinner.getSelectedItem();
-                                String weight = etWeight.getText().toString();
-                                Product p = activityState.getProduct();
-                                Intent intent = new Intent(getContext(), CalculateDetails.class);
-                                intent.putExtra("sampleObject", p);
-                                intent.putExtra("spinnervalue", spinnerValue);
-                                intent.putExtra("weight", weight);
-                                startActivity(intent);
-                                dialog.dismiss();
-                            } else {
-                                Toast.makeText(getContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
-                            }
+                            String spinnerValue = (String) spinner.getSelectedItem();
+                            String weight = etWeight.getText().toString();
+                            Product p = activityState.getProduct();
+                            Intent intent = new Intent(getContext(), CalculateDetails.class);
+                            intent.putExtra("sampleObject", p);
+                            intent.putExtra("spinnervalue", spinnerValue);
+                            intent.putExtra("weight", weight);
+                            startActivity(intent);
+                            dialog.dismiss();
+                        } else {
+                            Toast.makeText(getContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

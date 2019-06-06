@@ -48,6 +48,7 @@ import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.P
 
 public class OpenFoodAPIClient {
     public static final String TEXT_PLAIN = "text/plain";
+
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
     private OfflineUploadingTask task = new OfflineUploadingTask();
