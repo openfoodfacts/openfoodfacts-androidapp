@@ -115,7 +115,7 @@ public class QuantityParserUtil {
     public static Float getFloatValue(String initText, EntryFormat floatFormat) {
         Double result = getDoubleValue(initText, floatFormat);
         if (result != null) {
-            return Float.valueOf(result.floatValue());
+            return result.floatValue();
         }
         return null;
     }
