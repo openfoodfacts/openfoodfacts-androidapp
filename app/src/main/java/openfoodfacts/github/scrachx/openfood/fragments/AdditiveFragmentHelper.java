@@ -30,6 +30,14 @@ public class AdditiveFragmentHelper {
         //helper class
     }
 
+    /**
+     * Set additive tag on the TextView additiveProduct
+     * @param additives list of Additive names
+     * @param additiveProduct TextView where additive tags should be displayed
+     * @param apiClientForWikiData object of class WikidataApiClient
+     * @param fragment contains a reference to the calling fragment (BaseFragment)
+     * */
+
     public static void showAdditives(List<AdditiveName> additives, TextView additiveProduct, final WikidataApiClient apiClientForWikiData, BaseFragment fragment) {
         additiveProduct.setText(bold(fragment.getString(R.string.txtAdditives)));
         additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
@@ -45,6 +53,13 @@ public class AdditiveFragmentHelper {
 
         additiveProduct.append(getAdditiveTag(additives.get(additives.size() - 1),apiClientForWikiData,fragment));
     }
+
+    /**
+     * Returns Additive Tag from the Additive name using the WikidataApi
+     * @param additive the Additive name
+     * @param apiClientForWikiData object of class WikidataApiClient
+     * @param fragment contains a reference to the calling fragment (BaseFragment)
+     * */
 
     private static CharSequence getAdditiveTag(AdditiveName additive, final WikidataApiClient apiClientForWikiData, BaseFragment fragment) {
         FragmentActivity activity=fragment.getActivity();

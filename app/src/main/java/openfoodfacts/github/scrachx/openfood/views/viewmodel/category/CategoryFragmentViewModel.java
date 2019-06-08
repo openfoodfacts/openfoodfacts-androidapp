@@ -48,6 +48,10 @@ public class CategoryFragmentViewModel extends ViewModel {
         loadCategories();
     }
 
+    /**
+    * Generates a network call for showing categories in CategoryFragment
+     * */
+
     public void loadCategories() {
         subscriptions.add(repository.getAllCategoriesByLanguageCode(LocaleHelper.getLanguage(OFFApplication.getInstance()))
                 .doOnSubscribe(disposable -> {
@@ -88,12 +92,24 @@ public class CategoryFragmentViewModel extends ViewModel {
                         }));
     }
 
+    /**
+     * Save categories in CategoryDao database
+     *
+     * @param categories lst of the categories that should be added to the database
+     * */
+
     private void saveCategories(List<Category> categories) {
         Completable.fromAction(() -> repository.saveCategories(categories))
                 .subscribeOn(Schedulers.computation())
                 .subscribe(() -> {
                 }, e->Log.e(CategoryFragmentViewModel.class.getSimpleName(),"saveCategories",e));
     }
+
+    /**
+     * Generate a new array which lists all the category names
+     *
+     * @param categories list of all the categories loaded using API
+     * */
 
     private List<CategoryName> extractCategoriesNames(List<Category> categories) {
         List<CategoryName> categoryNames = new ArrayList<>();
@@ -121,6 +137,10 @@ public class CategoryFragmentViewModel extends ViewModel {
     public ObservableInt getShowOffline() {
         return showOffline;
     }
+
+    /**
+     * Search for all the category names that or equal to/start with a given string
+     * @param query string which is used to query for category names*/
   
     public void searchCategories(String query) {
         List<CategoryName> newFilteredCategories = new ArrayList<>();

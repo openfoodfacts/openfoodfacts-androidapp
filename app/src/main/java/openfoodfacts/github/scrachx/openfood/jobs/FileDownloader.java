@@ -13,6 +13,11 @@ import retrofit2.Response;
 
 import java.io.*;
 
+/**
+* Download file from internet using file url
+* and save it on disk
+* */
+
 public class FileDownloader {
     private Context context;
 
@@ -23,6 +28,13 @@ public class FileDownloader {
     public FileDownloader(Context context) {
         this.context = context;
     }
+
+    /**
+    * Downloads a file from internet using the file Url
+    *
+    *  @param fileUrl Url of the file to be downloaded
+    *  @param callback object of class FileReciever
+    * */
 
     public void download(String fileUrl, FileReceiver callback) {
         OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
@@ -48,6 +60,13 @@ public class FileDownloader {
             }
         });
     }
+
+    /**
+    * Creates space in disk for file downloaded from download function above
+     * @param context context
+     * @param body network response for recieved while downloading file from internet
+     * @param url url of the file which is downloaded from internet
+     * */
 
     private File writeResponseBodyToDisk(Context context, ResponseBody body, String url) {
         final Uri decode = Uri.parse(url);
