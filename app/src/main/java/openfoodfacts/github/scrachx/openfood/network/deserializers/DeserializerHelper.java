@@ -16,6 +16,11 @@ class DeserializerHelper {
         //helper class.
     }
 
+    /**
+     * Extracts names form the names node in the Json Response
+     * @param namesNode namesNode in Json response
+     * */
+
     static Map<String, String> extractNames(JsonNode namesNode) {
         Map<String, String> names = new HashMap<>();
         Iterator<Map.Entry<String, JsonNode>> nameNodeIterator = namesNode.fields();
@@ -26,6 +31,12 @@ class DeserializerHelper {
         }
         return names;
     }
+
+    /**
+     * extracts child nodes from a map of subnodes
+     * @param subNode map of subnodes
+     * @param key get the JsonNode for the given key
+     * */
 
     static List<String> extractChildNodeAsText(Map.Entry<String, JsonNode> subNode, String key) {
         List<String> stringList = new ArrayList<>();

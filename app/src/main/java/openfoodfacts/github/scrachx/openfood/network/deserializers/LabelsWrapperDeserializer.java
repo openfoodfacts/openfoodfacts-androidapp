@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Lobster on 03.03.18.
+ * Custom deserializer for LabelsWrapper
  */
 public class LabelsWrapperDeserializer extends StdDeserializer<LabelsWrapper> {
     public LabelsWrapperDeserializer() {

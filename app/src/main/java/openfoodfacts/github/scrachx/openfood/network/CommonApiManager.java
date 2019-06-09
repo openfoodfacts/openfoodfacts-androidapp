@@ -8,7 +8,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
- * Created by Lobster on 03.03.18.
+ * Initializes all the required API Services
  */
 
 public class CommonApiManager implements ICommonApiManager {
@@ -31,6 +31,10 @@ public class CommonApiManager implements ICommonApiManager {
             jacksonConverterFactory = JacksonConverterFactory.create();
     }
 
+    /**
+     * Defines and returns ProductAPIService
+     * */
+
     @Override
     public ProductApiService getProductApiService() {
         if (productApiService == null) {
@@ -39,6 +43,10 @@ public class CommonApiManager implements ICommonApiManager {
 
         return productApiService;
     }
+
+    /**
+     * Defines  and returns getOpenFoodApiService
+     * */
 
     @Override
     public OpenFoodAPIService getOpenFoodApiService() {
@@ -49,6 +57,10 @@ public class CommonApiManager implements ICommonApiManager {
         return openFoodApiService;
     }
 
+    /**
+     * Defines and returns getRobotoffApiService
+     * */
+
     @Override
     public RobotoffAPIService getRobotoffApiService() {
         if (robotoffApiService == null) {
@@ -57,6 +69,10 @@ public class CommonApiManager implements ICommonApiManager {
 
         return robotoffApiService;
     }
+
+    /**
+     * Initialising ProductApiService using Retrofit
+     * */
 
     private ProductApiService createProductApiService() {
         productApiService = new Retrofit.Builder()
@@ -70,6 +86,10 @@ public class CommonApiManager implements ICommonApiManager {
         return productApiService;
     }
 
+    /**
+     * Initialising RobotoffAPIService using Retrofit
+     * */
+
     private RobotoffAPIService createRobotoffApiService() {
         robotoffApiService = new Retrofit.Builder()
                 .baseUrl("https://robotoff.openfoodfacts.org")
@@ -81,6 +101,10 @@ public class CommonApiManager implements ICommonApiManager {
 
         return robotoffApiService;
     }
+
+    /**
+     * Initialising OpenFoodAPIService using Retrofit
+     * */
 
     private OpenFoodAPIService createOpenFoodApiService() {
         openFoodApiService = new Retrofit.Builder()

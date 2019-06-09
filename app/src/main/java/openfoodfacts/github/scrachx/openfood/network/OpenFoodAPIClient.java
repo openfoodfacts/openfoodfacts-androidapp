@@ -46,6 +46,10 @@ import java.util.*;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.*;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 
+/**
+ * API Client for all API callbacks
+ * */
+
 public class OpenFoodAPIClient {
     public static final String TEXT_PLAIN = "text/plain";
 
@@ -78,6 +82,11 @@ public class OpenFoodAPIClient {
         mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
     }
 
+    /**
+     * Returns API Service for OpenFoodAPIClient
+     * @param apiUrl base url for the API
+     * */
+
     private OpenFoodAPIClient(String apiUrl) {
         apiService = new Retrofit.Builder()
             .baseUrl(apiUrl)
@@ -89,6 +98,11 @@ public class OpenFoodAPIClient {
             .create(OpenFoodAPIService.class);
     }
 
+    /**
+     * Uploads comment by users
+     * @param login the username
+     * */
+
     public static String getCommentToUpload(String login) {
         String comment = PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance());
         if (login.isEmpty()) {
@@ -96,6 +110,11 @@ public class OpenFoodAPIClient {
         }
         return comment;
     }
+
+    /**
+     * Returns a ResponseBody object from file
+     * @param image FIle for the image
+     * */
 
     public static RequestBody createImageRequest(File image) {
         return RequestBody.create(MediaType.parse("image/*"), image);
@@ -168,6 +187,11 @@ public class OpenFoodAPIClient {
         });
     }
 
+    /**
+     * "Product not found" Diaolog builder
+     * @param activity reference of the calling activity
+     * @param barcode barcode number as string */
+
     public MaterialDialog.Builder productNotFoundDialogBuilder(Activity activity, String barcode) {
         return new MaterialDialog.Builder(activity)
             .title(R.string.txtDialogsTitle)
@@ -187,6 +211,13 @@ public class OpenFoodAPIClient {
                 }
             });
     }
+
+    /**
+     * Returns product value associated with each field for a given product
+     * @param barcode barcode of the product
+     * @param fields List of all fields
+     * @param fieldByLanguageCallback  An callback to the interface OnFieldByLanguageCallback
+     * */
 
     public void getFieldByLanguage(String barcode, ArrayList<String> fields, final OnFieldByLanguageCallback fieldByLanguageCallback) {
         StringBuilder fieldQuery = new StringBuilder();
@@ -224,6 +255,12 @@ public class OpenFoodAPIClient {
         });
     }
 
+    /**
+     * Get list of ingredients for a given product
+     * @param barcode barcode to reference the current product
+     * @param ingredientListCallback  a callback to the interface OnIngredientListCallback
+     * */
+
     public void getIngredients(String barcode, final OnIngredientListCallback ingredientListCallback) {
 
         apiService.getIngredientsByBarcode(barcode).enqueue(new Callback<JsonNode>() {
@@ -258,6 +295,13 @@ public class OpenFoodAPIClient {
         });
     }
 
+    /**Search product by name
+     * @param name name that is used to search for the product
+     * @param page number of pages
+     * @param activity reference to the calling activity
+     * @param productsCallback  reference to the callback interface
+     * */
+
     public void searchProduct(final String name, final int page, final Activity activity, final OnProductsCallback productsCallback) {
         String productNameLocale = getLocaleProductNameField();
         String fields = "selected_images,image_small_url,product_name,brands,quantity,code,nutrition_grade_fr," + productNameLocale;
@@ -287,6 +331,10 @@ public class OpenFoodAPIClient {
             }
         });
     }
+
+    /**
+     * returns current locale
+     * */
 
     public static String getLocaleProductNameField() {
         String locale = LocaleHelper.getLanguage(OFFApplication.getInstance());
@@ -322,6 +370,11 @@ public class OpenFoodAPIClient {
     public interface OnImagesCallback {
         void onImageResponse(boolean value, String response);
     }
+
+    /** Returns images for the current product
+     * @param barcode barcode for the current product
+     * @param onImagesCallback  reference to the OnImagesCallback interface
+     * */
 
     public void getImages(String barcode, OnImagesCallback onImagesCallback) {
 
@@ -372,6 +425,14 @@ public class OpenFoodAPIClient {
         }
     }
 
+    /**
+     * Product Callback
+     * @param activity refernce to the calling actvity
+     * @param product object of SendProduct
+     * @param productSentCallback Callback to the interface OnProductSentCallback
+     * @param dialog cuurenlt diaplayed dialg box
+     * */
+
     private Callback<State> createProductCallBack(Context activity, SendProduct product, OnProductSentCallback productSentCallback, Dialog dialog) {
         return new Callback<State>() {
             @Override
@@ -387,6 +448,13 @@ public class OpenFoodAPIClient {
             }
         };
     }
+
+    /**
+     * Calling API Service to upload the image
+     * @param context context
+     * @param image  object of ProductImage
+     * @param imageUploadListener Listener Interface for imageUpload
+     * */
 
     public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
         apiService.saveImage(getUploadableMap(image, context))
@@ -429,6 +497,12 @@ public class OpenFoodAPIClient {
             });
     }
 
+    /**
+    * Returns a map for images uploaded for product/ingredients/nutrition/other images
+     * @param image object of ProductImage
+     * @param context context
+     * */
+
     private Map<String, RequestBody> getUploadableMap(ProductImage image, Context context) {
         final String lang = LocaleHelper.getLanguage(context);
 
@@ -453,6 +527,12 @@ public class OpenFoodAPIClient {
         fillWithUserLoginInfo(imgMap, settings);
         return imgMap;
     }
+
+    /**
+     * comment user info on the image map
+     * @param imgMap map containing images uploaded for product/ingredients/nutrition/other images
+     * @param settings SharedPreferences to retrieve users login info
+     * */
 
     public static String fillWithUserLoginInfo(Map<String, RequestBody> imgMap, SharedPreferences settings) {
         final String login = settings.getString("user", "");
@@ -532,6 +612,12 @@ public class OpenFoodAPIClient {
         }
     }
 
+    /**
+     * Add a product to local history
+     * @param mHistoryProductDao object of HistoryProductDao
+     * @param product object containing info of the product
+     * */
+
     public static void addToHistory(HistoryProductDao mHistoryProductDao, Product product) {
         List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
         HistoryProduct hp;
@@ -546,6 +632,14 @@ public class OpenFoodAPIClient {
         mHistoryProductDao.insertOrReplace(hp);
     }
 
+    /**
+    * upload images in offline mode
+     * @param context context
+     * @param cancel boolean to store whether to cancel upload or not
+     * @param job object of JobParameters
+     * @param service object of SavedProductUploadJob
+     * */
+
     public void uploadOfflineImages(Context context, boolean cancel, JobParameters job, SavedProductUploadJob service) {
         if (!cancel) {
             task.job = job;
@@ -555,6 +649,10 @@ public class OpenFoodAPIClient {
             task.cancel(true);
         }
     }
+
+    /**
+     * AsyncTask to upload images offline
+     * */
 
     public class OfflineUploadingTask extends AsyncTask<Context, Void, Void> {
         JobParameters job;
@@ -616,6 +714,13 @@ public class OpenFoodAPIClient {
         }
     }
 
+    /**
+     * Search for products using bran name
+     * @param brand search query for product
+     * @param page page numbers
+     * @param onBrandCallback  object of OnBrandCallback interface
+     * */
+
     public void getProductsByBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
 
         apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
@@ -639,6 +744,13 @@ public class OpenFoodAPIClient {
         void onEditResponse(boolean value, String response);
     }
 
+    /**
+     * Send an API request to edit current image
+     * @param code code for the field of image (product/nutrient/ingredient)
+     * @param imgMap map containing reference to the images
+     * @param onEditImageCallback object of onEditImageCallback interface
+     * */
+
     public void editImage(String code, Map<String, String> imgMap, OnEditImageCallback onEditImageCallback) {
         apiService.editImages(code, imgMap).enqueue(new Callback<String>() {
             @Override
@@ -653,6 +765,12 @@ public class OpenFoodAPIClient {
             }
         });
     }
+
+    /**
+     * Get products by packaging
+     * @param packaging name of the packaging
+     * @param page number of pages
+     * @param onPackagingCallback  object of OnPackagingCallback interface*/
 
     public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
 
@@ -676,6 +794,9 @@ public class OpenFoodAPIClient {
     public void syncOldHistory() {
         new SyncOldHistoryTask().execute();
     }
+
+    /**
+     * Async Task to sync history*/
 
     public class SyncOldHistoryTask extends AsyncTask<Void, Void, Void> {
         boolean success = true;
@@ -729,6 +850,10 @@ public class OpenFoodAPIClient {
         apiService.getProductsByOrigin(origin, page).enqueue(createStoreCallback(onStoreCallback));
     }
 
+    /**
+     * return search response for store callback
+     * */
+
     public Callback<Search> createStoreCallback(OnStoreCallback onStoreCallback) {
         return new Callback<Search>() {
             @Override
@@ -751,6 +876,13 @@ public class OpenFoodAPIClient {
         apiService.getProductsByManufacturingPlace(manufacturingPlace, page).enqueue(createStoreCallback(onStoreCallback));
     }
 
+    /**
+     * Call API to get products by country
+     * @param country name of the country
+     * @param page number of pages
+     * @param onCountryCallback object of OnCountryCallback object
+     * */
+
     public void getProductsByCountry(String country, final int page, final onCountryCallback onCountryCallback) {
         apiService.getProductsByCountry(country, page).enqueue(new Callback<Search>() {
             @Override
@@ -769,6 +901,13 @@ public class OpenFoodAPIClient {
             }
         });
     }
+
+    /**
+     * call API service to return products using Additives
+     * @param additive search query for products
+     * @param page number of pages
+     * @param onAdditiveCallback  object of OnAdditiveCallback interface
+     * */
 
     public void getProductsByAdditive(final String additive, final int page, final OnAdditiveCallback onAdditiveCallback) {
 
@@ -789,6 +928,13 @@ public class OpenFoodAPIClient {
         });
     }
 
+    /**
+     * Search for products uding allergens
+     * @param allergen name of allergen
+     * @param page number of pages
+     * @param onAllergensCallback object of onAllergensCallback interface
+     * */
+
     public void getProductsByAllergen(final String allergen, final int page, final OnAllergensCallback onAllergensCallback) {
         apiService.getProductsByAllergen(allergen, page).enqueue(new Callback<Search>() {
             @Override
@@ -807,6 +953,13 @@ public class OpenFoodAPIClient {
         });
     }
 
+    /**
+     * Search for products using label
+     * @param label  search queyry for products :label
+     * @param page number of pages
+     * @param onLabelCallback object of OnLabelCallback interface
+     * */
+
     public void getProductsByLabel(String label, final int page, final onLabelCallback onLabelCallback) {
         apiService.getProductByLabel(label, page).enqueue(new Callback<Search>() {
             @Override
@@ -824,6 +977,13 @@ public class OpenFoodAPIClient {
             }
         });
     }
+
+    /**
+     * Search for products by category
+     * @param category name of category
+     * @param page number of page
+     * @param onCategoryCallback object of onCategoryCallback interface
+     * */
 
     public void getProductsByCategory(String category, final int page, final onCategoryCallback onCategoryCallback) {
         apiService.getProductByCategory(category, page).enqueue(new Callback<Search>() {
@@ -846,6 +1006,10 @@ public class OpenFoodAPIClient {
     public void getProductsByContributor(String contributor, final int page, final onContributorCallback onContributorCallback) {
         apiService.searchProductsByContributor(contributor, page).enqueue(createCallback(onContributorCallback));
     }
+
+    /**
+     * function to create callback for onContributorCallback and return Callback<Search>
+     */
 
     private Callback<Search> createCallback(onContributorCallback onContributorCallback) {
         return new Callback<Search>() {

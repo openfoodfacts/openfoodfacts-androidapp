@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Lobster on 03.03.18.
+ * custom deserializer for CategoriesWrapper
  */
 public class CategoriesWrapperDeserializer extends StdDeserializer<CategoriesWrapper> {
 
