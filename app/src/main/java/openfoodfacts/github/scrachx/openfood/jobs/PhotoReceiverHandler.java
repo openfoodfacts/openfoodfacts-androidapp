@@ -19,6 +19,9 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
+/**
+ * A class for handling photo receiver
+ */
 public class PhotoReceiverHandler {
     private final PhotoReceiver photoReceiver;
     private boolean cropActionEnabled = false;
@@ -42,11 +45,18 @@ public class PhotoReceiverHandler {
         final Context fragmentContext = fragment==null? OFFApplication.getInstance():fragment.getContext();
         final Context mainContext = activity == null ? fragmentContext : activity;
         EasyImage.handleActivityResult(requestCode, resultCode, data, mainActivity, new DefaultCallback() {
+            /**
+             * An overridden method to handle errors when they encounter on
+             * picking images.
+             */
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
                 //Some error handling
             }
 
+            /**
+             * An overridden method to handle when images are picked.
+             */
             @Override
             public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
                 if (cropActionEnabled) {
@@ -69,6 +79,10 @@ public class PhotoReceiverHandler {
                 }
             }
 
+            /**
+             * An overridden method to handle when the picked
+             * images are cancelled.
+             */
             @Override
             public void onCanceled(EasyImage.ImageSource source, int type) {
                 //Cancel handling, you might wanna remove taken photo if it was canceled
@@ -85,6 +99,9 @@ public class PhotoReceiverHandler {
         });
     }
 
+    /**
+     * A method called after cropping the image to process that image.
+     */
     private void onCropResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);

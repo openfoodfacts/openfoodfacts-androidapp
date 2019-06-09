@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.jobs;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
@@ -13,6 +15,10 @@ import retrofit2.Response;
 
 import java.io.*;
 
+/**
+ * File Downloader class which is used to download a file and
+ * write response to the disk.
+ */
 public class FileDownloader {
     private Context context;
 
@@ -20,16 +26,28 @@ public class FileDownloader {
         void fileDownloaded(File file);
     }
 
+    /**
+     * Constructor of the class used to initialize the objects.
+     * @param context : context to be set, cannot be null.
+     */
     public FileDownloader(Context context) {
         this.context = context;
     }
 
+    /**
+     * A method to download the file using fileUrl and to callback
+     * the FileReceiver interface method fileDownloaded.
+     * @param fileUrl provides the URL of the file to download.
+     * @param callback is called if the file is downloaded with success, cannot be null.
+     */
     public void download(String fileUrl, FileReceiver callback) {
         OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
         final Call<ResponseBody> responseBodyCall = client.downloadFile(fileUrl);
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                 /*This part will be executed when the task completes successfully and if
+                 response body not equal to  null.*/
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d(FileDownloader.class.getSimpleName(), "server contacted and has file");
                     File writtenToDisk = writeResponseBodyToDisk(context, response.body(), fileUrl);
@@ -49,6 +67,13 @@ public class FileDownloader {
         });
     }
 
+    /**
+     * A method to write the response body to disk.
+     * @param context: context of the class.
+     * @param body: response body from the call.
+     * @param url: url of the downloaded file.
+     * @return File that have written to the disk.
+     */
     private File writeResponseBodyToDisk(Context context, ResponseBody body, String url) {
         final Uri decode = Uri.parse(url);
         File res = new File(Utils.makeOrGetPictureDirectory(context), System.currentTimeMillis() + "-" + decode.getLastPathSegment());
