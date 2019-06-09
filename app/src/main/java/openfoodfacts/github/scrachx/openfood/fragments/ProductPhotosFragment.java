@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * @author prajwalm
+ * @see R.layout#fragment_product_photos
  */
 public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter.OnImageClickInterface {
     private OpenFoodAPIClient openFoodAPIClient;
@@ -101,6 +101,10 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
         });
     }
 
+    /**
+     * Call an intent to open full screen activity for a given image
+     * @param mUrlImage url of the image in FullScreenImage*/
+
     public void openFullScreen(String mUrlImage) {
         if (mUrlImage != null) {
             Intent intent = new Intent(getContext(), FullScreenImage.class);
@@ -110,6 +114,11 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
             startActivity(intent);
         }
     }
+
+    /**
+     * retrieves url of the imae clicked to open FullScreenActivity
+     * @param position position of the image clicked
+     * */
 
     @Override
     public void onImageClick(int position) {

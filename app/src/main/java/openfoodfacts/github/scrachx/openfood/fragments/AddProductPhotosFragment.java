@@ -32,6 +32,11 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
+/**
+ * Fragment for adding photos of the product
+ * @see R.layout#fragment_add_product_photos
+ * */
+
 public class AddProductPhotosFragment extends BaseFragment implements PhotoReceiver {
 
     @BindView(R.id.btnAddOtherImage)
@@ -139,6 +144,10 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
             imageProgressText.setText(R.string.image_uploaded_successfully);
         }
     }
+
+    /**
+     * Load image into the image view and add it to tableLayout
+     * */
 
     private void addImageRow() {
         TableRow image = new TableRow(activity);

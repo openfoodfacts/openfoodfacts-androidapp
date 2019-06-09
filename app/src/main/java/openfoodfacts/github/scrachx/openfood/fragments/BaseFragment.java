@@ -77,6 +77,9 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         return !isUserLoggedIn();
     }
 
+    /**Ask to login before editing product
+     * */
+
     protected void startLoginToEditAnd(int requestCode) {
         final Context context = getContext();
         if (context == null) {

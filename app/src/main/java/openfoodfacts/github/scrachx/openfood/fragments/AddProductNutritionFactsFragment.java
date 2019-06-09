@@ -71,6 +71,9 @@ import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 
+/**
+ * @see R.layout#fragment_add_product_nutrition_facts*/
+
 public class AddProductNutritionFactsFragment extends BaseFragment implements PhotoReceiver {
     private static final String[] ALL_UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_DV, UnitUtils.UNIT_IU};
     private static final String[] ALL_UNIT_SERVING = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_LITER, UnitUtils.UNIT_MILLILITRE};
@@ -272,6 +275,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
     }
 
+    /**
+     * Load the nutrition image uploaded form AddProductActivity
+     * */
+
     public void loadNutritionImage() {
         if (getAddProductActivity() == null) {
             return;
@@ -386,6 +393,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
         radioGroup.jumpDrawablesToCurrentState();
     }
+
+    /**
+     * lads nutrition image into the ImageView
+     * @param path path of the image
+     * */
 
     private void loadNutritionsImage(String path) {
         Picasso.with(getContext())
@@ -720,6 +732,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
     }
 
+    /**
+     * Add nutients to the map by from the text enetered into EditText
+     * @param editTextView EditText with spinner for entering the nutients
+     * @param targetMap map to enter the nutrient value recieved from edit texts
+     * */
+
     private void addNutrientToMap(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
         String completeName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
         targetMap.put(completeName, editTextView.getText().toString());
@@ -854,6 +872,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return sugar.getEntryName().equals(entryName) || (starchEditText != null && entryName.equals(starchEditText.getEntryName()));
     }
 
+    /**
+     * Validate the value of carbohydrate using carbs value and sugar value
+     * @param editText CustomValidatingEditTextView for retrieving the value enterd by the user
+     * @param value quality value with known prefix
+     * */
+
     private ValueState checkCarbohydrate(CustomValidatingEditTextView editText, float value) {
         if (!carbohydrate.getEntryName().equals(editText.getEntryName())) {
             return ValueState.NOT_TESTED;
@@ -877,6 +901,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
     }
 
+    /**
+     * Validate oh value according to Nutriments.PH
+     * @param editText CustomValidatingEditTextView for recieving value inputed from user
+     * @param value quality value with known prefix
+     * */
+
     private ValueState checkPh(CustomValidatingEditTextView editText, float value) {
         if (Nutriments.PH.equals(editText.getEntryName())) {
             double maxPhValue = 14;
@@ -887,6 +917,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
         return ValueState.NOT_TESTED;
     }
+
+    /**
+     * Validate serving size value entered by user
+     * */
 
     private ValueState checkPerServing(CustomValidatingEditTextView editText) {
         if (servingSize.getEntryName().equals(editText.getEntryName())) {
@@ -903,6 +937,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return ValueState.NOT_TESTED;
     }
 
+    /**
+     * Validate energy value entered by user
+     * */
+
     private ValueState checkEnergy(CustomValidatingEditTextView editTextView, float value) {
         if (energy.getEntryName().equals(editTextView.getEntryName())) {
             float energyInKcal = UnitUtils.convertToKiloCalories(value, getSelectedEnergyUnit());
@@ -917,6 +955,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
         return ValueState.NOT_TESTED;
     }
+
+    /**
+     * validate alcohol content entered by user*/
 
     private ValueState checkAlcohol(CustomValidatingEditTextView editTextView, float value) {
         if (alcohol.getEntryName().equals(editTextView.getEntryName())) {
