@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by Abdelali Eramli on 27/12/2017.
+ * Class for response recieved from CaregoryNetworkService class
  */
 
 public class CategoryResponse {

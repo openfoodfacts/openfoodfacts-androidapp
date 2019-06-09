@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.category.model;
 
 /**
- * Created by Abdelali Eramli on 27/12/2017.
+ * Model class for Category
  */
 
 public class Category {
