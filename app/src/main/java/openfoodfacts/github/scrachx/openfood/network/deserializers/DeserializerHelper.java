@@ -33,7 +33,7 @@ class DeserializerHelper {
     }
 
     /**
-     * extracts child nodes from a map of subnodes
+     * Extracts child nodes from a map of subnodes
      * @param subNode map of subnodes
      * @param key get the JsonNode for the given key
      * */

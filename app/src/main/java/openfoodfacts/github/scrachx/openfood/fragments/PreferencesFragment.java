@@ -45,6 +45,10 @@ import java.util.Locale;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
 
+/**
+ * A class for creating all the ListPreference
+ * */
+
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
@@ -255,6 +259,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Log.e(getClass().getSimpleName(), "on resume error", e);
         }
     }
+
+    /**
+     * AsyncTak to recieve additves on a background thread
+     * */
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";

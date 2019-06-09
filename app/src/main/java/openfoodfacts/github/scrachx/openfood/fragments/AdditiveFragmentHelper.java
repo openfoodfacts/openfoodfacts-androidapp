@@ -25,10 +25,21 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 
+/**
+ * Helper class for additive fragment
+ * */
+
 public class AdditiveFragmentHelper {
     private AdditiveFragmentHelper(){
         //helper class
     }
+
+    /**
+     * Show names of all additives on the TextView
+     * @param additives list of additive names
+     * @param additiveProduct TextView which displays additive names
+     * @param apiClientForWikiData object of WikidataApiClient
+     * */
 
     public static void showAdditives(List<AdditiveName> additives, TextView additiveProduct, final WikidataApiClient apiClientForWikiData, BaseFragment fragment) {
         additiveProduct.setText(bold(fragment.getString(R.string.txtAdditives)));
@@ -45,6 +56,13 @@ public class AdditiveFragmentHelper {
 
         additiveProduct.append(getAdditiveTag(additives.get(additives.size() - 1),apiClientForWikiData,fragment));
     }
+
+    /**
+     * Returns additive tag from additive name using WikidataApiClient
+     * @param additive name of the additive
+     * @param apiClientForWikiData object of WikidataApiClient
+     * @param fragment holds a reference to the calling fragment
+     * */
 
     private static CharSequence getAdditiveTag(AdditiveName additive, final WikidataApiClient apiClientForWikiData, BaseFragment fragment) {
         FragmentActivity activity=fragment.getActivity();

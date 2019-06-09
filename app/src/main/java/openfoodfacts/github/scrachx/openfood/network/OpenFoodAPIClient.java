@@ -295,12 +295,13 @@ public class OpenFoodAPIClient {
         });
     }
 
-    /**Search product by name
+    /**
+     * Search product by name
      * @param name name that is used to search for the product
      * @param page number of pages
      * @param activity reference to the calling activity
      * @param productsCallback  reference to the callback interface
-     * */
+     */
 
     public void searchProduct(final String name, final int page, final Activity activity, final OnProductsCallback productsCallback) {
         String productNameLocale = getLocaleProductNameField();
@@ -333,8 +334,8 @@ public class OpenFoodAPIClient {
     }
 
     /**
-     * returns current locale
-     * */
+     * @returns current locale
+     */
 
     public static String getLocaleProductNameField() {
         String locale = LocaleHelper.getLanguage(OFFApplication.getInstance());
@@ -371,10 +372,11 @@ public class OpenFoodAPIClient {
         void onImageResponse(boolean value, String response);
     }
 
-    /** Returns images for the current product
+    /**
+     * Returns images for the current product
      * @param barcode barcode for the current product
      * @param onImagesCallback  reference to the OnImagesCallback interface
-     * */
+     */
 
     public void getImages(String barcode, OnImagesCallback onImagesCallback) {
 
@@ -431,7 +433,7 @@ public class OpenFoodAPIClient {
      * @param product object of SendProduct
      * @param productSentCallback Callback to the interface OnProductSentCallback
      * @param dialog cuurenlt diaplayed dialg box
-     * */
+     */
 
     private Callback<State> createProductCallBack(Context activity, SendProduct product, OnProductSentCallback productSentCallback, Dialog dialog) {
         return new Callback<State>() {
@@ -454,7 +456,7 @@ public class OpenFoodAPIClient {
      * @param context context
      * @param image  object of ProductImage
      * @param imageUploadListener Listener Interface for imageUpload
-     * */
+     */
 
     public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
         apiService.saveImage(getUploadableMap(image, context))
@@ -498,10 +500,10 @@ public class OpenFoodAPIClient {
     }
 
     /**
-    * Returns a map for images uploaded for product/ingredients/nutrition/other images
+     * Returns a map for images uploaded for product/ingredients/nutrition/other images
      * @param image object of ProductImage
      * @param context context
-     * */
+     */
 
     private Map<String, RequestBody> getUploadableMap(ProductImage image, Context context) {
         final String lang = LocaleHelper.getLanguage(context);
@@ -532,7 +534,7 @@ public class OpenFoodAPIClient {
      * comment user info on the image map
      * @param imgMap map containing images uploaded for product/ingredients/nutrition/other images
      * @param settings SharedPreferences to retrieve users login info
-     * */
+     */
 
     public static String fillWithUserLoginInfo(Map<String, RequestBody> imgMap, SharedPreferences settings) {
         final String login = settings.getString("user", "");
@@ -616,7 +618,7 @@ public class OpenFoodAPIClient {
      * Add a product to local history
      * @param mHistoryProductDao object of HistoryProductDao
      * @param product object containing info of the product
-     * */
+     */
 
     public static void addToHistory(HistoryProductDao mHistoryProductDao, Product product) {
         List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
@@ -638,7 +640,7 @@ public class OpenFoodAPIClient {
      * @param cancel boolean to store whether to cancel upload or not
      * @param job object of JobParameters
      * @param service object of SavedProductUploadJob
-     * */
+     */
 
     public void uploadOfflineImages(Context context, boolean cancel, JobParameters job, SavedProductUploadJob service) {
         if (!cancel) {
@@ -652,7 +654,7 @@ public class OpenFoodAPIClient {
 
     /**
      * AsyncTask to upload images offline
-     * */
+     */
 
     public class OfflineUploadingTask extends AsyncTask<Context, Void, Void> {
         JobParameters job;
@@ -719,7 +721,7 @@ public class OpenFoodAPIClient {
      * @param brand search query for product
      * @param page page numbers
      * @param onBrandCallback  object of OnBrandCallback interface
-     * */
+     */
 
     public void getProductsByBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
 
@@ -749,7 +751,7 @@ public class OpenFoodAPIClient {
      * @param code code for the field of image (product/nutrient/ingredient)
      * @param imgMap map containing reference to the images
      * @param onEditImageCallback object of onEditImageCallback interface
-     * */
+     */
 
     public void editImage(String code, Map<String, String> imgMap, OnEditImageCallback onEditImageCallback) {
         apiService.editImages(code, imgMap).enqueue(new Callback<String>() {
@@ -796,7 +798,8 @@ public class OpenFoodAPIClient {
     }
 
     /**
-     * Async Task to sync history*/
+     * Async Task to sync history
+     */
 
     public class SyncOldHistoryTask extends AsyncTask<Void, Void, Void> {
         boolean success = true;
@@ -852,7 +855,7 @@ public class OpenFoodAPIClient {
 
     /**
      * return search response for store callback
-     * */
+     */
 
     public Callback<Search> createStoreCallback(OnStoreCallback onStoreCallback) {
         return new Callback<Search>() {
@@ -881,7 +884,7 @@ public class OpenFoodAPIClient {
      * @param country name of the country
      * @param page number of pages
      * @param onCountryCallback object of OnCountryCallback object
-     * */
+     */
 
     public void getProductsByCountry(String country, final int page, final onCountryCallback onCountryCallback) {
         apiService.getProductsByCountry(country, page).enqueue(new Callback<Search>() {
@@ -933,7 +936,7 @@ public class OpenFoodAPIClient {
      * @param allergen name of allergen
      * @param page number of pages
      * @param onAllergensCallback object of onAllergensCallback interface
-     * */
+     */
 
     public void getProductsByAllergen(final String allergen, final int page, final OnAllergensCallback onAllergensCallback) {
         apiService.getProductsByAllergen(allergen, page).enqueue(new Callback<Search>() {
@@ -958,7 +961,7 @@ public class OpenFoodAPIClient {
      * @param label  search queyry for products :label
      * @param page number of pages
      * @param onLabelCallback object of OnLabelCallback interface
-     * */
+     */
 
     public void getProductsByLabel(String label, final int page, final onLabelCallback onLabelCallback) {
         apiService.getProductByLabel(label, page).enqueue(new Callback<Search>() {
@@ -983,7 +986,7 @@ public class OpenFoodAPIClient {
      * @param category name of category
      * @param page number of page
      * @param onCategoryCallback object of onCategoryCallback interface
-     * */
+     */
 
     public void getProductsByCategory(String category, final int page, final onCategoryCallback onCategoryCallback) {
         apiService.getProductByCategory(category, page).enqueue(new Callback<Search>() {

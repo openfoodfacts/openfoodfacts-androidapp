@@ -24,7 +24,7 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
- * Created by prajwalm on 14/04/18.
+ * @see R.layout#fragment_contributors
  */
 
 public class ContributorsFragment extends BaseFragment {
@@ -102,6 +102,11 @@ public class ContributorsFragment extends BaseFragment {
         }
 
     }
+
+    /**
+     * Get date and time in MMMM dd, yyyy and HH:mm:ss a format
+     * @param dateTime date and time in miliseconds
+     * */
 
     private String[] getDateTime(String dateTime) {
         long unixSeconds = Long.parseLong(dateTime);

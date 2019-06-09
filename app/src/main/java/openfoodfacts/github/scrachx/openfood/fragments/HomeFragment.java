@@ -51,6 +51,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
+/**
+ * @see R.layout#fragment_home
+ * */
+
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
 
 
@@ -192,6 +196,11 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     }
 
+    /**
+     * Set text displayed on HOme based on build variant
+     * @param totalProductCount count of total products availab;e on the apps database
+     * */
+
     private void updateTextHome(int totalProductCount){
         textHome.setText(R.string.txtHome);
         if(totalProductCount!=0) {
@@ -213,6 +222,10 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     public void onCustomTabsDisconnected() {
 
     }
+
+    /**
+     * get tag line url from OpenFoodAPIService
+     * */
 
     private void getTagline(){
         OpenFoodAPIService openFoodAPIService = new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();

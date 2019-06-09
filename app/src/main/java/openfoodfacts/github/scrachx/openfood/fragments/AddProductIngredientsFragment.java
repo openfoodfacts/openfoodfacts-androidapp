@@ -38,6 +38,11 @@ import java.util.*;
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 
+/**
+ * Fragment for Add Product Ingredients
+ * @see R.layout#fragment_add_product_ingredients
+ * */
+
 public class AddProductIngredientsFragment extends BaseFragment implements PhotoReceiver {
     private static final String PARAM_INGREDIENTS = "ingredients_text";
     private static final String PARAM_TRACES = "add_traces";
@@ -174,6 +179,10 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         }
     }
 
+    /**
+     * Load ingredients image on the image view
+     * */
+
     public void loadIngredientsImage() {
         if (getAddProductActivity() == null) {
             return;
@@ -201,10 +210,20 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         }
     }
 
+    /**
+     * Set visibility parameters when image is loaded
+     * */
+
     private void imageLoaded() {
         btnEditImageIngredients.setVisibility(View.VISIBLE);
         imageProgress.setVisibility(View.GONE);
     }
+
+    /**
+     * returns alergen name from tag
+     * @param languageCode language in which additive name and tag are written
+     * @param tag Tag associated with the allergen
+     * */
 
     private String getTracesName(String languageCode, String tag) {
         AllergenName allergenName = mAllergenNameDao.queryBuilder().where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
@@ -268,6 +287,10 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             }
         }
     }
+
+    /**
+     * Automaticcely load suggestions for allergen names
+     * */
 
     private void loadAutoSuggestions() {
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
@@ -426,6 +449,10 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
 
+    /**
+     * Displays progress bar and hides other views util image is loaded
+     * */
+
     public void showImageProgress() {
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
@@ -433,6 +460,12 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         imageIngredients.setVisibility(View.INVISIBLE);
         btnEditImageIngredients.setVisibility(View.INVISIBLE);
     }
+
+    /**
+     * After image is loaded hide image progress
+     * @param errorInUploading boolean variable is true, if there is an error while showing image
+     * @param message error message in case of failure to display image
+     * */
 
     public void hideImageProgress(boolean errorInUploading, String message) {
         imageProgress.setVisibility(View.INVISIBLE);
@@ -448,6 +481,12 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         }
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * Display the list of ingredients based on the result from ocr of IngredientsList photo
+     * @param status status of ocr, in case of proper OCR it returns "set" or "0"
+     * @param ocrResult resultant string obtained after OCR of image
+     * */
 
     public void setIngredients(String status, String ocrResult) {
         if (getActivity() != null && !getActivity().isFinishing()) {

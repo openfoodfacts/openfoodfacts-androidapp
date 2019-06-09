@@ -76,6 +76,10 @@ import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.P
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_OFFLINE;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 
+/**
+ * @see R.layout#fragment_offline_edit
+ * */
+
 public class OfflineEditFragment extends NavigationBaseFragment implements SaveListAdapter.SaveClickInterface {
     public static final String LOG_TAG = "OFFLINE_EDIT";
     private static final String INGREDIENTS_ON_SERVER = "ingredientsTextOnServer";
@@ -339,6 +343,12 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             checkForExistingProductName(product, existingValuesOnServer);
         }
     }
+
+    /**
+     * Call an intent to open FullScreenImage activity
+     * @param s image url
+     * @param imageServer ImageView
+     * */
 
     private void showFullscreenView(String s, ImageView imageServer) {
         Intent intent = new Intent(getContext(), FullScreenImage.class);
@@ -763,6 +773,10 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         }
     }
 
+    /**
+     * After resuming the OfflineEditFragment resume the previous versions
+     * */
+
     private void fillAdapter() {
         saveItems.clear();
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
@@ -820,6 +834,9 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             }
         });
     }
+
+    /**
+     * Populate views depending on whether image is uploaded/msgdismissed */
 
     private void updateDataViews(boolean firstUpload, boolean msgdismissed) {
         if (msgdismissed) {
