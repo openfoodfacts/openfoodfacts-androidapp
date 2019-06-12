@@ -589,7 +589,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK) {
             onRefresh();
         }
-        if (FullScreenImage.isImageModified(requestCode, resultCode)) {
+        if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             onRefresh();
         }
 

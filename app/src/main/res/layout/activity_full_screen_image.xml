@@ -90,7 +90,6 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_alignParentEnd="true"
             style="@style/BorderButton"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height_short"
@@ -102,9 +101,8 @@
     />
     <ImageView
             android:id="@+id/btnChooseImage"
-            android:text="@string/choose_picture"
             android:textColor="@color/white"
-            app:srcCompat="@drawable/ic_photo_library"
+            app:srcCompat="@drawable/ic_baseline_image_search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnAddImage"
             android:layout_alignParentEnd="true"
@@ -117,9 +115,10 @@
             android:layout_marginLeft="@dimen/spacing_small"
             android:layout_marginStart="@dimen/spacing_small"
     />
-    <Button
+    <ImageView
             android:id="@+id/btnEditImage"
             android:text="@string/edit_image"
+            app:srcCompat="@drawable/ic_crop_rotate_24dp"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnChooseImage"
@@ -134,8 +133,23 @@
             android:layout_marginStart="@dimen/spacing_small"
     />
     <ImageView
+            android:id="@+id/btnUnselectImage"
+            app:srcCompat="@drawable/ic_remove_circle_white"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnEditImage"
+            android:layout_alignParentEnd="true"
+            style="@style/BorderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height_short"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+    />
+    <ImageView
             android:id="@+id/btnClose"
-            android:text="@string/choose_picture"
             android:textColor="@color/white"
             app:srcCompat="@drawable/ic_check_white_24dp"
             app:layout_constraintBottom_toBottomOf="parent"

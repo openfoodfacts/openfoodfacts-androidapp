@@ -351,6 +351,10 @@ public interface OpenFoodAPIService {
     Call<String> editImages(@Query("code") String code,
                             @QueryMap Map<String, String> fields);
 
+    @GET("/cgi/product_image_unselect.pl")
+    Call<String> unselectImage(@Query("code") String code,
+                               @QueryMap Map<String, String> fields);
+
     @GET
     Call<ResponseBody> downloadFile(@Url String fileUrl);
 

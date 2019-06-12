@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="@android:color/black"
+                                             android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:elevation="4dp"
+            android:id="@+id/toolbar"/>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/container"
+                 app:layout_constraintTop_toBottomOf="@id/toolbar"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintBottom_toTopOf="@id/txtInfo"
+                 android:layout_marginBottom="@dimen/spacing_small"
+                 android:layout_width="match_parent"
+                 android:layout_height="0dp">
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/imagesRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/images_item">
+
+        </android.support.v7.widget.RecyclerView>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:layout_margin="@dimen/spacing_small"
+                      android:orientation="vertical"
+                      android:visibility="invisible"
+                      android:id="@+id/zoomContainer"
+
+        >
+            <ImageView
+                    android:id="@+id/expandedImage"
+                    android:layout_width="match_parent"
+                    android:layout_weight="100"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:text="@string/closeZoom"
+                    android:textSize="@dimen/font_small"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/closeZoom"
+
+            />
+
+        </LinearLayout>
+    </FrameLayout>
+    <TextView android:id="@+id/txtInfo" android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textSize="@dimen/font_small"
+              android:text="One selected image"
+              android:textColor="@color/white"
+              android:visibility="invisible"
+              android:layout_marginEnd="@dimen/spacing_small"
+              android:layout_marginBottom="@dimen/spacing_tiny"
+              app:layout_constraintBottom_toTopOf="@id/btnChooseImage"
+              app:layout_constraintEnd_toEndOf="parent"
+    />
+    <Button
+            android:id="@+id/btnChooseImage"
+            android:text="@string/choose_picture_from_gallery"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_alignParentEnd="true"
+            style="@style/BorderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height_short"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+    />
+    <ImageView
+            android:id="@+id/btnCancel"
+            android:textColor="@color/white"
+            app:srcCompat="@drawable/ic_clear_white_24dp"
+            style="@style/BorderButton"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnAcceptSelection"
+            android:layout_height="@dimen/button_height_short"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+    />
+    <ImageView
+            android:id="@+id/btnAcceptSelection"
+            android:visibility="invisible"
+            android:textColor="@color/white"
+            app:srcCompat="@drawable/ic_check_white_24dp"
+            android:layout_alignParentEnd="true"
+            style="@style/BorderButton"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="@dimen/button_height_short"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+    />
+</android.support.constraint.ConstraintLayout>
+

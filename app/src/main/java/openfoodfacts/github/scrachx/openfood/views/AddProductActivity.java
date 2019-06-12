@@ -424,7 +424,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public void showFullscreen(String s, ImageView imageLocal) {
-        Intent intent = new Intent(AddProductActivity.this, FullScreenImage.class);
+        Intent intent = new Intent(AddProductActivity.this, ProductImageManagementActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("imageurl", s);
         intent.putExtras(bundle);

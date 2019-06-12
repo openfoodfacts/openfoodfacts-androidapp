@@ -39,7 +39,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -553,7 +553,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == RESULT_OK && isUserLoggedIn()) {
             startEditProduct();
         }
-        if (FullScreenImage.isImageModified(requestCode, resultCode)) {
+        if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             if (getActivity() instanceof ProductActivity) {
                 ((ProductActivity) getActivity()).onRefresh();
             }

@@ -51,16 +51,20 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 /**
  * Activity to display/edit product images
  */
-public class FullScreenImage extends BaseActivity implements PhotoReceiver {
+public class ProductImageManagementActivity extends BaseActivity implements PhotoReceiver {
     private static final int RESULTCODE_MODIFIED = 1;
     private static final int REQUEST_EDIT_IMAGE_AFTER_LOGIN = 1;
     private static final int REQUEST_ADD_IMAGE_AFTER_LOGIN = 2;
     private static final int REQUEST_CHOOSE_IMAGE_AFTER_LOGIN = 3;
+    private static final int REQUEST_UNSELECT_IMAGE_AFTER_LOGIN = 4;
     static final int REQUEST_EDIT_IMAGE = 1000;
+    static final int REQUEST_CHOOSE_IMAGE = 1001;
     @BindView(R.id.imageViewFullScreen)
     PhotoView mPhotoView;
     @BindView(R.id.btnEditImage)
-    Button editButton;
+    View editButton;
+    @BindView(R.id.btnUnselectImage)
+    View btnUnselectImage;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.textInfo)
@@ -89,6 +93,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         Product product = (Product) intent.getSerializableExtra(ImageKeyHelper.PRODUCT);
         boolean canEdit = product != null;
         editButton.setVisibility(canEdit ? View.VISIBLE : View.INVISIBLE);
+        btnUnselectImage.setVisibility(editButton.getVisibility());
 
         mAttacher = new PhotoViewAttacher(mPhotoView);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -136,7 +141,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
     }
 
     public static boolean isImageModified(int requestCode, int resultCode) {
-        return requestCode == REQUEST_EDIT_IMAGE && resultCode == FullScreenImage.RESULTCODE_MODIFIED;
+        return requestCode == REQUEST_EDIT_IMAGE && resultCode == ProductImageManagementActivity.RESULTCODE_MODIFIED;
     }
 
     private void incrementImageType(int inc) {
@@ -204,6 +209,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
             textInfo.setTextColor(ContextCompat.getColor(this, R.color.orange));
         }
         editButton.setVisibility(languageSupported ? View.VISIBLE : View.GONE);
+        btnUnselectImage.setVisibility(editButton.getVisibility());
         return languageSupported;
     }
 
@@ -253,7 +259,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
                     @Override
                     public void onError() {
                         mPhotoView.setVisibility(View.VISIBLE);
-                        Toast.makeText(FullScreenImage.this, getResources().getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ProductImageManagementActivity.this, getResources().getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show();
                         stopRefresh();
                     }
                 });
@@ -289,7 +295,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
                     }
                 } else {
                     if (StringUtils.isNotBlank(newState.getStatusVerbose())) {
-                        Toast.makeText(FullScreenImage.this, newState.getStatusVerbose(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ProductImageManagementActivity.this, newState.getStatusVerbose(), Toast.LENGTH_LONG).show();
                     }
                 }
                 if (!imageReloaded) {
@@ -360,6 +366,20 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         finish();
     }
 
+    @OnClick(R.id.btnUnselectImage)
+    void unselectImage() {
+        if (cannotEdit(REQUEST_UNSELECT_IMAGE_AFTER_LOGIN)) {
+            return;
+        }
+        startRefresh(getString(R.string.unselect_image));
+        client.unselectImage(getProduct().getCode(), getSelectedType(), getCurrentLanguage(), (value, response) -> {
+            if (value) {
+                setResult(RESULTCODE_MODIFIED);
+            }
+            reloadProduct();
+        });
+    }
+
     @OnClick(R.id.btnChooseImage)
     void onChooseImage() {
         if (cannotEdit(REQUEST_CHOOSE_IMAGE_AFTER_LOGIN)) {
@@ -368,7 +388,10 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_STORAGE);
         } else {
-            EasyImage.openGallery(this, -1, false);
+            final Intent intent = new Intent(ProductImageManagementActivity.this, ImagesSelectionActivity.class);
+            intent.putExtra(ImageKeyHelper.PRODUCT_BARCODE, getProduct().getCode());
+            intent.putExtra(ImagesSelectionActivity.TOOLBAR_TITLE, toolbar.getTitle());
+            startActivityForResult(intent, REQUEST_CHOOSE_IMAGE);
         }
     }
 
@@ -379,7 +402,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         }
         //if user not logged in, we force to log
         if (isUserNotLoggedIn()) {
-            startActivityForResult(new Intent(FullScreenImage.this, LoginActivity.class), loginRequestCode);
+            startActivityForResult(new Intent(ProductImageManagementActivity.this, LoginActivity.class), loginRequestCode);
             return true;
         }
         return false;
@@ -402,9 +425,6 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA && BaseFragment.isAllGranted(grantResults)) {
             onAddImage();
-        }
-        if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE && BaseFragment.isAllGranted(grantResults)) {
-            onChooseImage();
         }
     }
 
@@ -465,6 +485,9 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
     @SuppressWarnings("unused")
     @OnItemSelected(R.id.comboImageType)
     void onImageTypeChanged() {
+        if (getProduct() == null) {
+            return;
+        }
         ProductImageField newTypeSelected = TYPE_IMAGE.get(comboImageType.getSelectedItemPosition());
         final ProductImageField selectedType = getSelectedType();
         if (newTypeSelected.equals(selectedType)) {
@@ -514,8 +537,25 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
             if (resultCode == RESULT_OK) {
                 onChooseImage();
             }
+        } else if (requestCode == REQUEST_UNSELECT_IMAGE_AFTER_LOGIN) {
+            if (resultCode == RESULT_OK) {
+                unselectImage();
+            }
         } else if (requestCode == REQUEST_EDIT_IMAGE) {
             applyEditExistingImage(resultCode, data);
+        } else if (requestCode == REQUEST_CHOOSE_IMAGE) {
+            if (resultCode == RESULT_OK && data != null) {
+                File file = (File) data.getSerializableExtra(ImageKeyHelper.IMAGE_FILE);
+                String imgId = data.getStringExtra(ImageKeyHelper.IMG_ID);
+                //photo choosed from gallery
+                if (file != null) {
+                    onPhotoReturned(file);
+                } else if (StringUtils.isNotBlank(imgId)) {
+                    HashMap<String, String> imgMap = new HashMap<>();
+                    imgMap.put(ImageKeyHelper.IMG_ID, imgId);
+                    postEditImage(imgMap);
+                }
+            }
         } else {
             new PhotoReceiverHandler(this).onActivityResult(this, requestCode, resultCode, data);
         }
@@ -532,7 +572,6 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
         if (isUserNotLoggedIn() || !updateLanguageStatus() || dataFromCropActivity == null) {
             return;
         }
-        String imageUrl = getCurrentImageUrl();
         if (resultCode == Activity.RESULT_OK) {
             startRefresh(StringUtils.EMPTY);
             CropImage.ActivityResult result = CropImage.getActivityResult(dataFromCropActivity);
@@ -546,26 +585,31 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
                 HashMap<String, String> imgMap = new HashMap<>();
                 imgMap.put(ImageKeyHelper.IMG_ID, newServerTransformation.getInitImageId());
                 ImageTransformation.addTransformToMap(newServerTransformation, imgMap);
-                imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, product.getCode());
-                imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(getSelectedType(), getCurrentLanguage()));
-                mPhotoView.setVisibility(View.INVISIBLE);
-                client.editImage(product.getCode(), imgMap, (value, response) -> {
-                    if (value) {
-                        setResult(RESULTCODE_MODIFIED);
-                    }
-                    reloadProduct();
-                });
+                postEditImage(imgMap);
             } else {
                 stopRefresh();
             }
         }
     }
 
+    private void postEditImage(HashMap<String, String> imgMap) {
+        final String code = getProduct().getCode();
+        imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, code);
+        imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(getSelectedType(), getCurrentLanguage()));
+        mPhotoView.setVisibility(View.INVISIBLE);
+        client.editImage(code, imgMap, (value, response) -> {
+            if (value) {
+                setResult(RESULTCODE_MODIFIED);
+            }
+            reloadProduct();
+        });
+    }
+
     private void deleteLocalFiles() {
         if (lastViewedImage != null) {
             boolean deleted = lastViewedImage.delete();
             if (!deleted) {
-                Log.w(FullScreenImage.class.getSimpleName(), "cant delete file " + lastViewedImage);
+                Log.w(ProductImageManagementActivity.class.getSimpleName(), "cant delete file " + lastViewedImage);
             } else {
                 lastViewedImage = null;
             }
@@ -598,7 +642,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
             ProductImage image = new ProductImage(getProduct().getCode(), getSelectedType(), newPhotoFile, getCurrentLanguage());
             image.setFilePath(newPhotoFile.getAbsolutePath());
 
-            client.postImg(FullScreenImage.this, image, true, new ImageUploadListener() {
+            client.postImg(ProductImageManagementActivity.this, image, true, new ImageUploadListener() {
                 @Override
                 public void onSuccess() {
                     reloadProduct();
@@ -607,7 +651,7 @@ public class FullScreenImage extends BaseActivity implements PhotoReceiver {
 
                 @Override
                 public void onFailure(String message) {
-                    Toast.makeText(FullScreenImage.this, message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductImageManagementActivity.this, message, Toast.LENGTH_LONG).show();
                     stopRefresh();
                 }
             });

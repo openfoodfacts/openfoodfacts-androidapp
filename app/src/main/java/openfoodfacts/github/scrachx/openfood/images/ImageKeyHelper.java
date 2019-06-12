@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class ImageKeyHelper {
     public static final String IMAGE_URL = "imageurl";
+    public static final String IMAGE_FILE = "imagefile";
     public static final String IMAGE_TYPE = "imageType";
     public static final String PRODUCT_BARCODE = "code";
     public static final String PRODUCT = "product";

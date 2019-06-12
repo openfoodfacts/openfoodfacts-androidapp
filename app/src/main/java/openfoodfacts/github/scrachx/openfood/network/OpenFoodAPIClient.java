@@ -23,6 +23,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.*;
@@ -110,7 +111,8 @@ public class OpenFoodAPIClient {
         String fieldParam = getAllFields();
         return apiService.getProductByBarcode(barcode, fieldParam, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH));
     }
-    public Single<State> getProductFullSingle(final String barcode,String header) {
+
+    public Single<State> getProductFullSingle(final String barcode, String header) {
         String fieldParam = getAllFields();
         return apiService.getProductByBarcodeSingle(barcode, fieldParam, Utils.getUserAgent(header));
     }
@@ -679,7 +681,24 @@ public class OpenFoodAPIClient {
 
     public void editImage(String code, Map<String, String> imgMap, OnEditImageCallback onEditImageCallback) {
         addUserInfo(imgMap);
-        apiService.editImages(code, imgMap).enqueue(new Callback<String>() {
+        apiService.editImages(code, imgMap).enqueue(createCallback(onEditImageCallback));
+    }
+
+    /**
+     * Unselect the image from the product code.
+     *
+     * @param code code of the product
+     * @param onEditImageCallback
+     */
+    public void unselectImage(String code, ProductImageField field, String language, OnEditImageCallback onEditImageCallback) {
+        Map<String, String> imgMap = new HashMap<>();
+        addUserInfo(imgMap);
+        imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(field, language));
+        apiService.unselectImage(code, imgMap).enqueue(createCallback(onEditImageCallback));
+    }
+
+    private Callback<String> createCallback(OnEditImageCallback onEditImageCallback) {
+        return new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 onEditImageCallback.onEditResponse(true, response.body());
@@ -689,7 +708,7 @@ public class OpenFoodAPIClient {
             public void onFailure(Call<String> call, Throwable t) {
                 onEditImageCallback.onEditResponse(false, null);
             }
-        });
+        };
     }
 
     public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {

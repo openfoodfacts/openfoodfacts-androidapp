@@ -47,7 +47,7 @@ import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
@@ -326,7 +326,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     private void showFullscreenView(String s, ImageView imageServer) {
-        Intent intent = new Intent(getContext(), FullScreenImage.class);
+        Intent intent = new Intent(getContext(), ProductImageManagementActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("imageurl", s);
         intent.putExtras(bundle);

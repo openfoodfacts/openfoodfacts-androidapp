@@ -897,7 +897,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         super.onActivityResult(requestCode, resultCode, data);
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
         boolean shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK && data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, false));
-        if (FullScreenImage.isImageModified(requestCode, resultCode)) {
+        if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             shouldRefresh = true;
         }
         if (shouldRefresh) {

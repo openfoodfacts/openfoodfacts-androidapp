@@ -23,15 +23,15 @@ public class FullScreenActivityOpener {
         if (fragment == null) {
             return;
         }
-        Intent intent = new Intent(fragment.getContext(), FullScreenImage.class);
+        Intent intent = new Intent(fragment.getContext(), ProductImageManagementActivity.class);
         intent.putExtras(ImageKeyHelper.createImageBundle(imageType, product, LocaleHelper.getLanguage(fragment.getContext()), mUrlImage));
         if (fragment.getActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(fragment.getActivity(), mImageFront,
                     fragment.getActivity().getString(R.string.product_transition));
-            fragment.startActivityForResult(intent, FullScreenImage.REQUEST_EDIT_IMAGE, options.toBundle());
+            fragment.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE, options.toBundle());
         } else {
-            fragment.startActivityForResult(intent, FullScreenImage.REQUEST_EDIT_IMAGE);
+            fragment.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE);
         }
     }
 }
