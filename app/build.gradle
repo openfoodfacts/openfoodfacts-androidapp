@@ -14,7 +14,7 @@ def obtainTestBuildType() {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '28.0.3'
 
 
@@ -24,7 +24,7 @@ android {
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 316
         versionName "3.1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
