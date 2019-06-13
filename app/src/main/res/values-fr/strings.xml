@@ -139,11 +139,6 @@
         <item>Zinc</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Defaut</item>
-        <item>Nutrition</item>
-        <item>Ingrédients</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Favori</string>
     <string name="edit">Modifier</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">Rapport collagène sur protéines de viande</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Chlorophylle</string>
+    <string name="take_picture">Prendre une photo</string>
+    <string name="choose_picture">Choisir une photo</string>
+    <string name="choose_picture_from_gallery">Depuis la galerie</string>
     <string name="take_picture_ingredients">Prendre une photo des ingrédients</string>
     <string name="take_picture_front">Prendre une photo de l’avant</string>
     <string name="take_picture_nutrition_table">Prendre une photo du tableau nutritionnel</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">Nom inconnu</string>
     <string name="productBrandNull">Marque inconnue</string>
     <string name="productQuantityNull">Quantité inconnue</string>
+    <string name="productAdditivesUnknown">Additifs inconnus</string>
+    <string name="productAdditivesTemplate">%1$d additifs</string>
     <string name="product_not_complete">Ce produit n\'est pas encore complet.\nPouvez-vous ajouter des détails?</string>
     <string name="addProductOffline">Vous semblez déconnecté. Ajouter le produit %s en utilisant le mode hors ligne?</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">Préférences</string>
     <string name="OFFlogo">Logo Open Food Facts</string>
     <string name="loading_product">Chargement du produit %s</string>
+    <string name="image_not_defined_for_language">Aucune image pour la langue sélectionnée. Vous pouvez en ajouter une nouvelle</string>
     <string name="error_adding_ingredients">Une erreur s\'est produite lors de l\'ajout des ingrédients du produit</string>
     <string name="unable_to_extract_ingredients">Impossible d\'extraire les ingrédients de l\'image</string>
     <string name="error_adding_nutrition_facts">Une erreur s\'est produite lors de la tentative d\'ajout de données nutritionnelles sur le produit</string>
@@ -657,6 +658,9 @@
     <string name="traces_hint">Indiquer les ingrédients de mentions comme «Peut contenir des traces de», «Fabriqué dans une usine qui utilise aussi», etc. \nExemples: Lait, gluten, noix</string>
     <string name="nutrition_facts_not_specified">Les informations nutritionnelles ne sont pas mentionnées sur le produit.</string>
     <string name="nutrition_facts_picture">Photo des informations nutritionnelles</string>
+    <string name="front_picture">Image avant</string>
+    <string name="front_short_picture">De face</string>
+    <string name="other_picture">Autre photo</string>
     <string name="for_100g_100ml">Pour 100 g / 100 ml</string>
     <string name="per_serving">Par portion</string>
     <string name="serving_size">Taille d\'une portion</string>
@@ -679,9 +683,14 @@
     <string name="stores">Magasins</string>
     <string name="additional_pictures">Photos supplémentaires</string>
     <string name="hint_product_pictures">(Ajouter plus de photos du produit, par exemple: instructions de recyclage, étiquettes, etc.)</string>
+    <string name="uploading_image">Envoi de la photo</string>
     <string name="uploading_nutrition_image">Envoi de l\'image des informations nutritionnelles</string>
     <string name="uploading_ingredients_image">Envoi de l\'image des ingrédients</string>
     <string name="uploading_front_image">Envoi de l\'image principale</string>
+    <string name="edit_front_image">Modifier la photo avant</string>
+    <string name="edit_nutrition_image">Modifier la photo de la nutrition</string>
+    <string name="edit_ingredients_image">Modifier la photo des ingrédients</string>
+    <string name="edit_other_image">Modifier la photo</string>
     <string name="url_nova_groups">https://fr.openfoodfacts.org/classification-nova-pour-la-transformation-des-aliments</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Veuillez vous connecter pour modifier un produit.</string>
@@ -766,6 +775,8 @@
     <string name="customer_service">Service Clients :</string>
     <string name="fast_addition_mode_title">Mode d\'ajout rapide</string>
     <string name="fast_addition_mode">Active l\'ajout rapide de produits avec moins d\'attributs</string>
+    <string name="crop_new_image_title">Recadrer de nouvelles images</string>
+    <string name="crop_new_image">Active l\'action de recadrage sur les nouvelles images</string>
     <string name="addtive_search">Rechercher un additif</string>
     <string name="additives">Additifs</string>
     <!--used for product_lists implementation-->
@@ -816,9 +827,15 @@
     <string name="required_to_compute_nutriscore">(Nécessaire pour calculer le Nutri-Score)</string>
     <string name="first_scan_tooltip">Vous pouvez glisser vers le haut pour voir plus de détails</string>
     <string name="add_an_allergen">Ajouter un allergène</string>
-    <string name="add_a_list">Add a list</string>
+    <string name="add_a_list">Ajouter une liste</string>
     <string name="todo">À FAIRE</string>
     <string name="edit_image">Modifier l\'image</string>
+    <string name="unselect_image">Déselectionner l\'image</string>
+    <string name="choose_default_language">Sélectionnez la langue du produit</string>
     <string name="barcode">Code barre</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="productAdditivesNone">Sans additifs</string>
+    <string name="error_uploading_photo">Une erreur s\'est produite lors du téléchargement d\'une nouvelle photo</string>
+    <string name="history_network_error">Le produit n\'a pas pu être chargé. Veuillez réessayer lorsque vous êtes de nouveau en ligne.</string>
+    <string name="cant_modify_if_refreshing">Veuillez patienter jusqu\'à la fin du téléchargement</string>
+    <string name="closeZoom">Cliquez pour fermer le zoom</string>
 </resources>

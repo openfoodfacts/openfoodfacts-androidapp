@@ -143,11 +143,6 @@
         <item>Zinc</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Implicită</item>
-        <item>Informații nutriționale</item>
-        <item>Ingrediente</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Semn de carte</string>
     <string name="edit">Modificare</string>
@@ -442,6 +437,9 @@
     <string name="collagen_meat_protein_ratio">Raport colagen / proteine din carne</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Clorofilă</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Faceți o poză ingredientelor</string>
     <string name="take_picture_front">Faceți o poză frontală produsului</string>
     <string name="take_picture_nutrition_table">Faceți o poză tabelului cu informații nutriționale</string>
@@ -603,6 +601,8 @@
     <string name="productNameNull">Nume necunoscut</string>
     <string name="productBrandNull">Marcă necunoscută</string>
     <string name="productQuantityNull">Catitate necunoscută</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">Acest produs încă nu este complet.\nÎi poți adăuga tu câteva detalii?</string>
     <string name="addProductOffline">Pari a fi deconectat. Adaugi produsul %s folosind modul offline?</string>
     <string name="product_not_found">Produsul %1$s pe care l-ai scanat încă nu există în Open Food Facts. Îl poți adăuga tu?</string>
@@ -615,6 +615,7 @@
     <string name="preferences">Preferinţe</string>
     <string name="OFFlogo">Sigla Open Food Facts</string>
     <string name="loading_product">Se încarcă produse%s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Au apărut probleme în timp ce încercaţi să adăugaţi ingredientele produsului</string>
     <string name="unable_to_extract_ingredients">Imposibil de detectat ingredientele din imagine</string>
     <string name="error_adding_nutrition_facts">A apărut o problemă în timp ce încercați să adăugați detaliile produsului</string>
@@ -661,6 +662,9 @@
     <string name="traces_hint">Indicați ingredientele din mențiuni ca de exemplu: \"Ar putea conține urme de\", \"Produse într-o fabrică care procesează și\" etc. \nExemple: Lapte, Gluten, Nuci</string>
     <string name="nutrition_facts_not_specified">Valorile nutriționale nu sunt specificate pe produs.</string>
     <string name="nutrition_facts_picture">Imaginea cu valori nutriționale</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">Pentru 100 g / 100 ml</string>
     <string name="per_serving">Per porție</string>
     <string name="serving_size">Cantitatea unei porții</string>
@@ -683,9 +687,14 @@
     <string name="stores">Magazine</string>
     <string name="additional_pictures">Imagini suplimentare</string>
     <string name="hint_product_pictures">(Adăugați mai multe imagini ale produsului, de exemplu: instrucțiuni de reciclare, etichete etc.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Încărcarea imaginii ingredientelor</string>
     <string name="uploading_front_image">Încărcarea imaginii</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Conectați-vă pentru a edita un produs.</string>
@@ -770,6 +779,8 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->
@@ -823,6 +834,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Cod de bare</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>

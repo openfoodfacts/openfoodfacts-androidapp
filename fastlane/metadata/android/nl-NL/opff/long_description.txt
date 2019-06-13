@@ -8,11 +8,11 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** Get the Facts ***
+*** Ken de feiten ***
 
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
@@ -20,15 +20,15 @@ You will also be able to find (according to the indications present on the produ
 - brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Werkt in alle omstandigheden goed ***
+- Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
+- De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen
+- Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
 *** Your pet food, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Je kunt de app anoniem gebruiken
+- Je kunt jouw scangeschiedenis exporteren
 
 
 For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.

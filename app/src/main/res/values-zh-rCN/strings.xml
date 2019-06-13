@@ -135,11 +135,6 @@
         <item>锌</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>默认</item>
-        <item>营养</item>
-        <item>成分</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">书签</string>
     <string name="edit">编辑</string>
@@ -434,6 +429,9 @@
     <string name="collagen_meat_protein_ratio">胶原蛋白比例</string>
     <string name="cocoa">可可粉</string>
     <string name="chlorophyl">叶绿素</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">拍摄营养成分</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">拍摄营养成分</string>
@@ -595,6 +593,8 @@
     <string name="productNameNull">名称未知</string>
     <string name="productBrandNull">品牌未知</string>
     <string name="productQuantityNull">数量未知</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">这个产品还未完成。\n您可以添加一些细节吗？</string>
     <string name="addProductOffline">你已离线。要使用离线模式添加产品 %s 吗？</string>
     <string name="product_not_found">你扫描的产品 %1$s 尚未存在在 Open Food Facts 中。你可以添加它吗？</string>
@@ -607,6 +607,7 @@
     <string name="preferences">偏好</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">加载产品 %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">试图添加产品成分时出错</string>
     <string name="unable_to_extract_ingredients">无法从图像中提取成分</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
@@ -653,6 +654,9 @@
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">营养成分没有在产品傻姑娘注明</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">每份</string>
     <string name="serving_size">分量</string>
@@ -675,9 +679,14 @@
     <string name="stores">商店</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">请登录以编辑产品</string>
@@ -762,6 +771,8 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">添加</string>
     <!--used for product_lists implementation-->
@@ -815,6 +826,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">条形码</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>

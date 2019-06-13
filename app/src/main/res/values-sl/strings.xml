@@ -147,11 +147,6 @@
         <item>Cink</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Privzeto</item>
-        <item>Prehrana</item>
-        <item>Sestavine</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Zaznamek</string>
     <string name="edit">Uredi</string>
@@ -446,6 +441,9 @@
     <string name="collagen_meat_protein_ratio">Razmerje beljakovin v kolagenskem mesu</string>
     <string name="cocoa">Kakav</string>
     <string name="chlorophyl">Klorofil</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Fotografiraj sestavine</string>
     <string name="take_picture_front">Naredi sliko spredaj</string>
     <string name="take_picture_nutrition_table">Naredi posnetek iz tabele sestavin</string>
@@ -607,6 +605,8 @@
     <string name="productNameNull">Neznano ime</string>
     <string name="productBrandNull">Neznana blagovna znamka</string>
     <string name="productQuantityNull">Količina ni znana</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">Ta izdelek še ni dokončan. \nLahko dodate nekaj podrobnosti?</string>
     <string name="addProductOffline">Zdi se, da ste brez povezave. Dodam izdelek %s v načinu brez povezave?</string>
     <string name="product_not_found">Skeniran izdelek %1$s še ne obstaja v Open Food Facts. Ga lahko dodate?</string>
@@ -619,6 +619,7 @@
     <string name="preferences">Nastavitve</string>
     <string name="OFFlogo">Logotip odprta dejstva o hrani</string>
     <string name="loading_product">Nalaganje izdelka %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Nekaj je šlo narobe med poskusom dodajanja sestavin izdelka</string>
     <string name="unable_to_extract_ingredients">Iz slike ne morem razbrati sestavin</string>
     <string name="error_adding_nutrition_facts">Nekaj je šlo narobe med poskusom dodajanja prehranskih dejstev</string>
@@ -665,6 +666,9 @@
     <string name="traces_hint">Navedite sestavine iz navedb, kot so \"Lahko vsebujejo sledi\", \"Izdelano v tovarni, ki prav tako uporablja\", itd. \nPrimeri: mleko, gluten, oreščki</string>
     <string name="nutrition_facts_not_specified">Podatki o hranilni vrednosti niso navedeni na izdelku.</string>
     <string name="nutrition_facts_picture">Slika s podatki o hranilni vrednosti</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">Na 100g / 100ml</string>
     <string name="per_serving">Na porcijo</string>
     <string name="serving_size">Velikost obroka</string>
@@ -687,9 +691,14 @@
     <string name="stores">Trgovine</string>
     <string name="additional_pictures">Dodatne slike</string>
     <string name="hint_product_pictures">(Dodajte več slik izdelka, npr.: navodila za recikliranje, nalepke itd.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Nalaganje slike z dejstvi o prehrani</string>
     <string name="uploading_ingredients_image">Nalaganje slike s sestavinami</string>
     <string name="uploading_front_image">Nalaganje sprednje slike</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Prijavite se, če želite urediti izdelek.</string>
@@ -774,6 +783,8 @@
     <string name="customer_service">Podpora uporabnikom:</string>
     <string name="fast_addition_mode_title">Način za hitro dodajanje</string>
     <string name="fast_addition_mode">Omogoča hitro dodajanje izdelkov z manj atributi</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Poiščite dodatek</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->
@@ -827,6 +838,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Črtna koda</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>
