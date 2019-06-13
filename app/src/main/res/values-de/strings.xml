@@ -264,7 +264,7 @@
     <string name="login_button">Benutzername</string>
     <string name="create_account_button">Konto erstellen</string>
     <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
-    <string name="from_gallery">Aus Galerie</string>
+    <string name="from_gallery">Aus Galerie wählen</string>
     <string name="product_sent">Produkt wurde erfolgreich gesendet</string>
     <string name="action_edit_product">Produkt bearbeiten</string>
     <string name="title_info_dialog">Wie funktioniert es?</string>
@@ -688,9 +688,9 @@
     <string name="uploading_ingredients_image">Zutatenbild wird hochgeladen</string>
     <string name="uploading_front_image">Bild der Vorderseite wird hochgeladen</string>
     <string name="edit_front_image">Foto der Vorderseite bearbeiten</string>
-    <string name="edit_nutrition_image">Edit the nutrition photo</string>
-    <string name="edit_ingredients_image">Edit the ingredients photo</string>
-    <string name="edit_other_image">Edit the photo</string>
+    <string name="edit_nutrition_image">Foto der Nährstoffe bearbeiten</string>
+    <string name="edit_ingredients_image">Foto der Zutaten bearbeiten</string>
+    <string name="edit_other_image">Foto bearbeiten</string>
     <string name="url_nova_groups">https://de.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Bitte melden Sie sich an, um ein Produkt zu bearbeiten.</string>
@@ -775,8 +775,8 @@
     <string name="customer_service">Kundendienst:</string>
     <string name="fast_addition_mode_title">Schneller Hinzufügemodus</string>
     <string name="fast_addition_mode">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
-    <string name="crop_new_image_title">Crop new images</string>
-    <string name="crop_new_image">Enables crop action on new images</string>
+    <string name="crop_new_image_title">Neue Fotos zuschneiden</string>
+    <string name="crop_new_image">Zuschneiden von neuen Fotos ermöglichen</string>
     <string name="addtive_search">Nach Zusatzstoff suchen</string>
     <string name="additives">Zusatzstoffe</string>
     <!--used for product_lists implementation-->
@@ -830,12 +830,12 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="add_a_list">Eine Liste hinzufügen</string>
     <string name="todo">Zu erledigen</string>
     <string name="edit_image">Foto bearbeiten</string>
-    <string name="unselect_image">Unselect Image</string>
-    <string name="choose_default_language">Select product language</string>
+    <string name="unselect_image">Foto abwählen</string>
+    <string name="choose_default_language">Produktsprache wählen</string>
     <string name="barcode">Strichcode</string>
-    <string name="productAdditivesNone">No additives</string>
+    <string name="productAdditivesNone">Keine Zusatzstoffe</string>
     <string name="error_uploading_photo">Fehler beim Hochladen des neuen Fotos</string>
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
-    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
-    <string name="closeZoom">Click to close zoom</string>
+    <string name="history_network_error">Das Produkt konnte nicht geladen werden. Bitte versuchen Sie es erneut, wenn Sie wieder online sind.</string>
+    <string name="cant_modify_if_refreshing">Bitte warten bis das Hochladen abgeschlossen ist</string>
+    <string name="closeZoom">Hier klicken, um die Vergrößerung zu schließen</string>
 </resources>
