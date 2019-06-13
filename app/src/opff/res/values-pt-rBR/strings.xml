@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-pt.openpetfoodfacts.org/colaborador/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
-    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts é um banco de dados de mais de %1$d produtos alimentícios para animais de estimação (mais os que você irá contribuir) Uau. Uau.</string>
+    <string name="txtHome">Open Pet Food Facts é um banco de dados de produtos alimentares para animais de estimação com ingredientes, fatos de nutrição… Uau. Uau.</string>
     <string name="slide_1_title">Contribua para a Transparência Alimentar dos animais de estimação</string>
     <string name="slide_1_desc">Escaneie produtos, tire fotos, faça a transparência alimentar dos animais acontecer</string>
     <string name="slide_2_title">Conheça os fatos</string>
