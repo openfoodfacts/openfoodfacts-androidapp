@@ -12,4 +12,5 @@
         app:itemBackground="@color/blue_500"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
+
         app:menu="@menu/navigation_bottom"/>
