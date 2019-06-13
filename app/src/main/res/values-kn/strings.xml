@@ -139,11 +139,6 @@
         <item>ಝಿಂಕ್</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>ಪೂರ್ವಸ್ಥಿತಿ</item>
-        <item>ಪೋಷಣೆ</item>
-        <item>ಪದಾರ್ಥಗಳು</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">ಬುಕ್ಮಾರ್ಕ್</string>
     <string name="edit">ತಿದ್ದು</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">ಕಾಲಜನ್ ಮಾಂಸ ಪ್ರೋಟೀನ್ ಅನುಪಾತ</string>
     <string name="cocoa">ಕೊಕೊ</string>
     <string name="chlorophyl">ಕ್ಲೋರೊಫಿಲ್</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">ಹೆಸರು ತಿಳಿದಿಲ್ಲ</string>
     <string name="productBrandNull">ಬ್ರ್ಯಾಂಡ್ ಅಜ್ಞಾತವಾಗಿದೆ</string>
     <string name="productQuantityNull">ಪ್ರಮಾಣ ಅಜ್ಞಾತವಾಗಿದೆ</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">ಈ ಉತ್ಪನ್ನ ಇನ್ನೂ ಪೂರ್ಣಗೊಂಡಿಲ್ಲ. \ n ನೀವು ಕೆಲವು ವಿವರಗಳನ್ನು ಸೇರಿಸಬಹುದೇ?</string>
     <string name="addProductOffline">ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿ ಕಾಣಿಸುತ್ತಿದ್ದೀರಿ. ಆಫ್ಲೈನ್ ​​ಮೋಡ್ ಬಳಸಿಕೊಂಡು ಉತ್ಪನ್ನ %s ಸೇರಿಸಿ?</string>
     <string name="product_not_found">ಉತ್ಪನ್ನದ %1$s ನೀವು ಸ್ಕ್ಯಾನ್ ಓಪನ್ ಆಹಾರ ಫ್ಯಾಕ್ಟ್ಸ್ ಇನ್ನೂ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ನೀವು ಅದನ್ನು ಸೇರಿಸಬಹುದೇ?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">ಆದ್ಯತೆಗಳು</string>
     <string name="OFFlogo">ಆಹಾರ ಸಂಗತಿಗಳು ತೆರೆಯಿರಿ</string>
     <string name="loading_product">ಉತ್ಪನ್ನವನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">ಉತ್ಪನ್ನ ಪದಾರ್ಥಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
     <string name="unable_to_extract_ingredients">ಚಿತ್ರದಿಂದ ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
     <string name="error_adding_nutrition_facts">ಉತ್ಪನ್ನ ಪೌಷ್ಟಿಕ ಸತ್ಯಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
@@ -657,6 +658,9 @@
     <string name="traces_hint">\'ಕುರುಹುಗಳನ್ನು ಹೊಂದಿರಬಹುದು\', \'ಬಳಸಲಾಗುವ ಒಂದು ಕಾರ್ಖಾನೆಯಲ್ಲಿ ತಯಾರಿಸಲಾಗುತ್ತದೆ\' ಮುಂತಾದವುಗಳಿಂದ ಸೂಚಿಸುವ ಪದಾರ್ಥಗಳನ್ನು ಸೂಚಿಸಿ \ n ಉದಾಹರಣೆಗಳು: ಹಾಲು, ಅಂಟು, ಬೀಜಗಳು</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">ನ್ಯೂಟ್ರಿಷನ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಚಿತ್ರ</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">100g / 100ml ಗೆ</string>
     <string name="per_serving">ಪ್ರತಿ ಸೇವೆಗೆ</string>
     <string name="serving_size">ವಿತರಣೆಯ ಗಾತ್ರ</string>
@@ -679,9 +683,14 @@
     <string name="stores">ಅಂಗಡಿಗಳು</string>
     <string name="additional_pictures">ಹೆಚ್ಚುವರಿ ಚಿತ್ರಗಳು</string>
     <string name="hint_product_pictures">(ಉತ್ಪನ್ನದ ಹೆಚ್ಚಿನ ಚಿತ್ರಗಳನ್ನು ಸೇರಿಸಿ ಉದಾ: ಮರುಬಳಕೆಯ ಸೂಚನೆಗಳು, ಲೇಬಲ್ಗಳು ಇತ್ಯಾದಿ.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">ಪೌಷ್ಟಿಕಾಂಶ ಸತ್ಯದ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
     <string name="uploading_ingredients_image">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
     <string name="uploading_front_image">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">ಉತ್ಪನ್ನವನ್ನು ಸಂಪಾದಿಸಲು ದಯವಿಟ್ಟು ಸೈನ್ ಇನ್ ಮಾಡಿ.</string>
@@ -766,6 +775,8 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">ಸೇರ್ಪಡೆ</string>
     <!--used for product_lists implementation-->
@@ -819,6 +830,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">ಬಾರ್‌ ಕೋಡ್</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>
