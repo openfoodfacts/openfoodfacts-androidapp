@@ -58,7 +58,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     private static final int REQUEST_CHOOSE_IMAGE_AFTER_LOGIN = 3;
     private static final int REQUEST_UNSELECT_IMAGE_AFTER_LOGIN = 4;
     static final int REQUEST_EDIT_IMAGE = 1000;
-    static final int REQUEST_CHOOSE_IMAGE = 1001;
+    private static final int REQUEST_CHOOSE_IMAGE = 1001;
     @BindView(R.id.imageViewFullScreen)
     PhotoView mPhotoView;
     @BindView(R.id.btnEditImage)

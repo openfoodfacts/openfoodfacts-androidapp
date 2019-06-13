@@ -284,13 +284,6 @@
         <item>zu</item>
     </string-array>
 
-    <!--    Why using a different order than UI ?...-->
-    <string-array name="images_array">
-        <item>Default</item>
-        <item>Nutrition</item>
-        <item>Ingredients</item>
-    </string-array>
-
 
     <string-array name="product_images_fields_array" translatable="false">
         <item>product_name</item>
@@ -1130,6 +1123,6 @@
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
-    <string name="cant_modify_if_refreshing">Please, wait the end of the uploading task</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
 </resources>

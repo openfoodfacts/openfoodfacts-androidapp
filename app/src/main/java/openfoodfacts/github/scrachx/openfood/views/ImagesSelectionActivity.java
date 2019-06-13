@@ -61,10 +61,6 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
         OpenFoodAPIClient openFoodAPIClient = new OpenFoodAPIClient(this);
         setContentView(R.layout.activity_product_images_list);
         btnChooseImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_photo_library, 0, 0, 0);
@@ -113,6 +109,11 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
                     }
                 }
 
+                setSupportActionBar(toolbar);
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+
                 //Check if user is logged in
                 adapter = new ProductImagesSelectionAdapter(this, imageNames, code, position -> imageSelected());
 
@@ -143,11 +144,6 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         onCloseZoom();
     }
 
-    @OnClick(R.id.btnCancel)
-    void onBtnCancel() {
-        setResult(RESULT_CANCELED);
-        onBackPressed();
-    }
 
     @OnClick(R.id.btnAcceptSelection)
     void onBtnAcceptSelection() {

@@ -83,21 +83,7 @@
             android:layout_marginLeft="@dimen/spacing_small"
             android:layout_marginStart="@dimen/spacing_small"
     />
-    <ImageView
-            android:id="@+id/btnCancel"
-            android:textColor="@color/white"
-            app:srcCompat="@drawable/ic_clear_white_24dp"
-            style="@style/BorderButton"
-            android:layout_width="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnAcceptSelection"
-            android:layout_height="@dimen/button_height_short"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_marginEnd="@dimen/spacing_small"
-            android:layout_marginRight="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginStart="@dimen/spacing_small"
-    />
+
     <ImageView
             android:id="@+id/btnAcceptSelection"
             android:visibility="invisible"
