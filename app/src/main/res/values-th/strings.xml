@@ -31,7 +31,7 @@
         <item>ส่วนผสม</item>
         <item>อาหารการกิน</item>
         <item>ฉลากโภชนาการ</item>
-        <item>Environment</item>
+        <item>สภาพแวดล้อม</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -56,99 +56,94 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>กรดแอลฟา - ไลโนเลนิก / ALA (18: 3 n-3)</item>
+        <item>กรดอะแรคิดิก (20:0)</item>
+        <item>กรดอะแรคิโดนิก / AA / ARA (20:4 n-6)</item>
+        <item>กรดบีฮินิก (22:0)</item>
         <item>ไบคาร์บอเนต</item>
         <item>ไบโอติน</item>
-        <item>Butyric acid (4:0)</item>
+        <item>กรดบิวทีริก (4:0)</item>
         <item>คาเฟอีน</item>
         <item>แคลเซียม</item>
-        <item>Capric acid (10:0)</item>
-        <item>Caproic acid (6:0)</item>
-        <item>Caprylic acid (8:0)</item>
+        <item>กรดแคพริก (10:0)</item>
+        <item>กรดแคโพรอิก (6:0)</item>
+        <item>กรดแคพริลิก (8:0)</item>
         <item>เคซิอิน</item>
-        <item>Cerotic acid (26:0)</item>
+        <item>กรดซีโรทิก (26:0)</item>
         <item>คลอไรด์</item>
         <item>คอเลสเตอรอล</item>
         <item>โครเมียม</item>
         <item>ทองแดง</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>กรดไดโฮโม-แกมมา-ไลโนเลนิก / DGLA (20:3 n-6)</item>
+        <item>กรดโดโคซะเฮกซะอีโนอิก / DHA (22:6 n-3)</item>
+        <item>กรดอีโคซะเพนทะโนอิก / EPA (20:5 n-3)</item>
+        <item>กรดอีไลดิก (18:1 n-9)</item>
+        <item>กรดอีรูซิก (22:1 n-9)</item>
         <item>ธาฅุที่ประกอบด้วย</item>
         <item>ฟรักโทส</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>กรดแกมมา-ไลโนเลนิก / GLA (18:3 n-6)</item>
         <item>กลูโคส</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>กรดกอนโดอิก (20:1 n-9)</item>
         <item>ไอโอดีน</item>
         <item>เหล็ก</item>
         <item>แล็กโตส</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>กรดลอริก (12:0)</item>
+        <item>กรดลิกโนซีริก (24:0)</item>
+        <item>กรดไลโนเลอิก / LA (18:2 n-6)</item>
         <item>แมกนีเซียม</item>
         <item>Maltodextrins</item>
         <item>มอลโตส</item>
         <item>แมงกานีส</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>กรดมี๊ด (20:3 n-9)</item>
+        <item>กรดมีลิสสิก (30:0)</item>
         <item>โมลิบดีนัม</item>
         <item>ไขมันไม่อิ่มตัวโมโน</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>กรดมอนแทนิก (28:0)</item>
+        <item>กรดมิริสติก (14:0)</item>
+        <item>กรดเนอร์โวนิก (24:1 n-9)</item>
         <item>นิวคลีโอ</item>
-        <item>Oleic acid (18:1 n-9)</item>
-        <item>Omega 3 fatty acids</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
-        <item>Palmitic acid (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>กรดโอเลอิก (18:1 n-9)</item>
+        <item>กรดไขมันโอเมกา 3</item>
+        <item>กรดไขมันโอเมกา 6</item>
+        <item>กรดไขมันโอเมกา 9</item>
+        <item>กรดปาล์มิติก (16:0)</item>
+        <item>กรดแพนโททีนิก / แพนโททีเนต (Vitamin B5)</item>
         <item>พีเอช</item>
         <item>ฟอสฟอรัส</item>
-        <item>Sugar alcohols (Polyols)</item>
+        <item>แอลกอฮอล์น้ำตาล (พอลิออล)</item>
         <item>ไขมันไม่อิ่มตัวโพลี</item>
         <item>โพแทสเซียม</item>
         <item>ซีลีเนียม</item>
-        <item>Serum proteins</item>
+        <item>โปรตีนเซรุ่ม</item>
         <item>ไข่มุก</item>
-        <item>Starch</item>
-        <item>Stearic acid (18:0)</item>
+        <item>แป้ง</item>
+        <item>กรดสเตียริก (18:0)</item>
         <item>ซูโครส</item>
         <item>Taurine</item>
         <item>ไขมันทรานส์</item>
         <item>วิตามินเอ</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>วิตามิน B1 (ไทอะมิน)</item>
+        <item>วิตามิน B12 (โคบาลามิน)</item>
+        <item>วิตามิน B2 (ไรโบฟลาวิน)</item>
+        <item>วิตามิน B3 / วิตามิน PP (ไนอะซิน)</item>
+        <item>วิตามิน B6 (ไพริดอกซิน)</item>
+        <item>วิตามิน B9 (กรดโฟลิก)</item>
+        <item>วิตามิน C (กรดแอสคอร์บิก)</item>
         <item>วิตามินดี</item>
         <item>วิตามินอี</item>
         <item>วิตามินเค</item>
         <item>สังกะสี</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Default</item>
-        <item>อาหารการกิน</item>
-        <item>ส่วนผสม</item>
-    </string-array>
     <!-- Content Description -->
-    <string name="bookmark">Bookmark</string>
-    <string name="edit">Edit</string>
+    <string name="bookmark">รายการโปรด</string>
+    <string name="edit">แก้ไข</string>
     <string name="search_button">ค้นหา</string>
-    <string name="no_products">Products not found</string>
-    <string name="desc_list_item_icon">Item Icon</string>
-    <string name="alert_dialog_warning_title">Warning</string>
-    <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-    <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
+    <string name="no_products">ไม่พบผลิตภัณฑ์</string>
+    <string name="desc_list_item_icon">ไอคอนรายการ</string>
+    <string name="alert_dialog_warning_title">คำเตือน</string>
+    <string name="alert_dialog_warning_msg_user">ผู้ใช้/รหัสผ่านมีการเปลี่ยนแปลง โปรดอัปเดตข้อมูล</string>
+    <string name="alert_dialog_product_error_msg">ไม่พบผลิตภัณฑ์ โปรดลองใหม่อีกครั้ง</string>
     <string name="toast_retrieving">Loading...</string>
     <string name="txtGenericName">ชื่อสามัญ :</string>
     <string name="txtBarcode">บาร์โค้ด :</string>
@@ -222,7 +217,7 @@
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="txtBarcodeRequire">Barcode required</string>
-    <string name="txtOk">OK</string>
+    <string name="txtOk">ตกลง</string>
     <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
     <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
     <string name="txtAllsent">Products sent</string>
@@ -243,7 +238,7 @@
     <string name="user_drawer">ผู้ใช้งาน</string>
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
-    <string name="txt_product_not_found">Products not found</string>
+    <string name="txt_product_not_found">ไม่พบผลิตภัณฑ์</string>
     <string name="delete_txt">Delete</string>
     <string name="sign_in_drawer">Sign-in</string>
     <string name="alert_drawer">Allergen alert</string>
@@ -260,7 +255,7 @@
     <string name="formats">Formats</string>
     <string name="choose_formats">Choose Formats</string>
     <string name="select_camera">Select a Camera</string>
-    <string name="ok_button">OK</string>
+    <string name="ok_button">ตกลง</string>
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
@@ -434,6 +429,9 @@
     <string name="collagen_meat_protein_ratio">อัตราส่วนโปรตีนจากเนื้อสัตว์คอลลาเจน</string>
     <string name="cocoa">โกโก้</string>
     <string name="chlorophyl">คลอโรฟิลล์</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">ถ่ายภาพของส่วนผสม</string>
     <string name="take_picture_front">ถ่ายภาพด้านหน้า</string>
     <string name="take_picture_nutrition_table">ถ่ายภาพของตารางโภชนาการ</string>
@@ -587,7 +585,7 @@
     <string name="contribution_tab">Contributions</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
-    <string name="product">Edit</string>
+    <string name="product">แก้ไข</string>
     <string name="txtDialogsTitle">ข้อมูล</string>
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
@@ -595,6 +593,8 @@
     <string name="productNameNull">Name unknown</string>
     <string name="productBrandNull">Brand unknown</string>
     <string name="productQuantityNull">Quantity unknown</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
@@ -607,6 +607,7 @@
     <string name="preferences">Preferences</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
@@ -653,6 +654,9 @@
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">ต่อการให้บริการ</string>
     <string name="serving_size">ขนาดให้บริการ</string>
@@ -675,9 +679,14 @@
     <string name="stores">ร้านค้า</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
@@ -762,6 +771,8 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">สารเติมแต่ง</string>
     <!--used for product_lists implementation-->
@@ -795,7 +806,7 @@
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
-    <string name="product_summary_action_edit_button_label">Edit</string>
+    <string name="product_summary_action_edit_button_label">แก้ไข</string>
     <string name="product_summary_action_share_button_label">Share</string>
     <string name="product_question_prompt">Tap here to answer</string>
     <string name="product_question_positive_response">Yes</string>
@@ -815,6 +826,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">บาร์โค้ด</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>
