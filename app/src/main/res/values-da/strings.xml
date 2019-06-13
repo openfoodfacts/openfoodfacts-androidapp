@@ -836,6 +836,6 @@
     <string name="productAdditivesNone">Ingen tilsætningsstoffer</string>
     <string name="error_uploading_photo">Noget gik galt under upload af et nyt foto</string>
     <string name="history_network_error">Produktet kunne ikke indlæses. Forsøg igen, når du atter er online.</string>
-    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
-    <string name="closeZoom">Click to close zoom</string>
+    <string name="cant_modify_if_refreshing">Afvent færdiggørelse af upload</string>
+    <string name="closeZoom">Klik for at lukke zoom</string>
 </resources>
