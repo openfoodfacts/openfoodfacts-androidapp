@@ -31,12 +31,14 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -441,7 +443,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                 editImageFront.setVisibility(View.INVISIBLE);
                 mImageUrl = productDetails.get("image_front");
                 Picasso.with(getContext())
-                    .load("file://" + mImageUrl)
+                    .load(FileUtils.LOCALE_FILE_SCHEME+ mImageUrl)
                     .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
                     .into(imageFront, new Callback() {
@@ -582,7 +584,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             loadFrontImage(lang);
             OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
-            client.getExistingProductDetails(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {

@@ -30,6 +30,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
@@ -38,7 +39,7 @@ import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
@@ -151,7 +152,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(context));
             holder.productComparisonImage.setOnClickListener(view -> {
                 if (imageUrl != null) {
-                    Intent intent = new Intent(context, FullScreenImage.class);
+                    Intent intent = new Intent(context, ProductImageManagementActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("imageurl", imageUrl);
                     intent.putExtras(bundle);

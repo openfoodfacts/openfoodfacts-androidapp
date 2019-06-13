@@ -20,10 +20,12 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -241,7 +243,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             if (getImageIngredients() != null) {
                 imageProgress.setVisibility(View.VISIBLE);
                 Picasso.with(getContext())
-                    .load("file://" + getImageIngredients())
+                    .load(FileUtils.LOCALE_FILE_SCHEME + getImageIngredients())
                     .resize(dps50ToPixels(), dps50ToPixels())
                     .centerInside()
                     .into(imageIngredients, new Callback() {

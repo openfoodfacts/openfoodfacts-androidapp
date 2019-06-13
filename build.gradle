@@ -93,7 +93,7 @@ ext {
     fastAdapterCommons = '2.1.0@aar'
     converterScalars = '2.1.0'
     materialDrawer = '6.0.3@aar'
-    imageCropper = '2.6.0'
+    imageCropper = '2.7.0'
     orchestrator = '1.0.2'
     nachos = '1.1.1'
     testRunnerVersion = '1.0.2'

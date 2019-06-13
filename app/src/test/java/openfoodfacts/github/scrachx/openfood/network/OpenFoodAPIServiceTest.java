@@ -1,12 +1,17 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 
-import org.junit.Assert;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -182,7 +187,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     @Test
     public void getProduct_notFound() throws Exception {
         String barcode = "457457457";
-        Response<State> response = serviceRead.getFullProductByBarcode(barcode,Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
+        Response<State> response = serviceRead.getProductByBarcode(barcode,"code",Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
 
         assertTrue(response.isSuccessful());
 
@@ -232,8 +237,8 @@ public class OpenFoodAPIServiceTest implements APIUtils {
         State body = execute.body();
         assertEquals(body.getStatus(), 1);
         assertEquals(body.getStatusVerbose(), "fields saved");
-
-        Response<State> response = serviceWrite.getFullProductByBarcode(product.getBarcode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
+        String fields= "image_small_url,selected_images,languages_codes,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens_tags,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups,lang,purchase_places,nutrition_data_per,no_nutrition_data,other,other_information,conservation_conditions,recycling_instructions_to_discard,recycling_instructions_to_recycle,warning,customer_service,environment_infocard,environment_impact_level_tags";
+        Response<State> response = serviceWrite.getProductByBarcode(product.getBarcode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
         Product savedProduct = response.body().getProduct();
         assertEquals(product.getName(), savedProduct.getProductName());
         assertEquals(product.getBrands(), savedProduct.getBrands());

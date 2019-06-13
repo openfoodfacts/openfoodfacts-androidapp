@@ -6,9 +6,11 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import org.apache.commons.text.WordUtils;
 
-import java.util.Locale;
+import java.util.*;
 
 /**
  * This class is used to change your application locale and persist this change for the next time
@@ -19,10 +21,71 @@ import java.util.Locale;
  * Created by gunhansancar on 07/10/15.
  */
 public class LocaleHelper {
+    public static int find(List<LanguageData> availableLanguageForImage, String language) {
+        if (language != null) {
+            for (int i = 0; i < availableLanguageForImage.size(); i++) {
+                if (language.equals(availableLanguageForImage.get(i).code)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
 
-    private LocaleHelper(){
+    public static class LanguageData implements Comparable<LanguageData> {
+        private final String code;
+        private final String name;
+        private final boolean supported;
+
+        LanguageData(String code, String name, boolean supported) {
+            this.code = code;
+            this.name = name;
+            this.supported = supported;
+        }
+
+        public boolean isSupported() {
+            return supported;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+            if (LanguageData.class.equals(obj.getClass())) {
+                return code.equals(((LanguageData) obj).code);
+            }
+            return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return code.hashCode();
+        }
+
+        @Override
+        public int compareTo(@NonNull LanguageData o) {
+            return name.compareTo(o.name);
+        }
+    }
+
+    private LocaleHelper() {
         //Helper class
     }
+
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
     public static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
 
@@ -36,10 +99,36 @@ public class LocaleHelper {
         setLocale(context, lang);
     }
 
+    public static List<LanguageData> getLanguageData(Collection<String> codes, boolean supported) {
+        List<LanguageData> res = new ArrayList<>();
+        if (codes != null) {
+            for (String code : codes) {
+                final LanguageData languageData = getLanguageData(code, supported);
+                if (languageData != null) {
+                    res.add(languageData);
+                }
+            }
+        }
+        Collections.sort(res);
+        return res;
+    }
+
+    public static LanguageData getLanguageData(String code, boolean supported) {
+        Locale locale = getLocale(code);
+        if (locale == null) {
+            return null;
+        }
+        return new LanguageData(locale.getLanguage(), WordUtils.capitalize(locale.getDisplayName(locale)), supported);
+    }
+
     public static Locale getLocale() {
         return getLocale(OFFApplication.getInstance());
     }
 
+    /**
+     * Used by screenshots test
+     */
+    @SuppressWarnings("unused")
     public static Context setLocale(Locale locale) {
         return setLocale(OFFApplication.getInstance(), locale);
     }
@@ -127,5 +216,4 @@ public class LocaleHelper {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
     }
-
 }

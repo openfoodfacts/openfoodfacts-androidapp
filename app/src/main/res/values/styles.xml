@@ -22,6 +22,10 @@
         <item name="queryBackground">@color/md_light_appbar</item>
     </style>
 
+    <style name="WhiteSpinner" parent="Base.Widget.AppCompat.Spinner">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

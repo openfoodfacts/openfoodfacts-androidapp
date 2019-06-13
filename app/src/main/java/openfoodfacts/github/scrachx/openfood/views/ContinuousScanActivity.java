@@ -130,8 +130,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     ConstraintLayout details;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
-    @Inject
-    OpenFoodAPIService client;
+    private OpenFoodAPIClient client;
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private Product product;
     private ProductFragment productFragment;
@@ -197,7 +196,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         if (isFinishing() || isDestroyed()) {
             return;
         }
-        client.getFullProductByBarcodeSingle(lastText, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SCAN))
+        client.getProductFullSingle(lastText, Utils.HEADER_USER_AGENT_SCAN)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(a -> {
                     hideAllViews();
@@ -545,6 +544,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         OFFApplication.getAppComponent().inject(this);
+        client=new OpenFoodAPIClient(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continuous_scan);
         ButterKnife.bind(this);
