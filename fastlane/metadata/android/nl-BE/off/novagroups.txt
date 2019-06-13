@@ -1,21 +1,21 @@
-Nova group
+Nova-groep
 
-Nova groups
+Nova-groepen
 
-Nova group:
+Nova groep:
 
-Group 1
-Group 1 - Unprocessed or minimally processed foods
-Unprocessed or minimally processed foods
+Groep 1
+NOVA-Groep 1 - Onverwerkte of minimaal bewerkte levensmiddelen
+Onbewerkte of minimaal bewerkte levensmiddelen
 
 Group 2
-Group 2 - Processed culinary ingredients
-Processed culinary ingredients
+NOVA-Groep 2 - Levensmiddelen die bewerkte ingrediënten bevatten
+Bewerkte ingrediënten
 
 Group 3
-Group 3 - Processed foods
-Processed foods
+NOVA-Groep 3 - Bewerkte levensmiddelen
+Bewerkte levensmiddelen
 
-Group 4
-Group 4 - Ultra-processed food and drink products
-Ultra-processed food and drink products
+Groep 4
+NOVA-Groep 4 - Ultra-bewerkte levensmiddelen en dranken
+Ultra-bewerkte levensmiddelen en dranken
