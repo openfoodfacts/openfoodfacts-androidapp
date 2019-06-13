@@ -157,11 +157,6 @@
         <item>الزنك</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>الافتراضي</item>
-        <item>التغذية</item>
-        <item>المكونات</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">الإشارة المرجعية</string>
     <string name="edit">تعديل</string>
@@ -456,6 +451,9 @@
     <string name="collagen_meat_protein_ratio">نسبة بروتين اللحوم الكولاجين</string>
     <string name="cocoa">الكاكاو</string>
     <string name="chlorophyl">الكلوروفيل</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">التقط صورة للمكونات</string>
     <string name="take_picture_front">التقاط صورة من الجهة الأمامية</string>
     <string name="take_picture_nutrition_table">التقط صورة لجدول الحقائق الغذائية</string>
@@ -617,6 +615,8 @@
     <string name="productNameNull">الاسم غير معروف</string>
     <string name="productBrandNull">العلامة التجارية غير معروفة</string>
     <string name="productQuantityNull">كمية غير معروفة</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">هذا المنتج لم يكتمل بعد. \n هل يمكنك إضافة بعض التفاصيل؟</string>
     <string name="addProductOffline">يبدو أنك غير متصل. أضف المنتج %s باستخدام الوضع الغير متصل بالشبكة؟</string>
     <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. هل يمكنك إضافته؟</string>
@@ -629,6 +629,7 @@
     <string name="preferences">الخيارات</string>
     <string name="OFFlogo">شعار الحقائق الغذائية المفتوحة</string>
     <string name="loading_product">يتم تحميل المنتج %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">حدث خطأ ما أثناء محاولة إضافة مكونات المنتج</string>
     <string name="unable_to_extract_ingredients">غير قادر على استخراج المكونات من الصورة</string>
     <string name="error_adding_nutrition_facts">حدث خطأ ما أثناء محاولة إضافة الحقائق الغذائية للمنتج</string>
@@ -675,6 +676,9 @@
     <string name="traces_hint">أشر إلى المكونات تشير الى مثلاً \"قد تحتوي على آثار\" ، \"صنع في مصنع يستخدم أيضًا\" ، إلخ. \n أمثلة: الحليب ، الغلوتين ، المكسرات</string>
     <string name="nutrition_facts_not_specified">لم يتم تحديد الحقائق الغذائية على المنتج.</string>
     <string name="nutrition_facts_picture">صورة للحقائق الغذائية</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">100 جرام / 100 مل</string>
     <string name="per_serving">لكل وجبة</string>
     <string name="serving_size">حجم الحصة</string>
@@ -697,9 +701,14 @@
     <string name="stores">المتاجر</string>
     <string name="additional_pictures">صور إضافية</string>
     <string name="hint_product_pictures">(أضف المزيد من الصور للمنتج ، على سبيل المثال: تعليمات إعادة التدوير والملصقات وغير ذلك)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">تحميل صورة حقائق التغذية</string>
     <string name="uploading_ingredients_image">تحميل صورة المكونات</string>
     <string name="uploading_front_image">تحميل الصورة الأمامية</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">الرجاء التسجيل لتحرير المنتج.</string>
@@ -784,6 +793,8 @@
     <string name="customer_service">خدمة العُملاء:</string>
     <string name="fast_addition_mode_title">وضع الإضافة السريعة</string>
     <string name="fast_addition_mode">تفعيل الإضافة السريعة للمنتجات مع صفات أقل</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">البحث عن مادة مضافة</string>
     <string name="additives">إضافات</string>
     <!--used for product_lists implementation-->
@@ -837,6 +848,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">الرمز الشريطي</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">حدث خطأ ما اثناء تحميل صورة جديدة</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>
