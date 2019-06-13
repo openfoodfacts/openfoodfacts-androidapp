@@ -611,7 +611,7 @@
     <string name="preferences">Einstellungen</string>
     <string name="OFFlogo">Logo von Open Food Fact</string>
     <string name="loading_product">Produkt „%s” wird geladen</string>
-    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
+    <string name="image_not_defined_for_language">Kein Foto für die ausgewählte Sprache. Sie können eine neue hinzufügen.</string>
     <string name="error_adding_ingredients">Beim Versuch, Produktzutaten hinzuzufügen, ist ein Fehler aufgetreten</string>
     <string name="unable_to_extract_ingredients">Die Zutaten können nicht aus dem Bild extrahiert werden</string>
     <string name="error_adding_nutrition_facts">Beim Versuch, Nährwertangaben für Produkte hinzuzufügen, ist ein Fehler aufgetreten</string>
@@ -658,9 +658,9 @@
     <string name="traces_hint">Geben Sie Zutaten wie \"Kann Spuren enthalten\", \"Hergestellt in einer Fabrik, die verwendet auch\" usw. an. \nBeispiele: Milch, Gluten, Nüsse</string>
     <string name="nutrition_facts_not_specified">Die Nährwertinformationen sind nicht auf dem Produkt angegeben.</string>
     <string name="nutrition_facts_picture">Foto der Nährwertinformationen</string>
-    <string name="front_picture">Front Picture</string>
-    <string name="front_short_picture">Front</string>
-    <string name="other_picture">Other Picture</string>
+    <string name="front_picture">Produktfoto (Vorderseite)</string>
+    <string name="front_short_picture">Vorderseite</string>
+    <string name="other_picture">Weitere Fotos</string>
     <string name="for_100g_100ml">Für 100g / 100ml</string>
     <string name="per_serving">je Portion</string>
     <string name="serving_size">Portionsgröße</string>
@@ -683,11 +683,11 @@
     <string name="stores">Läden</string>
     <string name="additional_pictures">Zusätzliche Bilder</string>
     <string name="hint_product_pictures">(Fügen Sie weitere Bilder des Produkts hinzu. Z.B.: Recyclinganweisungen, Etiketten, etc.)</string>
-    <string name="uploading_image">Sending the photo</string>
+    <string name="uploading_image">Foto wird gesendet</string>
     <string name="uploading_nutrition_image">Hochladen des Nährwertangabenbilds</string>
     <string name="uploading_ingredients_image">Zutatenbild wird hochgeladen</string>
     <string name="uploading_front_image">Bild der Vorderseite wird hochgeladen</string>
-    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_front_image">Foto der Vorderseite bearbeiten</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
