@@ -441,9 +441,9 @@
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">קקאו</string>
     <string name="chlorophyl">כלורופיל</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture">Choose a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">צילום תמונה</string>
+    <string name="choose_picture">בחירת תמונה</string>
+    <string name="choose_picture_from_gallery">מהגלריה</string>
     <string name="take_picture_ingredients">צילום תמונה של הרכיבים</string>
     <string name="take_picture_front">צילום תמונה של החזית</string>
     <string name="take_picture_nutrition_table">צילום תמונה של טבלת הערכים</string>
@@ -605,7 +605,7 @@
     <string name="productNameNull">שם לא ידוע</string>
     <string name="productBrandNull">מותג לא ידוע</string>
     <string name="productQuantityNull">כמות בלתי ידועה</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesUnknown">תוספים בלתי ידועים</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">מוצר זה טרם הושלם. \nנוכל לבקש ממך להוסיף עוד פרטים?</string>
     <string name="addProductOffline">כנראה שאין לך חיבור לאינטרנט. להוסיף את המוצר %s במצב בלתי מקוון?</string>
