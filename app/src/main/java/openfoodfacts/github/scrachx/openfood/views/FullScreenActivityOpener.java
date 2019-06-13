@@ -10,6 +10,7 @@ import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Used to open fullscreen activity
@@ -24,7 +25,11 @@ public class FullScreenActivityOpener {
             return;
         }
         Intent intent = new Intent(fragment.getContext(), ProductImageManagementActivity.class);
-        intent.putExtras(ImageKeyHelper.createImageBundle(imageType, product, LocaleHelper.getLanguage(fragment.getContext()), mUrlImage));
+        String language = LocaleHelper.getLanguage(fragment.getContext());
+        if (!product.isLanguageSupported(language) && StringUtils.isNotBlank(product.getLang())) {
+            language = product.getLang();
+        }
+        intent.putExtras(ImageKeyHelper.createImageBundle(imageType, product, language, mUrlImage));
         if (fragment.getActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(fragment.getActivity(), mImageFront,
