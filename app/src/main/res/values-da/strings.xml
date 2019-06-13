@@ -688,9 +688,9 @@
     <string name="uploading_ingredients_image">Uploader ingrediensfoto</string>
     <string name="uploading_front_image">Uploader forsidefoto</string>
     <string name="edit_front_image">Refigér forsidefoto</string>
-    <string name="edit_nutrition_image">Edit the nutrition photo</string>
-    <string name="edit_ingredients_image">Edit the ingredients photo</string>
-    <string name="edit_other_image">Edit the photo</string>
+    <string name="edit_nutrition_image">Refigér ernæringsfoto</string>
+    <string name="edit_ingredients_image">Uploader ingrediensfoto</string>
+    <string name="edit_other_image">Redigér foto</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Log ind for at redigere et produkt.</string>
@@ -775,8 +775,8 @@
     <string name="customer_service">Kundeservice:</string>
     <string name="fast_addition_mode_title">Hurtig tilføjelse-funktion</string>
     <string name="fast_addition_mode">Gør det muligt hurtigt at tilføje produkter med færre attributter</string>
-    <string name="crop_new_image_title">Crop new images</string>
-    <string name="crop_new_image">Enables crop action on new images</string>
+    <string name="crop_new_image_title">Beskær nye fotos</string>
+    <string name="crop_new_image">Muliggør beskæring af nye fotos</string>
     <string name="addtive_search">Søg efter en tilsætningsstof</string>
     <string name="additives">Tilsætningsstoffer</string>
     <!--used for product_lists implementation-->
@@ -830,12 +830,12 @@
     <string name="add_a_list">Tilføj en liste</string>
     <string name="todo">AT GØRE</string>
     <string name="edit_image">Rediger billede</string>
-    <string name="unselect_image">Unselect Image</string>
-    <string name="choose_default_language">Select product language</string>
+    <string name="unselect_image">Afmarér foto</string>
+    <string name="choose_default_language">Vælg produktsprog</string>
     <string name="barcode">Stregkode</string>
-    <string name="productAdditivesNone">No additives</string>
+    <string name="productAdditivesNone">Ingen tilsætningsstoffer</string>
     <string name="error_uploading_photo">Noget gik galt under upload af et nyt foto</string>
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="history_network_error">Produktet kunne ikke indlæses. Forsøg igen, når du atter er online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
 </resources>
