@@ -31,8 +31,10 @@
 -keep public class android.support.v7.widget.** { *; }
 -keep public class android.support.v7.internal.widget.** { *; }
 -keep public class android.support.v7.internal.view.menu.** { *; }
+# to display labels on the BottomNavigationView
 -keepclassmembers class android.support.design.internal.BottomNavigationMenuView {
     boolean mShiftingMode;
 }
-
+# for stack-traces
+-keepattributes SourceFile,LineNumberTable
 -ignorewarnings
