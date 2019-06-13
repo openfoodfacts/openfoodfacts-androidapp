@@ -139,11 +139,6 @@
         <item>Zinc</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>అప్రమేయం</item>
-        <item>Nutrition</item>
-        <item>Ingredients</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Bookmark</string>
     <string name="edit">మార్చు</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Cocoa</string>
     <string name="chlorophyl">Chlorophyl</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Take a picture of the ingredients</string>
     <string name="take_picture_front">Take a picture of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">పేరు తెలియదు</string>
     <string name="productBrandNull">బ్రాండ్ తెలియదు</string>
     <string name="productQuantityNull">పరిమాణం తెలియదు</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">ఈ ఉత్పత్తి ఇంకా పూర్తి కాలేదు. \nమీరు కొన్ని వివరాలను చేర్చవచ్చా?</string>
     <string name="addProductOffline">మీరు ఆఫ్లైన్లో ఉన్నారు. ఉత్పత్తి జోడించు %s ఆఫ్లైన్ మోడ్ ఉపయోగించి?</string>
     <string name="product_not_found">ఉత్పత్తి %1$s మీరు స్కాన్ లో ఓపెన్ ఆహార వాస్తవాలు ఇంకా ఉనికిలో లేదు. మీరు దీన్ని జోడించవచ్చా?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">ప్రాధాన్యతలు</string>
     <string name="OFFlogo">ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్ లోగో</string>
     <string name="loading_product">ఉత్పత్తిని లోడ్ చేస్తోంది %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">ఉత్పత్తి పదార్ధాలను జోడించడానికి ప్రయత్నిస్తున్నప్పుడు ఏదో తప్పు జరిగింది</string>
     <string name="unable_to_extract_ingredients">చిత్రం నుండి పదార్ధాలను సేకరించడం సాధ్యం కాదు</string>
     <string name="error_adding_nutrition_facts">ఉత్పత్తి పోషణ వాస్తవాలను జోడించడానికి ప్రయత్నిస్తున్నప్పుడు ఏదో తప్పు జరిగింది</string>
@@ -657,6 +658,9 @@
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per serving</string>
     <string name="serving_size">Serving size</string>
@@ -679,9 +683,14 @@
     <string name="stores">Stores</string>
     <string name="additional_pictures">అదనపు చిత్రాలు</string>
     <string name="hint_product_pictures">(ఉత్పత్తి యొక్క మరిన్ని చిత్రాలు జోడించండి ఉదా: రీసైక్లింగ్ సూచనలను, లేబుల్స్ మొదలైనవి)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">పోషక పోషణ వాస్తవాల చిత్రం అప్లోడ్</string>
     <string name="uploading_ingredients_image">ప్రతిమలను చిత్రం అప్లోడ్</string>
     <string name="uploading_front_image">ముందు చిత్రం అప్లోడ్</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">దయచేసి ఒక ఉత్పత్తిని సవరించడానికి సైన్ ఇన్ చేయండి.</string>
@@ -766,6 +775,8 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
     <!--used for product_lists implementation-->
@@ -819,6 +830,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Barcode</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>
