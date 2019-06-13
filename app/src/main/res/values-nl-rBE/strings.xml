@@ -73,33 +73,33 @@
         <item>Capronzuur (6:0)</item>
         <item>Caprylzuur (8:0)</item>
         <item>Caseïne</item>
-        <item>Cerotic acid (26:0)</item>
+        <item>Cerotinezuur (26:0)</item>
         <item>Chloor</item>
         <item>Cholesterol</item>
         <item>Chroom</item>
         <item>Koper</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>Dihomo-gamma-linoleenzuur / DGLA (20: 3 n-6)</item>
+        <item>Docosahexaeenzuur (22: 6 n-3)</item>
+        <item>Eicosapentaeenzuur (20:5 n-3)</item>
+        <item>Eaidinezuur (18:1 n-9)</item>
+        <item>Erucazuur (22:1 n-9)</item>
         <item>Fluor</item>
         <item>Fructose</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>Gamma-linoleenzuur / GLA (18: 3 n-6)</item>
         <item>Glucose</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>Gondoisch zuur (20:1 n-9)</item>
         <item>Jodium</item>
         <item>IJzer</item>
         <item>Lactose</item>
         <item>Laurinezuur (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
+        <item>Lignocarinezuur (24: 0)</item>
         <item>Linolzuur / LA (18:2 n-6)</item>
         <item>Magnesium</item>
         <item>Maltodextrine</item>
         <item>Maltose</item>
         <item>Mangaan</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>Mead-zuur (20: 3 n-9)</item>
+        <item>Melissylzuur (30: 0)</item>
         <item>Molybdeen</item>
         <item>Enkelvoudig onverzadigde vetten</item>
         <item>Montanic zuur (28:0)</item>
@@ -139,11 +139,6 @@
         <item>Zink</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Standaard</item>
-        <item>Voedingswaarde</item>
-        <item>Ingrediënten</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Favoriet</string>
     <string name="edit">Bewerken</string>
@@ -178,7 +173,7 @@
     <string name="txtPalmOilProduct">Ingrediënten bevatten palmolie</string>
     <string name="txtServingSize">Per portie</string>
     <string name="txtNutrientLevel100g">Voedingsstoffen per 100g</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Voedingswaarden per 100 g :</string>
     <string name="txtNutritionLevelLow">kleine hoeveelheid</string>
     <string name="txtNutritionLevelModerate">matige hoeveelheid</string>
     <string name="txtNutritionLevelHigh">grote hoeveelheid</string>
@@ -382,7 +377,7 @@
     <string name="nutrition_serum_proteins">Serumproteïnen</string>
     <string name="nutrition_nucleotides">Nucleotiden</string>
     <string name="for_100g">Per 100g</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">Voor 100 ml</string>
     <string name="serving">Per portie</string>
     <string name="minerals">Mineralen</string>
     <string name="nutrition_calcium">Calcium</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">Collageen vleesproteïne verhouding</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Chlorofyl</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Maak een foto van de ingrediënten</string>
     <string name="take_picture_front">Maak een foto van de voorkant</string>
     <string name="take_picture_nutrition_table">Maak een foto van de voedingstabel</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">Naam onbekend</string>
     <string name="productBrandNull">Merk onbekend</string>
     <string name="productQuantityNull">Hoeveelheid onbekend</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">Dit product is nog niet compleet. \nWil je details toevoegen?</string>
     <string name="addProductOffline">Je lijkt offline te zijn. Het product %s toevoegen met behulp van de offlinemodus?</string>
     <string name="product_not_found">Product %1$s door jou gescand, bestaat nog niet. Wil je het toevoegen?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">Voorkeuren</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Product %s wordt geladen</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Er is iets misgegaan tijdens het proberen ingrediënten voor het product toe te voegen</string>
     <string name="unable_to_extract_ingredients">Kan ingrediënten niet uit afbeelding extraheren</string>
     <string name="error_adding_nutrition_facts">Er is iets fout gegaan bij het toevoegen van voedingsinformatie</string>
@@ -657,6 +658,9 @@
     <string name="traces_hint">Vermeld de ingrediënten met de vermelding \"Kan sporen bevatten van\", \"Geproduceerd in een fabriek waar ook X verwerkt wordt\", etc.</string>
     <string name="nutrition_facts_not_specified">De nutritionele informatie wordt niet op het product vermeld</string>
     <string name="nutrition_facts_picture">Foto van de voedingswaardetabel</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">Voor 100 g / 100 ml</string>
     <string name="per_serving">Per portie</string>
     <string name="serving_size">Grootte van een portie</string>
@@ -679,9 +683,14 @@
     <string name="stores">Winkels</string>
     <string name="additional_pictures">Extra afbeeldingen</string>
     <string name="hint_product_pictures">(Voeg meer foto\'s toe van het product, bijv: recyclinginstructies, labels etc.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Foto van de voedingswaarden aan het uploaden</string>
     <string name="uploading_ingredients_image">Foto van de ingrediënten aan het uploaden</string>
     <string name="uploading_front_image">Foto van voorkant aan het uploaden</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels&amp;hl=nl</string>
     <string name="sign_in_to_edit">Log in om een product te bewerken.</string>
@@ -731,7 +740,7 @@
     <string name="edit_diet_enabled_disabled">In-/uitschakelen</string>
     <string name="edit_diet_authorised_ingredients">Geautoriseerde ingrediënten</string>
     <string name="edit_diet_hint_ingredient_authorised">Lijst de toegestane ingrediënten die in groen moeten worden weergegeven. Bijvoorbeeld: appel, paddestoel, tomaat… U kunt deze lijst later invullen.</string>
-    <string name="edit_diet_so_so_ingredients">So so ingredients</string>
+    <string name="edit_diet_so_so_ingredients">Matige ingrediënten</string>
     <string name="edit_diet_hint_so_so_ingredient">Markeer ingrediënten die problemen kunnen geven en in oranje moeten worden weergegeven. Bijvoorbeeld: appel, paddenstoel of tomaat. Je kunt de lijst later aanvullen.</string>
     <string name="edit_diet_unauthorised_ingredients">Niet-geautoriseerde ingrediënten</string>
     <string name="edit_diet_hint_unauthorised_ingredient">Maak een lijst van de ongeautoriseerde ingrediënten die in rood zouden moeten verschijnen. Voorbeeld: gluten, melk, palmolie, suiker… U kunt deze lijst later invullen.</string>
@@ -766,6 +775,8 @@
     <string name="customer_service">Klantenservice :</string>
     <string name="fast_addition_mode_title">Snelle toevoegmodus</string>
     <string name="fast_addition_mode">Maakt snelle toevoeging van producten met minder kenmerken mogelijk</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Zoek een additief</string>
     <string name="additives">Additieven</string>
     <!--used for product_lists implementation-->
@@ -812,13 +823,19 @@
     <string name="go_to_full_product_page">Ga naar de volledige productpagina</string>
     <string name="no_additive_data_available_for_this_product">Er zijn geen gegevens over toevoegingen beschikbaar voor dit product</string>
     <string name="no_nutrient_information_available_for_this_product">Geen voedingsinformatie beschikbaar voor dit product</string>
-    <string name="error_duplicate_listname">You already have a list with this name</string>
-    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
-    <string name="first_scan_tooltip">You can slide up the card for more details</string>
-    <string name="add_an_allergen">Add an allergen</string>
-    <string name="add_a_list">Add a list</string>
-    <string name="todo">TODO</string>
-    <string name="edit_image">Edit Image</string>
+    <string name="error_duplicate_listname">Je hebt al een lijst met deze naam</string>
+    <string name="required_to_compute_nutriscore">(Nodig om de Nutri-Score te berekenen)</string>
+    <string name="first_scan_tooltip">U kunt de kaart omhoog vegen voor meer details</string>
+    <string name="add_an_allergen">Voeg een allergeen toe</string>
+    <string name="add_a_list">Voeg een lijst toe</string>
+    <string name="todo">Nog te doen</string>
+    <string name="edit_image">Bewerk afbeelding</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Streepjescode</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="productAdditivesNone">No additives</string>
+    <string name="error_uploading_photo">Er ging iets mis tijdens het uploaden van een nieuwe foto</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>
