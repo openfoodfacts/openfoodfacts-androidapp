@@ -147,11 +147,6 @@
         <item>Zinek</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Výchozí</item>
-        <item>Výživové hodnoty</item>
-        <item>Složení</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Záložka</string>
     <string name="edit">Upravit</string>
@@ -446,6 +441,9 @@
     <string name="collagen_meat_protein_ratio">Poměr bílkovin z kolagenového masa</string>
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Chlorofyl</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Vyfotit složení produktu</string>
     <string name="take_picture_front">Vyfoťte přední stranu výrobku</string>
     <string name="take_picture_nutrition_table">Vyfotit nutriční tabulku</string>
@@ -607,6 +605,8 @@
     <string name="productNameNull">Neznámé jméno</string>
     <string name="productBrandNull">Neznámý výrobce</string>
     <string name="productQuantityNull">Neznámé množství</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">Výrobek %1$s, který jste naskenovali, ještě není v databázi Open Food Facts. Můžete ho prosím přidat?</string>
@@ -619,6 +619,7 @@
     <string name="preferences">Předvolby</string>
     <string name="OFFlogo">Open Food Facts</string>
     <string name="loading_product">Načítání produktu %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Při pokusu o přidání složení, se něco pokazilo</string>
     <string name="unable_to_extract_ingredients">Nepodařilo se rozpoznat složení z obrázku</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
@@ -665,6 +666,9 @@
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Snímek tabulky výživových údajů</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">Na 100 g / 100 ml</string>
     <string name="per_serving">V jedné porci</string>
     <string name="serving_size">Velikost porce</string>
@@ -687,9 +691,14 @@
     <string name="stores">Prodejny</string>
     <string name="additional_pictures">Další obrázky</string>
     <string name="hint_product_pictures">(Přidejte další fotky produktu, jako pokyny pro recyklaci, štítky apod.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Pro úpravu produktu se musíte přihlásit.</string>
@@ -774,6 +783,8 @@
     <string name="customer_service">Zákaznická podpora:</string>
     <string name="fast_addition_mode_title">Režim rychlého přidávání</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditiva</string>
     <!--used for product_lists implementation-->
@@ -827,6 +838,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Upravit obrázek</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Čárový kód</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Při nahrávání nové fotografie došlo k chybě</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>
