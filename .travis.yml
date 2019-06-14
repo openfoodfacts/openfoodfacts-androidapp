@@ -101,3 +101,5 @@ deploy:
   file: app/build/outputs/apk/*.apk
   on:
     all_branches: true
+git:
+  depth: false
