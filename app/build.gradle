@@ -218,8 +218,6 @@ dependencies {
     }
     implementation "com.google.zxing:core:$rootProject.zxingCoreVersion"
 
-    //HTML Dom
-    implementation "org.jsoup:jsoup:$rootProject.htmlDomVersion"
 
     //Apache
     implementation "org.apache.commons:commons-collections4:$rootProject.apacheCollectionsVersion"

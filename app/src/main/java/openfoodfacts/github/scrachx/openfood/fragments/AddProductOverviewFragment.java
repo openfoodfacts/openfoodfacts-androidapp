@@ -31,9 +31,9 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
@@ -51,7 +51,6 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.greenrobot.greendao.async.AsyncSession;
-import org.jsoup.helper.StringUtil;
 
 import java.io.File;
 import java.net.URI;
@@ -786,7 +785,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
 
     private String getValues(NachoTextView nachoTextView) {
         List<String> list = nachoTextView.getChipValues();
-        return StringUtil.join(list, ",");
+        return StringUtils.join(list, ",");
     }
 
     @OnClick(R.id.section_manufacturing_details)
@@ -841,7 +840,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         String url = "https://www.google.com/search?q=" + code;
         if (!brand.getChipAndTokenValues().isEmpty()) {
             List<String> brandNames = brand.getChipAndTokenValues();
-            url = url + " " + StringUtil.join(brandNames, " ");
+            url = url + " " + StringUtils.join(brandNames, " ");
         }
         if (!name.getText().toString().isEmpty()) {
             url = url + " " + name.getText().toString();
