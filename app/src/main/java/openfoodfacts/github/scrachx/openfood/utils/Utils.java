@@ -617,7 +617,7 @@ public class Utils {
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
         ClickableSpan clickableSpan;
-        String url = SearchType.URLS.get(type);
+        String url = SearchTypeUrls.getUrl(type);
 
         if (url == null) {
             clickableSpan = new ClickableSpan() {
@@ -773,7 +773,7 @@ public class Utils {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(),"getVersionName",e);
         }
         return "(version unknown)";
     }
@@ -802,7 +802,7 @@ public class Utils {
         try {
             jsonObject = new JSONObject(response);
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(),"createJsonObject",e);
         }
         return jsonObject;
     }

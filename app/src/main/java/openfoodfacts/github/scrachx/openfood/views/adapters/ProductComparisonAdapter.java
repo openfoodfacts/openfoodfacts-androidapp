@@ -432,11 +432,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     //helper method
     private int dpsToPixel(int dps) {
         Resources r = context.getResources();
-        float px = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dps + 100,
-            r.getDisplayMetrics()
-        );
-        return (int) px;
+        return (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dps + 100f,r.getDisplayMetrics());
     }
 }

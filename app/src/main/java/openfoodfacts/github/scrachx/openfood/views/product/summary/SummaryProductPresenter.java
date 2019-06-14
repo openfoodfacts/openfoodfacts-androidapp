@@ -156,7 +156,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.getSingleProductQuestion(product.getCode(), languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::showProductQuestion, Throwable::printStackTrace)
+                .subscribe(view::showProductQuestion,e->Log.e(SummaryProductPresenter.this.getClass().getSimpleName(),"loadProductQuestion",e))
         );
     }
 
@@ -166,7 +166,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.annotateInsight(insightId, annotation)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::showAnnotatedInsightToast, Throwable::printStackTrace)
+                .subscribe(view::showAnnotatedInsightToast, e->Log.e(SummaryProductPresenter.this.getClass().getSimpleName(),"annotateInsight",e))
         );
     }
 
