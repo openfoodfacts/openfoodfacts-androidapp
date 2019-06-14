@@ -47,6 +47,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
@@ -361,7 +362,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                 productNotFound.setText(getString(R.string.addProductOffline, lastText));
                                 productNotFound.setVisibility(VISIBLE);
                                 fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                                fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.fab_add));
+                                fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus_white));
                             }
                             fabStatus.setVisibility(VISIBLE);
                             quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
@@ -656,8 +657,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     if (barcodeText.length() <= 2) {
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                     } else {
-                        if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") || !barcodeText.substring(0, 3)
-                            .contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
+                        if (ProductUtils.isBareCodeValid(barcodeText)) {
                             lastText = barcodeText;
                             searchByBarcode.setVisibility(GONE);
                             findProduct(barcodeText, false);

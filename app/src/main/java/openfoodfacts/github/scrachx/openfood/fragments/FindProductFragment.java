@@ -18,10 +18,10 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
 
@@ -65,8 +65,7 @@ public class FindProductFragment extends NavigationBaseFragment {
             if (barcodeText.length() <= 2) {
                 displayToast(getResources().getString(R.string.txtBarcodeNotValid));
             } else {
-                if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") || !barcodeText.substring(0, 3)
-                    .contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
+                if (ProductUtils.isBareCodeValid(barcodeText)) {
                     api.getProduct(mBarCodeText.getText().toString(), getActivity());
                 } else {
                     displayToast(getResources().getString(R.string.txtBarcodeNotValid));
