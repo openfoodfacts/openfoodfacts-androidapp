@@ -433,9 +433,9 @@
     <string name="collagen_meat_protein_ratio">Relação colagénio/proteína de carne</string>
     <string name="cocoa">Cacau</string>
     <string name="chlorophyl">Clorofila</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture">Choose a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">Tire uma foto</string>
+    <string name="choose_picture">Escolha uma foto</string>
+    <string name="choose_picture_from_gallery">Da galeria</string>
     <string name="take_picture_ingredients">Tirar foto aos ingredientes</string>
     <string name="take_picture_front">Tire uma foto da frente</string>
     <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
