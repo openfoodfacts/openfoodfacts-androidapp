@@ -965,19 +965,19 @@
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country of purchase</string>
     <string name="stores">Stores</string>
-    <string name="additional_pictures">Additional Pictures</string>
+    <string name="additional_pictures">Additional Photos</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Sending the nutrition facts photo</string>
-    <string name="uploading_ingredients_image">Sending the ingredients photo</string>
-    <string name="uploading_front_image">Sending the front photo</string>
-    <string name="edit_front_image">Edit the front photo</string>
-    <string name="edit_nutrition_image">Edit the nutrition photo</string>
-    <string name="edit_ingredients_image">Edit the ingredients photo</string>
-    <string name="edit_other_image">Edit the photo</string>
+    <string name="uploading_nutrition_image">Sending nutrition facts photo</string>
+    <string name="uploading_ingredients_image">Sending ingredients photo</string>
+    <string name="uploading_front_image">Sending front photo</string>
+    <string name="edit_front_image">Edit front photo</string>
+    <string name="edit_nutrition_image">Edit nutrition photo</string>
+    <string name="edit_ingredients_image">Edit ingredients photo</string>
+    <string name="edit_other_image">Edit photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
-    <string name="sign_in_to_edit">Please sign in to edit a product.</string>
+    <string name="sign_in_to_edit">Please sign in to edit the product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
     <string name="hint_serving_size">Examples: 60 g, 12 oz, 20cl, 2 fl oz</string>
@@ -985,13 +985,12 @@
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Title</string>
-    <string name="description_activity_product">description</string>
+    <string name="description_activity_product">Description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
 
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
-
     <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Toddlers</string>
@@ -1014,7 +1013,7 @@
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="update_image">Send an updated image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <string name="your_diets">Your diet(s)</string>
@@ -1049,10 +1048,10 @@
     <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
     <string name="conservationCond">Conservation Conditions</string>
     <string name="other_info">Other Information</string>
-    <string name="set_ingredient_img">Set image as Ingredient</string>
-    <string name="set_img_nutrients">Set Image as Nutrition</string>
-    <string name="set_img_front">Set Image as Front</string>
-    <string name="report_img">Report Image</string>
+    <string name="set_ingredient_img">Set photo as Ingredient</string>
+    <string name="set_img_nutrients">Set photo as Nutrition</string>
+    <string name="set_img_front">Set photo as Front</string>
+    <string name="report_img">Report photo</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
@@ -1074,7 +1073,7 @@
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="export_csv_your_listed_products">Export CSV</string>
-    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
+    <string name="txt_exporting_your_listed_products">Exporting your products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Discard</string>
     <string name="txt_save">Save</string>
@@ -1106,18 +1105,18 @@
     <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;>1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please fix the above fields with an error marker</string>
     <string name="go_to_full_product_page">Go to full product page</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
-    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
+    <string name="required_to_compute_nutriscore">(Required to compute the Nutri-Score)</string>
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
-    <string name="edit_image">Edit Image</string>
-    <string name="unselect_image">Unselect Image</string>
+    <string name="edit_image">Edit photo</string>
+    <string name="unselect_image">Unselect photo</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Barcode</string>
     <string name="productAdditivesNone">No additives</string>
