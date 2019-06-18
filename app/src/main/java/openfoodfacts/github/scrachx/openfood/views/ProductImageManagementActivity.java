@@ -42,10 +42,8 @@ import java.io.File;
 import java.util.*;
 
 import static android.Manifest.permission.CAMERA;
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_STORAGE;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
@@ -219,7 +217,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
 
     private void updateToolbarTitle(Product product) {
         if (product != null) {
-            changeToolBarTitle(product.getProductName(LocaleHelper.getLanguage(this)));
+            changeToolBarTitle(StringUtils.defaultString(product.getProductName(LocaleHelper.getLanguage(this))));
         }
     }
 
@@ -385,14 +383,10 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         if (cannotEdit(REQUEST_CHOOSE_IMAGE_AFTER_LOGIN)) {
             return;
         }
-        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_STORAGE);
-        } else {
-            final Intent intent = new Intent(ProductImageManagementActivity.this, ImagesSelectionActivity.class);
-            intent.putExtra(ImageKeyHelper.PRODUCT_BARCODE, getProduct().getCode());
-            intent.putExtra(ImagesSelectionActivity.TOOLBAR_TITLE, toolbar.getTitle());
-            startActivityForResult(intent, REQUEST_CHOOSE_IMAGE);
-        }
+        final Intent intent = new Intent(ProductImageManagementActivity.this, ImagesSelectionActivity.class);
+        intent.putExtra(ImageKeyHelper.PRODUCT_BARCODE, getProduct().getCode());
+        intent.putExtra(ImagesSelectionActivity.TOOLBAR_TITLE, toolbar.getTitle());
+        startActivityForResult(intent, REQUEST_CHOOSE_IMAGE);
     }
 
     private boolean cannotEdit(int loginRequestCode) {
