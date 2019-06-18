@@ -50,11 +50,4 @@ public @interface SearchType {
     String STATE = "state";
     String ORIGIN = "origin";
     String MANUFACTURING_PLACE = "manufacturing-place";
-
-    HashMap<String, String> URLS = new HashMap<String, String>() {{
-        put(ALLERGEN, BuildConfig.OFWEBSITE + "allergens/");
-        put(EMB, BuildConfig.OFWEBSITE + "packager-code/");
-        put(TRACE, BuildConfig.OFWEBSITE + "trace/");
-    }};
-
 }

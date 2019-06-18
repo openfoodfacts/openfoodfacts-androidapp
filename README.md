@@ -81,7 +81,6 @@ We use the following libraries, and we're not closed to changes where relevant :
 [code-mc/loadtoast](https://github.com/code-mc/loadtoast),
 [dm77/barcodescanner](https://github.com/dm77/barcodescanner),
 [koush/ion](https://github.com/koush/ion),
-[jsoup](https://jsoup.org/),
 [satyan/sugar](https://github.com/satyan/sugar),
 [afollestad/material-dialogs](https://github.com/afollestad/material-dialogs),
 [jjhesk/LoyalNativeSlider](https://github.com/jjhesk/LoyalNativeSlider),

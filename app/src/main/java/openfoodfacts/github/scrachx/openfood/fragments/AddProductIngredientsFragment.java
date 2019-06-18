@@ -30,8 +30,8 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import org.apache.commons.lang3.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
-import org.jsoup.helper.StringUtil;
 
 import java.io.File;
 import java.net.URI;
@@ -384,7 +384,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
             targetMap.put(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
             List<String> list = traces.getChipValues();
-            String string = StringUtil.join(list, ",");
+            String string = StringUtils.join(list, ",");
             targetMap.put(PARAM_TRACES.substring(4), string);
         }
     }
@@ -402,7 +402,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             }
             if (!traces.getChipValues().isEmpty()) {
                 List<String> list = traces.getChipValues();
-                String string = StringUtil.join(list, ",");
+                String string = StringUtils.join(list, ",");
                 ((AddProductActivity) activity).addToMap(PARAM_TRACES, string);
             }
         }

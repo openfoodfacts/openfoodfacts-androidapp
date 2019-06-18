@@ -123,7 +123,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
                 updateContent(view, additiveName);
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(getClass().getSimpleName(),"onCreateView",e);
         }
 
         return view;
@@ -263,14 +263,14 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
                 sitelinks = sitelinks.getJSONObject(languageCode);
                 link = sitelinks.getString("url");
             } catch (JSONException e) {
-                e.printStackTrace();
+                Log.e(getClass().getSimpleName(),"getWikiLink for language code "+languageCode,e);
             }
         } else if (sitelinks.has("enwiki")) {
             try {
                 sitelinks = sitelinks.getJSONObject("enwiki");
                 link = sitelinks.getString("url");
             } catch (JSONException e) {
-                e.printStackTrace();
+                Log.e(getClass().getSimpleName(),"sitelinks for language code "+languageCode,e);
             }
         } else {
             Log.i("ProductActivity", "Result for wikilink is not found in native or english language.");

@@ -62,7 +62,6 @@ import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.jsoup.helper.StringUtil.isBlank;
 
 public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View, PhotoReceiver {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
@@ -260,7 +259,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
         presenter.loadAllergens();
 
-        if (!isBlank(product.getTraces())) {
+        if (!StringUtils.isBlank(product.getTraces())) {
             String language = LocaleHelper.getLanguage(getContext());
             textTraceProductCardView.setVisibility(View.VISIBLE);
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());

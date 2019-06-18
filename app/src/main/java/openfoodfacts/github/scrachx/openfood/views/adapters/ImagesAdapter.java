@@ -168,7 +168,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
         try {
             imageName = jsonObject.getString("imagefield");
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(getClass().getSimpleName(),"displaySetImageName",e);
         }
         Toast.makeText(context, context.getString(R.string.set_image_name) + " " + imageName, Toast.LENGTH_LONG).show();
 
