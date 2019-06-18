@@ -57,7 +57,7 @@ public class LocaleHelper {
 
         @Override
         public String toString() {
-            return name;
+            return name+" ["+code+"]";
         }
 
         @Override

@@ -153,8 +153,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        state = getStateFromActivityIntent();
-
         presenter = new SummaryProductPresenter(product, this);
     }
 
@@ -173,6 +171,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         addNutriScorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
         addMorePicture.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
         photoReceiverHandler = new PhotoReceiverHandler(this);
+        state = getStateFromActivityIntent();
         refreshView(state);
     }
 

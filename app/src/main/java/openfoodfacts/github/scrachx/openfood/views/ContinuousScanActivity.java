@@ -653,7 +653,8 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                 } else {
                     String barcodeText = searchByBarcode.getText().toString();
-                    if (barcodeText.length() <= 2) {
+                    //for debug only:the barcode 1 is used for test:
+                    if (barcodeText.length() <= 2 && !ProductUtils.DEBUG_BARCODE.equals(barcodeText)) {
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                     } else {
                         if (ProductUtils.isBarcodeValid(barcodeText)) {
