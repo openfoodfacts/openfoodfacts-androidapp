@@ -52,7 +52,6 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
-import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import java.io.IOException;
 import java.util.*;
@@ -657,7 +656,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     if (barcodeText.length() <= 2) {
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                     } else {
-                        if (ProductUtils.isBareCodeValid(barcodeText)) {
+                        if (ProductUtils.isBarcodeValid(barcodeText)) {
                             lastText = barcodeText;
                             searchByBarcode.setVisibility(GONE);
                             findProduct(barcodeText, false);
