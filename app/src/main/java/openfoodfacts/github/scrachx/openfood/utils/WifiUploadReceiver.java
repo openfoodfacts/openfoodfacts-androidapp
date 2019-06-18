@@ -34,20 +34,7 @@ public class WifiUploadReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         int wifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, -1);
-     /*   if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction()) && WifiManager.WIFI_STATE_ENABLED == wifiState) {
-
-            //context.startService(new Intent(context, WifiService.class));
-            // Quick fix. TODO: Fix it the right way: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1583
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { 
-                context.startForegroundService(new Intent(context, WifiService.class)); 
-            } else {
-                context.startService(new Intent(context, WifiService.class));
-            }
-            
-        }*/
-        //Above code commented out by ross-holloway94 18 June 2018. Refer to issue #1583
-
-    }
+      }
 
     public static class WifiService extends Service {
 

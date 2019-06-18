@@ -98,7 +98,6 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         Date date = list.get(position).getTime();
         calcTime(date, holder);
 
-        //animate(holder);
     }
 
     @Override

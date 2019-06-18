@@ -221,7 +221,6 @@ public class Utils {
      * @return true if the application is installed, false otherwise.
      */
     public static boolean isApplicationInstalled(Context context, String packageName) {
-        //private boolean isApplicationInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
             // Check if the package name exists, if exception is thrown, package name does not
