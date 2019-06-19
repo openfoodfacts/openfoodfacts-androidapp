@@ -2,8 +2,8 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +73,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
 
         // Load Image if isBatteryLoad is false
         if (!isLowBatteryMode) {
-            Picasso.with(mActivity)
+            Picasso.get()
                     .load(item.getUrl())
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.ic_no_red_24dp)
@@ -86,7 +86,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             holder.historyImageProgressbar.setVisibility(View.GONE);
                         }
                     });

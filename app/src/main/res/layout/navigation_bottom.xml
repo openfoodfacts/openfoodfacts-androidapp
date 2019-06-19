@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<android.support.design.widget.BottomNavigationView
+<com.google.android.material.bottomnavigation.BottomNavigationView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/bottom_navigation"
@@ -12,5 +12,5 @@
         app:itemBackground="@color/blue_500"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/navigation_bottom"/>

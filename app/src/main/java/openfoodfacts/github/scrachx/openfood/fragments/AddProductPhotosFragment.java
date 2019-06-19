@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -145,7 +145,7 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, dpsToPixels(100));
         lp.topMargin = dpsToPixels(10);
         ImageView imageView = new ImageView(activity);
-        Picasso.with(activity)
+        Picasso.get()
                 .load(photoFile)
                 .resize(dpsToPixels(100), dpsToPixels(100))
                 .centerInside()

@@ -10,15 +10,15 @@ import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.PopupMenu;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.widget.PopupMenu;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -58,7 +58,7 @@ import java.util.*;
 
 import static android.view.View.*;
 
-public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
+public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActivity {
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
     private HistoryProductDao mHistoryProductDao;
@@ -282,7 +282,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
                         final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(getBaseContext()));
                         if (imageUrl != null) {
-                            Picasso.with(ContinuousScanActivity.this)
+                            Picasso.get()
                                 .load(imageUrl)
                                 .error(R.drawable.placeholder_thumb)
                                 .into(productImage, new Callback() {
@@ -293,7 +293,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                     }
 
                                     @Override
-                                    public void onError() {
+                                    public void onError(Exception ex) {
                                         imageProgress.setVisibility(GONE);
                                         showFirstScanTooltipIfNeeded();
                                     }
@@ -423,7 +423,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             name.setText(R.string.productNameNull);
         }
         if (productDetails.get("image_front") != null) {
-            Picasso.with(ContinuousScanActivity.this)
+            Picasso.get()
                 .load("file://" + productDetails.get("image_front"))
                 .error(R.drawable.placeholder_thumb)
                 .into(productImage, new Callback() {
@@ -433,7 +433,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception ex) {
                         imageProgress.setVisibility(GONE);
                     }
                 });

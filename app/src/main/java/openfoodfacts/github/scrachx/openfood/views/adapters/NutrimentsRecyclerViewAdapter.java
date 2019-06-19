@@ -1,13 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
@@ -88,7 +88,7 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
 
         void fillServingValue(NutrimentItem item) {
             final CharSequence servingValue = item.getServingValue();
-            if (StringUtils.isBlank(servingValue)) {
+            if (StringUtils.isBlank(servingValue.toString())) {
                 vNutrimentServingValue.setText(StringUtils.EMPTY);
             } else {
                 vNutrimentServingValue.append(item.getModifier());

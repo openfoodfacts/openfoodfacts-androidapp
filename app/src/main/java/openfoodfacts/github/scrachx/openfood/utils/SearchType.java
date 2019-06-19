@@ -1,10 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.support.annotation.StringDef;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import androidx.annotation.StringDef;
 
 import java.lang.annotation.Retention;
-import java.util.HashMap;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.*;

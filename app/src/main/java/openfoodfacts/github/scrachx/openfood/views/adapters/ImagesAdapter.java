@@ -3,8 +3,8 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -75,7 +75,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
         Button menuButton = holder.menuButton;
         String finalUrlString = ImageKeyHelper.getImageUrl(barcode, imageName, ImageKeyHelper.IMAGE_EDIT_SIZE_FILE);
 
-        Picasso.with(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView);
+        Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(imageView);
         Log.i("URL", finalUrlString);
 
 

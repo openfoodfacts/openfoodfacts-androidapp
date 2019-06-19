@@ -16,8 +16,8 @@ package openfoodfacts.github.scrachx.openfood.views.customtabs;
 
 
 import android.content.ComponentName;
-import android.support.customtabs.CustomTabsClient;
-import android.support.customtabs.CustomTabsServiceConnection;
+import androidx.browser.customtabs.CustomTabsClient;
+import androidx.browser.customtabs.CustomTabsServiceConnection;
 
 import java.lang.ref.WeakReference;
 

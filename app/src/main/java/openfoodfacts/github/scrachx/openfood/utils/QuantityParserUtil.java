@@ -2,9 +2,9 @@ package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.util.Log;
 import android.widget.TextView;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.CharUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.CharUtils;
+import org.apache.commons.lang.StringUtils;
 
 public class QuantityParserUtil {
     public enum EntryFormat {

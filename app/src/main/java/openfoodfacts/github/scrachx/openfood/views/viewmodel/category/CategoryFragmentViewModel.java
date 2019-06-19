@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views.viewmodel.category;
 
-import android.databinding.ObservableField;
-import android.databinding.ObservableInt;
-import android.support.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 

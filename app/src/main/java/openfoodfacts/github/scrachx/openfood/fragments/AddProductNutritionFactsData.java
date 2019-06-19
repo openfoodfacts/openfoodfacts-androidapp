@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.Arrays;
 import java.util.Collections;

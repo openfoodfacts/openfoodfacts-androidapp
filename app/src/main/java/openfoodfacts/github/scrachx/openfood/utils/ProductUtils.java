@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 public class ProductUtils {

@@ -9,15 +9,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.*;
 import android.widget.Button;
@@ -55,7 +55,7 @@ import java.util.*;
 
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_OFFLINE;
-import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static org.apache.commons.lang.StringUtils.isEmpty;
 
 public class OfflineEditFragment extends NavigationBaseFragment implements SaveListAdapter.SaveClickInterface {
     public static final String LOG_TAG = "OFFLINE_EDIT";
@@ -279,7 +279,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 ProgressBar imageProgressLocal = view.findViewById(R.id.image_progress_local);
                 ingredientsLocal.setText(productDetails.get("ingredients_text_" + lc));
                 ingredientsServer.setText(existingValuesOnServer.get(INGREDIENTS_ON_SERVER));
-                Picasso.with(getContext())
+                Picasso.get()
                     .load(existingValuesOnServer.get(INGREDIENTS_IMAGE_ON_SERVER))
                     .error(R.drawable.placeholder_thumb)
                     .into(imageServer, new Callback() {
@@ -293,11 +293,11 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             imageProgressServer.setVisibility(View.GONE);
                         }
                     });
-                Picasso.with(getContext())
+                Picasso.get()
                     .load(FileUtils.LOCALE_FILE_SCHEME + productDetails.get("image_ingredients"))
                     .error(R.drawable.placeholder_thumb)
                     .into(imageLocal, new Callback() {
@@ -311,7 +311,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             imageProgressLocal.setVisibility(View.GONE);
                         }
                     });
