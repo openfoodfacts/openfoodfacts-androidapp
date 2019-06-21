@@ -139,11 +139,6 @@
         <item>Cink</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Alapértelmezett</item>
-        <item>Tápanyag</item>
-        <item>Összetevők</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Könyvjelző</string>
     <string name="edit">Szerkesztés</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">Kollagén húsfehérje arány</string>
     <string name="cocoa">Kakaó</string>
     <string name="chlorophyl">Klorofill</string>
+    <string name="take_picture">Fotó készítése</string>
+    <string name="choose_picture">Válasszon egy fényképet</string>
+    <string name="choose_picture_from_gallery">Kiválasztás galériából</string>
     <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
     <string name="take_picture_front">Csinálj egy képet az elejéről</string>
     <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">Ismeretlen név</string>
     <string name="productBrandNull">Ismeretlen márkanév</string>
     <string name="productQuantityNull">Ismeretlen mennyiség</string>
+    <string name="productAdditivesUnknown">Ismeretlen adalékanyagok</string>
+    <string name="productAdditivesTemplate">%1$d adalékanyag</string>
     <string name="product_not_complete">Ez a termékoldal még nem teljes. \nHozzá tudna adni néhány részletet?</string>
     <string name="addProductOffline">Úgy tűnik, hogy kapcsolat nélküli módban van. Hozzáadja a(z) %s terméket a kapcsolat nélküli mód használatával ?</string>
     <string name="product_not_found">A beolvasott %1$s termék nem található az Open Food Facts adatbázisában. Hozzá tudná adni?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">Tulajdonságok</string>
     <string name="OFFlogo">Open Food Facts embléma</string>
     <string name="loading_product">%s termék betöltése</string>
+    <string name="image_not_defined_for_language">Nincs kép a kiválasztott nyelven. Adj hozzá egy újat</string>
     <string name="error_adding_ingredients">Valami hiba történt a termékösszetevők hozzáadása közben</string>
     <string name="unable_to_extract_ingredients">Nem sikerült az összetevők kiolvasása képből</string>
     <string name="error_adding_nutrition_facts">Valami hiba történt a tápértékadatok hozzáadása közben</string>
@@ -659,6 +660,9 @@
 \nPéldák: Tej, Glutén, Diófélék\"</string>
     <string name="nutrition_facts_not_specified">Nincsenek megadva tápértékadatok a termékhez.</string>
     <string name="nutrition_facts_picture">Tápértékadatok képe</string>
+    <string name="front_picture">Elölnézet képe</string>
+    <string name="front_short_picture">Elölnézet</string>
+    <string name="other_picture">Egyéb kép</string>
     <string name="for_100g_100ml">100 g / 100 ml-ben</string>
     <string name="per_serving">Adagonként</string>
     <string name="serving_size">Adag</string>
@@ -681,9 +685,14 @@
     <string name="stores">Boltok</string>
     <string name="additional_pictures">További képek</string>
     <string name="hint_product_pictures">(Adjon még több képet a termékről, például: újrahasznosítási utasítások, címkék stb.)</string>
+    <string name="uploading_image">Kép feltöltése a termékről</string>
     <string name="uploading_nutrition_image">Kép feltöltése a tápértéktartalomról</string>
     <string name="uploading_ingredients_image">Kép feltöltése az összetevőkről</string>
     <string name="uploading_front_image">Kép feltöltése a termékről</string>
+    <string name="edit_front_image">Elölnézeti kép szerkesztése</string>
+    <string name="edit_nutrition_image">Táplálkozási adatok kép szerkesztése</string>
+    <string name="edit_ingredients_image">Összetevők kép szerkesztése</string>
+    <string name="edit_other_image">Kép szerkesztése</string>
     <string name="url_nova_groups">https://hu.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Kérjük, jelentkezzen be egy termék szerkesztéséhez.</string>
@@ -768,6 +777,8 @@
     <string name="customer_service">Ügyfélszolgálat:</string>
     <string name="fast_addition_mode_title">Gyors hozzáadása mód</string>
     <string name="fast_addition_mode">Lehetővé teszi a kevesebb attribútumú termékek gyors hozzáadását</string>
+    <string name="crop_new_image_title">Új képek kivágása</string>
+    <string name="crop_new_image">Lehetővé teszi az új képeken végzett műveleteket</string>
     <string name="addtive_search">Egy dalékanyag keresése</string>
     <string name="additives">Adalékanyagok</string>
     <!--used for product_lists implementation-->
@@ -785,7 +796,7 @@
     <string name="write_external_storage_your_listed_products">Külső tárhelyre való írási engedély szükséges az adatok exportálásához.</string>
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">Termékeket adhat hozzá ehhez a listához a kereséssel és a termék jobb oldalán található + gombra kattintva.</string>
     <string name="txt_i_m_eating_this">Ezt eszem</string>
     <string name="compare_product_prompt">Termék összehasonlítása</string>
     <string name="search_history_pref_title">Keresési előzmények törlése</string>
@@ -808,7 +819,7 @@
     <string name="product_question_negative_response">Nem</string>
     <string name="product_question_ambiguous_response">Nem biztos</string>
     <string name="product_question_submit_message">Köszönjük a hozzájárulását!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">Az értéknek számnak kell lennie, és &lt;, &gt; vagy ~ értékkel kezdődhet. Példa: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Néhány tápanyagérték nem érvényes. Kérjük, javítsa ki a fenti hibával jelzett mezőket.</string>
     <string name="go_to_full_product_page">Ugrás a teljes termékoldalra</string>
@@ -821,6 +832,12 @@
     <string name="add_a_list">Hozzáadás egy listához</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Kép szerkesztése</string>
+    <string name="unselect_image">Kép kiválasztásának megszüntetése</string>
+    <string name="choose_default_language">Válassza ki a termék nyelvét</string>
     <string name="barcode">Vonalkód</string>
+    <string name="productAdditivesNone">Nincs adalékanyag</string>
     <string name="error_uploading_photo">Valami hiba történt az új fotó feltöltésekor</string>
+    <string name="history_network_error">A terméket nem lehet betölteni. Kérjük, próbálkozzon újra, ha újra online.</string>
+    <string name="cant_modify_if_refreshing">Várjon, amíg a feltöltés befejeződik</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>

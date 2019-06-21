@@ -21,7 +21,6 @@
                 app:elevation="10dp"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="@dimen/materialize_baseline_grid_small"
-                app:srcCompat="@drawable/fab_add"
                 />
         <android.support.v7.widget.RecyclerView
                 android:id="@+id/product_lists_recycler_view"

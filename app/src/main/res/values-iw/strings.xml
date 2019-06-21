@@ -147,11 +147,6 @@
         <item>אבץ</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>בררת מחדל</item>
-        <item>תזונה</item>
-        <item>רכיבים</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">סימניה</string>
     <string name="edit">עריכה</string>
@@ -446,6 +441,9 @@
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">קקאו</string>
     <string name="chlorophyl">כלורופיל</string>
+    <string name="take_picture">צילום תמונה</string>
+    <string name="choose_picture">בחירת תמונה</string>
+    <string name="choose_picture_from_gallery">מהגלריה</string>
     <string name="take_picture_ingredients">צילום תמונה של הרכיבים</string>
     <string name="take_picture_front">צילום תמונה של החזית</string>
     <string name="take_picture_nutrition_table">צילום תמונה של טבלת הערכים</string>
@@ -607,6 +605,8 @@
     <string name="productNameNull">שם לא ידוע</string>
     <string name="productBrandNull">מותג לא ידוע</string>
     <string name="productQuantityNull">כמות בלתי ידועה</string>
+    <string name="productAdditivesUnknown">תוספים בלתי ידועים</string>
+    <string name="productAdditivesTemplate">%1$d תוספים</string>
     <string name="product_not_complete">מוצר זה טרם הושלם. \nנוכל לבקש ממך להוסיף עוד פרטים?</string>
     <string name="addProductOffline">כנראה שאין לך חיבור לאינטרנט. להוסיף את המוצר %s במצב בלתי מקוון?</string>
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Food Facts. נוכל לבקש ממך להוסיף אותו?</string>
@@ -619,6 +619,7 @@
     <string name="preferences">העדפות</string>
     <string name="OFFlogo">הלוגו של Open Food Facts</string>
     <string name="loading_product">המוצר %s נטען</string>
+    <string name="image_not_defined_for_language">אין תמונה עבור השפה הנבחרת. ניתן להוסיף אחת חדשה</string>
     <string name="error_adding_ingredients">משהו השתבש במהלך הניסיון להוסיף רכיבים למוצר</string>
     <string name="unable_to_extract_ingredients">לא ניתן לחלץ רכיבים מהתמונה</string>
     <string name="error_adding_nutrition_facts">משהו השתבש במהלך הניסיון להוסיף עובדות תזונתיות למוצר</string>
@@ -665,6 +666,9 @@
     <string name="traces_hint">יש לציין רכיבים מאזכורים כגון ‚עשוי להכיל עקבות של’, ‚נוצר במפעל שמשתמש גם ב־’.\nדוגמאות: חלב, גלוטן, אגוזים</string>
     <string name="nutrition_facts_not_specified">המפרט התזונתי אינו מצוין על המוצר.</string>
     <string name="nutrition_facts_picture">תמונת הפירוט התזונתי</string>
+    <string name="front_picture">תמונת חזית</string>
+    <string name="front_short_picture">חזית</string>
+    <string name="other_picture">תמונה אחרת</string>
     <string name="for_100g_100ml">ל־100 ג׳ / 100 מ״ל</string>
     <string name="per_serving">להגשה</string>
     <string name="serving_size">גודל ההגשה</string>
@@ -687,9 +691,14 @@
     <string name="stores">חנויות</string>
     <string name="additional_pictures">תמונות נוספות</string>
     <string name="hint_product_pictures">(כדאי להוסיף תמונות נוספות של המוצר, למשל: הנחיות מחזור, תוויות וכו׳)</string>
+    <string name="uploading_image">התמונה נשלחת</string>
     <string name="uploading_nutrition_image">נשלחת תמונה של העובדות התזונתיות</string>
     <string name="uploading_ingredients_image">נשלחת תמונת רכיבים</string>
     <string name="uploading_front_image">התמונה הראשית נשלחת</string>
+    <string name="edit_front_image">עריכת תמונת החזית</string>
+    <string name="edit_nutrition_image">עריכת תמונת התזונה</string>
+    <string name="edit_ingredients_image">עריכת תמונת הרכיבים</string>
+    <string name="edit_other_image">עריכת התמונה</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">נא להיכנס כדי לערוך מוצר.</string>
@@ -774,6 +783,8 @@
     <string name="customer_service">שירות לקוחות:</string>
     <string name="fast_addition_mode_title">מצב הוספה מהירה</string>
     <string name="fast_addition_mode">מאפשר הוספה מהירה של מוצרים עם פחות תכונות</string>
+    <string name="crop_new_image_title">חיתוך תמונות חדשות</string>
+    <string name="crop_new_image">הפעלת חיתוך לתמונות חדשות</string>
     <string name="addtive_search">חיפוש תוסף</string>
     <string name="additives">תוספים</string>
     <!--used for product_lists implementation-->
@@ -827,6 +838,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">לביצוע</string>
     <string name="edit_image">עריכת תמונה</string>
+    <string name="unselect_image">ביטול בחירת התמונה</string>
+    <string name="choose_default_language">בחירת שפת המוצר</string>
     <string name="barcode">ברקוד</string>
+    <string name="productAdditivesNone">ללא תוספים</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">לא ניתן לטעון את המוצר. נא לנסות שוב עם חידוש החיבור לאינטרנט.</string>
+    <string name="cant_modify_if_refreshing">נא להמתין עד לסיום ההעלאה</string>
+    <string name="closeZoom">לחיצה לסגירת התקריב</string>
 </resources>

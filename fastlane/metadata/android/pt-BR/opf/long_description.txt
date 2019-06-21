@@ -22,7 +22,7 @@ Open Food Facts é uma base de dados de produtos alimentares com ingredientes, a
 - Não precisa de uma câmera para procurar um produto. Você pode digitar o código de barras se não tiver uma câmera ou caso esteja com problemas.
 
 *** Os seus produtos, os seus dados ***
-- Your personal data is yours, and is never sent online
+- os seus dados são seus e nunca são enviados on-line
 - Você pode usar o aplicativo anonimamente
 - Você pode exportar seu histórico
 

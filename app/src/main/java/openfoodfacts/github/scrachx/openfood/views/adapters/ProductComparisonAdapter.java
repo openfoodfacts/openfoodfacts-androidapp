@@ -30,6 +30,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
@@ -38,7 +39,7 @@ import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
@@ -125,14 +126,13 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         if (!productsToCompare.isEmpty()) {
 
             //support synchronous scrolling
-            if (CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
-                holder.listItemLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                    @Override
-                    public void onScrollChange(View view, int i, int i1, int i2, int i3) {
-                        for (ProductComparisonViewHolder viewHolder : viewHolders) {
-                            viewHolder.listItemLayout.setScrollX(i);
-                            viewHolder.listItemLayout.setScrollY(i1);
-                        }
+
+            if(CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
+                holder.listItemLayout.setOnScrollChangeListener((View.OnScrollChangeListener) (view, i, i1, i2, i3) -> {
+                    for (ProductComparisonViewHolder viewHolder : viewHolders) {
+                        viewHolder.listItemLayout.setScrollX(i);
+                        viewHolder.listItemLayout.setScrollY(i1);
+
                     }
                 });
             }
@@ -150,33 +150,30 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             }
 
             final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(context));
-            holder.productComparisonImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (imageUrl != null) {
-                        Intent intent = new Intent(context, FullScreenImage.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("imageurl", imageUrl);
-                        intent.putExtras(bundle);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            ActivityOptionsCompat options = ActivityOptionsCompat.
-                                makeSceneTransitionAnimation((Activity) context, holder.productComparisonImage,
-                                    context.getString(R.string.product_transition));
-                            context.startActivity(intent, options.toBundle());
-                        } else {
-                            context.startActivity(intent);
-                        }
+            holder.productComparisonImage.setOnClickListener(view -> {
+                if (imageUrl != null) {
+                    Intent intent = new Intent(context, ProductImageManagementActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("imageurl", imageUrl);
+                    intent.putExtras(bundle);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation((Activity) context, holder.productComparisonImage,
+                                context.getString(R.string.product_transition));
+                        context.startActivity(intent, options.toBundle());
                     } else {
-                        // take a picture
-                        if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+                        context.startActivity(intent);
+                    }
+                } else {
+                    // take a picture
+                    if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+                    } else {
+                        onPhotoReturnPosition = position;
+                        if (Utils.isHardwareCameraInstalled(context)) {
+                            EasyImage.openCamera(((Activity) context), 0);
                         } else {
-                            onPhotoReturnPosition = position;
-                            if (Utils.isHardwareCameraInstalled(context)) {
-                                EasyImage.openCamera(((Activity) context), 0);
-                            } else {
-                                EasyImage.openGallery(((Activity) context), 0, false);
-                            }
+                            EasyImage.openGallery(((Activity) context), 0, false);
                         }
                     }
                 }
@@ -435,11 +432,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     //helper method
     private int dpsToPixel(int dps) {
         Resources r = context.getResources();
-        float px = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dps + 100,
-            r.getDisplayMetrics()
-        );
-        return (int) px;
+        return (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dps + 100f,r.getDisplayMetrics());
     }
 }

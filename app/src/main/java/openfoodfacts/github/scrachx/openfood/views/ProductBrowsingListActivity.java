@@ -47,8 +47,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductBrowsingListActivity extends BaseActivity {
-
-    private static final  String SEARCH_INFO = "search_info";
+    /**
+     * Must be public to be visible by TakeScreenshotIncompleteProductsTest class.
+     */
+    @SuppressWarnings("WeakerAccess")
+    public static final  String SEARCH_INFO = "search_info";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;

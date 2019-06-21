@@ -139,11 +139,6 @@
         <item>Цинк</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>По подразбиране</item>
-        <item>Хранене</item>
-        <item>Съставки</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Отметка</string>
     <string name="edit">Редактирай</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">Съотношение колаген месо протеин</string>
     <string name="cocoa">Какао</string>
     <string name="chlorophyl">Хлорофил</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Направете снимка на съставките</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Направете снимка на таблицата с хранителните стойности</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">Name unknown</string>
     <string name="productBrandNull">Brand unknown</string>
     <string name="productQuantityNull">Quantity unknown</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">Предпочитания</string>
     <string name="OFFlogo">Open Food Facts лого</string>
     <string name="loading_product">Зареждане на продукт %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Нещо се обърка, докато се опитвахме да добавим съставките на продукта</string>
     <string name="unable_to_extract_ingredients">Невъзможно е да се извлекат съставки от изображението</string>
     <string name="error_adding_nutrition_facts">Нещо се обърка, докато се опитвахме да добавим хранителна информация за продукта</string>
@@ -659,6 +660,9 @@
 Приложения: Мляко, глутен, ядки\"</string>
     <string name="nutrition_facts_not_specified">Хранителните факти не са посочени върху продукта.</string>
     <string name="nutrition_facts_picture">Картина на хранителните факти</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">За 100 г / 100 мл</string>
     <string name="per_serving">На порция</string>
     <string name="serving_size">Големина на порцията</string>
@@ -681,9 +685,14 @@
     <string name="stores">Stores</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
@@ -768,6 +777,8 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->
@@ -821,6 +832,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Баркод</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>

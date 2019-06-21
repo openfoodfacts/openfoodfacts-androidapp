@@ -1,24 +1,16 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import com.fasterxml.jackson.databind.JsonNode;
-
-import java.util.ArrayList;
-import java.util.Map;
-
 import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.models.Search;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
-import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.Installation;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import retrofit2.Call;
 import retrofit2.http.*;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Define our Open Food Facts API endpoints.
@@ -28,21 +20,16 @@ public interface OpenFoodAPIService {
 
     String PRODUCT_API_COMMENT = "Official Android app";
 
-    @GET("api/v0/product/{barcode}.json?fields=image_small_url,selected_images,languages_codes,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens_tags,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups,lang,purchase_places,nutrition_data_per,no_nutrition_data,other,other_information,conservation_conditions,recycling_instructions_to_discard,recycling_instructions_to_recycle,warning,customer_service,environment_infocard,ingredients,environment_impact_level_tags")
-    Call<State> getFullProductByBarcode(@Path("barcode") String barcode,
-                                        @Header("User-Agent") String header);
     @GET("api/v0/product/{barcode}.json")
-    Call<JsonNode> getFieldByLangCode(@Path("barcode") String barcode,
-                                          @Query("fields") String fieldQuery);
+    Call<State> getProductByBarcode(@Path("barcode") String barcode,
+                                    @Query("fields") String fields,
+                                    @Header("User-Agent") String header);
+
 
     @GET("api/v0/product/{barcode}.json")
-    Single<State> getExistingProductDetails(@Path("barcode") String barcode,
+    Single<State> getProductByBarcodeSingle(@Path("barcode") String barcode,
                                             @Query("fields") String fields,
                                             @Header("User-Agent") String header);
-
-    @GET("api/v0/product/{barcode}.json?fields=image_small_url,selected_images,languages_codes,vitamins_tags,minerals_tags,amino_acids_tags,other_nutritional_substances_tags,image_front_url,image_ingredients_url,image_nutrition_url,url,code,traces_tags,ingredients_that_may_be_from_palm_oil_tags,additives_tags,allergens_hierarchy,manufacturing_places,nutriments,ingredients_from_palm_oil_tags,brands_tags,traces,categories_tags,ingredients_text,product_name,generic_name,ingredients_from_or_that_may_be_from_palm_oil_n,serving_size,allergens_tags,allergens,origins,stores,nutrition_grade_fr,nutrient_levels,countries,countries_tags,brands,packaging,labels_tags,labels_hierarchy,cities_tags,quantity,ingredients_from_palm_oil_n,image_url,link,emb_codes_tags,states_tags,creator,created_t,last_modified_t,last_modified_by,editors_tags,nova_groups,lang,purchase_places,nutrition_data_per,no_nutrition_data,other_information,conservation_conditions,recycling_instructions_to_discard,recycling_instructions_to_recycle,warning,customer_service,environment_infocard,environment_impact_level_tags,ingredients")
-    Single<State> getFullProductByBarcodeSingle(@Path("barcode") String barcode,
-                                                @Header("User-Agent") String header);
 
     @FormUrlEncoded
     @POST("cgi/product_jqm2.pl")
@@ -61,9 +48,6 @@ public interface OpenFoodAPIService {
     @FormUrlEncoded
     @POST("/cgi/session.pl")
     Call<ResponseBody> signIn(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit);
-
-    @POST("/cgi/product_jqm2.pl")
-    Call<State> saveProduct(@Body SendProduct product);
 
 
     @GET("api/v0/product/{barcode}.json?fields=ingredients")
@@ -203,13 +187,6 @@ public interface OpenFoodAPIService {
     Single<JsonNode> editImageSingle(@Query("code") String code,
                                      @QueryMap Map<String, String> fields);
 
-    @GET("/cgi/product_image_crop.pl")
-    Call<JsonNode> rotateImage(@Query("code") String code,
-                                 @Query("id") String id,
-                                 @Query("imgid") String imgid,
-                                 @Query("angle") String angle);
-    @GET("/api/v0/product/{barcode}.json?fields=images")
-    Call<JsonNode> getImages(@Path("barcode") String barcode);
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
     Single<JsonNode> getIngredients(@Query("code") String code,
@@ -373,6 +350,10 @@ public interface OpenFoodAPIService {
     @GET("/cgi/product_image_crop.pl")
     Call<String> editImages(@Query("code") String code,
                             @QueryMap Map<String, String> fields);
+
+    @GET("/cgi/product_image_unselect.pl")
+    Call<String> unselectImage(@Query("code") String code,
+                               @QueryMap Map<String, String> fields);
 
     @GET
     Call<ResponseBody> downloadFile(@Url String fileUrl);

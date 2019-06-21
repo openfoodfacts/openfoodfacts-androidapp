@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -42,6 +43,8 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
             if (isConnected) {
                 OpenFoodAPIClient api = new OpenFoodAPIClient(mActivity);
                 api.getProduct(txtBarcode.getText().toString(), (Activity) v.getContext());
+            } else {
+                Toast.makeText(mActivity, R.string.history_network_error, Toast.LENGTH_SHORT).show();
             }
         });
     }

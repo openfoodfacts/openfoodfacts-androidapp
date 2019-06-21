@@ -139,11 +139,6 @@
         <item>Zinc</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Per defecte</item>
-        <item>Nutrició</item>
-        <item>Ingredients</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Marcador</string>
     <string name="edit">Edita</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">Ràtio de col·lagen en la proteïna càrnia</string>
     <string name="cocoa">Cacau</string>
     <string name="chlorophyl">Clorofil·la</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Feu una foto dels ingredients</string>
     <string name="take_picture_front">Feu una foto del davant</string>
     <string name="take_picture_nutrition_table">Feu una foto de la taula nutricional</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">Nom desconegut</string>
     <string name="productBrandNull">Marca desconeguda</string>
     <string name="productQuantityNull">Quantitat desconeguda</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">Aquest producte encara no està complet. \nPodeu afegir-hi algun detall?</string>
     <string name="addProductOffline">Sembla que esteu desconnectat. Voleu afegir el producte %s amb el mode fora de línia?</string>
     <string name="product_not_found">El producte %1$s que heu escanejat encara no existeix a Open Food Facts. Podeu afegir-lo?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">Preferències</string>
     <string name="OFFlogo">Logo d\'Open Food Facts</string>
     <string name="loading_product">S\'està carregant el producte %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Alguna cosa ha sortit malament mentre s\'intentaven afegir els ingredients del producte</string>
     <string name="unable_to_extract_ingredients">No es poden extreure els ingredients de la imatge</string>
     <string name="error_adding_nutrition_facts">Alguna cosa ha sortit malament mentre s\'intentaven afegir les dades nutricionals del producte</string>
@@ -657,6 +658,9 @@
     <string name="traces_hint">Indiqueu els ingredients de les mencions com \"Pot contenir restes de\", \"Fabricat en una fàbrica que també s\'utilitza\", etc. \ nExemples: llet, gluten, fruits secs</string>
     <string name="nutrition_facts_not_specified">Les dades nutricionals no s\'especifiquen en el producte.</string>
     <string name="nutrition_facts_picture">Imatge de la Informació Nutricional</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">Per 100 g/100 ml</string>
     <string name="per_serving">Per ració</string>
     <string name="serving_size">Mida de la porció</string>
@@ -679,9 +683,14 @@
     <string name="stores">Botigues</string>
     <string name="additional_pictures">Imatges addicionals</string>
     <string name="hint_product_pictures">(Afegiu més imatges del producte, per exemple: instruccions de reciclatge, etiquetes, etc.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">S\'està carregant la imatge de les dades nutricionals</string>
     <string name="uploading_ingredients_image">S\'està carregant la imatge dels ingredients</string>
     <string name="uploading_front_image">S\'està carregant la imatge frontal</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://es-ca.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Inicieu la sessió per editar un producte.</string>
@@ -766,6 +775,8 @@
     <string name="customer_service">Atenció al client:</string>
     <string name="fast_addition_mode_title">Mode d\'addició ràpida</string>
     <string name="fast_addition_mode">Permet l\'addició ràpida de productes amb el mínim d\'atributs</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Cerqueu un additiu</string>
     <string name="additives">Additius</string>
     <!--used for product_lists implementation-->
@@ -819,6 +830,12 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Codi de barres</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
 </resources>

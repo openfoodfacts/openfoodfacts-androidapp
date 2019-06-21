@@ -7,7 +7,7 @@
     tools:context="openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/images_recycler"
+        android:id="@+id/imagesRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/images_item">

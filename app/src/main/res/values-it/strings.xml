@@ -139,11 +139,6 @@
         <item>Zinco</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Predefinito</item>
-        <item>Nutrizione</item>
-        <item>Ingredienti</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Segnalibro</string>
     <string name="edit">Modifica</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">Rapporto proteine della carne collagene</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Clorofilla</string>
+    <string name="take_picture">Scatta una foto</string>
+    <string name="choose_picture">Scegli una foto</string>
+    <string name="choose_picture_from_gallery">Dalla galleria</string>
     <string name="take_picture_ingredients">Prendi una foto degli ingredienti</string>
     <string name="take_picture_front">Scatta una foto della parte anteriore</string>
     <string name="take_picture_nutrition_table">Prendi una foto della tabella nutrizionale</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">Nome sconosciuto</string>
     <string name="productBrandNull">Marchio sconosciuto</string>
     <string name="productQuantityNull">Quantità sconosciuta</string>
+    <string name="productAdditivesUnknown">Additivi sconosciuti</string>
+    <string name="productAdditivesTemplate">%1$d additivi</string>
     <string name="product_not_complete">Questo prodotto non è ancora completo. \nPuoi aggiungere alcuni dettagli?</string>
     <string name="addProductOffline">Sembri offline. Aggiungi il prodotto %s utilizzando la modalità offline?</string>
     <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Food Facts. Puoi aggiungerlo?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">Impostazioni</string>
     <string name="OFFlogo">Logo di Open Food Facts</string>
     <string name="loading_product">Caricamento del prodotto %s</string>
+    <string name="image_not_defined_for_language">Nessuna immagine per la lingua selezionata. Puoi aggiungerne uno nuovo</string>
     <string name="error_adding_ingredients">Qualcosa è andato storto durante il tentativo di aggiunta degli ingredienti del prodotto</string>
     <string name="unable_to_extract_ingredients">Impossibile estrarre gli ingredienti dall\'immagine</string>
     <string name="error_adding_nutrition_facts">Qualcosa è andato storto durante il tentativo di aggiunta delle informazioni nutrizionali del prodotto</string>
@@ -657,6 +658,9 @@
     <string name="traces_hint">Indicare gli ingredienti dalla frasi tipo \"Può contenere tracce di\", \'Prodotto in una fabbrica che utilizza anche\', ecc. \nEsempi: Latte, glutine, frutta a guscio</string>
     <string name="nutrition_facts_not_specified">I valori nutrizionali non sono specificati sul prodotto.</string>
     <string name="nutrition_facts_picture">Foto delle informazioni nutrizionali</string>
+    <string name="front_picture">Immagine frontale</string>
+    <string name="front_short_picture">Frontale</string>
+    <string name="other_picture">Altra immagine</string>
     <string name="for_100g_100ml">Per 100g / 100ml</string>
     <string name="per_serving">Per porzione</string>
     <string name="serving_size">Porzione</string>
@@ -679,10 +683,15 @@
     <string name="stores">Negozi</string>
     <string name="additional_pictures">Foto aggiuntive</string>
     <string name="hint_product_pictures">(Aggiungi più foto del prodotto, per esempio: istruzioni per il riciclo, etichette, ecc.)</string>
+    <string name="uploading_image">Invio della foto</string>
     <string name="uploading_nutrition_image">Caricamento immagine informazioni nutrizionali</string>
     <string name="uploading_ingredients_image">Caricamento immagine ingredienti</string>
     <string name="uploading_front_image">Caricamento immagine frontale</string>
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="edit_front_image">Modifica la foto frontale</string>
+    <string name="edit_nutrition_image">Modifica la foto nutrizionale</string>
+    <string name="edit_ingredients_image">Modifica la foto degli ingredienti</string>
+    <string name="edit_other_image">Modifica la foto</string>
+    <string name="url_nova_groups">https://world-it.openfoodfacts.org/nova</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Accedi per modificare un prodotto.</string>
     <string name="hint_quantity">Esempi: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
@@ -766,6 +775,8 @@
     <string name="customer_service">Servizio Clienti :</string>
     <string name="fast_addition_mode_title">Modalità di aggiunta rapida</string>
     <string name="fast_addition_mode">Consente l\'aggiunta rapida di prodotti con meno attributi</string>
+    <string name="crop_new_image_title">Ritaglia nuove immagini</string>
+    <string name="crop_new_image">Abilita l\'azione di ritaglio su nuove immagini</string>
     <string name="addtive_search">Cerca un additivo</string>
     <string name="additives">Additivi</string>
     <!--used for product_lists implementation-->
@@ -819,6 +830,12 @@
     <string name="add_a_list">Aggiungi una lista</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Modifica immagine</string>
+    <string name="unselect_image">Deseleziona immagine</string>
+    <string name="choose_default_language">Seleziona la lingua del prodotto</string>
     <string name="barcode">Codice a barre</string>
+    <string name="productAdditivesNone">Nessun additivo</string>
     <string name="error_uploading_photo">Qualcosa è andato storto durante il caricamento di una nuova foto</string>
+    <string name="history_network_error">Il prodotto non può essere caricato. Si prega di riprovare quando si torna online.</string>
+    <string name="cant_modify_if_refreshing">Si prega di attendere fino al termine del caricamento</string>
+    <string name="closeZoom">Clicca per chiudere lo zoom</string>
 </resources>

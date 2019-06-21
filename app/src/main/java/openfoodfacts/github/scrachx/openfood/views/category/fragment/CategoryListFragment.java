@@ -79,12 +79,7 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
                 }
             }
         });
-        binding.offlineView.findViewById(R.id.buttonToRefresh).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewModel.loadCategories();
-            }
-        });
+        binding.offlineView.findViewById(R.id.buttonToRefresh).setOnClickListener(v -> viewModel.loadCategories());
     }
 
     @Override
