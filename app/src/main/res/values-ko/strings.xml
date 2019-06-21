@@ -248,8 +248,8 @@
     <string name="toggle_flash">Flash</string>
     <string name="flash_on">플래시 [ON]</string>
     <string name="flash_off">플래시 [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
+    <string name="ring_on">벨소리 [ON]</string>
+    <string name="ring_off">벨소리 [OFF]</string>
     <string name="auto_focus_on">자동 초점 [ON]</string>
     <string name="auto_focus_off">자동 초점 [OFF]</string>
     <string name="formats">파일 형식</string>
