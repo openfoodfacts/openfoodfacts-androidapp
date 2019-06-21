@@ -54,6 +54,8 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductDietsActivity;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -627,10 +629,16 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @OnClick(R.id.textIngredientProduct)
     public void openFragmentDietIngredientsProduct(View v) {
         //Prepare a new dietIngredientsProductFragment and show it
-        Bundle parameters = new Bundle();
-        DietIngredientsProductFragment dietIngredientsProductFragment = new DietIngredientsProductFragment();
-        dietIngredientsProductFragment.setArguments(parameters);
-        this.getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) this.getView().getParent().getParent().getParent()).getId(), dietIngredientsProductFragment, "").addToBackStack("ReturntoProduct").commit();
+        //Bundle parameters = new Bundle();
+        //DietIngredientsProductFragment dietIngredientsProductFragment = new DietIngredientsProductFragment();
+        //dietIngredientsProductFragment.setArguments(parameters);
+        //this.getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) this.getView().getParent().getParent()).getId(), dietIngredientsProductFragment, "").addToBackStack("ReturntoProduct").commit();
+        Intent intent = new Intent(getActivity(), ProductDietsActivity.class);
+        intent.putExtra("state", activityState);
+        //adds the information about the prompt when navigating the user to the edit the product
+        //intent.putExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, showCategoryPrompt);
+        //intent.putExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, showNutrientPrompt);
+        startActivity(intent);
     }
 
     @Override

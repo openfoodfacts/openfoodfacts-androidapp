@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
+import android.database.Cursor;
 import android.util.Log;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;

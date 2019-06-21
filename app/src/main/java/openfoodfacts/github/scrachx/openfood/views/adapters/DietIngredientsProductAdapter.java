@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.SpannableStringBuilder;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.DietIngredientsProductFragment;
 
@@ -19,8 +20,9 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
 
     private final DietIngredientsProductFragment.ClickListener listener;
     List<SpannableStringBuilder> list;
+    @BindView( R.id.toolbar )
+    Toolbar toolbar;
 
-    //ajouter un constructeur prenant en entrée une liste
     public DietIngredientsProductAdapter(List<SpannableStringBuilder> list, DietIngredientsProductFragment.ClickListener listener) {
         this.list = list;
         this.listener = listener;
@@ -35,7 +37,6 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
         private ImageButton stateRedImageButton;
         private WeakReference<DietIngredientsProductFragment.ClickListener> listenerRef;
 
-        //itemView est la vue correspondante à 1 cellule
         public DietIngredientsProductHolder(View itemView, DietIngredientsProductFragment.ClickListener listener) {
             super(itemView);
             ingredientTextView = (TextView) itemView.findViewById(R.id.ingredientTextView);
@@ -55,7 +56,6 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
             stateRedImageButton.setOnLongClickListener(this);
         }
 
-        //puis ajouter une fonction pour remplir la cellule en fonction d'un ingredient
         public void bind(SpannableStringBuilder ingredient){
             ingredientTextView.setText(ingredient);
         }
@@ -77,8 +77,6 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
             int state = 2;
             if (v.getId() == stateGreenImageButton.getId()) {
                 state = 1;
-        /*} else if (v.getId() == stateGreyImageButton.getId()) {
-            state=2;*/
             } else if (v.getId() == stateOrangeImageButton.getId()) {
                 state=0;
             } else if (v.getId() == stateRedImageButton.getId()) {
@@ -89,15 +87,12 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
 
     }
 
-    //cette fonction permet de créer les viewHolder
-    //et par la même d'indiquer la vue à inflater (à partir des layout xml)
     @Override
     public DietIngredientsProductHolder onCreateViewHolder(ViewGroup viewGroup, int itemType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_diet_ingredients_product,viewGroup,false);
         return new DietIngredientsProductHolder(view, listener);
     }
 
-    //c'est ici que nous allons remplir notre cellule avec le texte/image de chaque MyObjects
     @Override
     public void onBindViewHolder(DietIngredientsProductHolder dietIngredientHolder, int position) {
         SpannableStringBuilder ingredient = list.get(position);

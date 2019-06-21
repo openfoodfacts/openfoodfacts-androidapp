@@ -265,6 +265,63 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         return false;
                     }
 
+                    Fragment fragment = null;
+                    switch ((int) drawerItem.getIdentifier()) {
+                        case ITEM_HOME:
+                            fragment = new HomeFragment();
+                            break;
+                        case ITEM_SEARCH_BY_CODE:
+                            fragment = new FindProductFragment();
+                            break;
+                        case ITEM_CATEGORIES:
+                            startActivity(CategoryActivity.getIntent(this));
+                            break;
+
+                        case ITEM_ADDITIVES:
+                            startActivity(new Intent(this, AdditivesExplorer.class));
+                            break;
+                        case ITEM_SCAN:
+                            scan();
+                            break;
+                        case ITEM_COMPARE:
+                            startActivity(new Intent(MainActivity.this, ProductComparisonActivity.class));
+                            break;
+                        case ITEM_HISTORY:
+                            startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
+                            break;
+                        case ITEM_LOGIN:
+                            startActivityForResult(new Intent(MainActivity.this, LoginActivity
+                                    .class), LOGIN_REQUEST);
+                            break;
+                        case ITEM_ALERT:
+                            fragment = new AllergensAlertFragment();
+                            break;
+                        case ITEM_DIET:
+                            fragment = new DietsFragment();
+                            break;
+                        case ITEM_PREFERENCES:
+                            fragment = new PreferencesFragment();
+                            break;
+                        case ITEM_OFFLINE:
+                            fragment = new OfflineEditFragment();
+                            break;
+                        case ITEM_ABOUT:
+                            CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                                    customTabsIntent, discoverUri, new WebViewFallback());
+                            break;
+                        case ITEM_CONTRIBUTE:
+                            CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                                    customTabsIntent, contributeUri, new WebViewFallback());
+                            break;
+
+                        case ITEM_INCOMPLETE_PRODUCTS:
+
+                            /**
+                             * Search and display the products to be completed by moving to ProductBrowsingListActivity
+                             */
+                            ProductBrowsingListActivity.startActivity(this, "", SearchType.INCOMPLETE_PRODUCT);
+                            break;
+
                     case ITEM_OBF:
                         boolean otherOFAppInstalled = Utils.isApplicationInstalled
                             (MainActivity.this, BuildConfig.OFOTHERLINKAPP);

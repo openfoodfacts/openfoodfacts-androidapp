@@ -157,6 +157,14 @@ public class DietRepository implements IDietRepository {
      * Load diets which user selected earlier (i.e user's diets)
      */
     @Override
+    public List<Diet> getDiets() {
+        return dietDao.loadAll();
+    }
+
+    /**
+     * Load diets which user selected earlier (i.e user's diets)
+     */
+    @Override
     public List<Diet> getEnabledDiets() {
         return dietDao.queryBuilder().where(DietDao.Properties.Enabled.eq("true")).list();
     }

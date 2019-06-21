@@ -27,6 +27,8 @@ public interface IDietRepository {
 
     void setDietEnabled(String dietTag, Boolean isEnabled);
 
+    List<Diet> getDiets();
+
     List<Diet> getEnabledDiets();
 
     Diet getDietByTag(String tag);

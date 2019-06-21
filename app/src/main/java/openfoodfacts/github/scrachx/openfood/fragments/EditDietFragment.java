@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -43,6 +44,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.DietRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.IDietRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 
@@ -74,6 +76,8 @@ public class EditDietFragment extends Fragment {
     private List<String> ingredients = new ArrayList<>();
     // TODO: Rename and change types of parameters
     private String mDietName;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
 
     //private OnFragmentInteractionListener mListener;
 
@@ -177,6 +181,7 @@ public class EditDietFragment extends Fragment {
         appLanguageCode = LocaleHelper.getLanguage(getActivity());
         initializeChips();
         loadAutoSuggestions();
+        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
     }
 
     @OnClick(R.id.save_edits)

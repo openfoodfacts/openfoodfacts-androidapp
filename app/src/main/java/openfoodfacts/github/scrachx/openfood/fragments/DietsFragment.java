@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
@@ -24,6 +26,7 @@ import openfoodfacts.github.scrachx.openfood.models.Diet;
 import openfoodfacts.github.scrachx.openfood.models.DietDao;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DietsAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_DIET;
 
@@ -36,6 +39,8 @@ public class DietsFragment extends NavigationBaseFragment {
 
     private RecyclerView mRvDiet;
     private SharedPreferences mSettings;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
 
     @Override
     public int getNavigationDrawerType() {
@@ -87,6 +92,7 @@ public class DietsFragment extends NavigationBaseFragment {
                 transaction.commit();
             }
         }));
+        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
     }
 
     /**

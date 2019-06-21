@@ -12,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,20 +25,16 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.repositories.DietRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.IDietRepository;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.adapters.DietHAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DietIngredientsProductAdapter;
 
 public class DietIngredientsProductFragment extends BaseFragment {
 
-    RecyclerView dietRV;
     RecyclerView ingredientsRV;
     DietIngredientsProductAdapter ingredientsRVAdapter;
-    int lastDietDisplayed = 0;
-    boolean smoothScroll = true;
 
     private Product product;
     private State mState;
-    private Diet mDiet;
+    private String mDietTag;
     private List<SpannableStringBuilder> mIngredients;
     private IDietRepository dietRepository;
     // Fetching of the (theoretical) language of input:
@@ -56,12 +50,14 @@ public class DietIngredientsProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
         product = mState.getProduct();
+        Bundle parameters = getArguments();
+        mDietTag = parameters.getString("dietTag");
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        //No diet, no fragment !!!
+        //No diet in database, no fragment !!!
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         DietDao dietDao = daoSession.getDietDao();
         if (dietDao.loadAll().size() == 0) {
@@ -83,84 +79,31 @@ public class DietIngredientsProductFragment extends BaseFragment {
         mState = (State) intent.getExtras().getSerializable("state");
         refreshView(mState);
 
-        dietRV = (RecyclerView) view.findViewById(R.id.diet_h_recycler);
         ingredientsRV = (RecyclerView) view.findViewById(R.id.ingredients_recyclerView);
-        //définit l'agencement des cellules, ici de façon verticale, comme une ListView
-        dietRV.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
         ingredientsRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
-        DietDao dietDao = daoSession.getDietDao();
-        List<Diet> dietList = dietDao.loadAll();
-        Collections.sort(dietList, new Comparator<Diet>() {
-            @Override
-            public int compare(Diet d1, Diet d2) {
-                if (d1.getEnabled()) {
-                    if (d2.getEnabled()) {
-                        return d1.getTag().substring(3).compareToIgnoreCase(d2.getTag().substring(3));
-                    } else {
-                        return -1;
-                    }
-                } else if (d2.getEnabled()) {
-                    return 1;
-                } else {
-                    return d1.getTag().substring(3).compareToIgnoreCase(d2.getTag().substring(3));
-                }
-            }
-        });
-        mDiet = dietList.get(0);
-        dietRV.setAdapter(new DietHAdapter(dietList, new ClickListener() {
-            @Override
-            public void onPositionClicked(int position, View v) {
-                int changeToPosition = position<dietRV.getAdapter().getItemCount()-1 ? position+1 : 0;
-                dietRV.smoothScrollToPosition(changeToPosition);
-                changeMDiet(dietList.get(changeToPosition));
-            }
-
-            @Override
-            public void onLongClicked(int position, View v) {
-                dietRV.scrollToPosition(position-1);
-                changeMDiet(dietList.get(position-1));
-            }
-        }));
-        dietRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            //SmoothScroll to the first or last visible Diet Item
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (newState == 0) {
-                    if (smoothScroll) {
-                        smoothScroll = false;
-                        LinearLayoutManager llm = (LinearLayoutManager) recyclerView.getLayoutManager();
-                        if (lastDietDisplayed > llm.findFirstVisibleItemPosition()) {
-                            lastDietDisplayed = llm.findFirstVisibleItemPosition();
-                        } else {
-                            lastDietDisplayed = llm.findLastVisibleItemPosition();
-                        }
-                        recyclerView.smoothScrollToPosition(lastDietDisplayed);
-                        changeMDiet(dietList.get(lastDietDisplayed));
-                        //TODO Change the ingredients state to be on phase to the Diet.
-                    } else {
-                        smoothScroll = true;
-                    }
-                }
-            }
-        });
-
         if (mState != null && product.getIngredients() != null) {
             languageCode = product.getLang();
             fillIngredients(coloredIngredientsFromProduct());
         }
     }
 
-    private void changeMDiet(Diet diet) {
-        mDiet = diet;
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser && mIngredients != null){
+            onChange();
+        }
+    }
+
+    private void onChange() {
         mIngredients.clear();
         mIngredients.addAll(coloredIngredientsFromProduct());
         ingredientsRVAdapter.notifyDataSetChanged();
     }
 
     private List<SpannableStringBuilder> coloredIngredientsFromProduct() {
-        return dietRepository.getColoredSSBFromProductAndDiet(product, mDiet.getTag());
+        return dietRepository.getColoredSSBFromProductAndDiet(product, mDietTag);
     }
 
     public void fillIngredients(List<SpannableStringBuilder> ingredients) {
@@ -184,11 +127,11 @@ public class DietIngredientsProductFragment extends BaseFragment {
                     }
                 }
                 if (ingredientTag.equals("")) {
-                    dietRepository.addDietIngredients(mDiet.getTag(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
+                    dietRepository.addDietIngredients(mDietTag, mIngredients.get(position).toString(), languageCode, stateFromView(v));
                 } else {
-                    dietRepository.addDietIngredientsByTags(mDiet.getTag(),ingredientTag, stateFromView(v));
+                    dietRepository.addDietIngredientsByTags(mDietTag,ingredientTag, stateFromView(v));
                 }
-                changeMDiet(mDiet);
+                onChange();
             }
             @Override
             public void onLongClicked(int position, View v) {
@@ -199,14 +142,14 @@ public class DietIngredientsProductFragment extends BaseFragment {
                     if (productIngredient.getText().replace("_","").equals(mIngredients.get(position).toString())) {
                         ingredientTag = productIngredient.getId();
                         //Sometimes ID passed from a product doesn't exists in the taxonomy from ingredient.json.
-                        if (dietRepository.getIngredientByTag(productIngredient.getId()).getTag() != null) {
+                        if (dietRepository.getIngredientByTag(productIngredient.getId()).getTag() == null) {
                             //That's it, create a new ingredient
                             dietRepository.addIngredient(productIngredient.getId(), productIngredient.getText(), productIngredient.getId().split(":")[0]);
                         }
                         break;
                     }
                 }
-                List<Diet> dietsEnabled = dietRepository.getEnabledDiets();
+                List<Diet> dietsEnabled = dietRepository.getDiets();
                 for (int i = 0; i < dietsEnabled.size(); i++) {
                     Diet diet =  dietsEnabled.get(i);
                     if (ingredientTag.equals("")) {
@@ -215,14 +158,10 @@ public class DietIngredientsProductFragment extends BaseFragment {
                         dietRepository.addDietIngredientsByTags(diet.getTag(),ingredientTag, stateFromView(v));
                     }
                 }
-                changeMDiet(mDiet);
+                onChange();
             }
         });
         ingredientsRV.setAdapter(ingredientsRVAdapter);
-    }
-
-    public Diet getmDiet() {
-        return mDiet;
     }
 
     private int stateFromView(View v) {
