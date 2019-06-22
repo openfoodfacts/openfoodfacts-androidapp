@@ -149,7 +149,7 @@
     <string name="txtBarcode">บาร์โค้ด :</string>
     <string name="txtQuantity">ปริมาณ :</string>
     <string name="txtPackaging">บรรจุภัณฑ์</string>
-    <string name="txtBrands">Brands :</string>
+    <string name="txtBrands">ยี่ห้อ :</string>
     <string name="txtCategories">หมวดหมู่</string>
     <string name="txtLabels">ป้าย, ใบรับรอง, รางวัลต่างๆที่ได้รับ :</string>
     <string name="txtManufacturing">สถานที่ผลิตหรือแปรรูป:</string>
