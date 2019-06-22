@@ -433,9 +433,9 @@
     <string name="collagen_meat_protein_ratio">Collageen vleesproteïne verhouding</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Chlorofyl</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture">Choose a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">Maak een foto</string>
+    <string name="choose_picture">Kies een foto</string>
+    <string name="choose_picture_from_gallery">Uit Galerij</string>
     <string name="take_picture_ingredients">Maak een foto van de ingrediënten</string>
     <string name="take_picture_front">Maak een foto van de voorkant</string>
     <string name="take_picture_nutrition_table">Maak een foto van de voedingstabel</string>
@@ -597,8 +597,8 @@
     <string name="productNameNull">Naam onbekend</string>
     <string name="productBrandNull">Merk onbekend</string>
     <string name="productQuantityNull">Hoeveelheid onbekend</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesUnknown">Additieven onbekend</string>
+    <string name="productAdditivesTemplate">%1$d additieven</string>
     <string name="product_not_complete">Dit product is nog niet compleet. \nWil je details toevoegen?</string>
     <string name="addProductOffline">Je lijkt offline te zijn. Het product %s toevoegen met behulp van de offlinemodus?</string>
     <string name="product_not_found">Product %1$s door jou gescand, bestaat nog niet. Wil je het toevoegen?</string>
@@ -611,7 +611,7 @@
     <string name="preferences">Voorkeuren</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Product %s wordt geladen</string>
-    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
+    <string name="image_not_defined_for_language">Geen afbeelding voor de geselecteerde taal. Je kan een nieuwe toevoegen</string>
     <string name="error_adding_ingredients">Er is iets fout gegaan bij het toevoegen van ingrediënten</string>
     <string name="unable_to_extract_ingredients">Kan geen ingrediënten detecteren in de afbeelding</string>
     <string name="error_adding_nutrition_facts">Er is iets fout gegaan bij het toevoegen van voedingsinformatie</string>
@@ -658,9 +658,9 @@
     <string name="traces_hint">Vermeld de ingrediënten met de vermelding \"Kan sporen bevatten van\", \"Geproduceerd in een fabriek waar ook X verwerkt wordt\", etc.</string>
     <string name="nutrition_facts_not_specified">De voedingswaarden zijn niet op het product vermeld</string>
     <string name="nutrition_facts_picture">Foto van de voedingswaardetabel</string>
-    <string name="front_picture">Front Picture</string>
-    <string name="front_short_picture">Front</string>
-    <string name="other_picture">Other Picture</string>
+    <string name="front_picture">Foto van het product (voorkant)</string>
+    <string name="front_short_picture">Voorkant</string>
+    <string name="other_picture">Andere foto</string>
     <string name="for_100g_100ml">Voor 100 g / 100 ml</string>
     <string name="per_serving">Per portie</string>
     <string name="serving_size">Grootte van een portie</string>
@@ -683,14 +683,14 @@
     <string name="stores">Winkels</string>
     <string name="additional_pictures">Extra afbeeldingen</string>
     <string name="hint_product_pictures">(Voeg meer afbeeldingen van het product toe. Bijvoorbeeld: recycling instructies, labels etc.)</string>
-    <string name="uploading_image">Sending the photo</string>
+    <string name="uploading_image">De foto verzenden</string>
     <string name="uploading_nutrition_image">Foto van de voedingswaarden aan het uploaden</string>
     <string name="uploading_ingredients_image">Foto van de ingrediënten aan het uploaden</string>
     <string name="uploading_front_image">Foto van voorkant aan het uploaden</string>
-    <string name="edit_front_image">Edit the front photo</string>
-    <string name="edit_nutrition_image">Edit the nutrition photo</string>
-    <string name="edit_ingredients_image">Edit the ingredients photo</string>
-    <string name="edit_other_image">Edit the photo</string>
+    <string name="edit_front_image">Bewerk de foto van de voorkant</string>
+    <string name="edit_nutrition_image">Bewerk de foto met voedingswaarden</string>
+    <string name="edit_ingredients_image">Bewerk de foto met ingrediënten</string>
+    <string name="edit_other_image">Foto bewerken</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Log in om een product te bewerken.</string>
@@ -775,8 +775,8 @@
     <string name="customer_service">Klantenservice :</string>
     <string name="fast_addition_mode_title">Snelle toevoegmodus</string>
     <string name="fast_addition_mode">Maakt snelle toevoeging van producten met minder kenmerken mogelijk</string>
-    <string name="crop_new_image_title">Crop new images</string>
-    <string name="crop_new_image">Enables crop action on new images</string>
+    <string name="crop_new_image_title">Nieuwe afbeeldingen bijsnijden</string>
+    <string name="crop_new_image">Maak bijsnijden mogelijk voor nieuwe afbeeldingen</string>
     <string name="addtive_search">Zoeken naar een additief</string>
     <string name="additives">Additieven</string>
     <!--used for product_lists implementation-->
@@ -830,12 +830,12 @@
     <string name="add_a_list">Voeg een lijst toe</string>
     <string name="todo">Nog te doen</string>
     <string name="edit_image">Bewerk afbeelding</string>
-    <string name="unselect_image">Unselect Image</string>
-    <string name="choose_default_language">Select product language</string>
+    <string name="unselect_image">Foto deselecteren</string>
+    <string name="choose_default_language">Selecteer producttaal</string>
     <string name="barcode">Barcode</string>
-    <string name="productAdditivesNone">No additives</string>
+    <string name="productAdditivesNone">Geen additieven</string>
     <string name="error_uploading_photo">Er ging iets mis tijdens het uploaden van een nieuwe foto</string>
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
-    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
-    <string name="closeZoom">Click to close zoom</string>
+    <string name="history_network_error">Het product kan niet worden geladen. Probeer het opnieuw wanneer je weer online bent.</string>
+    <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
+    <string name="closeZoom">Klik om zoom te sluiten</string>
 </resources>
