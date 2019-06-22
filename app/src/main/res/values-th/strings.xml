@@ -276,11 +276,11 @@
     <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">รหัสผ่านของคุณ จะต้องมีความยาวอย่างน้อย 6 ตัวอักษร</string>
-    <string name="user">user</string>
-    <string name="error_field_required">This field is required.</string>
-    <string name="action_preferences">Preferences</string>
-    <string name="prefs_scan_startup">Scan on startup</string>
-    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
+    <string name="user">ผู้ใช้</string>
+    <string name="error_field_required">ต้องระบุข้อมูลในช่องนี้</string>
+    <string name="action_preferences">การตั้งค่าที่ต้องการ</string>
+    <string name="prefs_scan_startup">สแกนเมื่อเริ่มต้น</string>
+    <string name="prefs_scan_startup_summary">ตัวเลือกนี้หากเลือกแล้วจะเริ่มสแกนเมื่อเปิดแอพ</string>
     <string name="prefs_power_mode">Power mode scan</string>
     <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">ภาษา</string>
@@ -477,7 +477,7 @@
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">ข้อมูล</string>
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Preferences</string>
+    <string name="device_on_mobile_data_warning_positive">การตั้งค่าที่ต้องการ</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
@@ -605,7 +605,7 @@
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
-    <string name="preferences">Preferences</string>
+    <string name="preferences">การตั้งค่าที่ต้องการ</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
