@@ -41,7 +41,7 @@ public class LoadTaxonomiesService extends IntentService {
     }
 
     private void doTask() {
-        final Consumer<Throwable> throwableConsumer = throwable -> handleError(throwable);
+        final Consumer<Throwable> throwableConsumer = this::handleError;
         if (BuildConfig.FLAVOR.equals("off")) {
             Single.zip(
                 productRepository.getLabels(true),

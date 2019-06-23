@@ -6,6 +6,8 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
@@ -44,7 +46,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
                                 return Single.just(categoryName);
                             }
                         }))
-                    .filter(additiveName -> additiveName.isNotNull())
+                    .filter(AdditiveName::isNotNull)
                     .toList()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -128,7 +130,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
                                 return Single.just(labelName);
                             }
                         }))
-                    .filter(labelName -> labelName.isNotNull())
+                    .filter(LabelName::isNotNull)
                     .toList()
                     .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
                     .subscribeOn(Schedulers.io())
