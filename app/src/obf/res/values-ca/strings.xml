@@ -23,9 +23,7 @@
     <string name="slide_4_title">Treballeu fora de línia</string>
     <string name="slide_4_desc">Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet</string>
     <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Beauty Facts. Afegiu-lo.</string>
-    <string name="txtDialogsContentPowerMode">El producte que heu escanejat ja existeix a Open Beauty Facts.</string>
     <string name="msg_share">Mireu aquest producte a Open Beauty Facts:</string>
-    <string name="not_support_books">Actualment, els llibres no són compatibles amb Open Beauty Facts</string>
     <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-ho i afegiu-ho a Open Beauty Facts</string>
     <string name="Donation">Feu clic aquí per a fer un donatiu a Open Beauty Facts</string>
     <string name="translate_help_title">Ajudeu a traduir Open Beauty Facts</string>
