@@ -4,13 +4,28 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/ingredients_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
+    <Switch
+            android:id="@+id/diet_enabled"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height_short"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:checked="true"
+            android:gravity="center_vertical"
+            android:nextFocusDown="@id/diet_name"
+            android:text="@string/edit_diet_enabled_disabled"
+            android:textStyle="normal"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal" android:layout_marginBottom="@dimen/spacing_tiny"
+            android:layout_marginStart="@dimen/spacing_tiny" android:layout_marginEnd="@dimen/spacing_tiny"/>
+
+    <android.support.v7.widget.RecyclerView
+                                            xmlns:tools="http://schemas.android.com/tools"
+                                            android:id="@+id/ingredients_recyclerView"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="#ffffff"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_marginTop="0dp"
+                                            android:layout_below="@+id/diet_enabled"/>
 
 </RelativeLayout>

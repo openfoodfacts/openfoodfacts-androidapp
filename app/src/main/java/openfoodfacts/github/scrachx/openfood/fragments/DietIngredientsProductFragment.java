@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import java.util.List;
 import java.util.Locale;
 
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Diet;
@@ -29,12 +31,14 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.DietIngredientsProdu
 
 public class DietIngredientsProductFragment extends BaseFragment {
 
+    Switch dietEnabled;
     RecyclerView ingredientsRV;
     DietIngredientsProductAdapter ingredientsRVAdapter;
 
     private Product product;
     private State mState;
     private String mDietTag;
+    private Diet mDiet;
     private List<SpannableStringBuilder> mIngredients;
     private IDietRepository dietRepository;
     // Fetching of the (theoretical) language of input:
@@ -52,6 +56,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
         product = mState.getProduct();
         Bundle parameters = getArguments();
         mDietTag = parameters.getString("dietTag");
+        mDiet = dietRepository.getDietByTag(mDietTag);
     }
 
     @Override
@@ -78,6 +83,15 @@ public class DietIngredientsProductFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         mState = (State) intent.getExtras().getSerializable("state");
         refreshView(mState);
+
+        dietEnabled = view.findViewById(R.id.diet_enabled);
+        dietEnabled.setChecked(mDiet.getEnabled());
+        dietEnabled.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                IDietRepository dietRepository = DietRepository.getInstance();
+                dietRepository.setDietEnabled(mDiet.getTag(), isChecked);
+            }
+        });
 
         ingredientsRV = (RecyclerView) view.findViewById(R.id.ingredients_recyclerView);
         ingredientsRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
