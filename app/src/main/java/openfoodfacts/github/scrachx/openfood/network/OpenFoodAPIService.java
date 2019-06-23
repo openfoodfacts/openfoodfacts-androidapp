@@ -187,14 +187,13 @@ public interface OpenFoodAPIService {
     Single<JsonNode> editImageSingle(@Query("code") String code,
                                      @QueryMap Map<String, String> fields);
 
-
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
     Single<JsonNode> getIngredients(@Query("code") String code,
                                     @Query("id") String id);
 
     @GET("cgi/suggest.pl?tagtype=emb_codes")
     Single<ArrayList<String>> getEMBCodeSuggestions(@Query("term") String term);
-
+    
     @GET("/cgi/suggest.pl?tagtype=periods_after_opening")
     Single<ArrayList<String>> getPeriodAfterOpeningSuggestions(@Query("term") String term);
 
@@ -297,10 +296,8 @@ public interface OpenFoodAPIService {
     @GET("informer/{Contributor}/state/to-be-completed/{page}.json")
     Call<Search> getInfoAddedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
-
     @GET("last-edit-date/{LastEditDate}.json")
     Call<Search> byLastEditDate(@Path("LastEditDate") String LastEditDate);
-
 
     @GET("entry-dates/{EntryDates}.json")
     Call<Search> byEntryDates(@Path("EntryDates") String EntryDates);
@@ -335,17 +332,25 @@ public interface OpenFoodAPIService {
      */
     @GET("state/to-be-completed/{page}.json")
     Call<Search> getIncompleteProducts(@Path("page") int page);
-
+    /**
+     * This method gives the # of products on Open Food Facts
+     */
     @GET("/1.json?fields=null")
     Single<Search> getTotalProductCount();
-
+    /**
+     * This method gives the news in all languages
+     */
     @GET("/files/tagline/tagline-"+ BuildConfig.FLAVOR+".json")
     Call<ArrayList<TaglineLanguageModel>> getTagline();
-
+    /**
+     * This method gives the image fields of a product
+     */
 
     @GET("api/v0/product/{barcode}.json?fields=images")
     Call<String> getProductImages(@Path("barcode") String barcode);
-
+    /**
+     * This method is to crop images server side
+     */
 
     @GET("/cgi/product_image_crop.pl")
     Call<String> editImages(@Query("code") String code,
