@@ -16,6 +16,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
 
@@ -101,11 +102,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
     public void openFullScreen(String mUrlImage) {
         if (mUrlImage != null) {
-            Intent intent = new Intent(getContext(), ProductImageManagementActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("imageurl", mUrlImage);
-            intent.putExtras(bundle);
-            startActivity(intent);
+            FullScreenActivityOpener.openZoom(this,mUrlImage,null);
         }
     }
 

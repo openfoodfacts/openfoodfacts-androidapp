@@ -28,7 +28,11 @@ public class FullScreenActivityOpener {
         }
         final Context context = fragment.getContext();
         Intent intent = createIntent(context, product, imageType, mUrlImage);
-        if (mImageFront!=null && fragment.getActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        startActivity(fragment, mImageFront, intent);
+    }
+
+    private static void startActivity(Fragment fragment, View mImageFront, Intent intent) {
+        if (mImageFront != null && fragment.getActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(fragment.getActivity(), mImageFront,
                     fragment.getActivity().getString(R.string.product_transition));
@@ -44,7 +48,28 @@ public class FullScreenActivityOpener {
         }
         final Context context = activity.getBaseContext();
         Intent intent = createIntent(context, product, imageType, mUrlImage);
-        if (mImageFront!=null && activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        startActivity(activity, mImageFront, intent);
+    }
+
+    public static void openZoom(Activity activity, String mUrlImage, View mImageFront) {
+        if (activity == null) {
+            return;
+        }
+        Intent intent = new Intent(activity, ImageZoomActivity.class);
+        intent.putExtra(ImageKeyHelper.IMAGE_URL, mUrlImage);
+        startActivity(activity, mImageFront, intent);
+    }
+    public static void openZoom(Fragment activity, String mUrlImage, View mImageFront) {
+        if (activity == null) {
+            return;
+        }
+        Intent intent = new Intent(activity.getContext(), ImageZoomActivity.class);
+        intent.putExtra(ImageKeyHelper.IMAGE_URL, mUrlImage);
+        startActivity(activity, mImageFront, intent);
+    }
+
+    private static void startActivity(Activity activity, View mImageFront, Intent intent) {
+        if (mImageFront != null && activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(activity, mImageFront,
                     activity.getString(R.string.product_transition));
