@@ -340,7 +340,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         newProductFragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
                         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        fragmentTransaction.commit();
+                        fragmentTransaction.commitAllowingStateLoss();
                         productFragment = newProductFragment;
                         showFirstScanTooltipIfNeeded();
                     }
@@ -388,6 +388,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         quickView.getRootView().requestLayout();
     }
 
+
     private void showFirstScanTooltipIfNeeded() {
         final SharedPreferences sharedPreferences = getSharedPreferences(getClass().getSimpleName(), 0);
         boolean firstScan = sharedPreferences.getBoolean("firstScan", true);
@@ -404,6 +405,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             firstScanMessage.show();
         }
     }
+
 
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
         showAllViews();
