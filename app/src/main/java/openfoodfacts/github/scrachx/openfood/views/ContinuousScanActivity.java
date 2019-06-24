@@ -174,6 +174,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         if (isFinishing() || isDestroyed()) {
             return;
         }
+        if(disposable!=null && !disposable.isDisposed()){
+            //dispove the previous call if not ended.
+            disposable.dispose();
+        }
         client.getProductFullSingle(lastText, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe(a -> {
