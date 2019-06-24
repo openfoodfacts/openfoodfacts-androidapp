@@ -174,6 +174,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         if (isFinishing() || isDestroyed()) {
             return;
         }
+        if(disposable!=null && !disposable.isDisposed()){
+            //dispove the previous call if not ended.
+            disposable.dispose();
+        }
         client.getProductFullSingle(lastText, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe(a -> {
@@ -340,7 +344,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         newProductFragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
                         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        fragmentTransaction.commit();
+                        fragmentTransaction.commitAllowingStateLoss();
                         productFragment = newProductFragment;
                         showFirstScanTooltipIfNeeded();
                     }
@@ -388,6 +392,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         quickView.getRootView().requestLayout();
     }
 
+
     private void showFirstScanTooltipIfNeeded() {
         final SharedPreferences sharedPreferences = getSharedPreferences(getClass().getSimpleName(), 0);
         boolean firstScan = sharedPreferences.getBoolean("firstScan", true);
@@ -404,6 +409,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             firstScanMessage.show();
         }
     }
+
 
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
         showAllViews();
@@ -676,7 +682,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(LocaleHelper.setLocale(newBase, LocaleHelper.getLocale()));
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
     private boolean isProductIncomplete() {
@@ -780,6 +786,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             return true;
         });
         popup.show();
+    }
+
+    /**
+     * Overridden to collapse bottom view after a back action from edit form.
+     * @param savedInstanceState
+     */
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
     @Override
