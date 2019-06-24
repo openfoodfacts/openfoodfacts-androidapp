@@ -682,7 +682,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(LocaleHelper.setLocale(newBase, LocaleHelper.getLocale()));
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
     private boolean isProductIncomplete() {

@@ -594,6 +594,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
