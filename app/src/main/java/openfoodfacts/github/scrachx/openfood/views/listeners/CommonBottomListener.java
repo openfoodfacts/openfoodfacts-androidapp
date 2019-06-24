@@ -32,6 +32,9 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.scan_bottom_nav:
+                if(isCurrentActivity(ContinuousScanActivity.class)){
+                    break;
+                }
                 if (Utils.isHardwareCameraInstalled(context)) {
                     if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
