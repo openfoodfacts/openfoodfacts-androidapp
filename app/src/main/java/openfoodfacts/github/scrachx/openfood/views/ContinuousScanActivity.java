@@ -784,6 +784,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         popup.show();
     }
 
+    /**
+     * Overridden to collapse bottom view after a back action from edit form.
+     * @param savedInstanceState
+     */
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
