@@ -10,6 +10,7 @@ import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
@@ -200,16 +201,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     progressBar.setVisibility(GONE);
                     progressText.setVisibility(GONE);
                     if (state.getStatus() == 0) {
-                        hideAllViews();
-                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
-                        String s = getString(R.string.product_not_found, lastText);
-                        productNotFound.setText(s);
-                        productNotFound.setVisibility(VISIBLE);
-                        fabStatus.setVisibility(VISIBLE);
-                        fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                        fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
-                        fabStatus.setOnClickListener(v -> navigateToProductAddition(lastText));
+                        productNotFound(lastText);
                     } else {
                         product = state.getProduct();
                         if (getIntent().getBooleanExtra("compare_product", false)) {
@@ -225,7 +217,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
-                        new HistoryTask(mHistoryProductDao).doInBackground(product);
+                        new HistoryTask(mHistoryProductDao).execute(product);
                         showAllViews();
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         productShownInBottomView();
@@ -383,6 +375,19 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     }
                 }
             });
+    }
+
+    private void productNotFound(String lastText) {
+        hideAllViews();
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
+        String s = getString(R.string.product_not_found, lastText);
+        productNotFound.setText(s);
+        productNotFound.setVisibility(VISIBLE);
+        fabStatus.setVisibility(VISIBLE);
+        fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+        fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
+        fabStatus.setOnClickListener(v -> navigateToProductAddition(lastText));
     }
 
     private void productShownInBottomView() {

@@ -74,7 +74,7 @@ public class FullScreenActivityOpener {
                 makeSceneTransitionAnimation(activity, mImageFront,
                     activity.getString(R.string.product_transition));
             activity.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE, options.toBundle());
-        } else {
+        } else if(activity!=null){
             activity.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE);
         }
     }
