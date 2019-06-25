@@ -1,10 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Single;
@@ -237,17 +241,24 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Ingredient>> getIngredients(Boolean refresh) {
-        if (refresh) {
-            deleteIngredientCascade();
-            return productApi.getIngredients()
+        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
+        Long lastDLIngredients = mSettings.getLong("lastDLIngredients", 0);
+        if (lastDLIngredients > 0) {
+            if (refresh) {
+                mSettings.edit().putLong("lastDLIngredients", Calendar.getInstance().getTimeInMillis());
+                mSettings.edit().apply();
+                deleteIngredientCascade();
+                return productApi.getIngredients()
                     .map(IngredientsWrapper::map);
-            //Check ingredient from other tables
-        } else if (tableIsEmpty(ingredientDao)) {
-            return productApi.getIngredients()
+                //Check ingredient from other tables
+            } else if (tableIsEmpty(ingredientDao)) {
+                mSettings.edit().putLong("lastDLIngredients", Calendar.getInstance().getTimeInMillis());
+                mSettings.edit().apply();
+                return productApi.getIngredients()
                     .map(IngredientsWrapper::map);
-        } else {
-            return Single.fromCallable(() -> ingredientDao.loadAll());
+            }
         }
+        return Single.fromCallable(() -> ingredientDao.loadAll());
     }
 
     /**
