@@ -451,9 +451,9 @@
     <string name="collagen_meat_protein_ratio">نسبة بروتين اللحوم الكولاجين</string>
     <string name="cocoa">الكاكاو</string>
     <string name="chlorophyl">الكلوروفيل</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture">Choose a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">التقط صورة</string>
+    <string name="choose_picture">اختر صورة</string>
+    <string name="choose_picture_from_gallery">من معرض الصور</string>
     <string name="take_picture_ingredients">التقط صورة للمكونات</string>
     <string name="take_picture_front">التقاط صورة من الجهة الأمامية</string>
     <string name="take_picture_nutrition_table">التقط صورة لجدول الحقائق الغذائية</string>
@@ -856,4 +856,5 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>
