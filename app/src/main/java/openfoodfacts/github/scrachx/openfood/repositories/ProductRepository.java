@@ -227,6 +227,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
+     * TODO to be improved by loading only if required and only in the user language
      * Load ingredients from (the server or) local database
      *
      * @param refresh defines the source of data.
@@ -393,6 +394,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
+     * TODO to be improved by loading only if required and only in the user language
      * Ingredients saving to local database
      * <p>
      * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
