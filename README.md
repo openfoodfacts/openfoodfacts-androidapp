@@ -18,7 +18,7 @@ Open Food Facts is a database of food products with ingredients, allergens, nutr
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-25000+ contributors like you have added 868 000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+25000+ contributors like you have added 868000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
@@ -76,15 +76,15 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 ## Libraries used
 We use the following libraries, and we're not closed to changes where relevant :-) 
 
-[android-async-http](https://loopj.com/android-async-http/),
-[Jackson](http://jackson.codehaus.org),
-[code-mc/loadtoast](https://github.com/code-mc/loadtoast),
-[dm77/barcodescanner](https://github.com/dm77/barcodescanner),
-[koush/ion](https://github.com/koush/ion),
-[satyan/sugar](https://github.com/satyan/sugar),
-[afollestad/material-dialogs](https://github.com/afollestad/material-dialogs),
-[jjhesk/LoyalNativeSlider](https://github.com/jjhesk/LoyalNativeSlider),
-[mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer), and others (see Gradle)
+- [android-async-http](https://loopj.com/android-async-http/),
+- [Jackson](http://jackson.codehaus.org),
+- [code-mc/loadtoast](https://github.com/code-mc/loadtoast),
+- [dm77/barcodescanner](https://github.com/dm77/barcodescanner),
+- [koush/ion](https://github.com/koush/ion),
+- [satyan/sugar](https://github.com/satyan/sugar),
+- [afollestad/material-dialogs](https://github.com/afollestad/material-dialogs),
+- [jjhesk/LoyalNativeSlider](https://github.com/jjhesk/LoyalNativeSlider),
+- [mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer), and others (see Gradle)
 
 Big thanks to their contributors!
 
@@ -96,7 +96,7 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
 - [Fred Deniger](https://github.com/deniger)
-- [Full list of the Open Food Facts Android developpers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
+- [Full list of the Open Food Facts Android developers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
 
 ### Who do I talk to?
 
