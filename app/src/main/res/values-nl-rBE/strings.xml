@@ -838,4 +838,5 @@
     <string name="history_network_error">Het product kan niet worden geladen. Probeer het opnieuw wanneer je weer online bent.</string>
     <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
     <string name="closeZoom">Klik om zoom te sluiten</string>
+    <string name="imageFullscreen">Inzoomen</string>
 </resources>
