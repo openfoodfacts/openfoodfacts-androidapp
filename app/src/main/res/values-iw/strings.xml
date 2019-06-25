@@ -846,4 +846,5 @@
     <string name="history_network_error">לא ניתן לטעון את המוצר. נא לנסות שוב עם חידוש החיבור לאינטרנט.</string>
     <string name="cant_modify_if_refreshing">נא להמתין עד לסיום ההעלאה</string>
     <string name="closeZoom">לחיצה לסגירת התקריב</string>
+    <string name="imageFullscreen">תקריב</string>
 </resources>

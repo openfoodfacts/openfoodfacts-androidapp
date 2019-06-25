@@ -867,4 +867,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="history_network_error">Nie można załadować produktu. Spróbuj ponownie po powrocie do trybu online.</string>
     <string name="cant_modify_if_refreshing">Poczekaj na zakończenie przesyłania</string>
     <string name="closeZoom">Kliknij, aby zamknąć zoom</string>
+    <string name="imageFullscreen">Powiększenie</string>
 </resources>
