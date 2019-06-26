@@ -177,6 +177,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void refreshView(State state) {
+        //no state-> we can't display anything.
+        if(state==null){
+            return;
+        }
         super.refreshView(state);
         this.state = state;
         product = state.getProduct();

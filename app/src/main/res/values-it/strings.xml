@@ -692,4 +692,5 @@
     <string name="history_network_error">Il prodotto non può essere caricato. Si prega di riprovare quando si torna online.</string>
     <string name="cant_modify_if_refreshing">Si prega di attendere fino al termine del caricamento</string>
     <string name="closeZoom">Clicca per chiudere lo zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

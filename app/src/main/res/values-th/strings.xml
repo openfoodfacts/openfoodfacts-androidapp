@@ -181,7 +181,7 @@
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">คุณแน่ใจหรือไม่ว่าต้องการลบร่างข้อมูลนี้</string>
     <string name="txtDialogsContentInfoSave">ผลิตภัณฑ์ได้ถูกบันทึกไว้ในเครื่องแล้ว คุณสามารถแก้ไขได้อีกครั้งในเมนู \"แก้ไขออฟไลน์\"</string>
-    <string name="txtBarcodeRequire">Barcode required</string>
+    <string name="txtBarcodeRequire">ต้องการบาร์โค้ด</string>
     <string name="txtOk">ตกลง</string>
     <string name="txtBarcodeNotValid">บาร์โค้ดไม่ถูกต้อง</string>
     <string name="msg_share">ดูข้อมูลผลิตภัณฑ์นี้ได้ใน Open Food Facts :</string>
@@ -213,22 +213,22 @@
     <string name="permission_denied">Please activate permission in the settings</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-    <string name="user">user</string>
-    <string name="error_field_required">This field is required.</string>
-    <string name="action_preferences">Preferences</string>
-    <string name="prefs_scan_startup">Scan on startup</string>
-    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
-    <string name="prefs_power_mode">Power mode scan</string>
-    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+    <string name="error_invalid_password">รหัสผ่านของคุณ จะต้องมีความยาวอย่างน้อย 6 ตัวอักษร</string>
+    <string name="user">ผู้ใช้</string>
+    <string name="error_field_required">ต้องระบุข้อมูลในช่องนี้</string>
+    <string name="action_preferences">การตั้งค่าที่ต้องการ</string>
+    <string name="prefs_scan_startup">สแกนเมื่อเริ่มต้น</string>
+    <string name="prefs_scan_startup_summary">ตัวเลือกนี้หากเลือกแล้วจะเริ่มสแกนเมื่อเปิดแอพ</string>
+    <string name="prefs_power_mode">โหมดสแกนอย่างรวดเร็ว</string>
+    <string name="prefs_power_mode_summary">สแกนผลิตภัณฑ์อย่างรวดเร็วในซุปเปอร์มาร์เก็ตเพื่อดูว่าผลิตภัณฑ์ใดไม่อยู่ในฐานข้อมูล</string>
     <string name="prefs_language">ภาษา</string>
-    <string name="prefs_language_summary">Change language</string>
+    <string name="prefs_language_summary">เปลี่ยนภาษา</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">History</string>
-    <string name="clear_history">Clear history</string>
-    <string name="title_clear_history_dialog">Clear</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
-    <string name="export_csv_history">Export CSV</string>
+    <string name="scan_history_drawer">ประวัติการเข้าใช้</string>
+    <string name="clear_history">ล้างประวัติการเข้าใช้งาน</string>
+    <string name="title_clear_history_dialog">ล้างข้อมูล</string>
+    <string name="text_clear_history_dialog">คุณต้องการล้างประวัติการสแกนทั้งหมดหรือไม่?</string>
+    <string name="export_csv_history">นำออกเป็นไฟล์ CSV</string>
     <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
@@ -236,11 +236,11 @@
     <string name="no_title">No Title</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">ตารางข้อมูลโภชนาการสำหรับ %1$s ของผลิตภัณฑ์นี้</string>
-    <string name="check_facts">Check</string>
+    <string name="check_facts">ตรวจสอบ</string>
     <string name="nutrition">อาหารการกิน</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="calculated_nutrition">คำนวณสารอาหาร</string>
+    <string name="please_enter_weight">กรุณาพิมพ์น้ำหนักผลิตภัณฑ์</string>
+    <string name="enter_weight">กรุณาพิมพ์น้ำหนักผลิตภัณฑ์</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">คาร์โบไฮเดรต</string>
     <string name="nutrition_cholesterol">คอเลสเตอรอล</string>
@@ -358,8 +358,8 @@
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">ค้นหา</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
-    <string name="history_shortcut_short_label">History</string>
-    <string name="history_shortcut_long_label">History</string>
+    <string name="history_shortcut_short_label">ประวัติการเข้าใช้</string>
+    <string name="history_shortcut_long_label">ประวัติการเข้าใช้</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My Contributions</string>
     <string name="forgot_password">Forgot Password</string>
@@ -384,7 +384,7 @@
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">ข้อมูล</string>
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Preferences</string>
+    <string name="device_on_mobile_data_warning_positive">การตั้งค่าที่ต้องการ</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
@@ -496,7 +496,7 @@
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
-    <string name="preferences">Preferences</string>
+    <string name="preferences">การตั้งค่าที่ต้องการ</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -689,4 +689,5 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

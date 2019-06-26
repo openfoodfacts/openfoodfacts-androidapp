@@ -691,4 +691,5 @@
     <string name="history_network_error">crwdns119484:0crwdne119484:0</string>
     <string name="cant_modify_if_refreshing">crwdns119486:0crwdne119486:0</string>
     <string name="closeZoom">crwdns119488:0crwdne119488:0</string>
+    <string name="imageFullscreen">crwdns119576:0crwdne119576:0</string>
 </resources>

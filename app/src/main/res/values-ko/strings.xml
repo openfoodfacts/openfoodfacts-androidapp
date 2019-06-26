@@ -178,8 +178,8 @@
     <string name="txtPictureNeededDialogNo">삭제</string>
     <string name="toastSending">Uploading...</string>
     <string name="txtLoading">Loading...</string>
-    <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
-    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
+    <string name="txtDialogsContentDelete">정말로 해당 항목을 삭제하시겠습니까?</string>
+    <string name="txtDialogsContentInfoSave">제품이 로컬에 저장되었으므로 \"오프라인 편집\" 메뉴에서 편집 할 수 있습니다.</string>
     <string name="txtBarcodeRequire">Barcode required</string>
     <string name="txtOk">확인</string>
     <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
@@ -203,7 +203,7 @@
     <string name="ok_button">확인</string>
     <string name="cancel_button">취소</string>
     <string name="login_button">로그인</string>
-    <string name="create_account_button">Create Account</string>
+    <string name="create_account_button">계정 만들기</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
@@ -212,21 +212,21 @@
     <string name="permission_denied">Please activate permission in the settings</string>
     <string name="info_download_data_connection">이 기능을 작동 시키려면 일부 데이터를 다운로드 해야합니다. 인터넷 연결을 활성화하십시오.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+    <string name="error_invalid_password">비밀번호는 최소한 6글자여야 합니다.</string>
     <string name="user">사용자</string>
     <string name="error_field_required">필수 기재 항목입니다.</string>
     <string name="action_preferences">환경 설정</string>
     <string name="prefs_scan_startup">시작할 때 실행</string>
-    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
-    <string name="prefs_power_mode">Power mode scan</string>
-    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+    <string name="prefs_scan_startup_summary">이 옵션을 선택하면 앱이 열릴 때 스캔이 시작됩니다.</string>
+    <string name="prefs_power_mode">전원 모드 스캔</string>
+    <string name="prefs_power_mode_summary">슈퍼마켓에서 제품을 신속하게 스캔하여 데이터베이스에 없는 제품을 확인합니다.</string>
     <string name="prefs_language">언어</string>
     <string name="prefs_language_summary">언어 변경</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">History</string>
+    <string name="scan_history_drawer">최근 기록</string>
     <string name="clear_history">방문 기록 삭제</string>
     <string name="title_clear_history_dialog">지우기</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">모든 스캔 기록을 삭제 하시겠습니까?</string>
     <string name="export_csv_history">CSV로 내보내기</string>
     <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">History exported</string>
@@ -238,8 +238,8 @@
     <string name="check_facts">확인</string>
     <string name="nutrition">영양</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="please_enter_weight">제품 무게를 입력하십시오.</string>
+    <string name="enter_weight">제품 무게 입력</string>
     <string name="calculate_nutrition_facts">영양 정보 계산</string>
     <string name="nutrition_carbohydrate">탄수화물</string>
     <string name="nutrition_cholesterol">콜레스테롤</string>
@@ -302,9 +302,9 @@
     <string name="nutrition_alcohol">알코올</string>
     <string name="nutrition_vitamins">비타민</string>
     <string name="vitamin_a">비타민 A</string>
-    <string name="vitamin_d">Vitamin D</string>
-    <string name="vitamin_e">Vitamin E</string>
-    <string name="vitamin_k">Vitamin K</string>
+    <string name="vitamin_d">비타민 D</string>
+    <string name="vitamin_e">비타민 E</string>
+    <string name="vitamin_k">비타민 K</string>
     <string name="vitamin_c">비타민 C</string>
     <string name="vitamin_b1">비타민 B1</string>
     <string name="vitamin_b2">비타민 B2</string>
@@ -353,12 +353,12 @@
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
-    <string name="scan_shortcut_short_label">Scan</string>
+    <string name="scan_shortcut_short_label">스캔</string>
     <string name="scan_shortcut_long_label">제품 스캔</string>
     <string name="barcode_shortcut_short_label">수색</string>
     <string name="barcode_shortcut_long_label">바코드로 검색</string>
-    <string name="history_shortcut_short_label">History</string>
-    <string name="history_shortcut_long_label">History</string>
+    <string name="history_shortcut_short_label">최근 기록</string>
+    <string name="history_shortcut_long_label">최근 기록</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My Contributions</string>
     <string name="forgot_password">Forgot Password</string>
@@ -688,4 +688,5 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

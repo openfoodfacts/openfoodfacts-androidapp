@@ -704,4 +704,5 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

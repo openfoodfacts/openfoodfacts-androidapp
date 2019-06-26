@@ -1,10 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Property;
-import org.greenrobot.greendao.annotation.Generated;
 
 @Entity(
         indexes = {
@@ -26,9 +26,13 @@ public class YourListedProduct {
     String productDetails;
     @Property(nameInDb = "imageUrl")
     String imageUrl;
-    @Generated(hash = 1267347860)
+    @Property(nameInDb = "count")
+    String count;
+
+    @Generated(hash = 2123418045)
     public YourListedProduct(Long id, String barcode, Long listId, String listName,
-            String productName, String productDetails, String imageUrl) {
+                             String productName, String productDetails, String imageUrl,
+                             String count) {
         this.id = id;
         this.barcode = barcode;
         this.listId = listId;
@@ -36,10 +40,12 @@ public class YourListedProduct {
         this.productName = productName;
         this.productDetails = productDetails;
         this.imageUrl = imageUrl;
+        this.count = count;
     }
     @Generated(hash = 35341880)
     public YourListedProduct() {
     }
+
     public String getBarcode() {
         return this.barcode;
     }
@@ -83,4 +89,11 @@ public class YourListedProduct {
         this.id = id;
     }
 
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
 }

@@ -502,7 +502,7 @@
     <string name="preferences">Voorkeuren</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Product %s wordt geladen</string>
-    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
+    <string name="image_not_defined_for_language">Geen afbeelding voor de geselecteerde taal. Je kan een nieuwe toevoegen</string>
     <string name="error_adding_ingredients">Er is iets misgegaan tijdens het proberen ingrediënten voor het product toe te voegen</string>
     <string name="unable_to_extract_ingredients">Kan ingrediënten niet uit afbeelding extraheren</string>
     <string name="error_adding_nutrition_facts">Er is iets fout gegaan bij het toevoegen van voedingsinformatie</string>
@@ -573,14 +573,14 @@
     <string name="stores">Winkels</string>
     <string name="additional_pictures">Extra afbeeldingen</string>
     <string name="hint_product_pictures">(Voeg meer foto\'s toe van het product, bijv: recyclinginstructies, labels etc.)</string>
-    <string name="uploading_image">Sending the photo</string>
+    <string name="uploading_image">De foto verzenden</string>
     <string name="uploading_nutrition_image">Foto van de voedingswaarden aan het uploaden</string>
     <string name="uploading_ingredients_image">Foto van de ingrediënten aan het uploaden</string>
     <string name="uploading_front_image">Foto van voorkant aan het uploaden</string>
-    <string name="edit_front_image">Edit the front photo</string>
-    <string name="edit_nutrition_image">Edit the nutrition photo</string>
-    <string name="edit_ingredients_image">Edit the ingredients photo</string>
-    <string name="edit_other_image">Edit the photo</string>
+    <string name="edit_front_image">Bewerk de foto van de voorkant</string>
+    <string name="edit_nutrition_image">Bewerk de foto met voedingswaarden</string>
+    <string name="edit_ingredients_image">Bewerk de foto met ingrediënten</string>
+    <string name="edit_other_image">Foto bewerken</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels&amp;hl=nl</string>
     <string name="sign_in_to_edit">Log in om een product te bewerken.</string>
@@ -636,8 +636,8 @@
     <string name="set_image_name">Afbeelding succesvol ingesteld als</string>
     <string name="fast_addition_mode_title">Snelle toevoegmodus</string>
     <string name="fast_addition_mode">Maakt snelle toevoeging van producten met minder kenmerken mogelijk</string>
-    <string name="crop_new_image_title">Crop new images</string>
-    <string name="crop_new_image">Enables crop action on new images</string>
+    <string name="crop_new_image_title">Nieuwe afbeeldingen bijsnijden</string>
+    <string name="crop_new_image">Maak bijsnijden mogelijk voor nieuwe afbeeldingen</string>
     <string name="addtive_search">Zoek een additief</string>
     <string name="additives">Additieven</string>
     <!--used for product_lists implementation-->
@@ -684,12 +684,13 @@
     <string name="add_an_allergen">Voeg een allergeen toe</string>
     <string name="add_a_list">Voeg een lijst toe</string>
     <string name="edit_image">Bewerk afbeelding</string>
-    <string name="unselect_image">Unselect Image</string>
-    <string name="choose_default_language">Select product language</string>
+    <string name="unselect_image">Foto deselecteren</string>
+    <string name="choose_default_language">Selecteer producttaal</string>
     <string name="barcode">Streepjescode</string>
-    <string name="productAdditivesNone">No additives</string>
+    <string name="productAdditivesNone">Geen additieven</string>
     <string name="error_uploading_photo">Er ging iets mis tijdens het uploaden van een nieuwe foto</string>
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
-    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
-    <string name="closeZoom">Click to close zoom</string>
+    <string name="history_network_error">Het product kan niet worden geladen. Probeer het opnieuw wanneer je weer online bent.</string>
+    <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
+    <string name="closeZoom">Klik om zoom te sluiten</string>
+    <string name="imageFullscreen">Inzoomen</string>
 </resources>

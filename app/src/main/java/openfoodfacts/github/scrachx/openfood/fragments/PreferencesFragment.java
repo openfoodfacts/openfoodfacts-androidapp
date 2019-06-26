@@ -34,7 +34,6 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Navi
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import org.apache.commons.text.WordUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 

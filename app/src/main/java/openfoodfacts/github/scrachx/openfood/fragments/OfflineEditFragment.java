@@ -12,7 +12,6 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -46,10 +45,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import org.greenrobot.greendao.async.AsyncSession;
@@ -326,18 +322,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     private void showFullscreenView(String s, ImageView imageServer) {
-        Intent intent = new Intent(getContext(), ProductImageManagementActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("imageurl", s);
-        intent.putExtras(bundle);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(activity, imageServer,
-                    getString(R.string.product_transition));
-            startActivity(intent, options.toBundle());
-        } else {
-            startActivity(intent);
-        }
+        FullScreenActivityOpener.openZoom(this,s,imageServer);
     }
 
     /**
