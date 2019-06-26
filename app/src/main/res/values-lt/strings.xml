@@ -195,7 +195,7 @@
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">Barkodas</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
@@ -243,7 +243,7 @@
     <string name="home_drawer">Home</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">Kategorijos</string>
     <string name="search_by_category">Category</string>
     <string name="search_by_name_drawer">Search by name</string>
     <string name="scan_search">Scan Barcode</string>
@@ -559,7 +559,7 @@
     <string name="txtOptions">Options</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
-    <string name="by_barcode">Barcode</string>
+    <string name="by_barcode">Barkodas</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
@@ -840,10 +840,11 @@
     <string name="edit_image">Edit Image</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
-    <string name="barcode">Barcode</string>
+    <string name="barcode">Barkodas</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

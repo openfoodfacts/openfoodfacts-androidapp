@@ -838,4 +838,5 @@
     <string name="history_network_error">O produto não pôde ser carregado. Por favor, tente novamente quando estiver online novamente.</string>
     <string name="cant_modify_if_refreshing">Por favor, aguarde até que o envio termine</string>
     <string name="closeZoom">Clicar para fechar o zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

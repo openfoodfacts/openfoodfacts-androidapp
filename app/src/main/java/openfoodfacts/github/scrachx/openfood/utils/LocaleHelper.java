@@ -89,14 +89,14 @@ public class LocaleHelper {
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
     public static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
 
-    public static void onCreate(Context context) {
+    public static Context onCreate(Context context) {
         String lang = getLanguageInPreferences(context, Locale.getDefault().getLanguage());
-        setLocale(context, lang);
+        return setLocale(context, lang);
     }
 
-    public static void onCreate(Context context, String defaultLanguage) {
+    public static Context onCreate(Context context, String defaultLanguage) {
         String lang = getLanguageInPreferences(context, defaultLanguage);
-        setLocale(context, lang);
+        return setLocale(context, lang);
     }
 
     public static List<LanguageData> getLanguageData(Collection<String> codes, boolean supported) {
@@ -158,6 +158,12 @@ public class LocaleHelper {
         return setLocale(context, locale);
     }
 
+    /**
+     * Used by screenshots generator.
+     * @param context
+     * @param locale
+     * @return
+     */
     public static Context setLocale(Context context, Locale locale) {
         if (locale == null) {
             return context;

@@ -28,6 +28,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
@@ -77,6 +78,11 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 		api = new OpenFoodAPIClient( this );
 
 		mState = (State) getIntent().getSerializableExtra("state" );
+        //no state-> we can't display anything. we go back to home.
+        if(mState==null){
+            final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
 
 		setupViewPager( viewPager );
 
