@@ -26,9 +26,9 @@
 - 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。
 
 ***您的宠物食物，您的数据***
-- Your personal data is yours, and is never sent online
+- 您的个人数据只属于您，永远不会被上传。
 - 您可以匿名使用该应用
 - 您可以导出历史记录
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+对于食品，您可以安装Open Food Facts；对于化妆品，您可以安装Open Beauty Facts；对于其他任何产品，您可以安装Open Products Facts.
