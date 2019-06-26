@@ -802,10 +802,10 @@
     <string name="settings_country_dialog_title">Vælg dit land</string>
     <string name="settings_country_summary">Skift dit valgte land</string>
     <string name="settings_country_title">Land</string>
-    <string name="txt_enter_count">Enter the amount of product(s):</string>
-    <string name="txt_hint_count">Ex: 2, 1/2…</string>
+    <string name="txt_enter_count">Angiv produktantal:</string>
+    <string name="txt_hint_count">F.eks.: 2, 1/2…</string>
     <string name="txt_btn_count">Tilføj</string>
-    <string name="toast_null_count">This is not a valid number.</string>
+    <string name="toast_null_count">Dette er ikke et gyldigt antal.</string>
     <string name="list_text">Føjet til:\u0020</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
     <string name="empty"></string>
