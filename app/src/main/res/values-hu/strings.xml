@@ -826,7 +826,7 @@
     <string name="error_nutrient_entry">Az értéknek számnak kell lennie, és &lt;, &gt; vagy ~ értékkel kezdődhet. Példa: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Néhány tápanyagérték nem érvényes. Kérjük, javítsa ki a fenti hibával jelzett mezőket.</string>
-    <string name="go_to_full_product_page">Go to product</string>
+    <string name="go_to_full_product_page">Ugrás a termékre</string>
     <string name="no_additive_data_available_for_this_product">Ehhez a termékhez nem áll rendelkezésre adalék adat</string>
     <string name="no_nutrient_information_available_for_this_product">A termékhez nem áll rendelkezésre tápanyag-információ</string>
     <string name="error_duplicate_listname">Már van egy listája ezzel a névvel</string>
