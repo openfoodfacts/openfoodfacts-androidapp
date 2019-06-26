@@ -831,6 +831,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="settings_country_dialog_title">Wybierz kraj</string>
     <string name="settings_country_summary">Zmień kraj</string>
     <string name="settings_country_title">Kraj</string>
+    <string name="txt_enter_count">Enter the amount of product(s):</string>
+    <string name="txt_hint_count">Ex: 2, 1/2…</string>
+    <string name="txt_btn_count">Dodaj</string>
+    <string name="toast_null_count">This is not a valid number.</string>
     <string name="list_text">Dodano w:\u0020</string>
     <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
     <string name="empty"></string>
