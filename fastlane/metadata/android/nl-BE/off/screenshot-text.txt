@@ -1,8 +1,8 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Dat zijn de taglines die boven de screenshots in de playstore worden getoond. Houd ze kort en aantrekkelijk.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=nl
 
 =====================
-V2 screenshots
+V2 schermafbeeldingen
 =====================
 
 Scan producten
@@ -38,35 +38,35 @@ Krachtig
 Voedingswaarden
 
 =====================
-V3 screenshots
+V3 schermafbeeldingen
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+Kies producten die goed zijn voor jou en voor de 🌍 planeet!
 
-✔ Ultra-fast barcode scan
+✔ Ultrasnelle barcodescan
 
-✔ A global supermarket in your pocket
+✔ Een wereldwijde supermarkt in uw zak
 
-Nutritional quality
+Voedingswaarde
 
-Ultra-processed foods
+Ultra-bewerkte levensmiddelen
 
 Carbon impact
 
-Compare easily before you buy
+Vergelijk eenvoudig voor je koopt
 
-Create shopping lists, intake lists…
+Maak boodschappenlijstjes, intake lijsten…
 
-Find and compare over 750 000 products.
+Zoek en vergelijk meer dan 750 000 producten.
 
 
 
-Unlimited and fully-private scan history
+Onbeperkte en volledige privé scan-geschiedenis
 
-Swipe for even more details
+Veeg voor nog meer details
 
-Set Allergen Alerts
+Stel allergeenwaarschuwingen in
 
-Join our global movement for food transparency
+Sluit je aan bij onze wereldwijde beweging voor inzichtelijkheid van voedsel
 
-world.openfoodfacts.org/contribute
+world.openfoodfacts.org/contribute&hl=nl

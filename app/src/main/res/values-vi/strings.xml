@@ -135,11 +135,6 @@
         <item>Kẽm</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Mặc định</item>
-        <item>Dinh dưỡng</item>
-        <item>Thành phần</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Dấu trang</string>
     <string name="edit">Chỉnh sửa</string>
@@ -434,6 +429,9 @@
     <string name="collagen_meat_protein_ratio">Tỷ lệ đạm trong thịt Collagen</string>
     <string name="cocoa">Ca cao</string>
     <string name="chlorophyl">Diệp lục</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Hãy chụp các thành phần nguyên liệu</string>
     <string name="take_picture_front">Take a picture of the front</string>
     <string name="take_picture_nutrition_table">Hãy chụp bảng dinh dưỡng</string>
@@ -595,6 +593,8 @@
     <string name="productNameNull">Tên không xác định</string>
     <string name="productBrandNull">Thương hiệu không rõ</string>
     <string name="productQuantityNull">Số lượng không xác định</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">Sản phẩm này chưa hoàn chỉnh. \nBạn có thể thêm một số chi tiết không?</string>
     <string name="addProductOffline">Bạn có vẻ ngoại tuyến. Thêm sản phẩm %s bằng chế độ ngoại tuyến?</string>
     <string name="product_not_found">Sản phẩm %1$s bạn đã quét không tồn tại trong Sự Open Food Facts. Bạn có thể thêm nó?</string>
@@ -607,6 +607,7 @@
     <string name="preferences">Tuỳ chỉnh</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Đang tải sản phẩm %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Đã xảy ra sự cố khi cố gắng thêm thành phần sản phẩm</string>
     <string name="unable_to_extract_ingredients">Không thể trích xuất thành phần từ hình ảnh</string>
     <string name="error_adding_nutrition_facts">Đã xảy ra sự cố khi cố gắng thêm các thông tin dinh dưỡng của sản phẩm</string>
@@ -653,6 +654,9 @@
     <string name="traces_hint">Cho biết các thành phần từ các đề cập như \'Có thể chứa dấu vết\', \'Được sản xuất tại nhà máy cũng sử dụng\', v. v. \nVí dụ: Sữa, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Thành phần dinh dưỡng không được chỉ định trên sản phẩm.</string>
     <string name="nutrition_facts_picture">Hình ảnh về sự kiện dinh dưỡng</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">Cho 100g / 100ml</string>
     <string name="per_serving">Mỗi khẩu</string>
     <string name="serving_size">Kích thước phục vụ</string>
@@ -675,9 +679,14 @@
     <string name="stores">Cửa hàng</string>
     <string name="additional_pictures">Hình ảnh bổ sung</string>
     <string name="hint_product_pictures">(Thêm nhiều hình ảnh của sản phẩm hơn, ví dụ: hướng dẫn tái chế, nhãn, vv..)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Tải lên hình ảnh sự kiện dinh dưỡng</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world-vi.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Vui lòng đăng nhập để chỉnh sửa sản phẩm.</string>
@@ -762,6 +771,8 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Chất phụ gia</string>
     <!--used for product_lists implementation-->
@@ -815,6 +826,13 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Mã vạch</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

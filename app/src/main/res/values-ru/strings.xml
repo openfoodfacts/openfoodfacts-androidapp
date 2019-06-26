@@ -147,11 +147,6 @@
         <item>Цинк</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>По умолчанию</item>
-        <item>Пищевая ценность</item>
-        <item>Ингредиенты</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Добавить в закладки</string>
     <string name="edit">Изменить</string>
@@ -186,7 +181,7 @@
     <string name="txtPalmOilProduct">Ингредиенты из пальмового масла:</string>
     <string name="txtServingSize">Размер порции:</string>
     <string name="txtNutrientLevel100g">Пищевая ценность на 100 г:</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Пищевая ценность на 100 мл:</string>
     <string name="txtNutritionLevelLow">в малом количестве</string>
     <string name="txtNutritionLevelModerate">в умеренном количестве</string>
     <string name="txtNutritionLevelHigh">в большом количестве</string>
@@ -390,7 +385,7 @@
     <string name="nutrition_serum_proteins">Сывороточный протеин</string>
     <string name="nutrition_nucleotides">Нуклеотиды</string>
     <string name="for_100g">На 100 г</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">На 100 мл</string>
     <string name="serving">На порцию</string>
     <string name="minerals">Минералы</string>
     <string name="nutrition_calcium">Кальций</string>
@@ -446,6 +441,9 @@
     <string name="collagen_meat_protein_ratio">Доля коллагена в мясном белке</string>
     <string name="cocoa">Какао</string>
     <string name="chlorophyl">Хлорофилл</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Сделайте фото состава</string>
     <string name="take_picture_front">Сделайте общее фото</string>
     <string name="take_picture_nutrition_table">Сделайте фото энерг. ценности</string>
@@ -607,6 +605,8 @@
     <string name="productNameNull">Название неизвестно</string>
     <string name="productBrandNull">Бренд неизвестен</string>
     <string name="productQuantityNull">Количество неизвестно</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">Этот продукт еще не завершен. \nМожете вы добавить некоторые детали?</string>
     <string name="addProductOffline">Кажется, нет подключения к сети. Добавить продукт %s в автономном режиме?</string>
     <string name="product_not_found">Отсканированного продукта %1$s ещё нет в базе Open Food Facts. Вы можете добавить его?</string>
@@ -619,6 +619,7 @@
     <string name="preferences">Настройки</string>
     <string name="OFFlogo">Логотип Open Food Facts</string>
     <string name="loading_product">Загрузка продукта %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Что-то пошло не так при попытке добавления ингредиентов продукта</string>
     <string name="unable_to_extract_ingredients">Не удалось извлечь ингредиенты из изображения</string>
     <string name="error_adding_nutrition_facts">Что-то пошло не так при попытке добавить пищевую ценность продукта</string>
@@ -665,6 +666,9 @@
     <string name="traces_hint">Укажите ингредиенты, упоминаемые как \"Может содержать следы…\", \"Сделано на фабрике, которая также использует...\" и т. д. \nПримеры: молоко, глютен, орехи</string>
     <string name="nutrition_facts_not_specified">Пищевая ценность не указана на продукте.</string>
     <string name="nutrition_facts_picture">Фото пищевой ценности</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">В 100 г/100 мл</string>
     <string name="per_serving">На порцию</string>
     <string name="serving_size">Размер порции</string>
@@ -687,9 +691,14 @@
     <string name="stores">Магазины</string>
     <string name="additional_pictures">Дополнительные фотографии</string>
     <string name="hint_product_pictures">(Добавьте дополнительные фото продукта, например, инструкции по утилизации, этикетки и т. д.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Загрузка изображения пищевой ценности</string>
     <string name="uploading_ingredients_image">Загрузка изображения состава</string>
     <string name="uploading_front_image">Загрузка изображения лицевой стороны</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Войдите, чтобы отредактировать продукт.</string>
@@ -774,6 +783,8 @@
     <string name="customer_service">Центр поддержки:</string>
     <string name="fast_addition_mode_title">Режим быстрого добавления</string>
     <string name="fast_addition_mode">Позволяет быстро добавлять продукты с меньшим количеством атрибутов</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Поиск добавки</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->
@@ -820,13 +831,20 @@
     <string name="go_to_full_product_page">Перейти на полную страницу продукта</string>
     <string name="no_additive_data_available_for_this_product">Дополнительных данные не доступны для этого продукта</string>
     <string name="no_nutrient_information_available_for_this_product">Нет информации о питательной ценности для этого продукта</string>
-    <string name="error_duplicate_listname">You already have a list with this name</string>
+    <string name="error_duplicate_listname">У вас уже есть список с таким именем</string>
     <string name="required_to_compute_nutriscore">(Требуется для вычисления Nutri-Score)</string>
-    <string name="first_scan_tooltip">You can slide up the card for more details</string>
-    <string name="add_an_allergen">Add an allergen</string>
-    <string name="add_a_list">Add a list</string>
-    <string name="todo">TODO</string>
-    <string name="edit_image">Edit Image</string>
+    <string name="first_scan_tooltip">Вы можете сдвинуть карточку для подробностей</string>
+    <string name="add_an_allergen">Добавить аллерген</string>
+    <string name="add_a_list">Добавить список</string>
+    <string name="todo">СДЕЛАТЬ</string>
+    <string name="edit_image">Редактировать изображение</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Штрих-код</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="productAdditivesNone">No additives</string>
+    <string name="error_uploading_photo">Произошла ошибка во время загрузки нового фото</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

@@ -31,12 +31,14 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -49,7 +51,6 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.greenrobot.greendao.async.AsyncSession;
-import org.jsoup.helper.StringUtil;
 
 import java.io.File;
 import java.net.URI;
@@ -441,7 +442,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                 editImageFront.setVisibility(View.INVISIBLE);
                 mImageUrl = productDetails.get("image_front");
                 Picasso.with(getContext())
-                    .load("file://" + mImageUrl)
+                    .load(FileUtils.LOCALE_FILE_SCHEME+ mImageUrl)
                     .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
                     .into(imageFront, new Callback() {
@@ -582,7 +583,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             loadFrontImage(lang);
             OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
-            client.getExistingProductDetails(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
@@ -784,7 +785,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
 
     private String getValues(NachoTextView nachoTextView) {
         List<String> list = nachoTextView.getChipValues();
-        return StringUtil.join(list, ",");
+        return StringUtils.join(list, ",");
     }
 
     @OnClick(R.id.section_manufacturing_details)
@@ -839,7 +840,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         String url = "https://www.google.com/search?q=" + code;
         if (!brand.getChipAndTokenValues().isEmpty()) {
             List<String> brandNames = brand.getChipAndTokenValues();
-            url = url + " " + StringUtil.join(brandNames, " ");
+            url = url + " " + StringUtils.join(brandNames, " ");
         }
         if (!name.getText().toString().isEmpty()) {
             url = url + " " + name.getText().toString();

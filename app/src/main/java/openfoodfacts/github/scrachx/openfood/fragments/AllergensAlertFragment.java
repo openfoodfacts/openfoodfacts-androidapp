@@ -106,14 +106,14 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                     mRvAllergens.setHasFixedSize(true);
                     mAdapter.registerAdapterDataObserver(mDataObserver);
                     mDataObserver.onChanged();
-                }, Throwable::printStackTrace);
+                }, e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByEnabledAndLanguageCode",e));
 
         productRepository.getAllergensByLanguageCode(language)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allergens -> {
                     mAllergensFromDao = allergens;
-                }, Throwable::printStackTrace);
+                }, e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByLanguageCode",e));
 
 
         currentView = view;
@@ -190,14 +190,14 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allergens -> {
                     mAllergensEnabled = allergens;
-                }, Throwable::printStackTrace);
+                }, e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByEnabledAndLanguageCode",e));
 
         productRepository.getAllergensByLanguageCode(language)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allergens -> {
                     mAllergensFromDao = allergens;
-                }, Throwable::printStackTrace);
+                },  e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByLanguageCode",e));
     }
 
     @Override

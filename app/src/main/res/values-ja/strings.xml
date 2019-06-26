@@ -135,11 +135,6 @@
         <item>亜鉛</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>デフォルト</item>
-        <item>栄養</item>
-        <item>原材料</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">ブックマーク</string>
     <string name="edit">編集</string>
@@ -434,6 +429,9 @@
     <string name="collagen_meat_protein_ratio">コラーゲン肉タンパク質比</string>
     <string name="cocoa">ココア</string>
     <string name="chlorophyl">クロロフィル</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">原材料の写真を撮ります</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">栄養成分表の写真を撮ります</string>
@@ -595,6 +593,8 @@
     <string name="productNameNull">名前不明</string>
     <string name="productBrandNull">ブランド不明</string>
     <string name="productQuantityNull">数量不明</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">この製品はまだ完全ではありません。\n詳細を追加できますか?</string>
     <string name="addProductOffline">オフラインのようです。オフラインモードを使用して製品 %s を追加しますか ?</string>
     <string name="product_not_found">スキャンした製品 %1$s はまだ Open Food Facts に存在しません。追加できますか?</string>
@@ -607,6 +607,7 @@
     <string name="preferences">プリファレンス</string>
     <string name="OFFlogo">Open Food Facts ロゴ</string>
     <string name="loading_product">製品の読み込み中 %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">製品の原材料を追加中に問題が発生しました</string>
     <string name="unable_to_extract_ingredients">画像から成分を抽出することができません。</string>
     <string name="error_adding_nutrition_facts">製品の栄養成分を追加中に問題が発生しました。</string>
@@ -653,6 +654,9 @@
     <string name="traces_hint">「微量含まれている可能性がある」「使用する工場で製造されている」などの言及から原材料を示します。\n例: 牛乳、グルテン、ナッツ</string>
     <string name="nutrition_facts_not_specified">栄養成分表が製品に指定されていません。</string>
     <string name="nutrition_facts_picture">栄養成分表の画像</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">100g / 100ml 当たり</string>
     <string name="per_serving">一食当たり</string>
     <string name="serving_size">一人前の分量</string>
@@ -675,9 +679,14 @@
     <string name="stores">店舗</string>
     <string name="additional_pictures">追加の写真</string>
     <string name="hint_product_pictures">(製品の写真をさらに追加してください。例: リサイクルの指示、ラベル、など)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">栄養成分表をアップロードしています</string>
     <string name="uploading_ingredients_image">原材料画像をアップロードしています</string>
     <string name="uploading_front_image">正面画像をアップロードしています</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">商品を編集するにはログインしてください。</string>
@@ -762,6 +771,8 @@
     <string name="customer_service">カスタマーサービス :</string>
     <string name="fast_addition_mode_title">高速追加モード</string>
     <string name="fast_addition_mode">少ない属性で製品をすばやく追加できます</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">添加物</string>
     <!--used for product_lists implementation-->
@@ -815,6 +826,13 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">バーコード</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

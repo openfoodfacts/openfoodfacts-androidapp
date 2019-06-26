@@ -62,6 +62,10 @@ jobs:
 
   - stage: test
     script:
+      - ./gradlew compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
+
+  - stage: test
+    script:
       - ./gradlew testObfDebugUnitTest connectedObfDebugAndroidTest assembleObfDebug --stacktrace
       - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
 
@@ -101,3 +105,5 @@ deploy:
   file: app/build/outputs/apk/*.apk
   on:
     all_branches: true
+git:
+  depth: false

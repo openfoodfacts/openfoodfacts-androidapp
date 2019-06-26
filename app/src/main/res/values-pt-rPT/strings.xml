@@ -139,11 +139,6 @@
         <item>Zinco</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Padrão</item>
-        <item>Nutrição</item>
-        <item>Ingredientes</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Favorito</string>
     <string name="edit">Editar</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">Relação colagénio/proteína de carne</string>
     <string name="cocoa">Cacau</string>
     <string name="chlorophyl">Clorofila</string>
+    <string name="take_picture">Tire uma foto</string>
+    <string name="choose_picture">Escolha uma foto</string>
+    <string name="choose_picture_from_gallery">Da galeria</string>
     <string name="take_picture_ingredients">Tirar foto aos ingredientes</string>
     <string name="take_picture_front">Tire uma foto da frente</string>
     <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">Nome desconhecido</string>
     <string name="productBrandNull">Marca desconhecida</string>
     <string name="productQuantityNull">Quantidade desconhecida</string>
+    <string name="productAdditivesUnknown">Aditivos desconhecidos</string>
+    <string name="productAdditivesTemplate">%1$d aditivos</string>
     <string name="product_not_complete">Este produto ainda não está completo. \nPode adicionar alguns detalhes?</string>
     <string name="addProductOffline">Você parece estar offline. Adicione o produto %s usando o modo offline?</string>
     <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">Configurações</string>
     <string name="OFFlogo">Logotipo da Open Food Facts</string>
     <string name="loading_product">Carregando produto %s</string>
+    <string name="image_not_defined_for_language">Nenhuma imagem selecionado para o idioma. Você pode adicionar uma nova</string>
     <string name="error_adding_ingredients">Algo errou ao tentar adicionar ingredientes do produto</string>
     <string name="unable_to_extract_ingredients">Não é possível extrair ingredientes da imagem</string>
     <string name="error_adding_nutrition_facts">Algo errou ao tentar adicionar fatos de nutrição do produto</string>
@@ -657,6 +658,9 @@
     <string name="traces_hint">Indique ingredientes que sejam mencionados como \'Pode conter vestígios de\', \'Feito em uma fábrica que também usa\', etc. \nExemplos: Leite, Glúten, Nozes</string>
     <string name="nutrition_facts_not_specified">Informação nutricional não especificada no produto.</string>
     <string name="nutrition_facts_picture">Imagens de fatos nutricionais</string>
+    <string name="front_picture">Imagem Frontal</string>
+    <string name="front_short_picture">Frente</string>
+    <string name="other_picture">Outra imagem</string>
     <string name="for_100g_100ml">Por 100g / 100ml</string>
     <string name="per_serving">Por porção</string>
     <string name="serving_size">Tamanho da porção</string>
@@ -679,9 +683,14 @@
     <string name="stores">Lojas</string>
     <string name="additional_pictures">Imagens Adicionais</string>
     <string name="hint_product_pictures">(Adicione mais fotos do produto, por exemplo: instruções de reciclagem, etiquetas etc.)</string>
+    <string name="uploading_image">Enviando a foto</string>
     <string name="uploading_nutrition_image">Fazendo upload da imagem dos fatos nutricionais</string>
     <string name="uploading_ingredients_image">Fazendo upload da imagem de ingredientes</string>
     <string name="uploading_front_image">Fazendo upload da imagem da frente</string>
+    <string name="edit_front_image">Editar a foto frontal</string>
+    <string name="edit_nutrition_image">Edite a foto de nutrição</string>
+    <string name="edit_ingredients_image">Editar a foto dos ingredientes</string>
+    <string name="edit_other_image">Editar a foto</string>
     <string name="url_nova_groups">https://pt.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Por favor, faça o login para editar um produto.</string>
@@ -766,6 +775,8 @@
     <string name="customer_service">Serviço de Apoio ao Cliente:</string>
     <string name="fast_addition_mode_title">Modo de adição rápida</string>
     <string name="fast_addition_mode">Permite adição rápida de produtos com menos atributos</string>
+    <string name="crop_new_image_title">Cortar novas imagens</string>
+    <string name="crop_new_image">Permite a ação de corte em novas imagens</string>
     <string name="addtive_search">Procurar um aditivo</string>
     <string name="additives">Aditivos</string>
     <!--used for product_lists implementation-->
@@ -819,6 +830,13 @@
     <string name="add_a_list">Adicionar uma lista</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Editar Imagem</string>
+    <string name="unselect_image">Desmarcar Imagem</string>
+    <string name="choose_default_language">Selecione o idioma do produto</string>
     <string name="barcode">Código de barras</string>
+    <string name="productAdditivesNone">Sem aditivos</string>
     <string name="error_uploading_photo">Algo deu errado ao fazer ao enviar uma foto nova</string>
+    <string name="history_network_error">O produto não pôde ser carregado. Por favor, tente novamente quando estiver online novamente.</string>
+    <string name="cant_modify_if_refreshing">Por favor, aguarde até que o envio termine</string>
+    <string name="closeZoom">Clicar para fechar o zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

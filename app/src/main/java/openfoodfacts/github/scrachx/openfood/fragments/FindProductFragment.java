@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,10 @@ import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
 
@@ -51,9 +52,8 @@ public class FindProductFragment extends NavigationBaseFragment {
                 searchBarcode(barCode);
             }
         }
-        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
+        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
-
 
     @OnClick(R.id.buttonBarcode)
     protected void onSearchBarcodeProduct() {
@@ -65,8 +65,7 @@ public class FindProductFragment extends NavigationBaseFragment {
             if (barcodeText.length() <= 2) {
                 displayToast(getResources().getString(R.string.txtBarcodeNotValid));
             } else {
-                if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") || !barcodeText.substring(0, 3)
-                    .contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
+                if (ProductUtils.isBarcodeValid(barcodeText)) {
                     api.getProduct(mBarCodeText.getText().toString(), getActivity());
                 } else {
                     displayToast(getResources().getString(R.string.txtBarcodeNotValid));
@@ -95,13 +94,10 @@ public class FindProductFragment extends NavigationBaseFragment {
     }
 
     public void onResume() {
-
         super.onResume();
-
-        try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.search_by_barcode_drawer));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        final ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setTitle(getString(R.string.search_by_barcode_drawer));
         }
     }
 

@@ -6,11 +6,9 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
@@ -34,18 +32,17 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.*;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
@@ -65,7 +62,6 @@ import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.jsoup.helper.StringUtil.isBlank;
 
 public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View, PhotoReceiver {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
@@ -239,7 +235,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_ingredients())) {
             addPhotoLabel.setVisibility(View.GONE);
             mUrlImage = mSendProduct.getImgupload_ingredients();
-            Picasso.with(getContext()).load("file://" + mUrlImage).config(Bitmap.Config.RGB_565).into(mImageIngredients);
+            Picasso.with(getContext()).load(FileUtils.LOCALE_FILE_SCHEME + mUrlImage).config(Bitmap.Config.RGB_565).into(mImageIngredients);
         }
 
         List<String> allergens = getAllergens();
@@ -263,7 +259,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
         presenter.loadAllergens();
 
-        if (!isBlank(product.getTraces())) {
+        if (!StringUtils.isBlank(product.getTraces())) {
             String language = LocaleHelper.getLanguage(getContext());
             textTraceProductCardView.setVisibility(View.VISIBLE);
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
@@ -333,7 +329,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
         return otherNutritionStringBuilder;
     }
-
 
     private CharSequence getAllergensTag(AllergenName allergen) {
         SpannableStringBuilder ssb = new SpannableStringBuilder();
@@ -414,7 +409,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @Override
     public void showAdditives(List<AdditiveName> additives) {
-        AdditiveFragmentHelper.showAdditives(additives,additiveProduct,apiClientForWikiData,this);
+        AdditiveFragmentHelper.showAdditives(additives, additiveProduct, apiClientForWikiData, this);
     }
 
     @Override
@@ -548,20 +543,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     @OnClick(R.id.imageViewIngredients)
-    public void openFullScreen(View v) {
-        if (mUrlImage != null) {
-            Intent intent = new Intent(v.getContext(), FullScreenImage.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("imageurl", mUrlImage);
-            intent.putExtras(bundle);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(getActivity(), mImageIngredients,
-                        getActivity().getString(R.string.product_transition));
-                startActivity(intent, options.toBundle());
-            } else {
-                startActivity(intent);
-            }
+    void openFullScreen(View v) {
+        if (mUrlImage != null && activityState != null && activityState.getProduct() != null) {
+            FullScreenActivityOpener.openForUrl(this, activityState.getProduct(), INGREDIENTS, mUrlImage, mImageIngredients);
         } else {
             newIngredientImage();
         }
@@ -602,6 +586,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             startActivity(intent);
         }
         if (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK) {
+            onRefresh();
+        }
+        if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             onRefresh();
         }
 

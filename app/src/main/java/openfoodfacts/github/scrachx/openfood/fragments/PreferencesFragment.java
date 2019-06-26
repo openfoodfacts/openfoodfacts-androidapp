@@ -217,7 +217,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             String version = pInfo.versionName;
             versionPref.setSummary(getString(R.string.version_string) + " " + version);
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(PreferencesFragment.class.getSimpleName(),"onCreatePreferences",e);
         }
     }
 

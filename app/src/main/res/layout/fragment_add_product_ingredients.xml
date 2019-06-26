@@ -129,6 +129,7 @@
                 android:minHeight="150dp"
                 android:nextFocusDown="@id/traces"
                 android:padding="@dimen/spacing_small"
+                android:textDirection="anyRtl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list"/>

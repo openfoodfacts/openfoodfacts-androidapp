@@ -4,7 +4,6 @@ apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 def obtainTestBuildType() {
     //to activate  screenshots buildType in IDE; uncomment next line and comment other
     //otherwise the folder androidTestScreenshots is not recognized as a test folder.
-//    def result="screenshots"
     def result = "debug"
     if (project.hasProperty("testBuildType")) {
         result = project.getProperties().get("testBuildType")
@@ -25,8 +24,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 316
-        versionName "3.1.6"
+        versionCode 317
+        versionName "3.1.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -194,7 +193,6 @@ dependencies {
     implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
 
-    //    compile 'io.rest-assured:json-path:3.0.7'
 
     //CSV Serialization/Deserialization
     implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
@@ -218,8 +216,6 @@ dependencies {
     }
     implementation "com.google.zxing:core:$rootProject.zxingCoreVersion"
 
-    //HTML Dom
-    implementation "org.jsoup:jsoup:$rootProject.htmlDomVersion"
 
     //Apache
     implementation "org.apache.commons:commons-collections4:$rootProject.apacheCollectionsVersion"
@@ -247,8 +243,6 @@ dependencies {
     implementation "com.mikepenz:fastadapter-commons:$rootProject.fastAdapterCommons"
     implementation "com.squareup.retrofit2:converter-scalars:$rootProject.converterScalars"
 
-    //UI Component : Fab
-    implementation "com.github.clans:fab:$rootProject.fabVersion"
 
     //UI Component : Font Icons
     implementation "com.mikepenz:iconics-core:$rootProject.fontIconCoreVersion"

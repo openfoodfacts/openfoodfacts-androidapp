@@ -25,7 +25,7 @@
     <string name="text_barcode">Tipo de código de barras :</string>
     <string name="message_in_activity_save_product_offline">Só é obligatoria unha foto para enviar un novo produto.</string>
     <string name="product_incomplete_message">Este produto non está completo. Como resultado, non puidemos facer as comprobacións de alérxenos.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Este produto contén:</string>
     <string name="no_offline_data">Remataches</string>
     <string name="first_offline">Os produtos engadidos fora de liña aparecerán aquí</string>
     <!-- Image Upload -->
@@ -35,12 +35,12 @@
         <item>Ingredientes</item>
         <item>Nutrición</item>
         <item>Táboa nutricional</item>
-        <item>Environment</item>
+        <item>Medio ambiente</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Fotos do produto</item>
+        <item>Análise de ingredientes</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -54,96 +54,91 @@
         <item>kg</item>
         <item>µg</item>
         <item>% DV</item>
-        <item>IU</item>
+        <item>UI</item>
     </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Ácido alfa-linolénico / ALA (18: 3 n-3)</item>
+        <item>Ácido arácídico (20: 0)</item>
+        <item>Ácido araquidónico / AA / ARA (20: 4 n-6)</item>
+        <item>Ácido Behenic (22: 0)</item>
         <item>Bicarbonato</item>
         <item>Biotina</item>
-        <item>Butyric acid (4:0)</item>
+        <item>Ácido butírico (4: 0)</item>
         <item>Cafeína</item>
         <item>Calcio</item>
-        <item>Capric acid (10:0)</item>
-        <item>Caproic acid (6:0)</item>
-        <item>Caprylic acid (8:0)</item>
+        <item>Ácido capriciano (10: 0)</item>
+        <item>Ácido capriciano (6: 0)</item>
+        <item>Ácido capriciano (8: 0)</item>
         <item>Caseína</item>
-        <item>Cerotic acid (26:0)</item>
+        <item>Ácido capriciano (26: 0)</item>
         <item>Cloro</item>
         <item>Colesterol</item>
         <item>Cromo</item>
         <item>Cobre</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>Ácido dihomo-gamma-linolénico / DGLA (20: 3 n-6)</item>
+        <item>Ácido docosahexaenoico / DHA (22: 6 n-3)</item>
+        <item>Ácido docosahexaenoico / DHA (20: 5 n-3)</item>
+        <item>Ácido elaídico (18: 1 n-9)</item>
+        <item>Ácido erúcico (22: 1 n-9)</item>
         <item>Flúor</item>
         <item>Fructosa</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>Ácido gamma-linolénico / GLA (18: 3 n-6)</item>
         <item>Glucosa</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>Ácido gondoico (20: 1 n-9)</item>
         <item>Iodo</item>
         <item>Ferro</item>
         <item>Lactosa</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>Ácido laurico (12: 0)</item>
+        <item>Ácido lignocérico (24: 0)</item>
+        <item>Ácido linoleico / LA (18: 2 n-6)</item>
         <item>Magnesio</item>
         <item>Maltodextrinas</item>
         <item>Maltosa</item>
         <item>Manganeso</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>Ácido de Mead (20: 3 n-9)</item>
+        <item>Ácido melissico (30: 0)</item>
         <item>Molibdeno</item>
         <item>Graxa Mono insaturada</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>Ácido Montanic (28: 0)</item>
+        <item>Ácido mirístico (14: 0)</item>
+        <item>Ácido nervónico (24: 1 n-9)</item>
         <item>Nucleótidos</item>
-        <item>Oleic acid (18:1 n-9)</item>
-        <item>Omega 3 fatty acids</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
-        <item>Palmitic acid (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>Ácido oleico (18: 1 n-9)</item>
+        <item>Ácidos graxos omega 3</item>
+        <item>Ácidos graxos omega 6</item>
+        <item>Ácidos graxos omega 9</item>
+        <item>Ácido palmítico (16: 0)</item>
+        <item>Ácido pantoténico / pantotenato (vitamina B5)</item>
         <item>pH</item>
         <item>Fósforo</item>
-        <item>Sugar alcohols (Polyols)</item>
+        <item>Alcohol de azucre (polioles)</item>
         <item>Graxa Poli insaturada</item>
         <item>Potasio</item>
         <item>Selenio</item>
-        <item>Serum proteins</item>
+        <item>Proteínas séricas</item>
         <item>Silicatos</item>
-        <item>Starch</item>
-        <item>Stearic acid (18:0)</item>
+        <item>Amidón</item>
+        <item>Ácido esteárico (18: 0)</item>
         <item>Sacarosa</item>
         <item>Taurina</item>
         <item>Graxas trans</item>
         <item>Vitamina A</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
+        <item>Vitamina B1 (tiamina)</item>
+        <item>Vitamina B12 (Cobalamina)</item>
+        <item>Vitamina B2 (riboflavina)</item>
+        <item>Vitamina B3 / Vitamina PP (niacina)</item>
+        <item>Vitamina B6 (piridoxina)</item>
+        <item>Vitamina B9 (ácido fólico)</item>
+        <item>Vitamina C (ácido ascórbico)</item>
+        <item>Vitamina D</item>
+        <item>Vitamina E</item>
         <item>Vitamin K</item>
         <item>Cinc</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Predeterminado</item>
-        <item>Nutrición</item>
-        <item>Ingredientes</item>
-    </string-array>
     <!-- Content Description -->
     <string name="bookmark">Marcar</string>
     <string name="edit">Editar</string>
@@ -438,6 +433,9 @@
     <string name="collagen_meat_protein_ratio">Proporción de coláxeno proteína da carne</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Clorofila</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Tomar unha foto dos ingredientes</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Tomar unha foto da táboa nutricional</string>
@@ -599,6 +597,8 @@
     <string name="productNameNull">Nome descoñecido</string>
     <string name="productBrandNull">Marca descoñecida</string>
     <string name="productQuantityNull">Cantidade descoñecida</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">Este produto aínda non está completo. \nPode engadirlle algún detalle?</string>
     <string name="addProductOffline">Semella desconectada. Engadir o produto %s utilizando o modo fora de liña ?</string>
     <string name="product_not_found">O produto %1$s que escaneou aínda non existe en Open Food Facts. Quere engadilo?</string>
@@ -611,6 +611,7 @@
     <string name="preferences">Axustes</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
@@ -657,6 +658,9 @@
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Por ración</string>
     <string name="serving_size">Tamaño da ración</string>
@@ -679,9 +683,14 @@
     <string name="stores">Tendas</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
@@ -766,6 +775,8 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditivos</string>
     <!--used for product_lists implementation-->
@@ -819,6 +830,13 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Código de barras</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

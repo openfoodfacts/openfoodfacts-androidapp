@@ -3,8 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.util.StdConverter;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.images.ImageSize;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.text.StringEscapeUtils;
@@ -161,6 +160,10 @@ public class Product implements Serializable {
         }
     }
 
+    public boolean hasProductNameIn(String languageCode) {
+        return additionalProperties.get("product_name_" + languageCode) != null;
+    }
+
     public String getGenericName(String languageCode) {
         String result = getFieldHelper("generic_name", languageCode);
         if (result != null) {
@@ -180,7 +183,7 @@ public class Product implements Serializable {
     }
 
     public String getImageIngredientsUrl(String languageCode) {
-        String result = getImage(languageCode, ImageRole.INGREDIENTS, ImageSize.DISPLAY);
+        String result = getSelectedImage(languageCode, ProductImageField.INGREDIENTS, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(result)) {
             return result;
         } else {
@@ -189,7 +192,7 @@ public class Product implements Serializable {
     }
 
     public String getImageNutritionUrl(String languageCode) {
-        String result = getImage(languageCode, ImageRole.NUTRITION, ImageSize.DISPLAY);
+        String result = getSelectedImage(languageCode, ProductImageField.NUTRITION, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(result)) {
             return result;
         } else {
@@ -226,7 +229,6 @@ public class Product implements Serializable {
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
-
 
     public String getWarning() {
         return warning;
@@ -284,14 +286,14 @@ public class Product implements Serializable {
     }
 
     public String getImageSmallUrl(String languageCode) {
-        String image = getImage(languageCode, ImageRole.FRONT, ImageSize.SMALL);
+        String image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL);
         if (StringUtils.isNotBlank(image)) {
             return image;
         }
         return getImageSmallUrl();
     }
 
-    private String getImage(String languageCode, ImageRole type, ImageSize size) {
+    public String getSelectedImage(String languageCode, ProductImageField type, ImageSize size) {
         Map<String, Map> images = (Map<String, Map>) additionalProperties.get("selected_images");
         if (images != null) {
             images = (Map<String, Map>) images.get(type.name().toLowerCase());
@@ -305,13 +307,43 @@ public class Product implements Serializable {
                 }
             }
         }
+        switch (type) {
+            case FRONT:
+                return getImageUrl();
+            case INGREDIENTS:
+                return getImageIngredientsUrl();
+            case NUTRITION:
+                return getImageNutritionUrl();
+            case OTHER:
+                return null;
+        }
         return null;
     }
 
+    public List<String> getAvailableLanguageForImage(ProductImageField type, ImageSize size) {
+        Map<String, Map> images = (Map<String, Map>) additionalProperties.get("selected_images");
+        if (images != null) {
+            images = (Map<String, Map>) images.get(type.name().toLowerCase());
+            if (images != null) {
+                Map<String, String> imagesByLocale = (Map<String, String>) images.get(size.name().toLowerCase());
+                return new ArrayList<>(imagesByLocale.keySet());
+            }
+        }
+        return Collections.emptyList();
+    }
+
+    public Map<String, ?> getImageDetails(String imageKey) {
+        Map<String, Map> images = (Map<String, Map>) additionalProperties.get("images");
+        if (images != null) {
+            Map<String, ?> imagesDetails = (Map<String, ?>) images.get(imageKey);
+            return imagesDetails;
+        }
+        return null;
+    }
 
     public boolean isLanguageSupported(String languageCode) {
         Map<String, Map> languagesCodes = (Map<String, Map>) additionalProperties.get("languages_codes");
-        return languageCode!=null && languagesCodes!=null && languagesCodes.containsKey(languageCode.toLowerCase());
+        return languageCode != null && languagesCodes != null && languagesCodes.containsKey(languageCode.toLowerCase());
     }
 
     /**
@@ -322,7 +354,7 @@ public class Product implements Serializable {
     }
 
     public String getImageFrontUrl(String languageCode) {
-        String image = getImage(languageCode, ImageRole.FRONT, ImageSize.DISPLAY);
+        String image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(image)) {
             return image;
         }
@@ -588,7 +620,7 @@ public class Product implements Serializable {
     }
 
     public String getImageUrl(String languageCode) {
-        String url = getImage(languageCode, ImageRole.FRONT, ImageSize.DISPLAY);
+        String url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(url)) {
             return url;
         }

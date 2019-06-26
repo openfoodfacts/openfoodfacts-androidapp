@@ -31,7 +31,7 @@
         <item>ส่วนผสม</item>
         <item>อาหารการกิน</item>
         <item>ฉลากโภชนาการ</item>
-        <item>Environment</item>
+        <item>สภาพแวดล้อม</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -56,297 +56,293 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>กรดแอลฟา - ไลโนเลนิก / ALA (18: 3 n-3)</item>
+        <item>กรดอะแรคิดิก (20:0)</item>
+        <item>กรดอะแรคิโดนิก / AA / ARA (20:4 n-6)</item>
+        <item>กรดบีฮินิก (22:0)</item>
         <item>ไบคาร์บอเนต</item>
         <item>ไบโอติน</item>
-        <item>Butyric acid (4:0)</item>
+        <item>กรดบิวทีริก (4:0)</item>
         <item>คาเฟอีน</item>
         <item>แคลเซียม</item>
-        <item>Capric acid (10:0)</item>
-        <item>Caproic acid (6:0)</item>
-        <item>Caprylic acid (8:0)</item>
+        <item>กรดแคพริก (10:0)</item>
+        <item>กรดแคโพรอิก (6:0)</item>
+        <item>กรดแคพริลิก (8:0)</item>
         <item>เคซิอิน</item>
-        <item>Cerotic acid (26:0)</item>
+        <item>กรดซีโรทิก (26:0)</item>
         <item>คลอไรด์</item>
         <item>คอเลสเตอรอล</item>
         <item>โครเมียม</item>
         <item>ทองแดง</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>กรดไดโฮโม-แกมมา-ไลโนเลนิก / DGLA (20:3 n-6)</item>
+        <item>กรดโดโคซะเฮกซะอีโนอิก / DHA (22:6 n-3)</item>
+        <item>กรดอีโคซะเพนทะโนอิก / EPA (20:5 n-3)</item>
+        <item>กรดอีไลดิก (18:1 n-9)</item>
+        <item>กรดอีรูซิก (22:1 n-9)</item>
         <item>ธาฅุที่ประกอบด้วย</item>
         <item>ฟรักโทส</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>กรดแกมมา-ไลโนเลนิก / GLA (18:3 n-6)</item>
         <item>กลูโคส</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>กรดกอนโดอิก (20:1 n-9)</item>
         <item>ไอโอดีน</item>
         <item>เหล็ก</item>
         <item>แล็กโตส</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>กรดลอริก (12:0)</item>
+        <item>กรดลิกโนซีริก (24:0)</item>
+        <item>กรดไลโนเลอิก / LA (18:2 n-6)</item>
         <item>แมกนีเซียม</item>
         <item>Maltodextrins</item>
         <item>มอลโตส</item>
         <item>แมงกานีส</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>กรดมี๊ด (20:3 n-9)</item>
+        <item>กรดมีลิสสิก (30:0)</item>
         <item>โมลิบดีนัม</item>
         <item>ไขมันไม่อิ่มตัวโมโน</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>กรดมอนแทนิก (28:0)</item>
+        <item>กรดมิริสติก (14:0)</item>
+        <item>กรดเนอร์โวนิก (24:1 n-9)</item>
         <item>นิวคลีโอ</item>
-        <item>Oleic acid (18:1 n-9)</item>
-        <item>Omega 3 fatty acids</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
-        <item>Palmitic acid (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>กรดโอเลอิก (18:1 n-9)</item>
+        <item>กรดไขมันโอเมกา 3</item>
+        <item>กรดไขมันโอเมกา 6</item>
+        <item>กรดไขมันโอเมกา 9</item>
+        <item>กรดปาล์มิติก (16:0)</item>
+        <item>กรดแพนโททีนิก / แพนโททีเนต (Vitamin B5)</item>
         <item>พีเอช</item>
         <item>ฟอสฟอรัส</item>
-        <item>Sugar alcohols (Polyols)</item>
+        <item>แอลกอฮอล์น้ำตาล (พอลิออล)</item>
         <item>ไขมันไม่อิ่มตัวโพลี</item>
         <item>โพแทสเซียม</item>
         <item>ซีลีเนียม</item>
-        <item>Serum proteins</item>
+        <item>โปรตีนเซรุ่ม</item>
         <item>ไข่มุก</item>
-        <item>Starch</item>
-        <item>Stearic acid (18:0)</item>
+        <item>แป้ง</item>
+        <item>กรดสเตียริก (18:0)</item>
         <item>ซูโครส</item>
         <item>Taurine</item>
         <item>ไขมันทรานส์</item>
         <item>วิตามินเอ</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
-        <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>วิตามิน B1 (ไทอะมิน)</item>
+        <item>วิตามิน B12 (โคบาลามิน)</item>
+        <item>วิตามิน B2 (ไรโบฟลาวิน)</item>
+        <item>วิตามิน B3 / วิตามิน PP (ไนอะซิน)</item>
+        <item>วิตามิน B6 (ไพริดอกซิน)</item>
+        <item>วิตามิน B9 (กรดโฟลิก)</item>
+        <item>วิตามิน C (กรดแอสคอร์บิก)</item>
         <item>วิตามินดี</item>
         <item>วิตามินอี</item>
         <item>วิตามินเค</item>
         <item>สังกะสี</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Default</item>
-        <item>อาหารการกิน</item>
-        <item>ส่วนผสม</item>
-    </string-array>
     <!-- Content Description -->
-    <string name="bookmark">Bookmark</string>
-    <string name="edit">Edit</string>
+    <string name="bookmark">รายการโปรด</string>
+    <string name="edit">แก้ไข</string>
     <string name="search_button">ค้นหา</string>
-    <string name="no_products">Products not found</string>
-    <string name="desc_list_item_icon">Item Icon</string>
-    <string name="alert_dialog_warning_title">Warning</string>
-    <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-    <string name="alert_dialog_product_error_msg">Product not found, please try again</string>
+    <string name="no_products">ไม่พบผลิตภัณฑ์</string>
+    <string name="desc_list_item_icon">ไอคอนรายการ</string>
+    <string name="alert_dialog_warning_title">คำเตือน</string>
+    <string name="alert_dialog_warning_msg_user">ผู้ใช้/รหัสผ่านมีการเปลี่ยนแปลง โปรดอัปเดตข้อมูล</string>
+    <string name="alert_dialog_product_error_msg">ไม่พบผลิตภัณฑ์ โปรดลองใหม่อีกครั้ง</string>
     <string name="toast_retrieving">Loading...</string>
     <string name="txtGenericName">ชื่อสามัญ :</string>
     <string name="txtBarcode">บาร์โค้ด :</string>
     <string name="txtQuantity">ปริมาณ :</string>
-    <string name="txtPackaging">Packaging :</string>
-    <string name="txtBrands">Brands :</string>
-    <string name="txtCategories">Categories :</string>
-    <string name="txtLabels">Labels, certifications, awards :</string>
-    <string name="txtManufacturing">Manufacturing or processing places :</string>
+    <string name="txtPackaging">บรรจุภัณฑ์</string>
+    <string name="txtBrands">ยี่ห้อ :</string>
+    <string name="txtCategories">หมวดหมู่</string>
+    <string name="txtLabels">ป้าย, ใบรับรอง, รางวัลต่างๆที่ได้รับ :</string>
+    <string name="txtManufacturing">สถานที่ผลิตหรือแปรรูป:</string>
     <string name="txtIngredientsOrigins">แหล่งที่มาของวัตถุดิบ :</string>
     <string name="txtCity">เมืองรัฐและประเทศที่ซื้อ :</string>
-    <string name="txtEMB">EMB Code:</string>
+    <string name="txtEMB">รหัส EMB</string>
     <string name="txtManufactureUrl">เชื่อมโยงไปยังหน้าสินค้าบนเว็บไซต์อย่างเป็นทางการของผู้ผลิต:</string>
-    <string name="txtStores">Stores :</string>
+    <string name="txtStores">ร้านค้า</string>
     <string name="txtCountries">ประเทศของการขาย :</string>
     <string name="txtIngredients">ส่วนผสมรายการ :</string>
-    <string name="Donate">Donate</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="Donate">บริจาค</string>
+    <string name="Donation">คลิกที่นี่เพื่อบริจาคให้กับ Open Food Facts</string>
     <string name="txtSubstances">สารก่อภูมิแพ้อาหาร :</string>
-    <string name="txtAdditives">Additives :</string>
-    <string name="txtTraces">Traces :</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
-    <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
+    <string name="txtAdditives">สารเติมแต่ง :</string>
+    <string name="txtTraces">ร่องรอย:</string>
+    <string name="txtMayBeFromPalmOilProduct">ส่วนผสมที่อาจมาจากน้ำมันปาล์ม:</string>
+    <string name="txtPalmOilProduct">ส่วนผสมจากน้ำมันปาล์ม:</string>
     <string name="txtServingSize">ที่ให้บริการขนาด :</string>
-    <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100g">ระดับสารอาหารสำหรับ 100 กรัม:</string>
+    <string name="txtNutrientLevel100ml">ระดับสารอาหารสำหรับ 100 มล.:</string>
     <string name="txtNutritionLevelLow">ในปริมาณที่ต่ำ</string>
     <string name="txtNutritionLevelModerate">ปริมาณปานกลาง</string>
     <string name="txtNutritionLevelHigh">ในปริมาณมาก</string>
-    <string name="txtLogin">Login :</string>
+    <string name="txtLogin">เข้าสู่ระบบ :</string>
     <string name="txtPass">รหัสผ่าน :</string>
-    <string name="txtTitleHome">Open your food and know what you eat</string>
+    <string name="txtTitleHome">เปิดดูอาหารของคุณและรู้ถึงสิ่งที่คุณกิน</string>
     <string name="txtSave">บันทึก</string>
-    <string name="txtSignIn">Sign in</string>
+    <string name="txtSignIn">ลงชื่อเข้าใช้</string>
     <string name="txtUser">User panel</string>
-    <string name="txtToastSaved">User saved</string>
+    <string name="txtToastSaved">บันทึกผู้ใช้แล้ว</string>
     <string name="txtSalt">เกลือ</string>
-    <string name="txtFat">Fat</string>
+    <string name="txtFat">ไขมัน</string>
     <string name="txtSugars">น้ำตาล</string>
     <string name="hintBarcode">บาร์โค้ด</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Login</string>
+    <string name="txtNutriScoreInfo">เรียนรู้เพิ่มเติมเกี่ยวกับระดับสารอาหาร</string>
+    <string name="hintLogin">เข้าสู่ระบบ</string>
     <string name="hintPass">รหัสผ่าน</string>
-    <string name="errorLogin">Login or password error</string>
-    <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-    <string name="uploadLater">Image will be uploaded when network is available</string>
-    <string name="txtInfoLoginOk">User saved</string>
-    <string name="txtInfoLoginNo">User not saved</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
-    <string name="txtYes">Yes</string>
-    <string name="txtNo">No</string>
-    <string name="hintNameProduct">Name</string>
-    <string name="hintEnergy">Energy in kJ per serving</string>
-    <string name="hintEnergyUnit">Energy unit</string>
-    <string name="hintWeight">Weight</string>
-    <string name="hintStores">Store</string>
-    <string name="hintBrand">Brand</string>
-    <string name="txtTakePicture">Take picture</string>
-    <string name="txtSendAll">Upload all</string>
-    <string name="txtNoData">No data</string>
-    <string name="txtPictureNeeded">Wait…</string>
+    <string name="errorLogin">เกิดข้อผิดพลาดการเข้าสู่ระบบหรือรหัสผ่าน</string>
+    <string name="errorWeb">เราไม่สามารถเข้าถึงอินเทอร์เน็ต คุณมีปัญหาการเชื่อมต่อหรือไม่?</string>
+    <string name="uploadLater">รูปภาพจะถูกอัพโหลดเมื่อเครือข่ายพร้อมใช้งาน</string>
+    <string name="txtInfoLoginOk">บันทึกผู้ใช้แล้ว</string>
+    <string name="txtInfoLoginNo">ไม่ได้บันทึกผู้ใช้</string>
+    <string name="txtDialogsContent">ผลิตภัณฑ์ที่คุณสแกนยังไม่มีอยู่ใน Open Food Facts กรุณาเพิ่ม
+ชื่อผลิตภัณฑ์</string>
+    <string name="txtDialogsContentPowerMode">ผลิตภัณฑ์ที่คุณสแกนมีอยู่ใน Open Food Facts แล้ว</string>
+    <string name="txtYes">ถูกต้อง</string>
+    <string name="txtNo">ไม่ใช่</string>
+    <string name="hintNameProduct">ชื่อ</string>
+    <string name="hintEnergy">พลังงานเป็น kJ ต่อ 1 เสิร์ฟ</string>
+    <string name="hintEnergyUnit">หน่วยพลังงาน</string>
+    <string name="hintWeight">น้ำหนัก</string>
+    <string name="hintStores">เก็บ</string>
+    <string name="hintBrand">ยี่ห้อ</string>
+    <string name="txtTakePicture">ถ่ายภาพ</string>
+    <string name="txtSendAll">อัปโหลดทั้งหมด</string>
+    <string name="txtNoData">ไม่มีข้อมูล</string>
+    <string name="txtPictureNeeded">รอ…</string>
     <string name="txtPictureNeededDialogContent">You should add at least one picture before submitting this product</string>
-    <string name="txtPictureNeededDialogYes">Stay</string>
-    <string name="txtPictureNeededDialogNo">Discard</string>
+    <string name="txtPictureNeededDialogYes">พักอยู่</string>
+    <string name="txtPictureNeededDialogNo">ยก​เลิก</string>
     <string name="toastSending">Uploading...</string>
-    <string name="dataSaved">Saved locally on your device</string>
-    <string name="txtInfoAddUser">Please enter your login and password</string>
-    <string name="txtDataUpdated">Data updated</string>
+    <string name="dataSaved">บันทึกไว้ในอุปกรณ์ของคุณ</string>
+    <string name="txtInfoAddUser">กรุณากรอกชื่อผู้ใช้งานและรหัสผ่านของคุณ</string>
+    <string name="txtDataUpdated">อัปเดตข้อมูลแล้ว</string>
     <string name="txtLoading">Loading...</string>
-    <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
-    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
-    <string name="txtBarcodeRequire">Barcode required</string>
-    <string name="txtOk">OK</string>
+    <string name="txtDialogsContentDelete">คุณแน่ใจหรือไม่ว่าต้องการลบร่างข้อมูลนี้</string>
+    <string name="txtDialogsContentInfoSave">ผลิตภัณฑ์ได้ถูกบันทึกไว้ในเครื่องแล้ว คุณสามารถแก้ไขได้อีกครั้งในเมนู \"แก้ไขออฟไลน์\"</string>
+    <string name="txtBarcodeRequire">ต้องการบาร์โค้ด</string>
+    <string name="txtOk">ตกลง</string>
     <string name="txtContentDialogUploading">Please don\'t exit during the process...</string>
     <string name="txtAbout">The pictures you send are published under the free licence Creative Commons Attribution and ShareAlike.</string>
-    <string name="txtAllsent">Products sent</string>
-    <string name="txtPalm">The product does not contain any palm oil</string>
-    <string name="txtBarcodeNotValid">Barcode not valid</string>
-    <string name="try_it_scan_now">Scan product</string>
-    <string name="share">Share</string>
-    <string name="translate">Translate</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
-    <string name="create_account">Sign up</string>
-    <string name="home_drawer">Home</string>
+    <string name="txtAllsent">ส่งสินค้าแล้ว</string>
+    <string name="txtPalm">ผลิตภัณฑ์นี้ไม่มีส่วนผสมของน้ำมันปาล์ม</string>
+    <string name="txtBarcodeNotValid">บาร์โค้ดไม่ถูกต้อง</string>
+    <string name="try_it_scan_now">สแกนผลิตภัณฑ์</string>
+    <string name="share">แบ่งปัน</string>
+    <string name="translate">แปลความ</string>
+    <string name="msg_share">ดูข้อมูลผลิตภัณฑ์นี้ได้ใน Open Food Facts :</string>
+    <string name="create_account">ลงทะเบียน</string>
+    <string name="home_drawer">หน้า​แรก​</string>
     <string name="search_drawer">ค้นหา</string>
-    <string name="search_by_barcode_drawer">Type barcode</string>
+    <string name="search_by_barcode_drawer">พิมพ์บาร์โค้ด</string>
     <string name="category_drawer">หมวดหมู่</string>
-    <string name="search_by_category">Category</string>
-    <string name="search_by_name_drawer">Search by name</string>
-    <string name="scan_search">Scan Barcode</string>
+    <string name="search_by_category">หมวดหมู่:</string>
+    <string name="search_by_name_drawer">ค้นหาด้วยชื่อ</string>
+    <string name="scan_search">สแกนบาร์โค้ด</string>
     <string name="user_drawer">ผู้ใช้งาน</string>
-    <string name="offline_edit_drawer">Offline edit</string>
-    <string name="txt_anonymous">Anonymous</string>
-    <string name="txt_product_not_found">Products not found</string>
-    <string name="delete_txt">Delete</string>
-    <string name="sign_in_drawer">Sign-in</string>
-    <string name="alert_drawer">Allergen alert</string>
-    <string name="your_lists">Your lists</string>
-    <string name="warning_allergens">Contains allergens</string>
-    <string name="title_dialog_alert">Add alert</string>
-    <string name="toggle_flash">Flash</string>
+    <string name="offline_edit_drawer">แก้ไขออฟไลน์</string>
+    <string name="txt_anonymous">ไม่ระบุชื่อ</string>
+    <string name="txt_product_not_found">ไม่พบผลิตภัณฑ์</string>
+    <string name="delete_txt">ลบ</string>
+    <string name="sign_in_drawer">ลงชื่อเข้าใช้</string>
+    <string name="alert_drawer">การแจ้งเตือนสารก่อภูมิแพ้</string>
+    <string name="your_lists">รายการของคุณ</string>
+    <string name="warning_allergens">มีสารก่อภูมิแพ้</string>
+    <string name="title_dialog_alert">เพิ่มการแจ้งเตือน</string>
+    <string name="toggle_flash">แฟลช</string>
     <string name="flash_on">Flash [ON]</string>
     <string name="flash_off">Flash [OFF]</string>
     <string name="ring_on">Ring [ON]</string>
     <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
-    <string name="select_camera">Select a Camera</string>
-    <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
-    <string name="login_button">Login</string>
-    <string name="create_account_button">Create Account</string>
+    <string name="auto_focus_on">ออโต้โฟกัส [ON]</string>
+    <string name="auto_focus_off">ออโต้โฟกัส [OFF]</string>
+    <string name="formats">รูปแบบ</string>
+    <string name="choose_formats">เลือกรูปแบบ</string>
+    <string name="select_camera">เลือกกล้องถ่ายรูป</string>
+    <string name="ok_button">ตกลง</string>
+    <string name="cancel_button">ยกเลิก</string>
+    <string name="login_button">เข้าสู่ระบบ</string>
+    <string name="create_account_button">สร้างบัญชีผู้ใช้</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="from_gallery">From gallery</string>
-    <string name="product_sent">Product sent successfully</string>
-    <string name="action_edit_product">Edit product</string>
-    <string name="title_info_dialog">How does it work?</string>
-    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-    <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
-    <string name="permission_title">Permission information</string>
-    <string name="permission_denied">Please activate permission in the settings</string>
+    <string name="product_sent">ส่งสินค้าเรียบร้อยแล้ว</string>
+    <string name="action_edit_product">แก้ไขสินค้า</string>
+    <string name="title_info_dialog">มันทำงานอย่างไร?</string>
+    <string name="text_offline_info_dialog">คุณสามารถสแกนผลิตภัณฑ์เมื่อออฟไลน์เพื่อเพิ่มลงใน Open Food Facts ในภายหลัง ผลิตภัณฑ์ทั้งหมดที่คุณสแกนจะปรากฏที่นี่และคุณจะสามารถส่งผลิตภัณฑ์โดยกดที่ปุ่มด้านล่าง</string>
+    <string name="permission_camera">จำเป็นต้องได้รับอนุญาตจากกล้องเพื่อสแกนบาร์โค้ดและถ่ายภาพ</string>
+    <string name="permission_title">ข้อมูลการอนุญาต</string>
+    <string name="permission_denied">กรุณาเปิดใช้งานการอนุญาตในการตั้งค่า</string>
     <string name="permission_storage">Storage permission is needed to take or select pictures</string>
-    <string name="info_download_data">You need to download some data to get this functionality working, please press yes to download it.</string>
+    <string name="info_download_data">คุณต้องดาวน์โหลดข้อมูลบางส่วนเพื่อให้ฟังก์ชั่นนี้ใช้งานได้โปรดกดใช่เพื่อดาวน์โหลด</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
-    <string name="msg_input_empty">Please fill the fields first.</string>
+    <string name="msg_input_empty">กรุณากรอกข้อมูลในช่องว่างก่อน</string>
     <string name="new_offline_info">Please take a picture of the product, ingredients, nutrition facts table and any other information on the label. Thank you!</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-    <string name="user">user</string>
-    <string name="error_field_required">This field is required.</string>
-    <string name="action_preferences">Preferences</string>
-    <string name="prefs_scan_startup">Scan on startup</string>
-    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
-    <string name="prefs_power_mode">Power mode scan</string>
-    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
+    <string name="error_invalid_password">รหัสผ่านของคุณ จะต้องมีความยาวอย่างน้อย 6 ตัวอักษร</string>
+    <string name="user">ผู้ใช้</string>
+    <string name="error_field_required">ต้องระบุข้อมูลในช่องนี้</string>
+    <string name="action_preferences">การตั้งค่าที่ต้องการ</string>
+    <string name="prefs_scan_startup">สแกนเมื่อเริ่มต้น</string>
+    <string name="prefs_scan_startup_summary">ตัวเลือกนี้หากเลือกแล้วจะเริ่มสแกนเมื่อเปิดแอพ</string>
+    <string name="prefs_power_mode">โหมดสแกนอย่างรวดเร็ว</string>
+    <string name="prefs_power_mode_summary">สแกนผลิตภัณฑ์อย่างรวดเร็วในซุปเปอร์มาร์เก็ตเพื่อดูว่าผลิตภัณฑ์ใดไม่อยู่ในฐานข้อมูล</string>
     <string name="prefs_language">ภาษา</string>
-    <string name="prefs_language_summary">Change language</string>
+    <string name="prefs_language_summary">เปลี่ยนภาษา</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">History</string>
-    <string name="clear_history">Clear history</string>
-    <string name="title_clear_history_dialog">Clear</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
-    <string name="export_csv_history">Export CSV</string>
+    <string name="scan_history_drawer">ประวัติการเข้าใช้</string>
+    <string name="clear_history">ล้างประวัติการเข้าใช้งาน</string>
+    <string name="title_clear_history_dialog">ล้างข้อมูล</string>
+    <string name="text_clear_history_dialog">คุณต้องการล้างประวัติการสแกนทั้งหมดหรือไม่?</string>
+    <string name="export_csv_history">นำออกเป็นไฟล์ CSV</string>
     <string name="txt_exporting_history">Exporting history...</string>
-    <string name="txt_history_exported">History exported</string>
-    <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
-    <string name="txt_nutrition_not_found">N/A</string>
-    <string name="no_brand">No Brand</string>
-    <string name="no_title">No Title</string>
+    <string name="txt_history_exported">ส่งออกประวัติ</string>
+    <string name="permision_write_external_storage">จำเป็นต้องได้รับอนุญาตจากหน่วยเก็บข้อมูลภายนอกเพื่อส่งออกประวัติ</string>
+    <string name="txt_nutrition_not_found">ไม่มีข้อมูล</string>
+    <string name="no_brand">ไม่มียี่ห้อ</string>
+    <string name="no_title">ไม่มีชื่อ</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">ตารางข้อมูลโภชนาการสำหรับ %1$s ของผลิตภัณฑ์นี้</string>
-    <string name="check_facts">Check</string>
+    <string name="check_facts">ตรวจสอบ</string>
     <string name="nutrition">อาหารการกิน</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="calculated_nutrition">คำนวณสารอาหาร</string>
+    <string name="please_enter_weight">กรุณาพิมพ์น้ำหนักผลิตภัณฑ์</string>
+    <string name="enter_weight">กรุณาพิมพ์น้ำหนักผลิตภัณฑ์</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
-    <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
+    <string name="txt_calories_result">%1$s kcal ใน %2$s %3$s</string>
     <string name="nutrition_carbohydrate">คาร์โบไฮเดรต</string>
-    <string name="nutrition_carbohydrate_short_name">Carbohydrate (g)</string>
+    <string name="nutrition_carbohydrate_short_name">คาร์โบไฮเดรต (g)</string>
     <string name="nutrition_cholesterol">คอเลสเตอรอล</string>
-    <string name="nutrition_cholesterol_short_name">Cholesterol (g)</string>
+    <string name="nutrition_cholesterol_short_name">คอเลสเตอรอล (g)</string>
     <string name="nutrition_energy">พลังงาน</string>
     <string name="nutrition_energy_short_name">พลังงาน</string>
-    <string name="nutrition_fat">Fat</string>
-    <string name="nutrition_fat_short_name">Fat (g)</string>
+    <string name="nutrition_fat">ไขมัน</string>
+    <string name="nutrition_fat_short_name">ไขมัน (g)</string>
     <string name="nutrition_fiber">เส้นใยอาหาร</string>
-    <string name="nutrition_fiber_short_name">Dietary fiber (g)</string>
+    <string name="nutrition_fiber_short_name">ใยอาหาร (g)</string>
     <string name="nutrition_header">ข้อมูลโภชนาการ</string>
-    <string name="nutrition_no_data_message">No data is available for this product</string>
-    <string name="nutrition_per_quantity">For 100g/100ml</string>
+    <string name="nutrition_no_data_message">ไม่มีข้อมูลสำหรับผลิตภัณฑ์นี้</string>
+    <string name="nutrition_per_quantity">สำหรับ 100 กรัม / 100 มล.</string>
     <string name="nutrition_proteins">โปรตีน</string>
-    <string name="nutrition_proteins_short_name">Proteins (g)</string>
+    <string name="nutrition_proteins_short_name">โปรตีน (g)</string>
     <string name="nutrition_salt">เกลือ</string>
-    <string name="nutrition_salt_short_name">Salt (g)</string>
+    <string name="nutrition_salt_short_name">เกลือ (g)</string>
     <string name="nutrition_satured_fat">ไขมันอิ่มตัว</string>
-    <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
+    <string name="nutrition_satured_fat_short_name">ไขมันอิ่มตัว (g)</string>
     <string name="nutrition_serving">ต่อการให้บริการ</string>
     <string name="nutrition_serving_size">ที่ให้บริการขนาด :</string>
     <string name="nutrition_sodium">โซเดียม</string>
-    <string name="nutrition_sodium_short_name">Sodium (g)</string>
+    <string name="nutrition_sodium_short_name">โซเดียม (g)</string>
     <string name="nutrition_sugars">น้ำตาล</string>
-    <string name="nutrition_sugars_short_name">Sugars (g)</string>
+    <string name="nutrition_sugars_short_name">น้ำตาล (g)</string>
     <string name="nutrition_trans_fat">ไขมันทรานส์</string>
-    <string name="nutrition_trans_fat_short_name">Trans fat (g)</string>
-    <string name="nutriment_serving_size">Per portion : </string>
-    <string name="action_manage_account">Manage account</string>
-    <string name="action_contributes">Your contributions</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
-    <string name="logout_drawer">Logout</string>
+    <string name="nutrition_trans_fat_short_name">ไขมันทรานส์ (g)</string>
+    <string name="nutriment_serving_size">ต่อสัดส่วนบริโภค : </string>
+    <string name="action_manage_account">จัดการบัญชี</string>
+    <string name="action_contributes">ผลงานของคุณ</string>
+    <string name="choose_energy_unit">เลือกหน่วยพลังงานที่คุณต้องการสำหรับตารางโภชนาการ</string>
+    <string name="energy_pref_title">หน่วยพลังงานที่ต้องการ</string>
+    <string name="choose_volume_unit">เลือกหน่วยปริมาตรที่คุณต้องการสำหรับตารางโภชนาการ</string>
+    <string name="volume_pref_title">หน่วยปริมาณที่ต้องการ</string>
+    <string name="logout_drawer">ออกจากระบบ</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
-    <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
+    <string name="textCarbonFootprint">การปล่อยก๊าซคาร์บอนไดออกไซด์ / CO2: </string>
     <string name="txtDialogPowerMode">Quick view</string>
     <string name="txtSeeMore">See more</string>
     <string name="action_search">ค้นหา</string>
@@ -434,6 +430,9 @@
     <string name="collagen_meat_protein_ratio">อัตราส่วนโปรตีนจากเนื้อสัตว์คอลลาเจน</string>
     <string name="cocoa">โกโก้</string>
     <string name="chlorophyl">คลอโรฟิลล์</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture">Choose a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">ถ่ายภาพของส่วนผสม</string>
     <string name="take_picture_front">ถ่ายภาพด้านหน้า</string>
     <string name="take_picture_nutrition_table">ถ่ายภาพของตารางโภชนาการ</string>
@@ -451,8 +450,8 @@
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">ค้นหา</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
-    <string name="history_shortcut_short_label">History</string>
-    <string name="history_shortcut_long_label">History</string>
+    <string name="history_shortcut_short_label">ประวัติการเข้าใช้</string>
+    <string name="history_shortcut_long_label">ประวัติการเข้าใช้</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My Contributions</string>
     <string name="forgot_password">Forgot Password</string>
@@ -478,7 +477,7 @@
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">ข้อมูล</string>
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Preferences</string>
+    <string name="device_on_mobile_data_warning_positive">การตั้งค่าที่ต้องการ</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
@@ -501,7 +500,7 @@
     <string name="preference_header_contributing">Contributing</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">เข้าสู่ระบบ</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -523,13 +522,13 @@
     <string name="allergen_string">Allergen</string>
     <string name="search_string">ค้นหา</string>
     <string name="country_string">ประเทศที่ขาย</string>
-    <string name="store_subtitle">Store</string>
+    <string name="store_subtitle">เก็บ</string>
     <string name="packaging_subtitle">บรรจุภัณฑ์</string>
     <string name="last_seen_string">%1$d %2$s ago</string>
-    <string name="store_string">Store</string>
+    <string name="store_string">เก็บ</string>
     <string name="packaging_string">บรรจุภัณฑ์</string>
     <string name="label_string">Label</string>
-    <string name="category_string">Category</string>
+    <string name="category_string">หมวดหมู่:</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
     <string name="Rate_Us">Show Your Support</string>
@@ -565,7 +564,7 @@
     <string name="format_error">Wrong Barcode/QR format</string>
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
-    <string name="bottomNav_history">History</string>
+    <string name="bottomNav_history">ประวัติการเข้าใช้</string>
     <string name="bottomNav_search">ค้นหา</string>
     <string name="products_added">Products you added or edited</string>
     <string name="products_incomplete">Products you added that need to be completed</string>
@@ -587,7 +586,7 @@
     <string name="contribution_tab">Contributions</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
-    <string name="product">Edit</string>
+    <string name="product">แก้ไข</string>
     <string name="txtDialogsTitle">ข้อมูล</string>
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
@@ -595,6 +594,8 @@
     <string name="productNameNull">Name unknown</string>
     <string name="productBrandNull">Brand unknown</string>
     <string name="productQuantityNull">Quantity unknown</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
@@ -604,9 +605,10 @@
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
-    <string name="preferences">Preferences</string>
+    <string name="preferences">การตั้งค่าที่ต้องการ</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
@@ -653,6 +655,9 @@
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="front_picture">Front Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">ต่อการให้บริการ</string>
     <string name="serving_size">ขนาดให้บริการ</string>
@@ -675,9 +680,14 @@
     <string name="stores">ร้านค้า</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
@@ -762,6 +772,8 @@
     <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">สารเติมแต่ง</string>
     <!--used for product_lists implementation-->
@@ -771,10 +783,10 @@
     <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Products to buy</string>
-    <string name="export_csv_your_listed_products">Export CSV</string>
+    <string name="export_csv_your_listed_products">นำออกเป็นไฟล์ CSV</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
-    <string name="txt_discard">Discard</string>
+    <string name="txt_discard">ยก​เลิก</string>
     <string name="txt_save">บันทึก</string>
     <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
@@ -795,11 +807,11 @@
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
-    <string name="product_summary_action_edit_button_label">Edit</string>
+    <string name="product_summary_action_edit_button_label">แก้ไข</string>
     <string name="product_summary_action_share_button_label">Share</string>
     <string name="product_question_prompt">Tap here to answer</string>
-    <string name="product_question_positive_response">Yes</string>
-    <string name="product_question_negative_response">No</string>
+    <string name="product_question_positive_response">ถูกต้อง</string>
+    <string name="product_question_negative_response">ไม่ใช่</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
@@ -815,6 +827,13 @@
     <string name="add_a_list">Add a list</string>
     <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">บาร์โค้ด</string>
+    <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>
