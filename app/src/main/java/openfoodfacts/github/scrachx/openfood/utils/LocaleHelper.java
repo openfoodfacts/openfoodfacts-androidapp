@@ -142,9 +142,16 @@ public class LocaleHelper {
     }
 
     public static Locale getLocale(Context context) {
-        Resources resources = context.getResources();
-        Configuration configuration = resources.getConfiguration();
-        final Locale locale = configuration.locale;
+        Locale locale = null;
+        if (context != null) {
+            Resources resources = context.getResources();
+            if (resources != null) {
+                Configuration configuration = resources.getConfiguration();
+                if (configuration != null) {
+                    locale = configuration.locale;
+                }
+            }
+        }
         return locale == null ? Locale.getDefault() : locale;
     }
 
@@ -195,6 +202,9 @@ public class LocaleHelper {
      * @return Locale from locale string
      */
     public static Locale getLocale(String locale) {
+        if(locale==null){
+            return Locale.getDefault();
+        }
         String[] localeParts = locale.split("-");
         String language = localeParts[0];
         String country = localeParts.length == 2 ? localeParts[1] : "";
