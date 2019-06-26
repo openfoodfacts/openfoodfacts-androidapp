@@ -824,7 +824,7 @@
     <string name="error_nutrient_entry">Værdien skal være numerisk og kan starte med &lt;, &gt; eller ~, f.eks. &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Portionsstørrelsen skal udgøre en positiv værdi</string>
     <string name="error_in_nutrient_data">Nogle næringsværdier er ugyldige. Korrigér venligst ovenstående fejlmarkerede felter</string>
-    <string name="go_to_full_product_page">Gå til fuld produktside</string>
+    <string name="go_to_full_product_page">Go to product</string>
     <string name="no_additive_data_available_for_this_product">Ingen data om tilsætningsstoffer tilgængelig for dette produkt</string>
     <string name="no_nutrient_information_available_for_this_product">Ingen information om næringsstoffer tilgængelig for dette produkt</string>
     <string name="error_duplicate_listname">Du har allerede en liste med dette navn</string>
