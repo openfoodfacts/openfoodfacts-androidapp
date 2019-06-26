@@ -824,7 +824,7 @@
     <string name="error_nutrient_entry">O valor deve ser numérico e pode começar com &lt;, &gt; ou ~. Exemplo: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">O valor de tamanho do serviço deve ser um valor positivo</string>
     <string name="error_in_nutrient_data">Alguns valores de nutrientes não são válidos. Por favor, corrija os campos acima com marcador de erro</string>
-    <string name="go_to_full_product_page">Ir para a página completa do produto</string>
+    <string name="go_to_full_product_page">Go to product</string>
     <string name="no_additive_data_available_for_this_product">Não há dados adicionais disponíveis para este produto</string>
     <string name="no_nutrient_information_available_for_this_product">Nenhuma informação nutricional disponível para este produto</string>
     <string name="error_duplicate_listname">Você já tem uma lista com este nome</string>
