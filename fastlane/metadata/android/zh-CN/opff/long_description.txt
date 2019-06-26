@@ -1,4 +1,4 @@
-扫瞄宠物食品或其条形码以获取有关食材、添加剂和营养成分的数据。
+扫瞄宠物食品或其条形码以获取有关配料、添加剂和营养成分的数据。
 
 该应用允许查看已包含的超过600种免费及开放的宠物食品数据，还可以添加缺失产品的图片及数据信息。
 
@@ -14,9 +14,9 @@
 
 ***获取信息***
 
-You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
+您也可以找到（根据产品上的指示）:
+- 配料表（含灰含量）
+- 营养成分信息，营养含量警界线…
 - brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
