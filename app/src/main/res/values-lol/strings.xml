@@ -801,6 +801,10 @@
     <string name="settings_country_dialog_title">crwdns114554:0crwdne114554:0</string>
     <string name="settings_country_summary">crwdns114556:0crwdne114556:0</string>
     <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
+    <string name="txt_enter_count">crwdns119578:0crwdne119578:0</string>
+    <string name="txt_hint_count">crwdns119580:0crwdne119580:0</string>
+    <string name="txt_btn_count">crwdns119582:0crwdne119582:0</string>
+    <string name="toast_null_count">crwdns119584:0crwdne119584:0</string>
     <string name="list_text">crwdns115878:0crwdne115878:0</string>
     <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
     <string name="empty"></string>
