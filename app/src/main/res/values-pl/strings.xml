@@ -853,7 +853,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="error_nutrient_entry">Wartość musi być liczbą i może zacząć się: &lt;, &gt; lub ~. Przykład: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Wartość rozmiar porcji musi być wartością dodatnią</string>
     <string name="error_in_nutrient_data">Niektóre wartości odżywcze nie są prawidłowe. Proszę poprawić pola oznaczone jako nieprawidłowe</string>
-    <string name="go_to_full_product_page">Przejdź do pełnej strony produktu</string>
+    <string name="go_to_full_product_page">Go to product</string>
     <string name="no_additive_data_available_for_this_product">Dodatkowe dane dla tego produktu nie są dostępne</string>
     <string name="no_nutrient_information_available_for_this_product">Brak informacji o wartości odżywczej dla tego produktu</string>
     <string name="error_duplicate_listname">Masz już listę o tej nazwie</string>
