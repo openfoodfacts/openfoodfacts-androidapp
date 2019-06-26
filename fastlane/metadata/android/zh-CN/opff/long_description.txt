@@ -2,14 +2,14 @@
 
 该应用允许查看已包含的超过600种免费及开放的宠物食品数据，还可以添加缺失产品的图片及数据信息。
 
-想获取更多关于开放宠物食品项目的信息，请访问https://world.openpetfoodfacts.org
+想获取更多关于Open Pet Food Facts项目信息，请访问https://world.openpetfoodfacts.org
 
 ***致力于宠物食品信息透明化***
 
 - Open Pet Food Facts 是一个由大家共同建立，同时服务于大家的宠物食品数据库。
 你可以用它来做更好的宠物食品，由于它是开放数据，任何人都可以重复使用。
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts是一个由来自全世界数以千计的志愿者开发的非盈利项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
+从今天起你可以通过购买我们的宠物产品为这个项目出份力。 
 
 
 ***获取信息***
