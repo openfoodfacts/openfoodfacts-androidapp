@@ -810,10 +810,10 @@
     <string name="settings_country_dialog_title">בחירת המדינה שלך</string>
     <string name="settings_country_summary">החלפת המדינה שבחרת</string>
     <string name="settings_country_title">מדינה</string>
-    <string name="txt_enter_count">Enter the amount of product(s):</string>
-    <string name="txt_hint_count">Ex: 2, 1/2…</string>
+    <string name="txt_enter_count">נא להקליד את כמות המוצרים:</string>
+    <string name="txt_hint_count">למשל: 2, 1/2…</string>
     <string name="txt_btn_count">הוספה</string>
-    <string name="toast_null_count">This is not a valid number.</string>
+    <string name="toast_null_count">זה אינו מספר תקני.</string>
     <string name="list_text">מועד הוספה:\u0020</string>
     <string name="txt_no_nutrition_data">למוצר זה אינו פירוט תזונתי על האריזה. אם מצב זה השתנה, ניתן לערוך את המוצר.</string>
     <string name="empty"></string>
