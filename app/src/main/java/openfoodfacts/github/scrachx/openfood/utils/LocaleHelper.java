@@ -158,7 +158,13 @@ public class LocaleHelper {
         return setLocale(context, locale);
     }
 
-    private static Context setLocale(Context context, Locale locale) {
+    /**
+     * Used by screenshots generator.
+     * @param context
+     * @param locale
+     * @return
+     */
+    public static Context setLocale(Context context, Locale locale) {
         if (locale == null) {
             return context;
         }

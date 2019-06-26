@@ -363,9 +363,16 @@ public class Nutriments implements Serializable {
             if (strValue.isEmpty() || strValue.contains("%")) {
                 return strValue;
             }
-            float valueFor100g = Float.parseFloat(strValue);
-            float portionInGram=UnitUtils.convertToGrams(userSetServing,otherUnit);
-            return getRoundNumber(valueFor100g/100*portionInGram);
+            try {
+                float valueFor100g = Float.parseFloat(strValue);
+                float portionInGram=UnitUtils.convertToGrams(userSetServing,otherUnit);
+                return getRoundNumber(valueFor100g/100*portionInGram);
+            }catch (NumberFormatException fmt){
+                Log.w(Nutriments.class.getSimpleName(),"getForAnyValue can't parse value "+strValue,fmt);
+            }
+            return StringUtils.EMPTY;
+
+
         }
     }
 }

@@ -175,7 +175,7 @@ public class OpenFoodAPIClient {
                     }
                 } else {
                     if (activity != null) {
-                        new HistoryTask().doInBackground(s.getProduct());
+                        new HistoryTask().execute(s.getProduct());
                     }
                     Bundle bundle = new Bundle();
 
