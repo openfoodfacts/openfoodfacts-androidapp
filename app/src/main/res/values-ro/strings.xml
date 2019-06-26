@@ -806,6 +806,10 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Țara</string>
+    <string name="txt_enter_count">Enter the amount of product(s):</string>
+    <string name="txt_hint_count">Ex: 2, 1/2…</string>
+    <string name="txt_btn_count">Adaugă</string>
+    <string name="toast_null_count">This is not a valid number.</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="empty"></string>
