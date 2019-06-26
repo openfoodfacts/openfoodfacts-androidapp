@@ -16,16 +16,16 @@
 
 您也可以找到（根据产品上的指示）:
 - 配料表（含灰含量）
-- 营养成分信息，营养含量警界线…
-- brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- 营养成分信息，营养含量限值…
+- 品牌，过敏原，标签（有机，纯天然...）
+适用于狗粮（干/湿）、猫食、蛇食、鱼食、鸟食、马食或任何你喜爱的动物的食物。
 
 在任何情况下都有效
 - 即使没有连接互联网，你也可以添加新的产品。
 - 应用程序仅加载严格必要以减少数据及电量消耗
 - 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。
 
-*** Your pet food, your data ***
+***您的宠物食物，您的数据***
 - Your personal data is yours, and is never sent online
 - 您可以匿名使用该应用
 - 您可以导出历史记录
