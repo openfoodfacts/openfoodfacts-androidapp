@@ -802,6 +802,10 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="settings_country_dialog_title">Wählen Sie Ihr Land aus</string>
     <string name="settings_country_summary">Ändern Sie Ihr ausgewähltes Land</string>
     <string name="settings_country_title">Land</string>
+    <string name="txt_enter_count">Enter the amount of product(s):</string>
+    <string name="txt_hint_count">Ex: 2, 1/2…</string>
+    <string name="txt_btn_count">Hinzufügen</string>
+    <string name="toast_null_count">This is not a valid number.</string>
     <string name="list_text">Hinzugefügt in:\u0020</string>
     <string name="txt_no_nutrition_data">Von diesem Produkt  sind keine Nährwertangaben auf der Verpackung angegeben. Wenn sich dieses geändert hat, können Sie das Produkt bearbeiten.</string>
     <string name="empty"></string>
