@@ -805,9 +805,9 @@
     <string name="settings_country_summary">Változtassa meg a kiválasztott országot</string>
     <string name="settings_country_title">Ország</string>
     <string name="txt_enter_count">Enter the amount of product(s):</string>
-    <string name="txt_hint_count">Ex: 2, 1/2…</string>
+    <string name="txt_hint_count">Például: 2, 1/2…</string>
     <string name="txt_btn_count">Hozzáad</string>
-    <string name="toast_null_count">This is not a valid number.</string>
+    <string name="toast_null_count">Érvénytelen szám.</string>
     <string name="list_text">Hozzáadva:\u0020</string>
     <string name="txt_no_nutrition_data">Ez a termék nem tartalmaz tápértéketadatokat a csomagoláson. Ha ez megváltozott, akkor szerkessze a terméket.</string>
     <string name="empty"></string>
