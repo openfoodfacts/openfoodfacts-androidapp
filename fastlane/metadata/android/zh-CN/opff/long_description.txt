@@ -1,8 +1,8 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+扫瞄宠物食品或其条形码以获取有关食材、添加剂和营养成分的数据。
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+该应用允许查看已包含的超过600种免费及开放的宠物食品数据，还可以添加缺失产品的图片及数据信息。
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+想获取更多关于开放宠物食品项目的信息，请访问https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
