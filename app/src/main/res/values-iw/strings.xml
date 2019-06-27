@@ -828,7 +828,7 @@
     <string name="error_nutrient_entry">הערך אמור להיות מספרי ולהתחיל ב־&lt;, &gt; או ~. לדוגמה: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">גודל ההגשה חייב להיות ערך חיובי</string>
     <string name="error_in_nutrient_data">חלק מערכי ההזנה אינם תקינים. נא לתקן את השדות להלן שמסומנים כשגויים</string>
-    <string name="go_to_full_product_page">מעבר לעמוד המוצר המלא</string>
+    <string name="go_to_full_product_page">Go to product</string>
     <string name="no_additive_data_available_for_this_product">אין נתוני תוספים זמינים עבור המוצר הזה</string>
     <string name="no_nutrient_information_available_for_this_product">אין נתוני חומרי הזנה זמינים עבור המוצר הזה</string>
     <string name="error_duplicate_listname">כבר יש לך רשימה בשם הזה</string>
