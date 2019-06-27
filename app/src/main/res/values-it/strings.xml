@@ -802,10 +802,6 @@
     <string name="settings_country_dialog_title">Seleziona il paese</string>
     <string name="settings_country_summary">Cambia il tuo paese selezionato</string>
     <string name="settings_country_title">Paese</string>
-    <string name="txt_enter_count">Inserisci la quantità di prodotto(i):</string>
-    <string name="txt_hint_count">Es: 2, 1/2…</string>
-    <string name="txt_btn_count">Aggiungi</string>
-    <string name="toast_null_count">Questi non è un numero valido.</string>
     <string name="list_text">Aggiunto in:\u0020</string>
     <string name="txt_no_nutrition_data">Questo prodotto non ha alcuna informazione nutrizionale sulla confezione. Se questo è cambiato, puoi modificare il prodotto.</string>
     <string name="empty"></string>
