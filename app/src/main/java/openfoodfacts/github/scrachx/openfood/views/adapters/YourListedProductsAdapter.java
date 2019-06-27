@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -54,7 +55,6 @@ public class YourListedProductsAdapter extends RecyclerView.Adapter<YourListedPr
         holder.tvTitle.setText(productName);
         holder.tvDetails.setText(products.get(position).getProductDetails());
         holder.tvBarcode.setText(barcode);
-        holder.tvCount.setText(products.get(position).getCount());
 
         if (!isLowBatteryMode) {
             Picasso.with(mContext)
@@ -108,7 +108,6 @@ public class YourListedProductsAdapter extends RecyclerView.Adapter<YourListedPr
         CustomTextView tvBarcode;
         AppCompatImageView imgProduct;
         ProgressBar imgProgressBar;
-        TextView tvCount;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -117,7 +116,6 @@ public class YourListedProductsAdapter extends RecyclerView.Adapter<YourListedPr
             tvBarcode=itemView.findViewById(R.id.barcodeYourListedProduct);
             imgProduct=itemView.findViewById(R.id.imgProductYourListedProduct);
             imgProgressBar=itemView.findViewById(R.id.imageProgressbarYourListedProduct);
-            tvCount = itemView.findViewById(R.id.countYourListedProduct);
         }
     }
 }
