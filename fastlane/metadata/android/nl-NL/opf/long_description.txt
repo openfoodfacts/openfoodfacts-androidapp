@@ -12,7 +12,7 @@ Open Products Facts helpt je om de kleine lettertjes op etiketten te begrijpen.
 
 *** Verzamel AAAALLE dingen ***
 - Je kunt alle items van je collecties toevoegen
-- Open Crayons Facts - The largest open database of coloring crayons
+- Open Crayons Facts - De grootste open database van kleurpotloden
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Maak je eigen open database :-)
 
@@ -22,7 +22,7 @@ Open Products Facts helpt je om de kleine lettertjes op etiketten te begrijpen.
 - Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
 *** Jouw producten, jouw gegevens ***
-- Your personal data is yours, and is never sent online
+- Je persoonlijke gegevens zijn van jou en worden nooit online verzonden
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren
 
