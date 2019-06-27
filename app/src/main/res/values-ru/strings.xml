@@ -810,10 +810,6 @@
     <string name="settings_country_dialog_title">Выберите свою страну</string>
     <string name="settings_country_summary">Изменить выбранную страну</string>
     <string name="settings_country_title">Страна</string>
-    <string name="txt_enter_count">Enter the amount of product(s):</string>
-    <string name="txt_hint_count">Ex: 2, 1/2…</string>
-    <string name="txt_btn_count">Добавить</string>
-    <string name="toast_null_count">This is not a valid number.</string>
     <string name="list_text">Добавлено в:\u0020</string>
     <string name="txt_no_nutrition_data">Этот продукт не имеет никакой информации о питании на упаковке. Если это изменилось, вы можете отредактировать продукт.</string>
     <string name="empty"></string>
