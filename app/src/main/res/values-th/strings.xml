@@ -799,10 +799,10 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">ประเทศ</string>
-    <string name="txt_enter_count">Enter the amount of product(s):</string>
-    <string name="txt_hint_count">Ex: 2, 1/2…</string>
+    <string name="txt_enter_count">ใส่ปริมาณผลิตภัณฑ์</string>
+    <string name="txt_hint_count">เช่น: 2, 1/2…</string>
     <string name="txt_btn_count">เพิ่ม</string>
-    <string name="toast_null_count">This is not a valid number.</string>
+    <string name="toast_null_count">{0} เป็นตัวเลขที่ไม่ถูกต้อง</string>
     <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="empty"></string>
@@ -821,7 +821,7 @@
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
-    <string name="go_to_full_product_page">Go to product</string>
+    <string name="go_to_full_product_page">ไปที่ผลิตภัณฑ์</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
