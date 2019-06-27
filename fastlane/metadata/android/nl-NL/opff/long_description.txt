@@ -16,9 +16,9 @@ Om het Open Pet Food Facts project te ontdekken, bezoek https://world.openpetfoo
 
 Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
 - ingrediëntenlijst (inclusief asgehalte)
-- nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- voedingswaarde, voedingsstoplicht…
+- merken, allergenen, labels (biologisch, veganistisch...)
+- Het werkt met hondenvoer (droog hondenvoer en nat hondenvoer), kattenvoer, konijnenvoer, slangenvoer, visvoer, vogelvoer, paardenvoer of ieder ander soort voer voor je favoriete dier.
 
 *** Werkt in alle omstandigheden goed ***
 - Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
@@ -26,7 +26,7 @@ Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
 - Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+- Je persoonlijke gegevens zijn van jou en worden nooit online verzonden
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren
 
