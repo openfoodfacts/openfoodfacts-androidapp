@@ -25,8 +25,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 317
-        versionName "3.1.7"
+        versionCode 322
+        versionName "3.2.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -55,6 +55,7 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+            buildConfigField 'String', 'STATICURL', '"https://static.openfoodfacts.org"'
 
         }
 
@@ -65,6 +66,7 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+            buildConfigField 'String', 'STATICURL', '"https://static.openbeautyfacts.org"'
         }
         opff {
             applicationId "org.openpetfoodfacts.scanner"
@@ -73,6 +75,7 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+            buildConfigField 'String', 'STATICURL', '"https://static.openpetfoodfacts.org"'
         }
         opf {
             applicationId "org.openproductsfacts.scanner"
@@ -81,6 +84,7 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+            buildConfigField 'String', 'STATICURL', '"https://static.openproductsfacts.org"'
         }
     }
 

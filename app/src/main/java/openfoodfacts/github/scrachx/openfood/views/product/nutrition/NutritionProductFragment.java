@@ -96,7 +96,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @BindView(R.id.nutrient_levels_card_view)
     CardView nutrientLevelsCardView;
     @BindView(R.id.newAdd)
-    Button img1;
+    Button newAdd;
     @BindView(R.id.calculateNutritionFacts)
     Button calculateNutritionFacts;
     @BindView(R.id.nutrimentsCardView)
@@ -133,7 +133,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
         nutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
-        img1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
+        newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
         refreshView(getStateFromActivityIntent());
     }
 
@@ -325,7 +325,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         if (isNotBlank(product.getImageNutritionUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
-            img1.setVisibility(View.VISIBLE);
+            newAdd.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {

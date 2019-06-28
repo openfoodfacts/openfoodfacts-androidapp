@@ -1,5 +1,12 @@
-Open Food Facts - the Android application
-===================================
+<img height='175' src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png" align="left" hspace="1" vspace="1">
+
+# Open Food Facts - Android application
+
+### A food products database
+
+Open Food Facts is a food products database made by everyone, for everyone. Open Food Facts gathers information and data on food products from around the world.
+
+
 [![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=openfoodfacts_openfoodfacts-androidapp&metric=alert_status)](https://sonarcloud.io/dashboard/index/openfoodfacts_openfoodfacts-androidapp)
@@ -8,12 +15,13 @@ Open Food Facts - the Android application
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/openfoodfacts/localized.svg)](https://crowdin.com/project/openfoodfacts)
 [![Open Source Helpers](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp/badges/users.svg)](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp)
 <br>
-<img src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png">
+
 ## What is Open Food Facts?
 
 ### A food products database
 
 Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+
 
 ### Made by everyone
 
@@ -25,7 +33,8 @@ Open Food Facts is a non-profit association of volunteers.
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
 - <https://world.openfoodfacts.org>
 
-### Open Food Facts on Google Play
+
+### Open Food Facts on [Google Play](https://play.google.com)
 ------------------
 
 <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"></a>
@@ -33,21 +42,17 @@ Data about food is of public interest and has to be open. The complete database 
 ### Open Food Facts on [F-Droid](https://f-droid.org/)
 ------------------
 
-<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank">Get it on F-Droid</a>
+<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80"></a>
 
 
-### Screenshots
-------------------
-<!--
-<img src="https://lh3.googleusercontent.com/PYEw9fMLJ5ETPqB2mxeekfVTTNOkJHscs4MRHo546GJzwgIoj3SiJFsZDx4_D-EAUA=w720-h310" height="300"><img src="https://lh3.googleusercontent.com/q7NWz-hc4x39q8N7EW0cz5GZDHN5-F0ttZPHFPvf8-cTG2RImWi_C2J7zCY1Wtc_qZw=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/HXGodB99lZDp3lusX4ZdnkKJxcKiFv5ohfvaiMB7iX-i_QrcvWzUXPxmlSp8nq8SkBc=w1280-h636" height="300"><img src="https://lh3.googleusercontent.com/t_AWYLEzr2O4n7KVli8GV_gpT_N1FKhq5EwReUvJjXdJNoPTBTwD-3cKTfZUrkyQAMM=w1280-h636" height="300">
--->
-<!--
-<!--
-<img src="https://lh3.googleusercontent.com/lycMGukSk-OOF5oI4Pg8yCVvoKJ7FgTh_jjMTnAPYJoUWelSKxu8wkRAHkCr0sJKYHrc=w1260-h646" alt="Food scores" height="300">
-<img src="https://lh3.googleusercontent.com/Ls9vfN5aMKMXR672ArFc-RPLQBqwPAUbPn5gNwkDA-w36CZ7hNOEZke9WIxqYAZbfA=w1260-h646" alt="Find and compare over 750000 products" height="300">
--->
-<img src="https://lh3.googleusercontent.com/VBZ5CfBYqVLpcdRF8TqZmcZaPWo4Ieghp6LmTJ51nU0FbobPXr_C-w3wmWJiYNxn6A=w1260-h646" alt="Choose the products that are good for you and for the planet" height="300"><img src="https://lh3.googleusercontent.com/VB-BSrbx2he7s7O1tGVfCLZNCGiWLy5SvuVpkrAP-Ay9PlLHPnXznyZr2w-0M8XzsA=w1260-h646" alt="Compare" height="300">
-<img src="https://lh3.googleusercontent.com/6Xcs8mxG3x724y5vcTo-M2ujC0QoktyiyUNNd5OzUwruLTZroYXnedY36Q1JgvdK5lA=w1260-h646" alt="Additives" height="300"><img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" alt="Join our movement" height="300">
+## Screenshots
+
+<p>
+  <img src="https://lh3.googleusercontent.com/VBZ5CfBYqVLpcdRF8TqZmcZaPWo4Ieghp6LmTJ51nU0FbobPXr_C-w3wmWJiYNxn6A=w1260-h646" width="212" height="400" />
+  <img src="https://lh3.googleusercontent.com/VB-BSrbx2he7s7O1tGVfCLZNCGiWLy5SvuVpkrAP-Ay9PlLHPnXznyZr2w-0M8XzsA=w1260-h646" width="212" height="400" /> 
+  <img src="https://lh3.googleusercontent.com/6Xcs8mxG3x724y5vcTo-M2ujC0QoktyiyUNNd5OzUwruLTZroYXnedY36Q1JgvdK5lA=w1260-h646" width="212" height="400" />
+    <img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" />
+</p>
 
 ## Translations
 
@@ -72,19 +77,26 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 * Select 'OFF' as the flavor (OBF is Open Beauty Facts, OPF: Open Products Facts, OPFF: Open Pet Food Facts)
 <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 
-
-## Libraries used
+## Libraries Used
 We use the following libraries, and we're not closed to changes where relevant :-) 
 
-- [android-async-http](https://loopj.com/android-async-http/),
-- [Jackson](http://jackson.codehaus.org),
-- [code-mc/loadtoast](https://github.com/code-mc/loadtoast),
-- [dm77/barcodescanner](https://github.com/dm77/barcodescanner),
-- [koush/ion](https://github.com/koush/ion),
-- [satyan/sugar](https://github.com/satyan/sugar),
-- [afollestad/material-dialogs](https://github.com/afollestad/material-dialogs),
-- [jjhesk/LoyalNativeSlider](https://github.com/jjhesk/LoyalNativeSlider),
-- [mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer), and others (see Gradle)
+- [Dagger 2](https://github.com/google/dagger) - A fast dependency injector for Android and Java
+- [Retrofit](http://square.github.io/retrofit/) - Retrofit turns your REST API into a Java interface
+- [OkHttp](https://github.com/square/okhttp) - An HTTP+SPDY client for Android and Java applications
+- [Butterknife](http://jakewharton.github.io/butterknife/) - View "injection" library for Android
+- [Mockito](https://github.com/mockito/mockito) - Most popular Mocking framework for unit tests written in Java 
+- [Apache](https://github.com/apache/commons-io) - The Apache Commons IO library contains utility classes, stream implementations, file filters, file comparators, endian transformation classes, and much more.
+- [RxJava](https://github.com/ReactiveX/RxJava) - Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.
+- [android-async-http](https://loopj.com/android-async-http/) - A Callback-Based Http Client Library for Android
+- [Jackson](http://jackson.codehaus.org) - Core part of Jackson that defines Streaming API as well as basic shared abstractions
+- [code-mc/loadtoast](https://github.com/code-mc/loadtoast) - Pretty material design toasts with feedback animations
+- [dm77/barcodescanner](https://github.com/dm77/barcodescanner) - Barcode Scanner Libraries for Android
+- [koush/ion](https://github.com/koush/ion) - Android Asynchronous Networking and Image Loading
+- [jsoup](https://jsoup.org/) - jsoup is a Java library for working with real-world HTML
+- [satyan/sugar](https://github.com/satyan/sugar) - Insanely easy way to work with Android Database. 
+- [afollestad/material-dialogs](https://github.com/afollestad/material-dialogs) - A beautiful, fluid, and extensible dialogs API for Kotlin & Android.
+- [jjhesk/LoyalNativeSlider](https://github.com/jjhesk/LoyalNativeSlider) - Possible a dynamic viewpager ever you can find.
+- [mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer) - The flexible, easy to use, all in one drawer library for your Android project.
 
 Big thanks to their contributors!
 

@@ -37,8 +37,8 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
                 }
                 if (Utils.isHardwareCameraInstalled(context)) {
                     if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
-                            new MaterialDialog.Builder(context)
+                        if (activity.hasWindowFocus() && ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
+                            new MaterialDialog.Builder(activity)
                                 .title(R.string.action_about)
                                 .content(R.string.permission_camera)
                                 .neutralText(R.string.txtOk)

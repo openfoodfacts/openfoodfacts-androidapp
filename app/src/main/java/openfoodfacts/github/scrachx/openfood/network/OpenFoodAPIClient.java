@@ -167,6 +167,10 @@ public class OpenFoodAPIClient {
                 }
 
                 final State s = response.body();
+                if(s==null){
+                    Toast.makeText(activity,R.string.something_went_wrong,Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if (s.getStatus() == 0) {
                     if (activity != null) {
                         productNotFoundDialogBuilder(activity, barcode)

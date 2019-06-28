@@ -130,7 +130,8 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
     }
 
     private void updateContent(View view, AdditiveName additive) {
-        View exposureEvalTable = view.findViewById(R.id.exposureEvalTable);
+
+
         mpInfantsImage = view.findViewById(R.id.mpInfants);
         mpToddlersImage = view.findViewById(R.id.mpToddlers);
         mpChildrenImage = view.findViewById(R.id.mpChildren);
@@ -144,10 +145,10 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
         spAdultsImage = view.findViewById(R.id.spAdults);
         spElderlyImage = view.findViewById(R.id.spElderly);
 
-        TextView efsaWarning = view.findViewById(R.id.efsaWarning);
-
-        String overexposureRisk = additive.getOverexposureRisk();
-        if (additive.hasOverexposureData()) {
+        if (additive!=null && additive.hasOverexposureData()) {
+            View exposureEvalTable = view.findViewById(R.id.exposureEvalTable);
+            TextView efsaWarning = view.findViewById(R.id.efsaWarning);
+            String overexposureRisk = additive.getOverexposureRisk();
             boolean isHighRisk = "high".equalsIgnoreCase(overexposureRisk);
             if (isHighRisk) {
                 bottomSheetTitleIcon.setImageResource(R.drawable.ic_additive_high_risk);

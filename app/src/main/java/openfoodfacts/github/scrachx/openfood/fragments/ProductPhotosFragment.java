@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -107,7 +107,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     @Override
     public void onImageClick(int position) {
 
-        String baseUrlString = "https://static.openfoodfacts.org/images/products/";
+        String baseUrlString = BuildConfig.STATICURL+ "/images/products/";
         String barcodePattern = product.getCode();
         if (barcodePattern.length() > 8) {
             barcodePattern = new StringBuilder(product.getCode())

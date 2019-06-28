@@ -100,6 +100,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             productComparisonAdditiveCv = view.findViewById(R.id.product_comparison_additive);
             productComparisonAdditiveText = view.findViewById(R.id.product_comparison_additive_text);
             fullProductButton = view.findViewById(R.id.full_product_button);
+            fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp,0,0,0);
             productComparisonCo2Icon = view.findViewById(R.id.product_comparison_co2_icon);
         }
     }
