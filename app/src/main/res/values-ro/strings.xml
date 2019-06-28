@@ -29,7 +29,7 @@
     <string name="text_barcode">Introduceți codul de bare</string>
     <string name="message_in_activity_save_product_offline">Doar o singură fotografie este obligatorie pentru a trimite un produs nou.</string>
     <string name="product_incomplete_message">Acest produs nu este complet. Ca urmare, nu am putut verifica alergenii.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Acest produs conține:</string>
     <string name="no_offline_data">Aţi terminat tot</string>
     <string name="first_offline">Produsele adăugate offline vor apărea aici</string>
     <!-- Image Upload -->
@@ -177,7 +177,7 @@
     <string name="txtPalmOilProduct">Ingrediente provenind din ulei de palmier:</string>
     <string name="txtServingSize">Cantitatea unei porții:</string>
     <string name="txtNutrientLevel100g">Informații nutriționale pentru 100g:</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Valori nutriționale pentru 100ml:</string>
     <string name="txtNutritionLevelLow">în cantitate mică</string>
     <string name="txtNutritionLevelModerate">în cantitate moderată</string>
     <string name="txtNutritionLevelHigh">în cantitate ridicată</string>
@@ -192,7 +192,7 @@
     <string name="txtFat">Grăsimi</string>
     <string name="txtSugars">Zaharuri</string>
     <string name="hintBarcode">Cod de bare</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">Află mai multe despre valorile nutriționale</string>
     <string name="hintLogin">Conectați-vă</string>
     <string name="hintPass">Parolă</string>
     <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
@@ -250,7 +250,7 @@
     <string name="delete_txt">Ştergeţi</string>
     <string name="sign_in_drawer">Conectare</string>
     <string name="alert_drawer">Alertă alergeni</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Listele tatle</string>
     <string name="warning_allergens">Conține alergeni</string>
     <string name="title_dialog_alert">Adaugare alertă</string>
     <string name="toggle_flash">Mod bliț</string>
