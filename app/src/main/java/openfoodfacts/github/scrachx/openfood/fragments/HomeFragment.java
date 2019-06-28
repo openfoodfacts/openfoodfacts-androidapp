@@ -55,6 +55,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     private OpenFoodAPIService apiClient;
     private SharedPreferences sp;
     private String taglineURL;
+    private Disposable disposable;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -118,11 +119,13 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                             .putString("pass", "")
                             .apply();
 
-                        new MaterialDialog.Builder(getActivity())
-                            .title(R.string.alert_dialog_warning_title)
-                            .content(R.string.alert_dialog_warning_msg_user)
-                            .positiveText(R.string.txtOk)
-                            .show();
+                        if(getActivity()!=null) {
+                            new MaterialDialog.Builder(getActivity())
+                                .title(R.string.alert_dialog_warning_title)
+                                .content(R.string.alert_dialog_warning_msg_user)
+                                .positiveText(R.string.txtOk)
+                                .show();
+                        }
                     }
                 }
 
@@ -131,6 +134,15 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                     Log.e(HomeFragment.class.getName(), "Unable to Sign-in");
                 }
             });
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //stop the call to off to get total product counts:
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
         }
     }
 
@@ -145,26 +157,33 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
             .subscribe(new SingleObserver<Search>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    updateTextHome(productCount);
+                    disposable=d;
+                    if(isAdded()) {
+                        updateTextHome(productCount);
+                    }
                 }
 
                 @Override
                 public void onSuccess(Search search) {
-                    int totalProductCount = productCount;
-                    try {
-                        totalProductCount = Integer.parseInt(search.getCount());
-                    } catch (NumberFormatException e) {
-                        Log.w(HomeFragment.class.getSimpleName(), "can parse " + search.getCount() + " as int", e);
+                    if(isAdded()) {
+                        int totalProductCount = productCount;
+                        try {
+                            totalProductCount = Integer.parseInt(search.getCount());
+                        } catch (NumberFormatException e) {
+                            Log.w(HomeFragment.class.getSimpleName(), "can parse " + search.getCount() + " as int", e);
+                        }
+                        updateTextHome(totalProductCount);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putInt("productCount", totalProductCount);
+                        editor.apply();
                     }
-                    updateTextHome(totalProductCount);
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putInt("productCount", totalProductCount);
-                    editor.apply();
                 }
 
                 @Override
                 public void onError(Throwable e) {
-                    updateTextHome(productCount);
+                    if(isAdded()) {
+                        updateTextHome(productCount);
+                    }
                 }
             });
 
@@ -179,14 +198,15 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     }
 
     private void updateTextHome(int totalProductCount) {
-        textHome.setText(R.string.txtHome);
-        if (totalProductCount != 0) {
-            String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
-            try {
+        try {
+            textHome.setText(R.string.txtHome);
+            if (totalProductCount != 0) {
+                String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
+
                 textHome.setText(String.format(txtHomeOnline, totalProductCount));
-            } catch (Exception e) {
-                Log.w(HomeFragment.class.getSimpleName(), "can format text for home", e);
             }
+        } catch (Exception e) {
+            Log.w(HomeFragment.class.getSimpleName(), "can format text for home", e);
         }
     }
 

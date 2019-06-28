@@ -671,7 +671,7 @@
     <string name="error_nutrient_entry">Giá trị phải là số và có thể bắt đầu bằng &lt;, &gt; hoặc ~. Ví dụ: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Giá trị phải là giá trị dương</string>
     <string name="error_in_nutrient_data">Một số giá trị dinh dưỡng không hợp lệ. Xin vui lòng sửa các trường trên với dấu đánh dấu lỗi</string>
-    <string name="go_to_full_product_page">Go to full product page</string>
+    <string name="go_to_full_product_page">Go to product</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>

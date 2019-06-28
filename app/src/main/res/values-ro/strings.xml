@@ -26,7 +26,7 @@
     <string name="contribute">Cum să contribuiţi</string>
     <string name="action_find">Căutare</string>
     <string name="product_incomplete_message">Acest produs nu este complet. Ca urmare, nu am putut verifica alergenii.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Acest produs conține:</string>
     <string name="no_offline_data">Aţi terminat tot</string>
     <string name="first_offline">Produsele adăugate offline vor apărea aici</string>
     <!-- Image Upload -->
@@ -159,7 +159,7 @@
     <string name="txtPalmOilProduct">Ingrediente provenind din ulei de palmier:</string>
     <string name="txtServingSize">Cantitatea unei porții:</string>
     <string name="txtNutrientLevel100g">Informații nutriționale pentru 100g:</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Valori nutriționale pentru 100ml:</string>
     <string name="txtNutritionLevelLow">în cantitate mică</string>
     <string name="txtNutritionLevelModerate">în cantitate moderată</string>
     <string name="txtNutritionLevelHigh">în cantitate ridicată</string>
@@ -170,7 +170,7 @@
     <string name="txtFat">Grăsimi</string>
     <string name="txtSugars">Zaharuri</string>
     <string name="hintBarcode">Cod de bare</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">Află mai multe despre valorile nutriționale</string>
     <string name="hintLogin">Conectați-vă</string>
     <string name="hintPass">Parolă</string>
     <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
@@ -679,10 +679,13 @@
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
-    <string name="go_to_full_product_page">Go to full product page</string>
+    <string name="go_to_full_product_page">Go to product</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
-    <string name="error_duplicate_listname">You already have a list with this name</string>
+    <string name="error_duplicate_<<<<<<< unused-resources
+209
+ 
+listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
