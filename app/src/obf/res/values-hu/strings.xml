@@ -23,9 +23,7 @@
     <string name="slide_4_title">Kapcsolat nélküli módban is működik</string>
     <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
     <string name="txtDialogsContent">A beolvasott termék nem található az Open Beauty Facts adatbázisában. Kérjük, adja hozzá.</string>
-    <string name="txtDialogsContentPowerMode">A beolvasott termék megtalálható az Open Beauty Facts adatbázisában.</string>
     <string name="msg_share">Nézze meg a terméket az Open Beauty Facts adatbázisában:</string>
-    <string name="not_support_books">A könyveket jelenleg nem támogatja az Open Beauty Facts</string>
     <string name="txt_broaden_search">- szélesítse a keresést \n- olvassa be és adja hozzá az Open Beauty Facts-hez</string>
     <string name="Donation">Kattintson ide az Open Beauty Facts-nek szánt adományozáshoz</string>
     <string name="translate_help_title">Segítse az Open Beauty Facts fordítását</string>

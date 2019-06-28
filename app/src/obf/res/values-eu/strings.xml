@@ -23,9 +23,7 @@
     <string name="slide_4_title">Lineaz kanpo funtzionatzen du</string>
     <string name="slide_4_desc">Produktu berriak gehi ditzakezu, momentuan Interneterako konexioa ez baduzu ere</string>
     <string name="txtDialogsContent">Eskaneatu duzun produktua ez dago Open Food Facts datu-basean oraindik. Gehitu ezazu mesedez.</string>
-    <string name="txtDialogsContentPowerMode">Eskaneatu duzun produktua badago Open Food Facts datu-basean.</string>
     <string name="msg_share">Ikusi produktu hau Open Food Facts-en:</string>
-    <string name="not_support_books">Liburuak ez dira Open Beauty Facts onartzen oraingoz</string>
     <string name="txt_broaden_search">- Zure \n- bilaketa zabaltzen, eskaneatu eta gehitu Open Beauty Facts-en</string>
     <string name="Donation">Egin klik hemen Open Beauty Facts-i donatzeko</string>
     <string name="translate_help_title">Lagundu Open Beauty Facts itzultzen</string>
