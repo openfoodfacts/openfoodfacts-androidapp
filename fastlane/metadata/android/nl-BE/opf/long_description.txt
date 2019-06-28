@@ -1,54 +1,54 @@
 Open Food Facts is een open database van voedingsproducten met ingrediënten, allergenen, voedingsinformatie en alle informatie die we kunnen vinden op de etiketten van de producten.
 
-*** Contribute to Product Transparency ***
+*** Draag bij aan producttransparantie ***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
-- You can start contributing today by adding your first product. 
+- Open Products Facts is een productendatabase die door iedereen is gemaakt, voor iedereen.
+- Je kunt het gebruiken om betere keuzes te maken, en omdat het open data is, kan iedereen het voor elk doel hergebruiken.
+- Open Products Facts is een non-profit-project ontwikkeld door duizenden vrijwilligers wereldwijd. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
+- Je kunt vandaag beginnen met een bijdrage te leveren door je eerste product toe te voegen. 
 
 *** Ken de feiten ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+Open Products Facts helpt je om de kleine lettertjes op etiketten te begrijpen.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
+*** Verzamel AAAALLE dingen ***
+- Je kunt alle items van je collecties toevoegen
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+- Open ??? Facts - Maak je eigen open database :-)
 
 *** Werkt in alle omstandigheden goed ***
 - Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
 - De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen
 - Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
+*** Jouw producten, jouw gegevens ***
+- Je persoonlijke gegevens zijn van jou en worden nooit online verzonden
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Open Products Facts is ook beschikbaar op internet op https://world.openproductsfacts.org
 Vragen, feedback: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Gisterochtend werd het Open Food Facts team wakker met een verbluffende openbaring. 
 
 Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+We hebben dus besloten om niet 1, maar 77000 andere afzonderlijke nieuwe databases te maken! 
 
-Open Products Facts will be an extremely ambitious project. Hier zijn er een paar: 
+Open Product Facts zal een extreem ambitieus project zijn. Hier zijn er een paar: 
 
 Open Crayons Facts - De grootste open database van kleurpotloden
 
 Open Miniature Food Facts - De grootste open database van miniatuurvoedingsmiddelen
 
-Open ??? Facts - The largest open database of ???
+Open ??? Facts - De grootste open database van ???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Morgen zullen we de 3 meest succesvolle databases selecteren en zullen we wereldwijd beginnen met het verzamelen van alle bijpassende producten.
 
 Will it be trash cans, télécartes, or mobile phones database ? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Dus als je houdt van t-shirts, kookboeken, origamipapier of sneeuwglobes, begin met scannen met de Open Product Facts Android app in Google Play
