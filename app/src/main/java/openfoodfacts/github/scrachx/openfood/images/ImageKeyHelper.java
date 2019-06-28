@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.images;
 
 import android.os.Bundle;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
@@ -74,7 +75,7 @@ public class ImageKeyHelper {
     }
 
     public static String getImageUrl(String barcode, String imageName, String size) {
-        String baseUrlString = "https://static.openfoodfacts.org/images/products/";
+        String baseUrlString = BuildConfig.STATICURL+ "/images/products/";
         String barcodePattern = barcode;
         if (barcodePattern.length() > 8) {
             barcodePattern = new StringBuilder(barcode)
