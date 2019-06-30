@@ -8,24 +8,24 @@ VERSION 3
 
 
 ======
-v2! All OFF volunteers have worked hard, based on your suggestions. نحن حركة عالمية أكثر من أي وقت مضى. تم تحرير ٥٠٠ ألف منتج ، و ١٨٢ دولة ، و ١٠ آلاف مشارك + مدفوع. أنت :-)
+الإصدار الثاني All OFF volunteers have worked hard, based on your suggestions. نحن حركة عالمية أكثر من أي وقت مضى. تم تحرير ٥٠٠ ألف منتج ، و ١٨٢ دولة ، و ١٠ آلاف مشارك + مدفوع. أنت :-)
 1. NutriScore لجميع المنتجات في العالم
 2. تاريخ قابل للتصدير لإرضائك فقط
 3. تنبيهات مسببة للحساسية
 4. Tap additives to explore with Wikipedia.
 5. Take photos, be part of food transparency
-6. Much faster, even on 2G. You can even contribute with no connection
-7. No sign-up required
-8. As light as before :)
+6. أسرع بكثير ، حتى على 2G. يمكنك المساهمة حتى عدم وجود اتصال
+7. بدون تسجيل
+8. مثل الضوء كما كان من قبل :)
 
-v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
-1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
-2. You can now get nutrition facts for the portion you're eating (Rutvik)
+الإصدار ٢.٨! تحديثات كثيرة في الإصدار الثاني، بذل المتطوعين مجهوداً كبير نحن الآن على مدار الساعة من خلال 570 ألف منتج تم تحريرها من 182 دولة بواسطة 10 آلاف مشارك ، بما في ذلك. أنت 🙂
+1. قمنا بإعادة بناء تجربة إضافة المنتج بالكامل (وهي تعمل حتى في وضع عدم الاتصال). (شكرا حذيفة)
+2. يمكنك الآن الحصول على حقائق التغذية للجزء الذي تتناوله (Rutvik)
 3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
 4. Housecleaning (by Rutvik & Salfai)
 5. 🌎 Korean & Indonesian
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
+2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. أنت 🙂
 1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
 2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
 3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
