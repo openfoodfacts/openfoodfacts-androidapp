@@ -350,8 +350,8 @@
     <string name="collagen_meat_protein_ratio">Pomer bielkovín mäsa kolagénu</string>
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Chlorofyl</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">Spraviť snímku</string>
+    <string name="choose_picture_from_gallery">Z galérie</string>
     <string name="take_picture_ingredients">Take a picture of the ingredients</string>
     <string name="take_picture_front">Take a picture of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>

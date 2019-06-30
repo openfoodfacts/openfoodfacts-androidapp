@@ -342,8 +342,8 @@
     <string name="collagen_meat_protein_ratio">Collageen vleesproteïne verhouding</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Chlorofyl</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">Maak een foto</string>
+    <string name="choose_picture_from_gallery">Uit Galerij</string>
     <string name="take_picture_ingredients">Maak een foto van de ingrediënten</string>
     <string name="take_picture_front">Maak een foto van de voorkant</string>
     <string name="take_picture_nutrition_table">Maak een foto van de voedingstabel</string>
@@ -488,8 +488,8 @@
     <string name="preference_show_all_product_photos_summary">Weergeef alle productfoto\'s in een apart tabblad</string>
     <string name="offline_product_addition_title">Voeg een nieuw product toe</string>
     <string name="productNameNull">Naam onbekend</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesUnknown">Additieven onbekend</string>
+    <string name="productAdditivesTemplate">%1$d additieven</string>
     <string name="product_not_complete">Dit product is nog niet compleet. \nWil je details toevoegen?</string>
     <string name="addProductOffline">Je lijkt offline te zijn. Het product %s toevoegen met behulp van de offlinemodus?</string>
     <string name="product_not_found">Product %1$s door jou gescand, bestaat nog niet. Wil je het toevoegen?</string>
@@ -549,8 +549,8 @@
     <string name="traces_hint">Vermeld de ingrediënten met de vermelding \"Kan sporen bevatten van\", \"Geproduceerd in een fabriek waar ook X verwerkt wordt\", etc.</string>
     <string name="nutrition_facts_not_specified">De nutritionele informatie wordt niet op het product vermeld</string>
     <string name="nutrition_facts_picture">Foto van de voedingswaardetabel</string>
-    <string name="front_short_picture">Front</string>
-    <string name="other_picture">Other Picture</string>
+    <string name="front_short_picture">Voorkant</string>
+    <string name="other_picture">Andere foto</string>
     <string name="for_100g_100ml">Voor 100 g / 100 ml</string>
     <string name="per_serving">Per portie</string>
     <string name="serving_size">Grootte van een portie</string>
