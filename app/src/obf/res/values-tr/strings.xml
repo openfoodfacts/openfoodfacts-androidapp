@@ -23,9 +23,7 @@
     <string name="slide_4_title">Çevrimdışı çalışıyor</string>
     <string name="slide_4_desc">Şu anda internet bağlantınız olmasa dahi yeni ürünler ekleyebilirsiniz</string>
     <string name="txtDialogsContent">Taradığınız ürün Open Beauty Facts\'te mevcut değil. Lütfen ekleyin.</string>
-    <string name="txtDialogsContentPowerMode">Taradığınız ürün Open Beauty Facts\'te zaten mevcut.</string>
     <string name="msg_share">Bu ürünü Open Beauty Facts\'te gör :</string>
-    <string name="not_support_books">Kitaplar şu anda Open Beauty Facts tarafından desteklenmemektedir</string>
     <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Beauty Facts\'e ekle</string>
     <string name="Donation">Open Beauty Facts\'e katkıda bulunmak için buraya tıklayınız</string>
     <string name="translate_help_title">Open Beauty Facts\'i tercüme etmeye yardımcı olun</string>

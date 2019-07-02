@@ -6,15 +6,15 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -39,7 +39,7 @@ import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
@@ -52,7 +52,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder> implements ImageUploadListener {
     private List<Product> productsToCompare;
@@ -100,6 +100,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             productComparisonAdditiveCv = view.findViewById(R.id.product_comparison_additive);
             productComparisonAdditiveText = view.findViewById(R.id.product_comparison_additive_text);
             fullProductButton = view.findViewById(R.id.full_product_button);
+            fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp,0,0,0);
             productComparisonCo2Icon = view.findViewById(R.id.product_comparison_co2_icon);
         }
     }
@@ -127,12 +128,11 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
 
             //support synchronous scrolling
 
-            if(CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
+            if (CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
                 holder.listItemLayout.setOnScrollChangeListener((View.OnScrollChangeListener) (view, i, i1, i2, i3) -> {
                     for (ProductComparisonViewHolder viewHolder : viewHolders) {
                         viewHolder.listItemLayout.setScrollX(i);
                         viewHolder.listItemLayout.setScrollY(i1);
-
                     }
                 });
             }
@@ -152,18 +152,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(context));
             holder.productComparisonImage.setOnClickListener(view -> {
                 if (imageUrl != null) {
-                    Intent intent = new Intent(context, ProductImageManagementActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("imageurl", imageUrl);
-                    intent.putExtras(bundle);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        ActivityOptionsCompat options = ActivityOptionsCompat.
-                            makeSceneTransitionAnimation((Activity) context, holder.productComparisonImage,
-                                context.getString(R.string.product_transition));
-                        context.startActivity(intent, options.toBundle());
-                    } else {
-                        context.startActivity(intent);
-                    }
+                    FullScreenActivityOpener.openForUrl((Activity) context, product, FRONT, imageUrl, holder.productComparisonImage);
                 } else {
                     // take a picture
                     if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
@@ -187,7 +176,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                 }
                 // Load Image if isLowBatteryMode is false
                 if (!isLowBatteryMode) {
-                    Picasso.with(context)
+                    Picasso.get()
                         .load(imageUrl)
                         .into(holder.productComparisonImage);
                 } else {
@@ -311,7 +300,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             salt = nutrientLevels.getSalt();
         }
 
-        if (nutriments != null  && !(fat == null && salt == null && saturatedFat == null && sugars == null)) {
+        if (nutriments != null && !(fat == null && salt == null && saturatedFat == null && sugars == null)) {
 
             Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
             if (fat != null && fatNutriment != null) {
@@ -432,6 +421,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     //helper method
     private int dpsToPixel(int dps) {
         Resources r = context.getResources();
-        return (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dps + 100f,r.getDisplayMetrics());
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dps + 100f, r.getDisplayMetrics());
     }
 }

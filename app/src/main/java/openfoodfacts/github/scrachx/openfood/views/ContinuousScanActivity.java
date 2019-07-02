@@ -10,15 +10,15 @@ import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.PopupMenu;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.widget.PopupMenu;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -58,7 +58,7 @@ import java.util.*;
 
 import static android.view.View.*;
 
-public class ContinuousScanActivity extends android.support.v7.app.AppCompatActivity {
+public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActivity {
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
     private HistoryProductDao mHistoryProductDao;
@@ -174,6 +174,10 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         if (isFinishing() || isDestroyed()) {
             return;
         }
+        if(disposable!=null && !disposable.isDisposed()){
+            //dispove the previous call if not ended.
+            disposable.dispose();
+        }
         client.getProductFullSingle(lastText, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe(a -> {
@@ -196,16 +200,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     progressBar.setVisibility(GONE);
                     progressText.setVisibility(GONE);
                     if (state.getStatus() == 0) {
-                        hideAllViews();
-                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
-                        String s = getString(R.string.product_not_found, lastText);
-                        productNotFound.setText(s);
-                        productNotFound.setVisibility(VISIBLE);
-                        fabStatus.setVisibility(VISIBLE);
-                        fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-                        fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
-                        fabStatus.setOnClickListener(v -> navigateToProductAddition(lastText));
+                        productNotFound(lastText);
                     } else {
                         product = state.getProduct();
                         if (getIntent().getBooleanExtra("compare_product", false)) {
@@ -221,7 +216,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
-                        new HistoryTask(mHistoryProductDao).doInBackground(product);
+                        new HistoryTask(mHistoryProductDao).execute(product);
                         showAllViews();
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         productShownInBottomView();
@@ -278,7 +273,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
                         final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(getBaseContext()));
                         if (imageUrl != null) {
-                            Picasso.with(ContinuousScanActivity.this)
+                            Picasso.get()
                                 .load(imageUrl)
                                 .error(R.drawable.placeholder_thumb)
                                 .into(productImage, new Callback() {
@@ -289,7 +284,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                                     }
 
                                     @Override
-                                    public void onError() {
+                                    public void onError(Exception ex) {
                                         imageProgress.setVisibility(GONE);
                                         showFirstScanTooltipIfNeeded();
                                     }
@@ -340,7 +335,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                         newProductFragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
                         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        fragmentTransaction.commit();
+                        fragmentTransaction.commitAllowingStateLoss();
                         productFragment = newProductFragment;
                         showFirstScanTooltipIfNeeded();
                     }
@@ -381,12 +376,26 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             });
     }
 
+    private void productNotFound(String lastText) {
+        hideAllViews();
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
+        String s = getString(R.string.product_not_found, lastText);
+        productNotFound.setText(s);
+        productNotFound.setVisibility(VISIBLE);
+        fabStatus.setVisibility(VISIBLE);
+        fabStatus.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+        fabStatus.setImageDrawable(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.plus));
+        fabStatus.setOnClickListener(v -> navigateToProductAddition(lastText));
+    }
+
     private void productShownInBottomView() {
         bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_LARGE, ContinuousScanActivity.this));
         quickView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
         quickView.requestLayout();
         quickView.getRootView().requestLayout();
     }
+
 
     private void showFirstScanTooltipIfNeeded() {
         final SharedPreferences sharedPreferences = getSharedPreferences(getClass().getSimpleName(), 0);
@@ -405,6 +414,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
         }
     }
 
+
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
         showAllViews();
         HashMap<String, String> productDetails = offlineSavedProduct.getProductDetailsMap();
@@ -417,7 +427,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             name.setText(R.string.productNameNull);
         }
         if (productDetails.get("image_front") != null) {
-            Picasso.with(ContinuousScanActivity.this)
+            Picasso.get()
                 .load("file://" + productDetails.get("image_front"))
                 .error(R.drawable.placeholder_thumb)
                 .into(productImage, new Callback() {
@@ -427,7 +437,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception ex) {
                         imageProgress.setVisibility(GONE);
                     }
                 });
@@ -676,7 +686,7 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(LocaleHelper.setLocale(newBase, LocaleHelper.getLocale()));
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
     private boolean isProductIncomplete() {
@@ -780,6 +790,16 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
             return true;
         });
         popup.show();
+    }
+
+    /**
+     * Overridden to collapse bottom view after a back action from edit form.
+     * @param savedInstanceState
+     */
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
     @Override

@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.TextInputLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -32,7 +32,7 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
@@ -357,7 +357,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private void loadNutritionsImage(String path) {
-        Picasso.with(getContext())
+        Picasso.get()
             .load(path)
             .resize(dpsToPixels(50), dpsToPixels(50))
             .centerInside()
@@ -368,7 +368,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 }
 
                 @Override
-                public void onError() {
+                public void onError(Exception ex) {
                     nutritionImageLoaded();
                 }
             });
@@ -945,7 +945,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         imageNutritionFacts.setVisibility(View.VISIBLE);
         btnEditImageNutritionFacts.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
-            Picasso.with(activity)
+            Picasso.get()
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()

@@ -5,10 +5,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.view.MenuItem;
 import com.afollestad.materialdialogs.MaterialDialog;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -32,10 +32,13 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.scan_bottom_nav:
+                if(isCurrentActivity(ContinuousScanActivity.class)){
+                    break;
+                }
                 if (Utils.isHardwareCameraInstalled(context)) {
                     if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
-                            new MaterialDialog.Builder(context)
+                        if (activity.hasWindowFocus() && ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
+                            new MaterialDialog.Builder(activity)
                                 .title(R.string.action_about)
                                 .content(R.string.permission_camera)
                                 .neutralText(R.string.txtOk)
