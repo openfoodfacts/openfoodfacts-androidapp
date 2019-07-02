@@ -22,7 +22,7 @@
 - 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。
 
 *** Your products, your data ***
-- Your personal data is yours, and is never sent online
+- 您的个人数据只属于您，永远不会被上传。
 - 您可以匿名使用该应用
 - 您可以导出历史记录
 

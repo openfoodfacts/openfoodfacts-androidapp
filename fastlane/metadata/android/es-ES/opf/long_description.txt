@@ -45,7 +45,7 @@ Datos de Crayones abiertos: la base de datos abierta más grande de lápices de 
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-Open ??? Facts - The largest open database of ???
+Abierto ??? Facts - The largest open database of ???
 
 Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 

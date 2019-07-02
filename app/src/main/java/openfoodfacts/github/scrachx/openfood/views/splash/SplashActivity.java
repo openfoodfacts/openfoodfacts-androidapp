@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.widget.TextView;
 
 import net.steamcrafted.loadtoast.LoadToast;
@@ -50,7 +50,7 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
 
         toast = new LoadToast(this);
 
-        presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this);
+        presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this, this);
         presenter.refreshData();
     }
 

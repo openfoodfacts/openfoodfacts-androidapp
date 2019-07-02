@@ -1,7 +1,17 @@
-v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a more global movement than ever. 500k products freed, 182 countries, 10K+ contributors, incl. you :-)
-1. The NutriScore for all products in the world
-2. Exportable history, for your eyes only
-3. Allergen alerts
+VERSION 3
+====
+1. It's easier to contribute new products, and get the Nutri-Score
+2. Create (and export) your product lists (shopping, eating…)
+3. Compare products side by side by scanning them one after the other.
+4. Completely redesigned product page, slide the card up to discover it
+5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+
+
+======
+v2! All OFF volunteers have worked hard, based on your suggestions. نحن حركة عالمية أكثر من أي وقت مضى. تم تحرير ٥٠٠ ألف منتج ، و ١٨٢ دولة ، و ١٠ آلاف مشارك + مدفوع. أنت :-)
+1. NutriScore لجميع المنتجات في العالم
+2. تاريخ قابل للتصدير لإرضائك فقط
+3. تنبيهات مسببة للحساسية
 4. Tap additives to explore with Wikipedia.
 5. Take photos, be part of food transparency
 6. Much faster, even on 2G. You can even contribute with no connection
@@ -19,3 +29,6 @@ v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your
 1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
 2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
 3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+
+
+

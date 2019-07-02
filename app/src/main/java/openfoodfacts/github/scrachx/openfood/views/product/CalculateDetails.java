@@ -3,11 +3,10 @@ package openfoodfacts.github.scrachx.openfood.views.product;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -22,11 +21,13 @@ import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.CalculateAdapter;
 
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY;
@@ -83,8 +84,7 @@ public class CalculateDetails extends BaseActivity {
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Header hack
-        nutrimentItems.add(new NutrimentItem(null, null, null,
-                                             null, null));
+        nutrimentItems.add(new NutrimentItem(ProductUtils.isPerServingInLiter(p)));
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
@@ -182,38 +182,9 @@ public class CalculateDetails extends BaseActivity {
     }
 
     private String calculateCalories(float weight, String unit) {
-        float caloriePer100g, weightInG;
-        caloriePer100g = Float.valueOf(Utils.getEnergy(p.getNutriments().get(Nutriments.ENERGY).getFor100gInUnits()));
-        switch (unit) {
-            case "mg":
-                weightInG = weight / 1000;
-                break;
-            case "kg":
-                weightInG = weight * 1000;
-                break;
-            case "l":
-                weightInG = weight * 1000;
-                break;
-            case "cl":
-                weightInG = weight * 10;
-                break;
-            default:
-                weightInG = weight;
-                break;
-        }
-        String snew = Float.toString(((caloriePer100g / 100) * weightInG));
-        return snew;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem share_item = menu.findItem(R.id.menu_item_share);
-        share_item.setVisible(false);
-        MenuItem edit_product = menu.findItem(R.id.action_edit_product);
-        edit_product.setVisible(false);
-        MenuItem calculate = menu.findItem(R.id.action_facts);
-        calculate.setVisible(false);
-        return true;
+        float caloriePer100g = Float.valueOf(Utils.getEnergy(p.getNutriments().get(Nutriments.ENERGY).getFor100gInUnits()));
+        float weightInG= UnitUtils.convertToGrams(weight,unit);
+        return Float.toString(((caloriePer100g / 100) * weightInG));
     }
 
 
@@ -222,19 +193,12 @@ public class CalculateDetails extends BaseActivity {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-//                NavUtils.navigateUpFromSameTask(this);
                 finish();
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_product, menu);
-        return true;
     }
 }
 

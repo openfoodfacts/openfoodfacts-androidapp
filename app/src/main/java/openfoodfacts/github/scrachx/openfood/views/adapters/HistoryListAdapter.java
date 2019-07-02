@@ -2,8 +2,8 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +20,8 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
 import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
-
-import static org.apache.commons.lang3.StringUtils.capitalize;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> {
 
@@ -54,19 +52,13 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.historyImageProgressbar.setVisibility(View.VISIBLE);
         HistoryItem item = list.get(position);
 
-        StringBuilder stringBuilder = new StringBuilder();
-        if (isNotEmpty(item.getBrands())) {
-            stringBuilder.append(capitalize(item.getBrands().split(",")[0].trim()));
-        }
 
-        if (isNotEmpty(item.getQuantity())) {
-            stringBuilder.append(" - ").append(item.getQuantity());
-        }
+        String productBrandsQuantityDetails = YourListedProducts.getProductBrandsQuantityDetails(item);
 
         //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
         holder.txtTitle.setText(item.getTitle());
         holder.txtBarcode.setText(item.getBarcode());
-        holder.txtProductDetails.setText(stringBuilder.toString());
+        holder.txtProductDetails.setText(productBrandsQuantityDetails);
         if(BuildConfig.FLAVOR.equals("opf")||BuildConfig.FLAVOR.equals("opff")||BuildConfig.FLAVOR.equals("obf")){
             holder.imgNutritionGrade.setVisibility(View.GONE);
         }
@@ -81,7 +73,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
 
         // Load Image if isBatteryLoad is false
         if (!isLowBatteryMode) {
-            Picasso.with(mActivity)
+            Picasso.get()
                     .load(item.getUrl())
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.ic_no_red_24dp)
@@ -94,7 +86,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             holder.historyImageProgressbar.setVisibility(View.GONE);
                         }
                     });
@@ -106,7 +98,6 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         Date date = list.get(position).getTime();
         calcTime(date, holder);
 
-        //animate(holder);
     }
 
     @Override

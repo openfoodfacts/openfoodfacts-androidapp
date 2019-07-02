@@ -23,9 +23,7 @@
     <string name="slide_4_title">Funciona offline</string>
     <string name="slide_4_desc">Pode adicionar novos produtos, mesmo se não tiver uma conexão com a Internet agora</string>
     <string name="txtDialogsContent">O produto que digitalizou ainda não existe no Open Beauty Facts. Por favor adicione-o.</string>
-    <string name="txtDialogsContentPowerMode">O produto que digitalizou já existe no Open Beauty Facts.</string>
     <string name="msg_share">Veja este produto em Open Beauty Facts:</string>
-    <string name="not_support_books">Atualmente, livros não são suportados pelo Open Beauty Facts</string>
     <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Beauty Facts</string>
     <string name="Donation">Clique aqui para doar para Open Beauty Facts</string>
     <string name="translate_help_title">Ajude a traduzir o Open Beauty Facts</string>
@@ -33,8 +31,8 @@
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo quando estiver offline, para adicioná-los posteriormente ao Open Beauty Facts. Os produtos digitalizados aparecerão aqui e você poderá enviá-los usando o botão abaixo.</string>
     <string name="warning_alert_data">A informação das suas alergias nunca será enviada para o servidor da Open Beauty Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa, por favor confirme sempre por si mesmo! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">the free cosmetics database</string>
+    <string name="tagline">a base de dados de cosméticos livre</string>
     <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente no Open Beauty Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Ajude a categorizar produtos</string>
 </resources>

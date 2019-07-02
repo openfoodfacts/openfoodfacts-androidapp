@@ -23,9 +23,7 @@
     <string name="slide_4_title">离线工作</string>
     <string name="slide_4_desc">即使您目前没有互联网连接，也可以添加新的产品。</string>
     <string name="txtDialogsContent">您扫描的产品尚不在 Open Beauty Facts 中，请添加。</string>
-    <string name="txtDialogsContentPowerMode">您所扫描的产品已在 Open Beauty Facts 中。</string>
     <string name="msg_share">在Open Beauty Facts上查看此产品：</string>
-    <string name="not_support_books">Open Beauty Facts目前不支持书籍</string>
     <string name="txt_broaden_search">- 扩大您的搜索 \n- 扫描并将其添加到 Open Beauty Facts</string>
     <string name="Donation">点击此处捐赠给 Open Beauty Facts</string>
     <string name="translate_help_title">帮助翻译 Open Beauty Facts</string>

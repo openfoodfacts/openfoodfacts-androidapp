@@ -1,35 +1,76 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Scan barcodes van levensmiddelen om gegevens te krijgen over ingrediënten, additieven en voedingsfeiten.
 
-The app allows to view the 547.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for missing products.
+▶ Zoek en vergelijk meer dan 800.000 producten
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+De app maakt het mogelijk om de 800.000 producten (inclusief 175.000 uit de VS) in de gratis en open database Open Food Facts te bekijken, en om foto's en gegevens toe te voegen voor nieuwe producten.
 
 
-***Contribute to Food Transparency***
+Om het vrijwillige Open Food Facts project te ontdekken, bezoek https://world.openfoodfacts.org
 
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your food cupboard. 
+▶ Kies de producten die goed voor je zijn
+- Nutri-Score, van "A" tot "E", voor de voedingskwaliteit
+- NOVA-groep, van "1" tot "4", voor het vinden van ultra-verwerkt voedsel
+- Je kan gemakkelijk naast elkaar producten vergelijken, door ze simpelweg te scannen. 
 
-*** Get the Facts ***
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find (according to the indications present on the products):
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+▶ En goed voor de planeet!
+- De koolstofimpact van je voedsel
+- Krijg een gevoel hoeveel je van je dagelijkse koolstofquota gebruikt voor voedsel
+- Op basis van de voetafdrukken die door ADEME voor Frankrijk zijn berekend.
+- Doe mee en help ons de Carbon Impact naar jouw land te brengen!
+- Om een Carbon Impact weer te geven, moet een product een volledige ingrediëntenlijst hebben met het percentage vlees of vis en een portiegrootte
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your food, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+▶ Draag bij aan de inzichtelijkheid van de voedselketen
+- Open Food Facts is een database met levensmiddelen gemaakt door iedereen, voor iedereen.
+- Je kunt het gebruiken om betere voedselkeuzes te maken, en omdat het open data is, kan iedereen het voor elk doel hergebruiken.
+- Open Food Facts is een non-profitproject ontwikkeld door duizenden vrijwilligers uit de hele wereld. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen.
+- Je kunt vandaag beginnen met een bijdrage te leveren door een product uit je koelkast toe te voegen.
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Maak lijsten
+Maak boodschappenlijstjes, houd bij wat je hebt gegeten en deel je lijsten eenvoudig en exporteer ze.
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+▶ Ken de feiten
+Open Food Facts helpt je om de kleine lettertjes op etiketten te begrijpen. Zo kan je vinden:
+- de CO2-voetafdruk en verpakking (evenals recyclinginstructies),
+- Nutri-Score (voedingswaarde), voedingsstoffen, vetgehalte, verzadigde vetzuren, koolhydraten, suikers, vezels, eiwitten en zout,
+- merken, allergenen, logo's (bio, glutenvrij, veganistisch, vegetarisch, halal, kosjer ...), traceerbaarheidsinformatie (verpakkingscodes, oorsprong van ingrediënten),
+- en op wijnen en bieren vindt u het alcoholpercentage.
+
+
+Gebaseerd op wetenschap, helpen wij de wetenschap!
+
+- We verzinnen dingen niet. We vertrouwen op peer-reviewed wetenschap.
+- De Nutri-Score is gecreëerd door het onafhankelijke Franse team onder leiding van professor Hercberg.
+- De NOVA-groepen voor voedselverwerking zijn ontworpen door het internationale team van professor Monteiro.
+- Je kunt een samenvatting krijgen van de EFSA-blootstellingsniveaus op additieven.
+- De Open Food Facts gemeenschap werkt samen met onderzoeksteams over de hele wereld om het voedingsonderzoek te verbeteren voor iedereen.
+
+
+▶ Offline scannen: scannen in ELKE situatie! (binnenkort beschikbaar)
+Scan met de snelheid van het licht (zelfs als u in een vliegtuig, onderzeeër of supermarkt bent)
+
+- De hele planeet, in je zak!
+- Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
+- De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen.
+
+▶ Jouw voedsel, jouw gegevens
+- Jouw gegevens zijn van jou en worden nooit online verzonden
+- Je kunt de app anoniem gebruiken
+- Je kunt jouw scangeschiedenis exporteren
+
+Stel allergeenwaarschuwingen in
+- Voor een melk, gluten, eieren, sojabonen, noten, vis, selderij, mosterd, zwaveldioxide en sulfieten, pinda's, sesamzaad, schaaldieren, weekdieren of lupine-allergie
+- Versnel het boodschappen doen door een eerste screening van je voedsel uit te voeren.
+- Wees voorzichtig: de gegevens kunnen niet 100% accuraat zijn en de detectie is wellicht niet 100% accuraat. Dus controleer altijd zelf de verpakking.
+
+
+▶ Zeg hallo en/of word lid!
+
+
+Open Food Facts is ook beschikbaar op het web op https://world.openfoodfacts.org
+
+
+Vragen, feedback: contact@openfoodfacts.org
+
+
+Voor cosmetica kan je Open Beauty Facts installeren, voor dierenvoeding, Open Pet Food Facts en voor alle andere producten, Open Products Facts.

@@ -9,6 +9,10 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
+    <style name="errorText" parent="@style/TextAppearance.Design.Error">
+        <item name="android:textColor">@color/design_error</item>
+    </style>
+
     <style name="Black_Back_Arrow" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="android:textColorPrimary">@color/md_black_1000</item>
     </style>
@@ -64,6 +68,27 @@
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="QuestionDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
+    <style name="BorderButton">
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:textColor">@color/button_link</item>
+        <item name="android:paddingLeft">@dimen/spacing_small</item>
+        <item name="android:paddingRight">@dimen/spacing_small</item>
+        <item name="android:paddingTop">@dimen/spacing_tiny</item>
+        <item name="android:paddingBottom">@dimen/spacing_tiny</item>
+    </style>
+
+    <style name="HorizontalLineSeparator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.4dp</item>
+        <item name="android:background">@color/grey_200</item>
     </style>
 
 </resources>

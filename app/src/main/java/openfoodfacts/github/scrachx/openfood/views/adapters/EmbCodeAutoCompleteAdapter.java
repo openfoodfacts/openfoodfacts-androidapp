@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
@@ -13,6 +13,7 @@ import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import org.apache.commons.lang.StringUtils;
 
 public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
 
@@ -31,6 +32,9 @@ public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements 
 
     @Override
     public String getItem(int position) {
+        if(position<0|| position>=mEMBCodeList.size()){
+            return StringUtils.EMPTY;
+        }
         return mEMBCodeList.get(position);
     }
 

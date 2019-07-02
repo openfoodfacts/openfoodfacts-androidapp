@@ -1,35 +1,76 @@
 مسح المنتجات الغذائية أو الباركود للحصول على بيانات عن المكونات والمواد المضافة والحقائق الغذائية للمنتج.
 
-يسمح التطبيق بمشاهدة ٥٤٧٠٠٠ مُنتج (بما في ذلك ١٧٥٠٠٠ في الولايات المتحدة) موجود بالفعل في قاعدة البيانات المفتوحة المجانية ، وأيضا لإضافة صور وبيانات عن المنتجات الغير موجودة فى قواعد البيانات.
+▶ Find & Compare more than 800.000 products
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
 
 
-***ساهم في شفافية المواد الغذائية***
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
+▶ Choose the products that are good for you
+- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
+- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+- You can easily compare as many products as you want, side by side by simply scanning them. 
+
+▶ And good for the planet!
+- The carbon impact of your food
+- Get a sense of how much of your daily carbon quota you're using for food
+- Based on the footprints computed for France by ADEME.
+- Join us and help us to bring the Carbon Impact to your country!
+- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+
+
+▶ Contribute to Food Transparency
 - الحقائق الغذائية المفتوحة هي قاعدة بيانات مفتوحة للمنتجات الغذائية التي اسهم فيها الجميع ، للجميع.
 - يمكنك استخدامه لصنع خيارات غذائية أفضل ، وباعتباره بيانات مفتوحة للجميع ، يمكن لأي شخص إعادة استخدامه لأي غرض.
-- حقائق غذائية مفتوحة هو مشروع غير ربحي وضعه الآلاف من المتطوعين من جميع أنحاء العالم. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة. 
--يمكنك البدء في بالمساهمة اليوم بإضافة منتج من خزانة الطعام الخاصة بك. 
+- حقائق غذائية مفتوحة هو مشروع غير ربحي وضعه الآلاف من المتطوعين من جميع أنحاء العالم. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة.
+- You can start contributing today by adding a product from your fridge.
 
-*** احصل على الحقائق ***
-- حقائق غذائية مفتوحة يساعدك على فهم التفاصيل الدقيقة المطبوعة على تسميات المنتجات. ستتمكن من العثور عليها (وفقا للمؤشرات الموجودة على المنتجات):
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
+
+▶ Get the Facts
+- حقائق غذائية مفتوحة يساعدك على فهم التفاصيل الدقيقة المطبوعة على تسميات المنتجات. You will be able to find:
 - البصمة الكربونية (انبعاثات ثاني أكسيد الكربون) والتعبئة (بالإضافة إلى تعليمات إعادة التدوير) ،
 - نيوترى إسكور (النتيجة الغذائية) ، والمغذيات ، والدهون / محتوى الدهون ، والأحماض الدهنية المشبعة ، والكربوهيدرات ، والسكريات ، والألياف ، والبروتين والملح والصوديوم.
 - العلامات التجارية ، المواد المثيرة للحساسية ، التفاصيل (السيرة الذاتية ، الخالية من الجلوتين ، نباتي ، نباتي صرف، حلال ...) ، معلومات التتبع (رموز التعبئة ، أصول المكونات)
 - على الخمور و المشروبات الروحية ، ستجد محتوى الكحول.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your food, your data ***
+▶ Based on Science, helping back Science!
+
+- We don't make up things. We rely on peer-reviewed science.
+- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+- You can get a synthesis of EFSA exposure levels on food additives.
+- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+
+
+▶ Offline Scan: Scan in ANY condition! (coming soon)
+Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+
+- The whole planet, in your pocket !
+- You can add new products, even if you don't have an Internet connection right now.
+- The app loads only the strict necessary to reduce data and battery consumption.
+
+▶ Your food, your data
 - Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
+▶ Set up allergen alerts on products
+- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+
+
+▶ Say hello and/or join us!
+
+
 حقائق الغذاء المفتوحة متاحة أيضا على شبكة الإنترنت في https://world.openfoodfacts.org
+
+
 للأسئلة و التعليقات: contact@openfoodfacts.org
+
 
 بالنسبة لمستحضرات التجميل ، يمكنك تحميل Open Beauty Facts ، للحصول على أغذية الحيوانات الأليفة ، وOpen Pet Food Facts ، وبالنسبة لجميع المنتجات الأخرى ، Open Products Facts.

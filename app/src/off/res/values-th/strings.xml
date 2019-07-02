@@ -21,12 +21,13 @@
     <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="txtDialogsContent">ผลิตภัณฑ์ที่คุณสแกนยังไม่มีอยู่ใน Open Food Facts กรุณาเพิ่ม
+ชื่อผลิตภัณฑ์</string>
+    <string name="txtDialogsContentPowerMode">ผลิตภัณฑ์ที่คุณสแกนมีอยู่ใน Open Food Facts แล้ว</string>
+    <string name="msg_share">ดูข้อมูลผลิตภัณฑ์นี้ได้ใน Open Food Facts :</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="Donation">คลิกที่นี่เพื่อบริจาคให้กับ Open Food Facts</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>

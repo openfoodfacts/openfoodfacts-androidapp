@@ -1,30 +1,25 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.Manifest;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.browser.customtabs.CustomTabsIntent;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.SingleObserver;
@@ -32,12 +27,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
@@ -46,25 +41,23 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
-
-    @BindView(R.id.buttonScan)
-    FloatingActionButton mButtonScan;
-
     @BindView(R.id.tvDailyFoodFact)
     TextView tvDailyFoodFact;
-
     @BindView(R.id.textHome)
     TextView textHome;
-
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
     private OpenFoodAPIService apiClient;
     private SharedPreferences sp;
     private String taglineURL;
+    private Disposable disposable;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,7 +70,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-        getTagline();
+        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
 
     @Override
@@ -85,34 +78,8 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         super.onActivityCreated(savedInstanceState);
     }
 
-    @OnClick(R.id.buttonScan)
-    protected void OnScan() {
-        if (Utils.isHardwareCameraInstalled(getContext())) {
-            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(getActivity())
-                            .title(R.string.action_about)
-                            .content(R.string.permission_camera)
-                            .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                            .show();
-                } else {
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                }
-            } else {
-                Intent intent = new Intent(getActivity(), ContinuousScanActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        } else {
-            if (getContext() instanceof MainActivity) {
-                ((MainActivity) getContext()).moveToBarcodeEntry();
-            }
-        }
-    }
-
     @OnClick(R.id.tvDailyFoodFact)
-    protected void setDailyFoodFact(){
+    protected void setDailyFoodFact() {
         // chrome custom tab init
         CustomTabsIntent customTabsIntent;
         CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
@@ -121,9 +88,9 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null);
 
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(),
-                customTabActivityHelper.getSession());
+            customTabActivityHelper.getSession());
         CustomTabActivityHelper.openCustomTab(getActivity(),
-                customTabsIntent, dailyFoodFactUri, new WebViewFallback());
+            customTabsIntent, dailyFoodFactUri, new WebViewFallback());
     }
 
     @Override
@@ -145,20 +112,22 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                     try {
                         htmlNoParsed = response.body().string();
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        Log.e(HomeFragment.class.getSimpleName(), "signin", e);
                     }
                     if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
-                            || htmlNoParsed.contains("See you soon!"))) {
+                        || htmlNoParsed.contains("See you soon!"))) {
                         settings.edit()
-                                .putString("user", "")
-                                .putString("pass", "")
-                                .apply();
+                            .putString("user", "")
+                            .putString("pass", "")
+                            .apply();
 
-                        new MaterialDialog.Builder(getActivity())
+                        if(getActivity()!=null) {
+                            new MaterialDialog.Builder(getActivity())
                                 .title(R.string.alert_dialog_warning_title)
                                 .content(R.string.alert_dialog_warning_msg_user)
                                 .positiveText(R.string.txtOk)
                                 .show();
+                        }
                     }
                 }
 
@@ -170,45 +139,55 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        //stop the call to off to get total product counts:
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
+    }
 
     public void onResume() {
 
         super.onResume();
 
-        String txtHomeOnline = OFFApplication.getInstance().getResources().getString(R.string.txtHomeOnline);
         int productCount = sp.getInt("productCount", 0);
         apiClient.getTotalProductCount()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Search>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        if (productCount != 0) {
-                            textHome.setText(String.format(txtHomeOnline, productCount));
-                        } else {
-                            textHome.setText(R.string.txtHome);
-                        }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new SingleObserver<Search>() {
+                @Override
+                public void onSubscribe(Disposable d) {
+                    disposable=d;
+                    if(isAdded()) {
+                        updateTextHome(productCount);
                     }
+                }
 
-                    @Override
-                    public void onSuccess(Search search) {
-                        SharedPreferences.Editor editor;
-                        int totalProductCount = Integer.parseInt(search.getCount());
-                        textHome.setText(String.format(txtHomeOnline, totalProductCount));
-                        editor = sp.edit();
+                @Override
+                public void onSuccess(Search search) {
+                    if(isAdded()) {
+                        int totalProductCount = productCount;
+                        try {
+                            totalProductCount = Integer.parseInt(search.getCount());
+                        } catch (NumberFormatException e) {
+                            Log.w(HomeFragment.class.getSimpleName(), "can parse " + search.getCount() + " as int", e);
+                        }
+                        updateTextHome(totalProductCount);
+                        SharedPreferences.Editor editor = sp.edit();
                         editor.putInt("productCount", totalProductCount);
                         editor.apply();
                     }
+                }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        if (productCount != 0) {
-                            textHome.setText(String.format(txtHomeOnline, productCount));
-                        } else {
-                            textHome.setText(R.string.txtHome);
-                        }
+                @Override
+                public void onError(Throwable e) {
+                    if(isAdded()) {
+                        updateTextHome(productCount);
                     }
-                });
+                }
+            });
 
         getTagline();
 
@@ -218,7 +197,19 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                 actionBar.setTitle("");
             }
         }
+    }
 
+    private void updateTextHome(int totalProductCount) {
+        try {
+            textHome.setText(R.string.txtHome);
+            if (totalProductCount != 0) {
+                String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
+
+                textHome.setText(String.format(txtHomeOnline, totalProductCount));
+            }
+        } catch (Exception e) {
+            Log.w(HomeFragment.class.getSimpleName(), "can format text for home", e);
+        }
     }
 
     @Override
@@ -231,33 +222,38 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     }
 
-    private void getTagline(){
+    private void getTagline() {
         OpenFoodAPIService openFoodAPIService = new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
         Call<ArrayList<TaglineLanguageModel>> call = openFoodAPIService.getTagline();
         call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
             @Override
             public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
-                if(response.isSuccessful()){
-                    String locale = String.valueOf(Resources.getSystem().getConfiguration().locale);
+                if (response.isSuccessful()) {
+                    final Locale locale = LocaleHelper.getLocale(getContext());
+                    String localAsString = locale.toString();
                     boolean isLanguageFound = false;
-                    for (int i = 0; i < response.body().size(); i++){
-                        if (response.body().get(i).getLanguage().equals(locale)){
+                    boolean isExactLanguageFound = false;
+                    for (int i = 0; i < response.body().size(); i++) {
+                        final String languageCountry = response.body().get(i).getLanguage();
+                        if (!isExactLanguageFound && (languageCountry.equals(localAsString) || languageCountry.contains(localAsString))) {
+                            isExactLanguageFound = languageCountry.equals(localAsString);
                             taglineURL = response.body().get(i).getTaglineModel().getUrl();
                             tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
                             tvDailyFoodFact.setVisibility(View.VISIBLE);
                             isLanguageFound = true;
                         }
                     }
-                    if (!isLanguageFound){
-                        taglineURL = response.body().get(response.body().size() -1).getTaglineModel().getUrl();
-                        tvDailyFoodFact.setText(response.body().get(response.body().size() -1).getTaglineModel().getMessage());
+                    if (!isLanguageFound) {
+                        taglineURL = response.body().get(response.body().size() - 1).getTaglineModel().getUrl();
+                        tvDailyFoodFact.setText(response.body().get(response.body().size() - 1).getTaglineModel().getMessage());
                         tvDailyFoodFact.setVisibility(View.VISIBLE);
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) { }
+            public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) {
+            }
         });
     }
 }

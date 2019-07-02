@@ -24,7 +24,7 @@
     <string name="txtDialogsContent">Izdelek, ki ste ga optično prebrali, še ne obstaja v podatkih o odprtih živilih. Prosimo, dodajte.</string>
     <string name="txtDialogsContentPowerMode">Izdelek, ki ste ga optično prebrali, že obstaja v podatkih o odprtih živilih.</string>
     <string name="msg_share">Poglej ta izdelek na dejstvih o odprtih živilih:</string>
-    <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+    <string name="not_support_books">Open Food Facts trenutno ne podpirajo knjig</string>
     <string name="txt_broaden_search">- razširitev iskanja \n- optično preberi in jo dodaj v Open Food Facts</string>
     <string name="Donation">Kliknite tukaj, če želite prispevati k Open Products Facts</string>
     <string name="translate_help_title">Pomagajte prevesti Open Products Facts</string>

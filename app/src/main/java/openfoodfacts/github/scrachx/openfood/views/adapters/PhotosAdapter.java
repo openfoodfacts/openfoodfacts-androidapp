@@ -1,9 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +35,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ImageView imageView = holder.getImageView();
 
-        Picasso.with(imageView.getContext())
+        Picasso.get()
                .load(mPhotos.get(position))
                .placeholder(R.drawable.placeholder_thumb)
                .error(R.drawable.error_image)

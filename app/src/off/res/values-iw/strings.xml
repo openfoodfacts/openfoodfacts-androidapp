@@ -17,7 +17,7 @@
     <string name="slide_1_desc">ניתן לסרוק מוצרים, לצלם אותם ולהפוך את השקיפות בתחום המזון למציאות</string>
     <string name="slide_2_title">קבלת העובדות</string>
     <string name="slide_2_desc">מידע נרחב על המוצר שסרקת, מפוענח עבורך</string>
-    <string name="slide_3_title">מה ה־Nutriscore</string>
+    <string name="slide_3_title">מה ה־Nutri-Score</string>
     <string name="slide_3_desc">תצוגה מלאכותית של המאפיינים התזונתיים של מוצרי המזון האהובים עליך</string>
     <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
     <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים אפילו ללא חיבור לאינטרנט כדי להוסיף אותם ל־Open Food Facts בשלב מאוחר יותר. המוצרים שנסרקו יופיעו כאן ותהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
+    <string name="tagline">מסד נתוני מוצרי המזון החופשי</string>
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Food Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="currently_on_version">כרגע ב־Open Food Facts</string>
 </resources>

@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PrefManager extends AppCompatActivity {
 
@@ -28,7 +28,7 @@ public class PrefManager extends AppCompatActivity {
     public void setFirstTimeLaunch(boolean isFirstTime) {
         editor = pref.edit();
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor.commit();
+        editor.apply();
     }
 
     public boolean isFirstTimeLaunch() {
