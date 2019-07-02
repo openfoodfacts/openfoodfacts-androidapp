@@ -25,7 +25,7 @@ You will also be able to find (according to the indications present on the produ
 - La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería
 - No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 
-*** Your pet food, your data ***
+*** Tu comida de mascota, tus datos ***
 - Tus datos son tuyos y nunca se envían en línea
 - Puedes usar la aplicación de forma anónima
 - Puedes exportar tu historial de escaneo

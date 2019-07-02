@@ -3,10 +3,10 @@ package openfoodfacts.github.scrachx.openfood.views.product;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -27,7 +27,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.CalculateAdapter;
 
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY;

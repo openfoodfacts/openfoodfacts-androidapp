@@ -4,20 +4,24 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.browser.customtabs.CustomTabsIntent;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.afollestad.materialdialogs.MaterialDialog;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.OnClick;
-import com.afollestad.materialdialogs.MaterialDialog;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -30,6 +34,9 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -38,11 +45,6 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Locale;
-
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
@@ -55,6 +57,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     private OpenFoodAPIService apiClient;
     private SharedPreferences sp;
     private String taglineURL;
+    private Disposable disposable;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -118,11 +121,13 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                             .putString("pass", "")
                             .apply();
 
-                        new MaterialDialog.Builder(getActivity())
-                            .title(R.string.alert_dialog_warning_title)
-                            .content(R.string.alert_dialog_warning_msg_user)
-                            .positiveText(R.string.txtOk)
-                            .show();
+                        if(getActivity()!=null) {
+                            new MaterialDialog.Builder(getActivity())
+                                .title(R.string.alert_dialog_warning_title)
+                                .content(R.string.alert_dialog_warning_msg_user)
+                                .positiveText(R.string.txtOk)
+                                .show();
+                        }
                     }
                 }
 
@@ -131,6 +136,15 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                     Log.e(HomeFragment.class.getName(), "Unable to Sign-in");
                 }
             });
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //stop the call to off to get total product counts:
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
         }
     }
 
@@ -145,26 +159,33 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
             .subscribe(new SingleObserver<Search>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    updateTextHome(productCount);
+                    disposable=d;
+                    if(isAdded()) {
+                        updateTextHome(productCount);
+                    }
                 }
 
                 @Override
                 public void onSuccess(Search search) {
-                    int totalProductCount = productCount;
-                    try {
-                        totalProductCount = Integer.parseInt(search.getCount());
-                    } catch (NumberFormatException e) {
-                        Log.w(HomeFragment.class.getSimpleName(), "can parse " + search.getCount() + " as int", e);
+                    if(isAdded()) {
+                        int totalProductCount = productCount;
+                        try {
+                            totalProductCount = Integer.parseInt(search.getCount());
+                        } catch (NumberFormatException e) {
+                            Log.w(HomeFragment.class.getSimpleName(), "can parse " + search.getCount() + " as int", e);
+                        }
+                        updateTextHome(totalProductCount);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putInt("productCount", totalProductCount);
+                        editor.apply();
                     }
-                    updateTextHome(totalProductCount);
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putInt("productCount", totalProductCount);
-                    editor.apply();
                 }
 
                 @Override
                 public void onError(Throwable e) {
-                    updateTextHome(productCount);
+                    if(isAdded()) {
+                        updateTextHome(productCount);
+                    }
                 }
             });
 
@@ -179,14 +200,15 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     }
 
     private void updateTextHome(int totalProductCount) {
-        textHome.setText(R.string.txtHome);
-        if (totalProductCount != 0) {
-            String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
-            try {
+        try {
+            textHome.setText(R.string.txtHome);
+            if (totalProductCount != 0) {
+                String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
+
                 textHome.setText(String.format(txtHomeOnline, totalProductCount));
-            } catch (Exception e) {
-                Log.w(HomeFragment.class.getSimpleName(), "can format text for home", e);
             }
+        } catch (Exception e) {
+            Log.w(HomeFragment.class.getSimpleName(), "can format text for home", e);
         }
     }
 

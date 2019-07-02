@@ -1,11 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +21,7 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Navi
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
 
@@ -62,7 +62,7 @@ public class FindProductFragment extends NavigationBaseFragment {
             displayToast(getResources().getString(R.string.txtBarcodeRequire));
         } else {
             String barcodeText = mBarCodeText.getText().toString();
-            if (barcodeText.length() <= 2) {
+            if (barcodeText.length() <= 2 && !ProductUtils.DEBUG_BARCODE.equals(barcodeText)) {
                 displayToast(getResources().getString(R.string.txtBarcodeNotValid));
             } else {
                 if (ProductUtils.isBarcodeValid(barcodeText)) {

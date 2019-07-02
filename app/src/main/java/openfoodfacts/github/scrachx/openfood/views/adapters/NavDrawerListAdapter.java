@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.content.res.AppCompatResources;
+import androidx.appcompat.content.res.AppCompatResources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

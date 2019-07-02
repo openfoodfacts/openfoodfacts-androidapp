@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -34,8 +34,8 @@ import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.Installation;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -167,6 +167,10 @@ public class OpenFoodAPIClient {
                 }
 
                 final State s = response.body();
+                if(s==null){
+                    Toast.makeText(activity,R.string.something_went_wrong,Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if (s.getStatus() == 0) {
                     if (activity != null) {
                         productNotFoundDialogBuilder(activity, barcode)
@@ -175,7 +179,7 @@ public class OpenFoodAPIClient {
                     }
                 } else {
                     if (activity != null) {
-                        new HistoryTask().doInBackground(s.getProduct());
+                        new HistoryTask().execute(s.getProduct());
                     }
                     Bundle bundle = new Bundle();
 

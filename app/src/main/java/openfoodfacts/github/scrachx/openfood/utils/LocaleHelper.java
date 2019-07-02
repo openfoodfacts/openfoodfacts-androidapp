@@ -6,9 +6,9 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import org.apache.commons.text.WordUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.*;
 
@@ -118,7 +118,7 @@ public class LocaleHelper {
         if (locale == null) {
             return null;
         }
-        return new LanguageData(locale.getLanguage(), WordUtils.capitalize(locale.getDisplayName(locale)), supported);
+        return new LanguageData(locale.getLanguage(), StringUtils.capitalize(locale.getDisplayName(locale)), supported);
     }
 
     public static Locale getLocale() {
@@ -142,9 +142,16 @@ public class LocaleHelper {
     }
 
     public static Locale getLocale(Context context) {
-        Resources resources = context.getResources();
-        Configuration configuration = resources.getConfiguration();
-        final Locale locale = configuration.locale;
+        Locale locale = null;
+        if (context != null) {
+            Resources resources = context.getResources();
+            if (resources != null) {
+                Configuration configuration = resources.getConfiguration();
+                if (configuration != null) {
+                    locale = configuration.locale;
+                }
+            }
+        }
         return locale == null ? Locale.getDefault() : locale;
     }
 
@@ -158,7 +165,13 @@ public class LocaleHelper {
         return setLocale(context, locale);
     }
 
-    private static Context setLocale(Context context, Locale locale) {
+    /**
+     * Used by screenshots generator.
+     * @param context
+     * @param locale
+     * @return
+     */
+    public static Context setLocale(Context context, Locale locale) {
         if (locale == null) {
             return context;
         }
@@ -189,6 +202,9 @@ public class LocaleHelper {
      * @return Locale from locale string
      */
     public static Locale getLocale(String locale) {
+        if(locale==null){
+            return Locale.getDefault();
+        }
         String[] localeParts = locale.split("-");
         String language = localeParts[0];
         String country = localeParts.length == 2 ? localeParts[1] : "";

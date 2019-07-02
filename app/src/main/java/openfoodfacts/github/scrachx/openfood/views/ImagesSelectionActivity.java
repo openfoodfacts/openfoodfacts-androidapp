@@ -2,13 +2,13 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -104,7 +104,7 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         final int selectedPosition = adapter.getSelectedPosition();
         if(selectedPosition>=0) {
             String finalUrlString = adapter.getImageUrl(selectedPosition);
-            Picasso.with(this).load(finalUrlString).resize(400, 400).centerInside().into(expandedImage);
+            Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(expandedImage);
             expandedContainer.setVisibility(View.VISIBLE);
             imagesRecycler.setVisibility(View.INVISIBLE);
         }

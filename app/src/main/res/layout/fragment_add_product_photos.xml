@@ -10,7 +10,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".fragments.AddProductPhotosFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -105,6 +105,6 @@
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/table_layout" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
