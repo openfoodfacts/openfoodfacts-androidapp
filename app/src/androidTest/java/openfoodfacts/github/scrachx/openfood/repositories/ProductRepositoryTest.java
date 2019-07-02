@@ -1,14 +1,16 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.greenrobot.greendao.database.Database;
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
@@ -28,9 +30,14 @@ public class ProductRepositoryTest {
     private static final String TEST_ALLERGEN_NAME = "Altramuces";
     private static IProductRepository productRepository;
 
+    @BeforeClass
+    public static void cleanAllergens() {
+        clearDatabase();
+        productRepository = ProductRepository.getInstance();
+        productRepository.saveAllergens(createAllergens());
+    }
 
-    @Before
-    public void cleanAllergens() {
+    private static void clearDatabase() {
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         Database db = daoSession.getDatabase();
         db.beginTransaction();
@@ -42,13 +49,11 @@ public class ProductRepositoryTest {
         } finally {
             db.endTransaction();
         }
-        productRepository = ProductRepository.getInstance();
-        productRepository.saveAllergens(createAllergens());
     }
 
-    @After
-    public void close() {
-        cleanAllergens();
+    @AfterClass
+    public static void close() {
+        clearDatabase();
     }
 
     @Test

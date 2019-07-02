@@ -2,8 +2,6 @@ package openfoodfacts.github.scrachx.openfood.test;
 
 import android.app.Activity;
 import android.util.Log;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 import tools.fastlane.screengrab.FalconScreenshotStrategy;
 import tools.fastlane.screengrab.Screengrab;
 

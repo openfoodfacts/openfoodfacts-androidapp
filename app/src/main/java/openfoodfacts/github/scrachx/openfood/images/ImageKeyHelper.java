@@ -5,7 +5,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 public class ImageKeyHelper {
     public static final String IMAGE_URL = "imageurl";
@@ -41,6 +41,7 @@ public class ImageKeyHelper {
         Bundle bundle = new Bundle();
         bundle.putString(ImageKeyHelper.IMAGE_URL, imageUrl);
         if (product != null) {
+
             bundle.putSerializable(ImageKeyHelper.PRODUCT, product);
             bundle.putSerializable(ImageKeyHelper.IMAGE_TYPE, imageType);
             bundle.putString(ImageKeyHelper.LANGUAGE, language);

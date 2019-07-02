@@ -10,14 +10,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,20 +17,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.opencsv.CSVWriter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
-import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.YourListedProductsAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -47,8 +45,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static org.apache.commons.lang3.StringUtils.capitalize;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static org.apache.commons.lang.StringUtils.capitalize;
+import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
 public class YourListedProducts extends BaseActivity implements SwipeControllerActions {
     @BindView(R.id.rvYourListedProducts)
@@ -225,38 +223,20 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
     }
 
     public void exportCSV() {
-        boolean isDownload = false;
-        String folderMain = " ";
-        String appname = " ";
-        if ((BuildConfig.FLAVOR.equals("off"))) {
-            folderMain = " Open Food Facts ";
-            appname = "OFF";
-        } else if ((BuildConfig.FLAVOR.equals("opff"))) {
-            folderMain = " Open Pet Food Facts ";
-            appname = "OPFF";
-        } else if ((BuildConfig.FLAVOR.equals("opf"))) {
-            folderMain = " Open Products Facts ";
-            appname = "OPF";
-        } else {
-            folderMain = " Open Beauty Facts ";
-            appname = "OBF";
-        }
+        String folderMain = FileUtils.getCsvFolderName();
         Toast.makeText(this, R.string.txt_exporting_your_listed_products, Toast.LENGTH_LONG).show();
         File baseDir = new File(Environment.getExternalStorageDirectory(), folderMain);
         if (!baseDir.exists()) {
             baseDir.mkdirs();
         }
         String productListName = thisProductList.getListName();
-        String fileName = appname + "-" + productListName + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
-        String filePath = baseDir + File.separator + fileName;
-        File f = new File(filePath);
-        try (CSVWriter writer = createCsvWriter(filePath, f)) {
-            String[] headers = getResources().getStringArray(R.array.your_products_headers);
-            writer.writeNext(headers);
+        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + productListName + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
+        File f = new File(baseDir,fileName);
+        boolean isDownload;
+        try (CSVPrinter writer = new CSVPrinter(new FileWriter(f), CSVFormat.DEFAULT.withHeader(getResources().getStringArray(R.array.your_products_headers)))) {
             List<YourListedProduct> listProducts = thisProductList.getProducts();
             for (YourListedProduct product : listProducts) {
-                String[] line = {product.getBarcode(), product.getProductName(), product.getListName(), product.getProductDetails()};
-                writer.writeNext(line);
+                writer.printRecord(product.getBarcode(), product.getProductName(), product.getListName(), product.getProductDetails());
             }
             Toast.makeText(this, R.string.txt_your_listed_products_exported, Toast.LENGTH_LONG).show();
             isDownload = true;
@@ -296,17 +276,6 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
                 .setSmallIcon(R.mipmap.ic_launcher);
             notificationManager.notify(8, builder.build());
         }
-    }
-
-    private CSVWriter createCsvWriter(String filePath, File f) throws IOException {
-        CSVWriter writer;
-        if (f.exists() && !f.isDirectory()) {
-            FileWriter fileWriter = new FileWriter(filePath, false);
-            writer = new CSVWriter(fileWriter);
-        } else {
-            writer = new CSVWriter(new FileWriter(filePath));
-        }
-        return writer;
     }
 
     @Override

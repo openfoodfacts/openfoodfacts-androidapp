@@ -6,13 +6,13 @@
     android:orientation="vertical"
     tools:context="openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imagesRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/images_item">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </RelativeLayout>

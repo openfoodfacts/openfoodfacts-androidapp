@@ -3,14 +3,14 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import butterknife.BindView;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
 /**
  * Activity to display/edit product images
@@ -70,7 +70,7 @@ public class ImageZoomActivity extends BaseActivity {
     private void loadImage(String imageUrl) {
         if (isNotEmpty(imageUrl)) {
             startRefresh(getString(R.string.txtLoading));
-            Picasso.with(this)
+            Picasso.get()
                 .load(imageUrl)
                 .into(mPhotoView, new Callback() {
                     @Override
@@ -82,7 +82,7 @@ public class ImageZoomActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception ex) {
                         mPhotoView.setVisibility(View.VISIBLE);
                         Toast.makeText(ImageZoomActivity.this, getResources().getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show();
                         stopRefresh();

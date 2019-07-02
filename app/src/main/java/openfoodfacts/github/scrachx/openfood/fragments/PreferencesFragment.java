@@ -11,14 +11,14 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.ListPreference;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.fragment.app.FragmentActivity;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,7 +34,7 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Navi
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import org.apache.commons.text.WordUtils;
+import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.IOException;
@@ -76,7 +76,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
             if (current != null) {
-                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
+                localeLabels[i] = StringUtils.capitalize(current.getDisplayName(current));
                 finalLocalLabels.add(localeLabels[i]);
                 finalLocalValues.add(localeValues[i]);
             }
