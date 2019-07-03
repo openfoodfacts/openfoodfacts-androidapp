@@ -74,9 +74,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> {
-                    view.showAllergens(allergens);
-                }, e -> Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAllergens", e))
+                .subscribe(allergens -> view.showAllergens(allergens), e -> Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAllergens", e))
         );
     }
 
@@ -178,4 +176,5 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             disposable.clear();
         }
     }
+
 }

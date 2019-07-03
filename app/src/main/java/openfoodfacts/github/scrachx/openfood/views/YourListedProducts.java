@@ -109,6 +109,9 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         }
 
         thisProductList = productListsDao.load(id);
+        if(thisProductList==null){
+            return;
+        }
         thisProductList.resetProducts();
         if (thisProductList.getId() == 1L) {
             isEatenList = true;

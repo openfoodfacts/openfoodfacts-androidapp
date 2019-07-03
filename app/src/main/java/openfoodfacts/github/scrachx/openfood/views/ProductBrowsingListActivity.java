@@ -602,7 +602,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
                                     View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
                                     if (view != null) {
                                         InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                        imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                        if(imm!=null) {
+                                            imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                        }
                                     }
                                 } catch (NullPointerException e) {
                                     Log.e(ProductBrowsingListActivity.class.getSimpleName(),"addOnItemTouchListener",e);

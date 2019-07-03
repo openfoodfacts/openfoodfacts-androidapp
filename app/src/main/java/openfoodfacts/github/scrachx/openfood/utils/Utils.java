@@ -22,11 +22,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import androidx.annotation.DrawableRes;
-import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.content.res.AppCompatResources;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -37,6 +32,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.firebase.jobdispatcher.*;
 import okhttp3.CipherSuite;
@@ -71,7 +71,7 @@ import java.util.regex.Pattern;
 import static android.text.TextUtils.isEmpty;
 
 public class Utils {
-    public static final String SPACE=" ";
+    public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
     public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
@@ -158,21 +158,11 @@ public class Utils {
         }
 
         File smallFileFront = new File(url.replace(".png", "_small.png"));
-        OutputStream fOutFront = null;
-        try {
-            fOutFront = new FileOutputStream(smallFileFront);
+
+        try (OutputStream fOutFront = new FileOutputStream(smallFileFront)) {
             bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
         } catch (IOException e) {
             Log.e("COMPRESS_IMAGE", e.getMessage(), e);
-        } finally {
-            if (fOutFront != null) {
-                try {
-                    fOutFront.flush();
-                    fOutFront.close();
-                } catch (IOException e) {
-                    // nothing to do
-                }
-            }
         }
         return smallFileFront.toString();
     }
@@ -256,6 +246,8 @@ public class Utils {
             case "e":
                 drawable = R.drawable.nnc_e;
                 break;
+            default:
+                break;
         }
 
         return drawable;
@@ -321,6 +313,8 @@ public class Utils {
             case "4":
                 drawable = R.drawable.ic_nova_group_4;
                 break;
+            default:
+                break;
         }
         return drawable;
     }
@@ -376,6 +370,8 @@ public class Utils {
                 break;
             case "e":
                 drawable = R.drawable.nnc_small_e;
+                break;
+            default:
                 break;
         }
 
@@ -578,6 +574,8 @@ public class Utils {
                     return "WiFi";
                 case ConnectivityManager.TYPE_WIMAX:
                     return "WiMax";
+                default:
+                    break;
             }
         }
 
@@ -773,7 +771,7 @@ public class Utils {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(Utils.class.getSimpleName(),"getVersionName",e);
+            Log.e(Utils.class.getSimpleName(), "getVersionName", e);
         }
         return "(version unknown)";
     }
@@ -802,7 +800,7 @@ public class Utils {
         try {
             jsonObject = new JSONObject(response);
         } catch (JSONException e) {
-            Log.e(Utils.class.getSimpleName(),"createJsonObject",e);
+            Log.e(Utils.class.getSimpleName(), "createJsonObject", e);
         }
         return jsonObject;
     }

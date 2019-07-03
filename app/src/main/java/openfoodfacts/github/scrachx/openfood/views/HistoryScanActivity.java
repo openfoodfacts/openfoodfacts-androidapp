@@ -399,8 +399,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         protected void onPostExecute(Context ctx) {
 
             sort(SORT_TYPE, productItems);
-            adapter = new HistoryListAdapter(productItems, getString(R.string
-                .website_product), activity, isLowBatteryMode);
+            adapter = new HistoryListAdapter(productItems,  activity, isLowBatteryMode);
             recyclerHistoryScanView.setAdapter(adapter);
             recyclerHistoryScanView.setLayoutManager(new LinearLayoutManager(ctx));
             historyProgressbar.setVisibility(View.GONE);
