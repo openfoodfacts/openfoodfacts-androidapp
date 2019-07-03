@@ -4,6 +4,9 @@
     <plurals name="offline_notification_count">
         <item quantity="other"> %d のオフライン製品が Open Food Facts に送信されるのを待っています</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="other">%d 分前</item>
     </plurals>
@@ -486,6 +489,9 @@
     <string name="productNameNull">名前不明</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">この製品はまだ完全ではありません。\n詳細を追加できますか?</string>
     <string name="addProductOffline">オフラインのようです。オフラインモードを使用して製品 %s を追加しますか ?</string>
     <string name="product_not_found">スキャンした製品 %1$s はまだ Open Food Facts に存在しません。追加できますか?</string>
@@ -680,6 +686,7 @@
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">バーコード</string>
