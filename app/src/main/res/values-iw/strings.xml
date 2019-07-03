@@ -8,10 +8,10 @@
         <item quantity="other">יש %d מוצרים בלתי מקוונים שממתינים להגשה כתרומה ל־Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="two">%d seconds ago</item>
-        <item quantity="many">%d seconds ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">לפני שנייה</item>
+        <item quantity="two">לפני שתי שניות</item>
+        <item quantity="many">לפני %d שניות</item>
+        <item quantity="other">לפני %d שניות</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">לפני דקה</item>
@@ -505,10 +505,10 @@
     <string name="productAdditivesUnknown">תוספים בלתי ידועים</string>
     <string name="productAdditivesTemplate">%1$d תוספים</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="two">%d additives</item>
-        <item quantity="many">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">תוסף אחד</item>
+        <item quantity="two">%d תוספים</item>
+        <item quantity="many">%d תוספים</item>
+        <item quantity="other">%d תוספים</item>
     </plurals>
     <string name="product_not_complete">מוצר זה טרם הושלם. \nנוכל לבקש ממך להוסיף עוד פרטים?</string>
     <string name="addProductOffline">כנראה שאין לך חיבור לאינטרנט. להוסיף את המוצר %s במצב בלתי מקוון?</string>
@@ -704,7 +704,7 @@
     <string name="add_an_allergen">הוספת אלרגן</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">עריכת תמונה</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">התמונה החדשה לא התקבלה עדיין. נא להמתין בטרם עריכתה</string>
     <string name="unselect_image">ביטול בחירת התמונה</string>
     <string name="choose_default_language">בחירת שפת המוצר</string>
     <string name="barcode">ברקוד</string>
