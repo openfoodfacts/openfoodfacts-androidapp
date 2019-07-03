@@ -5,6 +5,10 @@
         <item quantity="one"> Du har 1 offlineprodukt som väntar på att bidras till Open Food Facts</item>
         <item quantity="other"> Du har %d offlineprodukter som väntar på att bidras till Open Food Facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minut sedan</item>
         <item quantity="other">%d minuter sedan</item>
@@ -490,6 +494,10 @@
     <string name="productNameNull">Namn okänt</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">Denna produkt är ofärdig. \nKan du lägga till några fler detaljer?</string>
     <string name="addProductOffline">Du verkar vara offline. Lägg till %s med hjälp av offline-läge?</string>
     <string name="product_not_found">Produkten %1$s du skannat finns ännu inte i Open Food Facts. Kan du lägga till den?</string>
@@ -684,6 +692,7 @@
     <string name="add_an_allergen">Lägg till ett allergen</string>
     <string name="add_a_list">Lägg till en lista</string>
     <string name="edit_image">Redigera bild</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Streckkod</string>
