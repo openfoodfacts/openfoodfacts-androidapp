@@ -44,7 +44,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
     public HistoryScanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Inflate the layout, initialize the View Holder
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_list_item, parent, false);
-        return new HistoryScanHolder(v, productUrl, mActivity);
+        return new HistoryScanHolder(v, mActivity);
     }
 
     @Override
@@ -134,7 +134,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         long hours = TimeUnit.MILLISECONDS.toHours(now.getTime() - date.getTime());
         long days = TimeUnit.MILLISECONDS.toDays(now.getTime() - date.getTime());
 
-        String secText = String.valueOf(seconds) + " seconds ago";
+        String secText = seconds + " seconds ago";
         String hourText = res.getQuantityString(R.plurals.hours, (int) hours, (int) hours);
         String minText = res.getQuantityString(R.plurals.minutes, (int) minutes,(int) minutes);
         String dayText = res.getQuantityString(R.plurals.days, (int) days, (int) days);
