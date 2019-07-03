@@ -9,6 +9,14 @@
         <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في Open Food Facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="zero">%d seconds ago</item>
+        <item quantity="one">1 second ago</item>
+        <item quantity="two">%d seconds ago</item>
+        <item quantity="few">%d seconds ago</item>
+        <item quantity="many">%d seconds ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="zero">%d minutes ago</item>
         <item quantity="one">قبل دقيقة</item>
@@ -508,6 +516,14 @@
     <string name="productNameNull">الاسم غير معروف</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="zero">%d additives</item>
+        <item quantity="one">%d additive</item>
+        <item quantity="two">%d additives</item>
+        <item quantity="few">%d additives</item>
+        <item quantity="many">%d additives</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">هذا المنتج لم يكتمل بعد. \n هل يمكنك إضافة بعض التفاصيل؟</string>
     <string name="addProductOffline">يبدو أنك غير متصل. أضف المنتج %s باستخدام الوضع الغير متصل بالشبكة؟</string>
     <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. هل يمكنك إضافته؟</string>
@@ -702,6 +718,7 @@
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">الرمز الشريطي</string>
