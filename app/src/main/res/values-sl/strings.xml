@@ -7,6 +7,12 @@
         <item quantity="few"> %d izdeleki brez povezave čakajo na vaš prispevek k dejanjem o odprtih živilih</item>
         <item quantity="other"> %d izdelekov brez povezave čaka na vaš prispevek k dejanjem o odprtih živilih</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="two">%d seconds ago</item>
+        <item quantity="few">%d seconds ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minuto nazaj</item>
         <item quantity="two">%d minuti nazaj</item>
@@ -498,6 +504,12 @@
     <string name="productNameNull">Neznano ime</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="two">%d additives</item>
+        <item quantity="few">%d additives</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">Ta izdelek še ni dokončan. \nLahko dodate nekaj podrobnosti?</string>
     <string name="addProductOffline">Zdi se, da ste brez povezave. Dodam izdelek %s v načinu brez povezave?</string>
     <string name="product_not_found">Skeniran izdelek %1$s še ne obstaja v Open Food Facts. Ga lahko dodate?</string>
@@ -692,6 +704,7 @@
     <string name="add_an_allergen">Dodaj alergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Črtna koda</string>
