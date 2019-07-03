@@ -5,6 +5,10 @@
         <item quantity="one"> మీకు 1 ఆఫ్లైన్ ఉత్పత్తిని ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్కు అందించడానికి వేచి ఉన్నాయి</item>
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minute ago</item>
         <item quantity="other">%d నిమిషాల క్రితం</item>
@@ -490,6 +494,10 @@
     <string name="productNameNull">పేరు తెలియదు</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">ఈ ఉత్పత్తి ఇంకా పూర్తి కాలేదు. \nమీరు కొన్ని వివరాలను చేర్చవచ్చా?</string>
     <string name="addProductOffline">మీరు ఆఫ్లైన్లో ఉన్నారు. ఉత్పత్తి జోడించు %s ఆఫ్లైన్ మోడ్ ఉపయోగించి?</string>
     <string name="product_not_found">ఉత్పత్తి %1$s మీరు స్కాన్ లో ఓపెన్ ఆహార వాస్తవాలు ఇంకా ఉనికిలో లేదు. మీరు దీన్ని జోడించవచ్చా?</string>
@@ -684,6 +692,7 @@
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Barcode</string>

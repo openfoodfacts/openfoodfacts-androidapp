@@ -5,6 +5,10 @@
         <item quantity="one">Sie verfügen über ein Offline-Produkt, das darauf wartet, zu Open Food Facts hinzugefügt zu werden.</item>
         <item quantity="other">Sie verfügen über %d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">vor einer Minute</item>
         <item quantity="other">vor %d Minuten</item>
@@ -490,6 +494,10 @@
     <string name="productNameNull">Name unbekannt</string>
     <string name="productAdditivesUnknown">Unbekannte Zusatzstoffe</string>
     <string name="productAdditivesTemplate">%1$d Zusatzstoffe</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">Dieses Produkt ist noch nicht vollständig.\nKönnten Sie ein paar Details hinzufügen?</string>
     <string name="addProductOffline">Sie scheinen offline zu sein. Möchten Sie das Produkt „%s” im Offline-Modus hinzufügen?</string>
     <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Food Facts. Könnten Sie es bitte hinzufügen?</string>
@@ -684,6 +692,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="add_an_allergen">Allergen hinzufügen</string>
     <string name="add_a_list">Eine Liste hinzufügen</string>
     <string name="edit_image">Foto bearbeiten</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Foto abwählen</string>
     <string name="choose_default_language">Produktsprache wählen</string>
     <string name="barcode">Strichcode</string>

@@ -5,6 +5,10 @@
         <item quantity="one">crwdns115916:1crwdne115916:1</item>
         <item quantity="other">crwdns115916:5%dcrwdne115916:5</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">crwdns119588:1crwdne119588:1</item>
+        <item quantity="other">crwdns119588:5%dcrwdne119588:5</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">crwdns112896:1crwdne112896:1</item>
         <item quantity="other">crwdns112896:5%dcrwdne112896:5</item>
@@ -490,6 +494,10 @@
     <string name="productNameNull">crwdns114216:0crwdne114216:0</string>
     <string name="productAdditivesUnknown">crwdns119452:0crwdne119452:0</string>
     <string name="productAdditivesTemplate">crwdns119454:0%1$dcrwdne119454:0</string>
+    <plurals name="productAdditives">
+        <item quantity="one">crwdns119590:1%dcrwdne119590:1</item>
+        <item quantity="other">crwdns119590:5%dcrwdne119590:5</item>
+    </plurals>
     <string name="product_not_complete">crwdns114222:0crwdne114222:0</string>
     <string name="addProductOffline">crwdns114224:0%scrwdne114224:0</string>
     <string name="product_not_found">crwdns114226:0%1$scrwdne114226:0</string>
@@ -683,6 +691,7 @@
     <string name="add_an_allergen">crwdns117700:0crwdne117700:0</string>
     <string name="add_a_list">crwdns118276:0crwdne118276:0</string>
     <string name="edit_image">crwdns118218:0crwdne118218:0</string>
+    <string name="cant_edit_image_not_yet_uploaded">crwdns119592:0crwdne119592:0</string>
     <string name="unselect_image">crwdns119478:0crwdne119478:0</string>
     <string name="choose_default_language">crwdns119480:0crwdne119480:0</string>
     <string name="barcode">crwdns118220:0crwdne118220:0</string>

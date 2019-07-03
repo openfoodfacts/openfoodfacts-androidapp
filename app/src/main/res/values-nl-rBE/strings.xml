@@ -5,6 +5,10 @@
         <item quantity="one"> Je hebt 1 offline product wachtende om bijgedragen te worden aan Open Food Facts</item>
         <item quantity="other"> Je hebt %d offline producten wachtende om bijgedragen te worden aan Open Food Facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minuut geleden</item>
         <item quantity="other">%d minuten geleden</item>
@@ -490,6 +494,10 @@
     <string name="productNameNull">Naam onbekend</string>
     <string name="productAdditivesUnknown">Additieven onbekend</string>
     <string name="productAdditivesTemplate">%1$d additieven</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">Dit product is nog niet compleet. \nWil je details toevoegen?</string>
     <string name="addProductOffline">Je lijkt offline te zijn. Het product %s toevoegen met behulp van de offlinemodus?</string>
     <string name="product_not_found">Product %1$s door jou gescand, bestaat nog niet. Wil je het toevoegen?</string>
@@ -684,6 +692,7 @@
     <string name="add_an_allergen">Voeg een allergeen toe</string>
     <string name="add_a_list">Voeg een lijst toe</string>
     <string name="edit_image">Bewerk afbeelding</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Foto deselecteren</string>
     <string name="choose_default_language">Selecteer producttaal</string>
     <string name="barcode">Streepjescode</string>

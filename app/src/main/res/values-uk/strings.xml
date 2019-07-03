@@ -7,6 +7,12 @@
         <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="few">%d seconds ago</item>
+        <item quantity="many">%d seconds ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 хвилину тому</item>
         <item quantity="few">%d minutes ago</item>
@@ -30,7 +36,7 @@
     <string name="contribute">Як внести свій вклад</string>
     <string name="action_find">Знайти</string>
     <string name="product_incomplete_message">Інформація про продукт не є повною, тому неможливо перейти до заповнення алергенів.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">Цей продукт містить:</string>
     <string name="no_offline_data">Усе готово</string>
     <string name="first_offline">Тут відображуються продукти, що були додані в оффлайні</string>
     <!-- Image Upload -->
@@ -57,7 +63,7 @@
     <string-array name="weight_all_units">
         <item>г</item>
         <item>мг</item>
-        <item>µg</item>
+        <item>мкг</item>
         <item>% DV</item>
         <item>Міжнародна одиниця</item>
     </string-array>
@@ -96,7 +102,7 @@
         <item>Йод</item>
         <item>Залізо</item>
         <item>Лактоза</item>
-        <item>Lauric acid (12:0)</item>
+        <item>Лауринова кислота (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
         <item>Магній</item>
@@ -138,9 +144,9 @@
         <item>Вітамін B6 (піридоксин)</item>
         <item>Вітамін B9 (Фолієва кислота)</item>
         <item>Вітамін C (аскорбінова кислота)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
+        <item>Вітамін D</item>
+        <item>Вітамін E</item>
+        <item>Вітамін K</item>
         <item>Цинк</item>
     </string-array>
     <!-- Text units -->
@@ -158,7 +164,7 @@
     <string name="Donation">Натисніть тут, щоб підтримати Open Food Facts</string>
     <string name="txtSubstances">Речовини або продукти, що викликають алергію чи непереносимість:</string>
     <string name="txtAdditives">Добавки:</string>
-    <string name="txtTraces">Traces :</string>
+    <string name="txtTraces">Сліди:</string>
     <string name="txtMayBeFromPalmOilProduct">Інгредієнти, які можуть бути з пальмової олії:</string>
     <string name="txtPalmOilProduct">Інгредієнти з пальмової олії:</string>
     <string name="txtServingSize">Розмір порції:</string>
@@ -209,7 +215,7 @@
     <string name="delete_txt">Видалити</string>
     <string name="sign_in_drawer">Увійти</string>
     <string name="alert_drawer">Aлергени</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Ваші списки</string>
     <string name="title_dialog_alert">Додати оповіщення</string>
     <string name="select_camera">Обрати камеру</string>
     <string name="ok_button">Добре</string>
@@ -238,7 +244,7 @@
     <string name="scan_history_drawer">Історія</string>
     <string name="clear_history">Очистити історію</string>
     <string name="title_clear_history_dialog">Очистити</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Ви хочете очистити всю історію ваших сканувань?</string>
     <string name="export_csv_history">Зберегти у файл CSV</string>
     <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">Історію збережено</string>
@@ -250,8 +256,8 @@
     <string name="check_facts">Перевірити</string>
     <string name="nutrition">Харчова цінність</string>
     <string name="calculated_nutrition">Розраховане харчування</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="please_enter_weight">Будь-ласка введіть вагу продукту</string>
+    <string name="enter_weight">Введіть вагу продукту</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Вуглеводи</string>
     <string name="nutrition_cholesterol">Холестерин</string>
@@ -269,20 +275,20 @@
     <string name="nutriment_serving_size">В одній порції: </string>
     <string name="action_manage_account">Управління акаунтом</string>
     <string name="action_contributes">Ваш внесок</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="choose_energy_unit">Виберіть бажані одиниці енергії для таблиці харчування</string>
+    <string name="energy_pref_title">Бажана одиниця енергії</string>
+    <string name="choose_volume_unit">Виберіть бажані одиниці об\'єму для таблиці харчування</string>
+    <string name="volume_pref_title">Бажана одиниця об\'єму</string>
     <string name="logout_drawer">Вийти</string>
     <string name="contribution_without_account">Вам потрібно увійти або створити обліковий запис, щоб побачити свої внески</string>
     <string name="textCarbonFootprint">Викиди вуглецю / CO2: </string>
     <string name="action_search">Пошук</string>
     <string name="search_hint">Пошук товару</string>
-    <string name="number_of_results">Number of results: </string>
-    <string name="number_of_products">Number of products: </string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
+    <string name="number_of_results">Кількість результатів: </string>
+    <string name="number_of_products">Кількість продуктів: </string>
+    <string name="txt_no_matching__category_products">О, ні, ми не маємо жодного продукту в цій категорії, чи можете додати один?</string>
+    <string name="txt_no_matching_allergen_products">О, ні, ми не маємо продуктів з цим алергеном, чи можете додати один?</string>
+    <string name="txt_no_matching_label_products">О, ні, ми не маємо продуктів з цією міткою, чи можете додати один?</string>
     <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
     <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
     <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
@@ -498,6 +504,12 @@
     <string name="productNameNull">Name unknown</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="few">%d additives</item>
+        <item quantity="many">%d additives</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
@@ -692,6 +704,7 @@
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Код товару</string>
