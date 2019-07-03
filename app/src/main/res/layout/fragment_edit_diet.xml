@@ -12,20 +12,20 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="68dp"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation">
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/left_guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_begin="@dimen/activity_horizontal_margin" />
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/right_guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -222,7 +222,7 @@
                 app:layout_constraintStart_toStartOf="@id/left_guideline"
                 app:layout_constraintTop_toBottomOf="@id/ingredients_unauthorised" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

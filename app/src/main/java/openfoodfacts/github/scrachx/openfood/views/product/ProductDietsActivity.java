@@ -4,10 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.MenuItem;
 
 import java.util.Collections;
@@ -15,6 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
+import com.google.android.material.tabs.TabLayout;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.DietIngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
@@ -29,11 +29,11 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 public class ProductDietsActivity extends BaseActivity {
 
 	@BindView( R.id.pager )
-	ViewPager viewPager;
+    ViewPager viewPager;
 	@BindView( R.id.toolbar )
-	Toolbar toolbar;
+    Toolbar toolbar;
 	@BindView( R.id.tabs )
-	TabLayout tabLayout;
+    TabLayout tabLayout;
     @BindView( R.id.bottom_navigation )
 	BottomNavigationView bottomNavigationView;
 
