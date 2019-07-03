@@ -6,8 +6,8 @@
         <item quantity="other"> Vous avez %d produit hors ligne en attente d\'être ajouté à Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">Il y a 1 seconde</item>
+        <item quantity="other">Il y a %d secondes</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">Il y a 1 minute</item>
@@ -495,8 +495,8 @@
     <string name="productAdditivesUnknown">Additifs inconnus</string>
     <string name="productAdditivesTemplate">%1$d additifs</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d additif</item>
+        <item quantity="other">%d additifs</item>
     </plurals>
     <string name="product_not_complete">Ce produit n\'est pas encore complet.\nPouvez-vous ajouter des détails?</string>
     <string name="addProductOffline">Vous semblez déconnecté. Ajouter le produit %s en utilisant le mode hors ligne?</string>
