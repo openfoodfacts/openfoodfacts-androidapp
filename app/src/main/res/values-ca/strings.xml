@@ -5,6 +5,10 @@
         <item quantity="one"> Teniu 1 producte fora de línia esperant la vostra aportació a Open Food Facts</item>
         <item quantity="other"> Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">fa 1 minut</item>
         <item quantity="other">fa %d minuts</item>
@@ -490,6 +494,10 @@
     <string name="productNameNull">Nom desconegut</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">Aquest producte encara no està complet. \nPodeu afegir-hi algun detall?</string>
     <string name="addProductOffline">Sembla que esteu desconnectat. Voleu afegir el producte %s amb el mode fora de línia?</string>
     <string name="product_not_found">El producte %1$s que heu escanejat encara no existeix a Open Food Facts. Podeu afegir-lo?</string>
@@ -684,6 +692,7 @@
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Codi de barres</string>
