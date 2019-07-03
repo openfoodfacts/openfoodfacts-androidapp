@@ -6,8 +6,8 @@
         <item quantity="other"> Tienes %d productos a la espera de ser sincronizados con Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">Hace 1 segundo</item>
+        <item quantity="other">Hace %d segundos</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">Hace 1 minuto</item>
@@ -495,8 +495,8 @@
     <string name="productAdditivesUnknown">Aditivos desconocidos</string>
     <string name="productAdditivesTemplate">%1$d aditivos</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d aditivos</item>
+        <item quantity="other">%d aditivos</item>
     </plurals>
     <string name="product_not_complete">Este producto aún no está completo. \n¿Puede agregar algunos detalles?</string>
     <string name="addProductOffline">Parece desconectado. ¿Agregar el producto %s usando el modo sin conexión?</string>
@@ -692,7 +692,7 @@
     <string name="add_an_allergen">Añadir un alérgeno</string>
     <string name="add_a_list">Añadir una lista</string>
     <string name="edit_image">Editar imagen</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">La nueva imagen aún no se ha subido. Por favor, espere antes de editarla</string>
     <string name="unselect_image">Deseleccionar imagen</string>
     <string name="choose_default_language">Seleccionar idioma del producto</string>
     <string name="barcode">Código de barras</string>
