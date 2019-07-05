@@ -1,6 +1,6 @@
 Open Beauty Facts, içerdikleri maddeler, allerjenler, işaretler ve ürün etiketleri üzerinde bulabileceğimiz tüm bilgi çılgınlığı ürünleriyle dolu bir kozmetik ürünlerinden oluşan bir veritabanıdır.
 
-*** Contribute to Product Transparency ***
+*** Ürünlerdeki şeffaflığa yardımcı olabilirsiniz ***
 
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.

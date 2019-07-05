@@ -7,13 +7,13 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsIntent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.browser.customtabs.CustomTabsIntent;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -31,12 +31,14 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -46,10 +48,8 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAu
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.text.WordUtils;
+import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
-import org.jsoup.helper.StringUtil;
 
 import java.io.File;
 import java.net.URI;
@@ -363,7 +363,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             mImageUrl = imageFrontUrl;
             imageProgress.setVisibility(View.VISIBLE);
             editImageFront.setVisibility(View.INVISIBLE);
-            Picasso.with(getContext())
+            Picasso.get()
                 .load(imageFrontUrl)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
@@ -374,7 +374,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception ex) {
                         frontImageLoaded();
                     }
                 });
@@ -440,8 +440,8 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                 imageProgress.setVisibility(View.VISIBLE);
                 editImageFront.setVisibility(View.INVISIBLE);
                 mImageUrl = productDetails.get("image_front");
-                Picasso.with(getContext())
-                    .load("file://" + mImageUrl)
+                Picasso.get()
+                    .load(FileUtils.LOCALE_FILE_SCHEME+ mImageUrl)
                     .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
                     .into(imageFront, new Callback() {
@@ -451,7 +451,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             frontImageLoaded();
                         }
                     });
@@ -574,7 +574,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         languageCode = lang;
         Locale current = LocaleHelper.getLocale(lang);
         language.setText(R.string.product_language);
-        language.append(WordUtils.capitalize(current.getDisplayName(current)));
+        language.append(StringUtils.capitalize(current.getDisplayName(current)));
         if (activity instanceof AddProductActivity) {
             getAddProductActivity().setProductLanguage(languageCode);
         }
@@ -582,7 +582,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             loadFrontImage(lang);
             OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
-            client.getExistingProductDetails(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
@@ -784,7 +784,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
 
     private String getValues(NachoTextView nachoTextView) {
         List<String> list = nachoTextView.getChipValues();
-        return StringUtil.join(list, ",");
+        return StringUtils.join(list, ",");
     }
 
     @OnClick(R.id.section_manufacturing_details)
@@ -839,7 +839,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         String url = "https://www.google.com/search?q=" + code;
         if (!brand.getChipAndTokenValues().isEmpty()) {
             List<String> brandNames = brand.getChipAndTokenValues();
-            url = url + " " + StringUtil.join(brandNames, " ");
+            url = url + " " + StringUtils.join(brandNames, " ");
         }
         if (!name.getText().toString().isEmpty()) {
             url = url + " " + name.getText().toString();
@@ -871,7 +871,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             }
             Locale current = LocaleHelper.getLocale(localeValues[i]);
             if (current != null) {
-                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
+                localeLabels[i] = StringUtils.capitalize(current.getDisplayName(current));
                 finalLocalLabels.add(localeLabels[i]);
                 finalLocalValues.add(localeValues[i]);
             }
@@ -952,7 +952,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         imageFront.setVisibility(View.VISIBLE);
         editImageFront.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
-            Picasso.with(activity)
+            Picasso.get()
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()

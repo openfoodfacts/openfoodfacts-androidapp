@@ -2,9 +2,9 @@ package openfoodfacts.github.scrachx.openfood.views.product.environment;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.CardView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +37,7 @@ public class EnvironmentProductFragment extends BaseFragment {
     @BindView(R.id.carbon_footprint_cv)
     CardView carbonFootprintCardView;
 
-    private State mState;
+    private State activityState;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,11 +45,11 @@ public class EnvironmentProductFragment extends BaseFragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mState=getStateFromActivityIntent();
+        activityState =getStateFromActivityIntent();
 
-        final Product product = mState.getProduct();
+        final Product product = activityState.getProduct();
         Nutriments nutriments = product.getNutriments();
 
         if(nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
@@ -83,13 +83,13 @@ public class EnvironmentProductFragment extends BaseFragment {
             recyclingInstructionsToRecycleCv.setVisibility(View.GONE);
         }
 
-        refreshView(mState);
+        refreshView(activityState);
     }
 
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
-        mState = state;
+        activityState = state;
     }
 
 }

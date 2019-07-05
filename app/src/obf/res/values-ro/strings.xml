@@ -23,9 +23,7 @@
     <string name="slide_4_title">Funcţionează offline</string>
     <string name="slide_4_desc">Poți adăuga produse noi, chiar dacă nu ești conectat la internet momentan</string>
     <string name="txtDialogsContent">Produsul pe care l-ai scanat încă nu există în Open Beauty Facts. Te rog să îl adaugi tu.</string>
-    <string name="txtDialogsContentPowerMode">Produsul pe care l-ai scanat există deja în Open Beauty Facts.</string>
     <string name="msg_share">Vizualizează acest produs în Open Beauty Facts :</string>
-    <string name="not_support_books">Cărțiile nu sunt momentan recunoscute de Open Beauty Facts</string>
     <string name="txt_broaden_search">- extinderea căutării tale \n- scanează-l și adaugă-l în Open Beauty Facts</string>
     <string name="Donation">Apăsă aici pentru a face o donație către Open Beauty Facts</string>
     <string name="translate_help_title">Ajută la traducerea aplicației Open Beauty Facts</string>
@@ -33,8 +31,8 @@
     <string name="text_offline_info_dialog">Scanează produsele chiar dacă ești deconectat și le poți adăuga mai târziu în baza de date Open Beauty Facts. Produsele scanate vor apărea aici și le vei putea trimite folosind butonul de mai jos.</string>
     <string name="warning_alert_data">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Beauty Facts. Totodată, fii atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% corectă, așa că te rog să verifici și tu personal acele produse! </string>
     <!-- OBF tagline in different languages -->
-    <string name="tagline">the free cosmetics database</string>
+    <string name="tagline">baza de date gratuită pentru produsele cosmetice</string>
     <string name="product_not_found">Produsul %1$s pe care l-ai scanat nu există încă în Open Beauty Facts. Îl poți adăuga tu?</string>
     <string name="currently_on_version">Acum pe Open Beauty Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Ajutați la catalogarea produselor</string>
 </resources>

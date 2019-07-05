@@ -23,9 +23,7 @@
     <string name="slide_4_title">Działa offline</string>
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
     <string name="txtDialogsContent">Zeskanowany produkt nie znajduje się w bazie Open Beauty Facts. Dodaj go.</string>
-    <string name="txtDialogsContentPowerMode">Zeskanowany produkt już jest w bazie.</string>
     <string name="msg_share">Zobacz produkt na Open Beauty Facts:</string>
-    <string name="not_support_books">Obecnie nie obsługujemy książek</string>
     <string name="txt_broaden_search">poszerz zakres wyszukiwania \n - zeskanuj i dodaj do Open Beauty Facts</string>
     <string name="Donation">Kliknij by wpłacić darowiznę na rzecz Open Beauty Facts</string>
     <string name="translate_help_title">Wspomóż tłumaczenie Open Beauty Facts</string>

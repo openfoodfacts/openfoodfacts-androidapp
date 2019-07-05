@@ -5,7 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -69,9 +69,6 @@ public class FastScroller extends LinearLayout {
                 currentAnimator.cancel();
             }
             getHandler().removeCallbacks(handleHider);
-           /* if (handle.getVisibility() == INVISIBLE) {
-                showHandle();
-            }*/
             setRecyclerViewPosition(event.getY());
             return true;
         } else if (event.getAction() == MotionEvent.ACTION_UP) {

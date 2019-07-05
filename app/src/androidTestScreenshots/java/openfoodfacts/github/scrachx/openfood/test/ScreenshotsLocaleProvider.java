@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.test;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.Predicate;
-import org.apache.commons.collections4.PredicateUtils;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
+import org.apache.commons.collections.PredicateUtils;
 
 import java.util.List;
 
@@ -16,12 +16,12 @@ public class ScreenshotsLocaleProvider {
         return parameters;
     }
 
-    private Predicate<ScreenshotParameter> predicate = PredicateUtils.truePredicate();
+    private Predicate predicate = PredicateUtils.truePredicate();
 
     /**
      * @param predicate could be used to filter to use for a tests.
      */
-    public void setPredicate(Predicate<ScreenshotParameter> predicate) {
+    public void setPredicate(Predicate predicate) {
         this.predicate = predicate;
     }
 

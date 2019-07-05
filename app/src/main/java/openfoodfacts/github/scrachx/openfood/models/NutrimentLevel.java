@@ -9,7 +9,7 @@ import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 
-import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang.StringUtils.isBlank;
 
 /**
  * @author herau

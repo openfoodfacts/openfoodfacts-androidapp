@@ -1,13 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
@@ -48,22 +48,8 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
         NutrimentItem item = nutrimentItems.get(position);
 
         NutrimentViewHolder nutrimentViewHolder = (NutrimentViewHolder) holder;
-
-        nutrimentViewHolder.vNutrimentName.setText(item.getTitle());
-        nutrimentViewHolder.vNutrimentValue.append(item.getModifier());
-        nutrimentViewHolder.vNutrimentValue.append(item.getValue());
-        nutrimentViewHolder.vNutrimentValue.append(" ");
-        nutrimentViewHolder.vNutrimentValue.append(item.getUnit());
-
-        final CharSequence servingValue = item.getServingValue();
-        if(StringUtils.isBlank(servingValue)){
-            nutrimentViewHolder.vNutrimentServingValue.setText(StringUtils.EMPTY);
-        }else {
-            nutrimentViewHolder.vNutrimentServingValue.append(item.getModifier());
-            nutrimentViewHolder.vNutrimentServingValue.append(servingValue);
-            nutrimentViewHolder.vNutrimentServingValue.append(" ");
-            nutrimentViewHolder.vNutrimentServingValue.append(item.getUnit());
-        }
+        nutrimentViewHolder.fillNutrimentValue(item);
+        nutrimentViewHolder.fillServingValue(item);
     }
 
     @Override
@@ -80,16 +66,36 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
         return nutrimentItems.size();
     }
 
-    class NutrimentViewHolder extends RecyclerView.ViewHolder {
-        TextView vNutrimentName;
-        TextView vNutrimentValue;
-        TextView vNutrimentServingValue;
+    static class NutrimentViewHolder extends RecyclerView.ViewHolder {
+        private TextView vNutrimentName;
+        private TextView vNutrimentValue;
+        private TextView vNutrimentServingValue;
 
         public NutrimentViewHolder(View v) {
             super(v);
             vNutrimentName = v.findViewById(R.id.nutriment_name);
             vNutrimentValue = v.findViewById(R.id.nutriment_value);
             vNutrimentServingValue = v.findViewById(R.id.nutriment_serving_value);
+        }
+
+        void fillNutrimentValue(NutrimentItem item) {
+            vNutrimentName.setText(item.getTitle());
+            vNutrimentValue.append(item.getModifier());
+            vNutrimentValue.append(item.getValue());
+            vNutrimentValue.append(" ");
+            vNutrimentValue.append(item.getUnit());
+        }
+
+        void fillServingValue(NutrimentItem item) {
+            final CharSequence servingValue = item.getServingValue();
+            if (StringUtils.isBlank(servingValue.toString())) {
+                vNutrimentServingValue.setText(StringUtils.EMPTY);
+            } else {
+                vNutrimentServingValue.append(item.getModifier());
+                vNutrimentServingValue.append(servingValue);
+                vNutrimentServingValue.append(" ");
+                vNutrimentServingValue.append(item.getUnit());
+            }
         }
     }
 

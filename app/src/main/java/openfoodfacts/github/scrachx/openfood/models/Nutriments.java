@@ -1,13 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class Nutriments implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final String DEFAULT_UNIT = "g";
 
-    public final static String ENERGY ="energy";
+    public static final  String ENERGY ="energy";
     public static final String ENERGY_FROM_FAT = "energy-from-fat";
     public static final String FAT = "fat";
     public static final String SATURATED_FAT = "saturated-fat";
@@ -340,7 +340,7 @@ public class Nutriments implements Serializable {
             if (valueInGramOrMl.isEmpty() || unit.equals(UnitUtils.UNIT_GRAM)) {
                 return valueInGramOrMl;
             }
-            float value = Float.valueOf(valueInGramOrMl);
+            float value = Float.parseFloat(valueInGramOrMl);
             value = UnitUtils.convertFromGram(value, unit);
             return getRoundNumber(value);
         }
@@ -363,9 +363,16 @@ public class Nutriments implements Serializable {
             if (strValue.isEmpty() || strValue.contains("%")) {
                 return strValue;
             }
-            float valueFor100g = Float.valueOf(strValue);
-            float portionInGram=UnitUtils.convertToGrams(userSetServing,otherUnit);
-            return getRoundNumber(valueFor100g/100*portionInGram);
+            try {
+                float valueFor100g = Float.parseFloat(strValue);
+                float portionInGram=UnitUtils.convertToGrams(userSetServing,otherUnit);
+                return getRoundNumber(valueFor100g/100*portionInGram);
+            }catch (NumberFormatException fmt){
+                Log.w(Nutriments.class.getSimpleName(),"getForAnyValue can't parse value "+strValue,fmt);
+            }
+            return StringUtils.EMPTY;
+
+
         }
     }
 }

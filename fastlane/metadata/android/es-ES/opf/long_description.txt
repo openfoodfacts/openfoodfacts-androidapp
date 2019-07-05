@@ -31,7 +31,7 @@ Para alimentos, puede instalar Open Food Facts, para cosméticos, Open Beauty Fa
 Open Products Facts también está disponible en la web en https://world.openproductsfacts.org
 Preguntas, comentarios: contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** Listado original del Día de los Inocentes ***
 
 Ayer por la mañana, el equipo de Open Food Facts se despertó con una asombrosa revelación. 
 
@@ -45,10 +45,10 @@ Datos de Crayones abiertos: la base de datos abierta más grande de lápices de 
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-Open ??? Facts - The largest open database of ???
+Abierto ??? Datos - La mayor base de datos abierta de ???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Mañana, seleccionaremos las 3 bases de datos con más exito, y comenzaremos a recopilar todos los productos de esa categoria en el mundo.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+¿Será la base de datos de basuras, télécartes o móviles? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Así que si te gusta camisetas, libros de cocinar, el origami o globos de nieve, empieza a escanear usando la aplicación Open Products Facts Android en Google Play

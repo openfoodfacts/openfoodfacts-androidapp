@@ -1,24 +1,21 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-
+import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
 
 import org.json.JSONArray;
@@ -53,7 +50,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
         product = state.getProduct();
         // initialize the arraylist
         imageNames = new ArrayList<>();
-        imagesRecycler = view.findViewById(R.id.images_recycler);
+        imagesRecycler = view.findViewById(R.id.imagesRecycler);
 
         openFoodAPIClient.getImages(product.getCode(), (value, response) -> {
 
@@ -103,18 +100,14 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
     public void openFullScreen(String mUrlImage) {
         if (mUrlImage != null) {
-            Intent intent = new Intent(getContext(), FullScreenImage.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("imageurl", mUrlImage);
-            intent.putExtras(bundle);
-            startActivity(intent);
+            FullScreenActivityOpener.openZoom(this,mUrlImage,null);
         }
     }
 
     @Override
     public void onImageClick(int position) {
 
-        String baseUrlString = "https://static.openfoodfacts.org/images/products/";
+        String baseUrlString = BuildConfig.STATICURL+ "/images/products/";
         String barcodePattern = product.getCode();
         if (barcodePattern.length() > 8) {
             barcodePattern = new StringBuilder(product.getCode())

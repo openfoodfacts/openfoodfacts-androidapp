@@ -20,12 +20,8 @@ import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.annotation.DrawableRes;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.content.res.AppCompatResources;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -36,6 +32,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.firebase.jobdispatcher.*;
 import okhttp3.CipherSuite;
@@ -54,7 +55,7 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -70,11 +71,11 @@ import java.util.regex.Pattern;
 import static android.text.TextUtils.isEmpty;
 
 public class Utils {
+    public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
     public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
     public static boolean isUploadJobInitialised;
-    public static boolean DISABLE_IMAGE_LOAD = false;
     public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
@@ -157,21 +158,11 @@ public class Utils {
         }
 
         File smallFileFront = new File(url.replace(".png", "_small.png"));
-        OutputStream fOutFront = null;
-        try {
-            fOutFront = new FileOutputStream(smallFileFront);
+
+        try (OutputStream fOutFront = new FileOutputStream(smallFileFront)) {
             bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
         } catch (IOException e) {
             Log.e("COMPRESS_IMAGE", e.getMessage(), e);
-        } finally {
-            if (fOutFront != null) {
-                try {
-                    fOutFront.flush();
-                    fOutFront.close();
-                } catch (IOException e) {
-                    // nothing to do
-                }
-            }
         }
         return smallFileFront.toString();
     }
@@ -208,7 +199,7 @@ public class Utils {
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "decodeFile " + f, e);
         }
         return null;
     }
@@ -221,7 +212,6 @@ public class Utils {
      * @return true if the application is installed, false otherwise.
      */
     public static boolean isApplicationInstalled(Context context, String packageName) {
-        //private boolean isApplicationInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
             // Check if the package name exists, if exception is thrown, package name does not
@@ -256,6 +246,8 @@ public class Utils {
             case "e":
                 drawable = R.drawable.nnc_e;
                 break;
+            default:
+                break;
         }
 
         return drawable;
@@ -281,7 +273,7 @@ public class Utils {
         }
     }
 
-    public static <T extends View> ArrayList<T> getViewsByType(ViewGroup root, Class<T> tClass) {
+    public static <T extends View> List<T> getViewsByType(ViewGroup root, Class<T> tClass) {
         final ArrayList<T> result = new ArrayList<>();
         int childCount = root.getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -298,8 +290,7 @@ public class Utils {
     }
 
     public static int getNovaGroupDrawable(Product product) {
-        return getNovaGroupDrawable(product==null?null:product.getNovaGroups());
-
+        return getNovaGroupDrawable(product == null ? null : product.getNovaGroups());
     }
 
     public static int getNovaGroupDrawable(String novaGroup) {
@@ -322,6 +313,8 @@ public class Utils {
             case "4":
                 drawable = R.drawable.ic_nova_group_4;
                 break;
+            default:
+                break;
         }
         return drawable;
     }
@@ -340,7 +333,7 @@ public class Utils {
             return drawable;
         }
         List<String> tags = product.getEnvironmentImpactLevelTags();
-        if(CollectionUtils.isEmpty(tags)){
+        if (CollectionUtils.isEmpty(tags)) {
             return drawable;
         }
         String tag = tags.get(0).replace("\"", "");
@@ -377,6 +370,8 @@ public class Utils {
                 break;
             case "e":
                 drawable = R.drawable.nnc_small_e;
+                break;
+            default:
                 break;
         }
 
@@ -438,7 +433,7 @@ public class Utils {
      * @return true if installed, false otherwise.
      */
     public static boolean isHardwareCameraInstalled(Context context) {
-        if(context==null){
+        if (context == null) {
             return false;
         }
         try {
@@ -457,7 +452,7 @@ public class Utils {
     /**
      * Schedules job to download when network is available
      */
-    public synchronized static void scheduleProductUploadJob(Context context) {
+    public static synchronized void scheduleProductUploadJob(Context context) {
         if (isUploadJobInitialised) {
             return;
         }
@@ -522,8 +517,8 @@ public class Utils {
         }
     }
 
-    public static  boolean isUserLoggedIn(Context context){
-        if(context==null){
+    public static boolean isUserLoggedIn(Context context) {
+        if (context == null) {
             return false;
         }
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
@@ -579,6 +574,8 @@ public class Utils {
                     return "WiFi";
                 case ConnectivityManager.TYPE_WIMAX:
                     return "WiMax";
+                default:
+                    break;
             }
         }
 
@@ -618,7 +615,7 @@ public class Utils {
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
         ClickableSpan clickableSpan;
-        String url = SearchType.URLS.get(type);
+        String url = SearchTypeUrls.getUrl(type);
 
         if (url == null) {
             clickableSpan = new ClickableSpan() {
@@ -661,7 +658,6 @@ public class Utils {
             return defaultValue;
         }
     }
-
 
     private static int convertKjToKcal(double kj) {
         return kj != 0 ? Double.valueOf(kj / 4.1868d).intValue() : -1;
@@ -734,6 +730,11 @@ public class Utils {
         return (int) ((batteryPct) * 100) <= 15;
     }
 
+    public static boolean isDisableImageLoad(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getBoolean("disableImageLoad", false);
+    }
+
     /*
      * Function to open ContinuousScanActivity to facilitate scanning
      * @param activity
@@ -770,7 +771,7 @@ public class Utils {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "getVersionName", e);
         }
         return "(version unknown)";
     }
@@ -780,12 +781,13 @@ public class Utils {
      * @return Returns the header to be put in network call
      */
     public static String getUserAgent(String type) {
+        final String prefix = "Official Android App ";
         if (type.equals(HEADER_USER_AGENT_SCAN)) {
-            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
+            return prefix + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
         } else if (type.equals(HEADER_USER_AGENT_SEARCH)) {
-            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
+            return prefix + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
         }
-        return "Official Android App " + BuildConfig.VERSION_NAME;
+        return prefix + BuildConfig.VERSION_NAME;
     }
 
      /*
@@ -798,7 +800,7 @@ public class Utils {
         try {
             jsonObject = new JSONObject(response);
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "createJsonObject", e);
         }
         return jsonObject;
     }
