@@ -585,9 +585,9 @@ public class ContinuousScanActivity extends android.support.v7.app.AppCompatActi
                 if (!Utils.isNetworkConnected(getBaseContext()) && newState == BottomSheetBehavior.STATE_DRAGGING) {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 } else {
-                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-                    lastText = null;
-                }
+                    if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                        lastText = null;
+                    }
                 if (searchByBarcode.getVisibility() == View.VISIBLE) {
                     bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_SMALL, ContinuousScanActivity.this));
                     bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
