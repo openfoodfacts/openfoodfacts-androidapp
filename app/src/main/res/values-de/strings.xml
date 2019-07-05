@@ -7,7 +7,7 @@
     </plurals>
     <plurals name="seconds">
         <item quantity="one">vor 1 Sekunde</item>
-        <item quantity="other">Vor %d Sekunden</item>
+        <item quantity="other">vor %d Sekunden</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">vor einer Minute</item>

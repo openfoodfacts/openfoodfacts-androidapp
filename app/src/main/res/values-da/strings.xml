@@ -6,8 +6,8 @@
         <item quantity="other"> Du har %d offlineprodukter, som venter på at blive bidrag til Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">1 sekund siden</item>
+        <item quantity="other">%d sekunder siden</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minut siden</item>
@@ -495,8 +495,8 @@
     <string name="productAdditivesUnknown">Tilsætningsstoffer ukendt</string>
     <string name="productAdditivesTemplate">%1$d tilsætningsstoffer</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d tilsætningsstof</item>
+        <item quantity="other">%d tilsætningsstoffer</item>
     </plurals>
     <string name="product_not_complete">Dette produkt er endnu ikke færdiggjort.\nKan du tilføje yderligere detaljer?</string>
     <string name="addProductOffline">Du ser ud til at være offline. Tilføj produktet %s vha. offline-tilstanden?</string>
@@ -692,7 +692,7 @@
     <string name="add_an_allergen">Tilføj et allergen</string>
     <string name="add_a_list">Tilføj en liste</string>
     <string name="edit_image">Rediger billede</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">Det nye foto er endnu ikke uploadet. Vent med at redigerer det</string>
     <string name="unselect_image">Afmarér foto</string>
     <string name="choose_default_language">Vælg produktsprog</string>
     <string name="barcode">Stregkode</string>
