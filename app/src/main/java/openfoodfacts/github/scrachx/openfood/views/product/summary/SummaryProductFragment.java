@@ -6,15 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.fragment.app.FragmentActivity;
-import androidx.core.widget.NestedScrollView;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -25,6 +16,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -47,13 +47,12 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static android.app.Activity.RESULT_OK;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
@@ -61,8 +60,8 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRO
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener, PhotoReceiver {
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
@@ -178,7 +177,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void refreshView(State state) {
         //no state-> we can't display anything.
-        if(state==null){
+        if (state == null) {
             return;
         }
         super.refreshView(state);
@@ -474,47 +473,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAllergens(List<AllergenName> allergens) {
-        if (allergens.isEmpty()) {
+        final AllergenHelper.Data data = AllergenHelper.computeUserAllergen(product, allergens);
+        if (data.isEmpty()) {
             return;
         }
 
-        if (!product.getStatesTags().contains("en:complete")) {
+        if (data.isIncomplete()) {
             productAllergenAlert.setText(R.string.product_incomplete_message);
             productAllergenAlertLayout.setVisibility(View.VISIBLE);
             return;
         }
 
-        Set<String> productAllergens = new HashSet<>(product.getAllergensHierarchy());
-        productAllergens.addAll(product.getTracesTags());
-
-        List<String> allergenMatch = new ArrayList<>();
-        for (AllergenName allergenName : allergens) {
-            if (productAllergens.contains(allergenName.getAllergenTag())) {
-                allergenMatch.add(allergenName.getName());
-            }
-        }
-
-        if (allergenMatch.isEmpty()) {
-            return;
-        }
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(
-            String.format("%s\n", getResources().getString(R.string.product_allergen_prompt)));
-
-        boolean first = true;
-        for (String allergenName : allergenMatch) {
-            String formattedAllergen;
-            if (first) {
-                formattedAllergen = allergenName;
-            } else {
-                formattedAllergen = String.format(", %s", allergenName);
-            }
-
-            stringBuilder.append(formattedAllergen);
-            first = false;
-        }
-        productAllergenAlert.setText(stringBuilder.toString());
+        String text = String.format("%s\n", getResources().getString(R.string.product_allergen_prompt)) +
+            StringUtils.join(data.getAllergens(), ", ");
+        productAllergenAlert.setText(text);
         productAllergenAlertLayout.setVisibility(View.VISIBLE);
     }
 
@@ -534,13 +506,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
                 CategoryName category = categories.get(i);
                 CharSequence categoryName = getCategoriesTag(category);
-                if (categoryName != null) {
-                    // Add category name to text view
-                    categoryProduct.append(categoryName);
-                    // Add a comma if not the last item
-                    if (i != lastIndex) {
-                        categoryProduct.append(", ");
-                    }
+                // Add category name to text view
+                categoryProduct.append(categoryName);
+                // Add a comma if not the last item
+                if (i != lastIndex) {
+                    categoryProduct.append(", ");
                 }
             }
         }
@@ -648,6 +618,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     categoryProduct.setVisibility(View.GONE);
                     break;
                 }
+                default:
+                    break;
             }
         });
     }
@@ -664,6 +636,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     labelProduct.setVisibility(View.GONE);
                     break;
                 }
+                default:
+                    break;
             }
         });
     }
@@ -820,7 +794,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onBookmarkProductButtonClick() {
         Activity activity = getActivity();
 
-        String barcode = product.getCode();
+        String productBarcode = product.getCode();
         String productName = product.getProductName();
         String imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(getContext()));
         String productDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
@@ -838,7 +812,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             RecyclerView addToListRecyclerView =
                 addToListView.findViewById(R.id.rv_dialogAddToList);
             DialogAddToListAdapter addToListAdapter =
-                new DialogAddToListAdapter(activity, productLists, barcode, productName, productDetails, imageUrl);
+                new DialogAddToListAdapter(activity, productLists, productBarcode, productName, productDetails, imageUrl);
             addToListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
             addToListRecyclerView.setAdapter(addToListAdapter);
             TextView tvAddToList = addToListView.findViewById(R.id.tvAddToNewList);

@@ -10,25 +10,25 @@ import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.widget.PopupMenu;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.*;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.BeepManager;
@@ -37,6 +37,8 @@ import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.journeyapps.barcodescanner.DefaultDecoderFactory;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import io.reactivex.SingleObserver;
@@ -52,6 +54,8 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
+import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductPresenter;
+import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductPresenterView;
 
 import java.io.IOException;
 import java.util.*;
@@ -108,6 +112,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     ConstraintLayout details;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
+    private SummaryProductPresenter summaryProductPresenter;
     private OpenFoodAPIClient client;
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private Product product;
@@ -174,9 +179,12 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         if (isFinishing() || isDestroyed()) {
             return;
         }
-        if(disposable!=null && !disposable.isDisposed()){
+        if (disposable != null && !disposable.isDisposed()) {
             //dispove the previous call if not ended.
             disposable.dispose();
+        }
+        if (summaryProductPresenter != null) {
+            summaryProductPresenter.dispose();
         }
         client.getProductFullSingle(lastText, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
@@ -218,6 +226,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                         }
                         new HistoryTask(mHistoryProductDao).execute(product);
                         showAllViews();
+                        manageAllergens(product);
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         productShownInBottomView();
                         productNotFound.setVisibility(GONE);
@@ -264,7 +273,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                         }
                         List<String> addTags = product.getAdditivesTags();
                         if (!addTags.isEmpty()) {
-                            additives.setText(getString(R.string.productAdditivesTemplate, addTags.size()));
+                            additives.setText(getResources().getQuantityString(R.plurals.productAdditives, addTags.size(), addTags.size()));
                         } else if (product.getStatesTags().contains("en:ingredients-completed")) {
                             additives.setText(getString(R.string.productAdditivesNone));
                         } else {
@@ -376,6 +385,36 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
             });
     }
 
+    private void manageAllergens(Product product) {
+        summaryProductPresenter = new SummaryProductPresenter(product, new SummaryProductPresenterView() {
+            @Override
+            public void showAllergens(List<AllergenName> allergens) {
+                final AllergenHelper.Data data = AllergenHelper.computeUserAllergen(product, allergens);
+                if (data.isEmpty()) {
+                    return;
+                }
+                final MaterialDialog.Builder builder = new MaterialDialog.Builder(ContinuousScanActivity.this)
+                    .title(R.string.alert_drawer)
+                    .titleColorRes(R.color.red_500)
+                    .neutralText(R.string.txtOk)
+                    .icon(new IconicsDrawable(ContinuousScanActivity.this)
+                        .icon(GoogleMaterial.Icon.gmd_warning)
+                        .color(ContextCompat.getColor(ContinuousScanActivity.this, R.color.red_500))
+                        .sizeDp(24));
+                if (data.isIncomplete()) {
+                    builder
+                        .content(R.string.product_incomplete_message)
+                        .show();
+                } else {
+                    builder.content(R.string.product_allergen_prompt)
+                        .items(data.getAllergens())
+                        .show();
+                }
+            }
+        });
+        summaryProductPresenter.loadAllergens();
+    }
+
     private void productNotFound(String lastText) {
         hideAllViews();
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
@@ -396,7 +435,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         quickView.getRootView().requestLayout();
     }
 
-
     private void showFirstScanTooltipIfNeeded() {
         final SharedPreferences sharedPreferences = getSharedPreferences(getClass().getSimpleName(), 0);
         boolean firstScan = sharedPreferences.getBoolean("firstScan", true);
@@ -413,7 +451,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
             firstScanMessage.show();
         }
     }
-
 
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
         showAllViews();
@@ -490,6 +527,9 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         super.onDestroy();
         if (disposable != null && !disposable.isDisposed()) {
             disposable.dispose();
+        }
+        if (summaryProductPresenter != null) {
+            summaryProductPresenter.dispose();
         }
     }
 
@@ -794,6 +834,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
     /**
      * Overridden to collapse bottom view after a back action from edit form.
+     *
      * @param savedInstanceState
      */
     @Override

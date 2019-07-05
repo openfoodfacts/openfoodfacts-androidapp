@@ -16,16 +16,16 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 
 public class HistoryScanHolder extends RecyclerView.ViewHolder {
 
-    public TextView txtDate;
-    public TextView txtTitle;
-    public TextView txtBarcode;
-    public TextView txtProductDetails;
-    public ImageView imgProduct;
-    public ImageView imgNutritionGrade;
-    public Activity mActivity;
-    public ProgressBar historyImageProgressbar;
+    public final TextView txtDate;
+    public final TextView txtTitle;
+    public final TextView txtBarcode;
+    public final TextView txtProductDetails;
+    public final ImageView imgProduct;
+    public final ImageView imgNutritionGrade;
+    public final Activity mActivity;
+    public final ProgressBar historyImageProgressbar;
 
-    public HistoryScanHolder(final View itemView, final String productUrl, Activity activity) {
+    public HistoryScanHolder(final View itemView, Activity activity) {
         super(itemView);
         txtTitle = itemView.findViewById(R.id.titleHistory);
         txtBarcode = itemView.findViewById(R.id.barcodeHistory);
