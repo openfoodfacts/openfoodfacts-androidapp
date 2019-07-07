@@ -692,7 +692,7 @@
     <string name="add_an_allergen">Añadir un alérgeno</string>
     <string name="add_a_list">Añadir una lista</string>
     <string name="edit_image">Editar imagen</string>
-    <string name="cant_edit_image_not_yet_uploaded">La nueva imagen aún no se ha subido. Por favor, espere antes de editarla</string>
+    <string name="cant_edit_image_not_yet_uploaded">La nueva imagen aún no se ha subido. Espere antes de editarla</string>
     <string name="unselect_image">Deseleccionar imagen</string>
     <string name="choose_default_language">Seleccionar idioma del producto</string>
     <string name="barcode">Código de barras</string>
