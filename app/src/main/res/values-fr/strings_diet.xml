@@ -13,5 +13,9 @@
     <string name="edit_diet_hint_so_so_ingredient">Énumérez les ingrédients problématiques qui devraient être en orange. Exemple : œuf, poisson… Vous pourrez remplir cette liste plus tard.</string>
     <string name="edit_diet_unauthorised_ingredients">Ingrédients non autorisés</string>
     <string name="edit_diet_hint_unauthorised_ingredient">Énumérez les ingrédients non autorisés qui devraient être en rouge. Exemple : gluten, lait, huile de palme, sucre... Vous pourrez remplir cette liste plus tard.</string>
+    <string name="diet_export_1">Pour avoir ce nouveau régime dans OpenFoodFacts, merci d\'ouvrir l\'appli OFF, d\'aller dans le menu</string>
+    <string name="diet_export_2">Cliquer sur le bouton Ajouter un régime\nCopier/Coller les informations suivantes dans les champs correspondants :</string>
+    <string name="diet_export_3">Cliquer sur</string>
+    <string name="add_a_diet">Ajouter un régime</string>
     <!-- End of used for diets AddOn -->
 </resources>

@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +39,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 public class DietsFragment extends NavigationBaseFragment {
 
     private RecyclerView mRvDiet;
+    private LinearLayout mEmptyMessageView; // Empty View containing the message that will be shown if there is no diet
     private SharedPreferences mSettings;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
@@ -55,8 +57,9 @@ public class DietsFragment extends NavigationBaseFragment {
 
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mEmptyMessageView = view.findViewById(R.id.emptyDietsView);
         //Warning message, data stay on device.
-        mSettings = getActivity().getSharedPreferences("prefs", 0);
+/*        mSettings = getActivity().getSharedPreferences("prefs", 0);
         boolean firstRunDiets = mSettings.getBoolean("firstRunDiets", true);
         if (firstRunDiets) {
             new MaterialDialog.Builder(view.getContext())
@@ -68,32 +71,36 @@ public class DietsFragment extends NavigationBaseFragment {
             editor.putBoolean("firstRunDiets", false);
             editor.apply();
         }
-
+*/
         //Looking for data to be load in the Recycler
         mRvDiet = (RecyclerView) view.findViewById(R.id.diets_recycler);
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         DietDao dietDao = daoSession.getDietDao();
         List<Diet> dietList = dietDao.loadAll();
-
-        //Activate the recycler with the good adapter
-        mRvDiet.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        mRvDiet.setAdapter(new DietsAdapter(dietList, new ClickListener() {
-            @Override
-            public void onPositionClicked(int position, View v) {
-                Fragment fragment = new EditDietFragment();
-                if (v.getTag() != null) {
-                    Bundle args = new Bundle();
-                    args.putString("dietName", v.getTag().toString());
-                    fragment.setArguments(args);
+        if (dietList.isEmpty()) {
+            mEmptyMessageView.setVisibility(view.VISIBLE);
+            mRvDiet.setVisibility(view.GONE);
+        } else {
+            mEmptyMessageView.setVisibility(view.GONE);
+            mRvDiet.setVisibility(view.VISIBLE);
+            //Activate the recycler with the good adapter
+            mRvDiet.setLayoutManager(new LinearLayoutManager(this.getContext()));
+            mRvDiet.setAdapter(new DietsAdapter(dietList, new ClickListener() {
+                @Override
+                public void onPositionClicked(int position, View v) {
+                    Fragment fragment = new EditDietFragment();
+                    if (v.getTag() != null) {
+                        Bundle args = new Bundle();
+                        args.putString("dietName", v.getTag().toString());
+                        fragment.setArguments(args);
+                    }
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment_container, fragment );
+                    transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                    transaction.commit();
                 }
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, fragment );
-                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-                transaction.commit();
-            }
-        }));
-
-
+            }));
+        }
 
         BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
     }

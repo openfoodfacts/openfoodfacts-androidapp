@@ -1,41 +1,82 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+<?xml version="1.0" encoding="utf-8"?>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/diets_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="100dp"
-        tools:listitem="@layout/item_diet"
-        android:clipToPadding="false"/>
+<androidx.coordinatorlayout.widget.CoordinatorLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:fab="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/bottom_navigation"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="15dp"
-            android:layout_toStartOf="@id/bottom_navigation"
-            android:clickable="true"
-            android:focusable="true"
-            android:tint="@android:color/white"
-            fab:backgroundTint="@color/blue"
-            fab:fabSize="normal"
-            fab:srcCompat="@drawable/plus" android:layout_alignParentRight="true" android:layout_marginRight="25dp"
-            android:layout_toLeftOf="@id/bottom_navigation"/>
-
-    <include layout="@layout/navigation_bottom"
+    <Button
+        android:id="@+id/fab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
+        android:layout_gravity="top|center"
+        android:layout_marginHorizontal="10dp"
+        android:clickable="true"
+        android:drawableStart="@drawable/plus_blue"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:drawablePadding="-20dp"
+        android:focusable="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_a_diet"
+        android:textAllCaps="false"
+        android:textColor="@color/blue_500"
+        android:textSize="18sp"
+        android:background="@drawable/rounded_button"
+        fab:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/plus_blue"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/emptyDietsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="16dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/diets_dialog_warning_title"
+                android:textColor="@color/md_black_1000"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/warning_diets_data"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/diets_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="617dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="57dp"
+                android:layout_marginLeft="0dp"
+                android:clipChildren="true"
+                android:clipToPadding="false"
+                android:paddingBottom="100dp"
+                tools:listitem="@layout/item_diet"/>
+
+        <include layout="@layout/navigation_bottom"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/bottom_navigation"
+                 android:layout_alignParentBottom="true"
         />
-
-</RelativeLayout>
-
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
