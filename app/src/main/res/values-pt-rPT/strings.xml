@@ -5,6 +5,10 @@
         <item quantity="one"> Tem 1 produto off-line esperando para ser contribuído para o Open Food Facts</item>
         <item quantity="other"> Tem %d produtos off-line esperando para serem contribuídos para o Open Food Facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 segundo atrás</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minuto atrás</item>
         <item quantity="other">%d minutos atrás</item>
@@ -490,6 +494,10 @@
     <string name="productNameNull">Nome desconhecido</string>
     <string name="productAdditivesUnknown">Aditivos desconhecidos</string>
     <string name="productAdditivesTemplate">%1$d aditivos</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d aditivo</item>
+        <item quantity="other">%d aditivos</item>
+    </plurals>
     <string name="product_not_complete">Este produto ainda não está completo. \nPode adicionar alguns detalhes?</string>
     <string name="addProductOffline">Você parece estar offline. Adicione o produto %s usando o modo offline?</string>
     <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
@@ -675,7 +683,7 @@
     <string name="error_nutrient_entry">O valor deve ser numérico e pode começar com &lt;, &gt; ou ~. Exemplo: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">O valor de tamanho do serviço deve ser um valor positivo</string>
     <string name="error_in_nutrient_data">Alguns valores de nutrientes não são válidos. Por favor, corrija os campos acima com marcador de erro</string>
-    <string name="go_to_full_product_page">Go to product</string>
+    <string name="go_to_full_product_page">Ir para o produto</string>
     <string name="no_additive_data_available_for_this_product">Não há dados adicionais disponíveis para este produto</string>
     <string name="no_nutrient_information_available_for_this_product">Nenhuma informação nutricional disponível para este produto</string>
     <string name="error_duplicate_listname">Você já tem uma lista com este nome</string>
@@ -684,6 +692,7 @@
     <string name="add_an_allergen">Adicione um alérgeno</string>
     <string name="add_a_list">Adicionar uma lista</string>
     <string name="edit_image">Editar Imagem</string>
+    <string name="cant_edit_image_not_yet_uploaded">A nova imagem ainda não foi enviada. Por favor, aguarde antes de editá-la</string>
     <string name="unselect_image">Desmarcar Imagem</string>
     <string name="choose_default_language">Selecione o idioma do produto</string>
     <string name="barcode">Código de barras</string>

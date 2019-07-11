@@ -5,6 +5,10 @@
         <item quantity="one"> Önnek 1 darab kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</item>
         <item quantity="other"> Önnek %d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 másodperce</item>
+        <item quantity="other">%d másodperce</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 perce</item>
         <item quantity="other">%d perce</item>
@@ -490,6 +494,10 @@
     <string name="productNameNull">Ismeretlen név</string>
     <string name="productAdditivesUnknown">Ismeretlen adalékanyagok</string>
     <string name="productAdditivesTemplate">%1$d adalékanyag</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d adalékanyag</item>
+        <item quantity="other">%d adalékanyag</item>
+    </plurals>
     <string name="product_not_complete">Ez a termékoldal még nem teljes. \nHozzá tudna adni néhány részletet?</string>
     <string name="addProductOffline">Úgy tűnik, hogy kapcsolat nélküli módban van. Hozzáadja a(z) %s terméket a kapcsolat nélküli mód használatával ?</string>
     <string name="product_not_found">A beolvasott %1$s termék nem található az Open Food Facts adatbázisában. Hozzá tudná adni?</string>
@@ -686,6 +694,7 @@
     <string name="add_an_allergen">Adjunk hozzá egy allergént</string>
     <string name="add_a_list">Hozzáadás egy listához</string>
     <string name="edit_image">Kép szerkesztése</string>
+    <string name="cant_edit_image_not_yet_uploaded">Az új kép még nincs feltöltve. Kérjük, várjon a szerkesztés előtt!</string>
     <string name="unselect_image">Kép kiválasztásának megszüntetése</string>
     <string name="choose_default_language">Válassza ki a termék nyelvét</string>
     <string name="barcode">Vonalkód</string>

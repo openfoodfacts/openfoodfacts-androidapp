@@ -5,6 +5,10 @@
         <item quantity="one"> Open Food Facts için bekleyen 1 çevrimdışı ürününüz mevcut</item>
         <item quantity="other"> Open Food Facts için bekleyen %d çevrimdışı ürününüz mevcut</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 dakika önce</item>
         <item quantity="other">%d dakika önce</item>
@@ -19,7 +23,7 @@
     </plurals>
     <string name="action_about">Hakkında</string>
     <string name="action_discover">Keşfet</string>
-    <string name="contribute">Nasıl katkıda bulunulur</string>
+    <string name="contribute">Katkıda bulunabilirsiniz</string>
     <string name="action_find">Bul</string>
     <string name="product_incomplete_message">Ürün tamamlanmadı. Bu yüzden alerji kontrolü yapamadık.</string>
     <string name="product_allergen_prompt">This product contains:</string>
@@ -490,6 +494,10 @@
     <string name="productNameNull">İsim bilinmiyor</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">Bu ürün henüz tamamlanmadı. \nBiraz detay ekleyebilir misiniz?</string>
     <string name="addProductOffline">Çevrimdışı görünüyorsun. %s ürününü çevrimdışı modda eklemek ister misiniz?</string>
     <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
@@ -684,6 +692,7 @@
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Barkod</string>

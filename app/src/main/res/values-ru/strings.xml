@@ -7,6 +7,12 @@
         <item quantity="many"> У вас есть %d продуктов, ожидающих отправки в Open Food Facts</item>
         <item quantity="other"> У вас есть %d продуктов, ожидающих отправки в Open Food Facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="few">%d seconds ago</item>
+        <item quantity="many">%d seconds ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 минуту назад</item>
         <item quantity="few">%d минуты назад</item>
@@ -498,6 +504,12 @@
     <string name="productNameNull">Название неизвестно</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="few">%d additives</item>
+        <item quantity="many">%d additives</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">Этот продукт еще не завершен. \nМожете вы добавить некоторые детали?</string>
     <string name="addProductOffline">Кажется, нет подключения к сети. Добавить продукт %s в автономном режиме?</string>
     <string name="product_not_found">Отсканированного продукта %1$s ещё нет в базе Open Food Facts. Вы можете добавить его?</string>
@@ -692,6 +704,7 @@
     <string name="add_an_allergen">Добавить аллерген</string>
     <string name="add_a_list">Добавить список</string>
     <string name="edit_image">Редактировать изображение</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Штрих-код</string>
