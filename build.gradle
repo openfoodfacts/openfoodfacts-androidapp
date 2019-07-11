@@ -91,5 +91,8 @@ ext {
     imageCropper = '2.8.0'
     orchestrator = '1.1.0-alpha4'
     nachos = '1.1.1'
-    testRunnerVersion = '1.1.0-alpha4'
+    testRunnerVersion = '1.1.0'
+
+    testFalconVersion="2.1.1"
+    testscreengrabVersion="1.2.0"
 }

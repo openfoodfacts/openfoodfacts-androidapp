@@ -933,6 +933,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void showImageProgress() {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageNutritionFacts.setVisibility(View.INVISIBLE);
@@ -940,6 +943,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.GONE);
         imageProgressText.setVisibility(View.GONE);
         imageNutritionFacts.setVisibility(View.VISIBLE);

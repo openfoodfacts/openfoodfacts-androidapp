@@ -165,6 +165,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .withActivity(this)
             .withTranslucentStatusBar(true)
             .withHeaderBackground(R.drawable.header)
+            .withTextColorRes(R.color.white)
             .addProfiles(profile)
             .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                 @Override

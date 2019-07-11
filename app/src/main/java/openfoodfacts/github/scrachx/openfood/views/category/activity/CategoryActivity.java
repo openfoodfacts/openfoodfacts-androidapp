@@ -62,7 +62,7 @@ public class CategoryActivity extends BaseActivity {
             String url = getString(R.string.hunger_game_url);
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
             CustomTabsIntent customTabsIntent = builder.build();
-            customTabsIntent.launchUrl(getBaseContext(), Uri.parse(url));
+            customTabsIntent.launchUrl(CategoryActivity.this, Uri.parse(url));
         });
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
