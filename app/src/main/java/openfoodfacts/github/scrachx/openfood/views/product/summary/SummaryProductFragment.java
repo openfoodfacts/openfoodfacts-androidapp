@@ -202,7 +202,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //checks the product states_tags to determine which prompt to be shown
         refreshNutriscorePrompt();
 
-        presenter.loadAllergens();
+        presenter.loadAllergens(null);
         presenter.loadCategories();
         presenter.loadLabels();
         presenter.loadProductQuestion();

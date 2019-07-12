@@ -31,6 +31,7 @@
 
     <color name="orange_400">#ffa726</color>
     <color name="orange_800">#ef6c00</color>
+    <color name="orange_800_alpha">#88ef6c00</color>
 
     <color name="brown_100">#d7ccc8</color>
 
@@ -42,6 +43,7 @@
     <color name="grey_500">#9e9e9e</color>
     <color name="grey_600">#757575</color>
     <color name="grey_800">#424242</color>
+    <color name="grey_800_alpha">#88424242</color>
 
     <color name="blue_grey_100">#cfd8dc</color>
 

@@ -67,14 +67,20 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
         }
     }
 
+
     @Override
-    public void loadAllergens() {
+    public void loadAllergens(Runnable runIfError) {
         final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
         disposable.add(
             repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> view.showAllergens(allergens), e -> Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAllergens", e))
+                .subscribe(allergens -> view.showAllergens(allergens), e -> {
+                    if(runIfError!=null){
+                        runIfError.run();
+                    }
+                    Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAllergens", e);
+                })
         );
     }
 
