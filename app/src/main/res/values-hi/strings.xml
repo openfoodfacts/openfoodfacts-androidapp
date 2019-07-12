@@ -5,6 +5,10 @@
         <item quantity="one"> आपके पास 1 ऑफ़लाइन उत्पाद है जो Open Food Facts में योगदान देने का इंतजार कर रहा है |</item>
         <item quantity="other"> आपके पास %d ऑफ़लाइन उत्पाद है जो Open Food Facts में योगदान देने का इंतजार कर रहा है |%d</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 मिनट पहले</item>
         <item quantity="other">%d मिनट पहले</item>
@@ -17,13 +21,10 @@
         <item quantity="one">1 दिन पहले</item>
         <item quantity="other">%d दिन पहले</item>
     </plurals>
-    <string name="action_settings">सेटिंग्स</string>
     <string name="action_about">जानकारी</string>
     <string name="action_discover">तलाश करें</string>
     <string name="contribute">योगदान कैसे करें</string>
     <string name="action_find">ढूंढें</string>
-    <string name="text_barcode">बारकोड</string>
-    <string name="message_in_activity_save_product_offline">एक नया उत्पाद भेजने के लिए केवल एक फोटो अनिवार्य है</string>
     <string name="product_incomplete_message">यह उत्पाद पूर्ण नहीं है। नतीजतन, हम एलर्जी की जांच नहीं कर सके</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">आप सब कर चुके हैं</string>
@@ -101,7 +102,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>मॉलीब्डेनम</item>
-        <item>Monounsaturated fat</item>
+        <item>एक-संतृप्त वसा</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -115,7 +116,7 @@
         <item>पीएच</item>
         <item>फॉस्फोरस</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>बहुसंतृप्त वसा</item>
         <item>पोटेशियम</item>
         <item>सेलेनियम</item>
         <item>Serum proteins</item>
@@ -139,35 +140,15 @@
         <item>ज़िंक</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>चूक</item>
-        <item>पोषण</item>
-        <item>सामग्री</item>
-    </string-array>
     <!-- Content Description -->
-    <string name="bookmark">बुकमार्क</string>
-    <string name="edit">संपादित करें</string>
     <string name="search_button">ढूंढें</string>
-    <string name="no_products">उत्पाद नहीं मिला</string>
-    <string name="desc_list_item_icon">वस्तु का  आइकन</string>
     <string name="alert_dialog_warning_title">चेतावनी</string>
     <string name="alert_dialog_warning_msg_user">उपयोगकर्ता/ पासवर्ड बदल गया है,  कृप्या  जानकारी अपडेट करें</string>
-    <string name="alert_dialog_product_error_msg">उत्पाद नहीं मिला,  फिर प्रयास करें</string>
     <string name="toast_retrieving">लोड किया जा रहा है…</string>
-    <string name="txtGenericName">सामान्य नाम</string>
     <string name="txtBarcode">बारकोड:</string>
-    <string name="txtQuantity">मात्रा:</string>
-    <string name="txtPackaging">पैकेजिंग:</string>
-    <string name="txtBrands">ब्रांड:</string>
     <string name="txtCategories">श्रेणी:</string>
     <string name="txtLabels">लेबल, प्रमाणपत्र, पुरस्कार:</string>
-    <string name="txtManufacturing">विनिर्माण या प्रसंस्करण की  जगह</string>
-    <string name="txtIngredientsOrigins">सामग्री की उत्पत्ति:</string>
-    <string name="txtCity">शहर, राज्य और देश जहाँ इसे खरीदा गया:</string>
     <string name="txtEMB">ईएमबी कोड:</string>
-    <string name="txtManufactureUrl">निर्माता की साइट पे इस उत्पाद की लिंक:</string>
-    <string name="txtStores">स्टोर:</string>
-    <string name="txtCountries">जिन देशों में बिकता है</string>
     <string name="txtIngredients">सामग्री की सूची:</string>
     <string name="Donate">दान करें</string>
     <string name="Donation">ओपन फ़ूड फैक्ट्स को दान करने के लिए यहाँ क्लिक करें</string>
@@ -182,12 +163,8 @@
     <string name="txtNutritionLevelLow">कम मात्रा में</string>
     <string name="txtNutritionLevelModerate">मध्यम मात्रा में</string>
     <string name="txtNutritionLevelHigh">अधिक मात्रा में</string>
-    <string name="txtLogin">लॉग इन करें :</string>
-    <string name="txtPass">पासवर्ड :</string>
-    <string name="txtTitleHome">अपना आहार खोलें और जाने कि आप क्या खाते हैं</string>
     <string name="txtSave">सेव</string>
     <string name="txtSignIn">साइन इन करें</string>
-    <string name="txtUser">उपयोगकर्ता पैनल</string>
     <string name="txtToastSaved">उपयोगकर्ता की जानकारी  सेव है</string>
     <string name="txtSalt">नमक</string>
     <string name="txtFat">वसा</string>
@@ -202,39 +179,18 @@
     <string name="txtInfoLoginOk">उपयोगकर्ता की जानकारी  सेव है</string>
     <string name="txtInfoLoginNo">उपयोगकर्ता की जानकारी  सेव नहीं `है</string>
     <string name="txtDialogsContent">जिस उत्पाद को आप स्कैन कर चुके हैं वह अभी तक ओपन फूड फैक्ट्स में उपलब्ध नहीं है। कृपया इस उत्पाद के बारे में जानकारी प्राप्त करने में मदद करें।</string>
-    <string name="txtDialogsContentPowerMode">जिस उत्पाद को आप स्कैन कर चुके हैं वह ओपन फूड फैक्ट्स में उपलब्ध है।</string>
     <string name="txtYes">हाँ</string>
     <string name="txtNo">नहीं</string>
-    <string name="hintNameProduct">नाम</string>
-    <string name="hintEnergy">किलो जूल ऊर्जा प्रति सेवारत</string>
-    <string name="hintEnergyUnit">ऊर्जा इकाई</string>
-    <string name="hintWeight">भार</string>
-    <string name="hintStores">दुकान</string>
     <string name="hintBrand">ब्रांड</string>
-    <string name="txtTakePicture">तस्वीर ले ले</string>
     <string name="txtSendAll">सभी अपलोड कर दो</string>
-    <string name="txtNoData">कोई डेटा नहीं है</string>
-    <string name="txtPictureNeeded">रुकिए…</string>
-    <string name="txtPictureNeededDialogContent">Iss utpaad ko submit karne se pehle aapko kam se kam ek tasveer jodni chahiye.</string>
-    <string name="txtPictureNeededDialogYes">बने रहें</string>
     <string name="txtPictureNeededDialogNo">रद्द करें</string>
     <string name="toastSending">अपलोड हो रहा है</string>
-    <string name="dataSaved">अपने डिवाइस पर स्थानीय रूप से सेव है</string>
-    <string name="txtInfoAddUser">कृप्या अपना पासवर्ड और प्रवेश दर्ज करें</string>
-    <string name="txtDataUpdated">डेटा अपडेट</string>
     <string name="txtLoading">लोड किया जा रहा है…</string>
     <string name="txtDialogsContentDelete">क्या आप वाकई इस प्रारूप को हटाना चाहते हैं?</string>
     <string name="txtDialogsContentInfoSave">उत्पाद स्थानीय रूप से सेव है, आप ऑफलाइन संपादन मेनू में संपादित कर सकते हैं</string>
     <string name="txtBarcodeRequire">बारकोड अपेक्षित हैं</string>
     <string name="txtOk">ठीक है</string>
-    <string name="txtContentDialogUploading">कृपया इस प्रक्रिया के दौरान बाहर नहीं निकलते …</string>
-    <string name="txtAbout">जो तस्वीरें आपने भेजि वो मुक्त लाइसेंस क्रिएटिव कॉमन्स रोपण और अलाइक के तहत प्रकाशित कर रहे हैं।</string>
-    <string name="txtAllsent">उत्पाद भेज दिया</string>
-    <string name="txtPalm">उत्पाद में किसी भी तरह  का ताड़ का तेल शामिल नहीं है</string>
     <string name="txtBarcodeNotValid">बारकोड मान्य नहीं</string>
-    <string name="try_it_scan_now">उत्पाद  स्कैन कीजिए</string>
-    <string name="share">शेयर</string>
-    <string name="translate">अनुवाद करें</string>
     <string name="msg_share">Open Food Facts  पर इस उत्पाद को देखो:</string>
     <string name="create_account">साइन अप करें</string>
     <string name="home_drawer">मुख्य पृष्ठ</string>
@@ -242,46 +198,27 @@
     <string name="search_by_barcode_drawer">बारकोड के आधार पर ढूंढें</string>
     <string name="category_drawer">श्रेणियाँ</string>
     <string name="search_by_category">श्रेणी</string>
-    <string name="search_by_name_drawer">नाम से ढूंढें</string>
     <string name="scan_search">स्कैन</string>
     <string name="user_drawer">उपयोगकर्ता</string>
     <string name="offline_edit_drawer">ऑफ़लाइन संपादित</string>
     <string name="txt_anonymous">अज्ञात</string>
-    <string name="txt_product_not_found">उत्पाद नहीं मिला</string>
     <string name="delete_txt">नष्ट करे</string>
     <string name="sign_in_drawer">साइन इन करें</string>
     <string name="alert_drawer">एलर्जी की चेतावनी</string>
     <string name="your_lists">Your lists</string>
-    <string name="warning_allergens">एलरजेन शामिल है</string>
     <string name="title_dialog_alert">अलर्ट जोड़ें</string>
-    <string name="toggle_flash">Flash</string>
-    <string name="flash_on">Flash [ON]</string>
-    <string name="flash_off">Flash [OFF]</string>
-    <string name="ring_on">Ring [ON]</string>
-    <string name="ring_off">Ring [OFF]</string>
-    <string name="auto_focus_on">Auto Focus [ON]</string>
-    <string name="auto_focus_off">Auto Focus [OFF]</string>
-    <string name="formats">Formats</string>
-    <string name="choose_formats">Choose Formats</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">ठीक है</string>
     <string name="cancel_button">Cancel</string>
     <string name="login_button">लॉगिन</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data">आपकी एलर्जी जानकारी कभी ओपन फूड फैक्ट्स सर्वर पर नहीं भेजी जाएगी। इसके अलावा सावधान रहें, ज़रूरी नहीं कि उत्पाद डेटा सटीक हो, और पहचान 100% सही हो, इसलिए कृपया स्वयं दोबारा जांच करें!</string>
-    <string name="from_gallery">गैलरी से</string>
-    <string name="product_sent">उत्पाद की जानकारी सफलतापूर्वक भेजी गई</string>
-    <string name="action_edit_product">उत्पाद संपादित करें</string>
     <string name="title_info_dialog">यह कैसे काम करता है?</string>
     <string name="text_offline_info_dialog">जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप बाद में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप नीचे दिए गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।</string>
     <string name="permission_camera">कैमरा अनुमति की जरूरत है बारकोड को स्कैन और तस्वीरें लेने के लिए</string>
     <string name="permission_title">अनुमति जानकारी</string>
     <string name="permission_denied">सेटिंग्स में अनुमति सक्रिय करें</string>
-    <string name="permission_storage">स्टोरेज अनुमति ति की जरूरत है चित्रों का चयन करने की जरूरत है</string>
-    <string name="info_download_data">आपको इस कार्यक्षमता काम पाने के लिए कुछ डेटा डाउनलोड करने की जरूरत है, कृपया इसे डाउनलोड करने के लिए हाँ दबाएँ।</string>
     <string name="info_download_data_connection">आप इस कार्यक्षमता काम पाने के लिए कुछ डेटा डाउनलोड करने के लिए की जरूरत है। इंटरनेट कनेक्शन सक्रिय करें।</string>
-    <string name="msg_input_empty">कृपया फ़ील्ड पहले भरें।</string>
-    <string name="new_offline_info">कृपया उत्पाद, सामग्री, पोषण तथ्यों की सूची और लेबल पर किसी भी अन्य जानकारी की एक तस्वीर ले लो। धन्यवाद!</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">पासवर्ड कम से कम 6 अक्षर लंबा होने की जरूरत है।</string>
     <string name="user">उपयोगकर्ता</string>
@@ -302,7 +239,6 @@
     <string name="txt_exporting_history">इतिहास निर्यात …</string>
     <string name="txt_history_exported">इतिहास का निर्यात</string>
     <string name="permision_write_external_storage">लिखें बाह्य भंडारण की अनुमति इतिहास को निर्यात करने की जरूरत है।</string>
-    <string name="txt_nutrition_not_found">लागू नहीं</string>
     <string name="no_brand">No Brand</string>
     <string name="no_title">शीर्षक नहीं है</string>
     <!-- Nutrition info tab -->
@@ -313,34 +249,19 @@
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
-    <string name="txt_calories_result">%1$s kcal in %2$s %3$s</string>
     <string name="nutrition_carbohydrate">कार्बोहाइड्रेट</string>
-    <string name="nutrition_carbohydrate_short_name">कार्बोहाइड्रेट(g)</string>
     <string name="nutrition_cholesterol">कोलेस्ट्रॉल</string>
-    <string name="nutrition_cholesterol_short_name">कोलेस्ट्रॉल(जी)</string>
     <string name="nutrition_energy">ऊर्जा</string>
     <string name="nutrition_energy_short_name">ऊर्जा</string>
     <string name="nutrition_fat">वसा</string>
-    <string name="nutrition_fat_short_name">वसा(जी)</string>
     <string name="nutrition_fiber">फाइबर आहार</string>
-    <string name="nutrition_fiber_short_name">फाइबर आहार(जी)</string>
     <string name="nutrition_header">पोषण तथ्य</string>
-    <string name="nutrition_no_data_message">इस उत्पाद के लिए कोई डेटा उपलब्ध नहीं है</string>
-    <string name="nutrition_per_quantity">100g / 100 एमएल के लिए</string>
     <string name="nutrition_proteins">प्रोटीन</string>
-    <string name="nutrition_proteins_short_name">प्रोटीन(g)</string>
     <string name="nutrition_salt">नमक</string>
-    <string name="nutrition_salt_short_name">नमक(g)</string>
     <string name="nutrition_satured_fat">संतृप्त वसा</string>
-    <string name="nutrition_satured_fat_short_name">Saturated fat (g)</string>
-    <string name="nutrition_serving">प्रत्येक हिस्सा</string>
-    <string name="nutrition_serving_size">सेवारत परिमाण:</string>
     <string name="nutrition_sodium">सोडियम</string>
-    <string name="nutrition_sodium_short_name">सोडियम(g)</string>
     <string name="nutrition_sugars">शुगर्स</string>
-    <string name="nutrition_sugars_short_name">शुगर्स(g)</string>
     <string name="nutrition_trans_fat">ट्रांस वसा</string>
-    <string name="nutrition_trans_fat_short_name">ट्रांस वसा (g)</string>
     <string name="nutriment_serving_size">प्रति हिस्से:</string>
     <string name="action_manage_account">खाते का प्रबंधन</string>
     <string name="action_contributes">आपका योगदान</string>
@@ -351,15 +272,10 @@
     <string name="logout_drawer">लॉग आउट करें</string>
     <string name="contribution_without_account">आप साइन-इन कर सकते हैं या अपने योगदान रखने के लिए एक खाता बनाने\nप्रसंग:</string>
     <string name="textCarbonFootprint">कार्बन पदचिह्न / CO2 उत्सर्जन: </string>
-    <string name="txtDialogPowerMode">क्विक व्यू</string>
-    <string name="txtSeeMore">और देखें</string>
     <string name="action_search">ढूंढें</string>
     <string name="search_hint">उत्पाद खोजें</string>
     <string name="number_of_results">परिणामों की संख्या: </string>
-    <string name="brand">ब्रांड :</string>
     <string name="number_of_products">उत्पादों की संख्या: </string>
-    <string name="txt_no_results">कोई परिणाम नहीं मिला</string>
-    <string name="txt_extend_search">अपनी खोज को विस्तृत करें या उत्पाद ऐड करें</string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
     <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
     <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
@@ -368,12 +284,10 @@
     <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
     <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
     <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
     <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">हमें कोई भी मिलते-जुलते उत्पाद नहीं मिले हैं। \n आप यह कोशिश कर सकते हैं:</string>
     <string name="txt_broaden_search">- अपनी खोज को विस्तृत करना \n- स्कैन करें और इसे ओपन फ़ूड फैक्ट्स में ऐड करें</string>
-    <string name="txt_cant_load_search_results">खोज परिणामों का लोड करना नामुमकिन है</string>
     <string name="something_went_wrong">क्षमा करें, कुछ गलत हो गया…</string>
     <string name="txt_try_again">फिर कोशिश करे</string>
     <string name="nutrition_lactose">लैक्टोज</string>
@@ -384,12 +298,6 @@
     <string name="for_100g">१०० g के लिए</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">प्रत्येक हिस्सा</string>
-    <string name="minerals">खनिज</string>
-    <string name="nutrition_calcium">केल्शियम</string>
-    <string name="nutrition_potassium">पोटेशियम</string>
-    <string name="nutrition_chlore">क्लोरीन</string>
-    <string name="nutrition_magnesium">मैग्नीशियम</string>
-    <string name="nutrition_taurine">टौरीने</string>
     <string name="nutrition_monounsaturatedFat">एक-संतृप्त वसा</string>
     <string name="nutrition_polyunsaturatedFat">बहुसंतृप्त वसा</string>
     <string name="nutrition_omega3">ओमेगा 3</string>
@@ -438,6 +346,8 @@
     <string name="collagen_meat_protein_ratio">कोलेजन मांस प्रोटीन अनुपात</string>
     <string name="cocoa">कोकोआ</string>
     <string name="chlorophyl">क्लोरोफिल</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">सामग्रियों की एक छायाचित्र लीजिए</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">पोषण तालिका की एक तस्वीर लें</string>
@@ -474,7 +384,6 @@
     <string name="device_offline_dialog_message">ऐसा करने के लिए नेटवर्क कनेक्शन की आवश्यकता है, क्या आप इसे सेटिंग्स में बदलना चाहेंगे?</string>
     <string name="device_offline_dialog_negative">ख़ारिज करें</string>
     <string name="device_offline_dialog_positive">सेटिंग्स</string>
-    <string name="saving">सेविंग…</string>
     <string name="scan_first_product">पहला उत्पाद स्कैन करें</string>
     <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">मोबाइल डेटा पर अपलोड करें</string>
@@ -503,7 +412,6 @@
     <string name="preference_header_general">सामान्य</string>
     <string name="preference_header_network">नेटवर्क</string>
     <string name="preference_header_contributing">योगदान</string>
-    <string name="not_support_books">ओपन फ़ूड फैक्ट्स पर पुस्तकें उपलब्ध नहीं है</string>
     <string name="scan_first_string">आपके द्वारा देखे गए उत्पाद यहाँ सूचीबद्ध हैं \n यह केवल आपके लिए है और फ़ोन में संग्रहीत है</string>
     <string name="log_in">लॉगिन</string>
     <string name="login_true">पहले से ही लॉगिन हैं!</string>
@@ -514,14 +422,10 @@
     <string name="choose_resolution">संकल्प चुनें</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
-    <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
     <string name="wikidata_information">अधिक जानकारी</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
-    <string name="description">विवरण: </string>
-    <string name="title">शीर्षक: </string>
     <string name="Wikipedia">विकिपीडिया पर देखें</string>
     <string name="Browse_Products">Browse Products</string>
-    <string name="swipe_down">निचे स्वाइप करें</string>
     <string name="brand_string">ब्रांड</string>
     <string name="additive_string">योज्य</string>
     <string name="allergen_string">Allergen</string>
@@ -529,8 +433,6 @@
     <string name="country_string">जिन देशों में बिकता है</string>
     <string name="store_subtitle">दुकान</string>
     <string name="packaging_subtitle">पैकेजिंग</string>
-    <string name="last_seen_string">%1$d %2$s ago</string>
-    <string name="store_string">दुकान</string>
     <string name="packaging_string">पैकेजिंग</string>
     <string name="label_string">लेबल</string>
     <string name="category_string">श्रेणी</string>
@@ -545,12 +447,8 @@
     <string name="mineral_tags_text">मिनरल:</string>
     <string name="other_tags_text">Other Substances:</string>
     <!--shared element transition key-->
-    <string name="wikidata">Wikidata data</string>
     <string name="disable_image_loading">Disable image loading when battery is low</string>
     <string name="DisableLoadTitle">Disable image loading</string>
-    <string name="txtCamera">कैमरा</string>
-    <string name="txtGallery">गैलरी</string>
-    <string name="txtOptions">विकल्प</string>
     <string name="by_title">शीर्षक</string>
     <string name="by_brand">ब्रांड</string>
     <string name="by_barcode">बारकोड</string>
@@ -570,7 +468,6 @@
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
     <string name="bottomNav_history">वृत्तांत</string>
-    <string name="bottomNav_search">ढूंढें</string>
     <string name="products_added">Products you added or edited</string>
     <string name="products_incomplete">Products you added that need to be completed</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
@@ -583,7 +480,6 @@
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Products to be completed</string>
-    <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
     <string name="offline_notification_title">Offline contributions you need to send</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
@@ -591,14 +487,17 @@
     <string name="contribution_tab">योगदान</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
-    <string name="product">संपादित करें</string>
     <string name="txtDialogsTitle">जानकारी</string>
     <string name="preference_show_all_product_photos_title">उत्पाद की सभी तस्वीरें दिखाएं</string>
     <string name="preference_show_all_product_photos_summary">उत्पाद की सभी तस्वीरें एक अलग टैब में दिखाएं</string>
     <string name="offline_product_addition_title">नया उत्पाद ऐड करें</string>
     <string name="productNameNull">नाम ज्ञात नहीं है</string>
-    <string name="productBrandNull">ब्रांड ज्ञात नहीं है</string>
-    <string name="productQuantityNull">मात्रा ज्ञात नहीं है</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
@@ -611,10 +510,10 @@
     <string name="preferences">प्राथमिकताएँ</string>
     <string name="OFFlogo">ओपन फ़ूड फैक्ट्स लोगो</string>
     <string name="loading_product">%s लोड हो रहा है</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -658,6 +557,8 @@
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">पोषण तथ्य की तस्वीर</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">100 ग्राम / 100 मिलीलीटर के लिए</string>
     <string name="per_serving">प्रत्येक हिस्सा</string>
     <string name="serving_size">सेवारत माप</string>
@@ -680,15 +581,19 @@
     <string name="stores">दुकाने</string>
     <string name="additional_pictures">अतिरिक्त तस्वीरें</string>
     <string name="hint_product_pictures">(उत्पाद की और तस्वीरें ऐड करें। उदाहरण: रीसाइक्लिंग निर्देश, लेबल इत्यादि)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">पोषण तथ्य की तस्वीर अपलोड हो रही है</string>
     <string name="uploading_ingredients_image">सामग्री की तस्वीर अपलोड हो रही है</string>
     <string name="uploading_front_image">उत्पाद की तस्वीर अपलोड हो रही है</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">किसी उत्पाद को संपादित करने के लिए कृपया साइन इन करें।</string>
     <string name="hint_quantity">उदाहरण: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
-    <string name="hint_serving_size">उदाहरण: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">पोषण तथ्यों में %s पहले से मौजूद है</string>
     <string name="save_edits">संपादन सहेजें</string>
     <string name="contribution_by">Contribution by</string>
@@ -714,7 +619,6 @@
     <string name="some_people">Some people\n(over 5%)</string>
     <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
     <string name="risk_of_exposure">Risk of exposure</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
@@ -723,50 +627,25 @@
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Your diet(s)</string>
-    <string name="diet_name">Diet name</string>
-    <string name="diets_dialog_warning_title">चेतावनी</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
-    <string name="edit_diet_name">नाम</string>
-    <string name="edit_diet_description">Description</string>
-    <string name="edit_diet_enabled_disabled">Enabled/Disabled</string>
-    <string name="edit_diet_authorised_ingredients">Authorized ingredients</string>
-    <string name="edit_diet_hint_ingredient_authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
-    <string name="edit_diet_so_so_ingredients">So so ingredients</string>
-    <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="no_nutrition_data_prompt">This product doesn\'t have nutrition facts</string>
-    <string name="nutrition_image_prompt_text">पोषण तालिका की तस्वीर लें</string>
-    <string name="ingredient_image_prompt_text">सामग्रियों की एक छायाचित्र लीजिए</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
-    <string name="txtOtherInfo">Other Information: </string>
-    <string name="txtConservationCond">Conservation Conditions: </string>
-    <string name="txtRecyclingInstructionToRecycle">Recycling Instructions - To Recycle: </string>
-    <string name="txtRecyclingInstructionToDiscard">Recycling Instructions - To Discard: </string>
-    <string name="recyclingInstructionToRecycle">Recycling Instructions (to recycle)</string>
-    <string name="recyclingInstructionToDiscard">Recycling Instructions (to discard)</string>
-    <string name="conservationCond">Conservation Conditions</string>
-    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
-    <string name="txtLoaded">Translations were downloaded successfully</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Successfully set the image as</string>
-    <string name="warning">Warning :</string>
-    <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">योगशील</string>
     <!--used for product_lists implementation-->
@@ -776,23 +655,17 @@
     <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Products to buy</string>
-    <string name="export_csv_your_listed_products">CSV  निर्यात करें</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">रद्द करें</string>
-    <string name="txt_save">सेव़</string>
-    <string name="write_external_storage_your_listed_products">Write external storage permission is needed to export the data.</string>
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_i_m_eating_this">I\'m eating this</string>
-    <string name="compare_product_prompt">Compare this product</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">देश</string>
-    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="empty"></string>
     <string name="add_product">Add products</string>
@@ -810,7 +683,7 @@
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
-    <string name="go_to_full_product_page">Go to full product page</string>
+    <string name="go_to_full_product_page">Go to product</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
@@ -818,7 +691,15 @@
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
-    <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">बारकोड</string>
+    <string name="productAdditivesNone">No additives</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.category.adapter;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import openfoodfacts.github.scrachx.openfood.databinding.CategoryRecyclerItemBinding;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;

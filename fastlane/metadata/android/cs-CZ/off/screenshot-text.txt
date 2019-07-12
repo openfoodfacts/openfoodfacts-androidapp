@@ -23,13 +23,13 @@ Získejte alternativy pro vaše oblíbené potraviny
 
 Staňte se hybatelem férovosti potravin
 
-Wikipedia for Food
+Wikipedie pro potraviny
 
-Wikipedia for Cosmetics
+Wikipedie pro kosmetiku
 
-Wikipedia for Pet Food
+Wikipedie pro potraviny mazlíčků
 
-Wikipedia of Products
+Wikipedie výrobků
 
 Složení
 
@@ -43,7 +43,7 @@ V3 screenshots
 
 Choose the products that are good for you and for the 🌍 planet !
 
-✔ Ultra-fast barcode scan
+✔ Rychlé skenování čárových kódů
 
 ✔ A global supermarket in your pocket
 

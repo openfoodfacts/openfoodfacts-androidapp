@@ -3,14 +3,14 @@ package openfoodfacts.github.scrachx.openfood.views.category.fragment;
 
 import android.app.SearchManager;
 import android.content.Context;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.SearchView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.appcompat.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -79,12 +79,7 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
                 }
             }
         });
-        binding.offlineView.findViewById(R.id.buttonToRefresh).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewModel.loadCategories();
-            }
-        });
+        binding.offlineView.findViewById(R.id.buttonToRefresh).setOnClickListener(v -> viewModel.loadCategories());
     }
 
     @Override

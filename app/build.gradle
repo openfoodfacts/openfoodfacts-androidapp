@@ -4,7 +4,7 @@ apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 def obtainTestBuildType() {
     //to activate  screenshots buildType in IDE; uncomment next line and comment other
     //otherwise the folder androidTestScreenshots is not recognized as a test folder.
-//    def result="screenshots"
+//    def result = "screenshots"
     def result = "debug"
     if (project.hasProperty("testBuildType")) {
         result = project.getProperties().get("testBuildType")
@@ -14,7 +14,7 @@ def obtainTestBuildType() {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '28.0.3'
 
 
@@ -24,10 +24,10 @@ android {
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 316
-        versionName "3.1.6"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        targetSdkVersion 28
+        versionCode 322
+        versionName "3.2.2"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
 
@@ -35,14 +35,9 @@ android {
         release {
             crunchPngs true
         }
-
-        screenshots {
-            //to generate screenshots launch the grade task connectedOffScreenshotsAndroidTest -PtestBuildType=screenshots
-
+        screenshots{
             initWith debug
-            defaultConfig.minSdkVersion 18
         }
-
 
 
     }
@@ -60,6 +55,7 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+            buildConfigField 'String', 'STATICURL', '"https://static.openfoodfacts.org"'
 
         }
 
@@ -70,6 +66,7 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+            buildConfigField 'String', 'STATICURL', '"https://static.openbeautyfacts.org"'
         }
         opff {
             applicationId "org.openpetfoodfacts.scanner"
@@ -78,6 +75,7 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+            buildConfigField 'String', 'STATICURL', '"https://static.openpetfoodfacts.org"'
         }
         opf {
             applicationId "org.openproductsfacts.scanner"
@@ -86,6 +84,7 @@ android {
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
             buildConfigField 'String', 'WIKIDATA', '"https://www.wikidata.org/wiki/Special:EntityData/"'
+            buildConfigField 'String', 'STATICURL', '"https://static.openproductsfacts.org"'
         }
     }
 
@@ -126,7 +125,7 @@ android {
     testOptions {
         // avoid "Method ... not mocked."
         unitTests.returnDefaultValues = true
-        execution 'ANDROID_TEST_ORCHESTRATOR'
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
     }
 }
 
@@ -159,19 +158,19 @@ android {
 dependencies {
 
     //Android
-    implementation "com.android.support:customtabs:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:preference-v14:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
-    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayout"
-    implementation "com.android.support:multidex:$rootProject.multidexVersion"
+    implementation "androidx.browser:browser:$rootProject.supportLibraryVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.supportLibraryVersion"
+    implementation "androidx.cardview:cardview:$rootProject.supportLibraryVersion"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.supportLibraryVersion"
+    implementation "androidx.legacy:legacy-preference-v14:$rootProject.supportLibraryVersion"
+    implementation "com.google.android.material:material:$rootProject.supportLibraryVersion"
+    implementation "androidx.annotation:annotation:$rootProject.supportLibraryVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayout"
+    implementation "androidx.multidex:multidex:$rootProject.multidexVersion"
 
     //DI
-    implementation "com.android.support:support-v4:$rootProject.support"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.supportLibraryVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     compileOnly "javax.annotation:jsr250-api:$rootProject.jsr250api"
@@ -188,16 +187,13 @@ dependencies {
 
     //scheduling jobs
     implementation "com.firebase:firebase-jobdispatcher:$rootProject.jobDispatcher"
+    implementation "commons-lang:commons-lang:$rootProject.commonsLang"
+    implementation "org.apache.commons:commons-csv:$rootProject.commonsCsv"
 
     //Serialization/Deserialization
     implementation "com.fasterxml.jackson.core:jackson-core:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-databind:$rootProject.jacksonVersion"
     implementation "com.fasterxml.jackson.core:jackson-annotations:$rootProject.jacksonVersion"
-
-    //    compile 'io.rest-assured:json-path:3.0.7'
-
-    //CSV Serialization/Deserialization
-    implementation "com.opencsv:opencsv:$rootProject.openCsvVersion"
 
     //Database
     implementation "org.greenrobot:greendao:$rootProject.greenDaoVersion"
@@ -218,11 +214,7 @@ dependencies {
     }
     implementation "com.google.zxing:core:$rootProject.zxingCoreVersion"
 
-    //HTML Dom
-    implementation "org.jsoup:jsoup:$rootProject.htmlDomVersion"
-
     //Apache
-    implementation "org.apache.commons:commons-collections4:$rootProject.apacheCollectionsVersion"
     implementation "commons-validator:commons-validator:$rootProject.apacheValidatorVersion"
 
     //UI Component : Custom Toast
@@ -247,14 +239,9 @@ dependencies {
     implementation "com.mikepenz:fastadapter-commons:$rootProject.fastAdapterCommons"
     implementation "com.squareup.retrofit2:converter-scalars:$rootProject.converterScalars"
 
-    //UI Component : Fab
-    implementation "com.github.clans:fab:$rootProject.fabVersion"
-
     //UI Component : Font Icons
     implementation "com.mikepenz:iconics-core:$rootProject.fontIconCoreVersion"
     implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
-    implementation "com.mikepenz:material-design-iconic-typeface:$rootProject.materialFontVersion"
-    implementation "com.mikepenz:fontawesome-typeface:$rootProject.awesomeFontVersion"
     implementation("com.theartofdev.edmodo:android-image-cropper:$rootProject.imageCropper") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
@@ -263,23 +250,24 @@ dependencies {
     implementation "com.hootsuite.android:nachos:$rootProject.nachos"
 
     //Testing
-    androidTestUtil "com.android.support.test:orchestrator:$rootProject.orchestrator"
+    androidTestUtil "androidx.test:orchestrator:$rootProject.orchestrator"
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
 
     // Required for instrumented tests
-    androidTestImplementation "com.android.support.test:runner:$rootProject.testRunnerVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-web:$rootProject.espressoVersion"
-    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:$rootProject.espressoContribVersion") {
+    androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-web:$rootProject.espressoVersion"
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:$rootProject.espressoContribVersion") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'
         exclude module: 'recyclerview-v7'
     }
-    androidTestImplementation 'tools.fastlane:screengrab:1.2.0'
+    androidTestImplementation "com.jraska:falcon:$rootProject.testFalconVersion"
+    androidTestImplementation "tools.fastlane:screengrab:$rootProject.testscreengrabVersion"
     resourcePlaceholders {
         files = ['xml/shortcuts.xml']
     }

@@ -9,8 +9,8 @@ import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.BottomNavigationView;
-import android.support.customtabs.CustomTabsIntent;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.browser.customtabs.CustomTabsIntent;
 import android.widget.Button;
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -62,7 +62,7 @@ public class CategoryActivity extends BaseActivity {
             String url = getString(R.string.hunger_game_url);
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
             CustomTabsIntent customTabsIntent = builder.build();
-            customTabsIntent.launchUrl(getBaseContext(), Uri.parse(url));
+            customTabsIntent.launchUrl(CategoryActivity.this, Uri.parse(url));
         });
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }

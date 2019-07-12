@@ -2,7 +2,10 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
 import android.app.SearchManager;
-import android.content.*;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -17,18 +20,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,11 +27,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.*;
 import com.google.zxing.common.HybridBinarizer;
-import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -54,9 +56,9 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.*;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.*;
@@ -72,13 +74,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Objects;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
-    private static final int LOGIN_REQUEST = 1;
+    public static final int LOGIN_REQUEST = 1;
     private static final int SHOW_CONTRIBUTION_AFTER_LOGIN = 2;
     private static final long USER_ID = 500;
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
@@ -96,10 +98,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri contributeUri;
     private Uri discoverUri;
     private Uri userContributeUri;
-    private OfflineSavedProductDao mOfflineSavedProductDao;
     private int numberOFSavedProducts;
-    private SharedPreferences mSharedPref;
-    private int positionOfOfflineBadeItem;
     private String mBarcode;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -128,7 +127,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        mOfflineSavedProductDao = Utils.getAppDaoSession(MainActivity.this).getOfflineSavedProductDao();
+        OfflineSavedProductDao mOfflineSavedProductDao = Utils.getAppDaoSession(MainActivity.this).getOfflineSavedProductDao();
         numberOFSavedProducts = mOfflineSavedProductDao.loadAll().size();
 
 // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
@@ -166,6 +165,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .withActivity(this)
             .withTranslucentStatusBar(true)
             .withHeaderBackground(R.drawable.header)
+            .withTextColorRes(R.color.white)
             .addProfiles(profile)
             .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                 @Override
@@ -328,10 +328,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         boolean otherOFAppInstalled = Utils.isApplicationInstalled
                             (MainActivity.this, BuildConfig.OFOTHERLINKAPP);
                         if (otherOFAppInstalled) {
-                            Intent LaunchIntent = getPackageManager()
+                            Intent launchIntent = getPackageManager()
                                 .getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP);
-                            if (LaunchIntent != null) {
-                                startActivity(LaunchIntent);
+                            if (launchIntent != null) {
+                                startActivity(launchIntent);
                             } else {
                                 Toast.makeText(this, R.string.app_disabled_text, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent();
@@ -399,7 +399,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("obf")) {
             result.removeItem(ITEM_ALERT);
-            result.removeItem(ITEM_ADDITIVES);
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
@@ -421,12 +420,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             result.removeItem(ITEM_SCAN);
         }
 
-        //if you have many different types of DrawerItems you can magically pre-cache those items
-        // to get a better scroll performance
-        //make sure to init the cache after the DrawerBuilder was created as this will first
-        // clear the cache to make sure no old elements are in
-        new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
-            result.getDrawerItems());
+//        //if you have many different types of DrawerItems you can magically pre-cache those items
+//        // to get a better scroll performance
+//        //make sure to init the cache after the DrawerBuilder was created as this will first
+//        // clear the cache to make sure no old elements are in
+//        new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
+//            result.getDrawerItems());
 
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
@@ -470,7 +469,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         Utils.scheduleProductUploadJob(this);
 
         //Adds nutriscore and quantity values in old history for schema 5 update
-        mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
+        SharedPreferences mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
         boolean isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false);
         if (!isOldHistoryDataSynced && Utils.isNetworkConnected(this)) {
             OpenFoodAPIClient apiClient = new OpenFoodAPIClient(this);
@@ -591,13 +590,18 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             result.closeDrawer();
         } else {
             if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-                getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+                getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 //recreate the activity onBackPressed
                 recreate();
             } else {
                 super.onBackPressed();
             }
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
     @Override
@@ -632,7 +636,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
@@ -771,7 +775,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * This function is called from OfflineEditFragment only.
      */
     public void updateBadgeOfflineEditDrawerITem(int size) {
-        positionOfOfflineBadeItem = result.getPosition(primaryDrawerItem);
+        int positionOfOfflineBadeItem = result.getPosition(primaryDrawerItem);
         if (size > 0) {
             primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE)
                 .withBadge(String.valueOf(size)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
@@ -838,8 +842,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     private void chooseDialog(ArrayList<Uri> selectedImagesArray) {
-        boolean isBarCodePresent = false;
-        isBarCodePresent = isBarCodePresent || detectBarCodeInImage(selectedImagesArray);
+        boolean isBarCodePresent = detectBarCodeInImage(selectedImagesArray);
         if (isBarCodePresent) {
             createAlertDialog(false, mBarcode, selectedImagesArray);
         } else {
@@ -865,19 +868,19 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
                 Reader reader = new MultiFormatReader();
                 try {
-                    Hashtable<DecodeHintType, Object> decodeHints = new Hashtable<DecodeHintType, Object>();
+                    HashMap<DecodeHintType, Object> decodeHints = new HashMap<>();
                     decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
                     decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
-                    Result result = reader.decode(bitmap, decodeHints);
-                    if (result != null) {
-                        mBarcode = result.getText();
+                    Result decodedResult = reader.decode(bitmap, decodeHints);
+                    if (decodedResult != null) {
+                        mBarcode = decodedResult.getText();
                     }
                     if (mBarcode != null) {
                         return true;
                     }
                 } catch (FormatException e) {
                     Toast.makeText(getApplicationContext(), getString(R.string.format_error), Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
+                    Log.e(MainActivity.class.getSimpleName(), "Error decoding bitmap into barcode: " + e.getMessage());
                 } catch (Exception e) {
                     Log.e(MainActivity.class.getSimpleName(), "Error decoding bitmap into barcode: " + e.getMessage());
                 }
@@ -913,31 +916,30 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         alertDialogBuilder
             .setCancelable(false)
             .setPositiveButton(R.string.txtYes, (dialog, id) -> {
-                String temp_barcode = "";
                 for (Uri selected : uri) {
                     OpenFoodAPIClient api = new OpenFoodAPIClient(MainActivity.this);
                     ProductImage image = null;
                     ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                     NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-
+                    String tempBarcode;
                     if (hasEditText) {
 
-                        temp_barcode = barcodeEditText.getText().toString();
+                        tempBarcode = barcodeEditText.getText().toString();
                     } else {
-                        temp_barcode = barcode;
+                        tempBarcode = barcode;
                     }
 
-                    if (temp_barcode.length() > 0) {
+                    if (tempBarcode.length() > 0) {
                         dialog.cancel();
                         if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
                             File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
-                            image = new ProductImage(temp_barcode, OTHER, imageFile);
+                            image = new ProductImage(tempBarcode, OTHER, imageFile);
                             api.postImg(MainActivity.this, image, null);
                         } else {
                             Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                             State st = new State();
                             Product pd = new Product();
-                            pd.setCode(temp_barcode);
+                            pd.setCode(tempBarcode);
                             st.setProduct(pd);
                             intent.putExtra("state", st);
                             startActivity(intent);

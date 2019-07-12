@@ -21,15 +21,14 @@
                 app:elevation="10dp"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="@dimen/materialize_baseline_grid_small"
-                app:srcCompat="@drawable/fab_add"
                 />
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/product_lists_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="90"
                 android:layout_margin="@dimen/materialize_baseline_grid_small">
-        </android.support.v7.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
         <include layout="@layout/navigation_bottom"
                  android:id="@+id/bottom_navigation"
                  android:layout_width="match_parent"

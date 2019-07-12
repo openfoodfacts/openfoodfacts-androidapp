@@ -6,6 +6,8 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
@@ -44,7 +46,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
                                 return Single.just(categoryName);
                             }
                         }))
-                    .filter(additiveName -> additiveName.isNotNull())
+                    .filter(AdditiveName::isNotNull)
                     .toList()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -72,9 +74,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> {
-                    view.showAllergens(allergens);
-                }, e -> Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAllergens", e))
+                .subscribe(allergens -> view.showAllergens(allergens), e -> Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAllergens", e))
         );
     }
 
@@ -128,7 +128,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
                                 return Single.just(labelName);
                             }
                         }))
-                    .filter(labelName -> labelName.isNotNull())
+                    .filter(LabelName::isNotNull)
                     .toList()
                     .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
                     .subscribeOn(Schedulers.io())
@@ -156,7 +156,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.getSingleProductQuestion(product.getCode(), languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::showProductQuestion, Throwable::printStackTrace)
+                .subscribe(view::showProductQuestion,e->Log.e(SummaryProductPresenter.this.getClass().getSimpleName(),"loadProductQuestion",e))
         );
     }
 
@@ -166,7 +166,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.annotateInsight(insightId, annotation)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::showAnnotatedInsightToast, Throwable::printStackTrace)
+                .subscribe(view::showAnnotatedInsightToast, e->Log.e(SummaryProductPresenter.this.getClass().getSimpleName(),"annotateInsight",e))
         );
     }
 
@@ -176,4 +176,5 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             disposable.clear();
         }
     }
+
 }

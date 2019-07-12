@@ -5,6 +5,10 @@
         <item quantity="one"> Έχετε 1 προϊόν εκτός σύνδεσης πρόκειται να εισαχθεί στα Ανοικτά Στοιχεία Τροφίμων</item>
         <item quantity="other"> Έχετε %d προϊόν εκτός σύνδεσης που περιμένει να εισαχθεί στα Ανοικτά Στοιχεία Τροφίμων</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 λεπτό πριν</item>
         <item quantity="other">%d λεπτό πριν</item>
@@ -17,13 +21,10 @@
         <item quantity="one">1 ημέρα πριν</item>
         <item quantity="other">%d ημέρες πριν</item>
     </plurals>
-    <string name="action_settings">Ρυθμίσεις</string>
     <string name="action_about">Σχετικά με την εφαρμογή</string>
     <string name="action_discover">Ανακαλύψτε</string>
     <string name="contribute">Πως να συνεισφέρετε</string>
     <string name="action_find">Αναζήτηση</string>
-    <string name="text_barcode">Πληκτρολογήστε το barcode:</string>
-    <string name="message_in_activity_save_product_offline">Μόνο μία φωτογραφία είναι υποχρεωτική για να στείλετε ένα νέο προϊόν.</string>
     <string name="product_incomplete_message">Αυτό το προϊόν δεν έχει ολοκληρωθεί. Ως αποτέλεσμα, δεν μπορούσαμε να κάνουμε τον έλεγχο των αλλεργιογόνων.</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">Είστε έτοιμοι</string>
@@ -64,7 +65,7 @@
         <item>Αραχιδονικό οξύ (20:0)</item>
         <item>Αραχιδονικό οξύ / AA / ARA (20: 4 n-6)</item>
         <item>Βεχενικό οξύ (22:0)</item>
-        <item>Bicarbonate</item>
+        <item>Διττανθρακικά</item>
         <item>Βιοτίνη</item>
         <item>Βουτυρικό οξύ (4:0)</item>
         <item>Καφεΐνη</item>
@@ -139,35 +140,15 @@
         <item>Ψευδάργυρος</item>
     </string-array>
     <!-- Text units -->
-    <string-array name="images_array">
-        <item>Προεπιλεγμένο</item>
-        <item>Θρεπτική Αξία</item>
-        <item>Συστατικά</item>
-    </string-array>
     <!-- Content Description -->
-    <string name="bookmark">Προσθήκη Σελιδοδείκτη (Verb)</string>
-    <string name="edit">Επεξεργασία</string>
     <string name="search_button">Αναζήτηση</string>
-    <string name="no_products">Προϊόντα δεν βρέθηκαν</string>
-    <string name="desc_list_item_icon">Εικόνα προϊόντος</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Όνομα/Κωδικός λογαριασμού έχει αλλάξει, ανανεώστε τις πληροφορίες</string>
-    <string name="alert_dialog_product_error_msg">Προϊόν δεν βρέθηκε, δοκιμάστε άλλο συνδυασμό</string>
     <string name="toast_retrieving">Loading...</string>
-    <string name="txtGenericName">Κοινό/Γενικό όνομα :</string>
     <string name="txtBarcode">Barcode :</string>
-    <string name="txtQuantity">Ποσότητα :</string>
-    <string name="txtPackaging">Συσκευασία :</string>
-    <string name="txtBrands">Εμπορικά σήματα :</string>
     <string name="txtCategories">Κατηγορίες :</string>
     <string name="txtLabels">Ετικέτες, πιστοποιήσεις, βραβεία :</string>
-    <string name="txtManufacturing">Τόπος παραγωγής ή επεξεργασίας :</string>
-    <string name="txtIngredientsOrigins">Προέλευση των συστατικών :</string>
-    <string name="txtCity">Πόλη και χώρα αγοράς :</string>
     <string name="txtEMB">Κωδικός παρασκευής/εμφιάλωσης:</string>
-    <string name="txtManufactureUrl">Link στη σελίδα του προϊόντος στο επίσημο site του παραγωγού:</string>
-    <string name="txtStores">Καταστήματα :</string>
-    <string name="txtCountries">Χώρες όπου πωλείται :</string>
     <string name="txtIngredients">Λίστα συστατικών :</string>
     <string name="Donate">Κάντε Δωρεά</string>
     <string name="Donation">Κάντε κλικ εδώ για να κάνετε δωρεά στο Open Food Facts</string>
@@ -182,12 +163,8 @@
     <string name="txtNutritionLevelLow">σε μικρή ποσότητα</string>
     <string name="txtNutritionLevelModerate">σε μέτρια ποσότητα</string>
     <string name="txtNutritionLevelHigh">σε υψηλή ποσότητα</string>
-    <string name="txtLogin">Σύνδεση :</string>
-    <string name="txtPass">Κωδικός χρήστη :</string>
-    <string name="txtTitleHome">Open your food and know what you eat</string>
     <string name="txtSave">Αποθήκευση</string>
     <string name="txtSignIn">Είσοδος</string>
-    <string name="txtUser">Πίνακας χρήστη</string>
     <string name="txtToastSaved">Αλλαγές αποθηκεύτηκαν</string>
     <string name="txtSalt">Αλάτι</string>
     <string name="txtFat">Λίπη</string>
@@ -202,39 +179,18 @@
     <string name="txtInfoLoginOk">Αλλαγές αποθηκεύτηκαν</string>
     <string name="txtInfoLoginNo">Ο χρήστης δεν είναι αποθηκευμένος</string>
     <string name="txtDialogsContent">Το προϊόν που σαρώσατε δεν υπάρχει ακόμα στο Open Food Facts. Παρακαλούμε προσθέστε το.</string>
-    <string name="txtDialogsContentPowerMode">Το προϊόν που σαρώσατε υπάρχει ήδη στο Open Food Facts.</string>
     <string name="txtYes">Ναι</string>
     <string name="txtNo">Όχι</string>
-    <string name="hintNameProduct">Όνομα</string>
-    <string name="hintEnergy">Ενέργεια σε kJ ανά μερίδα</string>
-    <string name="hintEnergyUnit">Μονάδα ενέργειας</string>
-    <string name="hintWeight">Βάρος</string>
-    <string name="hintStores">Κατάστημα</string>
     <string name="hintBrand">Μάρκα</string>
-    <string name="txtTakePicture">Τραβήξτε φωτογραφία</string>
     <string name="txtSendAll">Μεταφορτώστε όλα</string>
-    <string name="txtNoData">Δεν υπάρχουν δεδομένα</string>
-    <string name="txtPictureNeeded">Παρακαλώ περιμένετε…</string>
-    <string name="txtPictureNeededDialogContent">Πρέπει να προσθέσετε μία εικόνα πριν προσθέσετε αυτό το προϊόν</string>
-    <string name="txtPictureNeededDialogYes">Περίμενε</string>
     <string name="txtPictureNeededDialogNo">Ακύρωση</string>
     <string name="toastSending">Μεταφόρτωση…</string>
-    <string name="dataSaved">Αποθηκεύτηκε τοπικά στη συσκευή σας</string>
-    <string name="txtInfoAddUser">Παρακαλούμε εισάγετε το όνομα χρήστη και κωδικό πρόσβασης</string>
-    <string name="txtDataUpdated">Τα δεδομένα ενημερώθηκαν</string>
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Σίγουρα θέλετε να διαγράψετε αυτό το πρόχειρο;</string>
     <string name="txtDialogsContentInfoSave">Το προϊόν είναι αποθηκευμένο τοπικά, μπορείτε να το επεξεργαστείτε στο μενού «Επεξεργασία χωρίς σύνδεση»</string>
     <string name="txtBarcodeRequire">Απαιτείται Barcode</string>
     <string name="txtOk">Εντάξει</string>
-    <string name="txtContentDialogUploading">Παρακαλούμε μην βγείτε κατά την διάρκεια της διαδικασίας…</string>
-    <string name="txtAbout">Οι φωτογραφίες που στέλνετε δημοσιεύονται με την άδεια Creative Commons Attribution και ShareAlike.</string>
-    <string name="txtAllsent">Τα προϊόντα αποστάλθηκαν</string>
-    <string name="txtPalm">Το προϊόν δεν περιέχει φοινικέλαιο</string>
     <string name="txtBarcodeNotValid">Barcode δεν είναι έγκυρο</string>
-    <string name="try_it_scan_now">Σάρωση προϊόντος</string>
-    <string name="share">Κοινοποίηση</string>
-    <string name="translate">Μετάφραση</string>
     <string name="msg_share">Κοιτάξτε αυτό το προϊόν στο Open Food Facts:</string>
     <string name="create_account">Εγγραφείτε</string>
     <string name="home_drawer">Αρχική</string>
@@ -242,46 +198,27 @@
     <string name="search_by_barcode_drawer">Πληκτρολογήστε barcode</string>
     <string name="category_drawer">Κατηγορίες</string>
     <string name="search_by_category">Κατηγορία</string>
-    <string name="search_by_name_drawer">Αναζήτηση βάση ονόματος</string>
     <string name="scan_search">Σάρωση barcode</string>
     <string name="user_drawer">Χρήστης</string>
     <string name="offline_edit_drawer">Επεξεργασία χωρίς σύνδεση</string>
     <string name="txt_anonymous">Ανώνυμος</string>
-    <string name="txt_product_not_found">Προϊόντα δεν βρέθηκαν</string>
     <string name="delete_txt">Διαγραφή</string>
     <string name="sign_in_drawer">Σύνδεση</string>
     <string name="alert_drawer">Ειδοποίηση για αλλεργιογόνο</string>
     <string name="your_lists">Οι λίστες σας</string>
-    <string name="warning_allergens">Περιέχει αλλεργιογόνα</string>
     <string name="title_dialog_alert">Προσθήκη ειδοποίησης</string>
-    <string name="toggle_flash">Φλας</string>
-    <string name="flash_on">Φλας ανοικτό [ON]</string>
-    <string name="flash_off">Φλας Κλειστό [OFF]</string>
-    <string name="ring_on">Κουδούνισμα [ON]</string>
-    <string name="ring_off">Κουδούνισμα [OFF]</string>
-    <string name="auto_focus_on">Εστίαση Αυτόματα [ON]</string>
-    <string name="auto_focus_off">Εστίαση Χειροκίνητα [OFF]</string>
-    <string name="formats">Μορφές</string>
-    <string name="choose_formats">Επέλεξε Μορφή</string>
     <string name="select_camera">Επιλογή Κάμερας</string>
     <string name="ok_button">Εντάξει</string>
     <string name="cancel_button">Ακύρωση</string>
     <string name="login_button">Σύνδεση</string>
     <string name="create_account_button">Δημιουργία Λογαριασμού</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-    <string name="from_gallery">Από τη συλλογή</string>
-    <string name="product_sent">Το προϊόν στάλθηκε με επιτυχία</string>
-    <string name="action_edit_product">Επεξεργασία προϊόντος</string>
     <string name="title_info_dialog">Οδηγίες Χρήσης</string>
     <string name="text_offline_info_dialog">Μπορείτε να σαρώσετε προϊόντα όταν είστε εκτός σύνδεσης για να τα προσθέσετε αργότερα στο Open Food Facts. Όλα τα προϊόντα που σαρώνετε θα εμφανίζονται εδώ και θα μπορείτε να τα στείλετε χρησιμοποιώντας το παρακάτω κουμπί.</string>
     <string name="permission_camera">Χρειάζεται άδεια κάμερας για τη σάρωση των Barcodes και τη λήψη φωτογραφιών.</string>
     <string name="permission_title">Δικαιώματα</string>
     <string name="permission_denied">Παρακαλώ δώστε δικαιώματα από τις ρυθμίσεις</string>
-    <string name="permission_storage">Τα δικαιώματα αποθήκευσης είναι απαραίτητα για την επιλογή και λήψη φωτογραφιών</string>
-    <string name="info_download_data">Χρειάζεται περιπτέρου λήψη ώστε να γίνει χρήση αυτής της λειτουργίας. Πατήστε Ναι για να ξεκινήσετε!</string>
     <string name="info_download_data_connection">Χρειάζεται περιπτέρου λήψη ώστε να γίνει χρήση αυτής της λειτουργίας. Για έναρξη λήψης ενεργοποιήστε WiFi ή Δεδομένα...</string>
-    <string name="msg_input_empty">Παρακαλώ συμπληρώστε τα κενά.</string>
-    <string name="new_offline_info">Τραβήξτε φωτογραφία το προϊόν, ετικέτα συστατικών, διατροφικά στοιχεία και άλλες τυχών πληροφορίες. Ευχαριστούμε!</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Ο κωδικός πρέπει να είναι τουλάχιστον 6 χαρακτήρες.</string>
     <string name="user">χρήστης</string>
@@ -302,7 +239,6 @@
     <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">Ιστορικό εξήχθη</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
-    <string name="txt_nutrition_not_found">Μη διαθέσιμο</string>
     <string name="no_brand">Χωρίς μάρκα</string>
     <string name="no_title">Χωρίς Τίτλο</string>
     <!-- Nutrition info tab -->
@@ -313,34 +249,19 @@
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">Υπολογίστε τα Διατροφικά Στοιχεία</string>
-    <string name="txt_calories_result">%1$s kcal σε %2$s %3$s</string>
     <string name="nutrition_carbohydrate">Υδατάνθρακας</string>
-    <string name="nutrition_carbohydrate_short_name">Υδατάνθρακες (g)</string>
     <string name="nutrition_cholesterol">Χοληστερόλη</string>
-    <string name="nutrition_cholesterol_short_name">Χοληστερόλη (g)</string>
     <string name="nutrition_energy">Ενέργεια</string>
     <string name="nutrition_energy_short_name">Ενέργεια</string>
     <string name="nutrition_fat">Λίπη</string>
-    <string name="nutrition_fat_short_name">Λιπαρά (g)</string>
     <string name="nutrition_fiber">Φυτικές ίνες</string>
-    <string name="nutrition_fiber_short_name">Φυτικές ίνες (g)</string>
     <string name="nutrition_header">Διατροφικά στοιχεία</string>
-    <string name="nutrition_no_data_message">Δεν υπάρχουν διαθέσιμα δεδομένα για αυτό το προϊόν</string>
-    <string name="nutrition_per_quantity">Για 100g/100ml</string>
     <string name="nutrition_proteins">Πρωτεΐνες</string>
-    <string name="nutrition_proteins_short_name">Πρωτεΐνες (g)</string>
     <string name="nutrition_salt">Αλάτι</string>
-    <string name="nutrition_salt_short_name">Αλάτι (g)</string>
     <string name="nutrition_satured_fat">Κορεσμένα λιπαρά</string>
-    <string name="nutrition_satured_fat_short_name">Κορεσμένα λιπαρά (g)</string>
-    <string name="nutrition_serving">Ανά μερίδα</string>
-    <string name="nutrition_serving_size">Μέγεθος μερίδας :</string>
     <string name="nutrition_sodium">Νάτριο</string>
-    <string name="nutrition_sodium_short_name">Νάτριο (g)</string>
     <string name="nutrition_sugars">Σάκχαρα</string>
-    <string name="nutrition_sugars_short_name">Sugars (g)</string>
     <string name="nutrition_trans_fat">Τρανς Λιπαρά</string>
-    <string name="nutrition_trans_fat_short_name">Τρανς λιπαρά (g)</string>
     <string name="nutriment_serving_size">Ανά μερίδα: </string>
     <string name="action_manage_account">Διαχείριση λογαριασμού</string>
     <string name="action_contributes">Οι συνεισφορές σας</string>
@@ -351,15 +272,10 @@
     <string name="logout_drawer">Αποσύνδεση</string>
     <string name="contribution_without_account">Μπορείτε να συνδεθείτε ή να δημιουργήσετε έναν λογαριασμό για να κρατήσετε τις συνεισφορές σας</string>
     <string name="textCarbonFootprint">Αποτύπωμα άνθρακα / εκπομπές CO2: </string>
-    <string name="txtDialogPowerMode">Γρήγορη προβολή</string>
-    <string name="txtSeeMore">Δείτε περισσότερα</string>
     <string name="action_search">Αναζήτηση</string>
     <string name="search_hint">Αναζήτηση προϊόντος</string>
     <string name="number_of_results">Αριθμός αποτελεσμάτων: </string>
-    <string name="brand">Μαρκα :</string>
     <string name="number_of_products">Αριθμός προϊόντων: </string>
-    <string name="txt_no_results">Δε βρέθηκαν αποτελέσματα</string>
-    <string name="txt_extend_search">Προσπαθήστε να διευρύνετε την αναζήτησή σας ή να προσθέσετε το προϊόν</string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
     <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
     <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
@@ -368,12 +284,10 @@
     <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
     <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
     <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_state_products">Oh no, we don’t have any products from this state, can you add one?</string>
     <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-    <string name="txt_cant_load_search_results">Δεν είναι δυνατή η φόρτωση των αποτελεσμάτων αναζήτησης</string>
     <string name="something_went_wrong">Συγνώμη, κάτι πήγε στραβά…</string>
     <string name="txt_try_again">Προσπαθήστε ξανά</string>
     <string name="nutrition_lactose">Λακτόζη</string>
@@ -384,12 +298,6 @@
     <string name="for_100g">Για 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Ανά μερίδα</string>
-    <string name="minerals">Μεταλλικά στοιχεία</string>
-    <string name="nutrition_calcium">Ασβέστιο</string>
-    <string name="nutrition_potassium">Κάλιο</string>
-    <string name="nutrition_chlore">Χλώριο</string>
-    <string name="nutrition_magnesium">Μαγνήσιο</string>
-    <string name="nutrition_taurine">Ταυρίνη</string>
     <string name="nutrition_monounsaturatedFat">Μονοακόρεστα λιπαρά</string>
     <string name="nutrition_polyunsaturatedFat">Πολυακόρεστα λιπαρά</string>
     <string name="nutrition_omega3">Ωμέγα-3</string>
@@ -416,7 +324,7 @@
     <string name="pantothenic_acid">Παντοθενικό οξύ</string>
     <string name="nutrition_minerals">Μεταλλικά στοιχεία</string>
     <string name="silica">Silica</string>
-    <string name="bicarbonate">Bicarbonate</string>
+    <string name="bicarbonate">Διττανθρακικά</string>
     <string name="potassium">Κάλιο</string>
     <string name="chloride">Χλωριούχο</string>
     <string name="calcium">Ασβέστιο</string>
@@ -438,6 +346,8 @@
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Κακάο</string>
     <string name="chlorophyl">Χλωροφύλλη</string>
+    <string name="take_picture">Take a photo</string>
+    <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Φωτογραφήστε τα συστατικά</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
@@ -474,7 +384,6 @@
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Απόρριψη</string>
     <string name="device_offline_dialog_positive">Ρυθμίσεις</string>
-    <string name="saving">Γίνεται αποθήκευση…</string>
     <string name="scan_first_product">Scan First Product</string>
     <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
@@ -503,7 +412,6 @@
     <string name="preference_header_general">Γενικά</string>
     <string name="preference_header_network">Ρυθμίσεις Δικτύου</string>
     <string name="preference_header_contributing">Συνεισφορά</string>
-    <string name="not_support_books">Δεν υποστηρίζονται βιβλία</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Σύνδεση</string>
     <string name="login_true">Already logged in!</string>
@@ -514,14 +422,10 @@
     <string name="choose_resolution">Ανάλυση</string>
     <string name="pref_resolution_summary">Ανάλυση φωτογραφίας προϊόντος</string>
     <string name="image_upload_resolution">Image upload resolution</string>
-    <string name="can_add_barcode">Having trouble scanning?\nDrag up to type the barcode</string>
     <string name="wikidata_information">Περισσότερες Πληροφορίες</string>
     <string name="wikidata_unavailable">Δεν υπάρχει ακόμη σελίδα Wikipedia στη γλώσσα σας.</string>
-    <string name="description">Περιγραφή: </string>
-    <string name="title">Τίτλος: </string>
     <string name="Wikipedia">Ανοίξτε στη Wikipedia</string>
     <string name="Browse_Products">Αναζήτηση προϊόντων</string>
-    <string name="swipe_down">Σύρετε προς τα κάτω</string>
     <string name="brand_string">Μάρκα</string>
     <string name="additive_string">Προσθετο</string>
     <string name="allergen_string">Αλλεργιογόνα</string>
@@ -529,8 +433,6 @@
     <string name="country_string">Χώρες όπου πωλείται</string>
     <string name="store_subtitle">Κατάστημα</string>
     <string name="packaging_subtitle">Συσκευασία</string>
-    <string name="last_seen_string">Πριν %1$d %2$s</string>
-    <string name="store_string">Κατάστημα</string>
     <string name="packaging_string">Συσκευασία</string>
     <string name="label_string">Ετικετα</string>
     <string name="category_string">Κατηγορία</string>
@@ -545,12 +447,8 @@
     <string name="mineral_tags_text">Μεταλλικά στοιχεία:</string>
     <string name="other_tags_text">Άλλες ουσίες:</string>
     <!--shared element transition key-->
-    <string name="wikidata">Δεδομένα του Wikidata</string>
     <string name="disable_image_loading">Απενεργοποίηση εικόνων όταν η μπαταρία είναι χαμηλή</string>
     <string name="DisableLoadTitle">Disable image loading</string>
-    <string name="txtCamera">Κάμερα</string>
-    <string name="txtGallery">Συλλογή</string>
-    <string name="txtOptions">Επιλογές</string>
     <string name="by_title">Ονομασία</string>
     <string name="by_brand">Μάρκα</string>
     <string name="by_barcode">Barcode</string>
@@ -570,7 +468,6 @@
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Θέλετε να προσθέσετε φωτογραφίες σε αυτό το Barcode;</string>
     <string name="bottomNav_history">Ιστορικό</string>
-    <string name="bottomNav_search">Αναζήτηση</string>
     <string name="products_added">Προϊόντα που προσθέσατε ή επεξεργαστήκατε</string>
     <string name="products_incomplete">Προϊόντα που προσθέσατε και απαιτούν συμπλήρωση</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
@@ -583,7 +480,6 @@
     <string name="notification_channel_name">Εξαγωγή ειδοποιήσεων</string>
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Products to be completed</string>
-    <string name="modified_history">Product added on %1$s at %2$s by %3$s.  Last edit of product page on %4$s at %5$s by %6$s.  Product page also edited by %7$s</string>
     <string name="offline_notification_title">Συνεισφορές εκτός σύνδεσης που πρέπει να στείλετε</string>
     <string name="creator_history">Προϊόν που προστέθηκε στις %1$s στις %2$s GMT+1 από</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
@@ -591,14 +487,17 @@
     <string name="contribution_tab">Συνεισφορές</string>
     <string name="contribution_tab_summary">Εμφάνιση καρτέλα με συνεισφορές χρηστών μαζί με τα προϊόντα</string>
     <string name="contribution_tab_title">Show contribution tab</string>
-    <string name="product">Επεξεργασία</string>
     <string name="txtDialogsTitle">Πληροφορίες</string>
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Προσθήκη νέου προϊόντος</string>
     <string name="productNameNull">Άγνωστο όνομα</string>
-    <string name="productBrandNull">Άγνωστη μάρκα</string>
-    <string name="productQuantityNull">Άγνωστη ποσότητα</string>
+    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
@@ -611,10 +510,10 @@
     <string name="preferences">Προτιμήσεις</string>
     <string name="OFFlogo">Λογότυπο Open Food Facts</string>
     <string name="loading_product">Loading product %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Δεν είναι δυνατή η εξαγωγή συστατικών από την εικόνα</string>
     <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
     <string name="choose_nutrient">Επιλέξτε ένα θρεπτικό συστατικό</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
@@ -658,6 +557,8 @@
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Τα διατροφικά δεδομένα δεν αναγράφονται σε αυτό το προϊόν</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="front_short_picture">Front</string>
+    <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">Για 100γρ/100ml</string>
     <string name="per_serving">Ανά μερίδα</string>
     <string name="serving_size">Μέγεθος μερίδας</string>
@@ -680,15 +581,19 @@
     <string name="stores">Καταστήματα</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+    <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Αποστολή φωτογραφίας Διατροφικών στοιχείων</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
+    <string name="edit_front_image">Edit the front photo</string>
+    <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Συνδεθείτε για να επεξεργαστείτε το προϊόν.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Τροποποιήστε ένα προϊόν</string>
-    <string name="hint_serving_size">Παραδείγματα: 60 g, 12 oz, 20cl, 2 fl oz</string>
     <string name="nutrient_already_added">%s είναι ήδη παρόν διατροφικά στοιχειά</string>
     <string name="save_edits">Αποθηκεύστε τις αλλαγές</string>
     <string name="contribution_by">Contribution by</string>
@@ -714,7 +619,6 @@
     <string name="some_people">Μερικοί άνθρωποι\n(πάνω από 5%)</string>
     <string name="safety_and_exposure_assessment">Ασφαλή ποσότητες κατανάλωσης</string>
     <string name="risk_of_exposure">Επικίνδυνες ποσότητες</string>
-    <string name="efsa_warning_moderate_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a moderate risk of consuming too much %1$s.</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
     <string name="legend_adi">υπερβαίνει Ημερήσιες Προσλαμβανόμενες Ποσότητες</string>
@@ -723,50 +627,25 @@
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
-    <string name="your_diets">Η(Οι) Διατροφή(ές) σας</string>
-    <string name="diet_name">Όνομα Διατροφής</string>
-    <string name="diets_dialog_warning_title">Warning</string>
-    <string name="warning_diets_data">Your diet(s) data stays on your device. Nothing will be uploaded anywhere.</string>
-    <string name="edit_diet_name">Όνομα</string>
-    <string name="edit_diet_description">Περιγραφή</string>
-    <string name="edit_diet_enabled_disabled">Ενεργοποιημένο ή απενεργοποιημένο</string>
-    <string name="edit_diet_authorised_ingredients">Authorized ingredients</string>
-    <string name="edit_diet_hint_ingredient_authorised">List the authorized ingredients that should appear in green. Example : apple, mushroom, tomato… You can complete this list later.</string>
-    <string name="edit_diet_so_so_ingredients">So so ingredients</string>
-    <string name="edit_diet_hint_so_so_ingredient">List the problematic ingredients that should appear in orange. Example : egg, fish… You can complete this list later.</string>
-    <string name="edit_diet_unauthorised_ingredients">Unauthorized ingredients</string>
-    <string name="edit_diet_hint_unauthorised_ingredient">List the unauthorized ingredients that should appear in red. Example : gluten, milk, palm oil, sugar… You can complete this list later.</string>
     <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Προσθέστε μια κατηγορία για να υπολογίσετε το Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="no_nutrition_data_prompt">Αυτό το προϊόν δεν διαθέτει διατροφικά στοιχεία</string>
-    <string name="nutrition_image_prompt_text">Take a picture of the nutrition facts</string>
-    <string name="ingredient_image_prompt_text">Φωτογραφήστε τα συστατικά</string>
     <string name="category_game_btn">Βοηθήστε στην κατηγοριοποίηση των προϊόντα για να υπολογίσετε το Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Έκδοση</string>
-    <string name="txtOtherInfo">Other Information: </string>
-    <string name="txtConservationCond">Conservation Conditions: </string>
-    <string name="txtRecyclingInstructionToRecycle">Οδηγίες ανακύκλωσης - Για Ανακύκλωση: </string>
-    <string name="txtRecyclingInstructionToDiscard">Οδηγίες Ανακύκλωσης - Για Απορρίμματα: </string>
-    <string name="recyclingInstructionToRecycle">Οδηγίες ανακύκλωσης (για ανακύκλωση)</string>
-    <string name="recyclingInstructionToDiscard">Οδηγίες ανακύκλωσης (για απόρριψη)</string>
-    <string name="conservationCond">Conservation Conditions</string>
-    <string name="other_info">Other Information</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Αναφορά εικόνας</string>
     <string name="detected_ingredients">Detected Ingredients</string>
-    <string name="txtLoaded">Οι μεταφράσεις κατεβάστηκαν με επιτυχία</string>
     <string name="txtConnectionError">Δεν ήταν δυνατή η λήψη ορισμένων δεδομένων. Mπορεί να οφείλεται σε σφάλμα σύνδεσης.</string>
     <string name="set_image_name">Successfully set the image as</string>
-    <string name="warning">Προσοχή :</string>
-    <string name="customer_service">Customer Service :</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Προσθετα</string>
     <!--used for product_lists implementation-->
@@ -776,23 +655,17 @@
     <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Προϊόντα προς αγορά</string>
-    <string name="export_csv_your_listed_products">Εξαγωγή σε CSV</string>
     <string name="txt_exporting_your_listed_products">Εξαγωγή των προϊόντων σας…</string>
     <string name="txt_your_listed_products_exported">Τα προϊόντα σας έχουν εξαχθεί</string>
     <string name="txt_discard">Ακύρωση</string>
-    <string name="txt_save">Αποθήκευση</string>
-    <string name="write_external_storage_your_listed_products">Απαιτούνται δικαιώματα αποθήκευσης για την εξαγωγή των δεδομένων.</string>
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">Θα μπορείτε να προσθέσετε προϊόντα σε αυτήν τη λίστα, αναζητώντας τα και κάνοντας κλικ στο κουμπί + στην επάνω δεξιά γωνία της σελίδας του προϊόντος.</string>
-    <string name="txt_i_m_eating_this">Το τρώω αυτό</string>
-    <string name="compare_product_prompt">Συγκρίνετε αυτό το Προϊόν</string>
     <string name="search_history_pref_title">Διαγραφή ιστορικού τοπικής αναζήτησης</string>
     <string name="search_history_pref_summary">Καταργήστε όλες τις αναζητήσεις που πραγματοποιήσατε σε αυτήν τη συσκευή</string>
     <string name="settings_country_dialog_title">Επιλέξτε τη χώρα σας</string>
     <string name="settings_country_summary">Αλλάξτε την επιλεγμένη χώρα σας</string>
     <string name="settings_country_title">Χώρα</string>
-    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">Το προϊόν αυτό δεν περιέχει πληροφορίες διατροφής στη συσκευασία. Αν αυτό Δεν ισχύει, μπορείτε να επεξεργαστείτε το προϊόν.</string>
     <string name="empty"></string>
     <string name="add_product">Add products</string>
@@ -810,7 +683,7 @@
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
-    <string name="go_to_full_product_page">Go to full product page</string>
+    <string name="go_to_full_product_page">Go to product</string>
     <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
@@ -818,7 +691,15 @@
     <string name="first_scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
-    <string name="todo">TODO</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="unselect_image">Unselect Image</string>
+    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Barcode</string>
+    <string name="productAdditivesNone">No additives</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
+    <string name="closeZoom">Click to close zoom</string>
+    <string name="imageFullscreen">Zoom</string>
 </resources>

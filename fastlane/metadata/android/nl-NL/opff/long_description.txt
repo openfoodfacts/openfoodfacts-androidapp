@@ -1,34 +1,34 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Scan barcodes van diervoedingsproducten om gegevens te krijgen over ingrediënten, additieven en voedingswaarden.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+De app maakt het mogelijk om meer dan 600 huisdiervoedingsproducten in de gratis en open database Open Pet Food Facts te bekijken, en om foto's en gegevens toe te voegen voor nieuwe producten.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Om het Open Pet Food Facts project te ontdekken, bezoek https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts is een database met huisdiervoedingsproducten gemaakt door iedereen, voor iedereen.
+- Je kunt de database gebruiken om betere keuzes voor huisdiervoeding te maken, en omdat het open data is, kan iedereen het voor elk doel hergebruiken.
+- Open Pet Food Facts is een non-profit-project ontwikkeld door duizenden vrijwilligers wereldwijd. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
+- Je kunt vandaag beginnen met een bijdrage te leveren door een product uit de voorraad van je huisdier toe te voegen. 
 
 
-*** Get the Facts ***
+*** Ken de feiten ***
 
-You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
+- ingrediëntenlijst (inclusief asgehalte)
+- voedingswaarde, voedingsstoplicht…
+- merken, allergenen, labels (biologisch, veganistisch...)
+- Het werkt met hondenvoer (droog hondenvoer en nat hondenvoer), kattenvoer, konijnenvoer, slangenvoer, visvoer, vogelvoer, paardenvoer of ieder ander soort voer voor je favoriete dier.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Werkt in alle omstandigheden goed ***
+- Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
+- De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen
+- Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Je persoonlijke gegevens zijn van jou en worden nooit online verzonden
+- Je kunt de app anoniem gebruiken
+- Je kunt jouw scangeschiedenis exporteren
 
 
 For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.

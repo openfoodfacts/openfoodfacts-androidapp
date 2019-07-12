@@ -10,10 +10,6 @@ buildscript {
     dependencies {
 
 
-
-
-
-
         classpath 'com.android.tools.build:gradle:3.3.2'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -37,66 +33,66 @@ allprojects {
     
         sonarqube { properties { property 'sonar.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*,**/*.xml" } }
 
+    sonarqube { properties { property 'sonar.coverage.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*" } }
+
 }
 
 ext {
-    supportLibraryVersion = '27.1.1'
-    multidexVersion = '1.0.3'
+    supportLibraryVersion = '1.0.0'
+    multidexVersion = '2.0.0'
 
-    daggerVersion = '2.13'
+    daggerVersion = '2.22'
 
-    rxVersion = '2.2.7'
-    rxAndroidVersion = '2.1.0'
+    rxVersion = '2.2.9'
+    rxAndroidVersion = '2.1.1'
 
-    retrofitVersion = '2.3.0'
-    okhttpVersion = '3.9.0'
+    retrofitVersion = '2.6.0'
+    okhttpVersion = '3.12.1'
 
-    gsonVersion = '2.8.2'
-    jacksonVersion = '2.8.9'
+    jacksonVersion = '2.9.8'
 
     greenDaoVersion = '3.2.0'
 
-    picassoVersion = '2.5.2'
+    picassoVersion = '2.71828'
     //DO NOT UPDATE : saveInAppExternalFilesDir() removed
     easyImageVersion = '1.4.0'
 
-    butterknifeVersion = '8.8.1'
+    butterknifeVersion = '10.1.0'
 
-    openCsvVersion = '4.1'
+    commonsLang='2.6'
+    commonsCsv='1.4'
 
     journeyappsZxingScannerVersion = '3.6.0'
     zxingCoreVersion = '3.3.0' //For Android 14+ support zxing:core should be 3.3.0 or earlier
 
     htmlDomVersion = '1.11.2'
 
-    apacheCollectionsVersion = '4.1'
     apacheValidatorVersion = '1.6'
 
     loadToastVersion = '1.0.12'
     zoomingImgVersion = '2.1.3'
     materialDialogVersion = '0.9.6.0'
-    fabVersion = '1.6.4'
 
-    fontIconCoreVersion = '3.0.0@aar'
-    googleMaterialFontVersion = '3.0.1.2.original@aar'
-    materialFontVersion = '2.2.0.4@aar'
-    awesomeFontVersion = '4.7.0.2@aar'
+    fontIconCoreVersion = '3.2.5@aar'
+    googleMaterialFontVersion = '3.0.1.3.original@aar'
 
     jUnitVersion = '4.12'
     jsonUnitVersion = '1.27.0'
-    espressoVersion = '3.0.2'
-    espressoContribVersion = '3.0.1'
+    espressoVersion = '3.1.0'
+    espressoContribVersion = '3.1.0'
     mockitoVersion = '2.13.0'
 
-    constraintLayout = '1.1.3'
-    support = '27.1.1'
+    constraintLayout = '1.1.2'
     jsr250api = '1.0'
     jobDispatcher = '0.8.5'
-    fastAdapterCommons = '2.1.0@aar'
+    fastAdapterCommons = '3.3.1@aar'
     converterScalars = '2.1.0'
-    materialDrawer = '6.0.3@aar'
-    imageCropper = '2.6.0'
-    orchestrator = '1.0.2'
+    materialDrawer = '6.1.2'
+    imageCropper = '2.8.0'
+    orchestrator = '1.1.0-alpha4'
     nachos = '1.1.1'
-    testRunnerVersion = '1.0.2'
+    testRunnerVersion = '1.1.0'
+
+    testFalconVersion="2.1.1"
+    testscreengrabVersion="1.2.0"
 }
