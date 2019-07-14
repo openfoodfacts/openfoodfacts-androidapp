@@ -36,7 +36,7 @@ public class AllergenHelper {
             return createEmpty();
         }
 
-        if (!product.getStatesTags().contains("en:complete")) {
+        if (!product.getStatesTags().contains("en:ingredients-completed")) {
             return new Data(true, Collections.emptyList());
         }
 
