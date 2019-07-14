@@ -9,16 +9,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.*;
 import android.widget.Button;
@@ -38,16 +37,15 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.SaveListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import org.greenrobot.greendao.async.AsyncSession;
@@ -57,7 +55,7 @@ import java.util.*;
 
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_OFFLINE;
-import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static org.apache.commons.lang.StringUtils.isEmpty;
 
 public class OfflineEditFragment extends NavigationBaseFragment implements SaveListAdapter.SaveClickInterface {
     public static final String LOG_TAG = "OFFLINE_EDIT";
@@ -147,7 +145,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                             intentAirplaneMode.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intentAirplaneMode);
                         } catch (ActivityNotFoundException e) {
-                            e.printStackTrace();
+                            Log.e(OfflineEditFragment.class.getSimpleName(),"onSendAllProducts",e);
                         }
                     } else {
                         Intent intent1 = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
@@ -212,7 +210,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             size--;
 
             String fields = "link,quantity,image_ingredients_url,ingredients_text_" + productDetails.get("lang") + ",product_name_" + productDetails.get("lang");
-            client.getExistingProductDetails(product.getBarcode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            client.getProductByBarcodeSingle(product.getBarcode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
@@ -281,7 +279,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                 ProgressBar imageProgressLocal = view.findViewById(R.id.image_progress_local);
                 ingredientsLocal.setText(productDetails.get("ingredients_text_" + lc));
                 ingredientsServer.setText(existingValuesOnServer.get(INGREDIENTS_ON_SERVER));
-                Picasso.with(getContext())
+                Picasso.get()
                     .load(existingValuesOnServer.get(INGREDIENTS_IMAGE_ON_SERVER))
                     .error(R.drawable.placeholder_thumb)
                     .into(imageServer, new Callback() {
@@ -295,12 +293,12 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             imageProgressServer.setVisibility(View.GONE);
                         }
                     });
-                Picasso.with(getContext())
-                    .load("file://" + productDetails.get("image_ingredients"))
+                Picasso.get()
+                    .load(FileUtils.LOCALE_FILE_SCHEME + productDetails.get("image_ingredients"))
                     .error(R.drawable.placeholder_thumb)
                     .into(imageLocal, new Callback() {
                         @Override
@@ -308,12 +306,12 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                             imageProgressLocal.setVisibility(View.GONE);
                             // Add option to zoom image.
                             imageLocal.setOnClickListener(v -> {
-                                showFullscreenView("file://" + productDetails.get("image_ingredients"), imageLocal);
+                                showFullscreenView(FileUtils.LOCALE_FILE_SCHEME + productDetails.get("image_ingredients"), imageLocal);
                             });
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             imageProgressLocal.setVisibility(View.GONE);
                         }
                     });
@@ -324,18 +322,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     private void showFullscreenView(String s, ImageView imageServer) {
-        Intent intent = new Intent(getContext(), FullScreenImage.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("imageurl", s);
-        intent.putExtras(bundle);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(activity, imageServer,
-                    getString(R.string.product_transition));
-            startActivity(intent, options.toBundle());
-        } else {
-            startActivity(intent);
-        }
+        FullScreenActivityOpener.openZoom(this,s,imageServer);
     }
 
     /**
@@ -440,7 +427,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         if (!imageFrontUploaded && imageFrontFilePath != null && !imageFrontFilePath.isEmpty()) {
             // front image is not yet uploaded.
             Map<String, RequestBody> imgMap = createRequestBodyMap(code, productDetails, ProductImageField.FRONT);
-            RequestBody image = OpenFoodAPIClient.createImageRequest(new File(imageFrontFilePath));
+            RequestBody image = ProductImage.createImageRequest(new File(imageFrontFilePath));
             imgMap.put("imgupload_front\"; filename=\"front_" + productDetails.get("lang") + ".png\"", image);
 
             // Attribute the upload to the connected user
@@ -522,7 +509,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         if (!imageIngredientsUploaded && imageIngredientsFilePath != null && !imageIngredientsFilePath.isEmpty()) {
             // ingredients image is not yet uploaded.
             Map<String, RequestBody> imgMap = createRequestBodyMap(code, productDetails, ProductImageField.INGREDIENTS);
-            RequestBody image = OpenFoodAPIClient.createImageRequest(new File(imageIngredientsFilePath));
+            RequestBody image = ProductImage.createImageRequest(new File(imageIngredientsFilePath));
             imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + productDetails.get("lang") + ".png\"", image);
 
             // Attribute the upload to the connected user
@@ -584,8 +571,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     private String fillWithUserLoginInfo(Map<String, RequestBody> imgMap) {
-        final SharedPreferences settings = activity.getBaseContext().getSharedPreferences("login", 0);
-        return OpenFoodAPIClient.fillWithUserLoginInfo(imgMap,settings);
+        return OpenFoodAPIClient.fillWithUserLoginInfo(imgMap);
     }
 
     /**
@@ -602,7 +588,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             Map<String, RequestBody> imgMap = new HashMap<>();
             RequestBody barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
             RequestBody imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), ProductImageField.NUTRITION.toString() + '_' + productDetails.get("lang"));
-            RequestBody image = OpenFoodAPIClient.createImageRequest(photoFile);
+            RequestBody image = ProductImage.createImageRequest(photoFile);
             imgMap.put("code", barcode);
             imgMap.put("imagefield", imageField);
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + productDetails.get("lang") + ".png\"", image);

@@ -3,8 +3,8 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,6 +16,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -72,21 +73,9 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
         String imageName = images.get(position);
         ImageView imageView = holder.productImage;
         Button menuButton = holder.menuButton;
+        String finalUrlString = ImageKeyHelper.getImageUrl(barcode, imageName, ImageKeyHelper.IMAGE_EDIT_SIZE_FILE);
 
-        String baseUrlString = "https://static.openfoodfacts.org/images/products/";
-        String barcodePattern = barcode;
-        if (barcodePattern.length() > 8) {
-            barcodePattern = new StringBuilder(barcode)
-                    .insert(3, "/")
-                    .insert(7, "/")
-                    .insert(11, "/")
-                    .toString();
-        }
-
-
-        String finalUrlString = baseUrlString + barcodePattern + "/" + imageName + ".400" + ".jpg";
-
-        Picasso.with(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView);
+        Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(imageView);
         Log.i("URL", finalUrlString);
 
 
@@ -102,13 +91,13 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        final String imgIdKey = "imgid";
+                        final String imgIdKey = ImageKeyHelper.IMG_ID;
                         switch (item.getItemId()) {
 
                             case R.id.set_ingredient_image:
                                 imgMap.put(imgIdKey, images.get(position));
-                                imgMap.put("code", barcode);
-                                imgMap.put("id", ProductImageField.INGREDIENTS.toString() + '_' + product.getLang());
+                                imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
+                                imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.INGREDIENTS,product));
 
                                 openFoodAPIClient.editImage(product.getCode(), imgMap, new OpenFoodAPIClient.OnEditImageCallback() {
                                     @Override
@@ -121,8 +110,8 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
 
                             case R.id.set_nutrition_image:
                                 imgMap.put(imgIdKey, images.get(position));
-                                imgMap.put("code", barcode);
-                                imgMap.put("id", ProductImageField.NUTRITION.toString() + '_' + product.getLang());
+                                imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
+                                imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.NUTRITION,product));
 
                                 openFoodAPIClient.editImage(product.getCode(), imgMap, new OpenFoodAPIClient.OnEditImageCallback() {
                                     @Override
@@ -135,8 +124,8 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
 
                             case R.id.set_front_image:
                                 imgMap.put(imgIdKey, images.get(position));
-                                imgMap.put("code", barcode);
-                                imgMap.put("id", ProductImageField.FRONT.toString() + '_' + product.getLang());
+                                imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
+                                imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.FRONT,product));
 
                                 openFoodAPIClient.editImage(product.getCode(), imgMap, new OpenFoodAPIClient.OnEditImageCallback() {
                                     @Override
@@ -179,7 +168,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
         try {
             imageName = jsonObject.getString("imagefield");
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(getClass().getSimpleName(),"displaySetImageName",e);
         }
         Toast.makeText(context, context.getString(R.string.set_image_name) + " " + imageName, Toast.LENGTH_LONG).show();
 

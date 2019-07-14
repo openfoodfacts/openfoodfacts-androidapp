@@ -3,12 +3,8 @@ package openfoodfacts.github.scrachx.openfood.views.listeners;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
-import android.support.design.widget.BottomNavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.util.Log;
-
-import java.lang.reflect.Field;
 
 public class BottomNavigationListenerInstaller {
     /*
@@ -18,24 +14,24 @@ public class BottomNavigationListenerInstaller {
          */
     @SuppressLint("RestrictedApi")
     private static void disableShiftMode(BottomNavigationView view) {
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
-        try {
-            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
-            shiftingMode.setAccessible(true);
-            shiftingMode.setBoolean(menuView, false);
-            shiftingMode.setAccessible(false);
-            for (int i = 0; i < menuView.getChildCount(); i++) {
-                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
-                item.setShiftingMode(false);
-
-                item.setChecked(item.getItemData().isChecked());
-            }
-        } catch (NoSuchFieldException e) {
-            Log.i(BottomNavigationListenerInstaller.class.getSimpleName(),"disableShiftMode",e);
-
-        } catch (IllegalAccessException e) {
-            Log.i(BottomNavigationListenerInstaller.class.getSimpleName(),"disableShiftMode",e);
-        }
+//        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
+//        try {
+//            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+//            shiftingMode.setAccessible(true);
+//            shiftingMode.setBoolean(menuView, false);
+//            shiftingMode.setAccessible(false);
+//            for (int i = 0; i < menuView.getChildCount(); i++) {
+//                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+//                item.setShiftingMode(false);
+//
+//                item.setChecked(item.getItemData().isChecked());
+//            }
+//        } catch (NoSuchFieldException e) {
+//            Log.i(BottomNavigationListenerInstaller.class.getSimpleName(),"disableShiftMode",e);
+//
+//        } catch (IllegalAccessException e) {
+//            Log.i(BottomNavigationListenerInstaller.class.getSimpleName(),"disableShiftMode",e);
+//        }
     }
 
 

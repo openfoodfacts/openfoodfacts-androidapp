@@ -2,8 +2,8 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.core.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -11,14 +11,15 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-
-import java.util.List;
 
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;

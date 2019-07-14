@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -20,9 +20,8 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
-
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 /**
  * Created by prajwalm on 14/04/18.

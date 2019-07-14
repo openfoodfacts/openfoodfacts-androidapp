@@ -2,7 +2,10 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
 import android.app.SearchManager;
-import android.content.*;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -17,18 +20,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,11 +27,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.*;
 import com.google.zxing.common.HybridBinarizer;
-import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -54,9 +56,9 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.*;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.*;
@@ -70,12 +72,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Objects;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
-    private static final int LOGIN_REQUEST = 1;
+    public static final int LOGIN_REQUEST = 1;
     private static final int SHOW_CONTRIBUTION_AFTER_LOGIN = 2;
     private static final long USER_ID = 500;
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
@@ -160,6 +165,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .withActivity(this)
             .withTranslucentStatusBar(true)
             .withHeaderBackground(R.drawable.header)
+            .withTextColorRes(R.color.white)
             .addProfiles(profile)
             .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                 @Override
@@ -393,7 +399,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("obf")) {
             result.removeItem(ITEM_ALERT);
-            result.removeItem(ITEM_ADDITIVES);
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
@@ -415,12 +420,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             result.removeItem(ITEM_SCAN);
         }
 
-        //if you have many different types of DrawerItems you can magically pre-cache those items
-        // to get a better scroll performance
-        //make sure to init the cache after the DrawerBuilder was created as this will first
-        // clear the cache to make sure no old elements are in
-        new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
-            result.getDrawerItems());
+//        //if you have many different types of DrawerItems you can magically pre-cache those items
+//        // to get a better scroll performance
+//        //make sure to init the cache after the DrawerBuilder was created as this will first
+//        // clear the cache to make sure no old elements are in
+//        new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
+//            result.getDrawerItems());
 
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
@@ -592,6 +597,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 super.onBackPressed();
             }
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
     @Override

@@ -109,25 +109,22 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                 .negativeText(R.string.txt_discard)
                 .show();
             // this enable to avoid dismissing dalog if list name already exist
-            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d("Positive", "Positive clicked");
-                    String listName = dialog.getInputEditText().getText().toString();
-                    boolean isAlreadyIn = checkListNameExist(listName);
-                    if (!isAlreadyIn) {
-                        ProductLists productList = new ProductLists(listName, 0);
-                        productLists.add(productList);
-                        productListsDao.insert(productList);
-                        Long id = productList.getId();
-                        Intent intent = new Intent(ProductListsActivity.this, YourListedProducts.class);
-                        intent.putExtra("listId", id);
-                        intent.putExtra("listName", listName);
-                        intent.putExtra("product", p);
-                        startActivityForResult(intent, 1);
-                    } else {
-                        Toast.makeText(ProductListsActivity.this, R.string.error_duplicate_listname, Toast.LENGTH_SHORT).show();
-                    }
+            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(v -> {
+                Log.d("Positive", "Positive clicked");
+                String listName = dialog.getInputEditText().getText().toString();
+                boolean isAlreadyIn = checkListNameExist(listName);
+                if (!isAlreadyIn) {
+                    ProductLists productList = new ProductLists(listName, 0);
+                    productLists.add(productList);
+                    productListsDao.insert(productList);
+                    Long id = productList.getId();
+                    Intent intent = new Intent(ProductListsActivity.this, YourListedProducts.class);
+                    intent.putExtra("listId", id);
+                    intent.putExtra("listName", listName);
+                    intent.putExtra("product", p);
+                    startActivityForResult(intent, 1);
+                } else {
+                    Toast.makeText(ProductListsActivity.this, R.string.error_duplicate_listname, Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -150,30 +147,24 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         fabAdd.setOnClickListener(view -> {
             MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title(R.string.txt_create_new_list)
-                .input("List name", "", false, new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                    }
+                .input("List name", "", false, (dialog1, input) -> {
                 })
                 .positiveText(R.string.dialog_create)
                 .negativeText(R.string.dialog_cancel)
                 .show();
             // this enable to avoid dismissing dalog if list name already exist
-            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d("Positive", "Positive clicked");
-                    String listName = dialog.getInputEditText().getText().toString();
-                    boolean isAlreadyIn = checkListNameExist(listName);
-                    if (!isAlreadyIn) {
-                        ProductLists productList = new ProductLists(listName, 0);
-                        productLists.add(productList);
-                        productListsDao.insert(productList);
-                        dialog.dismiss();
-                        adapter.notifyDataSetChanged();
-                    } else {
-                        Toast.makeText(ProductListsActivity.this, R.string.error_duplicate_listname, Toast.LENGTH_SHORT).show();
-                    }
+            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(v -> {
+                Log.d("Positive", "Positive clicked");
+                String listName = dialog.getInputEditText().getText().toString();
+                boolean isAlreadyIn = checkListNameExist(listName);
+                if (!isAlreadyIn) {
+                    ProductLists productList = new ProductLists(listName, 0);
+                    productLists.add(productList);
+                    productListsDao.insert(productList);
+                    dialog.dismiss();
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(ProductListsActivity.this, R.string.error_duplicate_listname, Toast.LENGTH_SHORT).show();
                 }
             });
         });

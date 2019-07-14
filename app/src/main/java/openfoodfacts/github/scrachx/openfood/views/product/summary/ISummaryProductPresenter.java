@@ -22,7 +22,7 @@ public interface ISummaryProductPresenter {
 
         void annotateInsight(String insightId, int annotation);
 
-        void loadAllergens();
+        void loadAllergens(Runnable runIfError);
 
         void loadCategories();
 

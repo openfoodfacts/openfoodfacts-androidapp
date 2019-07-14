@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 

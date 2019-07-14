@@ -4,8 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +19,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 
 public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveViewHolder> {
 
@@ -69,7 +70,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
             holder.progressBar.setVisibility(View.VISIBLE);
         }
         holder.txtTitle.setText(item.getTitle());
-        Picasso.with(context).load("file://" + item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
+        Picasso.get().load(FileUtils.LOCALE_FILE_SCHEME + item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtWeight.setText(item.getWeight());
         holder.txtBrand.setText(item.getBrand());

@@ -9,15 +9,15 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.ShareActionProvider;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,7 +43,7 @@ import static android.app.Activity.RESULT_OK;
 public class ProductFragment extends Fragment implements OnRefreshListener {
 
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    public static State productState;
+    public static State productState;//NOSONAR To be changed ASAP !
     @BindView(R.id.pager)
     ViewPager viewPager;
     @BindView(R.id.toolbar)
@@ -130,7 +130,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @Override
     public void onRefresh() {
-        api.getAPIService().getFullProductByBarcode(productState.getProduct().getCode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
+        api.getProductFull(productState.getProduct().getCode()).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
                 final State s = response.body();

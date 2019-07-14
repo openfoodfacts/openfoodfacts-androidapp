@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.TextInputLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -23,16 +23,16 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
@@ -109,7 +109,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private String code;
     private OfflineSavedProduct mOfflineSavedProduct;
     private String imagePath;
-    private boolean productEdited;
     private Product product;
     private EditText lastEditText;
     private CustomValidatingEditTextView starchEditText;
@@ -131,6 +130,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         Bundle b = getArguments();
         lastEditText = alcohol;
         if (b != null) {
+            boolean productEdited;
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             productEdited = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
@@ -296,7 +296,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (productDetails != null) {
             if (productDetails.get("image_nutrition_facts") != null) {
                 imagePath = productDetails.get("image_nutrition_facts");
-                final String path = "file://" + imagePath;
+                final String path = FileUtils.LOCALE_FILE_SCHEME + imagePath;
                 imageProgress.setVisibility(View.VISIBLE);
                 loadNutritionsImage(path);
             }
@@ -357,7 +357,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private void loadNutritionsImage(String path) {
-        Picasso.with(getContext())
+        Picasso.get()
             .load(path)
             .resize(dpsToPixels(50), dpsToPixels(50))
             .centerInside()
@@ -368,7 +368,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 }
 
                 @Override
-                public void onError() {
+                public void onError(Exception ex) {
                     nutritionImageLoaded();
                 }
             });
@@ -933,6 +933,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void showImageProgress() {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageNutritionFacts.setVisibility(View.INVISIBLE);
@@ -940,12 +943,15 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.GONE);
         imageProgressText.setVisibility(View.GONE);
         imageNutritionFacts.setVisibility(View.VISIBLE);
         btnEditImageNutritionFacts.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
-            Picasso.with(activity)
+            Picasso.get()
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()

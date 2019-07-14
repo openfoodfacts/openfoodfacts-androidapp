@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views.customtabs;
 
 // Copyright 2015 Google Inc. All Rights Reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the "License")
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
@@ -16,8 +16,8 @@ package openfoodfacts.github.scrachx.openfood.views.customtabs;
 
 
 import android.content.ComponentName;
-import android.support.customtabs.CustomTabsClient;
-import android.support.customtabs.CustomTabsServiceConnection;
+import androidx.browser.customtabs.CustomTabsClient;
+import androidx.browser.customtabs.CustomTabsServiceConnection;
 
 import java.lang.ref.WeakReference;
 

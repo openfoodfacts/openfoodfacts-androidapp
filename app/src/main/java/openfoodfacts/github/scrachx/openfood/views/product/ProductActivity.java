@@ -10,11 +10,11 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.RequiresApi;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -28,6 +28,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
@@ -49,7 +50,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     @BindView( R.id.bottom_navigation )
 	BottomNavigationView bottomNavigationView;
 
-    ProductFragmentPagerAdapter adapterResult;
+    private ProductFragmentPagerAdapter adapterResult;
 
     private OpenFoodAPIClient api;
     private State mState;
@@ -70,11 +71,18 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         setTitle(getString(R.string.app_name_long));
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
 		api = new OpenFoodAPIClient( this );
 
 		mState = (State) getIntent().getSerializableExtra("state" );
+        //no state-> we can't display anything. we go back to home.
+        if(mState==null){
+            final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
 
 		setupViewPager( viewPager );
 
@@ -82,7 +90,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if (mSensorManager != null) {
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
         mShakeDetector = new ShakeDetector();
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
@@ -95,8 +105,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             }
         });
         BottomNavigationListenerInstaller.install(bottomNavigationView,this,this);
-		//To update the product details
-		onRefresh();
 	}
 
 	@Override
@@ -115,8 +123,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
 	private void setupViewPager( ViewPager viewPager )
 	{
-        adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
-		adapterResult = setupViewPager(viewPager, adapterResult, mState, this);
+		adapterResult = setupViewPager(viewPager, new ProductFragmentPagerAdapter(getSupportFragmentManager()), mState, this);
     }
 
     /**

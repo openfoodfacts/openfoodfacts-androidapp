@@ -5,20 +5,34 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import butterknife.OnClick;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+
+import net.steamcrafted.loadtoast.LoadToast;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import net.steamcrafted.loadtoast.LoadToast;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
@@ -27,8 +41,6 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
-
-import java.util.*;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_ALERT;
 
@@ -94,14 +106,14 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                     mRvAllergens.setHasFixedSize(true);
                     mAdapter.registerAdapterDataObserver(mDataObserver);
                     mDataObserver.onChanged();
-                }, Throwable::printStackTrace);
+                }, e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByEnabledAndLanguageCode",e));
 
         productRepository.getAllergensByLanguageCode(language)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allergens -> {
                     mAllergensFromDao = allergens;
-                }, Throwable::printStackTrace);
+                }, e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByLanguageCode",e));
 
 
         currentView = view;
@@ -119,7 +131,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe((List<AllergenName> allergens) -> {
                         Collections.sort(allergens, (a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
-                        List<String> allergensNames = new ArrayList<String>();
+                        List<String> allergensNames = new ArrayList<>();
                         for (AllergenName allergenName : allergens) {
                             allergensNames.add(allergenName.getName());
                         }
@@ -178,14 +190,14 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allergens -> {
                     mAllergensEnabled = allergens;
-                }, Throwable::printStackTrace);
+                }, e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByEnabledAndLanguageCode",e));
 
         productRepository.getAllergensByLanguageCode(language)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allergens -> {
                     mAllergensFromDao = allergens;
-                }, Throwable::printStackTrace);
+                },  e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByLanguageCode",e));
     }
 
     @Override

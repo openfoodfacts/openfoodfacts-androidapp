@@ -22,11 +22,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.annotation.DrawableRes;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.content.res.AppCompatResources;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -37,6 +32,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.firebase.jobdispatcher.*;
 import okhttp3.CipherSuite;
@@ -44,7 +45,6 @@ import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
 import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
@@ -55,7 +55,7 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -71,10 +71,11 @@ import java.util.regex.Pattern;
 import static android.text.TextUtils.isEmpty;
 
 public class Utils {
+    public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
-    public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
-    public static boolean isUploadJobInitialised;
+    private static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
+    private static boolean isUploadJobInitialised;
     public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
@@ -157,21 +158,11 @@ public class Utils {
         }
 
         File smallFileFront = new File(url.replace(".png", "_small.png"));
-        OutputStream fOutFront = null;
-        try {
-            fOutFront = new FileOutputStream(smallFileFront);
+
+        try (OutputStream fOutFront = new FileOutputStream(smallFileFront)) {
             bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
         } catch (IOException e) {
             Log.e("COMPRESS_IMAGE", e.getMessage(), e);
-        } finally {
-            if (fOutFront != null) {
-                try {
-                    fOutFront.flush();
-                    fOutFront.close();
-                } catch (IOException e) {
-                    // nothing to do
-                }
-            }
         }
         return smallFileFront.toString();
     }
@@ -186,7 +177,7 @@ public class Utils {
     }
 
     // Decodes image and scales it to reduce memory consumption
-    public static Bitmap decodeFile(File f) {
+    private static Bitmap decodeFile(File f) {
         try {
             // Decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
@@ -221,7 +212,6 @@ public class Utils {
      * @return true if the application is installed, false otherwise.
      */
     public static boolean isApplicationInstalled(Context context, String packageName) {
-        //private boolean isApplicationInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
             // Check if the package name exists, if exception is thrown, package name does not
@@ -255,6 +245,8 @@ public class Utils {
                 break;
             case "e":
                 drawable = R.drawable.nnc_e;
+                break;
+            default:
                 break;
         }
 
@@ -321,6 +313,8 @@ public class Utils {
             case "4":
                 drawable = R.drawable.ic_nova_group_4;
                 break;
+            default:
+                break;
         }
         return drawable;
     }
@@ -350,8 +344,9 @@ public class Utils {
                 return R.drawable.ic_co2_low_24dp;
             case "en:medium":
                 return R.drawable.ic_co2_medium_24dp;
+            default:
+                return drawable;
         }
-        return drawable;
     }
 
     public static int getSmallImageGrade(String grade) {
@@ -377,6 +372,8 @@ public class Utils {
             case "e":
                 drawable = R.drawable.nnc_small_e;
                 break;
+            default:
+                break;
         }
 
         return drawable;
@@ -384,6 +381,7 @@ public class Utils {
 
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
+        if(drawable==null){return null;}
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable
             .getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -578,15 +576,16 @@ public class Utils {
                     return "WiFi";
                 case ConnectivityManager.TYPE_WIMAX:
                     return "WiMax";
+                default:
+                    break;
             }
         }
 
         return "Other";
     }
 
-    public static String timeStamp() {
-        Long tsLong = System.currentTimeMillis();
-        return tsLong.toString();
+    private static String timeStamp() {
+        return ((Long) System.currentTimeMillis()).toString();
     }
 
     public static File makeOrGetPictureDirectory(Context context) {
@@ -601,7 +600,11 @@ public class Utils {
             return picDir;
         }
         // creates the directory if not present yet
-        picDir.mkdir();
+        final boolean mkdir = picDir.mkdir();
+        if(!mkdir){
+            Log.e(Utils.class.getSimpleName(),"Can create dir "+picDir);
+        }
+
 
         return picDir;
     }
@@ -617,7 +620,7 @@ public class Utils {
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
         ClickableSpan clickableSpan;
-        String url = SearchType.URLS.get(type);
+        String url = SearchTypeUrls.getUrl(type);
 
         if (url == null) {
             clickableSpan = new ClickableSpan() {
@@ -662,13 +665,13 @@ public class Utils {
     }
 
     private static int convertKjToKcal(double kj) {
-        return kj != 0 ? Double.valueOf(kj / 4.1868d).intValue() : -1;
+        return kj != 0 ? (int) (kj / 4.1868d) : -1;
     }
 
     /**
      * Function which returns volume in oz if parameter is in cl, ml, or l
      *
-     * @param servingSize
+     * @param servingSize value to transform
      * @return volume in oz if servingSize is a volume parameter else return the the parameter unchanged
      */
     public static String getServingInOz(String servingSize) {
@@ -697,10 +700,10 @@ public class Utils {
     /**
      * Function that returns the volume in liters if input parameter is in oz
      *
-     * @param servingSize
+     * @param servingSize the value to transform: not null
      * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
      */
-    public static String getServingInL(String servingSize) {
+    public static String getServingInL(@NonNull String servingSize) {
 
         if (servingSize.toLowerCase().contains("oz")) {
             Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
@@ -717,7 +720,7 @@ public class Utils {
     /**
      * Function which returns true if the battery level is low
      *
-     * @param context
+     * @param context the context
      * @return true if battery is low or false if battery in not low
      */
     public static boolean getBatteryLevel(Context context) {
@@ -773,7 +776,7 @@ public class Utils {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "getVersionName", e);
         }
         return "(version unknown)";
     }
@@ -802,7 +805,7 @@ public class Utils {
         try {
             jsonObject = new JSONObject(response);
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "createJsonObject", e);
         }
         return jsonObject;
     }

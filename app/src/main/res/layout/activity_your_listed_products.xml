@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent"
-                                             tools:context=".views.YourListedProducts">
-    <android.support.v7.widget.Toolbar
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".views.YourListedProducts">
+    <androidx.appcompat.widget.Toolbar
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -54,13 +54,13 @@
     </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rvYourListedProducts"
             android:layout_margin="@dimen/materialize_baseline_grid_small"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
     <include layout="@layout/navigation_bottom"
              android:id="@+id/bottom_navigation"
              android:layout_width="match_parent"
@@ -68,4 +68,4 @@
              android:layout_gravity="bottom"
              app:layout_constraintBottom_toBottomOf="parent"
     />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
