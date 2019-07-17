@@ -688,7 +688,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="no_nutrient_information_available_for_this_product">Für dieses Produkt sind keine Nährstoffinformationen verfügbar</string>
     <string name="error_duplicate_listname">Es existiert bereits eine Liste mit diesem Namen</string>
     <string name="required_to_compute_nutriscore">(Wird benötigt um den Nutri-Score zu berechnen)</string>
-    <string name="first_scan_tooltip">Sie können die Karte nach oben schieben, um weitere Details zu erhalten.</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Allergen hinzufügen</string>
     <string name="add_a_list">Eine Liste hinzufügen</string>
     <string name="edit_image">Foto bearbeiten</string>
@@ -698,6 +698,11 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="barcode">Strichcode</string>
     <string name="productAdditivesNone">Keine Zusatzstoffe</string>
     <string name="error_uploading_photo">Fehler beim Hochladen des neuen Fotos</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">Das Produkt konnte nicht geladen werden. Bitte versuchen Sie es erneut, wenn Sie wieder online sind.</string>
     <string name="cant_modify_if_refreshing">Bitte warten bis das Hochladen abgeschlossen ist</string>
     <string name="closeZoom">Hier klicken, um die Vergrößerung zu schließen</string>
