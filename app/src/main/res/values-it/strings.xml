@@ -270,7 +270,7 @@
     <string name="choose_volume_unit">Scegli le tue unità preferite di volume per la tabella nutrizionale</string>
     <string name="volume_pref_title">Unità di volume preferita</string>
     <string name="logout_drawer">Termina sessione</string>
-    <string name="contribution_without_account">Puoi accedere o creare un account per salvare il tuo contributo</string>
+    <string name="contribution_without_account">Puoi accedere o creare un account di Open Food Facts per mantenere i tuoi contributi</string>
     <string name="textCarbonFootprint">Emissioni di CO2 (impronta climatica): </string>
     <string name="action_search">Cerca</string>
     <string name="search_hint">Cerca un prodotto</string>
@@ -688,7 +688,7 @@
     <string name="no_nutrient_information_available_for_this_product">Nessuna informazione disponibile sui nutrienti per questo prodotto</string>
     <string name="error_duplicate_listname">Hai già una lista con questo nome</string>
     <string name="required_to_compute_nutriscore">(Necessario per calcolare il Nutri-Score)</string>
-    <string name="first_scan_tooltip">Scorri la carta per più dettagli</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Aggiungi un allergene</string>
     <string name="add_a_list">Aggiungi una lista</string>
     <string name="edit_image">Modifica immagine</string>
@@ -698,6 +698,11 @@
     <string name="barcode">Codice a barre</string>
     <string name="productAdditivesNone">Nessun additivo</string>
     <string name="error_uploading_photo">Qualcosa è andato storto durante il caricamento di una nuova foto</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">Il prodotto non può essere caricato. Si prega di riprovare quando si torna online.</string>
     <string name="cant_modify_if_refreshing">Si prega di attendere fino al termine del caricamento</string>
     <string name="closeZoom">Clicca per chiudere lo zoom</string>
