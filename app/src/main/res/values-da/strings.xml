@@ -688,7 +688,7 @@
     <string name="no_nutrient_information_available_for_this_product">Ingen information om næringsstoffer tilgængelig for dette produkt</string>
     <string name="error_duplicate_listname">Du har allerede en liste med dette navn</string>
     <string name="required_to_compute_nutriscore">(Nødvendig til beregning af Nutri-Score)</string>
-    <string name="first_scan_tooltip">Du kan skubbe op kortet for flere detaljer</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Tilføj et allergen</string>
     <string name="add_a_list">Tilføj en liste</string>
     <string name="edit_image">Rediger billede</string>
@@ -698,6 +698,11 @@
     <string name="barcode">Stregkode</string>
     <string name="productAdditivesNone">Ingen tilsætningsstoffer</string>
     <string name="error_uploading_photo">Noget gik galt under upload af et nyt foto</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">Produktet kunne ikke indlæses. Forsøg igen, når du atter er online.</string>
     <string name="cant_modify_if_refreshing">Afvent færdiggørelse af upload</string>
     <string name="closeZoom">Klik for at lukke zoom</string>
