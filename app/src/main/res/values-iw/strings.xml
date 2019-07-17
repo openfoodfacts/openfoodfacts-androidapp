@@ -700,7 +700,7 @@
     <string name="no_nutrient_information_available_for_this_product">אין נתוני חומרי הזנה זמינים עבור המוצר הזה</string>
     <string name="error_duplicate_listname">כבר יש לך רשימה בשם הזה</string>
     <string name="required_to_compute_nutriscore">(נדרש לטובת חישוב Nutri-Score)</string>
-    <string name="first_scan_tooltip">ניתן להחליק את הכרטיס כלפי מעלה לפרטים נוספים</string>
+    <string name="scan_tooltip">ניתן להחליק את הכרטיס כלפי מעלה לפרטים נוספים</string>
     <string name="add_an_allergen">הוספת אלרגן</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">עריכת תמונה</string>
@@ -710,6 +710,11 @@
     <string name="barcode">ברקוד</string>
     <string name="productAdditivesNone">ללא תוספים</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="import_csv_to_list">ייבוא קובץ רשימה בתצורת CSV של Open Food Facts</string>
+    <string name="toast_import_csv_error">שגיאה בייבוא קובץ CSV</string>
+    <string name="toast_import_csv">ה־CSV ייובא בהצלחה!</string>
+    <string name="open_csv">פתיחת CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">לא ניתן לטעון את המוצר. נא לנסות שוב עם חידוש החיבור לאינטרנט.</string>
     <string name="cant_modify_if_refreshing">נא להמתין עד לסיום ההעלאה</string>
     <string name="closeZoom">לחיצה לסגירת התקריב</string>

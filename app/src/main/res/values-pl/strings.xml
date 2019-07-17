@@ -721,7 +721,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="no_nutrient_information_available_for_this_product">Brak informacji o wartości odżywczej dla tego produktu</string>
     <string name="error_duplicate_listname">Masz już listę o tej nazwie</string>
     <string name="required_to_compute_nutriscore">(Wymagane do obliczenia Nutri-Score)</string>
-    <string name="first_scan_tooltip">Możesz przesunąć kartę, aby uzyskać więcej szczegółów</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Dodaj alergen</string>
     <string name="add_a_list">Dodaj listę</string>
     <string name="edit_image">Edytuj zdjęcie</string>
@@ -731,6 +731,11 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="barcode">Kod kreskowy</string>
     <string name="productAdditivesNone">Bez dodatków</string>
     <string name="error_uploading_photo">W czasie przesyłania nowego zdjęcia wystąpił błąd</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">Nie można załadować produktu. Spróbuj ponownie po powrocie do trybu online.</string>
     <string name="cant_modify_if_refreshing">Poczekaj na zakończenie przesyłania</string>
     <string name="closeZoom">Kliknij, aby zamknąć zoom</string>

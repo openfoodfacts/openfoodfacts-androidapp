@@ -687,7 +687,7 @@
     <string name="no_nutrient_information_available_for_this_product">crwdns116188:0crwdne116188:0</string>
     <string name="error_duplicate_listname">crwdns117592:0crwdne117592:0</string>
     <string name="required_to_compute_nutriscore">crwdns117042:0crwdne117042:0</string>
-    <string name="first_scan_tooltip">crwdns117698:0crwdne117698:0</string>
+    <string name="scan_tooltip">crwdns120444:0crwdne120444:0</string>
     <string name="add_an_allergen">crwdns117700:0crwdne117700:0</string>
     <string name="add_a_list">crwdns118276:0crwdne118276:0</string>
     <string name="edit_image">crwdns118218:0crwdne118218:0</string>
@@ -697,6 +697,11 @@
     <string name="barcode">crwdns118220:0crwdne118220:0</string>
     <string name="productAdditivesNone">crwdns119482:0crwdne119482:0</string>
     <string name="error_uploading_photo">crwdns118274:0crwdne118274:0</string>
+    <string name="import_csv_to_list">crwdns120446:0crwdne120446:0</string>
+    <string name="toast_import_csv_error">crwdns120448:0crwdne120448:0</string>
+    <string name="toast_import_csv">crwdns120450:0crwdne120450:0</string>
+    <string name="open_csv">crwdns120452:0crwdne120452:0</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">crwdns119484:0crwdne119484:0</string>
     <string name="cant_modify_if_refreshing">crwdns119486:0crwdne119486:0</string>
     <string name="closeZoom">crwdns119488:0crwdne119488:0</string>
