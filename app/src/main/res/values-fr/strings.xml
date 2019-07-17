@@ -688,7 +688,7 @@
     <string name="no_nutrient_information_available_for_this_product">Aucune information nutritionnelle n\'est disponible pour ce produit</string>
     <string name="error_duplicate_listname">Vous avez déjà une liste portant ce nom</string>
     <string name="required_to_compute_nutriscore">(Nécessaire pour calculer le Nutri-Score)</string>
-    <string name="first_scan_tooltip">Vous pouvez glisser vers le haut pour voir plus de détails</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Ajouter un allergène</string>
     <string name="add_a_list">Ajouter une liste</string>
     <string name="edit_image">Modifier l\'image</string>
@@ -698,6 +698,11 @@
     <string name="barcode">Code barre</string>
     <string name="productAdditivesNone">Sans additifs</string>
     <string name="error_uploading_photo">Une erreur s\'est produite lors du téléchargement d\'une nouvelle photo</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">Le produit n\'a pas pu être chargé. Veuillez réessayer lorsque vous êtes de nouveau en ligne.</string>
     <string name="cant_modify_if_refreshing">Veuillez patienter jusqu\'à la fin du téléchargement</string>
     <string name="closeZoom">Cliquez pour fermer le zoom</string>
