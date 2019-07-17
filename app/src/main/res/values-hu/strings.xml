@@ -690,7 +690,7 @@
     <string name="no_nutrient_information_available_for_this_product">A termékhez nem áll rendelkezésre tápanyag-információ</string>
     <string name="error_duplicate_listname">Már van egy listája ezzel a névvel</string>
     <string name="required_to_compute_nutriscore">(Nutri-Score kiszámításához szükséges)</string>
-    <string name="first_scan_tooltip">További részletekért csúsztassa fel a kártyát</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Adjunk hozzá egy allergént</string>
     <string name="add_a_list">Hozzáadás egy listához</string>
     <string name="edit_image">Kép szerkesztése</string>
@@ -700,6 +700,11 @@
     <string name="barcode">Vonalkód</string>
     <string name="productAdditivesNone">Nincs adalékanyag</string>
     <string name="error_uploading_photo">Valami hiba történt az új fotó feltöltésekor</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">A terméket nem lehet betölteni. Kérjük, próbálkozzon újra, ha újra online.</string>
     <string name="cant_modify_if_refreshing">Várjon, amíg a feltöltés befejeződik</string>
     <string name="closeZoom">Click to close zoom</string>
