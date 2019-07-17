@@ -1,5 +1,5 @@
 Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=zh
 
 =====================
 V2 screenshots
