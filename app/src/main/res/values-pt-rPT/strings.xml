@@ -7,7 +7,7 @@
     </plurals>
     <plurals name="seconds">
         <item quantity="one">1 segundo atrás</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="other">%d segundos atrás</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minuto atrás</item>
@@ -688,7 +688,7 @@
     <string name="no_nutrient_information_available_for_this_product">Nenhuma informação nutricional disponível para este produto</string>
     <string name="error_duplicate_listname">Você já tem uma lista com este nome</string>
     <string name="required_to_compute_nutriscore">(Necessário para calcular o Nutri-Score)</string>
-    <string name="first_scan_tooltip">Você pode deslizar o cartão para mais detalhes</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Adicione um alérgeno</string>
     <string name="add_a_list">Adicionar uma lista</string>
     <string name="edit_image">Editar Imagem</string>
@@ -698,6 +698,11 @@
     <string name="barcode">Código de barras</string>
     <string name="productAdditivesNone">Sem aditivos</string>
     <string name="error_uploading_photo">Algo deu errado ao fazer ao enviar uma foto nova</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">O produto não pôde ser carregado. Por favor, tente novamente quando estiver online novamente.</string>
     <string name="cant_modify_if_refreshing">Por favor, aguarde até que o envio termine</string>
     <string name="closeZoom">Clicar para fechar o zoom</string>
