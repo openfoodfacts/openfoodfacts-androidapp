@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.FragmentActivity;
@@ -20,10 +21,6 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -614,16 +611,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @OnClick(R.id.textIngredientProduct)
     public void openFragmentDietIngredientsProduct(View v) {
-        //Prepare a new dietIngredientsProductFragment and show it
-        //Bundle parameters = new Bundle();
-        //DietIngredientsProductFragment dietIngredientsProductFragment = new DietIngredientsProductFragment();
-        //dietIngredientsProductFragment.setArguments(parameters);
-        //this.getActivity().getSupportFragmentManager().beginTransaction().replace(((ViewGroup) this.getView().getParent().getParent()).getId(), dietIngredientsProductFragment, "").addToBackStack("ReturntoProduct").commit();
         Intent intent = new Intent(getActivity(), ProductDietsActivity.class);
         intent.putExtra("state", activityState);
-        //adds the information about the prompt when navigating the user to the edit the product
-        //intent.putExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, showCategoryPrompt);
-        //intent.putExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, showNutrientPrompt);
         startActivity(intent);
     }
 

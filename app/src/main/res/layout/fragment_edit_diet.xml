@@ -32,6 +32,15 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="@dimen/activity_horizontal_margin" />
 
+            <EditText
+                    android:id="@+id/diet_id"
+                    android:visibility="gone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#dd0b16"
+                    app:layout_constraintStart_toStartOf="@id/left_guideline"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/section_diet_name"
                 android:layout_width="0dp"
@@ -50,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:autofillHints=""
+                android:hint="@string/edit_diet_hint_name_of_the_diet"
                 android:background="@drawable/bg_edittext"
                 android:gravity="center_vertical"
                 android:inputType="text"
@@ -77,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:background="@drawable/bg_edittext"
+                android:hint="@string/edit_diet_hint_description_of_the_diet"
                 android:gravity="center_vertical"
                 android:inputType="textMultiLine"
                 android:nextFocusDown="@id/diet_enabled"

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -20,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.EditDietFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.DietsFragment;
 import openfoodfacts.github.scrachx.openfood.models.Diet;
+import openfoodfacts.github.scrachx.openfood.models.DietName;
 import openfoodfacts.github.scrachx.openfood.repositories.DietRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.IDietRepository;
 
@@ -27,7 +29,7 @@ public class DietsAdapter extends RecyclerView.Adapter<DietsAdapter.ViewHolder> 
 
     private List<Diet> mDiets;
     private final DietsFragment.ClickListener listener;
-
+    private String languageCode = Locale.getDefault().getLanguage();
 
     public DietsAdapter(List<Diet> diets, DietsFragment.ClickListener listener) {
         mDiets = diets;
@@ -73,7 +75,9 @@ public class DietsAdapter extends RecyclerView.Adapter<DietsAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Diet diet = mDiets.get(position);
         TextView textView = holder.nameTextView;
-        textView.setText(diet.getTag().substring(diet.getTag().indexOf(":") + 1));
+        IDietRepository dietRepository = DietRepository.getInstance();
+        DietName dietName = dietRepository.getDietNameByDietTagAndLanguageCode(diet.getTag(), languageCode);
+        textView.setText(dietName.getName());
         Switch mSwitch = holder.dietEnabledSwitch;
         mSwitch.setChecked(diet.getEnabled());
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

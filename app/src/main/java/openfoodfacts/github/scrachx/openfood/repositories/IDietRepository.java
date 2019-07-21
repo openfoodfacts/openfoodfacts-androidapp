@@ -33,6 +33,8 @@ public interface IDietRepository {
 
     Diet getDietByTag(String tag);
 
+    Diet getDietById(Long id);
+
     Diet getDietByNameAndLanguageCode(String name, String languageCode);
 
     DietName getDietNameByNameAndLanguageCode(String name, String languageCode);
@@ -40,6 +42,8 @@ public interface IDietRepository {
     DietName getDietNameByDietTagAndLanguageCode(String dietTag, String languageCode);
 
     void addDiet(String name, String description, boolean isEnabled, String languageCode);
+
+    void saveDiet(Long id, String name, String description, boolean isEnabled, String languageCode);
 
     Ingredient getIngredientByTag(String tag);
 

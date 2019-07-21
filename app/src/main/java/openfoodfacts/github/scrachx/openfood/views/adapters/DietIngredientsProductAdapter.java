@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.text.SpannableStringBuilder;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,6 +98,23 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
     @Override
     public void onBindViewHolder(DietIngredientsProductHolder dietIngredientHolder, int position) {
         SpannableStringBuilder ingredient = list.get(position);
+        ForegroundColorSpan[] FGCSpans= ingredient.getSpans(0,ingredient.length(), ForegroundColorSpan.class);
+        if (FGCSpans.length == 1) {
+            //Only one color, activate the corresponding button.
+            if (ingredient.getSpanStart(FGCSpans[0]) == 0 && ingredient.getSpanEnd(FGCSpans[0]) == ingredient.length()) {
+                //And it covered the all text. activate the corresponding colored button.
+                //FGCSpans[0].getForegroundColor();
+                //dietIngredientHolder.stateGreenImageButton.getForeground()
+                dietIngredientHolder.stateGreenImageButton.setScaleX((float) 1.5);
+                dietIngredientHolder.stateGreenImageButton.setScaleY((float) 1.5);
+            } else {
+                //The color doesn't cover the all text. activate the grey button.
+                dietIngredientHolder.stateGreyImageButton.setMinimumWidth(dietIngredientHolder.stateGreyImageButton.getWidth()+5);
+            };
+        } else {
+            //No colors or more than one, activate the grey button.
+            dietIngredientHolder.stateGreyImageButton.setMinimumWidth(dietIngredientHolder.stateGreyImageButton.getWidth()+5);
+        };
         dietIngredientHolder.bind(ingredient);
     }
 

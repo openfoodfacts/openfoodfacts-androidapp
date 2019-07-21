@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,15 +14,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Switch;
-
 import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.chip.Chip;
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
-
 import org.greenrobot.greendao.async.AsyncSession;
 
 import java.util.ArrayList;
@@ -52,6 +47,8 @@ public class EditDietFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DIET_NAME = "dietName";
     //Récupération des éléments du fragment de saisie d'une Diet
+    @BindView(R.id.diet_id)
+    EditText dietId;
     @BindView(R.id.diet_name)
     EditText dietName;
     @BindView(R.id.diet_description)
@@ -122,6 +119,7 @@ public class EditDietFragment extends Fragment {
             DietName dietName = dietRepository.getDietNameByDietTagAndLanguageCode(diet.getTag(), languageCode);
             dietDescription.setText(dietName.getDescription());
             dietEnabled.setChecked(diet.getEnabled());
+            dietId.setText(dietName.getId().toString());
             String ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), 1, languageCode);
             if (!ingredientNames.equals("")) {
                 ingredientsAuthorised.setText(Arrays.asList(ingredientNames.split("\\s*,\\s*")));
@@ -185,40 +183,52 @@ public class EditDietFragment extends Fragment {
 
     @OnClick(R.id.save_edits)
     void saveEdits() {
-        dietRepository = DietRepository.getInstance();
-        //Add or replace a diet row with the form's informations.
-        dietRepository.addDiet(dietName.getText().toString(), dietDescription.getText().toString(), dietEnabled.isChecked(), languageCode);
-        //Get the diet
-        Diet diet = dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode);
-        //Set the state at 2 (no impact) for all ingredients associated with the diet. Sort of reset before the next steps
-        List<DietIngredients> dietIngredientsList = dietRepository.getDietIngredientsListByDietTag(diet.getTag());
-        for (int i = 0; i < dietIngredientsList.size(); i++) {
-            DietIngredients dietIngredients = dietIngredientsList.get(i);
-            dietIngredients.setState(2);
-            dietRepository.saveDietIngredients(dietIngredients);
+        if (dietName.getText().length() == 0) {
+            dietName.setHintTextColor(getResources().getColor(R.color.red));
+            dietName.requestFocus();
+            Toast toast = Toast.makeText(OFFApplication.getInstance(), R.string.edit_diet_toast_name_of_the_diet, Toast.LENGTH_LONG);
+            toast.show();
+        } else {
+            dietRepository = DietRepository.getInstance();
+            if (dietId.getText().toString().isEmpty()) {
+                //Add a diet row with the form's informations.
+                dietRepository.addDiet(dietName.getText().toString(), dietDescription.getText().toString(), dietEnabled.isChecked(), languageCode);
+            } else {
+                //Update a diet row with the form's informations.
+                dietRepository.saveDiet(Long.valueOf(dietId.getText().toString()), dietName.getText().toString(), dietDescription.getText().toString(), dietEnabled.isChecked(), languageCode);
+            }
+            //Get the diet
+            Diet diet = dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode);
+            //Set the state at 2 (no impact) for all ingredients associated with the diet. Sort of reset before the next steps
+            List<DietIngredients> dietIngredientsList = dietRepository.getDietIngredientsListByDietTag(diet.getTag());
+            for (int i = 0; i < dietIngredientsList.size(); i++) {
+                DietIngredients dietIngredients = dietIngredientsList.get(i);
+                dietIngredients.setState(2);
+                dietRepository.saveDietIngredients(dietIngredients);
+            }
+            //Set the goods state for each ingredients in the 3 lists
+            for (Chip chip : ingredientsAuthorised.getAllChips()) {
+                String ingredient = (String) chip.getText();
+                dietRepository.addIngredient(ingredient, languageCode);
+                dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, 1);
+            }
+            for (Chip chip : ingredientsSoSo.getAllChips()) {
+                String ingredient = (String) chip.getText();
+                dietRepository.addIngredient(ingredient, languageCode);
+                dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, 0);
+            }
+            for (Chip chip : ingredientsUnauthorised.getAllChips()) {
+                String ingredient = (String) chip.getText();
+                dietRepository.addIngredient(ingredient, languageCode);
+                dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, -1);
+            }
+            //Back to the DietsFragment.
+            Fragment fragment = new DietsFragment();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, fragment);
+            transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+            transaction.commit();
         }
-        //Set the goods state for each ingredients in the 3 lists
-        for (Chip chip : ingredientsAuthorised.getAllChips()) {
-            String ingredient = (String) chip.getText();
-            dietRepository.addIngredient(ingredient, languageCode);
-            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, 1);
-        }
-        for (Chip chip : ingredientsSoSo.getAllChips()) {
-            String ingredient = (String) chip.getText();
-            dietRepository.addIngredient(ingredient, languageCode);
-            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, 0);
-        }
-        for (Chip chip : ingredientsUnauthorised.getAllChips()) {
-            String ingredient = (String) chip.getText();
-            dietRepository.addIngredient(ingredient, languageCode);
-            dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, -1);
-        }
-        //Back to the DietsFragment.
-        Fragment fragment = new DietsFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-        transaction.commit();
     }
 
     private void initializeChips() {

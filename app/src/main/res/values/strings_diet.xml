@@ -17,5 +17,13 @@
     <string name="diet_export_2">Click on the Add a diet button\nThen copy/paste theses informations in the corresponding fields :</string>
     <string name="diet_export_3">Click on</string>
     <string name="add_a_diet">Add a diet</string>
+    <string name="edit_diet_hint_name_of_the_diet">An explicit name for your diet is required</string>
+    <string name="edit_diet_toast_name_of_the_diet">Please enter an explicit name for your diet !</string>
+    <string name="edit_diet_hint_description_of_the_diet">A optionaly description of for your diet</string>
+    <string name="warning_diets_taxonomy">However, for a better experience, you will automatically download the ingredients taxonomy when you\'ll add your first diet.</string>
+    <string name="warning_diets_online">So please, be sure you are online before your first click on the \"Add a diet\" button !</string>
+    <string name="warning_one_diet_1">Now you have created a diet you can see its effects by scanning a product and consult its ingredients.</string>
+    <string name="warning_one_diet_2">You may click on this ingredients list to complete your diet.</string>
+    <string name="warning_one_diet_3">You may also add some other diets and enabled/disabled them.</string>
     <!-- End of used for diets AddOn -->
 </resources>

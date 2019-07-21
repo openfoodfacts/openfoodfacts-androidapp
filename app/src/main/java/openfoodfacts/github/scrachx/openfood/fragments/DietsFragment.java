@@ -40,6 +40,7 @@ public class DietsFragment extends NavigationBaseFragment {
 
     private RecyclerView mRvDiet;
     private LinearLayout mEmptyMessageView; // Empty View containing the message that will be shown if there is no diet
+    private LinearLayout mOneDietMessageView; // Empty View containing the message that will be shown if there is no diet
     private SharedPreferences mSettings;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
@@ -58,20 +59,7 @@ public class DietsFragment extends NavigationBaseFragment {
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mEmptyMessageView = view.findViewById(R.id.emptyDietsView);
-        //Warning message, data stay on device.
-/*        mSettings = getActivity().getSharedPreferences("prefs", 0);
-        boolean firstRunDiets = mSettings.getBoolean("firstRunDiets", true);
-        if (firstRunDiets) {
-            new MaterialDialog.Builder(view.getContext())
-                    .title(R.string.diets_dialog_warning_title)
-                    .content(R.string.warning_diets_data)
-                    .positiveText(R.string.ok_button)
-                    .show();
-            SharedPreferences.Editor editor = mSettings.edit();
-            editor.putBoolean("firstRunDiets", false);
-            editor.apply();
-        }
-*/
+        mOneDietMessageView = view.findViewById(R.id.oneDietView);
         //Looking for data to be load in the Recycler
         mRvDiet = (RecyclerView) view.findViewById(R.id.diets_recycler);
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
@@ -79,10 +67,15 @@ public class DietsFragment extends NavigationBaseFragment {
         List<Diet> dietList = dietDao.loadAll();
         if (dietList.isEmpty()) {
             mEmptyMessageView.setVisibility(view.VISIBLE);
+            mOneDietMessageView.setVisibility(view.GONE);
             mRvDiet.setVisibility(view.GONE);
         } else {
             mEmptyMessageView.setVisibility(view.GONE);
             mRvDiet.setVisibility(view.VISIBLE);
+            if (dietList.size() == 1)
+                mOneDietMessageView.setVisibility(view.VISIBLE);
+            else
+                mOneDietMessageView.setVisibility(view.GONE);
             //Activate the recycler with the good adapter
             mRvDiet.setLayoutManager(new LinearLayoutManager(this.getContext()));
             mRvDiet.setAdapter(new DietsAdapter(dietList, new ClickListener() {

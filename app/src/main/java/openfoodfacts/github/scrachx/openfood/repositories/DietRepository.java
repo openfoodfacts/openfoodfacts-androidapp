@@ -197,6 +197,26 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
+     * Return a Diet from its ID.
+     *
+     * @param id       The ID
+     * @return Diet     Diet object
+     *
+     * @author dobriseb
+     */
+    @Override
+    public Diet getDietById(Long id) {
+        //Looking for the Diet.
+        List<Diet> diets = dietDao.queryBuilder().where(DietDao.Properties.Id.eq(id)).list();
+        if (diets.size() == 0) {
+            //Not found, return a new one
+            return new Diet();
+        }
+        //return the first (and only) Diet object
+        return diets.get(0);
+    }
+
+    /**
      * Return the Diet object from a Name and a languageCode
      *
      * @param name          The Name of the Diet
@@ -315,6 +335,68 @@ public class DietRepository implements IDietRepository {
             }
             //In all the case, update its Enabled field and save the Diet object
             diet.setEnabled(isEnabled);
+            dietDao.getSession().insertOrReplace(diet);
+        }
+    }
+
+    /**
+     * Add a new diet with Name, Description...
+     * A test of non existance is done before insertion.
+     *
+     * @param id           ID of the diet
+     * @param name         New name of the diet
+     * @param description  New description of the diet
+     * @param isEnabled    New state of the diet depends on whether user enabled or disabled the diet
+     * @param languageCode User's LanguageCode
+     *
+     * @author dobriseb
+     */
+    @Override
+    public void saveDiet(Long id, String name, String description, boolean isEnabled, String languageCode) {
+        if (id.toString().isEmpty() || id==0) {
+            addDiet(name, description, isEnabled, languageCode);
+        } else {
+            //Looking for the diet with this ID
+            Diet diet = getDietById(id);
+            if (diet.getTag() == null) {
+                //The returned Diet object is a new one, set its Tag
+                diet.setTag(languageCode + ":" + name);
+            }
+            //In all the case, update its Enabled field and save the Diet object
+            diet.setEnabled(isEnabled);
+            //Looking for a DietName object with this Tag and LanguageCode
+            DietName dietName = getDietNameByDietTagAndLanguageCode(diet.getTag(), languageCode);
+            if (dietName.getDietTag() == null) {
+                //Not found, so a new one has just be created, complete it.
+                dietName.setLanguageCode(languageCode);
+                dietName.setDietTag(diet.getTag());
+            }
+            if (! dietName.getName().toString().equals(name) && diet.getTag().toString().equals(languageCode + ":" + dietName.getName().toString())) {
+                //The name is the one that constitue the Tag with the language code. It's going to be changed. So the Tag must be changed...
+                //Why didn't I listen to me and use the Id instead of a Tag !!!
+                String newTag = languageCode + ":" + name;
+                //First, test if there is no other diet with that Tag
+                Diet dietExist = getDietByTag(newTag);
+                if (dietExist.getTag() == null) {
+                    //OK, we can use that Tag
+                    //Direct SQL need refresh on each rows... better way like this.
+                    List<DietIngredients> dietIngredientsList = getDietIngredientsListByDietTag(diet.getTag());
+                    for (int i = 0; i < dietIngredientsList.size(); i++) {
+                        DietIngredients dietIngredients =  dietIngredientsList.get(i);
+                        dietIngredients.setDietTag(newTag);
+                        saveDietIngredients(dietIngredients);
+                    }
+                    dietNameDao.getDatabase().execSQL("update DIET_NAME set DIET_TAG='" + newTag + "' where DIET_TAG='" + diet.getTag() + "';");
+                    //Now we can change the Name and Tag (in dietName) and the Tag in diet
+                    dietName.setName(name);
+                    //Yes it seems to be a doublon, but the above SQL have not refreshed the data.
+                    dietName.setDietTag(newTag);
+                    diet.setTag(newTag);
+                }
+            }
+            //In all the case update name and description and save the IngredientName object
+            dietName.setDescription(description);
+            dietNameDao.getSession().insertOrReplace(dietName);
             dietDao.getSession().insertOrReplace(diet);
         }
     }
@@ -451,7 +533,7 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public void addIngredient(String name, String languageCode) {
-        name = name.trim().replaceAll("_","");
+        name = name.trim().replaceAll("_","").replaceAll("\\*","");
         if (name != "") {
             //Recherche du IngredientName correspondant au name et language code
             IngredientName ingredientName = getIngredientNameByNameAndLanguageCode(name, languageCode);
@@ -491,20 +573,21 @@ public class DietRepository implements IDietRepository {
             //By run addIngredient again we will create the name and associate it to this ingredient.
             addIngredient(ingredientTag, name, languageCode);
         } else {
+            name = name.replaceAll("_","").replaceAll("\\*","");
             //A ingredient exists with this tag
             List<IngredientName> ingredientNames = ingredient.getNames();
             boolean addName = true;
             for (int i = 0; i < ingredientNames.size(); i++) {
                 IngredientName ingredientName =  ingredientNames.get(i);
-                if (ingredientName.getLanguageCode().equals(languageCode) && ingredientName.getName().equals(name.replaceAll("_",""))) {
-                    //Ingredient exists and had thie name in thie languageCode. Nothings to do.
+                if (ingredientName.getLanguageCode().equals(languageCode) && ingredientName.getName().equals(name)) {
+                    //Ingredient exists and had this name in this languageCode. Nothings to do.
                     addName = false;
                 }
             }
             if (addName) {
                 //Add this name to the ingredient
                 IngredientName ingredientName = new IngredientName();
-                ingredientName.setName(name.replaceAll("_",""));
+                ingredientName.setName(name);
                 ingredientName.setLanguageCode(languageCode);
                 ingredientName.setIngredientTag(ingredientTag);
                 ingredientNameDao.getSession().insert(ingredientName);
@@ -945,8 +1028,13 @@ public class DietRepository implements IDietRepository {
         //Let have 2 ingredients list, one with only rank>1 and one with rank0 (in other words, one without anything between parenthesis and one qith only things between parenthesis)
         String ingredients0 = ingredients;
         start = ingredients.indexOf("(");
+        end = ingredients.length();
         while (start>0) {
             end = ingredients.indexOf(")", start);
+            if (end == -1) {
+                //Parenthesis not closed !!! go to the end
+                end = ingredients.length();
+            }
             ingredients = ingredients.substring(0,start) + new String(new char[end-start]).replace('\0', ' ') + ingredients.substring(end);
             ingredients0 = ingredients0.substring(0,fromIndex) + new String(new char[start-fromIndex]).replace('\0', ' ') + ingredients0.substring(start);
             fromIndex = end + 1;
@@ -985,6 +1073,8 @@ public class DietRepository implements IDietRepository {
                 //The erased "sucre" is not the good one, but it doesn't matter cause the second (and "good") "sucre" will be treated when the "sucre" of rank=0 will come.
                 //So we split the ingredients in two (before start and after) and replace the ingredient from the second one by spaces (as many as the length of ingredient).
                 ingredients = ingredients.substring(0,start) + ingredients.substring(start).replaceFirst(Pattern.quote(ingredient), new String(new char[ingredient.length()]).replace('\0', ' '));
+                //Now we can suppress asterisk(s).
+                ingredient = productIngredient.getText().replaceAll("\\*","");
                 if (state == 2) {
                     //The ingredientTag doesn't seems to have a relation with a diet, looking for the sentence.
                     //Theoretically this will never append. But this is theory.
