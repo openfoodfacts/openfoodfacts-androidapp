@@ -3,7 +3,7 @@
     <string name="your_diets">Vos régimes</string>
     <string name="diet_name">Nom du régime</string>
     <string name="diets_dialog_warning_title">Attention</string>
-    <string name="warning_diets_data">Les données de votre(s) régime(s) restent sur votre appareil. Rien ne sera téléchargé nulle part.</string>
+    <string name="warning_diets_data">Les données de votre(s) régime(s) restent sur votre appareil. Rien ne sera téléversé nulle part.</string>
     <string name="edit_diet_name">Nom</string>
     <string name="edit_diet_description">Description</string>
     <string name="edit_diet_enabled_disabled">Activé/Désactivé</string>
