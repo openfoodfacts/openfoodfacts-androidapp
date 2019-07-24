@@ -894,7 +894,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     public boolean areRequiredFieldsEmpty() {
         if (mImageUrl == null || mImageUrl.equals("")) {
             Toast.makeText(OFFApplication.getInstance(), R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
-            scrollView.fullScroll(View.FOCUS_UP);
+            if(scrollView!=null) {
+                scrollView.fullScroll(View.FOCUS_UP);
+            }
             return true;
         } else {
             return false;
@@ -940,6 +942,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     public void showImageProgress() {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageFront.setVisibility(View.INVISIBLE);
@@ -947,6 +952,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.GONE);
         imageProgressText.setVisibility(View.GONE);
         imageFront.setVisibility(View.VISIBLE);

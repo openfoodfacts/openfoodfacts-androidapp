@@ -9,7 +9,7 @@
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">1 soicind ó shin</item>
         <item quantity="two">%d seconds ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
@@ -37,7 +37,7 @@
         <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">Faoi</string>
-    <string name="action_discover">Discover</string>
+    <string name="action_discover">Faigh amach</string>
     <string name="contribute">How to contribute</string>
     <string name="action_find">Aimsigh</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
@@ -156,15 +156,15 @@
     </string-array>
     <!-- Text units -->
     <!-- Content Description -->
-    <string name="search_button">Search</string>
+    <string name="search_button">Cuardaigh</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">Barcode:</string>
-    <string name="txtCategories">Categories :</string>
+    <string name="txtCategories">Catagóirí:</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">EMB Code:</string>
-    <string name="txtIngredients">Ingredients list :</string>
+    <string name="txtIngredients">Liosta na gcomhábhar:</string>
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="txtSubstances">Substaintí nó táirgí is cúis le hailléirgí nó le héadulaingtí :</string>
@@ -179,15 +179,15 @@
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
     <string name="txtSave">Sábháil</string>
-    <string name="txtSignIn">Sign in</string>
+    <string name="txtSignIn">Sínigh isteach</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salann</string>
     <string name="txtFat">Saill</string>
-    <string name="txtSugars">Sugars</string>
+    <string name="txtSugars">Siúcraí</string>
     <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Login</string>
-    <string name="hintPass">Password</string>
+    <string name="hintLogin">Logáil isteach</string>
+    <string name="hintPass">Pasfhocal</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
     <string name="uploadLater">Image will be uploaded when network is available</string>
@@ -207,25 +207,25 @@
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Barcode not valid</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
-    <string name="create_account">Sign up</string>
+    <string name="create_account">Clarú</string>
     <string name="home_drawer">Baile</string>
-    <string name="search_drawer">Search</string>
+    <string name="search_drawer">Cuardaigh</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">Catagóirí</string>
     <string name="search_by_category">Category</string>
     <string name="scan_search">Scan Barcode</string>
-    <string name="user_drawer">User</string>
+    <string name="user_drawer">Úsáideoir</string>
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
     <string name="delete_txt">Delete</string>
-    <string name="sign_in_drawer">Sign-in</string>
+    <string name="sign_in_drawer">Sínigh isteach</string>
     <string name="alert_drawer">Allergen alert</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Do liostaí</string>
     <string name="title_dialog_alert">Add alert</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cealaigh</string>
-    <string name="login_button">Login</string>
+    <string name="login_button">Logáil isteach</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">How does it work?</string>
@@ -246,9 +246,9 @@
     <string name="prefs_language">Teanga</string>
     <string name="prefs_language_summary">Athraigh an teanga</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">History</string>
+    <string name="scan_history_drawer">Stair</string>
     <string name="clear_history">Clear history</string>
-    <string name="title_clear_history_dialog">Clear</string>
+    <string name="title_clear_history_dialog">Glan</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Easpórtáil CSV</string>
     <string name="txt_exporting_history">Exporting history...</string>
@@ -259,7 +259,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">Tábla fíricí cothaithe do %1$s den táirge seo</string>
     <string name="check_facts">Check</string>
-    <string name="nutrition">Nutrition</string>
+    <string name="nutrition">Cothú</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
@@ -275,7 +275,7 @@
     <string name="nutrition_salt">Salann</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
-    <string name="nutrition_sugars">Sugars</string>
+    <string name="nutrition_sugars">Siúcraí</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
@@ -288,7 +288,7 @@
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="action_search">Cuardaigh</string>
-    <string name="search_hint">Search a product</string>
+    <string name="search_hint">Cuardaigh táirge</string>
     <string name="number_of_results">Number of results: </string>
     <string name="number_of_products">Number of products: </string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
@@ -380,7 +380,7 @@
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">Cuardaigh</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
-    <string name="history_shortcut_short_label">History</string>
+    <string name="history_shortcut_short_label">Stair</string>
     <string name="history_shortcut_long_label">Stair</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My Contributions</string>
@@ -394,7 +394,7 @@
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
     <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
     <string name="airplane_mode_active_dialog_negative">Dismiss</string>
-    <string name="airplane_mode_active_dialog_positive">Settings</string>
+    <string name="airplane_mode_active_dialog_positive">Socruithe</string>
     <string name="device_offline_dialog_title">Network unavailable</string>
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Dismiss</string>
@@ -411,7 +411,7 @@
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
     <string name="FAQ">CC</string>
-    <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+    <string name="FrequentlyAskedQuestions">Ceisteanna Coitianta</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Please check your connection.</string>
@@ -428,11 +428,11 @@
     <string name="preference_header_network">Líonra</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Logáil isteach</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">Cealaigh</string>
     <string name="dialog_create">Create</string>
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
@@ -443,14 +443,14 @@
     <string name="Browse_Products">Browse Products</string>
     <string name="brand_string">Brand</string>
     <string name="additive_string">Additive</string>
-    <string name="allergen_string">Allergen</string>
-    <string name="search_string">Search</string>
+    <string name="allergen_string">Ailléirgin</string>
+    <string name="search_string">Cuardaigh</string>
     <string name="country_string">Country</string>
     <string name="store_subtitle">Siopa</string>
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
-    <string name="category_string">Category</string>
+    <string name="category_string">Catagóir</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
     <string name="Rate_Us">Show Your Support</string>
@@ -502,7 +502,7 @@
     <string name="contribution_tab">Contributions</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
-    <string name="txtDialogsTitle">Information</string>
+    <string name="txtDialogsTitle">Eolas</string>
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Add a new product</string>
@@ -560,7 +560,7 @@
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Overview</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="ingredients">Comhábhair</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
@@ -586,9 +586,9 @@
     <string name="product_picture">Product Picture</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
-    <string name="product_name">Product name</string>
+    <string name="product_name">Ainm táirge</string>
     <string name="quantity">Quantity</string>
-    <string name="labels">Labels</string>
+    <string name="labels">Lipéid</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Origin of ingredients</string>
@@ -596,7 +596,7 @@
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
+    <string name="stores">Siopaí</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
@@ -652,7 +652,7 @@
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Version</string>
+    <string name="version">Leagan</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -706,7 +706,7 @@
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
-    <string name="first_scan_tooltip">You can slide up the card for more details</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
@@ -716,8 +716,13 @@
     <string name="barcode">Barcode</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">Zúmáil</string>
 </resources>
