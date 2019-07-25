@@ -6,45 +6,37 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
-
-import org.apache.commons.collections.CollectionUtils;
-
-import java.io.File;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import butterknife.BindView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductLists;
-import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
     private static final int ACTIVITY_CHOOSE_FILE = 123;
@@ -85,7 +77,6 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
         fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.plus_blue, 0, 0, 0);
-
 
         productListsDao = getProducListsDaoWithDefaultList(this);
         productLists = productListsDao.loadAll();
@@ -188,9 +179,14 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK && data.getExtras().getBoolean("update")) {
             adapter.notifyDataSetChanged();
-        }else if (requestCode == ACTIVITY_CHOOSE_FILE) {
+        } else if (requestCode == ACTIVITY_CHOOSE_FILE) {
             if (resultCode == RESULT_OK) {
-                new ParseCSV(new File(data.getData().getPath())).execute();
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(data.getData());
+                    new ParseCSV(inputStream).execute();
+                } catch (Exception e) {
+                    Log.e(ProductListsActivity.class.getSimpleName(), "Error importing CSV: " + e.getMessage());
+                }
             }
         }
     }
@@ -230,11 +226,11 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
     @SuppressLint("StaticFieldLeak")
     class ParseCSV extends AsyncTask<Void, Integer, Boolean> {
-        File file;
+        InputStream inputStream;
         ProgressDialog progressDialog;
 
-        ParseCSV(File file) {
-            this.file = file;
+        ParseCSV(InputStream inputStream) {
+            this.inputStream = inputStream;
             progressDialog = new ProgressDialog(ProductListsActivity.this);
         }
 
@@ -252,7 +248,6 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                 Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv_error), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv), Toast.LENGTH_SHORT).show();
-
             }
         }
 
@@ -266,27 +261,27 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
             YourListedProductDao yourListedProductDao = Utils.getAppDaoSession(ProductListsActivity.this).getYourListedProductDao();
             List<YourListedProduct> list = new ArrayList<>();
 
-            try (CSVReader csvReader = new CSVReaderBuilder(new FileReader(file)).withSkipLines(1).build()) {
-                List<String[]> result = csvReader.readAll();
+            try (CSVParser csvParser = new CSVParser(new InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+                List<CSVRecord> result = csvParser.getRecords();
                 int size = result.size();
                 int count = 0;
                 long id;
-                for (String[] row : result) {
-                    List<ProductLists> lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(row[2])).list();
+                for (CSVRecord record : result) {
+                    List<ProductLists> lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
                     if (lists.size() <= 0) {
                         //create new list
-                        ProductLists productList = new ProductLists(row[2], 0);
+                        ProductLists productList = new ProductLists(record.get(2), 0);
                         productLists.add(productList);
                         productListsDao.insert(productList);
-                        lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(row[2])).list();
+                        lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
                     }
                     id = lists.get(0).getId();
 
                     YourListedProduct yourListedProduct = new YourListedProduct();
-                    yourListedProduct.setBarcode(row[0]);
-                    yourListedProduct.setProductName(row[1]);
-                    yourListedProduct.setListName(row[2]);
-                    yourListedProduct.setProductDetails(row[3]);
+                    yourListedProduct.setBarcode(record.get(0));
+                    yourListedProduct.setProductName(record.get(1));
+                    yourListedProduct.setListName(record.get(2));
+                    yourListedProduct.setProductDetails(record.get(3));
                     yourListedProduct.setListId(id);
                     list.add(yourListedProduct);
 
