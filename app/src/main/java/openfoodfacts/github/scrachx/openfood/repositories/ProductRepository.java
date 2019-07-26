@@ -1,9 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
+import android.content.SharedPreferences;
 import android.util.Log;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -134,9 +139,12 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Label>> getLabels(Boolean refresh) {
-        if (refresh || tableIsEmpty(labelDao)) {
+        Long lastModifiedDate = UpdateSinceLastUpload("labels");
+        if (lastModifiedDate > 1) {
+//        if (refresh || tableIsEmpty(labelDao)) {
             return productApi.getLabels()
-                    .map(LabelsWrapper::map);
+                    .map(LabelsWrapper::map)
+                .doOnSuccess(__ -> updateLastDL("labels", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> labelDao.loadAll());
         }
@@ -170,9 +178,12 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Allergen>> getAllergens(Boolean refresh) {
-        if (refresh || tableIsEmpty(allergenDao)) {
+        Long lastModifiedDate = UpdateSinceLastUpload("allergens");
+        if (lastModifiedDate > 1) {
+//        if (refresh || tableIsEmpty(allergenDao)) {
             return productApi.getAllergens()
-                    .map(AllergensWrapper::map);
+                    .map(AllergensWrapper::map)
+                .doOnSuccess(__ -> updateLastDL("allergens", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> allergenDao.loadAll());
         }
@@ -188,9 +199,12 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Country>> getCountries(Boolean refresh) {
-        if (refresh || tableIsEmpty(countryDao)) {
+        Long lastModifiedDate = UpdateSinceLastUpload("countries");
+        if (lastModifiedDate > 1) {
+//        if (refresh || tableIsEmpty(countryDao)) {
             return productApi.getCountries()
-                    .map(CountriesWrapper::map);
+                    .map(CountriesWrapper::map)
+                .doOnSuccess(__ -> updateLastDL("countries", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> countryDao.loadAll());
         }
@@ -206,9 +220,12 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Category>> getCategories(Boolean refresh) {
-        if (refresh || tableIsEmpty(categoryDao)) {
+        Long lastModifiedDate = UpdateSinceLastUpload("categories");
+        if (lastModifiedDate > 1) {
+//        if (refresh || tableIsEmpty(categoryDao)) {
             return productApi.getCategories()
-                    .map(CategoriesWrapper::map);
+                    .map(CategoriesWrapper::map)
+                .doOnSuccess(__ -> updateLastDL("categories", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> categoryDao.loadAll());
         }
@@ -233,9 +250,12 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Additive>> getAdditives(Boolean refresh) {
-        if (refresh || tableIsEmpty(additiveDao)) {
+        Long lastModifiedDate = UpdateSinceLastUpload("additives");
+        if (lastModifiedDate > 1) {
+//        if (refresh || tableIsEmpty(additiveDao)) {
             return productApi.getAdditives()
-                    .map(AdditivesWrapper::map);
+                    .map(AdditivesWrapper::map)
+                .doOnSuccess(__ -> updateLastDL("additives", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> additiveDao.loadAll());
         }
@@ -244,26 +264,81 @@ public class ProductRepository implements IProductRepository {
     /**
      * TODO to be improved by loading only if required and only in the user language
      * Load ingredients from (the server or) local database
+     * If SharedPreferences lastDLIngredients is set try this :
+     *  if file from the server is newer than last download delete database, load the file and fill database,
+     *  else if database is empty, download the file and fill database,
+     *  else return the content from the local database.
      *
-     * @param refresh defines the source of data.
-     *                If refresh is true (or local database is empty) than load it from the server,
-     *                else from the local database.
      * @return The ingredients in the product.
      * Pour le moment, pas de question a se poser, les données ne sont que locales.
      */
     @Override
-    public Single<List<Ingredient>> getIngredients(Boolean refresh) {
-        if (refresh) {
-            deleteIngredientCascade();
-            return productApi.getIngredients()
-                    .map(IngredientsWrapper::map);
+    public Single<List<Ingredient>> getIngredients() {
+        Long lastModifiedDate = UpdateSinceLastUpload("ingredients");
+        if (lastModifiedDate > 1) {
+            //Ingredients.json has been modified since our last download.
+            if (! tableIsEmpty(ingredientDao)){
+                deleteIngredientCascade();
+            }
+            return (Single<List<Ingredient>>) productApi.getIngredients()
+                .map(IngredientsWrapper::map)
+                .doOnSuccess(__ -> updateLastDL("ingredients", lastModifiedDate));
             //Check ingredient from other tables
-        } else if (tableIsEmpty(ingredientDao)) {
-            return productApi.getIngredients()
-                    .map(IngredientsWrapper::map);
-        } else {
-            return Single.fromCallable(() -> ingredientDao.loadAll());
         }
+        return Single.fromCallable(() -> ingredientDao.loadAll());
+    }
+
+    /**
+     * This function test if a taxonomy needs to be uploaded
+     *
+     * @param taxonomy The name of the taxonomy to be tested
+     *        (allergens, additives, categories, countries, ingredients, labels, tags)
+     *
+     * @return
+     *      -1 no internet connexion.
+     *      0 taxonomy is not marked to be load.
+     *      1 taxonomy is up to date.
+     *      other : date of the new taxonomy on the servers => to be updated
+     */
+    public Long UpdateSinceLastUpload(String taxonomy) {
+        Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " begin.");
+        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
+        Long lastDL = mSettings.getLong("lastDL" + taxonomy, 0);
+        if (lastDL > 0) {
+            //In that case we must download this taxonomy .json unless we already downloaded the last version.
+            //Get Last modified date for the file on sever.
+            long lastModifiedDate = 0;
+            try {
+                URL url = new URL(BuildConfig.OFWEBSITE + "data/taxonomies/" + taxonomy + ".json");
+                HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+                lastModifiedDate = httpCon.getLastModified();
+                httpCon.disconnect();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return -1");
+                return  Long.valueOf(-1);
+            }
+            if (lastModifiedDate > lastDL) {
+                Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return " + lastModifiedDate);
+                return lastModifiedDate;
+            } else {
+                Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return 1");
+                return Long.valueOf(1);
+            }
+        }
+        Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return 0");
+        return Long.valueOf(0);
+    }
+
+    /**
+     * This function update the lastDLtaxonomy setting
+     * @param taxonomy  Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
+     * @param lastDL    Date of last update on Long format
+     */
+    public void updateLastDL(String taxonomy, Long lastDL){
+        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
+        mSettings.edit().putLong("lastDL" + taxonomy, lastDL).apply();
+        Log.i("INFO_URL", "End of import for : " + taxonomy);
     }
 
     /**

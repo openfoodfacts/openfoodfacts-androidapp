@@ -40,7 +40,7 @@ public interface IProductRepository {
 
     Single<List<Category>> getCategories(Boolean refresh);
 
-    Single<List<Ingredient>> getIngredients(Boolean refresh);
+    Single<List<Ingredient>> getIngredients();
 
     void saveLabels(List<Label> labels);
 

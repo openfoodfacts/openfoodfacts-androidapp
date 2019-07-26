@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
-
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 
@@ -36,6 +36,20 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                 settings.edit()
                         .putBoolean("firstRun", false)
                         .apply();
+                //Set to 1 the lastDL for the taxonomy to be loaded :
+                //This two are needed for all flavors :
+                settings.edit().putLong("lastDLcategories", Long.valueOf(1)).apply();
+                settings.edit().putLong("lastDLtags", Long.valueOf(1)).apply();
+                if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("obf")) {
+                    settings.edit().putLong("lastDLadditives", Long.valueOf(1)).apply();
+                    settings.edit().putLong("lastDLcountries", Long.valueOf(1)).apply();
+                    settings.edit().putLong("lastDLlabels", Long.valueOf(1)).apply();
+                    //For the moment, ingredients are only need if Diet is use.
+                    settings.edit().putLong("lastDLingredients", Long.valueOf(0)).apply();
+                }
+                if (BuildConfig.FLAVOR.equals("off")) {
+                    settings.edit().putLong("lastDLallergens", Long.valueOf(1)).apply();
+                }
             }
             if (isNeedToRefresh()) { //true if data was refreshed more than 1 day ago
                 Intent intent = new Intent(context, LoadTaxonomiesService.class);
