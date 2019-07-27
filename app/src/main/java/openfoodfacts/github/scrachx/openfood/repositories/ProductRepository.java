@@ -144,7 +144,7 @@ public class ProductRepository implements IProductRepository {
 //        if (refresh || tableIsEmpty(labelDao)) {
             return productApi.getLabels()
                     .map(LabelsWrapper::map)
-                .doOnSuccess(__ -> updateLastDL("labels", lastModifiedDate));
+                .doOnSuccess(__ -> updateLastDownload("labels", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> labelDao.loadAll());
         }
@@ -183,7 +183,7 @@ public class ProductRepository implements IProductRepository {
 //        if (refresh || tableIsEmpty(allergenDao)) {
             return productApi.getAllergens()
                     .map(AllergensWrapper::map)
-                .doOnSuccess(__ -> updateLastDL("allergens", lastModifiedDate));
+                .doOnSuccess(__ -> updateLastDownload("allergens", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> allergenDao.loadAll());
         }
@@ -204,7 +204,7 @@ public class ProductRepository implements IProductRepository {
 //        if (refresh || tableIsEmpty(countryDao)) {
             return productApi.getCountries()
                     .map(CountriesWrapper::map)
-                .doOnSuccess(__ -> updateLastDL("countries", lastModifiedDate));
+                .doOnSuccess(__ -> updateLastDownload("countries", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> countryDao.loadAll());
         }
@@ -225,7 +225,7 @@ public class ProductRepository implements IProductRepository {
 //        if (refresh || tableIsEmpty(categoryDao)) {
             return productApi.getCategories()
                     .map(CategoriesWrapper::map)
-                .doOnSuccess(__ -> updateLastDL("categories", lastModifiedDate));
+                .doOnSuccess(__ -> updateLastDownload("categories", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> categoryDao.loadAll());
         }
@@ -255,7 +255,7 @@ public class ProductRepository implements IProductRepository {
 //        if (refresh || tableIsEmpty(additiveDao)) {
             return productApi.getAdditives()
                     .map(AdditivesWrapper::map)
-                .doOnSuccess(__ -> updateLastDL("additives", lastModifiedDate));
+                .doOnSuccess(__ -> updateLastDownload("additives", lastModifiedDate));
         } else {
             return Single.fromCallable(() -> additiveDao.loadAll());
         }
@@ -264,7 +264,7 @@ public class ProductRepository implements IProductRepository {
     /**
      * TODO to be improved by loading only if required and only in the user language
      * Load ingredients from (the server or) local database
-     * If SharedPreferences lastDLIngredients is set try this :
+     * If SharedPreferences lastDownloadIngredients is set try this :
      *  if file from the server is newer than last download delete database, load the file and fill database,
      *  else if database is empty, download the file and fill database,
      *  else return the content from the local database.
@@ -282,7 +282,7 @@ public class ProductRepository implements IProductRepository {
             }
             return (Single<List<Ingredient>>) productApi.getIngredients()
                 .map(IngredientsWrapper::map)
-                .doOnSuccess(__ -> updateLastDL("ingredients", lastModifiedDate));
+                .doOnSuccess(__ -> updateLastDownload("ingredients", lastModifiedDate));
             //Check ingredient from other tables
         }
         return Single.fromCallable(() -> ingredientDao.loadAll());
@@ -303,8 +303,8 @@ public class ProductRepository implements IProductRepository {
     public Long UpdateSinceLastUpload(String taxonomy) {
         Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " begin.");
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        Long lastDL = mSettings.getLong("lastDL" + taxonomy, 0);
-        if (lastDL > 0) {
+        Long lastDownload = mSettings.getLong("lastDownload" + taxonomy, 0);
+        if (lastDownload > 0) {
             //In that case we must download this taxonomy .json unless we already downloaded the last version.
             //Get Last modified date for the file on sever.
             long lastModifiedDate = 0;
@@ -318,7 +318,7 @@ public class ProductRepository implements IProductRepository {
                 Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return -1");
                 return  Long.valueOf(-1);
             }
-            if (lastModifiedDate > lastDL) {
+            if (lastModifiedDate > lastDownload) {
                 Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return " + lastModifiedDate);
                 return lastModifiedDate;
             } else {
@@ -331,13 +331,13 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
-     * This function update the lastDLtaxonomy setting
+     * This function update the lastDownloadtaxonomy setting
      * @param taxonomy  Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
-     * @param lastDL    Date of last update on Long format
+     * @param lastDownload    Date of last update on Long format
      */
-    public void updateLastDL(String taxonomy, Long lastDL){
+    public void updateLastDownload(String taxonomy, Long lastDownload){
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        mSettings.edit().putLong("lastDL" + taxonomy, lastDL).apply();
+        mSettings.edit().putLong("lastDownload" + taxonomy, lastDownload).apply();
         Log.i("INFO_URL", "End of import for : " + taxonomy);
     }
 
