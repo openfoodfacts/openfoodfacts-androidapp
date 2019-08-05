@@ -62,8 +62,8 @@
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
         <item>Ácido alfa-linolénico / ALA (18: 3 n-3)</item>
-        <item>Ácido Araquídico (20: 0)</item>
-        <item>Ácido araquidónico / AA / ARA (20: 4 n-6)</item>
+        <item>Ácido araquídico (20:0)</item>
+        <item>Ácido araquidónico / AA / ARA (20:4 n-6)</item>
         <item>Ácido behénico (22:0)</item>
         <item>Bicarbonato</item>
         <item>Biotina</item>
@@ -71,7 +71,7 @@
         <item>Cafeína</item>
         <item>Calcio</item>
         <item>Ácido cáprico (10:0)</item>
-        <item>Ácido Caproico (6:0)</item>
+        <item>Ácido caproico (6:0)</item>
         <item>Ácido caprílico (8:0)</item>
         <item>Caseína</item>
         <item>Ácido cerótico (26:0)</item>
@@ -80,9 +80,9 @@
         <item>Cromo</item>
         <item>Cobre</item>
         <item>Ácido dihomo-gamma-linolénico / DGLA (20:3 n-6)</item>
-        <item>Ácido Docosahexaenoico / DHA (22:6 n-3)</item>
+        <item>Ácido docosahexaenoico / DHA (22:6 n-3)</item>
         <item>Ácido eicosapentaenoico / EPA (20:5 n-3)</item>
-        <item>Ácido elaidico (18:1 n-9)</item>
+        <item>Ácido elaídico (18:1 n-9)</item>
         <item>Acido erúcico (22:1 n-9)</item>
         <item>Fluoruro</item>
         <item>Fructosa</item>

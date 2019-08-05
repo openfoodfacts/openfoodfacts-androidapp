@@ -16,10 +16,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
 Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="few">%d seconds ago</item>
-        <item quantity="many">%d seconds ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">1 sekundę temu</item>
+        <item quantity="few">%d sekundy temu</item>
+        <item quantity="many">%d sekund temu</item>
+        <item quantity="other">%d sekund temu</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">\"Minutę temu
@@ -526,10 +526,10 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="productAdditivesUnknown">Nieznane dodatki</string>
     <string name="productAdditivesTemplate">%1$d dodatków</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="few">%d additives</item>
-        <item quantity="many">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d dodatek</item>
+        <item quantity="few">%d dodatki</item>
+        <item quantity="many">%d dodatków</item>
+        <item quantity="other">%d dodatków</item>
     </plurals>
     <string name="product_not_complete">Ten produkt nie jest jeszcze kompletny. \nCzy możesz dodać więcej szczegółów?</string>
     <string name="addProductOffline">Wygląda na to, że nie jesteś połączony z siecią. Dodać produkt %s w trybie offline?</string>
@@ -716,25 +716,25 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="error_nutrient_entry">Wartość musi być liczbą i może zacząć się: &lt;, &gt; lub ~. Przykład: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Wartość rozmiar porcji musi być wartością dodatnią</string>
     <string name="error_in_nutrient_data">Niektóre wartości odżywcze nie są prawidłowe. Proszę poprawić pola oznaczone jako nieprawidłowe</string>
-    <string name="go_to_full_product_page">Go to product</string>
+    <string name="go_to_full_product_page">Przejdź do produktu</string>
     <string name="no_additive_data_available_for_this_product">Dodatkowe dane dla tego produktu nie są dostępne</string>
     <string name="no_nutrient_information_available_for_this_product">Brak informacji o wartości odżywczej dla tego produktu</string>
     <string name="error_duplicate_listname">Masz już listę o tej nazwie</string>
     <string name="required_to_compute_nutriscore">(Wymagane do obliczenia Nutri-Score)</string>
-    <string name="scan_tooltip">You can slide up the card for more details</string>
+    <string name="scan_tooltip">Możesz przesunąć kartę, aby uzyskać więcej szczegółów</string>
     <string name="add_an_allergen">Dodaj alergen</string>
     <string name="add_a_list">Dodaj listę</string>
     <string name="edit_image">Edytuj zdjęcie</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">Nowy obraz nie został jeszcze załadowany. Poczekaj przed edycją</string>
     <string name="unselect_image">Odznacz zdjęcie</string>
     <string name="choose_default_language">Wybierz język produktu</string>
     <string name="barcode">Kod kreskowy</string>
     <string name="productAdditivesNone">Bez dodatków</string>
     <string name="error_uploading_photo">W czasie przesyłania nowego zdjęcia wystąpił błąd</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
-    <string name="toast_import_csv_error">Error in importing CSV file</string>
-    <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="toast_import_csv_error">Błąd podczas importowania pliku CSV</string>
+    <string name="toast_import_csv">Importowanie CSV zakończone pomyślnie!</string>
+    <string name="open_csv">Otwórz CSV</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Nie można załadować produktu. Spróbuj ponownie po powrocie do trybu online.</string>
     <string name="cant_modify_if_refreshing">Poczekaj na zakończenie przesyłania</string>
