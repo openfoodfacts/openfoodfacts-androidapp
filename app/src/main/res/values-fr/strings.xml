@@ -457,7 +457,7 @@
     <string name="by_nutrition_grade">Note nutritionnelle</string>
     <string name="sort_by">Trier par</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://world-fr.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Secouez le téléphone pour scanner des produits</string>
     <string name="shake_title">Secouer pour scanner</string>
     <!-- strings related to share images -->
@@ -688,7 +688,7 @@
     <string name="no_nutrient_information_available_for_this_product">Aucune information nutritionnelle n\'est disponible pour ce produit</string>
     <string name="error_duplicate_listname">Vous avez déjà une liste portant ce nom</string>
     <string name="required_to_compute_nutriscore">(Nécessaire pour calculer le Nutri-Score)</string>
-    <string name="scan_tooltip">You can slide up the card for more details</string>
+    <string name="scan_tooltip">Vous pouvez faire glisser vers le haut la carte pour plus de détails</string>
     <string name="add_an_allergen">Ajouter un allergène</string>
     <string name="add_a_list">Ajouter une liste</string>
     <string name="edit_image">Modifier l\'image</string>
@@ -698,10 +698,10 @@
     <string name="barcode">Code barre</string>
     <string name="productAdditivesNone">Sans additifs</string>
     <string name="error_uploading_photo">Une erreur s\'est produite lors du téléchargement d\'une nouvelle photo</string>
-    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
-    <string name="toast_import_csv_error">Error in importing CSV file</string>
-    <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="import_csv_to_list">Importer un fichier CSV de la liste Open Food Facts</string>
+    <string name="toast_import_csv_error">Erreur lors de l\'importation du fichier CSV</string>
+    <string name="toast_import_csv">CSV importé avec succès !</string>
+    <string name="open_csv">Ouvrir CSV</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Le produit n\'a pas pu être chargé. Veuillez réessayer lorsque vous êtes de nouveau en ligne.</string>
     <string name="cant_modify_if_refreshing">Veuillez patienter jusqu\'à la fin du téléchargement</string>
