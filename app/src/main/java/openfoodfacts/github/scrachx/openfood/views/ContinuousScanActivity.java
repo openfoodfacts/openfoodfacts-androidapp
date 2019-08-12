@@ -811,4 +811,10 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
             return null;
         }
     }
+
+    public void collapseBottomSheet(){
+        if(bottomSheetBehavior!=null){
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        }
+    }
 }
