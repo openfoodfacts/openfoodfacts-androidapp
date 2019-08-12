@@ -477,7 +477,9 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     @Override
     protected void onResume() {
         super.onResume();
-        barcodeView.resume();
+        if(bottomSheetBehavior.getState() !=BottomSheetBehavior.STATE_EXPANDED) {
+            barcodeView.resume();
+        }
     }
 
     @Override
@@ -547,6 +549,9 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                 if (newState == BottomSheetBehavior.STATE_HIDDEN) {
                     lastText = null;
                     txtProductCallToAction.setVisibility(GONE);
+                }
+                else if(newState==BottomSheetBehavior.STATE_COLLAPSED){
+                    barcodeView.resume();
                 }
                 if (searchByBarcode.getVisibility() == VISIBLE) {
                     bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_SMALL, ContinuousScanActivity.this));
