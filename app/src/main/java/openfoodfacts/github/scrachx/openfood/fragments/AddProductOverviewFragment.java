@@ -778,7 +778,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     private void chipifyAllUnterminatedTokens() {
         NachoTextView[] nachoTextViews = {brand, packaging, categories, label, originOfIngredients, embCode, countryWherePurchased, stores, countriesWhereSold};
         for (NachoTextView nachoTextView : nachoTextViews) {
-            nachoTextView.chipifyAllUnterminatedTokens();
+            if (nachoTextView != null) {
+                nachoTextView.chipifyAllUnterminatedTokens();
+            }
         }
     }
 
@@ -942,23 +944,39 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     public void showImageProgress() {
-        if(!isAdded() || imageProgress==null){
+        if(!isAdded()){
             return;
         }
-        imageProgress.setVisibility(View.VISIBLE);
-        imageProgressText.setVisibility(View.VISIBLE);
-        imageFront.setVisibility(View.INVISIBLE);
-        editImageFront.setVisibility(View.INVISIBLE);
+        if (imageProgress != null) {
+            imageProgress.setVisibility(View.VISIBLE);
+        }
+        if (imageProgressText != null) {
+            imageProgressText.setVisibility(View.VISIBLE);
+        }
+        if (imageFront != null) {
+            imageFront.setVisibility(View.INVISIBLE);
+        }
+        if (editImageFront != null) {
+            editImageFront.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
-        if(!isAdded() || imageProgress==null){
+        if(!isAdded()){
             return;
         }
-        imageProgress.setVisibility(View.GONE);
-        imageProgressText.setVisibility(View.GONE);
-        imageFront.setVisibility(View.VISIBLE);
-        editImageFront.setVisibility(View.VISIBLE);
+        if (imageProgress != null) {
+            imageProgress.setVisibility(View.GONE);
+        }
+        if (imageProgressText != null) {
+            imageProgressText.setVisibility(View.GONE);
+        }
+        if (imageFront != null) {
+            imageFront.setVisibility(View.VISIBLE);
+        }
+        if (editImageFront != null) {
+            editImageFront.setVisibility(View.VISIBLE);
+        }
         if (!errorInUploading) {
             Picasso.get()
                 .load(photoFile)
