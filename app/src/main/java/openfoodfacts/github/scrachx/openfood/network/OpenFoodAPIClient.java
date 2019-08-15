@@ -167,8 +167,8 @@ public class OpenFoodAPIClient {
                 }
 
                 final State s = response.body();
-                if(s==null){
-                    Toast.makeText(activity,R.string.something_went_wrong,Toast.LENGTH_LONG).show();
+                if (s == null) {
+                    Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (s.getStatus() == 0) {
@@ -186,7 +186,7 @@ public class OpenFoodAPIClient {
                     s.setProduct(s.getProduct());
                     if (callback != null) {
                         callback.onStateResponse(s);
-                    } else if (activity != null) {
+                    } else {
                         Intent intent = new Intent(activity, ProductActivity.class);
                         bundle.putSerializable("state", s);
                         intent.putExtras(bundle);
