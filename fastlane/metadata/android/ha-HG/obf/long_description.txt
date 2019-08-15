@@ -1,8 +1,8 @@
-***Contribute to Cosmetic Transparency***
+*** Ka ba da gudummawa wajen tabbatar da kwaskwarima ***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Bugun Labaran Lissafi Kwarewar kayan kwalliyar kayan kwaskwarima wanda kowa yayi, domin kowa.
+- Kuna iya amfani da shi don yin zaɓin mafi kyawun kayan kwalliya, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
+- Bugun Kayan Fata na Kyauta wani shiri ne wanda ba riba ba wanda dubunnan masu ba da agaji na duniya suka kirkira. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your cosmetic cupboard. 
 
 *** Get the Facts ***
@@ -14,14 +14,14 @@
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
 *** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+- Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
+- Kuna iya amfani da app ba tare da sani ba
+- Kuna iya fitarwa da tarihin bincikenku
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
