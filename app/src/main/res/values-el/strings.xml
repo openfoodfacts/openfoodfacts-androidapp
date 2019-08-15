@@ -6,7 +6,7 @@
         <item quantity="other"> Έχετε %d προϊόν εκτός σύνδεσης που περιμένει να εισαχθεί στα Ανοικτά Στοιχεία Τροφίμων</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">1 δευτερόλεπτο πριν</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
@@ -142,7 +142,7 @@
     <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Αναζήτηση</string>
-    <string name="alert_dialog_warning_title">Warning</string>
+    <string name="alert_dialog_warning_title">Προσοχή</string>
     <string name="alert_dialog_warning_msg_user">Όνομα/Κωδικός λογαριασμού έχει αλλάξει, ανανεώστε τις πληροφορίες</string>
     <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">Barcode :</string>
@@ -266,9 +266,9 @@
     <string name="action_manage_account">Διαχείριση λογαριασμού</string>
     <string name="action_contributes">Οι συνεισφορές σας</string>
     <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="energy_pref_title">Προτιμώμενη μονάδα ενέργειας</string>
     <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="volume_pref_title">Προτιμώμενη μονάδα όγκου</string>
     <string name="logout_drawer">Αποσύνδεση</string>
     <string name="contribution_without_account">Μπορείτε να συνδεθείτε ή να δημιουργήσετε έναν λογαριασμό για να κρατήσετε τις συνεισφορές σας</string>
     <string name="textCarbonFootprint">Αποτύπωμα άνθρακα / εκπομπές CO2: </string>
@@ -346,8 +346,8 @@
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Κακάο</string>
     <string name="chlorophyl">Χλωροφύλλη</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">Βγάλε μια φωτογραφία</string>
+    <string name="choose_picture_from_gallery">Από τη γκαλερί</string>
     <string name="take_picture_ingredients">Φωτογραφήστε τα συστατικά</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
@@ -373,7 +373,7 @@
     <string name="next">Επόμενο</string>
     <string name="skip">Παράλειψη</string>
     <string name="start">Κατάλαβα</string>
-    <string name="contact">Contact</string>
+    <string name="contact">Επικοινωνία</string>
     <string name="contact_summary">Επικοινωνία με τους δημιουργούς</string>
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
@@ -385,7 +385,7 @@
     <string name="device_offline_dialog_negative">Απόρριψη</string>
     <string name="device_offline_dialog_positive">Ρυθμίσεις</string>
     <string name="scan_first_product">Scan First Product</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_delete_search_history">Επιτυχής διαγραφή ιστορικού</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Αποστολή νέων εικόνων μόνο από WiFi</string>
@@ -396,7 +396,7 @@
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Επιλογή γλώσσας</string>
     <string name="FAQ">FAQ</string>
-    <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+    <string name="FrequentlyAskedQuestions">Συχνές Ερωτήσεις</string>
     <string name="translate_help_title">Βοηθήστε να μεταφραστεί το Open Food Facts</string>
     <string name="translate_help_summary">Βοηθήστε στην μετάφραση της εφαρμογής χωρίς να απαιτούνται τεχνολογικές γνώσεις</string>
     <string name="please_check_your_connection">Παρακαλώ ελέγξτε τη σύνδεσή σας στο internet.</string>
