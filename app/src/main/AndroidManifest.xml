@@ -107,7 +107,7 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
 
                 <data
-                        android:host="*.openfoodfacts.org"
+                        android:host="@string/deeplink_product"
                         android:pathPrefix="/product"
                         android:scheme="https"/>
             </intent-filter>
