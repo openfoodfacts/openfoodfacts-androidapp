@@ -311,7 +311,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     case "en:non-vegetarian":
                         vegetarianIcon.setVisibility(View.VISIBLE);
                         vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.red_500), android.graphics.PorterDuff.Mode.SRC_IN);
-                        vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "yes"));
+                        vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "no"));
                         break;
                     case "en:vegetarian-status-unknown":
                         vegetarianIcon.setVisibility(View.GONE);
@@ -329,7 +329,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     case "en:non-vegan":
                         veganIcon.setVisibility(View.VISIBLE);
                         veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.red_500), android.graphics.PorterDuff.Mode.SRC_IN);
-                        veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "yes"));
+                        veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "no"));
                         break;
                     case "en:vegan-status-unknown":
                         veganIcon.setVisibility(View.GONE);
