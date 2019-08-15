@@ -156,7 +156,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                 @Override
                 public void onSuccess(State state) {
                     mState = state;
-                    new HistoryTask(mHistoryProductDao).execute(mState.getProduct());
                     getIntent().putExtra("state", state);
                     if (mState != null) {
                         initViews();
