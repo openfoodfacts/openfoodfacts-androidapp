@@ -1,5 +1,5 @@
 Esos son los eslóganes que se muestran arriba de las capturas de pantalla en la playstore. Mantenlos cortos y atractivos.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=es
 
 =====================
 Capturas de pantalla versión 2
