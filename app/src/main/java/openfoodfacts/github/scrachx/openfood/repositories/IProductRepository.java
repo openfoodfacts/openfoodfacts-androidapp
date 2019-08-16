@@ -20,7 +20,10 @@ import openfoodfacts.github.scrachx.openfood.models.Question;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
 
 /**
- * Created by Lobster on 03.03.18.
+ * This is a repository class working as an Interface.
+ * It defines all the functions in Repository component.
+ * @author Lobster
+ * @since 03.03.18
  */
 
 public interface IProductRepository {

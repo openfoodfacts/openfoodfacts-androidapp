@@ -1,22 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.List;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
 
+import java.util.List;
 
 public class CalculateAdapter extends RecyclerView.Adapter {
-
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-
     private final List<NutrimentItem> nutrimentItems;
 
     public CalculateAdapter(List<NutrimentItem> nutrimentItems) {
@@ -25,15 +22,13 @@ public class CalculateAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        if(viewType == TYPE_HEADER)
-        {
-            int layoutResourceId=R.layout.nutrition_fact_header_new;
-            View v =LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
+        if (viewType == TYPE_HEADER) {
+            int layoutResourceId = R.layout.nutrition_fact_header_new;
+            View v = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
             return new NutrimentHeaderViewHolder(v);
-        }
-        else {
+        } else {
             int layoutResourceId = R.layout.nutriment_item_list;
             View v = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
             return new NutrimentViewHolder(v);
@@ -41,27 +36,16 @@ public class CalculateAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (!(holder instanceof NutrimentViewHolder)) {
             return;
         }
 
         NutrimentItem item = nutrimentItems.get(position);
-
         NutrimentViewHolder nutrimentViewHolder = (NutrimentViewHolder) holder;
-
-        nutrimentViewHolder.vNutrimentName.setText(item.getTitle());
-        nutrimentViewHolder.vNutrimentValue.append(item.getModifier());
-        nutrimentViewHolder.vNutrimentValue.append(item.getValue());
-        nutrimentViewHolder.vNutrimentValue.append(" ");
-        nutrimentViewHolder.vNutrimentValue.append(item.getUnit());
-
-        nutrimentViewHolder.vNutrimentServingValue.append(item.getModifier());
-        nutrimentViewHolder.vNutrimentServingValue.append(item.getServingValue());
-        nutrimentViewHolder.vNutrimentServingValue.append(" ");
-        nutrimentViewHolder.vNutrimentServingValue.append(item.getUnit());
+        nutrimentViewHolder.fillNutrimentValue(item);
+        nutrimentViewHolder.fillServingValue(item);
         holder.setIsRecyclable(false);
-
     }
 
     @Override
@@ -83,21 +67,36 @@ public class CalculateAdapter extends RecyclerView.Adapter {
         return nutrimentItems.size();
     }
 
-    class NutrimentViewHolder extends RecyclerView.ViewHolder {
-        TextView vNutrimentName;
-        TextView vNutrimentValue;
-        TextView vNutrimentServingValue;
+    static class NutrimentViewHolder extends RecyclerView.ViewHolder {
+        private TextView vNutrimentName;
+        private TextView vNutrimentValue;
+        private TextView vNutrimentServingValue;
 
-        public NutrimentViewHolder(View v) {
+        NutrimentViewHolder(View v) {
             super(v);
             vNutrimentName = v.findViewById(R.id.nutriment_name);
             vNutrimentValue = v.findViewById(R.id.nutriment_value);
             vNutrimentServingValue = v.findViewById(R.id.nutriment_serving_value);
         }
+
+        void fillNutrimentValue(NutrimentItem item) {
+            vNutrimentName.setText(item.getTitle());
+            vNutrimentValue.append(item.getModifier());
+            vNutrimentValue.append(item.getValue());
+            vNutrimentValue.append(" ");
+            vNutrimentValue.append(item.getUnit());
+        }
+
+        void fillServingValue(NutrimentItem item) {
+            vNutrimentServingValue.append(item.getModifier());
+            vNutrimentServingValue.append(item.getServingValue());
+            vNutrimentServingValue.append(" ");
+            vNutrimentServingValue.append(item.getUnit());
+        }
     }
 
     class NutrimentHeaderViewHolder extends RecyclerView.ViewHolder {
-        public NutrimentHeaderViewHolder(View itemView) {
+        NutrimentHeaderViewHolder(View itemView) {
             super(itemView);
         }
     }

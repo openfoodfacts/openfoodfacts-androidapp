@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipeRefresh"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                       xmlns:tools="http://schemas.android.com/tools"
+                                                       android:id="@+id/swipeRefresh"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="fill_vertical"
@@ -25,8 +25,6 @@
                 android:id="@+id/imageViewNutrition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/spacing_normal"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginRight="@dimen/spacing_normal"
@@ -37,22 +35,18 @@
                 app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
             <Button
-                android:drawableLeft="@drawable/ic_add_a_photo_black_18dp"
-                android:drawablePadding="5dp"
                 android:id="@+id/newAdd"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/update_image"
                 android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/spacing_normal"
+                android:text="@string/update_image"
                 style="@style/BorderButton"
                 android:visibility="gone"/>
             <TextView
                 android:id="@+id/addPhotoLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imageViewNutrition"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
                 android:layout_marginBottom="@dimen/spacing_normal"
                 android:gravity="center"
                 android:text="@string/take_picture_nutrition_table"
@@ -74,7 +68,8 @@
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginBottom="@dimen/spacing_tiny"
                     android:clickable="true"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:focusable="true" />
 
                 <TextView
                     android:id="@+id/nutriscoreLink"
@@ -94,8 +89,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_normal"
-                android:drawableLeft="@drawable/ic_add_box_blue_18dp"
-                android:drawableStart="@drawable/ic_add_box_blue_18dp"
                 android:text="@string/add_nutrient_prompt_text"
                 android:visibility="gone"
                 style="@style/BorderButton"
@@ -126,7 +119,7 @@
 
 
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/nutrient_levels_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,7 +144,7 @@
                         android:textSize="@dimen/font_normal"
                         android:textStyle="bold" />
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/listNutrientLevels"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -181,7 +174,7 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/calculateNutritionFacts"
@@ -191,7 +184,7 @@
                 style="@style/BorderButton"
                 android:text="@string/calculate_nutrition_facts" />
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/serving_size_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -211,11 +204,11 @@
                     android:textIsSelectable="true"
                     android:textSize="@dimen/font_normal" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:cardElevation="@dimen/card_elevation"
@@ -234,7 +227,7 @@
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_large" />
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/nutriments_recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -246,10 +239,10 @@
                         />
 
                 </RelativeLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-</android.support.v4.widget.SwipeRefreshLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

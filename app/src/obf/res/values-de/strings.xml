@@ -23,9 +23,7 @@
     <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
     <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
     <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Beauty Facts”. Bitte fügen Sie es jetzt hinzu.</string>
-    <string name="txtDialogsContentPowerMode">Das eingelesene Produkt existiert bereits in „Open Beauty Facts”.</string>
     <string name="msg_share">Dieses Produkt auf Open Beauty Facts anzeigen:</string>
-    <string name="not_support_books">Bücher werden derzeit nicht von Open Beauty Facts unterstützt</string>
     <string name="txt_broaden_search">• Suche erweitern \n• erfassen und zu Open Beauty Facts hinzufügen</string>
     <string name="Donation">Klicken Sie hier, um für Open Beauty Facts zu spenden</string>
     <string name="translate_help_title">Bei der Übersetzung von Open Beauty Facts mithelfen</string>

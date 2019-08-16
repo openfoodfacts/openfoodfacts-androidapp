@@ -1,36 +1,21 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.NavUtils;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.ShareActionProvider;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.RequiresApi;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
-
-import com.afollestad.materialdialogs.MaterialDialog;
-
-
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -43,11 +28,9 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
-import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.product.environment.EnvironmentProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
@@ -55,13 +38,9 @@ import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.
 import openfoodfacts.github.scrachx.openfood.views.product.nutrition.NutritionProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-
 public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
 	private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-	private static final int EDIT_REQUEST_CODE = 2;
 	@BindView( R.id.pager )
 	ViewPager viewPager;
 	@BindView( R.id.toolbar )
@@ -71,12 +50,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     @BindView( R.id.bottom_navigation )
 	BottomNavigationView bottomNavigationView;
 
-    RecyclerView productBrowsingRecyclerView;
-    ProductFragmentPagerAdapter adapterResult;
-    ProductsRecyclerViewAdapter productsRecyclerViewAdapter;
+    private ProductFragmentPagerAdapter adapterResult;
 
     private OpenFoodAPIClient api;
-    private ShareActionProvider mShareActionProvider;
     private State mState;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -95,11 +71,18 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         setTitle(getString(R.string.app_name_long));
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
 		api = new OpenFoodAPIClient( this );
 
-		mState = (State) getIntent().getExtras().getSerializable( "state" );
+		mState = (State) getIntent().getSerializableExtra("state" );
+        //no state-> we can't display anything. we go back to home.
+        if(mState==null){
+            final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
 
 		setupViewPager( viewPager );
 
@@ -107,50 +90,21 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if (mSensorManager != null) {
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
         mShakeDetector = new ShakeDetector();
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
-        mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeDetected() {
-            @Override
-            public void onShake(int count) {
+        mShakeDetector.setOnShakeListener(count -> {
 
-                if (scanOnShake) {
-                    Utils.scan(ProductActivity.this);
-                }
+            if (scanOnShake) {
+                Utils.scan(ProductActivity.this);
             }
         });
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.scan_bottom_nav:
-                    onScanButtonClicked(this);
-                    break;
-
-                case R.id.history_bottom_nav:
-                    startActivity(new Intent(this, HistoryScanActivity.class));
-                    break;
-
-                case R.id.search_product:
-                    Intent intent = new Intent(this, MainActivity.class);
-                    intent.putExtra("product_search", true);
-                    startActivity(intent);
-                    break;
-
-                case R.id.home:
-                    NavUtils.navigateUpFromSameTask(this);
-                    break;
-
-				default:
-					return true;
-			}
-			return true;
-		} );
-
-		//To update the product details
-		onRefresh();
+        BottomNavigationListenerInstaller.install(bottomNavigationView,this,this);
 	}
 
 	@Override
@@ -160,37 +114,16 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 		if( requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK )
 		{
 			Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
-			intent.putExtra( "edit_product", mState.getProduct() );
+			intent.putExtra( AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct() );
 			startActivity( intent );
 		}
 
 	}
 
-    public static void onScanButtonClicked(Activity activity) {
-        if (Utils.isHardwareCameraInstalled(activity)) {
-            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(activity)
-                            .title(R.string.action_about)
-                            .content(R.string.permission_camera)
-                            .neutralText(R.string.txtOk)
-                            .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                            .show();
-                } else {
-                    ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
-                }
-            } else {
-                Intent intent = new Intent(activity, ContinuousScanActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                activity.startActivity(intent);
-            }
-        }
-    }
 
 	private void setupViewPager( ViewPager viewPager )
 	{
-        adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
-		adapterResult = setupViewPager(viewPager, adapterResult, mState, this);
+		adapterResult = setupViewPager(viewPager, new ProductFragmentPagerAdapter(getSupportFragmentManager()), mState, this);
     }
 
     /**
@@ -220,7 +153,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             {
                 adapterResult.addFragment(new EnvironmentProductFragment(), "Environment");
             }
-            if( PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false ) )
+            if(isPhotoMode(activity))
             {
                 adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
             }
@@ -228,7 +161,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         if( BuildConfig.FLAVOR.equals( "opff" ) )
         {
             adapterResult.addFragment( new NutritionProductFragment(), menuTitles[2] );
-            if( PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false ) )
+            if(isPhotoMode(activity))
             {
                 adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
             }
@@ -236,7 +169,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         if( BuildConfig.FLAVOR.equals( "obf" ) )
         {
-            if( PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false ) )
+            if(isPhotoMode(activity))
             {
                 adapterResult.addFragment( new ProductPhotosFragment(), newMenuTitles[0] );
             }
@@ -256,54 +189,23 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         return adapterResult;
     }
 
+    private static boolean isPhotoMode(Activity activity) {
+        return PreferenceManager.getDefaultSharedPreferences( activity ).getBoolean( "photoMode", false );
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return onOptionsItemSelected(item, mState, this);
+        return onOptionsItemSelected(item, this);
     }
 
-    public static boolean onOptionsItemSelected(MenuItem item, State mState, Activity activity) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-//                NavUtils.navigateUpFromSameTask(this);
-                activity.finish();
-                return true;
-
-            default:
-                return true;
+    public static boolean onOptionsItemSelected(MenuItem item, Activity activity) {
+        // Respond to the action bar's Up/Home button
+        if (item.getItemId() == android.R.id.home) {
+            activity.finish();
         }
+        return true;
     }
 
-    // Call to update the share intent
-    private void setShareIntent(Intent shareIntent) {
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setShareIntent(shareIntent);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_CAMERA:
-            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
-                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
-                    new MaterialDialog.Builder(this)
-                            .title(R.string.permission_title)
-                            .content(R.string.permission_denied)
-                            .negativeText(R.string.txtNo)
-                            .positiveText(R.string.txtYes)
-                            .onPositive((dialog, which) -> {
-                                Intent intent = new Intent();
-                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                Uri uri = Uri.fromParts("package", getPackageName(), null);
-                                intent.setData(uri);
-                                startActivity(intent);
-                            })
-                            .show();
-                }
-            }
-        }
-    }
 
     @Override
     public void onRefresh() {
@@ -314,7 +216,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        mState = (State) intent.getExtras().getSerializable("state");
+        mState = (State) intent.getSerializableExtra("state");
         adapterResult.refresh(mState);
     }
 

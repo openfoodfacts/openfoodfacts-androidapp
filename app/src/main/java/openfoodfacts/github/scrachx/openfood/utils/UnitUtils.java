@@ -58,6 +58,9 @@ public class UnitUtils {
         if (UNIT_CENTILITRE.equalsIgnoreCase(unitOfValue)) {
             return value * 10;
         }
+        if (UNIT_MILLILITRE.equalsIgnoreCase(unitOfValue)) {
+            return value;
+        }
         //TODO : what about % DV and IU
         return value;
     }

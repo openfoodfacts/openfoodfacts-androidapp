@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/preference_header_general">
-
+    <PreferenceCategory android:title="@string/preference_header_general" android:summary="">
 
         <ListPreference
             android:defaultValue="en"
@@ -54,7 +53,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_header_network">
+    <PreferenceCategory android:title="@string/preference_header_network" android:summary="">
 
         <CheckBoxPreference
             android:defaultValue="true"
@@ -79,7 +78,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_header_contributing">
+    <PreferenceCategory android:title="@string/preference_header_contributing" android:summary="">
 
         <Preference
             android:summary="@string/Donation"
@@ -101,6 +100,12 @@
             android:title="@string/contribution_tab_title" />
 
         <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="cropNewImage"
+                android:summary="@string/crop_new_image"
+                android:title="@string/crop_new_image_title" />
+
+        <CheckBoxPreference
             android:defaultValue="true"
             android:key="fastAdditionMode"
             android:summary="@string/fast_addition_mode"
@@ -114,7 +119,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_header_about">
+    <PreferenceCategory android:title="@string/preference_header_about" android:summary="">
 
         <Preference
             android:key="contact_team"

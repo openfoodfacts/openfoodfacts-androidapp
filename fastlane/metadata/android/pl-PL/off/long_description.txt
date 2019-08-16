@@ -5,7 +5,7 @@ Skanuj produkty lub ich kody kreskowe, by uzyskać dane o składzie, dodatkach i
 Aplikacja pozwala przeglądać ponad 800.000 produktów (w tym 175.000 w USA) już znajdujących się w bazie wolnego i otwartego Open Food Facts jak i również dodać zdjęcia oraz dane dla nowych produktów.
 
 
-Aby poznać projekt wspierany przez wolontariuszy Open Food Facts, odwiedź https://world.openfoodfacts.org
+Aby zapoznać się z projektem Open Food Facts, który jest tworzony przez wolontariuszy, odwiedź https://world.openfoodfacts.org
 
 ▶ Wybierz produkty, które są dla Ciebie dobre
 - Klasa Nutri-Score, od "A" do "E" >> Jakość wartości odżywczej
@@ -24,12 +24,12 @@ Aby poznać projekt wspierany przez wolontariuszy Open Food Facts, odwiedź http
 Open Food Facts to baza danych tworzona przez każdego dla wszystkich.
 Możesz z niej korzystać aby wybierać lepsze jedzenie. Ponieważ to są otwarte dane, możesz je wykorzystać w dowolnym celu.
 Open Food Facts to projekt nie dochodowy tworzony przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projectków do których możesz dołączyć.
-- Możesz zacząć współtworzyć dzisiaj, dodając produkt z twojej lodówki.
+- Możesz zaangażować się już dzisiaj, dodając produkt z twojej lodówki.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
-▶ Poznaj fakty
+▶ Poznaj prawdę
 Open Food Facts pomaga zrozumieć drobny tekst na etykietach. Będziesz mógł znaleźć:
 - emisję dwutlenku węgla (CO2) i typ opakowania (oraz instrukcje dotyczące recycklingu),
 - Wynik Nutriscore (ocena wartośći odżywczej), składniki odżywcze, zawartość tłuszczu, nasycone kwasy tłuszczowe, węglowodany, cukry, błonnik, białko i sól oraz sód.
@@ -37,34 +37,34 @@ Open Food Facts pomaga zrozumieć drobny tekst na etykietach. Będziesz mógł z
 - Na winach i piwach znajdziesz zawartość alkoholu.
 
 
-▶ Based on Science, helping back Science!
+▶Według nauki i dla nauki!
 
-- We don't make up things. We rely on peer-reviewed science.
-- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
-- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
-- You can get a synthesis of EFSA exposure levels on food additives.
-- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+- Nie tworzymy nowych pojęć. Opieramy się na wynikach badań naukowych.
+- Nutri-Score został stworzony przez niezależny francuski zespół kierowany przez profesora Hercberga.
+- Skala NOVA opisująca stopień przetwarzania żywności została zaprojektowana przez międzynarodowy zespół pod kierunkiem profesora Monteiro.
+- W przypadku dodatków do żywności możesz uzyskać syntezę poziomów narażenia według EFSA.
+- Społeczność Open Food Facts współpracuje z zespołami badawczymi na całej planecie w celu ulepszenia badań żywieniowych, które przynoszą korzyści wszystkim.
 
 
-▶ Offline Scan: Scan in ANY condition! (wkrótce)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+▶ Skanowanie offline: Skanuj w DOWOLNYCH warunkach! (wkrótce)
+Skanuj z prędkością światła (nawet jeśli jesteś w samolocie, łodzi podwodnej lub supermarkecie)
 
-- The whole planet, in your pocket !
+- Cała planeta w twojej kieszeni!
 - Możesz dodać nowe produkty, nawet nie mając teraz połączenia.
-- The app loads only the strict necessary to reduce data and battery consumption.
+- W celu ograniczenia zużycia danych, jak i lepszego zarządzania energią aplikacja ładuje tylko absolutnie niezbędne elementy.
 
-▶ Your food, your data
+▶ Twoje jedzenie, twoje dane
 Twoje dany nigdy nie są wysyłane online
 Możesz korzystać anonimowo z aplikacji
 Możesz eksportować historię skanowania
 
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+▶ Zdefiniuj ostrzeżenia dotyczące produktów mogących powodować alergie
+- Alergia na mleko, gluten, jaja, soja, orzechy, ryby, seler, gorczyca, dwutlenek siarki i siarczyny, orzeszki ziemne, nasiona sezamu, skorupiaki, mięczaki lub łubin?
+- Zwiększ wydajność swoich zakupów przeprowadzając wstępną kontrolę produktów spożywczych przy pomocy Open Food Facts.
+- Bądź ostrożny, informacje o produkcie mogą, nie były w 100% dokładne, natomiast sam proces rozpoznawania może nie być w 100% skuteczny. Dlatego zawsze sprawdzaj podwójnie, porównując dane w aplikacji z informacją na opakowaniu.
 
 
-▶ Say hello and/or join us!
+▶ Przywitaj się i dołącz do nas!
 
 
 Open Food Facts jest także dostępne na stronie:

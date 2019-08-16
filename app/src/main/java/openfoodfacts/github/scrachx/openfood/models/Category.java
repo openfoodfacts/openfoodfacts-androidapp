@@ -1,7 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import android.util.Log;
-
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;

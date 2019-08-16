@@ -29,10 +29,10 @@
     <string name="Donation">点击此处捐助给 Open Food Facts</string>
     <string name="translate_help_title">帮助翻译 Open Food Facts</string>
     <string name="translate_help_summary">将 Open Food Facts 数据库带到您的语言 - 没有技术性的知识要求</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">离线时扫描产品，稍后再将其添加到 Open Food Facts 中。扫描的所有产品都会显示在这里，您可以按下面的按钮发送它们。</string>
     <string name="warning_alert_data">您的过敏信息将永远不会发送到 Open Food Facts 服务器。另外，请注意，产品数据可能不准确，检测可能不是 100％ 准确的，请自行仔细检查！ </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
     <string name="product_not_found">你扫描的产品 %1$s 尚未存在在 Open Food Facts 中。你可以添加它吗？</string>
-    <string name="currently_on_version">Currently on Open Food Facts</string>
+    <string name="currently_on_version">目前在 Open Food Facts</string>
 </resources>

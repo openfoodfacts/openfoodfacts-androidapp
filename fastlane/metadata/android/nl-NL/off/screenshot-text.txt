@@ -1,45 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
----
-scan_en.png
-Scan products
+Dat zijn de taglines die boven de screenshots in de playstore worden getoond. Houd ze kort en aantrekkelijk.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=nl
 
-quickview_en.png
-Krijg de Nutriscore
+=====================
+V2 schermafbeeldingen
+=====================
 
-history_en.png
-Your full scan history, fully private & exportable
+Scan producten
 
-product_view_wikipedia_en.png
-Go further with Wikipedia
+Krijg de Nutri-Score
 
-allergen_alert_en.png
-Set allergen alerts
+Je volledige scan geschiedenis, helemaal privé & exporteerbaar
 
-home_en.png
-product_view_nutrition_summary_en.png
-Nutrition, simplified
+Ga verder met Wikipedia
 
-product_view_allergen_alert_en.png
-Allergenen alert
+Stel allergeenwaarschuwingen in
 
-categories_en.png
-Get alternatives for your favorite foods
+Voeding, vereenvoudigd
 
-foodtransparency_en.png
-Become an actor of food transparency
+Allergeenwaarschuwing
 
-product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+Bekijk alternatieven voor je favoriete levensmiddelen
 
-product_view_ingredients_en.png
+Doe mee aan voedsel inzicht
+
+Wikipedia voor voedsel
+
+Wikipedia voor cosmetica
+
+Wikipedia voor dierenvoeding
+
+Wikipedia van producten
+
 Ingrediënten
 
-menu_en.png
-Powerful
+Krachtig
 
-product_view_nutrition_table_en.png
-Voedigswaarden
+Voedingswaarden
+
+=====================
+V3 schermafbeeldingen
+=====================
+
+Kies de producten die goed zijn voor u en voor de 🌍 planeet!
+
+✔ Ultrasnelle barcodescan
+
+✔ Een wereldwijde supermarkt in uw zak
+
+Voedingswaarde
+
+Ultra-verwerkte voedingsmiddelen
+
+Carbon impact
+
+Vergelijk eenvoudig voor je koopt
+
+Maak boodschappenlijstjes, intake lijsten…
+
+Zoek en vergelijk meer dan 750 000 producten.
+
+
+
+Onbeperkte en volledige privé scan-geschiedenis
+
+Veeg voor nog meer details
+
+Stel allergeenwaarschuwingen in
+
+Sluit je aan bij onze wereldwijde beweging voor inzichtelijkheid van voedsel
+
+world.openfoodfacts.org/contribute&hl=nl

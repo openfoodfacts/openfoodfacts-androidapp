@@ -3,21 +3,15 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.NumberKeyListener;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,31 +22,28 @@ import butterknife.*;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImageRotate;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-import org.apache.commons.lang3.StringUtils;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
+import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
+import java.net.URI;
 import java.util.*;
 
-import static android.Manifest.permission.CAMERA;
-import static android.app.Activity.RESULT_OK;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
-public class AddProductNutritionFactsFragment extends BaseFragment {
+public class AddProductNutritionFactsFragment extends BaseFragment implements PhotoReceiver {
     private static final String[] ALL_UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_DV, UnitUtils.UNIT_IU};
+    private static final String[] ALL_UNIT_SERVING = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_LITER, UnitUtils.UNIT_MILLILITRE};
     private static final String[] UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM};
     private static final String PARAM_NO_NUTRITION_DATA = "no_nutrition_data";
     private static final String PARAM_NUTRITION_DATA_PER = "nutrition_data_per";
@@ -73,14 +64,17 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     ConstraintLayout nutritionFactsLayout;
     @BindView(R.id.btnAddImageNutritionFacts)
     ImageView imageNutritionFacts;
+    @BindView(R.id.btnEditImageNutritionFacts)
+    View btnEditImageNutritionFacts;
     @BindView(R.id.imageProgress)
     ProgressBar imageProgress;
     @BindView(R.id.imageProgressText)
     TextView imageProgressText;
+    private PhotoReceiverHandler photoReceiverHandler;
     @BindView(R.id.radio_group)
     RadioGroup radioGroup;
     @BindView(R.id.serving_size)
-    CustomValidatingEditTextView serving_size;
+    CustomValidatingEditTextView servingSize;
     @BindView(R.id.energy)
     CustomValidatingEditTextView energy;
     @BindView(R.id.fat)
@@ -107,6 +101,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     TextView globalValidationMsg;
     @BindView(R.id.btn_add)
     Button buttonAdd;
+    @BindView(R.id.btn_add_a_nutrient)
+    Button buttonAddNutrient;
     //index list stores the index of other nutrients which are used.
     private Set<Integer> index = new HashSet<>();
     private Activity activity;
@@ -114,9 +110,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private String code;
     private OfflineSavedProduct mOfflineSavedProduct;
     private String imagePath;
-    private boolean edit_product;
     private Product product;
-    private boolean newImageSelected;
     private EditText lastEditText;
     private CustomValidatingEditTextView starchEditText;
     private Set<CustomValidatingEditTextView> allEditViews = Collections.emptySet();
@@ -132,22 +126,27 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        photoReceiverHandler = new PhotoReceiverHandler(this);
+        buttonAddNutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp, 0, 0, 0);
         Bundle b = getArguments();
         lastEditText = alcohol;
         if (b != null) {
+            boolean productEdited;
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            edit_product = b.getBoolean("edit_product");
+            productEdited = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
             if (product != null) {
                 code = product.getCode();
             }
-            if (edit_product && product != null) {
+            if (productEdited && product != null) {
                 code = product.getCode();
                 buttonAdd.setText(R.string.save_edits);
                 preFillProductValues();
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct.getBarcode();
                 preFillValuesFromOffline();
+            } else {
+                radioGroup.jumpDrawablesToCurrentState();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show();
@@ -190,15 +189,16 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         return !isAllValuesValid();
     }
 
+    @Nullable
+    public AddProductActivity getAddProductActivity() {
+        return (AddProductActivity) getActivity();
+    }
+
     /**
      * Pre fill the fields of the product which are already present on the server.
      */
     private void preFillProductValues() {
-        if (product.getImageNutritionUrl() != null && !product.getImageNutritionUrl().isEmpty()) {
-            imageProgress.setVisibility(View.VISIBLE);
-            imagePath = product.getImageNutritionUrl();
-            loadNutritionsImage(imagePath);
-        }
+        loadNutritionImage();
         if (product.getNoNutritionData() != null && product.getNoNutritionData().equalsIgnoreCase("on")) {
             noNutritionData.setChecked(true);
             nutritionFactsLayout.setVisibility(View.GONE);
@@ -207,16 +207,16 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             updateSelectedDataSize(product.getNutritionDataPer());
         }
         if (product.getServingSize() != null && !product.getServingSize().isEmpty()) {
-            String servingSize = product.getServingSize();
+            String servingSizeValue = product.getServingSize();
             // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
-            updateServingSizeFrom(servingSize);
+            updateServingSizeFrom(servingSizeValue);
         }
         Nutriments nutriments = product.getNutriments();
-        if (nutriments != null) {
-            final ArrayList<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
+        if (nutriments != null && getView() != null) {
+            final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
             for (CustomValidatingEditTextView view : editViews) {
                 final String nutrientShortName = view.getEntryName();
-                if (nutrientShortName.equals(serving_size.getEntryName())) {
+                if (nutrientShortName.equals(servingSize.getEntryName())) {
                     continue;
                 }
                 String value = getValueFromShortName(nutriments, nutrientShortName);
@@ -242,6 +242,19 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         }
     }
 
+    public void loadNutritionImage() {
+        if (getAddProductActivity() == null) {
+            return;
+        }
+        photoFile=null;
+        final String newImageNutritionUrl = product.getImageNutritionUrl(getAddProductActivity().getProductLanguageForEdition());
+        if (newImageNutritionUrl != null && !newImageNutritionUrl.isEmpty()) {
+            imageProgress.setVisibility(View.VISIBLE);
+            imagePath = newImageNutritionUrl;
+            loadNutritionsImage(imagePath);
+        }
+    }
+
     private int getSelectedUnitFromShortName(Nutriments nutriments, String nutrientShortName) {
         final String unit = nutriments.getUnit(nutrientShortName);
         return getSelectedUnit(nutrientShortName, unit);
@@ -260,20 +273,19 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     }
 
     private String getValueFromShortName(Nutriments nutriments, String nutrientShortName) {
-        String value;
-        if (nutriments.getModifier(nutrientShortName) != null) {
-            value = nutriments.getModifier(nutrientShortName) + nutriments.getValue(nutrientShortName);
+        final String modifier = nutriments.getModifier(nutrientShortName);
+        if (modifier != null) {
+            return modifier + nutriments.getValue(nutrientShortName);
         } else {
-            value = nutriments.getValue(nutrientShortName);
+            return nutriments.getValue(nutrientShortName);
         }
-        return value;
     }
 
     private void updateServingSizeFrom(String servingSize) {
         String[] part = servingSize.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-        serving_size.setText(part[0]);
+        this.servingSize.setText(part[0]);
         if (part.length > 1) {
-            serving_size.getAttachedSpinner().setSelection(getPositionInAllUnitArray(part[1].trim()));
+            this.servingSize.getAttachedSpinner().setSelection(getPositionInServingUnitArray(part[1].trim()));
         }
     }
 
@@ -285,7 +297,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         if (productDetails != null) {
             if (productDetails.get("image_nutrition_facts") != null) {
                 imagePath = productDetails.get("image_nutrition_facts");
-                final String path = "file://" + imagePath;
+                final String path = FileUtils.LOCALE_FILE_SCHEME + imagePath;
                 imageProgress.setVisibility(View.VISIBLE);
                 loadNutritionsImage(path);
             }
@@ -298,14 +310,14 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
                 updateSelectedDataSize(s);
             }
             if (productDetails.get(PARAM_SERVING_SIZE) != null) {
-                String servingSize = productDetails.get(PARAM_SERVING_SIZE);
+                String servingSizeValue = productDetails.get(PARAM_SERVING_SIZE);
                 // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
-                updateServingSizeFrom(servingSize);
+                updateServingSizeFrom(servingSizeValue);
             }
-            final ArrayList<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
+            final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
             for (CustomValidatingEditTextView view : editViews) {
                 final String nutrientShortName = view.getEntryName();
-                if (nutrientShortName.equals(serving_size.getEntryName())) {
+                if (nutrientShortName.equals(servingSize.getEntryName())) {
                     continue;
                 }
                 final String nutrientCompleteName = AddProductNutritionFactsData.getCompleteEntryName(view);
@@ -337,29 +349,35 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
     private void updateSelectedDataSize(String s) {
         radioGroup.clearCheck();
-        if (s.equals(Nutriments.DEFAULT_NUTRITION_SIZE)) {
+        if (s.equals(ProductUtils.DEFAULT_NUTRITION_SIZE)) {
             radioGroup.check(R.id.for100g_100ml);
         } else {
             radioGroup.check(R.id.per_serving);
         }
+        radioGroup.jumpDrawablesToCurrentState();
     }
 
     private void loadNutritionsImage(String path) {
-        Picasso.with(getContext())
+        Picasso.get()
             .load(path)
             .resize(dpsToPixels(50), dpsToPixels(50))
             .centerInside()
             .into(imageNutritionFacts, new Callback() {
                 @Override
                 public void onSuccess() {
-                    imageProgress.setVisibility(View.GONE);
+                    nutritionImageLoaded();
                 }
 
                 @Override
-                public void onError() {
-                    imageProgress.setVisibility(View.GONE);
+                public void onError(Exception ex) {
+                    nutritionImageLoaded();
                 }
             });
+    }
+
+    private void nutritionImageLoaded() {
+        imageProgress.setVisibility(View.GONE);
+        btnEditImageNutritionFacts.setVisibility(View.VISIBLE);
     }
 
     private int getSelectedEnergyUnitIndex(String unit) {
@@ -397,66 +415,53 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         return 0;
     }
 
+    private int getPositionInServingUnitArray(String unit) {
+        for (int i = 0; i < AddProductNutritionFactsFragment.ALL_UNIT_SERVING.length; i++) {
+            if (ALL_UNIT_SERVING[i].equalsIgnoreCase(unit)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         activity = getActivity();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
 
     @OnClick(R.id.btnAddImageNutritionFacts)
     void addNutritionFactsImage() {
         if (imagePath != null) {
-            // nutrition facts image is already added. Open full screen image.
-            Intent intent = new Intent(getActivity(), FullScreenImageRotate.class);
-            Bundle bundle = new Bundle();
-            if (edit_product && !newImageSelected) {
-                bundle.putString("imageurl", imagePath);
-                bundle.putString("code", product.getCode());
-                bundle.putString("id", "nutrition_en");
+            if (photoFile != null) {
+                cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture));
             } else {
-                bundle.putString("imageurl", "file://" + imagePath);
-                bundle.putString("code", product.getCode());
-                bundle.putString("id", "nutrition_en");
-            }
-            intent.putExtras(bundle);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(activity, imageNutritionFacts,
-                        activity.getString(R.string.product_transition));
-                startActivity(intent, options.toBundle());
-            } else {
-                startActivity(intent);
+                new FileDownloader(getContext()).download(imagePath, file -> {
+                    photoFile = file;
+                    cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture));
+                });
             }
         } else {
-            // add nutrition facts image.
-            openCamera();
+            newNutritionFactsImage();
         }
     }
 
-    private void openCamera() {
-        if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-        } else {
-            EasyImage.openCamera(this, 0);
-        }
+    @OnClick(R.id.btnEditImageNutritionFacts)
+    void newNutritionFactsImage() {
+        doChooseOrTakePhotos(getString(R.string.nutrition_facts_picture));
     }
 
-    @OnLongClick(R.id.btnAddImageNutritionFacts)
-    boolean newNutritionFactsImage() {
-        openCamera();
-        return true;
+    @Override
+    protected void doOnPhotosPermissionGranted() {
+        newNutritionFactsImage();
     }
 
     @OnClick(R.id.btn_add)
     void next() {
-        Activity activity = getActivity();
-        if (activity instanceof AddProductActivity) {
-            ((AddProductActivity) activity).proceed();
+        Activity fragmentActivity = getActivity();
+        if (fragmentActivity instanceof AddProductActivity) {
+            ((AddProductActivity) fragmentActivity).proceed();
         }
     }
 
@@ -532,7 +537,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         if (isCarbohydrateRelated(text)) {
             checkValue(carbohydrate);
         }
-        if (serving_size.getEntryName().equals(text.getEntryName())) {
+        if (servingSize.getEntryName().equals(text.getEntryName())) {
             checkAllValues();
         }
     }
@@ -621,27 +626,27 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    public void getAllDetails(Map<String,String> targetMap) {
+    public void getAllDetails(Map<String, String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (noNutritionData.isChecked()) {
                 targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
             } else {
                 if (isDataPer100()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, Nutriments.DEFAULT_NUTRITION_SIZE);
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (serving_size.getText().toString().isEmpty()) {
+                if (servingSize.getText()==null || servingSize.getText().toString().isEmpty()) {
                     targetMap.put(PARAM_SERVING_SIZE, "");
                 } else {
-                    String servingSize = serving_size.getText().toString() + UNIT[serving_size.getAttachedSpinner().getSelectedItemPosition()];
-                    targetMap.put(PARAM_SERVING_SIZE, servingSize);
+                    String servingSizeValue = this.servingSize.getText().toString() + ObjectUtils.toString(this.servingSize.getAttachedSpinner().getSelectedItem());
+                    targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
-                    if (serving_size.getEntryName().equals(editTextView.getEntryName())) {
+                    if (servingSize.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
-                    addNutrientToMap(editTextView,targetMap);
+                    addNutrientToMap(editTextView, targetMap);
                 }
             }
         }
@@ -659,38 +664,38 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     /**
      * adds only those fields to the query map which are not empty.
      */
-    public void getDetails(Map<String,String> targetMap) {
+    public void getDetails(Map<String, String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (noNutritionData.isChecked()) {
                 targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
             } else {
                 if (isDataPer100()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, Nutriments.DEFAULT_NUTRITION_SIZE);
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (!serving_size.getText().toString().isEmpty()) {
-                    String servingSize = serving_size.getText().toString() + UNIT[serving_size.getAttachedSpinner().getSelectedItemPosition()];
-                    targetMap.put(PARAM_SERVING_SIZE, servingSize);
+                if (servingSize.getText()!=null && !servingSize.getText().toString().isEmpty()) {
+                    String servingSizeValue = this.servingSize.getText().toString() + ObjectUtils.toString(this.servingSize.getAttachedSpinner().getSelectedItem().toString());
+                    targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
-                    if (serving_size.getEntryName().equals(editTextView.getEntryName())) {
+                    if (servingSize.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
-                    if (!editTextView.getText().toString().isEmpty()) {
-                        addNutrientToMap(editTextView,targetMap);
+                    if (editTextView.getText()!=null && !editTextView.getText().toString().isEmpty()) {
+                        addNutrientToMap(editTextView, targetMap);
                     }
                 }
             }
         }
     }
 
-    private void addNutrientToMap(CustomValidatingEditTextView editTextView,Map<String,String> targetMap) {
+    private void addNutrientToMap(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
         String completeName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
         targetMap.put(completeName, editTextView.getText().toString());
         if (hasUnit(editTextView) && editTextView.getAttachedSpinner() != null) {
             targetMap.put(completeName + AddProductNutritionFactsData.SUFFIX_UNIT,
-                    getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition()));
+                getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition()));
         }
     }
 
@@ -720,8 +725,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     private float getReferenceValueInGram() {
         float reference = 100;
         if (radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
-            reference = QuantityParserUtil.getFloatValueOrDefault(serving_size, QuantityParserUtil.EntryFormat.NO_PREFIX, reference);
-            reference = convertToGrams(reference, serving_size.getAttachedSpinner().getSelectedItemPosition());
+            reference = QuantityParserUtil.getFloatValueOrDefault(servingSize, QuantityParserUtil.EntryFormat.NO_PREFIX, reference);
+            reference = UnitUtils.convertToGrams(reference, ALL_UNIT_SERVING[servingSize.getAttachedSpinner().getSelectedItemPosition()]);
         }
         return reference;
     }
@@ -820,7 +825,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     }
 
     private ValueState checkCarbohydrate(CustomValidatingEditTextView editText, float value) {
-        if (!carbohydrate.getEntryName().equals(editText)) {
+        if (!carbohydrate.getEntryName().equals(editText.getEntryName())) {
             return ValueState.NOT_TESTED;
         }
         ValueState res = checkAsGram(editText, value);
@@ -835,7 +840,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         sugarValue = convertToGrams(sugarValue, sugar.getAttachedSpinner().getSelectedItemPosition());
         double newStarch = convertToGrams(getStarchValue(), getStarchUnitSelectedIndex());
         if ((sugarValue + newStarch) > carbsValue) {
-            carbohydrate.requestFocus();
             carbohydrate.showError(getString(R.string.error_in_carbohydrate_value));
             return ValueState.NOT_VALID;
         } else {
@@ -855,11 +859,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     }
 
     private ValueState checkPerServing(CustomValidatingEditTextView editText) {
-        if (serving_size.getEntryName().equals(editText.getEntryName())) {
+        if (servingSize.getEntryName().equals(editText.getEntryName())) {
             if (isDataPer100()) {
                 return ValueState.VALID;
             }
-            float value = QuantityParserUtil.getFloatValueOrDefault(serving_size, QuantityParserUtil.EntryFormat.NO_PREFIX, 0);
+            float value = QuantityParserUtil.getFloatValueOrDefault(servingSize, QuantityParserUtil.EntryFormat.NO_PREFIX, 0);
             if (value <= 0) {
                 editText.showError(getString(R.string.error_nutrient_serving_data));
                 return ValueState.NOT_VALID;
@@ -909,66 +913,51 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
         return starchEditText.getAttachedSpinner().getSelectedItemPosition();
     }
 
-    private int dpsToPixels(int dps) {
-        final float scale = activity.getResources().getDisplayMetrics().density;
-        return (int) (dps * scale + 0.5f);
+    @Override
+    public void onPhotoReturned(File newPhotoFile) {
+        URI resultUri = newPhotoFile.toURI();
+        imagePath = resultUri.getPath();
+
+        photoFile = newPhotoFile;
+        ProductImage image = new ProductImage(code, NUTRITION, newPhotoFile);
+        image.setFilePath(resultUri.getPath());
+        if (activity instanceof AddProductActivity) {
+            ((AddProductActivity) activity).addToPhotoMap(image, 2);
+        }
+        hideImageProgress(false, getString(R.string.image_uploaded_successfully));
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                imagePath = resultUri.getPath();
-                newImageSelected = true;
-                photoFile = new File((resultUri.getPath()));
-                ProductImage image = new ProductImage(code, NUTRITION, photoFile);
-                image.setFilePath(resultUri.getPath());
-                if (activity instanceof AddProductActivity) {
-                    ((AddProductActivity) activity).addToPhotoMap(image, 2);
-                }
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Log.e("Crop image error", result.getError().toString());
-            }
-        }
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
-            @Override
-            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-                //nothing to do
-            }
-
-            @Override
-            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                    .setAllowFlipping(false)
-                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                    .setOutputUri(Utils.getOutputPicUri(getContext()))
-                    .start(activity.getApplicationContext(), AddProductNutritionFactsFragment.this);
-            }
-        });
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
 
     public void showImageProgress() {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageNutritionFacts.setVisibility(View.INVISIBLE);
+        btnEditImageNutritionFacts.setVisibility(View.INVISIBLE);
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.GONE);
         imageProgressText.setVisibility(View.GONE);
         imageNutritionFacts.setVisibility(View.VISIBLE);
+        btnEditImageNutritionFacts.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
-            Picasso.with(activity)
+            Picasso.get()
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
                 .into(imageNutritionFacts);
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         }
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 }

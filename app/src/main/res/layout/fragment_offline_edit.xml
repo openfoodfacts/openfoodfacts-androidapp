@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:layout_editor_absoluteY="25dp">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/message_container_card_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -35,7 +41,7 @@
                 android:layout_margin="@dimen/padding_short"
                 android:background="@color/white"
                 app:srcCompat="@drawable/ic_action_cross"
-                android:contentDescription="TODO" />
+                 />
 
 
             <LinearLayout
@@ -63,7 +69,7 @@
                     android:textSize="@dimen/font_normal" />
             </LinearLayout>
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -79,8 +85,7 @@
             android:paddingTop="@dimen/padding_large"
             android:layout_centerHorizontal="true"
             android:visibility="visible"
-            app:srcCompat="@drawable/ic_cloud_done"
-            android:contentDescription="TODO" />
+            app:srcCompat="@drawable/ic_cloud_done" />
 
         <TextView
             android:id="@+id/noDataText"
@@ -107,7 +112,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listOfflineSave"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -137,4 +142,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/navigation_bottom"/>
+</RelativeLayout>

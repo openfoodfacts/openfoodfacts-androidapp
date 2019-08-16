@@ -8,8 +8,6 @@ import android.os.Handler;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 
-;
-
 /**
  * Created by Lobster on 03.03.18.
  */
@@ -44,12 +42,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                 context.startService(intent);
             }
             if (firstRun) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        view.navigateToMainActivity();
-                    }
-                }, 6000);
+                new Handler().postDelayed(() -> view.navigateToMainActivity(), 6000);
             } else {
                 view.navigateToMainActivity();
             }

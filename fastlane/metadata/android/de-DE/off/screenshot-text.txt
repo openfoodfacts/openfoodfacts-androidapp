@@ -1,45 +1,72 @@
 Das sind die Beschriftungen, die über den Screenshots im Playstore angezeigt werden. Halten Sie sie kurz und attraktiv.
-Dateinamen nicht ändern.
-───
-scan_de.png
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=de
+
+════════════════
+V2 Bildschirmfotos
+════════════════
+
 Produkte erfassen
 
-quickview_de.png
 „Nutri-Score” (franz. Nahrungsmittelampel) abrufen
 
-history_de.png
 Ihr vollständiger Verlauf eingelesener Produkte, vollständig privat und exportierbar
 
-product_view_wikipedia_de.png
 Weiter geht's mit Wikipedia
 
-allergen_alert_de.png
 Allergenwarnungen festlegen
 
-home_de.png
-product_view_nutrition_summary_de.png
 Ernährung, vereinfacht
 
-product_view_allergen_alert_de.png
 Allergen-Warnung
 
-categories_de.png
 Alternativen finden für Ihre Lieblingsspeisen
 
-foodtransparency_de.png
 Werden Sie ein Vertreter der Lebensmitteltransparenz
 
-product_view_summary_de.png
 Wikipedia für Lebensmittel
+
 Wikipedia für Kosmetik
+
 Wikipedia für Tiernahrung
+
 Wikipedia für Produkte
 
-product_view_ingredients_de.png
 Inhaltsstoffe
 
-menu_de.png
 Leistungsfähig
 
-product_view_nutrition_table_de.png
 Nährwertangaben
+
+════════════════
+V3 Bildschirmfotos
+════════════════
+
+Wählen Sie die Produkte, die gut für Sie und für den 🌍 Planeten sind!
+
+✔ Ultraschnelles Einlesen von Strichcodes
+
+✔ Ein weltumspannender Supermarkt in der Tasche
+
+Nahrungsqualität
+
+Sehr hoch verarbeitete Lebensmittel
+
+CO₂-Einfluss
+
+Vergleichen Sie leicht, bevor Sie kaufen
+
+Erstellen Sie Einkaufslisten, Eingangslisten …
+
+Mehr als 750.000 Produkte finden & vergleichen.
+
+
+
+Unbegrenzter und vollständig privater Verlauf der erfassten Produkte
+
+Wischen, um weitere Details anzuzeigen
+
+Allergenwarnungen festlegen
+
+Schließen Sie sich unserer globalen Bewegung für Transparenz bei Lebensmitteln an
+
+world.openfoodfacts.org/contribute

@@ -4,30 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.preference.PreferenceManager;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
@@ -35,14 +16,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
@@ -54,27 +47,27 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
-import pl.aprilapps.easyphotopicker.DefaultCallback;
-import pl.aprilapps.easyphotopicker.EasyImage;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import static android.Manifest.permission.*;
 import static android.app.Activity.RESULT_OK;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.*;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.*;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
+public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener, PhotoReceiver {
+    private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
+    private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
+    private static final int EDIT_REQUEST_CODE = 2;
+    private PhotoReceiverHandler photoReceiverHandler;
     @BindView(R.id.product_allergen_alert_layout)
     LinearLayout productAllergenAlertLayout;
     @BindView(R.id.product_allergen_alert_text)
@@ -142,7 +135,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri nutritionScoreUri;
     private TagDao mTagDao;
-    private SummaryProductFragment mFragment;
     private ISummaryProductPresenter.Actions presenter;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
@@ -150,12 +142,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean showNutrientPrompt = false;
     //boolean to determine if category prompt should be shown
     private boolean showCategoryPrompt = false;
-    //boolean to indicate if the image clicked was that of ingredients
-    private boolean addingIngredientsImage = false;
-    //boolean to indicate if the image clicked was that of nutrition
-    private boolean addingNutritionImage = false;
-    private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    private static final int EDIT_REQUEST_CODE = 2;
     private Question productQuestion = null;
     private boolean hasCategoryInsightQuestion = false;
 
@@ -166,8 +152,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         customTabActivityHelper.setConnectionCallback(this);
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        state=getStateFromActivityIntent();
-
         presenter = new SummaryProductPresenter(product, this);
     }
 
@@ -175,18 +159,27 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
         apiClientForWikiData = new WikidataApiClient();
-        mFragment = this;
         return createView(inflater, container, R.layout.fragment_summary_product);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //done here for android 4 compatibility.
+        //a better solution could be to use https://developer.android.com/jetpack/androidx/releases/ but weird issue with it..
+        addNutriScorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
+        addMorePicture.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
+        photoReceiverHandler = new PhotoReceiverHandler(this);
+        state = getStateFromActivityIntent();
         refreshView(state);
     }
 
     @Override
     public void refreshView(State state) {
+        //no state-> we can't display anything.
+        if (state == null) {
+            return;
+        }
         super.refreshView(state);
         this.state = state;
         product = state.getProduct();
@@ -202,16 +195,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         nameProduct.setVisibility(View.VISIBLE);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Utils.DISABLE_IMAGE_LOAD = preferences.getBoolean("disableImageLoad", false);
-        if (Utils.DISABLE_IMAGE_LOAD && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
             isLowBatteryMode = true;
         }
 
         //checks the product states_tags to determine which prompt to be shown
         refreshNutriscorePrompt();
 
-        presenter.loadAllergens();
+        presenter.loadAllergens(null);
         presenter.loadCategories();
         presenter.loadLabels();
         presenter.loadProductQuestion();
@@ -222,19 +213,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         barcode = product.getCode();
         String langCode = LocaleHelper.getLanguage(getContext());
 
-        if (isNotBlank(product.getImageUrl())) {
+        final String imageUrl = product.getImageUrl(langCode);
+        if (isNotBlank(imageUrl)) {
             addPhotoLabel.setVisibility(View.GONE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Picasso.with(getContext())
-                    .load(product.getImageUrl())
+                Picasso.get()
+                    .load(imageUrl)
                     .into(mImageFront);
             } else {
                 mImageFront.setVisibility(View.GONE);
             }
 
-            mUrlImage = product.getImageUrl();
+            mUrlImage = imageUrl;
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
@@ -258,7 +250,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             String[] brands = product.getBrands().split(",");
             for (int i = 0; i < brands.length; i++) {
-                if(i>0){
+                if (i > 0) {
                     brandProduct.append(", ");
                 }
                 brandProduct.append(Utils.getClickableText(brands[i].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
@@ -274,10 +266,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
             for (int i = 0; i < embTags.length; i++) {
-                if(i>0){
+                if (i > 0) {
                     embCode.append(", ");
                 }
-                String  embTag = embTags[i];
+                String embTag = embTags[i];
                 embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
             }
         } else {
@@ -311,6 +303,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 sugars = nutrientLevels.getSugars();
                 salt = nutrientLevels.getSalt();
             }
+
+            final boolean inVolume = ProductUtils.isPerServingInLiter(product);
+            textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
 
             if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
                 // prefetch the uri
@@ -370,6 +365,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         } else {
             scoresLayout.setVisibility(View.GONE);
         }
+        //to be sure that top of the product view is visible at start
+        nameProduct.requestFocus();
+        nameProduct.clearFocus();
     }
 
     private void refreshScoresLayout() {
@@ -384,8 +382,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void refreshNutriscore() {
-        int nutritionGradeResource =Utils.getImageGrade(product);
-        if (nutritionGradeResource!=Utils.NO_DRAWABLE_RESOURCE) {
+        int nutritionGradeResource = Utils.getImageGrade(product);
+        if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
             nutriscoreImage.setVisibility(View.VISIBLE);
             nutriscoreImage.setImageResource(nutritionGradeResource);
             nutriscoreImage.setOnClickListener(view1 -> {
@@ -417,7 +415,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
             co2Icon.setVisibility(View.VISIBLE);
             co2Icon.setImageResource(environmentImpactResource);
-        }else{
+        } else {
             co2Icon.setVisibility(View.GONE);
         }
     }
@@ -451,93 +449,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    private CharSequence getAdditiveTag(AdditiveName additive) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                if (additive.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        FragmentActivity activity = getActivity();
-                        if (value) {
-                            if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, additive,
-                                    activity.getSupportFragmentManager());
-                            }
-                        } else {
-                            if (additive.hasOverexposureData()) {
-                                if (activity != null && !activity.isFinishing()) {
-                                    BottomScreenCommon.showBottomScreen(result, additive,
-                                        activity.getSupportFragmentManager());
-                                }
-                            } else {
-                                ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                            }
-                        }
-                    });
-                } else {
-                    FragmentActivity activity = getActivity();
-                    if (additive.hasOverexposureData()) {
-                        if (activity != null && !activity.isFinishing()) {
-                            BottomScreenCommon.showBottomScreen(null, additive,
-                                activity.getSupportFragmentManager());
-                        }
-                    } else {
-                        ProductBrowsingListActivity.startActivity(getContext(), additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                    }
-                }
-            }
-        };
-
-        spannableStringBuilder.append(additive.getName());
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        // if the additive has an overexposure risk ("high" or "moderate") then append the warning message to it
-        if (additive.hasOverexposureData()) {
-            boolean isHighRisk = "high".equalsIgnoreCase(additive.getOverexposureRisk());
-            Drawable riskIcon;
-            String riskWarningStr;
-            int riskWarningColor;
-            if (isHighRisk) {
-                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_high_risk);
-                riskWarningStr = getString(R.string.overexposure_high);
-                riskWarningColor = getColor(getContext(), R.color.overexposure_high);
-            } else {
-                riskIcon = ContextCompat.getDrawable(getContext(), R.drawable.ic_additive_moderate_risk);
-                riskWarningStr = getString(R.string.overexposure_moderate);
-                riskWarningColor = getColor(getContext(), R.color.overexposure_moderate);
-            }
-            riskIcon.setBounds(0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight());
-            ImageSpan iconSpan = new ImageSpan(riskIcon, ImageSpan.ALIGN_BOTTOM);
-
-            spannableStringBuilder.append(" - "); // this will be replaced with the risk icon
-            spannableStringBuilder.setSpan(iconSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-
-            spannableStringBuilder.append(riskWarningStr);
-            spannableStringBuilder
-                .setSpan(new ForegroundColorSpan(riskWarningColor), spannableStringBuilder.length() - riskWarningStr.length(), spannableStringBuilder.length(),
-                    SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
-        return spannableStringBuilder;
-    }
-
     @Override
     public void showAdditives(List<AdditiveName> additives) {
-        additiveProduct.setText(bold(getString(R.string.txtAdditives)));
-        additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
-        additiveProduct.append(" ");
-        additiveProduct.append("\n");
-        additiveProduct.setClickable(true);
-        additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
-
-        for (int i = 0; i < additives.size() - 1; i++) {
-            additiveProduct.append(getAdditiveTag(additives.get(i)));
-            additiveProduct.append("\n");
-        }
-
-        additiveProduct.append(getAdditiveTag((additives.get(additives.size() - 1))));
+        AdditiveFragmentHelper.showAdditives(additives, additiveProduct, apiClientForWikiData, this);
     }
 
     @Override
@@ -559,47 +473,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAllergens(List<AllergenName> allergens) {
-        if (allergens.isEmpty()) {
+        final AllergenHelper.Data data = AllergenHelper.computeUserAllergen(product, allergens);
+        if (data.isEmpty()) {
             return;
         }
 
-        if (!product.getStatesTags().contains("en:complete")) {
+        if (data.isIncomplete()) {
             productAllergenAlert.setText(R.string.product_incomplete_message);
             productAllergenAlertLayout.setVisibility(View.VISIBLE);
             return;
         }
 
-        Set<String> productAllergens = new HashSet<>(product.getAllergensHierarchy());
-        productAllergens.addAll(product.getTracesTags());
-
-        List<String> allergenMatch = new ArrayList<>();
-        for (AllergenName allergenName : allergens) {
-            if (productAllergens.contains(allergenName.getAllergenTag())) {
-                allergenMatch.add(allergenName.getName());
-            }
-        }
-
-        if (allergenMatch.isEmpty()) {
-            return;
-        }
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(
-            String.format("%s\n", getResources().getString(R.string.product_allergen_prompt)));
-
-        boolean first = true;
-        for (String allergenName : allergenMatch) {
-            String formattedAllergen;
-            if (first) {
-                formattedAllergen = allergenName;
-            } else {
-                formattedAllergen = String.format(", %s", allergenName);
-            }
-
-            stringBuilder.append(formattedAllergen);
-            first = false;
-        }
-        productAllergenAlert.setText(stringBuilder.toString());
+        String text = String.format("%s\n", getResources().getString(R.string.product_allergen_prompt)) +
+            StringUtils.join(data.getAllergens(), ", ");
+        productAllergenAlert.setText(text);
         productAllergenAlertLayout.setVisibility(View.VISIBLE);
     }
 
@@ -619,13 +506,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
                 CategoryName category = categories.get(i);
                 CharSequence categoryName = getCategoriesTag(category);
-                if (categoryName != null) {
-                    // Add category name to text view
-                    categoryProduct.append(categoryName);
-                    // Add a comma if not the last item
-                    if (i != lastIndex) {
-                        categoryProduct.append(", ");
-                    }
+                // Add category name to text view
+                categoryProduct.append(categoryName);
+                // Add a comma if not the last item
+                if (i != lastIndex) {
+                    categoryProduct.append(", ");
                 }
             }
         }
@@ -633,15 +518,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showProductQuestion(Question question) {
-        if(Utils.isUserLoggedIn(getContext()) && question!=null && !question.isEmpty()){
+        if (Utils.isUserLoggedIn(getContext()) && question != null && !question.isEmpty()) {
             productQuestion = question;
             productQuestionText.setText(String.format("%s\n%s",
                 question.getQuestion(), question.getValue()));
             productQuestionLayout.setVisibility(View.VISIBLE);
             hasCategoryInsightQuestion = question.getInsightType().equals("category");
-        }else{
+        } else {
             productQuestionLayout.setVisibility(View.GONE);
-            productQuestion=null;
+            productQuestion = null;
         }
         refreshNutriscorePrompt();
         refreshScoresLayout();
@@ -649,7 +534,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.product_question_layout)
     public void onProductQuestionClick() {
-        if(productQuestion==null && !Utils.isUserLoggedIn(getContext())){
+        if (productQuestion == null && !Utils.isUserLoggedIn(getContext())) {
             return;
         }
         new QuestionDialog(getActivity())
@@ -693,7 +578,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     public void showAnnotatedInsightToast(InsightAnnotationResponse response) {
-        if (response.getStatus().equals("updated")) {
+        if (response.getStatus().equals("updated") && getActivity() != null) {
             Toast toast = Toast.makeText(getActivity(), R.string.product_question_submit_message, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.setDuration(Toast.LENGTH_SHORT);
@@ -733,6 +618,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     categoryProduct.setVisibility(View.GONE);
                     break;
                 }
+                default:
+                    break;
             }
         });
     }
@@ -749,6 +636,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     labelProduct.setVisibility(View.GONE);
                     break;
                 }
+                default:
+                    break;
             }
         });
     }
@@ -845,12 +734,22 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.add_nutriscore_prompt)
     public void onAddNutriScorePromptClick() {
+        if (BuildConfig.FLAVOR.equals("off")) {
+            if (isUserNotLoggedIn()) {
+                startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN);
+            } else {
+                editProductNutriscore();
+            }
+        }
+    }
+
+    private void editProductNutriscore() {
         Intent intent = new Intent(getActivity(), AddProductActivity.class);
-        intent.putExtra("edit_product", product);
+        intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
         //adds the information about the prompt when navigating the user to the edit the product
-        intent.putExtra("modify_category_prompt", showCategoryPrompt);
-        intent.putExtra("modify_nutrition_prompt", showNutrientPrompt);
-        startActivityForResult(intent, EDIT_REQUEST_CODE);
+        intent.putExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, showCategoryPrompt);
+        intent.putExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, showNutrientPrompt);
+        startActivity(intent);
     }
 
     @OnClick(R.id.action_compare_button)
@@ -863,13 +762,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         startActivity(intent);
     }
 
-
     @OnClick(R.id.action_share_button)
     public void onShareProductButtonClick() {
         String shareUrl = " " + getString(R.string.website_product) + product.getCode();
         Intent sharingIntent = new Intent();
         sharingIntent.setAction(Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
+        sharingIntent.setType(OpenFoodAPIClient.TEXT_PLAIN);
         String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
         String shareSub = "\n\n";
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
@@ -879,34 +777,26 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.action_edit_button)
     public void onEditProductButtonClick() {
-        final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
-        final String login = settings.getString("user", "");
-        if (login.isEmpty()) {
-            new MaterialDialog.Builder(getActivity())
-                .title(R.string.sign_in_to_edit)
-                .positiveText(R.string.txtSignIn)
-                .negativeText(R.string.dialog_cancel)
-                .onPositive((dialog, which) -> {
-                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                    startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
-                    dialog.dismiss();
-                })
-                .onNegative((dialog, which) -> dialog.dismiss())
-                .build().show();
+        if (isUserNotLoggedIn()) {
+            startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN);
         } else {
-            Intent intent = new Intent(getActivity(), AddProductActivity.class);
-            intent.putExtra("edit_product", product);
-            startActivityForResult(intent, EDIT_REQUEST_CODE);
+            editProduct();
         }
+    }
+
+    private void editProduct() {
+        Intent intent = new Intent(getActivity(), AddProductActivity.class);
+        intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
+        startActivityForResult(intent, EDIT_REQUEST_CODE);
     }
 
     @OnClick(R.id.action_add_to_list_button)
     public void onBookmarkProductButtonClick() {
         Activity activity = getActivity();
 
-        String barcode = product.getCode();
+        String productBarcode = product.getCode();
         String productName = product.getProductName();
-        String imageUrl = product.getImageSmallUrl();
+        String imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(getContext()));
         String productDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
 
         MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(activity)
@@ -916,13 +806,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         addToListDialog.show();
         View addToListView = addToListDialog.getCustomView();
         if (addToListView != null) {
-            ProductListsDao productListsDao =ProductListsActivity.getProducListsDaoWithDefaultList(this.getContext());
+            ProductListsDao productListsDao = ProductListsActivity.getProducListsDaoWithDefaultList(this.getContext());
             List<ProductLists> productLists = productListsDao.loadAll();
 
             RecyclerView addToListRecyclerView =
                 addToListView.findViewById(R.id.rv_dialogAddToList);
             DialogAddToListAdapter addToListAdapter =
-                new DialogAddToListAdapter(activity, productLists, barcode, productName, productDetails, imageUrl);
+                new DialogAddToListAdapter(activity, productLists, productBarcode, productName, productDetails, imageUrl);
             addToListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
             addToListRecyclerView.setAdapter(addToListAdapter);
             TextView tvAddToList = addToListView.findViewById(R.id.tvAddToNewList);
@@ -946,82 +836,34 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.buttonMorePictures)
     public void takeMorePicture() {
-        try {
-            if (Utils.isHardwareCameraInstalled(getContext())) {
-                if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-                } else {
-                    sendOther = true;
-                    EasyImage.openCamera(this, 0);
-                }
-            } else {
-                if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
-                } else {
-                    sendOther = true;
-                    EasyImage.openGallery(this, 0, false);
-                }
-            }
-
-            if (ContextCompat.checkSelfPermission(this.getContext(), READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(this.getContext(), WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), READ_EXTERNAL_STORAGE)
-                    || ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), WRITE_EXTERNAL_STORAGE)) {
-                    new MaterialDialog.Builder(this.getContext())
-                        .title(R.string.action_about)
-                        .content(R.string.permission_storage)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat
-                            .requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE))
-                        .show();
-                } else {
-                    ActivityCompat.requestPermissions(this.getActivity(), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, Utils.MY_PERMISSIONS_REQUEST_STORAGE);
-                }
-            }
-        } catch (NullPointerException e) {
-            Log.i(getClass().getSimpleName(), e.toString());
-        }
+        sendOther = true;
+        doChooseOrTakePhotos(getString(R.string.take_more_pictures));
     }
 
     @OnClick(R.id.imageViewFront)
     public void openFullScreen(View v) {
         if (mUrlImage != null) {
-            Intent intent = new Intent(v.getContext(), FullScreenImage.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("imageurl", mUrlImage);
-            intent.putExtras(bundle);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation(getActivity(), (View) mImageFront,
-                        getActivity().getString(R.string.product_transition));
-                startActivity(intent, options.toBundle());
-            } else {
-                startActivity(intent);
-            }
+            FullScreenActivityOpener.openForUrl(this, product, FRONT, mUrlImage, mImageFront);
         } else {
             // take a picture
-            if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-            } else {
-                sendOther = false;
-                if (Utils.isHardwareCameraInstalled(getContext())) {
-                    EasyImage.openCamera(this, 0);
-                } else {
-                    EasyImage.openGallery(getActivity(), 0, false);
-                }
-            }
+            newFrontImage();
         }
     }
 
-    private void onPhotoReturned(File photoFile) {
+    void newFrontImage() {
+        // add front image.
+        sendOther = false;
+        doChooseOrTakePhotos(getString(R.string.set_img_front));
+    }
+
+    private void loadPhoto(File photoFile) {
         ProductImage image = new ProductImage(barcode, FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image, this);
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
-        Picasso.with(getContext())
+        Picasso.get()
             .load(photoFile)
             .fit()
             .into(mImageFront);
@@ -1030,99 +872,46 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-
-                //the booleans are checked to determine if the picture uploaded was due to a prompt click
-                //the pictures are uploaded with the correct path
-                if (addingIngredientsImage) {
-                    ProductImage image = new ProductImage(barcode, INGREDIENTS, new File(resultUri.getPath()));
-                    image.setFilePath(resultUri.getPath());
-                    showOtherImageProgress();
-                    api.postImg(getContext(), image, this);
-                    addingIngredientsImage = false;
-                }
-
-                if (addingNutritionImage) {
-                    ProductImage image = new ProductImage(barcode, NUTRITION, new File(resultUri.getPath()));
-                    image.setFilePath(resultUri.getPath());
-                    showOtherImageProgress();
-                    api.postImg(getContext(), image, this);
-                    addingNutritionImage = false;
-                }
-
-                if (!sendOther) {
-                    onPhotoReturned(new File(resultUri.getPath()));
-                } else {
-                    ProductImage image = new ProductImage(barcode, OTHER, new File(resultUri.getPath()));
-                    image.setFilePath(resultUri.getPath());
-                    showOtherImageProgress();
-                    api.postImg(getContext(), image, this);
-                }
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
-            }
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
+        boolean shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK && data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, false));
+        if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
+            shouldRefresh = true;
         }
-
-        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
-            @Override
-            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
-                //Some error handling
-            }
-
-            @Override
-            public void onImagesPicked(List<File> imageFiles, EasyImage.ImageSource source, int type) {
-                CropImage.activity(Uri.fromFile(imageFiles.get(0)))
-                    .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                    .setAllowFlipping(false)
-                    .start(getContext(), mFragment);
-            }
-
-            @Override
-            public void onCanceled(EasyImage.ImageSource source, int type) {
-                //Cancel handling, you might wanna remove taken photo if it was canceled
-                if (source == EasyImage.ImageSource.CAMERA) {
-                    File photoFile = EasyImage.lastlyTakenButCanceledPhoto(getContext());
-                    if (photoFile != null) {
-                        photoFile.delete();
-                    }
-                }
-            }
-        });
-        if (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK && data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, false)) {
+        if (shouldRefresh) {
             if (getActivity() instanceof ProductActivity) {
                 ((ProductActivity) getActivity()).onRefresh();
             }
         }
+        if (resultCode == RESULT_OK) {
+            if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && isUserLoggedIn()) {
+                editProduct();
+            }
+            if (requestCode == EDIT_PRODUCT_NUTRITION_AFTER_LOGIN && isUserLoggedIn()) {
+                editProductNutriscore();
+            }
+        }
+    }
+
+    public void onPhotoReturned(File newPhotoFile) {
+        URI resultUri = newPhotoFile.toURI();
+        //the booleans are checked to determine if the picture uploaded was due to a prompt click
+        //the pictures are uploaded with the correct path
+        if (!sendOther) {
+            loadPhoto(new File(resultUri.getPath()));
+        } else {
+            ProductImage image = new ProductImage(barcode, OTHER, newPhotoFile);
+            image.setFilePath(resultUri.getPath());
+            showOtherImageProgress();
+            api.postImg(getContext(), image, this);
+        }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
-                                           @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_CAMERA: {
-                if (grantResults.length <= 0 || grantResults[0] != PERMISSION_GRANTED) {
-                    new MaterialDialog.Builder(getActivity())
-                        .title(R.string.permission_title)
-                        .content(R.string.permission_denied)
-                        .negativeText(R.string.txtNo)
-                        .positiveText(R.string.txtYes)
-                        .onPositive((dialog, which) -> {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                        })
-                        .show();
-                } else {
-                    sendOther = false;
-                    EasyImage.openCamera(this, 0);
-                }
-            }
+    protected void doOnPhotosPermissionGranted() {
+        if (sendOther) {
+            takeMorePicture();
+        } else {
+            newFrontImage();
         }
     }
 
@@ -1145,9 +934,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
     public void onFailure(String message) {
         uploadingImageProgress.setVisibility(View.GONE);
         uploadingImageProgressText.setVisibility(View.GONE);
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        Context context = getContext();
+        if (context == null) {
+            context = OFFApplication.getInstance();
+        }
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 }

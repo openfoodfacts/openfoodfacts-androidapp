@@ -11,14 +11,14 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.ListPreference;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.fragment.app.FragmentActivity;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,7 +34,7 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Navi
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import org.apache.commons.text.WordUtils;
+import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.IOException;
@@ -48,7 +48,6 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
-    private static final String USER_COUNTRY_PREFERENCE_KEY = "user_country";
     private Context context;
 
     @Override
@@ -77,7 +76,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
             if (current != null) {
-                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
+                localeLabels[i] = StringUtils.capitalize(current.getDisplayName(current));
                 finalLocalLabels.add(localeLabels[i]);
                 finalLocalValues.add(localeValues[i]);
             }
@@ -108,8 +107,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        ListPreference countryPreference = ((ListPreference) findPreference(USER_COUNTRY_PREFERENCE_KEY));
+        ListPreference countryPreference = ((ListPreference) findPreference(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY));
         List<String> countryLabels = new ArrayList<>();
+        List<String> countryTags = new ArrayList<>();
 
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
@@ -120,9 +120,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             List<CountryName> countryNames = (List<CountryName>) operation.getResult();
             for (int i = 0; i < countryNames.size(); i++) {
                 countryLabels.add(countryNames.get(i).getName());
+                countryTags.add(countryNames.get(i).getCountyTag());
             }
             countryPreference.setEntries(countryLabels.toArray(new String[0]));
-            countryPreference.setEntryValues(countryLabels.toArray(new String[0]));
+            countryPreference.setEntryValues(countryTags.toArray(new String[0]));
         });
 
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
@@ -131,7 +132,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         countryPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
             if (preference instanceof ListPreference) {
-               if (preference.getKey().equals(USER_COUNTRY_PREFERENCE_KEY)) {
+               if (preference.getKey().equals(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)) {
                    String country = (String) newValue;
                    SharedPreferences.Editor editor = settings.edit();
                    editor.putString(preference.getKey(), country);
@@ -158,16 +159,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
 
         Preference rateus = findPreference("RateUs");
-        rateus.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + context.getPackageName())));
-                } catch (android.content.ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));
-                }
-                return true;
+        rateus.setOnPreferenceClickListener(preference -> {
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + context.getPackageName())));
+            } catch (android.content.ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));
             }
+            return true;
         });
 
         findPreference("FAQ").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.faq_url));
@@ -176,7 +174,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         ListPreference energyUnitPreference = (ListPreference) findPreference("energyUnitPreference");
         String[] energyUnits = getActivity().getResources().getStringArray(R.array.energy_units);
-        ;
         energyUnitPreference.setEntries(energyUnits);
         energyUnitPreference.setEntryValues(energyUnits);
         energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -220,7 +217,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             String version = pInfo.versionName;
             versionPref.setSummary(getString(R.string.version_string) + " " + version);
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(PreferencesFragment.class.getSimpleName(),"onCreatePreferences",e);
         }
     }
 

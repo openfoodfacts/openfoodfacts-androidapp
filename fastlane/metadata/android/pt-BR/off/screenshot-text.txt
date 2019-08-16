@@ -1,45 +1,72 @@
-Esses são os slogans mostrados acima das capturas de tela no playstore. Mantenha-os curtos e atraentes.
-Não mude o nome do ficheiro.
----
-scan_pt.png
-Digitalizar produto
+Aquelas são as tags acima dos prints na playstore. Deixe-os curtos e atrativos.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
-quickview_pt.png
+=====================
+V2 capturas de ecrã
+=====================
+
+Escanear produtos
+
 Obtenha o Nutriscore
 
-history_pt.png
-Seu histórico completo de digitalizações, totalmente privado e exportável
+Seu histórico de escaneio completo, totalmente privado e exportável
 
-product_view_wikipedia_pt.png
-Mais na Wikipedia
+Vá a fundo com Wikipedia
 
-allergen_alert_pt.png
-Definir alertas de alérgenos
+Colocar alertas de alérgeno
 
-home_pt.png
-product_view_nutrition_summary_pt.png
-Nutrição simplificada
+Nutrição, simplificado
 
-product_view_allergen_alert_pt.png
-Alerta de alergénios
+Alerta de alergénos
 
-categories_pt.png
-Obtenha alternativas para seus alimentos favoritos
+Tenha alternativas para suas comidas preferidas
 
-foodtransparency_en.png
-Torne-se um ator da transparência alimentar
+Transforme-se em um ator de transparência alimentar
 
-product_view_summary_pt.png
 Wikipedia para comida
-Wikipedia para Cosméticos
-Wikipedia para comida para animais
-Wikipedia de produtos
 
-product_view_ingredients_pt.png
+Wikipedia para Cosméticos
+
+Wikipedia para Comida de Animais
+
+Wikipedia de Produtos
+
 Ingredientes
 
-menu_pt.png
 Poderoso
 
-product_view_nutrition_table_pt.png
 Informação nutricional
+
+=====================
+V3 capturas de ecrã
+=====================
+
+Escolha os produtos que são bons para você e para o 🌍 planeta!
+
+✔ Digitalização de código de barras ultra-rápida
+
+✔ Um supermercado global no seu bolso
+
+Qualidade nutricional
+
+Alimentos ultraprocessados
+
+Impacto de carbono
+
+Compare facilmente antes de comprar
+
+Crie listas de compras, listas de consumo…
+
+Encontre e compare mais de 750 000 produtos.
+
+
+
+Histórico de digitalizações ilimitado e totalmente privado
+
+Deslize para mais detalhes
+
+Definir alertas de alérgenos
+
+Junte-se ao nosso movimento global para a transparência alimentar
+
+br.openfoodfacts.org/contribute

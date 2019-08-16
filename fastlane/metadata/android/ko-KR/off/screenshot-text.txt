@@ -1,45 +1,72 @@
 Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
----
-scan_en.png
-Scan products
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
-quickview_en.png
-Get the Nutriscore
+=====================
+V2 screenshots
+=====================
 
-history_en.png
+제품 스캔
+
+Nutriscore 가져 오기
+
 Your full scan history, fully private & exportable
 
-product_view_wikipedia_en.png
-Go further with Wikipedia
+위키피디아와 함께 나아가십시오.
 
-allergen_alert_en.png
-Set allergen alerts
+알레르기 유발 경고 설정
 
-home_en.png
-product_view_nutrition_summary_en.png
 Nutrition, simplified
 
-product_view_allergen_alert_en.png
 알레르기 항원 경보
 
-categories_en.png
-Get alternatives for your favorite foods
+좋아하는 음식에 대한 대안을 얻으십시오.
 
-foodtransparency_en.png
 Become an actor of food transparency
 
-product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+음식 위키백과
 
-product_view_ingredients_en.png
+화장품 위키백과
+
+반려동물 사료 위키백과
+
+제품 위키백과
+
 성분
 
-menu_en.png
-Powerful
+강력한
 
-product_view_nutrition_table_en.png
 영양 성분 표시
+
+=====================
+V3 screenshots
+=====================
+
+Choose the products that are good for you and for the 🌍 planet !
+
+✔ Ultra-fast barcode scan
+
+✔ A global supermarket in your pocket
+
+Nutritional quality
+
+Ultra-processed foods
+
+Carbon impact
+
+Compare easily before you buy
+
+Create shopping lists, intake lists…
+
+Find and compare over 750 000 products.
+
+
+
+Unlimited and fully-private scan history
+
+Swipe for even more details
+
+Set Allergen Alerts
+
+Join our global movement for food transparency
+
+world.openfoodfacts.org/contribute

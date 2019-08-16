@@ -1,36 +1,28 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.util.StdConverter;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.text.StringEscapeUtils;
+import openfoodfacts.github.scrachx.openfood.images.ImageSize;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 class ProductStringConverter extends StdConverter<String, String> {
     public String convert(String value) {
-        return StringEscapeUtils.unescapeHtml4(value).replace("\\'", "'").replace("&quot", "'");
+        return StringEscapeUtils.unescapeHtml(value).replace("\\'", "'").replace("&quot", "'");
     }
 }
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     @JsonProperty("image_small_url")
     private String imageSmallUrl;
     @JsonProperty("image_nutrition_url")
@@ -147,8 +139,6 @@ public class Product implements Serializable {
     private String customerService;
     @JsonProperty("environment_infocard")
     private String environmentInfocard;
-
-
     private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonAnyGetter
@@ -168,7 +158,10 @@ public class Product implements Serializable {
         } else {
             return getProductName();
         }
+    }
 
+    public boolean hasProductNameIn(String languageCode) {
+        return additionalProperties.get("product_name_" + languageCode) != null;
     }
 
     public String getGenericName(String languageCode) {
@@ -178,7 +171,6 @@ public class Product implements Serializable {
         } else {
             return getGenericName();
         }
-
     }
 
     public String getIngredientsText(String languageCode) {
@@ -188,77 +180,11 @@ public class Product implements Serializable {
         } else {
             return getIngredientsText();
         }
-
-    }
-
-    public String getOtherInformation(String languageCode) {
-        String result = getFieldHelper("other_information", languageCode);
-        if (result != null) {
-            return result;
-        } else {
-            return getOtherInformation();
-        }
-
-    }
-
-    public String getConservationConditions(String languageCode) {
-        String result = getFieldHelper("conservation_conditions", languageCode);
-        if (result != null) {
-            return result;
-        } else {
-            return getConservationConditions();
-        }
-
-    }
-
-    public String getRecyclingInstructionsToDiscard(String languageCode) {
-        String result = getFieldHelper("recycling_instructions_to_discard", languageCode);
-        if (result != null) {
-            return result;
-        } else {
-            return getRecyclingInstructionsToDiscard();
-        }
-    }
-
-    public String getRecyclingInstructionsToRecycle(String languageCode) {
-        String result = getFieldHelper("recycling_instructions_to_recycle", languageCode);
-        if (result != null) {
-            return result;
-        } else {
-            return getRecyclingInstructionsToRecycle();
-        }
-    }
-
-    public String getWarning(String languageCode) {
-        String result = getFieldHelper("warning", languageCode);
-        if (result != null) {
-            return result;
-        } else {
-            return getWarning();
-        }
-    }
-
-    public String getCustomerService(String languageCode) {
-        String result = getFieldHelper("customer_service", languageCode);
-        if (result != null) {
-            return result;
-        } else {
-            return getCustomerService();
-        }
-    }
-
-    public String getImageFrontUrl(String languageCode) {
-        String result = getFieldHelper("image_front_url", languageCode);
-        if (result != null) {
-            return result;
-        } else {
-            return getImageFrontUrl();
-        }
     }
 
     public String getImageIngredientsUrl(String languageCode) {
-        String result = getFieldHelper("image_ingredient_url", languageCode);
-        if (result != null) {
+        String result = getSelectedImage(languageCode, ProductImageField.INGREDIENTS, ImageSize.DISPLAY);
+        if (StringUtils.isNotBlank(result)) {
             return result;
         } else {
             return getImageIngredientsUrl();
@@ -266,34 +192,32 @@ public class Product implements Serializable {
     }
 
     public String getImageNutritionUrl(String languageCode) {
-        String result = getFieldHelper("image_nutrition_url", languageCode);
-        if (result != null) {
+        String result = getSelectedImage(languageCode, ProductImageField.NUTRITION, ImageSize.DISPLAY);
+        if (StringUtils.isNotBlank(result)) {
             return result;
         } else {
             return getImageNutritionUrl();
         }
     }
 
-    public String getFieldHelper(String field, String languageCode) {
+    private String getFieldHelper(String field, String languageCode) {
 
         if (!languageCode.equals("en") && additionalProperties.get(field + "_" + languageCode) != null
-                && isNotBlank(additionalProperties.get(field + "_" + languageCode).toString())) {
+            && isNotBlank(additionalProperties.get(field + "_" + languageCode).toString())) {
             return additionalProperties.get(field + "_" + languageCode)
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+                .toString()
+                .replace("\\'", "'")
+                .replace("&quot", "'");
         } else if (additionalProperties.get(field + "_en") != null
-                && isNotBlank(additionalProperties.get(field + "_en").toString())) {
+            && isNotBlank(additionalProperties.get(field + "_en").toString())) {
             return additionalProperties.get(field + "_en")
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'");
+                .toString()
+                .replace("\\'", "'")
+                .replace("&quot", "'");
         } else {
             return null;
         }
-
     }
-
 
     /**
      * @return The statesTags
@@ -306,20 +230,13 @@ public class Product implements Serializable {
         return lastModifiedBy;
     }
 
-
-    public String getCustomerService() {
-        return customerService;
-    }
-
     public String getWarning() {
         return warning;
     }
 
-
     /**
      * @return The vitaminTags
      */
-
     public List<String> getVitaminTags() {
         return vitaminTags;
     }
@@ -331,7 +248,6 @@ public class Product implements Serializable {
     /**
      * @return The mineralsTags
      */
-
     public List<String> getMineralTags() {
         return mineralTags;
     }
@@ -343,7 +259,6 @@ public class Product implements Serializable {
     /**
      * @return The aminoAcidTags
      */
-
     public List<String> getAminoAcidTags() {
         return aminoAcidTags;
     }
@@ -352,11 +267,9 @@ public class Product implements Serializable {
         this.aminoAcidTags = aminoAcidTags;
     }
 
-
     /**
      * @return The otherNutritionTags
      */
-
     public List<String> getOtherNutritionTags() {
         return otherNutritionTags;
     }
@@ -368,8 +281,69 @@ public class Product implements Serializable {
     /**
      * @return The imageSmallUrl
      */
-    public String getImageSmallUrl() {
+    private String getImageSmallUrl() {
         return imageSmallUrl;
+    }
+
+    public String getImageSmallUrl(String languageCode) {
+        String image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL);
+        if (StringUtils.isNotBlank(image)) {
+            return image;
+        }
+        return getImageSmallUrl();
+    }
+
+    public String getSelectedImage(String languageCode, ProductImageField type, ImageSize size) {
+        Map<String, Map> images = (Map<String, Map>) additionalProperties.get("selected_images");
+        if (images != null) {
+            images = (Map<String, Map>) images.get(type.name().toLowerCase());
+            if (images != null) {
+                Map<String, String> imagesByLocale = (Map<String, String>) images.get(size.name().toLowerCase());
+                if (imagesByLocale != null) {
+                    String url = imagesByLocale.get(languageCode);
+                    if (StringUtils.isNotBlank(url)) {
+                        return url;
+                    }
+                }
+            }
+        }
+        switch (type) {
+            case FRONT:
+                return getImageUrl();
+            case INGREDIENTS:
+                return getImageIngredientsUrl();
+            case NUTRITION:
+                return getImageNutritionUrl();
+            case OTHER:
+                return null;
+        }
+        return null;
+    }
+
+    public List<String> getAvailableLanguageForImage(ProductImageField type, ImageSize size) {
+        Map<String, Map> images = (Map<String, Map>) additionalProperties.get("selected_images");
+        if (images != null) {
+            images = (Map<String, Map>) images.get(type.name().toLowerCase());
+            if (images != null) {
+                Map<String, String> imagesByLocale = (Map<String, String>) images.get(size.name().toLowerCase());
+                return new ArrayList<>(imagesByLocale.keySet());
+            }
+        }
+        return Collections.emptyList();
+    }
+
+    public Map<String, ?> getImageDetails(String imageKey) {
+        Map<String, Map> images = (Map<String, Map>) additionalProperties.get("images");
+        if (images != null) {
+            Map<String, ?> imagesDetails = (Map<String, ?>) images.get(imageKey);
+            return imagesDetails;
+        }
+        return null;
+    }
+
+    public boolean isLanguageSupported(String languageCode) {
+        Map<String, Map> languagesCodes = (Map<String, Map>) additionalProperties.get("languages_codes");
+        return languageCode != null && languagesCodes != null && languagesCodes.containsKey(languageCode.toLowerCase());
     }
 
     /**
@@ -379,13 +353,20 @@ public class Product implements Serializable {
         return imageFrontUrl;
     }
 
+    public String getImageFrontUrl(String languageCode) {
+        String image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY);
+        if (StringUtils.isNotBlank(image)) {
+            return image;
+        }
+        return getImageFrontUrl();
+    }
+
     /**
      * @return The imageIngredientsUrl
      */
     public String getImageIngredientsUrl() {
         return imageIngredientsUrl;
     }
-
 
     /**
      * @return The imageNutritionUrl
@@ -520,8 +501,6 @@ public class Product implements Serializable {
     /**
      * @return The servingSize
      */
-
-
     public String getServingSize() {
         return servingSize;
     }
@@ -548,8 +527,9 @@ public class Product implements Serializable {
      * @return The stores
      */
     public String getStores() {
-        if (stores == null)
+        if (stores == null) {
             return null;
+        }
         return stores.replace(",", ", ");
     }
 
@@ -571,8 +551,9 @@ public class Product implements Serializable {
      * @return The countries
      */
     public String getCountries() {
-        if (countries == null)
+        if (countries == null) {
             return null;
+        }
         return countries.replace(",", ", ");
     }
 
@@ -580,8 +561,9 @@ public class Product implements Serializable {
      * @return The brands
      */
     public String getBrands() {
-        if (brands == null)
+        if (brands == null) {
             return null;
+        }
         return brands.replace(",", ", ");
     }
 
@@ -589,8 +571,9 @@ public class Product implements Serializable {
      * @return The packaging
      */
     public String getPackaging() {
-        if (packaging == null)
+        if (packaging == null) {
             return null;
+        }
         return packaging.replace(",", ", ");
     }
 
@@ -632,8 +615,16 @@ public class Product implements Serializable {
     /**
      * @return The imageUrl
      */
-    public String getImageUrl() {
+    private String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getImageUrl(String languageCode) {
+        String url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY);
+        if (StringUtils.isNotBlank(url)) {
+            return url;
+        }
+        return getImageUrl();
     }
 
     /**
@@ -726,9 +717,9 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("code", code)
-                .append("productName", productName)
-                .append("additional_properties", additionalProperties)
-                .toString();
+            .append("code", code)
+            .append("productName", productName)
+            .append("additional_properties", additionalProperties)
+            .toString();
     }
 }

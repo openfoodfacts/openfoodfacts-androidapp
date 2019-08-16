@@ -6,6 +6,7 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
@@ -14,7 +15,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Lobster on 17.03.18.
@@ -49,7 +49,7 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
                                             return Single.just(categoryName);
                                         }
                                     }))
-                            .filter(additiveName -> additiveName.isNotNull())
+                            .filter(AdditiveName::isNotNull)
                             .toList()
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())

@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
+import android.util.Log;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
@@ -53,12 +54,15 @@ import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
- * Created by Lobster on 03.03.18.
+ * This is a repository class which implements repository interface.
+ * @author Lobster
+ * @since 03.03.18
  */
 
 public class ProductRepository implements IProductRepository {
 
     private static final String DEFAULT_LANGUAGE = "en";
+    private static final String TAG= ProductRepository.class.getSimpleName();
 
     private static IProductRepository instance;
 
@@ -82,6 +86,10 @@ public class ProductRepository implements IProductRepository {
     private IngredientNameDao ingredientNameDao;
     private IngredientsRelationDao ingredientsRelationDao;
 
+    /**
+     * A method used to get instance from the repository.
+     * @return : instance of the repository
+     */
     public static IProductRepository getInstance() {
         if (instance == null) {
             instance = new ProductRepository();
@@ -90,6 +98,9 @@ public class ProductRepository implements IProductRepository {
         return instance;
     }
 
+    /**
+     * Constructor of the class which is used to initialize objects.
+     */
     private ProductRepository() {
         productApi = CommonApiManager.getInstance().getProductApiService();
         openFooApi = CommonApiManager.getInstance().getOpenFoodApiService();
@@ -119,6 +130,7 @@ public class ProductRepository implements IProductRepository {
      * @param refresh defines the source of data.
      *                If refresh is true (or local database is empty) than load it from the server,
      *                else from the local database.
+     * @return The list of Labels.
      */
     @Override
     public Single<List<Label>> getLabels(Boolean refresh) {
@@ -136,6 +148,7 @@ public class ProductRepository implements IProductRepository {
      * @param refresh defines the source of data.
      *                If refresh is true (or local database is empty) than load it from the server,
      *                else from the local database.
+     * @return The list of Tags.
      */
     @Override
     public Single<List<Tag>> getTags(Boolean refresh) {
@@ -171,6 +184,7 @@ public class ProductRepository implements IProductRepository {
      * @param refresh defines the source of data.
      *                If refresh is true (or local database is empty) than load it from the server,
      *                else from the local database.
+     * @return The list of countries.
      */
     @Override
     public Single<List<Country>> getCountries(Boolean refresh) {
@@ -188,6 +202,7 @@ public class ProductRepository implements IProductRepository {
      * @param refresh defines the source of data.
      *                If refresh is true (or local database is empty) than load it from the server,
      *                else from the local database.
+     * @return The list of categories.
      */
     @Override
     public Single<List<Category>> getCategories(Boolean refresh) {
@@ -201,6 +216,7 @@ public class ProductRepository implements IProductRepository {
 
     /**
      * Load allergens which user selected earlier (i.e user's allergens)
+     * @return The list of allergens.
      */
     @Override
     public List<Allergen> getEnabledAllergens() {
@@ -213,6 +229,7 @@ public class ProductRepository implements IProductRepository {
      * @param refresh defines the source of data.
      *                If refresh is true (or local database is empty) than load it from the server,
      *                else from the local database.
+     * @return The list of additives.
      */
     @Override
     public Single<List<Additive>> getAdditives(Boolean refresh) {
@@ -225,6 +242,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
+     * TODO to be improved by loading only if required and only in the user language
      * Load ingredients from (the server or) local database
      *
      * @param refresh defines the source of data.
@@ -250,6 +268,7 @@ public class ProductRepository implements IProductRepository {
 
     /**
      * Labels saving to local database
+     * @param labels The list of labels to be saved.
      * <p>
      * Label and LabelName has One-To-Many relationship, therefore we need to save them separately.
      */
@@ -266,7 +285,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveLabels",e);
         } finally {
             db.endTransaction();
         }
@@ -274,6 +293,7 @@ public class ProductRepository implements IProductRepository {
 
     /**
      * Tags saving to local database
+     * @param tags The list of tags to be saved.
      */
     @Override
     public void saveTags(List<Tag> tags) {
@@ -283,6 +303,7 @@ public class ProductRepository implements IProductRepository {
 
     /**
      * Allergens saving to local database
+     * @param allergens The list of allergens to be saved.
      * <p>
      * Allergen and AllergenName has One-To-Many relationship, therefore we need to save them separately.
      */
@@ -299,14 +320,16 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveAllergens",e);
         } finally {
             db.endTransaction();
         }
     }
 
+
     /**
      * Additives saving to local database
+     * @param additives The list of additives to be saved.
      * <p>
      * Additive and AdditiveName has One-To-Many relationship, therefore we need to save them separately.
      */
@@ -323,7 +346,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveAdditives",e);
         } finally {
             db.endTransaction();
         }
@@ -331,6 +354,7 @@ public class ProductRepository implements IProductRepository {
 
     /**
      * Countries saving to local database
+     * @param countries The list of countries to be saved.
      * <p>
      * Country and CountryName has One-To-Many relationship, therefore we need to save them separately.
      */
@@ -347,7 +371,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveCountries",e);
         } finally {
             db.endTransaction();
         }
@@ -355,6 +379,7 @@ public class ProductRepository implements IProductRepository {
 
     /**
      * Categories saving to local database
+     * @param categories The list of categories to be saved.
      * <p>
      * Category and CategoryName has One-To-Many relationship, therefore we need to save them separately.
      */
@@ -371,7 +396,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveCategories",e);
         } finally {
             db.endTransaction();
         }
@@ -391,7 +416,9 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
+     * TODO to be improved by loading only if required and only in the user language
      * Ingredients saving to local database
+     * @param ingredients The list of ingredients to be saved.
      * <p>
      * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      */
@@ -414,7 +441,7 @@ public class ProductRepository implements IProductRepository {
 
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"saveIngredients",e);
         } finally {
             db.endTransaction();
         }
@@ -422,6 +449,7 @@ public class ProductRepository implements IProductRepository {
 
     /**
      * Ingredient saving to local database
+     * @param ingredient The ingredient to be saved.
      */
     @Override
     public void saveIngredient(Ingredient ingredient) {
@@ -454,6 +482,7 @@ public class ProductRepository implements IProductRepository {
      *
      * @param labelTag     is a unique Id of label
      * @param languageCode is a 2-digit language code
+     * @return The translated label
      */
     @Override
     public Single<LabelName> getLabelByTagAndLanguageCode(String labelTag, String languageCode) {
@@ -472,6 +501,7 @@ public class ProductRepository implements IProductRepository {
      * Loads translated label from the local database by unique tag of label and default language code
      *
      * @param labelTag is a unique Id of label
+     * @return The translated label
      */
     @Override
     public Single<LabelName> getLabelByTagAndDefaultLanguageCode(String labelTag) {
@@ -483,6 +513,7 @@ public class ProductRepository implements IProductRepository {
      *
      * @param additiveTag  is a unique Id of additive
      * @param languageCode is a 2-digit language code
+     * @return The translated additive name
      */
     @Override
     public Single<AdditiveName> getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode) {
@@ -501,6 +532,7 @@ public class ProductRepository implements IProductRepository {
      * Loads translated additive from the local database by unique tag of additive and default language code
      *
      * @param additiveTag is a unique Id of additive
+     * @return The translated additive tag
      */
     @Override
     public Single<AdditiveName> getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
@@ -512,6 +544,7 @@ public class ProductRepository implements IProductRepository {
      *
      * @param countryTag   is a unique Id of country
      * @param languageCode is a 2-digit language code
+     * @return The translated country name
      */
     @Override
     public Single<CountryName> getCountryByTagAndLanguageCode(String countryTag, String languageCode) {
@@ -530,6 +563,7 @@ public class ProductRepository implements IProductRepository {
      * Loads translated country from the local database by unique tag of country and default language code
      *
      * @param countryTag is a unique Id of country
+     * @return The translated country name
      */
     @Override
     public Single<CountryName> getCountryByTagAndDefaultLanguageCode(String countryTag) {
@@ -541,6 +575,7 @@ public class ProductRepository implements IProductRepository {
      *
      * @param categoryTag  is a unique Id of category
      * @param languageCode is a 2-digit language code
+     * @return The translated category name
      */
     @Override
     public Single<CategoryName> getCategoryByTagAndLanguageCode(String categoryTag, String languageCode) {
@@ -567,12 +602,21 @@ public class ProductRepository implements IProductRepository {
      * Loads translated category from the local database by unique tag of category and default language code
      *
      * @param categoryTag is a unique Id of category
+     * @return The translated category name
      */
     @Override
     public Single<CategoryName> getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
         return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
     }
 
+
+
+    /**
+     * Loads list of translated category names from the local database by language code
+     *
+     * @param languageCode is a 2-digit language code
+     * @return The translated list of category name
+     */
     @Override
     public Single<List<CategoryName>> getAllCategoriesByLanguageCode(String languageCode) {
         return Single.fromCallable(() -> categoryNameDao.queryBuilder()
@@ -581,6 +625,11 @@ public class ProductRepository implements IProductRepository {
                 .list());
     }
 
+    /**
+     * Loads list of category names from the local database by default language code
+     *
+     * @return The list of category name
+     */
     @Override
     public Single<List<CategoryName>> getAllCategoriesByDefaultLanguageCode() {
         return getAllCategoriesByLanguageCode(DEFAULT_LANGUAGE);
@@ -591,6 +640,7 @@ public class ProductRepository implements IProductRepository {
      *
      * @param isEnabled    depends on whether allergen was selected or unselected by user
      * @param languageCode is a 2-digit language code
+     * @return The list of allergen names
      */
     @Override
     public Single<List<AllergenName>> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode) {
@@ -621,6 +671,7 @@ public class ProductRepository implements IProductRepository {
      * Loads all translated allergens.
      *
      * @param languageCode is a 2-digit language code
+     * @return The list of translated allergen names
      */
     @Override
     public Single<List<AllergenName>> getAllergensByLanguageCode(String languageCode) {
@@ -630,6 +681,13 @@ public class ProductRepository implements IProductRepository {
                         .list());
     }
 
+    /**
+     * Loads translated allergen from the local database by unique tag of allergen and language code
+     *
+     * @param allergenTag  is a unique Id of allergen
+     * @param languageCode is a 2-digit language code
+     * @return The translated allergen name
+     */
     @Override
     public Single<AllergenName> getAllergenByTagAndLanguageCode(String allergenTag, String languageCode) {
         return Single.fromCallable(() -> {
@@ -650,6 +708,12 @@ public class ProductRepository implements IProductRepository {
         });
     }
 
+    /**
+     * Loads translated allergen from the local database by unique tag of allergen and default language code
+     *
+     * @param allergenTag is a unique Id of allergen
+     * @return The translated allergen name
+     */
     @Override
     public Single<AllergenName> getAllergenByTagAndDefaultLanguageCode(String allergenTag) {
         return getAllergenByTagAndLanguageCode(allergenTag, DEFAULT_LANGUAGE);
@@ -664,14 +728,6 @@ public class ProductRepository implements IProductRepository {
         return dao.count() == 0;
     }
 
-    /**
-     * Checks whether table is not empty
-     *
-     * @param dao checks records count of any table
-     */
-    private Boolean tableIsNotEmpty(AbstractDao dao) {
-        return dao.count() != 0;
-    }
 
     /**
      * Checks whether table of additives is empty
@@ -681,6 +737,14 @@ public class ProductRepository implements IProductRepository {
         return tableIsEmpty(additiveDao);
     }
 
+
+    /**
+     * Loads question from the local database by code and lang of question.
+     *
+     * @param code for the question
+     * @param lang is language of the question
+     * @return The single question
+     */
     @Override
     public Single<Question> getSingleProductQuestion(String code, String lang) {
         return robotoffApi.getProductQuestion(code, lang, 1)
@@ -693,6 +757,12 @@ public class ProductRepository implements IProductRepository {
                 });
     }
 
+    /**
+     * Annotate the insight response using insight id and annotation
+     * @param insightId is the unique id for the insight
+     * @param annotation is the annotation to be used
+     * @return The annotated insight response
+     */
     @Override
     public Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation) {
         return robotoffApi.annotateInsight(insightId, annotation);

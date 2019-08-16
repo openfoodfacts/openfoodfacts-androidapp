@@ -1,45 +1,72 @@
-Oto slogany nad screenshotami w playstore. Niech będą krótkie i atrakcyjne.
-Nie zmieniaj nazwy pliku.
----
-scan-eng.png
+Teksty widoczne nad zrzutami ekranu w sklepie z aplikacjami. Niech będą krótkie i atrakcyjne.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=pl
+
+=====================
+V2 zrzuty ekranów
+=====================
+
 Skanuj produkty
 
-quickview_en.png
 Zdobądź skalę Nutriscore
 
-history_en.png
 Pełna historia skanowania, w pełni prywatna i eksportowalna
 
-product_view_wikipedia_en.png
 Dalej z Wikipedią
 
-allergen_alert_en.png
 Ustawy ostrzeżenia o alergenach
 
-home_en.png
-product_view_nutrition_summary_en.png
 Odżywianie, uproszczone
 
-product_view_allergen_alert_en.png
 Ostrzeżenie o alergenach
 
-categories_en.png
 Znajdź alternatywę dla swoich ulubionych potraw
 
-foodtransparency_en.png
 Zostań uczestnikiem działań mających na celu popularyzację wiedzy na temat żywności
 
-product_view_summary_en.png
 Wikipedia żywności
+
 Wikipedia kosmetyków
+
 Wikipedia karmy dla zwierząt domowych
+
 Wikipedia produktów
 
-product_view_ingredients_en.png
 Składniki
 
-menu_en.png
 Potężny
 
-product_view_nutrition_table_en.png
 Wartości odżywcze
+
+=====================
+V3 zrzuty ekranu
+=====================
+
+Wybierz produkty, które są dobre dla Ciebie i 🌍planety!
+
+✔ Bardzo szybki skan kodów kreskowych
+
+✔ Globalny supermarket w twojej kieszeni
+
+Jakość żywności
+
+Żywność wysoko przetworzona
+
+Wpływ dwutlenku węgla
+
+Porównaj w łatwy sposób przed zakupem
+
+Twórz listy zakupów, listy spożywanych produktów…
+
+Ponad 750000 produktów możliwych do znalezienia i porównania.
+
+
+
+Nieograniczona i w pełni prywatna historia skanowania
+
+Przesuń, aby uzyskać więcej szczegółów
+
+Stwórz ostrzeżenia o alergenach
+
+Dołącz do naszego ruchu na rzecz globalnej przejrzystości żywności
+
+world.openfoodfacts.org/contribute

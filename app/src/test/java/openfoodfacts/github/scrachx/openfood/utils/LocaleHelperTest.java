@@ -12,21 +12,21 @@ import static org.junit.Assert.assertEquals;
 public class LocaleHelperTest {
 
     @Test
-    public void getLocale_fr() throws Exception {
+    public void getLocale_fr() {
         Locale locale = LocaleHelper.getLocale("fr");
 
         assertEquals(Locale.FRENCH, locale);
     }
 
     @Test
-    public void getLocale_en() throws Exception {
+    public void getLocale_en() {
         Locale locale = LocaleHelper.getLocale("en");
 
         assertEquals(Locale.ENGLISH, locale);
     }
 
     @Test
-    public void getLocale_en_US() throws Exception {
+    public void getLocale_en_US() {
         Locale locale = LocaleHelper.getLocale("en-US");
 
         assertEquals(Locale.US, locale);

@@ -1,31 +1,31 @@
-***Contribute to Cosmetic Transparency***
+***Draag bij aan inzichtelijkheid van de cosmetica-industrie***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+- Open Beauty Facts is een database met cosmetica gemaakt door iedereen, voor iedereen.
+- Je kunt het gebruiken om betere cosmeticakeuzes te maken, en omdat het open data is, kan iedereen het voor elk doel hergebruiken.
+- Open Beauty Facts is een non-profitproject ontwikkeld door duizenden vrijwilligers uit de hele wereld. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
+- Je kunt vandaag beginnen met een bijdrage te leveren door een product uit je badkamerkast toe te voegen. 
 
-*** Get the Facts ***
+*** Ken de feiten ***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+- Cosmetica-additieven, FIL. codes, CI-nummers, INCI (International Nomenclature of Cosmetic Ingredients), ingrediëntenlijst, allergenen, verpakkingscodes... 
+Open Beauty Facts helpt je om de kleine lettertjes op etiketten te begrijpen.
+- Je hoeft geen drogist meer te zijn en latijn te leren om een ingrediëntenlijst te decoderen :-)
+- Je kunt scannen: aftershaves, bodylotions, crèmes, deodorant, eyeliner, foundation, geur, lippenstift, make-up, masker, parfum, shampoo, zeep, douchegel, nagellak en nog veel meer…
+- We denken dat het voor mensen met huidaandoeningen zoals acne, psoriasis en eczeem… nuttig kan zijn om betere cosmetische keuzes te maken.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Werkt in alle omstandigheden goed ***
+- Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
+- De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen
+- Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Jouw cosmetica, jouw gegevens ***
+- Jouw gegevens zijn van jou en worden nooit online verzonden
+- Je kunt de app anoniem gebruiken
+- Je kunt jouw scangeschiedenis exporteren
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Opmerking: Open Beauty Facts wordt momenteel gebouwd, de site en de applicatie zijn gebaseerd op Open Food Facts en er zullen wijzigingen worden aangebracht om rekening te houden met de specifieke kenmerken van cosmetica.
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Beauty Facts is ook beschikbaar op internet op https://world.openbeautyfacts.org
+Vragen, feedback: contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Voor cosmetica kan je Open Beauty Facts installeren, voor dierenvoeding, Open Pet Food Facts en voor alle andere producten, Open Products Facts.
