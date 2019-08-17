@@ -372,9 +372,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             .content(R.string.logout_dialog_content)
                             .positiveText(R.string.txtOk)
                             .negativeText(R.string.dialog_cancel)
-                            .onPositive((dialog, which) -> logout())
-                            .onNegative((dialog, which) -> Toast.makeText(getApplicationContext(), "Cancelled",
-                                Toast.LENGTH_SHORT).show()).show();
+                            .onPositive((dialog, which) -> logout()).show();
                         break;
                     default:
                         // nothing to do
