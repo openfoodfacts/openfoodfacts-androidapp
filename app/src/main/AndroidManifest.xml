@@ -187,7 +187,6 @@
                 <data android:scheme="https" android:host="@string/deeplink_product" android:pathPrefix="/cgi/search.pl"/>
                 <data android:scheme="https" android:host="@string/deeplink_product" android:pathPrefix="/contributor"/>
                 <data android:scheme="https" android:host="@string/deeplink_product" android:pathPrefix="/country"/>
-                <data android:scheme="https" android:host="@string/deeplink_product" android:pathPrefix="/category"/>
                 <data android:scheme="https" android:host="@string/deeplink_product" android:pathPrefix="/label"/>
                 <data android:scheme="https" android:host="@string/deeplink_product" android:pathPrefix="/manufacturing-place"/>
                 <data android:scheme="https" android:host="@string/deeplink_product" android:pathPrefix="/origin"/>
