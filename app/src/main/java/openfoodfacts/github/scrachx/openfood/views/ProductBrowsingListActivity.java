@@ -187,33 +187,27 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     switch (position) {
                         case 0:
                             contributionType = 0;
-                            newSearchQuery();
                             break;
                         case 1:
                             contributionType = 1;
-                            newSearchQuery();
                             break;
                         case 2:
                             contributionType = 2;
-                            newSearchQuery();
                             break;
                         case 3:
                             contributionType = 3;
-                            newSearchQuery();
                             break;
                         case 4:
                             contributionType = 4;
-                            newSearchQuery();
                             break;
                         case 5:
                             contributionType = 5;
-                            newSearchQuery();
                             break;
                         default:
                             contributionType = 0;
-                            newSearchQuery();
                             break;
                     }
+                    newSearchQuery();
                 });
                 builder.show();
                 return true;
@@ -229,15 +223,31 @@ public class ProductBrowsingListActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         countProductsView.setVisibility(View.INVISIBLE);
 
-        if (getIntent().getAction() != null && getIntent().getAction().equals(Intent.ACTION_VIEW)){
-            // the user has entered the activity via a url
-            mSearchInfo = SearchInfo.emptySearchInfo();
-            Uri data = getIntent().getData();
-            String[] paths = data.toString().split("/");
-            Toast.makeText(getApplicationContext(), data.toString(), Toast.LENGTH_LONG).show();
-        } else if (getIntent().hasExtra(SEARCH_INFO)) {
+        Log.i(getClass().getSimpleName(), "Activity started");
+
+        if (getIntent().hasExtra(SEARCH_INFO)) {
             SearchInfo searchInfo = getIntent().getExtras().getParcelable(SEARCH_INFO);
             mSearchInfo = searchInfo != null ? searchInfo : SearchInfo.emptySearchInfo();
+        } else if (getIntent().getAction().equals(Intent.ACTION_VIEW)){
+            // the user has entered the activity via a url
+            Uri data = getIntent().getData();
+            if (data != null) {
+                String[] paths = data.toString().split("/");
+
+                if (mSearchInfo == null) mSearchInfo = SearchInfo.emptySearchInfo();
+
+                mSearchInfo.setSearchTitle(paths[4]);
+                mSearchInfo.setSearchQuery(paths[4]);
+                mSearchInfo.setSearchType(paths[3]);
+
+                if (paths[3].equals("cgi") && paths[4] != null && paths[4].contains("search.pl")){
+                    mSearchInfo.setSearchTitle(data.getQueryParameter("search_terms"));
+                    mSearchInfo.setSearchQuery(data.getQueryParameter("search_terms"));
+                    mSearchInfo.setSearchType(SearchType.SEARCH);
+                }
+            } else {
+                Log.i(getClass().getSimpleName(), "No data was passed in with URL");
+            }
         }
 
         newSearchQuery();
@@ -247,15 +257,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
             isLowBatteryMode = true;
         }
 
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-
-        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mShakeDetector = new ShakeDetector();
+        scanOnShake = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("shakeScanMode", false);
 
         if (scanOnShake) {
+            mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            mShakeDetector = new ShakeDetector();
             mShakeDetector.setOnShakeListener(count -> Utils.scan(ProductBrowsingListActivity.this));
         }
 
