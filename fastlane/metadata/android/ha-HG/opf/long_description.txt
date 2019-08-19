@@ -16,7 +16,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Works well in any condition ***
+*** Yana aiki da kyau a kowane yanayi ***
 - Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
