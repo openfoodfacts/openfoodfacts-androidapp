@@ -194,7 +194,7 @@
     <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
     <string name="create_account">Tilmeld dig</string>
     <string name="home_drawer">Hjem</string>
-    <string name="install">Install</string>
+    <string name="install">Installér</string>
     <string name="search_drawer">Søg</string>
     <string name="search_by_barcode_drawer">Indtast stregkode</string>
     <string name="category_drawer">Kategorier</string>
@@ -668,7 +668,7 @@
     <string name="settings_country_summary">Skift dit valgte land</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <string name="image_prompt_language">Tag et foto af ingredienserne i</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Tilføj produkter</string>
