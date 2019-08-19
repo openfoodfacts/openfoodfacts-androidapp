@@ -189,6 +189,7 @@
     <string name="msg_share">於 Open Food Facts 上查看此產品：</string>
     <string name="create_account">註冊</string>
     <string name="home_drawer">首頁</string>
+    <string name="install">Install</string>
     <string name="search_drawer">搜尋</string>
     <string name="search_by_barcode_drawer">輸入條碼</string>
     <string name="category_drawer">類別</string>
@@ -661,6 +662,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">國家</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
