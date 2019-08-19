@@ -224,7 +224,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="msg_share">Zobacz produkt w Open Food Facts :</string>
     <string name="create_account">Zarejestruj się</string>
     <string name="home_drawer">Strona główna</string>
-    <string name="install">Install</string>
+    <string name="install">Zainstaluj</string>
     <string name="search_drawer">Poszukiwanie</string>
     <string name="search_by_barcode_drawer">Wpisz kod kreskowy</string>
     <string name="category_drawer">Kategorie</string>
