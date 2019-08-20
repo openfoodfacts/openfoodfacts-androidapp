@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -18,8 +19,9 @@ import openfoodfacts.github.scrachx.openfood.R;
 public class TipBox extends LinearLayout {
     private String identifier;
     private boolean animate;
-    private TextView tipMessage;
     private SharedPreferences prefs;
+    private TextView tipMessage;
+    private ImageView arrow;
 
     public TipBox(Context context, @Nullable AttributeSet attrs) throws Exception {
         super(context, attrs);
@@ -34,9 +36,12 @@ public class TipBox extends LinearLayout {
         if (message != null) {
             tipMessage.setText(message);
         }
-        attributes.recycle();
+        int marginStart = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginStart, 0);
+        arrow = findViewById(R.id.arrow);
+        setArrowMarginStart(marginStart);
 
         tipMessage = findViewById(R.id.tipMessage);
+        attributes.recycle();
 
         // gone by default
         setVisibility(View.GONE);
@@ -85,6 +90,12 @@ public class TipBox extends LinearLayout {
 
     public void setTipMessage(CharSequence message) {
         tipMessage.setText(message);
+    }
+
+    public void setArrowMarginStart(int marginStart) {
+        LinearLayout.LayoutParams layoutParams = (LayoutParams) arrow.getLayoutParams();
+        layoutParams.setMargins(marginStart, 0, 0, 0);
+        arrow.setLayoutParams(layoutParams);
     }
 
     public void expand() {

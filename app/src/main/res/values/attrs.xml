@@ -33,5 +33,6 @@
         <attr name="animate" format="boolean" />
         <attr name="message" format="string" />
         <attr name="identifier" format="string" />
+        <attr name="arrowMarginStart" format="dimension" />
     </declare-styleable>
 </resources>

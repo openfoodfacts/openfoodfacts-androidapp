@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/tipMessage"
-            android:layout_width="match_parent"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
@@ -40,8 +40,6 @@
         android:id="@+id/arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
         android:scaleType="fitXY"
         android:tint="@color/green_300"
         app:srcCompat="@drawable/ic_tip_box_down_arrow"

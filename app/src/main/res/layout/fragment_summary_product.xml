@@ -143,6 +143,7 @@
                     <ImageButton
                         android:id="@+id/action_compare_button"
                         style="@style/ActionButton"
+                        android:layout_height="49dp"
                         app:srcCompat="@drawable/ic_compare_arrows_circle_24dp"
                         tools:ignore="ContentDescription" />
 
@@ -230,6 +231,7 @@
                     android:id="@+id/tipBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:arrowMarginStart="@dimen/spacing_normal"
                     app:identifier="ingredient_analysis_tip_box" />
 
                 <ImageView
@@ -237,6 +239,8 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_below="@id/tipBox"
+                    android:layout_marginStart="@dimen/spacing_normal"
+                    android:layout_marginLeft="@dimen/spacing_normal"
                     android:tint="@color/green_500"
                     app:srcCompat="@drawable/ic_monkey_happy"
                     tools:ignore="ContentDescription" />
