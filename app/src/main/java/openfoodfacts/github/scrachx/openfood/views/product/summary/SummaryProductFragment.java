@@ -243,7 +243,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         return;
                 }
 
-                StringBuilder text = new StringBuilder(getString(R.string.ingredients_in_this_product, getString(titleResId)));
+                StringBuilder text = new StringBuilder(getString(R.string.ingredients_in_this_product, getString(titleResId).toLowerCase()));
                 text.append(" <b>");
                 text.append(matchingIngredients.get(0));
                 for (int i = 1; i < matchingIngredients.size(); ++i) {

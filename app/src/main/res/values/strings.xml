@@ -998,5 +998,5 @@
     <string name="maybe_vegan">Maybe Vegan</string>
     <string name="non_vegetarian">Non-Vegetarian</string>
     <string name="maybe_vegetarian">Maybe Vegetarian</string>
-    <string name="ingredients_in_this_product">%1$s ingredients in this product:</string>
+    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
 </resources>
