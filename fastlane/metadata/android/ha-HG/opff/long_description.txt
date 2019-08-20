@@ -18,17 +18,17 @@ Hakanan zaka iya samun (bisa ga alamun da aka gabatar akan samfuran):
 - jerin kayan masarufi (gami da abubuwan ash)
 - bayanin abinci mai gina jiki, hasken zirga-zirgar abinci mai kyau…
 - brands, allergens, tasirin (Organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- Yana aiki tare da abincin kare (busheshen abincin kare & rigar kare abincin), abincin kulya, abincin zomo, abincin maciji, abincin kifi, abincin tsuntsu, abincin doki ko kowane abinci don dabbar da kuka fi so.
 
 *** Yana aiki da kyau a kowane yanayi ***
 - Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
 - shiga app din na da tsananin dole don rage bayanai dakuma amfani da batir
 - Ba kwa buƙatar kamara don duba samfur. Hakanan zaka iya buga lambar birni idan bakada kyamarar koda da matsala tare da ita.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+*** Abincin abincinku, bayananku ***
+- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
 - Kuna iya amfani da app ba tare da sani ba
 - Kuna iya fitarwa da tarihin bincikenku
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Don abincin ɗan adam, zaku iya shigar da Faɗin Abinci Mai Kyau, don kayan kwalliya, Buɗe kayayyakin kyau, da sauran samfurori duka, bude samfuran Kayayyaki.
