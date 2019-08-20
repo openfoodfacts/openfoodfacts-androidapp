@@ -204,7 +204,7 @@
     <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
     <string name="create_account">הרשמה</string>
     <string name="home_drawer">ראשי</string>
-    <string name="install">Install</string>
+    <string name="install">התקנה</string>
     <string name="search_drawer">חיפוש</string>
     <string name="search_by_barcode_drawer">חיפוש לפי ברקוד</string>
     <string name="category_drawer">קטגוריות</string>
@@ -680,7 +680,7 @@
     <string name="settings_country_summary">החלפת המדינה שבחרת</string>
     <string name="settings_country_title">מדינה</string>
     <string name="txt_no_nutrition_data">למוצר זה אינו פירוט תזונתי על האריזה. אם מצב זה השתנה, ניתן לערוך את המוצר.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <string name="image_prompt_language">צילום הרכיבים של</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">הוספת מוצרים</string>
