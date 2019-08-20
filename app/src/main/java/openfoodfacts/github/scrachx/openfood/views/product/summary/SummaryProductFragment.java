@@ -255,6 +255,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 Dialog dialog = alertDialogBuilder.setTitle(titleResId)
                     .setIcon(iconResId)
                     .setMessage(Html.fromHtml(text.toString()))
+                    .setPositiveButton(getString(R.string.close_button), null)
                     .create();
                 dialog.show();
                 ImageView icon = dialog.findViewById(android.R.id.icon);
