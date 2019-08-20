@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_300"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/gotItBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/button_link"
+            android:padding="10dp"
+            android:text="@string/got_it"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tipMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toStartOf="@id/gotItBtn"
+            android:layout_toLeftOf="@id/gotItBtn"
+            android:padding="@dimen/activity_horizontal_margin" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:scaleType="fitXY"
+        android:tint="@color/green_300"
+        app:srcCompat="@drawable/ic_tip_box_down_arrow"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>

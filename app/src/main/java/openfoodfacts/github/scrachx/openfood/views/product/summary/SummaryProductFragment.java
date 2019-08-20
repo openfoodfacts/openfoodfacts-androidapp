@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
@@ -135,6 +136,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView veganIcon;
     @BindView(R.id.vegetarianIcon)
     ImageView vegetarianIcon;
+    @BindView(R.id.tipBox)
+    TipBox tipBox;
     private State state;
     private Product product;
     private OpenFoodAPIClient api;
@@ -270,6 +273,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             vegetarianIcon.setVisibility(View.GONE);
             return;
         }
+
+        tipBox.setTipMessage(getString(R.string.tip_message, getString(R.string.ingredient_analysis_tip)));
 
         if (getActivity() != null) {
             for (String tag :

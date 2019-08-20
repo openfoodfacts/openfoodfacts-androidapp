@@ -89,33 +89,6 @@
                             android:layout_marginBottom="@dimen/spacing_tiny"
                             android:textSize="@dimen/font_normal"
                             tools:text="Quantity" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:id="@+id/palmOilIcon"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:tint="@color/green_500"
-                                app:srcCompat="@drawable/ic_monkey_happy" />
-
-                            <ImageView
-                                android:id="@+id/veganIcon"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:tint="@color/green_500"
-                                app:srcCompat="@drawable/ic_leaf" />
-
-                            <ImageView
-                                android:id="@+id/vegetarianIcon"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:tint="@color/green_500"
-                                app:srcCompat="@drawable/ic_egg" />
-                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -138,7 +111,8 @@
                             android:background="?android:selectableItemBackground"
                             android:maxHeight="120dp"
                             android:scaleType="fitCenter"
-                            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+                            app:srcCompat="@drawable/ic_add_a_photo_black_48dp"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
                             android:id="@+id/addPhotoLabel"
@@ -147,9 +121,7 @@
                             android:gravity="center"
                             android:text="@string/take_picture_front"
                             android:textStyle="bold" />
-
                     </LinearLayout>
-
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -171,7 +143,8 @@
                     <ImageButton
                         android:id="@+id/action_compare_button"
                         style="@style/ActionButton"
-                        app:srcCompat="@drawable/ic_compare_arrows_circle_24dp" />
+                        app:srcCompat="@drawable/ic_compare_arrows_circle_24dp"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/action_compare_button_label"
@@ -190,7 +163,8 @@
                     <ImageButton
                         android:id="@+id/action_add_to_list_button"
                         style="@style/ActionButton"
-                        app:srcCompat="@drawable/ic_bookmark_circle_24dp" />
+                        app:srcCompat="@drawable/ic_bookmark_circle_24dp"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/action_add_to_list_button_label"
@@ -209,7 +183,8 @@
                     <ImageButton
                         android:id="@+id/action_edit_button"
                         style="@style/ActionButton"
-                        app:srcCompat="@drawable/ic_edit_circle_24dp" />
+                        app:srcCompat="@drawable/ic_edit_circle_24dp"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/action_edit_button_label"
@@ -231,7 +206,8 @@
                     <ImageButton
                         android:id="@+id/action_share_button"
                         style="@style/ActionButton"
-                        app:srcCompat="@drawable/ic_share_circle_24dp" />
+                        app:srcCompat="@drawable/ic_share_circle_24dp"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/action_share_button_label"
@@ -241,6 +217,52 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View style="@style/HorizontalLineSeparator" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <openfoodfacts.github.scrachx.openfood.views.TipBox
+                    android:id="@+id/tipBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:identifier="ingredient_analysis_tip_box" />
+
+                <ImageView
+                    android:id="@+id/palmOilIcon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/tipBox"
+                    android:tint="@color/green_500"
+                    app:srcCompat="@drawable/ic_monkey_happy"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/veganIcon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/tipBox"
+                    android:layout_toEndOf="@id/palmOilIcon"
+                    android:layout_toRightOf="@id/palmOilIcon"
+                    android:tint="@color/green_500"
+                    app:srcCompat="@drawable/ic_leaf"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/vegetarianIcon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/tipBox"
+                    android:layout_toEndOf="@id/veganIcon"
+                    android:layout_toRightOf="@id/veganIcon"
+                    android:tint="@color/green_500"
+                    app:srcCompat="@drawable/ic_egg"
+                    tools:ignore="ContentDescription" />
+            </RelativeLayout>
 
             <View style="@style/HorizontalLineSeparator" />
 
@@ -263,6 +285,7 @@
                     app:layout_constraintEnd_toStartOf="@id/nova_group"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
                     tools:src="@drawable/nnc_a" />
 
                 <ImageView
@@ -276,6 +299,7 @@
                     app:layout_constraintEnd_toStartOf="@id/co2_icon"
                     app:layout_constraintStart_toEndOf="@id/imageGrade"
                     app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
                     tools:src="@drawable/ic_nova_group_1" />
 
                 <ImageView
@@ -289,6 +313,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/nova_group"
                     app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
                     tools:srcCompat="@drawable/ic_co2_high_24dp" />
 
                 <Button
@@ -327,7 +352,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:layout_margin="@dimen/spacing_normal"
-                    app:srcCompat="@drawable/ic_forum_white_24dp" />
+                    app:srcCompat="@drawable/ic_forum_white_24dp"
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
                     android:id="@+id/bottom_sheet_linear_layout"
@@ -368,7 +394,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:padding="@dimen/spacing_normal"
-                    app:srcCompat="@drawable/ic_clear_white_24dp" />
+                    app:srcCompat="@drawable/ic_clear_white_24dp"
+                    tools:ignore="ContentDescription" />
 
             </RelativeLayout>
 
