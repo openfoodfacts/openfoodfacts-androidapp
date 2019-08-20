@@ -2,12 +2,12 @@ A bincika kayayyakin abincin dabbobi ko lambar lambar su don samun bayanai akan 
 
 Wannan app tabada damar duba fiye da 600 Pet abinci kayayyakin riga kunshe ne a cikin free da kuma bude database Open Pet Bayanan abinci, da kuma don ƙara hotuna da bayanai don bata kayayyakin.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Don gano kaddamar da taimako dan buɗe bangare na Abinci, ziyarci https://world.openpetfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+*** Ka ba da gudummawa wajen tabbatar da kwaskwarima ***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+- Bude Abubuwan Abinci shine tsarin samar da abinci wanda kowa yake yi, don kowa.
+- Kuna iya amfani da shi don yin zaɓin abinci mafi kyau, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 
