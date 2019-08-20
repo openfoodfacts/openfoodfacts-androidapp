@@ -22,7 +22,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Ba kwa buƙatar kamara don duba samfur. Hakanan zaka iya buga lambar birni idan bakada kyamarar koda da matsala tare da ita.
 
 *** Your products, your data ***
-- Your personal data is yours, and is never sent online
+- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
 - Kuna iya amfani da app ba tare da sani ba
 - Kuna iya fitarwa da tarihin bincikenku
 
