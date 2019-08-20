@@ -1,10 +1,10 @@
 Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
 
-*** Contribute to Product Transparency ***
+*** Bada gudummuwa wajen bayanan samfura ***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Bude Abubuwa na kayan masarufi ne wanda kowa yayi shi, domin kowa da kowa.
+- Kuna iya amfani da shi don yin zaɓi mafi kyau, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
+- Batun Kayayyakin Samfuran Kayan Komputa wani shiri ne wanda mai riba ba wanda dubunnan masu ba da agaji na duniya suka kirkira. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding your first product. 
 
 *** Get the Facts ***
