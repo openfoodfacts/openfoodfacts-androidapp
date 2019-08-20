@@ -12,28 +12,28 @@ Open Food Facts is an open database of food products with ingredients, allergens
 
 *** karba AAAALL gabadayan abubuwan ***
 - Kuna iya ƙara duk abubuwan dakuka tara
-- Open Crayons Facts - The largest open database of coloring crayons
-- Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+- Bude abubuwan da ake kira Crayons - Manyan bayanai bude wuraren zane-zanen launi
+- Bude Labarin Abincin Abinci - Mafi girman bayanan bude kayan samfuran na abinci
+- Bude ??? Kayayyaki - Kirkirar bayanan bude shafinku :-)
 
 *** Yana aiki da kyau a kowane yanayi ***
 - Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
 - shiga app din na da tsananin dole don rage bayanai dakuma amfani da batir
 - Ba kwa buƙatar kamara don duba samfur. Hakanan zaka iya buga lambar birni idan bakada kyamarar koda da matsala tare da ita.
 
-*** Your products, your data ***
+*** Samfuran kayanka, bayanan ka ***
 - Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
 - Kuna iya amfani da app ba tare da sani ba
 - Kuna iya fitarwa da tarihin bincikenku
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Don abinci, zaku iya shigar da Faɗin Abinci Mai Kyau, don kayan kwalliya, Batun Kayan Kwarewa, da kuma abincin dabbobi, Bude Abincin Abinci.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Bude samfuran Fayil kuma ana samunsu ta yanar gizo akan https://world.openproductsfacts.org
 Questions, feedback : contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** Lissafin wawaye na Afrilu ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Jiya da safe, Kunungiyar Abinci game da Abinci na Farko ta farka zuwa wahayi mai ban mamaki. 
 
 Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
 
