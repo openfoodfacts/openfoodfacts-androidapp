@@ -57,7 +57,6 @@ public class TipBox extends LinearLayout {
 
         prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         boolean show = prefs.getBoolean(identifier, true);
-        show = true;
         if (!show) {
             return;
         }
