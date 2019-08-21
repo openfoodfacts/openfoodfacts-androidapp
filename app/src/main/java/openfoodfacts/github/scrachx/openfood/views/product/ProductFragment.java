@@ -9,19 +9,24 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -41,7 +46,6 @@ import retrofit2.Response;
 import static android.app.Activity.RESULT_OK;
 
 public class ProductFragment extends Fragment implements OnRefreshListener {
-
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     public static State productState;//NOSONAR To be changed ASAP !
     @BindView(R.id.pager)
@@ -75,7 +79,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
         setupViewPager(viewPager);
 
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             viewPager.setNestedScrollingEnabled(true);
         }
 
@@ -97,7 +101,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                 Utils.scan(getActivity());
             }
         });
-        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
+        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
         return view;
     }
 
@@ -126,7 +130,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             mShareActionProvider.setShareIntent(shareIntent);
         }
     }
-
 
     @Override
     public void onRefresh() {
@@ -170,7 +173,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         // without this, the view can be centered vertically on initial show. we force the scroll to top !
         if (adapterResult.getItem(0) instanceof SummaryProductFragment) {
             SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.getItem(0);
-            if(productFragment.scrollView!=null) {
+            if (productFragment.scrollView != null) {
                 productFragment.scrollView.scrollTo(0, 0);
             }
         }

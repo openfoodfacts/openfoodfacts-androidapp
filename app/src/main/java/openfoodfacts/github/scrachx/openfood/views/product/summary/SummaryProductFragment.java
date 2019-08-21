@@ -1,15 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
 import android.app.Activity;
-import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -19,12 +18,17 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroupOverlay;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -35,12 +39,18 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import butterknife.BindView;
-import butterknife.OnClick;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
+import org.apache.commons.lang.StringUtils;
+
+import java.io.File;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
@@ -48,11 +58,42 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.Question;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.views.*;
+import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
+import openfoodfacts.github.scrachx.openfood.utils.QuestionActionListeners;
+import openfoodfacts.github.scrachx.openfood.utils.QuestionDialog;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
+import openfoodfacts.github.scrachx.openfood.views.TipBox;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -60,14 +101,6 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsWithTagDialogFragment;
-
-import org.apache.commons.lang.StringUtils;
-
-import java.io.File;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
@@ -171,6 +204,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean showCategoryPrompt = false;
     private Question productQuestion = null;
     private boolean hasCategoryInsightQuestion = false;
+    private SharedPreferences prefs;
+    private BroadcastReceiver prefChangedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals("action_pref_changed")) {
+                updateAnalysisTags();
+            }
+        }
+    };
 
     @Override
     public void onAttach(Context context) {
@@ -201,25 +243,41 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         refreshView(state);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getContext() != null) {
+            getContext().registerReceiver(prefChangedReceiver, new IntentFilter("action_pref_changed"));
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (getContext() != null) {
+            getContext().unregisterReceiver(prefChangedReceiver);
+        }
+    }
+
     private void showIngredientsWithTag(Product product, String tag, String value) {
         if (getActivity() != null) {
             IngredientsWithTagDialogFragment editNameDialogFragment = IngredientsWithTagDialogFragment.newInstance(product, tag, value);
-            editNameDialogFragment.setOnDismissListener(dialog -> showIngredientAnalysisTags());
             editNameDialogFragment.show(getChildFragmentManager(), "fragment_ingredients_with_tag");
         }
     }
 
-    private void showIngredientAnalysisTags() {
+    public void updateAnalysisTags() {
         if (getActivity() != null) {
+            palmOilIcon.setVisibility(View.GONE);
+            veganIcon.setVisibility(View.GONE);
+            vegetarianIcon.setVisibility(View.GONE);
+            analysisSeparator.setVisibility(View.GONE);
+
             List<String> tags = product.getIngredientsAnalysisTags();
             if (tags == null || tags.size() == 0) {
-                palmOilIcon.setVisibility(View.GONE);
-                veganIcon.setVisibility(View.GONE);
-                vegetarianIcon.setVisibility(View.GONE);
                 return;
             }
 
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
             boolean displayPalmOilStatus = prefs.getBoolean("enablePalmOilStatusDisplay", true);
             boolean displayVegetarianStatus = prefs.getBoolean("enableVegetarianStatusDisplay", true);
             boolean displayVeganStatus = prefs.getBoolean("enableVeganStatusDisplay", true);
@@ -386,7 +444,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             quantityProduct.setVisibility(View.GONE);
         }
 
-        showIngredientAnalysisTags();
+        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        updateAnalysisTags();
 
         if (isNotBlank(product.getBrands())) {
             brandProduct.setClickable(true);

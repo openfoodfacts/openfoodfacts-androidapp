@@ -1,12 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -146,8 +148,10 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                 AppCompatCheckBox cb = getView().findViewById(R.id.cb);
                 cb.setText(rbTextResId);
                 cb.setChecked(prefs.getBoolean(prefKey, true));
-                cb.setOnCheckedChangeListener((buttonView, isChecked) ->
-                    prefs.edit().putBoolean(prefKey, isChecked).apply());
+                cb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    prefs.edit().putBoolean(prefKey, isChecked).apply();
+                    buttonView.getContext().sendBroadcast(new Intent("action_pref_changed"));
+                });
 
                 ((AppCompatTextView) getView().findViewById(R.id.message)).setText(Html.fromHtml(
                     getString(R.string.ingredients_in_this_product, getString(titleResId).toLowerCase()) + ingredientsText));
