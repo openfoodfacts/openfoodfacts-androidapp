@@ -80,4 +80,8 @@
 
     <!--FeedBack Dialog sample color-->
     <color name="sampleColor">#795548</color>
+
+    <color name="monkey_happy">#85bb2f</color>
+    <color name="monkey_uncertain">#fecb02</color>
+    <color name="monkey_sad">#e63e11</color>
 </resources>

@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -28,12 +30,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.FragmentActivity;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
+
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
@@ -52,6 +58,8 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsWithTagDialogFragment;
+
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -190,157 +198,112 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private void showIngredientsWithTag(Product product, String tag, String value) {
         if (getActivity() != null) {
-            ArrayList<String> matchingIngredients = new ArrayList<>();
-            List<LinkedHashMap<String, String>> ingredients = product.getIngredients();
-            for (LinkedHashMap<String, String> ingredient :
-                ingredients) {
-                if (ingredient.containsKey(tag)) {
-                    if (value.equals(ingredient.get(tag))) {
-                        matchingIngredients.add(ingredient.get("text"));
-                    }
-                }
-            }
-
-            if (matchingIngredients.size() > 0) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                    getActivity());
-                int iconResId;
-                int iconColor;
-                int titleResId;
-                switch (tag) {
-                    case "from_palm_oil":
-                        if ("maybe".equals(value)) {
-                            titleResId = R.string.maybe_from_palm_oil;
-                            iconResId = R.drawable.ic_monkey_uncertain;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.orange_400);
-                        } else {
-                            titleResId = R.string.from_palm_oil;
-                            iconResId = R.drawable.ic_monkey_unhappy;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.red_500);
-                        }
-                        break;
-                    case "vegan":
-                        iconResId = R.drawable.ic_leaf;
-                        if ("maybe".equals(value)) {
-                            titleResId = R.string.maybe_vegan;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.orange_400);
-                        } else {
-                            titleResId = R.string.non_vegan;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.red_500);
-                        }
-                        break;
-                    case "vegetarian":
-                        iconResId = R.drawable.ic_egg;
-                        if ("maybe".equals(value)) {
-                            titleResId = R.string.maybe_vegetarian;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.orange_400);
-                        } else {
-                            titleResId = R.string.non_vegetarian;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.red_500);
-                        }
-                        break;
-                    default:
-                        return;
-                }
-
-                StringBuilder text = new StringBuilder(getString(R.string.ingredients_in_this_product, getString(titleResId).toLowerCase()));
-                text.append(" <b>");
-                text.append(matchingIngredients.get(0));
-                for (int i = 1; i < matchingIngredients.size(); ++i) {
-                    text.append(", ");
-                    text.append(matchingIngredients.get(i));
-                }
-                text.append("</b>");
-
-                Dialog dialog = alertDialogBuilder.setTitle(titleResId)
-                    .setIcon(iconResId)
-                    .setMessage(Html.fromHtml(text.toString()))
-                    .setPositiveButton(getString(R.string.close_button), null)
-                    .create();
-                dialog.show();
-                ImageView icon = dialog.findViewById(android.R.id.icon);
-                if (icon != null) {
-                    icon.setColorFilter(iconColor, android.graphics.PorterDuff.Mode.SRC_IN);
-                }
-            }
+            IngredientsWithTagDialogFragment editNameDialogFragment = IngredientsWithTagDialogFragment.newInstance(product, tag, value);
+            editNameDialogFragment.show(getChildFragmentManager(), "fragment_ingredients_with_tag");
         }
     }
 
     private void showIngredientAnalysisTags() {
-        List<String> tags = product.getIngredientsAnalysisTags();
-        if (tags == null || tags.size() == 0) {
-            palmOilIcon.setVisibility(View.GONE);
-            veganIcon.setVisibility(View.GONE);
-            vegetarianIcon.setVisibility(View.GONE);
-            return;
-        }
-
-        tipBox.setTipMessage(getString(R.string.tip_message, getString(R.string.ingredient_analysis_tip)));
-
         if (getActivity() != null) {
+            List<String> tags = product.getIngredientsAnalysisTags();
+            if (tags == null || tags.size() == 0) {
+                palmOilIcon.setVisibility(View.GONE);
+                veganIcon.setVisibility(View.GONE);
+                vegetarianIcon.setVisibility(View.GONE);
+                return;
+            }
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+            boolean displayPalmOilStatus = prefs.getBoolean("enablePalmOilStatusDisplay", true);
+            boolean displayVegetarianStatus = prefs.getBoolean("enableVegetarianStatusDisplay", true);
+            boolean displayVeganStatus = prefs.getBoolean("enableVeganStatusDisplay", true);
+
             for (String tag :
                 tags) {
-                switch (tag) {
-                    case "en:palm-oil-free":
-                        palmOilIcon.setVisibility(View.VISIBLE);
-                        palmOilIcon.setImageResource(R.drawable.ic_monkey_happy);
-                        palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.green_500), android.graphics.PorterDuff.Mode.SRC_IN);
-                        palmOilIcon.setOnClickListener(null);
-                        break;
-                    case "en:may-contain-palm-oil":
-                        palmOilIcon.setVisibility(View.VISIBLE);
-                        palmOilIcon.setImageResource(R.drawable.ic_monkey_happy);
-                        palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.orange_400), android.graphics.PorterDuff.Mode.SRC_IN);
-                        palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "maybe"));
-                        break;
-                    case "en:palm-oil":
-                        palmOilIcon.setVisibility(View.VISIBLE);
-                        palmOilIcon.setImageResource(R.drawable.ic_monkey_unhappy);
-                        palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.red_500), android.graphics.PorterDuff.Mode.SRC_IN);
-                        palmOilIcon.setOnClickListener(v -> {
-                            showIngredientsWithTag(product, "from_palm_oil", "yes");
-                        });
-                        break;
-                    case "en:palm-oil-content-unknown":
+                if (tag.contains("palm")) {
+                    if (!displayPalmOilStatus) {
                         palmOilIcon.setVisibility(View.GONE);
-                        break;
-                    case "en:vegetarian":
-                        vegetarianIcon.setVisibility(View.VISIBLE);
-                        vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.green_500), android.graphics.PorterDuff.Mode.SRC_IN);
-                        vegetarianIcon.setOnClickListener(null);
-                        break;
-                    case "en:maybe-vegetarian":
-                        vegetarianIcon.setVisibility(View.VISIBLE);
-                        vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.orange_400), android.graphics.PorterDuff.Mode.SRC_IN);
-                        vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "maybe"));
-                        break;
-                    case "en:non-vegetarian":
-                        vegetarianIcon.setVisibility(View.VISIBLE);
-                        vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.red_500), android.graphics.PorterDuff.Mode.SRC_IN);
-                        vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "no"));
-                        break;
-                    case "en:vegetarian-status-unknown":
+                    } else {
+                        switch (tag) {
+                            case "en:palm-oil-free":
+                                palmOilIcon.setVisibility(View.VISIBLE);
+                                palmOilIcon.setImageResource(R.drawable.ic_monkey_happy);
+                                palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
+                                palmOilIcon.setOnClickListener(null);
+                                break;
+                            case "en:may-contain-palm-oil":
+                                palmOilIcon.setVisibility(View.VISIBLE);
+                                palmOilIcon.setImageResource(R.drawable.ic_monkey_happy);
+                                palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
+                                palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "maybe"));
+                                break;
+                            case "en:palm-oil":
+                                palmOilIcon.setVisibility(View.VISIBLE);
+                                palmOilIcon.setImageResource(R.drawable.ic_monkey_unhappy);
+                                palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
+                                palmOilIcon.setOnClickListener(v -> {
+                                    showIngredientsWithTag(product, "from_palm_oil", "yes");
+                                });
+                                break;
+                            default:
+                                palmOilIcon.setVisibility(View.GONE);
+                        }
+                    }
+                } else if (tag.contains("vegetarian")) {
+                    if (!displayVegetarianStatus) {
                         vegetarianIcon.setVisibility(View.GONE);
-                        break;
-                    case "en:vegan":
-                        veganIcon.setVisibility(View.VISIBLE);
-                        veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.green_500), android.graphics.PorterDuff.Mode.SRC_IN);
-                        veganIcon.setOnClickListener(null);
-                        break;
-                    case "en:maybe-vegan":
-                        veganIcon.setVisibility(View.VISIBLE);
-                        veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.orange_400), android.graphics.PorterDuff.Mode.SRC_IN);
-                        veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "maybe"));
-                        break;
-                    case "en:non-vegan":
-                        veganIcon.setVisibility(View.VISIBLE);
-                        veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.red_500), android.graphics.PorterDuff.Mode.SRC_IN);
-                        veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "no"));
-                        break;
-                    case "en:vegan-status-unknown":
+                    } else {
+                        switch (tag) {
+                            case "en:vegetarian":
+                                vegetarianIcon.setVisibility(View.VISIBLE);
+                                vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
+                                vegetarianIcon.setOnClickListener(null);
+                                break;
+                            case "en:maybe-vegetarian":
+                                vegetarianIcon.setVisibility(View.VISIBLE);
+                                vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
+                                vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "maybe"));
+                                break;
+                            case "en:non-vegetarian":
+                                vegetarianIcon.setVisibility(View.VISIBLE);
+                                vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
+                                vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "no"));
+                                break;
+                            default:
+                                vegetarianIcon.setVisibility(View.GONE);
+                        }
+                    }
+                } else if (tag.contains("vegan")) {
+                    if (!displayVeganStatus) {
                         veganIcon.setVisibility(View.GONE);
-                        break;
+                    } else {
+                        switch (tag) {
+                            case "en:vegan":
+                                veganIcon.setVisibility(View.VISIBLE);
+                                veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
+                                veganIcon.setOnClickListener(null);
+                                break;
+                            case "en:maybe-vegan":
+                                veganIcon.setVisibility(View.VISIBLE);
+                                veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
+                                veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "maybe"));
+                                break;
+                            case "en:non-vegan":
+                                veganIcon.setVisibility(View.VISIBLE);
+                                veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
+                                veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "no"));
+                                break;
+                            default:
+                                veganIcon.setVisibility(View.GONE);
+                        }
+                    }
                 }
+            }
+
+            if (palmOilIcon.getVisibility() == View.VISIBLE || vegetarianIcon.getVisibility() == View.VISIBLE || veganIcon.getVisibility() == View.VISIBLE) {
+                tipBox.setTipMessage(getString(R.string.tip_message, getString(R.string.ingredient_analysis_tip)));
+            } else {
+                tipBox.setTipMessage(getString(R.string.tip_message, getString(R.string.ingredient_analysis_tip)));
             }
         }
     }

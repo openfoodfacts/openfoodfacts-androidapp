@@ -34,5 +34,11 @@
         <attr name="message" format="string" />
         <attr name="identifier" format="string" />
         <attr name="arrowMarginStart" format="dimension" />
+        <attr name="arrowMarginEnd" format="dimension" />
+        <attr name="arrowAlignment" format="string">
+            <flag name="start" value="8388611" />
+            <flag name="center" value="1" />
+            <flag name="end" value="8388613" />
+        </attr>
     </declare-styleable>
 </resources>

@@ -78,6 +78,27 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/preference_header_display" android:summary="">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="enablePalmOilStatusDisplay"
+            android:summaryOff="@string/preference_display_palm_oil_status_summary_off"
+            android:summaryOn="@string/preference_display_palm_oil_status_summary_on"
+            android:title="@string/preference_display_palm_oil_status" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="enableVegetarianStatusDisplay"
+            android:summaryOff="@string/preference_display_vegetarian_status_summary_off"
+            android:summaryOn="@string/preference_display_vegetarian_status_summary_on"
+            android:title="@string/preference_display_vegetarian_status" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="enableVeganStatusDisplay"
+            android:summaryOff="@string/preference_display_vegan_status_summary_off"
+            android:summaryOn="@string/preference_display_vegan_status_summary_on"
+            android:title="@string/preference_display_vegan_status" />
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/preference_header_contributing" android:summary="">
 
         <Preference

@@ -225,13 +225,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_normal">
 
                 <openfoodfacts.github.scrachx.openfood.views.TipBox
                     android:id="@+id/tipBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:arrowMarginStart="@dimen/spacing_normal"
+                    app:arrowAlignment="start"
+                    app:arrowMarginStart="0dp"
                     app:identifier="ingredient_analysis_tip_box" />
 
                 <ImageView
@@ -239,21 +241,8 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_below="@id/tipBox"
-                    android:layout_marginStart="@dimen/spacing_normal"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:tint="@color/green_500"
+                    android:tint="@color/monkey_happy"
                     app:srcCompat="@drawable/ic_monkey_happy"
-                    tools:ignore="ContentDescription" />
-
-                <ImageView
-                    android:id="@+id/veganIcon"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_below="@id/tipBox"
-                    android:layout_toEndOf="@id/palmOilIcon"
-                    android:layout_toRightOf="@id/palmOilIcon"
-                    android:tint="@color/green_500"
-                    app:srcCompat="@drawable/ic_leaf"
                     tools:ignore="ContentDescription" />
 
                 <ImageView
@@ -261,10 +250,21 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_below="@id/tipBox"
-                    android:layout_toEndOf="@id/veganIcon"
-                    android:layout_toRightOf="@id/veganIcon"
-                    android:tint="@color/green_500"
+                    android:layout_toEndOf="@id/palmOilIcon"
+                    android:layout_toRightOf="@id/palmOilIcon"
+                    android:tint="@color/monkey_happy"
                     app:srcCompat="@drawable/ic_egg"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/veganIcon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/tipBox"
+                    android:layout_toEndOf="@id/vegetarianIcon"
+                    android:layout_toRightOf="@id/vegetarianIcon"
+                    android:tint="@color/monkey_happy"
+                    app:srcCompat="@drawable/ic_leaf"
                     tools:ignore="ContentDescription" />
             </RelativeLayout>
 
