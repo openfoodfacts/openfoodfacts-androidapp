@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
@@ -145,10 +146,10 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
 
                 ((AppCompatTextView) getView().findViewById(R.id.title)).setText(titleResId);
 
-                AppCompatCheckBox cb = getView().findViewById(R.id.cb);
-                cb.setText(rbTextResId);
-                cb.setChecked(prefs.getBoolean(prefKey, true));
-                cb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                SwitchCompat sc = getView().findViewById(R.id.cb);
+                sc.setText(rbTextResId);
+                sc.setChecked(prefs.getBoolean(prefKey, true));
+                sc.setOnCheckedChangeListener((buttonView, isChecked) -> {
                     prefs.edit().putBoolean(prefKey, isChecked).apply();
                     buttonView.getContext().sendBroadcast(new Intent("action_pref_changed"));
                 });

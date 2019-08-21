@@ -21,8 +21,8 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="@dimen/padding_normal"
+        android:layout_marginLeft="@dimen/padding_normal"
         android:lines="1"
         android:textSize="@dimen/font_large"
         android:textStyle="bold"
@@ -30,33 +30,33 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Non-Vegan" />
 
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_large"
+        android:checked="true"
+        android:textSize="@dimen/font_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="@string/preference_display_vegan_status" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/padding_large"
         android:textSize="@dimen/font_normal"
-        app:layout_constraintTop_toBottomOf="@id/title" />
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:checked="true"
-        android:textSize="@dimen/font_normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/message"
-        tools:text="@string/preference_display_vegan_status" />
+        app:layout_constraintTop_toBottomOf="@id/cb" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/close"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/padding_normal"
         android:text="@string/close_button"
         android:textSize="@dimen/font_normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cb" />
+        app:layout_constraintTop_toBottomOf="@id/message" />
 </androidx.constraintlayout.widget.ConstraintLayout>
