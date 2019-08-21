@@ -216,12 +216,12 @@
                         android:text="@string/product_summary_action_share_button_label" />
                 </LinearLayout>
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View style="@style/HorizontalLineSeparator" />
 
             <RelativeLayout
+                android:id="@+id/analysisContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -268,7 +268,9 @@
                     tools:ignore="ContentDescription" />
             </RelativeLayout>
 
-            <View style="@style/HorizontalLineSeparator" />
+            <View
+                android:id="@+id/analysisSeparator"
+                style="@style/HorizontalLineSeparator" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/scores_layout"

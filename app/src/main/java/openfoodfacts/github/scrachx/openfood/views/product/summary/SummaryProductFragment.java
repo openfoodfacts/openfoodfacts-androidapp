@@ -19,6 +19,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroupOverlay;
 import android.widget.*;
 
 import androidx.annotation.NonNull;
@@ -146,6 +147,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     ImageView vegetarianIcon;
     @BindView(R.id.tipBox)
     TipBox tipBox;
+    @BindView(R.id.analysisContainer)
+    View analysisContainer;
+    @BindView(R.id.analysisSeparator)
+    View analysisSeparator;
     private State state;
     private Product product;
     private OpenFoodAPIClient api;
@@ -199,6 +204,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void showIngredientsWithTag(Product product, String tag, String value) {
         if (getActivity() != null) {
             IngredientsWithTagDialogFragment editNameDialogFragment = IngredientsWithTagDialogFragment.newInstance(product, tag, value);
+            editNameDialogFragment.setOnDismissListener(dialog -> showIngredientAnalysisTags());
             editNameDialogFragment.show(getChildFragmentManager(), "fragment_ingredients_with_tag");
         }
     }
@@ -301,9 +307,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
 
             if (palmOilIcon.getVisibility() == View.VISIBLE || vegetarianIcon.getVisibility() == View.VISIBLE || veganIcon.getVisibility() == View.VISIBLE) {
+                analysisContainer.setVisibility(View.VISIBLE);
+                analysisSeparator.setVisibility(View.VISIBLE);
                 tipBox.setTipMessage(getString(R.string.tip_message, getString(R.string.ingredient_analysis_tip)));
             } else {
-                tipBox.setTipMessage(getString(R.string.tip_message, getString(R.string.ingredient_analysis_tip)));
+                analysisContainer.setVisibility(View.GONE);
+                analysisSeparator.setVisibility(View.GONE);
             }
         }
     }
