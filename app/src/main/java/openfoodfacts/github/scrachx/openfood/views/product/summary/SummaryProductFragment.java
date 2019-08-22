@@ -266,7 +266,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    public void updateAnalysisTags() {
+    private void updateAnalysisTags() {
         if (getActivity() != null) {
             palmOilIcon.setVisibility(View.GONE);
             veganIcon.setVisibility(View.GONE);

@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,11 +7,9 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SwitchCompat;
@@ -29,7 +26,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 
 public class IngredientsWithTagDialogFragment extends DialogFragment {
     private SharedPreferences prefs;
-    private DialogInterface.OnDismissListener onDismissListener;
 
     public static IngredientsWithTagDialogFragment newInstance(Product product, String tag, String value) {
         IngredientsWithTagDialogFragment frag = new IngredientsWithTagDialogFragment();
@@ -69,10 +65,6 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         return text.toString();
     }
 
-    public void setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {
-        this.onDismissListener = onDismissListener;
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -84,8 +76,6 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         super.onActivityCreated(savedInstanceState);
 
         if (getActivity() != null) {
-            getDialog().setOnDismissListener(onDismissListener);
-
             prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
             String ingredientsText = getArguments().getString("ingredients");
