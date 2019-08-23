@@ -224,6 +224,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="msg_share">Zobacz produkt w Open Food Facts :</string>
     <string name="create_account">Zarejestruj się</string>
     <string name="home_drawer">Strona główna</string>
+    <string name="install">Zainstaluj</string>
     <string name="search_drawer">Poszukiwanie</string>
     <string name="search_by_barcode_drawer">Wpisz kod kreskowy</string>
     <string name="category_drawer">Kategorie</string>
@@ -700,6 +701,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="settings_country_summary">Zmień kraj</string>
     <string name="settings_country_title">Kraj</string>
     <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Dodaj produkty</string>
     <string name="add_another_product">Dodaj kolejny produkt</string>

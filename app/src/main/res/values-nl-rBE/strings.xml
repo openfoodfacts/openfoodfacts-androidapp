@@ -194,6 +194,7 @@
     <string name="msg_share">Bekijk dit product op Open Food Facts</string>
     <string name="create_account">Inschrijven</string>
     <string name="home_drawer">Hoofdmenu</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Zoek</string>
     <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
     <string name="category_drawer">Categorieën</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Wijzig je geselecteerde land</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dit product bevat geen voedingswaarde-informatie op de verpakking. Als dit is veranderd, kan je het product bewerken.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
     <string name="add_another_product">Voeg een nieuw product toe</string>

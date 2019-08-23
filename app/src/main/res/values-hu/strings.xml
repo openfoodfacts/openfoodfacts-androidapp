@@ -194,6 +194,7 @@
     <string name="msg_share">Nézze meg a terméket az Open Food Facts adatbázisában:</string>
     <string name="create_account">Regisztráció</string>
     <string name="home_drawer">Kezdőlap</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Keres</string>
     <string name="search_by_barcode_drawer">Keresés vonalkód alapján</string>
     <string name="category_drawer">Kategóriák</string>
@@ -669,6 +670,8 @@
     <string name="settings_country_summary">Változtassa meg a kiválasztott országot</string>
     <string name="settings_country_title">Ország</string>
     <string name="txt_no_nutrition_data">Ez a termék nem tartalmaz tápértéketadatokat a csomagoláson. Ha ez megváltozott, akkor szerkessze a terméket.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Termékek hozzáadása</string>
     <string name="add_another_product">Újabb termék hozzáadása</string>
