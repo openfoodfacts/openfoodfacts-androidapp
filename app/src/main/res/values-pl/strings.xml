@@ -268,7 +268,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="text_clear_history_dialog">Czy chcesz wyczyścić historię skanowania?</string>
     <string name="export_csv_history">Eksport CSV</string>
     <string name="txt_exporting_history">Eksport historii…</string>
-    <string name="txt_history_exported">Eksportowano historię</string>
+    <string name="txt_history_exported">Wyeksportowano historię</string>
     <string name="permision_write_external_storage">Aby uzyskać historię eksportu, konieczne jest zapisanie zewnętrznej pamięci masowej.</string>
     <string name="no_brand">Brak marki</string>
     <string name="no_title">Brak tytułu</string>
@@ -344,7 +344,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="vitamin_d">Witamina D</string>
     <string name="vitamin_e">Witamina E</string>
     <string name="vitamin_k">Witamina K</string>
-    <string name="vitamin_c">Witamina C</string>
+    <string name="vitamin_c">Witamina C (kwas askorbinowy)</string>
     <string name="vitamin_b1">Witamina B1</string>
     <string name="vitamin_b2">Witamina B2</string>
     <string name="vitamin_pp">Witamina B3 (Witamina PP)</string>
@@ -544,9 +544,9 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="preferences">Ustawienia</string>
     <string name="OFFlogo">Logo Open Food Facts</string>
     <string name="loading_product">Ładowanie Produktu %s</string>
-    <string name="image_not_defined_for_language">Brak zdjęć produktu dla wybranego języka. Możesz dodać nowy</string>
+    <string name="image_not_defined_for_language">Brak zdjęć produktu dla wybranego języka. Możesz dodać nowe</string>
     <string name="error_adding_ingredients">Coś poszło nie tak podczas próby dodania składników produktu</string>
-    <string name="unable_to_extract_ingredients">Nie można wydobyć składników z obrazu</string>
+    <string name="unable_to_extract_ingredients">Nie można wyodrębnić składników z obrazu</string>
     <string name="error_adding_nutrition_facts">Coś poszło nie tak podczas próby dodania faktów żywieniowych produktu</string>
     <string name="error_in_carbohydrate_value">Węglowodany nie mogą wynosić mniej niż suma cukru i skrobi</string>
     <string name="choose_nutrient">Wybierz składnik odżywczy</string>
@@ -573,11 +573,11 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="please_wait">Proszę czekać</string>
     <string name="product_uploaded_successfully">Produkt przesłany pomyślnie</string>
     <string name="no_internet_connection">Wygląda na to, że nie masz połączenia z Internetem, zdjęcia zostaną przesłane, gdy sieć będzie dostępna</string>
-    <string name="no_internet_unable_to_extract_ingredients">Brak połączenia z Internetem. Niemożliwe do ekstrakcji składniki</string>
+    <string name="no_internet_unable_to_extract_ingredients">Brak połączenia z internetem. Nie można wyodrębnić składników</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Przegląd</string>
     <string name="ingredients">Składniki</string>
-    <string name="nutrition_facts">Fakty żywieniowe</string>
+    <string name="nutrition_facts">Wartość odżywcza</string>
     <string name="your_version">Twoje</string>
     <string name="ingredients_picture">Zdjęcie składników</string>
     <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
@@ -701,7 +701,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="settings_country_summary">Zmień kraj</string>
     <string name="settings_country_title">Kraj</string>
     <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <string name="image_prompt_language">Zrób zdjęcie składników</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Dodaj produkty</string>
@@ -734,7 +734,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="barcode">Kod kreskowy</string>
     <string name="productAdditivesNone">Bez dodatków</string>
     <string name="error_uploading_photo">W czasie przesyłania nowego zdjęcia wystąpił błąd</string>
-    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="import_csv_to_list">Pobierz z Open Food Facts plik CSV</string>
     <string name="toast_import_csv_error">Błąd podczas importowania pliku CSV</string>
     <string name="toast_import_csv">Importowanie CSV zakończone pomyślnie!</string>
     <string name="open_csv">Otwórz CSV</string>
