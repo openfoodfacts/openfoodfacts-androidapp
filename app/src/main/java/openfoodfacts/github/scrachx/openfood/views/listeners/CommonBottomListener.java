@@ -33,6 +33,7 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
         switch (item.getItemId()) {
             case R.id.scan_bottom_nav:
                 if(isCurrentActivity(ContinuousScanActivity.class)){
+                    ((ContinuousScanActivity)activity).collapseBottomSheet();
                     break;
                 }
                 if (Utils.isHardwareCameraInstalled(context)) {
