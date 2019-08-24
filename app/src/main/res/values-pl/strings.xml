@@ -522,7 +522,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="txtDialogsTitle">Informacje</string>
     <string name="preference_show_all_product_photos_title">Pokaż wszystkie zdjęcia produktu</string>
     <string name="preference_show_all_product_photos_summary">Pokaż wszystkie przesłane zdjęcia produktów w oddzielnej karcie</string>
-    <string name="offline_product_addition_title">Dodać nowy produkt</string>
+    <string name="offline_product_addition_title">Dodawanie nowego produktu</string>
     <string name="productNameNull">Nazwa nieznana</string>
     <string name="productAdditivesUnknown">Nieznane dodatki</string>
     <string name="productAdditivesTemplate">%1$d dodatków</string>
@@ -582,7 +582,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="ingredients_picture">Zdjęcie składników</string>
     <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
     <string name="ingredients_list">Lista składników</string>
-    <string name="ingredients_hint">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składników, oznacz alergeny za pomocą _</string>
+    <string name="ingredients_hint">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
     <string name="extract_ingredients">Wyodrębnij składniki</string>
     <string name="extracting_ingredients">Wyodrębnianie składników</string>
     <string name="looksGood">Wygląda dobrze</string>
