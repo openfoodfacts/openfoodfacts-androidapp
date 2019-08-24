@@ -495,7 +495,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="sorry_msg">Aplikacje nie dodaje obrazów bez kodu kreskowego. Spróbuj w wersji mobilnej.</string>
     <string name="no_barcode">Nie odnaleziono kodu kreskowego</string>
     <string name="enter_barcode">Wprowadź poniżej kod kreskowy</string>
-    <string name="format_error">Błędny kod kreskowy/QR</string>
+    <string name="format_error">Niepoprawny format kodu kreskowego/QR</string>
     <string name="code_detected">Wykryto kod kreskowy</string>
     <string name="do_you_want_to">Czy chcesz dodać zdjęcia do kodu kreskowego?</string>
     <string name="bottomNav_history">Historia</string>
