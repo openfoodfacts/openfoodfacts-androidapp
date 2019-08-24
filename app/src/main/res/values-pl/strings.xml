@@ -118,7 +118,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
         <item>Fruktoza</item>
         <item>Kwas gamma-linolenowy / GLA (18: 3 n-6)</item>
         <item>Glukoza</item>
-        <item>Kwas gantoinowy (20: 1 n-9)</item>
+        <item>Kwas gondoinowy (20:1 n-9)</item>
         <item>Jod</item>
         <item>Żelazo</item>
         <item>Laktoza</item>
@@ -185,8 +185,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="txtSubstances">Substancje lub produkty wywołujące alergie lub nietolerancje :</string>
     <string name="txtAdditives">Dodatki :</string>
     <string name="txtTraces">Ilości śladowe :</string>
-    <string name="txtMayBeFromPalmOilProduct">Składniki pochodzące z oleju palmowego :</string>
-    <string name="txtPalmOilProduct">Składniki z oleju palmowego :</string>
+    <string name="txtMayBeFromPalmOilProduct">Składniki, które mogą pochodzić z oleju palmowego:</string>
+    <string name="txtPalmOilProduct">Składniki pochodzące z oleju palmowego :</string>
     <string name="txtServingSize">Porcja :</string>
     <string name="txtNutrientLevel100g">Wartość odżywcza w 100g :</string>
     <string name="txtNutrientLevel100ml">Wartość odżywcza w 100 ml :</string>
