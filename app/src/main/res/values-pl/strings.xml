@@ -55,7 +55,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="action_discover">Odkryj</string>
     <string name="contribute">Jak mogę pomóc</string>
     <string name="action_find">Znajdź</string>
-    <string name="product_incomplete_message">Produkt jest niekompletny. W wyniku tego nie mogliśmy sktontrolować alergeny.</string>
+    <string name="product_incomplete_message">Lista składników tego produktu nie jest kompletna. Wobec czego ostrzeżenie o alergenach nie jest wyświetlane.</string>
     <string name="product_allergen_prompt">Produkt zawiera:</string>
     <string name="no_offline_data">Wszystko gotowe</string>
     <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
