@@ -426,7 +426,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="device_on_mobile_data_warning_negative">Przesyłaj mimo to</string>
     <string name="changes_saved">Zmiany zostały zapisane</string>
     <string name="preference_choose_language_dialog_title">Wybierz język</string>
-    <string name="FAQ">Odpowiedzi na najczęstsze pytania</string>
+    <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Często zadawane pytania</string>
     <string name="translate_help_title">Wspomóż tłumaczenie Open Food Facts</string>
     <string name="translate_help_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
@@ -447,7 +447,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="log_in">Logowanie</string>
     <string name="login_true">Jesteś już zalogowany.</string>
     <string name="confirm_logout">Potwierdź wylogowanie się</string>
-    <string name="logout_dialog_content">Czy na pewno chcesz wylogować się?</string>
+    <string name="logout_dialog_content">Czy na pewno chcesz się wylogować?</string>
     <string name="dialog_cancel">Anuluj</string>
     <string name="dialog_create">Stwórz</string>
     <string name="choose_resolution">Wybierz rozdzielczość</string>
