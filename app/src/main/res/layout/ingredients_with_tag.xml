@@ -49,6 +49,16 @@
         android:textSize="@dimen/font_normal"
         app:layout_constraintTop_toBottomOf="@id/cb" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/helpTranslate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:layout_marginTop="@dimen/padding_large"
+        android:text="@string/help_translate_ingredients"
+        android:textSize="@dimen/font_small"
+        app:layout_constraintTop_toBottomOf="@id/message" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/close"
         style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -58,5 +68,6 @@
         android:text="@string/close_button"
         android:textSize="@dimen/font_normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/message" />
+        app:layout_constraintTop_toBottomOf="@id/helpTranslate" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

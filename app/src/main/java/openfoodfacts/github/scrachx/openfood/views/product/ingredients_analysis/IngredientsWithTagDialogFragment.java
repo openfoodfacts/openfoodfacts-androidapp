@@ -1,9 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.text.style.URLSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
@@ -23,6 +29,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 
 public class IngredientsWithTagDialogFragment extends DialogFragment {
     private SharedPreferences prefs;
@@ -88,6 +95,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             int rbTextResId;
             String messageStr = null;
             String prefKey;
+            boolean showHelpTranslate = false;
             switch (tag) {
                 case "from_palm_oil":
                     if ("maybe".equals(value)) {
@@ -99,6 +107,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                         iconResId = R.drawable.ic_monkey_uncertain;
                         iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
                         messageStr = getString(R.string.unknown_palm_oil_status);
+                        showHelpTranslate = true;
                     } else if ("yes".equals(value)) {
                         titleResId = R.string.from_palm_oil;
                         iconResId = R.drawable.ic_monkey_unhappy;
@@ -121,6 +130,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                         titleResId = R.string.unknown_vegetarian;
                         iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
                         messageStr = getString(R.string.unknown_vegetarian_status);
+                        showHelpTranslate = true;
                     } else if ("no".equals(value)) {
                         titleResId = R.string.non_vegetarian;
                         iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_sad);
@@ -141,6 +151,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                         titleResId = R.string.unknown_vegan;
                         iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
                         messageStr = getString(R.string.unknown_vegan_status);
+                        showHelpTranslate = true;
                     } else if ("no".equals(value)) {
                         titleResId = R.string.non_vegan;
                         iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_sad);
@@ -175,6 +186,26 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             }
             AppCompatTextView message = getView().findViewById(R.id.message);
             message.setText(Html.fromHtml(messageStr));
+
+            AppCompatTextView helpTranslate = getView().findViewById(R.id.helpTranslate);
+            if (showHelpTranslate) {
+                helpTranslate.setOnClickListener(v -> {
+                    CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
+                    CustomTabActivityHelper.openCustomTab(
+                        getActivity(),// activity
+                        customTabsIntent,
+                        Uri.parse(getString(R.string.help_translate_ingredients_link)),
+                        (activity, uri) -> {
+                            Intent i = new Intent(Intent.ACTION_VIEW);
+                            i.setData(uri);
+                            activity.startActivity(i);
+                        }
+                    );
+                });
+                helpTranslate.setVisibility(View.VISIBLE);
+            } else {
+                helpTranslate.setVisibility(View.GONE);
+            }
 
             getView().findViewById(R.id.close).setOnClickListener(v -> dismiss());
         }

@@ -376,6 +376,8 @@
         <item>image_nutrition_url</item>
     </string-array>
 
+    <string name="help_translate_ingredients_link" translatable="false">https://world-ro.openfoodfacts.org/ingredients?translate=1</string>
+
     <!-- Content Description -->
 
     <string name="search_button">Search</string>
@@ -1020,4 +1022,5 @@
     <string name="preference_display_vegan_status">Display vegan status</string>
     <string name="preference_display_vegan_status_summary_on">Display vegan status in product overview</string>
     <string name="preference_display_vegan_status_summary_off">Hide vegan status in product overview</string>
+    <string name="help_translate_ingredients"><u>Help translate the ingredients in your language</u></string>
 </resources>
