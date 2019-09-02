@@ -194,6 +194,7 @@
     <string name="msg_share">Κοιτάξτε αυτό το προϊόν στο Open Food Facts:</string>
     <string name="create_account">Εγγραφείτε</string>
     <string name="home_drawer">Αρχική</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Αναζήτηση</string>
     <string name="search_by_barcode_drawer">Πληκτρολογήστε barcode</string>
     <string name="category_drawer">Κατηγορίες</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Αλλάξτε την επιλεγμένη χώρα σας</string>
     <string name="settings_country_title">Χώρα</string>
     <string name="txt_no_nutrition_data">Το προϊόν αυτό δεν περιέχει πληροφορίες διατροφής στη συσκευασία. Αν αυτό Δεν ισχύει, μπορείτε να επεξεργαστείτε το προϊόν.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>

@@ -194,6 +194,7 @@
     <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
     <string name="create_account">Registrera</string>
     <string name="home_drawer">Hem</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Sök</string>
     <string name="search_by_barcode_drawer">Sök med streckkod</string>
     <string name="category_drawer">Kategorier</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Lägg till produkter</string>
     <string name="add_another_product">Add another product</string>

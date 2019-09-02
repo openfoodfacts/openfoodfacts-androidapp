@@ -204,6 +204,7 @@
     <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
     <string name="create_account">Регистрация</string>
     <string name="home_drawer">Главная</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Поиск</string>
     <string name="search_by_barcode_drawer">Поиск по штрих-коду</string>
     <string name="category_drawer">Категории</string>
@@ -679,6 +680,8 @@
     <string name="settings_country_summary">Изменить выбранную страну</string>
     <string name="settings_country_title">Страна</string>
     <string name="txt_no_nutrition_data">Этот продукт не имеет никакой информации о питании на упаковке. Если это изменилось, вы можете отредактировать продукт.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Добавить продукты</string>
     <string name="add_another_product">Добавить другой продукт</string>

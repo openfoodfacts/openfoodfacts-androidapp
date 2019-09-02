@@ -194,6 +194,7 @@
     <string name="msg_share">Guarda questo prodotto su Open Food Facts</string>
     <string name="create_account">Registrati</string>
     <string name="home_drawer">Homepage</string>
+    <string name="install">Installa</string>
     <string name="search_drawer">Cerca</string>
     <string name="search_by_barcode_drawer">Digita codice a barre</string>
     <string name="category_drawer">Categorie</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Cambia il tuo paese selezionato</string>
     <string name="settings_country_title">Paese</string>
     <string name="txt_no_nutrition_data">Questo prodotto non ha alcuna informazione nutrizionale sulla confezione. Se questo è cambiato, puoi modificare il prodotto.</string>
+    <string name="image_prompt_language">Scatta una foto degli ingredienti in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Inserisci prodotti</string>
     <string name="add_another_product">Aggiungi un altro prodotto</string>

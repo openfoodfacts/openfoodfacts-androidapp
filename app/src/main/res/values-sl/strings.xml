@@ -204,6 +204,7 @@
     <string name="msg_share">Poglej ta izdelek na dejstvih o odprtih živilih:</string>
     <string name="create_account">Prijava</string>
     <string name="home_drawer">Domov</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Iskanje</string>
     <string name="search_by_barcode_drawer">Vnesite črtno kodo</string>
     <string name="category_drawer">Kategorije</string>
@@ -656,8 +657,8 @@
     <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
     <string name="fast_addition_mode_title">Način za hitro dodajanje</string>
     <string name="fast_addition_mode">Omogoča hitro dodajanje izdelkov z manj atributi</string>
-    <string name="crop_new_image_title">Crop new images</string>
-    <string name="crop_new_image">Enables crop action on new images</string>
+    <string name="crop_new_image_title">Obreži nove slike</string>
+    <string name="crop_new_image">Omogoča obrezovanje novih slik</string>
     <string name="addtive_search">Poiščite dodatek</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->
@@ -679,11 +680,13 @@
     <string name="settings_country_summary">Spremenite izbrano državo</string>
     <string name="settings_country_title">Država</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add products</string>
+    <string name="add_product">Dodaj izdelke</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Dodajte prehranska dejstva za izračun Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_compare_button_label">Primerjaj</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Uredi</string>
     <string name="product_summary_action_share_button_label">Deli</string>
