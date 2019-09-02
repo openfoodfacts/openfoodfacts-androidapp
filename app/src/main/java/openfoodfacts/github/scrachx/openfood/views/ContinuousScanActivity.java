@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.app.ActionBar;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -160,7 +159,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     private int peekLarge;
     private int peekSmall;
     private boolean isAnalysisTagsEmpty = true;
-    private SharedPreferences prefs;
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
@@ -224,9 +222,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         Iterator itr = tags.iterator();
         while (itr.hasNext()) {
             String tag = (String) itr.next();
-            if (tag.contains("unknown")) {
-                itr.remove();
-            } else if (tag.contains("palm") && !displayPalmOilStatus) {
+            if (tag.contains("palm") && !displayPalmOilStatus) {
                 itr.remove();
             } else if (tag.contains("vegetarian") && !displayVegetarianStatus) {
                 itr.remove();
@@ -605,8 +601,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
         peekLarge = getResources().getDimensionPixelSize(R.dimen.scan_summary_peek_large);
         peekSmall = getResources().getDimensionPixelSize(R.dimen.scan_summary_peek_small);
-
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         Intent intent = new Intent(this, MainActivity.class);
 

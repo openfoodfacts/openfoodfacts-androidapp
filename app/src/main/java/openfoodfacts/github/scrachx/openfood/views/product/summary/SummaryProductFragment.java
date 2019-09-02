@@ -293,11 +293,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 palmOilIcon.setVisibility(View.VISIBLE);
                                 palmOilIcon.setImageResource(R.drawable.ic_monkey_happy);
                                 palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
-                                palmOilIcon.setOnClickListener(null);
+                                palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "no"));
                                 break;
                             case "en:may-contain-palm-oil":
                                 palmOilIcon.setVisibility(View.VISIBLE);
-                                palmOilIcon.setImageResource(R.drawable.ic_monkey_happy);
+                                palmOilIcon.setImageResource(R.drawable.ic_monkey_uncertain);
                                 palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
                                 palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "maybe"));
                                 break;
@@ -305,12 +305,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 palmOilIcon.setVisibility(View.VISIBLE);
                                 palmOilIcon.setImageResource(R.drawable.ic_monkey_unhappy);
                                 palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
-                                palmOilIcon.setOnClickListener(v -> {
-                                    showIngredientsWithTag(product, "from_palm_oil", "yes");
-                                });
+                                palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "yes"));
                                 break;
                             default:
-                                palmOilIcon.setVisibility(View.GONE);
+                                palmOilIcon.setVisibility(View.VISIBLE);
+                                palmOilIcon.setImageResource(R.drawable.ic_monkey_uncertain);
+                                palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
+                                palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "unknown"));
                         }
                     }
                 } else if (tag.contains("vegetarian")) {
@@ -321,7 +322,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                             case "en:vegetarian":
                                 vegetarianIcon.setVisibility(View.VISIBLE);
                                 vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
-                                vegetarianIcon.setOnClickListener(null);
+                                vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "yes"));
                                 break;
                             case "en:maybe-vegetarian":
                                 vegetarianIcon.setVisibility(View.VISIBLE);
@@ -334,7 +335,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "no"));
                                 break;
                             default:
-                                vegetarianIcon.setVisibility(View.GONE);
+                                vegetarianIcon.setVisibility(View.VISIBLE);
+                                vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
+                                vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "unknown"));
                         }
                     }
                 } else if (tag.contains("vegan")) {
@@ -345,7 +348,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                             case "en:vegan":
                                 veganIcon.setVisibility(View.VISIBLE);
                                 veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
-                                veganIcon.setOnClickListener(null);
+                                veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "yes"));
                                 break;
                             case "en:maybe-vegan":
                                 veganIcon.setVisibility(View.VISIBLE);
@@ -358,7 +361,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                 veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "no"));
                                 break;
                             default:
-                                veganIcon.setVisibility(View.GONE);
+                                veganIcon.setVisibility(View.VISIBLE);
+                                veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
+                                veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "unknown"));
                         }
                     }
                 }

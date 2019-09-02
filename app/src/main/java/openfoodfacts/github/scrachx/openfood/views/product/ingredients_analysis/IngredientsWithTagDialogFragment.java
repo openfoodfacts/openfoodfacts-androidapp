@@ -82,72 +82,101 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             String tag = getArguments().getString("tag");
             String value = getArguments().getString("value");
 
-            if (ingredientsText != null) {
-                int iconResId;
-                int iconColor;
-                int titleResId;
-                int rbTextResId;
-                String prefKey;
-                switch (tag) {
-                    case "from_palm_oil":
-                        if ("maybe".equals(value)) {
-                            titleResId = R.string.maybe_from_palm_oil;
-                            iconResId = R.drawable.ic_monkey_uncertain;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.orange_400);
-                        } else {
-                            titleResId = R.string.from_palm_oil;
-                            iconResId = R.drawable.ic_monkey_unhappy;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.red_500);
-                        }
-                        rbTextResId = R.string.preference_display_palm_oil_status;
-                        prefKey = "enablePalmOilStatusDisplay";
-                        break;
-                    case "vegetarian":
-                        iconResId = R.drawable.ic_egg;
-                        if ("maybe".equals(value)) {
-                            titleResId = R.string.maybe_vegetarian;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.orange_400);
-                        } else {
-                            titleResId = R.string.non_vegetarian;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.red_500);
-                        }
-                        rbTextResId = R.string.preference_display_vegetarian_status;
-                        prefKey = "enableVegetarianStatusDisplay";
-                        break;
-                    case "vegan":
-                        iconResId = R.drawable.ic_leaf;
-                        if ("maybe".equals(value)) {
-                            titleResId = R.string.maybe_vegan;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.orange_400);
-                        } else {
-                            titleResId = R.string.non_vegan;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.red_500);
-                        }
-                        rbTextResId = R.string.preference_display_vegan_status;
-                        prefKey = "enableVeganStatusDisplay";
-                        break;
-                    default:
-                        return;
-                }
-
-                AppCompatImageView icon = getView().findViewById(R.id.icon);
-                icon.setImageResource(iconResId);
-                icon.setColorFilter(iconColor, android.graphics.PorterDuff.Mode.SRC_IN);
-
-                ((AppCompatTextView) getView().findViewById(R.id.title)).setText(titleResId);
-
-                SwitchCompat sc = getView().findViewById(R.id.cb);
-                sc.setText(rbTextResId);
-                sc.setChecked(prefs.getBoolean(prefKey, true));
-                sc.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                    prefs.edit().putBoolean(prefKey, isChecked).apply();
-                    buttonView.getContext().sendBroadcast(new Intent("action_pref_changed"));
-                });
-
-                ((AppCompatTextView) getView().findViewById(R.id.message)).setText(Html.fromHtml(
-                    getString(R.string.ingredients_in_this_product, getString(titleResId).toLowerCase()) + ingredientsText));
-                getView().findViewById(R.id.close).setOnClickListener(v -> dismiss());
+            int iconResId;
+            int iconColor;
+            int titleResId;
+            int rbTextResId;
+            String messageStr = null;
+            String prefKey;
+            switch (tag) {
+                case "from_palm_oil":
+                    if ("maybe".equals(value)) {
+                        titleResId = R.string.maybe_from_palm_oil;
+                        iconResId = R.drawable.ic_monkey_uncertain;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_uncertain);
+                    } else if ("unknown".equals(value)) {
+                        titleResId = R.string.unknown_palm_oil;
+                        iconResId = R.drawable.ic_monkey_uncertain;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
+                        messageStr = getString(R.string.unknown_palm_oil_status);
+                    } else if ("yes".equals(value)) {
+                        titleResId = R.string.from_palm_oil;
+                        iconResId = R.drawable.ic_monkey_unhappy;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_sad);
+                    } else {
+                        titleResId = R.string.not_from_palm_oil;
+                        iconResId = R.drawable.ic_monkey_happy;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_happy);
+                        messageStr = getString(R.string.this_product_is, getString(titleResId).toLowerCase());
+                    }
+                    rbTextResId = R.string.preference_display_palm_oil_status;
+                    prefKey = "enablePalmOilStatusDisplay";
+                    break;
+                case "vegetarian":
+                    iconResId = R.drawable.ic_egg;
+                    if ("maybe".equals(value)) {
+                        titleResId = R.string.maybe_vegetarian;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_uncertain);
+                    } else if ("unknown".equals(value)) {
+                        titleResId = R.string.unknown_vegetarian;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
+                        messageStr = getString(R.string.unknown_vegetarian_status);
+                    } else if ("no".equals(value)) {
+                        titleResId = R.string.non_vegetarian;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_sad);
+                    } else {
+                        titleResId = R.string.vegetarian;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_happy);
+                        messageStr = getString(R.string.this_product_is, getString(titleResId).toLowerCase());
+                    }
+                    rbTextResId = R.string.preference_display_vegetarian_status;
+                    prefKey = "enableVegetarianStatusDisplay";
+                    break;
+                case "vegan":
+                    iconResId = R.drawable.ic_leaf;
+                    if ("maybe".equals(value)) {
+                        titleResId = R.string.maybe_vegan;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_uncertain);
+                    } else if ("unknown".equals(value)) {
+                        titleResId = R.string.unknown_vegan;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
+                        messageStr = getString(R.string.unknown_vegan_status);
+                    } else if ("no".equals(value)) {
+                        titleResId = R.string.non_vegan;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_sad);
+                    } else {
+                        titleResId = R.string.vegan;
+                        iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_happy);
+                        messageStr = getString(R.string.this_product_is, getString(titleResId).toLowerCase());
+                    }
+                    rbTextResId = R.string.preference_display_vegan_status;
+                    prefKey = "enableVeganStatusDisplay";
+                    break;
+                default:
+                    return;
             }
+
+            AppCompatImageView icon = getView().findViewById(R.id.icon);
+            icon.setImageResource(iconResId);
+            icon.setColorFilter(iconColor, android.graphics.PorterDuff.Mode.SRC_IN);
+
+            ((AppCompatTextView) getView().findViewById(R.id.title)).setText(titleResId);
+
+            SwitchCompat sc = getView().findViewById(R.id.cb);
+            sc.setText(rbTextResId);
+            sc.setChecked(prefs.getBoolean(prefKey, true));
+            sc.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                prefs.edit().putBoolean(prefKey, isChecked).apply();
+                buttonView.getContext().sendBroadcast(new Intent("action_pref_changed"));
+            });
+
+            if (messageStr == null) {
+                messageStr = getString(R.string.ingredients_in_this_product, getString(titleResId).toLowerCase()) + ingredientsText;
+            }
+            AppCompatTextView message = getView().findViewById(R.id.message);
+            message.setText(Html.fromHtml(messageStr));
+
+            getView().findViewById(R.id.close).setOnClickListener(v -> dismiss());
         }
     }
 }
