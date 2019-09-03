@@ -376,7 +376,7 @@
         <item>image_nutrition_url</item>
     </string-array>
 
-    <string name="help_translate_ingredients_link" translatable="false">https://world-ro.openfoodfacts.org/ingredients?translate=1</string>
+    <string name="help_translate_ingredients_link" translatable="false">https://world-%1$s.openfoodfacts.org/ingredients?translate=1</string>
 
     <!-- Content Description -->
 

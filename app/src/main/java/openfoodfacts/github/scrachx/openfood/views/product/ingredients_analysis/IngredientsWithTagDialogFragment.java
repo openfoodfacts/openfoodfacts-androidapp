@@ -26,6 +26,7 @@ import androidx.preference.PreferenceManager;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -194,7 +195,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                     CustomTabActivityHelper.openCustomTab(
                         getActivity(),// activity
                         customTabsIntent,
-                        Uri.parse(getString(R.string.help_translate_ingredients_link)),
+                        Uri.parse(getString(R.string.help_translate_ingredients_link, Locale.getDefault().getLanguage())),
                         (activity, uri) -> {
                             Intent i = new Intent(Intent.ACTION_VIEW);
                             i.setData(uri);
