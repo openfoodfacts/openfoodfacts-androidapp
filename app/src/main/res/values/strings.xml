@@ -993,7 +993,7 @@
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Close</string>
     <string name="tip_message">TIP: %1$s </string>
-    <string name="ingredient_analysis_tip">Click on the icons bellow to learn more about the product and to select what information you are interested in.</string>
+    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
     <string name="not_from_palm_oil">Not from palm oil</string>
     <string name="from_palm_oil">From palm oil</string>
