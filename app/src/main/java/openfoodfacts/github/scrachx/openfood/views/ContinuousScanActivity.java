@@ -461,6 +461,9 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
     private void productShownInBottomView() {
         bottomSheetBehavior.setPeekHeight(peekLarge);
+        quickView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+        quickView.requestLayout();
+        quickView.getRootView().requestLayout();
     }
 
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
@@ -840,11 +843,11 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                     hideAllViews();
                     handler.removeCallbacks(runnable);
                     quickView.setOnClickListener(null);
+                    searchByBarcode.setText(null);
+                    searchByBarcode.setVisibility(VISIBLE);
                     quickView.setVisibility(INVISIBLE);
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                     handler.postDelayed(() -> quickView.setVisibility(VISIBLE), 500);
-                    searchByBarcode.setText(null);
-                    searchByBarcode.setVisibility(VISIBLE);
                     searchByBarcode.requestFocus();
                     break;
                 case R.id.toggleCamera:
