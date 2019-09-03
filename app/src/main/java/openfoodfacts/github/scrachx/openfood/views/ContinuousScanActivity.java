@@ -219,19 +219,14 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         boolean displayVegetarianStatus = prefs.getBoolean("enableVegetarianStatusDisplay", true);
         boolean displayVeganStatus = prefs.getBoolean("enableVeganStatusDisplay", true);
 
-        Iterator itr = tags.iterator();
-        while (itr.hasNext()) {
-            String tag = (String) itr.next();
-            if (tag.contains("palm") && !displayPalmOilStatus) {
-                itr.remove();
-            } else if (tag.contains("vegetarian") && !displayVegetarianStatus) {
-                itr.remove();
-            } else if (tag.contains("vegan") && !displayVeganStatus) {
-                itr.remove();
+        List<String> visibleTags = new ArrayList<>();
+        for (String tag : tags) {
+            if ((tag.contains("palm") && displayPalmOilStatus) || (tag.contains("vegetarian") && displayVegetarianStatus) || (tag.contains("vegan") && displayVeganStatus)) {
+                visibleTags.add(tag);
             }
         }
 
-        if (tags.size() == 0) {
+        if (visibleTags.size() == 0) {
             productTags.setVisibility(GONE);
             isAnalysisTagsEmpty = true;
             return;
@@ -240,7 +235,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         productTags.setVisibility(VISIBLE);
         isAnalysisTagsEmpty = false;
 
-        IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(this, tags);
+        IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(this, visibleTags);
         adapter.setOnItemClickListener((view, position) -> {
             IngredientsWithTagDialogFragment editNameDialogFragment = IngredientsWithTagDialogFragment
                 .newInstance(product, (String) view.getTag(R.id.analysis_tag), (String) view.getTag(R.id.analysis_tag_value));
