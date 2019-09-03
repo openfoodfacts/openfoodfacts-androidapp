@@ -18,7 +18,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <FrameLayout
         android:id="@+id/frame"
@@ -26,7 +27,6 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <com.journeyapps.barcodescanner.DecoratedBarcodeView
             android:id="@+id/barcode_scanner"
@@ -39,15 +39,16 @@
             android:layout_height="25dp"
             android:layout_gravity="end"
             android:layout_margin="@dimen/spacing_small"
-            app:srcCompat="@drawable/ic_more_vert_white_24dp" />
+            app:srcCompat="@drawable/ic_more_vert_white_24dp"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/toggle_flash"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_margin="@dimen/spacing_small"
-            app:srcCompat="@drawable/ic_flash_off_white_24dp" />
-
+            app:srcCompat="@drawable/ic_flash_off_white_24dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/txt_product_call_to_action"
@@ -94,7 +95,7 @@
         <LinearLayout
             android:id="@+id/quick_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             app:behavior_hideable="true"
             app:behavior_peekHeight="@dimen/scan_summary_peek_large"
@@ -113,7 +114,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:background="@color/white"
                 tools:ignore="MissingPrefix"
                 tools:visibility="visible">
@@ -127,7 +129,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
 
                 <TextView
                     android:id="@+id/quickView_name"
@@ -173,6 +174,7 @@
                         app:layout_constraintHorizontal_bias="0.52"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription"
                         tools:layout_constraintStart_toStartOf="parent"
                         tools:src="@drawable/img_scan" />
 
@@ -204,6 +206,7 @@
                         app:layout_constraintStart_toEndOf="@+id/quickView_image"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_percent="0.4"
+                        tools:ignore="ContentDescription"
                         tools:src="@drawable/nnc_a" />
 
                     <ImageView
@@ -216,6 +219,7 @@
                         app:layout_constraintEnd_toEndOf="@id/quickView_additives"
                         app:layout_constraintStart_toStartOf="@+id/quickView_additives"
                         app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription"
                         tools:srcCompat="@drawable/ic_nova_group_1"
                         tools:visibility="gone" />
 
@@ -233,6 +237,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/quickView_additives"
                         app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription"
                         tools:srcCompat="@drawable/ic_co2_high_24dp" />
 
                     <TextView
@@ -300,7 +305,8 @@
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="Autofill" />
 
                 <FrameLayout
                     android:id="@+id/frame_layout"

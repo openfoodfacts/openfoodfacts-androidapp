@@ -133,7 +133,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     @BindView(R.id.quickView_searchByBarcode)
     EditText searchByBarcode;
     @BindView(R.id.quickView_tags)
-    RecyclerView rvTags;
+    RecyclerView productTags;
     @BindView(R.id.quickView_details)
     ConstraintLayout details;
     @BindView(R.id.bottom_navigation)
@@ -186,7 +186,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     private BroadcastReceiver prefChangedReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals("action_pref_changed")) {
+            if ("action_pref_changed".equals(intent.getAction())) {
                 updateAnalysisTags(product);
             }
         }
@@ -209,7 +209,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     private void updateAnalysisTags(Product product) {
         List<String> tags = product != null ? product.getIngredientsAnalysisTags() : null;
         if (tags == null || tags.size() == 0) {
-            rvTags.setVisibility(GONE);
+            productTags.setVisibility(GONE);
             isAnalysisTagsEmpty = true;
             return;
         }
@@ -232,12 +232,12 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         }
 
         if (tags.size() == 0) {
-            rvTags.setVisibility(GONE);
+            productTags.setVisibility(GONE);
             isAnalysisTagsEmpty = true;
             return;
         }
 
-        rvTags.setVisibility(VISIBLE);
+        productTags.setVisibility(VISIBLE);
         isAnalysisTagsEmpty = false;
 
         IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(this, tags);
@@ -246,7 +246,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                 .newInstance(product, (String) view.getTag(R.id.analysis_tag), (String) view.getTag(R.id.analysis_tag_value));
             editNameDialogFragment.show(getSupportFragmentManager(), "fragment_ingredients_with_tag");
         });
-        rvTags.setAdapter(adapter);
+        productTags.setAdapter(adapter);
     }
 
     /**
@@ -466,9 +466,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
     private void productShownInBottomView() {
         bottomSheetBehavior.setPeekHeight(peekLarge);
-        quickView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
-        quickView.requestLayout();
-        quickView.getRootView().requestLayout();
     }
 
     private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
@@ -521,7 +518,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         additives.setVisibility(VISIBLE);
         imageProgress.setVisibility(VISIBLE);
         if (!isAnalysisTagsEmpty) {
-            rvTags.setVisibility(VISIBLE);
+            productTags.setVisibility(VISIBLE);
         }
     }
 
@@ -540,7 +537,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         productNotFound.setVisibility(GONE);
         imageProgress.setVisibility(GONE);
         txtProductCallToAction.setVisibility(GONE);
-        rvTags.setVisibility(GONE);
+        productTags.setVisibility(GONE);
     }
 
     @Override
@@ -601,6 +598,8 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
         peekLarge = getResources().getDimensionPixelSize(R.dimen.scan_summary_peek_large);
         peekSmall = getResources().getDimensionPixelSize(R.dimen.scan_summary_peek_small);
+
+        productTags.setNestedScrollingEnabled(false);
 
         Intent intent = new Intent(this, MainActivity.class);
 
@@ -669,7 +668,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                     }
                     if (slideOffset > 0.01f) {
                         details.setVisibility(GONE);
-                        rvTags.setVisibility(GONE);
+                        productTags.setVisibility(GONE);
                         barcodeView.pause();
                         if (slideDelta > 0 && productFragment != null) {
                             productFragment.bottomSheetWillGrow();
@@ -679,7 +678,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                         barcodeView.resume();
                         details.setVisibility(VISIBLE);
                         if (!isAnalysisTagsEmpty) {
-                            rvTags.setVisibility(VISIBLE);
+                            productTags.setVisibility(VISIBLE);
                         }
                         bottomNavigationView.setVisibility(VISIBLE);
                         if (productNotFound.getVisibility() != VISIBLE) {
@@ -846,11 +845,11 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                     hideAllViews();
                     handler.removeCallbacks(runnable);
                     quickView.setOnClickListener(null);
-                    searchByBarcode.setText(null);
-                    searchByBarcode.setVisibility(VISIBLE);
                     quickView.setVisibility(INVISIBLE);
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                     handler.postDelayed(() -> quickView.setVisibility(VISIBLE), 500);
+                    searchByBarcode.setText(null);
+                    searchByBarcode.setVisibility(VISIBLE);
                     searchByBarcode.requestFocus();
                     break;
                 case R.id.toggleCamera:

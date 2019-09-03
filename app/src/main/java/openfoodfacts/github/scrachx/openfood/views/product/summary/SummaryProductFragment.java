@@ -208,7 +208,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private BroadcastReceiver prefChangedReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals("action_pref_changed")) {
+            if ("action_pref_changed".equals(intent.getAction())) {
                 updateAnalysisTags();
             }
         }
