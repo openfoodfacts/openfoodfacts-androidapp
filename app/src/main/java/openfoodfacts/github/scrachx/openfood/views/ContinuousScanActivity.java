@@ -251,11 +251,10 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
      * @param lastBarcode Barcode to be searched
      * @param newlyAdded true if the product is added using the product addition just now
      */
-    private void findProduct(String barcode, boolean newlyAdded) {
+    private void findProduct(String lastBarcode, boolean newlyAdded) {
         if (isFinishing()) {
             return;
         }
-        final String lastBarcode = "5942105000484";
         if (disposable != null && !disposable.isDisposed()) {
             //dispove the previous call if not ended.
             disposable.dispose();

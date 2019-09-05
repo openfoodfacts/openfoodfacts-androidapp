@@ -1020,8 +1020,8 @@
     <string name="preference_display_vegan_status">Display vegan status</string>
     <string name="preference_display_vegan_status_summary_on">Display vegan status in product overview</string>
     <string name="preference_display_vegan_status_summary_off">Hide vegan status in product overview</string>
-    <string name="unknown_status_no_translation">We couldn’t assess the %1$s status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients"><![CDATA[<u>Help translate the ingredients in your language</u>]]></string>
-    <string name="unknown_status_missing_ingredients">We couldn’t assess the %1$s status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients"><![CDATA[<u>Help extract the ingredients to get the %1$s status.</u>]]></string>
+    <string name="unknown_status_no_translation">We couldn\'t assess the %1$s status of the product due to unrecognized ingredients.</string>
+    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="unknown_status_missing_ingredients">We couldn\'t assess the %1$s status of the product due to missing ingredients.</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
 </resources>

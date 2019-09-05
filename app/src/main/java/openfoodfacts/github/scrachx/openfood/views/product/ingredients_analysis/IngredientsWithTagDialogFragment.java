@@ -226,7 +226,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
 
             AppCompatTextView helpNeeded = getView().findViewById(R.id.helpNeeded);
             if (showHelpTranslate) {
-                helpNeeded.setText(Html.fromHtml(getString(R.string.help_translate_ingredients)));
+                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_translate_ingredients) + "</u>"));
                 helpNeeded.setOnClickListener(v -> {
                     CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
                     CustomTabActivityHelper.openCustomTab(
@@ -242,7 +242,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                 });
                 helpNeeded.setVisibility(View.VISIBLE);
             } else if (showHelpExtract) {
-                helpNeeded.setText(Html.fromHtml(getString(R.string.help_extract_ingredients, getString(nameId).toLowerCase())));
+                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_extract_ingredients, getString(nameId).toLowerCase()) + "</u>"));
                 helpNeeded.setOnClickListener(v -> {
                     dismiss();
                     if (getActivity() instanceof ContinuousScanActivity) {
