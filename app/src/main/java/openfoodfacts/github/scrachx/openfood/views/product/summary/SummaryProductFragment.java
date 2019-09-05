@@ -273,14 +273,40 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             vegetarianIcon.setVisibility(View.GONE);
             analysisSeparator.setVisibility(View.GONE);
 
-            List<String> tags = product.getIngredientsAnalysisTags();
-            if (tags == null || tags.size() == 0) {
-                return;
-            }
-
             boolean displayPalmOilStatus = prefs.getBoolean("enablePalmOilStatusDisplay", true);
             boolean displayVegetarianStatus = prefs.getBoolean("enableVegetarianStatusDisplay", true);
             boolean displayVeganStatus = prefs.getBoolean("enableVeganStatusDisplay", true);
+
+            List<String> tags = product.getIngredientsAnalysisTags();
+            if (tags == null || tags.size() == 0) {
+                if (!displayPalmOilStatus) {
+                    palmOilIcon.setVisibility(View.GONE);
+                } else {
+                    palmOilIcon.setVisibility(View.VISIBLE);
+                    palmOilIcon.setImageResource(R.drawable.ic_monkey_uncertain);
+                    palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
+                    palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "missing"));
+                }
+
+                if (!displayVegetarianStatus) {
+                    vegetarianIcon.setVisibility(View.GONE);
+                } else {
+                    vegetarianIcon.setVisibility(View.VISIBLE);
+                    vegetarianIcon.setVisibility(View.VISIBLE);
+                    vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
+                    vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "missing"));
+                }
+
+                if (!displayVeganStatus) {
+                    veganIcon.setVisibility(View.GONE);
+                } else {
+                    veganIcon.setVisibility(View.VISIBLE);
+                    veganIcon.setVisibility(View.VISIBLE);
+                    veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
+                    veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "missing"));
+                }
+                return;
+            }
 
             for (String tag :
                 tags) {

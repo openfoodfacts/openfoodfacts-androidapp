@@ -12,7 +12,6 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:tint="@color/green_500"
-        app:layout_constraintBottom_toBottomOf="@id/title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_monkey_happy" />
@@ -23,11 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding_normal"
         android:layout_marginLeft="@dimen/padding_normal"
-        android:lines="1"
-        android:textSize="@dimen/font_large"
+        android:textSize="@dimen/font_normal"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/icon"
         app:layout_constraintStart_toEndOf="@id/icon"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon"
         tools:text="Non-Vegan" />
 
     <androidx.appcompat.widget.SwitchCompat
@@ -36,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_large"
         android:checked="true"
-        android:textSize="@dimen/font_normal"
+        android:textSize="@dimen/font_small"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
         tools:text="@string/preference_display_vegan_status" />
@@ -50,13 +49,13 @@
         app:layout_constraintTop_toBottomOf="@id/cb" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/helpTranslate"
+        android:id="@+id/helpNeeded"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="italic"
         android:layout_marginTop="@dimen/padding_large"
         android:text="@string/help_translate_ingredients"
         android:textSize="@dimen/font_small"
+        android:textStyle="italic"
         app:layout_constraintTop_toBottomOf="@id/message" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -68,6 +67,6 @@
         android:text="@string/close_button"
         android:textSize="@dimen/font_normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/helpTranslate" />
+        app:layout_constraintTop_toBottomOf="@id/helpNeeded" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

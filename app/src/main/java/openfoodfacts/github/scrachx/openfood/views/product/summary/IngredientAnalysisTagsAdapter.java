@@ -75,6 +75,14 @@ public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<Ingredie
                     holder.itemView.setTag(R.id.analysis_tag, "from_palm_oil");
                     holder.itemView.setTag(R.id.analysis_tag_value, "unknown");
                     break;
+                case "en:palm-oil-missing":
+                    holder.icon.setImageResource(R.drawable.ic_monkey_uncertain);
+                    background = context.getResources().getDrawable(R.drawable.rounded_button);
+                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
+                    holder.itemView.setBackground(background);
+                    holder.itemView.setTag(R.id.analysis_tag, "from_palm_oil");
+                    holder.itemView.setTag(R.id.analysis_tag_value, "missing");
+                    break;
                 case "en:vegetarian":
                     holder.icon.setImageResource(R.drawable.ic_egg);
                     background = context.getResources().getDrawable(R.drawable.rounded_button);
@@ -107,6 +115,14 @@ public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<Ingredie
                     holder.itemView.setTag(R.id.analysis_tag, "vegetarian");
                     holder.itemView.setTag(R.id.analysis_tag_value, "unknown");
                     break;
+                case "en:vegetarian-missing":
+                    holder.icon.setImageResource(R.drawable.ic_egg);
+                    background = context.getResources().getDrawable(R.drawable.rounded_button);
+                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
+                    holder.itemView.setBackground(background);
+                    holder.itemView.setTag(R.id.analysis_tag, "vegetarian");
+                    holder.itemView.setTag(R.id.analysis_tag_value, "missing");
+                    break;
                 case "en:vegan":
                     holder.icon.setImageResource(R.drawable.ic_leaf);
                     background = context.getResources().getDrawable(R.drawable.rounded_button);
@@ -138,6 +154,14 @@ public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<Ingredie
                     holder.itemView.setBackground(background);
                     holder.itemView.setTag(R.id.analysis_tag, "vegan");
                     holder.itemView.setTag(R.id.analysis_tag_value, "unknown");
+                    break;
+                case "en:vegan-missing":
+                    holder.icon.setImageResource(R.drawable.ic_leaf);
+                    background = context.getResources().getDrawable(R.drawable.rounded_button);
+                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
+                    holder.itemView.setBackground(background);
+                    holder.itemView.setTag(R.id.analysis_tag, "vegan");
+                    holder.itemView.setTag(R.id.analysis_tag_value, "missing");
                     break;
                 default:
                     holder.icon.setImageDrawable(null);

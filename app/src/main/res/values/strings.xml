@@ -995,21 +995,19 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
+    <string name="palm_oil">Palm oil</string>
     <string name="not_from_palm_oil">Not from palm oil</string>
     <string name="from_palm_oil">From palm oil</string>
     <string name="maybe_from_palm_oil">Maybe from palm oil</string>
     <string name="unknown_palm_oil">Unknown palm oil status</string>
-    <string name="unknown_palm_oil_status">We couldn’t assess the palm oil status of the product due to unrecognized ingredients.</string>
     <string name="vegan">Vegan</string>
     <string name="non_vegan">Non-Vegan</string>
     <string name="maybe_vegan">Maybe Vegan</string>
     <string name="unknown_vegan">Unknown vegan status</string>
-    <string name="unknown_vegan_status">We couldn’t assess the vegan status of the product due to unrecognized ingredients.</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="non_vegetarian">Non-Vegetarian</string>
     <string name="maybe_vegetarian">Maybe Vegetarian</string>
     <string name="unknown_vegetarian">Unknown vegetarian status</string>
-    <string name="unknown_vegetarian_status">We couldn’t assess the vegetarian status of the product due to unrecognized ingredients.</string>
     <string name="this_product_is">This product is %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="preference_header_display">Display</string>
@@ -1022,5 +1020,8 @@
     <string name="preference_display_vegan_status">Display vegan status</string>
     <string name="preference_display_vegan_status_summary_on">Display vegan status in product overview</string>
     <string name="preference_display_vegan_status_summary_off">Hide vegan status in product overview</string>
-    <string name="help_translate_ingredients"><u>Help translate the ingredients in your language</u></string>
+    <string name="unknown_status_no_translation">We couldn’t assess the %1$s status of the product due to unrecognized ingredients.</string>
+    <string name="help_translate_ingredients"><![CDATA[<u>Help translate the ingredients in your language</u>]]></string>
+    <string name="unknown_status_missing_ingredients">We couldn’t assess the %1$s status of the product due to missing ingredients.</string>
+    <string name="help_extract_ingredients"><![CDATA[<u>Help extract the ingredients to get the %1$s status.</u>]]></string>
 </resources>

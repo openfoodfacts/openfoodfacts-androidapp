@@ -36,6 +36,7 @@ import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -173,6 +174,18 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.getItem(0);
             if (productFragment.scrollView != null) {
                 productFragment.scrollView.scrollTo(0, 0);
+            }
+        }
+    }
+
+    public void goToIngredients() {
+        if (adapterResult == null || adapterResult.getCount() == 0) {
+            return;
+        }
+        for (int i = 0; i < adapterResult.getCount(); ++i) {
+            if (adapterResult.getItem(i) instanceof IngredientsProductFragment) {
+                viewPager.setCurrentItem(i);
+                return;
             }
         }
     }
