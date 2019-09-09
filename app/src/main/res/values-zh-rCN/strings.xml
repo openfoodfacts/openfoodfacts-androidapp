@@ -606,9 +606,9 @@
     <string name="children_age">3至9岁</string>
     <string name="adolescents">Adolescents</string>
     <string name="adolescents_age">10至17岁</string>
-    <string name="adults">Adults</string>
+    <string name="adults">成人</string>
     <string name="adults_age">18至64岁</string>
-    <string name="elderly">Elderly</string>
+    <string name="elderly">老年</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
