@@ -628,7 +628,7 @@
     <string name="description_activity_product">وصف</string>
     <string name="intent_filter_share_label">أضف إلى حقائق الطعام المفتوح</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_high">ارتفاع خطر التعرض المفرط</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
     <string name="infants">الرُضَّع</string>
     <string name="infants_age">&lt; 1</string>
@@ -636,7 +636,7 @@
     <string name="toddlers_age">١ إلى ٢</string>
     <string name="children">الأطفال</string>
     <string name="children_age">٣ إلى ٩</string>
-    <string name="adolescents">Adolescents</string>
+    <string name="adolescents">المراهقين</string>
     <string name="adolescents_age">١٠ إلى ١٧</string>
     <string name="adults">البالغين</string>
     <string name="adults_age">١٨ إلى ٦٤</string>
