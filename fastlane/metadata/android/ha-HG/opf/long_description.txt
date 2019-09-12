@@ -35,17 +35,17 @@ Questions, feedback : contact@openfoodfacts.org
 
 Jiya da safe, Kunungiyar Abinci game da Abinci na Farko ta farka zuwa wahayi mai ban mamaki. 
 
-Tattara abincin duniya, da kayan kwalliya da abincin dabbobi kenan. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Tattara abincin duniya, da kayan kwalliya da abincin dabbobi kenan. Tare da mahaukaci cigaba da aka samu a cikin shekarar da ta gabata, lallai ne mu zama kusa da kammala aikinmu na tattara dukkanin abinci da kayan kwalliya a duniya, daidai ne?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Don haka mun kafa don ƙirƙirar ba 1, amma sauran 77000 raba sabon bayanan bayanai! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Bude samfura Gaskiya zai zama babban aiki mai himma. Here are a few of them: 
 
 Open Crayons Facts - The largest open database of coloring crayons
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-Open ??? Facts - The largest open database of ???
+Bude ??? Facts - The largest open database of ???
 
 Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
