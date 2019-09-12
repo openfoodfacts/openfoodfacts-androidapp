@@ -710,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Lütfen yükleme tamamlanana kadar bekleyin</string>
     <string name="closeZoom">Yakınlaştırmayı kapatmak için tıklayın</string>
     <string name="imageFullscreen">Yakınlaştır</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Katkı maddeleri :</string>
+    <string name="compare_salt">Tuz</string>
+    <string name="compare_sugars">Şeker</string>
+    <string name="compare_saturated_fat">Doymuş yağ</string>
+    <string name="compare_fat">Yağ</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>
