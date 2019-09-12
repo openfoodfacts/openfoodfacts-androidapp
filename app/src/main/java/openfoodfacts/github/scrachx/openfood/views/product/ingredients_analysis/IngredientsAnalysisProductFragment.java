@@ -59,7 +59,9 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
-        refreshView((State) intent.getExtras().getSerializable("state"));
+        if(intent!=null && intent.getExtras()!=null){
+            refreshView((State) intent.getExtras().getSerializable("state"));
+        }
     }
 
     @Override
