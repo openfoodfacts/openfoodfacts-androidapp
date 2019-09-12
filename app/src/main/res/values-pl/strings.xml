@@ -743,4 +743,12 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="cant_modify_if_refreshing">Poczekaj na zakończenie przesyłania</string>
     <string name="closeZoom">Kliknij, aby zamknąć zoom</string>
     <string name="imageFullscreen">Powiększenie</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Dodatki :</string>
+    <string name="compare_salt">Sól</string>
+    <string name="compare_sugars">Cukry</string>
+    <string name="compare_saturated_fat">Tłuszcz nasycony</string>
+    <string name="compare_fat">Tłuszcz</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>
