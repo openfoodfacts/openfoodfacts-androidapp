@@ -209,7 +209,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             }
 
             if (isNotBlank(product.getBrands())) {
-                holder.productBrandTextView.setText(bold(context.getString(R.string.comparison_brands)));
+                holder.productBrandTextView.setText(bold(context.getString(R.string.compare_brands)));
                 holder.productBrandTextView.append(" ");
 
                 String[] brands = product.getBrands().split(",");
