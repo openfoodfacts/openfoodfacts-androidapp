@@ -710,12 +710,12 @@
     <string name="cant_modify_if_refreshing">Por favor, espera hasta que finalice la carga</string>
     <string name="closeZoom">Haz clic para cerrar zoom</string>
     <string name="imageFullscreen">Zoom</string>
-    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
-    <string name="compare_brands">Brands :</string>
+    <string name="product_already_exists_in_comparison">El producto ya existe en la lista de comparación</string>
+    <string name="compare_brands">Marcas:</string>
     <string name="compare_additives">Aditivos:</string>
     <string name="compare_salt">Sal</string>
     <string name="compare_sugars">Azúcares</string>
     <string name="compare_saturated_fat">Grasa saturada</string>
     <string name="compare_fat">Grasas</string>
-    <string name="compare_quantity">Quantity :</string>
+    <string name="compare_quantity">Cantidad:</string>
 </resources>
