@@ -611,7 +611,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         getActivity().runOnUiThread(() -> {
             switch (state) {
                 case LOADING: {
-                    categoryProduct.append(getString(R.string.txtLoading));
+                    if(getContext()!=null) {
+                        categoryProduct.append(getString(R.string.txtLoading));
+                    }
                     break;
                 }
                 case EMPTY: {
