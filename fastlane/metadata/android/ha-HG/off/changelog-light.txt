@@ -20,10 +20,10 @@ v2 ! Dukkan masu ba da agaji na KASHE sun yi aiki tuƙuru, gwargwadon shawarwari
 
 v2.8 ! Bayan babban V2, duk masu ba da agajin kashe sun ci gaba da aiki tuƙuru, gwargwadon shawarwarinku. Yanzu muna agogo a samfuran 570k waɗanda aka 'yanta su daga 182 ƙasashe ta hanyar 10K + masu ba da gudummawa, incl. ku 🙂
 1. Mun sake gina duk kwarewar ƙarin samfurin (kuma har ila yau yana aiki a layi akashe). (godiya Huzaifa)
-1. You can now get nutrition facts for the portion you're eating (Rutvik)
-3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
-5. 🌎 Korean & Indonesian
+1. A yanzu zaku iya samun abinci mai gina jiki game da abincin da kuke ci (Rutvik)
+3. Yanzu muna lissafin kungiyoyin NOVA da hadi da Nutriscore (Huzaifa)
+4. Goge-goge na gida (by Rutvik & Salfai)
+5. 🌎 Yaren Koriya & Indonesiyan
 
 2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. ku 🙂
 1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
