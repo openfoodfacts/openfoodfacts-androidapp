@@ -7,9 +7,9 @@ Sabuwar native version na bude labaran kayan abinci. Dukkan Masu Ba da Lamunin b
 Meye sabo ?
 ==================
 1. Kuna samun hoto 360: abinci mai gina jiki, kayan abinci, da duk bayanan abinci, cikin tsari da kwanciyar hankali.
-2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
-3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
-4. You can set allergens alerts (always double check the actual label yourself though!)
+1. Samu maki "abinci NutriScore" abincin mai gina jiki don duk samfuran duniya. Sauƙaƙe kwatanta samfura. Sauƙaƙa fiye da teburin abinci mai gina jiki.
+3. Samu karin bayani daga Wikipedia. Danna nau'in abinci, ƙari… don ƙarin koyo da ganin makamancin samfuran.
+4. Kuna iya saita faɗakarwa na allergens (koyaushe ku riƙa bincika ainihin alamar da kanku ko da yake!)
 5. You now get a scan history you can export and that never leaves your phone
 6. You can shake your phone at any time in the app to start scanning
 7. You can now add new products even when you're offline
