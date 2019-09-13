@@ -1,12 +1,12 @@
 
 ==================
-New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
+Sabuwar native version na bude labaran kayan abinci. Dukkan Masu Ba da Lamunin bude labarin kayan Abinci suna aiki tuƙuru a kai, gwargwadon shawarwarinku da karɓar ra'ayoyinku :)
 ==================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
+* Batun Kayayyakin Abinci yanzu shine ke motsi a duniya fiye da da. Samfuran 500k sun 'yanta, masu ba da gudummawar rijista 10K, kasashe 182. Za ku shiga tare da mu?
 ==================
-What's new ?
+Meye sabo ?
 ==================
-1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
+1. Kuna samun hoto 360: abinci mai gina jiki, kayan abinci, da duk bayanan abinci, cikin tsari da kwanciyar hankali.
 2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
 3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
 4. You can set allergens alerts (always double check the actual label yourself though!)
