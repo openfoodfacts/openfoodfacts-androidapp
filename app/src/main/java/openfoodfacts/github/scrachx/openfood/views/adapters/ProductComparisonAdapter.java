@@ -2,28 +2,37 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.widget.NestedScrollView;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -31,7 +40,12 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
@@ -41,11 +55,6 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import pl.aprilapps.easyphotopicker.EasyImage;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -191,14 +200,16 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             }
 
             if (isNotBlank(product.getQuantity())) {
-                holder.productQuantityTextView.setText(bold("Quantity :"));
+                holder.productQuantityTextView.setText(bold(
+                    context.getString(R.string.compare_quantity)
+                ));
                 holder.productQuantityTextView.append(' ' + product.getQuantity());
             } else {
                 //product quantity placeholder goes here
             }
 
             if (isNotBlank(product.getBrands())) {
-                holder.productBrandTextView.setText(bold("Brands :"));
+                holder.productBrandTextView.setText(bold(context.getString(R.string.compare_brands)));
                 holder.productBrandTextView.append(" ");
 
                 String[] brands = product.getBrands().split(",");
@@ -305,7 +316,9 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
             if (fat != null && fatNutriment != null) {
                 String fatNutrimentLevel = fat.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Fat", fatNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(
+                    context.getString(R.string.compare_fat),
+                    fatNutriment.getDisplayStringFor100g(),
                     fatNutrimentLevel,
                     fat.getImageLevel()));
             }
@@ -313,7 +326,9 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Saturated fat", saturatedFatNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(
+                    context.getString(R.string.compare_saturated_fat),
+                    saturatedFatNutriment.getDisplayStringFor100g(),
                     saturatedFatLocalize,
                     saturatedFat.getImageLevel()));
             }
@@ -321,7 +336,9 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
             if (sugars != null && sugarsNutriment != null) {
                 String sugarsLocalize = sugars.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Sugars", sugarsNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(
+                    context.getString(R.string.compare_sugars),
+                    sugarsNutriment.getDisplayStringFor100g(),
                     sugarsLocalize,
                     sugars.getImageLevel()));
             }
@@ -329,9 +346,12 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
             if (salt != null && saltNutriment != null) {
                 String saltLocalize = salt.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Salt", saltNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(
+                    context.getString(R.string.compare_salt),
+                    saltNutriment.getDisplayStringFor100g(),
                     saltLocalize,
-                    salt.getImageLevel()));
+                    salt.getImageLevel()
+                ));
             }
         }
         return levelItem;
@@ -360,7 +380,11 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                     })
                     .subscribe(additives -> {
                         if (!additives.isEmpty()) {
-                            additivesBuilder.append(bold("Additives :"));
+                            additivesBuilder.append(
+                                bold(
+                                    context.getString(R.string.compare_additives)
+                                )
+                            );
                             additivesBuilder.append(" ");
                             additivesBuilder.append("\n");
 

@@ -4,17 +4,23 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.Toast;
-import butterknife.BindView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.File;
+import java.util.ArrayList;
+
+import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
@@ -22,9 +28,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductComparisonAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
-
-import java.io.File;
-import java.util.ArrayList;
 
 public class ProductComparisonActivity extends BaseActivity implements PhotoReceiver {
     private PhotoReceiverHandler photoReceiverHandler;
@@ -41,7 +44,7 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
         if (getIntent().getExtras() != null && getIntent().getBooleanExtra("product_found", false)) {
             products = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
             if (getIntent().getBooleanExtra("product_already_exists", false)) {
-                Toast.makeText(this, "The product already exists in the comparison list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show();
             }
         }
 

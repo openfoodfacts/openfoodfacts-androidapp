@@ -117,6 +117,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             isEatenList = true;
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(false);
         products = thisProductList.getProducts();
         if (products.isEmpty()) {
             emptyList = true;
