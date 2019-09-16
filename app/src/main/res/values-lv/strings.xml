@@ -716,4 +716,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Piedevas:</string>
+    <string name="compare_salt">Sāls</string>
+    <string name="compare_sugars">Cukurs</string>
+    <string name="compare_saturated_fat">Piesātinātie tauki</string>
+    <string name="compare_fat">Tauki</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

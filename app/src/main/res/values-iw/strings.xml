@@ -722,4 +722,12 @@
     <string name="cant_modify_if_refreshing">נא להמתין עד לסיום ההעלאה</string>
     <string name="closeZoom">לחיצה לסגירת התקריב</string>
     <string name="imageFullscreen">תקריב</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">תוספים :</string>
+    <string name="compare_salt">מלח</string>
+    <string name="compare_sugars">סוכרים</string>
+    <string name="compare_saturated_fat">שומן רווי</string>
+    <string name="compare_fat">שומן</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

@@ -1,4 +1,4 @@
-contribuye con la transparencia cosmética
+contribuye a la transparencia cosmética
 
 Open Beauty Facts es una base de datos cosmética hecha por la gente, para la gente.
 Puedes usarla para hacer mejores elecciones de cosméticos, posee datos abiertos, y cualquiera puede volver a usarla para cualquier propósito.
@@ -14,7 +14,7 @@ Puedes escanear: lociones para el afeitado, lociones corporales, cremas, desodor
 creemos que puede ser muy útil para personas con condiciones dermatológicas como acné, psoriasis, eczema... a hacer mejores elecciones de cosméticos.
 
 *** Funciona bien en cualquier condición ***
-- Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento.
+- Puedes agregar nuevos productos, incluso si no tienes una conexión a Internet en este momento.
 - La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería
 - No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 

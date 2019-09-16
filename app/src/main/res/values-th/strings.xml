@@ -705,4 +705,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">ซูม</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">สารเติมแต่ง :</string>
+    <string name="compare_salt">เกลือ</string>
+    <string name="compare_sugars">น้ำตาล</string>
+    <string name="compare_saturated_fat">ไขมันอิ่มตัว</string>
+    <string name="compare_fat">Fat</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

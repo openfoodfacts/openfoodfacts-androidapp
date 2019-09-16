@@ -541,7 +541,7 @@
     <string name="product_uploaded_successfully">crwdns114298:0crwdne114298:0</string>
     <string name="no_internet_connection">crwdns114300:0crwdne114300:0</string>
     <string name="no_internet_unable_to_extract_ingredients">crwdns114302:0crwdne114302:0</string>
-    <string name="percent">crwdns114304:0%1$d%crwdne114304:0</string>
+    <string name="percent">crwdns114304:0%1$dcrwdnd114304:0%%crwdne114304:0</string>
     <string name="overview">crwdns114306:0crwdne114306:0</string>
     <string name="ingredients">crwdns114308:0crwdne114308:0</string>
     <string name="nutrition_facts">crwdns114310:0crwdne114310:0</string>
@@ -709,4 +709,12 @@
     <string name="cant_modify_if_refreshing">crwdns119486:0crwdne119486:0</string>
     <string name="closeZoom">crwdns119488:0crwdne119488:0</string>
     <string name="imageFullscreen">crwdns119576:0crwdne119576:0</string>
+    <string name="product_already_exists_in_comparison">crwdns121762:0crwdne121762:0</string>
+    <string name="compare_brands">crwdns121764:0crwdne121764:0</string>
+    <string name="compare_additives">crwdns121766:0crwdne121766:0</string>
+    <string name="compare_salt">crwdns121768:0crwdne121768:0</string>
+    <string name="compare_sugars">crwdns121770:0crwdne121770:0</string>
+    <string name="compare_saturated_fat">crwdns121772:0crwdne121772:0</string>
+    <string name="compare_fat">crwdns121774:0crwdne121774:0</string>
+    <string name="compare_quantity">crwdns121776:0crwdne121776:0</string>
 </resources>

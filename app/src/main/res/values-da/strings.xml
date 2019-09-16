@@ -710,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Afvent færdiggørelse af upload</string>
     <string name="closeZoom">Klik for at lukke zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">Produktet findes allerede på sammenligningslisten</string>
+    <string name="compare_brands">Mærker:</string>
+    <string name="compare_additives">Tilsætningsstoffer:</string>
+    <string name="compare_salt">Salt</string>
+    <string name="compare_sugars">Sukkerarter</string>
+    <string name="compare_saturated_fat">Mættet fedt</string>
+    <string name="compare_fat">Fedt</string>
+    <string name="compare_quantity">Mængde:</string>
 </resources>

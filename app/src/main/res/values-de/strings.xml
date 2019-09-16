@@ -710,4 +710,12 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="cant_modify_if_refreshing">Bitte warten bis das Hochladen abgeschlossen ist</string>
     <string name="closeZoom">Hier klicken, um die Vergrößerung zu schließen</string>
     <string name="imageFullscreen">Vergrößern</string>
+    <string name="product_already_exists_in_comparison">Das Produkt ist bereits in der Vergleichsliste vorhanden</string>
+    <string name="compare_brands">Marken:</string>
+    <string name="compare_additives">Zusatzstoffe:</string>
+    <string name="compare_salt">Salz</string>
+    <string name="compare_sugars">Zucker</string>
+    <string name="compare_saturated_fat">Gesättigte Fettsäuren</string>
+    <string name="compare_fat">Fett</string>
+    <string name="compare_quantity">Menge:</string>
 </resources>
