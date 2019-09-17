@@ -712,4 +712,12 @@
     <string name="cant_modify_if_refreshing">Várjon, amíg a feltöltés befejeződik</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Nagyítás</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Adalékanyagok:</string>
+    <string name="compare_salt">Só</string>
+    <string name="compare_sugars">Cukrok</string>
+    <string name="compare_saturated_fat">Telített zsír</string>
+    <string name="compare_fat">Zsír</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

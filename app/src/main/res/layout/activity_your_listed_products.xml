@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/rvYourListedProducts"
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
@@ -19,14 +20,13 @@
 
     <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:id="@+id/main_layout"
-            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
                 android:id="@+id/tvInfoYourListedProducts"
@@ -56,16 +56,19 @@
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:id="@+id/rvYourListedProducts"
             android:layout_margin="@dimen/materialize_baseline_grid_small"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+    >
     </androidx.recyclerview.widget.RecyclerView>
     <include layout="@layout/navigation_bottom"
              android:id="@+id/bottom_navigation"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_gravity="bottom"
+             app:layout_constraintTop_toBottomOf="@+id/rvYourListedProducts"
              app:layout_constraintBottom_toBottomOf="parent"
     />
 </androidx.constraintlayout.widget.ConstraintLayout>

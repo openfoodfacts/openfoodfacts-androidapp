@@ -194,7 +194,7 @@
     <string name="msg_share">Regardez ce produit sur Open Food Facts :</string>
     <string name="create_account">S\'inscrire</string>
     <string name="home_drawer">Accueil</string>
-    <string name="install">Install</string>
+    <string name="install">Installer</string>
     <string name="search_drawer">Rechercher</string>
     <string name="search_by_barcode_drawer">Rechercher par code-barre</string>
     <string name="category_drawer">Catégories</string>
@@ -668,7 +668,7 @@
     <string name="settings_country_summary">Changer le pays sélectionné</string>
     <string name="settings_country_title">Pays</string>
     <string name="txt_no_nutrition_data">Ce produit ne contient aucune information nutritionnelle sur l\'emballage. Si cela a changé, vous pouvez modifier le produit.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <string name="image_prompt_language">Prendre une photo des ingrédients en</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Ajouter des produits</string>
@@ -710,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Veuillez patienter jusqu\'à la fin du téléchargement</string>
     <string name="closeZoom">Cliquez pour fermer le zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">Le produit existe déjà dans la liste de comparaison</string>
+    <string name="compare_brands">Marques :</string>
+    <string name="compare_additives">Additifs :</string>
+    <string name="compare_salt">Sel</string>
+    <string name="compare_sugars">Sucres</string>
+    <string name="compare_saturated_fat">Graisses saturées</string>
+    <string name="compare_fat">Matières grasses</string>
+    <string name="compare_quantity">Quantité :</string>
 </resources>

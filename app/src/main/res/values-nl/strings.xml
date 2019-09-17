@@ -710,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
     <string name="closeZoom">Klik om zoom te sluiten</string>
     <string name="imageFullscreen">Inzoomen</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Additieven</string>
+    <string name="compare_salt">Zout</string>
+    <string name="compare_sugars">Suikers</string>
+    <string name="compare_saturated_fat">Verzadigd vet</string>
+    <string name="compare_fat">Vet</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

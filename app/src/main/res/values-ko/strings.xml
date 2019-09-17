@@ -596,19 +596,19 @@
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="overexposure_high">과다 노출에 대한 고위험</string>
+    <string name="overexposure_moderate">과다 노출에 대한 중위험</string>
+    <string name="infants">영아</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="toddlers">유아</string>
+    <string name="toddlers_age">1~2</string>
+    <string name="children">어린이</string>
+    <string name="children_age">3~9</string>
+    <string name="adolescents">청소년</string>
+    <string name="adolescents_age">10~17</string>
+    <string name="adults">성인</string>
+    <string name="adults_age">18~64</string>
+    <string name="elderly">노인</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
@@ -704,4 +704,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">첨가물:</string>
+    <string name="compare_salt">소금</string>
+    <string name="compare_sugars">당류</string>
+    <string name="compare_saturated_fat">포화 지방</string>
+    <string name="compare_fat">지방</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

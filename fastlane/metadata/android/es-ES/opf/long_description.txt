@@ -1,14 +1,14 @@
 Open Products Facts es una base de datos abierta de todos los productos en el mundo.
 
-*** Contribuya a la Transparencia del Producto ***
+*** Contribuye a la Transparencia del Producto ***
 
 - Open Products Facts es una base de datos de productos hecha por todos, para todos.
-- Puede usarlo para tomar mejores decisiones, y como son datos abiertos, cualquiera puede volver a usarlos para cualquier propósito.
+- Puedes usarlo para tomar mejores decisiones, y como son datos abiertos, cualquiera puede volver a usarlos para cualquier propósito.
 - Open Products Facts es un proyecto sin fines de lucro desarrollado por miles de voluntarios de todo el mundo. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
--Puedes empezar a contribuir hoy agregando su primer producto. 
+-Puedes empezar a contribuir hoy agregando tu primer producto. 
 
 *** Obtener los datos ***
-- Open Products Facts lo ayuda a comprender la letra pequeña de las etiquetas de los productos.
+- Open Products Facts te ayuda a comprender la letra pequeña de las etiquetas de los productos.
 
 *** Recoge TOOODAS las cosas ***
 - Puedes agregar todos los artículos de tus colecciones
@@ -17,7 +17,7 @@ Open Products Facts es una base de datos abierta de todos los productos en el mu
 - Abierto ??? Hechos - Crea tu propia base de datos abierta :-)
 
 *** Funciona bien en cualquier condición ***
-- Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento.
+- Puedes agregar nuevos productos, incluso si no tienes una conexión a Internet en este momento.
 - La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería
 - No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 
@@ -35,7 +35,7 @@ Preguntas, comentarios: contact@openfoodfacts.org
 
 Ayer por la mañana, el equipo de Open Food Facts se despertó con una asombrosa revelación. 
 
-Recolectar la comida, los cosméticos y la comida para mascotas del mundo fue tan pasajera. Con el progreso insano del último año, seguramente debemos estar cerca de completar nuestra misión de recolectar todos los productos alimenticios y cosméticos del mundo, ¿verdad?
+Recolectar la comida, los cosméticos y la comida para mascotas del mundo estaba pasado de moda. Con el gran progreso del último año, seguramente debemos estar cerca de completar nuestra misión de recolectar todos los productos alimenticios y cosméticos del mundo, ¿verdad?
 
 ¡Así que nos preparamos para crear no 1, sino otras 77000 bases de datos nuevas! 
 
@@ -47,8 +47,8 @@ Open Miniature Food Facts - La base de datos más grande de productos alimentici
 
 Abierto ??? Datos - La mayor base de datos abierta de ???
 
-Mañana, seleccionaremos las 3 bases de datos con más exito, y comenzaremos a recopilar todos los productos de esa categoria en el mundo.
+Mañana seleccionaremos las 3 bases de datos con más exito y comenzaremos a recopilar todos los productos de esa categoria en el mundo.
 
 ¿Será la base de datos de basuras, télécartes o móviles? 
 
-Así que si te gusta camisetas, libros de cocinar, el origami o globos de nieve, empieza a escanear usando la aplicación Open Products Facts Android en Google Play
+Así que si te gustan las camisetas, los libros de cocina, el origami o los globos de nieve, empieza a escanear usando la aplicación Open Products Facts Android en Google Play

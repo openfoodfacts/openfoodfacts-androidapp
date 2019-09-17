@@ -734,4 +734,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Ychwanegion :</string>
+    <string name="compare_salt">Salt</string>
+    <string name="compare_sugars">Sugars</string>
+    <string name="compare_saturated_fat">Saturated fat</string>
+    <string name="compare_fat">Fat</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

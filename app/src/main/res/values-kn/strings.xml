@@ -710,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">ಸೇರ್ಪಡೆಗಳು:</string>
+    <string name="compare_salt">ಸಾಲ್ಟ್</string>
+    <string name="compare_sugars">ಸಕ್ಕರೆಗಳು</string>
+    <string name="compare_saturated_fat">ಪರಿಷ್ಕರಿಸಿದ ಕೊಬ್ಬು</string>
+    <string name="compare_fat">ಫ್ಯಾಟ್</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

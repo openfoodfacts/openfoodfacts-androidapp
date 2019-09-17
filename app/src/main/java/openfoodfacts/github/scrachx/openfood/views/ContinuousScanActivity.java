@@ -329,20 +329,25 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
                         final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(getBaseContext()));
                         if (imageUrl != null) {
-                            Picasso.get()
-                                .load(imageUrl)
-                                .error(R.drawable.placeholder_thumb)
-                                .into(productImage, new Callback() {
-                                    @Override
-                                    public void onSuccess() {
-                                        imageProgress.setVisibility(GONE);
-                                    }
+                            try {
+                                Picasso.get()
+                                    .load(imageUrl)
+                                    .error(R.drawable.placeholder_thumb)
+                                    .into(productImage, new Callback() {
+                                        @Override
+                                        public void onSuccess() {
+                                            imageProgress.setVisibility(GONE);
+                                        }
 
-                                    @Override
-                                    public void onError(Exception ex) {
-                                        imageProgress.setVisibility(GONE);
-                                    }
-                                });
+                                        @Override
+                                        public void onError(Exception ex) {
+                                            imageProgress.setVisibility(GONE);
+                                        }
+                                    });
+                            } catch (IllegalStateException e) {
+                                //could happen if Picasso is not instanciate correctly...
+                                Log.w(this.getClass().getSimpleName(), e.getMessage(), e);
+                            }
                         } else {
                             productImage.setImageResource(R.drawable.placeholder_thumb);
                             imageProgress.setVisibility(GONE);

@@ -431,7 +431,7 @@
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Търсене</string>
-    <string name="country_string">Countries where sold</string>
+    <string name="country_string">Държави, където се продават</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
@@ -712,4 +712,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Добавки :</string>
+    <string name="compare_salt">Сол</string>
+    <string name="compare_sugars">Захар</string>
+    <string name="compare_saturated_fat">Наситени мазнини</string>
+    <string name="compare_fat">Мазнини</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>
