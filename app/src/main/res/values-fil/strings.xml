@@ -5,6 +5,10 @@
         <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> You have one offline product waiting to be contributing, Just open the food facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minute ago</item>
         <item quantity="other">%d one minute ago</item>
@@ -190,6 +194,7 @@
     <string name="msg_share">Tingnan ang produktong ito sa Open Food Facts :</string>
     <string name="create_account">Mag Sign-up</string>
     <string name="home_drawer">Home</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Hanapin</string>
     <string name="search_by_barcode_drawer">I-type ang barcode</string>
     <string name="category_drawer">Mga Kategorya</string>
@@ -490,6 +495,10 @@
     <string name="productNameNull">Name unknown</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
@@ -595,17 +604,17 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="infants">Mga Sanggol</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="toddlers">Mga Sanggol</string>
+    <string name="toddlers_age">1 hanggang 2</string>
+    <string name="children">Mga Kabataan</string>
+    <string name="children_age">3 hanggang 9</string>
+    <string name="adolescents">Mga Binata/Dalaga</string>
+    <string name="adolescents_age">10 hanggang 17</string>
+    <string name="adults">Mga magulang</string>
+    <string name="adults_age">18 hanggang 64</string>
+    <string name="elderly">Matatanda</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
@@ -659,6 +668,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Bansa</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
@@ -680,17 +691,31 @@
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
-    <string name="first_scan_tooltip">You can slide up the card for more details</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Barcode</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Mga additibo :</string>
+    <string name="compare_salt">Asin</string>
+    <string name="compare_sugars">Mga asukal</string>
+    <string name="compare_saturated_fat">Saturated na taba</string>
+    <string name="compare_fat">Taba</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

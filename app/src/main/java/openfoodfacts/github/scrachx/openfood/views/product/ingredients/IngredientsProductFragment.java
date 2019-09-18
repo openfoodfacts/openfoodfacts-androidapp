@@ -24,6 +24,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.theartofdev.edmodo.cropper.CropImage;
+
+import java.io.File;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -227,6 +236,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
 
+
         if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
             updateImageBtn.setVisibility(View.VISIBLE);
@@ -239,7 +249,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             } else {
                 mImageIngredients.setVisibility(View.GONE);
             }
-
             mUrlImage = product.getImageIngredientsUrl(langCode);
         }
 

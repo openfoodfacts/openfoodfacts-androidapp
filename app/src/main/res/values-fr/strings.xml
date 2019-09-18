@@ -5,6 +5,10 @@
         <item quantity="one"> Vous avez 1 produit hors ligne en attente d\'être ajouté à Open Food Facts</item>
         <item quantity="other"> Vous avez %d produit hors ligne en attente d\'être ajouté à Open Food Facts</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">Il y a 1 seconde</item>
+        <item quantity="other">Il y a %d secondes</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">Il y a 1 minute</item>
         <item quantity="other">Il y a %d minutes</item>
@@ -190,6 +194,7 @@
     <string name="msg_share">Regardez ce produit sur Open Food Facts :</string>
     <string name="create_account">S\'inscrire</string>
     <string name="home_drawer">Accueil</string>
+    <string name="install">Installer</string>
     <string name="search_drawer">Rechercher</string>
     <string name="search_by_barcode_drawer">Rechercher par code-barre</string>
     <string name="category_drawer">Catégories</string>
@@ -453,7 +458,7 @@
     <string name="by_nutrition_grade">Note nutritionnelle</string>
     <string name="sort_by">Trier par</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://world-fr.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Secouez le téléphone pour scanner des produits</string>
     <string name="shake_title">Secouer pour scanner</string>
     <!-- strings related to share images -->
@@ -490,6 +495,10 @@
     <string name="productNameNull">Nom inconnu</string>
     <string name="productAdditivesUnknown">Additifs inconnus</string>
     <string name="productAdditivesTemplate">%1$d additifs</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additif</item>
+        <item quantity="other">%d additifs</item>
+    </plurals>
     <string name="product_not_complete">Ce produit n\'est pas encore complet.\nPouvez-vous ajouter des détails?</string>
     <string name="addProductOffline">Vous semblez déconnecté. Ajouter le produit %s en utilisant le mode hors ligne?</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>
@@ -659,6 +668,8 @@
     <string name="settings_country_summary">Changer le pays sélectionné</string>
     <string name="settings_country_title">Pays</string>
     <string name="txt_no_nutrition_data">Ce produit ne contient aucune information nutritionnelle sur l\'emballage. Si cela a changé, vous pouvez modifier le produit.</string>
+    <string name="image_prompt_language">Prendre une photo des ingrédients en</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Ajouter des produits</string>
     <string name="add_another_product">Ajouter un autre produit</string>
@@ -675,22 +686,36 @@
     <string name="error_nutrient_entry">La valeur doit être numérique et peut commencer par &lt;, &gt; or ~. Exemple: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">La valeur de la taille de la portion doit être une valeur positive</string>
     <string name="error_in_nutrient_data">Certaines valeurs nutritives ne sont pas valides. Veuillez corriger les champs ci-dessus avec un marqueur d\'erreur</string>
-    <string name="go_to_full_product_page">Go to product</string>
+    <string name="go_to_full_product_page">Aller au produit</string>
     <string name="no_additive_data_available_for_this_product">Aucune donnée sur les additifs n\'est disponible pour ce produit</string>
     <string name="no_nutrient_information_available_for_this_product">Aucune information nutritionnelle n\'est disponible pour ce produit</string>
     <string name="error_duplicate_listname">Vous avez déjà une liste portant ce nom</string>
     <string name="required_to_compute_nutriscore">(Nécessaire pour calculer le Nutri-Score)</string>
-    <string name="first_scan_tooltip">Vous pouvez glisser vers le haut pour voir plus de détails</string>
+    <string name="scan_tooltip">Vous pouvez faire glisser vers le haut la carte pour plus de détails</string>
     <string name="add_an_allergen">Ajouter un allergène</string>
     <string name="add_a_list">Ajouter une liste</string>
     <string name="edit_image">Modifier l\'image</string>
+    <string name="cant_edit_image_not_yet_uploaded">La nouvelle image n\'est pas encore téléchargée. Merci de patienter un instant avant de l\'éditer</string>
     <string name="unselect_image">Déselectionner l\'image</string>
     <string name="choose_default_language">Sélectionnez la langue du produit</string>
     <string name="barcode">Code barre</string>
     <string name="productAdditivesNone">Sans additifs</string>
     <string name="error_uploading_photo">Une erreur s\'est produite lors du téléchargement d\'une nouvelle photo</string>
+    <string name="import_csv_to_list">Importer un fichier CSV de la liste Open Food Facts</string>
+    <string name="toast_import_csv_error">Erreur lors de l\'importation du fichier CSV</string>
+    <string name="toast_import_csv">CSV importé avec succès !</string>
+    <string name="open_csv">Ouvrir CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">Le produit n\'a pas pu être chargé. Veuillez réessayer lorsque vous êtes de nouveau en ligne.</string>
     <string name="cant_modify_if_refreshing">Veuillez patienter jusqu\'à la fin du téléchargement</string>
     <string name="closeZoom">Cliquez pour fermer le zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">Le produit existe déjà dans la liste de comparaison</string>
+    <string name="compare_brands">Marques :</string>
+    <string name="compare_additives">Additifs :</string>
+    <string name="compare_salt">Sel</string>
+    <string name="compare_sugars">Sucres</string>
+    <string name="compare_saturated_fat">Graisses saturées</string>
+    <string name="compare_fat">Matières grasses</string>
+    <string name="compare_quantity">Quantité :</string>
 </resources>

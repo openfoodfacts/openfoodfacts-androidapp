@@ -7,6 +7,12 @@
         <item quantity="few"> %d izdeleki brez povezave čakajo na vaš prispevek k dejanjem o odprtih živilih</item>
         <item quantity="other"> %d izdelekov brez povezave čaka na vaš prispevek k dejanjem o odprtih živilih</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">1 second ago</item>
+        <item quantity="two">%d seconds ago</item>
+        <item quantity="few">%d seconds ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minuto nazaj</item>
         <item quantity="two">%d minuti nazaj</item>
@@ -198,6 +204,7 @@
     <string name="msg_share">Poglej ta izdelek na dejstvih o odprtih živilih:</string>
     <string name="create_account">Prijava</string>
     <string name="home_drawer">Domov</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Iskanje</string>
     <string name="search_by_barcode_drawer">Vnesite črtno kodo</string>
     <string name="category_drawer">Kategorije</string>
@@ -498,6 +505,12 @@
     <string name="productNameNull">Neznano ime</string>
     <string name="productAdditivesUnknown">Additives unknown</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="two">%d additives</item>
+        <item quantity="few">%d additives</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
     <string name="product_not_complete">Ta izdelek še ni dokončan. \nLahko dodate nekaj podrobnosti?</string>
     <string name="addProductOffline">Zdi se, da ste brez povezave. Dodam izdelek %s v načinu brez povezave?</string>
     <string name="product_not_found">Skeniran izdelek %1$s še ne obstaja v Open Food Facts. Ga lahko dodate?</string>
@@ -644,8 +657,8 @@
     <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
     <string name="fast_addition_mode_title">Način za hitro dodajanje</string>
     <string name="fast_addition_mode">Omogoča hitro dodajanje izdelkov z manj atributi</string>
-    <string name="crop_new_image_title">Crop new images</string>
-    <string name="crop_new_image">Enables crop action on new images</string>
+    <string name="crop_new_image_title">Obreži nove slike</string>
+    <string name="crop_new_image">Omogoča obrezovanje novih slik</string>
     <string name="addtive_search">Poiščite dodatek</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->
@@ -667,11 +680,13 @@
     <string name="settings_country_summary">Spremenite izbrano državo</string>
     <string name="settings_country_title">Država</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add products</string>
+    <string name="add_product">Dodaj izdelke</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Dodajte prehranska dejstva za izračun Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_compare_button_label">Primerjaj</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Uredi</string>
     <string name="product_summary_action_share_button_label">Deli</string>
@@ -688,17 +703,31 @@
     <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
-    <string name="first_scan_tooltip">You can slide up the card for more details</string>
+    <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Dodaj alergen</string>
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Črtna koda</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Aditivi :</string>
+    <string name="compare_salt">Sol</string>
+    <string name="compare_sugars">Sladkorji</string>
+    <string name="compare_saturated_fat">Nasičena maščoba</string>
+    <string name="compare_fat">Maščoba</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

@@ -20,20 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/spacing_small"
-        android:layout_marginRight="@dimen/spacing_small"
-        android:layout_marginBottom="185dp"
-        android:tint="@color/white"
-        android:visibility="gone"
-        app:backgroundTint="@color/blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_mode_edit_black"
-        tools:visibility="visible" />
 
     <FrameLayout
         android:id="@+id/frame"
@@ -63,18 +49,39 @@
             android:layout_margin="@dimen/spacing_small"
             app:srcCompat="@drawable/ic_flash_off_white_24dp" />
 
+
         <TextView
-            android:id="@+id/txt_product_not_complete"
+            android:id="@+id/txt_product_call_to_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="152dp"
+            android:layout_marginBottom="102dp"
+            android:paddingTop="@dimen/spacing_small"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingEnd="@dimen/spacing_small"
             android:gravity="center_horizontal"
-            android:text="@string/product_not_complete"
+            android:text="@string/scan_tooltip"
             android:textColor="@color/white"
+            android:background="@drawable/rounded_quick_view_text"
+            android:paddingBottom="50dp"
             android:textSize="12sp"
             android:visibility="gone"
             tools:visibility="visible" />
+
+        <ProgressBar
+                android:id="@+id/call_to_action_imageProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_gravity="bottom|start"
+                android:layout_marginBottom="136dp"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginLeft="@dimen/horizontal_margin"
+                android:maxHeight="@dimen/spacing_large"
+                android:minHeight="@dimen/spacing_large"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
     </FrameLayout>
 
@@ -143,7 +150,9 @@
                     android:layout_width="80dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -158,6 +167,7 @@
                     android:id="@+id/quickView_imageProgress"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/horizontal_margin"
                     android:layout_marginStart="@dimen/horizontal_margin"
                     android:padding="@dimen/activity_horizontal_margin"
                     android:visibility="visible"
@@ -171,6 +181,7 @@
                     android:id="@+id/quickView_nutriScore"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginRight="4dp"
                     android:layout_marginEnd="4dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitStart"
@@ -199,8 +210,10 @@
                     android:id="@+id/quickView_co2_icon"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginLeft="4dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -230,6 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:padding="32dp"
                 android:visibility="gone"

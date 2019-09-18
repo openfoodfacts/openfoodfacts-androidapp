@@ -36,10 +36,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
@@ -110,6 +107,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
      */
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
         startActivity(context, searchQuery, searchQuery, type);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
     /**
@@ -602,7 +604,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
                                     View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
                                     if (view != null) {
                                         InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                        imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                        if(imm!=null) {
+                                            imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                        }
                                     }
                                 } catch (NullPointerException e) {
                                     Log.e(ProductBrowsingListActivity.class.getSimpleName(),"addOnItemTouchListener",e);

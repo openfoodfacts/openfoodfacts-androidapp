@@ -778,7 +778,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     private void chipifyAllUnterminatedTokens() {
         NachoTextView[] nachoTextViews = {brand, packaging, categories, label, originOfIngredients, embCode, countryWherePurchased, stores, countriesWhereSold};
         for (NachoTextView nachoTextView : nachoTextViews) {
-            nachoTextView.chipifyAllUnterminatedTokens();
+            if (nachoTextView != null) {
+                nachoTextView.chipifyAllUnterminatedTokens();
+            }
         }
     }
 
@@ -893,8 +895,10 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
 
     public boolean areRequiredFieldsEmpty() {
         if (mImageUrl == null || mImageUrl.equals("")) {
-            Toast.makeText(OFFApplication.getInstance(), R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
-            scrollView.fullScroll(View.FOCUS_UP);
+            Toast.makeText(getContext(), R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
+            if(scrollView!=null) {
+                scrollView.fullScroll(View.FOCUS_UP);
+            }
             return true;
         } else {
             return false;
@@ -940,17 +944,39 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     public void showImageProgress() {
-        imageProgress.setVisibility(View.VISIBLE);
-        imageProgressText.setVisibility(View.VISIBLE);
-        imageFront.setVisibility(View.INVISIBLE);
-        editImageFront.setVisibility(View.INVISIBLE);
+        if(!isAdded()){
+            return;
+        }
+        if (imageProgress != null) {
+            imageProgress.setVisibility(View.VISIBLE);
+        }
+        if (imageProgressText != null) {
+            imageProgressText.setVisibility(View.VISIBLE);
+        }
+        if (imageFront != null) {
+            imageFront.setVisibility(View.INVISIBLE);
+        }
+        if (editImageFront != null) {
+            editImageFront.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
-        imageProgress.setVisibility(View.GONE);
-        imageProgressText.setVisibility(View.GONE);
-        imageFront.setVisibility(View.VISIBLE);
-        editImageFront.setVisibility(View.VISIBLE);
+        if(!isAdded()){
+            return;
+        }
+        if (imageProgress != null) {
+            imageProgress.setVisibility(View.GONE);
+        }
+        if (imageProgressText != null) {
+            imageProgressText.setVisibility(View.GONE);
+        }
+        if (imageFront != null) {
+            imageFront.setVisibility(View.VISIBLE);
+        }
+        if (editImageFront != null) {
+            editImageFront.setVisibility(View.VISIBLE);
+        }
         if (!errorInUploading) {
             Picasso.get()
                 .load(photoFile)

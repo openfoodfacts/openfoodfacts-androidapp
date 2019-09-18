@@ -229,6 +229,9 @@ public class LocaleHelper {
     }
 
     private static String getLanguageInPreferences(Context context, String defaultLanguage) {
+        if(context==null){
+            return  defaultLanguage;
+        }
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
     }

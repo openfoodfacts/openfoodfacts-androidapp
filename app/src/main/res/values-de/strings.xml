@@ -5,6 +5,10 @@
         <item quantity="one">Sie verfügen über ein Offline-Produkt, das darauf wartet, zu Open Food Facts hinzugefügt zu werden.</item>
         <item quantity="other">Sie verfügen über %d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</item>
     </plurals>
+    <plurals name="seconds">
+        <item quantity="one">vor 1 Sekunde</item>
+        <item quantity="other">vor %d Sekunden</item>
+    </plurals>
     <plurals name="minutes">
         <item quantity="one">vor einer Minute</item>
         <item quantity="other">vor %d Minuten</item>
@@ -190,6 +194,7 @@
     <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
     <string name="create_account">Registrieren</string>
     <string name="home_drawer">Startseite</string>
+    <string name="install">Installieren</string>
     <string name="search_drawer">Suchen</string>
     <string name="search_by_barcode_drawer">Nach Strichcode suchen</string>
     <string name="category_drawer">Kategorien</string>
@@ -490,6 +495,10 @@
     <string name="productNameNull">Name unbekannt</string>
     <string name="productAdditivesUnknown">Unbekannte Zusatzstoffe</string>
     <string name="productAdditivesTemplate">%1$d Zusatzstoffe</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d Zusatzstoff</item>
+        <item quantity="other">%d Zusatzstoffe</item>
+    </plurals>
     <string name="product_not_complete">Dieses Produkt ist noch nicht vollständig.\nKönnten Sie ein paar Details hinzufügen?</string>
     <string name="addProductOffline">Sie scheinen offline zu sein. Möchten Sie das Produkt „%s” im Offline-Modus hinzufügen?</string>
     <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Food Facts. Könnten Sie es bitte hinzufügen?</string>
@@ -659,6 +668,8 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="settings_country_summary">Ändern Sie Ihr ausgewähltes Land</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Von diesem Produkt  sind keine Nährwertangaben auf der Verpackung angegeben. Wenn sich dieses geändert hat, können Sie das Produkt bearbeiten.</string>
+    <string name="image_prompt_language">Foto der Inhaltsstoffe aufnehmen in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Produkt hinzufügen</string>
     <string name="add_another_product">Weiteres Produkt hinzufügen</string>
@@ -680,17 +691,31 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="no_nutrient_information_available_for_this_product">Für dieses Produkt sind keine Nährstoffinformationen verfügbar</string>
     <string name="error_duplicate_listname">Es existiert bereits eine Liste mit diesem Namen</string>
     <string name="required_to_compute_nutriscore">(Wird benötigt um den Nutri-Score zu berechnen)</string>
-    <string name="first_scan_tooltip">Sie können die Karte nach oben schieben, um weitere Details zu erhalten.</string>
+    <string name="scan_tooltip">Sie können die Karte nach oben schieben, um weitere Details zu erfahren</string>
     <string name="add_an_allergen">Allergen hinzufügen</string>
     <string name="add_a_list">Eine Liste hinzufügen</string>
     <string name="edit_image">Foto bearbeiten</string>
+    <string name="cant_edit_image_not_yet_uploaded">Das neue Foto ist noch nicht vollständig hochgeladen. Bitte warten Sie, bevor Sie es bearbeiten können.</string>
     <string name="unselect_image">Foto abwählen</string>
     <string name="choose_default_language">Produktsprache wählen</string>
     <string name="barcode">Strichcode</string>
     <string name="productAdditivesNone">Keine Zusatzstoffe</string>
     <string name="error_uploading_photo">Fehler beim Hochladen des neuen Fotos</string>
+    <string name="import_csv_to_list">Importiert eine Open Food Facts Liste als CSV-Datei</string>
+    <string name="toast_import_csv_error">Fehler beim Importieren der CSV-Datei</string>
+    <string name="toast_import_csv">CSV-Datei erfolgreich importiert!</string>
+    <string name="open_csv">CSV-Datei öffnen</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">Das Produkt konnte nicht geladen werden. Bitte versuchen Sie es erneut, wenn Sie wieder online sind.</string>
     <string name="cant_modify_if_refreshing">Bitte warten bis das Hochladen abgeschlossen ist</string>
     <string name="closeZoom">Hier klicken, um die Vergrößerung zu schließen</string>
     <string name="imageFullscreen">Vergrößern</string>
+    <string name="product_already_exists_in_comparison">Das Produkt ist bereits in der Vergleichsliste vorhanden</string>
+    <string name="compare_brands">Marken:</string>
+    <string name="compare_additives">Zusatzstoffe:</string>
+    <string name="compare_salt">Salz</string>
+    <string name="compare_sugars">Zucker</string>
+    <string name="compare_saturated_fat">Gesättigte Fettsäuren</string>
+    <string name="compare_fat">Fett</string>
+    <string name="compare_quantity">Menge:</string>
 </resources>
