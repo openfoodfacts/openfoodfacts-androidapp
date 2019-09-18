@@ -202,7 +202,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //checks the product states_tags to determine which prompt to be shown
         refreshNutriscorePrompt();
 
-        presenter.loadAllergens();
+        presenter.loadAllergens(null);
         presenter.loadCategories();
         presenter.loadLabels();
         presenter.loadProductQuestion();
@@ -611,7 +611,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         getActivity().runOnUiThread(() -> {
             switch (state) {
                 case LOADING: {
-                    categoryProduct.append(getString(R.string.txtLoading));
+                    if(getContext()!=null) {
+                        categoryProduct.append(getString(R.string.txtLoading));
+                    }
                     break;
                 }
                 case EMPTY: {

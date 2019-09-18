@@ -6,8 +6,8 @@
         <item quantity="other"> Önnek %d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">1 másodperce</item>
+        <item quantity="other">%d másodperce</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 perce</item>
@@ -194,6 +194,7 @@
     <string name="msg_share">Nézze meg a terméket az Open Food Facts adatbázisában:</string>
     <string name="create_account">Regisztráció</string>
     <string name="home_drawer">Kezdőlap</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Keres</string>
     <string name="search_by_barcode_drawer">Keresés vonalkód alapján</string>
     <string name="category_drawer">Kategóriák</string>
@@ -495,8 +496,8 @@
     <string name="productAdditivesUnknown">Ismeretlen adalékanyagok</string>
     <string name="productAdditivesTemplate">%1$d adalékanyag</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d adalékanyag</item>
+        <item quantity="other">%d adalékanyag</item>
     </plurals>
     <string name="product_not_complete">Ez a termékoldal még nem teljes. \nHozzá tudna adni néhány részletet?</string>
     <string name="addProductOffline">Úgy tűnik, hogy kapcsolat nélküli módban van. Hozzáadja a(z) %s terméket a kapcsolat nélküli mód használatával ?</string>
@@ -669,6 +670,8 @@
     <string name="settings_country_summary">Változtassa meg a kiválasztott országot</string>
     <string name="settings_country_title">Ország</string>
     <string name="txt_no_nutrition_data">Ez a termék nem tartalmaz tápértéketadatokat a csomagoláson. Ha ez megváltozott, akkor szerkessze a terméket.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Termékek hozzáadása</string>
     <string name="add_another_product">Újabb termék hozzáadása</string>
@@ -690,18 +693,31 @@
     <string name="no_nutrient_information_available_for_this_product">A termékhez nem áll rendelkezésre tápanyag-információ</string>
     <string name="error_duplicate_listname">Már van egy listája ezzel a névvel</string>
     <string name="required_to_compute_nutriscore">(Nutri-Score kiszámításához szükséges)</string>
-    <string name="first_scan_tooltip">További részletekért csúsztassa fel a kártyát</string>
+    <string name="scan_tooltip">További részletekért csúsztassa fel a kártyát</string>
     <string name="add_an_allergen">Adjunk hozzá egy allergént</string>
     <string name="add_a_list">Hozzáadás egy listához</string>
     <string name="edit_image">Kép szerkesztése</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">Az új kép még nincs feltöltve. Kérjük, várjon a szerkesztés előtt!</string>
     <string name="unselect_image">Kép kiválasztásának megszüntetése</string>
     <string name="choose_default_language">Válassza ki a termék nyelvét</string>
     <string name="barcode">Vonalkód</string>
     <string name="productAdditivesNone">Nincs adalékanyag</string>
     <string name="error_uploading_photo">Valami hiba történt az új fotó feltöltésekor</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Hiba a CSV-fájl importálásakor</string>
+    <string name="toast_import_csv">A CSV importálás sikeres!</string>
+    <string name="open_csv">CSV megnyitása</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">A terméket nem lehet betölteni. Kérjük, próbálkozzon újra, ha újra online.</string>
     <string name="cant_modify_if_refreshing">Várjon, amíg a feltöltés befejeződik</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Nagyítás</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Adalékanyagok:</string>
+    <string name="compare_salt">Só</string>
+    <string name="compare_sugars">Cukrok</string>
+    <string name="compare_saturated_fat">Telített zsír</string>
+    <string name="compare_fat">Zsír</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

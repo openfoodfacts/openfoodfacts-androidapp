@@ -8,7 +8,7 @@ Wersja 3
 
 
 ======
-v2 ! Wszyscy wolontariusze ciężko pracowali, opierając się na waszych sugestiach. Jesteśmy ruchem bardziej globalnym niż kiedykolwiek. Wypuszczono 500 tysięcy produktów, 182 kraje, ponad 10 tysięcy uczestników. możesz :-)
+v2 ! Wszyscy wolontariusze ciężko pracowali, opierając się na waszych sugestiach. Jesteśmy ruchem bardziej globalnym niż kiedykolwiek. Dodano 500 tysięcy produktów, 182 kraje, ponad 10 tysięcy uczestników wliczając ciebie :-)
 1. Skala NutriScore dla produktów z całego świata
 2. Możliwość eksportowania historii tylko dla siebie
 3. Ostrzeżenia o alergenach

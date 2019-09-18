@@ -14,7 +14,7 @@ Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składn
 - You can add all the items from your collections
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
-- Otwarty ??? Facts - Create your own open database :-)
+- Otwarty ??? Fakts - Stwórz własną otwartą bazę danych :-)
 
 ***Działa dobrze w każdej sytuacji***
 - Możesz dodać nowe produkty, nawet nie mając teraz połączenia.

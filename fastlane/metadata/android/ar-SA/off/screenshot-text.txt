@@ -1,5 +1,5 @@
 هذه هي الخطوط الموضحة أعلى لقطات الشاشة في المتجر. والاحتفاظ بها قصيرة وجذابة.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ar
 
 =====================
 V2 screenshots

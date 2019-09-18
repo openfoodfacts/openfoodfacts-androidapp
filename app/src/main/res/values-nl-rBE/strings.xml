@@ -6,8 +6,8 @@
         <item quantity="other"> Je hebt %d offline producten wachtende om bijgedragen te worden aan Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">1 seconde geleden</item>
+        <item quantity="other">%d seconden geleden</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minuut geleden</item>
@@ -194,6 +194,7 @@
     <string name="msg_share">Bekijk dit product op Open Food Facts</string>
     <string name="create_account">Inschrijven</string>
     <string name="home_drawer">Hoofdmenu</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Zoek</string>
     <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
     <string name="category_drawer">Categorieën</string>
@@ -495,8 +496,8 @@
     <string name="productAdditivesUnknown">Additieven onbekend</string>
     <string name="productAdditivesTemplate">%1$d additieven</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d additieven</item>
+        <item quantity="other">%d additieven</item>
     </plurals>
     <string name="product_not_complete">Dit product is nog niet compleet. \nWil je details toevoegen?</string>
     <string name="addProductOffline">Je lijkt offline te zijn. Het product %s toevoegen met behulp van de offlinemodus?</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Wijzig je geselecteerde land</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dit product bevat geen voedingswaarde-informatie op de verpakking. Als dit is veranderd, kan je het product bewerken.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
     <string name="add_another_product">Voeg een nieuw product toe</string>
@@ -683,23 +686,36 @@
     <string name="error_nutrient_entry">De waarde moet numeriek zijn en kan beginnen met &lt;, &gt; or ~. Voorbeeld: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">De waarde van de dienende grootte moet een positieve waarde zijn</string>
     <string name="error_in_nutrient_data">Sommige voedingswaarden zijn niet geldig. Corrigeer bovenstaande velden met een foutmarkering</string>
-    <string name="go_to_full_product_page">Go to product</string>
+    <string name="go_to_full_product_page">Ga naar product</string>
     <string name="no_additive_data_available_for_this_product">Er zijn geen gegevens over toevoegingen beschikbaar voor dit product</string>
     <string name="no_nutrient_information_available_for_this_product">Geen voedingsinformatie beschikbaar voor dit product</string>
     <string name="error_duplicate_listname">Je hebt al een lijst met deze naam</string>
     <string name="required_to_compute_nutriscore">(Nodig om de Nutri-Score te berekenen)</string>
-    <string name="first_scan_tooltip">U kunt de kaart omhoog vegen voor meer details</string>
+    <string name="scan_tooltip">Je kan de kaart omhoog vegen voor meer details</string>
     <string name="add_an_allergen">Voeg een allergeen toe</string>
     <string name="add_a_list">Voeg een lijst toe</string>
     <string name="edit_image">Bewerk afbeelding</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">De nieuwe afbeelding is nog niet geüpload. Wacht alsjeblieft voordat je het bewerkt</string>
     <string name="unselect_image">Foto deselecteren</string>
     <string name="choose_default_language">Selecteer producttaal</string>
     <string name="barcode">Streepjescode</string>
     <string name="productAdditivesNone">Geen additieven</string>
     <string name="error_uploading_photo">Er ging iets mis tijdens het uploaden van een nieuwe foto</string>
+    <string name="import_csv_to_list">Importeer een CSV-bestand van de Open Food Facts-lijst</string>
+    <string name="toast_import_csv_error">Fout bij het importeren van CSV-bestand</string>
+    <string name="toast_import_csv">CSV succesvol geïmporteerd!</string>
+    <string name="open_csv">Open CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">Het product kan niet worden geladen. Probeer het opnieuw wanneer je weer online bent.</string>
     <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
     <string name="closeZoom">Klik om zoom te sluiten</string>
     <string name="imageFullscreen">Inzoomen</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Additieven</string>
+    <string name="compare_salt">Zout</string>
+    <string name="compare_sugars">Suikers</string>
+    <string name="compare_saturated_fat">Verzadigd vet</string>
+    <string name="compare_fat">Vet</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

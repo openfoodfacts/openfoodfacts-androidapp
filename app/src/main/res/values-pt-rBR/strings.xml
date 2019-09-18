@@ -6,8 +6,8 @@
         <item quantity="other"> Você tem %d produtos off-line esperando para serem contribuídos para o Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">1 segundo atrás</item>
+        <item quantity="other">%d segundos atrás</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minuto atrás</item>
@@ -194,6 +194,7 @@
     <string name="msg_share">Veja este produto no Open Food Facts :</string>
     <string name="create_account">Inscrever</string>
     <string name="home_drawer">Início</string>
+    <string name="install">Instalar</string>
     <string name="search_drawer">Procurar</string>
     <string name="search_by_barcode_drawer">Escreva o código de barras</string>
     <string name="category_drawer">Categorias</string>
@@ -495,8 +496,8 @@
     <string name="productAdditivesUnknown">Aditivos desconhecidos</string>
     <string name="productAdditivesTemplate">%1$d aditivos</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d aditivo</item>
+        <item quantity="other">%d aditivos</item>
     </plurals>
     <string name="product_not_complete">Este produto ainda não está completo. \nPode adicionar alguns detalhes?</string>
     <string name="addProductOffline">Você parece estar offline. Adicione o produto %s usando o modo offline?</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Alterar seu país selecionado</string>
     <string name="settings_country_title">País</string>
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
+    <string name="image_prompt_language">Tire uma foto dos ingredientes em</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Adicionar produtos</string>
     <string name="add_another_product">Adicione outro produto</string>
@@ -683,23 +686,36 @@
     <string name="error_nutrient_entry">O valor deve ser numérico e pode começar com &lt;, &gt; ou ~. Exemplo: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">O valor de tamanho do serviço deve ser um valor positivo</string>
     <string name="error_in_nutrient_data">Alguns valores de nutrientes não são válidos. Por favor, corrija os campos acima com marcador de erro</string>
-    <string name="go_to_full_product_page">Go to product</string>
+    <string name="go_to_full_product_page">Ir para o produto</string>
     <string name="no_additive_data_available_for_this_product">Não há dados adicionais disponíveis para este produto</string>
     <string name="no_nutrient_information_available_for_this_product">Nenhuma informação nutricional disponível para este produto</string>
     <string name="error_duplicate_listname">Você já tem uma lista com esse nome</string>
     <string name="required_to_compute_nutriscore">(Necessário para calcular o Nutri-Score)</string>
-    <string name="first_scan_tooltip">Você pode deslizar o cartão para mais detalhes</string>
+    <string name="scan_tooltip">Você pode deslizar o cartão para cima para mais detalhes</string>
     <string name="add_an_allergen">Adicione um alérgeno</string>
     <string name="add_a_list">Adicionar uma lista</string>
     <string name="edit_image">Editar Imagem</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">A nova imagem ainda não foi enviada. Por favor, aguarde antes de editá-la</string>
     <string name="unselect_image">Desmarcar Imagem</string>
     <string name="choose_default_language">Selecione o idioma do produto</string>
     <string name="barcode">Código de barras</string>
     <string name="productAdditivesNone">Sem aditivos</string>
     <string name="error_uploading_photo">Algo deu errado ao fazer ao enviar uma foto nova</string>
+    <string name="import_csv_to_list">Importar um ficherio CSV da lista de Open Food Facts</string>
+    <string name="toast_import_csv_error">Erro ao importar o ficheiro CSV</string>
+    <string name="toast_import_csv">CSV importado com sucesso!</string>
+    <string name="open_csv">Abrir CSV</string>
+    <!-- Used for diets AddOn -->
     <string name="history_network_error">O produto não pôde ser carregado. Por favor, tente novamente quando estiver online novamente.</string>
     <string name="cant_modify_if_refreshing">Por favor, aguarde até que o envio termine</string>
     <string name="closeZoom">Clicar para fechar o zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Aditivos :</string>
+    <string name="compare_salt">Sal :</string>
+    <string name="compare_sugars">Açúcares</string>
+    <string name="compare_saturated_fat">Gordura saturada</string>
+    <string name="compare_fat">Gordura</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

@@ -1,5 +1,5 @@
-Esos son los eslóganes que se muestran arriba de las capturas de pantalla en la playstore. Mantenlos cortos y atractivos.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+Esos son los eslóganes que se muestran encima de las capturas de pantalla en la playstore. Mantenlos cortos y atractivos.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=es
 
 =====================
 Capturas de pantalla versión 2
@@ -9,17 +9,17 @@ Escanea productos
 
 Obtener el Nutriscore
 
-Su historial de escaneo completo, totalmente privado y exportable
+Tu historial de escaneo completo, totalmente privado y exportable
 
-Vaya más allá con Wikipedia
+Ve más allá con Wikipedia
 
-Establecer alertas de alérgenos
+Establece alertas de alérgenos
 
 Nutrición, simplificada
 
 Alerta de alérgenos
 
-Obtenga alternativas para sus comidas favoritas
+Obtén alternativas para tus comidas favoritas
 
 Conviértete en un actor de la transparencia alimentaria
 
@@ -27,7 +27,7 @@ Wikipedia para Comida
 
 Wikipedia para Cosméticos
 
-Wikipedia para Comida para mascotas
+Wikipedia para Comida para Mascotas
 
 Wikipedia de Productos
 

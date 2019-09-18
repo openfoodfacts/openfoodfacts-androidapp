@@ -429,6 +429,9 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void showImageProgress() {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageProgressText.setText(R.string.toastSending);
@@ -437,6 +440,9 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.INVISIBLE);
         imageProgressText.setVisibility(View.GONE);
         imageIngredients.setVisibility(View.VISIBLE);

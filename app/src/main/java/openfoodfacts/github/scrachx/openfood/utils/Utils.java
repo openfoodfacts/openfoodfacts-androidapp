@@ -33,6 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
@@ -44,7 +45,6 @@ import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
 import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
@@ -74,8 +74,8 @@ public class Utils {
     public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
-    public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
-    public static boolean isUploadJobInitialised;
+    private static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
+    private static boolean isUploadJobInitialised;
     public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
@@ -177,7 +177,7 @@ public class Utils {
     }
 
     // Decodes image and scales it to reduce memory consumption
-    public static Bitmap decodeFile(File f) {
+    private static Bitmap decodeFile(File f) {
         try {
             // Decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
@@ -344,8 +344,9 @@ public class Utils {
                 return R.drawable.ic_co2_low_24dp;
             case "en:medium":
                 return R.drawable.ic_co2_medium_24dp;
+            default:
+                return drawable;
         }
-        return drawable;
     }
 
     public static int getSmallImageGrade(String grade) {
@@ -380,6 +381,7 @@ public class Utils {
 
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
+        if(drawable==null){return null;}
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable
             .getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -582,9 +584,8 @@ public class Utils {
         return "Other";
     }
 
-    public static String timeStamp() {
-        Long tsLong = System.currentTimeMillis();
-        return tsLong.toString();
+    private static String timeStamp() {
+        return ((Long) System.currentTimeMillis()).toString();
     }
 
     public static File makeOrGetPictureDirectory(Context context) {
@@ -599,7 +600,11 @@ public class Utils {
             return picDir;
         }
         // creates the directory if not present yet
-        picDir.mkdir();
+        final boolean mkdir = picDir.mkdir();
+        if(!mkdir){
+            Log.e(Utils.class.getSimpleName(),"Can create dir "+picDir);
+        }
+
 
         return picDir;
     }
@@ -660,13 +665,13 @@ public class Utils {
     }
 
     private static int convertKjToKcal(double kj) {
-        return kj != 0 ? Double.valueOf(kj / 4.1868d).intValue() : -1;
+        return kj != 0 ? (int) (kj / 4.1868d) : -1;
     }
 
     /**
      * Function which returns volume in oz if parameter is in cl, ml, or l
      *
-     * @param servingSize
+     * @param servingSize value to transform
      * @return volume in oz if servingSize is a volume parameter else return the the parameter unchanged
      */
     public static String getServingInOz(String servingSize) {
@@ -695,10 +700,10 @@ public class Utils {
     /**
      * Function that returns the volume in liters if input parameter is in oz
      *
-     * @param servingSize
+     * @param servingSize the value to transform: not null
      * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
      */
-    public static String getServingInL(String servingSize) {
+    public static String getServingInL(@NonNull String servingSize) {
 
         if (servingSize.toLowerCase().contains("oz")) {
             Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
@@ -715,7 +720,7 @@ public class Utils {
     /**
      * Function which returns true if the battery level is low
      *
-     * @param context
+     * @param context the context
      * @return true if battery is low or false if battery in not low
      */
     public static boolean getBatteryLevel(Context context) {
