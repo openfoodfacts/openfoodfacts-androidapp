@@ -194,6 +194,7 @@
     <string name="msg_share">Tingnan ang produktong ito sa Open Food Facts :</string>
     <string name="create_account">Mag Sign-up</string>
     <string name="home_drawer">Home</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Hanapin</string>
     <string name="search_by_barcode_drawer">I-type ang barcode</string>
     <string name="category_drawer">Mga Kategorya</string>
@@ -603,17 +604,17 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="infants">Mga Sanggol</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="toddlers">Mga Sanggol</string>
+    <string name="toddlers_age">1 hanggang 2</string>
+    <string name="children">Mga Kabataan</string>
+    <string name="children_age">3 hanggang 9</string>
+    <string name="adolescents">Mga Binata/Dalaga</string>
+    <string name="adolescents_age">10 hanggang 17</string>
+    <string name="adults">Mga magulang</string>
+    <string name="adults_age">18 hanggang 64</string>
+    <string name="elderly">Matatanda</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Bansa</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
@@ -707,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Mga additibo :</string>
+    <string name="compare_salt">Asin</string>
+    <string name="compare_sugars">Mga asukal</string>
+    <string name="compare_saturated_fat">Saturated na taba</string>
+    <string name="compare_fat">Taba</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

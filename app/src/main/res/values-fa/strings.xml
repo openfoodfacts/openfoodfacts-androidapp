@@ -194,6 +194,7 @@
     <string name="msg_share">نگاهی به این محصول در Open Food Facts:</string>
     <string name="create_account">ثبت نام</string>
     <string name="home_drawer">صفحه اصلی</string>
+    <string name="install">Install</string>
     <string name="search_drawer">جستجو</string>
     <string name="search_by_barcode_drawer">بارکد را وارد کنید</string>
     <string name="category_drawer">Categories</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
@@ -707,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">مواد افزودنی:</string>
+    <string name="compare_salt">نمک</string>
+    <string name="compare_sugars">قندها</string>
+    <string name="compare_saturated_fat">Saturated fat</string>
+    <string name="compare_fat">چربی</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

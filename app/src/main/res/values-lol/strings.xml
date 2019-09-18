@@ -194,6 +194,7 @@
     <string name="msg_share">crwdns113508:0crwdne113508:0</string>
     <string name="create_account">crwdns113510:0crwdne113510:0</string>
     <string name="home_drawer">crwdns113512:0crwdne113512:0</string>
+    <string name="install">crwdns121274:0crwdne121274:0</string>
     <string name="search_drawer">crwdns113518:0crwdne113518:0</string>
     <string name="search_by_barcode_drawer">crwdns113520:0crwdne113520:0</string>
     <string name="category_drawer">crwdns113522:0crwdne113522:0</string>
@@ -540,7 +541,7 @@
     <string name="product_uploaded_successfully">crwdns114298:0crwdne114298:0</string>
     <string name="no_internet_connection">crwdns114300:0crwdne114300:0</string>
     <string name="no_internet_unable_to_extract_ingredients">crwdns114302:0crwdne114302:0</string>
-    <string name="percent">crwdns114304:0%1$d%crwdne114304:0</string>
+    <string name="percent">crwdns114304:0%1$dcrwdnd114304:0%%crwdne114304:0</string>
     <string name="overview">crwdns114306:0crwdne114306:0</string>
     <string name="ingredients">crwdns114308:0crwdne114308:0</string>
     <string name="nutrition_facts">crwdns114310:0crwdne114310:0</string>
@@ -666,6 +667,8 @@
     <string name="settings_country_summary">crwdns114556:0crwdne114556:0</string>
     <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
     <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
+    <string name="image_prompt_language">crwdns121276:0crwdne121276:0</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">crwdns115984:0crwdne115984:0</string>
     <string name="add_another_product">crwdns115748:0crwdne115748:0</string>
@@ -706,4 +709,12 @@
     <string name="cant_modify_if_refreshing">crwdns119486:0crwdne119486:0</string>
     <string name="closeZoom">crwdns119488:0crwdne119488:0</string>
     <string name="imageFullscreen">crwdns119576:0crwdne119576:0</string>
+    <string name="product_already_exists_in_comparison">crwdns121762:0crwdne121762:0</string>
+    <string name="compare_brands">crwdns121764:0crwdne121764:0</string>
+    <string name="compare_additives">crwdns121766:0crwdne121766:0</string>
+    <string name="compare_salt">crwdns121768:0crwdne121768:0</string>
+    <string name="compare_sugars">crwdns121770:0crwdne121770:0</string>
+    <string name="compare_saturated_fat">crwdns121772:0crwdne121772:0</string>
+    <string name="compare_fat">crwdns121774:0crwdne121774:0</string>
+    <string name="compare_quantity">crwdns121776:0crwdne121776:0</string>
 </resources>

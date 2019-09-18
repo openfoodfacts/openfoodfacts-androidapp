@@ -21,7 +21,7 @@ También podrá encontrar (de acuerdo con las indicaciones presentes en los prod
 - Funciona con alimentos para perros (comida seca para perros y comida húmeda para perros), comida para gatos, para conejos, para serpientes, para peces, para aves, para caballos o cualquier comida para su animal favorito.
 
 *** Funciona bien en cualquier condición ***
-- Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento.
+- Puedes agregar nuevos productos, incluso si no tienes una conexión a Internet en este momento.
 - La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería
 - No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 

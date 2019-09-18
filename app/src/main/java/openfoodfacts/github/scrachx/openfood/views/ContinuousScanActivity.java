@@ -247,20 +247,25 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
                         final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(getBaseContext()));
                         if (imageUrl != null) {
-                            Picasso.get()
-                                .load(imageUrl)
-                                .error(R.drawable.placeholder_thumb)
-                                .into(productImage, new Callback() {
-                                    @Override
-                                    public void onSuccess() {
-                                        imageProgress.setVisibility(GONE);
-                                    }
+                            try {
+                                Picasso.get()
+                                    .load(imageUrl)
+                                    .error(R.drawable.placeholder_thumb)
+                                    .into(productImage, new Callback() {
+                                        @Override
+                                        public void onSuccess() {
+                                            imageProgress.setVisibility(GONE);
+                                        }
 
-                                    @Override
-                                    public void onError(Exception ex) {
-                                        imageProgress.setVisibility(GONE);
-                                    }
-                                });
+                                        @Override
+                                        public void onError(Exception ex) {
+                                            imageProgress.setVisibility(GONE);
+                                        }
+                                    });
+                            } catch (IllegalStateException e) {
+                                //could happen if Picasso is not instanciate correctly...
+                                Log.w(this.getClass().getSimpleName(), e.getMessage(), e);
+                            }
                         } else {
                             productImage.setImageResource(R.drawable.placeholder_thumb);
                             imageProgress.setVisibility(GONE);
@@ -477,7 +482,9 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     @Override
     protected void onResume() {
         super.onResume();
-        barcodeView.resume();
+        if(bottomSheetBehavior.getState() !=BottomSheetBehavior.STATE_EXPANDED) {
+            barcodeView.resume();
+        }
     }
 
     @Override
@@ -547,6 +554,9 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                 if (newState == BottomSheetBehavior.STATE_HIDDEN) {
                     lastText = null;
                     txtProductCallToAction.setVisibility(GONE);
+                }
+                else if(newState==BottomSheetBehavior.STATE_COLLAPSED){
+                    barcodeView.resume();
                 }
                 if (searchByBarcode.getVisibility() == VISIBLE) {
                     bottomSheetBehavior.setPeekHeight(BaseActivity.dpsToPixel(PEEK_SMALL, ContinuousScanActivity.this));
@@ -809,6 +819,12 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         protected Void doInBackground(Product... products) {
             OpenFoodAPIClient.addToHistory(mHistoryProductDao, products[0]);
             return null;
+        }
+    }
+
+    public void collapseBottomSheet(){
+        if(bottomSheetBehavior!=null){
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         }
     }
 }

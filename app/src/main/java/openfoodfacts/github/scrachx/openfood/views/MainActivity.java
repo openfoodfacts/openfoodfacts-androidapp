@@ -232,43 +232,38 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 }
 
                 @Override
+                    public void onDrawerSlide(View drawerView, float slideOffset) {
+                        Utils.hideKeyboard(MainActivity.this);
+                    }
+                })
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(ITEM_HOME),
+                        new SectionDrawerItem().withName(R.string.search_drawer),
+                        new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
+                        new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.additives).withIcon(getResources().getDrawable(R.drawable.additives)).withIdentifier(ITEM_ADDITIVES).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.compare_products).withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(ITEM_ADVANCED_SEARCH).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
+                        new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
+                        new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.your_lists).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(ITEM_YOUR_LISTS).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
+                        new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
+                        new DividerDrawerItem(),
+                        primaryDrawerItem,
+                        new DividerDrawerItem(),
+                        new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
+                )
+                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
-                public void onDrawerSlide(View drawerView, float slideOffset) {
-                    Utils.hideKeyboard(MainActivity.this);
-                }
-            })
-            .addDrawerItems(
-                new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(ITEM_HOME),
-                new SectionDrawerItem().withName(R.string.search_drawer),
-                new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
-                new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.additives).withIcon(getResources().getDrawable(R.drawable.additives)).withIdentifier(ITEM_ADDITIVES)
-                    .withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.compare_products).withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(ITEM_ADVANCED_SEARCH)
-                    .withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
-                new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
-                new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS)
-                    .withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.your_lists).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(ITEM_YOUR_LISTS).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS)
-                    .withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
-                new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
-                new DividerDrawerItem(),
-                primaryDrawerItem,
-                new DividerDrawerItem(),
-                new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
-            )
-            .withOnDrawerItemClickListener((view, position, drawerItem) -> {
-
-                if (drawerItem == null) {
-                    return false;
-                }
+                    if (drawerItem == null) {
+                        return false;
+                    }
 
                 Fragment fragment = null;
                 switch ((int) drawerItem.getIdentifier()) {
@@ -399,19 +394,24 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("obf")) {
             result.removeItem(ITEM_ALERT);
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
+            result.removeItem(ITEM_ADDITIVES);
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
         }
 
         if (BuildConfig.FLAVOR.equals("opff")) {
             result.removeItem(ITEM_ALERT);
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
         if (BuildConfig.FLAVOR.equals("opf")) {
             result.removeItem(ITEM_ALERT);
             result.removeItem(ITEM_ADDITIVES);
             result.removeItem(ITEM_ADVANCED_SEARCH);
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
+        }
+
+        if(!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install) + " " + getString(R.string.open_other_flavor_drawer)));
+        } else {
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
         }
 
         // Remove scan item if the device does not have a camera, for example, Chromebooks or
@@ -806,6 +806,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public void onResume() {
         super.onResume();
+
+        // change drawer menu item from "install" to "open" when navigating back from play store.
+        if(Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
+
+            result.getAdapter().notifyDataSetChanged();
+        }
 
         updateConnectedState();
         shakePreference.registerOnSharedPreferenceChangeListener(this);

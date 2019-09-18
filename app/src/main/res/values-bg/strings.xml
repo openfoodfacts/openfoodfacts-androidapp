@@ -194,6 +194,7 @@
     <string name="msg_share">Погледнете този продукт в Open Food Facts:</string>
     <string name="create_account">Регистрирай се</string>
     <string name="home_drawer">Начало</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Търсене</string>
     <string name="search_by_barcode_drawer">Въведете баркод</string>
     <string name="category_drawer">Категории</string>
@@ -430,7 +431,7 @@
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Търсене</string>
-    <string name="country_string">Countries where sold</string>
+    <string name="country_string">Държави, където се продават</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
@@ -669,6 +670,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
@@ -709,4 +712,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Добавки :</string>
+    <string name="compare_salt">Сол</string>
+    <string name="compare_sugars">Захар</string>
+    <string name="compare_saturated_fat">Наситени мазнини</string>
+    <string name="compare_fat">Мазнини</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

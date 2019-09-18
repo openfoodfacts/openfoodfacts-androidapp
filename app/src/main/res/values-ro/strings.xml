@@ -199,6 +199,7 @@
     <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
     <string name="create_account">Înregistrare</string>
     <string name="home_drawer">Pagina de start</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Caută</string>
     <string name="search_by_barcode_drawer">Căutare după codul de bare</string>
     <string name="category_drawer">Categorii</string>
@@ -673,6 +674,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Țara</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
@@ -713,4 +716,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Aditivi alimentari:</string>
+    <string name="compare_salt">Sare</string>
+    <string name="compare_sugars">Zaharuri</string>
+    <string name="compare_saturated_fat">Acizi grași saturați</string>
+    <string name="compare_fat">Grăsimi</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>
