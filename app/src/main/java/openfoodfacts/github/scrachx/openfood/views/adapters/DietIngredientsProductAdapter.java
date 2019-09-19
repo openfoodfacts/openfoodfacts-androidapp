@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,6 +99,14 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
     @Override
     public void onBindViewHolder(DietIngredientsProductHolder dietIngredientHolder, int position) {
         SpannableStringBuilder ingredient = list.get(position);
+        dietIngredientHolder.stateRedImageButton.setScaleX((float) 0.7);
+        dietIngredientHolder.stateRedImageButton.setScaleY((float) 0.7);
+        dietIngredientHolder.stateOrangeImageButton.setScaleX((float) 0.7);
+        dietIngredientHolder.stateOrangeImageButton.setScaleY((float) 0.7);
+        dietIngredientHolder.stateGreenImageButton.setScaleX((float) 0.7);
+        dietIngredientHolder.stateGreenImageButton.setScaleY((float) 0.7);
+        dietIngredientHolder.stateGreyImageButton.setScaleX((float) 0.7);
+        dietIngredientHolder.stateGreyImageButton.setScaleY((float) 0.7);
         ForegroundColorSpan[] FGCSpans= ingredient.getSpans(0,ingredient.length(), ForegroundColorSpan.class);
         if (FGCSpans.length == 1) {
             //Only one color, activate the corresponding button.
@@ -105,15 +114,32 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
                 //And it covered the all text. activate the corresponding colored button.
                 //FGCSpans[0].getForegroundColor();
                 //dietIngredientHolder.stateGreenImageButton.getForeground()
-                dietIngredientHolder.stateGreenImageButton.setScaleX((float) 1.5);
-                dietIngredientHolder.stateGreenImageButton.setScaleY((float) 1.5);
+                Log.i("BUTTON", "Position : " + position + " ForegroundColor : " + FGCSpans[0].getForegroundColor());
+                switch (FGCSpans[0].getForegroundColor()) {
+                    case -16731136 :
+                        dietIngredientHolder.stateGreenImageButton.setScaleX((float) 1.1);
+                        dietIngredientHolder.stateGreenImageButton.setScaleY((float) 1.1);
+                        break;
+                    case -26368 :
+                        dietIngredientHolder.stateOrangeImageButton.setScaleX((float) 1.1);
+                        dietIngredientHolder.stateOrangeImageButton.setScaleY((float) 1.1);
+                        break;
+                    case -65536 :
+                        dietIngredientHolder.stateRedImageButton.setScaleX((float) 1.1);
+                        dietIngredientHolder.stateRedImageButton.setScaleY((float) 1.1);
+                        break;
+                    default:
+                        dietIngredientHolder.stateGreyImageButton.setScaleX((float) 1.1);
+                        dietIngredientHolder.stateGreyImageButton.setScaleY((float) 1.1);
+                        break;
+                }
             } else {
                 //The color doesn't cover the all text. activate the grey button.
-                dietIngredientHolder.stateGreyImageButton.setMinimumWidth(dietIngredientHolder.stateGreyImageButton.getWidth()+5);
             };
         } else {
             //No colors or more than one, activate the grey button.
-            dietIngredientHolder.stateGreyImageButton.setMinimumWidth(dietIngredientHolder.stateGreyImageButton.getWidth()+5);
+            dietIngredientHolder.stateGreyImageButton.setScaleX((float) 1.1);
+            dietIngredientHolder.stateGreyImageButton.setScaleY((float) 1.1);
         };
         dietIngredientHolder.bind(ingredient);
     }
