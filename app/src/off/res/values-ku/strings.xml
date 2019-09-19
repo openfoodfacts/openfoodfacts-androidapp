@@ -11,8 +11,8 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>
-    <string name="txtHome">Open Food Facts is an open database of food products.</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute) with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
+    <string name="txtHome">Open Facts Food, di wan malzemeyên, alerjen, agahî adanî û berhemên mohrên a zelal bi hemû agahî em dikarin li ser heye berhemên xwarin peyda dagirtin.</string>
     <string name="slide_1_title">Contribute to Food transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
     <string name="slide_2_title">Get the facts</string>
