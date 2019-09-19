@@ -7,9 +7,9 @@
         <item quantity="other"> Aveți %d produse offline care așteaptă să fie contribuite la Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="few">%d seconds ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">Acum 1 secundă</item>
+        <item quantity="few">Acum %d secunde</item>
+        <item quantity="other">Acum %d secunde</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">Acum un minut</item>
@@ -302,7 +302,7 @@
     <string name="nutrition_serum_proteins">Proteine sangvine</string>
     <string name="nutrition_nucleotides">Nucleotide</string>
     <string name="for_100g">per 100g</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">Pentru 100 ml</string>
     <string name="serving">Per porție</string>
     <string name="nutrition_monounsaturatedFat">Grăsimi monosaturate</string>
     <string name="nutrition_polyunsaturatedFat">Grăsimi polinesaturate</string>
@@ -353,7 +353,7 @@
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Clorofilă</string>
     <string name="take_picture">Take a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="choose_picture_from_gallery">Din galerie</string>
     <string name="take_picture_ingredients">Faceți o poză ingredientelor</string>
     <string name="take_picture_front">Faceți o poză frontală produsului</string>
     <string name="take_picture_nutrition_table">Faceți o poză tabelului cu informații nutriționale</string>
@@ -564,7 +564,7 @@
     <string name="traces_hint">Indicați ingredientele din mențiuni ca de exemplu: \"Ar putea conține urme de\", \"Produse într-o fabrică care procesează și\" etc. \nExemple: Lapte, Gluten, Nuci</string>
     <string name="nutrition_facts_not_specified">Valorile nutriționale nu sunt specificate pe produs.</string>
     <string name="nutrition_facts_picture">Imaginea cu valori nutriționale</string>
-    <string name="front_short_picture">Front</string>
+    <string name="front_short_picture">Față</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">Pentru 100 g / 100 ml</string>
     <string name="per_serving">Per porție</string>
@@ -610,18 +610,18 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="infants">Sugari</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
+    <string name="toddlers">Copii mici</string>
+    <string name="toddlers_age">1-2 ani</string>
+    <string name="children">Copii</string>
     <string name="children_age">3 to 9</string>
     <string name="adolescents">Adolescents</string>
     <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
-    <string name="elderly_age">65+</string>
+    <string name="adults">Adulţi</string>
+    <string name="adults_age">18-64 ani</string>
+    <string name="elderly">Vârstnic</string>
+    <string name="elderly_age">peste 65 de ani</string>
     <string name="most_people">Majoritatea persoanelor \ n (peste 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
     <string name="safety_and_exposure_assessment">Evaluarea siguranței și a expunerii</string>
@@ -641,7 +641,7 @@
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Version</string>
+    <string name="version">Versiune</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -688,7 +688,7 @@
     <string name="product_question_positive_response">Da</string>
     <string name="product_question_negative_response">Nu</string>
     <string name="product_question_ambiguous_response">Not sure</string>
-    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="product_question_submit_message">Vă mulțumim pentru contribuție!</string>
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
@@ -698,8 +698,8 @@
     <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="scan_tooltip">You can slide up the card for more details</string>
-    <string name="add_an_allergen">Add an allergen</string>
-    <string name="add_a_list">Add a list</string>
+    <string name="add_an_allergen">Adăugați un alergen</string>
+    <string name="add_a_list">Adăugați o listă</string>
     <string name="edit_image">Edit Image</string>
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
@@ -717,11 +717,11 @@
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
-    <string name="compare_brands">Brands :</string>
+    <string name="compare_brands">Mărci :</string>
     <string name="compare_additives">Aditivi alimentari:</string>
     <string name="compare_salt">Sare</string>
     <string name="compare_sugars">Zaharuri</string>
     <string name="compare_saturated_fat">Acizi grași saturați</string>
     <string name="compare_fat">Grăsimi</string>
-    <string name="compare_quantity">Quantity :</string>
+    <string name="compare_quantity">Cantitate:</string>
 </resources>
