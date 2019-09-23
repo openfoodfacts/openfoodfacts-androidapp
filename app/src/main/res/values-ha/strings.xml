@@ -33,7 +33,7 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Summary</item>
-        <item>Ingredients</item>
+        <item>Kayan mahadi</item>
         <item>Nutrition</item>
         <item>Nutrition Table</item>
         <item>Environment</item>
@@ -205,7 +205,7 @@
     <string name="txt_anonymous">Anonymous</string>
     <string name="delete_txt">Delete</string>
     <string name="sign_in_drawer">Sign-in</string>
-    <string name="alert_drawer">Allergen alert</string>
+    <string name="alert_drawer">Allergen faɗakarwa</string>
     <string name="your_lists">Your lists</string>
     <string name="title_dialog_alert">Add alert</string>
     <string name="select_camera">Select a Camera</string>
@@ -256,7 +256,7 @@
     <string name="nutrition_energy_short_name">Energy</string>
     <string name="nutrition_fat">Fat</string>
     <string name="nutrition_fiber">Dietary fiber</string>
-    <string name="nutrition_header">Nutrition facts</string>
+    <string name="nutrition_header">Bayanan abinci mai gina jiki</string>
     <string name="nutrition_proteins">Proteins</string>
     <string name="nutrition_salt">Salt</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
@@ -356,8 +356,8 @@
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about Nova</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp1_msg">Kungiya 1 - Abincin da ba a sarrafa ba ko kadan</string>
+    <string name="nova_grp2_msg">Kungiya ta 2 - Abubuwan da aka sarrafa kayan abinci</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
@@ -543,7 +543,7 @@
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Overview</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="ingredients">Kayan mahadi</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
