@@ -8,7 +8,7 @@
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">1 секунду тому</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
@@ -118,9 +118,9 @@
         <item>Nervonic acid (24:1 n-9)</item>
         <item>Нуклеотиди</item>
         <item>Oleic acid (18:1 n-9)</item>
-        <item>Omega 3 fatty acids</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
+        <item>Омега 3 жирні кислоти</item>
+        <item>Омега 6 жирні кислоти</item>
+        <item>Омега 9 жирні кислоти</item>
         <item>Palmitic acid (16:0)</item>
         <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
         <item>пШ</item>
