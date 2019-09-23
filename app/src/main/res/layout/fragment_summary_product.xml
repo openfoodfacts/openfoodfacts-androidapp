@@ -220,12 +220,12 @@
 
             <View style="@style/HorizontalLineSeparator" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/analysisContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="@dimen/padding_normal">
 
                 <openfoodfacts.github.scrachx.openfood.views.TipBox
@@ -236,37 +236,14 @@
                     app:arrowMarginStart="0dp"
                     app:identifier="ingredient_analysis_tip_box" />
 
-                <ImageView
-                    android:id="@+id/palmOilIcon"
-                    android:layout_width="48dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/analysis_tags"
+                    android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_below="@id/tipBox"
-                    android:tint="@color/monkey_happy"
-                    app:srcCompat="@drawable/ic_monkey_happy"
-                    tools:ignore="ContentDescription" />
-
-                <ImageView
-                    android:id="@+id/vegetarianIcon"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_below="@id/tipBox"
-                    android:layout_toEndOf="@id/palmOilIcon"
-                    android:layout_toRightOf="@id/palmOilIcon"
-                    android:tint="@color/monkey_happy"
-                    app:srcCompat="@drawable/ic_egg"
-                    tools:ignore="ContentDescription" />
-
-                <ImageView
-                    android:id="@+id/veganIcon"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_below="@id/tipBox"
-                    android:layout_toEndOf="@id/vegetarianIcon"
-                    android:layout_toRightOf="@id/vegetarianIcon"
-                    android:tint="@color/monkey_happy"
-                    app:srcCompat="@drawable/ic_leaf"
-                    tools:ignore="ContentDescription" />
-            </RelativeLayout>
+                    android:background="@null"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </LinearLayout>
 
             <View
                 android:id="@+id/analysisSeparator"

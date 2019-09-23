@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
+
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.FragmentActivity;
 import androidx.core.content.ContextCompat;
@@ -18,14 +19,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import com.fasterxml.jackson.core.type.TypeReference;
+
 import net.steamcrafted.loadtoast.LoadToast;
+
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.*;
@@ -34,8 +41,10 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Navi
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
+import org.greenrobot.greendao.query.WhereCondition;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -89,8 +98,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
             FragmentActivity activity = PreferencesFragment.this.getActivity();
             Configuration configuration = activity.getResources().getConfiguration();
-            Toast.makeText(getContext(),getString(R.string.changes_saved),Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(getContext(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
@@ -132,13 +140,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
         countryPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
             if (preference instanceof ListPreference) {
-               if (preference.getKey().equals(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)) {
-                   String country = (String) newValue;
-                   SharedPreferences.Editor editor = settings.edit();
-                   editor.putString(preference.getKey(), country);
-                   editor.apply();
-                   Toast.makeText(getContext(),getString(R.string.changes_saved),Toast.LENGTH_SHORT).show();
-               }
+                if (preference.getKey().equals(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)) {
+                    String country = (String) newValue;
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putString(preference.getKey(), country);
+                    editor.apply();
+                    Toast.makeText(getContext(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
+                }
             }
             return true;
         }));
@@ -217,8 +225,32 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             String version = pInfo.versionName;
             versionPref.setSummary(getString(R.string.version_string) + " " + version);
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(PreferencesFragment.class.getSimpleName(),"onCreatePreferences",e);
+            Log.e(PreferencesFragment.class.getSimpleName(), "onCreatePreferences", e);
         }
+
+        AsyncSession asyncSessionAnalysisTags = daoSession.startAsyncSession();
+        AnalysisTagConfigDao analysisTagConfigDao = daoSession.getAnalysisTagConfigDao();
+        asyncSessionAnalysisTags.setListenerMainThread(operation -> {
+            @SuppressWarnings("unchecked")
+            PreferenceScreen preferenceScreen = getPreferenceScreen();
+            PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+            preferenceScreen.addPreference(displayCategory);
+            List<AnalysisTagConfig> analysisTagConfigs = (List<AnalysisTagConfig>) operation.getResult();
+            for (AnalysisTagConfig config :
+                analysisTagConfigs) {
+                CheckBoxPreference preference = new CheckBoxPreference(preferenceScreen.getContext());
+                preference.setKey(config.getType());
+                preference.setDefaultValue(true);
+                preference.setSummary(null);
+                preference.setSummaryOn(null);
+                preference.setSummaryOff(null);
+                preference.setTitle(getString(R.string.display_analysis_tag_status, config.getType()));
+                displayCategory.addPreference(preference);
+            }
+        });
+        asyncSessionAnalysisTags.queryList(analysisTagConfigDao.queryBuilder()
+            .where(new WhereCondition.StringCondition("1 GROUP BY type"))
+            .orderAsc(AnalysisTagConfigDao.Properties.Type).build());
     }
 
     private boolean openWebCustomTab(int faqUrl) {
@@ -248,7 +280,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         super.onResume();
         try {
             final AppCompatActivity activity = (AppCompatActivity) getActivity();
-            if (activity != null &&  activity.getSupportActionBar()!=null) {
+            if (activity != null && activity.getSupportActionBar() != null) {
                 activity.getSupportActionBar().setTitle(getString(R.string.action_preferences));
             }
         } catch (NullPointerException e) {
@@ -284,7 +316,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 mAdditiveDao.insertOrReplaceInTx(frenchAdditives);
             } catch (IOException e) {
                 result = false;
-                Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile,e);
+                Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile, e);
             }
             return result;
         }

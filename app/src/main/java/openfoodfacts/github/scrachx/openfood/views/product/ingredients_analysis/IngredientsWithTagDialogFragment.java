@@ -1,10 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +20,10 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -25,6 +31,7 @@ import java.util.List;
 import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -32,27 +39,31 @@ import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 public class IngredientsWithTagDialogFragment extends DialogFragment {
     private SharedPreferences prefs;
+    private DialogInterface.OnDismissListener onDismissListener;
 
-    public static IngredientsWithTagDialogFragment newInstance(Product product, String tag, String value) {
+    public static IngredientsWithTagDialogFragment newInstance(Product product, AnalysisTagConfig config) {
         IngredientsWithTagDialogFragment frag = new IngredientsWithTagDialogFragment();
         Bundle args = new Bundle();
-        args.putString("code", product.getCode());
-        args.putSerializable("ingredients", getMatchingIngredientsText(product, tag, value));
-        args.putString("tag", tag);
-        args.putString("value", value);
+        args.putString("tag", config.getAnalysisTag());
+        args.putString("type", config.getType());
+        args.putString("icon_url", config.getIconUrl());
+        args.putString("color", config.getColor());
+        args.putString("name", config.getName().getName());
+        String showIngredients = config.getName().getShowIngredients();
+        if (showIngredients != null) {
+            args.putSerializable("ingredients", getMatchingIngredientsText(product, showIngredients.split(":")));
+        }
         frag.setArguments(args);
         return frag;
     }
 
-    private static String getMatchingIngredientsText(Product product, String tag, String value) {
+    private static String getMatchingIngredientsText(Product product, String[] showIngredients) {
         ArrayList<String> matchingIngredients = new ArrayList<>();
         List<LinkedHashMap<String, String>> ingredients = product.getIngredients();
         for (LinkedHashMap<String, String> ingredient :
             ingredients) {
-            if (ingredient.containsKey(tag)) {
-                if (value.equals(ingredient.get(tag))) {
-                    matchingIngredients.add(ingredient.get("text").replaceAll("_", ""));
-                }
+            if (showIngredients[1].equals(ingredient.get(showIngredients[0]))) {
+                matchingIngredients.add(ingredient.get("text").replaceAll("_", ""));
             }
         }
 
@@ -85,147 +96,52 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         if (getActivity() != null) {
             prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-            String ingredientsText = getArguments().getString("ingredients");
             String tag = getArguments().getString("tag");
-            String value = getArguments().getString("value");
-
-            int iconResId;
-            int iconColor;
-            int titleResId;
-            int rbTextResId;
-            int nameId;
-            String messageStr = null;
-            String prefKey;
-            boolean showHelpTranslate = false;
-            boolean showHelpExtract = false;
-            switch (tag) {
-                case "from_palm_oil":
-                    nameId = R.string.palm_oil;
-                    rbTextResId = R.string.preference_display_palm_oil_status;
-                    prefKey = "enablePalmOilStatusDisplay";
-                    switch (value) {
-                        case "maybe":
-                            titleResId = R.string.maybe_from_palm_oil;
-                            iconResId = R.drawable.ic_monkey_uncertain;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_uncertain);
-                            break;
-                        case "unknown":
-                            titleResId = R.string.unknown_palm_oil;
-                            iconResId = R.drawable.ic_monkey_uncertain;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
-                            messageStr = getString(R.string.unknown_status_no_translation, getString(nameId).toLowerCase());
-                            showHelpTranslate = true;
-                            break;
-                        case "yes":
-                            titleResId = R.string.from_palm_oil;
-                            iconResId = R.drawable.ic_monkey_unhappy;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_sad);
-                            break;
-                        case "no":
-                            titleResId = R.string.not_from_palm_oil;
-                            iconResId = R.drawable.ic_monkey_happy;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_happy);
-                            messageStr = getString(R.string.this_product_is, getString(titleResId).toLowerCase());
-                            break;
-                        default:
-                            titleResId = R.string.unknown_palm_oil;
-                            iconResId = R.drawable.ic_monkey_uncertain;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
-                            messageStr = getString(R.string.unknown_status_missing_ingredients, getString(nameId).toLowerCase());
-                            showHelpExtract = true;
-                    }
-                    break;
-                case "vegetarian":
-                    iconResId = R.drawable.ic_egg;
-                    nameId = R.string.vegetarian;
-                    rbTextResId = R.string.preference_display_vegetarian_status;
-                    prefKey = "enableVegetarianStatusDisplay";
-                    switch (value) {
-                        case "maybe":
-                            titleResId = R.string.maybe_vegetarian;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_uncertain);
-                            break;
-                        case "unknown":
-                            titleResId = R.string.unknown_vegetarian;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
-                            messageStr = getString(R.string.unknown_status_no_translation, getString(nameId).toLowerCase());
-                            showHelpTranslate = true;
-                            break;
-                        case "no":
-                            titleResId = R.string.non_vegetarian;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_sad);
-                            break;
-                        case "yes":
-                            titleResId = R.string.vegetarian;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_happy);
-                            messageStr = getString(R.string.this_product_is, getString(titleResId).toLowerCase());
-                            break;
-                        default:
-                            titleResId = R.string.unknown_vegetarian;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
-                            messageStr = getString(R.string.unknown_status_missing_ingredients, getString(nameId).toLowerCase());
-                            showHelpExtract = true;
-                    }
-                    break;
-                case "vegan":
-                    iconResId = R.drawable.ic_leaf;
-                    nameId = R.string.vegan;
-                    rbTextResId = R.string.preference_display_vegan_status;
-                    prefKey = "enableVeganStatusDisplay";
-                    switch (value) {
-                        case "maybe":
-                            titleResId = R.string.maybe_vegan;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_uncertain);
-                            break;
-                        case "unknown":
-                            titleResId = R.string.unknown_vegan;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
-                            messageStr = getString(R.string.unknown_status_no_translation, getString(nameId).toLowerCase());
-                            showHelpTranslate = true;
-                            break;
-                        case "no":
-                            titleResId = R.string.non_vegan;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_sad);
-                            break;
-                        case "yes":
-                            titleResId = R.string.vegan;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_happy);
-                            messageStr = getString(R.string.this_product_is, getString(titleResId).toLowerCase());
-                            break;
-                        default:
-                            titleResId = R.string.unknown_vegan;
-                            iconColor = ContextCompat.getColor(getActivity(), R.color.monkey_unknown);
-                            messageStr = getString(R.string.unknown_status_missing_ingredients, getString(nameId).toLowerCase());
-                            showHelpExtract = true;
-                    }
-                    break;
-                default:
-                    return;
-            }
+            String type = getArguments().getString("type");
+            String iconUrl = getArguments().getString("icon_url");
+            String color = getArguments().getString("color");
+            String name = getArguments().getString("name");
+            String ingredients = getArguments().getString("ingredients");
 
             AppCompatImageView icon = getView().findViewById(R.id.icon);
-            icon.setImageResource(iconResId);
-            icon.setColorFilter(iconColor, android.graphics.PorterDuff.Mode.SRC_IN);
+            Picasso.get()
+                .load(iconUrl)
+                .into(icon);
+            Drawable background = getResources().getDrawable(R.drawable.rounded_button);
+            background.setColorFilter(Color.parseColor(color), android.graphics.PorterDuff.Mode.SRC_IN);
+            getView().findViewById(R.id.icon_frame).setBackground(background);
 
-            ((AppCompatTextView) getView().findViewById(R.id.title)).setText(titleResId);
+            ((AppCompatTextView) getView().findViewById(R.id.title)).setText(name);
 
             SwitchCompat sc = getView().findViewById(R.id.cb);
-            sc.setText(rbTextResId);
-            sc.setChecked(prefs.getBoolean(prefKey, true));
+            sc.setText(getString(R.string.display_analysis_tag_status, type));
+            sc.setChecked(prefs.getBoolean(type, true));
             sc.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                prefs.edit().putBoolean(prefKey, isChecked).apply();
-                buttonView.getContext().sendBroadcast(new Intent("action_pref_changed"));
+                prefs.edit().putBoolean(type, isChecked).apply();
             });
 
-            AppCompatTextView message = getView().findViewById(R.id.message);
-
-            if (messageStr == null) {
-                messageStr = getString(R.string.ingredients_in_this_product, getString(titleResId).toLowerCase()) + ingredientsText;
+            String messageStr = getString(R.string.ingredients_in_this_product_are, name.toLowerCase());
+            if (!TextUtils.isEmpty(ingredients)) {
+                messageStr = getString(R.string.ingredients_in_this_product, name.toLowerCase()) + ingredients;
             }
-            message.setText(Html.fromHtml(messageStr));
 
             AppCompatTextView helpNeeded = getView().findViewById(R.id.helpNeeded);
-            if (showHelpTranslate) {
+            boolean showHelpTranslate = tag.contains("unknown");
+            boolean showHelpExtract = showHelpTranslate && TextUtils.isEmpty(ingredients);
+            if (showHelpExtract) {
+                messageStr = getString(R.string.unknown_status_missing_ingredients, name.toLowerCase());
+                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_extract_ingredients, name.toLowerCase()) + "</u>"));
+                helpNeeded.setOnClickListener(v -> {
+                    dismiss();
+                    if (getActivity() instanceof ContinuousScanActivity) {
+                        ((ContinuousScanActivity) getActivity()).showIngredientsTab();
+                    } else if (getActivity() instanceof ProductActivity) {
+                        ((ProductActivity) getActivity()).showIngredientsTab();
+                    }
+                });
+                helpNeeded.setVisibility(View.VISIBLE);
+            } else if (showHelpTranslate) {
+                messageStr = getString(R.string.unknown_status_missing_ingredients, name.toLowerCase());
                 helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_translate_ingredients) + "</u>"));
                 helpNeeded.setOnClickListener(v -> {
                     CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
@@ -241,22 +157,26 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                     );
                 });
                 helpNeeded.setVisibility(View.VISIBLE);
-            } else if (showHelpExtract) {
-                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_extract_ingredients, getString(nameId).toLowerCase()) + "</u>"));
-                helpNeeded.setOnClickListener(v -> {
-                    dismiss();
-                    if (getActivity() instanceof ContinuousScanActivity) {
-                        ((ContinuousScanActivity) getActivity()).showIngredientsTab();
-                    } else if (getActivity() instanceof ProductActivity) {
-                        ((ProductActivity) getActivity()).showIngredientsTab();
-                    }
-                });
-                helpNeeded.setVisibility(View.VISIBLE);
             } else {
                 helpNeeded.setVisibility(View.GONE);
             }
+            AppCompatTextView message = getView().findViewById(R.id.message);
+            message.setText(Html.fromHtml(messageStr));
 
             getView().findViewById(R.id.close).setOnClickListener(v -> dismiss());
+        }
+    }
+
+    public void setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {
+        this.onDismissListener = onDismissListener;
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+
+        if (onDismissListener != null) {
+            onDismissListener.onDismiss(dialog);
         }
     }
 }

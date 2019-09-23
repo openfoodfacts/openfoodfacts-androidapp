@@ -1,10 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
-import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
 import android.os.AsyncTask;
@@ -29,7 +28,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -54,7 +52,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -67,12 +64,15 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
@@ -159,6 +159,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     private int peekLarge;
     private int peekSmall;
     private boolean isAnalysisTagsEmpty = true;
+    private IProductRepository repository = ProductRepository.getInstance();
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
@@ -183,14 +184,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         }
     };
     private boolean productShowing = false;
-    private BroadcastReceiver prefChangedReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if ("action_pref_changed".equals(intent.getAction())) {
-                updateAnalysisTags(product);
-            }
-        }
-    };
 
     /**
      * Used by screenshot tests.
@@ -204,45 +197,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         barcodeView.pause();
         imageForScreenshotGenerationOnly.setVisibility(VISIBLE);
         findProduct(barcode, false);
-    }
-
-    private void updateAnalysisTags(Product product) {
-        List<String> tags = product != null ? product.getIngredientsAnalysisTags() : null;
-        if (tags == null || tags.size() == 0) {
-            tags = new ArrayList<>(3);
-            tags.add("en:palm-oil-missing");
-            tags.add("en:vegetarian-missing");
-            tags.add("en:vegan-missing");
-        }
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean displayPalmOilStatus = prefs.getBoolean("enablePalmOilStatusDisplay", true);
-        boolean displayVegetarianStatus = prefs.getBoolean("enableVegetarianStatusDisplay", true);
-        boolean displayVeganStatus = prefs.getBoolean("enableVeganStatusDisplay", true);
-
-        List<String> visibleTags = new ArrayList<>();
-        for (String tag : tags) {
-            if ((tag.contains("palm") && displayPalmOilStatus) || (tag.contains("vegetarian") && displayVegetarianStatus) || (tag.contains("vegan") && displayVeganStatus)) {
-                visibleTags.add(tag);
-            }
-        }
-
-        if (visibleTags.size() == 0) {
-            productTags.setVisibility(GONE);
-            isAnalysisTagsEmpty = true;
-            return;
-        }
-
-        productTags.setVisibility(VISIBLE);
-        isAnalysisTagsEmpty = false;
-
-        IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(this, visibleTags);
-        adapter.setOnItemClickListener((view, position) -> {
-            IngredientsWithTagDialogFragment editNameDialogFragment = IngredientsWithTagDialogFragment
-                .newInstance(product, (String) view.getTag(R.id.analysis_tag), (String) view.getTag(R.id.analysis_tag_value));
-            editNameDialogFragment.show(getSupportFragmentManager(), "fragment_ingredients_with_tag");
-        });
-        productTags.setAdapter(adapter);
     }
 
     /**
@@ -306,9 +260,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                         txtProductCallToAction.setText(isProductIncomplete() ? R.string.product_not_complete : R.string.scan_tooltip);
                         txtProductCallToAction.setVisibility(VISIBLE);
 
-                        updateAnalysisTags(product);
-
-                        manageAllergens(product);
+                        manageSummary(product);
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         productShownInBottomView();
                         productNotFound.setVisibility(GONE);
@@ -428,7 +380,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
             });
     }
 
-    private void manageAllergens(Product product) {
+    private void manageSummary(Product product) {
         callToActionProgress.setVisibility(VISIBLE);
         summaryProductPresenter = new SummaryProductPresenter(product, new SummaryProductPresenterView() {
             @Override
@@ -452,8 +404,33 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                     txtProductCallToAction.setText(text);
                 }
             }
+
+            @Override
+            public void showAnalysisTags(List<AnalysisTagConfig> analysisTags) {
+                super.showAnalysisTags(analysisTags);
+
+                if (analysisTags.size() == 0) {
+                    productTags.setVisibility(GONE);
+                    isAnalysisTagsEmpty = true;
+                    return;
+                }
+
+                productTags.setVisibility(VISIBLE);
+                isAnalysisTagsEmpty = false;
+
+                IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(ContinuousScanActivity.this, analysisTags);
+                adapter.setOnItemClickListener((view, position) -> {
+                    IngredientsWithTagDialogFragment fragment = IngredientsWithTagDialogFragment
+                        .newInstance(product, (AnalysisTagConfig) view.getTag(R.id.analysis_tag_config));
+                    fragment.show(getSupportFragmentManager(), "fragment_ingredients_with_tag");
+
+                    fragment.setOnDismissListener(dialog -> adapter.filterVisibleTags());
+                });
+                productTags.setAdapter(adapter);
+            }
         });
         summaryProductPresenter.loadAllergens(() -> callToActionProgress.setVisibility(GONE));
+        summaryProductPresenter.loadAnalysisTags();
     }
 
     private void productNotFound(String lastText) {
@@ -559,7 +536,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     protected void onPause() {
         super.onPause();
         barcodeView.pause();
-        unregisterReceiver(prefChangedReceiver);
     }
 
     @Override
@@ -568,7 +544,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
             barcodeView.resume();
         }
-        registerReceiver(prefChangedReceiver, new IntentFilter("action_pref_changed"));
     }
 
     @Override

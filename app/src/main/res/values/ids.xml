@@ -6,6 +6,5 @@
     <item name="menu_camera_selector" type="id" />
     <item name="menu_about" type="id" />
     <item name="menu_problem_scanning" type="id" />
-    <item name="analysis_tag" type="id" />
-    <item name="analysis_tag_value" type="id" />
+    <item name="analysis_tag_config" type="id" />
 </resources>

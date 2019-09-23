@@ -172,9 +172,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         // without this, the view can be centered vertically on initial show. we force the scroll to top !
         if (adapterResult.getItem(0) instanceof SummaryProductFragment) {
             SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.getItem(0);
-            if (productFragment.scrollView != null) {
-                productFragment.scrollView.scrollTo(0, 0);
-            }
+            productFragment.resetScroll();
         }
     }
 

@@ -7,6 +7,8 @@ package openfoodfacts.github.scrachx.openfood.network;
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagsWrapper;
 import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
 import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
@@ -18,7 +20,6 @@ import retrofit2.http.GET;
  * This calls should be used as rare as possible, because they load Big Data
  */
 public interface ProductApiService {
-
     @GET("data/taxonomies/labels.json")
     Single<LabelsWrapper> getLabels();
 
@@ -36,30 +37,34 @@ public interface ProductApiService {
 
     @GET("data/taxonomies/categories.json")
     Single<CategoriesWrapper> getCategories();
-    
+
     @GET("data/taxonomies/vitamins.json")
     Single<CategoriesWrapper> getVitamins();
-    
+
     @GET("data/taxonomies/additives_classes.json")
     Single<CategoriesWrapper> getAdditivesClasses();
-    
+
     @GET("data/taxonomies/nucleotides.json")
     Single<CategoriesWrapper> getNucleotides();
-    
+
     @GET("data/taxonomies/nutrient_levels.json")
     Single<CategoriesWrapper> getNutrientLevels();
-    
+
     @GET("data/taxonomies/languages.json")
     Single<CategoriesWrapper> getLanguages();
-    
+
     @GET("data/taxonomies/nutrients.json")
     Single<CategoriesWrapper> getNutrients();
-    
+
     @GET("data/taxonomies/minerals.json")
     Single<CategoriesWrapper> getMinerals();
-    
+
     @GET("data/taxonomies/states.json")
     Single<CategoriesWrapper> getStates();
-    
-    
+
+    @GET("data/taxonomies/ingredients_analysis.json")
+    Single<AnalysisTagsWrapper> getAnalysisTags();
+
+    @GET("files/app/ingredients-analysis.json")
+    Single<AnalysisTagGonfigsWrapper> getAnalysisTagConfigs();
 }

@@ -1,31 +1,43 @@
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 
 public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<IngredientAnalysisTagsAdapter.ViewHolder> {
-    private List<String> tags;
+    private WeakReference<Context> contextRef;
+    private SharedPreferences prefs;
+    private List<AnalysisTagConfig> tags;
+    private List<AnalysisTagConfig> visibleTags = new ArrayList<>();
     private LayoutInflater inflater;
     private OnItemClickListener onClickListener;
-    private WeakReference<Context> contextRef;
 
     // data is passed into the constructor
-    public IngredientAnalysisTagsAdapter(Context context, List<String> tags) {
+    public IngredientAnalysisTagsAdapter(Context context, List<AnalysisTagConfig> tags) {
         contextRef = new WeakReference<>(context);
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
         this.inflater = LayoutInflater.from(context);
         this.tags = tags;
+        this.visibleTags.addAll(tags);
+
+        filterVisibleTags();
     }
 
     // inflates the row layout from xml when needed
@@ -40,140 +52,22 @@ public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<Ingredie
     public void onBindViewHolder(ViewHolder holder, int position) {
         Context context = contextRef.get();
         if (context != null) {
-            String tag = tags.get(position);
-            holder.itemView.setTag(tag);
-            switch (tag) {
-                case "en:palm-oil-free":
-                    holder.icon.setImageResource(R.drawable.ic_monkey_happy);
-                    Drawable background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "from_palm_oil");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "no");
-                    break;
-                case "en:may-contain-palm-oil":
-                    holder.icon.setImageResource(R.drawable.ic_monkey_happy);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "from_palm_oil");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "maybe");
-                    break;
-                case "en:palm-oil":
-                    holder.icon.setImageResource(R.drawable.ic_monkey_unhappy);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "from_palm_oil");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "yes");
-                    break;
-                case "en:palm-oil-content-unknown":
-                    holder.icon.setImageResource(R.drawable.ic_monkey_uncertain);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "from_palm_oil");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "unknown");
-                    break;
-                case "en:palm-oil-missing":
-                    holder.icon.setImageResource(R.drawable.ic_monkey_uncertain);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "from_palm_oil");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "missing");
-                    break;
-                case "en:vegetarian":
-                    holder.icon.setImageResource(R.drawable.ic_egg);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegetarian");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "yes");
-                    break;
-                case "en:maybe-vegetarian":
-                    holder.icon.setImageResource(R.drawable.ic_egg);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegetarian");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "maybe");
-                    break;
-                case "en:non-vegetarian":
-                    holder.icon.setImageResource(R.drawable.ic_egg);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegetarian");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "no");
-                    break;
-                case "en:vegetarian-status-unknown":
-                    holder.icon.setImageResource(R.drawable.ic_egg);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegetarian");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "unknown");
-                    break;
-                case "en:vegetarian-missing":
-                    holder.icon.setImageResource(R.drawable.ic_egg);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegetarian");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "missing");
-                    break;
-                case "en:vegan":
-                    holder.icon.setImageResource(R.drawable.ic_leaf);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegan");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "yes");
-                    break;
-                case "en:maybe-vegan":
-                    holder.icon.setImageResource(R.drawable.ic_leaf);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegan");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "maybe");
-                    break;
-                case "en:non-vegan":
-                    holder.icon.setImageResource(R.drawable.ic_leaf);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegan");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "no");
-                    break;
-                case "en:vegan-status-unknown":
-                    holder.icon.setImageResource(R.drawable.ic_leaf);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegan");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "unknown");
-                    break;
-                case "en:vegan-missing":
-                    holder.icon.setImageResource(R.drawable.ic_leaf);
-                    background = context.getResources().getDrawable(R.drawable.rounded_button);
-                    background.setColorFilter(ContextCompat.getColor(context, R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                    holder.itemView.setBackground(background);
-                    holder.itemView.setTag(R.id.analysis_tag, "vegan");
-                    holder.itemView.setTag(R.id.analysis_tag_value, "missing");
-                    break;
-                default:
-                    holder.icon.setImageDrawable(null);
-                    break;
-            }
+            AnalysisTagConfig tag = visibleTags.get(position);
+            Picasso.get()
+                .load(tag.getIconUrl())
+                .into(holder.icon);
+            Drawable background = context.getResources().getDrawable(R.drawable.rounded_button);
+            background.setColorFilter(Color.parseColor(tag.getColor()), android.graphics.PorterDuff.Mode.SRC_IN);
+            holder.itemView.setBackground(background);
+
+            holder.itemView.setTag(R.id.analysis_tag_config, tag);
         }
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return tags.size();
+        return visibleTags.size();
     }
 
     // stores and recycles views as they are scrolled off screen
@@ -194,6 +88,18 @@ public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<Ingredie
                 onClickListener.onItemClick(view, getAdapterPosition());
             }
         }
+    }
+
+    public void filterVisibleTags() {
+        visibleTags.clear();
+        for (AnalysisTagConfig tag :
+            tags) {
+            if (prefs.getBoolean(tag.getType(), true)) {
+                visibleTags.add(tag);
+            }
+        }
+
+        notifyDataSetChanged();
     }
 
     // allows clicks events to be caught

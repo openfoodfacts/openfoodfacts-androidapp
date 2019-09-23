@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
+
 import androidx.annotation.Nullable;
+
 import android.util.Log;
 import android.widget.Toast;
+
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -41,22 +44,26 @@ public class LoadTaxonomiesService extends IntentService {
     }
 
     private void doTask() {
-      
+
         final Consumer<Throwable> throwableConsumer = this::handleError;
-        
+
         if (BuildConfig.FLAVOR.equals("off")) {
             Single.zip(
                 productRepository.getLabels(true),
                 productRepository.getTags(true),
                 productRepository.getAllergens(true),
+                productRepository.getAnalysisTagConfigs(true),
+                productRepository.getAnalysisTags(true),
                 productRepository.getCountries(true),
                 productRepository.getAdditives(true),
-                productRepository.getCategories(true), (labels, tags, allergens,  countries, additives, categories) -> {
+                productRepository.getCategories(true), (labels, tags, allergens, analysisTagConfigs, analysisTags, countries, additives, categories) -> {
                     Completable.merge(
                         Arrays.asList(
                             Completable.fromAction(() -> productRepository.saveLabels(labels)),
                             Completable.fromAction(() -> productRepository.saveTags(tags)),
                             Completable.fromAction(() -> productRepository.saveAllergens(allergens)),
+                            Completable.fromAction(() -> productRepository.saveAnalysisTagConfigs(analysisTagConfigs)),
+                            Completable.fromAction(() -> productRepository.saveAnalysisTags(analysisTags)),
                             Completable.fromAction(() -> productRepository.saveCountries(countries)),
                             Completable.fromAction(() -> productRepository.saveAdditives(additives)),
                             Completable.fromAction(() -> productRepository.saveCategories(categories))

@@ -1,12 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -32,10 +29,8 @@ import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.FragmentActivity;
-import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,6 +56,7 @@ import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
@@ -165,21 +161,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @BindView(R.id.action_compare_button)
     ImageButton compareProductButton;
     @BindView(R.id.scrollView)
-    public NestedScrollView scrollView;
+    NestedScrollView scrollView;
     @BindView(R.id.product_question_layout)
     RelativeLayout productQuestionLayout;
     @BindView(R.id.product_question_text)
     TextView productQuestionText;
     @BindView(R.id.product_question_dismiss)
     ImageView productQuestionDismiss;
-    @BindView(R.id.palmOilIcon)
-    ImageView palmOilIcon;
-    @BindView(R.id.veganIcon)
-    ImageView veganIcon;
-    @BindView(R.id.vegetarianIcon)
-    ImageView vegetarianIcon;
     @BindView(R.id.tipBox)
     TipBox tipBox;
+    @BindView(R.id.analysis_tags)
+    RecyclerView rvAnalysisTags;
     @BindView(R.id.analysisContainer)
     View analysisContainer;
     @BindView(R.id.analysisSeparator)
@@ -204,15 +196,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean showCategoryPrompt = false;
     private Question productQuestion = null;
     private boolean hasCategoryInsightQuestion = false;
-    private SharedPreferences prefs;
-    private BroadcastReceiver prefChangedReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if ("action_pref_changed".equals(intent.getAction())) {
-                updateAnalysisTags();
-            }
-        }
-    };
 
     @Override
     public void onAttach(Context context) {
@@ -243,167 +226,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         refreshView(state);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (getContext() != null) {
-            getContext().registerReceiver(prefChangedReceiver, new IntentFilter("action_pref_changed"));
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (getContext() != null) {
-            getContext().unregisterReceiver(prefChangedReceiver);
-        }
-    }
-
-    private void showIngredientsWithTag(Product product, String tag, String value) {
-        if (getActivity() != null) {
-            IngredientsWithTagDialogFragment editNameDialogFragment = IngredientsWithTagDialogFragment.newInstance(product, tag, value);
-            editNameDialogFragment.show(getChildFragmentManager(), "fragment_ingredients_with_tag");
-        }
-    }
-
     private void updateAnalysisTags() {
-        if (getActivity() != null) {
-            palmOilIcon.setVisibility(View.GONE);
-            veganIcon.setVisibility(View.GONE);
-            vegetarianIcon.setVisibility(View.GONE);
-            analysisSeparator.setVisibility(View.GONE);
 
-            boolean displayPalmOilStatus = prefs.getBoolean("enablePalmOilStatusDisplay", true);
-            boolean displayVegetarianStatus = prefs.getBoolean("enableVegetarianStatusDisplay", true);
-            boolean displayVeganStatus = prefs.getBoolean("enableVeganStatusDisplay", true);
-
-            List<String> tags = product.getIngredientsAnalysisTags();
-            if (tags == null || tags.size() == 0) {
-                if (!displayPalmOilStatus) {
-                    palmOilIcon.setVisibility(View.GONE);
-                } else {
-                    palmOilIcon.setVisibility(View.VISIBLE);
-                    palmOilIcon.setImageResource(R.drawable.ic_monkey_uncertain);
-                    palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                    palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "missing"));
-                }
-
-                if (!displayVegetarianStatus) {
-                    vegetarianIcon.setVisibility(View.GONE);
-                } else {
-                    vegetarianIcon.setVisibility(View.VISIBLE);
-                    vegetarianIcon.setVisibility(View.VISIBLE);
-                    vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                    vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "missing"));
-                }
-
-                if (!displayVeganStatus) {
-                    veganIcon.setVisibility(View.GONE);
-                } else {
-                    veganIcon.setVisibility(View.VISIBLE);
-                    veganIcon.setVisibility(View.VISIBLE);
-                    veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                    veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "missing"));
-                }
-                return;
-            }
-
-            for (String tag :
-                tags) {
-                if (tag.contains("palm")) {
-                    if (!displayPalmOilStatus) {
-                        palmOilIcon.setVisibility(View.GONE);
-                    } else {
-                        switch (tag) {
-                            case "en:palm-oil-free":
-                                palmOilIcon.setVisibility(View.VISIBLE);
-                                palmOilIcon.setImageResource(R.drawable.ic_monkey_happy);
-                                palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
-                                palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "no"));
-                                break;
-                            case "en:may-contain-palm-oil":
-                                palmOilIcon.setVisibility(View.VISIBLE);
-                                palmOilIcon.setImageResource(R.drawable.ic_monkey_uncertain);
-                                palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
-                                palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "maybe"));
-                                break;
-                            case "en:palm-oil":
-                                palmOilIcon.setVisibility(View.VISIBLE);
-                                palmOilIcon.setImageResource(R.drawable.ic_monkey_unhappy);
-                                palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
-                                palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "yes"));
-                                break;
-                            default:
-                                palmOilIcon.setVisibility(View.VISIBLE);
-                                palmOilIcon.setImageResource(R.drawable.ic_monkey_uncertain);
-                                palmOilIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                                palmOilIcon.setOnClickListener(v -> showIngredientsWithTag(product, "from_palm_oil", "unknown"));
-                        }
-                    }
-                } else if (tag.contains("vegetarian")) {
-                    if (!displayVegetarianStatus) {
-                        vegetarianIcon.setVisibility(View.GONE);
-                    } else {
-                        switch (tag) {
-                            case "en:vegetarian":
-                                vegetarianIcon.setVisibility(View.VISIBLE);
-                                vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
-                                vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "yes"));
-                                break;
-                            case "en:maybe-vegetarian":
-                                vegetarianIcon.setVisibility(View.VISIBLE);
-                                vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
-                                vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "maybe"));
-                                break;
-                            case "en:non-vegetarian":
-                                vegetarianIcon.setVisibility(View.VISIBLE);
-                                vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
-                                vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "no"));
-                                break;
-                            default:
-                                vegetarianIcon.setVisibility(View.VISIBLE);
-                                vegetarianIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                                vegetarianIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "unknown"));
-                        }
-                    }
-                } else if (tag.contains("vegan")) {
-                    if (!displayVeganStatus) {
-                        veganIcon.setVisibility(View.GONE);
-                    } else {
-                        switch (tag) {
-                            case "en:vegan":
-                                veganIcon.setVisibility(View.VISIBLE);
-                                veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_happy), android.graphics.PorterDuff.Mode.SRC_IN);
-                                veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegetarian", "yes"));
-                                break;
-                            case "en:maybe-vegan":
-                                veganIcon.setVisibility(View.VISIBLE);
-                                veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_uncertain), android.graphics.PorterDuff.Mode.SRC_IN);
-                                veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "maybe"));
-                                break;
-                            case "en:non-vegan":
-                                veganIcon.setVisibility(View.VISIBLE);
-                                veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_sad), android.graphics.PorterDuff.Mode.SRC_IN);
-                                veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "no"));
-                                break;
-                            default:
-                                veganIcon.setVisibility(View.VISIBLE);
-                                veganIcon.setColorFilter(ContextCompat.getColor(getActivity(), R.color.monkey_unknown), android.graphics.PorterDuff.Mode.SRC_IN);
-                                veganIcon.setOnClickListener(v -> showIngredientsWithTag(product, "vegan", "unknown"));
-                        }
-                    }
-                }
-            }
-
-            if (palmOilIcon.getVisibility() == View.VISIBLE || vegetarianIcon.getVisibility() == View.VISIBLE || veganIcon.getVisibility() == View.VISIBLE) {
-                analysisContainer.setVisibility(View.VISIBLE);
-                analysisSeparator.setVisibility(View.VISIBLE);
-                tipBox.setTipMessage(getString(R.string.tip_message, getString(R.string.ingredient_analysis_tip)));
-            } else {
-                analysisContainer.setVisibility(View.GONE);
-                analysisSeparator.setVisibility(View.GONE);
-            }
-        }
     }
 
     @Override
@@ -440,6 +264,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter.loadProductQuestion();
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
+        presenter.loadAnalysisTags();
 
         mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
         barcode = product.getCode();
@@ -474,10 +299,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         } else {
             quantityProduct.setVisibility(View.GONE);
         }
-
-        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-
-        updateAnalysisTags();
 
         if (isNotBlank(product.getBrands())) {
             brandProduct.setClickable(true);
@@ -708,6 +529,22 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
+    public void showAnalysisTags(List<AnalysisTagConfig> analysisTags) {
+        getActivity().runOnUiThread(() -> {
+            IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(getContext(), analysisTags);
+            adapter.setOnItemClickListener((view, position) -> {
+                IngredientsWithTagDialogFragment fragment = IngredientsWithTagDialogFragment
+                    .newInstance(product, (AnalysisTagConfig) view.getTag(R.id.analysis_tag_config));
+                fragment.show(getChildFragmentManager(), "fragment_ingredients_with_tag");
+
+                fragment.setOnDismissListener(dialog -> adapter.filterVisibleTags());
+            });
+
+            rvAnalysisTags.setAdapter(adapter);
+        });
+    }
+
+    @Override
     public void showAllergens(List<AllergenName> allergens) {
         final AllergenHelper.Data data = AllergenHelper.computeUserAllergen(product, allergens);
         if (data.isEmpty()) {
@@ -847,7 +684,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         getActivity().runOnUiThread(() -> {
             switch (state) {
                 case LOADING: {
-                    if(getContext()!=null) {
+                    if (getContext() != null) {
                         categoryProduct.append(getString(R.string.txtLoading));
                     }
                     break;
@@ -1186,5 +1023,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             context = OFFApplication.getInstance();
         }
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void resetScroll() {
+        scrollView.scrollTo(0, 0);
+
+        if (rvAnalysisTags.getAdapter() != null) {
+            ((IngredientAnalysisTagsAdapter) rvAnalysisTags.getAdapter()).filterVisibleTags();
+        }
     }
 }

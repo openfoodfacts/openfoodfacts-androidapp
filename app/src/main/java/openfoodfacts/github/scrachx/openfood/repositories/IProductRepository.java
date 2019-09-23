@@ -8,6 +8,8 @@ import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTag;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.Category;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.Country;
@@ -22,12 +24,11 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 /**
  * This is a repository class working as an Interface.
  * It defines all the functions in Repository component.
+ *
  * @author Lobster
  * @since 03.03.18
  */
-
 public interface IProductRepository {
-
     Single<List<Label>> getLabels(Boolean refresh);
 
     Single<List<Allergen>> getAllergens(Boolean refresh);
@@ -51,6 +52,10 @@ public interface IProductRepository {
     void saveCountries(List<Country> countries);
 
     void saveAllergens(List<Allergen> allergens);
+
+    void saveAnalysisTags(List<AnalysisTag> analysisTags);
+
+    void saveAnalysisTagConfigs(List<AnalysisTagConfig> analysisTagConfigs);
 
     void saveCategories(List<Category> categories);
 
@@ -97,4 +102,10 @@ public interface IProductRepository {
     Single<Question> getSingleProductQuestion(String code, String lang);
 
     Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation);
+
+    Single<List<AnalysisTag>> getAnalysisTags(Boolean refresh);
+
+    Single<List<AnalysisTagConfig>> getAnalysisTagConfigs(Boolean refresh);
+
+    Single<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode);
 }
