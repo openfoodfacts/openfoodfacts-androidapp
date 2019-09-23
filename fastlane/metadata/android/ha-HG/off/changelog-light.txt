@@ -25,10 +25,10 @@ v2.8 ! Bayan babban V2, duk masu ba da agajin kashe sun ci gaba da aiki tuƙuru,
 4. Goge-goge na gida (by Rutvik & Salfai)
 5. 🌎 Yaren Koriya & Indonesiyan
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. ku 🙂
-1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-1. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+2.8.8 ! Tsammani zamu dakatar da ƙari akan samfurin? Dukkan ma’aikatan agaji na kashe-kashe sun ci gaba da aiki tuƙuru. Samfuran 590k, kasashe 182, masu bada gudummawa 10K +, incl. ku 🙂
+1. A yanzu zaku iya shirya kowane kaya tare da asusun ku. Danna kan ✏️ a shafin shafi don gyara.
+1. 🌍 Slovak, Ibrananci, Spanish, Larabci, Dutch, Hungarian da Vietnamese (fassara.openfoodfacts.org don taimakawa)
+3. Bude kayan Abinci shine cikakken aikin bayar da gudummawa: Kuna iya ba da gudummawa ta lokaci (world.openfoodfacts.org/contribute) ko kuɗi (donate.openfoodfacts.org)
 
 
 

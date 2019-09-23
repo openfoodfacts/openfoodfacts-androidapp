@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Skanna livsmedelsprodukter eller deras streckkod för att få information om ingredienser, tillsatser och näringsfakta.
 
 ▶ Find & Compare more than 800.000 products
 
