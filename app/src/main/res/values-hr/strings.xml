@@ -174,7 +174,7 @@
     <string name="txtSalt">Sol</string>
     <string name="txtFat">Masnoće</string>
     <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">Bar kod</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Lozinka</string>
@@ -202,7 +202,7 @@
     <string name="install">Install</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">Kategorije</string>
     <string name="search_by_category">Category</string>
     <string name="scan_search">Scan Barcode</string>
     <string name="user_drawer">User</string>
@@ -457,7 +457,7 @@
     <string name="DisableLoadTitle">Disable image loading</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
-    <string name="by_barcode">Barcode</string>
+    <string name="by_barcode">Bar kod</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
@@ -704,7 +704,7 @@
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
-    <string name="barcode">Barcode</string>
+    <string name="barcode">Bar kod</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
