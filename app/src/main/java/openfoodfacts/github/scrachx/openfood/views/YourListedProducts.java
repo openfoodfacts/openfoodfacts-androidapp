@@ -276,7 +276,6 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         }
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-
             String channelId = "export_channel";
             CharSequence channelName = context.getString(R.string.notification_channel_name);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
