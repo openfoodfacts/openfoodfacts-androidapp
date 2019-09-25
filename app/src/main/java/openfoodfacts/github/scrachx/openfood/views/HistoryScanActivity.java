@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -34,7 +33,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NavUtils;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -182,36 +180,15 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             Log.e(HistoryScanActivity.class.getSimpleName(), "can export to " + csvFile, e);
         }
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Intent downloadIntent = new Intent(Intent.ACTION_VIEW);
-        downloadIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        Uri csvUri = FileProvider.getUriForFile(this, this.getPackageName() + ".provider", csvFile);
-        downloadIntent.setDataAndType(csvUri, "text/csv");
-        downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel("downloadChannel", "ChannelCSV", importance);
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-
-            String channelId = "export_channel";
-            CharSequence channelName = getString(R.string.notification_channel_name);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
-            notificationChannel.setDescription(getString(R.string.notify_channel_description));
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
-            .setContentTitle(getString(R.string.notify_title))
-            .setContentText(getString(R.string.notify_content))
-            .setContentIntent(PendingIntent.getActivity(this, 4, downloadIntent, 0))
-            .setSmallIcon(R.mipmap.ic_launcher);
+        NotificationManager notificationManager = YourListedProducts.createNotification(csvFile, downloadIntent, this);
 
         if (isDownload) {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
+                .setContentTitle(getString(R.string.notify_title))
+                .setContentText(getString(R.string.notify_content))
+                .setContentIntent(PendingIntent.getActivity(this, 4, downloadIntent, 0))
+                .setSmallIcon(R.mipmap.ic_launcher);
             notificationManager.notify(7, builder.build());
         }
     }

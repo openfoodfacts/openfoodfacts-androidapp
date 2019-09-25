@@ -106,7 +106,7 @@ public class Utils {
      */
     private static void openTags(Spannable text, Object[] tags) {
         for (Object tag : tags) {
-            text.setSpan(tag, 0, 0, Spannable.SPAN_MARK_MARK);
+            text.setSpan(tag, 0, 0, Spanned.SPAN_MARK_MARK);
         }
     }
 
@@ -142,7 +142,7 @@ public class Utils {
         View view = activity.getCurrentFocus();
 
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null) {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }

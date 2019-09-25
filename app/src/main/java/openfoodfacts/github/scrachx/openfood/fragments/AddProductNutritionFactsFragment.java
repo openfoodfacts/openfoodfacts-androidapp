@@ -776,7 +776,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         editText.setSingleLine();
         editText.setGravity(Gravity.CENTER_VERTICAL);
         editText.requestFocus();
-        TableRow.LayoutParams lpEditText = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, dpsToPixels(45));
+        TableRow.LayoutParams lpEditText = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(45));
         lpEditText.setMargins(0, dpsToPixels(10), 0, 0);
         editText.setLayoutParams(lpEditText);
         if (preFillValues) {
@@ -795,7 +795,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         spinner.setBackgroundResource(R.drawable.spinner_weights_grey);
         spinner.setAdapter(spinnerArrayAdapter);
         spinner.setPadding(dpsToPixels(1), 0, 0, 0);
-        final TableRow.LayoutParams spinnerLayoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, dpsToPixels(35));
+        final TableRow.LayoutParams spinnerLayoutParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(35));
         spinnerLayoutParams.setMargins(dpsToPixels(8), dpsToPixels(16), dpsToPixels(8), dpsToPixels(6));
         spinner.setLayoutParams(spinnerLayoutParams);
 
