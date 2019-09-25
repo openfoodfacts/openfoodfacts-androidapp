@@ -1,4 +1,4 @@
-Dat zijn de taglines die boven de screenshots in de playstore worden getoond. Houd ze kort en aantrekkelijk.
+Dat zijn de slogans die boven de screenshots in de playstore worden getoond. Houd ze kort en aantrekkelijk.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=nl
 
 =====================
