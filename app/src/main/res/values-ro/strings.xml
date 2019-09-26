@@ -363,8 +363,8 @@
     <string name="nova_info_msg">Learn more about Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_grp3_msg">Grupa 3 - Alimente procesate</string>
+    <string name="nova_grp4_msg">Grupa 4 - Produse alimentare și băuturi ultra-procesate</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Comandă rapidă indisponibilă</string>
     <string name="scan_shortcut_short_label">Scanează</string>
@@ -616,7 +616,7 @@
     <string name="toddlers_age">1-2 ani</string>
     <string name="children">Copii</string>
     <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
+    <string name="adolescents">Adolescenţi</string>
     <string name="adolescents_age">10 to 17</string>
     <string name="adults">Adulţi</string>
     <string name="adults_age">18-64 ani</string>
