@@ -135,6 +135,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             new FillAdapter(HistoryScanActivity.this).execute(context);
             swipeRefreshLayout.setRefreshing(false);
         });
+        bottomNavigationView.setSelectedItemId(R.id.history_bottom_nav);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
     }
 

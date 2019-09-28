@@ -82,6 +82,7 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        bottomNavigationView.setSelectedItemId(R.id.compare_products);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
         setTitle(getString(R.string.compare_products));
 

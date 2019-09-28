@@ -70,6 +70,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+        bottomNavigationView.setSelectedItemId(R.id.home_page);
         BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
 
