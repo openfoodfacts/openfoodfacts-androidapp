@@ -152,6 +152,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     public void onResume() {
 
         super.onResume();
+        bottomNavigationView.setSelectedItemId(R.id.home_page);
 
         int productCount = sp.getInt("productCount", 0);
         apiClient.getTotalProductCount()
