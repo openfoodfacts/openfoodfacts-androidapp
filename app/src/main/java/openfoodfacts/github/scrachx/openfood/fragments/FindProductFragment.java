@@ -52,6 +52,8 @@ public class FindProductFragment extends NavigationBaseFragment {
                 searchBarcode(barCode);
             }
         }
+
+        bottomNavigationView.getMenu().getItem(0).setCheckable(false);
         BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
 

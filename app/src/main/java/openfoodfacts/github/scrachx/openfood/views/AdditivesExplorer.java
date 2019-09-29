@@ -69,6 +69,7 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
             recyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
         });
 
+        bottomNavigationView.getMenu().getItem(0).setCheckable(false);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 

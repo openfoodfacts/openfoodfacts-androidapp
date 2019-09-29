@@ -258,6 +258,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (scanOnShake) {
             mShakeDetector.setOnShakeListener(count -> Utils.scan(ProductBrowsingListActivity.this));
         }
+
+        bottomNavigationView.getMenu().setGroupCheckable(0, false, true);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 
