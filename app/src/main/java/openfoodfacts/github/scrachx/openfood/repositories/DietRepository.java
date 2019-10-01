@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -38,6 +39,8 @@ import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
+import static java.lang.Character.isDigit;
+import static java.lang.Character.isLetter;
 
 //import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
 //import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
@@ -1047,10 +1050,8 @@ public class DietRepository implements IDietRepository {
         //For each productIngredient
         for (int i = 0; i < productIngredients.size(); i++) {
             ProductIngredient productIngredient = productIngredients.get(i);
-            //Looking for the state of the tag
-            state = minStateForEnabledDietFromIngredientTag(productIngredient.getId());
-            //Suppress underscore from the getText string cause there is no underscore in ssbIngredients
-            ingredient = productIngredient.getText().replaceAll("_","");
+            //Are we still in the productIngredients with a Rank>0 ?
+            // If yes continue to test on ingredients, if no switch with ingredients0
             if (productIngredient.getRank() == 0 && ingredients0 != null) {
                 //This ingredient is part of another, for example "sucre" in "..., chocolat noir 6.1% [pâte de cacao, sucre, cacao maigre en poudre, émulsifiant (lécithine de soja), arôme]..."
                 //We already have treated the other which have a rank>1, so we have to get back to the beginning to treat this ingredient.
@@ -1058,52 +1059,93 @@ public class DietRepository implements IDietRepository {
                 ingredients0 = null;
                 //fromIndex=0;
             }
-            start = ingredients.indexOf(ingredient);
-            if (start >= 0) {
-                //found ingredient in ingredients
-                end = start + ingredient.length();
-                fromIndex = start;
-                //Replace ingredient by white spaces in ingredients.
-                //The goal is to treat only once the ingredients that are write more than one time, for example "sucre" in "..., sucre, oeufs 11.4%, chocolat noir 6.1% [pâte de cacao, sucre,..."
-                //The problem is that the first "sucre" is given with a rank>1 and the second, which is a component of "chocolat noir" came later with a rank=0.
-                //When we will treat "sucre" with rank>1, the example above will become "...,      , oeufs 11.4%, chocolat noir 6.1% [pâte de cacao, sucre,..."
-                //In this example : "..., oeufs 11.4%, chocolat noir 6.1% [pâte de cacao, sucre, cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
-                //"oeufs" then "chocolat noir" will transform ingredients in "...,       11.4%,               6.1% [pâte de cacao, sucre, cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
-                //then came "sucre" with rank>0 : "...,       11.4%,               6.1% [pâte de cacao,      , cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
-                //The erased "sucre" is not the good one, but it doesn't matter cause the second (and "good") "sucre" will be treated when the "sucre" of rank=0 will come.
-                //So we split the ingredients in two (before start and after) and replace the ingredient from the second one by spaces (as many as the length of ingredient).
-                ingredients = ingredients.substring(0,start) + ingredients.substring(start).replaceFirst(Pattern.quote(ingredient), new String(new char[ingredient.length()]).replace('\0', ' '));
-                //Now we can suppress asterisk(s).
-                ingredient = productIngredient.getText().replaceAll("\\*","");
-                if (state == 2) {
-                    //The ingredientTag doesn't seems to have a relation with a diet, looking for the sentence.
-                    //Theoretically this will never append. But this is theory.
-                    languageCode = product.getLang();
-                    state = minStateForEnabledDietFromIngredient(ingredient, languageCode);
+            //Suppress underscore from the getText string cause there is no underscore in ssbIngredients
+            ingredient = productIngredient.getText().replaceAll("_","");
+            //Now, looking for a state lower than 2 from the relation between actives diets and this productIngredient
+            //First looking for the state of the tag
+            state = minStateForEnabledDietFromIngredientTag(productIngredient.getId());
+            if (state == 2) {
+                //The ingredientTag doesn't seems to have a relation with an active diet, looking for the sentence.
+                //Theoretically this will never append. But this is theory.
+                languageCode = product.getLang();
+                state = minStateForEnabledDietFromIngredient(ingredient, languageCode);
+            }
+            if (state == 2) {
+                //The sentence doesn't seems to have a relation with a diet, looking for each word.
+                if (ingredient.indexOf(" ") > 0) {
+                    //Ingredient is composed from at least 2 words, test each one.
+                    String[] ingredientWords = ingredient.split(" ");
+                    for (int j = 0; j < ingredientWords.length; j++) {
+                        String ingredientWord = ingredientWords[j];
+                        state = minStateForEnabledDietFromIngredient(ingredientWord, languageCode);
+                        if (state != 2) {
+                            //This word must be colored
+                            start = ssbIngredients.toString().indexOf(ingredientWord);
+                            end = start + ingredientWord.length();
+                            ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state);
+                        }
+                    }
                 }
-                if (state == 2) {
-                    //The sentence doesn't seems to have a relation with a diet, looking for each word.
+            } else {
+                //The Tag or the complete sentence has been found and must be colored
+                //Looking for the sentence in ingredients
+                start = ingredients.indexOf(ingredient);
+                if (start >= 0) {
+                    //found ingredient in ingredients
+                    end = start + ingredient.length();
+                    fromIndex = start;
+                } else {
+                    //The ingredient is not in the list. Theoretically, this is not possible !!!
+                    // But, yes, it is... "huile de tournesol désodorisée" was not found in "..., huile de tournesol* désodorisée, ..."
+                    // because of the position of the asterisk
+                    //Search for words by words
                     if (ingredient.indexOf(" ") > 0) {
-                        //Ingredient is composed from at least 2 words, test each one.
+                        //Ingredient is composed from at least 2 words, search each one from the end of the other.
                         String[] ingredientWords = ingredient.split(" ");
-                        for (int j = 0; j < ingredientWords.length; j++) {
-                            String ingredientWord = ingredientWords[j];
-                            state = minStateForEnabledDietFromIngredient(ingredientWord, languageCode);
-                            if (state != 2) {
-                                //This word must be colored
-                                start = ssbIngredients.toString().indexOf(ingredientWord);
-                                end = start + ingredientWord.length();
-                                ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state);
+                        start = ingredients.indexOf(ingredientWords[0]);
+                        if (start > 0) {
+                            fromIndex = start + ingredientWords[0].length();
+                            for (int j = 1; j < ingredientWords.length; j++) {
+                                String ingredientWord = ingredientWords[j];
+                                end = ingredients.indexOf(ingredientWord, fromIndex);
+                                if (end - fromIndex > 2) {
+                                    //More than 2 characters between the words, doesn't seems reasonable.
+                                    start = -1;
+                                    end = -1;
+                                    break;
+                                } else {
+                                    fromIndex = end + ingredientWord.length();
+                                }
+                            }
+                            if (start > 0) {
+                                //It's look like one character has beenn add between 2 words of ingredient once or more time
+                                //Lets colored what we have found.
+                                end = fromIndex;
                             }
                         }
                     }
-                } else {
-                    //The Tag or the complete sentence has been found and must be colored
-                    ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state); // .setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))),0,24,SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
-            } else {
-                //The ingredient is not in the list. Theoretically, this is not possible !!!
+                if (start >= 0) {
+                    //Just colored the sentence found.
+                    ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state); // .setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))),0,24,SPAN_EXCLUSIVE_EXCLUSIVE);
+                } else {
+                    //This means that we haven't found the productIngredient in the ingredients of the product
+                    Log.i("IMPOSSIBLE", "The ingredient \"" + ingredient + "\" was not found in \"" + ingredients +"\".");
+                    //TODO search another way to find the ingredient or add id at the bottom of the list
+                }
             }
+            //Replace ingredient by white spaces in ingredients.
+            //The goal is to treat only once the ingredients that are write more than one time, for example "sucre" in "..., sucre, oeufs 11.4%, chocolat noir 6.1% [pâte de cacao, sucre,..."
+            //The problem is that the first "sucre" is given with a rank>1 and the second, which is a component of "chocolat noir" came later with a rank=0.
+            //When we will treat "sucre" with rank>1, the example above will become "...,      , oeufs 11.4%, chocolat noir 6.1% [pâte de cacao, sucre,..."
+            //In this example : "..., oeufs 11.4%, chocolat noir 6.1% [pâte de cacao, sucre, cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
+            //"oeufs" then "chocolat noir" will transform ingredients in "...,       11.4%,               6.1% [pâte de cacao, sucre, cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
+            //then came "sucre" with rank>0 : "...,       11.4%,               6.1% [pâte de cacao,      , cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
+            //The erased "sucre" is not the good one, but it doesn't matter cause the second (and "good") "sucre" will be treated when the "sucre" of rank=0 will come.
+            //So we split the ingredients in two (before start and after) and replace the ingredient from the second one by spaces (as many as the length of ingredient).
+            ingredients = ingredients.substring(0,start) + ingredients.substring(start).replaceFirst(Pattern.quote(ingredient), new String(new char[ingredient.length()]).replace('\0', ' '));
+            //Now we can suppress asterisk(s).
+            ingredient = productIngredient.getText().replaceAll("\\*","");
         }
         return  ssbIngredients;
     }

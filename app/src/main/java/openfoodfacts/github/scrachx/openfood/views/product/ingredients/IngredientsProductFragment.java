@@ -83,6 +83,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     private static final int EDIT_REQUEST_CODE = 2;
+    private static final int EDIT_PRODUCT_DIETS_CODE = 3;
     @BindView(R.id.textIngredientProduct)
     TextView ingredientsProduct;
     private AllergenNameDao mAllergenNameDao;
@@ -611,6 +612,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK) {
             onRefresh();
         }
+        if (requestCode == EDIT_PRODUCT_DIETS_CODE) {
+            onRefresh();
+        }
         if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             onRefresh();
         }
@@ -626,7 +630,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void openFragmentDietIngredientsProduct(View v) {
         Intent intent = new Intent(getActivity(), ProductDietsActivity.class);
         intent.putExtra("state", activityState);
-        startActivity(intent);
+        startActivityForResult(intent, EDIT_PRODUCT_DIETS_CODE);
     }
 
     @Override
