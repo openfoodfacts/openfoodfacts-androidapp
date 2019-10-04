@@ -1061,6 +1061,9 @@ public class DietRepository implements IDietRepository {
         int start = 0;
         int end = 0;
         int fromIndex = 0;
+        int startInIngredients = 0;
+        int endInIngredients = 0;
+        int fromIndexInIngredients = 0;
         String ingredient = "";
         String languageCode = "";
         //List of the ingredients of the product in text
@@ -1081,7 +1084,7 @@ public class DietRepository implements IDietRepository {
             start = ingredients.indexOf("(", fromIndex);
         }
         ingredients0 = ingredients0.substring(0,end) + new String(new char[ingredients0.length()-end]).replace('\0', ' ');
-        //fromIndex = 0;
+
         //List of productIngredient of the product
         List<ProductIngredient> productIngredients = product.getIngredients();
         //For each productIngredient
@@ -1098,6 +1101,44 @@ public class DietRepository implements IDietRepository {
             }
             //Suppress underscore from the getText string cause there is no underscore in ssbIngredients
             ingredient = productIngredient.getText().replaceAll("_","");
+
+            //Looking for the ingredient in ingredients
+            startInIngredients = ingredients.indexOf(ingredient);
+            if (startInIngredients >= 0) {
+                //found ingredient in ingredients
+                endInIngredients = startInIngredients + ingredient.length();
+                fromIndexInIngredients = startInIngredients;
+            } else {
+                //The ingredient is not in the list. Theoretically, this is not possible !!!
+                // But, yes, it is... "huile de tournesol désodorisée" was not found in "..., huile de tournesol* désodorisée, ..."
+                // because of the position of the asterisk
+                //Search for words by words
+                if (ingredient.indexOf(" ") > 0) {
+                    //Ingredient is composed from at least 2 words, search each one from the end of the other.
+                    String[] ingredientWords = ingredient.split(" ");
+                    startInIngredients = ingredients.indexOf(ingredientWords[0]);
+                    if (startInIngredients > 0) {
+                        fromIndexInIngredients = startInIngredients + ingredientWords[0].length();
+                        for (int j = 1; j < ingredientWords.length; j++) {
+                            String ingredientWord = ingredientWords[j];
+                            endInIngredients = ingredients.indexOf(ingredientWord, fromIndexInIngredients);
+                            if (endInIngredients - fromIndexInIngredients > 2) {
+                                //More than 2 characters between the words, doesn't seems reasonable.
+                                startInIngredients = -1;
+                                endInIngredients = -1;
+                                break;
+                            } else {
+                                fromIndexInIngredients = endInIngredients + ingredientWord.length();
+                            }
+                        }
+                        if (startInIngredients > 0) {
+                            //It's look like one character has beenn add between 2 words of ingredient once or more time
+                            //Let conserve this result
+                            endInIngredients = fromIndexInIngredients;
+                        }
+                    }
+                }
+            }
             //Now, looking for a state lower than 2 from the relation between actives diets and this productIngredient
             //First looking for the state of the tag
             state = minStateForEnabledDietFromIngredientTag(productIngredient.getId());
@@ -1125,50 +1166,13 @@ public class DietRepository implements IDietRepository {
                 }
             } else {
                 //The Tag or the complete sentence has been found and must be colored
-                //Looking for the sentence in ingredients
-                start = ingredients.indexOf(ingredient);
-                if (start >= 0) {
-                    //found ingredient in ingredients
-                    end = start + ingredient.length();
-                    fromIndex = start;
-                } else {
-                    //The ingredient is not in the list. Theoretically, this is not possible !!!
-                    // But, yes, it is... "huile de tournesol désodorisée" was not found in "..., huile de tournesol* désodorisée, ..."
-                    // because of the position of the asterisk
-                    //Search for words by words
-                    if (ingredient.indexOf(" ") > 0) {
-                        //Ingredient is composed from at least 2 words, search each one from the end of the other.
-                        String[] ingredientWords = ingredient.split(" ");
-                        start = ingredients.indexOf(ingredientWords[0]);
-                        if (start > 0) {
-                            fromIndex = start + ingredientWords[0].length();
-                            for (int j = 1; j < ingredientWords.length; j++) {
-                                String ingredientWord = ingredientWords[j];
-                                end = ingredients.indexOf(ingredientWord, fromIndex);
-                                if (end - fromIndex > 2) {
-                                    //More than 2 characters between the words, doesn't seems reasonable.
-                                    start = -1;
-                                    end = -1;
-                                    break;
-                                } else {
-                                    fromIndex = end + ingredientWord.length();
-                                }
-                            }
-                            if (start > 0) {
-                                //It's look like one character has beenn add between 2 words of ingredient once or more time
-                                //Lets colored what we have found.
-                                end = fromIndex;
-                            }
-                        }
-                    }
-                }
-                if (start >= 0) {
+                if (startInIngredients >= 0) {
                     //Just colored the sentence found.
-                    ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state); // .setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))),0,24,SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ssbIngredients = coloredSSBFromState(ssbIngredients, startInIngredients, endInIngredients, state); // .setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))),0,24,SPAN_EXCLUSIVE_EXCLUSIVE);
                 } else {
                     //This means that we haven't found the productIngredient in the ingredients of the product
                     Log.i("IMPOSSIBLE", "The ingredient \"" + ingredient + "\" was not found in \"" + ingredients +"\".");
-                    //TODO search another way to find the ingredient or add id at the bottom of the list
+                    //TODO search another way to find the ingredient or add it at the bottom of the list
                 }
             }
             //Replace ingredient by white spaces in ingredients.
@@ -1180,9 +1184,12 @@ public class DietRepository implements IDietRepository {
             //then came "sucre" with rank>0 : "...,       11.4%,               6.1% [pâte de cacao,      , cacao maigre en poudre, émulsifiant (lécithine de soja), arôme], sucre..."
             //The erased "sucre" is not the good one, but it doesn't matter cause the second (and "good") "sucre" will be treated when the "sucre" of rank=0 will come.
             //So we split the ingredients in two (before start and after) and replace the ingredient from the second one by spaces (as many as the length of ingredient).
-            ingredients = ingredients.substring(0,start) + ingredients.substring(start).replaceFirst(Pattern.quote(ingredient), new String(new char[ingredient.length()]).replace('\0', ' '));
+            //ingredients = ingredients.substring(0,startInIngredients) + ingredients.substring(startInIngredients).replaceFirst(Pattern.quote(ingredient), new String(new char[ingredient.length()]).replace('\0', ' '));
+            if (startInIngredients > -1) {
+                ingredients = ingredients.substring(0,startInIngredients) + new String(new char[endInIngredients-startInIngredients]).replace('\0', ' ') + ingredients.substring(endInIngredients);
+            }
             //Now we can suppress asterisk(s).
-            ingredient = productIngredient.getText().replaceAll("\\*","");
+            //ingredient = productIngredient.getText().replaceAll("\\*","");
         }
         return  ssbIngredients;
     }
