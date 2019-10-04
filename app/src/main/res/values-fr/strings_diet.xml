@@ -25,5 +25,8 @@
     <string name="warning_one_diet_1">Maintenant que vous avez créé un régime, vous pouvez voir ses effets en scannant un produit et en consultant ses ingrédients.</string>
     <string name="warning_one_diet_2">Vous pourrez alors cliquer sur cette liste d\'ingrédients pour compléter votre régime.</string>
     <string name="warning_one_diet_3">Vous pouvez également ajouter d\'autres régimes et les activer / désactiver.</string>
+    <string name="edit_diet_remove">Supprimer ce régime.</string>
+    <string name="title_remove_diet_dialog">Suppression</string>
+    <string name="text_remove_diet_dialog">Voulez-vous supprimer ce régime et toutes ces relations ?</string>
     <!-- End of used for diets AddOn -->
 </resources>

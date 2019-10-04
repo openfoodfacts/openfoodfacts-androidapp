@@ -25,5 +25,8 @@
     <string name="warning_one_diet_1">Now you have created a diet you can see its effects by scanning a product and consult its ingredients.</string>
     <string name="warning_one_diet_2">You may click on this ingredients list to complete your diet.</string>
     <string name="warning_one_diet_3">You may also add some other diets and enabled/disabled them.</string>
+    <string name="edit_diet_remove">Remove this diet.</string>
+    <string name="title_remove_diet_dialog">Remove</string>
+    <string name="text_remove_diet_dialog">Do you want to remove the diet and all its relations?</string>
     <!-- End of used for diets AddOn -->
 </resources>

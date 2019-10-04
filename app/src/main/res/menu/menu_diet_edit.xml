@@ -9,4 +9,11 @@
         android:title="@string/share"
         android:visible="true"
         app:showAsAction="always"/>
+
+    <item
+            android:id="@+id/action_remove"
+            android:icon="@drawable/ic_delete_black_24dp"
+            android:title="@string/edit_diet_remove"
+            app:showAsAction="ifRoom" />
+
 </menu>

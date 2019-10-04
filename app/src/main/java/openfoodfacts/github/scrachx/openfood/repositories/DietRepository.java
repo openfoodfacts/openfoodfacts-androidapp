@@ -131,6 +131,27 @@ public class DietRepository implements IDietRepository {
     }
 
     /**
+     * remove a Diet from local database
+     */
+    @Override
+    public void removeDiet(Long id) {
+        Diet diet = getDietById(id);
+        if (diet.getId() > 0) {
+            List <DietName> dietNameList = getDietNameListByDietTag(diet.getTag());
+            for (int i = 0; i < dietNameList.size(); i++) {
+                DietName dietName =  dietNameList.get(i);
+                dietNameDao.delete(dietName);
+            }
+            List <DietIngredients> dietIngredientsList = getDietIngredientsListByDietTag(diet.getTag());
+            for (int i = 0; i < dietIngredientsList.size(); i++) {
+                DietIngredients dietIngredients =  dietIngredientsList.get(i);
+                dietIngredientsDao.delete(dietIngredients);
+            }
+            diet.delete();
+        }
+    }
+
+    /**
      * DietIngredients saving to local database
      */
     @Override
@@ -239,6 +260,22 @@ public class DietRepository implements IDietRepository {
         }
         //Return the Diet with the Tag of the DietName found.
         return getDietByTag(dietName.getDietTag());
+    }
+
+    /**
+     * Return the DietNames objects that correspond to the dietTag
+     *
+     * @param dietTag       The tag of the diet
+     * @return DietNames    List of all the name of the diet
+     *
+     * @author dobriseb
+     */
+    @Override
+    public List <DietName> getDietNameListByDietTag(String dietTag) {
+        List<DietName> dietNameList = dietNameDao.queryBuilder().where(
+            DietNameDao.Properties.DietTag.eq(dietTag)
+        ).list();
+        return dietNameList;
     }
 
     /**

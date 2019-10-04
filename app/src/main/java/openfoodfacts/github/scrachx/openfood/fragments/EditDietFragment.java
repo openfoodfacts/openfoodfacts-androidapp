@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -43,10 +46,9 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 
 public class EditDietFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DIET_NAME = "dietName";
-    //Récupération des éléments du fragment de saisie d'une Diet
+    //Get the components of the fragment_diet_edit
     @BindView(R.id.diet_id)
     EditText dietId;
     @BindView(R.id.diet_name)
@@ -70,7 +72,6 @@ public class EditDietFragment extends Fragment {
     private IDietRepository dietRepository;
     private IngredientNameDao mIngredientNameDao;
     private List<String> ingredients = new ArrayList<>();
-    // TODO: Rename and change types of parameters
     private String mDietName;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
@@ -88,7 +89,6 @@ public class EditDietFragment extends Fragment {
      * @param dietName Name off the diet to edit, null if new diet to be created.
      * @return A new instance of fragment EditDietFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static EditDietFragment newInstance(String dietName) {
         EditDietFragment fragment = new EditDietFragment();
         Bundle args = new Bundle();
@@ -140,31 +140,53 @@ public class EditDietFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_diet_edit, menu);
         super.onCreateOptionsMenu(menu, inflater);
+        if (dietId.getText().toString().isEmpty()) {
+            MenuItem pinMenuItem = menu.findItem(R.id.action_remove);
+            pinMenuItem.setVisible(false);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_share) {
-            dietRepository = DietRepository.getInstance();
-            StringBuffer extraText = new StringBuffer();
-            extraText.append(getString(R.string.diet_export_1) + " \"" + getString(R.string.your_diets) + "\"\n" + getString(R.string.diet_export_2) + "\n");
-            extraText.append(getString(R.string.edit_diet_name) + " : " + dietName.getText().toString() + "\n");
-            extraText.append(getString(R.string.edit_diet_description) + " : " + dietDescription.getText().toString() + "\n");
-            extraText.append(getString(R.string.edit_diet_authorised_ingredients) + "  : " + ingredientsAuthorised.getAllChips().toString().replace("[","").replace("]",",") + "\n");
-            extraText.append(getString(R.string.edit_diet_so_so_ingredients) + "  : " + ingredientsSoSo.getAllChips().toString().replace("[","").replace("]",",") + "\n");
-            extraText.append(getString(R.string.edit_diet_unauthorised_ingredients) + "  : " + ingredientsUnauthorised.getAllChips().toString().replace("[","").replace("]",",") + "\n");
-            extraText.append(getString(R.string.diet_export_3) + " \"" + getString(R.string.save_edits) + "\"");
-            //String jsonDiet = dietRepository.exportDietToJson(dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode));
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, extraText.toString());
-            //sendIntent.putExtra(Intent.EXTRA_TEXT, jsonDiet);
-            sendIntent.setType("text/plain");
-            startActivity(sendIntent);
-            return true;
-        }
+        dietRepository = DietRepository.getInstance();
+        switch (item.getItemId()) {
+            case R.id.action_remove:
+                new MaterialDialog.Builder(this.getContext())
+                    .title(R.string.title_remove_diet_dialog)
+                    .content(R.string.text_remove_diet_dialog)
+                    .onPositive((dialog, which) -> {
+                        if (! dietId.getText().toString().isEmpty()) {
+                            dietRepository.removeDiet(Long.parseLong(dietId.getText().toString()));
+                        }
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        fm.popBackStack();
+                    })
+                    .positiveText(R.string.txtYes)
+                    .negativeText(R.string.txtNo)
+                    .show();
+                //Back to the DietsFragment.
+                return true;
 
-        return super.onOptionsItemSelected(item);
+            case R.id.action_share:
+                StringBuffer extraText = new StringBuffer();
+                extraText.append(getString(R.string.diet_export_1) + " \"" + getString(R.string.your_diets) + "\"\n" + getString(R.string.diet_export_2) + "\n");
+                extraText.append(getString(R.string.edit_diet_name) + " : " + dietName.getText().toString() + "\n");
+                extraText.append(getString(R.string.edit_diet_description) + " : " + dietDescription.getText().toString() + "\n");
+                extraText.append(getString(R.string.edit_diet_authorised_ingredients) + "  : " + ingredientsAuthorised.getAllChips().toString().replace("[","").replace("]",",") + "\n");
+                extraText.append(getString(R.string.edit_diet_so_so_ingredients) + "  : " + ingredientsSoSo.getAllChips().toString().replace("[","").replace("]",",") + "\n");
+                extraText.append(getString(R.string.edit_diet_unauthorised_ingredients) + "  : " + ingredientsUnauthorised.getAllChips().toString().replace("[","").replace("]",",") + "\n");
+                extraText.append(getString(R.string.diet_export_3) + " \"" + getString(R.string.save_edits) + "\"");
+                //String jsonDiet = dietRepository.exportDietToJson(dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode));
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, extraText.toString());
+                //sendIntent.putExtra(Intent.EXTRA_TEXT, jsonDiet);
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

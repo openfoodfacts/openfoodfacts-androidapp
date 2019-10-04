@@ -20,11 +20,9 @@
         tools:text="@string/diet_name"/>
 
     <Switch
-        android:id="@+id/diet_enabled"
-        android:layout_width="50dp"
-        android:layout_height="11dp"
-        android:layout_weight="1"
-        android:layout_margin="@dimen/spacing_small"
-        android:layout_marginLeft="@dimen/spacing_normal"
-        android:layout_marginRight="@dimen/spacing_normal"/>
+            android:id="@+id/diet_enabled"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content" />
+
 </LinearLayout>
