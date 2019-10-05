@@ -219,7 +219,7 @@
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
     <string name="delete_txt">Dilemel</string>
-    <string name="sign_in_drawer">Sign-in</string>
+    <string name="sign_in_drawer">Kevreañ</string>
     <string name="alert_drawer">Allergen alert</string>
     <string name="your_lists">Ho rolloù</string>
     <string name="title_dialog_alert">Add alert</string>
@@ -377,7 +377,7 @@
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
-    <string name="scan_shortcut_short_label">Scan</string>
+    <string name="scan_shortcut_short_label">Skanañ</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">Klask</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
@@ -612,7 +612,7 @@
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-    <string name="edit_product_title">Edit a product</string>
+    <string name="edit_product_title">Aozañ ur produ</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
@@ -727,7 +727,7 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">Zoum</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
     <string name="compare_additives">Additives :</string>
