@@ -153,7 +153,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         super.onResume();
 
         int productCount = sp.getInt("productCount", 0);
-        apiClient.getTotalProductCount()
+        apiClient.getTotalProductCount(getString(R.string.app_name) + " " + Utils.getUserAgent("OTHERS"))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<Search>() {
@@ -224,7 +224,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     private void getTagline() {
         OpenFoodAPIService openFoodAPIService = new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
-        Call<ArrayList<TaglineLanguageModel>> call = openFoodAPIService.getTagline();
+        Call<ArrayList<TaglineLanguageModel>> call = openFoodAPIService.getTagline(getString(R.string.app_name) + " " + Utils.getUserAgent("OTHERS"));
         call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
             @Override
             public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
