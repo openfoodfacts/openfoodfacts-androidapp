@@ -7,10 +7,13 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.style.ForegroundColorSpan;
 import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.cardview.widget.CardView;
 import android.text.SpannableStringBuilder;
@@ -63,6 +66,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductDietsActivity;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.IllegalClassException;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -267,7 +271,38 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             textIngredientProductCardView.setVisibility(View.VISIBLE);
             SpannableStringBuilder txtIngredients = new SpannableStringBuilder(product.getIngredientsText(langCode).replace("_", ""));
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens);
-            txtIngredients = dietRepository.getColoredSSBFromSSBAndProduct(txtIngredients, product);
+            //txtIngredients = dietRepository.getColoredSSBFromSSBAndProduct(txtIngredients, product);
+            //txtIngredients.subSequence(txtIngredients.length()-2,txtIngredients.length()).toString();
+            //txtIngredients = txtIngredients.replace(txtIngredients.length()-2,txtIngredients.length(),"");
+            Object[] txtIngredientsProductState = (Object[]) dietRepository.getColoredSSBAndProductStateFromSSBAndProduct(txtIngredients, product);
+            txtIngredients = (SpannableStringBuilder) txtIngredientsProductState[0];
+            long productState = (long) txtIngredientsProductState[1];
+            FragmentManager fragmentManager = getFragmentManager();
+            Fragment fragmentSummary = fragmentManager.getFragments().get(0);
+            ImageView dietScale = fragmentSummary.getView().findViewById(R.id.dietState);
+            dietScale.setVisibility(View.VISIBLE);
+            //If Continuous ScanActivity is active, then add the productState
+            try {
+                ((ContinuousScanActivity) getActivity()).setDietState(productState);
+            } catch (Exception e) {
+                //Just continue
+            }
+            switch (Long.toString(productState)) {
+                case "-1":
+                    dietScale.setImageResource(R.drawable.trafficligth_red);
+                    dietScale.setContentDescription("@string/edit_diet_unauthorised_ingredients");
+                    break;
+                case "0":
+                    dietScale.setImageResource(R.drawable.trafficligth_orange);
+                    dietScale.setContentDescription("@string/edit_diet_so_so_ingredients");
+                    break;
+                case "1":
+                    dietScale.setImageResource(R.drawable.trafficligth_green);
+                    dietScale.setContentDescription("@string/edit_authorised_ingredients");
+                    break;
+                default:
+                    dietScale.setVisibility(View.INVISIBLE);
+            }
             if (TextUtils.isEmpty(product.getIngredientsText(langCode))) {
                 extractIngredientsPrompt.setVisibility(View.VISIBLE);
             }

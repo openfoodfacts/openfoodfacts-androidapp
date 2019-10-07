@@ -117,18 +117,22 @@ public class DietIngredientsProductAdapter extends RecyclerView.Adapter<DietIngr
                 Log.i("BUTTON", "Position : " + position + " ForegroundColor : " + FGCSpans[0].getForegroundColor());
                 switch (FGCSpans[0].getForegroundColor()) {
                     case -16731136 :
+                        //Green, that mean State 1
                         dietIngredientHolder.stateGreenImageButton.setScaleX((float) 1.1);
                         dietIngredientHolder.stateGreenImageButton.setScaleY((float) 1.1);
                         break;
                     case -26368 :
+                        //Orange, that mean State 0
                         dietIngredientHolder.stateOrangeImageButton.setScaleX((float) 1.1);
                         dietIngredientHolder.stateOrangeImageButton.setScaleY((float) 1.1);
                         break;
                     case -65536 :
+                        //Red, that mean State -1
                         dietIngredientHolder.stateRedImageButton.setScaleX((float) 1.1);
                         dietIngredientHolder.stateRedImageButton.setScaleY((float) 1.1);
                         break;
                     default:
+                        //Well, that mean State 2
                         dietIngredientHolder.stateGreyImageButton.setScaleX((float) 1.1);
                         dietIngredientHolder.stateGreyImageButton.setScaleY((float) 1.1);
                         break;

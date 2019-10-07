@@ -234,6 +234,23 @@
                 >
 
                 <ImageView
+                        android:id="@+id/dietState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:clickable="true"
+                        android:contentDescription=""
+                        android:focusable="true"
+                        android:maxHeight="90dp"
+                        android:paddingTop="20dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/imageGrade"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/trafficligth_red" />
+
+                <ImageView
                     android:id="@+id/imageGrade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -243,7 +260,7 @@
                     android:maxHeight="90dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/dietState"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/nova_group"
                     tools:src="@drawable/nnc_a" />

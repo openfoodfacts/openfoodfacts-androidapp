@@ -93,7 +93,7 @@ public interface IDietRepository {
 
     SpannableStringBuilder getColoredSSBFromSSBIngredients(SpannableStringBuilder ssbIngredients, String languageCode);
 
-    SpannableStringBuilder getColoredSSBFromSSBAndProduct(SpannableStringBuilder ssbIngredients, Product product);
+    Object getColoredSSBAndProductStateFromSSBAndProduct(SpannableStringBuilder ssbIngredients, Product product);
 
     List<String> getIngredientsListFromIngredientsText (String ingredientsText, boolean preserveAllSign);
 

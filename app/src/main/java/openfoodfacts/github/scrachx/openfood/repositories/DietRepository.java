@@ -1056,8 +1056,9 @@ public class DietRepository implements IDietRepository {
      * @author dobriseb
      */
     @Override
-    public SpannableStringBuilder getColoredSSBFromSSBAndProduct(SpannableStringBuilder ssbIngredients, Product product) {
+    public Object[] getColoredSSBAndProductStateFromSSBAndProduct(SpannableStringBuilder ssbIngredients, Product product) {
         long state;
+        long productState = 1;
         int start = 0;
         int end = 0;
         int fromIndex = 0;
@@ -1102,7 +1103,7 @@ public class DietRepository implements IDietRepository {
             //Suppress underscore from the getText string cause there is no underscore in ssbIngredients
             ingredient = productIngredient.getText().replaceAll("_","");
 
-            //Looking for the ingredient in ingredients
+            //Looking for the place of ingredient in ingredients
             startInIngredients = ingredients.indexOf(ingredient);
             if (startInIngredients >= 0) {
                 //found ingredient in ingredients
@@ -1139,6 +1140,7 @@ public class DietRepository implements IDietRepository {
                     }
                 }
             }
+
             //Now, looking for a state lower than 2 from the relation between actives diets and this productIngredient
             //First looking for the state of the tag
             state = minStateForEnabledDietFromIngredientTag(productIngredient.getId());
@@ -1150,6 +1152,9 @@ public class DietRepository implements IDietRepository {
             }
             if (state == 2) {
                 //The sentence doesn't seems to have a relation with a diet, looking for each word.
+                //First, if we don't know the relation of the ingredient and the diet then the productState can't stay at 1
+                if (productState == 1) productState=2;
+                //Search for each words if there is many.
                 if (ingredient.indexOf(" ") > 0) {
                     //Ingredient is composed from at least 2 words, test each one.
                     String[] ingredientWords = ingredient.split(" ");
@@ -1158,6 +1163,8 @@ public class DietRepository implements IDietRepository {
                         state = minStateForEnabledDietFromIngredient(ingredientWord, languageCode);
                         if (state != 2) {
                             //This word must be colored
+                            //If this state is under the productState and 1, then it is the new productState
+                            if (state <1 && state < productState) productState = state;
                             start = ssbIngredients.toString().indexOf(ingredientWord);
                             end = start + ingredientWord.length();
                             ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state);
@@ -1166,6 +1173,8 @@ public class DietRepository implements IDietRepository {
                 }
             } else {
                 //The Tag or the complete sentence has been found and must be colored
+                //If this state is under the productState and 1, then it is the new productState
+                if (state <1 && state < productState) productState = state;
                 if (startInIngredients >= 0) {
                     //Just colored the sentence found.
                     ssbIngredients = coloredSSBFromState(ssbIngredients, startInIngredients, endInIngredients, state); // .setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))),0,24,SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -1191,7 +1200,8 @@ public class DietRepository implements IDietRepository {
             //Now we can suppress asterisk(s).
             //ingredient = productIngredient.getText().replaceAll("\\*","");
         }
-        return  ssbIngredients;
+
+        return new Object[]{ssbIngredients, productState};
     }
 
     /**
