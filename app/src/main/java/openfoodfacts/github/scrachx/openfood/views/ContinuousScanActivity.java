@@ -274,7 +274,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                         }
                         //Hide dietState from quickView if app flavour is not OFF
                         if (! BuildConfig.FLAVOR.equals("off")) {
-                            dietState.setVisibility(INVISIBLE);
+                            dietState.setVisibility(GONE);
                         }
                         // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
                         if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
@@ -295,7 +295,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                                 additives.setVisibility(VISIBLE);
                                 novaGroup.setImageResource(novaGroupDrawable);
                             } else {
-                                novaGroup.setVisibility(INVISIBLE);
+                                novaGroup.setVisibility(GONE);
                             }
                         } else {
                             novaGroup.setVisibility(GONE);
@@ -305,7 +305,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                             co2Icon.setVisibility(VISIBLE);
                             co2Icon.setImageResource(environmentImpactResource);
                         } else {
-                            co2Icon.setVisibility(INVISIBLE);
+                            co2Icon.setVisibility(GONE);
                         }
                         FragmentManager fm = getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -848,7 +848,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                 dietState.setImageResource(R.drawable.trafficligth_green);
                 break;
             default:
-                dietState.setVisibility(INVISIBLE);
+                dietState.setVisibility(GONE);
         }
     }
 }
