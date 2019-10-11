@@ -230,7 +230,8 @@
                     android:layout_height="wrap_content"
                     app:arrowAlignment="start"
                     app:arrowMarginStart="0dp"
-                    app:identifier="ingredient_analysis_tip_box" />
+                    app:identifier="ingredient_analysis_tip_box"
+                    app:message="@string/ingredient_analysis_tip" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/analysis_tags"

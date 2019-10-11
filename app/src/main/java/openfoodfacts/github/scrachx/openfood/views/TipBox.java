@@ -38,9 +38,10 @@ public class TipBox extends LinearLayout {
             throw new Exception("Tip box identifier not set!!!");
         }
         animate = attributes.getBoolean(R.styleable.TipBox_animate, true);
+        tipMessage = findViewById(R.id.tipMessage);
         String message = attributes.getString(R.styleable.TipBox_message);
         if (message != null) {
-            tipMessage.setText(message);
+            tipMessage.setText(context.getString(R.string.tip_message, message));
         }
         arrow = findViewById(R.id.arrow);
         int marginStart = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginStart, 0);
@@ -48,7 +49,6 @@ public class TipBox extends LinearLayout {
         int arrowAlignment = attributes.getInt(R.styleable.TipBox_arrowAlignment, Gravity.START);
         setArrowAlignment(arrowAlignment, marginStart, marginEnd);
 
-        tipMessage = findViewById(R.id.tipMessage);
         attributes.recycle();
 
         // gone by default

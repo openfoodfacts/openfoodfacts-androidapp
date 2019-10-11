@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
+
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 
@@ -33,10 +34,10 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                 .putBoolean("firstRun", false)
                 .apply();
         }
-//        if (isNeedToRefresh()) { //true if data was refreshed more than 1 day ago
+        if (isNeedToRefresh()) { //true if data was refreshed more than 1 day ago
             Intent intent = new Intent(context, LoadTaxonomiesService.class);
             context.startService(intent);
-//        }
+        }
         if (firstRun) {
             new Handler().postDelayed(() -> view.navigateToMainActivity(), 6000);
         } else {
