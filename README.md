@@ -26,7 +26,7 @@ Open Food Facts is a database of food products with ingredients, allergens, nutr
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-25000+ contributors like you have added 868000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+25000+ contributors like you have added 968000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
@@ -90,7 +90,7 @@ We use the following libraries, and we're not closed to changes where relevant :
 - [android-async-http](https://loopj.com/android-async-http/) - A Callback-Based Http Client Library for Android
 - [Jackson](http://jackson.codehaus.org) - Core part of Jackson that defines Streaming API as well as basic shared abstractions
 - [code-mc/loadtoast](https://github.com/code-mc/loadtoast) - Pretty material design toasts with feedback animations
-- [dm77/barcodescanner](https://github.com/dm77/barcodescanner) - Barcode Scanner Libraries for Android
+- [journeyapps/zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded) - Barcode scanner library for Android, based on the ZXing decoder
 - [koush/ion](https://github.com/koush/ion) - Android Asynchronous Networking and Image Loading
 - [jsoup](https://jsoup.org/) - jsoup is a Java library for working with real-world HTML
 - [satyan/sugar](https://github.com/satyan/sugar) - Insanely easy way to work with Android Database. 

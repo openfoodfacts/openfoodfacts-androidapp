@@ -41,6 +41,8 @@ ext {
     supportLibraryVersion = '1.0.0'
     multidexVersion = '2.0.1'
 
+    workRuntime = '2.2.0'
+
     daggerVersion = '2.22'
 
     rxVersion = '2.2.9'

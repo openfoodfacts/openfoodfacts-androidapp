@@ -211,7 +211,7 @@
     <string name="delete_txt">Ştergeţi</string>
     <string name="sign_in_drawer">Conectare</string>
     <string name="alert_drawer">Alertă alergeni</string>
-    <string name="your_lists">Listele tatle</string>
+    <string name="your_lists">Listele tale</string>
     <string name="title_dialog_alert">Adaugare alertă</string>
     <string name="select_camera">Alege camera</string>
     <string name="ok_button">OK</string>
@@ -229,7 +229,7 @@
     <string name="error_invalid_password">Parola trebuie să fie de cel puțin 6 caractere.</string>
     <string name="user">utilizator</string>
     <string name="error_field_required">Acest câmp este obligatoriu.</string>
-    <string name="action_preferences">Preferinţe</string>
+    <string name="action_preferences">Preferințe</string>
     <string name="prefs_scan_startup">Scanare la pornire</string>
     <string name="prefs_scan_startup_summary">Această opțiune permite activarea funcției de scanare la pornirea aplicației.</string>
     <string name="prefs_power_mode">Scanare \"power mode\"</string>
@@ -274,7 +274,7 @@
     <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="energy_pref_title">Preferred energy unit</string>
     <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="volume_pref_title">Unitate de volum preferată</string>
     <string name="logout_drawer">Deconectare</string>
     <string name="contribution_without_account">Conectați-vă sau creați un cont pentru a păstra contribuțiile.</string>
     <string name="textCarbonFootprint">Amprenta carbon / Emisii CO2 </string>
@@ -363,8 +363,8 @@
     <string name="nova_info_msg">Learn more about Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_grp3_msg">Grupa 3 - Alimente procesate</string>
+    <string name="nova_grp4_msg">Grupa 4 - Produse alimentare și băuturi ultra-procesate</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Comandă rapidă indisponibilă</string>
     <string name="scan_shortcut_short_label">Scanează</string>
@@ -397,7 +397,7 @@
     <string name="preference_enable_mobile_data_summary_off">Încărcați produse noi utilizând doar WiFi</string>
     <string name="device_on_mobile_data_warning_title">Informaţii</string>
     <string name="device_on_mobile_data_warning_message">Încărcarea prin datelre mobile este dezactivată, vă rugăm conectați-vă la WiFi sau modificați opțiunile în setări</string>
-    <string name="device_on_mobile_data_warning_positive">Preferinţe</string>
+    <string name="device_on_mobile_data_warning_positive">Preferințe</string>
     <string name="device_on_mobile_data_warning_negative">Încărcați oricum</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Alegeți limba</string>
@@ -408,7 +408,7 @@
     <string name="please_check_your_connection">Te rog verifică conexiunea ta.</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Cautare avansată &amp; Grafice</string>
-    <string name="compare_products">Compare products</string>
+    <string name="compare_products">Compară produse</string>
     <string name="connectivity_check">Te rog verifică conexiunea ta la internet</string>
     <string name="dismiss">Renunță</string>
     <string name="Terms">Termeni</string>
@@ -501,9 +501,9 @@
     <string name="productAdditivesUnknown">Aditivi necunoscuți</string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="few">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d aditiv</item>
+        <item quantity="few">%d aditivi</item>
+        <item quantity="other">%d aditivi</item>
     </plurals>
     <string name="product_not_complete">Acest produs încă nu este complet.\nÎi poți adăuga tu câteva detalii?</string>
     <string name="addProductOffline">Pari a fi deconectat. Adaugi produsul %s folosind modul offline?</string>
@@ -514,7 +514,7 @@
     <string name="switch_camera">Schimbă camera foto</string>
     <string name="autofocus">Autofocalizare</string>
     <string name="initial_loading">Încărcare inițială</string>
-    <string name="preferences">Preferinţe</string>
+    <string name="preferences">Preferințe</string>
     <string name="OFFlogo">Sigla Open Food Facts</string>
     <string name="loading_product">Se încarcă produse%s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -616,7 +616,7 @@
     <string name="toddlers_age">1-2 ani</string>
     <string name="children">Copii</string>
     <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
+    <string name="adolescents">Adolescenţi</string>
     <string name="adolescents_age">10 to 17</string>
     <string name="adults">Adulţi</string>
     <string name="adults_age">18-64 ani</string>
@@ -677,11 +677,11 @@
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add products</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_product">Adaugă produse</string>
+    <string name="add_another_product">Adaugă un alt produs</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">Compară</string>
+    <string name="product_summary_action_add_to_list_button_label">Adaugă la listă</string>
     <string name="product_summary_action_edit_button_label">Modificare</string>
     <string name="product_summary_action_share_button_label">Distribuiți</string>
     <string name="product_question_prompt">Tap here to answer</string>
@@ -705,7 +705,7 @@
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Cod de bare</string>
-    <string name="productAdditivesNone">No additives</string>
+    <string name="productAdditivesNone">Fără aditivi</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
@@ -716,7 +716,7 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
-    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="product_already_exists_in_comparison">Produsul există deja în lista de comparație</string>
     <string name="compare_brands">Mărci :</string>
     <string name="compare_additives">Aditivi alimentari:</string>
     <string name="compare_salt">Sare</string>
