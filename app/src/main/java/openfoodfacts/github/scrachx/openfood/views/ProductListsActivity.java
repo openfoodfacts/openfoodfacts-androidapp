@@ -1,26 +1,26 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductLists;
-import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -28,11 +28,18 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
+    private static final int ACTIVITY_CHOOSE_FILE = 123;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.fabAdd)
@@ -70,7 +77,6 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
         fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.plus_blue, 0, 0, 0);
-
 
         productListsDao = getProducListsDaoWithDefaultList(this);
         productLists = productListsDao.loadAll();
@@ -173,6 +179,15 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK && data.getExtras().getBoolean("update")) {
             adapter.notifyDataSetChanged();
+        } else if (requestCode == ACTIVITY_CHOOSE_FILE) {
+            if (resultCode == RESULT_OK) {
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(data.getData());
+                    new ParseCSV(inputStream).execute();
+                } catch (Exception e) {
+                    Log.e(ProductListsActivity.class.getSimpleName(), "Error importing CSV: " + e.getMessage());
+                }
+            }
         }
     }
 
@@ -184,6 +199,101 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
             adapter.remove(productToRemove);
             adapter.notifyItemRemoved(position);
             adapter.notifyItemRangeChanged(position, adapter.getItemCount());
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_product_lists, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_import_csv) {
+            selectCSVFile();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void selectCSVFile() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("text/csv");
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.open_csv)), ACTIVITY_CHOOSE_FILE);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class ParseCSV extends AsyncTask<Void, Integer, Boolean> {
+        InputStream inputStream;
+        ProgressDialog progressDialog;
+
+        ParseCSV(InputStream inputStream) {
+            this.inputStream = inputStream;
+            progressDialog = new ProgressDialog(ProductListsActivity.this);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            progressDialog.dismiss();
+            if (!aBoolean) {
+                Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv_error), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv), Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            progressDialog.setProgress(values[0]);
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            YourListedProductDao yourListedProductDao = Utils.getAppDaoSession(ProductListsActivity.this).getYourListedProductDao();
+            List<YourListedProduct> list = new ArrayList<>();
+
+            try (CSVParser csvParser = new CSVParser(new InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+                List<CSVRecord> result = csvParser.getRecords();
+                int size = result.size();
+                int count = 0;
+                long id;
+                for (CSVRecord record : result) {
+                    List<ProductLists> lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
+                    if (lists.size() <= 0) {
+                        //create new list
+                        ProductLists productList = new ProductLists(record.get(2), 0);
+                        productLists.add(productList);
+                        productListsDao.insert(productList);
+                        lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
+                    }
+                    id = lists.get(0).getId();
+
+                    YourListedProduct yourListedProduct = new YourListedProduct();
+                    yourListedProduct.setBarcode(record.get(0));
+                    yourListedProduct.setProductName(record.get(1));
+                    yourListedProduct.setListName(record.get(2));
+                    yourListedProduct.setProductDetails(record.get(3));
+                    yourListedProduct.setListId(id);
+                    list.add(yourListedProduct);
+
+                    count++;
+                    publishProgress((int) ((float) count * 100 / (float) size));
+                }
+                yourListedProductDao.insertOrReplaceInTx(list);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
         }
     }
 }

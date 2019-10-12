@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 

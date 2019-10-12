@@ -1,4 +1,4 @@
-Dat zijn de taglines die boven de screenshots in de playstore worden getoond. Houd ze kort en aantrekkelijk.
+Dat zijn de slogans die boven de screenshots in de playstore worden getoond. Houd ze kort en aantrekkelijk.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=nl
 
 =====================
@@ -41,7 +41,7 @@ Voedingswaarden
 V3 schermafbeeldingen
 =====================
 
-Kies producten die goed zijn voor jou en voor de 🌍 planeet!
+Kies de producten die goed zijn voor u en voor de 🌍 planeet!
 
 ✔ Ultrasnelle barcodescan
 

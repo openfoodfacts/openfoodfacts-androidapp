@@ -9,13 +9,16 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.StringRes;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.*;
+import androidx.annotation.StringRes;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.widget.*;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,10 +36,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
@@ -47,8 +47,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductBrowsingListActivity extends BaseActivity {
-
-    private static final  String SEARCH_INFO = "search_info";
+    /**
+     * Must be public to be visible by TakeScreenshotIncompleteProductsTest class.
+     */
+    @SuppressWarnings("WeakerAccess")
+    public static final  String SEARCH_INFO = "search_info";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -104,6 +107,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
      */
     public static void startActivity(Context context, String searchQuery, @SearchType String type) {
         startActivity(context, searchQuery, searchQuery, type);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
     /**
@@ -596,7 +604,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
                                     View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
                                     if (view != null) {
                                         InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                        imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                        if(imm!=null) {
+                                            imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                        }
                                     }
                                 } catch (NullPointerException e) {
                                     Log.e(ProductBrowsingListActivity.class.getSimpleName(),"addOnItemTouchListener",e);

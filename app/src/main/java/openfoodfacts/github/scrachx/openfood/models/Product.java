@@ -4,18 +4,18 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.util.StdConverter;
 import openfoodfacts.github.scrachx.openfood.images.ImageSize;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.text.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import java.io.Serializable;
 import java.util.*;
 
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 class ProductStringConverter extends StdConverter<String, String> {
     public String convert(String value) {
-        return StringEscapeUtils.unescapeHtml4(value).replace("\\'", "'").replace("&quot", "'");
+        return StringEscapeUtils.unescapeHtml(value).replace("\\'", "'").replace("&quot", "'");
     }
 }
 

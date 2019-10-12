@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v7.content.res.AppCompatResources;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 import openfoodfacts.github.scrachx.openfood.R;

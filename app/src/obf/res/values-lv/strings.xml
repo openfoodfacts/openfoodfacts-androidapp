@@ -23,9 +23,7 @@
     <string name="slide_4_title">Darbojas bezsaistē</string>
     <string name="slide_4_desc">Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma</string>
     <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
-    <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāv Open Food Facts.</string>
     <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
-    <string name="not_support_books">Open Food Facts pašlaik neatbalsta grāmatas</string>
     <string name="txt_broaden_search">- paplašināt meklēšanu \ n- skenēt un pievienot to Open Food Facts</string>
     <string name="Donation">Noklikšķiniet šeit, lai ziedotu Open Food Facts</string>
     <string name="translate_help_title">Palīdziet tulkot \"Open Food Facts\"</string>

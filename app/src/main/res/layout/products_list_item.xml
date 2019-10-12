@@ -17,7 +17,7 @@
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/spacing_normal">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgProduct"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -67,7 +67,7 @@
 
     </GridLayout>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgGrade"
         android:layout_width="20dp"
         android:layout_height="20dp"

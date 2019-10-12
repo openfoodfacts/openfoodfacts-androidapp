@@ -11,7 +11,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:context=".fragments.AddProductOverviewFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -139,7 +139,7 @@
                 tools:drawableRight="@drawable/ic_arrow_drop_down"
                 tools:text="Product language : English"/>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -160,9 +160,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:nextFocusDown="@id/quantity"/>
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/quantity_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
             />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
                 android:id="@+id/quantity_hint"
                 android:layout_width="0dp"
@@ -201,7 +201,7 @@
                 app:layout_constraintTop_toBottomOf="@id/quantity_til"/>
 
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/brand_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -229,9 +229,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
             />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/packaging_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -259,9 +259,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
             />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/categories_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -290,7 +290,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
             />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
                 android:id="@+id/category_hint"
                 android:layout_width="0dp"
@@ -304,7 +304,7 @@
                 app:layout_constraintStart_toStartOf="@+id/categories_til"
                 app:layout_constraintTop_toBottomOf="@+id/categories_til"/>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/label_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -334,8 +334,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
             />
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/period_of_time_after_opening_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -360,7 +360,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <View
@@ -387,7 +387,7 @@
                 app:layout_constraintTop_toBottomOf="@id/grey_line2"
                 tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
                 tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"/>
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/origin_of_ingredients_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -419,9 +419,9 @@
                     app:layout_constraintStart_toStartOf="parent"
 
                     tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/manufacturing_place_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -444,9 +444,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emb_code_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -477,7 +477,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
         <ImageView
                 android:id="@+id/hint_emb_code"
                 android:layout_width="20dp"
@@ -491,7 +491,7 @@
                 app:layout_constraintTop_toTopOf="@id/emb_code_til"
                 app:srcCompat="@drawable/ic_help_outline_orange_24dp"/>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/link_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -515,7 +515,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
                 android:id="@+id/hint_link"
@@ -566,7 +566,7 @@
                 tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
                 tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"/>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/country_where_purchased_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -598,9 +598,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/stores_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -630,9 +630,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/countries_where_sold_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -663,7 +663,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <View
                 android:id="@+id/grey_line4"
@@ -723,6 +723,6 @@
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/btn_other_pictures"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

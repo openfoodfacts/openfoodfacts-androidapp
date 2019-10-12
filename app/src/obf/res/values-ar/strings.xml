@@ -23,9 +23,7 @@
     <string name="slide_4_title">يعمل بدون اتصال</string>
     <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
     <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته.</string>
-    <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في \"حقائق الجمال المفتوحة\".</string>
     <string name="msg_share">انظر لهذا المنتج على \"حقائق الجمال المفتوحة\":</string>
-    <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل \"حقائق الجمال المفتوحة\"</string>
     <string name="txt_broaden_search">- لتوسيع بحثك \n- قم بمسحه ضوئياً وإضافته إلى Open Beauty Facts</string>
     <string name="Donation">انقر هنا للتبرع الى \"حقائق الجمال المفتوحة\"</string>
     <string name="translate_help_title">ساعد في ترجمة \"حقائق الجمال المفتوحة\"</string>

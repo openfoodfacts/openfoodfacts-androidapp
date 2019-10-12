@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.ContinuousScanActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/constraintLayout"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".views.ContinuousScanActivity">
 
     <ImageView
         android:id="@+id/imageForScreenshotGenerationOnly"
@@ -20,20 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/spacing_small"
-        android:layout_marginRight="@dimen/spacing_small"
-        android:layout_marginBottom="185dp"
-        android:tint="@color/white"
-        android:visibility="gone"
-        app:backgroundTint="@color/blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_mode_edit_black"
-        tools:visibility="visible" />
 
     <FrameLayout
         android:id="@+id/frame"
@@ -63,29 +49,50 @@
             android:layout_margin="@dimen/spacing_small"
             app:srcCompat="@drawable/ic_flash_off_white_24dp" />
 
+
         <TextView
-            android:id="@+id/txt_product_not_complete"
+            android:id="@+id/txt_product_call_to_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="152dp"
+            android:layout_marginBottom="102dp"
+            android:paddingTop="@dimen/spacing_small"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingEnd="@dimen/spacing_small"
             android:gravity="center_horizontal"
-            android:text="@string/product_not_complete"
+            android:text="@string/scan_tooltip"
             android:textColor="@color/white"
+            android:background="@drawable/rounded_quick_view_text"
+            android:paddingBottom="50dp"
             android:textSize="12sp"
             android:visibility="gone"
             tools:visibility="visible" />
 
+        <ProgressBar
+                android:id="@+id/call_to_action_imageProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_gravity="bottom|start"
+                android:layout_marginBottom="136dp"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginLeft="@dimen/horizontal_margin"
+                android:maxHeight="@dimen/spacing_large"
+                android:minHeight="@dimen/spacing_large"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
     </FrameLayout>
 
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/quick_view_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/quick_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -128,7 +135,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Roasted Dalia" />
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/quickView_details"
                 android:layout_width="match_parent"
                 android:layout_height="97dp"
@@ -143,7 +150,9 @@
                     android:layout_width="80dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -158,6 +167,7 @@
                     android:id="@+id/quickView_imageProgress"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/horizontal_margin"
                     android:layout_marginStart="@dimen/horizontal_margin"
                     android:padding="@dimen/activity_horizontal_margin"
                     android:visibility="visible"
@@ -171,6 +181,7 @@
                     android:id="@+id/quickView_nutriScore"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginRight="4dp"
                     android:layout_marginEnd="4dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitStart"
@@ -199,8 +210,10 @@
                     android:id="@+id/quickView_co2_icon"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginLeft="4dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -222,7 +235,7 @@
                     tools:text="3 additives" />
 
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ProgressBar
 
@@ -230,6 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:padding="32dp"
                 android:visibility="gone"
@@ -287,11 +301,11 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/quickView_details" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <android.support.design.widget.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -300,10 +314,11 @@
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintTop_toBottomOf="@id/quick_view_layout"
         app:menu="@menu/navigation_bottom">
 
 
-    </android.support.design.widget.BottomNavigationView>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

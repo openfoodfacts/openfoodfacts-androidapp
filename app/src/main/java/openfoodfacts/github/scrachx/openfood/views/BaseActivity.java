@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.dagger.component.ActivityComponent;
 import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private ActivityComponent activityComponent;

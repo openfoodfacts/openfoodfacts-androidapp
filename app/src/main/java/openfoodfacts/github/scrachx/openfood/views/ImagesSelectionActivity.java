@@ -2,13 +2,13 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,18 +21,18 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
+import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductImagesSelectionAdapter;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -64,7 +64,6 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         OpenFoodAPIClient openFoodAPIClient = new OpenFoodAPIClient(this);
         setContentView(R.layout.activity_product_images_list);
         btnChooseImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_photo_library, 0, 0, 0);
-        ArrayList<String> imageNames = new ArrayList<>();
 
         Intent intent = getIntent();
 
@@ -85,29 +84,7 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
                 } catch (JSONException e) {
                     Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
                 }
-                if (images != null) {
-                    final JSONArray names = images.names();
-                    if (names != null) {
-                        // loop through all the image names and store them in a array list
-                        for (int i = 0; i < names.length(); i++) {
-                            try {
-                                // do not include images with contain nutrients,ingredients or other in their names
-                                // as they are duplicate and do not load as well
-                                final String namesString = names.getString(i);
-                                if (namesString.contains("n") ||
-                                    namesString.contains("f") ||
-                                    namesString.contains("i") ||
-                                    namesString.contains("o")) {
-
-                                    continue;
-                                }
-                                imageNames.add(namesString);
-                            } catch (JSONException e) {
-                                Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
-                            }
-                        }
-                    }
-                }
+                List<String> imageNames=ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(images);
 
                 setSupportActionBar(toolbar);
                 if (getSupportActionBar() != null) {
@@ -127,7 +104,7 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         final int selectedPosition = adapter.getSelectedPosition();
         if(selectedPosition>=0) {
             String finalUrlString = adapter.getImageUrl(selectedPosition);
-            Picasso.with(this).load(finalUrlString).resize(400, 400).centerInside().into(expandedImage);
+            Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(expandedImage);
             expandedContainer.setVisibility(View.VISIBLE);
             imagesRecycler.setVisibility(View.INVISIBLE);
         }

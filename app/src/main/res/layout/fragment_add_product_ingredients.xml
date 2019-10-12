@@ -10,7 +10,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:context=".fragments.AddProductIngredientsFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -129,6 +129,7 @@
                 android:minHeight="150dp"
                 android:nextFocusDown="@id/traces"
                 android:padding="@dimen/spacing_small"
+                android:textDirection="anyRtl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list"/>
@@ -139,7 +140,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="@string/extract_ingredients"
-                android:textColor="@color/md_black_1000"
                 android:visibility="gone"
                 style="@style/BorderButton"
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
@@ -185,7 +185,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ocr_progress"
                 tools:visibility="visible"/>
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
@@ -285,6 +285,6 @@
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/traces"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

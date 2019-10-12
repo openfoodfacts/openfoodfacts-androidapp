@@ -10,7 +10,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:context=".fragments.AddProductNutritionFactsFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -25,7 +25,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/nutrition_facts_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:text="@string/per_serving"/>
             </RadioGroup>
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/serving_size_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -162,7 +162,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                 />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner
                     android:id="@+id/spinner_serving_unit"
@@ -182,7 +182,7 @@
 
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/energy_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -211,7 +211,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                 />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner
                     android:id="@+id/spinner_energy_unit"
@@ -230,7 +230,7 @@
                     app:layout_constraintStart_toEndOf="@id/energy_til"/>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fat_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -258,7 +258,7 @@
                         app:attachedSpinner="@+id/spinner_fat_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Spinner
                     android:id="@+id/spinner_fat_unit"
                     android:layout_width="0dp"
@@ -277,7 +277,7 @@
             />
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/saturated-fat_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -306,7 +306,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                 />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Spinner
                     android:id="@+id/spinner_saturated-fat_unit"
                     android:layout_width="0dp"
@@ -324,7 +324,7 @@
                     app:layout_constraintStart_toEndOf="@id/saturated-fat_til"/>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/carbohydrates_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -353,7 +353,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                 />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Spinner
                     android:id="@+id/spinner_carbohydrates_unit"
                     android:layout_width="0dp"
@@ -371,7 +371,7 @@
                     app:layout_constraintStart_toEndOf="@id/carbohydrates_til"/>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/sugars_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -400,7 +400,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                 />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Spinner
                     android:id="@+id/spinner_sugars_unit"
                     android:layout_width="0dp"
@@ -418,7 +418,7 @@
                     app:layout_constraintStart_toEndOf="@id/sugars_til"/>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fiber_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -447,7 +447,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                 />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Spinner
                     android:id="@+id/spinner_fiber_unit"
                     android:layout_width="0dp"
@@ -465,7 +465,7 @@
                     app:layout_constraintStart_toEndOf="@id/fiber_til"/>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/proteins_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -493,7 +493,7 @@
                         app:attachedSpinner="@+id/spinner_proteins_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Spinner
                     android:id="@+id/spinner_proteins_unit"
                     android:layout_width="0dp"
@@ -511,7 +511,7 @@
                     app:layout_constraintStart_toEndOf="@id/proteins_til"/>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/salt_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -539,7 +539,7 @@
                         app:attachedSpinner="@+id/spinner_salt_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Spinner
                     android:id="@+id/spinner_salt_unit"
                     android:layout_width="0dp"
@@ -557,7 +557,7 @@
                     app:layout_constraintStart_toEndOf="@id/salt_til"/>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/sodium_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -586,7 +586,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <Spinner
                     android:id="@+id/spinner_sodium_unit"
                     android:layout_width="0dp"
@@ -602,7 +602,7 @@
                     app:layout_constraintTop_toTopOf="@id/sodium_til"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/sodium_til"/>
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/alcohol_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -629,7 +629,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                     android:id="@+id/text_alcohol_unit"
                     android:layout_width="0dp"
@@ -670,7 +670,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/table_layout"/>
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
                 android:id="@+id/global_validation_msg"
@@ -699,6 +699,6 @@
                 android:text="@string/add_this_product"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/global_validation_msg"/>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

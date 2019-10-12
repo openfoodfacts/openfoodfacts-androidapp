@@ -7,11 +7,11 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.CardView;
+import androidx.annotation.Nullable;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.ViewPager;
+import androidx.cardview.widget.CardView;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -24,6 +24,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.theartofdev.edmodo.cropper.CropImage;
+
+import java.io.File;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -47,7 +56,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.util.Collections;
@@ -60,9 +69,8 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static org.jsoup.helper.StringUtil.isBlank;
 
 public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View, PhotoReceiver {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
@@ -192,29 +200,30 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (!vitaminTagsList.isEmpty()) {
             vitaminsTagsTextCardView.setVisibility(View.VISIBLE);
             vitaminTagsTextView.setText(bold(getString(R.string.vitamin_tags_text)));
-            vitaminTagsTextView.append(buildStringBuilder(vitaminTagsList, StringUtils.SPACE));
+            vitaminTagsTextView.append(buildStringBuilder(vitaminTagsList, Utils.SPACE));
         }
 
         if (!aminoAcidTagsList.isEmpty()) {
             aminoAcidTagsTextCardView.setVisibility(View.VISIBLE);
             aminoAcidTagsTextView.setText(bold(getString(R.string.amino_acid_tags_text)));
-            aminoAcidTagsTextView.append(buildStringBuilder(aminoAcidTagsList, StringUtils.SPACE));
+            aminoAcidTagsTextView.append(buildStringBuilder(aminoAcidTagsList, Utils.SPACE));
         }
 
         if (!mineralTags.isEmpty()) {
             mineralTagsTextCardView.setVisibility(View.VISIBLE);
             mineralTagsTextView.setText(bold(getString(R.string.mineral_tags_text)));
-            mineralTagsTextView.append(buildStringBuilder(mineralTags, StringUtils.SPACE));
+            mineralTagsTextView.append(buildStringBuilder(mineralTags, Utils.SPACE));
         }
 
         if (!otherNutritionTags.isEmpty()) {
             otherNutritionTagTextView.setVisibility(View.VISIBLE);
             otherNutritionTagTextView.setText(bold(getString(R.string.other_tags_text)));
-            otherNutritionTagTextView.append(buildStringBuilder(otherNutritionTags, StringUtils.SPACE));
+            otherNutritionTagTextView.append(buildStringBuilder(otherNutritionTags, Utils.SPACE));
         }
 
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
+
 
         if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
             addPhotoLabel.setVisibility(View.GONE);
@@ -222,13 +231,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Picasso.with(getContext())
+                Picasso.get()
                     .load(product.getImageIngredientsUrl(langCode))
                     .into(mImageIngredients);
             } else {
                 mImageIngredients.setVisibility(View.GONE);
             }
-
             mUrlImage = product.getImageIngredientsUrl(langCode);
         }
 
@@ -236,7 +244,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_ingredients())) {
             addPhotoLabel.setVisibility(View.GONE);
             mUrlImage = mSendProduct.getImgupload_ingredients();
-            Picasso.with(getContext()).load(FileUtils.LOCALE_FILE_SCHEME + mUrlImage).config(Bitmap.Config.RGB_565).into(mImageIngredients);
+            Picasso.get().load(FileUtils.LOCALE_FILE_SCHEME + mUrlImage).config(Bitmap.Config.RGB_565).into(mImageIngredients);
         }
 
         List<String> allergens = getAllergens();
@@ -260,7 +268,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
         presenter.loadAllergens();
 
-        if (!isBlank(product.getTraces())) {
+        if (!StringUtils.isBlank(product.getTraces())) {
             String language = LocaleHelper.getLanguage(getContext());
             textTraceProductCardView.setVisibility(View.VISIBLE);
             traceProduct.setMovementMethod(LinkMovementMethod.getInstance());
@@ -568,7 +576,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = newPhotoFile.getAbsolutePath();
 
-        Picasso.with(getContext())
+        Picasso.get()
             .load(newPhotoFile)
             .fit()
             .into(mImageIngredients);

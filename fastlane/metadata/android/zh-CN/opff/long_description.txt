@@ -1,34 +1,34 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+扫瞄宠物食品或其条形码以获取有关配料、添加剂和营养成分的数据。
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+该应用允许查看已包含的超过600种免费及开放的宠物食品数据，还可以添加缺失产品的图片及数据信息。
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+想获取更多关于Open Pet Food Facts项目信息，请访问https://world.openpetfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+***致力于宠物食品信息透明化***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts 是一个由大家共同建立，同时服务于大家的宠物食品数据库。
+你可以用它来做更好的宠物食品，由于它是开放数据，任何人都可以重复使用。
+- Open Pet Food Facts是一个由来自全世界数以千计的志愿者开发的非盈利项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
+从今天起你可以通过购买我们的宠物产品为这个项目出份力。 
 
 
 ***获取信息***
 
-You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+您也可以找到（根据产品上的指示）:
+- 配料表（含灰含量）
+- 营养成分信息，营养含量限值…
+- 品牌，过敏原，标签（有机，纯天然...）
+适用于狗粮（干/湿）、猫食、蛇食、鱼食、鸟食、马食或任何你喜爱的动物的食物。
 
 在任何情况下都有效
 - 即使没有连接互联网，你也可以添加新的产品。
 - 应用程序仅加载严格必要以减少数据及电量消耗
 - 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+***您的宠物食物，您的数据***
+- 您的个人数据只属于您，永远不会被上传。
 - 您可以匿名使用该应用
 - 您可以导出历史记录
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+对于食品，您可以安装Open Food Facts；对于化妆品，您可以安装Open Beauty Facts；对于其他任何产品，您可以安装Open Products Facts.

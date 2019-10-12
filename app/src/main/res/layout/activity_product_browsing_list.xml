@@ -9,7 +9,7 @@
         android:orientation="vertical"
 >
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
@@ -41,19 +41,19 @@
                     android:text="@string/number_of_products"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-            <android.support.v4.widget.SwipeRefreshLayout
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                     android:id="@+id/swipe_refresh"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/products_recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/materialize_baseline_grid_small">
 
-                </android.support.v7.widget.RecyclerView>
-            </android.support.v4.widget.SwipeRefreshLayout>
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -159,6 +159,6 @@
                     app:srcCompat="@drawable/ic_add_a_photo_black_48dp"/>
 
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <include layout="@layout/navigation_bottom"/>
 </LinearLayout>

@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="100dp">
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:gravity="center"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <android.support.v7.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:gravity="center"
                     android:textSize="18sp"
                     android:textColor="#FFF"
@@ -53,7 +53,7 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/review_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -84,7 +84,7 @@
             android:background="@drawable/reviewdialog_review_action_ripple"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/postive_feedback_icon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -92,7 +92,7 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/reviewdialog_ic_accept_action"
                 />
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/positive_feedback_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
             android:focusable="true"
             android:background="@drawable/reviewdialog_review_action_ripple"
             android:layout_height="match_parent">
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/negative_feedback_icon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -123,7 +123,7 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/reviewdialog_ic_cancel_action"
                 />
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/negative_feedback_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
             android:background="@drawable/reviewdialog_review_action_ripple"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ambiguity_feedback_icon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -155,7 +155,7 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/reviewdialog_ic_ambiguity_action"
                 />
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/ambiguity_feedback_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

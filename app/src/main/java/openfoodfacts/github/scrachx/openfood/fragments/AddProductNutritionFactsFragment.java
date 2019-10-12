@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.TextInputLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -32,7 +32,8 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.*;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
@@ -357,7 +358,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private void loadNutritionsImage(String path) {
-        Picasso.with(getContext())
+        Picasso.get()
             .load(path)
             .resize(dpsToPixels(50), dpsToPixels(50))
             .centerInside()
@@ -368,7 +369,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 }
 
                 @Override
-                public void onError() {
+                public void onError(Exception ex) {
                     nutritionImageLoaded();
                 }
             });
@@ -635,10 +636,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (servingSize.getText().toString().isEmpty()) {
+                if (servingSize.getText()==null || servingSize.getText().toString().isEmpty()) {
                     targetMap.put(PARAM_SERVING_SIZE, "");
                 } else {
-                    String servingSizeValue = this.servingSize.getText().toString() + ALL_UNIT_SERVING[this.servingSize.getAttachedSpinner().getSelectedItemPosition()];
+                    String servingSizeValue = this.servingSize.getText().toString() + ObjectUtils.toString(this.servingSize.getAttachedSpinner().getSelectedItem());
                     targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
@@ -673,15 +674,15 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (!servingSize.getText().toString().isEmpty()) {
-                    String servingSizeValue = this.servingSize.getText().toString() + UNIT[this.servingSize.getAttachedSpinner().getSelectedItemPosition()];
+                if (servingSize.getText()!=null && !servingSize.getText().toString().isEmpty()) {
+                    String servingSizeValue = this.servingSize.getText().toString() + ObjectUtils.toString(this.servingSize.getAttachedSpinner().getSelectedItem().toString());
                     targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
                     if (servingSize.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
-                    if (!editTextView.getText().toString().isEmpty()) {
+                    if (editTextView.getText()!=null && !editTextView.getText().toString().isEmpty()) {
                         addNutrientToMap(editTextView, targetMap);
                     }
                 }
@@ -933,6 +934,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void showImageProgress() {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageNutritionFacts.setVisibility(View.INVISIBLE);
@@ -940,12 +944,15 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.GONE);
         imageProgressText.setVisibility(View.GONE);
         imageNutritionFacts.setVisibility(View.VISIBLE);
         btnEditImageNutritionFacts.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
-            Picasso.with(activity)
+            Picasso.get()
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()

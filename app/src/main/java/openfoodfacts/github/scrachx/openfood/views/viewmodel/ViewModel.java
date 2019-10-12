@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.viewmodel;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import io.reactivex.disposables.CompositeDisposable;
 

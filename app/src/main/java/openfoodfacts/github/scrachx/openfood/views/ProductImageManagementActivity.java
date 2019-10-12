@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -31,22 +31,21 @@ import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.views.adapters.LanguageDataAdapter;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import java.io.File;
 import java.util.*;
 
 import static android.Manifest.permission.CAMERA;
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_STORAGE;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
 /**
  * Activity to display/edit product images
@@ -214,12 +213,16 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     }
 
     private String getCurrentLanguage() {
-        return getIntent().getStringExtra(ImageKeyHelper.LANGUAGE);
+        final String language = getIntent().getStringExtra(ImageKeyHelper.LANGUAGE);
+        if(language==null){
+            return LocaleHelper.getLanguage(getBaseContext());
+        }
+        return language;
     }
 
     private void updateToolbarTitle(Product product) {
         if (product != null) {
-            changeToolBarTitle(product.getProductName(LocaleHelper.getLanguage(this)));
+            changeToolBarTitle(StringUtils.defaultString(product.getProductName(LocaleHelper.getLanguage(this))));
         }
     }
 
@@ -235,7 +238,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
 
     private void onRefresh(boolean reloadProduct) {
         String imageUrl = getCurrentImageUrl();
-        if (reloadProduct || imageUrl == null) {
+        if (reloadProduct || imageUrl == null ) {
             reloadProduct();
         } else {
             loadImage(imageUrl);
@@ -244,9 +247,13 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
 
     private void loadImage(String imageUrl) {
         if (isNotEmpty(imageUrl)) {
+            String url=imageUrl;
+            if(FileUtils.isAbsolute(url)){
+                url="file://"+url;
+            }
             startRefresh(getString(R.string.txtLoading));
-            Picasso.with(this)
-                .load(imageUrl)
+            Picasso.get()
+                .load(url)
                 .into(mPhotoView, new Callback() {
                     @Override
                     public void onSuccess() {
@@ -257,7 +264,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception ex) {
                         mPhotoView.setVisibility(View.VISIBLE);
                         Toast.makeText(ProductImageManagementActivity.this, getResources().getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show();
                         stopRefresh();
@@ -385,14 +392,10 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         if (cannotEdit(REQUEST_CHOOSE_IMAGE_AFTER_LOGIN)) {
             return;
         }
-        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_STORAGE);
-        } else {
-            final Intent intent = new Intent(ProductImageManagementActivity.this, ImagesSelectionActivity.class);
-            intent.putExtra(ImageKeyHelper.PRODUCT_BARCODE, getProduct().getCode());
-            intent.putExtra(ImagesSelectionActivity.TOOLBAR_TITLE, toolbar.getTitle());
-            startActivityForResult(intent, REQUEST_CHOOSE_IMAGE);
-        }
+        final Intent intent = new Intent(ProductImageManagementActivity.this, ImagesSelectionActivity.class);
+        intent.putExtra(ImageKeyHelper.PRODUCT_BARCODE, getProduct().getCode());
+        intent.putExtra(ImagesSelectionActivity.TOOLBAR_TITLE, toolbar.getTitle());
+        startActivityForResult(intent, REQUEST_CHOOSE_IMAGE);
     }
 
     private boolean cannotEdit(int loginRequestCode) {

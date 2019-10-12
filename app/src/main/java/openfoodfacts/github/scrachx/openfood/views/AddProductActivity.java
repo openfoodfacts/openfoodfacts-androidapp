@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -45,7 +45,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import javax.inject.Inject;
 import java.io.File;
@@ -381,7 +381,7 @@ public class AddProductActivity extends AppCompatActivity {
                 ProgressBar imageProgressLocal = view.findViewById(R.id.image_progress_local);
                 ingredientsLocal.setText(productDetails.get("ingredients_text" + "_" + lc));
                 ingredientsServer.setText(ingredientsTextOnServer);
-                Picasso.with(this)
+                Picasso.get()
                     .load(ingredientsImageOnServer)
                     .error(R.drawable.placeholder_thumb)
                     .into(imageServer, new Callback() {
@@ -395,11 +395,11 @@ public class AddProductActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             imageProgressServer.setVisibility(View.GONE);
                         }
                     });
-                Picasso.with(this)
+                Picasso.get()
                     .load(FileUtils.LOCALE_FILE_SCHEME + imagesFilePath[1])
                     .error(R.drawable.placeholder_thumb)
                     .into(imageLocal, new Callback() {
@@ -413,7 +413,7 @@ public class AddProductActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             imageProgressLocal.setVisibility(View.GONE);
                         }
                     });

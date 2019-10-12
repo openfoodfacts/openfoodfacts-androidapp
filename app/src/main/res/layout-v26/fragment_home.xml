@@ -24,7 +24,7 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/taglineHome"
             android:layout_width="184dp"
             android:layout_height="30dp"

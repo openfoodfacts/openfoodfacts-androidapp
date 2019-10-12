@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
@@ -68,7 +68,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Picasso.with(context)
+                Picasso.get()
                     .load(imageSmallUrl)
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.error_image)
@@ -81,12 +81,12 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             productHolder.vProductImageProgressbar.setVisibility(View.GONE);
                         }
                     });
             } else {
-                Picasso.with(context).load(R.drawable.placeholder_thumb).into(productHolder.vProductImage);
+                Picasso.get().load(R.drawable.placeholder_thumb).into(productHolder.vProductImage);
                 productHolder.vProductImageProgressbar.setVisibility(View.INVISIBLE);
             }
 

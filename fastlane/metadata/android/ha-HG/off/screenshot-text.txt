@@ -1,41 +1,41 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Waɗannan sune alamun hoto da aka nuna a saman hotunan kariyar kwamfuta a cikin playstore. Ka ajiye su gajeru da sha'awa.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 V2 screenshots
 =====================
 
-Scan products
+Duba kayan
 
-Get the Nutriscore
+Sami Nutriscore
 
-Your full scan history, fully private & exportable
+Cikakken tarihin bincikenku, cikakken mai zaman kansa & wanda ake iya fitarwa
 
-Go further with Wikipedia
+Ci gaba da Wikipedia
 
-Set allergen alerts
+Saita faɗakarwar allergen
 
-Nutrition, simplified
+Abinci mai gina jiki, mai sauki
 
-Allergen alert
+Allergen faɗakarwa
 
-Get alternatives for your favorite foods
+Nemi madadin abincin da kuka fi so
 
-Become an actor of food transparency
+Zama dan wasan kwaikwayo game da kayan abinci
 
-Wikipedia for Food
+Wikipedia don Abinci
 
-Wikipedia for Cosmetics
+Wikipedia na kayan kwalliya
 
-Wikipedia for Pet Food
+Wikipedia na Abincin dabbobi
 
-Wikipedia of Products
+Wikipedia na samfura
 
-Ingredients
+Kayan mahadi
 
-Powerful
+Mai karfi
 
-Nutrition facts
+Bayanan abinci mai gina jiki
 
 =====================
 V3 screenshots

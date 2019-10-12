@@ -9,7 +9,7 @@
               tools:context="openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity">
 
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
                                        android:id="@+id/toolbar"
                                        android:layout_width="match_parent"
                                        android:layout_height="wrap_content"

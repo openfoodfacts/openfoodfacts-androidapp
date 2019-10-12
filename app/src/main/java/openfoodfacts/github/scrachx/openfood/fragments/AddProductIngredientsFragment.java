@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +30,8 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
-import org.jsoup.helper.StringUtil;
 
 import java.io.File;
 import java.net.URI;
@@ -185,7 +185,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         if (newImageIngredientsUrl != null && !newImageIngredientsUrl.isEmpty()) {
             imageProgress.setVisibility(View.VISIBLE);
             imagePath = newImageIngredientsUrl;
-            Picasso.with(getContext())
+            Picasso.get()
                 .load(newImageIngredientsUrl)
                 .resize(dps50ToPixels(), dps50ToPixels())
                 .centerInside()
@@ -196,7 +196,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception ex) {
                         imageLoaded();
                     }
                 });
@@ -242,7 +242,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         if (productDetails != null) {
             if (getImageIngredients() != null) {
                 imageProgress.setVisibility(View.VISIBLE);
-                Picasso.with(getContext())
+                Picasso.get()
                     .load(FileUtils.LOCALE_FILE_SCHEME + getImageIngredients())
                     .resize(dps50ToPixels(), dps50ToPixels())
                     .centerInside()
@@ -253,7 +253,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             imageProgress.setVisibility(View.GONE);
                         }
                     });
@@ -384,7 +384,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
             targetMap.put(PARAM_INGREDIENTS + "_" + lc, ingredients.getText().toString());
             List<String> list = traces.getChipValues();
-            String string = StringUtil.join(list, ",");
+            String string = StringUtils.join(list, ",");
             targetMap.put(PARAM_TRACES.substring(4), string);
         }
     }
@@ -402,7 +402,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             }
             if (!traces.getChipValues().isEmpty()) {
                 List<String> list = traces.getChipValues();
-                String string = StringUtil.join(list, ",");
+                String string = StringUtils.join(list, ",");
                 ((AddProductActivity) activity).addToMap(PARAM_TRACES, string);
             }
         }
@@ -429,6 +429,9 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void showImageProgress() {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.VISIBLE);
         imageProgressText.setVisibility(View.VISIBLE);
         imageProgressText.setText(R.string.toastSending);
@@ -437,12 +440,15 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
+        if(!isAdded() || imageProgress==null){
+            return;
+        }
         imageProgress.setVisibility(View.INVISIBLE);
         imageProgressText.setVisibility(View.GONE);
         imageIngredients.setVisibility(View.VISIBLE);
         btnEditImageIngredients.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
-            Picasso.with(activity)
+            Picasso.get()
                 .load(photoFile)
                 .resize(dps50ToPixels(), dps50ToPixels())
                 .centerInside()

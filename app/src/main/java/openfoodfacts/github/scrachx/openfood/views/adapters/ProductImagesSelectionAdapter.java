@@ -1,10 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +76,7 @@ public class ProductImagesSelectionAdapter extends RecyclerView.Adapter<ProductI
         } else {
             viewGroup.setBackgroundColor(0);
         }
-        Picasso.with(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView);
+        Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(imageView);
     }
 
     @Override

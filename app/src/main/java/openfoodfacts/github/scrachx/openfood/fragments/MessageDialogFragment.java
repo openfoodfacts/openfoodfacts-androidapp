@@ -3,8 +3,8 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 
 public class MessageDialogFragment extends DialogFragment {
     public interface MessageDialogListener {
