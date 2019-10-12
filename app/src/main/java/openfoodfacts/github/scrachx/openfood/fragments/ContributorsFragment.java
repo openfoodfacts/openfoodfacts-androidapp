@@ -59,7 +59,7 @@ public class ContributorsFragment extends BaseFragment {
         final Product product = stateFromActivity.getProduct();
         if (isNotBlank(product.getCreator())) {
             String[] createdDate = getDateTime(product.getCreatedDateTime());
-            String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1]);
+            String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1],product.getCreator());
             creatorText.setMovementMethod(LinkMovementMethod.getInstance());
             creatorText.setText(creatorTxt + " ");
             creatorText.append(getContributorsTag(product.getCreator()));
@@ -69,7 +69,7 @@ public class ContributorsFragment extends BaseFragment {
 
         if (isNotBlank(product.getLastModifiedBy())) {
             String[] lastEditDate = getDateTime(product.getLastModifiedTime());
-            String editorTxt = getString(R.string.last_editor_history, lastEditDate[0], lastEditDate[1]);
+            String editorTxt = getString(R.string.last_editor_history, lastEditDate[0], lastEditDate[1], product.getLastModifiedBy());
             lastEditorText.setMovementMethod(LinkMovementMethod.getInstance());
             lastEditorText.setText(editorTxt + " ");
             lastEditorText.append(getContributorsTag(product.getLastModifiedBy()));
