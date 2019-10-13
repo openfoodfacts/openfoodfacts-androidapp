@@ -61,8 +61,7 @@ public class ContributorsFragment extends BaseFragment {
             String[] createdDate = getDateTime(product.getCreatedDateTime());
             String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1],product.getCreator());
             creatorText.setMovementMethod(LinkMovementMethod.getInstance());
-            creatorText.setText(creatorTxt + " ");
-            creatorText.append(getContributorsTag(product.getCreator()));
+            creatorText.setText(creatorTxt);
         } else {
             creatorText.setVisibility(View.INVISIBLE);
         }
@@ -71,9 +70,7 @@ public class ContributorsFragment extends BaseFragment {
             String[] lastEditDate = getDateTime(product.getLastModifiedTime());
             String editorTxt = getString(R.string.last_editor_history, lastEditDate[0], lastEditDate[1], product.getLastModifiedBy());
             lastEditorText.setMovementMethod(LinkMovementMethod.getInstance());
-            lastEditorText.setText(editorTxt + " ");
-            lastEditorText.append(getContributorsTag(product.getLastModifiedBy()));
-
+            lastEditorText.setText(editorTxt);
         } else {
             lastEditorText.setVisibility(View.INVISIBLE);
         }
