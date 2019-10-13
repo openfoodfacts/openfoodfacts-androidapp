@@ -46,6 +46,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -80,6 +81,7 @@ public class Utils {
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
     public static final int NO_DRAWABLE_RESOURCE = 0;
+    public static final String OFFLINE_EDIT_PENDING_WORK_NAME = "offline_edit_pending_products_work";
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
@@ -786,13 +788,12 @@ public class Utils {
      * @return Returns the header to be put in network call
      */
     public static String getUserAgent(String type) {
-        final String prefix = "Official Android App ";
-        if (type.equals(HEADER_USER_AGENT_SCAN)) {
-            return prefix + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
-        } else if (type.equals(HEADER_USER_AGENT_SEARCH)) {
-            return prefix + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
-        }
-        return prefix + BuildConfig.VERSION_NAME;
+        return getUserAgent() + " " + type;
+    }
+
+    public static String getUserAgent() {
+        final String prefix = " Official Android App ";
+        return BuildConfig.APP_NAME + prefix + BuildConfig.VERSION_NAME;
     }
 
      /*
