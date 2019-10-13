@@ -91,6 +91,13 @@ public class ProductRepository implements IProductRepository {
     private IngredientNameDao ingredientNameDao;
     private IngredientsRelationDao ingredientsRelationDao;
 
+    // -1 no internet connexion.
+    private static Long TAXONOMY_NO_INTERNET = (long) -1;
+    //  0 taxonomy is not marked to be load.
+    private static Long TAXONOMY_NOT_TO_BE_LOADED = (long) 0;
+    //  1 taxonomy is up to date.
+    private static Long TAXONOMY_UP_TO_DATE = (long) 1;
+
     /**
      * A method used to get instance from the repository.
      * @return : instance of the repository
@@ -295,10 +302,10 @@ public class ProductRepository implements IProductRepository {
      *        (allergens, additives, categories, countries, ingredients, labels, tags)
      *
      * @return
-     *      -1 no internet connexion.
-     *      0 taxonomy is not marked to be load.
-     *      1 taxonomy is up to date.
-     *      other : date of the new taxonomy on the servers => to be updated
+     *     TAXONOMY_NO_INTERNET (-1)        no internet connexion.
+     *     TAXONOMY_NOT_TO_BE_LOADED (0)    taxonomy is not marked to be load.
+     *     TAXONOMY_UP_TO_DATE (1)          taxonomy is up to date.
+     *     other :                          date of the new taxonomy on the servers => to be updated
      */
     public Long UpdateSinceLastUpload(String taxonomy) {
         Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " begin.");
@@ -316,18 +323,18 @@ public class ProductRepository implements IProductRepository {
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return -1");
-                return  Long.valueOf(-1);
+                return  TAXONOMY_NO_INTERNET;
             }
             if (lastModifiedDate > lastDownload) {
                 Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return " + lastModifiedDate);
                 return lastModifiedDate;
             } else {
                 Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return 1");
-                return Long.valueOf(1);
+                return TAXONOMY_UP_TO_DATE;
             }
         }
         Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return 0");
-        return Long.valueOf(0);
+        return TAXONOMY_NOT_TO_BE_LOADED;
     }
 
     /**
