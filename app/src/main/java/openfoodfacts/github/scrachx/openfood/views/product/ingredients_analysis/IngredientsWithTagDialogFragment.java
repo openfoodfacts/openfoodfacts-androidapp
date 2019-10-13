@@ -49,9 +49,13 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         args.putString("icon_url", config.getIconUrl());
         args.putString("color", config.getColor());
         args.putString("name", config.getName().getName());
-        String showIngredients = config.getName().getShowIngredients();
-        if (showIngredients != null) {
-            args.putSerializable("ingredients", getMatchingIngredientsText(product, showIngredients.split(":")));
+        if (product.getIngredients() == null || product.getIngredients().size() == 0) {
+            args.putBoolean("missing_ingredients", true);
+        } else {
+            String showIngredients = config.getName().getShowIngredients();
+            if (showIngredients != null) {
+                args.putSerializable("ingredients", getMatchingIngredientsText(product, showIngredients.split(":")));
+            }
         }
         frag.setArguments(args);
         return frag;
@@ -63,7 +67,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         for (LinkedHashMap<String, String> ingredient :
             ingredients) {
             if (showIngredients[1].equals(ingredient.get(showIngredients[0]))) {
-                matchingIngredients.add(ingredient.get("text").replaceAll("_", ""));
+                matchingIngredients.add(ingredient.get("text").toLowerCase().replaceAll("_", ""));
             }
         }
 
@@ -102,6 +106,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             String color = getArguments().getString("color");
             String name = getArguments().getString("name");
             String ingredients = getArguments().getString("ingredients");
+            boolean missingIngredients = getArguments().getBoolean("missing_ingredients", false);
 
             AppCompatImageView icon = getView().findViewById(R.id.icon);
             Picasso.get()
@@ -121,15 +126,11 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             });
 
             String messageStr = getString(R.string.ingredients_in_this_product_are, name.toLowerCase());
-            if (!TextUtils.isEmpty(ingredients)) {
-                messageStr = getString(R.string.ingredients_in_this_product, name.toLowerCase()) + ingredients;
-            }
-
             AppCompatTextView helpNeeded = getView().findViewById(R.id.helpNeeded);
             boolean showHelpTranslate = tag.contains("unknown");
-            boolean showHelpExtract = showHelpTranslate && TextUtils.isEmpty(ingredients);
+            boolean showHelpExtract = showHelpTranslate && missingIngredients;
             if (showHelpExtract) {
-                messageStr = getString(R.string.unknown_status_missing_ingredients, name.toLowerCase());
+                messageStr = getString(R.string.unknown_status_missing_ingredients);
                 helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_extract_ingredients, name.toLowerCase()) + "</u>"));
                 helpNeeded.setOnClickListener(v -> {
                     dismiss();
@@ -141,7 +142,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                 });
                 helpNeeded.setVisibility(View.VISIBLE);
             } else if (showHelpTranslate) {
-                messageStr = getString(R.string.unknown_status_missing_ingredients, name.toLowerCase());
+                messageStr = getString(R.string.unknown_status_no_translation);
                 helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_translate_ingredients) + "</u>"));
                 helpNeeded.setOnClickListener(v -> {
                     CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
@@ -158,6 +159,9 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                 });
                 helpNeeded.setVisibility(View.VISIBLE);
             } else {
+                if (!TextUtils.isEmpty(ingredients)) {
+                    messageStr = getString(R.string.ingredients_in_this_product, name.toLowerCase()) + ingredients;
+                }
                 helpNeeded.setVisibility(View.GONE);
             }
             AppCompatTextView message = getView().findViewById(R.id.message);

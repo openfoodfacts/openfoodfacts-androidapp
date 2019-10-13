@@ -249,6 +249,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                         preference.setTitle(getString(R.string.display_analysis_tag_status, config.getType()));
                         displayCategory.addPreference(preference);
                     }
+
+                    displayCategory.setVisible(true);
                 }
             });
             asyncSessionAnalysisTags.queryList(analysisTagConfigDao.queryBuilder()

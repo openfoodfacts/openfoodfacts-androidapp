@@ -2,6 +2,8 @@ package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.util.Log;
 
+import com.squareup.picasso.Picasso;
+
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
@@ -844,6 +846,7 @@ public class ProductRepository implements IProductRepository {
         db.beginTransaction();
         try {
             for (AnalysisTagConfig analysisTagConfig : analysisTagConfigs) {
+                Picasso.get().load(analysisTagConfig.getIconUrl()).fetch();
                 analysisTagConfigDao.insertOrReplace(analysisTagConfig);
             }
 
@@ -862,18 +865,20 @@ public class ProductRepository implements IProductRepository {
                 .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
                 .unique();
 
-            AnalysisTagName analysisTagName = analysisTagNameDao.queryBuilder()
-                .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTag),
-                    AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
-                .unique();
-            if (analysisTagName == null) {
-                analysisTagName = analysisTagNameDao.queryBuilder()
+            if (analysisTagConfig != null) {
+                AnalysisTagName analysisTagName = analysisTagNameDao.queryBuilder()
                     .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTag),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
                     .unique();
-            }
+                if (analysisTagName == null) {
+                    analysisTagName = analysisTagNameDao.queryBuilder()
+                        .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTag),
+                            AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                        .unique();
+                }
 
-            analysisTagConfig.setName(analysisTagName);
+                analysisTagConfig.setName(analysisTagName);
+            }
 
             return analysisTagConfig;
         });
