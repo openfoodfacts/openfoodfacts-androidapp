@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
@@ -39,9 +40,21 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
+
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.zxing.*;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.FormatException;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Reader;
+import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -50,23 +63,13 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.holder.StringHolder;
-import com.mikepenz.materialdrawer.model.*;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.*;
-import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
-import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -76,8 +79,37 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
+import butterknife.BindView;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
+import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.workers.OfflineEditPendingProductsWorker;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.OFFLINE_EDIT_PENDING_WORK_NAME;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
     public static final int LOGIN_REQUEST = 1;
@@ -114,6 +146,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_main);
+
+        final PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(OfflineEditPendingProductsWorker.class, 60, TimeUnit.MINUTES, 10, TimeUnit.MINUTES)
+            .setConstraints(new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
+            .addTag(OFFLINE_EDIT_PENDING_WORK_NAME)
+            .build();
+
+        WorkManager.getInstance(getApplicationContext()).enqueueUniquePeriodicWork(OFFLINE_EDIT_PENDING_WORK_NAME, ExistingPeriodicWorkPolicy.KEEP, periodicWorkRequest);
 
         shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
 

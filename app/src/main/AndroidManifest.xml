@@ -8,8 +8,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!--    WifiUploadReceiver is a foreground service... so we should add this-->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <!-- Support for Chromebooks -->
     <uses-feature
@@ -153,8 +151,6 @@
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
-        <service android:name=".utils.UploadService" />
-        <service android:name=".utils.WifiUploadReceiver$WifiService" />
         <service android:name=".views.LoadTaxonomiesService" />
 
         <provider
@@ -186,14 +182,6 @@
 
         </activity>
 
-        <receiver
-            android:name=".utils.WifiUploadReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-            </intent-filter>
-        </receiver>
-
         <activity
             android:name=".views.ContinuousScanActivity"
             android:screenOrientation="portrait"
@@ -208,8 +196,8 @@
         <activity
             android:name=".views.ProductListsActivity"
             android:parentActivityName=".views.MainActivity" />
-        <activity android:name=".views.YourListedProducts"></activity>
-        <activity android:name=".views.ProductComparisonActivity"></activity>
+        <activity android:name=".views.YourListedProducts" />
+        <activity android:name=".views.ProductComparisonActivity" />
 
     </application>
 
