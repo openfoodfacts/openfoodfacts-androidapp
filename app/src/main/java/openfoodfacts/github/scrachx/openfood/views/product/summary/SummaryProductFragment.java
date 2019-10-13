@@ -174,8 +174,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     RecyclerView rvAnalysisTags;
     @BindView(R.id.analysisContainer)
     View analysisContainer;
-    @BindView(R.id.analysisSeparator)
-    View analysisSeparator;
     private State state;
     private Product product;
     private OpenFoodAPIClient api;
@@ -531,6 +529,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showAnalysisTags(List<AnalysisTagConfig> analysisTags) {
         getActivity().runOnUiThread(() -> {
+            analysisContainer.setVisibility(View.VISIBLE);
             IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(getContext(), analysisTags);
             adapter.setOnItemClickListener((view, position) -> {
                 IngredientsWithTagDialogFragment fragment = IngredientsWithTagDialogFragment

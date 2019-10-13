@@ -222,7 +222,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:padding="@dimen/padding_normal">
+                android:padding="@dimen/padding_normal"
+                android:visibility="gone">
 
                 <openfoodfacts.github.scrachx.openfood.views.TipBox
                     android:id="@+id/tipBox"
@@ -240,11 +241,11 @@
                     android:background="@null"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-            </LinearLayout>
 
-            <View
-                android:id="@+id/analysisSeparator"
-                style="@style/HorizontalLineSeparator" />
+                <View
+                    android:id="@+id/analysisSeparator"
+                    style="@style/HorizontalLineSeparator" />
+            </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/scores_layout"

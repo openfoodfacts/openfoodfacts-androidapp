@@ -228,29 +228,37 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Log.e(PreferencesFragment.class.getSimpleName(), "onCreatePreferences", e);
         }
 
-        AsyncSession asyncSessionAnalysisTags = daoSession.startAsyncSession();
-        AnalysisTagConfigDao analysisTagConfigDao = daoSession.getAnalysisTagConfigDao();
-        asyncSessionAnalysisTags.setListenerMainThread(operation -> {
-            @SuppressWarnings("unchecked")
+        if (BuildConfig.FLAVOR.equals("off")) {
+            AsyncSession asyncSessionAnalysisTags = daoSession.startAsyncSession();
+            AnalysisTagConfigDao analysisTagConfigDao = daoSession.getAnalysisTagConfigDao();
+            asyncSessionAnalysisTags.setListenerMainThread(operation -> {
+                if (isAdded()) {
+                    @SuppressWarnings("unchecked")
+                    PreferenceScreen preferenceScreen = getPreferenceScreen();
+                    PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+                    preferenceScreen.addPreference(displayCategory);
+                    List<AnalysisTagConfig> analysisTagConfigs = (List<AnalysisTagConfig>) operation.getResult();
+                    for (AnalysisTagConfig config :
+                        analysisTagConfigs) {
+                        CheckBoxPreference preference = new CheckBoxPreference(preferenceScreen.getContext());
+                        preference.setKey(config.getType());
+                        preference.setDefaultValue(true);
+                        preference.setSummary(null);
+                        preference.setSummaryOn(null);
+                        preference.setSummaryOff(null);
+                        preference.setTitle(getString(R.string.display_analysis_tag_status, config.getType()));
+                        displayCategory.addPreference(preference);
+                    }
+                }
+            });
+            asyncSessionAnalysisTags.queryList(analysisTagConfigDao.queryBuilder()
+                .where(new WhereCondition.StringCondition("1 GROUP BY type"))
+                .orderAsc(AnalysisTagConfigDao.Properties.Type).build());
+        } else {
             PreferenceScreen preferenceScreen = getPreferenceScreen();
             PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
-            preferenceScreen.addPreference(displayCategory);
-            List<AnalysisTagConfig> analysisTagConfigs = (List<AnalysisTagConfig>) operation.getResult();
-            for (AnalysisTagConfig config :
-                analysisTagConfigs) {
-                CheckBoxPreference preference = new CheckBoxPreference(preferenceScreen.getContext());
-                preference.setKey(config.getType());
-                preference.setDefaultValue(true);
-                preference.setSummary(null);
-                preference.setSummaryOn(null);
-                preference.setSummaryOff(null);
-                preference.setTitle(getString(R.string.display_analysis_tag_status, config.getType()));
-                displayCategory.addPreference(preference);
-            }
-        });
-        asyncSessionAnalysisTags.queryList(analysisTagConfigDao.queryBuilder()
-            .where(new WhereCondition.StringCondition("1 GROUP BY type"))
-            .orderAsc(AnalysisTagConfigDao.Properties.Type).build());
+            preferenceScreen.removePreference(displayCategory);
+        }
     }
 
     private boolean openWebCustomTab(int faqUrl) {

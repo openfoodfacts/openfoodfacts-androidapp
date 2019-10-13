@@ -7,6 +7,7 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
@@ -169,30 +170,32 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
 
     @Override
     public void loadAnalysisTags() {
-        List<String> analysisTags = product.getIngredientsAnalysisTags();
-        if (analysisTags != null && !analysisTags.isEmpty()) {
-            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
-            disposable.add(
-                Observable.fromArray(analysisTags.toArray(new String[analysisTags.size()]))
-                    .flatMapSingle(tag -> repository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode))
-                    .filter(AnalysisTagConfig::isNotNull)
-                    .toList()
-                    .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(analysisTagConfigs -> {
-                        if (analysisTagConfigs.isEmpty()) {
+        if (BuildConfig.FLAVOR.equals("off")) {
+            List<String> analysisTags = product.getIngredientsAnalysisTags();
+            if (analysisTags != null && !analysisTags.isEmpty()) {
+                final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
+                disposable.add(
+                    Observable.fromArray(analysisTags.toArray(new String[analysisTags.size()]))
+                        .flatMapSingle(tag -> repository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode))
+                        .filter(AnalysisTagConfig::isNotNull)
+                        .toList()
+                        .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(analysisTagConfigs -> {
+                            if (analysisTagConfigs.isEmpty()) {
+                                view.showLabelsState(ProductInfoState.EMPTY);
+                            } else {
+                                view.showAnalysisTags(analysisTagConfigs);
+                            }
+                        }, e -> {
+                            Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAnalysisTags", e);
                             view.showLabelsState(ProductInfoState.EMPTY);
-                        } else {
-                            view.showAnalysisTags(analysisTagConfigs);
-                        }
-                    }, e -> {
-                        Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAnalysisTags", e);
-                        view.showLabelsState(ProductInfoState.EMPTY);
-                    })
-            );
-        } else {
-            view.showLabelsState(ProductInfoState.EMPTY);
+                        })
+                );
+            } else {
+                view.showLabelsState(ProductInfoState.EMPTY);
+            }
         }
     }
 
