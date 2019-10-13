@@ -1067,8 +1067,10 @@ public class DietRepository implements IDietRepository {
         int fromIndexInIngredients = 0;
         String ingredient = "";
         String languageCode = "";
-        //List of the ingredients of the product in text
-        String ingredients = ssbIngredients.toString();
+        //List of the ingredients of the product in text and lower case to optimize indexOf.
+        //In lowercase will find more ingredient in ingredients...
+        //When an additive is alone between parenthesis, it is consider like an ingredient of non-zero rank, so let replace it's parenthesis by some comas.
+        String ingredients = ssbIngredients.toString().toLowerCase().replaceAll("\\((e[0-9]+)\\)",",$1,");
         //Let have 2 ingredients list, one with only rank>1 and one with rank0 (in other words, one without anything between parenthesis and one qith only things between parenthesis)
         String ingredients0 = ingredients;
         start = ingredients.indexOf("(");
@@ -1100,8 +1102,8 @@ public class DietRepository implements IDietRepository {
                 ingredients0 = null;
                 //fromIndex=0;
             }
-            //Suppress underscore from the getText string cause there is no underscore in ssbIngredients
-            ingredient = productIngredient.getText().replaceAll("_","");
+            //Suppress underscore from the getText string cause there is no underscore in ssbIngredients and pass it in lowercase.
+            ingredient = productIngredient.getText().replaceAll("_","").toLowerCase();
 
             //Looking for the place of ingredient in ingredients
             startInIngredients = ingredients.indexOf(ingredient);
@@ -1165,7 +1167,7 @@ public class DietRepository implements IDietRepository {
                             //This word must be colored
                             //If this state is under the productState and 1, then it is the new productState
                             if (state <1 && state < productState) productState = state;
-                            start = ssbIngredients.toString().indexOf(ingredientWord);
+                            start = ingredients.indexOf(ingredientWord);
                             end = start + ingredientWord.length();
                             ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state);
                         }
