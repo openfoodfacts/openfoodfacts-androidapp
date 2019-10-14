@@ -96,7 +96,7 @@ public class ProductRepository implements IProductRepository {
     //  0 taxonomy is not marked to be load.
     public final static Long TAXONOMY_NOT_TO_BE_LOADED =0L;
     //  1 taxonomy is up to date.
-    public final static Long TAXONOMY_UP_TO_DATE = 1L;
+    public final static Long TAXONOMY_TO_BE_LOADED = 1L;
     /**
      * A method used to get instance from the repository.
      * @return : instance of the repository
@@ -146,7 +146,7 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Single<List<Label>> getLabels(Boolean refresh) {
         Long lastModifiedDate = updateSinceLastUpload("labels");
-        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
+        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
 //        if (refresh || tableIsEmpty(labelDao)) {
             return productApi.getLabels()
                     .map(LabelsWrapper::map)
@@ -185,7 +185,7 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Single<List<Allergen>> getAllergens(Boolean refresh) {
         Long lastModifiedDate = updateSinceLastUpload("allergens");
-        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
+        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
 //        if (refresh || tableIsEmpty(allergenDao)) {
             return productApi.getAllergens()
                     .map(AllergensWrapper::map)
@@ -206,7 +206,7 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Single<List<Country>> getCountries(Boolean refresh) {
         Long lastModifiedDate = updateSinceLastUpload("countries");
-        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
+        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
 //        if (refresh || tableIsEmpty(countryDao)) {
             return productApi.getCountries()
                     .map(CountriesWrapper::map)
@@ -227,7 +227,7 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Single<List<Category>> getCategories(Boolean refresh) {
         Long lastModifiedDate = updateSinceLastUpload("categories");
-        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
+        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
 //        if (refresh || tableIsEmpty(categoryDao)) {
             return productApi.getCategories()
                     .map(CategoriesWrapper::map)
@@ -257,7 +257,7 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Single<List<Additive>> getAdditives(Boolean refresh) {
         Long lastModifiedDate = updateSinceLastUpload("additives");
-        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
+        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
 //        if (refresh || tableIsEmpty(additiveDao)) {
             return productApi.getAdditives()
                     .map(AdditivesWrapper::map)
@@ -281,7 +281,7 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Single<List<Ingredient>> getIngredients() {
         Long lastModifiedDate = updateSinceLastUpload("ingredients");
-        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
+        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
             //Ingredients.json has been modified since our last download.
             if (! tableIsEmpty(ingredientDao)){
                 deleteIngredientCascade();
@@ -303,14 +303,14 @@ public class ProductRepository implements IProductRepository {
      * @return
      *     TAXONOMY_NO_INTERNET (-1)        no internet connexion.
      *     TAXONOMY_NOT_TO_BE_LOADED (0)    taxonomy is not marked to be load.
-     *     TAXONOMY_UP_TO_DATE (1)          taxonomy is up to date.
+     *     TAXONOMY_TO_BE_LOADED (1)          taxonomy is up to date.
      *     other :                          date of the new taxonomy on the servers => to be updated
      */
     public Long updateSinceLastUpload(String taxonomy) {
         Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " begin.");
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        Long lastDownload = mSettings.getLong("lastDownload" + taxonomy, 0);
-        if (lastDownload >TAXONOMY_NOT_TO_BE_LOADED) {
+        Long lastDownload = mSettings.getLong("lastDownload" + taxonomy, TAXONOMY_NOT_TO_BE_LOADED);
+        if (lastDownload > TAXONOMY_NOT_TO_BE_LOADED) {
             //In that case we must download this taxonomy .json unless we already downloaded the last version.
             //Get Last modified date for the file on sever.
             long lastModifiedDate = 0;
@@ -329,7 +329,7 @@ public class ProductRepository implements IProductRepository {
                 return lastModifiedDate;
             } else {
                 Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return 1");
-                return TAXONOMY_UP_TO_DATE;
+                return TAXONOMY_TO_BE_LOADED;
             }
         }
         Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return 0");
