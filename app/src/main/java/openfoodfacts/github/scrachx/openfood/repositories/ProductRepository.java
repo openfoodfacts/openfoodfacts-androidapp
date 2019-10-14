@@ -348,7 +348,7 @@ public class ProductRepository implements IProductRepository {
      * @param lastDownload    Date of last update on Long format
      */
     public void updateLastDownload(String taxonomy, Long lastDownload){
-        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
+        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", TAXONOMY_NOT_TO_BE_LOADED);
         mSettings.edit().putLong("lastDownload" + taxonomy, lastDownload).apply();
         Log.i("INFO_URL", "End of import for : " + taxonomy);
     }
