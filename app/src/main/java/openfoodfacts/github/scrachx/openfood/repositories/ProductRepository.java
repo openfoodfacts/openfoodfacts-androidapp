@@ -97,7 +97,12 @@ public class ProductRepository implements IProductRepository {
     private static Long TAXONOMY_NOT_TO_BE_LOADED = (long) 0;
     //  1 taxonomy is up to date.
     private static Long TAXONOMY_UP_TO_DATE = (long) 1;
-
+// -1 no internet connexion.
+    private final static Long TAXONOMY_NO_INTERNET = -1L;
+    //  0 taxonomy is not marked to be load.
+    public final static Long TAXONOMY_NOT_TO_BE_LOADED =0L;
+    //  1 taxonomy is up to date.
+    public final static Long TAXONOMY_UP_TO_DATE = 1L;
     /**
      * A method used to get instance from the repository.
      * @return : instance of the repository
