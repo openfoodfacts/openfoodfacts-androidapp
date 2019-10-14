@@ -92,13 +92,7 @@ public class ProductRepository implements IProductRepository {
     private IngredientsRelationDao ingredientsRelationDao;
 
     // -1 no internet connexion.
-    private static Long TAXONOMY_NO_INTERNET = (long) -1;
-    //  0 taxonomy is not marked to be load.
-    private static Long TAXONOMY_NOT_TO_BE_LOADED = (long) 0;
-    //  1 taxonomy is up to date.
-    private static Long TAXONOMY_UP_TO_DATE = (long) 1;
-// -1 no internet connexion.
-    private final static Long TAXONOMY_NO_INTERNET = -1L;
+    public final static Long TAXONOMY_NO_INTERNET = -1L;
     //  0 taxonomy is not marked to be load.
     public final static Long TAXONOMY_NOT_TO_BE_LOADED =0L;
     //  1 taxonomy is up to date.
@@ -151,8 +145,8 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Label>> getLabels(Boolean refresh) {
-        Long lastModifiedDate = UpdateSinceLastUpload("labels");
-        if (lastModifiedDate > 1) {
+        Long lastModifiedDate = updateSinceLastUpload("labels");
+        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
 //        if (refresh || tableIsEmpty(labelDao)) {
             return productApi.getLabels()
                     .map(LabelsWrapper::map)
@@ -190,8 +184,8 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Allergen>> getAllergens(Boolean refresh) {
-        Long lastModifiedDate = UpdateSinceLastUpload("allergens");
-        if (lastModifiedDate > 1) {
+        Long lastModifiedDate = updateSinceLastUpload("allergens");
+        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
 //        if (refresh || tableIsEmpty(allergenDao)) {
             return productApi.getAllergens()
                     .map(AllergensWrapper::map)
@@ -211,8 +205,8 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Country>> getCountries(Boolean refresh) {
-        Long lastModifiedDate = UpdateSinceLastUpload("countries");
-        if (lastModifiedDate > 1) {
+        Long lastModifiedDate = updateSinceLastUpload("countries");
+        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
 //        if (refresh || tableIsEmpty(countryDao)) {
             return productApi.getCountries()
                     .map(CountriesWrapper::map)
@@ -232,8 +226,8 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Category>> getCategories(Boolean refresh) {
-        Long lastModifiedDate = UpdateSinceLastUpload("categories");
-        if (lastModifiedDate > 1) {
+        Long lastModifiedDate = updateSinceLastUpload("categories");
+        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
 //        if (refresh || tableIsEmpty(categoryDao)) {
             return productApi.getCategories()
                     .map(CategoriesWrapper::map)
@@ -262,8 +256,8 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Additive>> getAdditives(Boolean refresh) {
-        Long lastModifiedDate = UpdateSinceLastUpload("additives");
-        if (lastModifiedDate > 1) {
+        Long lastModifiedDate = updateSinceLastUpload("additives");
+        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
 //        if (refresh || tableIsEmpty(additiveDao)) {
             return productApi.getAdditives()
                     .map(AdditivesWrapper::map)
@@ -286,8 +280,8 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Ingredient>> getIngredients() {
-        Long lastModifiedDate = UpdateSinceLastUpload("ingredients");
-        if (lastModifiedDate > 1) {
+        Long lastModifiedDate = updateSinceLastUpload("ingredients");
+        if (lastModifiedDate > TAXONOMY_UP_TO_DATE) {
             //Ingredients.json has been modified since our last download.
             if (! tableIsEmpty(ingredientDao)){
                 deleteIngredientCascade();
@@ -313,7 +307,7 @@ public class ProductRepository implements IProductRepository {
      *     other :                          date of the new taxonomy on the servers => to be updated
      */
     public Long updateSinceLastUpload(String taxonomy) {
-        Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " begin.");
+        Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " begin.");
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
         Long lastDownload = mSettings.getLong("lastDownload" + taxonomy, 0);
         if (lastDownload >TAXONOMY_NOT_TO_BE_LOADED) {
@@ -327,18 +321,18 @@ public class ProductRepository implements IProductRepository {
                 httpCon.disconnect();
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return -1");
+                Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return -1");
                 return  TAXONOMY_NO_INTERNET;
             }
             if (lastModifiedDate > lastDownload) {
-                Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return " + lastModifiedDate);
+                Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return " + lastModifiedDate);
                 return lastModifiedDate;
             } else {
-                Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return 1");
+                Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return 1");
                 return TAXONOMY_UP_TO_DATE;
             }
         }
-        Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " end, return 0");
+        Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return 0");
         return TAXONOMY_NOT_TO_BE_LOADED;
     }
 
@@ -348,7 +342,7 @@ public class ProductRepository implements IProductRepository {
      * @param lastDownload    Date of last update on Long format
      */
     public void updateLastDownload(String taxonomy, Long lastDownload){
-        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", TAXONOMY_NOT_TO_BE_LOADED);
+        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", TAXONOMY_NOT_TO_BE_LOADED.intValue());
         mSettings.edit().putLong("lastDownload" + taxonomy, lastDownload).apply();
         Log.i("INFO_URL", "End of import for : " + taxonomy);
     }
