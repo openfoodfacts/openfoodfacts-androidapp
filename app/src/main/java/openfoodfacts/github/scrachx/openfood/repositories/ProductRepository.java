@@ -316,7 +316,7 @@ public class ProductRepository implements IProductRepository {
         Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " begin.");
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
         Long lastDownload = mSettings.getLong("lastDownload" + taxonomy, 0);
-        if (lastDownload > 0) {
+        if (lastDownload >TAXONOMY_NOT_TO_BE_LOADED) {
             //In that case we must download this taxonomy .json unless we already downloaded the last version.
             //Get Last modified date for the file on sever.
             long lastModifiedDate = 0;
