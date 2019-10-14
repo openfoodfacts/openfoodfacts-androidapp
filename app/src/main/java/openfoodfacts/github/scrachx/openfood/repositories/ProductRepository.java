@@ -9,6 +9,7 @@ import org.greenrobot.greendao.database.Database;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,8 +96,11 @@ public class ProductRepository implements IProductRepository {
     public final static Long TAXONOMY_NO_INTERNET = -1L;
     //  0 taxonomy is not marked to be load.
     public final static Long TAXONOMY_NOT_TO_BE_LOADED =0L;
-    //  1 taxonomy is up to date.
+    //  1 taxonomy has to be download.
     public final static Long TAXONOMY_TO_BE_LOADED = 1L;
+    //  1 taxonomy is up to date.
+    public final static Long TAXONOMY_IS_UP_TO_DATE = 2L;
+
     /**
      * A method used to get instance from the repository.
      * @return : instance of the repository
@@ -145,13 +149,27 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Label>> getLabels(Boolean refresh) {
-        Long lastModifiedDate = updateSinceLastUpload("labels");
-        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
-//        if (refresh || tableIsEmpty(labelDao)) {
+        //First set a default value
+        Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
+        if (refresh) {
+            //It is ask to refresh database if needed
+            /*
+            if (tableIsEmpty(labelDao)) {
+                //Table is empty, we'll force database to be refresh
+                updateLastDownload("labels", TAXONOMY_TO_BE_LOADED);
+            }
+             */
+            //Test if file on server is more recent than nlast download.
+            lastModifiedDate = updateSinceLastUpload("labels");
+        }
+        if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
+            //Download taxonomy from server
+            Long finalLastModifiedDate = lastModifiedDate;
             return productApi.getLabels()
-                    .map(LabelsWrapper::map)
-                .doOnSuccess(__ -> updateLastDownload("labels", lastModifiedDate));
+                .map(LabelsWrapper::map)
+                .doOnSuccess(__ -> updateLastDownload("labels", finalLastModifiedDate));
         } else {
+            //Return contains of database.
             return Single.fromCallable(() -> labelDao.loadAll());
         }
     }
@@ -184,13 +202,27 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Allergen>> getAllergens(Boolean refresh) {
-        Long lastModifiedDate = updateSinceLastUpload("allergens");
-        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
-//        if (refresh || tableIsEmpty(allergenDao)) {
+        //First set a default value
+        Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
+        if (refresh) {
+            //It is ask to refresh database if needed
+            /*
+            if (tableIsEmpty(allergenDao)) {
+                //Table is empty, we'll force database to be refresh
+                updateLastDownload("allergens", TAXONOMY_TO_BE_LOADED);
+            }
+             */
+            //Test if file on server is more recent than nlast download.
+            lastModifiedDate = updateSinceLastUpload("allergens");
+        }
+        if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
+            //Download taxonomy from server
+            Long finalLastModifiedDate = lastModifiedDate;
             return productApi.getAllergens()
-                    .map(AllergensWrapper::map)
-                .doOnSuccess(__ -> updateLastDownload("allergens", lastModifiedDate));
+                .map(AllergensWrapper::map)
+                .doOnSuccess(__ -> updateLastDownload("allergens", finalLastModifiedDate));
         } else {
+            //Return contains of database.
             return Single.fromCallable(() -> allergenDao.loadAll());
         }
     }
@@ -205,12 +237,25 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Country>> getCountries(Boolean refresh) {
-        Long lastModifiedDate = updateSinceLastUpload("countries");
-        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
-//        if (refresh || tableIsEmpty(countryDao)) {
+        //First set a default value
+        Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
+        if (refresh) {
+            //It is ask to refresh database if needed
+            /*
+            if (tableIsEmpty(countryDao)) {
+                //Table is empty, we'll force database to be refresh
+                updateLastDownload("countries", TAXONOMY_TO_BE_LOADED);
+            }
+             */
+            //Test if file on server is more recent than nlast download.
+            lastModifiedDate = updateSinceLastUpload("countries");
+        }
+        if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
+            //Download taxonomy from server
+            Long finalLastModifiedDate = lastModifiedDate;
             return productApi.getCountries()
                     .map(CountriesWrapper::map)
-                .doOnSuccess(__ -> updateLastDownload("countries", lastModifiedDate));
+                .doOnSuccess(__ -> updateLastDownload("countries", finalLastModifiedDate));
         } else {
             return Single.fromCallable(() -> countryDao.loadAll());
         }
@@ -226,12 +271,25 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Category>> getCategories(Boolean refresh) {
-        Long lastModifiedDate = updateSinceLastUpload("categories");
-        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
-//        if (refresh || tableIsEmpty(categoryDao)) {
+        //First set a default value
+        Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
+        if (refresh) {
+            //It is ask to refresh database if needed
+            /*
+            if (tableIsEmpty(categoryDao)) {
+                //Table is empty, we'll force database to be refresh
+                updateLastDownload("categories", TAXONOMY_TO_BE_LOADED);
+            }
+            */
+            //Test if file on server is more recent than nlast download.
+            lastModifiedDate = updateSinceLastUpload("categories");
+        }
+        if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
+            //Download taxonomy from server
+            Long finalLastModifiedDate = lastModifiedDate;
             return productApi.getCategories()
-                    .map(CategoriesWrapper::map)
-                .doOnSuccess(__ -> updateLastDownload("categories", lastModifiedDate));
+                .map(CategoriesWrapper::map)
+                .doOnSuccess(__ -> updateLastDownload("categories", finalLastModifiedDate));
         } else {
             return Single.fromCallable(() -> categoryDao.loadAll());
         }
@@ -256,12 +314,25 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<List<Additive>> getAdditives(Boolean refresh) {
-        Long lastModifiedDate = updateSinceLastUpload("additives");
-        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
-//        if (refresh || tableIsEmpty(additiveDao)) {
+        //First set a default value
+        Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
+        if (refresh) {
+            //It is ask to refresh database if needed
+/*            if (tableIsEmpty(additiveDao)) {
+                //Table is empty, we'll force database to be refresh
+                updateLastDownload("additives", TAXONOMY_TO_BE_LOADED);
+            }
+
+ */
+            //Test if file on server is more recent than nlast download.
+            lastModifiedDate = updateSinceLastUpload("additives");
+        }
+        if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
+            //Download taxonomy from server
+            Long finalLastModifiedDate = lastModifiedDate;
             return productApi.getAdditives()
-                    .map(AdditivesWrapper::map)
-                .doOnSuccess(__ -> updateLastDownload("additives", lastModifiedDate));
+                .map(AdditivesWrapper::map)
+                .doOnSuccess(__ -> updateLastDownload("additives", finalLastModifiedDate));
         } else {
             return Single.fromCallable(() -> additiveDao.loadAll());
         }
@@ -276,22 +347,31 @@ public class ProductRepository implements IProductRepository {
      *  else return the content from the local database.
      *
      * @return The ingredients in the product.
-     * Pour le moment, pas de question a se poser, les données ne sont que locales.
      */
     @Override
-    public Single<List<Ingredient>> getIngredients() {
-        Long lastModifiedDate = updateSinceLastUpload("ingredients");
-        if (lastModifiedDate > TAXONOMY_TO_BE_LOADED) {
-            //Ingredients.json has been modified since our last download.
-            if (! tableIsEmpty(ingredientDao)){
-                deleteIngredientCascade();
+    public Single<List<Ingredient>> getIngredients(Boolean refresh) {
+        //First set a default value
+        Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
+        if (refresh) {
+            //It is ask to refresh database if needed
+            /*
+            if (tableIsEmpty(ingredientDao)) {
+                //Table is empty, we'll force database to be refresh
+                updateLastDownload("ingredients", TAXONOMY_TO_BE_LOADED);
             }
-            return (Single<List<Ingredient>>) productApi.getIngredients()
-                .map(IngredientsWrapper::map)
-                .doOnSuccess(__ -> updateLastDownload("ingredients", lastModifiedDate));
-            //Check ingredient from other tables
+            */
+            //Test if file on server is more recent than last download.
+            lastModifiedDate = updateSinceLastUpload("ingredients");
         }
-        return Single.fromCallable(() -> ingredientDao.loadAll());
+        if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
+            //Download taxonomy from server
+            Long finalLastModifiedDate = lastModifiedDate;
+            return productApi.getIngredients()
+                .map(IngredientsWrapper::map)
+                .doOnSuccess(__ -> updateLastDownload("ingredients", finalLastModifiedDate));
+        } else {
+            return Single.fromCallable(() -> ingredientDao.loadAll());
+        }
     }
 
     /**
@@ -303,15 +383,20 @@ public class ProductRepository implements IProductRepository {
      * @return
      *     TAXONOMY_NO_INTERNET (-1)        no internet connexion.
      *     TAXONOMY_NOT_TO_BE_LOADED (0)    taxonomy is not marked to be load.
-     *     TAXONOMY_TO_BE_LOADED (1)          taxonomy is up to date.
+     *     TAXONOMY_IS_UP_TO_DATE (2)       taxonomy is up to date.
      *     other :                          date of the new taxonomy on the servers => to be updated
+     *
+     *     Note that TAXONOMY_TO_BE_LOADED (1) is just use to ask taxonomy to be loaded and never returned by this method.
      */
     public Long updateSinceLastUpload(String taxonomy) {
         Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " begin.");
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
         Long lastDownload = mSettings.getLong("lastDownload" + taxonomy, TAXONOMY_NOT_TO_BE_LOADED);
-        if (lastDownload > TAXONOMY_NOT_TO_BE_LOADED) {
-            //In that case we must download this taxonomy .json unless we already downloaded the last version.
+        if (lastDownload == TAXONOMY_TO_BE_LOADED) {
+            //This taxonomy has to be loaded, no test is needed, just return currentTimestamp().
+            return System.currentTimeMillis();
+        } else if (lastDownload > TAXONOMY_TO_BE_LOADED) {
+            //In that case we must download this taxonomy .json unless we already downloaded the latest version.
             //Get Last modified date for the file on sever.
             long lastModifiedDate = 0;
             try {
@@ -320,19 +405,23 @@ public class ProductRepository implements IProductRepository {
                 lastModifiedDate = httpCon.getLastModified();
                 httpCon.disconnect();
             } catch (IOException e) {
+                //Problem
                 e.printStackTrace();
-                Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return -1");
+                Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
                 return  TAXONOMY_NO_INTERNET;
             }
             if (lastModifiedDate > lastDownload) {
+                //File on server is more recent that last download.
                 Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return " + lastModifiedDate);
                 return lastModifiedDate;
             } else {
-                Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return 1");
-                return TAXONOMY_TO_BE_LOADED;
+                //File on server has not change since last download
+                Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return " + TAXONOMY_IS_UP_TO_DATE);
+                return TAXONOMY_IS_UP_TO_DATE;
             }
         }
-        Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return 0");
+        //Well, the file is not marked to be loaded.
+        Log.i("INFO_URL", "updateSinceLastUpload for : " + taxonomy + " end, return " + TAXONOMY_NOT_TO_BE_LOADED);
         return TAXONOMY_NOT_TO_BE_LOADED;
     }
 
@@ -344,7 +433,7 @@ public class ProductRepository implements IProductRepository {
     public void updateLastDownload(String taxonomy, Long lastDownload){
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", TAXONOMY_NOT_TO_BE_LOADED.intValue());
         mSettings.edit().putLong("lastDownload" + taxonomy, lastDownload).apply();
-        Log.i("INFO_URL", "End of import for : " + taxonomy);
+        Log.i("INFO_URL", "Set lastDownload of " + taxonomy + " to " + lastDownload);
     }
 
     /**

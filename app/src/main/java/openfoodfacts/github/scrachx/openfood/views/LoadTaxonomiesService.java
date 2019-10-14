@@ -49,7 +49,7 @@ public class LoadTaxonomiesService extends IntentService {
                 productRepository.getLabels(true),
                 productRepository.getTags(true),
                 productRepository.getAllergens(true),
-                productRepository.getIngredients(),
+                productRepository.getIngredients(true),
                 productRepository.getCountries(true),
                 productRepository.getAdditives(true),
                 productRepository.getCategories(true), (labels, tags, allergens, ingredients, countries, additives, categories) -> {
@@ -80,7 +80,7 @@ public class LoadTaxonomiesService extends IntentService {
             Single.zip(
                 productRepository.getLabels(true),
                 productRepository.getTags(true),
-                productRepository.getIngredients(),
+                productRepository.getIngredients(true),
                 productRepository.getCountries(true),
                 productRepository.getAdditives(true),
                 productRepository.getCategories(true), (labels, tags, ingredients, countries, additives, categories) -> {

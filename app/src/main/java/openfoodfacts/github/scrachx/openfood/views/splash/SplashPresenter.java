@@ -75,6 +75,6 @@ public class SplashPresenter implements ISplashPresenter.Actions {
      * This method checks if data was refreshed more than 1 day ago
      */
     private Boolean isNeedToRefresh() {
-        return System.currentTimeMillis() - settings.getLong(Utils.LAST_REFRESH_DATE, 0) > 0; //REFRESH_PERIOD;
+        return System.currentTimeMillis() - settings.getLong(Utils.LAST_REFRESH_DATE, 0) > REFRESH_PERIOD;
     }
 }
