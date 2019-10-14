@@ -312,7 +312,7 @@ public class ProductRepository implements IProductRepository {
      *     TAXONOMY_UP_TO_DATE (1)          taxonomy is up to date.
      *     other :                          date of the new taxonomy on the servers => to be updated
      */
-    public Long UpdateSinceLastUpload(String taxonomy) {
+    public Long updateSinceLastUpload(String taxonomy) {
         Log.i("INFO_URL", "UpdateSinceLastUpload for : " + taxonomy + " begin.");
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
         Long lastDownload = mSettings.getLong("lastDownload" + taxonomy, 0);
