@@ -38,7 +38,20 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                         .apply();
                 //Set to 1 the lastDownload for the taxonomy to be loaded :
                 //This two are needed for all flavors :
-                settings.edit().putLong("lastDownloadcategories", Long.valueOf(1)).apply();
+                 if(!settings.contains("lastDownloadcategories")){
+            settings.edit().putLong("lastDownloadcategories", Long.valueOf(ProductRepository.TAXONOMY_UP_TO_DATE)).apply();
+            settings.edit().putLong("lastDownloadtags", Long.valueOf(ProductRepository.TAXONOMY_UP_TO_DATE)).apply();
+            if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("obf")) {
+                settings.edit().putLong("lastDownloadadditives", Long.valueOf(ProductRepository.TAXONOMY_UP_TO_DATE)).apply();
+                settings.edit().putLong("lastDownloadcountries", Long.valueOf(ProductRepository.TAXONOMY_UP_TO_DATE)).apply();
+                settings.edit().putLong("lastDownloadlabels", Long.valueOf(ProductRepository.TAXONOMY_UP_TO_DATE)).apply();
+                //For the moment, ingredients are only need if Diet is use.
+                settings.edit().putLong("lastDownloadingredients", Long.valueOf(ProductRepository.TAXONOMY_NOT_TO_BE_LOADED)).apply();
+            }
+            if (BuildConfig.FLAVOR.equals("off")) {
+                settings.edit().putLong("lastDownloadallergens", Long.valueOf(ProductRepository.TAXONOMY_UP_TO_DATE)).apply();
+            }
+        }
                 settings.edit().putLong("lastDownloadtags", Long.valueOf(1)).apply();
                 if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("obf")) {
                     settings.edit().putLong("lastDownloadadditives", Long.valueOf(1)).apply();
