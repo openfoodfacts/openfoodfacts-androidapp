@@ -142,7 +142,7 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
 
     private void addImageRow() {
         TableRow image = new TableRow(activity);
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, dpsToPixels(100));
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(100));
         lp.topMargin = dpsToPixels(10);
         ImageView imageView = new ImageView(activity);
         Picasso.get()
