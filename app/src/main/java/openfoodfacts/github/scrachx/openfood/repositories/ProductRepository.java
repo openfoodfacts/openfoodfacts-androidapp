@@ -142,24 +142,17 @@ public class ProductRepository implements IProductRepository {
     /**
      * Load labels from the server or local database
      *
-     * @param refresh defines the source of data.
-     *                If refresh is true (or local database is empty) than load it from the server,
+     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
+     *                If checkUpdate is true (or local database is empty) than load it from the server,
      *                else from the local database.
      * @return The list of Labels.
      */
     @Override
-    public Single<List<Label>> getLabels(Boolean refresh) {
+    public Single<List<Label>> getLabels(Boolean checkUpdate) {
         //First set a default value
         Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
-        if (refresh) {
-            //It is ask to refresh database if needed
-            /*
-            if (tableIsEmpty(labelDao)) {
-                //Table is empty, we'll force database to be refresh
-                updateLastDownload("labels", TAXONOMY_TO_BE_LOADED);
-            }
-             */
-            //Test if file on server is more recent than nlast download.
+        if (checkUpdate || tableIsEmpty(labelDao)) {
+            //It is ask to check if a refresh of the database is needed - Test if file on server is more recent than last download.
             lastModifiedDate = updateSinceLastUpload("labels");
         }
         if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
@@ -195,24 +188,17 @@ public class ProductRepository implements IProductRepository {
     /**
      * Load allergens from the server or local database
      *
-     * @param refresh defines the source of data.
-     *                If refresh is true (or local database is empty) than load it from the server,
+     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
+     *                If checkUpdate is true (or local database is empty) than load it from the server,
      *                else from the local database.
      * @return The allergens in the product.
      */
     @Override
-    public Single<List<Allergen>> getAllergens(Boolean refresh) {
+    public Single<List<Allergen>> getAllergens(Boolean checkUpdate) {
         //First set a default value
         Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
-        if (refresh) {
-            //It is ask to refresh database if needed
-            /*
-            if (tableIsEmpty(allergenDao)) {
-                //Table is empty, we'll force database to be refresh
-                updateLastDownload("allergens", TAXONOMY_TO_BE_LOADED);
-            }
-             */
-            //Test if file on server is more recent than nlast download.
+        if (checkUpdate || tableIsEmpty(allergenDao)) {
+            //It is ask to check if a refresh of the database is needed - Test if file on server is more recent than last download.
             lastModifiedDate = updateSinceLastUpload("allergens");
         }
         if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
@@ -230,24 +216,17 @@ public class ProductRepository implements IProductRepository {
     /**
      * Load countries from the server or local database
      *
-     * @param refresh defines the source of data.
-     *                If refresh is true (or local database is empty) than load it from the server,
+     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
+     *                If checkUpdate is true (or local database is empty) than load it from the server,
      *                else from the local database.
      * @return The list of countries.
      */
     @Override
-    public Single<List<Country>> getCountries(Boolean refresh) {
+    public Single<List<Country>> getCountries(Boolean checkUpdate) {
         //First set a default value
         Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
-        if (refresh) {
-            //It is ask to refresh database if needed
-            /*
-            if (tableIsEmpty(countryDao)) {
-                //Table is empty, we'll force database to be refresh
-                updateLastDownload("countries", TAXONOMY_TO_BE_LOADED);
-            }
-             */
-            //Test if file on server is more recent than nlast download.
+        if (checkUpdate || tableIsEmpty(countryDao)) {
+            //It is ask to check if a refresh of the database is needed - Test if file on server is more recent than last download.
             lastModifiedDate = updateSinceLastUpload("countries");
         }
         if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
@@ -264,24 +243,17 @@ public class ProductRepository implements IProductRepository {
     /**
      * Load categories from the server or local database
      *
-     * @param refresh defines the source of data.
-     *                If refresh is true (or local database is empty) than load it from the server,
+     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
+     *                If checkUpdate is true (or local database is empty) than load it from the server,
      *                else from the local database.
      * @return The list of categories.
      */
     @Override
-    public Single<List<Category>> getCategories(Boolean refresh) {
+    public Single<List<Category>> getCategories(Boolean checkUpdate) {
         //First set a default value
         Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
-        if (refresh) {
-            //It is ask to refresh database if needed
-            /*
-            if (tableIsEmpty(categoryDao)) {
-                //Table is empty, we'll force database to be refresh
-                updateLastDownload("categories", TAXONOMY_TO_BE_LOADED);
-            }
-            */
-            //Test if file on server is more recent than nlast download.
+        if (checkUpdate || tableIsEmpty(categoryDao)) {
+            //It is ask to check if a refresh of the database is needed - Test if file on server is more recent than last download.
             lastModifiedDate = updateSinceLastUpload("categories");
         }
         if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
@@ -307,24 +279,17 @@ public class ProductRepository implements IProductRepository {
     /**
      * Load additives from the server or local database
      *
-     * @param refresh defines the source of data.
-     *                If refresh is true (or local database is empty) than load it from the server,
+     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
+     *                If checkUpdate is true (or local database is empty) than load it from the server,
      *                else from the local database.
      * @return The list of additives.
      */
     @Override
-    public Single<List<Additive>> getAdditives(Boolean refresh) {
+    public Single<List<Additive>> getAdditives(Boolean checkUpdate) {
         //First set a default value
         Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
-        if (refresh) {
-            //It is ask to refresh database if needed
-/*            if (tableIsEmpty(additiveDao)) {
-                //Table is empty, we'll force database to be refresh
-                updateLastDownload("additives", TAXONOMY_TO_BE_LOADED);
-            }
-
- */
-            //Test if file on server is more recent than nlast download.
+        if (checkUpdate || tableIsEmpty(additiveDao)) {
+            //It is ask to check if a refresh of the database is needed - Test if file on server is more recent than last download.
             lastModifiedDate = updateSinceLastUpload("additives");
         }
         if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
@@ -339,28 +304,24 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
-     * TODO to be improved by loading only if required and only in the user language
+     * TODO to be improved by loading only in the user language ?
      * Load ingredients from (the server or) local database
      * If SharedPreferences lastDownloadIngredients is set try this :
      *  if file from the server is newer than last download delete database, load the file and fill database,
      *  else if database is empty, download the file and fill database,
      *  else return the content from the local database.
      *
+     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
+     *                If checkUpdate is true (or local database is empty) than load it from the server,
+     *
      * @return The ingredients in the product.
      */
     @Override
-    public Single<List<Ingredient>> getIngredients(Boolean refresh) {
+    public Single<List<Ingredient>> getIngredients(Boolean checkUpdate) {
         //First set a default value
         Long lastModifiedDate = TAXONOMY_NOT_TO_BE_LOADED;
-        if (refresh) {
-            //It is ask to refresh database if needed
-            /*
-            if (tableIsEmpty(ingredientDao)) {
-                //Table is empty, we'll force database to be refresh
-                updateLastDownload("ingredients", TAXONOMY_TO_BE_LOADED);
-            }
-            */
-            //Test if file on server is more recent than last download.
+        if (checkUpdate || tableIsEmpty(ingredientDao)) {
+            //It is ask to check if a refresh of the database is needed - Test if file on server is more recent than last download.
             lastModifiedDate = updateSinceLastUpload("ingredients");
         }
         if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
