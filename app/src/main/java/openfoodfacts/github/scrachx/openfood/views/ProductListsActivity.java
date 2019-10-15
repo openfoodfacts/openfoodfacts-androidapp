@@ -291,7 +291,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                 yourListedProductDao.insertOrReplaceInTx(list);
                 return true;
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.e("ParseCSV",e.getMessage(),e);
                 return false;
             }
         }

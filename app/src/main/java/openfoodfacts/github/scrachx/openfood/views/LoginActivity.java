@@ -205,10 +205,10 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
                         if (httpCookie.getDomain().equals(".openbeautyfacts.org") && httpCookie.getPath().equals("/")) {
                             String[] cookieValues = httpCookie.getValue().split("&");
+                            //why ?
                             for (int i = 0; i < cookieValues.length; i++) {
                                 editor.putString(cookieValues[i], cookieValues[++i]);
                             }
-
                             break;
                         }
                     }

@@ -71,7 +71,7 @@ public class OFFApplication extends MultiDexApplication {
             if (e instanceof UndeliverableException) {
                 e = e.getCause();
             }
-            if ((e instanceof IOException) || (e instanceof SocketException)) {
+            if (e instanceof IOException) {
 
                 // fine, irrelevant network problem or API that throws on cancellation
                 Log.i(OFFApplication.class.getSimpleName(),"network exception",e);
