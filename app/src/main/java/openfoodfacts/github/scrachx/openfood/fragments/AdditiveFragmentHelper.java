@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.style.DynamicDrawableSpan;
 import androidx.fragment.app.FragmentActivity;
 import androidx.core.content.ContextCompat;
 import android.text.SpannableStringBuilder;
@@ -103,7 +104,7 @@ public class AdditiveFragmentHelper {
                 riskWarningColor = getColor(context, R.color.overexposure_moderate);
             }
             riskIcon.setBounds(0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight());
-            ImageSpan iconSpan = new ImageSpan(riskIcon, ImageSpan.ALIGN_BOTTOM);
+            ImageSpan iconSpan = new ImageSpan(riskIcon, DynamicDrawableSpan.ALIGN_BOTTOM);
 
             spannableStringBuilder.append(" - "); // this will be replaced with the risk icon
             spannableStringBuilder.setSpan(iconSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);

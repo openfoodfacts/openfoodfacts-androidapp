@@ -29,19 +29,20 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
  * @since 03.03.18
  */
 public interface IProductRepository {
-    Single<List<Label>> getLabels(Boolean refresh);
 
-    Single<List<Allergen>> getAllergens(Boolean refresh);
+    Single<List<Label>> getLabels(Boolean checkUpdate);
+
+    Single<List<Allergen>> getAllergens(Boolean checkUpdate);
 
     Single<List<Tag>> getTags(Boolean refresh);
 
-    Single<List<Additive>> getAdditives(Boolean refresh);
+    Single<List<Additive>> getAdditives(Boolean checkUpdate);
 
-    Single<List<Country>> getCountries(Boolean refresh);
+    Single<List<Country>> getCountries(Boolean checkUpdate);
 
-    Single<List<Category>> getCategories(Boolean refresh);
+    Single<List<Category>> getCategories(Boolean checkUpdate);
 
-    Single<List<Ingredient>> getIngredients(Boolean refresh);
+    Single<List<Ingredient>> getIngredients(Boolean checkUpdate);
 
     void saveLabels(List<Label> labels);
 

@@ -52,16 +52,18 @@ public class LoadTaxonomiesService extends IntentService {
                 productRepository.getLabels(true),
                 productRepository.getTags(true),
                 productRepository.getAllergens(true),
+                productRepository.getIngredients(true),
                 productRepository.getAnalysisTagConfigs(true),
                 productRepository.getAnalysisTags(true),
                 productRepository.getCountries(true),
                 productRepository.getAdditives(true),
-                productRepository.getCategories(true), (labels, tags, allergens, analysisTagConfigs, analysisTags, countries, additives, categories) -> {
+                productRepository.getCategories(true), (labels, tags, allergens, ingredients, analysisTagConfigs, analysisTags, countries, additives, categories) -> {
                     Completable.merge(
                         Arrays.asList(
                             Completable.fromAction(() -> productRepository.saveLabels(labels)),
                             Completable.fromAction(() -> productRepository.saveTags(tags)),
                             Completable.fromAction(() -> productRepository.saveAllergens(allergens)),
+                            Completable.fromAction(() -> productRepository.saveIngredients(ingredients)),
                             Completable.fromAction(() -> productRepository.saveAnalysisTagConfigs(analysisTagConfigs)),
                             Completable.fromAction(() -> productRepository.saveAnalysisTags(analysisTags)),
                             Completable.fromAction(() -> productRepository.saveCountries(countries)),
@@ -85,7 +87,7 @@ public class LoadTaxonomiesService extends IntentService {
             Single.zip(
                 productRepository.getLabels(true),
                 productRepository.getTags(true),
-                productRepository.getIngredients(false), //TODO : have a test on last-modified-date of ingredients.json before download it. Then pass the parameter to true
+                productRepository.getIngredients(true),
                 productRepository.getCountries(true),
                 productRepository.getAdditives(true),
                 productRepository.getCategories(true), (labels, tags, ingredients, countries, additives, categories) -> {
