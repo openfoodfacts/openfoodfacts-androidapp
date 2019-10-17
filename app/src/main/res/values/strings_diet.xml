@@ -22,7 +22,7 @@
     <string name="edit_diet_hint_description_of_the_diet">A optionaly description of for your diet</string>
     <string name="warning_diets_taxonomy">However, for a better experience, you will automatically download the ingredients taxonomy when you\'ll add your first diet.</string>
     <string name="warning_diets_online">So please, be sure you are online before your first click on the \"Add a diet\" button !</string>
-    <string name="warning_one_diet_1">Now you have created a diet you can see its effects by scanning a product and consult its ingredients.</string>
+    <string name="warning_one_diet_1">Now you have created a diet you can see its effects by scanning a product (a traffic light appear in case of problem) and consult its ingredients.</string>
     <string name="warning_one_diet_2">You may click on this ingredients list to complete your diet.</string>
     <string name="warning_one_diet_3">You may also add some other diets and enabled/disabled them.</string>
     <string name="edit_diet_remove">Remove this diet.</string>
