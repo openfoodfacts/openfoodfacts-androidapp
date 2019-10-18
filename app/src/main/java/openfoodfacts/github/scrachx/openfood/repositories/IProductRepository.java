@@ -30,19 +30,19 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
  */
 public interface IProductRepository {
 
-    Single<List<Label>> getLabels(Boolean checkUpdate);
+    Single<List<Label>> getLabels(boolean checkUpdate);
 
-    Single<List<Allergen>> getAllergens(Boolean checkUpdate);
+    Single<List<Allergen>> getAllergens(boolean checkUpdate);
 
-    Single<List<Tag>> getTags(Boolean refresh);
+    Single<List<Tag>> getTags(boolean refresh);
 
-    Single<List<Additive>> getAdditives(Boolean checkUpdate);
+    Single<List<Additive>> getAdditives(boolean checkUpdate);
 
-    Single<List<Country>> getCountries(Boolean checkUpdate);
+    Single<List<Country>> getCountries(boolean checkUpdate);
 
-    Single<List<Category>> getCategories(Boolean checkUpdate);
+    Single<List<Category>> getCategories(boolean checkUpdate);
 
-    Single<List<Ingredient>> getIngredients(Boolean checkUpdate);
+    Single<List<Ingredient>> getIngredients(boolean checkUpdate);
 
     void saveLabels(List<Label> labels);
 
@@ -59,8 +59,6 @@ public interface IProductRepository {
     void saveAnalysisTagConfigs(List<AnalysisTagConfig> analysisTagConfigs);
 
     void saveCategories(List<Category> categories);
-
-    void deleteIngredientCascade();
 
     void saveIngredients(List<Ingredient> ingredients);
 
@@ -104,9 +102,9 @@ public interface IProductRepository {
 
     Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation);
 
-    Single<List<AnalysisTag>> getAnalysisTags(Boolean refresh);
+    Single<List<AnalysisTag>> getAnalysisTags(boolean refresh);
 
-    Single<List<AnalysisTagConfig>> getAnalysisTagConfigs(Boolean refresh);
+    Single<List<AnalysisTagConfig>> getAnalysisTagConfigs(boolean refresh);
 
     Single<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode);
 }

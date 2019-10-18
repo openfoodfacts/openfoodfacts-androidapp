@@ -2,72 +2,23 @@ package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.content.SharedPreferences;
 import android.util.Log;
-
 import com.squareup.picasso.Picasso;
+import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTag;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Category;
-import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Country;
-import openfoodfacts.github.scrachx.openfood.models.CountryDao;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.Ingredient;
-import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientName;
-import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
-import openfoodfacts.github.scrachx.openfood.models.Label;
-import openfoodfacts.github.scrachx.openfood.models.LabelDao;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Question;
-import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
-import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
-import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
-import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * This is a repository class which implements repository interface.
@@ -100,15 +51,8 @@ public class ProductRepository implements IProductRepository {
     private AnalysisTagDao analysisTagDao;
     private AnalysisTagNameDao analysisTagNameDao;
     private AnalysisTagConfigDao analysisTagConfigDao;
-
     // -1 no internet connexion.
-    public final static Long TAXONOMY_NO_INTERNET = -1L;
-    //  0 taxonomy is not marked to be load.
-    public final static Long TAXONOMY_NOT_TO_BE_LOADED =0L;
-    //  1 taxonomy has to be download.
-    public final static Long TAXONOMY_TO_BE_LOADED = 1L;
-    //  1 taxonomy is up to date.
-    public final static Long TAXONOMY_IS_UP_TO_DATE = 2L;
+    private final static long TAXONOMY_NO_INTERNET = -9999L;
 
     /**
      * A method used to get instance from the repository.
@@ -156,39 +100,19 @@ public class ProductRepository implements IProductRepository {
      * Load labels from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *                If checkUpdate is true (or local database is empty) than load it from the server,
-     *                else from the local database.
+     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     else from the local database.
      * @return The list of Labels.
      */
     @Override
-    public Single<List<Label>> getLabels(Boolean checkUpdate) {
-        //First check if this taxonomy is to be loaded.
-        String taxonomy = "labels";
-        Long lastDownload = getLastDownload(taxonomy);
-        if (lastDownload > 0) {
-            //Taxonomy is marked to be download
-            Long lastModifiedDate;
-            if (tableIsEmpty(labelDao)) {
-                //Table is empty, no check for update, just load taxonomy
-                lastModifiedDate = getLastModifiedDate(taxonomy);
-                return loadLabels(lastModifiedDate);
-            } else if (checkUpdate) {
-                //It is ask to check for update - Test if file on server is more recent than last download.
-                lastModifiedDate = CheckUpdateSinceLastDownload(taxonomy);
-                if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
-                    //Download taxonomy from server
-                    return loadLabels(lastModifiedDate);
-                }
-            }
-        }
-        //If we are here then just get the information from the local database
-        return Single.fromCallable(() -> labelDao.loadAll());
+    public Single<List<Label>> getLabels(boolean checkUpdate) {
+        return getTaxonomy(Taxonomy.LABEL, checkUpdate, labelDao);
     }
 
-    public Single<List<Label>> loadLabels(Long lastModifiedDate){
+    public Single<List<Label>> loadLabels(long lastModifiedDate) {
         return productApi.getLabels()
             .map(LabelsWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload("labels", lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownload(Taxonomy.LABEL, lastModifiedDate));
     }
 
     /**
@@ -200,7 +124,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of Tags.
      */
     @Override
-    public Single<List<Tag>> getTags(Boolean refresh) {
+    public Single<List<Tag>> getTags(boolean refresh) {
         if (refresh || tableIsEmpty(labelDao)) {
             return openFooApi.getTags()
                 .map(TagsWrapper::getTags);
@@ -213,117 +137,80 @@ public class ProductRepository implements IProductRepository {
      * Load allergens from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *                If checkUpdate is true (or local database is empty) than load it from the server,
-     *                else from the local database.
+     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     else from the local database.
      * @return The allergens in the product.
      */
     @Override
-    public Single<List<Allergen>> getAllergens(Boolean checkUpdate) {
+    public Single<List<Allergen>> getAllergens(boolean checkUpdate) {
+        return getTaxonomy(Taxonomy.ALLERGEN, checkUpdate, allergenDao);
+    }
+
+    private <T> Single<List<T>> getTaxonomy(Taxonomy taxonomy, boolean checkUpdate, AbstractDao dao) {
         //First check if this taxonomy is to be loaded.
-        String taxonomy = "allergens";
-        Long lastDownload = getLastDownload(taxonomy);
-        if (lastDownload > 0) {
+        DownloadState downloadState = getLastDownloadFromSettings(taxonomy);
+        if (downloadState.isDownloadActivated()) {
             //Taxonomy is marked to be download
-            Long lastModifiedDate;
-            if (tableIsEmpty(allergenDao)) {
+            if (tableIsEmpty(dao)) {
                 //Table is empty, no check for update, just load taxonomy
-                lastModifiedDate = getLastModifiedDate(taxonomy);
-                return loadAllergens(lastModifiedDate);
+                long lastModifiedDate = getLastModifiedDateFromServer(taxonomy);
+                if (lastModifiedDate != TAXONOMY_NO_INTERNET) {
+                    return taxonomy.load(this, lastModifiedDate);
+                }
             } else if (checkUpdate) {
                 //It is ask to check for update - Test if file on server is more recent than last download.
-                lastModifiedDate = CheckUpdateSinceLastDownload(taxonomy);
-                if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
-                    //Download taxonomy from server
-                    return loadAllergens(lastModifiedDate);
+                long lastModifiedDate = getLastModifiedDateFromServer(taxonomy);
+                if (lastModifiedDate > downloadState.getLastModifiedDateOnServer()) {
+                    return taxonomy.load(this, lastModifiedDate);
                 }
             }
         }
         //If we are here then just get the information from the local database
-        return Single.fromCallable(() -> allergenDao.loadAll());
+        return Single.fromCallable(() -> dao.loadAll());
     }
 
-    public Single<List<Allergen>> loadAllergens(Long lastModifiedDate){
-            return productApi.getAllergens()
-                .map(AllergensWrapper::map)
-                .doOnSuccess(__ -> updateLastDownload("allergens", lastModifiedDate));
+    public Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
+        return productApi.getAllergens()
+            .map(AllergensWrapper::map)
+            .doOnSuccess(__ -> updateLastDownload(Taxonomy.ALLERGEN, lastModifiedDate));
     }
 
     /**
      * Load countries from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *                If checkUpdate is true (or local database is empty) than load it from the server,
-     *                else from the local database.
+     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     else from the local database.
      * @return The list of countries.
      */
     @Override
-    public Single<List<Country>> getCountries(Boolean checkUpdate) {
-        //First check if this taxonomy is to be loaded.
-        String taxonomy = "countries";
-        Long lastDownload = getLastDownload(taxonomy);
-        if (lastDownload > 0) {
-            //Taxonomy is marked to be download
-            Long lastModifiedDate;
-            if (tableIsEmpty(countryDao)) {
-                //Table is empty, no check for update, just load taxonomy
-                lastModifiedDate = getLastModifiedDate(taxonomy);
-                return loadCountries(lastModifiedDate);
-            } else if (checkUpdate) {
-                //It is ask to check for update - Test if file on server is more recent than last download.
-                lastModifiedDate = CheckUpdateSinceLastDownload(taxonomy);
-                if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
-                    //Download taxonomy from server
-                    return loadCountries(lastModifiedDate);
-                }
-            }
-        }
-        //If we are here then just get the information from the local database
-        return Single.fromCallable(() -> countryDao.loadAll());
+    public Single<List<Country>> getCountries(boolean checkUpdate) {
+        return getTaxonomy(Taxonomy.COUNTRY, checkUpdate, countryDao);
     }
 
-    public Single<List<Country>> loadCountries(Long lastModifiedDate){
+    public Single<List<Country>> loadCountries(Long lastModifiedDate) {
         return productApi.getCountries()
             .map(CountriesWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload("countries", lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownload(Taxonomy.COUNTRY, lastModifiedDate));
     }
 
     /**
      * Load categories from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *                If checkUpdate is true (or local database is empty) than load it from the server,
-     *                else from the local database.
+     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     else from the local database.
      * @return The list of categories.
      */
     @Override
-    public Single<List<Category>> getCategories(Boolean checkUpdate) {
-        //First check if this taxonomy is to be loaded.
-        String taxonomy = "categories";
-        Long lastDownload = getLastDownload(taxonomy);
-        if (lastDownload > 0) {
-            //Taxonomy is marked to be download
-            Long lastModifiedDate;
-            if (tableIsEmpty(categoryDao)) {
-                //Table is empty, no check for update, just load taxonomy
-                lastModifiedDate = getLastModifiedDate(taxonomy);
-                return loadCategories(lastModifiedDate);
-            } else if (checkUpdate) {
-                //It is ask to check for update - Test if file on server is more recent than last download.
-                lastModifiedDate = CheckUpdateSinceLastDownload(taxonomy);
-                if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
-                    //Download taxonomy from server
-                    return loadCategories(lastModifiedDate);
-                }
-            }
-        }
-        //If we are here then just get the information from the local database
-        return Single.fromCallable(() -> categoryDao.loadAll());
+    public Single<List<Category>> getCategories(boolean checkUpdate) {
+        return getTaxonomy(Taxonomy.CATEGORY, checkUpdate, categoryDao);
     }
 
-    public Single<List<Category>> loadCategories(Long lastModifiedDate){
+    public Single<List<Category>> loadCategories(Long lastModifiedDate) {
         return productApi.getCategories()
             .map(CategoriesWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload("categories", lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownload(Taxonomy.CATEGORY, lastModifiedDate));
     }
 
     /**
@@ -340,107 +227,65 @@ public class ProductRepository implements IProductRepository {
      * Load additives from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *                If checkUpdate is true (or local database is empty) than load it from the server,
-     *                else from the local database.
+     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     else from the local database.
      * @return The list of additives.
      */
     @Override
-    public Single<List<Additive>> getAdditives(Boolean checkUpdate) {
-        //First check if this taxonomy is to be loaded.
-        String taxonomy = "additives";
-        Long lastDownload = getLastDownload(taxonomy);
-        if (lastDownload > 0) {
-            //Taxonomy is marked to be download
-            Long lastModifiedDate;
-            if (tableIsEmpty(additiveDao)) {
-                //Table is empty, no check for update, just load taxonomy
-                lastModifiedDate = getLastModifiedDate(taxonomy);
-                return loadAdditives(lastModifiedDate);
-            } else if (checkUpdate) {
-                //It is ask to check for update - Test if file on server is more recent than last download.
-                lastModifiedDate = CheckUpdateSinceLastDownload(taxonomy);
-                if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
-                    //Download taxonomy from server
-                    return loadAdditives(lastModifiedDate);
-                }
-            }
-        }
-        //If we are here then just get the information from the local database
-        return Single.fromCallable(() -> additiveDao.loadAll());
+    public Single<List<Additive>> getAdditives(boolean checkUpdate) {
+        return getTaxonomy(Taxonomy.ADDITIVE, checkUpdate, additiveDao);
     }
 
-    public Single<List<Additive>> loadAdditives(Long lastModifiedDate){
+    public Single<List<Additive>> loadAdditives(long lastModifiedDate) {
         return productApi.getAdditives()
             .map(AdditivesWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload("additives", lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownload(Taxonomy.ADDITIVE, lastModifiedDate));
     }
 
     /**
      * TODO to be improved by loading only in the user language ?
      * Load ingredients from (the server or) local database
      * If SharedPreferences lastDownloadIngredients is set try this :
-     *  if file from the server is newer than last download delete database, load the file and fill database,
-     *  else if database is empty, download the file and fill database,
-     *  else return the content from the local database.
+     * if file from the server is newer than last download delete database, load the file and fill database,
+     * else if database is empty, download the file and fill database,
+     * else return the content from the local database.
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *                If checkUpdate is true (or local database is empty) than load it from the server,
-     *
+     *     If checkUpdate is true (or local database is empty) than load it from the server,
      * @return The ingredients in the product.
      */
     @Override
-    public Single<List<Ingredient>> getIngredients(Boolean checkUpdate) {
-        //First check if this taxonomy is to be loaded.
-        String taxonomy = "ingredients";
-        Long lastDownload = getLastDownload(taxonomy);
-        if (lastDownload > 0) {
-            //Taxonomy is marked to be download
-            Long lastModifiedDate;
-            if (tableIsEmpty(ingredientDao)) {
-                //Table is empty, no check for update, just load taxonomy
-                lastModifiedDate = getLastModifiedDate(taxonomy);
-                return loadIngredients(lastModifiedDate);
-            } else if (checkUpdate) {
-                //It is ask to check for update - Test if file on server is more recent than last download.
-                lastModifiedDate = CheckUpdateSinceLastDownload(taxonomy);
-                if (lastModifiedDate > TAXONOMY_IS_UP_TO_DATE) {
-                    //Download taxonomy from server
-                    return loadIngredients(lastModifiedDate);
-                }
-            }
-        }
-        //If we are here then just get the information from the local database
-        return Single.fromCallable(() -> ingredientDao.loadAll());
+    public Single<List<Ingredient>> getIngredients(boolean checkUpdate) {
+        return getTaxonomy(Taxonomy.INGREDIENT, checkUpdate, ingredientDao);
     }
 
-    public Single<List<Ingredient>> loadIngredients(Long lastModifiedDate){
+    public Single<List<Ingredient>> loadIngredients(long lastModifiedDate) {
         return productApi.getIngredients()
             .map(IngredientsWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload("ingredients", lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownload(Taxonomy.INGREDIENT, lastModifiedDate));
     }
 
     /**
      * This function check the last modified date of the taxonomy.json file on OF server.
      *
-     * @param taxonomy              The lowercase taxonomy to be check
-     *
+     * @param taxonomy The lowercase taxonomy to be check
      * @return lastModifierDate     The timestamp of the last changes date of the taxonomy.json on OF server
-     *                              Or TAXONOMY_NO_INTERNET if there is no connexion.
+     *     Or TAXONOMY_NO_INTERNET if there is no connexion.
      */
-    public Long getLastModifiedDate(String taxonomy) {
+    public long getLastModifiedDateFromServer(Taxonomy taxonomy) {
         long lastModifiedDate = 0;
         try {
-            URL url = new URL(BuildConfig.OFWEBSITE + "data/taxonomies/" + taxonomy + ".json");
+            URL url = new URL(BuildConfig.OFWEBSITE + taxonomy.getJsonUrl());
             HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
             lastModifiedDate = httpCon.getLastModified();
             httpCon.disconnect();
         } catch (IOException e) {
             //Problem
-            e.printStackTrace();
-            Log.i("INFO_URL", "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
-            return  TAXONOMY_NO_INTERNET;
+            Log.e(getClass().getName(), "getLastModifiedDate", e);
+            Log.i(getClass().getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
+            return TAXONOMY_NO_INTERNET;
         }
-        Log.i("INFO_URL", "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
+        Log.i(getClass().getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
         return lastModifiedDate;
     }
 
@@ -448,63 +293,48 @@ public class ProductRepository implements IProductRepository {
      * This function test if a taxonomy needs to be uploaded
      *
      * @param taxonomy The name of the taxonomy to be tested
-     *        (allergens, additives, categories, countries, ingredients, labels, tags)
-     *
-     * @return
-     *     TAXONOMY_NO_INTERNET (-1)        no internet connexion.
+     *     (allergens, additives, categories, countries, ingredients, labels, tags)
+     * @return TAXONOMY_NO_INTERNET (-1)        no internet connexion.
      *     TAXONOMY_NOT_TO_BE_LOADED (0)    taxonomy is not marked to be load.
      *     TAXONOMY_IS_UP_TO_DATE (2)       taxonomy is up to date.
      *     other :                          date of the new taxonomy on the servers => to be updated
-     *
      *     Note that TAXONOMY_TO_BE_LOADED (1) is just use to ask taxonomy to be loaded and never returned by this method.
      */
-    public Long CheckUpdateSinceLastDownload(String taxonomy) {
+    public DownloadState checkUpdateSinceLastDownload(Taxonomy taxonomy) {
         Log.i("INFO_URL", "CheckUpdateSinceLastDownload for : " + taxonomy + " begin.");
-        Long lastDownload = getLastDownload(taxonomy);
-        if (lastDownload == TAXONOMY_TO_BE_LOADED) {
-            //This taxonomy has to be loaded, no test is needed, just return currentTimestamp().
-            return System.currentTimeMillis();
-        } else if (lastDownload > TAXONOMY_TO_BE_LOADED) {
-            //In that case we must download this taxonomy .json unless we already downloaded the latest version.
-            //Get Last modified date for the file on sever.
-            long lastModifiedDate = getLastModifiedDate(taxonomy);
-            if (lastModifiedDate > lastDownload) {
-                //File on server is more recent that last download.
-                Log.i("INFO_URL", "CheckUpdateSinceLastDownload for : " + taxonomy + " end, return " + lastModifiedDate);
-                return lastModifiedDate;
-            } else {
-                //File on server has not change since last download
-                Log.i("INFO_URL", "CheckUpdateSinceLastDownload for : " + taxonomy + " end, return " + TAXONOMY_IS_UP_TO_DATE);
-                return TAXONOMY_IS_UP_TO_DATE;
+        DownloadState lastDownload = getLastDownloadFromSettings(taxonomy);
+        if (lastDownload.isDownloadActivated()) {
+            long lastModifiedDate = getLastModifiedDateFromServer(taxonomy);
+            if (lastModifiedDate > lastDownload.getLastModifiedDateOnServer()) {
+                return new DownloadState(true, lastModifiedDate);
             }
         }
-        //Well, the file is not marked to be loaded.
-        Log.i("INFO_URL", "CheckUpdateSinceLastDownload for : " + taxonomy + " end, return " + TAXONOMY_NOT_TO_BE_LOADED);
-        return TAXONOMY_NOT_TO_BE_LOADED;
+        return new DownloadState(false, 0);
     }
 
     /**
      * This function set lastDownloadtaxonomy setting
-     * @param taxonomy  Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
-     * @param lastDownload    Date of last update on Long format
+     *
+     * @param taxonomy Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
+     * @param lastDownload Date of last update on Long format
      */
-    public void updateLastDownload(String taxonomy, Long lastDownload){
+    private void updateLastDownload(Taxonomy taxonomy, long lastDownload) {
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        mSettings.edit().putLong("lastDownload" + taxonomy, lastDownload).apply();
-        Log.i("INFO_URL", "Set lastDownload of " + taxonomy + " to " + lastDownload);
+        mSettings.edit().putLong(taxonomy.getLastDownloadTimeStampPreferenceId(), lastDownload).apply();
+        Log.i(TAG, "Set lastDownload of " + taxonomy + " to " + lastDownload);
     }
 
     /**
      * This function get lastDownloadtaxonomy setting
-     * @param taxonomy  Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
      *
+     * @param taxonomy Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
      * @return Actual value of lastDownloadtaxonomy in the setting.
      */
-    public Long getLastDownload(String taxonomy){
+    private DownloadState getLastDownloadFromSettings(Taxonomy taxonomy) {
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        Long lastDownload = mSettings.getLong("lastDownload" + taxonomy, TAXONOMY_NOT_TO_BE_LOADED);
-        Log.i("INFO_URL", "getLastDownload of " + taxonomy + " is " + lastDownload);
-        return lastDownload;
+        boolean isDownloadActivated = mSettings.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false);
+        long lastDownload = mSettings.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L);
+        return new DownloadState(isDownloadActivated, lastDownload);
     }
 
     /**
@@ -651,7 +481,6 @@ public class ProductRepository implements IProductRepository {
      * Delete rows from Ingredient, IngredientName and IngredientsRelation
      * set the autoincrement to 0
      */
-    @Override
     public void deleteIngredientCascade() {
         ingredientDao.deleteAll();
         ingredientNameDao.deleteAll();
@@ -1022,13 +851,14 @@ public class ProductRepository implements IProductRepository {
      * @return The analysis tags in the product.
      */
     @Override
-    public Single<List<AnalysisTag>> getAnalysisTags(Boolean refresh) {
-        if (refresh || tableIsEmpty(analysisTagDao)) {
-            return productApi.getAnalysisTags()
-                .map(AnalysisTagsWrapper::map);
-        } else {
-            return Single.fromCallable(() -> analysisTagDao.loadAll());
-        }
+    public Single<List<AnalysisTag>> getAnalysisTags(boolean refresh) {
+        return getTaxonomy(Taxonomy.ANALYSIS_TAGS, refresh, analysisTagDao);
+    }
+
+    Single<List<AnalysisTag>> loadAnalysisTags(long lastModifiedDate) {
+        return productApi.getAnalysisTags()
+            .map(AnalysisTagsWrapper::map)
+            .doOnSuccess(__ -> updateLastDownload(Taxonomy.ANALYSIS_TAGS, lastModifiedDate));
     }
 
     /**
@@ -1058,13 +888,13 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public Single<List<AnalysisTagConfig>> getAnalysisTagConfigs(Boolean refresh) {
-        if (refresh || tableIsEmpty(analysisTagConfigDao)) {
-            return productApi.getAnalysisTagConfigs()
-                .map(AnalysisTagGonfigsWrapper::map);
-        } else {
-            return Single.fromCallable(() -> analysisTagConfigDao.loadAll());
-        }
+    public Single<List<AnalysisTagConfig>> getAnalysisTagConfigs(boolean refresh) {
+        return  getTaxonomy(Taxonomy.ANALYSIS_TAG_CONFIG,refresh,analysisTagConfigDao);
+    }
+
+    public Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {
+        return productApi.getAnalysisTagConfigs()
+            .map(AnalysisTagGonfigsWrapper::map).doOnSuccess(__ -> updateLastDownload(Taxonomy.ANALYSIS_TAGS, lastModifiedDate));
     }
 
     @Override
