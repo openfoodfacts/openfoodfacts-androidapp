@@ -482,8 +482,8 @@
     <string name="notify_channel_description">crwdns114186:0crwdne114186:0</string>
     <string name="products_to_be_completed">crwdns114188:0crwdne114188:0</string>
     <string name="offline_notification_title">crwdns114192:0crwdne114192:0</string>
-    <string name="creator_history">crwdns114194:0%1$scrwdnd114194:0%2$scrwdne114194:0</string>
-    <string name="last_editor_history">crwdns114196:0%1$scrwdnd114196:0%2$scrwdne114196:0</string>
+    <string name="creator_history">crwdns122944:0%1$scrwdnd122944:0%2$scrwdnd122944:0%3$scrwdne122944:0</string>
+    <string name="last_editor_history">crwdns122946:0%1$scrwdnd122946:0%2$scrwdnd122946:0%3$scrwdne122946:0</string>
     <string name="other_editors">crwdns114198:0crwdne114198:0</string>
     <string name="contribution_tab">crwdns114200:0crwdne114200:0</string>
     <string name="contribution_tab_summary">crwdns114202:0crwdne114202:0</string>
