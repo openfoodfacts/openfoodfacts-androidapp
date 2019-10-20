@@ -1,5 +1,5 @@
 To jsou štítky zobrazené nad snímky obrazovky v playstore. Uchovávejte je krátké a atraktivní.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=cs
 
 =====================
 V2 screenshots

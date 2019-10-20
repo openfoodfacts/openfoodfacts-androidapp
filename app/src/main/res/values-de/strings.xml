@@ -194,6 +194,7 @@
     <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
     <string name="create_account">Registrieren</string>
     <string name="home_drawer">Startseite</string>
+    <string name="install">Installieren</string>
     <string name="search_drawer">Suchen</string>
     <string name="search_by_barcode_drawer">Nach Strichcode suchen</string>
     <string name="category_drawer">Kategorien</string>
@@ -667,6 +668,8 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="settings_country_summary">Ändern Sie Ihr ausgewähltes Land</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Von diesem Produkt  sind keine Nährwertangaben auf der Verpackung angegeben. Wenn sich dieses geändert hat, können Sie das Produkt bearbeiten.</string>
+    <string name="image_prompt_language">Foto der Inhaltsstoffe aufnehmen in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Produkt hinzufügen</string>
     <string name="add_another_product">Weiteres Produkt hinzufügen</string>
@@ -707,4 +710,12 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="cant_modify_if_refreshing">Bitte warten bis das Hochladen abgeschlossen ist</string>
     <string name="closeZoom">Hier klicken, um die Vergrößerung zu schließen</string>
     <string name="imageFullscreen">Vergrößern</string>
+    <string name="product_already_exists_in_comparison">Das Produkt ist bereits in der Vergleichsliste vorhanden</string>
+    <string name="compare_brands">Marken:</string>
+    <string name="compare_additives">Zusatzstoffe:</string>
+    <string name="compare_salt">Salz</string>
+    <string name="compare_sugars">Zucker</string>
+    <string name="compare_saturated_fat">Gesättigte Fettsäuren</string>
+    <string name="compare_fat">Fett</string>
+    <string name="compare_quantity">Menge:</string>
 </resources>

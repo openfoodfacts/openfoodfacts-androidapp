@@ -204,6 +204,7 @@
     <string name="msg_share">Pozrieť si tento výrobok na Open Food Facts:</string>
     <string name="create_account">Zaregistrovať sa</string>
     <string name="home_drawer">Domov</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Vyhľadať</string>
     <string name="search_by_barcode_drawer">Zadajte čiarový kód</string>
     <string name="category_drawer">Kategórie</string>
@@ -679,6 +680,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
@@ -719,4 +722,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Prídavné látky:</string>
+    <string name="compare_salt">Soľ</string>
+    <string name="compare_sugars">Cukry</string>
+    <string name="compare_saturated_fat">Nasýtený tuk</string>
+    <string name="compare_fat">Tuk</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

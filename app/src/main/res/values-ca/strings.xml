@@ -194,6 +194,7 @@
     <string name="msg_share">Mireu aquest producte a Open Food Facts:</string>
     <string name="create_account">Uniu-vos</string>
     <string name="home_drawer">Inici</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Cerca</string>
     <string name="search_by_barcode_drawer">Cerca per codi de barres</string>
     <string name="category_drawer">Categories</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Canvieu el país seleccionat</string>
     <string name="settings_country_title">País</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Afegiu productes</string>
     <string name="add_another_product">Add another product</string>
@@ -707,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Additius :</string>
+    <string name="compare_salt">Sal</string>
+    <string name="compare_sugars">Sucres</string>
+    <string name="compare_saturated_fat">Greixos saturats</string>
+    <string name="compare_fat">Greixos</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

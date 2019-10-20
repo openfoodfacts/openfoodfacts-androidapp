@@ -189,6 +189,7 @@
     <string name="msg_share">Lihat produk ini pada Open Food Facts:</string>
     <string name="create_account">Daftar</string>
     <string name="home_drawer">Beranda</string>
+    <string name="install">Install</string>
     <string name="search_drawer">mencari </string>
     <string name="search_by_barcode_drawer">Ketik kode batang</string>
     <string name="category_drawer">Kategori</string>
@@ -476,8 +477,8 @@
     <string name="notify_channel_description">Pemberitahuan untuk melihat lokasi file yang diekspor</string>
     <string name="products_to_be_completed">Produk perlu diselesaikan</string>
     <string name="offline_notification_title">Kontribusi luar jaringan yang perlu anda kirim</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Halaman produk juga diubah oleh </string>
     <string name="contribution_tab">Kontribusi</string>
     <string name="contribution_tab_summary">Tampilkan kontribusi pengguna dengan produk</string>
@@ -661,6 +662,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Negara</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
@@ -701,4 +704,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Bahan tambahan :</string>
+    <string name="compare_salt">garam</string>
+    <string name="compare_sugars">Gula</string>
+    <string name="compare_saturated_fat">Lemak jenuh</string>
+    <string name="compare_fat">Lemak</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

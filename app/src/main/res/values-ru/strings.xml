@@ -204,6 +204,7 @@
     <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
     <string name="create_account">Регистрация</string>
     <string name="home_drawer">Главная</string>
+    <string name="install">Установить</string>
     <string name="search_drawer">Поиск</string>
     <string name="search_by_barcode_drawer">Поиск по штрих-коду</string>
     <string name="category_drawer">Категории</string>
@@ -657,7 +658,7 @@
     <string name="fast_addition_mode_title">Режим быстрого добавления</string>
     <string name="fast_addition_mode">Позволяет быстро добавлять продукты с меньшим количеством атрибутов</string>
     <string name="crop_new_image_title">Обрезать новые изображения</string>
-    <string name="crop_new_image">Enables crop action on new images</string>
+    <string name="crop_new_image">Включить действие обрезки на новых изображениях</string>
     <string name="addtive_search">Поиск добавки</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->
@@ -679,6 +680,8 @@
     <string name="settings_country_summary">Изменить выбранную страну</string>
     <string name="settings_country_title">Страна</string>
     <string name="txt_no_nutrition_data">Этот продукт не имеет никакой информации о питании на упаковке. Если это изменилось, вы можете отредактировать продукт.</string>
+    <string name="image_prompt_language">Сделайте фото состава в</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Добавить продукты</string>
     <string name="add_another_product">Добавить другой продукт</string>
@@ -700,23 +703,31 @@
     <string name="no_nutrient_information_available_for_this_product">Нет информации о питательной ценности для этого продукта</string>
     <string name="error_duplicate_listname">У вас уже есть список с таким именем</string>
     <string name="required_to_compute_nutriscore">(Требуется для вычисления Nutri-Score)</string>
-    <string name="scan_tooltip">You can slide up the card for more details</string>
+    <string name="scan_tooltip">Вы можете сдвинуть карточку для подробностей</string>
     <string name="add_an_allergen">Добавить аллерген</string>
     <string name="add_a_list">Добавить список</string>
     <string name="edit_image">Редактировать изображение</string>
     <string name="cant_edit_image_not_yet_uploaded">Новое изображение еще не загружено. Пожалуйста, подождите, прежде чем его редактировать</string>
-    <string name="unselect_image">Unselect Image</string>
+    <string name="unselect_image">Снять выбор с изображения</string>
     <string name="choose_default_language">Выберите язык продукта</string>
     <string name="barcode">Штрих-код</string>
     <string name="productAdditivesNone">Без добавок</string>
     <string name="error_uploading_photo">Произошла ошибка во время загрузки нового фото</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
-    <string name="toast_import_csv_error">Error in importing CSV file</string>
-    <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="toast_import_csv_error">Ошибка при импорте CSV файла</string>
+    <string name="toast_import_csv">CSV успешно импортирован!</string>
+    <string name="open_csv">Открыть CSV</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Продукт не может быть загружен. Пожалуйста, попробуйте снова, когда вы вернетесь в онлайн.</string>
     <string name="cant_modify_if_refreshing">Пожалуйста, дождитесь окончания загрузки</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">Продукт уже существует в списке сравнения</string>
+    <string name="compare_brands">Бренды :</string>
+    <string name="compare_additives">Добавки:</string>
+    <string name="compare_salt">Соль</string>
+    <string name="compare_sugars">Сахара</string>
+    <string name="compare_saturated_fat">Насыщенные жиры</string>
+    <string name="compare_fat">Жир</string>
+    <string name="compare_quantity">Количество :</string>
 </resources>

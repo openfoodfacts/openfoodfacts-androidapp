@@ -117,6 +117,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             isEatenList = true;
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(false);
         products = thisProductList.getProducts();
         if (products.isEmpty()) {
             emptyList = true;
@@ -248,28 +249,8 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             Log.e(YourListedProducts.class.getSimpleName(), "exportCSV", e);
         }
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Intent downloadIntent = new Intent(Intent.ACTION_VIEW);
-        downloadIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        Uri csvUri = FileProvider.getUriForFile(this, this.getPackageName() + ".provider", f);
-        downloadIntent.setDataAndType(csvUri, "text/csv");
-        downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel("downloadChannel", "ChannelCSV", importance);
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-
-            String channelId = "export_channel";
-            CharSequence channelName = getString(R.string.notification_channel_name);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
-            notificationChannel.setDescription(getString(R.string.notify_channel_description));
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
+        NotificationManager notificationManager = createNotification(f, downloadIntent, this);
 
         if (isDownload) {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")
@@ -279,6 +260,30 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
                 .setSmallIcon(R.mipmap.ic_launcher);
             notificationManager.notify(8, builder.build());
         }
+    }
+
+    static NotificationManager createNotification(File f, Intent downloadIntent, Context context) {
+        Uri csvUri = FileProvider.getUriForFile(context, context.getPackageName() + ".provider", f);
+        downloadIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        downloadIntent.setDataAndType(csvUri, "text/csv");
+        downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel("downloadChannel", "ChannelCSV", importance);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            String channelId = "export_channel";
+            CharSequence channelName = context.getString(R.string.notification_channel_name);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
+            notificationChannel.setDescription(context.getString(R.string.notify_channel_description));
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+        return notificationManager;
     }
 
     @Override

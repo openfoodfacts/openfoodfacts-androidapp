@@ -140,7 +140,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="@string/extract_ingredients"
-                android:textColor="@color/md_black_1000"
                 android:visibility="gone"
                 style="@style/BorderButton"
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"

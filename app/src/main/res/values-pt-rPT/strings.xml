@@ -194,6 +194,7 @@
     <string name="msg_share">Ver este produto no Open Food Facts :</string>
     <string name="create_account">Inscrever</string>
     <string name="home_drawer">Início</string>
+    <string name="install">Instalar</string>
     <string name="search_drawer">Procurar</string>
     <string name="search_by_barcode_drawer">Escrever o código de barras</string>
     <string name="category_drawer">Categorias</string>
@@ -221,7 +222,7 @@
     <string name="info_download_data_connection">É necessário descarregar alguns dados para activar esta funcionalidade. Por favor, active a ligação à Internet.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">A palavra-passe deve conter pelo menos 6 caracteres.</string>
-    <string name="user">usuário</string>
+    <string name="user">utilizador</string>
     <string name="error_field_required">Este campo é necessário.</string>
     <string name="action_preferences">Configurações</string>
     <string name="prefs_scan_startup">Digitalizar ao iniciar</string>
@@ -485,7 +486,7 @@
     <string name="last_editor_history">Última edição da página do produto em %1$s at %2$s CEST por </string>
     <string name="other_editors">Página do produto também editada por </string>
     <string name="contribution_tab">Contribuições</string>
-    <string name="contribution_tab_summary">Mostrar guia de contribuições do usuário com produtos</string>
+    <string name="contribution_tab_summary">Mostrar guia de contribuições do utilizador com produtos</string>
     <string name="contribution_tab_title">Mostrar guia de contribuição</string>
     <string name="txtDialogsTitle">Informação</string>
     <string name="preference_show_all_product_photos_title">Mostrar todas as fotos do produto</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Alterar seu país selecionado</string>
     <string name="settings_country_title">País</string>
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
+    <string name="image_prompt_language">Tire uma foto dos ingredientes em</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Adicionar produtos</string>
     <string name="add_another_product">Adicione outro produto</string>
@@ -707,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Por favor, aguarde até que o envio termine</string>
     <string name="closeZoom">Clicar para fechar o zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">O produto já existe na lista de comparação</string>
+    <string name="compare_brands">Marcas:</string>
+    <string name="compare_additives">Aditivos :</string>
+    <string name="compare_salt">Sal :</string>
+    <string name="compare_sugars">Açúcares</string>
+    <string name="compare_saturated_fat">Gordura saturada</string>
+    <string name="compare_fat">Gorduras</string>
+    <string name="compare_quantity">Quantidade:</string>
 </resources>

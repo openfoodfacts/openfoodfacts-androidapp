@@ -1,6 +1,6 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Skenirajte prehrambene izdelke ali črtno kodo, da pridobite podatke o sestavinah, dodatkih in podatkih o hranilni vrednosti.
 
-▶ Find & Compare more than 800.000 products
+▶ Poiščite in primerjajte več kot 800.000 izdelkov
 
 The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
 
@@ -30,11 +30,11 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Pridobite dejstva
-- Open Food Facts helps you to make sense of the fine print on products labels. Našli boste lahko:
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Open Food Facts vam pomagajo razumeti smisel drobnega tiska na nalepkah izdelkov. Našli boste lahko:
+- ogljični odtis (emisije CO2) in embalažo (kot tudi navodila za recikliranje),
 - Nutriscore (hranilna vrednost), hranila, vsebnost maščobe, nasičene maščobne kisline, ogljikovi hidrati, sladkorji, vlaknine, beljakovine in sol ter natrij.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+- blagovne znamke, alergene, nalepke (bio, brez glutena, veganska, vegetarijanska, halal, kosher ...), informacije o sledljivosti (oznake embalaže, izvor sestavin)
+- Na vinih in pivih boste našli vsebnost alkohola.
 
 
 ▶ Temeljijo na znanosti, pomaga znanosti nazaj!
@@ -67,10 +67,10 @@ Skenirajte s hitrostjo svetlobe (tudi če ste na letalu, podmornici ali v superm
 ▶ Pozdravite in / ali se nam pridružite!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Informacije o Open Food Facts, so na voljo tudi na spletnem mestu https://world.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+Vprašanja, povratne informacije: contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Za kozmetiko lahko namestite Open Beauty Facts, za hrano za hišne ljubljenčke, Open Pet Food Facts in za vse ostale izdelke, Open Products Facts.

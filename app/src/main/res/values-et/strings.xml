@@ -169,7 +169,7 @@
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">Triipkood</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
@@ -194,9 +194,10 @@
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Home</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">Kategooriad</string>
     <string name="search_by_category">Category</string>
     <string name="scan_search">Scan Barcode</string>
     <string name="user_drawer">User</string>
@@ -451,7 +452,7 @@
     <string name="DisableLoadTitle">Disable image loading</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
-    <string name="by_barcode">Barcode</string>
+    <string name="by_barcode">Triipkood</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
@@ -481,8 +482,8 @@
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Products to be completed</string>
     <string name="offline_notification_title">Offline contributions you need to send</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Product page also edited by </string>
     <string name="contribution_tab">Contributions</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
@@ -695,7 +698,7 @@
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
-    <string name="barcode">Barcode</string>
+    <string name="barcode">Triipkood</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
@@ -707,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Additives :</string>
+    <string name="compare_salt">Salt</string>
+    <string name="compare_sugars">Sugars</string>
+    <string name="compare_saturated_fat">Saturated fat</string>
+    <string name="compare_fat">Fat</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

@@ -121,7 +121,7 @@
         <item>Selen</item>
         <item>Serum proteins</item>
         <item>Kiseldioxid</item>
-        <item>Starch</item>
+        <item>Stärkelse</item>
         <item>Stearinsyra (18: 0)</item>
         <item>Sackaros</item>
         <item>Taurin</item>
@@ -132,8 +132,8 @@
         <item>Vitamin B2 (Riboflavin)</item>
         <item>Vitamin B3 / Vitamin PP (Niacin)</item>
         <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>Vitamin B9 (folsyra)</item>
+        <item>C-vitamin (askorbinsyra)</item>
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
@@ -194,6 +194,7 @@
     <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
     <string name="create_account">Registrera</string>
     <string name="home_drawer">Hem</string>
+    <string name="install">Install</string>
     <string name="search_drawer">Sök</string>
     <string name="search_by_barcode_drawer">Sök med streckkod</string>
     <string name="category_drawer">Kategorier</string>
@@ -667,6 +668,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Lägg till produkter</string>
     <string name="add_another_product">Add another product</string>
@@ -707,4 +710,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">Tillsatser :</string>
+    <string name="compare_salt">Salt</string>
+    <string name="compare_sugars">Socker</string>
+    <string name="compare_saturated_fat">Mättat fett</string>
+    <string name="compare_fat">Fett</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>

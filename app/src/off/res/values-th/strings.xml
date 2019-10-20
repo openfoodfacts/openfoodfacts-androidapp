@@ -26,7 +26,7 @@
     <string name="txtDialogsContentPowerMode">ผลิตภัณฑ์ที่คุณสแกนมีอยู่ใน Open Food Facts แล้ว</string>
     <string name="msg_share">ดูข้อมูลผลิตภัณฑ์นี้ได้ใน Open Food Facts :</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="txt_broaden_search">- ขยายการค้นหาของคุณ \n- สแกนและเพิ่มลงใน Open Food Facts</string>
     <string name="Donation">คลิกที่นี่เพื่อบริจาคให้กับ Open Food Facts</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>

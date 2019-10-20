@@ -189,6 +189,7 @@
     <string name="msg_share">오픈 푸드 팩트에서 이 상품을 검색해보세요.</string>
     <string name="create_account">회원 가입</string>
     <string name="home_drawer">홈</string>
+    <string name="install">Install</string>
     <string name="search_drawer">수색</string>
     <string name="search_by_barcode_drawer">바코드를 입력해주세요.</string>
     <string name="category_drawer">카테고리</string>
@@ -450,7 +451,7 @@
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Sort by</string>
+    <string name="sort_by">정렬 기준</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Shake phone to scan products</string>
@@ -463,8 +464,8 @@
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
     <string name="bottomNav_history">최근 기록</string>
-    <string name="products_added">Products you added or edited</string>
-    <string name="products_incomplete">Products you added that need to be completed</string>
+    <string name="products_added">추가 또는 편집한 제품</string>
+    <string name="products_incomplete">완성돼야하는 추가된 제품</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
@@ -476,8 +477,8 @@
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Products to be completed</string>
     <string name="offline_notification_title">Offline contributions you need to send</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by </string>
+    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Product page also edited by </string>
     <string name="contribution_tab">Contributions</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
@@ -544,12 +545,12 @@
     <string name="ingredients_list">성분 목록</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
-    <string name="extracting_ingredients">Extracting ingredients</string>
+    <string name="extracting_ingredients">성분을 추출하는 중입니다.</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Traces</string>
+    <string name="traces">흔적</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
-    <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
+    <string name="nutrition_facts_not_specified">영양성분표가 제품에 명시되어 있지 않습니다.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
@@ -557,7 +558,7 @@
     <string name="per_serving">인분</string>
     <string name="serving_size">서빙 사이즈</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Add a nutrient</string>
+    <string name="add_a_nutrient">영양소 추가하기</string>
     <string name="add_this_product">Add this product</string>
     <string name="product_picture">Product Picture</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
@@ -572,7 +573,7 @@
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
+    <string name="stores">상점</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
@@ -595,19 +596,19 @@
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="overexposure_high">과다 노출에 대한 고위험</string>
+    <string name="overexposure_moderate">과다 노출에 대한 중위험</string>
+    <string name="infants">영아</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="toddlers">유아</string>
+    <string name="toddlers_age">1~2</string>
+    <string name="children">어린이</string>
+    <string name="children_age">3~9</string>
+    <string name="adolescents">청소년</string>
+    <string name="adolescents_age">10~17</string>
+    <string name="adults">성인</string>
+    <string name="adults_age">18~64</string>
+    <string name="elderly">노인</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
@@ -661,6 +662,8 @@
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">국가</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
@@ -701,4 +704,12 @@
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="compare_brands">Brands :</string>
+    <string name="compare_additives">첨가물:</string>
+    <string name="compare_salt">소금</string>
+    <string name="compare_sugars">당류</string>
+    <string name="compare_saturated_fat">포화 지방</string>
+    <string name="compare_fat">지방</string>
+    <string name="compare_quantity">Quantity :</string>
 </resources>
