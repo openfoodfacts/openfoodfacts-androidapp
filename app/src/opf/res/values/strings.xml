@@ -49,4 +49,5 @@
     <string name="currently_on_version">Currently on Open Products Facts</string>
     <string name="category_game_btn">Help categorize products</string>
     <string name="offline_excerpt_filename" translatable="false">fr.openproductsfacts.org.products.small.zip</string>
+    <string name="open_other_flavor_drawer" translatable="false">Open Food Facts</string>
 </resources>

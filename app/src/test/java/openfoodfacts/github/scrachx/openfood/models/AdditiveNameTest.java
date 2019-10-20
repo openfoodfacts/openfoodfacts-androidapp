@@ -46,7 +46,7 @@ public class AdditiveNameTest {
     @Test
     public void constructorWithWikiDataId_setsIsWikiDataIdPresentTrue() {
         mAdditiveName = new AdditiveName("AdditiveTag", "En", "Name",
-                "WikiDatId");
+                null,"WikiDatId");
         assertTrue(mAdditiveName.getIsWikiDataIdPresent());
     }
 

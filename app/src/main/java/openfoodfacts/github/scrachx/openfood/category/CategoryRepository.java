@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.category;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import android.util.Log;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
@@ -27,6 +28,7 @@ public class CategoryRepository {
         return networkService.getCategories()
                 .map(categoryResponse -> mapper.fromNetwork(categoryResponse.getTags()))
                 .doOnSuccess(memoryCache::set)
+                .doOnError(throwable-> Log.w(CategoryRepository.class.getSimpleName(),"Can't get categories",throwable))
                 .subscribeOn(Schedulers.io());
     }
 }

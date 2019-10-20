@@ -23,7 +23,7 @@
         android:paddingRight="4dp"
         android:paddingBottom="4dp">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgProductYourListedProduct"
             android:layout_width="80dp"
             android:layout_height="80dp"

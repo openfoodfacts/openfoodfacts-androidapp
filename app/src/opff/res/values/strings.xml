@@ -13,8 +13,8 @@
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
     <string name="faq_url" translatable="false">https://world.openpetfoodfacts.org/faq</string>
     <string name="advanced_search_url" translatable="false">https://world.openpetfoodfacts.org/cgi/search.pl</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
-    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Contribute to Pet Food transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
     <string name="slide_2_title">Get the facts</string>
@@ -49,5 +49,5 @@
     <string name="currently_on_version">Currently on Open Pet Food Facts</string>
     <string name="category_game_btn">Help categorize products</string>
     <string name="offline_excerpt_filename" translatable="false">fr.openpetfoodfacts.org.products.small.zip</string>
-
+    <string name="open_other_flavor_drawer" translatable="false">Open Food Facts</string>
 </resources>

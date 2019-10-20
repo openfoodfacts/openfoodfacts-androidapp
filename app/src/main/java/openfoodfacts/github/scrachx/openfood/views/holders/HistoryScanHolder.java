@@ -4,27 +4,28 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 
 public class HistoryScanHolder extends RecyclerView.ViewHolder {
 
-    public TextView txtDate;
-    public TextView txtTitle;
-    public TextView txtBarcode;
-    public TextView txtProductDetails;
-    public ImageView imgProduct;
-    public ImageView imgNutritionGrade;
-    public Activity mActivity;
-    public ProgressBar historyImageProgressbar;
+    public final TextView txtDate;
+    public final TextView txtTitle;
+    public final TextView txtBarcode;
+    public final TextView txtProductDetails;
+    public final ImageView imgProduct;
+    public final ImageView imgNutritionGrade;
+    public final Activity mActivity;
+    public final ProgressBar historyImageProgressbar;
 
-    public HistoryScanHolder(final View itemView, final String productUrl, Activity activity) {
+    public HistoryScanHolder(final View itemView, Activity activity) {
         super(itemView);
         txtTitle = itemView.findViewById(R.id.titleHistory);
         txtBarcode = itemView.findViewById(R.id.barcodeHistory);
@@ -42,6 +43,8 @@ public class HistoryScanHolder extends RecyclerView.ViewHolder {
             if (isConnected) {
                 OpenFoodAPIClient api = new OpenFoodAPIClient(mActivity);
                 api.getProduct(txtBarcode.getText().toString(), (Activity) v.getContext());
+            } else {
+                Toast.makeText(mActivity, R.string.history_network_error, Toast.LENGTH_SHORT).show();
             }
         });
     }

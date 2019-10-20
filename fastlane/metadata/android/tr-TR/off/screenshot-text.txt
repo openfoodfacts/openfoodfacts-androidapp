@@ -1,45 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-Don't change the filename.
----
-scan_en.png
-Scan products
+Bunlar Playstore'daki ekran görüntülerinin üstünde gösterilen etiket yazılarıdır. Kısa ve ilgi çekici tutun.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=tr
 
-quickview_en.png
-Nutriscore'u al
+=====================
+V2 ekran görüntüleri
+=====================
 
-history_en.png
-Your full scan history, fully private & exportable
+Ürünleri tara
 
-product_view_wikipedia_en.png
-Go further with Wikipedia
+Nutriscore'u öğren
 
-allergen_alert_en.png
-Set allergen alerts
+Tam tarama geçmişiniz, tamamen size özel & dışa aktarılabilir
 
-home_en.png
-product_view_nutrition_summary_en.png
-Nutrition, simplified
+Wikipedia ile daha ileri git
 
-product_view_allergen_alert_en.png
-Allerjen uyarısı
+Alerjen uyarıları ayarla
 
-categories_en.png
-Get alternatives for your favorite foods
+Beslenme, basitleştirilmiş
 
-foodtransparency_en.png
-Become an actor of food transparency
+Alerjen uyarısı
 
-product_view_summary_en.png
-Wikipedia for Food
-Wikipedia for Cosmetics
-Wikipedia for Pet Food
-Wikipedia of Products
+En sevdiğiniz yiyecekler için alternatifler öğrenin
 
-product_view_ingredients_en.png
+Gıda şeffaflığının katılımcısı ol
+
+Gıdaların Wikipedia'sı
+
+Kozmetiklerin Wikipedia'sı
+
+Evcil Hayvan Besinlerinin Wikipedia'sı
+
+Ürünlerin Wikipedia'sı
+
 İçindekiler
 
-menu_en.png
-Powerful
+Güçlü
 
-product_view_nutrition_table_en.png
-Beslenme gerçekleri
+Besin değerleri
+
+=====================
+V3 ekran görüntüleri
+=====================
+
+Sizin ve 🌍 gezegen için iyi olan ürünleri seçin !
+
+✔ Ultra hızlı barkod tarama
+
+✔ Cebinizde küresel bir süpermarket
+
+Beslenme kalitesi
+
+Aşırı işlenmiş gıdalar
+
+Karbon etkisi
+
+Satın almadan önce kolayca karşılaştırın
+
+Alışveriş listeleri, alım listeleri… oluşturun
+
+750 000'den fazla ürünü bulun ve karşılaştırın.
+
+
+
+Sınırsız ve tamamen özel tarama geçmişi
+
+Daha fazla ayrıntı için kaydırın
+
+Alerjen Uyarıları Ayarla
+
+Gıda şeffaflığı için küresel hareketimize katılın
+
+tr.openfoodfacts.org/contribute

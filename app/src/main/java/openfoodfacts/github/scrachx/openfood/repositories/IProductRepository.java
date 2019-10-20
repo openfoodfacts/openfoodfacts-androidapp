@@ -12,27 +12,35 @@ import openfoodfacts.github.scrachx.openfood.models.Category;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.Country;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.Label;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.Question;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
 
 /**
- * Created by Lobster on 03.03.18.
+ * This is a repository class working as an Interface.
+ * It defines all the functions in Repository component.
+ * @author Lobster
+ * @since 03.03.18
  */
 
 public interface IProductRepository {
 
-    Single<List<Label>> getLabels(Boolean refresh);
+    Single<List<Label>> getLabels(Boolean checkUpdate);
 
-    Single<List<Allergen>> getAllergens(Boolean refresh);
+    Single<List<Allergen>> getAllergens(Boolean checkUpdate);
 
     Single<List<Tag>> getTags(Boolean refresh);
 
-    Single<List<Additive>> getAdditives(Boolean refresh);
+    Single<List<Additive>> getAdditives(Boolean checkUpdate);
 
-    Single<List<Country>> getCountries(Boolean refresh);
+    Single<List<Country>> getCountries(Boolean checkUpdate);
 
-    Single<List<Category>> getCategories(Boolean refresh);
+    Single<List<Category>> getCategories(Boolean checkUpdate);
+
+    Single<List<Ingredient>> getIngredients(Boolean checkUpdate);
 
     void saveLabels(List<Label> labels);
 
@@ -45,6 +53,12 @@ public interface IProductRepository {
     void saveAllergens(List<Allergen> allergens);
 
     void saveCategories(List<Category> categories);
+
+    void deleteIngredientCascade();
+
+    void saveIngredients(List<Ingredient> ingredients);
+
+    void saveIngredient(Ingredient ingredient);
 
     void setAllergenEnabled(String allergenTag, Boolean isEnabled);
 
@@ -80,4 +94,7 @@ public interface IProductRepository {
 
     Boolean additivesIsEmpty();
 
+    Single<Question> getSingleProductQuestion(String code, String lang);
+
+    Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation);
 }

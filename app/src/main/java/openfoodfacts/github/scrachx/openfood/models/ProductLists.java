@@ -9,13 +9,16 @@ import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
 import org.greenrobot.greendao.DaoException;
+import org.greenrobot.greendao.annotation.Unique;
 
 @Entity(indexes = {@Index(value = "listName")})
 
 public class ProductLists {
     @Id(autoincrement = true)
     private Long id;
+
     @Property(nameInDb = "listName")
+    @Unique
     private String listName;
     @Property(nameInDb = "numOfProducts")
     private long numOfProducts;

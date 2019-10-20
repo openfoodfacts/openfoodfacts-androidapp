@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.widget.TextView;
 
 import net.steamcrafted.loadtoast.LoadToast;

@@ -10,7 +10,7 @@
             type="openfoodfacts.github.scrachx.openfood.models.CategoryName" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
@@ -36,5 +36,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

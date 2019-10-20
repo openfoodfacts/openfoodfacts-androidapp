@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
@@ -60,7 +60,7 @@ public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> 
 
                                 @Override
                                 public void onError(Throwable e) {
-                                    Log.e(PeriodAfterOpeningAutoCompleteAdapter.class.getSimpleName(), e.getMessage());
+                                    Log.e(PeriodAfterOpeningAutoCompleteAdapter.class.getSimpleName(), e.getMessage(),e);
                                 }
                             });
 

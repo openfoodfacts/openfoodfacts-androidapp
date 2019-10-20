@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -19,12 +20,8 @@ import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.annotation.DrawableRes;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.content.res.AppCompatResources;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -33,69 +30,68 @@ import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.firebase.jobdispatcher.Constraint;
-import com.firebase.jobdispatcher.Driver;
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.firebase.jobdispatcher.Job;
-import com.firebase.jobdispatcher.Lifetime;
-import com.firebase.jobdispatcher.Trigger;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Collections;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import com.firebase.jobdispatcher.*;
 import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
 import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static android.text.TextUtils.isEmpty;
 
 public class Utils {
-
+    public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
     public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
     private static final String TAG = "Utils";
     public static boolean isUploadJobInitialised;
     public static boolean DISABLE_IMAGE_LOAD = false;
-
     public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
+    public static final int NO_DRAWABLE_RESOURCE = 0;
+    public static final String OFFLINE_EDIT_PENDING_WORK_NAME = "offline_edit_pending_products_work";
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
      * objects and then applies a list of zero or more tags to the entire range.
      *
      * @param content an array of character sequences to apply a style to
-     * @param tags    the styled span objects to apply to the content
-     *                such as android.text.style.StyleSpan
+     * @param tags the styled span objects to apply to the content
+     *     such as android.text.style.StyleSpan
      */
     private static CharSequence apply(CharSequence[] content, Object... tags) {
         SpannableStringBuilder text = new SpannableStringBuilder();
@@ -114,7 +110,7 @@ public class Utils {
      */
     private static void openTags(Spannable text, Object[] tags) {
         for (Object tag : tags) {
-            text.setSpan(tag, 0, 0, Spannable.SPAN_MARK_MARK);
+            text.setSpan(tag, 0, 0, Spanned.SPAN_MARK_MARK);
         }
     }
 
@@ -143,13 +139,14 @@ public class Utils {
     }
 
     public static void hideKeyboard(Activity activity) {
-        if (activity == null)
+        if (activity == null) {
             return;
+        }
 
         View view = activity.getCurrentFocus();
 
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null) {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
@@ -165,21 +162,11 @@ public class Utils {
         }
 
         File smallFileFront = new File(url.replace(".png", "_small.png"));
-        OutputStream fOutFront = null;
-        try {
-            fOutFront = new FileOutputStream(smallFileFront);
+
+        try (OutputStream fOutFront = new FileOutputStream(smallFileFront)) {
             bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
         } catch (IOException e) {
             Log.e("COMPRESS_IMAGE", e.getMessage(), e);
-        } finally {
-            if (fOutFront != null) {
-                try {
-                    fOutFront.flush();
-                    fOutFront.close();
-                } catch (IOException e) {
-                    // nothing to do
-                }
-            }
         }
         return smallFileFront.toString();
     }
@@ -194,7 +181,7 @@ public class Utils {
     }
 
     // Decodes image and scales it to reduce memory consumption
-    public static Bitmap decodeFile(File f) {
+    private static Bitmap decodeFile(File f) {
         try {
             // Decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
@@ -207,7 +194,7 @@ public class Utils {
             // Find the correct scale value. It should be the power of 2.
             int scale = 1;
             while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
-                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                o.outHeight / scale / 2 >= REQUIRED_SIZE) {
                 scale *= 2;
             }
 
@@ -216,7 +203,7 @@ public class Utils {
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "decodeFile " + f, e);
         }
         return null;
     }
@@ -224,13 +211,11 @@ public class Utils {
     /**
      * Check if a certain application is installed on a device.
      *
-     * @param context     the applications context.
+     * @param context the applications context.
      * @param packageName the package name that you want to check.
      * @return true if the application is installed, false otherwise.
      */
-
     public static boolean isApplicationInstalled(Context context, String packageName) {
-        //private boolean isApplicationInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
             // Check if the package name exists, if exception is thrown, package name does not
@@ -243,7 +228,7 @@ public class Utils {
     }
 
     public static int getImageGrade(String grade) {
-        int drawable = 0;
+        int drawable = NO_DRAWABLE_RESOURCE;
 
         if (grade == null) {
             return drawable;
@@ -264,6 +249,8 @@ public class Utils {
                 break;
             case "e":
                 drawable = R.drawable.nnc_e;
+                break;
+            default:
                 break;
         }
 
@@ -288,11 +275,30 @@ public class Utils {
             default:
                 return "";
         }
+    }
 
+    public static <T extends View> List<T> getViewsByType(ViewGroup root, Class<T> tClass) {
+        final ArrayList<T> result = new ArrayList<>();
+        int childCount = root.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View child = root.getChildAt(i);
+            if (child instanceof ViewGroup) {
+                result.addAll(getViewsByType((ViewGroup) child, tClass));
+            }
+
+            if (tClass.isInstance(child)) {
+                result.add(tClass.cast(child));
+            }
+        }
+        return result;
+    }
+
+    public static int getNovaGroupDrawable(Product product) {
+        return getNovaGroupDrawable(product == null ? null : product.getNovaGroups());
     }
 
     public static int getNovaGroupDrawable(String novaGroup) {
-        int drawable = 0;
+        int drawable = NO_DRAWABLE_RESOURCE;
 
         if (novaGroup == null) {
             return drawable;
@@ -311,12 +317,44 @@ public class Utils {
             case "4":
                 drawable = R.drawable.ic_nova_group_4;
                 break;
+            default:
+                break;
         }
         return drawable;
     }
 
+    public static int getSmallImageGrade(Product product) {
+        return getSmallImageGrade(product == null ? null : product.getNutritionGradeFr());
+    }
+
+    public static int getImageGrade(Product product) {
+        return getImageGrade(product == null ? null : product.getNutritionGradeFr());
+    }
+
+    public static int getImageEnvironmentImpact(Product product) {
+        int drawable = NO_DRAWABLE_RESOURCE;
+        if (product == null) {
+            return drawable;
+        }
+        List<String> tags = product.getEnvironmentImpactLevelTags();
+        if (CollectionUtils.isEmpty(tags)) {
+            return drawable;
+        }
+        String tag = tags.get(0).replace("\"", "");
+        switch (tag) {
+            case "en:high":
+                return R.drawable.ic_co2_high_24dp;
+            case "en:low":
+                return R.drawable.ic_co2_low_24dp;
+            case "en:medium":
+                return R.drawable.ic_co2_medium_24dp;
+            default:
+                return drawable;
+        }
+    }
+
     public static int getSmallImageGrade(String grade) {
-        int drawable = 0;
+        int drawable = NO_DRAWABLE_RESOURCE;
 
         if (grade == null) {
             return drawable;
@@ -338,6 +376,8 @@ public class Utils {
             case "e":
                 drawable = R.drawable.nnc_small_e;
                 break;
+            default:
+                break;
         }
 
         return drawable;
@@ -345,8 +385,9 @@ public class Utils {
 
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
+        if(drawable==null){return null;}
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable
-                .getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            .getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
@@ -388,7 +429,6 @@ public class Utils {
         return ((OFFApplication) context.getApplicationContext()).getDaoSession();
     }
 
-
     public static DaoSession getDaoSession(Context context) {
         return OFFApplication.daoSession;
     }
@@ -399,12 +439,17 @@ public class Utils {
      * @return true if installed, false otherwise.
      */
     public static boolean isHardwareCameraInstalled(Context context) {
+        if (context == null) {
+            return false;
+        }
         try {
             if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
                 return true;
             }
         } catch (NullPointerException e) {
-            if (BuildConfig.DEBUG) Log.i(context.getClass().getSimpleName(), e.toString());
+            if (BuildConfig.DEBUG) {
+                Log.i(context.getClass().getSimpleName(), e.toString());
+            }
             return false;
         }
         return false;
@@ -413,22 +458,23 @@ public class Utils {
     /**
      * Schedules job to download when network is available
      */
-
-    synchronized public static void scheduleProductUploadJob(Context context) {
-        if (isUploadJobInitialised) return;
+    public static synchronized void scheduleProductUploadJob(Context context) {
+        if (isUploadJobInitialised) {
+            return;
+        }
         final int periodicity = (int) TimeUnit.MINUTES.toSeconds(30);
         final int toleranceInterval = (int) TimeUnit.MINUTES.toSeconds(5);
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(driver);
         Job uploadJob = jobDispatcher.newJobBuilder()
-                .setService(SavedProductUploadJob.class)
-                .setTag(UPLOAD_JOB_TAG)
-                .setConstraints(Constraint.ON_UNMETERED_NETWORK)
-                .setLifetime(Lifetime.FOREVER)
-                .setRecurring(false)
-                .setTrigger(Trigger.executionWindow(periodicity, periodicity + toleranceInterval))
-                .setReplaceCurrent(false)
-                .build();
+            .setService(SavedProductUploadJob.class)
+            .setTag(UPLOAD_JOB_TAG)
+            .setConstraints(Constraint.ON_UNMETERED_NETWORK)
+            .setLifetime(Lifetime.FOREVER)
+            .setRecurring(false)
+            .setTrigger(Trigger.executionWindow(periodicity, periodicity + toleranceInterval))
+            .setReplaceCurrent(false)
+            .build();
         jobDispatcher.schedule(uploadJob);
         isUploadJobInitialised = true;
     }
@@ -437,24 +483,24 @@ public class Utils {
         OkHttpClient httpClient;
         if (Build.VERSION.SDK_INT == 24) {
             ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-                    .tlsVersions(TlsVersion.TLS_1_2)
-                    .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
-                    .build();
+                .tlsVersions(TlsVersion.TLS_1_2)
+                .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                .build();
 
             httpClient = new OkHttpClient.Builder()
-                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                    .readTimeout(30000, TimeUnit.MILLISECONDS)
-                    .writeTimeout(30000, TimeUnit.MILLISECONDS)
-                    .connectionSpecs(Collections.singletonList(spec))
-                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                    .build();
+                .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                .readTimeout(30000, TimeUnit.MILLISECONDS)
+                .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                .connectionSpecs(Collections.singletonList(spec))
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .build();
         } else {
             httpClient = new OkHttpClient.Builder()
-                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                    .readTimeout(30000, TimeUnit.MILLISECONDS)
-                    .writeTimeout(30000, TimeUnit.MILLISECONDS)
-                    .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                    .build();
+                .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                .readTimeout(30000, TimeUnit.MILLISECONDS)
+                .writeTimeout(30000, TimeUnit.MILLISECONDS)
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .build();
         }
         return httpClient;
     }
@@ -470,11 +516,20 @@ public class Utils {
     public static boolean isAirplaneModeActive(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
             return Settings.System.getInt(context.getContentResolver(),
-                    Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+                Settings.System.AIRPLANE_MODE_ON, 0) != 0;
         } else {
             return Settings.Global.getInt(context.getContentResolver(),
-                    Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
+                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
         }
+    }
+
+    public static boolean isUserLoggedIn(Context context) {
+        if (context == null) {
+            return false;
+        }
+        final SharedPreferences settings = context.getSharedPreferences("login", 0);
+        final String login = settings.getString("user", "");
+        return StringUtils.isNotEmpty(login);
     }
 
     /**
@@ -525,17 +580,17 @@ public class Utils {
                     return "WiFi";
                 case ConnectivityManager.TYPE_WIMAX:
                     return "WiMax";
+                default:
+                    break;
             }
         }
 
         return "Other";
     }
 
-    public static String timeStamp() {
-        Long tsLong = System.currentTimeMillis();
-        return tsLong.toString();
+    private static String timeStamp() {
+        return ((Long) System.currentTimeMillis()).toString();
     }
-
 
     public static File makeOrGetPictureDirectory(Context context) {
         // determine the profile directory
@@ -549,7 +604,11 @@ public class Utils {
             return picDir;
         }
         // creates the directory if not present yet
-        picDir.mkdir();
+        final boolean mkdir = picDir.mkdir();
+        if(!mkdir){
+            Log.e(Utils.class.getSimpleName(),"Can create dir "+picDir);
+        }
+
 
         return picDir;
     }
@@ -583,7 +642,7 @@ public class Utils {
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
         ClickableSpan clickableSpan;
-        String url = SearchType.URLS.get(type);
+        String url = SearchTypeUrls.getUrl(type);
 
         if (url == null) {
             clickableSpan = new ClickableSpan() {
@@ -605,7 +664,6 @@ public class Utils {
         SpannableString spannableText = new SpannableString(text);
         spannableText.setSpan(clickableSpan, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableText;
-
     }
 
     /**
@@ -615,27 +673,27 @@ public class Utils {
      * @return energy in kcal.
      */
     public static String getEnergy(String value) {
-        String defaultValue = "0";
+        String defaultValue = StringUtils.EMPTY;
         if (defaultValue.equals(value) || isEmpty(value)) {
             return defaultValue;
         }
 
         try {
-            int energyKcal = convertKjToKcal(Integer.parseInt(value));
+            int energyKcal = convertKjToKcal(Double.parseDouble(value));
             return String.valueOf(energyKcal);
         } catch (NumberFormatException e) {
             return defaultValue;
         }
     }
 
-    private static int convertKjToKcal(int kj) {
-        return kj != 0 ? Double.valueOf(((double) kj) / 4.1868d).intValue() : -1;
+    private static int convertKjToKcal(double kj) {
+        return kj != 0 ? (int) (kj / 4.1868d) : -1;
     }
 
     /**
      * Function which returns volume in oz if parameter is in cl, ml, or l
      *
-     * @param servingSize
+     * @param servingSize value to transform
      * @return volume in oz if servingSize is a volume parameter else return the the parameter unchanged
      */
     public static String getServingInOz(String servingSize) {
@@ -664,10 +722,10 @@ public class Utils {
     /**
      * Function that returns the volume in liters if input parameter is in oz
      *
-     * @param servingSize
+     * @param servingSize the value to transform: not null
      * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
      */
-    public static String getServingInL(String servingSize) {
+    public static String getServingInL(@NonNull String servingSize) {
 
         if (servingSize.toLowerCase().contains("oz")) {
             Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
@@ -684,7 +742,7 @@ public class Utils {
     /**
      * Function which returns true if the battery level is low
      *
-     * @param context
+     * @param context the context
      * @return true if battery is low or false if battery in not low
      */
     public static boolean getBatteryLevel(Context context) {
@@ -699,35 +757,36 @@ public class Utils {
         return (int) ((batteryPct) * 100) <= 15;
     }
 
+    public static boolean isDisableImageLoad(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getBoolean("disableImageLoad", false);
+    }
+
     /*
      * Function to open ContinuousScanActivity to facilitate scanning
      * @param activity
      */
     public static void scan(Activity activity) {
 
-
         if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) !=
-                PackageManager.PERMISSION_GRANTED) {
+            PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest
-                    .permission.CAMERA)) {
+                .permission.CAMERA)) {
                 new MaterialDialog.Builder(activity)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
-                        .show().setOnDismissListener(dialogInterface -> ActivityCompat.requestPermissions(activity,
-                        new String[]{Manifest.permission.CAMERA},
-                        Utils.MY_PERMISSIONS_REQUEST_CAMERA));
-
+                    .title(R.string.action_about)
+                    .content(R.string.permission_camera)
+                    .neutralText(R.string.txtOk)
+                    .show().setOnDismissListener(dialogInterface -> ActivityCompat.requestPermissions(activity,
+                    new String[]{Manifest.permission.CAMERA},
+                    Utils.MY_PERMISSIONS_REQUEST_CAMERA));
             } else {
                 ActivityCompat.requestPermissions(activity, new String[]{Manifest
-                        .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
+                    .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
             }
         } else {
             Intent intent = new Intent(activity, ContinuousScanActivity.class);
             activity.startActivity(intent);
         }
-
-
     }
 
     /**
@@ -739,21 +798,22 @@ public class Utils {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "getVersionName", e);
         }
         return "(version unknown)";
     }
+
     /**
      * @param type Type of call (Search or Scan)
      * @return Returns the header to be put in network call
      */
     public static String getUserAgent(String type) {
-        if(type.equals(HEADER_USER_AGENT_SCAN)) {
-            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
-        } else if(type.equals(HEADER_USER_AGENT_SEARCH)) {
-            return "Official Android App " + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
-        }
-        return "Official Android App "+BuildConfig.VERSION_NAME;
+        return getUserAgent() + " " + type;
+    }
+
+    public static String getUserAgent() {
+        final String prefix = " Official Android App ";
+        return BuildConfig.APP_NAME + prefix + BuildConfig.VERSION_NAME;
     }
 
      /*
@@ -761,12 +821,12 @@ public class Utils {
      @return Returns a Json object
       */
 
-    public static JSONObject createJsonObject(String response){
+    public static JSONObject createJsonObject(String response) {
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(response);
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "createJsonObject", e);
         }
         return jsonObject;
     }

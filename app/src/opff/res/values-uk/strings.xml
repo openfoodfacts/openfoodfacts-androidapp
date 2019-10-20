@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
-    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, allergens, indicia and all the tidbits of information we can find on pet food product labels. Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Contribute to Pet Food transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
     <string name="slide_2_title">Get the facts</string>
@@ -25,7 +25,7 @@
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">Подивіться на цей товар на \"Open Food Facts\":</string>
-    <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+    <string name="not_support_books">Книги наразі не підтримуються додатоком Open Food Facts</string>
     <string name="txt_broaden_search">- розширити пошук\n- просканувати та додати товар</string>
     <string name="Donation">Натисніть тут, щоб підтримати Open Food Facts</string>
     <string name="translate_help_title">Допоможіть перекласти Open Food Facts</string>

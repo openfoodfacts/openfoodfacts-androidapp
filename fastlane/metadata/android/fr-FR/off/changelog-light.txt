@@ -1,8 +1,18 @@
-v2 ! Tous les bénévoles OFF ont travaillé dur, sur la base de vos suggestions. Nous sommes un mouvement plus global que jamais. 500k produits libérés, 182 pays, 10K+ contributeurs, dont vous :)
+VERSION 3
+====
+1. C'est plus simple de contribuer sur de nouveaux produits, et d'obtenir le Nutri-Score
+2. Créer (et exporter) votre liste de produits (shopping, nourriture...)
+3. Comparer les produits entre eux en les scannant l'un après l'autre.
+4. La page des produits complètement redisignée, glisser la carte vers le haut pour la découvrir
+5. Open Food Facts est une application bénévole: vous pouvez donner du temps (world.openfoodfacts.org/contribute) ou de l'argent (donate.openfoodfacts.org)
+
+
+======
+v2 ! Tous les bénévoles ont travaillé dur, en se basant sur vos suggestions. Nous sommes un mouvement plus global que jamais. Incluant 500.000 produits libérés, 182 pays, plus de 10.000 contributeurs. vous :)
 1. Le NutriScore pour tous les produits dans le monde
-2. Historique exportable, pour vos yeux seulement
+2. Historique exportable, rien que pour vous
 3. Alertes allergènes
-4. Appuyez sur les additifs pour explorer avec Wikipedia.
+4. Appuyez sur les additifs pour explorer sur Wikipedia.
 5. Prenez des photos, faites partie de la transparence alimentaire
 6. Beaucoup plus rapide, même sur 2G. Vous pouvez même contribuer sans connexion
 7. Aucune inscription requise
@@ -19,3 +29,6 @@ v2.8! Après la grande V2, tous les volontaires OFF ont travaillé dur, sur la b
 1. Vous pouvez maintenant modifier n'importe quel produit avec votre compte OFF. Cliquez sur ✏️ sur une page de produit pour le modifier.
 2. 🌍 Slovaque, hébreu, espagnol, arabe, néerlandais, hongrois et vietnamien (translate.openfoodfacts.org pour aider)
 3. Open Food Facts est un effort entièrement bénévole : vous pouvez donner du temps (world.openfoodfacts.org/contribute) ou de l'argent (donate.openfoodfacts.org)
+
+
+

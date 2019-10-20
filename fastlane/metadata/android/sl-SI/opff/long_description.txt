@@ -6,9 +6,9 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 
 ***Contribute to Pet Food Transparency***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
+- Open Pet Food Facts je zbirka podatkov o živilskih izdelkih, ki so jo pripravili vsi, za vse.
+-Uporabite jo lahko za boljšo izbiro hrane za hišne ljubljenčke in ker je to odprta zbirka podatkov, jo lahko kdorkoli ponovno uporabiti za kateri koli namen.
+- Open Pet Fact Facts je neprofitni projekt, ki ga je razvilo na tisoče prostovoljcev iz vsega sveta. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 

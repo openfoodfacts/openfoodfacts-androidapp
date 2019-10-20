@@ -1,35 +1,76 @@
 สแกนผลิตภัณฑ์อาหารหรือบาร์โค้ดเพื่อรับข้อมูลเกี่ยวกับส่วนผสมสารเติมแต่งและสารอาหาร
 
-แอปนี้จะช่วยให้สามารถดูผลิตภัณฑ์ 547.000 (รวมถึงผลิตภัณฑ์ 175.000 บาทในสหรัฐฯ) ที่มีอยู่แล้วในฐานข้อมูลเปิดและเปิดข้อมูลผลิตภัณฑ์อาหารและเพิ่มรูปภาพและข้อมูลสำหรับผลิตภัณฑ์ที่ขาดหายไป
+▶ Find & Compare more than 800.000 products
 
-To discover the Open Food Facts project, please visit https://openfoodfacts.org
+The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
 
 
-*** ให้ความโปร่งใสด้านอาหาร ***
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
+▶ Choose the products that are good for you
+- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
+- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+- You can easily compare as many products as you want, side by side by simply scanning them. 
+
+▶ And good for the planet!
+- The carbon impact of your food
+- Get a sense of how much of your daily carbon quota you're using for food
+- Based on the footprints computed for France by ADEME.
+- Join us and help us to bring the Carbon Impact to your country!
+- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+
+
+▶ Contribute to Food Transparency
 - Open Food Facts เป็นฐานข้อมูลผลิตภัณฑ์อาหารที่ทุกคนทำเพื่อทุกคน
 - คุณสามารถใช้เพื่อเลือกอาหารที่ดีขึ้นและเป็นข้อมูลที่เปิดได้ทุกคนสามารถใช้ซ้ำได้เพื่อวัตถุประสงค์ใด ๆ
-- Open Food Facts เป็นโครงการที่ไม่หวังผลกำไรที่พัฒนาโดยอาสาสมัครหลายพันคนจากทั่วโลก เรามีโครงการที่น่าตื่นเต้นมากมายที่คุณสามารถมีส่วนร่วมได้หลายวิธี 
-- คุณสามารถเริ่มให้ความช่วยเหลือในวันนี้โดยการเพิ่มผลิตภัณฑ์จากตู้อาหารของคุณ 
+- Open Food Facts เป็นโครงการที่ไม่หวังผลกำไรที่พัฒนาโดยอาสาสมัครหลายพันคนจากทั่วโลก เรามีโครงการที่น่าตื่นเต้นมากมายที่คุณสามารถมีส่วนร่วมได้หลายวิธี
+- You can start contributing today by adding a product from your fridge.
 
-*** รับข้อมูล ***
-- Open Food Facts ช่วยให้คุณเข้าใจถึงการพิมพ์ที่ดีบนฉลากผลิตภัณฑ์ คุณจะสามารถค้นหา (ตามข้อบ่งชี้ที่มีอยู่ในผลิตภัณฑ์):
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
+
+▶ Get the Facts
+- Open Food Facts ช่วยให้คุณเข้าใจถึงการพิมพ์ที่ดีบนฉลากผลิตภัณฑ์ You will be able to find:
 - คาร์บอนไดออกไซด์ (CO2 emissions) และบรรจุภัณฑ์ (รวมถึงคำแนะนำในการรีไซเคิล)
 Nutriscore (โภชนาการ) สารอาหารไขมัน / ไขมันไขมันอิ่มตัวคาร์โบไฮเดรตน้ำตาลใยโปรตีนและเกลือและโซเดียม
 - แบรนด์สารก่อภูมิแพ้ป้ายชื่อ (ชีวภาพปราศจากกลูเตนมังสวิรัติมังสวิรัติฮาลาลโคเชอร์ ... ) ข้อมูลการตรวจสอบย้อนกลับ (รหัสบรรจุภัณฑ์ต้นกำเนิดของส่วนผสม)
 - เกี่ยวกับไวน์และเบียร์คุณจะพบเนื้อหาแอลกอฮอล์
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your food, your data ***
+▶ Based on Science, helping back Science!
+
+- We don't make up things. We rely on peer-reviewed science.
+- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+- You can get a synthesis of EFSA exposure levels on food additives.
+- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+
+
+▶ Offline Scan: Scan in ANY condition! (coming soon)
+Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+
+- The whole planet, in your pocket !
+- You can add new products, even if you don't have an Internet connection right now.
+- The app loads only the strict necessary to reduce data and battery consumption.
+
+▶ Your food, your data
 - Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
+▶ Set up allergen alerts on products
+- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+
+
+▶ Say hello and/or join us!
+
+
 เปิดข้อเท็จจริงด้านอาหารนอกจากนี้ยังมีอยู่บนเว็บที่ https://world.openfoodfacts.org
+
+
 คำถามความคิดเห็น: contact@openfoodfacts.org
+
 
 สำหรับเครื่องสำอางคุณสามารถติดตั้ง Open Beauty Facts สำหรับอาหารสำหรับสัตว์เลี้ยงอาหารสัตว์เลี้ยงเปิดและสำหรับผลิตภัณฑ์อื่น ๆ ทั้งหมดเปิดข้อมูลผลิตภัณฑ์

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNull;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.*;
 
@@ -58,7 +59,7 @@ public class LabelsWrapperTest {
 
         Label label2 = labels.get(1);
         assertEquals(labelTag2, label2.getTag());
-        assertEquals(null, label2.getWikiDataId());
+        assertNull(label2.getWikiDataId());
         assertFalse(label2.getIsWikiDataIdPresent());
         assertEquals(2, label2.getNames().size());
 

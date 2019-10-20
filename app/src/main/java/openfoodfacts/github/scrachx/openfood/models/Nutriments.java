@@ -1,19 +1,18 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.R;
-
-import static android.text.TextUtils.isEmpty;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 /**
@@ -27,7 +26,7 @@ public class Nutriments implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final String DEFAULT_UNIT = "g";
 
-    public final static String ENERGY ="energy";
+    public static final  String ENERGY ="energy";
     public static final String ENERGY_FROM_FAT = "energy-from-fat";
     public static final String FAT = "fat";
     public static final String SATURATED_FAT = "saturated-fat";
@@ -125,7 +124,6 @@ public class Nutriments implements Serializable {
     public static final String PHOSPHORUS = "phosphorus";
     public static final String IRON = "iron";
     public static final String MAGNESIUM = "magnesium";
-
     public static final Map<String, Integer> MINERALS_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.SILICA, R.string.silica);
         put(Nutriments.BICARBONATE, R.string.bicarbonate);
@@ -201,12 +199,13 @@ public class Nutriments implements Serializable {
     private boolean containsMinerals;
 
     public Nutriment get(String nutrimentName){
-        if (nutrimentName.isEmpty() || !additionalProperties.containsKey(nutrimentName)) {
+        if (nutrimentName.isEmpty() || additionalProperties.get(nutrimentName)==null) {
             return null;
         }
 
         try{
-            return new Nutriment(additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName));
+            return new Nutriment(nutrimentName,additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName),
+                getModifier(nutrimentName));
         }catch (NullPointerException e){
             // In case one of the getters was unable to get data as string
             String stacktrace = Log.getStackTraceString(e);
@@ -216,31 +215,34 @@ public class Nutriments implements Serializable {
     }
 
     public String getUnit(String nutrimentName){
-        String unit = ((String) additionalProperties.get(nutrimentName + "_unit"));
-        return isEmpty(unit) ? DEFAULT_UNIT : unit;
+        return getAdditionalProperty(nutrimentName,"_unit",DEFAULT_UNIT);
     }
 
     public String getServing(String nutrimentName){
-        return additionalProperties.get(nutrimentName + "_serving").toString();
+        return getAdditionalProperty(nutrimentName,"_serving");
     }
 
+    private String getAdditionalProperty(String nutrimentName,String suffix){
+        return getAdditionalProperty(nutrimentName,suffix,StringUtils.EMPTY);
+    }
+
+    private String getAdditionalProperty(String nutrimentName,String suffix,String defaultValue){
+        final Object value = additionalProperties.get(nutrimentName + suffix);
+        return value==null?defaultValue:value.toString();
+    }
+
+
     public String get100g(String nutrimentName){
-        return additionalProperties.get(nutrimentName + "_100g").toString();
+        return getAdditionalProperty(nutrimentName,"_100g");
     }
 
     public String getValue(String nutrimentName) {
-        if (additionalProperties.get(nutrimentName + "_value") != null) {
-            return additionalProperties.get(nutrimentName + "_value").toString();
-        }
-        return null;
+        return getAdditionalProperty(nutrimentName,"_value",null);
     }
 
     @Nullable
     public String getModifier(String nutrimentName) {
-        if (additionalProperties.get(nutrimentName + "_modifier") != null) {
-            return additionalProperties.get(nutrimentName + "_modifier").toString();
-        }
-        return null;
+        return getAdditionalProperty(nutrimentName,"_modifier",null);
     }
 
     public boolean contains(String nutrimentName){
@@ -272,26 +274,43 @@ public class Nutriments implements Serializable {
     }
 
     public static class Nutriment {
-
-        private final String value;
+        private final String key;
+        private final String name;
         private final String for100g;
         private final String forServing;
         private final String unit;
+        private final String modifier;
 
-        Nutriment(String name, String for100g, String forServing, String unit) {
-            this.value = name;
+        Nutriment(String key, String name, String for100g, String forServing, String unit, String modifier) {
+            this.key = key;
+            this.name = name;
             this.for100g = for100g;
             this.forServing = forServing;
-            this.unit = unit;
+            this.modifier = modifier;
+            this.unit = getRealUnit(unit);
         }
 
-        public String getValue() {
-            return value;
+        public String getDisplayStringFor100g() {
+            return StringUtils.defaultString(modifier) + getFor100gInUnits() + " " + unit;
         }
 
-        public String getFor100g() {
-            return for100g;
+        /**
+         * All the values given by the api are in gram. For all unit it's possible to convert back to th
+         *
+         * @param unit the initial unit
+         * @return if the unit is % DV, the api gives the value in g
+         */
+        private String getRealUnit(String unit) {
+            if (unit.contains("%")) {
+                return UnitUtils.UNIT_GRAM;
+            }
+            return unit;
         }
+
+        public String getName() {
+            return name;
+        }
+
 
         /**
          * Returns the amount of nutriment per 100g
@@ -301,9 +320,6 @@ public class Nutriments implements Serializable {
             return getValueInUnits(for100g, unit);
         }
 
-        public String getForServing() {
-            return forServing;
-        }
 
         /**
          * Returns the amount of nutriment per serving
@@ -317,31 +333,20 @@ public class Nutriments implements Serializable {
             return unit;
         }
 
-        private static String getValueInUnits(String stringValue, String unit) {
-            if (stringValue.isEmpty() || stringValue.contains("%") || unit.equals("g")) {
-                return stringValue;
-            } else if (unit.equals("g")) {
-                float value = Float.valueOf(stringValue);
-                return getRoundNumber(value);
-            } else if (unit.equals("kg")) {
-                float value = Float.valueOf(stringValue);
-                return getRoundNumber(value / 1000);
-            } else if (unit.equals("mg")) {
-                float value = Float.valueOf(stringValue);
-                return getRoundNumber(value * 1000);
-            } else if (unit.equals("µg")) {
-                float value = Float.valueOf(stringValue);
-                return getRoundNumber(value * 1000000);
-            } else if (unit.equals("l")) {
-                float value = Float.valueOf(stringValue);
-                return getRoundNumber(value / 1000);
-            } else if (unit.equals("cl")) {
-                float value = Float.valueOf(stringValue);
-                return getRoundNumber(value / 10);
+        private String getValueInUnits(String valueInGramOrMl, String unit) {
+            if(StringUtils.isBlank(valueInGramOrMl)){
+                return StringUtils.EMPTY;
             }
-            else {
-                return stringValue;
+            if (valueInGramOrMl.isEmpty() || unit.equals(UnitUtils.UNIT_GRAM)) {
+                return valueInGramOrMl;
             }
+            float value = Float.parseFloat(valueInGramOrMl);
+            value = UnitUtils.convertFromGram(value, unit);
+            return getRoundNumber(value);
+        }
+
+        public String getKey() {
+            return key;
         }
 
         /**
@@ -350,39 +355,24 @@ public class Nutriments implements Serializable {
          * given 1 kg of the product.
          *
          * @param userSetServing amount of this product used to calculate nutriment value
-         * @param unit units in either "g", "kg", or "mg" to define userSetServing
+         * @param otherUnit units in either "g", "kg", or "mg" to define userSetServing
          * @return nutriment value for a given amount of this product
          */
-        public String getForAnyValue(float userSetServing, String unit) {
+        public String getForAnyValue(float userSetServing, String otherUnit) {
             String strValue = getFor100gInUnits();
             if (strValue.isEmpty() || strValue.contains("%")) {
                 return strValue;
-            } else if (unit.equals("g")) {
-                float value = Float.valueOf(strValue);
-                value = (userSetServing / 100) * value;
-                return getRoundNumber(value);
-            } else if (unit.equals("kg")) {
-                float value = Float.valueOf(strValue);
-                value = (userSetServing * 10) * value;
-                return getRoundNumber(value);
-            } else if (unit.equals("mg")) {
-                float value = Float.valueOf(strValue);
-                value = (userSetServing / 100000) * value;
-                return getRoundNumber(value);
-            } else if (unit.equals("l")) {
-                float value = Float.valueOf(strValue);
-                value = (userSetServing * 10) * value;
-                return getRoundNumber(value);
-            } else if (unit.equals("cl")) {
-                float value = Float.valueOf(strValue);
-                value = (userSetServing / 10) * value;
-                return getRoundNumber(value);
-            }else {
-                return strValue;
             }
+            try {
+                float valueFor100g = Float.parseFloat(strValue);
+                float portionInGram=UnitUtils.convertToGrams(userSetServing,otherUnit);
+                return getRoundNumber(valueFor100g/100*portionInGram);
+            }catch (NumberFormatException fmt){
+                Log.w(Nutriments.class.getSimpleName(),"getForAnyValue can't parse value "+strValue,fmt);
+            }
+            return StringUtils.EMPTY;
+
+
         }
-
-
     }
-
 }

@@ -8,14 +8,16 @@
         android:id="@+id/tvDialogListName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="@dimen/padding_short"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-        android:textSize="22sp" />
+        android:textSize="@dimen/font_large"
+        />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/tvDialogListName"
-        android:background="@color/brown_100" />
+        android:background="@color/brown_100"
+        />
 
 </RelativeLayout>

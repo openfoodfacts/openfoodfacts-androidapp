@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_image"
         android:layout_width="@dimen/product_width"
         android:layout_height="@dimen/product_height"

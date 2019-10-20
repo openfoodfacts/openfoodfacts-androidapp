@@ -1,35 +1,76 @@
 Lebensmittel erfassen oder deren Barcode einlesen, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
 
-Die App erlaubt es, die 547.000 Produkte (davon 175.000 in den USA), die bereits in der freien und offenen Datenbank Open Food Facts enthalten sind, einzusehen und auch Fotos und Daten für fehlende Produkte hinzuzufügen.
+▶ Findet und vergleicht mehr als 800.000 Produkte
 
-Um das Open Food Facts Projekt zu entdecken, besuchen Sie bitte https://openfoodfacts.org
+Die App ermöglicht es, die 800.000 Produkte (davon 175.000 in den USA) anzuzeigen, die bereits in der kostenlosen und offenen Datenbank Open Food Facts enthalten sind, sowie Fotos und Daten für neue Produkte hinzuzufügen.
 
 
-★★★ Beitrag zur Transparenz von Lebensmittelprodukten ★★★
+Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken, besuchen Sie https://world.openfoodfacts.org
 
+▶ Wählen Sie die Produkte aus, die gut für Sie sind
+• Die Nutri-Score-Klasse, von „A” bis „E” ➜ Nährwertqualität
+• Die NOVA-Gruppe, von „1” bis „4” ➜ Finden Sie hochverarbeiteten Lebensmittel
+• Sie können beliebig viele Produkte miteinander vergleichen, indem Sie sie einfach scannen. 
+
+▶ Und gut für den Planeten!
+• Der CO₂-Einfluss Ihrer Lebensmittel
+• Gewinnen Sie einen Eindruck davon, wie viel von Ihrer täglichen CO₂-Verbrauch Sie für Lebensmittel aufwenden
+• Basierend auf den durch die Umweltagentur ADEME für Frankreich berechneter Fußabdruck
+• Schließen Sie sich uns an und helfen Sie uns, den CO₂-Einfluss in Ihr Land zu bringen!
+• Um den CO₂-Einfluss anzuzeigen, muss ein Produkt eine vollständige Zutatenliste mit dem Prozentsatz an Fleisch oder Fisch und einer Menge aufweisen
+
+
+▶ Beitrag zur Lebensmitteltransparenz
 • Open Food Facts ist eine Lebensmitteldatenbank, die von jedermann für alle erstellt wurde.
 • Sie können sie verwenden, um bessere Lebensmittelauswahlen zu treffen, und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
-• Open Food Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können. 
-• Sie können noch heute einen Beitrag leisten, indem Sie ein Produkt aus Ihrem Vorratsschrank hinzufügen. 
+• Open Food Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können.
+• Sie können noch heute damit beginnen, einen Beitrag zu leisten, indem Sie ein Produkt aus Ihrem Kühlschrank hinzufügen.
 
-★★★ Fakten abrufen ★★★
-• Open Food Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
+▶ Listen erstellen
+Erstellen Sie Einkaufslisten, verfolgen Sie, was Sie gegessen haben, und teilen und exportieren Sie einfach Ihre Listen.
+
+▶ Rufen Sie die Fakten auf
+• Open Food Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Sie können finden:
 • CO₂-Fußabdruck (CO2-Emissionen) und Verpackung (sowie Verwertungshinweise),
 • Nutri-Score (Nährwertbewertung), Nährstoffe, Fett/Fettgehalt, gesättigte Fettsäuren, Kohlenhydrate, Zucker, Ballaststoffe, Eiweiß und Salz und Natrium.
 • Marken, Allergene, Etiketten (Bio, Glutenfrei, Vegan, Vegetarisch, Halal, Koscher …), Rückverfolgbarkeitsinformationen (Verpackungscodes, Herkunft der Zutaten)
 • Auf Weinen und Bieren finden Sie den Alkoholgehalt.
 
-★★★ Funktioniert gut in jedem Umfeld ★★★
-• Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
-• Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren
-• Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
 
-★★★ Ihre Nahrung — Ihre Daten ★★★
+▶ Basierend auf Wissenschaft, hilft es der Wissenschaft zurück!
+
+- Wir denken uns das nicht aus. Wir stützen uns auf eine von Experten begutachtete Wissenschaft.
+• Der Nutri-Score wurde von dem unabhängigen französischen Team um Professor Hercberg erstellt.
+• Die NOVA-Gruppen zur Lebensmittelverarbeitung wurden vom internationalen Team von Professor Monteiro entworfen.
+• Sie können eine Synthese der EFSA-Expositionswerte für Lebensmittelzusatzstoffe erhalten.
+• Die Gemeinschaft von Open Food Facts arbeitet mit Forschungsteams auf der ganzen Welt zusammen, um die Erforschung der Ernährung zum Wohle aller zu verbessern.
+
+
+▶ Offline erfassen: Einlesen in einem beliebigen Zustand! (demnächst verfügbar)
+Mit Lichtgeschwindigkeit erfassen (auch wenn Sie sich in einem Flugzeug, U-Boot oder Supermarkt befinden)
+
+• Den ganzen Planeten, in Ihrer Tasche!
+• Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
+• Die App lädt nur das Notwendigste, um den Daten- und Batterieverbrauch zu reduzieren.
+
+▶ Ihre Nahrungsmittel — Ihre Daten
 • Ihre Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihren Erfassungsverlauf exportieren
 
+▶ Warnhinweise für allergene Produkte festlegen
+• Allergisch auf Milch, Gluten, Eier, Sojabohnen, Nüsse, Fisch, Sellerie, Senf, Schwefeldioxid und Sulfite, Erdnüsse, Sesam, Krustentiere, Weichtiere oder Lupinen?
+• Beschleunigen Sie Ihren Einkauf, indem Sie eine erste Überprüfung Ihrer Lebensmittel mit Open Food Facts durchführen.
+• Achten Sie darauf, dass die Informationen und die Erkennungsrate nicht zu 100% genau sein könnten. Überprüfen Sie deshalb immer eigenverantwortlich, mit den auf der Verpackung angegebenen Werten.
+
+
+▶ Sagen Sie einfach nur Hallo und/oder schließen Sie sich uns an!
+
+
 Open Food Facts ist auch im Internet verfügbar unter https://world.openfoodfacts.org
+
+
 Fragen und Rückmeldungen: contact@openfoodfacts.org
+
 
 Für Kosmetik können Sie „Open Beauty Facts”, für Tierfutter „Open Pet Food Facts” und für alle anderen Produkte „Open Products Facts” installieren.

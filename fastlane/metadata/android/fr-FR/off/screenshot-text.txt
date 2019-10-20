@@ -1,45 +1,72 @@
-Ce sont les slogans affichés au-dessus des captures d'écran dans le Playstore. Gardez-les concis et attrayants.
-Ne modifiez pas le nom du fichier.
----
-scan_fr.png
+Ceci sont les slogans affichés au-dessus des captures d'écran dans le Playstore. Gardez-les concis et attrayants.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=fr
+
+======================
+Captures d'écran V2
+======================
+
 Scannez des produits
 
-quickview_fr.png
 Obtenez le Nutriscore
 
-history_fr.png
 L'historique de vos scans, entièrement privé et exportable
 
-product_view_wikipedia_fr.png
-Allez plus loin avec Wikipedia
+Allez plus loin avec Wikipédia
 
-allergen_alert_fr.png
-Mettez des alertes allergènes
+Ajoutez des alertes allergènes
 
-home_fr.png
-product_view_nutrition_summary_fr.png
 La nutrition, simplifiée
 
-product_view_allergen_alert_fr.png
 Alerte allergènes
 
-categories_fr.png
 Trouvez des alternatives pour vos aliments préférés
 
-foodtransparency_fr.png
 Devenez un acteur de la transparence alimentaire
 
-product_view_summary_fr.png
-Wikipedia pour la nourriture
-Wikipedia pour la cosmétique
-Wikipedia pour l'alimentation des animaux de compagnie
-Wikipedia des produits
+Wikipédia pour la nourriture
 
-product_view_ingredients_fr.png
+Wikipédia pour la cosmétique
+
+Wikipédia pour l'alimentation des animaux de compagnie
+
+Wikipédia des produits
+
 Ingrédients
 
-menu_fr.png
 Puissant
 
-product_view_nutrition_table_fr.png
-Composition nutritionnelle
+Informations nutritionnelles
+
+======================
+Captures d'écran V3
+======================
+
+Choisissez les produits qui sont bons pour vous et pour la planète!
+
+✔ Scan ultra-rapide
+
+✔ Un supermarché complet dans votre poche
+
+Qualité nutritionnelle
+
+Aliments ultra-transformés
+
+Impact carbone
+
+Comparez facilement avant d'acheter
+
+Créer des listes de courses, des listes de consommation…
+
+Recherchez et comparez plus de 750 000 produits.
+
+
+
+Historique de scan illimité et entièrement privé
+
+Faites glisser pour voir plus de détails
+
+Définir des alertes d'allergènes
+
+Rejoignez notre mouvement mondial pour la transparence alimentaire
+
+fr.openfoodfacts.org/contribuer

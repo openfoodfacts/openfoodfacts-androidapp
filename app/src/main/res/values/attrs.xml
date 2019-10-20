@@ -25,5 +25,9 @@
         <attr name="drawableTopCompat" />
         <attr name="drawableBottomCompat" />
     </declare-styleable>
+    <declare-styleable name="CustomValidatingEditView">
+        <attr name="parentTextInputLayout" format="reference"/>
+        <attr name="attachedSpinner" format="reference"/>
+    </declare-styleable>
 
 </resources>

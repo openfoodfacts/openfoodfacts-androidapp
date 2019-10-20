@@ -1,35 +1,76 @@
 Digitalize produtos alimentares para obter dados sobre ingredientes, aditivos e informação nutricional.
 
-A aplicação permite visualizar os 547.000 produtos (incluindo 175.000 nos EUA) já contidos no banco de dados aberto e gratuito dos Open Food Facts e de adicionar fotos e dados de produtos faltantes.
+▶ Encontre e compare mais de 800.000 produtos
 
-Para descobrir o projeto Open Food Facts, visite https://pt.openfoodfacts.org
+A aplicação permite visualizar os 800.000 produtos (incluindo 175.000 nos EUA) já contidos no banco de dados aberto e gratuito dos Open Food Facts e de adicionar fotos e dados de produtos novos.
 
 
-***Contribua para a Transparência Alimentar***
+Para descobrir o projeto Open Food Facts realizado por voluntários, visite https://world-pt.openfoodfacts.org
 
+▶ Escolha os produtos que são bons para você
+- A classificação Nutri-Score, de "A" a "E" >> Qualidade nutricional
+- O grupo NOVA, de "1" a "4" >> Encontre o alimento ultraprocessado
+- Você pode facilmente comparar quantos produtos quiser, lado a lado simplesmente digitalizando-os. 
+
+▶ E bom para o planeta!
+- O impacto de carbono de sua comida
+- Tenha uma noção de quanto de sua quota diária de carbono está usando para alimentar
+- Com base nas pegadas calculadas para a França pela ADEME.
+- Junte-se a nós e ajude-nos a levar o Carbon Impact ao seu país!
+- Para exibir um Impacto de Carbono, um produto deve ter uma lista completa de ingredientes com % de carne ou peixe e uma quantidade
+
+
+▶ Contribuir para a transparência alimentar
 - Open Food Facts é um banco de dados de produtos alimentícios feito por todos, para todos.
 - Pode usá-lo para fazer melhores escolhas alimentares, e como são dados abertos, qualquer um pode reutilizá-lo para qualquer finalidade.
-- Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
-- Pode começar a contribuir hoje, adicionando um produto do seu armário de alimentos. 
+- Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras.
+- Você pode começar a contribuir hoje adicionando um produto de sua geladeira.
 
-*** Conheça os fatos ***
-- Open Food Facts ajuda a entender as letras miúdas dos rótulos dos produtos. Poderá encontrar (de acordo com as indicações presentes nos produtos):
+Criar listas
+Crie listas de compras, controle o que você comeu e compartilhe facilmente e exporte suas listas.
+
+▶ Obtenha os Factos
+- Open Food Facts ajuda a entender as letras miúdas dos rótulos dos produtos. Você será capaz de encontrar:
 - pegada de carbono (emissões de CO2) e embalagem (assim como instruções de reciclagem),
 - Nutriscore (escore nutricional), nutrientes, teor de gordura / gordura, ácidos graxos saturados, carboidratos, açúcares, fibras, proteínas e sal e sódio.
 - marcas, alérgenos, rótulos (bio, sem glúten, vegan, vegetariano, halal, kosher ...), informações de rastreabilidade (códigos de embalagem, origem dos ingredientes)
 - Em vinhos e cervejas encontrará o teor alcoólico.
 
-*** Funciona bem em qualquer condição ***
-- Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento.
-- A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
-- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
 
-*** Sua comida, seus dados ***
+▶ Baseado na ciência, ajudando a ciência!
+
+- Nós não inventamos coisas. Nós confiamos na ciência revisada por pares.
+- O Nutri-Score foi criado pela equipe francesa independente liderada pelo professor Hercberg.
+- Os grupos NOVA em processamento de alimentos foram projetados pela equipe internacional do professor Monteiro.
+- Você pode obter uma síntese dos níveis de exposição da EFSA em aditivos alimentares.
+- A comunidade Open Food Facts está colaborando com equipes de pesquisa em todo o planeta para melhorar a pesquisa nutricional que beneficia a todos.
+
+
+▶ Off-line Scan: digitalizar em qualquer condição! (brevemente)
+Digitalize à velocidade da luz (mesmo se você estiver num avião, submarino ou supermercado)
+
+- O planeta inteiro, no seu bolso!
+- Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento.
+- O aplicativo carrega apenas o estrito necessário para reduzir o consumo de dados e bateria.
+
+▶ Sua comida, seus dados
 - Seus dados são seus e nunca são enviados on-line
 - Pode usar o aplicativo anonimamente
 - Pode exportar seu histórico de digitalizações
 
+▶ Configurar alertas de alérgenos em produtos
+- Leite, glúten, ovos, soja, nozes, peixe, aipo, mostarda, dióxido de enxofre e sulfitos, amendoim, sementes de gergelim, crustáceos, moluscos ou alergia de tremoços?
+- Acelere suas compras fazendo uma triagem inicial de sua comida com o Open Food Facts.
+- Tenha cuidado para que as informações não sejam 100% precisas e a detecção não seja 100% precisa. Portanto, verifique sempre por si mesmo, com a embalagem.
+
+
+▶ Diga olá e / ou junte-se a nós!
+
+
 O Open Food Facts também está disponível na web em https://pt.openfoodfacts.org
+
+
 Perguntas, feedback: contact@openfoodfacts.org
+
 
 Para cosméticos pode instalar o Open Beauty Facts, para comida para animais Open Pet Food Facts, e para todos os outros produtos Open Products Facts.

@@ -12,8 +12,8 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fr.openpetfoodfacts.org/contributeur/</string>
     <string name="terms_url">https://fr.openproductsfacts.org/conditions-d-utilisation</string>
-    <string name="txtHomeOnline">Open Pet Food Facts est une base de données contenant plus de %1$d produits alimentaires pour animaux (plus ceux que vous contribuerez) à 2, 4 et 6 pattes avec les ingrédients, les allergènes et toutes les informations disponibles sur les étiquettes des produits alimentaires pour nos amis à 2, 4 et 6 pattes. Woof. Woof.</string>
-    <string name="txtHome">Open Pet Food Facts est une base de données de produits alimentaires pour animaux de compagnie à 2, 4 et 6 pattes avec les ingrédients, les allergènes et toutes les informations disponibles sur les étiquettes des produits alimentaires pour nos amis à 2, 4 et 6 pattes. Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Food Facts est une base de données contenant plus de %1$d de nourriture pour animaux (plus ceux que vous contribuerez) avec des ingrédients, allergènes, nutritions et toutes les informations que l\'on peut trouver sur les étiquettes des produits.</string>
+    <string name="txtHome">Open Pet Food Facts est une base de données de produits alimentaires pour animaux de compagnie avec ingrédients, informations nutritionnelles… Woof. Trame.</string>
     <string name="slide_1_title">Contribuez à la transparence de l\'alimentation animale</string>
     <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez un acteur de la transparence de l\'alimentation animale</string>
     <string name="slide_2_title">Obtenez les faits</string>
@@ -33,7 +33,7 @@
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Pet Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
     <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez à vérifier également par vous-même ! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="tagline">free pet food products database</string>
+    <string name="tagline">l\'information alimentaire pour animaux ouverte</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Pet Food Facts. Pouvez-vous l\'ajouter ?</string>
     <string name="currently_on_version">Actuellement sur Open Pet Food Facts</string>
     <string name="category_game_btn">Aidez à classer les produits</string>
