@@ -5,7 +5,7 @@
         <item quantity="other"> អ្នកមានផលិតផលក្រៅបណ្ដាញ %d ដែលកំពុងរង់ចាំដើម្បីដាក់ចូលទៅក្នុង ការពង្រីកការពិតនៃអាហារ</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="other">មួយ​វិនាទី​មុន​</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="other">\"1 នាទីកន្លងទៅ
@@ -22,7 +22,7 @@
     <string name="contribute">របៀបក្នុងការបញ្ចូល</string>
     <string name="action_find">ស្វែងរក</string>
     <string name="product_incomplete_message">ផលិតផលនេះមិនបានបញ្ចប់ទេ។ ជាលទ្ធផលយើងមិនអាចធ្វើការត្រួតពិនិត្យអាឡែរហ្សីបានទេ។</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">ផលិត​ផល​នេះ​មាន​ផ្ទុក​នូវ​</string>
     <string name="no_offline_data">អ្នកធ្វើបានរួចរាល់ហើយ</string>
     <string name="first_offline">ផលិតផលដែលបានបន្ថែមក្រៅបណ្តាញនឹងបង្ហាញនៅទីនេះ</string>
     <!-- Image Upload -->
@@ -32,12 +32,12 @@
         <item>គ្រឿងផ្សំ</item>
         <item>អាហាររូបត្ថម្ភ</item>
         <item>តារាងអាហារូបត្ថម្ភ</item>
-        <item>Environment</item>
+        <item>បរិស្ថាន​</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>រូបភាព​របស់​ផលិត​ផល​</item>
+        <item>ការ​វិភាគ​ទៅ​លើ​គ្រឿង​ទេស​</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -59,19 +59,19 @@
     <string-array name="nutrients_array">
         <item>អាស៊ីតអាល់ហ្វាលីនូលេនិច/អាស៊ីតអាល់ហ្វាលីនូលេនិច(18:3 n-3)</item>
         <item>អាស៊ីតអាចឈីឌិច (20: 0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>អាស៊ីត​អៀរ៉ាគី​ដី​ណិច​</item>
+        <item>មេ​ហេណិច​អាស៊ីត​</item>
         <item>Bicarbonate</item>
         <item>Biotin</item>
         <item>Butyric acid (4:0)</item>
-        <item>Caffeine</item>
-        <item>Calcium</item>
+        <item>កាហ្វេអ៊ីន​</item>
+        <item>កាល់ស្សូម​</item>
         <item>អាស៊ីតខាបព្រីក(10: 0)</item>
         <item>អាស៊ីតខាបព្រីក(6: 0)</item>
         <item>អាស៊ីតខាបព្រីលិក(8: 0)</item>
         <item>Casein</item>
         <item>Cerotic acid (26:0)</item>
-        <item>Chloride</item>
+        <item>ក្លររ៉ាយ​</item>
         <item>Cholesterol</item>
         <item>Chromium</item>
         <item>Copper</item>
