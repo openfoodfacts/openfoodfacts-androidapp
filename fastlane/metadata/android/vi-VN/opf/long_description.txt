@@ -22,7 +22,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
-- Your personal data is yours, and is never sent online
+- Đảm bảo dữ sự an toàn của dữ liệu cá nhân của bạn
 - You can use the app anonymously
 - You can export your scan history
 
