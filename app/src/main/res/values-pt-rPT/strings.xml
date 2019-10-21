@@ -222,7 +222,7 @@
     <string name="info_download_data_connection">É necessário descarregar alguns dados para activar esta funcionalidade. Por favor, active a ligação à Internet.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">A palavra-passe deve conter pelo menos 6 caracteres.</string>
-    <string name="user">usuário</string>
+    <string name="user">utilizador</string>
     <string name="error_field_required">Este campo é necessário.</string>
     <string name="action_preferences">Configurações</string>
     <string name="prefs_scan_startup">Digitalizar ao iniciar</string>
@@ -486,7 +486,7 @@
     <string name="last_editor_history">Última edição da página do produto em %1$s at %2$s CEST por </string>
     <string name="other_editors">Página do produto também editada por </string>
     <string name="contribution_tab">Contribuições</string>
-    <string name="contribution_tab_summary">Mostrar guia de contribuições do usuário com produtos</string>
+    <string name="contribution_tab_summary">Mostrar guia de contribuições do utilizador com produtos</string>
     <string name="contribution_tab_title">Mostrar guia de contribuição</string>
     <string name="txtDialogsTitle">Informação</string>
     <string name="preference_show_all_product_photos_title">Mostrar todas as fotos do produto</string>
