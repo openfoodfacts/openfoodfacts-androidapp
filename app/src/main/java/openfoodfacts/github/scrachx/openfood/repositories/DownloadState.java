@@ -1,20 +1,23 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
-public class DownloadState {
+/**
+ * Contains information about taxonomy download state from settings.
+ */
+class DownloadState {
 
     private final boolean downloadActivated;
-    private final long lastModifiedDateOnServer;
+    private final long lastModifiedDateOnSettings;
 
-    public DownloadState(boolean downloadActivated, long lastModifiedDateOnServer) {
+    DownloadState(boolean downloadActivated, long lastModifiedDateOnSettings) {
         this.downloadActivated = downloadActivated;
-        this.lastModifiedDateOnServer = lastModifiedDateOnServer;
+        this.lastModifiedDateOnSettings = lastModifiedDateOnSettings;
     }
 
-    public boolean isDownloadActivated() {
+    boolean isDownloadActivated() {
         return downloadActivated;
     }
 
-    public long getLastModifiedDateOnServer() {
-        return lastModifiedDateOnServer;
+    long getLastModifiedDateOnSettings() {
+        return lastModifiedDateOnSettings;
     }
 }

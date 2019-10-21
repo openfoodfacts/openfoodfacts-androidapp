@@ -2,59 +2,60 @@ package openfoodfacts.github.scrachx.openfood.repositories;
 
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
 
 import java.util.List;
 
 public enum Taxonomy {
-    LABEL("data/taxonomies/labels.json") {
+    LABEL(ProductApiService.LABELS_JSON) {
         @Override
         public Single<List<Label>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadLabels(lastModifiedDate);
         }
     },
-    COUNTRY("data/taxonomies/countries.json") {
+    COUNTRY(ProductApiService.COUNTRIES_JSON) {
         @Override
         public Single<List<Country>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadCountries(lastModifiedDate);
         }
     },
-    CATEGORY("data/taxonomies/categories.json") {
+    CATEGORY(ProductApiService.CATEGORIES_JSON) {
         @Override
         public Single<List<Category>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadCategories(lastModifiedDate);
         }
     },
-    ADDITIVE("data/taxonomies/additives.json") {
+    ADDITIVE(ProductApiService.ADDITIVES_JSON) {
         @Override
         public Single<List<Additive>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadAdditives(lastModifiedDate);
         }
     },
-    INGREDIENT("data/taxonomies/ingredients.json") {
+    INGREDIENT(ProductApiService.INGREDIENTS_JSON) {
         @Override
         public Single<List<Ingredient>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadIngredients(lastModifiedDate);
         }
     },
-    ALLERGEN("data/taxonomies/allergens.json") {
+    ALLERGEN(ProductApiService.ALLERGENS_JSON) {
         @Override
         public Single<List<Allergen>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadAllergens(lastModifiedDate);
         }
     },
-    ANALYSIS_TAGS("data/taxonomies/ingredients_analysis.json") {
+    ANALYSIS_TAGS(ProductApiService.ANALYSIS_TAG_JSON) {
         @Override
         public Single<List<AnalysisTag>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadAnalysisTags(lastModifiedDate);
         }
     },
-    ANALYSIS_TAG_CONFIG("files/app/ingredients-analysis.json") {
+    ANALYSIS_TAG_CONFIG(ProductApiService.ANALYSIS_TAG_CONFIG_JSON) {
         @Override
         public Single<List<AnalysisTagConfig>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadAnalysisTagConfigs(lastModifiedDate);
         }
     };
-    private final String jsonUrl;
+    public final String jsonUrl;
 
     Taxonomy(String jsonName) {
         this.jsonUrl = jsonName;

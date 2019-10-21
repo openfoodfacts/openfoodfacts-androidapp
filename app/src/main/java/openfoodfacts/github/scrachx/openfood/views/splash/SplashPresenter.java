@@ -4,12 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
-import org.apache.commons.lang.ArrayUtils;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -21,7 +19,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
     private final Long REFRESH_PERIOD = 6 * 30 * 24 * 60 * 60 * 1000L;
     private ISplashPresenter.View view;
     private SharedPreferences settings;
-    Context context;
+    private Context context;
 
     public SplashPresenter(SharedPreferences settings, ISplashPresenter.View view, Context context) {
         this.view = view;
@@ -34,7 +32,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
     }
 
     private void activateDownload(Taxonomy taxonomy, String... flavors) {
-        if (ArrayUtils.contains(flavors, BuildConfig.FLAVOR)) {
+        if (OFFApplication.isFlavor(flavors)) {
             settings.edit().putBoolean(taxonomy.getDownloadActivatePreferencesId(), true).apply();
         }
     }
@@ -42,12 +40,12 @@ public class SplashPresenter implements ISplashPresenter.Actions {
     @Override
     public void refreshData() {
         activateDownload(Taxonomy.CATEGORY);
-        activateDownload(Taxonomy.ADDITIVE,"off","obf");
-        activateDownload(Taxonomy.COUNTRY,"off","obf");
-        activateDownload(Taxonomy.LABEL,"off","obf");
-        activateDownload(Taxonomy.ALLERGEN,"off");
-        activateDownload(Taxonomy.ANALYSIS_TAGS,"off");
-        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG,"off");
+        activateDownload(Taxonomy.ADDITIVE,OFFApplication.OFF, OFFApplication.OBF);
+        activateDownload(Taxonomy.COUNTRY,OFFApplication.OFF, OFFApplication.OBF);
+        activateDownload(Taxonomy.LABEL,OFFApplication.OFF, OFFApplication.OBF);
+        activateDownload(Taxonomy.ALLERGEN,OFFApplication.OFF);
+        activateDownload(Taxonomy.ANALYSIS_TAGS,OFFApplication.OFF);
+        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG,OFFApplication.OFF);
 
         //first run ever off this application, whatever the version
         boolean firstRun = settings.getBoolean("firstRun", true);

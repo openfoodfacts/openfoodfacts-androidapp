@@ -20,22 +20,31 @@ import retrofit2.http.GET;
  * This calls should be used as rare as possible, because they load Big Data
  */
 public interface ProductApiService {
-    @GET("data/taxonomies/labels.json")
+    String LABELS_JSON = "data/taxonomies/labels.json";
+    String COUNTRIES_JSON = "data/taxonomies/countries.json";
+    String CATEGORIES_JSON = "data/taxonomies/categories.json";
+    String ADDITIVES_JSON = "data/taxonomies/additives.json";
+    String INGREDIENTS_JSON = "data/taxonomies/ingredients.json";
+    String ALLERGENS_JSON = "data/taxonomies/allergens.json";
+    String ANALYSIS_TAG_JSON = "data/taxonomies/ingredients_analysis.json";
+    String ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json";
+
+    @GET(LABELS_JSON)
     Single<LabelsWrapper> getLabels();
 
-    @GET("data/taxonomies/allergens.json")
+    @GET(ALLERGENS_JSON)
     Single<AllergensWrapper> getAllergens();
 
-    @GET("data/taxonomies/ingredients.json")
+    @GET(INGREDIENTS_JSON)
     Single<IngredientsWrapper> getIngredients();
 
-    @GET("data/taxonomies/additives.json")
+    @GET(ADDITIVES_JSON)
     Single<AdditivesWrapper> getAdditives();
 
-    @GET("data/taxonomies/countries.json")
+    @GET(COUNTRIES_JSON)
     Single<CountriesWrapper> getCountries();
 
-    @GET("data/taxonomies/categories.json")
+    @GET(CATEGORIES_JSON)
     Single<CategoriesWrapper> getCategories();
 
     @GET("data/taxonomies/vitamins.json")
@@ -62,9 +71,9 @@ public interface ProductApiService {
     @GET("data/taxonomies/states.json")
     Single<CategoriesWrapper> getStates();
 
-    @GET("data/taxonomies/ingredients_analysis.json")
+    @GET(ANALYSIS_TAG_JSON)
     Single<AnalysisTagsWrapper> getAnalysisTags();
 
-    @GET("files/app/ingredients-analysis.json")
+    @GET(ANALYSIS_TAG_CONFIG_JSON)
     Single<AnalysisTagGonfigsWrapper> getAnalysisTagConfigs();
 }

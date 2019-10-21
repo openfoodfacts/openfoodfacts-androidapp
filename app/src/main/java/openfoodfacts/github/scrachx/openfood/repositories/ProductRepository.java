@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -100,7 +101,7 @@ public class ProductRepository implements IProductRepository {
      * Load labels from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     If checkUpdate is true (or local database is empty) then load it from the server,
      *     else from the local database.
      * @return The list of Labels.
      */
@@ -112,20 +113,20 @@ public class ProductRepository implements IProductRepository {
     public Single<List<Label>> loadLabels(long lastModifiedDate) {
         return productApi.getLabels()
             .map(LabelsWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload(Taxonomy.LABEL, lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.LABEL, lastModifiedDate));
     }
 
     /**
      * Load tags from the server or local database
      *
      * @param refresh defines the source of data.
-     *     If refresh is true (or local database is empty) than load it from the server,
+     *     If refresh is true (or local database is empty) then load it from the server,
      *     else from the local database.
      * @return The list of Tags.
      */
     @Override
     public Single<List<Tag>> getTags(boolean refresh) {
-        if (refresh || tableIsEmpty(labelDao)) {
+        if (refresh || tableIsEmpty(tagDao)) {
             return openFooApi.getTags()
                 .map(TagsWrapper::getTags);
         } else {
@@ -137,7 +138,7 @@ public class ProductRepository implements IProductRepository {
      * Load allergens from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     If checkUpdate is true (or local database is empty) then load it from the server,
      *     else from the local database.
      * @return The allergens in the product.
      */
@@ -147,6 +148,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     private <T> Single<List<T>> getTaxonomy(Taxonomy taxonomy, boolean checkUpdate, AbstractDao dao) {
+        final Boolean aBoolean = tableIsEmpty(analysisTagDao);
         //First check if this taxonomy is to be loaded.
         DownloadState downloadState = getLastDownloadFromSettings(taxonomy);
         if (downloadState.isDownloadActivated()) {
@@ -159,9 +161,9 @@ public class ProductRepository implements IProductRepository {
                 }
             } else if (checkUpdate) {
                 //It is ask to check for update - Test if file on server is more recent than last download.
-                long lastModifiedDate = getLastModifiedDateFromServer(taxonomy);
-                if (lastModifiedDate > downloadState.getLastModifiedDateOnServer()) {
-                    return taxonomy.load(this, lastModifiedDate);
+                long lastModifiedDateFromServer = getLastModifiedDateFromServer(taxonomy);
+                if (lastModifiedDateFromServer > downloadState.getLastModifiedDateOnSettings()) {
+                    return taxonomy.load(this, lastModifiedDateFromServer);
                 }
             }
         }
@@ -172,14 +174,14 @@ public class ProductRepository implements IProductRepository {
     public Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
         return productApi.getAllergens()
             .map(AllergensWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload(Taxonomy.ALLERGEN, lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.ALLERGEN, lastModifiedDate));
     }
 
     /**
      * Load countries from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     If checkUpdate is true (or local database is empty) then load it from the server,
      *     else from the local database.
      * @return The list of countries.
      */
@@ -191,14 +193,14 @@ public class ProductRepository implements IProductRepository {
     public Single<List<Country>> loadCountries(Long lastModifiedDate) {
         return productApi.getCountries()
             .map(CountriesWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload(Taxonomy.COUNTRY, lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.COUNTRY, lastModifiedDate));
     }
 
     /**
      * Load categories from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     If checkUpdate is true (or local database is empty) then load it from the server,
      *     else from the local database.
      * @return The list of categories.
      */
@@ -210,7 +212,7 @@ public class ProductRepository implements IProductRepository {
     public Single<List<Category>> loadCategories(Long lastModifiedDate) {
         return productApi.getCategories()
             .map(CategoriesWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload(Taxonomy.CATEGORY, lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.CATEGORY, lastModifiedDate));
     }
 
     /**
@@ -227,7 +229,7 @@ public class ProductRepository implements IProductRepository {
      * Load additives from the server or local database
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     If checkUpdate is true (or local database is empty) then load it from the server,
      *     else from the local database.
      * @return The list of additives.
      */
@@ -239,7 +241,7 @@ public class ProductRepository implements IProductRepository {
     public Single<List<Additive>> loadAdditives(long lastModifiedDate) {
         return productApi.getAdditives()
             .map(AdditivesWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload(Taxonomy.ADDITIVE, lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.ADDITIVE, lastModifiedDate));
     }
 
     /**
@@ -251,7 +253,7 @@ public class ProductRepository implements IProductRepository {
      * else return the content from the local database.
      *
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) than load it from the server,
+     *     If checkUpdate is true (or local database is empty) then load it from the server,
      * @return The ingredients in the product.
      */
     @Override
@@ -262,7 +264,7 @@ public class ProductRepository implements IProductRepository {
     public Single<List<Ingredient>> loadIngredients(long lastModifiedDate) {
         return productApi.getIngredients()
             .map(IngredientsWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload(Taxonomy.INGREDIENT, lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.INGREDIENT, lastModifiedDate));
     }
 
     /**
@@ -272,7 +274,7 @@ public class ProductRepository implements IProductRepository {
      * @return lastModifierDate     The timestamp of the last changes date of the taxonomy.json on OF server
      *     Or TAXONOMY_NO_INTERNET if there is no connexion.
      */
-    public long getLastModifiedDateFromServer(Taxonomy taxonomy) {
+    private long getLastModifiedDateFromServer(Taxonomy taxonomy) {
         long lastModifiedDate = 0;
         try {
             URL url = new URL(BuildConfig.OFWEBSITE + taxonomy.getJsonUrl());
@@ -289,28 +291,6 @@ public class ProductRepository implements IProductRepository {
         return lastModifiedDate;
     }
 
-    /**
-     * This function test if a taxonomy needs to be uploaded
-     *
-     * @param taxonomy The name of the taxonomy to be tested
-     *     (allergens, additives, categories, countries, ingredients, labels, tags)
-     * @return TAXONOMY_NO_INTERNET (-1)        no internet connexion.
-     *     TAXONOMY_NOT_TO_BE_LOADED (0)    taxonomy is not marked to be load.
-     *     TAXONOMY_IS_UP_TO_DATE (2)       taxonomy is up to date.
-     *     other :                          date of the new taxonomy on the servers => to be updated
-     *     Note that TAXONOMY_TO_BE_LOADED (1) is just use to ask taxonomy to be loaded and never returned by this method.
-     */
-    public DownloadState checkUpdateSinceLastDownload(Taxonomy taxonomy) {
-        Log.i("INFO_URL", "CheckUpdateSinceLastDownload for : " + taxonomy + " begin.");
-        DownloadState lastDownload = getLastDownloadFromSettings(taxonomy);
-        if (lastDownload.isDownloadActivated()) {
-            long lastModifiedDate = getLastModifiedDateFromServer(taxonomy);
-            if (lastModifiedDate > lastDownload.getLastModifiedDateOnServer()) {
-                return new DownloadState(true, lastModifiedDate);
-            }
-        }
-        return new DownloadState(false, 0);
-    }
 
     /**
      * This function set lastDownloadtaxonomy setting
@@ -318,7 +298,7 @@ public class ProductRepository implements IProductRepository {
      * @param taxonomy Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
      * @param lastDownload Date of last update on Long format
      */
-    private void updateLastDownload(Taxonomy taxonomy, long lastDownload) {
+    private void updateLastDownloadDateInSettings(Taxonomy taxonomy, long lastDownload) {
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
         mSettings.edit().putLong(taxonomy.getLastDownloadTimeStampPreferenceId(), lastDownload).apply();
         Log.i(TAG, "Set lastDownload of " + taxonomy + " to " + lastDownload);
@@ -328,7 +308,7 @@ public class ProductRepository implements IProductRepository {
      * This function get lastDownloadtaxonomy setting
      *
      * @param taxonomy Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
-     * @return Actual value of lastDownloadtaxonomy in the setting.
+     * @return Actual value of DownloadState in the setting.
      */
     private DownloadState getLastDownloadFromSettings(Taxonomy taxonomy) {
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
@@ -738,7 +718,7 @@ public class ProductRepository implements IProductRepository {
                 return allergenNames;
             }
 
-            return new ArrayList<>();
+            return Collections.emptyList();
         });
     }
 
@@ -846,7 +826,7 @@ public class ProductRepository implements IProductRepository {
      * Load analysis tags from the server or local database
      *
      * @param refresh defines the source of data.
-     *     If refresh is true (or local database is empty) than load it from the server,
+     *     If refresh is true (or local database is empty) then load it from the server,
      *     else from the local database.
      * @return The analysis tags in the product.
      */
@@ -858,7 +838,7 @@ public class ProductRepository implements IProductRepository {
     Single<List<AnalysisTag>> loadAnalysisTags(long lastModifiedDate) {
         return productApi.getAnalysisTags()
             .map(AnalysisTagsWrapper::map)
-            .doOnSuccess(__ -> updateLastDownload(Taxonomy.ANALYSIS_TAGS, lastModifiedDate));
+            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAGS, lastModifiedDate));
     }
 
     /**
@@ -894,7 +874,7 @@ public class ProductRepository implements IProductRepository {
 
     public Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {
         return productApi.getAnalysisTagConfigs()
-            .map(AnalysisTagGonfigsWrapper::map).doOnSuccess(__ -> updateLastDownload(Taxonomy.ANALYSIS_TAGS, lastModifiedDate));
+            .map(AnalysisTagGonfigsWrapper::map).doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAGS, lastModifiedDate));
     }
 
     @Override
