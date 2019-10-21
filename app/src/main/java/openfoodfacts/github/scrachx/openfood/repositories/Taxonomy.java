@@ -54,11 +54,17 @@ public enum Taxonomy {
         public Single<List<AnalysisTagConfig>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadAnalysisTagConfigs(lastModifiedDate);
         }
+    },
+    TAGS(ProductApiService.TAGS_JSON) {
+        @Override
+        public Single<List<Tag>> load(ProductRepository repository, long lastModifiedDate) {
+            return repository.loadTags(lastModifiedDate);
+        }
     };
     public final String jsonUrl;
 
-    Taxonomy(String jsonName) {
-        this.jsonUrl = jsonName;
+    Taxonomy(String jsonUrl) {
+        this.jsonUrl = jsonUrl;
     }
 
     public String getJsonUrl() {

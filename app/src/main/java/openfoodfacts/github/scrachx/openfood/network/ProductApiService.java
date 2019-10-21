@@ -5,14 +5,7 @@ package openfoodfacts.github.scrachx.openfood.network;
  */
 
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.*;
 import retrofit2.http.GET;
 
 /**
@@ -28,6 +21,7 @@ public interface ProductApiService {
     String ALLERGENS_JSON = "data/taxonomies/allergens.json";
     String ANALYSIS_TAG_JSON = "data/taxonomies/ingredients_analysis.json";
     String ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json";
+    String TAGS_JSON = "data/taxonomies/packager-codes.json";
 
     @GET(LABELS_JSON)
     Single<LabelsWrapper> getLabels();
@@ -46,6 +40,9 @@ public interface ProductApiService {
 
     @GET(CATEGORIES_JSON)
     Single<CategoriesWrapper> getCategories();
+
+    @GET(TAGS_JSON)
+    Single<TagsWrapper> getTags();
 
     @GET("data/taxonomies/vitamins.json")
     Single<CategoriesWrapper> getVitamins();

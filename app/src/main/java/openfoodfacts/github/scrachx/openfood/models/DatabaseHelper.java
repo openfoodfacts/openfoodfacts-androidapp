@@ -135,13 +135,11 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 YourListedProductDao.createTable(db, true);
                 break;
             }
-            case 12: {
+            //12 -13 - 14 - issue with merge and bad numerotation
+            case 15: {
                 IngredientDao.createTable(db, true);
                 IngredientNameDao.createTable(db, true);
                 IngredientsRelationDao.createTable(db, true);
-                break;
-            }
-            case 13: {
                 AnalysisTagNameDao.createTable(db, true);
                 AnalysisTagDao.createTable(db, true);
                 AnalysisTagConfigDao.createTable(db, true);

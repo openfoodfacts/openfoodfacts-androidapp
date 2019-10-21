@@ -32,7 +32,7 @@ public class ProductRepository implements IProductRepository {
     private static final String TAG = ProductRepository.class.getSimpleName();
     private static IProductRepository instance;
     private ProductApiService productApi;
-    private OpenFoodAPIService openFooApi;
+    private OpenFoodAPIService openFoodApi;
     private RobotoffAPIService robotoffApi;
     private Database db;
     private LabelDao labelDao;
@@ -73,7 +73,7 @@ public class ProductRepository implements IProductRepository {
      */
     private ProductRepository() {
         productApi = CommonApiManager.getInstance().getProductApiService();
-        openFooApi = CommonApiManager.getInstance().getOpenFoodApiService();
+        openFoodApi = CommonApiManager.getInstance().getOpenFoodApiService();
         robotoffApi = CommonApiManager.getInstance().getRobotoffApiService();
 
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
@@ -100,55 +100,63 @@ public class ProductRepository implements IProductRepository {
     /**
      * Load labels from the server or local database
      *
-     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) then load it from the server,
-     *     else from the local database.
      * @return The list of Labels.
      */
-    @Override
-    public Single<List<Label>> getLabels(boolean checkUpdate) {
-        return getTaxonomy(Taxonomy.LABEL, checkUpdate, labelDao);
+    public Single<List<Label>> reloadLabelsFromServer() {
+        return getTaxonomy(Taxonomy.LABEL, true, false, labelDao);
     }
 
-    public Single<List<Label>> loadLabels(long lastModifiedDate) {
+    Single<List<Label>> loadLabels(long lastModifiedDate) {
         return productApi.getLabels()
             .map(LabelsWrapper::map)
-            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.LABEL, lastModifiedDate));
+            .doOnSuccess(labels -> {
+                saveLabels(labels);
+                updateLastDownloadDateInSettings(Taxonomy.LABEL, lastModifiedDate);
+            });
     }
 
     /**
      * Load tags from the server or local database
      *
-     * @param refresh defines the source of data.
-     *     If refresh is true (or local database is empty) then load it from the server,
-     *     else from the local database.
      * @return The list of Tags.
      */
-    @Override
-    public Single<List<Tag>> getTags(boolean refresh) {
-        if (refresh || tableIsEmpty(tagDao)) {
-            return openFooApi.getTags()
-                .map(TagsWrapper::getTags);
-        } else {
-            return Single.fromCallable(() -> tagDao.loadAll());
-        }
+    public Single<List<Tag>> reloadTagsFromServer() {
+        return getTaxonomy(Taxonomy.TAGS, true, false, tagDao);
+    }
+
+    Single<List<Tag>> loadTags(long lastModifiedDate) {
+        return productApi.getTags()
+            .map(TagsWrapper::getTags)
+            .doOnSuccess(tags -> {
+                saveTags(tags);
+                updateLastDownloadDateInSettings(Taxonomy.TAGS, lastModifiedDate);
+            });
     }
 
     /**
      * Load allergens from the server or local database
      *
-     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) then load it from the server,
-     *     else from the local database.
      * @return The allergens in the product.
      */
-    @Override
-    public Single<List<Allergen>> getAllergens(boolean checkUpdate) {
-        return getTaxonomy(Taxonomy.ALLERGEN, checkUpdate, allergenDao);
+    public Single<List<Allergen>> reloadAllergensFromServer() {
+        return getTaxonomy(Taxonomy.ALLERGEN, true, false, allergenDao);
     }
 
-    private <T> Single<List<T>> getTaxonomy(Taxonomy taxonomy, boolean checkUpdate, AbstractDao dao) {
-        final Boolean aBoolean = tableIsEmpty(analysisTagDao);
+    @Override
+    public Single<List<Allergen>> getAllergens() {
+        return getTaxonomy(Taxonomy.ALLERGEN, false, true, allergenDao);
+    }
+
+    /**
+     * @param taxonomy enum defining taxonomy to be downloaded
+     * @param checkUpdate checkUpdate defines if the source of data must be refresh from server if it has been update there.
+     *     *     *     If checkUpdate is true (or local database is empty) then load it from the server,
+     *     *     *     else from the local database.
+     * @param loadFromLocalDatabase if true the values will be loaded from local database if no update to perform from server
+     * @param dao used to check if locale data is empty
+     * @param <T> type of taxonomy
+     */
+    private <T> Single<List<T>> getTaxonomy(Taxonomy taxonomy, boolean checkUpdate, boolean loadFromLocalDatabase, AbstractDao dao) {
         //First check if this taxonomy is to be loaded.
         DownloadState downloadState = getLastDownloadFromSettings(taxonomy);
         if (downloadState.isDownloadActivated()) {
@@ -162,57 +170,66 @@ public class ProductRepository implements IProductRepository {
             } else if (checkUpdate) {
                 //It is ask to check for update - Test if file on server is more recent than last download.
                 long lastModifiedDateFromServer = getLastModifiedDateFromServer(taxonomy);
-                if (lastModifiedDateFromServer > downloadState.getLastModifiedDateOnSettings()) {
+                if (lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > downloadState.getLastModifiedDateOnSettings()) {
                     return taxonomy.load(this, lastModifiedDateFromServer);
                 }
             }
         }
-        //If we are here then just get the information from the local database
-        return Single.fromCallable(() -> dao.loadAll());
+        if (loadFromLocalDatabase) {
+            //If we are here then just get the information from the local database
+            return Single.fromCallable(() -> dao.loadAll());
+        }
+        return Single.fromCallable(() -> Collections.emptyList());
     }
 
-    public Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
+    Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
         return productApi.getAllergens()
             .map(AllergensWrapper::map)
-            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.ALLERGEN, lastModifiedDate));
+            .doOnSuccess(allergens -> {
+                saveAllergens(allergens);
+                updateLastDownloadDateInSettings(Taxonomy.ALLERGEN, lastModifiedDate);
+            });
     }
 
     /**
      * Load countries from the server or local database
      *
-     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) then load it from the server,
-     *     else from the local database.
      * @return The list of countries.
      */
-    @Override
-    public Single<List<Country>> getCountries(boolean checkUpdate) {
-        return getTaxonomy(Taxonomy.COUNTRY, checkUpdate, countryDao);
+    public Single<List<Country>> relodCountriesFromServer() {
+        return getTaxonomy(Taxonomy.COUNTRY, true, false, countryDao);
     }
 
-    public Single<List<Country>> loadCountries(Long lastModifiedDate) {
+    Single<List<Country>> loadCountries(Long lastModifiedDate) {
         return productApi.getCountries()
             .map(CountriesWrapper::map)
-            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.COUNTRY, lastModifiedDate));
+            .doOnSuccess(countries -> {
+                saveCountries(countries);
+                updateLastDownloadDateInSettings(Taxonomy.COUNTRY, lastModifiedDate);
+            });
     }
 
     /**
      * Load categories from the server or local database
      *
-     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) then load it from the server,
-     *     else from the local database.
      * @return The list of categories.
      */
-    @Override
-    public Single<List<Category>> getCategories(boolean checkUpdate) {
-        return getTaxonomy(Taxonomy.CATEGORY, checkUpdate, categoryDao);
+    public Single<List<Category>> reloadCategoriesFromServer() {
+        return getTaxonomy(Taxonomy.CATEGORY, true, false, categoryDao);
     }
 
-    public Single<List<Category>> loadCategories(Long lastModifiedDate) {
+    @Override
+    public Single<List<Category>> getCategories() {
+        return getTaxonomy(Taxonomy.CATEGORY, false, true, categoryDao);
+    }
+
+    Single<List<Category>> loadCategories(Long lastModifiedDate) {
         return productApi.getCategories()
             .map(CategoriesWrapper::map)
-            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.CATEGORY, lastModifiedDate));
+            .doOnSuccess(categories -> {
+                saveCategories(categories);
+                updateLastDownloadDateInSettings(Taxonomy.CATEGORY, lastModifiedDate);
+            });
     }
 
     /**
@@ -228,20 +245,20 @@ public class ProductRepository implements IProductRepository {
     /**
      * Load additives from the server or local database
      *
-     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) then load it from the server,
-     *     else from the local database.
      * @return The list of additives.
      */
-    @Override
-    public Single<List<Additive>> getAdditives(boolean checkUpdate) {
-        return getTaxonomy(Taxonomy.ADDITIVE, checkUpdate, additiveDao);
+    public Single<List<Additive>> reloadAdditivesFromServer() {
+        return getTaxonomy(Taxonomy.ADDITIVE, true, false, additiveDao);
     }
 
-    public Single<List<Additive>> loadAdditives(long lastModifiedDate) {
+    Single<List<Additive>> loadAdditives(long lastModifiedDate) {
         return productApi.getAdditives()
             .map(AdditivesWrapper::map)
-            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.ADDITIVE, lastModifiedDate));
+            .doOnSuccess(additives ->
+            {
+                saveAdditives(additives);
+                updateLastDownloadDateInSettings(Taxonomy.ADDITIVE, lastModifiedDate);
+            });
     }
 
     /**
@@ -252,19 +269,19 @@ public class ProductRepository implements IProductRepository {
      * else if database is empty, download the file and fill database,
      * else return the content from the local database.
      *
-     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     If checkUpdate is true (or local database is empty) then load it from the server,
      * @return The ingredients in the product.
      */
-    @Override
-    public Single<List<Ingredient>> getIngredients(boolean checkUpdate) {
-        return getTaxonomy(Taxonomy.INGREDIENT, checkUpdate, ingredientDao);
+    public Single<List<Ingredient>> reloadIngredientsFromServer() {
+        return getTaxonomy(Taxonomy.INGREDIENT, true, false, ingredientDao);
     }
 
-    public Single<List<Ingredient>> loadIngredients(long lastModifiedDate) {
+    Single<List<Ingredient>> loadIngredients(long lastModifiedDate) {
         return productApi.getIngredients()
             .map(IngredientsWrapper::map)
-            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.INGREDIENT, lastModifiedDate));
+            .doOnSuccess(ingredients -> {
+                saveIngredients(ingredients);
+                updateLastDownloadDateInSettings(Taxonomy.INGREDIENT, lastModifiedDate);
+            });
     }
 
     /**
@@ -277,7 +294,11 @@ public class ProductRepository implements IProductRepository {
     private long getLastModifiedDateFromServer(Taxonomy taxonomy) {
         long lastModifiedDate = 0;
         try {
-            URL url = new URL(BuildConfig.OFWEBSITE + taxonomy.getJsonUrl());
+            String baseUrl = BuildConfig.OFWEBSITE;
+            if (!baseUrl.endsWith("/")) {
+                baseUrl = baseUrl + "/";
+            }
+            URL url = new URL(baseUrl + taxonomy.getJsonUrl());
             HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
             lastModifiedDate = httpCon.getLastModified();
             httpCon.disconnect();
@@ -290,7 +311,6 @@ public class ProductRepository implements IProductRepository {
         Log.i(getClass().getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
         return lastModifiedDate;
     }
-
 
     /**
      * This function set lastDownloadtaxonomy setting
@@ -324,8 +344,7 @@ public class ProductRepository implements IProductRepository {
      *     <p>
      *     Label and LabelName has One-To-Many relationship, therefore we need to save them separately.
      */
-    @Override
-    public void saveLabels(List<Label> labels) {
+    private void saveLabels(List<Label> labels) {
         db.beginTransaction();
         try {
             for (Label label : labels) {
@@ -348,7 +367,6 @@ public class ProductRepository implements IProductRepository {
      *
      * @param tags The list of tags to be saved.
      */
-    @Override
     public void saveTags(List<Tag> tags) {
         tagDao.insertOrReplaceInTx(tags);
     }
@@ -360,8 +378,7 @@ public class ProductRepository implements IProductRepository {
      *     <p>
      *     Allergen and AllergenName has One-To-Many relationship, therefore we need to save them separately.
      */
-    @Override
-    public void saveAllergens(List<Allergen> allergens) {
+    void saveAllergens(List<Allergen> allergens) {
         db.beginTransaction();
         try {
             for (Allergen allergen : allergens) {
@@ -386,8 +403,7 @@ public class ProductRepository implements IProductRepository {
      *     <p>
      *     Additive and AdditiveName has One-To-Many relationship, therefore we need to save them separately.
      */
-    @Override
-    public void saveAdditives(List<Additive> additives) {
+    private void saveAdditives(List<Additive> additives) {
         db.beginTransaction();
         try {
             for (Additive additive : additives) {
@@ -412,8 +428,7 @@ public class ProductRepository implements IProductRepository {
      *     <p>
      *     Country and CountryName has One-To-Many relationship, therefore we need to save them separately.
      */
-    @Override
-    public void saveCountries(List<Country> countries) {
+    private void saveCountries(List<Country> countries) {
         db.beginTransaction();
         try {
             for (Country country : countries) {
@@ -438,8 +453,7 @@ public class ProductRepository implements IProductRepository {
      *     <p>
      *     Category and CategoryName has One-To-Many relationship, therefore we need to save them separately.
      */
-    @Override
-    public void saveCategories(List<Category> categories) {
+    private void saveCategories(List<Category> categories) {
         db.beginTransaction();
         try {
             for (Category category : categories) {
@@ -479,8 +493,7 @@ public class ProductRepository implements IProductRepository {
      *     <p>
      *     Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      */
-    @Override
-    public void saveIngredients(List<Ingredient> ingredients) {
+    private void saveIngredients(List<Ingredient> ingredients) {
         db.beginTransaction();
         try {
             for (Ingredient ingredient : ingredients) {
@@ -783,13 +796,6 @@ public class ProductRepository implements IProductRepository {
         return dao.count() == 0;
     }
 
-    /**
-     * Checks whether table of additives is empty
-     */
-    @Override
-    public Boolean additivesIsEmpty() {
-        return tableIsEmpty(additiveDao);
-    }
 
     /**
      * Loads question from the local database by code and lang of question.
@@ -825,20 +831,19 @@ public class ProductRepository implements IProductRepository {
     /**
      * Load analysis tags from the server or local database
      *
-     * @param refresh defines the source of data.
-     *     If refresh is true (or local database is empty) then load it from the server,
-     *     else from the local database.
      * @return The analysis tags in the product.
      */
-    @Override
-    public Single<List<AnalysisTag>> getAnalysisTags(boolean refresh) {
-        return getTaxonomy(Taxonomy.ANALYSIS_TAGS, refresh, analysisTagDao);
+    public Single<List<AnalysisTag>> reloadAnalysisTagsFromServer() {
+        return getTaxonomy(Taxonomy.ANALYSIS_TAGS, true, false, analysisTagDao);
     }
 
     Single<List<AnalysisTag>> loadAnalysisTags(long lastModifiedDate) {
         return productApi.getAnalysisTags()
             .map(AnalysisTagsWrapper::map)
-            .doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAGS, lastModifiedDate));
+            .doOnSuccess(analysisTags -> {
+                saveAnalysisTags(analysisTags);
+                updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAGS, lastModifiedDate);
+            });
     }
 
     /**
@@ -848,8 +853,7 @@ public class ProductRepository implements IProductRepository {
      *     <p>
      *     AnalysisTag and AnalysisTagName has One-To-Many relationship, therefore we need to save them separately.
      */
-    @Override
-    public void saveAnalysisTags(List<AnalysisTag> analysisTags) {
+    private void saveAnalysisTags(List<AnalysisTag> analysisTags) {
         db.beginTransaction();
         try {
             for (AnalysisTag analysisTag : analysisTags) {
@@ -867,18 +871,19 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
-    @Override
-    public Single<List<AnalysisTagConfig>> getAnalysisTagConfigs(boolean refresh) {
-        return  getTaxonomy(Taxonomy.ANALYSIS_TAG_CONFIG,refresh,analysisTagConfigDao);
+    public Single<List<AnalysisTagConfig>> reloadAnalysisTagConfigsFromServer() {
+        return getTaxonomy(Taxonomy.ANALYSIS_TAG_CONFIG, true, false, analysisTagConfigDao);
     }
 
     public Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {
         return productApi.getAnalysisTagConfigs()
-            .map(AnalysisTagGonfigsWrapper::map).doOnSuccess(__ -> updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAGS, lastModifiedDate));
+            .map(AnalysisTagGonfigsWrapper::map).doOnSuccess(analysisTagConfigs -> {
+                saveAnalysisTagConfigs(analysisTagConfigs);
+                updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAG_CONFIG, lastModifiedDate);
+            });
     }
 
-    @Override
-    public void saveAnalysisTagConfigs(List<AnalysisTagConfig> analysisTagConfigs) {
+    private void saveAnalysisTagConfigs(List<AnalysisTagConfig> analysisTagConfigs) {
         db.beginTransaction();
         try {
             for (AnalysisTagConfig analysisTagConfig : analysisTagConfigs) {

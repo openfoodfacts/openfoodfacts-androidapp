@@ -77,7 +77,6 @@ public class Utils {
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
     private static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
     private static boolean isUploadJobInitialised;
-    public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
     public static final int NO_DRAWABLE_RESOURCE = 0;

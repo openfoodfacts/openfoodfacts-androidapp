@@ -28,12 +28,12 @@ public class ProductRepositoryTest {
     private static final String TEST_ALLERGEN_TAG = "en:lupin";
     private static final String TEST_LANGUAGE_CODE = "es";
     private static final String TEST_ALLERGEN_NAME = "Altramuces";
-    private static IProductRepository productRepository;
+    private static ProductRepository productRepository;
 
     @BeforeClass
     public static void cleanAllergens() {
         clearDatabase();
-        productRepository = ProductRepository.getInstance();
+        productRepository = (ProductRepository) ProductRepository.getInstance();
         productRepository.saveAllergens(createAllergens());
     }
 
@@ -58,7 +58,7 @@ public class ProductRepositoryTest {
 
     @Test
     public void testGetAllergens() {
-        List<Allergen> allergens = productRepository.getAllergens(false).blockingGet();
+        List<Allergen> allergens = productRepository.reloadAllergensFromServer().blockingGet();
 
         assertNotNull(allergens);
         assertEquals(2, allergens.size());

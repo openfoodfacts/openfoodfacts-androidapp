@@ -5,27 +5,23 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
-
-import androidx.annotation.Nullable;
-
 import android.util.Log;
 import android.widget.Toast;
-
-import io.reactivex.Completable;
+import androidx.annotation.Nullable;
 import io.reactivex.Single;
+import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoadTaxonomiesService extends IntentService {
-    private IProductRepository productRepository;
+    private ProductRepository productRepository;
     private SharedPreferences settings;
 
     public LoadTaxonomiesService() {
@@ -34,7 +30,7 @@ public class LoadTaxonomiesService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        productRepository = ProductRepository.getInstance();
+        productRepository = (ProductRepository) ProductRepository.getInstance();
         settings = getSharedPreferences("prefs", 0);
         try {
             doTask();
@@ -46,95 +42,24 @@ public class LoadTaxonomiesService extends IntentService {
     private void doTask() {
 
         final Consumer<Throwable> throwableConsumer = this::handleError;
-
-        if (BuildConfig.FLAVOR.equals("off")) {
-            Single.zip(
-                productRepository.getLabels(true),
-                productRepository.getTags(true),
-                productRepository.getAllergens(true),
-                productRepository.getIngredients(true),
-                productRepository.getAnalysisTagConfigs(true),
-                productRepository.getAnalysisTags(true),
-                productRepository.getCountries(true),
-                productRepository.getAdditives(true),
-                productRepository.getCategories(true), (labels, tags, allergens, ingredients, analysisTagConfigs, analysisTags, countries, additives, categories) -> {
-                    Completable.merge(
-                        Arrays.asList(
-                            Completable.fromAction(() -> productRepository.saveLabels(labels)),
-                            Completable.fromAction(() -> productRepository.saveTags(tags)),
-                            Completable.fromAction(() -> productRepository.saveAllergens(allergens)),
-                            Completable.fromAction(() -> productRepository.saveIngredients(ingredients)),
-                            Completable.fromAction(() -> productRepository.saveAnalysisTagConfigs(analysisTagConfigs)),
-                            Completable.fromAction(() -> productRepository.saveAnalysisTags(analysisTags)),
-                            Completable.fromAction(() -> productRepository.saveCountries(countries)),
-                            Completable.fromAction(() -> productRepository.saveAdditives(additives)),
-                            Completable.fromAction(() -> productRepository.saveCategories(categories))
-                        )
-                    ).doOnError(throwableConsumer)
-                        .subscribeOn(Schedulers.computation())
-                        .subscribe(() -> {
-                            settings.edit().putLong(Utils.LAST_REFRESH_DATE, System.currentTimeMillis()).apply();
-                        }, throwableConsumer);
-
-                    return true;
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(throwableConsumer)
-                .toCompletable()
-                .subscribe();
-        } else if (BuildConfig.FLAVOR.equals("obf")) {
-            Single.zip(
-                productRepository.getLabels(true),
-                productRepository.getTags(true),
-                productRepository.getIngredients(true),
-                productRepository.getCountries(true),
-                productRepository.getAdditives(true),
-                productRepository.getCategories(true), (labels, tags, ingredients, countries, additives, categories) -> {
-                    Completable.merge(
-                        Arrays.asList(
-                            Completable.fromAction(() -> productRepository.saveLabels(labels)),
-                            Completable.fromAction(() -> productRepository.saveTags(tags)),
-                            Completable.fromAction(() -> productRepository.saveIngredients(ingredients)),
-                            Completable.fromAction(() -> productRepository.saveCountries(countries)),
-                            Completable.fromAction(() -> productRepository.saveAdditives(additives)),
-                            Completable.fromAction(() -> productRepository.saveCategories(categories))
-                        )
-                    ).doOnError(throwableConsumer).subscribeOn(Schedulers.computation())
-                        .subscribe(() -> {
-                            settings.edit().putLong(Utils.LAST_REFRESH_DATE, System.currentTimeMillis()).apply();
-                        }, throwableConsumer);
-
-                    return true;
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(throwableConsumer)
-                .toCompletable()
-                .subscribe();
-        } else if (BuildConfig.FLAVOR.equals("opf") || BuildConfig.FLAVOR.equals("opff")) {
-            Single.zip(
-                productRepository.getTags(true),
-                productRepository.getCategories(true), (tags, categories) -> {
-                    Completable.merge(
-                        Arrays.asList(
-                            Completable.fromAction(() -> productRepository.saveTags(tags)),
-                            Completable.fromAction(() -> productRepository.saveCategories(categories))
-                        )
-                    ).subscribeOn(Schedulers.computation())
-                        .doOnError(throwableConsumer)
-                        .subscribe(() -> {
-                            settings.edit().putLong(Utils.LAST_REFRESH_DATE, System.currentTimeMillis()).apply();
-                        }, throwableConsumer);
-
-                    return true;
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(throwableConsumer)
-                .toCompletable()
-                .subscribe();
-        }
+        List<SingleSource<?>> syncObservables = new ArrayList<>();
+        syncObservables.add(productRepository.reloadLabelsFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadTagsFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadAllergensFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadIngredientsFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadAnalysisTagConfigsFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadAnalysisTagsFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.relodCountriesFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadAdditivesFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadCategoriesFromServer().subscribeOn(Schedulers.io()));
+        Single.zip(syncObservables, objects -> {
+            //we do nothing there. Maybe there is a better solution to launch these singles in //
+            return true;
+        }).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError(throwableConsumer)
+            .ignoreElement()
+            .subscribe();
     }
 
     private void handleError(Throwable throwable) {
