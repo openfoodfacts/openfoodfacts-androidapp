@@ -228,7 +228,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (getIntent().hasExtra(SEARCH_INFO)) {
             SearchInfo searchInfo = getIntent().getExtras().getParcelable(SEARCH_INFO);
             mSearchInfo = searchInfo != null ? searchInfo : SearchInfo.emptySearchInfo();
-        } else if (getIntent().getAction().equals(Intent.ACTION_VIEW)){
+        } else if (Intent.ACTION_VIEW.equals(getIntent().getAction())){
             // the user has entered the activity via a url
             Uri data = getIntent().getData();
             if (data != null) {
