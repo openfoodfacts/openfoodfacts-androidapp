@@ -222,7 +222,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:padding="@dimen/padding_normal"
                 android:visibility="gone">
 
                 <openfoodfacts.github.scrachx.openfood.views.TipBox
@@ -239,6 +238,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@null"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginLeft="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

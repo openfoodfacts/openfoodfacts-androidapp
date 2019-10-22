@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +12,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -22,20 +20,18 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
-
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
-
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
 
 public class IngredientsWithTagDialogFragment extends DialogFragment {
     private SharedPreferences prefs;
@@ -67,7 +63,10 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         for (LinkedHashMap<String, String> ingredient :
             ingredients) {
             if (showIngredients[1].equals(ingredient.get(showIngredients[0]))) {
-                matchingIngredients.add(ingredient.get("text").toLowerCase().replaceAll("_", ""));
+                final String text = ingredient.get("text");
+                if (text != null) {
+                    matchingIngredients.add(text.toLowerCase().replaceAll("_", ""));
+                }
             }
         }
 
@@ -127,7 +126,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
 
             String messageStr = getString(R.string.ingredients_in_this_product_are, name.toLowerCase());
             AppCompatTextView helpNeeded = getView().findViewById(R.id.helpNeeded);
-            boolean showHelpTranslate = tag.contains("unknown");
+            boolean showHelpTranslate = tag != null && tag.contains("unknown");
             boolean showHelpExtract = showHelpTranslate && missingIngredients;
             if (showHelpExtract) {
                 messageStr = getString(R.string.unknown_status_missing_ingredients);
