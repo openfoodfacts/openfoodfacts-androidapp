@@ -3,7 +3,9 @@ package openfoodfacts.github.scrachx.openfood.views.splash;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.ResultReceiver;
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
@@ -16,7 +18,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
     private SharedPreferences settings;
     private Context context;
 
-    public SplashPresenter(SharedPreferences settings, ISplashPresenter.View view, Context context) {
+    SplashPresenter(SharedPreferences settings, ISplashPresenter.View view, Context context) {
         this.view = view;
         this.settings = settings;
         this.context = context;
@@ -50,8 +52,19 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                 .putBoolean("firstRun", false)
                 .apply();
         }
+        final ResultReceiver receiver = new ResultReceiver(new Handler()) {
+            @Override
+            protected void onReceiveResult(int resultCode, Bundle resultData) {
+                if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
+                    view.showLoading();
+                } else {
+                    view.hideLoading(resultCode == LoadTaxonomiesService.STATUS_ERROR);
+                }
+            }
+        };
         //the service will load server resources only if newer than already downloaded...
         Intent intent = new Intent(context, LoadTaxonomiesService.class);
+        intent.putExtra("receiver", receiver);
         context.startService(intent);
         if (firstRun) {
             new Handler().postDelayed(() -> view.navigateToMainActivity(), 6000);

@@ -7,9 +7,9 @@ import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
 import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
@@ -32,7 +32,6 @@ public class ProductRepository implements IProductRepository {
     private static final String TAG = ProductRepository.class.getSimpleName();
     private static IProductRepository instance;
     private ProductApiService productApi;
-    private OpenFoodAPIService openFoodApi;
     private RobotoffAPIService robotoffApi;
     private Database db;
     private LabelDao labelDao;
@@ -73,7 +72,6 @@ public class ProductRepository implements IProductRepository {
      */
     private ProductRepository() {
         productApi = CommonApiManager.getInstance().getProductApiService();
-        openFoodApi = CommonApiManager.getInstance().getOpenFoodApiService();
         robotoffApi = CommonApiManager.getInstance().getRobotoffApiService();
 
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
@@ -103,7 +101,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of Labels.
      */
     public Single<List<Label>> reloadLabelsFromServer() {
-        return getTaxonomy(Taxonomy.LABEL, true, false, labelDao);
+        return getTaxonomyData(Taxonomy.LABEL, true, false, labelDao);
     }
 
     Single<List<Label>> loadLabels(long lastModifiedDate) {
@@ -121,7 +119,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of Tags.
      */
     public Single<List<Tag>> reloadTagsFromServer() {
-        return getTaxonomy(Taxonomy.TAGS, true, false, tagDao);
+        return getTaxonomyData(Taxonomy.TAGS, true, false, tagDao);
     }
 
     Single<List<Tag>> loadTags(long lastModifiedDate) {
@@ -139,12 +137,12 @@ public class ProductRepository implements IProductRepository {
      * @return The allergens in the product.
      */
     public Single<List<Allergen>> reloadAllergensFromServer() {
-        return getTaxonomy(Taxonomy.ALLERGEN, true, false, allergenDao);
+        return getTaxonomyData(Taxonomy.ALLERGEN, true, false, allergenDao);
     }
 
     @Override
     public Single<List<Allergen>> getAllergens() {
-        return getTaxonomy(Taxonomy.ALLERGEN, false, true, allergenDao);
+        return getTaxonomyData(Taxonomy.ALLERGEN, false, true, allergenDao);
     }
 
     /**
@@ -156,10 +154,15 @@ public class ProductRepository implements IProductRepository {
      * @param dao used to check if locale data is empty
      * @param <T> type of taxonomy
      */
-    private <T> Single<List<T>> getTaxonomy(Taxonomy taxonomy, boolean checkUpdate, boolean loadFromLocalDatabase, AbstractDao dao) {
+    private <T> Single<List<T>> getTaxonomyData(Taxonomy taxonomy, boolean checkUpdate, boolean loadFromLocalDatabase, AbstractDao dao) {
         //First check if this taxonomy is to be loaded.
-        DownloadState downloadState = getLastDownloadFromSettings(taxonomy);
-        if (downloadState.isDownloadActivated()) {
+        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
+        boolean isDownloadActivated = mSettings.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false);
+        long lastDownloadFromSettings = mSettings.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L);
+        //if the database scheme changed, this settings should be true
+        boolean forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false);
+
+        if (isDownloadActivated) {
             //Taxonomy is marked to be download
             if (tableIsEmpty(dao)) {
                 //Table is empty, no check for update, just load taxonomy
@@ -170,7 +173,7 @@ public class ProductRepository implements IProductRepository {
             } else if (checkUpdate) {
                 //It is ask to check for update - Test if file on server is more recent than last download.
                 long lastModifiedDateFromServer = getLastModifiedDateFromServer(taxonomy);
-                if (lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > downloadState.getLastModifiedDateOnSettings()) {
+                if (forceUpdate || lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > lastDownloadFromSettings) {
                     return taxonomy.load(this, lastModifiedDateFromServer);
                 }
             }
@@ -197,7 +200,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of countries.
      */
     public Single<List<Country>> relodCountriesFromServer() {
-        return getTaxonomy(Taxonomy.COUNTRY, true, false, countryDao);
+        return getTaxonomyData(Taxonomy.COUNTRY, true, false, countryDao);
     }
 
     Single<List<Country>> loadCountries(Long lastModifiedDate) {
@@ -215,12 +218,12 @@ public class ProductRepository implements IProductRepository {
      * @return The list of categories.
      */
     public Single<List<Category>> reloadCategoriesFromServer() {
-        return getTaxonomy(Taxonomy.CATEGORY, true, false, categoryDao);
+        return getTaxonomyData(Taxonomy.CATEGORY, true, false, categoryDao);
     }
 
     @Override
     public Single<List<Category>> getCategories() {
-        return getTaxonomy(Taxonomy.CATEGORY, false, true, categoryDao);
+        return getTaxonomyData(Taxonomy.CATEGORY, false, true, categoryDao);
     }
 
     Single<List<Category>> loadCategories(Long lastModifiedDate) {
@@ -248,7 +251,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of additives.
      */
     public Single<List<Additive>> reloadAdditivesFromServer() {
-        return getTaxonomy(Taxonomy.ADDITIVE, true, false, additiveDao);
+        return getTaxonomyData(Taxonomy.ADDITIVE, true, false, additiveDao);
     }
 
     Single<List<Additive>> loadAdditives(long lastModifiedDate) {
@@ -272,7 +275,7 @@ public class ProductRepository implements IProductRepository {
      * @return The ingredients in the product.
      */
     public Single<List<Ingredient>> reloadIngredientsFromServer() {
-        return getTaxonomy(Taxonomy.INGREDIENT, true, false, ingredientDao);
+        return getTaxonomyData(Taxonomy.INGREDIENT, true, false, ingredientDao);
     }
 
     Single<List<Ingredient>> loadIngredients(long lastModifiedDate) {
@@ -292,12 +295,9 @@ public class ProductRepository implements IProductRepository {
      *     Or TAXONOMY_NO_INTERNET if there is no connexion.
      */
     private long getLastModifiedDateFromServer(Taxonomy taxonomy) {
-        long lastModifiedDate = 0;
+        long lastModifiedDate;
         try {
             String baseUrl = BuildConfig.OFWEBSITE;
-            if (!baseUrl.endsWith("/")) {
-                baseUrl = baseUrl + "/";
-            }
             URL url = new URL(baseUrl + taxonomy.getJsonUrl());
             HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
             lastModifiedDate = httpCon.getLastModified();
@@ -324,18 +324,6 @@ public class ProductRepository implements IProductRepository {
         Log.i(TAG, "Set lastDownload of " + taxonomy + " to " + lastDownload);
     }
 
-    /**
-     * This function get lastDownloadtaxonomy setting
-     *
-     * @param taxonomy Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
-     * @return Actual value of DownloadState in the setting.
-     */
-    private DownloadState getLastDownloadFromSettings(Taxonomy taxonomy) {
-        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        boolean isDownloadActivated = mSettings.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false);
-        long lastDownload = mSettings.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L);
-        return new DownloadState(isDownloadActivated, lastDownload);
-    }
 
     /**
      * Labels saving to local database
@@ -367,7 +355,7 @@ public class ProductRepository implements IProductRepository {
      *
      * @param tags The list of tags to be saved.
      */
-    public void saveTags(List<Tag> tags) {
+    private void saveTags(List<Tag> tags) {
         tagDao.insertOrReplaceInTx(tags);
     }
 
@@ -834,7 +822,7 @@ public class ProductRepository implements IProductRepository {
      * @return The analysis tags in the product.
      */
     public Single<List<AnalysisTag>> reloadAnalysisTagsFromServer() {
-        return getTaxonomy(Taxonomy.ANALYSIS_TAGS, true, false, analysisTagDao);
+        return getTaxonomyData(Taxonomy.ANALYSIS_TAGS, true, false, analysisTagDao);
     }
 
     Single<List<AnalysisTag>> loadAnalysisTags(long lastModifiedDate) {
@@ -872,10 +860,10 @@ public class ProductRepository implements IProductRepository {
     }
 
     public Single<List<AnalysisTagConfig>> reloadAnalysisTagConfigsFromServer() {
-        return getTaxonomy(Taxonomy.ANALYSIS_TAG_CONFIG, true, false, analysisTagConfigDao);
+        return getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, true, false, analysisTagConfigDao);
     }
 
-    public Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {
+    Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {
         return productApi.getAnalysisTagConfigs()
             .map(AnalysisTagGonfigsWrapper::map).doOnSuccess(analysisTagConfigs -> {
                 saveAnalysisTagConfigs(analysisTagConfigs);

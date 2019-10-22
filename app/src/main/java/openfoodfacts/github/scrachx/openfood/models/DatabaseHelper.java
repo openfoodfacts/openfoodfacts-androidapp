@@ -41,7 +41,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
 
         //db model has changed we need to invalidate and reload taxonomies
         if (settings != null && oldVersion != newVersion) {
-            settings.edit().putLong(Utils.LAST_REFRESH_DATE, 0).apply();
+            settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, true).apply();
         }
     }
 
