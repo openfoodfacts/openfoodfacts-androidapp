@@ -12,7 +12,6 @@
     <option name="FORMATTER_TAGS_ENABLED" value="true" />
     <option name="WRAP_COMMENTS" value="true" />
     <option name="SOFT_MARGINS" value="160" />
-
     <JavaCodeStyleSettings>
       <option name="PACKAGES_TO_USE_IMPORT_ON_DEMAND">
         <value>
@@ -171,6 +170,9 @@
       <option name="RIGHT_MARGIN" value="180" />
     </codeStyleSettings>
     <codeStyleSettings language="XML">
+      <indentOptions>
+        <option name="CONTINUATION_INDENT_SIZE" value="4" />
+      </indentOptions>
       <arrangement>
         <rules>
           <section>

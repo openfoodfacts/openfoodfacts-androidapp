@@ -11,6 +11,10 @@ class DeserializerHelper {
     static final String EN_KEY = "en";
     static final String PARENTS_KEY = "parents";
     static final String CHILDREN_KEY = "children";
+    static final String SHOW_INGREDIENTS_KEY = "show_ingredients";
+    static final String TYPE_KEY = "type";
+    static final String ICON_KEY = "icon";
+    static final String COLOR_KEY = "color";
 
     private DeserializerHelper() {
         //helper class.

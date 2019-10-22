@@ -62,4 +62,6 @@
 
     <dimen name="nav_bar_height">65dp</dimen>
 
+    <dimen name="scan_summary_peek_large">198dp</dimen>
+    <dimen name="scan_summary_peek_small">120dp</dimen>
 </resources>
