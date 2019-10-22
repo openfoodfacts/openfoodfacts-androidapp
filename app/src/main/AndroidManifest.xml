@@ -156,7 +156,6 @@
             </intent-filter>
         </service>
         <service android:name=".utils.UploadService"/>
-        <service android:name=".utils.WifiUploadReceiver$WifiService"/>
         <service android:name=".views.LoadTaxonomiesService"/>
 
         <provider
@@ -207,14 +206,6 @@
             <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
 
         </activity>
-
-        <receiver
-                android:name=".utils.WifiUploadReceiver"
-                android:exported="false">
-            <intent-filter>
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
-            </intent-filter>
-        </receiver>
 
         <activity
                 android:name=".views.ContinuousScanActivity"
