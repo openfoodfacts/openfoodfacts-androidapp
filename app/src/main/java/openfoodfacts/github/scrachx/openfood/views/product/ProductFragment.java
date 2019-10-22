@@ -123,12 +123,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         return ProductActivity.onOptionsItemSelected(item, getActivity());
     }
 
-    // Call to update the share intent
-    private void setShareIntent(Intent shareIntent) {
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setShareIntent(shareIntent);
-        }
-    }
 
     @Override
     public void onRefresh() {

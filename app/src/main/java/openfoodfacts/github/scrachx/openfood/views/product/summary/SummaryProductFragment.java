@@ -224,9 +224,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         refreshView(state);
     }
 
-    private void updateAnalysisTags() {
-
-    }
 
     @Override
     public void refreshView(State state) {
