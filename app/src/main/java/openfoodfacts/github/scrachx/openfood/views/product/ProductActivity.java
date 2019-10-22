@@ -91,7 +91,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
 		mState = (State) getIntent().getSerializableExtra("state" );
 
-        if (getIntent().getAction().equals(Intent.ACTION_VIEW)) {
+         if (Intent.ACTION_VIEW.equals(getIntent().getAction())) {
             // handle opening the app via product page url
             Uri data = getIntent().getData();
             String[] paths = data.toString().split("/"); // paths[4]
