@@ -15,7 +15,15 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -25,10 +33,19 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.OnClick;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
+
+import org.apache.commons.lang.StringUtils;
+
+import java.io.File;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
@@ -36,23 +53,50 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.Question;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.views.*;
+import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
+import openfoodfacts.github.scrachx.openfood.utils.QuestionActionListeners;
+import openfoodfacts.github.scrachx.openfood.utils.QuestionDialog;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
+import openfoodfacts.github.scrachx.openfood.views.TipBox;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
-import org.apache.commons.lang.StringUtils;
-
-import java.io.File;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsWithTagDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
@@ -117,13 +161,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @BindView(R.id.action_compare_button)
     ImageButton compareProductButton;
     @BindView(R.id.scrollView)
-    public NestedScrollView scrollView;
+    NestedScrollView scrollView;
     @BindView(R.id.product_question_layout)
     RelativeLayout productQuestionLayout;
     @BindView(R.id.product_question_text)
     TextView productQuestionText;
     @BindView(R.id.product_question_dismiss)
     ImageView productQuestionDismiss;
+    @BindView(R.id.tipBox)
+    TipBox tipBox;
+    @BindView(R.id.analysis_tags)
+    RecyclerView rvAnalysisTags;
+    @BindView(R.id.analysisContainer)
+    View analysisContainer;
     private State state;
     private Product product;
     private OpenFoodAPIClient api;
@@ -174,6 +224,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         refreshView(state);
     }
 
+
     @Override
     public void refreshView(State state) {
         //no state-> we can't display anything.
@@ -208,6 +259,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter.loadProductQuestion();
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
+        presenter.loadAnalysisTags();
 
         mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
         barcode = product.getCode();
@@ -472,6 +524,23 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
+    public void showAnalysisTags(List<AnalysisTagConfig> analysisTags) {
+        getActivity().runOnUiThread(() -> {
+            analysisContainer.setVisibility(View.VISIBLE);
+            IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(getContext(), analysisTags);
+            adapter.setOnItemClickListener((view, position) -> {
+                IngredientsWithTagDialogFragment fragment = IngredientsWithTagDialogFragment
+                    .newInstance(product, (AnalysisTagConfig) view.getTag(R.id.analysis_tag_config));
+                fragment.show(getChildFragmentManager(), "fragment_ingredients_with_tag");
+
+                fragment.setOnDismissListener(dialog -> adapter.filterVisibleTags());
+            });
+
+            rvAnalysisTags.setAdapter(adapter);
+        });
+    }
+
+    @Override
     public void showAllergens(List<AllergenName> allergens) {
         final AllergenHelper.Data data = AllergenHelper.computeUserAllergen(product, allergens);
         if (data.isEmpty()) {
@@ -611,7 +680,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         getActivity().runOnUiThread(() -> {
             switch (state) {
                 case LOADING: {
-                    if(getContext()!=null) {
+                    if (getContext() != null) {
                         categoryProduct.append(getString(R.string.txtLoading));
                     }
                     break;
@@ -950,5 +1019,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             context = OFFApplication.getInstance();
         }
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void resetScroll() {
+        scrollView.scrollTo(0, 0);
+
+        if (rvAnalysisTags.getAdapter() != null) {
+            ((IngredientAnalysisTagsAdapter) rvAnalysisTags.getAdapter()).filterVisibleTags();
+        }
     }
 }

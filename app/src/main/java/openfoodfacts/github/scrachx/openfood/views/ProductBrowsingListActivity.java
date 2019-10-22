@@ -601,11 +601,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
                             if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
                                 api.getProduct(barcode, ProductBrowsingListActivity.this);
                                 try {
-                                    View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
-                                    if (view != null) {
+                                    View viewWithFocus = ProductBrowsingListActivity.this.getCurrentFocus();
+                                    if (viewWithFocus != null) {
                                         InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                        if(imm!=null) {
-                                            imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                                        if(imm!=null ) {
+                                            imm.hideSoftInputFromWindow(viewWithFocus.getWindowToken(), 0);
                                         }
                                     }
                                 } catch (NullPointerException e) {
