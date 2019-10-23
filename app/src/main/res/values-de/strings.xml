@@ -721,10 +721,10 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="ingredients_in_this_product">Zutaten in diesem Produkt, die %1$s sind:</string>
     <string name="display_analysis_tag_status">%1$s Status anzeigen</string>
     <string name="preference_header_display">Anzeigen</string>
-    <string name="unknown_status_no_translation">Open Food Facts konnten den Status des Produkts aufgrund nicht erkannter Inhaltsstoffe nicht beurteilen.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
-    <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="unknown_status_no_translation">Open Food Facts konnte den Status des Produkts aufgrund nicht erkannter Inhaltsstoffe nicht beurteilen.</string>
+    <string name="help_translate_ingredients">Helfen Sie mit, die Zutaten in Ihre Sprache zu übersetzen</string>
+    <string name="unknown_status_missing_ingredients">Open Food Facts konnte den Status des Produkts aufgrund fehlender Inhaltsstoffe nicht beurteilen.</string>
+    <string name="help_extract_ingredients">Mithelfen, Zutaten zu erfassen, um den Status %1$s zu erhalten.</string>
     <string name="product_already_exists_in_comparison">Das Produkt ist bereits in der Vergleichsliste vorhanden</string>
     <string name="compare_brands">Marken:</string>
     <string name="compare_additives">Zusatzstoffe:</string>
