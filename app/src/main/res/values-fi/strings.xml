@@ -715,16 +715,16 @@
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Sulje</string>
     <string name="tip_message">VINKKI: %1$s </string>
-    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
-    <string name="got_it">Got it!</string>
-    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
-    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
+    <string name="ingredient_analysis_tip">Napsauttamalla alla olevia kuvakkeita saat lisätietoja tuotteesta, ja voit valita tiedot joista olet kiinnostunut.</string>
+    <string name="got_it">Selvä!</string>
+    <string name="ingredients_in_this_product_are">Tämän tuotteen ainesosat ovat %1$s.</string>
+    <string name="ingredients_in_this_product">Tämän tuotteen ainesosat, jotka ovat %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
-    <string name="preference_header_display">Display</string>
-    <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
-    <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="preference_header_display">Näyttö</string>
+    <string name="unknown_status_no_translation">Tuotteen tilaa ei voitu arvioida tunnistamattomien ainesosien takia.</string>
+    <string name="help_translate_ingredients">Auta kääntämään ainesosat kielellesi</string>
+    <string name="unknown_status_missing_ingredients">Tuotteen tilaa ei voitu arvioida puuttuvien ainesosien takia.</string>
+    <string name="help_extract_ingredients">Auta poimimaan ainesosat tilan %1$s saamiseksi.</string>
     <string name="product_already_exists_in_comparison">Tuote on jo vertailuluettelossa</string>
     <string name="compare_brands">Tuotemerkit:</string>
     <string name="compare_additives">Lisäaineet:</string>
