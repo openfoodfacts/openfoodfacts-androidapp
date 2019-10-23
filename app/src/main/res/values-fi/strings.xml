@@ -100,7 +100,7 @@
         <item>Maltoosi</item>
         <item>Mangaani</item>
         <item>Meadin happo (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>Triakontaanihappo (30:0)</item>
         <item>Molybdeeni</item>
         <item>Kertatyydyttämätön rasva</item>
         <item>Montaanihappo (28:0)</item>
@@ -433,16 +433,16 @@
     <string name="additive_string">Lisäaine</string>
     <string name="allergen_string">Allergeeni</string>
     <string name="search_string">Etsi</string>
-    <string name="country_string">Maat myyntiehdot</string>
-    <string name="store_subtitle">Kauppa</string>
+    <string name="country_string">Maat, joissa myynnissä</string>
+    <string name="store_subtitle">Myymälä</string>
     <string name="packaging_subtitle">Pakkaus</string>
     <string name="packaging_string">Pakkaus</string>
-    <string name="label_string">Etiketti</string>
-    <string name="category_string">Kategoria</string>
+    <string name="label_string">Merkki</string>
+    <string name="category_string">Luokitus</string>
     <string name="connection">Yhdistetty</string>
     <string name="contributor_string">Osallistuja</string>
     <string name="Rate_Us">Näytä tukesi</string>
-    <string name="Rate_Us_title">Arvostele äppsimme</string>
+    <string name="Rate_Us_title">Arvostele sovelluksemme</string>
     <string name="app_disabled_text">Sovellus on poistettu käytöstä</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">Vitamiinit:</string>
@@ -450,12 +450,12 @@
     <string name="mineral_tags_text">Mineraalit:</string>
     <string name="other_tags_text">Muut aineet:</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">Disable image loading when battery is low</string>
-    <string name="DisableLoadTitle">Disable image loading</string>
+    <string name="disable_image_loading">Ota kuvien lataaminen pois käytöstä, kun akku on vähissä</string>
+    <string name="DisableLoadTitle">Poista kuvien lataaminen käytöstä</string>
     <string name="by_title">Otsikko</string>
     <string name="by_brand">Tuotemerkki</string>
     <string name="by_barcode">Viivakoodi</string>
-    <string name="by_time">Äskettäin tarkastellut</string>
+    <string name="by_time">Hiljattain katsotut</string>
     <string name="sort">Järjestä</string>
     <string name="by_nutrition_grade">Ravintoarvosana</string>
     <string name="sort_by">Lajittelujärjestys</string>
@@ -464,19 +464,19 @@
     <string name="shake_summary">Ravista puhelinta lukeaksesi tuotteita</string>
     <string name="shake_title">Ravista lukeaksesi</string>
     <!-- strings related to share images -->
-    <string name="sorry_msg">Kuvia ilman viivakoodia ei voida vielä lisätä äppsillä. Kokeile sivuston mobiiliversiota.</string>
-    <string name="no_barcode">Emme ole havainneet viivakoodia</string>
+    <string name="sorry_msg">Kuvia ilman viivakoodia ei voi vielä lisätä sovelluksella. Kokeile sivuston mobiiliversiota.</string>
+    <string name="no_barcode">Viivakoodia ei löydetty</string>
     <string name="enter_barcode">Kirjoita viivakoodi alle</string>
     <string name="format_error">Väärä viivakoodi- tai QR-formaatti</string>
-    <string name="code_detected">Havaitsimme viivakoodin</string>
+    <string name="code_detected">Viivakoodi löydetty</string>
     <string name="do_you_want_to">Haluatko lisätä kuvia tähän viivakoodiin?</string>
     <string name="bottomNav_history">Historia</string>
     <string name="products_added">Lisäämäsi tai muokkaamasi tuotteet</string>
-    <string name="products_incomplete">Tuotteita, jotka olet lisännyt, jotka kaipaavat täydentämistä</string>
+    <string name="products_incomplete">Tuotteet jotka olet lisännyt ja kaipaavat täydentämistä</string>
     <string name="product_pictures_contributed">Tuotteet, joista otit kuvia</string>
-    <string name="picture_contributed_incomplete">Tuotteet, joista olet ottanut kuvia, jotka pitää täydentää</string>
+    <string name="picture_contributed_incomplete">Tuotteet, joista olet ottanut kuvia ja pitää täydentää</string>
     <string name="product_info_added">Tuotteet, joihin lisäsit tietoja</string>
-    <string name="product_info_tocomplete">Tuotteet joihin olet lisännyt tietoa, jotka pitäisi täyttää</string>
+    <string name="product_info_tocomplete">Tuotteet joihin olet lisännyt tietoa ja tarvitsevat täyttämistä</string>
     <string name="show_by">Näytä</string>
     <string name="notify_title">Vienti valmis</string>
     <string name="notify_content">Napsauta nähdäksesi viedyt tuotteet</string>
@@ -488,21 +488,21 @@
     <string name="last_editor_history">Viimeisimmän tuotesivun muokkauksen %1$s kello %2$s CEST teki %3$s </string>
     <string name="other_editors">Tuotesivua on muokannut myös </string>
     <string name="contribution_tab">Muokkaukset</string>
-    <string name="contribution_tab_summary">Näytä käyttäjän lisäykset-välilehti tuotteissa</string>
+    <string name="contribution_tab_summary">Näytä käyttäjän osallistumisvälilehti tuotteissa</string>
     <string name="contribution_tab_title">Näytä osallistumisvälilehti</string>
     <string name="txtDialogsTitle">Tietoja</string>
     <string name="preference_show_all_product_photos_title">Näytä kaikki tuotekuvat</string>
-    <string name="preference_show_all_product_photos_summary">Näytä kaikki lähetetyt tuotekuvat erillisellä välilehdellä</string>
+    <string name="preference_show_all_product_photos_summary">Näytä kaikki lähetetyt tuotekuvat erillisessä välilehdessä</string>
     <string name="offline_product_addition_title">Lisää uusi tuote</string>
-    <string name="productNameNull">Nimi tuntematon</string>
-    <string name="productAdditivesUnknown">Lisäaineita ei tunneta</string>
+    <string name="productNameNull">Tuntematon nimi</string>
+    <string name="productAdditivesUnknown">Tunnistamattomia lisäaineita</string>
     <string name="productAdditivesTemplate">%1$d lisäainetta</string>
     <plurals name="productAdditives">
         <item quantity="one">%d lisäaine</item>
         <item quantity="other">%d lisäainetta</item>
     </plurals>
     <string name="product_not_complete">Tämä tuote ei ole vielä valmis. \nVoitko lisätä joitain yksityiskohtia?</string>
-    <string name="addProductOffline">Vaikutat olevasi offline-tilassa. Lisää tuote %s offline-tilassa?</string>
+    <string name="addProductOffline">Vaikutat olevan offline-tilassa. Lisää tuote %s offline-tilassa?</string>
     <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Food Factsissä. Voitko lisätä sen?</string>
     <string name="scan_sound">Lukuääni</string>
     <string name="trouble_scanning">Vaikeuksia lukemisessa?</string>
@@ -514,20 +514,20 @@
     <string name="OFFlogo">Open Food Facts -logo</string>
     <string name="loading_product">Ladataan tuotetta %s</string>
     <string name="image_not_defined_for_language">Valitulle kielelle ei ole kuvaa. Voit lisätä uuden</string>
-    <string name="error_adding_ingredients">Jotain meni pieleen yrittäessämme lisätä tuotteen ainesosia</string>
-    <string name="unable_to_extract_ingredients">Ainesosia ei voitu tunnistaa automaattisesti kuvasta</string>
-    <string name="error_adding_nutrition_facts">Jotain meni pieleen yrittäessämme lisätä tuotteen ravintosisältöä</string>
-    <string name="error_in_carbohydrate_value">Hiilihydraattien määrä ei voi olla alempi kuin sokerin ja tärkkelyksen summa</string>
-    <string name="choose_nutrient">Valitse ravinne</string>
-    <string name="error_adding_product_details">Jotain meni pieleen yrittäessämme lisätä tuotteen yksityiskohtia</string>
+    <string name="error_adding_ingredients">Jokin meni vikaan tuotteen ainesosien lisäyksessä</string>
+    <string name="unable_to_extract_ingredients">Ainesosia ei voitu poimia kuvasta automaattisesti</string>
+    <string name="error_adding_nutrition_facts">Jokin meni vikaan lisätessä tuotteen ravintosisältöä</string>
+    <string name="error_in_carbohydrate_value">Hiilihydraattien määrä ei voi olla pienempi kuin sokerin ja tärkkelyksen summa</string>
+    <string name="choose_nutrient">Valitse ravintoaine</string>
+    <string name="error_adding_product_details">Jokin meni vikaan tuotteen yksityiskohtien lisäyksessä</string>
     <string name="hint_product_URL">Linkki tuotteen viralliselle sivulle</string>
     <string name="product_language">Tuotteen kieli: </string>
     <string name="hint_emb_codes">Esimerkkejä: EMB 53062, FR 62.448.034 CE, 84 R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-    <string name="official_website">Virallinen nettisivu</string>
+    <string name="official_website">Virallinen sivusto</string>
     <string name="scan_QR_code">Lue QR-koodi tuotesivustolle</string>
     <string name="add_at_least_one_picture">Lisää ainakin yksi kuva tästä tuotteesta ennen jatkamista</string>
     <string name="image_uploaded_successfully">Kuvan lähettäminen onnistui</string>
-    <string name="error_adding_product_photos">Jotain meni pieleen yrittäessämme lisätä tuotekuvia</string>
+    <string name="error_adding_product_photos">Jokin meni vikaan tuotekuvien lisäyksessä</string>
     <string name="ingredients_overwrite">Ainesosien korvaus</string>
     <string name="choose_mine">Valitse minun</string>
     <string name="keep_previous_version">Pidä edellinen versio</string>
@@ -537,25 +537,25 @@
     <string name="quantity_overwrite">Määrän korvaaminen</string>
     <string name="link_overwrite">Linkin korvaaminen</string>
     <string name="save_product">Haluatko tallentaa tuotteen?</string>
-    <string name="error_adding_product">Jotain meni pieleen, kun tuotetta lisättiin</string>
+    <string name="error_adding_product">Jokin meni vikaan tuotteen lisäyksessä</string>
     <string name="photos">Kuvat</string>
     <string name="please_wait">Odota hetki</string>
     <string name="product_uploaded_successfully">Tuotteen lähettäminen onnistui</string>
     <string name="no_internet_connection">Vaikuttaa siltä, että sinulla ei ole Internet-yhteyttä, kuvat lähetetään, kun verkko on käytettävissä</string>
-    <string name="no_internet_unable_to_extract_ingredients">Ei Internet-yhteyttä. Ainesosia ei tunnistaa automaattisesti</string>
+    <string name="no_internet_unable_to_extract_ingredients">Ei Internet-yhteyttä. Ainesosia ei poimita automaattisesti</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Yleiskatsaus</string>
-    <string name="ingredients">Ainekset</string>
+    <string name="ingredients">Ainesosat</string>
     <string name="nutrition_facts">Ravintosisältö</string>
     <string name="your_version">Sinun</string>
     <string name="ingredients_picture">Kuva ainesosista</string>
-    <string name="take_ingredients_picture_to_extract">(Ota kuva aineosista, jotta ne tunnistetaan automaattisesti)</string>
+    <string name="take_ingredients_picture_to_extract">(Ota kuva aineosista, jotta ne voidaan poimia automaattisesti)</string>
     <string name="ingredients_list">Ainesosaluettelo</string>
     <string name="ingredients_hint">Säilytä järjestys. Ilmaise prosenttiosuus, jos ilmoitettu. Erottele pilkulla tai väliviivalla. Käytä sulkuja () ainesosan ainesosille. Laita allergeenit kahden alaviivan väliin esim. _maito_</string>
-    <string name="extract_ingredients">Tunnista ainesosat automaattisesti</string>
-    <string name="extracting_ingredients">Tunnistetaan ainesosia</string>
-    <string name="looksGood">Näyttää hyvältä</string>
-    <string name="skip_ingredients">Voi että \n Ohita ainesosat</string>
+    <string name="extract_ingredients">Poimi ainesosat</string>
+    <string name="extracting_ingredients">Poimitaan ainesosia</string>
+    <string name="looksGood">Hyvältä näyttää</string>
+    <string name="skip_ingredients">Liian huono \n Ohita ainesosat</string>
     <string name="traces">Jäämät</string>
     <string name="traces_hint">Ilmoita mahdolliset ainesosajäämät \"Voi sisältää jäämiä\", \"Valmistettu tehtaassa, jossa käsitellään myös\" jne. \nEsim. maito, gluteeni, pähkinät</string>
     <string name="nutrition_facts_not_specified">Ravintosisältöä ei ole määritelty tuotteessa.</string>
@@ -564,39 +564,39 @@
     <string name="other_picture">Muu kuva</string>
     <string name="for_100g_100ml">100 g / 100 ml kohden</string>
     <string name="per_serving">Annosta kohti</string>
-    <string name="serving_size">Palvelevat koko</string>
+    <string name="serving_size">Annoskoko</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Lisää ravintoaine</string>
     <string name="add_this_product">Lisää tämä tuote</string>
     <string name="product_picture">Tuotekuva</string>
-    <string name="one_photo_compulsory">(vähintään yksi kuva vaaditaan uuden tuotteen lähettämiseksi)</string>
+    <string name="one_photo_compulsory">(vähintään yksi kuva vaaditaan uuden tuotteen lisäämiseksi)</string>
     <string name="product_details">Tuotetiedot</string>
     <string name="product_name">Tuotteen nimi</string>
     <string name="quantity">Määrä</string>
     <string name="labels">Merkit</string>
     <string name="period_of_time_after_opening">Aika avaamisen jälkeen</string>
     <string name="manufacturing_details">Valmistustiedot</string>
-    <string name="origin_of_ingredients">Alkuperä ainesosien</string>
+    <string name="origin_of_ingredients">Ainesosien alkuperä</string>
     <string name="manufacturing_place">Valmistuspaikka</string>
     <string name="emb_code">EMB-koodi</string>
     <string name="purchasing_details">Ostotiedot</string>
-    <string name="country_where_purchased">Country where purchased</string>
+    <string name="country_where_purchased">Ostomaa</string>
     <string name="stores">Myymälät</string>
     <string name="additional_pictures">Lisäkuvia</string>
-    <string name="hint_product_pictures">(Lisää lisää kuvia tuotteesta. Esimerkiksi: kierrätysohjeet, etiketit jne.)</string>
+    <string name="hint_product_pictures">(Lisää muita kuvia tuotteesta. Esimerkiksi: kierrätysohjeet, merkit jne.)</string>
     <string name="uploading_image">Lähtetään kuvaa</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
+    <string name="uploading_nutrition_image">Lähetetään kuvaa ravintosisällöstä</string>
+    <string name="uploading_ingredients_image">Lähetetään kuvaa ainesosista</string>
+    <string name="uploading_front_image">Lähetetään etukuvaa</string>
     <string name="edit_front_image">Muokkaa etukuvaa</string>
-    <string name="edit_nutrition_image">Muokkaa ravinnekuvaa</string>
-    <string name="edit_ingredients_image">Muokkaa ainesosien kuvaa</string>
+    <string name="edit_nutrition_image">Muokkaa kuvaa ravintosisällöstä</string>
+    <string name="edit_ingredients_image">Muokkaa kuvaa ainesosista</string>
     <string name="edit_other_image">Muokkaa kuvaa</string>
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Kirjaudu sisään muokataksesi tuotetta.</string>
-    <string name="hint_quantity">Esimerkit: 2 l, 250 g, 1 kg, 25 cl, 6 nesteunssia, 1 pauna</string>
-    <string name="edit_product_title">Muokkaa tuote</string>
+    <string name="hint_quantity">Esimerkit: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pauna</string>
+    <string name="edit_product_title">Muokkaa tuotetta</string>
     <string name="nutrient_already_added">%s on jo ravintosisällössä</string>
     <string name="save_edits">Tallenna muokkaukset</string>
     <string name="contribution_by">Lähettäjä</string>
@@ -606,13 +606,13 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Suuri ylialtistumisen riski</string>
     <string name="overexposure_moderate">Kohtalainen ylialtistumisen riski</string>
-    <string name="infants">Pikkulapset</string>
+    <string name="infants">Imeväiset</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Taaperot</string>
     <string name="toddlers_age">1 - 2</string>
     <string name="children">Lapset</string>
     <string name="children_age">3 - 9</string>
-    <string name="adolescents">nuorille</string>
+    <string name="adolescents">Nuoret</string>
     <string name="adolescents_age">10 - 17</string>
     <string name="adults">Aikuiset</string>
     <string name="adults_age">18 - 64</string>
