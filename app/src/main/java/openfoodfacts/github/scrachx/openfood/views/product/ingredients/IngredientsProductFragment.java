@@ -279,8 +279,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             long productState = (long) txtIngredientsProductState[1];
             FragmentManager fragmentManager = getFragmentManager();
             Fragment fragmentSummary = fragmentManager.getFragments().get(0);
-            ImageView dietScale = fragmentSummary.getView().findViewById(R.id.dietState);
-            dietScale.setVisibility(View.VISIBLE);
+            ImageView dietState = fragmentSummary.getView().findViewById(R.id.dietState);
+            dietState.setVisibility(View.VISIBLE);
             //If Continuous ScanActivity is active, then add the productState
             try {
                 ((ContinuousScanActivity) getActivity()).setDietState(productState);
@@ -289,19 +289,19 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             }
             switch (Long.toString(productState)) {
                 case "-1":
-                    dietScale.setImageResource(R.drawable.trafficligth_red);
-                    dietScale.setContentDescription("@string/edit_diet_unauthorised_ingredients");
+                    dietState.setImageResource(R.drawable.trafficligth_red);
+                    dietState.setContentDescription("@string/edit_diet_unauthorised_ingredients");
                     break;
                 case "0":
-                    dietScale.setImageResource(R.drawable.trafficligth_orange);
-                    dietScale.setContentDescription("@string/edit_diet_so_so_ingredients");
+                    dietState.setImageResource(R.drawable.trafficligth_orange);
+                    dietState.setContentDescription("@string/edit_diet_so_so_ingredients");
                     break;
                 case "1":
-                    dietScale.setImageResource(R.drawable.trafficligth_green);
-                    dietScale.setContentDescription("@string/edit_authorised_ingredients");
+                    dietState.setImageResource(R.drawable.trafficligth_green);
+                    dietState.setContentDescription("@string/edit_authorised_ingredients");
                     break;
                 default:
-                    dietScale.setVisibility(View.INVISIBLE);
+                    dietState.setVisibility(View.INVISIBLE);
             }
             if (TextUtils.isEmpty(product.getIngredientsText(langCode))) {
                 extractIngredientsPrompt.setVisibility(View.VISIBLE);

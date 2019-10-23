@@ -266,7 +266,8 @@
                         app:layout_constraintStart_toEndOf="@+id/quickView_image"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:src="@drawable/trafficligth_red"
-                        tools:visibility="VISIBLE" />
+                        tools:ignore="ContentDescription"
+                        tools:visibility="visible" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

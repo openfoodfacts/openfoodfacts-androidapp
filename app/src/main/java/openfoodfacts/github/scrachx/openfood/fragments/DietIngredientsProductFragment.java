@@ -96,7 +96,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
         ingredientsRV = (RecyclerView) view.findViewById(R.id.ingredients_recyclerView);
         ingredientsRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
-        if (mState != null && product.getIngredients() != null) {
+        if (mState != null && product.getProductIngredients() != null) {
             languageCode = product.getLang();
             fillIngredients(coloredIngredientsFromProduct());
         }
@@ -127,7 +127,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
             public void onPositionClicked(int position, View v) {
                 //addDietTagIngredients because languageCode of the product is not necessary languageCode of the Diet !
                 String ingredientTag = "";
-                List<ProductIngredient> productIngredients = product.getIngredients();
+                List<ProductIngredient> productIngredients = product.getProductIngredients();
                 for (int i = 0; i < productIngredients.size(); i++) {
                     ProductIngredient productIngredient =  productIngredients.get(i);
                     if (productIngredient.getText().replace("_","").equals(mIngredients.get(position).toString())) {
@@ -150,7 +150,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
             @Override
             public void onLongClicked(int position, View v) {
                 String ingredientTag = "";
-                List<ProductIngredient> productIngredients = product.getIngredients();
+                List<ProductIngredient> productIngredients = product.getProductIngredients();
                 for (int i = 0; i < productIngredients.size(); i++) {
                     ProductIngredient productIngredient =  productIngredients.get(i);
                     if (productIngredient.getText().replace("_","").equals(mIngredients.get(position).toString())) {

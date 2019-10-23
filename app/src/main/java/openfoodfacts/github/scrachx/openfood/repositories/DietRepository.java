@@ -1089,7 +1089,7 @@ public class DietRepository implements IDietRepository {
         ingredients0 = ingredients0.substring(0,end) + new String(new char[ingredients0.length()-end]).replace('\0', ' ');
 
         //List of productIngredient of the product
-        List<ProductIngredient> productIngredients = product.getIngredients();
+        List<ProductIngredient> productIngredients = product.getProductIngredients();
         //For each productIngredient
         for (int i = 0; i < productIngredients.size(); i++) {
             ProductIngredient productIngredient = productIngredients.get(i);
@@ -1257,7 +1257,7 @@ public class DietRepository implements IDietRepository {
         String ingredient = "";
         String languageCode = "";
         //Iterate the list of ingredient of the product
-        List<ProductIngredient> productIngredients = product.getIngredients();
+        List<ProductIngredient> productIngredients = product.getProductIngredients();
         for (int i = 0; i < productIngredients.size(); i++) {
             ProductIngredient productIngredient =  productIngredients.get(i);
             //Suppress underscore

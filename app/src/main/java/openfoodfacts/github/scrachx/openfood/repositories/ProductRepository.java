@@ -482,8 +482,7 @@ public class ProductRepository implements IProductRepository {
      *     <p>
      *     Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      */
-    @Override
-    public void saveIngredients(List<Ingredient> ingredients) {
+    private void saveIngredients(List<Ingredient> ingredients) {
         boolean complete = false;
         if (tableIsEmpty(ingredientDao)) {
             //If table ingredient is empty then it has probably been deleted so we have to complete it after saving.
@@ -550,7 +549,6 @@ public class ProductRepository implements IProductRepository {
      *
      * @param ingredient The ingredient to be saved.
      */
-    @Override
     public void saveIngredient(Ingredient ingredient) {
         List<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(ingredient);

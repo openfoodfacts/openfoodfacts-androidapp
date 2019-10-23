@@ -20,9 +20,6 @@ public interface IProductRepository {
 
     Single<List<Category>> getCategories();
 
-
-    void saveIngredient(Ingredient ingredient);
-
     void setAllergenEnabled(String allergenTag, Boolean isEnabled);
 
     Single<LabelName> getLabelByTagAndLanguageCode(String labelTag, String languageCode);
