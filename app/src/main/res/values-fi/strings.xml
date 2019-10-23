@@ -719,8 +719,8 @@
     <string name="got_it">Selvä!</string>
     <string name="ingredients_in_this_product_are">Tämän tuotteen ainesosat ovat %1$s.</string>
     <string name="ingredients_in_this_product">Tämän tuotteen ainesosat, jotka ovat %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
-    <string name="preference_header_display">Näyttö</string>
+    <string name="display_analysis_tag_status">Näytä %1$s tila</string>
+    <string name="preference_header_display">Näytä</string>
     <string name="unknown_status_no_translation">Tuotteen tilaa ei voitu arvioida tunnistamattomien ainesosien takia.</string>
     <string name="help_translate_ingredients">Auta kääntämään ainesosat kielellesi</string>
     <string name="unknown_status_missing_ingredients">Tuotteen tilaa ei voitu arvioida puuttuvien ainesosien takia.</string>
