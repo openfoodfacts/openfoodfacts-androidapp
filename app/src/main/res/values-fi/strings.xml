@@ -3,27 +3,27 @@
 <resources>
     <plurals name="offline_notification_count">
         <item quantity="one"> Yksi offline-tilassa muokattu tuote odottaa lähettämistä Open Food Facts:iin</item>
-        <item quantity="other"> %d offline-tilassa muokattua tuotetta odottaa lähettämistä Open Food Facts:iin</item>
+        <item quantity="other">%d offline-tilassa muokattua tuotetta odottaa lähettämistä Open Food Factsiin</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">sekunti sitten</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="other">%d sekuntia sitten</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minuutti sitten</item>
         <item quantity="other">%d minuuttia sitten</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 tunti sitten</item>
+        <item quantity="one">tunti sitten</item>
         <item quantity="other">%d tuntia sitten</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 päivä sitten</item>
+        <item quantity="one">päivä sitten</item>
         <item quantity="other">%d päivää sitten</item>
     </plurals>
     <string name="action_about">Tietoja</string>
-    <string name="action_discover">Löydä</string>
-    <string name="contribute">Miten voit auttaa</string>
+    <string name="action_discover">Tutustu</string>
+    <string name="contribute">Miten voit osallistua</string>
     <string name="action_find">Etsi</string>
     <string name="product_incomplete_message">Tämän tuotteen tiedot ovat puutteelliset. Allergeenitarkistusta ei voitu tehdä.</string>
     <string name="product_allergen_prompt">Tämä tuote sisältää:</string>
@@ -34,7 +34,7 @@
     <string-array name="nav_drawer_items_product">
         <item>Yhteenveto</item>
         <item>Ainekset</item>
-        <item>Nutri-Score</item>
+        <item>Ravintoarvot</item>
         <item>Ravintosisältö</item>
         <item>Ympäristö</item>
     </string-array>
@@ -51,7 +51,7 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>mg</item>
+        <item>g</item>
         <item>kg</item>
         <item>µg</item>
         <item>% päivittäisestä saannista</item>
@@ -119,7 +119,7 @@
         <item>Monityydyttämätön rasva</item>
         <item>Kalium</item>
         <item>Seleeni</item>
-        <item>Seerumiproteiineja</item>
+        <item>Plasmaproteiinit</item>
         <item>Piidioksidi</item>
         <item>Tärkkelys</item>
         <item>Steariinihappo (18:0)</item>
@@ -146,16 +146,16 @@
     <string name="alert_dialog_warning_msg_user">Käyttäjä / salasana on muuttunut, päivitä tiedot</string>
     <string name="toast_retrieving">Ladataan…</string>
     <string name="txtBarcode">Viivakoodi:</string>
-    <string name="txtCategories">Tuotekategoriat:</string>
-    <string name="txtLabels">Etiketit, sertifikaatit, palkinnot :</string>
+    <string name="txtCategories">Luokat:</string>
+    <string name="txtLabels">Merkit, sertifikaatit, palkinnot :</string>
     <string name="txtEMB">EMB-koodi:</string>
     <string name="txtIngredients">Ainesosaluettelo:</string>
-    <string name="Donate">Tee lahjoitus</string>
-    <string name="Donation">Klikkaa tästä lahjoittaaksesi Open Food Facts:lle</string>
+    <string name="Donate">Lahjoita</string>
+    <string name="Donation">Klikkaa tästä lahjoittaaksesi Open Food Factsille</string>
     <string name="txtSubstances">Allergioita tai intoleransseja aiheuttavat aineet ja tuotteet :</string>
     <string name="txtAdditives">Lisäaineet:</string>
     <string name="txtTraces">Jäämät:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ainesosat, jotka voivat olla peräisin palmuöljystä:</string>
+    <string name="txtMayBeFromPalmOilProduct">Ainesosat, jotka voivat olla peräisin palmuöljystä :</string>
     <string name="txtPalmOilProduct">Palmuöljyperäiset ainesosat :</string>
     <string name="txtServingSize">Annoskoko:</string>
     <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
@@ -170,15 +170,15 @@
     <string name="txtFat">Rasva</string>
     <string name="txtSugars">Sokerit</string>
     <string name="hintBarcode">Viivakoodi</string>
-    <string name="txtNutriScoreInfo">Opi lisää ravinnepitoisuuksista</string>
+    <string name="txtNutriScoreInfo">Opi lisää ravintoainepitoisuuksista</string>
     <string name="hintLogin">Käyttäjätunnus</string>
     <string name="hintPass">Salasana</string>
     <string name="errorLogin">Käyttäjätunnus tai salasana virheellinen</string>
-    <string name="errorWeb">Emme pystyneet pääsemään Internettiin. Onko sinulla yhtesongelmia?</string>
+    <string name="errorWeb">Internetin käyttö ei onnistunut. Onko sinulla yhteysongelmia?</string>
     <string name="uploadLater">Kuva lähetetään, kun verkko on käytettävissä</string>
     <string name="txtInfoLoginOk">Käyttäjä tallennettu</string>
     <string name="txtInfoLoginNo">Käyttäjää ei tallennettu</string>
-    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Facts:ssa. Ole hyvä ja lisää se.</string>
+    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Factsissa. Lisää se.</string>
     <string name="txtYes">Kyllä</string>
     <string name="txtNo">Ei</string>
     <string name="hintBrand">Tuotemerkki</string>
@@ -190,15 +190,17 @@
     <string name="txtDialogsContentInfoSave">Tuote tallennetaan paikallisesti. Voit muokata sitä Offline-muokkaus -valikossa</string>
     <string name="txtBarcodeRequire">Viivakoodi vaaditaan</string>
     <string name="txtOk">OK</string>
-    <string name="txtBarcodeNotValid">Viivakoodi on virheellinen</string>
-    <string name="msg_share">Katso tätä tuotetta Open Food Facts:ssa:</string>
+    <string name="txtBarcodeNotValid">Virheellinen viivakoodi</string>
+    <string name="msg_share">Katso tätä tuotetta Open Food Factsissa:</string>
     <string name="create_account">Rekisteröidy</string>
     <string name="home_drawer">Koti</string>
     <string name="install">Asenna</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Etsi</string>
     <string name="search_by_barcode_drawer">Etsi viivakoodilla</string>
     <string name="category_drawer">Luokat</string>
-    <string name="search_by_category">Kategoria</string>
+    <string name="search_by_category">Luokalla</string>
     <string name="scan_search">Lue viivakoodi</string>
     <string name="user_drawer">Käyttäjä</string>
     <string name="offline_edit_drawer">Offline-muokkaus</string>
@@ -211,15 +213,15 @@
     <string name="select_camera">Valitse kamera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Peruuta</string>
-    <string name="login_button">Käyttäjätunnus</string>
+    <string name="login_button">Kirjaudu</string>
     <string name="create_account_button">Luo tili</string>
     <string name="warning_alert_data">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100% tarkka, joten tarkista itse!</string>
     <string name="title_info_dialog">Miten se toimii?</string>
-    <string name="text_offline_info_dialog">Voit skannata tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Facts -sivulle. Kaikki skannaamasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
-    <string name="permission_camera">Lupaa käyttää kameraa vaaditaan viivakoodien skannaamiseen ja kuvien ottamiseen.</string>
+    <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Facts -sivulle. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
+    <string name="permission_camera">Lupaa käyttää kameraa vaaditaan viivakoodien lukemiseen ja kuvien ottamiseen.</string>
     <string name="permission_title">Käyttöoikeudet</string>
     <string name="permission_denied">Aktivoi lupa asetuksissa</string>
-    <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
+    <string name="info_download_data_connection">Tämän ominaisuuden pitää ladata tietoja toimiakseen. Aktivoi Internet-yhteys.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Salasanan on oltava vähintään 6 merkkiä.</string>
     <string name="user">käyttäjä</string>
@@ -227,29 +229,29 @@
     <string name="action_preferences">Asetukset</string>
     <string name="prefs_scan_startup">Viivakoodinluku käynnistäessä</string>
     <string name="prefs_scan_startup_summary">Tämän asetuksen ollessa päällä viivakoodinluku aloitetaan kun sovellus avataan.</string>
-    <string name="prefs_power_mode">Pikaskannaamisen tila</string>
-    <string name="prefs_power_mode_summary">Skannaa tuotteita supermarketissa nopeasti nähdäksesi, mitkä niistä eivät ole tietokannassa.</string>
+    <string name="prefs_power_mode">Pikalukutila</string>
+    <string name="prefs_power_mode_summary">Lue tuotteita supermarketissa nopeasti nähdäksesi, mitkä niistä eivät ole tietokannassa.</string>
     <string name="prefs_language">Kieli</string>
     <string name="prefs_language_summary">Vaihda kieli</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historia</string>
     <string name="clear_history">Tyhjennä historia</string>
     <string name="title_clear_history_dialog">Tyhjennä</string>
-    <string name="text_clear_history_dialog">Haluatko tyhjentää koko skannaushistorian?</string>
-    <string name="export_csv_history">Vie CSV:nä</string>
+    <string name="text_clear_history_dialog">Haluatko tyhjentää koko lukuhistorian?</string>
+    <string name="export_csv_history">Vie CSV-tiedostona</string>
     <string name="txt_exporting_history">Viedään historiaa…</string>
     <string name="txt_history_exported">Historia viety</string>
-    <string name="permision_write_external_storage">Lupa ulkoiseen tallennustillaan kirjoittaminen tarvitaan historian viemiseen.</string>
+    <string name="permision_write_external_storage">Lupa ulkoiseen tallennustilaan kirjoittaminen vaaditaan historian viemiseen.</string>
     <string name="no_brand">Ei tuotemerkkiä</string>
     <string name="no_title">Ei otsikkoa</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s tuotteesta</string>
+    <string name="display_fact">Tämän tuotteen ravintosisältö määrälle %1$s</string>
     <string name="check_facts">Tarkista</string>
-    <string name="nutrition">Nutri-Score</string>
-    <string name="calculated_nutrition">Laskettu ravitsevuus</string>
+    <string name="nutrition">Ravinto</string>
+    <string name="calculated_nutrition">Laskettu ravinto</string>
     <string name="please_enter_weight">Kirjoita tuotteen paino</string>
     <string name="enter_weight">Kirjoita tuotteen paino</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculate_nutrition_facts">Laske ravintosisältö tietylle määrälle</string>
     <string name="nutrition_carbohydrate">Hiilihydraatti</string>
     <string name="nutrition_cholesterol">Kolesteroli</string>
     <string name="nutrition_energy">Energia</string>
@@ -266,44 +268,44 @@
     <string name="nutriment_serving_size">Annosta kohti: </string>
     <string name="action_manage_account">Tilin asetukset</string>
     <string name="action_contributes">Osallistumisesi</string>
-    <string name="choose_energy_unit">Valitse haluamasi energiayksikkö ravitsemustaulukolle</string>
-    <string name="energy_pref_title">Haluamasi energiayksikkö</string>
-    <string name="choose_volume_unit">Valitse haluamasi tilavuusyksiköt ravitsemustaulukolle</string>
-    <string name="volume_pref_title">Haluttu tilavuusyksikkö</string>
+    <string name="choose_energy_unit">Valitse ensisijainen energiayksikkö ravintotiedoille</string>
+    <string name="energy_pref_title">Ensisijainen energiayksikkö</string>
+    <string name="choose_volume_unit">Valitse ensisijaiset tilavuusyksiköt ravintotaulukolle</string>
+    <string name="volume_pref_title">Ensisijainen tilavuusyksikkö</string>
     <string name="logout_drawer">Kirjaudu ulos</string>
-    <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
+    <string name="contribution_without_account">Kirjaudu sisään tai luo Open Food Facts -tili säilyttääksesi osallistumisesi</string>
     <string name="textCarbonFootprint">Hiilijalanjälki / CO2-päästöt: </string>
     <string name="action_search">Etsi</string>
     <string name="search_hint">Etsi tuote</string>
     <string name="number_of_results">Tulosten lukumäärä: </string>
     <string name="number_of_products">Tuotteiden määrä: </string>
-    <string name="txt_no_matching__category_products">Voi ei, meillä ei ole yhtään tuotetta tässä kategoriassa, voitko lisätä yhden?</string>
-    <string name="txt_no_matching_allergen_products">Voi ei, meillä ei ole mitään tuotteita tämän allergeenin kanssa, voitko lisätä yhden?</string>
+    <string name="txt_no_matching__category_products">Voi ei, meillä ei ole tuotteita tässä luokassa, voitko lisätä yhden?</string>
+    <string name="txt_no_matching_allergen_products">Voi ei, meillä ei ole tuotteita tämän allergeenin kanssa, voitko lisätä yhden?</string>
     <string name="txt_no_matching_label_products">Voi ei, meillä ei ole yhtään tuotetta tällä merkillä, voitko lisätä sen?</string>
     <string name="txt_no_matching_additive_products">Voi ei, meillä ei ole tuotteita tämän lisäaineen kanssa, voitko lisätä yhden?</string>
-    <string name="txt_no_matching_country_products">Voi ei, meillä ei ole yhtään tuotetta tästä maasta, voitko lisätä yhden?</string>
-    <string name="txt_no_matching_store_products">Voi ei, meillä ei ole yhtään tuotetta tästä kaupasta, voitko lisätä yhden?</string>
-    <string name="txt_no_matching_packaging_products">Voi ei, meillä ei ole mitään tuotteita tämän pakkauksen kanssa, voitko lisätä yhden?</string>
-    <string name="txt_no_matching_brand_products">Voi ei, meillä ei ole yhtään tämän tuotemerkin tuotetta, voitko lisätä yhden?</string>
-    <string name="txt_no_matching_incomplete_products">Meillä ei ole keskeneräisiä tuotteita! Haluatko lisätä uuden tuotteen?</string>
-    <string name="txt_no_matching_contributor_products">Voi ei, meillä ei ole yhtään tuotetta tältä avustajalta, voitko lisätä sen?</string>
+    <string name="txt_no_matching_country_products">Voi ei, meillä ei ole tuotteita tästä maasta, voitko lisätä yhden?</string>
+    <string name="txt_no_matching_store_products">Voi ei, meillä ei ole tuotteita tästä kaupasta, voitko lisätä yhden?</string>
+    <string name="txt_no_matching_packaging_products">Voi ei, meillä ei ole tuotteita tämän pakkauksen kanssa, voitko lisätä yhden?</string>
+    <string name="txt_no_matching_brand_products">Voi ei, meillä ei ole tuotemerkin tuotteita, voitko lisätä yhden?</string>
+    <string name="txt_no_matching_incomplete_products">Meillä ei ole keskeneräisiä tuotteita! Lisätäänkö uusi tuote?</string>
+    <string name="txt_no_matching_contributor_products">Voi ei, meillä ei ole tuotteita tältä osallistujalta, voitko lisätä yhden?</string>
     <string name="txt_no_matching_products">Emme löytäneet vastaavia tuotteita.\nVoit kokeilla:</string>
-    <string name="txt_broaden_search">- laajenna hakuasi \n- skannaa ja lisää se Open Food Facts -sivulle</string>
-    <string name="something_went_wrong">Pahoittelut, jotain meni pieleen…</string>
+    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Food Facts -sivulle</string>
+    <string name="something_went_wrong">Pahoittelut, jokin meni vikaan…</string>
     <string name="txt_try_again">Yritä uudelleen</string>
     <string name="nutrition_lactose">Laktoosi</string>
     <string name="nutrition_casein">Kaseiini</string>
     <string name="nutrition_maltodextrins">Maltodekstriinit</string>
-    <string name="nutrition_serum_proteins">Seerumiproteiineja</string>
+    <string name="nutrition_serum_proteins">Plasmaproteiinit</string>
     <string name="nutrition_nucleotides">Nukleotidit</string>
-    <string name="for_100g">100 g:ssa</string>
-    <string name="for_100ml">100 ml kohden</string>
+    <string name="for_100g">100 g</string>
+    <string name="for_100ml">100 ml</string>
     <string name="serving">Annosta kohti</string>
     <string name="nutrition_monounsaturatedFat">Kertatyydyttämätön rasva</string>
     <string name="nutrition_polyunsaturatedFat">Monityydyttämätön rasva</string>
-    <string name="nutrition_omega3">Omega 3</string>
-    <string name="nutrition_omega6">Omega 6</string>
-    <string name="nutrition_omega9">Omega 9</string>
+    <string name="nutrition_omega3">Omega-3</string>
+    <string name="nutrition_omega6">Omega-6</string>
+    <string name="nutrition_omega9">Omega-9</string>
     <string name="nutrition_sucrose">Sakkaroosi</string>
     <string name="nutrition_glucose">Glukoosi</string>
     <string name="nutrition_fructose">Fruktoosi</string>
@@ -344,56 +346,56 @@
     <string name="taurine">Tauriini</string>
     <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">Hedelmät, vihannekset, pähkinät</string>
-    <string name="collagen_meat_protein_ratio">Kollageeni-lihaproteiinisuhde</string>
+    <string name="collagen_meat_protein_ratio">Kollageenin ja proteiinin välinen suhdeluku</string>
     <string name="cocoa">Kaakao</string>
     <string name="chlorophyl">Lehtivihreä</string>
     <string name="take_picture">Ota kuva</string>
     <string name="choose_picture_from_gallery">Galleriasta</string>
     <string name="take_picture_ingredients">Ota kuva aineksista</string>
-    <string name="take_picture_front">Ota valokuva edestä</string>
+    <string name="take_picture_front">Ota kuva edestä</string>
     <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_more_pictures">Ota lisää kuvia</string>
     <string name="txtSaturatedFat">Tyydyttynyt rasva</string>
-    <string name="nutriscore_info_msg">Opi lisää Nutri-Scoresta</string>
+    <string name="nutriscore_info_msg">Lisätietoja Nutri-Scoresta</string>
     <string name="nova_info_msg">Lisätietoja Novasta</string>
-    <string name="nova_grp1_msg">Ryhmä 1 - käsittelemättömät tai minimaalisesti jalostetut elintarvikkeet</string>
+    <string name="nova_grp1_msg">Ryhmä 1 - jalostamattomat tai vähän jalostetut elintarvikkeet</string>
     <string name="nova_grp2_msg">Ryhmä 2 - jalostetut ruoka-aineosat</string>
     <string name="nova_grp3_msg">Ryhmä 3 - jalostetut elintarvikkeet</string>
     <string name="nova_grp4_msg">Ryhmä 4 - Erittäin jalostetut ruoka- ja juomatuotteet</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Shortcut Not Available</string>
-    <string name="scan_shortcut_short_label">Skannaa</string>
-    <string name="scan_shortcut_long_label">Skannaa tuote</string>
+    <string name="disabled_message">Pikakuvake ei käytettävissä.</string>
+    <string name="scan_shortcut_short_label">Lue</string>
+    <string name="scan_shortcut_long_label">Lue tuote</string>
     <string name="barcode_shortcut_short_label">Etsi</string>
-    <string name="barcode_shortcut_long_label">Search By Barcode</string>
+    <string name="barcode_shortcut_long_label">Etsi viivakoodilla</string>
     <string name="history_shortcut_short_label">Historia</string>
     <string name="history_shortcut_long_label">Historia</string>
     <string name="contributions_shortcut_short_label">Muokkaukset</string>
     <string name="contributions_shortcut_long_label">Muokkaukseni</string>
-    <string name="forgot_password">Salasana unohtunut</string>
+    <string name="forgot_password">Unohtunut salasana</string>
     <string name="next">SEURAAVA</string>
     <string name="skip">OHITA</string>
     <string name="start">SELVÄ</string>
     <string name="contact">Yhteystiedot</string>
     <string name="contact_summary">Ota yhteyttä tiimiin</string>
-    <string name="email_not_found">Yhtään sähköpostisovellusta ei löytynyt</string>
+    <string name="email_not_found">Sähköpostisovellusta ei löytynyt</string>
     <string name="airplane_mode_active_dialog_title">Lentokonetila käytössä</string>
     <string name="airplane_mode_active_dialog_message">Lentokonetila on käytössä. Poista se käytöstä jatkaaksesi.</string>
     <string name="airplane_mode_active_dialog_negative">Hylkää</string>
     <string name="airplane_mode_active_dialog_positive">Asetukset</string>
-    <string name="device_offline_dialog_title">Verkko ei ole saavutettavissa</string>
+    <string name="device_offline_dialog_title">Verkko ei ole käytettävissä</string>
     <string name="device_offline_dialog_message">Tämän tekemiseen tarvitaan verkkoyhteys. Haluatko muuttaa tätä asetuksissa?</string>
     <string name="device_offline_dialog_negative">Hylkää</string>
     <string name="device_offline_dialog_positive">Asetukset</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Lue ensimmäinen tuotteesi</string>
     <string name="preference_delete_search_history">Historian poisto onnistui</string>
     <string name="preference_enable_mobile_data_title">Lataa mobiilidatalla</string>
-    <string name="preference_enable_mobile_data_summary_on">Lataa uusia tuotteita mobiilidatan &amp; WiFin kautta</string>
+    <string name="preference_enable_mobile_data_summary_on">Lähetä uusia tuotteita mobiilidatalla &amp; WiFi-yhteydellä</string>
     <string name="preference_enable_mobile_data_summary_off">Lataa uusia tuotteita vain WiFi-yhteydellä</string>
     <string name="device_on_mobile_data_warning_title">Tietoja</string>
-    <string name="device_on_mobile_data_warning_message">Lataaminen mobiilidatalla on poistettu käytöstä. Muodosta yhteys langattomaan verkkoon tai muuta tilannetta asetuksissa</string>
+    <string name="device_on_mobile_data_warning_message">Lähettäminen mobiilidatalla on poistettu käytöstä. Muodosta yhteys langattomaan verkkoon tai muuta tilannetta asetuksissa</string>
     <string name="device_on_mobile_data_warning_positive">Asetukset</string>
-    <string name="device_on_mobile_data_warning_negative">Lataa joka tapauksessa</string>
+    <string name="device_on_mobile_data_warning_negative">Lähetä joka tapauksessa</string>
     <string name="changes_saved">Muutokset tallennettu</string>
     <string name="preference_choose_language_dialog_title">Valitse kieli</string>
     <string name="FAQ">UKK</string>
@@ -421,8 +423,8 @@
     <string name="dialog_cancel">Peruuta</string>
     <string name="dialog_create">Luo</string>
     <string name="choose_resolution">Choose Resolution</string>
-    <string name="pref_resolution_summary">Valitse tarkkuus kuvan lähettämistä varten</string>
-    <string name="image_upload_resolution">Kuvan latausresoluutio</string>
+    <string name="pref_resolution_summary">Valitse tarkkuus kuvan lähettämiseen</string>
+    <string name="image_upload_resolution">Lähetettävän kuvan tarkkuus</string>
     <string name="wikidata_information">Syvemmälle</string>
     <string name="wikidata_unavailable">Kielelläsi ei vielä ole Wikipedia-sivua.</string>
     <string name="Wikipedia">Näytä Wikipediassa</string>
@@ -459,8 +461,8 @@
     <string name="sort_by">Lajittelujärjestys</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
-    <string name="shake_summary">Ravista puhelinta skannataksesi tuotteita</string>
-    <string name="shake_title">Ravista skannataksesi</string>
+    <string name="shake_summary">Ravista puhelinta lukeaksesi tuotteita</string>
+    <string name="shake_title">Ravista lukeaksesi</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Kuvia ilman viivakoodia ei voida vielä lisätä äppsillä. Kokeile sivuston mobiiliversiota.</string>
     <string name="no_barcode">Emme ole havainneet viivakoodia</string>
@@ -501,10 +503,10 @@
     </plurals>
     <string name="product_not_complete">Tämä tuote ei ole vielä valmis. \nVoitko lisätä joitain yksityiskohtia?</string>
     <string name="addProductOffline">Vaikutat olevasi offline-tilassa. Lisää tuote %s offline-tilassa?</string>
-    <string name="product_not_found">Skannattua tuotetta %1$s ei vielä ole Open Food Factsissä. Voitko lisätä sen?</string>
-    <string name="scan_sound">Skannausääni</string>
-    <string name="trouble_scanning">Vaikeuksia skannauksessa?</string>
-    <string name="barcode_hint">Vaikeuksia skannauksessa? Syötä viivakoodi</string>
+    <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Food Factsissä. Voitko lisätä sen?</string>
+    <string name="scan_sound">Lukuääni</string>
+    <string name="trouble_scanning">Vaikeuksia lukemisessa?</string>
+    <string name="barcode_hint">Vaikeuksia lukemisessa? Syötä viivakoodi</string>
     <string name="switch_camera">Vaihda kameraa</string>
     <string name="autofocus">Automaattitarkennus</string>
     <string name="initial_loading">Alustava lataus</string>
@@ -514,7 +516,7 @@
     <string name="image_not_defined_for_language">Valitulle kielelle ei ole kuvaa. Voit lisätä uuden</string>
     <string name="error_adding_ingredients">Jotain meni pieleen yrittäessämme lisätä tuotteen ainesosia</string>
     <string name="unable_to_extract_ingredients">Ainesosia ei voitu tunnistaa automaattisesti kuvasta</string>
-    <string name="error_adding_nutrition_facts">Jotain meni pieleen yrittäessämme lisätä tuotteen ravitsemustietoja</string>
+    <string name="error_adding_nutrition_facts">Jotain meni pieleen yrittäessämme lisätä tuotteen ravintosisältöä</string>
     <string name="error_in_carbohydrate_value">Hiilihydraattien määrä ei voi olla alempi kuin sokerin ja tärkkelyksen summa</string>
     <string name="choose_nutrient">Valitse ravinne</string>
     <string name="error_adding_product_details">Jotain meni pieleen yrittäessämme lisätä tuotteen yksityiskohtia</string>
@@ -522,9 +524,9 @@
     <string name="product_language">Tuotteen kieli: </string>
     <string name="hint_emb_codes">Esimerkkejä: EMB 53062, FR 62.448.034 CE, 84 R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Virallinen nettisivu</string>
-    <string name="scan_QR_code">Skannaa QR-koodi tuotesivustolle</string>
+    <string name="scan_QR_code">Lue QR-koodi tuotesivustolle</string>
     <string name="add_at_least_one_picture">Lisää ainakin yksi kuva tästä tuotteesta ennen jatkamista</string>
-    <string name="image_uploaded_successfully">Kuvan lataaminen onnistui</string>
+    <string name="image_uploaded_successfully">Kuvan lähettäminen onnistui</string>
     <string name="error_adding_product_photos">Jotain meni pieleen yrittäessämme lisätä tuotekuvia</string>
     <string name="ingredients_overwrite">Ainesosien korvaus</string>
     <string name="choose_mine">Valitse minun</string>
@@ -538,8 +540,8 @@
     <string name="error_adding_product">Jotain meni pieleen, kun tuotetta lisättiin</string>
     <string name="photos">Kuvat</string>
     <string name="please_wait">Odota hetki</string>
-    <string name="product_uploaded_successfully">Tuotteen lataus onnistui</string>
-    <string name="no_internet_connection">Vaikuttaa siltä, että sinulla ei ole Internet-yhteyttä, kuvat ladataan, kun verkko on käytettävissä</string>
+    <string name="product_uploaded_successfully">Tuotteen lähettäminen onnistui</string>
+    <string name="no_internet_connection">Vaikuttaa siltä, että sinulla ei ole Internet-yhteyttä, kuvat lähetetään, kun verkko on käytettävissä</string>
     <string name="no_internet_unable_to_extract_ingredients">Ei Internet-yhteyttä. Ainesosia ei tunnistaa automaattisesti</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Yleiskatsaus</string>
@@ -556,7 +558,7 @@
     <string name="skip_ingredients">Voi että \n Ohita ainesosat</string>
     <string name="traces">Jäämät</string>
     <string name="traces_hint">Ilmoita mahdolliset ainesosajäämät \"Voi sisältää jäämiä\", \"Valmistettu tehtaassa, jossa käsitellään myös\" jne. \nEsim. maito, gluteeni, pähkinät</string>
-    <string name="nutrition_facts_not_specified">Ravintotietoja ei ole spesifioitu tuotteessa.</string>
+    <string name="nutrition_facts_not_specified">Ravintosisältöä ei ole määritelty tuotteessa.</string>
     <string name="nutrition_facts_picture">Kuva ravintosisällöstä</string>
     <string name="front_short_picture">Etupuoli</string>
     <string name="other_picture">Muu kuva</string>
@@ -595,7 +597,7 @@
     <string name="sign_in_to_edit">Kirjaudu sisään muokataksesi tuotetta.</string>
     <string name="hint_quantity">Esimerkit: 2 l, 250 g, 1 kg, 25 cl, 6 nesteunssia, 1 pauna</string>
     <string name="edit_product_title">Muokkaa tuote</string>
-    <string name="nutrient_already_added">%s on jo läsnä ravinnetietoissa</string>
+    <string name="nutrient_already_added">%s on jo ravintosisällössä</string>
     <string name="save_edits">Tallenna muokkaukset</string>
     <string name="contribution_by">Lähettäjä</string>
     <string name="title_activity_product">Otsikko</string>
@@ -695,12 +697,12 @@
     <string name="add_an_allergen">Lisää allergeeni</string>
     <string name="add_a_list">Lisää luettelo</string>
     <string name="edit_image">Muokkaa kuvaa</string>
-    <string name="cant_edit_image_not_yet_uploaded">Uutta kuvaa ei ole vielä ladattu. Odota, ennen kuin muokkaat sitä</string>
+    <string name="cant_edit_image_not_yet_uploaded">Uutta kuvaa ei ole vielä lähetetty. Odota, ennen kuin muokkaat sitä</string>
     <string name="unselect_image">Poista kuvan valinta</string>
     <string name="choose_default_language">Valitse tuotekieli</string>
     <string name="barcode">Viivakoodi</string>
     <string name="productAdditivesNone">Ei lisäaineita</string>
-    <string name="error_uploading_photo">Jokin meni pieleen uuden kuvan lähetyksessä</string>
+    <string name="error_uploading_photo">Jokin meni vikaan uuden kuvan lähetyksessä</string>
     <string name="import_csv_to_list">Tuo Open Food Facts -luettelo CSV-tiedostona</string>
     <string name="toast_import_csv_error">CSV-tiedoston tuonnissa tapahtui virhe</string>
     <string name="toast_import_csv">CSV-tuonti onnistui!</string>
@@ -710,6 +712,19 @@
     <string name="cant_modify_if_refreshing">Odota, kunnes lähetys on valmis</string>
     <string name="closeZoom">Sulje zoomaus napsauttamalla</string>
     <string name="imageFullscreen">Zoomaa</string>
+    <!-- Used for product ingredients analysis tags -->
+    <string name="close_button">Sulje</string>
+    <string name="tip_message">TIP: %1$s </string>
+    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
+    <string name="got_it">Got it!</string>
+    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
+    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
+    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="preference_header_display">Display</string>
+    <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
+    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="product_already_exists_in_comparison">Tuote on jo vertailuluettelossa</string>
     <string name="compare_brands">Tuotemerkit :</string>
     <string name="compare_additives">Lisäaineet:</string>
