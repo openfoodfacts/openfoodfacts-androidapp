@@ -715,13 +715,13 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Schließen</string>
     <string name="tip_message">TIP: %1$s </string>
-    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
-    <string name="got_it">Got it!</string>
-    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
-    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
-    <string name="preference_header_display">Display</string>
-    <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
+    <string name="ingredient_analysis_tip">Klicken Sie auf die untenstehenden Symbole, um mehr über das Produkt zu erfahren und auszuwählen, für welche Informationen Sie sich interessieren.</string>
+    <string name="got_it">Verstanden!</string>
+    <string name="ingredients_in_this_product_are">Die Inhaltsstoffe in diesem Produkt sind %1$s.</string>
+    <string name="ingredients_in_this_product">Zutaten in diesem Produkt, die %1$s sind:</string>
+    <string name="display_analysis_tag_status">%1$s Status anzeigen</string>
+    <string name="preference_header_display">Anzeigen</string>
+    <string name="unknown_status_no_translation">Open Food Facts konnten den Status des Produkts aufgrund nicht erkannter Inhaltsstoffe nicht beurteilen.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
