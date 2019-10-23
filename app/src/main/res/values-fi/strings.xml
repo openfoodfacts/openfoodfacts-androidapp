@@ -152,11 +152,11 @@
     <string name="txtIngredients">Ainesosaluettelo:</string>
     <string name="Donate">Lahjoita</string>
     <string name="Donation">Klikkaa tästä lahjoittaaksesi Open Food Factsille</string>
-    <string name="txtSubstances">Allergioita tai intoleransseja aiheuttavat aineet ja tuotteet :</string>
+    <string name="txtSubstances">Allergioita tai intoleransseja aiheuttavat aineet ja tuotteet:</string>
     <string name="txtAdditives">Lisäaineet:</string>
     <string name="txtTraces">Jäämät:</string>
     <string name="txtMayBeFromPalmOilProduct">Ainesosat, jotka voivat olla peräisin palmuöljystä :</string>
-    <string name="txtPalmOilProduct">Palmuöljyperäiset ainesosat :</string>
+    <string name="txtPalmOilProduct">Palmuöljyperäiset ainesosat:</string>
     <string name="txtServingSize">Annoskoko:</string>
     <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
     <string name="txtNutrientLevel100ml">Ravintosisältö per 100 ml:</string>
@@ -622,31 +622,31 @@
     <string name="some_people">Jotkut ihmiset\n(yli 5%)</string>
     <string name="safety_and_exposure_assessment">Turvallisuuden ja altistumisen arviointi</string>
     <string name="risk_of_exposure">Altistumisen riski</string>
-    <string name="efsa_warning_high_risk">Euroopan elintarviketurvallisuusviranomainen (EFSA) on todennut, että joillakin väestöryhmillä on suuri riski kuluttaa liikaa %1$s.</string>
-    <string name="legend_noael">ylläannettu annos havaitulla haitallisella vaikutuksella (NOAEL)</string>
-    <string name="legend_adi">yli hyväksyttävän päivittäisen saannin</string>
+    <string name="efsa_warning_high_risk">Euroopan elintarviketurvallisuusviranomainen (EFSA) on todennut, että joillakin väestöryhmillä on suuri riski kuluttaa liikaa ainetta %1$s.</string>
+    <string name="legend_noael">enemmän kuin haitattoman tason annos (NOAEL)</string>
+    <string name="legend_adi">enemmän kuin hyväksyttävä päiväsaanti (ADI)</string>
     <string name="max_energy_val_msg">Tämä arvo on yli 2000 kcal / 100 g. Voitko korjata sen?</string>
-    <string name="max_nutrient_val_msg">Annettu arvo on korkeampi kuin annoskokoa kohti</string>
+    <string name="max_nutrient_val_msg">Annettu arvo on korkeampi kuin annoskokoa kohti annettu</string>
     <string name="update_image">Lähetä päivitetty kuva</string>
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <!-- End of used for diets AddOn -->
-    <string name="extract_ingredients_prompt">Tunnista ainesosat automaattisesti</string>
-    <string name="add_nutrient_prompt_text">Lisää ravintosisältö Nutri-Score -arvon laskemiseksi</string>
-    <string name="add_category_prompt_text">Lisää kategoria Nutri-Score -arvon laskemiseksi</string>
-    <string name="add_nutrient_category_prompt_text">Lisää ravintosisältö ja kategoria Nutri-Score -arvon laskemiseksi</string>
+    <string name="extract_ingredients_prompt">Poimi ainesosat</string>
+    <string name="add_nutrient_prompt_text">Lisää ravintosisältö Nutri-Scoren laskemiseksi</string>
+    <string name="add_category_prompt_text">Lisää luokitus Nutri-Scoren laskemiseksi</string>
+    <string name="add_nutrient_category_prompt_text">Lisää ravintosisältö ja luokitus Nutri-Scoren laskemiseksi</string>
     <string name="category_game_btn">Auta luokittelemaan tuotteita, jotta Nutri-Score voidaan laskea</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version_string">Open Food Facts Android-sovellus</string>
     <string name="version">Versio</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
-    <string name="report_img">Raportoi kuva</string>
+    <string name="set_ingredient_img">Aseta ainesosakuvaksi</string>
+    <string name="set_img_nutrients">Aseta ravintosisältökuvaksi</string>
+    <string name="set_img_front">Aseta etukuvaksi</string>
+    <string name="report_img">Ilmoita kuvasta</string>
     <string name="detected_ingredients">Havaitut ainesosat</string>
-    <string name="txtConnectionError">Emme voineet ladata tiettyjä tietoja. Tämä voi johtua yhteysvirheestä.</string>
-    <string name="set_image_name">Kuva asetettu onnistuneesti rooliin</string>
+    <string name="txtConnectionError">Tiettyjä tietoja ei voitu ladata. Tämä voi johtua yhteysvirheestä.</string>
+    <string name="set_image_name">Kuva asetettu rooliin</string>
     <string name="fast_addition_mode_title">Pikalisäystila</string>
-    <string name="fast_addition_mode">Mahdollistaa tuotteiden nopean lisäämisen vähemmillä attribuuteilla</string>
+    <string name="fast_addition_mode">Mahdollistaa tuotteiden nopean lisäämisen vähemmillä määritteillä</string>
     <string name="crop_new_image_title">Rajaa uusia kuvia</string>
     <string name="crop_new_image">Mahdollistaa uusien kuvien rajauksen</string>
     <string name="addtive_search">Etsi lisäaine</string>
@@ -655,36 +655,36 @@
     <string name="add_to_product_lists">Lisää luetteloihisi</string>
     <string name="txt_create_new_list">Luo uusi luettelo</string>
     <string name="txt_add_to_new_list">Lisää uuteen luetteloon</string>
-    <string name="create_new_list_list_name">Listan nimi</string>
+    <string name="create_new_list_list_name">Luettelon nimi</string>
     <string name="txt_eaten_products">Syödyt tuotteet</string>
-    <string name="txt_products_to_buy">Tuotteita ostettavaksi</string>
-    <string name="txt_exporting_your_listed_products">Tuotteiden vienti…</string>
+    <string name="txt_products_to_buy">Ostettavat tuotteet</string>
+    <string name="txt_exporting_your_listed_products">Viedään tuotteitasi…</string>
     <string name="txt_your_listed_products_exported">Tuotteesi on viety</string>
     <string name="txt_discard">Hävitä</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin ja napauttamalla \"Syön tätä\".
+        Voit lisätä tuotteita tähän luetteloon etsimällä niitä ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
     <string name="txt_info_your_listed_products">Voit lisätä tuotteita tähän luetteloon etsimällä niitä ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
     <string name="search_history_pref_title">Poista paikallinen hakuhistoria</string>
     <string name="search_history_pref_summary">Poista kaikki tällä laitteella tekemäsi haut</string>
     <string name="settings_country_dialog_title">Valitse maasi</string>
     <string name="settings_country_summary">Vaihda valitsemasi maa</string>
     <string name="settings_country_title">Maa</string>
-    <string name="txt_no_nutrition_data">Tuotteen pakkauksessa ei ole ravintoarvotietoja. Jos tämä on muuttunut, voit muokata tuotetta.</string>
-    <string name="image_prompt_language">Ota valokuva ainesosista</string>
+    <string name="txt_no_nutrition_data">Tuotteen pakkauksessa ei ole ravintosisältöä. Jos tämä on muuttunut, voit muokata tuotetta.</string>
+    <string name="image_prompt_language">Ota valokuva ainesosista kielellä</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Lisää tuotteita</string>
     <string name="add_another_product">Lisää toinen tuote</string>
-    <string name="add_nutrition_facts_for_nutriscore">Lisää ravintosisältö Nutri-Score -arvon laskemiseksi</string>
+    <string name="add_nutrition_facts_for_nutriscore">Lisää ravintosisältö Nutri-Scoren laskemiseksi</string>
     <string name="product_summary_action_compare_button_label">Vertaile</string>
-    <string name="product_summary_action_add_to_list_button_label">Lisätä listaan</string>
+    <string name="product_summary_action_add_to_list_button_label">Lisää luetteloon</string>
     <string name="product_summary_action_edit_button_label">Muokkaa</string>
     <string name="product_summary_action_share_button_label">Jaa</string>
     <string name="product_question_prompt">Napauta tätä vastataksesi</string>
     <string name="product_question_positive_response">Kyllä</string>
     <string name="product_question_negative_response">Ei</string>
     <string name="product_question_ambiguous_response">Epävarma</string>
-    <string name="product_question_submit_message">Kiitos panoksestasi!</string>
+    <string name="product_question_submit_message">Kiitokset osallistumisestasi!</string>
     <string name="error_nutrient_entry">Arvon tulee olla numeerinen ja se voi alkaa &lt;, &gt; tai ~. Esimerkki: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
     <string name="error_nutrient_serving_data">Annoskoon tulee olla positiivinen arvo</string>
     <string name="error_in_nutrient_data">Jotkut ravintoarvot eivät ole kelvollisia. Korjaa kentät joissa on virhemerkki</string>
@@ -703,9 +703,9 @@
     <string name="barcode">Viivakoodi</string>
     <string name="productAdditivesNone">Ei lisäaineita</string>
     <string name="error_uploading_photo">Jokin meni vikaan uuden kuvan lähetyksessä</string>
-    <string name="import_csv_to_list">Tuo Open Food Facts -luettelo CSV-tiedostona</string>
+    <string name="import_csv_to_list">Tuo Open Food Facts -luettelo CSV-tiedostosta</string>
     <string name="toast_import_csv_error">CSV-tiedoston tuonnissa tapahtui virhe</string>
-    <string name="toast_import_csv">CSV-tuonti onnistui!</string>
+    <string name="toast_import_csv">CSV-tiedoston tuonti onnistui!</string>
     <string name="open_csv">Avaa CSV</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Tuotetta ei voitu ladata. Yritä uudelleen, kun olet taas online-tilassa.</string>
@@ -714,7 +714,7 @@
     <string name="imageFullscreen">Zoomaa</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Sulje</string>
-    <string name="tip_message">TIP: %1$s </string>
+    <string name="tip_message">VINKKI: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
@@ -726,7 +726,7 @@
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="product_already_exists_in_comparison">Tuote on jo vertailuluettelossa</string>
-    <string name="compare_brands">Tuotemerkit :</string>
+    <string name="compare_brands">Tuotemerkit:</string>
     <string name="compare_additives">Lisäaineet:</string>
     <string name="compare_salt">Suola</string>
     <string name="compare_sugars">Sokerit</string>
