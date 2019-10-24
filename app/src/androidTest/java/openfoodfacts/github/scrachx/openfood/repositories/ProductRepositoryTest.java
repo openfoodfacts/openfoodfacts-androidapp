@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
@@ -28,12 +29,12 @@ public class ProductRepositoryTest {
     private static final String TEST_ALLERGEN_TAG = "en:lupin";
     private static final String TEST_LANGUAGE_CODE = "es";
     private static final String TEST_ALLERGEN_NAME = "Altramuces";
-    private static IProductRepository productRepository;
+    private static ProductRepository productRepository;
 
     @BeforeClass
     public static void cleanAllergens() {
         clearDatabase();
-        productRepository = ProductRepository.getInstance();
+        productRepository = (ProductRepository) ProductRepository.getInstance();
         productRepository.saveAllergens(createAllergens());
     }
 
@@ -58,21 +59,29 @@ public class ProductRepositoryTest {
 
     @Test
     public void testGetAllergens() {
-        List<Allergen> allergens = productRepository.getAllergens(false).blockingGet();
+        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
+        boolean isDownloadActivated = mSettings.getBoolean(Taxonomy.ALLERGEN.getDownloadActivatePreferencesId(), false);
+        if (!isDownloadActivated) {
+            List<Allergen> allergens = productRepository.reloadAllergensFromServer().blockingGet();
+            assertNotNull(allergens);
+            assertEquals(0, allergens.size());
+        } else {
+            List<Allergen> allergens = productRepository.reloadAllergensFromServer().blockingGet();
 
-        assertNotNull(allergens);
-        assertEquals(2, allergens.size());
+            assertNotNull(allergens);
+            assertEquals(2, allergens.size());
 
-        Allergen allergen = allergens.get(0);
-        assertEquals(TEST_ALLERGEN_TAG, allergen.getTag());
+            Allergen allergen = allergens.get(0);
+            assertEquals(TEST_ALLERGEN_TAG, allergen.getTag());
 
-        List<AllergenName> allergenNames = allergen.getNames();
-        assertEquals(3, allergenNames.size());
+            List<AllergenName> allergenNames = allergen.getNames();
+            assertEquals(3, allergenNames.size());
 
-        AllergenName allergenName = allergenNames.get(0);
-        assertEquals(allergenName.getAllergenTag(), allergen.getTag());
-        assertEquals(TEST_LANGUAGE_CODE, allergenName.getLanguageCode());
-        assertEquals(TEST_ALLERGEN_NAME, allergenName.getName());
+            AllergenName allergenName = allergenNames.get(0);
+            assertEquals(allergenName.getAllergenTag(), allergen.getTag());
+            assertEquals(TEST_LANGUAGE_CODE, allergenName.getLanguageCode());
+            assertEquals(TEST_ALLERGEN_NAME, allergenName.getName());
+        }
     }
 
     @Test

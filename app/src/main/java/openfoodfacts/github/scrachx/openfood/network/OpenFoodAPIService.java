@@ -311,8 +311,7 @@ public interface OpenFoodAPIService {
     @GET("code/{Code}.json")
     Call<Search> byCode(@Path("Code") String Code);
 
-    @GET("packager-codes.json")
-    Single<TagsWrapper> getTags();
+
 
     @GET("state/{State}/{page}.json")
     Call<Search> getProductsByState(@Path("State") String state, @Path("page") int page);

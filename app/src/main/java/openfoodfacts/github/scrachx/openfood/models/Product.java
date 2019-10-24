@@ -140,6 +140,10 @@ public class Product implements Serializable {
     @JsonProperty("environment_infocard")
     private String environmentInfocard;
     private Map<String, Object> additionalProperties = new HashMap<>();
+    @JsonProperty("ingredients_analysis_tags")
+    private List<String> ingredientsAnalysisTags = new ArrayList<>();
+    @JsonProperty("ingredients")
+    private List<LinkedHashMap<String, String>> ingredients = new ArrayList<>();
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
@@ -684,6 +688,14 @@ public class Product implements Serializable {
 
     public String getEnvironmentInfocard() {
         return environmentInfocard;
+    }
+
+    public List<String> getIngredientsAnalysisTags() {
+        return ingredientsAnalysisTags;
+    }
+
+    public List<LinkedHashMap<String, String>> getIngredients() {
+        return ingredients;
     }
 
     /**
