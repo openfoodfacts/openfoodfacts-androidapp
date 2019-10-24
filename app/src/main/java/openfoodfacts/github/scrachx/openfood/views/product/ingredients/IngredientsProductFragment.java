@@ -286,6 +286,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 ((ContinuousScanActivity) getActivity()).setDietState(productState);
             } catch (Exception e) {
                 //Just continue
+                Toast.makeText(getActivity(), e.getMessage(),Toast.LENGTH_LONG).show();
             }
             switch (Long.toString(productState)) {
                 case "-1":
