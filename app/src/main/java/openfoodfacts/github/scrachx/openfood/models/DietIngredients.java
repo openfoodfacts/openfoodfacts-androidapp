@@ -19,10 +19,10 @@ public class DietIngredients {
     Long id;
     private String dietTag;
     private String ingredientTag;
-    private long state;
-@Generated(hash = 1986818704)
+    private int state;
+@Generated(hash = 1789866432)
 public DietIngredients(Long id, String dietTag, String ingredientTag,
-        long state) {
+        int state) {
     this.id = id;
     this.dietTag = dietTag;
     this.ingredientTag = ingredientTag;
@@ -49,10 +49,10 @@ public String getIngredientTag() {
 public void setIngredientTag(String ingredientTag) {
     this.ingredientTag = ingredientTag;
 }
-public long getState() {
+public int getState() {
     return this.state;
 }
-public void setState(long state) {
+public void setState(int state) {
     this.state = state;
 }
 }

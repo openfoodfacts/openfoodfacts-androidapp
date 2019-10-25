@@ -179,14 +179,14 @@ public class DietIngredientsProductFragment extends BaseFragment {
     }
 
     private int stateFromView(View v) {
-        int state = 2;
+        int state = DietRepository.DIET_STATE_UNKNOWN;
         String vName = v.toString().substring(v.toString().indexOf("state")+5);
         if (vName.equals("GreenImageButton}")) {
-            state = 1;
+            state = DietRepository.DIET_STATE_AUTHORISED;
         } else if (vName.equals("OrangeImageButton}")) {
-            state=0;
+            state= DietRepository.DIET_STATE_SOSO;
         } else if (vName.equals("RedImageButton}")) {
-            state=-1;
+            state= DietRepository.DIET_STATE_FORBIDEN;
         }
         return state;
     }

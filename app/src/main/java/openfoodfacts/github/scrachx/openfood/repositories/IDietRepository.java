@@ -61,29 +61,29 @@ public interface IDietRepository {
 
     void addIngredient(String ingredientTag, String name, String languageCode);
 
-    void addDietIngredientsByTags(String dietTag, String ingredientTag, long state);
+    void addDietIngredientsByTags(String dietTag, String ingredientTag, int state);
 
-    void addDietIngredients(String dietTag, String ingredientName, String languageCode, long state);
+    void addDietIngredients(String dietTag, String ingredientName, String languageCode, int state);
 
-    List<DietIngredients> getDietIngredientsListByDietTagAndState(String dietTag, long state);
+    List<DietIngredients> getDietIngredientsListByDietTagAndState(String dietTag, int state);
 
     List<DietIngredients> getDietIngredientsListByDietTag(String dietTag);
 
-    List<Ingredient> getIngredientsLinkedToDietByDietTagAndState(String dietTag, long state);
+    List<Ingredient> getIngredientsLinkedToDietByDietTagAndState(String dietTag, int state);
 
     List<Ingredient> getIngredientsLinkedToDietByDietTag(String dietTag);
 
-    List<Ingredient> getIngredientsLinkedToDietByDietNameLanguageCodeAndState(String dietName, String languageCode, long state);
+    List<Ingredient> getIngredientsLinkedToDietByDietNameLanguageCodeAndState(String dietName, String languageCode, int state);
 
     List<Ingredient> getIngredientsLinkedToDietByDietNameAndLanguageCode(String dietName, String languageCode);
 
     List<IngredientName> getIngredientNamesByIngredientsAndLanguageCode(List<Ingredient> ingredients, String languageCode);
 
-    String getSortedIngredientNameStringByDietTagStateAndLanguageCode(String dietTag, long state, String languageCode);
+    String getSortedIngredientNameStringByDietTagStateAndLanguageCode(String dietTag, int state, String languageCode);
 
-    List<String> getIngredientNameLinkedToEnabledDietsByLanguageCode(long state, String languageCode);
+    List<String> getIngredientNameLinkedToEnabledDietsByLanguageCode(int state, String languageCode);
 
-    long stateFromIngredientTagDietTag(String ingredientTag, String dietTag);
+    int stateFromIngredientTagDietTag(String ingredientTag, String dietTag);
 
     List<SpannableStringBuilder> getColoredSSBFromProductAndDiet(Product product, String dietTag);
 

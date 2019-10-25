@@ -120,15 +120,15 @@ public class EditDietFragment extends Fragment {
             dietDescription.setText(dietName.getDescription());
             dietEnabled.setChecked(diet.getEnabled());
             dietId.setText(dietName.getId().toString());
-            String ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), 1, languageCode);
+            String ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), DietRepository.DIET_STATE_AUTHORISED, languageCode);
             if (!ingredientNames.equals("")) {
                 ingredientsAuthorised.setText(Arrays.asList(ingredientNames.split("\\s*,\\s*")));
             }
-            ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), 0, languageCode);
+            ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), DietRepository.DIET_STATE_SOSO, languageCode);
             if (!ingredientNames.equals("")) {
                 ingredientsSoSo.setText(Arrays.asList(ingredientNames.split("\\s*,\\s*")));
             }
-            ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), -1, languageCode);
+            ingredientNames = dietRepository.getSortedIngredientNameStringByDietTagStateAndLanguageCode(diet.getTag(), DietRepository.DIET_STATE_FORBIDEN, languageCode);
             if (!ingredientNames.equals("")) {
                 ingredientsUnauthorised.setText(Arrays.asList(ingredientNames.split("\\s*,\\s*")));
             }
@@ -221,28 +221,28 @@ public class EditDietFragment extends Fragment {
             }
             //Get the diet
             Diet diet = dietRepository.getDietByNameAndLanguageCode(dietName.getText().toString(), languageCode);
-            //Set the state at 2 (no impact) for all ingredients associated with the diet. Sort of reset before the next steps
+            //Set the state at DIET_STATE_UNKNOWN (no impact) for all ingredients associated with the diet. Sort of reset before the next steps
             List<DietIngredients> dietIngredientsList = dietRepository.getDietIngredientsListByDietTag(diet.getTag());
             for (int i = 0; i < dietIngredientsList.size(); i++) {
                 DietIngredients dietIngredients = dietIngredientsList.get(i);
-                dietIngredients.setState(2);
+                dietIngredients.setState(DietRepository.DIET_STATE_UNKNOWN);
                 dietRepository.saveDietIngredients(dietIngredients);
             }
             //Set the goods state for each ingredients in the 3 lists
             for (Chip chip : ingredientsAuthorised.getAllChips()) {
                 String ingredient = (String) chip.getText();
                 dietRepository.addIngredient(ingredient, languageCode);
-                dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, 1);
+                dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, DietRepository.DIET_STATE_AUTHORISED);
             }
             for (Chip chip : ingredientsSoSo.getAllChips()) {
                 String ingredient = (String) chip.getText();
                 dietRepository.addIngredient(ingredient, languageCode);
-                dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, 0);
+                dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, DietRepository.DIET_STATE_SOSO);
             }
             for (Chip chip : ingredientsUnauthorised.getAllChips()) {
                 String ingredient = (String) chip.getText();
                 dietRepository.addIngredient(ingredient, languageCode);
-                dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, -1);
+                dietRepository.addDietIngredients(diet.getTag(), ingredient, languageCode, DietRepository.DIET_STATE_FORBIDEN);
             }
             //Back to the DietsFragment.
             Fragment fragment = new DietsFragment();

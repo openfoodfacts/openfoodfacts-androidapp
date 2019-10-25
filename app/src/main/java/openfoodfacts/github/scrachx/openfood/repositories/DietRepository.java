@@ -67,6 +67,14 @@ public class DietRepository implements IDietRepository {
     private DietIngredientsDao dietIngredientsDao;
     private HashMap<Integer, String> colors = new HashMap<Integer, String>();
 
+    //List of States :
+    public static final int DIET_STATE_FORBIDEN = -1;
+    public static final int DIET_STATE_SOSO = 0;
+    public static final int DIET_STATE_AUTHORISED = 1;
+    public static final int DIET_STATE_UNKNOWN = 2;
+    public static final int DIET_STATE_NO_DIET_ENABLED = 3;
+
+
     /**
      *
      * @return instance of dietRepository
@@ -643,7 +651,7 @@ public class DietRepository implements IDietRepository {
      * @param state             State code (-1: forbidden, 0: so-so, 1: authorised, 2: no impact)
      */
     @Override
-    public void addDietIngredientsByTags(String dietTag, String ingredientTag, long state) {
+    public void addDietIngredientsByTags(String dietTag, String ingredientTag, int state) {
         DietIngredients dietIngredients = new DietIngredients();
         dietIngredients.setDietTag(dietTag);
         dietIngredients.setIngredientTag(ingredientTag);
@@ -662,7 +670,7 @@ public class DietRepository implements IDietRepository {
      * @author dobriseb
      */
     @Override
-    public void addDietIngredients(String dietTag, String ingredientName, String languageCode, long state) {
+    public void addDietIngredients(String dietTag, String ingredientName, String languageCode, int state) {
         ingredientName = ingredientName.trim();
         if (ingredientName != "") {
             Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientName, languageCode);
@@ -687,10 +695,10 @@ public class DietRepository implements IDietRepository {
      * @author dobriseb
      */
     @Override
-    public List<DietIngredients> getDietIngredientsListByDietTagAndState(String dietTag, long state) {
+    public List<DietIngredients> getDietIngredientsListByDietTagAndState(String dietTag, int state) {
         //Recherche des DietIngredients ayant dietTag
         List<DietIngredients> dietIngredientsList;
-        if (state == -2) {
+        if (state == DIET_STATE_FORBIDEN) {
             dietIngredientsList = dietIngredientsDao.queryBuilder().where(
                     DietIngredientsDao.Properties.DietTag.eq(dietTag)
             ).list();
@@ -726,7 +734,7 @@ public class DietRepository implements IDietRepository {
      * @author dobriseb
      */
     @Override
-    public List<Ingredient> getIngredientsLinkedToDietByDietTagAndState(String dietTag, long state) {
+    public List<Ingredient> getIngredientsLinkedToDietByDietTagAndState(String dietTag, int state) {
         List<DietIngredients> dietIngredientsList = getDietIngredientsListByDietTagAndState(dietTag, state);
         if (dietIngredientsList != null) {
             DietIngredients dietIngredients;
@@ -780,7 +788,7 @@ public class DietRepository implements IDietRepository {
      * @author dobriseb
      */
     @Override
-    public List<Ingredient> getIngredientsLinkedToDietByDietNameLanguageCodeAndState(String dietName, String languageCode, long state) {
+    public List<Ingredient> getIngredientsLinkedToDietByDietNameLanguageCodeAndState(String dietName, String languageCode, int state) {
         Diet diet = getDietByNameAndLanguageCode(dietName, languageCode);
         return getIngredientsLinkedToDietByDietTagAndState(diet.getTag(), state);
     }
@@ -833,7 +841,7 @@ public class DietRepository implements IDietRepository {
      * @author dobriseb
      */
     @Override
-    public String getSortedIngredientNameStringByDietTagStateAndLanguageCode(String dietTag, long state, String languageCode) {
+    public String getSortedIngredientNameStringByDietTagStateAndLanguageCode(String dietTag, int state, String languageCode) {
         List<Ingredient> ingredients = getIngredientsLinkedToDietByDietTagAndState(dietTag, state);
         if (ingredients != null) {
             List<IngredientName> ingredientNames = getIngredientNamesByIngredientsAndLanguageCode(ingredients, languageCode);
@@ -870,7 +878,7 @@ public class DietRepository implements IDietRepository {
      * @author dobriseb
      */
     @Override
-    public List<String> getIngredientNameLinkedToEnabledDietsByLanguageCode(long state, String languageCode) {
+    public List<String> getIngredientNameLinkedToEnabledDietsByLanguageCode(int state, String languageCode) {
         List<Diet> diets = getEnabledDiets();
         List<Ingredient> ingredientsTBC = new ArrayList<>();
         for (int i = 0; i < diets.size(); i++) {
@@ -925,8 +933,8 @@ public class DietRepository implements IDietRepository {
      * @author dobriseb
      */
     @Override
-    public long stateFromIngredientTagDietTag(String ingredientTag, String dietTag){
-        long state = 2;
+    public int stateFromIngredientTagDietTag(String ingredientTag, String dietTag){
+        int state = DIET_STATE_UNKNOWN;
         DietIngredients dietIngredients = dietIngredientsDao.queryBuilder()
                 .where(
                         DietIngredientsDao.Properties.DietTag.eq(dietTag),
@@ -948,8 +956,8 @@ public class DietRepository implements IDietRepository {
      *
      * @author dobriseb
      */
-    public long minStateForEnabledDietFromIngredientTag(String ingredientTag){
-        long state = 2;
+    public int minStateForEnabledDietFromIngredientTag(String ingredientTag){
+        int state = DIET_STATE_UNKNOWN;
         List<DietIngredients> dietIngredients = dietIngredientsDao.queryBuilder()
                 .where(
                         new WhereCondition.StringCondition("DIET_TAG in (SELECT TAG FROM DIET WHERE ENABLED)"),
@@ -966,8 +974,8 @@ public class DietRepository implements IDietRepository {
         return state;
     }
 
-    private long stateFromIngredientDietTag(String ingredientxt, String dietTag, String languageCode){
-        long state = 2;
+    private int stateFromIngredientDietTag(String ingredientxt, String dietTag, String languageCode){
+        int state = DIET_STATE_UNKNOWN;
         Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientxt, languageCode);
         if (ingredient.getTag() != null) {
             state = stateFromIngredientTagDietTag(ingredient.getTag(), dietTag);
@@ -975,8 +983,8 @@ public class DietRepository implements IDietRepository {
         return state;
     }
 
-    private long minStateForEnabledDietFromIngredient(String ingredientxt, String languageCode){
-        long state = 2;
+    private int minStateForEnabledDietFromIngredient(String ingredientxt, String languageCode){
+        int state = DIET_STATE_UNKNOWN;
         Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientxt, languageCode);
         if (ingredient.getTag() != null) {
             state = minStateForEnabledDietFromIngredientTag(ingredient.getTag());
@@ -984,8 +992,8 @@ public class DietRepository implements IDietRepository {
         return state;
     }
 
-    private long stateFromIngredientDiet(String ingredientxt, String dietxt, String languageCode){
-        long state = 2;
+    private int stateFromIngredientDiet(String ingredientxt, String dietxt, String languageCode){
+        int state = DIET_STATE_UNKNOWN;
         Diet diet = getDietByNameAndLanguageCode(dietxt, languageCode);
         if (diet != null) {
             state = stateFromIngredientDietTag(ingredientxt, diet.getTag(), languageCode);
@@ -1057,8 +1065,12 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public Object[] getColoredSSBAndProductStateFromSSBAndProduct(SpannableStringBuilder ssbIngredients, Product product) {
-        long state;
-        long productState = 1;
+        if (getEnabledDiets().size() == 0) {
+            //No diets are enabled so no colorisation of the ssb and no state
+            return new Object[]{ssbIngredients, DIET_STATE_NO_DIET_ENABLED};
+        }
+        int state;
+        int productState = DIET_STATE_AUTHORISED;
         int start = 0;
         int end = 0;
         int fromIndex = 0;
@@ -1146,16 +1158,16 @@ public class DietRepository implements IDietRepository {
             //Now, looking for a state lower than 2 from the relation between actives diets and this productIngredient
             //First looking for the state of the tag
             state = minStateForEnabledDietFromIngredientTag(productIngredient.getId());
-            if (state == 2) {
+            if (state == DIET_STATE_UNKNOWN) {
                 //The ingredientTag doesn't seems to have a relation with an active diet, looking for the sentence.
                 //Theoretically this will never append. But this is theory.
                 languageCode = product.getLang();
                 state = minStateForEnabledDietFromIngredient(ingredient, languageCode);
             }
-            if (state == 2) {
+            if (state == DIET_STATE_UNKNOWN) {
                 //The sentence doesn't seems to have a relation with a diet, looking for each word.
                 //First, if we don't know the relation of the ingredient and the diet then the productState can't stay at 1
-                if (productState == 1) productState=2;
+                if (productState == DIET_STATE_AUTHORISED) productState=DIET_STATE_UNKNOWN;
                 //Search for each words if there is many.
                 if (ingredient.indexOf(" ") > 0) {
                     //Ingredient is composed from at least 2 words, test each one.
@@ -1163,10 +1175,10 @@ public class DietRepository implements IDietRepository {
                     for (int j = 0; j < ingredientWords.length; j++) {
                         String ingredientWord = ingredientWords[j];
                         state = minStateForEnabledDietFromIngredient(ingredientWord, languageCode);
-                        if (state != 2) {
+                        if (state < DIET_STATE_UNKNOWN) {
                             //This word must be colored
                             //If this state is under the productState and 1, then it is the new productState
-                            if (state <1 && state < productState) productState = state;
+                            if (state < DIET_STATE_AUTHORISED && state < productState) productState = state;
                             start = ingredients.indexOf(ingredientWord);
                             end = start + ingredientWord.length();
                             ssbIngredients = coloredSSBFromState(ssbIngredients, start, end, state);
@@ -1175,8 +1187,8 @@ public class DietRepository implements IDietRepository {
                 }
             } else {
                 //The Tag or the complete sentence has been found and must be colored
-                //If this state is under the productState and 1, then it is the new productState
-                if (state <1 && state < productState) productState = state;
+                //If this state is under the productState and DIET_STATE_AUTHORISED, then it is the new productState
+                if (state <DIET_STATE_AUTHORISED && state < productState) productState = state;
                 if (startInIngredients >= 0) {
                     //Just colored the sentence found.
                     ssbIngredients = coloredSSBFromState(ssbIngredients, startInIngredients, endInIngredients, state); // .setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))),0,24,SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -1218,7 +1230,7 @@ public class DietRepository implements IDietRepository {
      * @param state                     State for the color (-1 : red, 0, orange, 1 green)
      * @return
      */
-    private SpannableStringBuilder setSpanColorBetweenTokens(Pattern INGREDIENT_PATTERN, CharSequence text, List<String> ingredientsToBeColored, long state) {
+    private SpannableStringBuilder setSpanColorBetweenTokens(Pattern INGREDIENT_PATTERN, CharSequence text, List<String> ingredientsToBeColored, int state) {
         final SpannableStringBuilder ssb = new SpannableStringBuilder(text);
         Matcher m = INGREDIENT_PATTERN.matcher(ssb);
         while (m.find()) {
@@ -1251,7 +1263,7 @@ public class DietRepository implements IDietRepository {
     public List<SpannableStringBuilder> getColoredSSBFromProductAndDiet(Product product, String dietTag) {
         List<SpannableStringBuilder> ingredientsSp = new ArrayList<>();
         SpannableStringBuilder ingredientSp;
-        long state;
+        int state;
         int start = 0;
         int end = 0;
         String ingredient = "";
@@ -1265,12 +1277,12 @@ public class DietRepository implements IDietRepository {
             ingredientSp = new SpannableStringBuilder(ingredient);
             //Search for state by ingredientTag (and dietTag)
             state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredientTag(productIngredient.getId()) : stateFromIngredientTagDietTag(productIngredient.getId(), dietTag);
-            if (state == 2) {
+            if (state == DIET_STATE_UNKNOWN) {
                 //Search for state by ingredient text, languageCode (and dietTag)
                 languageCode = product.getLang();
                 state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredient(ingredient, languageCode) : stateFromIngredientDietTag(ingredient, dietTag, languageCode);
             }
-            if (state == 2) {
+            if (state == DIET_STATE_UNKNOWN) {
                 //Search state for each words of ingredients text
                 if (ingredient.indexOf(" ") > 0) {
                     //Ingredient is composed from at least 2 words, test each one.
@@ -1278,7 +1290,7 @@ public class DietRepository implements IDietRepository {
                     for (int j = 0; j < ingredientWords.length; j++) {
                         String ingredientWord = ingredientWords[j];
                         state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredient(ingredientWord, languageCode) : stateFromIngredientDietTag(ingredientWord, dietTag, languageCode);
-                        if (state != 2) {
+                        if (state != DIET_STATE_UNKNOWN) {
                             //This word must be colored
                             start = ingredient.indexOf(ingredientWord);
                             end = start + ingredientWord.length();
@@ -1308,18 +1320,18 @@ public class DietRepository implements IDietRepository {
     @Override
     public List<SpannableStringBuilder> getColoredSSBFromIngredientsDiet(List<String> ingredients, String dietTag, String languageCode) {
         List<SpannableStringBuilder> ingredientsSp = new ArrayList<>();
-        long state;
+        int state;
         for (int i = 0; i < ingredients.size(); i++) {
             String ingredient =  ingredients.get(i);
             state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredient(ingredient, languageCode) : stateFromIngredientDietTag(ingredient, dietTag, languageCode);
-            if (state == 2 && ingredient.indexOf(" ") > 0) {
+            if (state == DIET_STATE_UNKNOWN && ingredient.indexOf(" ") > 0) {
                 //Ingredient is composed from at least 2 words, test each one.
                 SpannableStringBuilder ingredientSp = new SpannableStringBuilder(ingredient);
                 String[] ingredientWords = ingredient.split(" ");
                 for (int j = 0; j < ingredientWords.length; j++) {
                     String ingredientWord = ingredientWords[j];
                     state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredient(ingredientWord, languageCode) : stateFromIngredientDietTag(ingredientWord, dietTag, languageCode);
-                    if (state != 2) {
+                    if (state != DIET_STATE_UNKNOWN) {
                         int start = ingredient.indexOf(ingredientWord);
                         int end = start + ingredientWord.length();
                         ingredientSp = coloredSSBFromState(ingredientSp, start, end, state);
@@ -1333,7 +1345,7 @@ public class DietRepository implements IDietRepository {
         return ingredientsSp;
     }
 
-    private SpannableStringBuilder coloredSSBFromState(SpannableStringBuilder ss, int start, int end, long state) {
+    private SpannableStringBuilder coloredSSBFromState(SpannableStringBuilder ss, int start, int end, int state) {
         ss.setSpan(new ForegroundColorSpan(Color.parseColor(colors.get((int) (long) state))), start, end, SPAN_EXCLUSIVE_EXCLUSIVE);
         return ss;
     }

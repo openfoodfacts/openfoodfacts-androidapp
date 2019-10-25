@@ -276,7 +276,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             //txtIngredients = txtIngredients.replace(txtIngredients.length()-2,txtIngredients.length(),"");
             Object[] txtIngredientsProductState = (Object[]) dietRepository.getColoredSSBAndProductStateFromSSBAndProduct(txtIngredients, product);
             txtIngredients = (SpannableStringBuilder) txtIngredientsProductState[0];
-            long productState = (long) txtIngredientsProductState[1];
+            int productState = (int) txtIngredientsProductState[1];
             FragmentManager fragmentManager = getFragmentManager();
             Fragment fragmentSummary = fragmentManager.getFragments().get(0);
             ImageView dietState = fragmentSummary.getView().findViewById(R.id.dietState);
@@ -288,18 +288,22 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 //Just continue
                 Toast.makeText(getActivity(), e.getMessage(),Toast.LENGTH_LONG).show();
             }
-            switch (Long.toString(productState)) {
-                case "-1":
+            switch (productState) {
+                case DietRepository.DIET_STATE_FORBIDEN:
                     dietState.setImageResource(R.drawable.trafficligth_red);
                     dietState.setContentDescription("@string/edit_diet_unauthorised_ingredients");
                     break;
-                case "0":
+                case DietRepository.DIET_STATE_SOSO:
                     dietState.setImageResource(R.drawable.trafficligth_orange);
                     dietState.setContentDescription("@string/edit_diet_so_so_ingredients");
                     break;
-                case "1":
+                case DietRepository.DIET_STATE_AUTHORISED:
                     dietState.setImageResource(R.drawable.trafficligth_green);
                     dietState.setContentDescription("@string/edit_authorised_ingredients");
+                    break;
+                case DietRepository.DIET_STATE_UNKNOWN:
+                    dietState.setImageResource(R.drawable.trafficligth_grey);
+                    //dietState.setContentDescription("@string/edit_authorised_ingredients");
                     break;
                 default:
                     dietState.setVisibility(View.INVISIBLE);

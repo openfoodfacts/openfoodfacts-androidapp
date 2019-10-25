@@ -914,6 +914,9 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
             case "1":
                 dietState.setImageResource(R.drawable.trafficligth_green);
                 break;
+            case "2":
+                dietState.setImageResource(R.drawable.trafficligth_grey);
+                break;
             default:
                 dietState.setVisibility(GONE);
         }
