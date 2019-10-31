@@ -217,8 +217,8 @@
     <string name="create_account">تسجيل الدخول</string>
     <string name="home_drawer">الصفحة الرئيسية</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">حقائق الجمال مفتوحة</string>
-    <string name="open_food_drawer">الحقائق الغذائية مفتوحة</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">بحث</string>
     <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
     <string name="category_drawer">الفئات</string>
