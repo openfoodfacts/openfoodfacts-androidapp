@@ -158,13 +158,12 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                 lt.setTextColor(getContext().getResources().getColor(R.color.white));
                 lt.show();
                 final SharedPreferences.Editor editor = mSettings.edit();
-                productRepository.getAllergens(true)
+                productRepository.getAllergens()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .toObservable()
                         .subscribe(allergens -> {
                             editor.putBoolean("errorAllergens", false).apply();
-                            productRepository.saveAllergens(allergens);
                             mAdapter.setAllergens(mAllergensEnabled);
                             mAdapter.notifyDataSetChanged();
                             updateAllergenDao();

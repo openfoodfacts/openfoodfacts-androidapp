@@ -25,8 +25,8 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 322
-        versionName "3.2.2"
+        versionCode 323
+        versionName "3.2.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
@@ -52,6 +52,7 @@ android {
         off {
             applicationId "openfoodfacts.github.scrachx.openfood"
             resValue "string", "app_name", "OpenFoodFacts"
+            buildConfigField 'String', 'APP_NAME', '"Open Food Facts"'
             buildConfigField 'String', 'HOST', '"https://ssl-api.openfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openbeautyfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openfoodfacts.org/"'
@@ -63,6 +64,7 @@ android {
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
             resValue "string", "app_name", "OpenBeautyFacts"
+            buildConfigField 'String', 'APP_NAME', '"Open Beauty Facts"'
             buildConfigField 'String', 'HOST', '"https://ssl-api.openbeautyfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openbeautyfacts.org/"'
@@ -72,6 +74,7 @@ android {
         opff {
             applicationId "org.openpetfoodfacts.scanner"
             resValue "string", "app_name", "OpenPetFoodFacts"
+            buildConfigField 'String', 'APP_NAME', '"Open Pet Food Facts"'
             buildConfigField 'String', 'HOST', '"https://ssl-api.openpetfoodfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openpetfoodfacts.org/"'
@@ -81,6 +84,7 @@ android {
         opf {
             applicationId "org.openproductsfacts.scanner"
             resValue "string", "app_name", "OpenProductsFacts"
+            buildConfigField 'String', 'APP_NAME', '"Open Products Facts"'
             buildConfigField 'String', 'HOST', '"https://ssl-api.openproductsfacts.org"'
             buildConfigField 'String', 'OFOTHERLINKAPP', '"org.openfoodfacts.scanner"'
             buildConfigField 'String', 'OFWEBSITE', '"https://world.openproductsfacts.org/"'
@@ -143,7 +147,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 13
+    schemaVersion 15
 }
 android {
     // Other settings
@@ -161,6 +165,7 @@ dependencies {
     //Android
     implementation "androidx.browser:browser:$rootProject.supportLibraryVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
+    implementation "androidx.work:work-runtime:$rootProject.workRuntime"
     implementation "androidx.recyclerview:recyclerview:$rootProject.supportLibraryVersion"
     implementation "androidx.cardview:cardview:$rootProject.supportLibraryVersion"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.supportLibraryVersion"

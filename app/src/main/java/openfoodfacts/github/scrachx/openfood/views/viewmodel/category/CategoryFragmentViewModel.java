@@ -63,9 +63,8 @@ public class CategoryFragmentViewModel extends ViewModel {
                 })
                 .flatMap(categoryNames -> {
                     if (categoryNames.isEmpty()) {
-                        return repository.getCategories(true)
+                        return repository.getCategories()
                                 .flatMap(categories -> {
-                                    saveCategories(categories);
                                     return Single.just(extractCategoriesNames(categories));
                                 });
                     } else {
@@ -86,13 +85,6 @@ public class CategoryFragmentViewModel extends ViewModel {
                                 showProgress.set(View.GONE);
                             }
                         }));
-    }
-
-    private void saveCategories(List<Category> categories) {
-        Completable.fromAction(() -> repository.saveCategories(categories))
-                .subscribeOn(Schedulers.computation())
-                .subscribe(() -> {
-                }, e->Log.e(CategoryFragmentViewModel.class.getSimpleName(),"saveCategories",e));
     }
 
     private List<CategoryName> extractCategoriesNames(List<Category> categories) {

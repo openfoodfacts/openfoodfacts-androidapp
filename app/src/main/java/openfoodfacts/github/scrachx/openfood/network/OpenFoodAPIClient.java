@@ -1,15 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.firebase.jobdispatcher.JobParameters;
@@ -54,12 +53,11 @@ import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.P
 
 public class OpenFoodAPIClient {
     public static final String TEXT_PLAIN = "text/plain";
-    public static final String USER_ID = "user_id";
+    private static final String USER_ID = "user_id";
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
     private OfflineUploadingTask task = new OfflineUploadingTask();
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
-    private DaoSession daoSession;
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
     private final OpenFoodAPIService apiService;
     private Context mActivity;
@@ -74,7 +72,7 @@ public class OpenFoodAPIClient {
     //used to upload in background
     public OpenFoodAPIClient(Context context) {
         this(BuildConfig.HOST);
-        daoSession = Utils.getDaoSession(context);
+        DaoSession daoSession = Utils.getDaoSession(context);
         mToUploadProductDao = daoSession.getToUploadProductDao();
     }
 
@@ -167,8 +165,8 @@ public class OpenFoodAPIClient {
                 }
 
                 final State s = response.body();
-                if(s==null){
-                    Toast.makeText(activity,R.string.something_went_wrong,Toast.LENGTH_LONG).show();
+                if (s == null) {
+                    Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (s.getStatus() == 0) {
@@ -186,7 +184,7 @@ public class OpenFoodAPIClient {
                     s.setProduct(s.getProduct());
                     if (callback != null) {
                         callback.onStateResponse(s);
-                    } else if (activity != null) {
+                    } else {
                         Intent intent = new Intent(activity, ProductActivity.class);
                         bundle.putSerializable("state", s);
                         intent.putExtras(bundle);
@@ -361,22 +359,6 @@ public class OpenFoodAPIClient {
                 onImagesCallback.onImageResponse(false, null);
             }
         });
-    }
-
-    private Callback<State> createProductCallBack(Context activity, SendProduct product, OnProductSentCallback productSentCallback, Dialog dialog) {
-        return new Callback<State>() {
-            @Override
-            public void onResponse(Call<State> call, Response<State> response) {
-                onResponseCallForPostFunction(call, response, activity, productSentCallback, product);
-                dialog.dismiss();
-            }
-
-            @Override
-            public void onFailure(Call<State> call, Throwable t) {
-                productSentCallback.onProductSentResponse(false);
-                dialog.dismiss();
-            }
-        };
     }
 
     public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {

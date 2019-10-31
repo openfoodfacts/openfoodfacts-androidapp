@@ -311,8 +311,7 @@ public interface OpenFoodAPIService {
     @GET("code/{Code}.json")
     Call<Search> byCode(@Path("Code") String Code);
 
-    @GET("packager-codes.json")
-    Single<TagsWrapper> getTags();
+
 
     @GET("state/{State}/{page}.json")
     Call<Search> getProductsByState(@Path("State") String state, @Path("page") int page);
@@ -336,12 +335,12 @@ public interface OpenFoodAPIService {
      * This method gives the # of products on Open Food Facts
      */
     @GET("/1.json?fields=null")
-    Single<Search> getTotalProductCount();
+    Single<Search> getTotalProductCount(@Header("User-Agent") String header);
     /**
      * This method gives the news in all languages
      */
     @GET("/files/tagline/tagline-"+ BuildConfig.FLAVOR+".json")
-    Call<ArrayList<TaglineLanguageModel>> getTagline();
+    Call<ArrayList<TaglineLanguageModel>> getTagline(@Header("User-Agent") String header);
     /**
      * This method gives the image fields of a product
      */

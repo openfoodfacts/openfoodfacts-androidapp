@@ -195,6 +195,8 @@
     <string name="create_account">Tilmeld dig</string>
     <string name="home_drawer">Hjem</string>
     <string name="install">Installér</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Søg</string>
     <string name="search_by_barcode_drawer">Indtast stregkode</string>
     <string name="category_drawer">Kategorier</string>
@@ -710,6 +712,19 @@
     <string name="cant_modify_if_refreshing">Afvent færdiggørelse af upload</string>
     <string name="closeZoom">Klik for at lukke zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <!-- Used for product ingredients analysis tags -->
+    <string name="close_button">Luk</string>
+    <string name="tip_message">TIP: %1$s </string>
+    <string name="ingredient_analysis_tip">Klik på ikonerne herunder for at få mere at vide om produktet, og vælge hvilke oplysninger du er interesseret i.</string>
+    <string name="got_it">Forstået!</string>
+    <string name="ingredients_in_this_product_are">Ingredienser i dette produkt udgør %1$s.</string>
+    <string name="ingredients_in_this_product">Ingredienser i dette produkt udgør %1$s:</string>
+    <string name="display_analysis_tag_status">Vis %1$s-status</string>
+    <string name="preference_header_display">Vis</string>
+    <string name="unknown_status_no_translation">Produktstatussen kunne ikke vurderes grundet ukendte ingredienser.</string>
+    <string name="help_translate_ingredients">Hjælp med at oversætte ingredienserne til dit sprog</string>
+    <string name="unknown_status_missing_ingredients">Produktstatussen kunne ikke vurderes grundet manglende ingredienser.</string>
+    <string name="help_extract_ingredients">Hjælp med at udtrække ingredienserne for at få %1$s-statussen.</string>
     <string name="product_already_exists_in_comparison">Produktet findes allerede på sammenligningslisten</string>
     <string name="compare_brands">Mærker:</string>
     <string name="compare_additives">Tilsætningsstoffer:</string>

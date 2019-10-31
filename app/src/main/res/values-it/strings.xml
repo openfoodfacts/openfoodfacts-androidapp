@@ -159,7 +159,7 @@
     <string name="txtPalmOilProduct">Ingredienti derivanti dall\'olio di palma:</string>
     <string name="txtServingSize">Grandezza porzione:</string>
     <string name="txtNutrientLevel100g">Nutrienti per 100g:</string>
-    <string name="txtNutrientLevel100ml">Livelli di nutrienti per 100 ml:</string>
+    <string name="txtNutrientLevel100ml">Livelli dei nutrienti per 100 ml:</string>
     <string name="txtNutritionLevelLow">in basse quantità</string>
     <string name="txtNutritionLevelModerate">in moderate quantità</string>
     <string name="txtNutritionLevelHigh">in grandi quantità</string>
@@ -195,6 +195,8 @@
     <string name="create_account">Registrati</string>
     <string name="home_drawer">Homepage</string>
     <string name="install">Installa</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Cerca</string>
     <string name="search_by_barcode_drawer">Digita codice a barre</string>
     <string name="category_drawer">Categorie</string>
@@ -482,8 +484,8 @@
     <string name="notify_channel_description">Notifica per mostrare la posizione del file esportato</string>
     <string name="products_to_be_completed">Prodotti da completare</string>
     <string name="offline_notification_title">Contributi offline da inviare</string>
-    <string name="creator_history">Prodotto aggiunto a %1$s a %2$s CET da</string>
-    <string name="last_editor_history">Ultima modifica della pagina del prodotto a %1$s a %2$s CEST da </string>
+    <string name="creator_history">Prodotto aggiunto su %1$s alle %2$s CET da %3$s</string>
+    <string name="last_editor_history">Ultima modifica della pagina del prodotto il %1$s alle %2$s CEST da %3$s </string>
     <string name="other_editors">Pagina del prodotto modificata anche da </string>
     <string name="contribution_tab">Contributi</string>
     <string name="contribution_tab_summary">Mostra la scheda dei contributi dell\'utente con i prodotti</string>
@@ -710,6 +712,19 @@
     <string name="cant_modify_if_refreshing">Si prega di attendere fino al termine del caricamento</string>
     <string name="closeZoom">Clicca per chiudere lo zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <!-- Used for product ingredients analysis tags -->
+    <string name="close_button">Chiudi </string>
+    <string name="tip_message">SUGGERIMENTO: %1$s </string>
+    <string name="ingredient_analysis_tip">Fai clic sulle icone sottostanti per ulteriori informazioni sul prodotto e per selezionare le informazioni che ti interessano.</string>
+    <string name="got_it">Capito!</string>
+    <string name="ingredients_in_this_product_are">Gli ingredienti di questo prodotto sono %1$s.</string>
+    <string name="ingredients_in_this_product">Gli ingredienti di questo prodotto che sono %1$s:</string>
+    <string name="display_analysis_tag_status">Mostra stato %1$s</string>
+    <string name="preference_header_display">Mostra</string>
+    <string name="unknown_status_no_translation">Non siamo riusciti a valutare lo stato del prodotto a causa di ingredienti non riconosciuti.</string>
+    <string name="help_translate_ingredients">Aiuta a tradurre gli ingredienti nella tua lingua</string>
+    <string name="unknown_status_missing_ingredients">Non siamo riusciti a valutare lo stato del prodotto a causa di ingredienti mancanti.</string>
+    <string name="help_extract_ingredients">Aiuta ad estrarre gli ingredienti per ottenere lo stato di %1$s.</string>
     <string name="product_already_exists_in_comparison">Il prodotto esiste già nell\'elenco di confronto</string>
     <string name="compare_brands">Marche:</string>
     <string name="compare_additives">Additivi:</string>

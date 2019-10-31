@@ -73,4 +73,4 @@ Open Food Facts is also available on the web at https://world.openfoodfacts.org
 Questions, feedback : contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+För kosmetika kan du installera Open Beauty Facts, för husdjursmat Open Pet Food Facts och för alla andra produkter Open Products Facts.

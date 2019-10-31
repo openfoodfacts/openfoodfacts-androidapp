@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/preference_header_general" android:summary="">
 
@@ -77,6 +78,9 @@
             android:title="@string/DisableLoadTitle" />
 
     </PreferenceCategory>
+
+    <!-- This is populated at runtime based on available analysis tags -->
+    <PreferenceCategory android:title="@string/preference_header_display" android:summary="" android:key="display_category" app:isPreferenceVisible="false"/>
 
     <PreferenceCategory android:title="@string/preference_header_contributing" android:summary="">
 

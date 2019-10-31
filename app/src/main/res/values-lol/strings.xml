@@ -195,6 +195,8 @@
     <string name="create_account">crwdns113510:0crwdne113510:0</string>
     <string name="home_drawer">crwdns113512:0crwdne113512:0</string>
     <string name="install">crwdns121274:0crwdne121274:0</string>
+    <string name="open_beauty_drawer">crwdns123488:0crwdne123488:0</string>
+    <string name="open_food_drawer">crwdns123490:0crwdne123490:0</string>
     <string name="search_drawer">crwdns113518:0crwdne113518:0</string>
     <string name="search_by_barcode_drawer">crwdns113520:0crwdne113520:0</string>
     <string name="category_drawer">crwdns113522:0crwdne113522:0</string>
@@ -482,8 +484,8 @@
     <string name="notify_channel_description">crwdns114186:0crwdne114186:0</string>
     <string name="products_to_be_completed">crwdns114188:0crwdne114188:0</string>
     <string name="offline_notification_title">crwdns114192:0crwdne114192:0</string>
-    <string name="creator_history">crwdns114194:0%1$scrwdnd114194:0%2$scrwdne114194:0</string>
-    <string name="last_editor_history">crwdns114196:0%1$scrwdnd114196:0%2$scrwdne114196:0</string>
+    <string name="creator_history">crwdns122944:0%1$scrwdnd122944:0%2$scrwdnd122944:0%3$scrwdne122944:0</string>
+    <string name="last_editor_history">crwdns122946:0%1$scrwdnd122946:0%2$scrwdnd122946:0%3$scrwdne122946:0</string>
     <string name="other_editors">crwdns114198:0crwdne114198:0</string>
     <string name="contribution_tab">crwdns114200:0crwdne114200:0</string>
     <string name="contribution_tab_summary">crwdns114202:0crwdne114202:0</string>
@@ -709,6 +711,19 @@
     <string name="cant_modify_if_refreshing">crwdns119486:0crwdne119486:0</string>
     <string name="closeZoom">crwdns119488:0crwdne119488:0</string>
     <string name="imageFullscreen">crwdns119576:0crwdne119576:0</string>
+    <!-- Used for product ingredients analysis tags -->
+    <string name="close_button">crwdns123492:0crwdne123492:0</string>
+    <string name="tip_message">crwdns123494:0%1$scrwdne123494:0</string>
+    <string name="ingredient_analysis_tip">crwdns123496:0crwdne123496:0</string>
+    <string name="got_it">crwdns123498:0crwdne123498:0</string>
+    <string name="ingredients_in_this_product_are">crwdns123500:0%1$scrwdne123500:0</string>
+    <string name="ingredients_in_this_product">crwdns123502:0%1$scrwdne123502:0</string>
+    <string name="display_analysis_tag_status">crwdns123504:0%1$scrwdne123504:0</string>
+    <string name="preference_header_display">crwdns123506:0crwdne123506:0</string>
+    <string name="unknown_status_no_translation">crwdns123508:0crwdne123508:0</string>
+    <string name="help_translate_ingredients">crwdns123510:0crwdne123510:0</string>
+    <string name="unknown_status_missing_ingredients">crwdns123512:0crwdne123512:0</string>
+    <string name="help_extract_ingredients">crwdns123514:0%1$scrwdne123514:0</string>
     <string name="product_already_exists_in_comparison">crwdns121762:0crwdne121762:0</string>
     <string name="compare_brands">crwdns121764:0crwdne121764:0</string>
     <string name="compare_additives">crwdns121766:0crwdne121766:0</string>

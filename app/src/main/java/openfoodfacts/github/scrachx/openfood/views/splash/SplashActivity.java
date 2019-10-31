@@ -4,35 +4,36 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.TextView;
-
-import net.steamcrafted.loadtoast.LoadToast;
-
+import android.widget.Toast;
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SplashActivity extends BaseActivity implements ISplashPresenter.View {
-
     @BindView(R.id.tagline)
     TextView tagline;
-    int i = 0;
-    private ISplashPresenter.Actions presenter;
-    private LoadToast toast;
-    private String[] taglines;
 
+    private ISplashPresenter.Actions presenter;
+    private String[] taglines;
     /*
     To show different slogans below the logo while content is being downloaded.
      */
-    Runnable changeTagline = new Runnable() {
+    private Runnable changeTagline = new Runnable() {
+
+        int i = 0;
+
         @Override
         public void run() {
             i++;
-            if (i > taglines.length - 1)
+            if (i > taglines.length - 1) {
                 i = 0;
+            }
             tagline.setText(taglines[i]);
             tagline.postDelayed(changeTagline, 1500);
         }
@@ -48,8 +49,6 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
         taglines = getResources().getStringArray(R.array.taglines_array);
         tagline.post(changeTagline);
 
-        toast = new LoadToast(this);
-
         presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this, this);
         presenter.refreshData();
     }
@@ -57,9 +56,9 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
     @Override
     public void navigateToMainActivity() {
         EasyImage.configuration(this)
-                .setImagesFolderName("OFF_Images")
-                .saveInAppExternalFilesDir()
-                .setCopyExistingPicturesToPublicLocation(true);
+            .setImagesFolderName("OFF_Images")
+            .saveInAppExternalFilesDir()
+            .setCopyExistingPicturesToPublicLocation(true);
         Intent mainIntent = new Intent(SplashActivity.this, WelcomeActivity.class);
         startActivity(mainIntent);
         finish();
@@ -67,18 +66,13 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
 
     @Override
     public void showLoading() {
-        toast.setText(SplashActivity.this.getString(R.string.toast_retrieving));
-        toast.setBackgroundColor(ContextCompat.getColor(SplashActivity.this, R.color.blue));
-        toast.setTextColor(ContextCompat.getColor(SplashActivity.this, R.color.white));
-        toast.show();
     }
 
     @Override
     public void hideLoading(boolean isError) {
-        if (isError)
-            toast.error();
-        else
-            toast.success();
+        if (isError) {
+            new Handler(Looper.getMainLooper()).post(() -> Toast.makeText(OFFApplication.getInstance(), R.string.errorWeb, Toast.LENGTH_LONG).show());
+        }
     }
 
     @Override
