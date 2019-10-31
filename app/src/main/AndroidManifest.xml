@@ -202,7 +202,7 @@
         <activity
             android:name=".views.ProductListsActivity"
             android:parentActivityName=".views.MainActivity" />
-        <activity android:name=".views.YourListedProducts"></activity>
+        <activity android:name=".views.YourListedProducts" />
     </application>
 
 </manifest>

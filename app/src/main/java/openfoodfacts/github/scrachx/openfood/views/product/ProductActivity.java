@@ -106,26 +106,21 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         });
 
         bottomNavigationView.getMenu().getItem(0).setCheckable(false);
-        BottomNavigationListenerInstaller.install(bottomNavigationView,this,this);
-	}
+        BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
+    }
 
-	@Override
-	protected void onActivityResult( int requestCode, int resultCode, Intent data )
-	{
-		super.onActivityResult( requestCode, resultCode, data );
-		if( requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK )
-		{
-			Intent intent = new Intent( ProductActivity.this, AddProductActivity.class );
-			intent.putExtra( AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct() );
-			startActivity( intent );
-		}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
+            startActivity(intent);
+        }
+    }
 
-	}
-
-
-	private void setupViewPager( ViewPager viewPager )
-	{
-		adapterResult = setupViewPager(viewPager, new ProductFragmentPagerAdapter(getSupportFragmentManager()), mState, this);
+    private void setupViewPager(ViewPager viewPager) {
+        adapterResult = setupViewPager(viewPager, new ProductFragmentPagerAdapter(getSupportFragmentManager()), mState, this);
     }
 
     /**

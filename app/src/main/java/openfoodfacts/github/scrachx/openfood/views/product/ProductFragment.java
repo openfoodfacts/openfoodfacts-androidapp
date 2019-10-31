@@ -99,7 +99,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         });
 
         bottomNavigationView.getMenu().getItem(0).setCheckable(false);
-        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
+        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
         return view;
     }
 
