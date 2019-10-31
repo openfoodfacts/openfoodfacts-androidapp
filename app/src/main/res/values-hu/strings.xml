@@ -195,8 +195,8 @@
     <string name="create_account">Regisztráció</string>
     <string name="home_drawer">Kezdőlap</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_beauty_drawer">Open Beauty Facts (Nyílt Szépség Tények)</string>
+    <string name="open_food_drawer">Open Food Facts (Nyílt Élelmiszer Tények)</string>
     <string name="search_drawer">Keres</string>
     <string name="search_by_barcode_drawer">Keresés vonalkód alapján</string>
     <string name="category_drawer">Kategóriák</string>
