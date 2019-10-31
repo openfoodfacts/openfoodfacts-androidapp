@@ -195,8 +195,8 @@
     <string name="create_account">साइन अप करें</string>
     <string name="home_drawer">मुख्य पृष्ठ</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_beauty_drawer">ओपन ब्यूटी फैक्ट्स</string>
+    <string name="open_food_drawer">ओपन फ़ूड फैक्ट्स</string>
     <string name="search_drawer">ढूंढें</string>
     <string name="search_by_barcode_drawer">बारकोड के आधार पर ढूंढें</string>
     <string name="category_drawer">श्रेणियाँ</string>
