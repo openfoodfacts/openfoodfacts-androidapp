@@ -65,7 +65,7 @@ public class CategoryActivity extends BaseActivity {
             customTabsIntent.launchUrl(CategoryActivity.this, Uri.parse(url));
         });
 
-        bottomNavigationView.getMenu().getItem(0).setCheckable(false);
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 

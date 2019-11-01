@@ -53,7 +53,7 @@ public class FindProductFragment extends NavigationBaseFragment {
             }
         }
 
-        bottomNavigationView.getMenu().getItem(0).setCheckable(false);
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
         BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
 

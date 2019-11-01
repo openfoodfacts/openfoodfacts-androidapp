@@ -107,7 +107,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             }
         });
 
-        bottomNavigationView.getMenu().getItem(0).setCheckable(false);
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
     }
 

@@ -87,7 +87,7 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
             }
         });
 
-        bottomNavigationView.setSelectedItemId(R.id.compare_products);
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.compare_products);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 

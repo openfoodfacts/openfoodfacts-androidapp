@@ -135,7 +135,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             itemTouchhelper.attachToRecyclerView(recyclerView);
         }
 
-        bottomNavigationView.getMenu().getItem(0).setCheckable(false);
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 

@@ -70,7 +70,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-        bottomNavigationView.setSelectedItemId(R.id.home_page);
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
         BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
 
@@ -152,7 +152,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     public void onResume() {
 
         super.onResume();
-        bottomNavigationView.setSelectedItemId(R.id.home_page);
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
 
         int productCount = sp.getInt("productCount", 0);
         apiClient.getTotalProductCount(Utils.getUserAgent())
