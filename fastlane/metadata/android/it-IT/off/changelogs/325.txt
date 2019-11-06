@@ -1,0 +1,2 @@
+1. NOVITÀ: ora puoi vedere se un prodotto è vegano, vegetariano o se contiene olio di palma, basato sulla sua lista degli ingredienti. Ulteriori analisi verranno aggiunte nel tempo. Inviaci una mail per dirci cosa ti piacerebbe vedere :-) 
+2. Miglioramenti vari con correzioni per diversi problemi da voi segnalati a contact@openfoodfacts.org

@@ -52,7 +52,7 @@
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
-        <item>kg</item>
+        <item>mg</item>
         <item>µg</item>
         <item>% päivittäisestä saannista</item>
         <item>IU</item>
