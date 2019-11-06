@@ -113,7 +113,10 @@ files:
  
   - source: /fastlane/metadata/android/en-US/off/changelog-light.txt
     translation: /fastlane/metadata/android/%locale%/off/changelog-light.txt
-    
+
+  - source: /fastlane/metadata/android/en-US/off/changelogs/325.txt
+    translation: /fastlane/metadata/android/%locale%/off/changelogs/325.txt  
+
   - source: /fastlane/metadata/android/en-US/off/changelogs/322.txt
     translation: /fastlane/metadata/android/%locale%/off/changelogs/322.txt  
     
