@@ -11,7 +11,7 @@
     <string name="website_product">https://world-fi.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fi.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts on avoin tietokanta, joka sisältää yli %1$d elintarviketta (plus ne jotka lisäät)</string>
+    <string name="txtHomeOnline">Open Food Facts on avoin tietokanta, joka sisältää yli %1$d elintarviketta (plus ne jotka lisäät).</string>
     <string name="txtHome">Open Food Facts on avoin elintarviketietokanta.</string>
     <string name="slide_1_title">Edistä elintarvikkeiden läpinäkyvyyttä</string>
     <string name="slide_1_desc">Lue tuotteita, ota ne mukaan kuvaan, mahdollista elintarvikkeiden läpinäkyvyys</string>
@@ -20,7 +20,7 @@
     <string name="slide_3_title">Saa Nutri-Score</string>
     <string name="slide_3_desc">Synteettinen näkymä lempielintarvikkeidesi ravinto-ominaisuuksista</string>
     <string name="slide_4_title">Toimii offline-tilassa</string>
-    <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.</string>
+    <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
     <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Factsissa. Lisääthän sen.</string>
     <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Food Factsissa.</string>
     <string name="msg_share">Katso tätä tuotetta Open Food Factsissa:</string>
