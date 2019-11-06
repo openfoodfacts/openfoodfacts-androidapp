@@ -360,8 +360,8 @@
     <string name="nova_info_msg">Lisätietoja Novasta</string>
     <string name="nova_grp1_msg">Ryhmä 1 - Jalostamattomat tai vähän jalostetut elintarvikkeet</string>
     <string name="nova_grp2_msg">Ryhmä 2 - Jalostetut ruoka-aineosat</string>
-    <string name="nova_grp3_msg">Ryhmä 3 - jalostetut elintarvikkeet</string>
-    <string name="nova_grp4_msg">Ryhmä 4 - Erittäin jalostetut ruoka- ja juomatuotteet</string>
+    <string name="nova_grp3_msg">Ryhmä 3 - Jalostetut elintarvikkeet</string>
+    <string name="nova_grp4_msg">Ryhmä 4 - Ultrajalostetut elintarvikkeet</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Pikakuvake ei käytettävissä.</string>
     <string name="scan_shortcut_short_label">Lue</string>
@@ -370,8 +370,8 @@
     <string name="barcode_shortcut_long_label">Etsi viivakoodilla</string>
     <string name="history_shortcut_short_label">Historia</string>
     <string name="history_shortcut_long_label">Historia</string>
-    <string name="contributions_shortcut_short_label">Muokkaukset</string>
-    <string name="contributions_shortcut_long_label">Muokkaukseni</string>
+    <string name="contributions_shortcut_short_label">Osallistumiset</string>
+    <string name="contributions_shortcut_long_label">Osallistumiseni</string>
     <string name="forgot_password">Unohtunut salasana</string>
     <string name="next">SEURAAVA</string>
     <string name="skip">OHITA</string>
@@ -467,7 +467,7 @@
     <string name="sorry_msg">Kuvia ilman viivakoodia ei voi vielä lisätä sovelluksella. Kokeile sivuston mobiiliversiota.</string>
     <string name="no_barcode">Viivakoodia ei löydetty</string>
     <string name="enter_barcode">Kirjoita viivakoodi alle</string>
-    <string name="format_error">Väärä viivakoodi- tai QR-formaatti</string>
+    <string name="format_error">Väärä viivakoodi- tai QR-muoto</string>
     <string name="code_detected">Viivakoodi löydetty</string>
     <string name="do_you_want_to">Haluatko lisätä kuvia tähän viivakoodiin?</string>
     <string name="bottomNav_history">Historia</string>
@@ -482,7 +482,7 @@
     <string name="notify_content">Napsauta nähdäksesi viedyt tuotteet</string>
     <string name="notification_channel_name">Vie ilmoitukset</string>
     <string name="notify_channel_description">Ilmoitus viedyn tiedoston sijainnin näyttämiseksi</string>
-    <string name="products_to_be_completed">Tuotteet, joita pitäisi täydentää</string>
+    <string name="products_to_be_completed">Tuotteet, jotka kaipaavat täydentämistä</string>
     <string name="offline_notification_title">Offline-lisäyksesi, jotka täytyy lähettää</string>
     <string name="creator_history">Tuotteen lisäsi %3$s, %1$s kello %2$s CET</string>
     <string name="last_editor_history">Viimeisimmän tuotesivun muokkauksen %1$s kello %2$s CEST teki %3$s </string>
@@ -557,7 +557,7 @@
     <string name="looksGood">Hyvältä näyttää</string>
     <string name="skip_ingredients">Liian huono \n Ohita ainesosat</string>
     <string name="traces">Jäämät</string>
-    <string name="traces_hint">Ilmoita mahdolliset ainesosajäämät \"Voi sisältää jäämiä\", \"Valmistettu tehtaassa, jossa käsitellään myös\" jne. \nEsim. maito, gluteeni, pähkinät</string>
+    <string name="traces_hint">Ilmoita mahdolliset ainesosajäämät merkinnöistä kuten \"Voi sisältää jäämiä\", \"Valmistettu tehtaassa, jossa käsitellään myös\" jne. \nEsim. maito, gluteeni, pähkinät</string>
     <string name="nutrition_facts_not_specified">Ravintosisältöä ei ole määritelty tuotteessa.</string>
     <string name="nutrition_facts_picture">Kuva ravintosisällöstä</string>
     <string name="front_short_picture">Etupuoli</string>
@@ -690,7 +690,7 @@
     <string name="error_in_nutrient_data">Jotkut ravintoarvot eivät ole kelvollisia. Korjaa kentät joissa on virhemerkki</string>
     <string name="go_to_full_product_page">Siirry tuotteeseen</string>
     <string name="no_additive_data_available_for_this_product">Tästä tuotteesta ei ole lisäaineita koskevia tietoja</string>
-    <string name="no_nutrient_information_available_for_this_product">Tälle tuotteelle ei ole saatavilla ravintoarvoja koskevia tietoja</string>
+    <string name="no_nutrient_information_available_for_this_product">Tälle tuotteelle ei ole ravintoarvoja koskevia tietoja</string>
     <string name="error_duplicate_listname">Sinulla on jo luettelo tällä nimellä</string>
     <string name="required_to_compute_nutriscore">(Tarvitaan Nutri-Scoren laskemiseen)</string>
     <string name="scan_tooltip">Voit liu\'uttaa korttia ylöspäin saadaksesi lisätietoja</string>
