@@ -21,8 +21,8 @@
     <string name="slide_3_title">Seuraa käyttämääsi tuotetta</string>
     <string name="slide_3_desc">Kaikki lukemasi tuotteet, yhtenä näppäränä luettelona jonka voit viedä</string>
     <string name="slide_4_title">Toimii offline-tilassa</string>
-    <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.</string>
-    <string name="txtDialogsContent">Luettua tuotetta ei vielä ole Open Products Factsissa. Lisääthän sen?</string>
+    <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
+    <string name="txtDialogsContent">Luettua tuotetta ei vielä ole Open Products Factsissa. Lisääthän sen.</string>
     <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Products Factsissa.</string>
     <string name="msg_share">Katso tätä tuotetta Open Products Factsissa:</string>
     <string name="not_support_books">Open Products Facts ei tue kirjoja tällä hetkellä</string>
