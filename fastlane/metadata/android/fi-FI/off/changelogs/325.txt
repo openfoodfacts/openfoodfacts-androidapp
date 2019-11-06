@@ -1,2 +1,2 @@
-1. NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
-2. Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
+1. UUTTA: voit nyt nähdä tuotteiden vegaani-, kasvisyöjä- ja palmuöljy-tilat, jotka perustuvat ainesosaluetteloon. Muita analyysejä lisätään ajan myötä. Lähetä meille postilla mitä haluaisit nähdä :-) 
+2. Siivousta, johon sisältyy korjaukset useaan virheeseen, jotka te raportoitte osoitteeseen contact@openfoodfacts.org
