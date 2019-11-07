@@ -290,7 +290,7 @@
     <string name="txt_no_matching_incomplete_products">Meillä ei ole keskeneräisiä tuotteita! Lisätäänkö uusi tuote?</string>
     <string name="txt_no_matching_contributor_products">Voi ei, meillä ei ole tuotteita tältä osallistujalta, voitko lisätä yhden?</string>
     <string name="txt_no_matching_products">Emme löytäneet vastaavia tuotteita.\nVoit kokeilla:</string>
-    <string name="txt_broaden_search">- laajenna hakuasi \n- lue, ja lisää se Open Food Factsiin</string>
+    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Food Facts -sivulle</string>
     <string name="something_went_wrong">Pahoittelut, jokin meni vikaan…</string>
     <string name="txt_try_again">Yritä uudelleen</string>
     <string name="nutrition_lactose">Laktoosi</string>
@@ -485,7 +485,7 @@
     <string name="products_to_be_completed">Tuotteet, jotka kaipaavat täydentämistä</string>
     <string name="offline_notification_title">Offline-lisäyksesi, jotka täytyy lähettää</string>
     <string name="creator_history">Tuotteen lisäsi %3$s, %1$s kello %2$s CET</string>
-    <string name="last_editor_history">Viimeisimmän tuotesivun muokkauksen %1$s %2$s CEST teki %3$s </string>
+    <string name="last_editor_history">Viimeisimmän tuotesivun muokkauksen %1$s kello %2$s CEST teki %3$s </string>
     <string name="other_editors">Tuotesivua on muokannut myös </string>
     <string name="contribution_tab">Muokkaukset</string>
     <string name="contribution_tab_summary">Näytä käyttäjän osallistumisvälilehti tuotteissa</string>
