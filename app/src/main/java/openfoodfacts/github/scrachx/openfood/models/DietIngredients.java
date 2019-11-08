@@ -20,13 +20,17 @@ public class DietIngredients {
     private String dietTag;
     private String ingredientTag;
     private int state;
-@Generated(hash = 1789866432)
-public DietIngredients(Long id, String dietTag, String ingredientTag,
-        int state) {
+    private String ingredientLanguageCode;
+    private String ingredientName;
+@Generated(hash = 1021631038)
+public DietIngredients(Long id, String dietTag, String ingredientTag, int state,
+        String ingredientLanguageCode, String ingredientName) {
     this.id = id;
     this.dietTag = dietTag;
     this.ingredientTag = ingredientTag;
     this.state = state;
+    this.ingredientLanguageCode = ingredientLanguageCode;
+    this.ingredientName = ingredientName;
 }
 @Generated(hash = 362957604)
 public DietIngredients() {
@@ -54,5 +58,17 @@ public int getState() {
 }
 public void setState(int state) {
     this.state = state;
+}
+public String getIngredientLanguageCode() {
+    return this.ingredientLanguageCode;
+}
+public void setIngredientLanguageCode(String ingredientLanguageCode) {
+    this.ingredientLanguageCode = ingredientLanguageCode;
+}
+public String getIngredientName() {
+    return this.ingredientName;
+}
+public void setIngredientName(String ingredientName) {
+    this.ingredientName = ingredientName;
 }
 }

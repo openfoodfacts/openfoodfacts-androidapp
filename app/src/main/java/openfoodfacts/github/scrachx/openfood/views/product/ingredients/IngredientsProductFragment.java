@@ -668,9 +668,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @OnClick(R.id.textIngredientProduct)
     public void openFragmentDietIngredientsProduct(View v) {
-        Intent intent = new Intent(getActivity(), ProductDietsActivity.class);
-        intent.putExtra("state", activityState);
-        startActivityForResult(intent, EDIT_PRODUCT_DIETS_CODE);
+        if (dietRepository.getDietCount() > 0) {
+            Intent intent = new Intent(getActivity(), ProductDietsActivity.class);
+            intent.putExtra("state", activityState);
+            startActivityForResult(intent, EDIT_PRODUCT_DIETS_CODE);
+        }
     }
 
     @Override

@@ -28,5 +28,6 @@
     <string name="edit_diet_remove">Supprimer ce régime.</string>
     <string name="title_remove_diet_dialog">Suppression</string>
     <string name="text_remove_diet_dialog">Voulez-vous supprimer ce régime et toutes ces relations ?</string>
+    <string name="ingredients_loading">Chargement initial des ingredients</string>
     <!-- End of used for diets AddOn -->
 </resources>

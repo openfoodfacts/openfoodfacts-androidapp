@@ -140,13 +140,10 @@ public class DietIngredientsProductFragment extends BaseFragment {
                         break;
                     }
                 }
-                if (ingredientTag.equals("")) {
-                    dietRepository.addDietIngredients(mDietTag, mIngredients.get(position).toString(), languageCode, stateFromView(v));
-                } else {
-                    dietRepository.addDietIngredientsByTags(mDietTag,ingredientTag, stateFromView(v));
-                }
+                dietRepository.addDietIngredients(mDietTag, mIngredients.get(position).toString(), languageCode, stateFromView(v));
                 onChange();
             }
+
             @Override
             public void onLongClicked(int position, View v) {
                 String ingredientTag = "";
@@ -166,11 +163,7 @@ public class DietIngredientsProductFragment extends BaseFragment {
                 List<Diet> dietsEnabled = dietRepository.getDiets();
                 for (int i = 0; i < dietsEnabled.size(); i++) {
                     Diet diet =  dietsEnabled.get(i);
-                    if (ingredientTag.equals("")) {
-                        dietRepository.addDietIngredients(diet.getTag(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
-                    } else {
-                        dietRepository.addDietIngredientsByTags(diet.getTag(),ingredientTag, stateFromView(v));
-                    }
+                    dietRepository.addDietIngredients(diet.getTag(), mIngredients.get(position).toString(), languageCode, stateFromView(v));
                 }
                 onChange();
             }

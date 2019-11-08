@@ -145,9 +145,6 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 IngredientDao.createTable(db, true);
                 IngredientNameDao.createTable(db, true);
                 IngredientsRelationDao.createTable(db, true);
-
-
-
                 AnalysisTagNameDao.createTable(db, true);
                 AnalysisTagDao.createTable(db, true);
                 AnalysisTagConfigDao.createTable(db, true);

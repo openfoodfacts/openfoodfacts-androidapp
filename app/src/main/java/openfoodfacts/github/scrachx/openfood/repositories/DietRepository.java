@@ -159,6 +159,11 @@ public class DietRepository implements IDietRepository {
         }
     }
 
+    @Override
+    public int getDietCount(){
+        return (int) dietDao.count();
+    }
+
     /**
      * DietIngredients saving to local database
      */
@@ -583,19 +588,19 @@ public class DietRepository implements IDietRepository {
     public void addIngredient(String name, String languageCode) {
         name = name.trim().replaceAll("_","").replaceAll("\\*","");
         if (name != "") {
-            //Recherche du IngredientName correspondant au name et language code
+            //Looking for the IngredientName with this name and languageCode
             IngredientName ingredientName = getIngredientNameByNameAndLanguageCode(name, languageCode);
             if (ingredientName.getIngredientTag() == null) {
-                //Le IngredientName retourné est vide, on lui ajoute les infos name, languageCode et ingredientTag
+                //The IngredientName is empty, so we complete it with name, languageCode and ingredientTag
                 ingredientName.setName(name);
                 ingredientName.setLanguageCode(languageCode);
                 ingredientName.setIngredientTag(languageCode + ":" + name.replaceAll(" ","-"));
                 ingredientNameDao.getSession().insert(ingredientName);
             }
-            //Recherche de l'Ingredient correspondant au name et languageCode
+            //Looking for the Ingredient corresponding at this name and languageCode
             Ingredient ingredient = getIngredientByNameAndLanguageCode(name, languageCode);
             if (ingredient.getTag() == null) {
-                //La Ingredient retournée est vide, on lui ajoute sont tag
+                //The Ingredient is empty, complete it with the tag
                 ingredient.setTag(languageCode + ":" + name.replaceAll(" ","-"));
                 ingredientDao.getSession().insertOrReplace(ingredient);
             }
@@ -651,11 +656,13 @@ public class DietRepository implements IDietRepository {
      * @param state             State code (-1: forbidden, 0: so-so, 1: authorised, 2: no impact)
      */
     @Override
-    public void addDietIngredientsByTags(String dietTag, String ingredientTag, int state) {
+    public void addDietIngredientsByTags(String dietTag, String ingredientTag, int state, String ingredientName, String languageCode) {
         DietIngredients dietIngredients = new DietIngredients();
         dietIngredients.setDietTag(dietTag);
         dietIngredients.setIngredientTag(ingredientTag);
         dietIngredients.setState(state);
+        dietIngredients.setIngredientName(ingredientName);
+        dietIngredients.setIngredientLanguageCode(languageCode);
         saveDietIngredients(dietIngredients);
     }
 
@@ -675,8 +682,8 @@ public class DietRepository implements IDietRepository {
         if (ingredientName != "") {
             Ingredient ingredient = getIngredientByNameAndLanguageCode(ingredientName, languageCode);
             if (ingredient.getTag() != null) {
-                //Ingredient trouvé. Association des deux.
-                addDietIngredientsByTags(dietTag, ingredient.getTag(), state);
+                //Found Ingredient. Associate it with diet.
+                addDietIngredientsByTags(dietTag, ingredient.getTag(), state, ingredientName, languageCode);
             } else {
                 //No ingredient found, create it and then create the link
                 addIngredient(ingredientName, languageCode);

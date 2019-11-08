@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -26,11 +29,12 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Diet;
 import openfoodfacts.github.scrachx.openfood.models.DietDao;
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
+import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DietsAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
-import static android.app.Activity.RESULT_OK;
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_DIET;
 
 /**
@@ -105,6 +109,35 @@ public class DietsFragment extends NavigationBaseFragment {
      */
     @OnClick(R.id.fab)
     void openFragmentAddDiet () {
+        //Set the ingredients taxonomy to be download if it is not
+        SharedPreferences settings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
+        if (!settings.getBoolean(Taxonomy.INGREDIENT.getDownloadActivatePreferencesId(), false)) {
+            settings.edit().putBoolean(Taxonomy.INGREDIENT.getDownloadActivatePreferencesId(), true).apply();
+            //Load ingredients taxonomy if needed !!!
+            final ResultReceiver receiver = new ResultReceiver(new Handler()) {
+                @Override
+                protected void onReceiveResult(int resultCode, Bundle resultData) {
+                    if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
+                        Toast.makeText(getContext(), "Waiting for ingredients to be loaded", Toast.LENGTH_SHORT);
+                    }
+                }
+            };
+            //the service will load server resources only if newer than already downloaded...
+            Intent intent = new Intent(getContext(), LoadTaxonomiesService.class);
+            intent.putExtra("receiver", receiver);
+            getContext().startService(intent);
+            getView().findViewById(R.id.fab).setEnabled(false);
+            getView().findViewById(R.id.emptyDietsView).setVisibility(getView().GONE);
+            getView().findViewById(R.id.progressBar).setVisibility(getView().VISIBLE);
+            //Wait for 20 seconds or Ingredients to be loaded if it's faster
+            new Handler().postDelayed(() -> openEditDietFragment(), 20000);
+        } else {
+            //Just open the fragment.
+            openEditDietFragment();
+        }
+    }
+
+    private void openEditDietFragment() {
         Fragment fragment = new EditDietFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment );

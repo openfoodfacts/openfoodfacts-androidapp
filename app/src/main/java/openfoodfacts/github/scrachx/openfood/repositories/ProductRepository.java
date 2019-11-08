@@ -156,6 +156,7 @@ public class ProductRepository implements IProductRepository {
      * @param <T> type of taxonomy
      */
     private <T> Single<List<T>> getTaxonomyData(Taxonomy taxonomy, boolean checkUpdate, boolean loadFromLocalDatabase, AbstractDao dao) {
+        Log.i(TAG, "getTaxonomyData  launch with : " + taxonomy + ", " + checkUpdate + ", " + loadFromLocalDatabase + " and " + dao);
         //First check if this taxonomy is to be loaded.
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
         boolean isDownloadActivated = mSettings.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false);
@@ -267,13 +268,9 @@ public class ProductRepository implements IProductRepository {
 
     /**
      * TODO to be improved by loading only in the user language ?
-     * Load ingredients from (the server or) local database
-     * If SharedPreferences lastDownloadIngredients is set try this :
-     * if file from the server is newer than last download delete database, load the file and fill database,
-     * else if database is empty, download the file and fill database,
-     * else return the content from the local database.
+     * Load ingredients from the server or local database
      *
-     * @return The ingredients in the product.
+     * @return The list of ingredients.
      */
     public Single<List<Ingredient>> reloadIngredientsFromServer() {
         return getTaxonomyData(Taxonomy.INGREDIENT, true, false, ingredientDao);
@@ -305,11 +302,11 @@ public class ProductRepository implements IProductRepository {
             httpCon.disconnect();
         } catch (IOException e) {
             //Problem
-            Log.e(getClass().getName(), "getLastModifiedDate", e);
-            Log.i(getClass().getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
+            Log.e(TAG, "getLastModifiedDate", e);
+            Log.i(TAG, "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
             return TAXONOMY_NO_INTERNET;
         }
-        Log.i(getClass().getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
+        Log.i(TAG, "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
         return lastModifiedDate;
     }
 
@@ -465,13 +462,14 @@ public class ProductRepository implements IProductRepository {
      * set the autoincrement to 0
      */
     public void deleteIngredientCascade() {
+        Log.i(TAG,"deleteIngredientCascade");
         ingredientDao.deleteAll();
         ingredientNameDao.deleteAll();
         ingredientsRelationDao.deleteAll();
+        //reset sequences.
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         daoSession.getDatabase().execSQL(
-            "update sqlite_sequence set seq=0 where name in ('" + ingredientDao.getTablename() + "', '" + ingredientNameDao.getTablename() + "', '" + ingredientsRelationDao
-                .getTablename() + "')");
+            "update sqlite_sequence set seq=0 where name in ('" + ingredientDao.getTablename() + "', '" + ingredientNameDao.getTablename() + "', '" + ingredientsRelationDao.getTablename() + "')");
     }
 
     /**
@@ -483,9 +481,10 @@ public class ProductRepository implements IProductRepository {
      *     Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      */
     private void saveIngredients(List<Ingredient> ingredients) {
+        Log.i(TAG,"saveIngredients");
         boolean complete = false;
         if (tableIsEmpty(ingredientDao)) {
-            //If table ingredient is empty then it has probably been deleted so we have to complete it after saving.
+            //If table ingredient is empty then it has probably been truncated so we have to complete it after this saving.
             complete = true;
         }
         db.beginTransaction();

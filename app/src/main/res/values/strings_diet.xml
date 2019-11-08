@@ -28,5 +28,6 @@
     <string name="edit_diet_remove">Remove this diet.</string>
     <string name="title_remove_diet_dialog">Remove</string>
     <string name="text_remove_diet_dialog">Do you want to remove the diet and all its relations?</string>
+    <string name="ingredients_loading">Initial ingredients loading</string>
     <!-- End of used for diets AddOn -->
 </resources>

@@ -49,6 +49,8 @@ public interface IDietRepository {
 
     void removeDiet(Long id);
 
+    int getDietCount();
+
     Ingredient getIngredientByTag(String tag);
 
     Ingredient getIngredientByNameAndLanguageCode(String name, String languageCode);
@@ -61,7 +63,7 @@ public interface IDietRepository {
 
     void addIngredient(String ingredientTag, String name, String languageCode);
 
-    void addDietIngredientsByTags(String dietTag, String ingredientTag, int state);
+    void addDietIngredientsByTags(String dietTag, String ingredientTag, int state, String ingredientName, String languageCode);
 
     void addDietIngredients(String dietTag, String ingredientName, String languageCode, int state);
 
