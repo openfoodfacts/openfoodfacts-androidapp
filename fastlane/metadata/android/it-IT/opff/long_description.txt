@@ -12,7 +12,7 @@ Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfac
 - Puoi iniziare a contribuire oggi aggiungendo un prodotto dei tuoi alimenti per animali. 
 
 
-*** Prendi i fatti ***
+*** Ottieni i fatti ***
 
 Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
 - l'elenco degli ingredienti (compreso il contenuto di ceneri)

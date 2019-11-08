@@ -26,7 +26,7 @@
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">Katso tätä tuotetta Open Food Facts:ssa:</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
-    <string name="txt_broaden_search">- laajenna hakuasi \n- skannaa ja lisää se Open Food Facts -sivulle</string>
+    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Food Facts -sivulle</string>
     <string name="Donation">Klikkaa tästä lahjoittaaksesi Open Food Facts:lle</string>
     <string name="translate_help_title">Auta kääntämään Open Food Factsiä</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>

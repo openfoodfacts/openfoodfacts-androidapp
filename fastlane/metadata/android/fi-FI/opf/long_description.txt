@@ -1,54 +1,54 @@
-Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Open Products Facts on avoin tietokanta kaikille maailman tuotteille.
 
-*** Contribute to Product Transparency ***
+*** Lisää tuotteiden läpinäkyvyyttä ***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding your first product. 
+- Open Products Facts on kaikkien tekemä tuotetietokanta, kaikille.
+- Voit käyttää sitä tekemään parempia valintoja, ja koska se on avointa dataa, kuka tahansa voi käyttää sitä mihin tahansa tarkoitukseen.
+- Open Products Facts voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin. 
+- Voit aloittaa osallistumisen tänään lisäämällä ensimmäisen tuotteesi. 
 
-*** Get the Facts ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+*** Tiedä tosiseikat ***
+- Open Products Facts auttaa sinua ymmärtämään tuotteiden etikettien pikkupräntin.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
-- Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+*** Kerää KAAAAIIKKI asiat ***
+- Voit lisätä kaikki tavarat kokoelmistasi
+- Open Crayons Facts - Suurin avoin väriliitutietokanta
+- Open Miniature Food Facts - Suurin avoin miniatyyrielintarviketietokanta
+- Open ??? Facts - Luo oma avoin tietokantasi :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Toimii hyvin kaikissa olosuhteissa ***
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
+- Sovellus lataa vain kaikista välttämättömimmän, tiedonsiirron ja akun kulutuksen vähentämiseksi
+- Et tarvitse kameraa hakeaksesi tuotetta. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Sinun tuotteesi, sinun tietosi ***
+- Henkilökohtaiset tietosi ovat sinun, ja niitä ei koskaan lähetetä verkkoon
+- Voit käyttää sovellusta nimettömästi
+- Voit viedä lukuhistoriasi
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Elintarvikkeille voit asentaa Open Food Factsin, kosmetiikalle Open Beauty Factsin, ja lemmikkien elintarvikkeille Open Pet Food Factsin.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Products Facts on myös saatavilla verkossa osoitteessa https://world.openproductsfacts.org
+Kysymykset, palaute: contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** Alkuperäinen aprillipilalistaus ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Eilen aamulla, Open Food Facts -ryhmä heräsi tyrmäävään ilmestykseen. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Maailman elintarvikkeiden, kosmetiikan ja lemmikkien elintarvikkeiden kerääminen oli niin passé. Kuluneen vuoden mielettömällä kehityksellä olemme varmasti lähellä valmistumista tehtävässämme kerätä kaikki maailman elintarvikkeet ja kosmetiikkatuotteet, eikö?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Joten aloimme luomaan ei yhtä, vaan 77000:ta erillistä uutta tietokantaa! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts tulee olemaan erittäin kunnianhimoinen hanke. Here are a few of them: 
 
 Open Crayons Facts - The largest open database of coloring crayons
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-Avaa ??? Facts - The largest open database of ???
+Open ??? Facts - Suurin avoin ???-tietokanta
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Huomenna, valitsemme 3 menestyneimpää tietokantaa, ja alamme keräämään kaikkia maailman vastaavia tuotteita.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+Onko se roskakori-, puhelukortti-, kännykkätietokanta? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Joten, jos pidät t-paidoista, keittokirjoista, origamipaperista tai pyrypalloista, aloita lukemaan Google Playsta saatavalla Open Products Facts Android-sovelluksella

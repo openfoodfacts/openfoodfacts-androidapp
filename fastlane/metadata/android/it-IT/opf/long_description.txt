@@ -7,7 +7,7 @@ Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni
 - Open Products Facts è un progetto no-profit sviluppato da migliaia di volontari da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
 - Puoi iniziare a contribuire oggi aggiungendo il tuo primo prodotto. 
 
-*** Prendi i fatti ***
+*** Ottieni i fatti ***
 - Open Products Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti.
 
 *** Raccogli TUUUUTTE le cose ***

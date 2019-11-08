@@ -195,6 +195,8 @@
     <string name="create_account">S\'inscrire</string>
     <string name="home_drawer">Accueil</string>
     <string name="install">Installer</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Rechercher</string>
     <string name="search_by_barcode_drawer">Rechercher par code-barre</string>
     <string name="category_drawer">Catégories</string>
@@ -710,6 +712,19 @@
     <string name="cant_modify_if_refreshing">Veuillez patienter jusqu\'à la fin du téléchargement</string>
     <string name="closeZoom">Cliquez pour fermer le zoom</string>
     <string name="imageFullscreen">Zoom</string>
+    <!-- Used for product ingredients analysis tags -->
+    <string name="close_button">Fermer</string>
+    <string name="tip_message">CONSEIL : %1$s </string>
+    <string name="ingredient_analysis_tip">Cliquez sur les icônes ci-dessous pour en savoir plus sur le produit, et sélectionner les informations qui vous intéressent.</string>
+    <string name="got_it">Compris !</string>
+    <string name="ingredients_in_this_product_are">Ingrédients de ce produit qui sont %1$s.</string>
+    <string name="ingredients_in_this_product">Ingrédients de ce produit qui sont %1$s :</string>
+    <string name="display_analysis_tag_status">Afficher le statut %1$s</string>
+    <string name="preference_header_display">Afficher</string>
+    <string name="unknown_status_no_translation">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients inconnus.</string>
+    <string name="help_translate_ingredients">Aidez à traduire les ingrédients dans votre langue</string>
+    <string name="unknown_status_missing_ingredients">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients manquants.</string>
+    <string name="help_extract_ingredients">Aidez à extraire les ingrédients pour obtenir le statut de %1$s.</string>
     <string name="product_already_exists_in_comparison">Le produit existe déjà dans la liste de comparaison</string>
     <string name="compare_brands">Marques :</string>
     <string name="compare_additives">Additifs :</string>

@@ -1,1 +1,1 @@
-Scan food products to decrypt labels: ingredients, additives and nutrition facts
+Lue elintarvikkeita etikettien purkamiseksi: ainesosat, lisäaineet ja ravintosisällöt
