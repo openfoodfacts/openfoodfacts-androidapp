@@ -68,6 +68,7 @@ public class DietRepository implements IDietRepository {
     private HashMap<Integer, String> colors = new HashMap<Integer, String>();
 
     //List of States :
+    public static final int DIET_STATE_ALL = -2;
     public static final int DIET_STATE_FORBIDEN = -1;
     public static final int DIET_STATE_SOSO = 0;
     public static final int DIET_STATE_AUTHORISED = 1;
@@ -703,13 +704,15 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<DietIngredients> getDietIngredientsListByDietTagAndState(String dietTag, int state) {
-        //Recherche des DietIngredients ayant dietTag
+        //Looking for DietIngredients having this dietTag
         List<DietIngredients> dietIngredientsList;
-        if (state == DIET_STATE_FORBIDEN) {
+        if (state == DIET_STATE_ALL) {
+            //Return all dietIngredients for this dietTag
             dietIngredientsList = dietIngredientsDao.queryBuilder().where(
                     DietIngredientsDao.Properties.DietTag.eq(dietTag)
             ).list();
         } else {
+            //Return dietIngredients for this dietTag and that State
             dietIngredientsList = dietIngredientsDao.queryBuilder().where(
                     DietIngredientsDao.Properties.DietTag.eq(dietTag),
                     DietIngredientsDao.Properties.State.eq(state)
@@ -728,7 +731,7 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<DietIngredients> getDietIngredientsListByDietTag(String dietTag) {
-        return getDietIngredientsListByDietTagAndState(dietTag, -2);
+        return getDietIngredientsListByDietTagAndState(dietTag, DIET_STATE_ALL);
     }
 
     /**
@@ -781,7 +784,7 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<Ingredient> getIngredientsLinkedToDietByDietTag(String dietTag) {
-        return getIngredientsLinkedToDietByDietTagAndState(dietTag,-2);
+        return getIngredientsLinkedToDietByDietTagAndState(dietTag,DIET_STATE_ALL);
     }
 
     /**
@@ -811,7 +814,7 @@ public class DietRepository implements IDietRepository {
      */
     @Override
     public List<Ingredient> getIngredientsLinkedToDietByDietNameAndLanguageCode(String dietName, String languageCode) {
-        return getIngredientsLinkedToDietByDietNameLanguageCodeAndState(dietName, languageCode, -2);
+        return getIngredientsLinkedToDietByDietNameLanguageCodeAndState(dietName, languageCode, DIET_STATE_ALL);
     }
 
     /**
