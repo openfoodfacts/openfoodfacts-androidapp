@@ -1147,7 +1147,12 @@ public class DietRepository implements IDietRepository {
                         for (int j = 1; j < ingredientWords.length; j++) {
                             String ingredientWord = ingredientWords[j];
                             endInIngredients = ingredients.indexOf(ingredientWord, fromIndexInIngredients);
-                            if (endInIngredients - fromIndexInIngredients > 2) {
+                            if (endInIngredients == -1){
+                                //Well thi word has not been found
+                                startInIngredients = -1;
+                                endInIngredients = -1;
+                                break;
+                            } else if (endInIngredients - fromIndexInIngredients > 2) {
                                 //More than 2 characters between the words, doesn't seems reasonable.
                                 startInIngredients = -1;
                                 endInIngredients = -1;
