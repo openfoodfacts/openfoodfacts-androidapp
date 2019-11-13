@@ -34,6 +34,8 @@ import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
 import openfoodfacts.github.scrachx.openfood.models.IngredientName;
 import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
 import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
@@ -65,6 +67,7 @@ public class DietRepository implements IDietRepository {
     private IngredientNameDao ingredientNameDao;
     private IngredientsRelationDao ingredientsRelationDao;
     private DietIngredientsDao dietIngredientsDao;
+    private LabelNameDao labelNameDao;
     private HashMap<Integer, String> colors = new HashMap<Integer, String>();
 
     //List of States :
@@ -98,6 +101,7 @@ public class DietRepository implements IDietRepository {
         ingredientNameDao = daoSession.getIngredientNameDao();
         ingredientsRelationDao = daoSession.getIngredientsRelationDao();
         dietIngredientsDao = daoSession.getDietIngredientsDao();
+        labelNameDao = daoSession.getLabelNameDao();
 
         colors.put(-1, "#ff0000");
         colors.put(0, "#ff9900");
@@ -1088,7 +1092,7 @@ public class DietRepository implements IDietRepository {
         int endInIngredients = 0;
         int fromIndexInIngredients = 0;
         String ingredient = "";
-        String languageCode = "";
+        String languageCode = product.getLang();;
         //List of the ingredients of the product in text and lower case to optimize indexOf.
         //In lowercase will find more ingredient in ingredients...
         //When an additive is alone between parenthesis, it is consider like an ingredient of non-zero rank, so let replace it's parenthesis by some comas.
@@ -1129,6 +1133,26 @@ public class DietRepository implements IDietRepository {
 
             //Looking for the place of ingredient in ingredients
             startInIngredients = ingredients.indexOf(ingredient);
+            if (startInIngredients < 0) {
+                //Now, label are sometimes added to text in ingredients
+                // so "Quinoa Real rouge et blanc Bio" was not found in "... Quinoa Real rouge* et blanc*, ..."
+                // because of the label "Bio" have been added
+                //Remove labels
+                if (productIngredient.getAdditionalProperties().containsKey("labels")) {
+                    String labelTag = (String) productIngredient.getAdditionalProperties().get("labels");
+                    //Looking for the name of this label in the language code of the product
+                    LabelName labelName = labelNameDao.queryBuilder()
+                        .where(
+                            LabelNameDao.Properties.LabelTag.eq(labelTag),
+                            LabelNameDao.Properties.LanguageCode.eq(languageCode)
+                        )
+                        .unique();
+                    if (labelName != null) {
+                        ingredient = ingredient.replaceAll(" " + labelName.getName().toLowerCase(), "");
+                        startInIngredients = ingredients.indexOf(ingredient);
+                    }
+                }
+            }
             if (startInIngredients >= 0) {
                 //found ingredient in ingredients
                 endInIngredients = startInIngredients + ingredient.length();
@@ -1148,7 +1172,8 @@ public class DietRepository implements IDietRepository {
                             String ingredientWord = ingredientWords[j];
                             endInIngredients = ingredients.indexOf(ingredientWord, fromIndexInIngredients);
                             if (endInIngredients == -1){
-                                //Well thi word has not been found
+                                //Well this word has not been found
+                                // Don't know what to to
                                 startInIngredients = -1;
                                 endInIngredients = -1;
                                 break;
@@ -1162,7 +1187,7 @@ public class DietRepository implements IDietRepository {
                             }
                         }
                         if (startInIngredients > 0) {
-                            //It's look like one character has beenn add between 2 words of ingredient once or more time
+                            //It's look like one character has been added between 2 words of ingredient once or more time
                             //Let conserve this result
                             endInIngredients = fromIndexInIngredients;
                         }
@@ -1176,7 +1201,6 @@ public class DietRepository implements IDietRepository {
             if (state == DIET_STATE_UNKNOWN) {
                 //The ingredientTag doesn't seems to have a relation with an active diet, looking for the sentence.
                 //Theoretically this will never append. But this is theory.
-                languageCode = product.getLang();
                 state = minStateForEnabledDietFromIngredient(ingredient, languageCode);
             }
             if (state == DIET_STATE_UNKNOWN) {
@@ -1282,7 +1306,7 @@ public class DietRepository implements IDietRepository {
         int start = 0;
         int end = 0;
         String ingredient = "";
-        String languageCode = "";
+        String languageCode = product.getLang();
         //Iterate the list of ingredient of the product
         List<ProductIngredient> productIngredients = product.getProductIngredients();
         for (int i = 0; i < productIngredients.size(); i++) {
@@ -1294,7 +1318,6 @@ public class DietRepository implements IDietRepository {
             state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredientTag(productIngredient.getId()) : stateFromIngredientTagDietTag(productIngredient.getId(), dietTag);
             if (state == DIET_STATE_UNKNOWN) {
                 //Search for state by ingredient text, languageCode (and dietTag)
-                languageCode = product.getLang();
                 state = dietTag.equalsIgnoreCase("enabled") ? minStateForEnabledDietFromIngredient(ingredient, languageCode) : stateFromIngredientDietTag(ingredient, dietTag, languageCode);
             }
             if (state == DIET_STATE_UNKNOWN) {
