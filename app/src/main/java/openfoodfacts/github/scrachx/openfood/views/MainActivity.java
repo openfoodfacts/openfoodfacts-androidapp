@@ -443,10 +443,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("opff")) {
             result.removeItem(ITEM_ALERT);
+            result.removeItem(ITEM_DIET);
         }
 
         if (BuildConfig.FLAVOR.equals("opf")) {
             result.removeItem(ITEM_ALERT);
+            result.removeItem(ITEM_DIET);
             result.removeItem(ITEM_ADDITIVES);
             result.removeItem(ITEM_ADVANCED_SEARCH);
         }
