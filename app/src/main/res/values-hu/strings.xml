@@ -194,7 +194,7 @@
     <string name="msg_share">Nézze meg a terméket az Open Food Facts adatbázisában:</string>
     <string name="create_account">Regisztráció</string>
     <string name="home_drawer">Kezdőlap</string>
-    <string name="install">Install</string>
+    <string name="install">Telepítés</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Keres</string>
@@ -208,7 +208,7 @@
     <string name="delete_txt">Törlés</string>
     <string name="sign_in_drawer">Bejelentkezés</string>
     <string name="alert_drawer">Allergén riasztás</string>
-    <string name="your_lists">A listád</string>
+    <string name="your_lists">A listája</string>
     <string name="title_dialog_alert">Figyelmeztetés hozzáadása</string>
     <string name="select_camera">Válassza ki a kamerát</string>
     <string name="ok_button">OK</string>
@@ -226,7 +226,7 @@
     <string name="error_invalid_password">A jelszó legalább 6 karakter hosszú legyen.</string>
     <string name="user">felhasználó</string>
     <string name="error_field_required">Szükséges mező.</string>
-    <string name="action_preferences">Tulajdonságok</string>
+    <string name="action_preferences">Beállítások</string>
     <string name="prefs_scan_startup">Beolvasás indításkor</string>
     <string name="prefs_scan_startup_summary">Amennyiben ez az opció ki van választva, akkor az alkalmazás megnyitásakor megkezdi a beolvasást.</string>
     <string name="prefs_power_mode">Gyors beolvasás</string>
@@ -450,8 +450,8 @@
     <string name="mineral_tags_text">Ásványi anyagok:</string>
     <string name="other_tags_text">Egyéb anyagok:</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">Kép betöltés tiltása alacsony akkumulátor töltöttség esetén</string>
-    <string name="DisableLoadTitle">Kép betöltés tiltása</string>
+    <string name="disable_image_loading">Képbetöltés tiltása alacsony akkumulátor töltöttség esetén</string>
+    <string name="DisableLoadTitle">Képbetöltés tiltása</string>
     <string name="by_title">Cím</string>
     <string name="by_brand">Márkanév</string>
     <string name="by_barcode">Vonalkód</string>
@@ -510,7 +510,7 @@
     <string name="switch_camera">Kamera váltása</string>
     <string name="autofocus">Autofókusz</string>
     <string name="initial_loading">Kezdeti betöltés</string>
-    <string name="preferences">Tulajdonságok</string>
+    <string name="preferences">Beállítások</string>
     <string name="OFFlogo">Open Food Facts embléma</string>
     <string name="loading_product">%s termék betöltése</string>
     <string name="image_not_defined_for_language">Nincs kép a kiválasztott nyelven. Adj hozzá egy újat</string>
@@ -647,7 +647,7 @@
     <string name="detected_ingredients">Összetevők detektálása</string>
     <string name="txtConnectionError">Bizonyos adatokat nem tudtunk letölteni. Ennek oka lehet a csatlakozási hiba.</string>
     <string name="set_image_name">A kép sikeresen beállítva</string>
-    <string name="fast_addition_mode_title">Gyors hozzáadása mód</string>
+    <string name="fast_addition_mode_title">Gyors hozzáadás mód</string>
     <string name="fast_addition_mode">Lehetővé teszi a kevesebb attribútumú termékek gyors hozzáadását</string>
     <string name="crop_new_image_title">Új képek kivágása</string>
     <string name="crop_new_image">Lehetővé teszi az új képeken végzett műveleteket</string>
@@ -656,7 +656,7 @@
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add hozzá a listáidhoz</string>
     <string name="txt_create_new_list">Hozzon létre egy új listát</string>
-    <string name="txt_add_to_new_list">Add hozzá az új listádhoz</string>
+    <string name="txt_add_to_new_list">Adja hozzá az új listájához</string>
     <string name="create_new_list_list_name">Lista neve</string>
     <string name="txt_eaten_products">Elfogyasztott termékek</string>
     <string name="txt_products_to_buy">Termékek vásárolni</string>
@@ -688,7 +688,7 @@
     <string name="product_question_ambiguous_response">Nem biztos</string>
     <string name="product_question_submit_message">Köszönjük a hozzájárulását!</string>
     <string name="error_nutrient_entry">Az értéknek számnak kell lennie, és &lt;, &gt; vagy ~ értékkel kezdődhet. Példa: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
+    <string name="error_nutrient_serving_data">Az adag pozitív érték kell legyen</string>
     <string name="error_in_nutrient_data">Néhány tápanyagérték nem érvényes. Kérjük, javítsa ki a fenti hibával jelzett mezőket.</string>
     <string name="go_to_full_product_page">Ugrás a termékre</string>
     <string name="no_additive_data_available_for_this_product">Ehhez a termékhez nem áll rendelkezésre adalék adat</string>
@@ -718,8 +718,8 @@
     <string name="close_button">Bezár</string>
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
-    <string name="got_it">Got it!</string>
-    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
+    <string name="got_it">Rendben!</string>
+    <string name="ingredients_in_this_product_are">A termék összetevői %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="preference_header_display">Display</string>
