@@ -194,7 +194,7 @@
     <string name="msg_share">Bekijk dit product op Open Food Facts</string>
     <string name="create_account">Inschrijven</string>
     <string name="home_drawer">Hoofdmenu</string>
-    <string name="install">Install</string>
+    <string name="install">Installeer</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Zoek</string>
@@ -670,7 +670,7 @@
     <string name="settings_country_summary">Wijzig je geselecteerde land</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dit product bevat geen voedingswaarde-informatie op de verpakking. Als dit is veranderd, kan je het product bewerken.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <string name="image_prompt_language">Maak een foto van de ingrediëntenlijst</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
@@ -715,22 +715,22 @@
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Close</string>
     <string name="tip_message">TIP: %1$s </string>
-    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
-    <string name="got_it">Got it!</string>
-    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
-    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
-    <string name="preference_header_display">Display</string>
-    <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
-    <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
-    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
-    <string name="compare_brands">Brands :</string>
+    <string name="ingredient_analysis_tip">Klik op de onderstaande pictogrammen om meer te weten te komen over het product en om de informatie te selecteren waar je geïnteresseerd in bent.</string>
+    <string name="got_it">Ik snap het!</string>
+    <string name="ingredients_in_this_product_are">Ingrediënten in dit product zijn %1$s.</string>
+    <string name="ingredients_in_this_product">Ingrediënten in dit product die %1$s zijn:</string>
+    <string name="display_analysis_tag_status">Status %1$s weergeven</string>
+    <string name="preference_header_display">Weergave</string>
+    <string name="unknown_status_no_translation">We konden de status van het product niet beoordelen vanwege niet-herkende ingrediënten.</string>
+    <string name="help_translate_ingredients">Help de ingrediënten in uw taal te vertalen</string>
+    <string name="unknown_status_missing_ingredients">We konden de status van het product niet beoordelen vanwege ontbrekende ingrediënten.</string>
+    <string name="help_extract_ingredients">Help de ingrediënten te herkennen om de %1$s status te krijgen.</string>
+    <string name="product_already_exists_in_comparison">Het product staat al in de vergelijkingslijst</string>
+    <string name="compare_brands">Merken :</string>
     <string name="compare_additives">Additieven</string>
     <string name="compare_salt">Zout</string>
     <string name="compare_sugars">Suikers</string>
     <string name="compare_saturated_fat">Verzadigd vet</string>
     <string name="compare_fat">Vet</string>
-    <string name="compare_quantity">Quantity :</string>
+    <string name="compare_quantity">Hoeveelheid:</string>
 </resources>
