@@ -33,7 +33,7 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Yhteenveto</item>
-        <item>Ainekset</item>
+        <item>Ainesosat</item>
         <item>Ravintoarvot</item>
         <item>Ravintosisältö</item>
         <item>Ympäristö</item>
@@ -199,7 +199,7 @@
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Etsi</string>
     <string name="search_by_barcode_drawer">Etsi viivakoodilla</string>
-    <string name="category_drawer">Luokat</string>
+    <string name="category_drawer">Tuoteluokat</string>
     <string name="search_by_category">Tuoteluokalla</string>
     <string name="scan_search">Lue viivakoodi</string>
     <string name="user_drawer">Käyttäjä</string>
@@ -565,7 +565,7 @@
     <string name="for_100g_100ml">100 g / 100 ml kohden</string>
     <string name="per_serving">Annosta kohti</string>
     <string name="serving_size">Annoskoko</string>
-    <string name="alcohol_unit" formatted="false">% vol / °</string>
+    <string name="alcohol_unit" formatted="false">til-% / °</string>
     <string name="add_a_nutrient">Lisää ravintoaine</string>
     <string name="add_this_product">Lisää tämä tuote</string>
     <string name="product_picture">Tuotekuva</string>
