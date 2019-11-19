@@ -1,5 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -8,14 +16,10 @@ import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import org.junit.Before;
-import org.junit.Test;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
-
-import java.io.IOException;
-import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
@@ -33,6 +37,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
         serviceRead = new Retrofit.Builder()
             .baseUrl(APIUtils.GET_API)
             .addConverterFactory(JacksonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(HttpClientBuilder())
             .build()
             .create(OpenFoodAPIService.class);
@@ -55,6 +60,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
         serviceWrite = new Retrofit.Builder()
             .baseUrl(APIUtils.GET_API)
             .addConverterFactory(JacksonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(httpClientWithAuth)
             .build()
             .create(OpenFoodAPIService.class);
@@ -185,6 +191,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     @Test
     public void post_product() throws IOException {
         SendProduct product = new SendProduct();
+
         product.setBarcode("978020137962");
         product.setName("coca3");
         product.setBrands("auchan");
@@ -192,16 +199,22 @@ public class OpenFoodAPIServiceTest implements APIUtils {
         product.setWeight_unit("g");
         product.setLang("fr");
 
-//        Response<State> execute = serviceWrite.saveProduct(product).execute();
-        Response<State> execute = serviceWrite
-            .saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), null, null, PRODUCT_API_COMMENT).execute();
+        Map<String, String> productDetails = new HashMap<String, String>() {{
+            put("lang", product.getLang());
+            put("product_name", product.getName());
+            put("brands", product.getBrands());
+            put("quantity", product.getQuantity());
+        }};
 
-        assertTrue(execute.isSuccessful());
+        State body = serviceWrite
+            .saveProductSingle(product.getBarcode(), productDetails, PRODUCT_API_COMMENT)
+            .blockingGet();
 
-        State body = execute.body();
         assertEquals(body.getStatus(), 1);
         assertEquals(body.getStatusVerbose(), "fields saved");
+
         String fields = "product_name,brands,brands_tags,quantity";
+
         Response<State> response = serviceWrite.getProductByBarcode(product.getBarcode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
         Product savedProduct = response.body().getProduct();
         assertEquals(product.getName(), savedProduct.getProductName());
