@@ -1,17 +1,24 @@
-Enhancements:
+This roadmap is up for discussion.
 
-- Try to send images as soon they are selected (for a new product)
-- Add the "Period after Opening" field for Open Beauty Facts
-- Show last edit date on product
+Enhancements:
+- Add in-app changelog
+- Revamp the onboarding with illustations/animations/new features
+- Add % of daily values for products
+- Add a graph of your nutrient intake
+- Honoring the server-side barcode blacklist to avoid scan errors
+- Remove bugs on product page after product editing
 
 Major Enhancements:
-- Upload images and data to the correct language
-- Share credentials between Open Beauty Facts and Open Food Facts
-- Add ingredient detection tab for Open Beauty Facts
+- Revamp the Product store
+- Offline product scan
+- Product contribution experience that's less intimidating and includes our machine learning advances to offer suggestions
+- Store all history products for offline viewing
+- Merge Open Food Facts and Open Beauty Facts
+- Products recommandations (with better Nutri-Scores, NOVAs…)
 
 Bugs:
-- Add confirmation step before logging out
-- Disable Nutrition image upload for Open Beauty Facts
+- Share credentials between Open Beauty Facts and Open Food Facts
+- Fully native Open Food Facts signup
 
 UX:
 
@@ -25,28 +32,9 @@ https://github.com/openfoodfacts/openfoodfacts-androidapp/labels
 
 
 
-
-
--------
-Product Edition
-Product Browsing
-Scanning
-App Health
-Allergen Detector
-Translations & Internationalization
-Product Addition
-Work well on all phones
-Open Beauty Facts
-Empty products
-Expose even more information, with more context
 Offline Browsing
 Offline Edit
-Scan & Search History
-Sharing
-Search
 Gamification
 Look and feel
 User management
 Onboarding
-Tablet Optimization
-Language support
