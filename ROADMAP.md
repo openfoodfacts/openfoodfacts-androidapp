@@ -3,10 +3,11 @@ This roadmap is up for discussion.
 Enhancements:
 - Add in-app changelog
 - Revamp the onboarding with illustations/animations/new features
-- Add % of daily values for products
+- Add % of daily values for each nutrient of a product
 - Add a graph of your nutrient intake
 - Honoring the server-side barcode blacklist to avoid scan errors
 - Remove bugs on product page after product editing
+- Add additive function in the additive card
 
 Major Enhancements:
 - Revamp the Product store
