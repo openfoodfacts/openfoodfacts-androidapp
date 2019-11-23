@@ -1,5 +1,7 @@
 This roadmap is up for discussion.
 
+Note: Nutrition table bugs can be solved by fixing: Use the HTML fallback for the nutrition table, and make the native optional until we fix it. https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2474
+
 Showstopper bugs
 Lists:
 - Lists are not properly shown on the product page : https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2923
