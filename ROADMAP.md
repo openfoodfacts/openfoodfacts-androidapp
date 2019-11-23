@@ -27,6 +27,7 @@ Nutrition table :
 - Cocoa percentage is displayed as g: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2178
 
 Enhancements:
+- Product image stretched on upload: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1393
 - Show NOVA and Nutri-Score in search results and history: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2458
 - Don't return a result if the scanned barcode matches the server-side blacklist:  https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2629
 - I should not have to wait for the product to upload (esp. when I have no or little network) https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2677
@@ -46,25 +47,41 @@ Enhancements:
 - Information related to Nutri-score and Nova should be available offline : https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2238
 - Product name is not immediately shown on scan card after product addition: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2194
 - Improve suggestions by eliminating common special characters: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2184
-- Prepared nutrition facts are not displayed: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2177
+- Prepared nutrition facts are not displayed: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2177 and https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1288 (close one of them as duplicate)
+- Scanned products that do not exist in Open Food Facts do not appear in history: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/168
 
 Major Enhancements:
+- Allow adding a product to any project: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1900
 - Revamp the Product store
-- Offline product scan (Pull request doing half the feature ready): https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2069
+- Offline product scan (Pull request doing half the feature ready): https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2069, https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/37 and https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/30
 - Product contribution experience that's less intimidating and includes our machine learning advances to offer suggestions
-- Store all history products for offline viewing
+- Store all history products for offline viewing: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/875 and duplicate: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/211
 - Merge Open Food Facts and Open Beauty Facts
-- Products recommandations (with better Nutri-Scores, NOVAs…)
+- Products recommandations (with better Nutri-Scores, NOVAs…): https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/825 and https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/605
 - Add a personal achievements page: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2873
-- Various proposals for product addition redesign: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2230
+- Various proposals for product addition redesign: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2230 , https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/499, https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/269
+- Add product recall notifications: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/349
+- Daily Calorie counter: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/348
+- Search result ranking: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/199
+- Advanced search by additive, categories, ingredients: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/167
+- Detect barcode at 90° angle: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/125
+- Ability to add a product that doesn't have a barcode: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/123
 
 Bugs:
-- Share credentials between Open Beauty Facts and Open Food Facts
+- use Product instead of State in the bundle intent used in ProductFragment: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/152
+- Share credentials between Open Beauty Facts and Open Food Facts: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/528
 - Fully native Open Food Facts signup
 - Honor the unit from the nutrient taxonomy: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2867
 
+PRs to validate:
+- Open openfoodfacts.org links in the app: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/273
+
 Other:
 - Screenshot automation for F-Droid and the PlayStore: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Afastlane
+- Show last edit date on product: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/356
+- Check the PR :https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/305
+- Select products for offline view: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/303
+- Include translated descriptions in F-Droid metadata: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/107
 
 Milestones:
 
