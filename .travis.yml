@@ -70,22 +70,22 @@ jobs:
 
   - stage: test
     script:
-      - ./gradlew testObfDebugUnitTest connectedObfDebugAndroidTest assembleObfDebug --stacktrace
+      - ./gradlew testObfDebugUnitTest assembleObfDebug --stacktrace
       - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
 
   - stage: test
     script:
-      - ./gradlew testOffDebugUnitTest connectedOffDebugAndroidTest assembleOffDebug --stacktrace
+      - ./gradlew testOffDebugUnitTest assembleOffDebug --stacktrace
       - mv app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
 
   - stage: test
     script:
-      - ./gradlew testOpfDebugUnitTest connectedOpfDebugAndroidTest assembleOpfDebug --stacktrace
+      - ./gradlew testOpfDebugUnitTest assembleOpfDebug --stacktrace
       - mv app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
 
   - stage: test
     script:
-      - ./gradlew testOpffDebugUnitTest connectedOpffDebugAndroidTest assembleOpffDebug --stacktrace
+      - ./gradlew testOpffDebugUnitTest assembleOpffDebug --stacktrace
       - mv app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
 
 sudo: required
