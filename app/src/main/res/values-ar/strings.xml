@@ -10,7 +10,7 @@
         <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="zero">%d seconds ago</item>
+        <item quantity="zero">منذ ٪ d ثانية</item>
         <item quantity="one">1 second ago</item>
         <item quantity="two">%d seconds ago</item>
         <item quantity="few">%d seconds ago</item>
