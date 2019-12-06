@@ -29,7 +29,7 @@ Open Product Facts é um projeto sem fins lucrativos desenvolvido por milhares d
 Para comida, pode instalar Open Food Facts, para cosméticos, Open Beauty Facts, e para comida de animais, Open Pet Food Facts.
 
 O Open Beauty Facts também está disponível na web em https://pt.openbeautyfacts.org
-Perguntas, feedback: contact@openfoodfacts.org
+Perguntas, feedback: contato@openfoodfacts.org
 
 *** Listagem Original do Dia das mentiras ***
 
