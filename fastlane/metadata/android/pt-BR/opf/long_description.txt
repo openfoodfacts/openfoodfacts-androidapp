@@ -7,7 +7,7 @@ O Open Products Facts é um banco de dados aberto de todos os produtos do mundo.
 Open Product Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários ao redor do mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
 - Pode começar a contribuir hoje ao adicionar um produto do seu frigorífico. 
 
-*** Conheça os fatos ***
+*** Conheça os Fatos ***
 - Open Food Facts ajuda-o a entender as letras miúdas dos rótulos dos produtos.
 
 *** Colecione TODAAAAS as coisas ***

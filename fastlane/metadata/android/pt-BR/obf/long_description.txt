@@ -5,7 +5,7 @@
 - Open Beauty Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntário do mundo todo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
 - Você pode começar contribuindo hoje, adicionando um produto do seu ármario de cosméticos. 
 
-*** Conheça os fatos ***
+*** Conheça os Fatos ***
 
 - Aditivos cosméticos, F.I.L. códigos, números CI, INCI (Nomenclatura Internacional de Ingredientes Cosméticos), lista de ingredientes, alérgenos, códigos de embalagem... 
 - Open Beauty Facts ajuda a entender as letras miúdas dos rótulos dos produtos.

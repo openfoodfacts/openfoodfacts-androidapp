@@ -12,7 +12,7 @@ Para descobrir o projeto Open Pet Food Facts, visite https://world.openpetfoodfa
 - Pode começar a contribuir hoje, adicionando um produto do seu armário de alimentos para animais. 
 
 
-*** Conheça os fatos ***
+*** Conheça os Fatos ***
 
 Poderá encontrar também (de acordo com as indicações presentes nos produtos):
 - lista de ingredientes (incluindo o teor de cinzas)

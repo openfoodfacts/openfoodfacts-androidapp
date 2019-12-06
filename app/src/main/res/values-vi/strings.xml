@@ -453,7 +453,7 @@
     <string name="by_time">Đã xem gần đây</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Lớp dinh dưỡng</string>
-    <string name="sort_by">Sort by</string>
+    <string name="sort_by">Xếp theo</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Lắc điện thoại để quét sản phẩm</string>
@@ -466,7 +466,7 @@
     <string name="code_detected">Chúng tôi đã phát hiện mã vạch</string>
     <string name="do_you_want_to">Bạn có muốn thêm ảnh vào mã vạch này không?</string>
     <string name="bottomNav_history">History</string>
-    <string name="products_added">Products you added or edited</string>
+    <string name="products_added">Các sản phẩm bạn đã thêm hoặc chỉnh sửa</string>
     <string name="products_incomplete">Các sản phẩm bạn đã thêm cần được hoàn thành</string>
     <string name="product_pictures_contributed">Sản phẩm bạn chụp ảnh cho</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
