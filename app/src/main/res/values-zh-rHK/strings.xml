@@ -36,7 +36,7 @@
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
         <item>產品照片</item>
-        <item>Ingredient Analysis</item>
+        <item>成分分析</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -48,8 +48,8 @@
     <string-array name="weight_all_units">
         <item>mg</item>
         <item>kg</item>
-        <item>µg</item>
-        <item>% DV</item>
+        <item>微克</item>
+        <item>每日攝取百分比</item>
         <item>IU</item>
     </string-array>
     <!-- nutrients list
@@ -121,17 +121,17 @@
         <item>蔗糖</item>
         <item>牛磺酸</item>
         <item>反式脂肪</item>
-        <item>维生素 A</item>
+        <item>維他命A</item>
         <item>Vitamin B1 (Thiamin)</item>
         <item>Vitamin B12 (Cobalamin)</item>
         <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
+        <item>維他命B3或維他命PP（煙酸）</item>
         <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
+        <item>維他命B9（葉酸）</item>
         <item>Vitamin C (Ascorbic acid)</item>
-        <item>维生素 D</item>
-        <item>维生素 E</item>
-        <item>维生素 K</item>
+        <item>維他命D</item>
+        <item>維他命E</item>
+        <item>維他命K</item>
         <item>锌</item>
     </string-array>
     <!-- Text units -->
@@ -154,7 +154,7 @@
     <string name="txtPalmOilProduct">來自棕櫚油的成分：</string>
     <string name="txtServingSize">份量：</string>
     <string name="txtNutrientLevel100g">每100公克的營養等級：</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">100毫升的營養素：</string>
     <string name="txtNutritionLevelLow">库存量</string>
     <string name="txtNutritionLevelModerate">中等数量</string>
     <string name="txtNutritionLevelHigh">最高含量</string>
@@ -165,7 +165,7 @@
     <string name="txtFat">脂肪</string>
     <string name="txtSugars">糖</string>
     <string name="hintBarcode">条形码</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">瞭解營養水平</string>
     <string name="hintLogin">登入</string>
     <string name="hintPass">密碼</string>
     <string name="errorLogin">使用者名稱或密碼錯誤</string>
@@ -254,7 +254,7 @@
     <string name="nutrition_fat">脂肪</string>
     <string name="nutrition_fiber">膳食纤维</string>
     <string name="nutrition_header">营养成分</string>
-    <string name="nutrition_proteins">蛋白质</string>
+    <string name="nutrition_proteins">蛋白質</string>
     <string name="nutrition_salt">盐</string>
     <string name="nutrition_satured_fat">饱和脂肪</string>
     <string name="nutrition_sodium">钠</string>
@@ -306,18 +306,18 @@
     <string name="nutrition_fructose">果糖</string>
     <string name="nutrition_maltose">麦芽糖</string>
     <string name="nutrition_alcohol">酒精</string>
-    <string name="nutrition_vitamins">维生素</string>
-    <string name="vitamin_a">维生素 A</string>
-    <string name="vitamin_d">维生素 D</string>
-    <string name="vitamin_e">维生素 E</string>
-    <string name="vitamin_k">维生素 K</string>
-    <string name="vitamin_c">维生素 C</string>
-    <string name="vitamin_b1">维生素 B1</string>
-    <string name="vitamin_b2">维生素 B2</string>
-    <string name="vitamin_pp">维生素 PP</string>
-    <string name="vitamin_b6">维生素 B6</string>
-    <string name="vitamin_b9">维生素 B9</string>
-    <string name="vitamin_b12">维生素 B12</string>
+    <string name="nutrition_vitamins">維他命</string>
+    <string name="vitamin_a">維他命A</string>
+    <string name="vitamin_d">維他命D</string>
+    <string name="vitamin_e">維他命E</string>
+    <string name="vitamin_k">維他命K</string>
+    <string name="vitamin_c">維他命C</string>
+    <string name="vitamin_b1">維他命B1</string>
+    <string name="vitamin_b2">維他命B2</string>
+    <string name="vitamin_pp">維他命PP</string>
+    <string name="vitamin_b6">維他命B6</string>
+    <string name="vitamin_b9">維他命B9</string>
+    <string name="vitamin_b12">維他命B12</string>
     <string name="biotin">生物素</string>
     <string name="pantothenic_acid">泛酸</string>
     <string name="nutrition_minerals">矿物质</string>
@@ -341,7 +341,7 @@
     <string name="taurine">牛磺酸</string>
     <string name="ph">pH值</string>
     <string name="fruits_vegetables_nuts">水果，蔬菜，坚果</string>
-    <string name="collagen_meat_protein_ratio">胶原蛋白比例</string>
+    <string name="collagen_meat_protein_ratio">膠原蛋白比例</string>
     <string name="cocoa">可可粉</string>
     <string name="chlorophyl">叶绿素</string>
     <string name="take_picture">拍照</string>
@@ -440,7 +440,7 @@
     <string name="Rate_Us_title">Rate our App</string>
     <string name="app_disabled_text">Application is disabled</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-    <string name="vitamin_tags_text">維生素:</string>
+    <string name="vitamin_tags_text">維他命：</string>
     <string name="amino_acid_tags_text">Amino Acids:</string>
     <string name="mineral_tags_text">礦物質:</string>
     <string name="other_tags_text">Other Substances:</string>
@@ -488,15 +488,15 @@
     <string name="txtDialogsTitle">信息</string>
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
-    <string name="offline_product_addition_title">Add a new product</string>
+    <string name="offline_product_addition_title">新增產品</string>
     <string name="productNameNull">Name unknown</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesUnknown">不明添加劑</string>
+    <string name="productAdditivesTemplate">%1$d個添加劑</string>
     <plurals name="productAdditives">
-        <item quantity="other">%d additives</item>
+        <item quantity="other">%d個添加劑</item>
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
-    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+    <string name="addProductOffline">您好像離線了，您想使用離線模式加入產品%s嗎？</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Scan sound</string>
     <string name="trouble_scanning">Trouble Scanning?</string>
@@ -508,20 +508,20 @@
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
-    <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
+    <string name="error_adding_ingredients">加入食品成分時出錯</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
-    <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
+    <string name="error_adding_nutrition_facts">加入營養標籤時出錯</string>
     <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
-    <string name="choose_nutrient">Choose a nutrient</string>
-    <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
+    <string name="choose_nutrient">選擇營養素</string>
+    <string name="error_adding_product_details">加入產品資料時出錯</string>
     <string name="hint_product_URL">Link of the official page of the product</string>
     <string name="product_language">Product language : </string>
     <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Official website</string>
     <string name="scan_QR_code">Scan QR Code for product website</string>
-    <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
+    <string name="add_at_least_one_picture">請先加入至少一張產品圖片</string>
     <string name="image_uploaded_successfully">Image uploaded successfully</string>
-    <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
+    <string name="error_adding_product_photos">加入產品圖片時出錯</string>
     <string name="ingredients_overwrite">Ingredients overwrite</string>
     <string name="choose_mine">Choose mine</string>
     <string name="keep_previous_version">Keep previous version</string>
@@ -531,7 +531,7 @@
     <string name="quantity_overwrite">Quantity overwrite</string>
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">新增產品時出錯</string>
     <string name="photos">Photos</string>
     <string name="please_wait">Please wait</string>
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
@@ -561,7 +561,7 @@
     <string name="serving_size">分量</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">新增營養</string>
-    <string name="add_this_product">Add this product</string>
+    <string name="add_this_product">加入此產品</string>
     <string name="product_picture">Product Picture</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
@@ -576,7 +576,7 @@
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">商店</string>
-    <string name="additional_pictures">Additional Pictures</string>
+    <string name="additional_pictures">額外圖片</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
@@ -598,20 +598,20 @@
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_high">容易過量攝取</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="infants">嬰兒</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
-    <string name="elderly_age">65+</string>
+    <string name="toddlers">幼童</string>
+    <string name="toddlers_age">一至兩歲</string>
+    <string name="children">兒童</string>
+    <string name="children_age">三至九歲</string>
+    <string name="adolescents">青少年</string>
+    <string name="adolescents_age">十至十七歲</string>
+    <string name="adults">成人</string>
+    <string name="adults_age">18至64歲</string>
+    <string name="elderly">老年人</string>
+    <string name="elderly_age">65歲或以上</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
     <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
@@ -625,10 +625,10 @@
     <!-- Used for additive exposure evaluation table -->
     <!-- Used for diets AddOn -->
     <!-- End of used for diets AddOn -->
-    <string name="extract_ingredients_prompt">Extract ingredients</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="extract_ingredients_prompt">提取成分</string>
+    <string name="add_nutrient_prompt_text">加入營養標籤後才能算出Nutri-Score</string>
+    <string name="add_category_prompt_text">分類後才能算出Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">加入營養標籤及分類後才能算出Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
@@ -639,16 +639,16 @@
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Successfully set the image as</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
+    <string name="fast_addition_mode_title">快速加入模式</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="crop_new_image_title">Crop new images</string>
     <string name="crop_new_image">Enables crop action on new images</string>
-    <string name="addtive_search">Search for a additive</string>
+    <string name="addtive_search">搜尋添加劑</string>
     <string name="additives">添加</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Add to your lists</string>
+    <string name="add_to_product_lists">加入您的列表</string>
     <string name="txt_create_new_list">Create a new list</string>
-    <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="txt_add_to_new_list">加入新列表</string>
     <string name="create_new_list_list_name">List Name</string>
     <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Products to buy</string>
@@ -667,11 +667,11 @@
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add products</string>
-    <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_product">新增產品</string>
+    <string name="add_another_product">加入另一個產品</string>
+    <string name="add_nutrition_facts_for_nutriscore">加入營養標籤後才能算出Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_add_to_list_button_label">加入列表</string>
     <string name="product_summary_action_edit_button_label">編輯</string>
     <string name="product_summary_action_share_button_label">分享</string>
     <string name="product_question_prompt">Tap here to answer</string>
@@ -681,21 +681,21 @@
     <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="error_in_nutrient_data">某些營養素數值無效，請修正已標記的項目</string>
     <string name="go_to_full_product_page">Go to product</string>
-    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
-    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
+    <string name="no_additive_data_available_for_this_product">此產品沒有添加劑資料</string>
+    <string name="no_nutrient_information_available_for_this_product">此產品沒有營養資料</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
     <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
-    <string name="add_a_list">Add a list</string>
+    <string name="add_a_list">新增列表</string>
     <string name="edit_image">Edit Image</string>
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">条形码</string>
-    <string name="productAdditivesNone">No additives</string>
+    <string name="productAdditivesNone">沒有添加劑</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
