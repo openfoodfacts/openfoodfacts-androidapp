@@ -25,7 +25,7 @@
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">於 Open Food Facts 上查看此產品：</string>
-    <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
+    <string name="not_support_books">Open Food Facts現不支持書籍</string>
     <string name="txt_broaden_search">- 擴大您的搜尋\n - 掃描並將其新增到 Open Food Facts</string>
     <string name="Donation">捐款給 Open Food Facts</string>
     <string name="translate_help_title">幫助翻譯 Open Food Facts</string>
