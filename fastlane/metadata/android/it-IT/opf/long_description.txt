@@ -7,7 +7,7 @@ Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni
 - Open Products Facts è un progetto no-profit sviluppato da migliaia di volontari da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
 - Puoi iniziare a contribuire oggi aggiungendo il tuo primo prodotto. 
 
-*** Prendi i fatti ***
+*** Ottieni i fatti ***
 - Open Products Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti.
 
 *** Raccogli TUUUUTTE le cose ***
@@ -29,7 +29,7 @@ Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni
 Per il cibo, è possibile installare Open Food Facts, per i cosmetici, Open Beauty Facts e per alimenti per animali domestici, Open Pet Food Facts.
 
 Open Produts Facts è anche disponibile sul web ad https://world.openproductsfacts.org
-Domande e feedback a: contact@openfoodfacts.org
+Per domande e feedback: contact@openfoodfacts.org
 
 *** Elenco Originale Pesci D'Aprile ***
 

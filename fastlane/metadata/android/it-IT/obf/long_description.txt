@@ -5,7 +5,7 @@
 - Open Beauty Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
 - Puoi iniziare a contribuire oggi aggiungendo un prodotto dal tuo set di cosmetici. 
 
-*** Prendi i fatti ***
+*** Ottieni i fatti ***
 
 - Addititivi cosmetici, F.I.L. codici, numeri CI, INCI (International Nomenclature of Cosmetic Ingredients), elenco degli ingredienti, allergeni, codici di confezionamento... 
 - Open Beauty Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti.
@@ -27,6 +27,6 @@ Nota: Open Beauty Facts è in costruzione, il sito e l'applicazione sono basati 
 
 Open Beauty Facts è anche disponibile sul web all'indirizzo 
 https://world-it.openbeautyfacts.org/
-Domande e feedback a: contact@openfoodfacts.org
+Per domande e feedback: contact@openfoodfacts.org
 
 Per il cibo è possibile installare Open Food Facts, per alimenti per animali domestici Open Pet Food Facts e per tutti gli altri prodotti Open Products Facts.

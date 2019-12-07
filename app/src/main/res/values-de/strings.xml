@@ -195,6 +195,8 @@
     <string name="create_account">Registrieren</string>
     <string name="home_drawer">Startseite</string>
     <string name="install">Installieren</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Suchen</string>
     <string name="search_by_barcode_drawer">Nach Strichcode suchen</string>
     <string name="category_drawer">Kategorien</string>
@@ -710,6 +712,19 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="cant_modify_if_refreshing">Bitte warten bis das Hochladen abgeschlossen ist</string>
     <string name="closeZoom">Hier klicken, um die Vergrößerung zu schließen</string>
     <string name="imageFullscreen">Vergrößern</string>
+    <!-- Used for product ingredients analysis tags -->
+    <string name="close_button">Schließen</string>
+    <string name="tip_message">TIPP: %1$s </string>
+    <string name="ingredient_analysis_tip">Klicken Sie auf die untenstehenden Symbole, um mehr über das Produkt zu erfahren und auszuwählen, für welche Informationen Sie sich interessieren.</string>
+    <string name="got_it">Verstanden!</string>
+    <string name="ingredients_in_this_product_are">Die Inhaltsstoffe in diesem Produkt sind %1$s.</string>
+    <string name="ingredients_in_this_product">Zutaten in diesem Produkt, die %1$s sind:</string>
+    <string name="display_analysis_tag_status">%1$s Status anzeigen</string>
+    <string name="preference_header_display">Anzeigen</string>
+    <string name="unknown_status_no_translation">Open Food Facts konnte den Status des Produkts aufgrund nicht erkannter Inhaltsstoffe nicht beurteilen.</string>
+    <string name="help_translate_ingredients">Helfen Sie mit, die Zutaten in Ihre Sprache zu übersetzen</string>
+    <string name="unknown_status_missing_ingredients">Open Food Facts konnte den Status des Produkts aufgrund fehlender Inhaltsstoffe nicht beurteilen.</string>
+    <string name="help_extract_ingredients">Mithelfen, Zutaten zu erfassen, um den Status %1$s zu erhalten.</string>
     <string name="product_already_exists_in_comparison">Das Produkt ist bereits in der Vergleichsliste vorhanden</string>
     <string name="compare_brands">Marken:</string>
     <string name="compare_additives">Zusatzstoffe:</string>

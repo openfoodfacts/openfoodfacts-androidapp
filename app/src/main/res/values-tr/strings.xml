@@ -195,6 +195,8 @@
     <string name="create_account">Kaydol</string>
     <string name="home_drawer">Ana Sayfa</string>
     <string name="install">Yükle</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Ara</string>
     <string name="search_by_barcode_drawer">Barkodu yazın</string>
     <string name="category_drawer">Kategoriler</string>
@@ -710,6 +712,19 @@
     <string name="cant_modify_if_refreshing">Lütfen yükleme tamamlanana kadar bekleyin</string>
     <string name="closeZoom">Yakınlaştırmayı kapatmak için tıklayın</string>
     <string name="imageFullscreen">Yakınlaştır</string>
+    <!-- Used for product ingredients analysis tags -->
+    <string name="close_button">Kapat</string>
+    <string name="tip_message">İPUCU: %1$s </string>
+    <string name="ingredient_analysis_tip">Ürün hakkında daha fazla bilgi edinmek ve ilgilendiğiniz bilgileri seçmek için aşağıdaki simgelere tıklayın.</string>
+    <string name="got_it">Anladım!</string>
+    <string name="ingredients_in_this_product_are">Bu ürünün içindeki malzemeler %1$s.</string>
+    <string name="ingredients_in_this_product">Bu ürünün içindeki %1$s olan malzemeler:</string>
+    <string name="display_analysis_tag_status">%1$s durumunu göster</string>
+    <string name="preference_header_display">Göster</string>
+    <string name="unknown_status_no_translation">Tanınmayan malzemeler nedeniyle ürünün durumunu değerlendiremedik.</string>
+    <string name="help_translate_ingredients">İçindeki malzemelerin konuştuğunuz dile çevrilmesine yardım edin</string>
+    <string name="unknown_status_missing_ingredients">Eksik malzemeler nedeniyle ürünün durumunu değerlendiremedik.</string>
+    <string name="help_extract_ingredients">%1$s durumunu elde etmek için malzemelerin çıkarılmasına yardım edin.</string>
     <string name="product_already_exists_in_comparison">Ürün karşılaştırma listesinde zaten var</string>
     <string name="compare_brands">Markalar:</string>
     <string name="compare_additives">Katkı maddeleri :</string>
