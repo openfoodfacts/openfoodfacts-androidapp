@@ -413,15 +413,26 @@
     <string name="translate_help_title">סיוע בתרגום Open Food Facts</string>
     <string name="translate_help_summary">הנגשת מסד הנתונים של Open Food Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
     <string name="please_check_your_connection">נא לבדוק את החיבור שלך.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">חיפוש ותרשימים ומתקדמים</string>
     <string name="compare_products">השוואת מוצרים</string>
     <string name="connectivity_check">נא לבדוק את החיבור שלך לאינטרנט</string>
     <string name="dismiss">התעלמות</string>
     <string name="Terms">תנאים</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://he.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">כללי</string>
     <string name="preference_header_network">רשת</string>
     <string name="preference_header_contributing">התנדבות</string>
@@ -469,8 +480,6 @@
     <string name="sort">מיון</string>
     <string name="by_nutrition_grade">ציון תזונתי</string>
     <string name="sort_by">סידור לפי</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">יש לנער את הטלפון כדי לסרוק מוצרים</string>
     <string name="shake_title">יש לנער לסריקה</string>
     <!-- strings related to share images -->
@@ -604,8 +613,6 @@
     <string name="edit_nutrition_image">עריכת תמונת התזונה</string>
     <string name="edit_ingredients_image">עריכת תמונת הרכיבים</string>
     <string name="edit_other_image">עריכת התמונה</string>
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">נא להיכנס כדי לערוך מוצר.</string>
     <string name="hint_quantity">למשל: 2 ל׳, 250 ג׳, 1 ק״ג, 25 סנטיליטרים, 6 אונקיות נוזלים, 1 פאונד</string>
     <string name="edit_product_title">עריכת מוצר</string>
@@ -641,8 +648,6 @@
     <string name="max_nutrient_val_msg">הערך שהוקלד גבוה מגודל למנה</string>
     <string name="update_image">שליחת תמונה מעודכנת</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">חילוץ רכיבים</string>
     <string name="add_nutrient_prompt_text">יש להוסיף מפרט תזונתי כדי לחשב Nutri-Score</string>
     <string name="add_category_prompt_text">יש להוסיף קטגוריה כדי לחשב Nutri-Score</string>
