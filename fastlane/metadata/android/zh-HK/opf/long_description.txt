@@ -23,8 +23,8 @@ Open Food Facts 是一個食品的開發資料庫，它提供食品的營養成�
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- 您可以匿名使用應用程式
+- 您可以匯出掃描紀錄
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
