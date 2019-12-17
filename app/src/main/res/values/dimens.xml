@@ -64,4 +64,6 @@
 
     <dimen name="scan_summary_peek_large">198dp</dimen>
     <dimen name="scan_summary_peek_small">120dp</dimen>
+
+    <dimen name="small_loading_size">24dp</dimen>
 </resources>
