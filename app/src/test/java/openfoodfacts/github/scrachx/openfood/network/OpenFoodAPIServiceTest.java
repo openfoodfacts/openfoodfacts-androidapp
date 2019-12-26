@@ -58,7 +58,7 @@ public class OpenFoodAPIServiceTest implements APIUtils {
             .build();
 
         serviceWrite = new Retrofit.Builder()
-            .baseUrl(APIUtils.GET_API)
+            .baseUrl(APIUtils.DEV_API)
             .addConverterFactory(JacksonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(httpClientWithAuth)
@@ -192,12 +192,12 @@ public class OpenFoodAPIServiceTest implements APIUtils {
     public void post_product() throws IOException {
         SendProduct product = new SendProduct();
 
-        product.setBarcode("978020137962");
-        product.setName("coca3");
-        product.setBrands("auchan");
-        product.setWeight("300");
+        product.setBarcode("1234567890");
+        product.setName("ProductName");
+        product.setBrands("productbrand");
+        product.setWeight("123");
         product.setWeight_unit("g");
-        product.setLang("fr");
+        product.setLang("en");
 
         Map<String, String> productDetails = new HashMap<String, String>() {{
             put("lang", product.getLang());
