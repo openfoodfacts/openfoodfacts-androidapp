@@ -16,10 +16,10 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Works well in any condition ***
+*** Hoạt động tốt trong mọi điều kiện ***
 - You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Ứng dụng chỉ nạp các thông tin cần thiết để giảm mức tiêu thụ dữ liệu và pin
+- Bạn không cần camera để tra cứu sản phẩm. Bạn cũng có thể nhập mã vạch nếu không có máy ảnh.
 
 *** Your products, your data ***
 - Đảm bảo dữ sự an toàn của dữ liệu cá nhân của bạn

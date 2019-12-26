@@ -19,9 +19,9 @@
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- 您的數據是您的，永遠不會上載網上
+- 您可以匿名使用應用程式
+- 您可以匯出掃描紀錄
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 

@@ -207,9 +207,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                 } else {
                     // store the user session id (user_session and user_id)
                     for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
-                        if (httpCookie.getDomain().equals(".openbeautyfacts.org") && httpCookie.getPath().equals("/")) {
+                        //Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
+                        if (BuildConfig.HOST.contains(httpCookie.getDomain()) && httpCookie.getPath().equals("/")) {
                             String[] cookieValues = httpCookie.getValue().split("&");
-                            //why ?
                             for (int i = 0; i < cookieValues.length; i++) {
                                 editor.putString(cookieValues[i], cookieValues[++i]);
                             }
