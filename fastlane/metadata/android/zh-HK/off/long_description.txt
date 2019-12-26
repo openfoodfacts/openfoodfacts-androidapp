@@ -54,9 +54,9 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- 您的數據是您的，永遠不會上載網上
+- 您可以匿名使用應用程式
+- 您可以匯出掃描紀錄
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?

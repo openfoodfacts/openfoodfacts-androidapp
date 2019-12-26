@@ -35,4 +35,9 @@
     <string name="product_not_found">A beolvasott %1$s termék nem található az Open Beauty Facts adatbázisában. Hozzá tudná adni?</string>
     <string name="currently_on_version">Jelenleg az Open Beauty Facts-en</string>
     <string name="category_game_btn">Segítsen kategorizálni a termékeket</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
+    <string name="required_to_compute_nutriscore"></string>
 </resources>
