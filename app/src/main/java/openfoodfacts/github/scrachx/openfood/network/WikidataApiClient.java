@@ -29,7 +29,6 @@ public class WikidataApiClient {
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
 
     private final WikidataApiService wikidataApiService;
-    private JacksonConverterFactory jacksonConverterFactory;
 
     public WikidataApiClient() {
         this(BuildConfig.WIKIDATA);
@@ -39,7 +38,7 @@ public class WikidataApiClient {
         wikidataApiService = new Retrofit.Builder()
                 .baseUrl(apiUrl)
                 .client(httpClient)
-                .addConverterFactory(jacksonConverterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
                 .create(WikidataApiService.class);
