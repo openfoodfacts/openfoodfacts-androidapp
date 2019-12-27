@@ -10,12 +10,19 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
 import android.provider.SearchRecentSuggestions;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
-import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.fragment.app.FragmentActivity;
-import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -23,24 +30,9 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import net.steamcrafted.loadtoast.LoadToast;
-
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
@@ -51,6 +43,27 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
+import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
 
@@ -229,15 +242,54 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
 
         if (BuildConfig.FLAVOR.equals("off")) {
-            AsyncSession asyncSessionAnalysisTags = daoSession.startAsyncSession();
-            AnalysisTagConfigDao analysisTagConfigDao = daoSession.getAnalysisTagConfigDao();
-            asyncSessionAnalysisTags.setListenerMainThread(operation -> {
-                if (isAdded()) {
-                    @SuppressWarnings("unchecked")
-                    PreferenceScreen preferenceScreen = getPreferenceScreen();
-                    PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
-                    preferenceScreen.addPreference(displayCategory);
-                    List<AnalysisTagConfig> analysisTagConfigs = (List<AnalysisTagConfig>) operation.getResult();
+            buildDisplayCategory(daoSession);
+        } else {
+            PreferenceScreen preferenceScreen = getPreferenceScreen();
+            PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+            preferenceScreen.removePreference(displayCategory);
+        }
+    }
+
+    private void buildDisplayCategory(DaoSession daoSession) {
+        AsyncSession asyncSessionAnalysisTags = daoSession.startAsyncSession();
+        AnalysisTagConfigDao analysisTagConfigDao = daoSession.getAnalysisTagConfigDao();
+        asyncSessionAnalysisTags.setListenerMainThread(operation -> {
+            if (isAdded()) {
+                PreferenceScreen preferenceScreen = getPreferenceScreen();
+                PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+                displayCategory.removeAll();
+                preferenceScreen.addPreference(displayCategory);
+
+                List<AnalysisTagConfig> analysisTagConfigs = (List<AnalysisTagConfig>) operation.getResult();
+                // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
+                if (analysisTagConfigs.isEmpty()) {
+                    Preference preference = new Preference(preferenceScreen.getContext());
+                    preference.setTitle(R.string.load_ingredient_detection_data);
+                    preference.setSummary(R.string.load_ingredient_detection_data_summary);
+                    preference.setOnPreferenceClickListener(pref -> {
+                        pref.setOnPreferenceClickListener(null);
+                        //the service will load server resources only if newer than already downloaded...
+                        Intent intent = new Intent(context, LoadTaxonomiesService.class);
+                        intent.putExtra("receiver", new ResultReceiver(new Handler()) {
+                            @Override
+                            protected void onReceiveResult(int resultCode, Bundle resultData) {
+                                super.onReceiveResult(resultCode, resultData);
+
+                                if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
+                                    preference.setTitle(R.string.please_wait);
+                                    preference.setIcon(R.drawable.ic_cloud_download_black_24dp);
+                                    preference.setSummary(null);
+                                    preference.setWidgetLayoutResource(R.layout.loading);
+                                } else {
+                                    buildDisplayCategory(daoSession);
+                                }
+                            }
+                        });
+                        context.startService(intent);
+                        return true;
+                    });
+                    displayCategory.addPreference(preference);
+                } else {
                     for (AnalysisTagConfig config :
                         analysisTagConfigs) {
                         CheckBoxPreference preference = new CheckBoxPreference(preferenceScreen.getContext());
@@ -249,18 +301,14 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                         preference.setTitle(getString(R.string.display_analysis_tag_status, config.getType()));
                         displayCategory.addPreference(preference);
                     }
-
-                    displayCategory.setVisible(true);
                 }
-            });
-            asyncSessionAnalysisTags.queryList(analysisTagConfigDao.queryBuilder()
-                .where(new WhereCondition.StringCondition("1 GROUP BY type"))
-                .orderAsc(AnalysisTagConfigDao.Properties.Type).build());
-        } else {
-            PreferenceScreen preferenceScreen = getPreferenceScreen();
-            PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
-            preferenceScreen.removePreference(displayCategory);
-        }
+
+                displayCategory.setVisible(true);
+            }
+        });
+        asyncSessionAnalysisTags.queryList(analysisTagConfigDao.queryBuilder()
+            .where(new WhereCondition.StringCondition("1 GROUP BY type"))
+            .orderAsc(AnalysisTagConfigDao.Properties.Type).build());
     }
 
     private boolean openWebCustomTab(int faqUrl) {
