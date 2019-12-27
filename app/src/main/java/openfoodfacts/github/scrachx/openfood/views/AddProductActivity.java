@@ -922,7 +922,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     /**
-     * btnSave the current product in the offline db
+     * Save the current product in the offline db
      */
     private void saveProductOffline() {
         // Add the images to the productDetails to display them in UI later.
