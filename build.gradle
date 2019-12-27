@@ -39,6 +39,9 @@ allprojects {
 
 ext {
     supportLibraryVersion = '1.0.0'
+
+    materialVersion = '1.1.0-beta01'
+
     multidexVersion = '2.0.1'
 
     workRuntime = '2.2.0'
