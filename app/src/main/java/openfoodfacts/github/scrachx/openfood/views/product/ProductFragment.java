@@ -100,6 +100,8 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                 Utils.scan(getActivity());
             }
         });
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
         BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
         return view;
     }
