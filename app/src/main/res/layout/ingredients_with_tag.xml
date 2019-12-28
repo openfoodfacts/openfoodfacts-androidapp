@@ -73,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_normal"
+        android:background="@color/colorPrimaryDark"
         android:text="@string/close_button"
         android:textSize="@dimen/font_normal"
         app:layout_constraintEnd_toEndOf="parent"
