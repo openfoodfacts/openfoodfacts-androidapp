@@ -43,7 +43,7 @@
             android:id="@+id/nutriments_recycler_view_calc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listheader="@layout/nutrition_fact_header_new"
+            tools:listheader="@layout/nutrition_fact_header_calc"
             tools:listitem="@layout/nutriment_item_list"
             android:paddingBottom="60dp"
             android:scrollbars="vertical"/>
