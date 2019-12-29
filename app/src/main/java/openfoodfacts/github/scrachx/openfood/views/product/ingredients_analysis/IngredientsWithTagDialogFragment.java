@@ -9,9 +9,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -20,18 +22,20 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
+
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
 
 public class IngredientsWithTagDialogFragment extends DialogFragment {
     private SharedPreferences prefs;
@@ -45,7 +49,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         args.putString("icon_url", config.getIconUrl());
         args.putString("color", config.getColor());
         args.putString("name", config.getName().getName());
-        if (product.getIngredients() == null || product.getIngredients().size() == 0) {
+        if (product.getIngredients() == null || product.getIngredients().isEmpty()) {
             args.putBoolean("missing_ingredients", true);
         } else {
             String showIngredients = config.getName().getShowIngredients();
@@ -65,12 +69,12 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             if (showIngredients[1].equals(ingredient.get(showIngredients[0]))) {
                 final String text = ingredient.get("text");
                 if (text != null) {
-                    matchingIngredients.add(text.toLowerCase().replaceAll("_", ""));
+                    matchingIngredients.add(text.toLowerCase().replace("_", ""));
                 }
             }
         }
 
-        if (matchingIngredients.size() == 0) {
+        if (matchingIngredients.isEmpty()) {
             return null;
         }
 
@@ -95,6 +99,8 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getDialog().getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        getDialog().getWindow().setGravity(Gravity.CENTER);
 
         if (getActivity() != null) {
             prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -120,9 +126,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             SwitchCompat sc = getView().findViewById(R.id.cb);
             sc.setText(getString(R.string.display_analysis_tag_status, type));
             sc.setChecked(prefs.getBoolean(type, true));
-            sc.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                prefs.edit().putBoolean(type, isChecked).apply();
-            });
+            sc.setOnCheckedChangeListener((buttonView, isChecked) -> prefs.edit().putBoolean(type, isChecked).apply());
 
             String messageStr = getString(R.string.ingredients_in_this_product_are, name.toLowerCase());
             AppCompatTextView helpNeeded = getView().findViewById(R.id.helpNeeded);
