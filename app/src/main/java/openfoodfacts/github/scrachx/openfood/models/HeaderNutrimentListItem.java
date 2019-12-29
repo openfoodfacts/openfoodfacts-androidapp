@@ -5,9 +5,9 @@ import androidx.annotation.NonNull;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 
 /**
- * Group of NutrimentItem with bold values
+ * Group of NutrimentListItem with bold values
  */
-public class HeaderNutrimentItem extends NutrimentItem {
+public class HeaderNutrimentListItem extends NutrimentListItem {
     /**
      * Header with bold values
      * @param title
@@ -15,9 +15,9 @@ public class HeaderNutrimentItem extends NutrimentItem {
      * @param servingValue
      * @param unit
      */
-    public HeaderNutrimentItem(@NonNull CharSequence title, @NonNull CharSequence value,
-                               @NonNull CharSequence servingValue, @NonNull CharSequence unit,
-                               @NonNull CharSequence modifier) {
+    public HeaderNutrimentListItem(@NonNull CharSequence title, @NonNull CharSequence value,
+                                   @NonNull CharSequence servingValue, @NonNull CharSequence unit,
+                                   @NonNull CharSequence modifier) {
         super(bold(title), bold(value), bold(servingValue), bold(unit), bold(modifier));
     }
 
@@ -26,7 +26,7 @@ public class HeaderNutrimentItem extends NutrimentItem {
      * Header with only bold title
      * @param title
      */
-    public HeaderNutrimentItem(@NonNull CharSequence title) {
+    public HeaderNutrimentListItem(@NonNull CharSequence title) {
         super(bold(title), "", "", "", "");
     }
 }

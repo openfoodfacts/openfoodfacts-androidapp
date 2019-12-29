@@ -51,11 +51,11 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
-import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentItem;
+import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
-import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
@@ -175,33 +175,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void refreshView(State state) {
         super.refreshView(state);
+
+        final String langCode = LocaleHelper.getLanguage(getContext());
+
         activityState = state;
         product = state.getProduct();
-        String langCode = LocaleHelper.getLanguage(getContext());
-        //checks the product states_tags to determine which prompt to be shown
-        List<String> statesTags = product.getStatesTags();
-        if (statesTags.contains("en:categories-to-be-completed")) {
-            showCategoryPrompt = true;
-        }
-        if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
-            showNutritionPrompt = false;
-            showNutritionData = false;
-        } else {
-            if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
-                showNutritionPrompt = true;
-            }
-        }
 
-        if (showNutritionPrompt || showCategoryPrompt) {
-            nutriscorePrompt.setVisibility(View.VISIBLE);
-            if (showNutritionPrompt && showCategoryPrompt) {
-                nutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
-            } else if (showNutritionPrompt) {
-                nutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
-            } else if (showCategoryPrompt) {
-                nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
-            }
-        }
+        checkPrompts();
+
+        showPrompts();
 
         if (!showNutritionData) {
             mImageNutrition.setVisibility(View.GONE);
@@ -227,6 +209,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         NutrimentLevel saturatedFat = null;
         NutrimentLevel sugars = null;
         NutrimentLevel salt = null;
+
         if (nutrientLevels != null) {
             fat = nutrientLevels.getFat();
             saturatedFat = nutrientLevels.getSaturatedFat();
@@ -242,8 +225,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             // prefetch the uri
             customTabActivityHelper = new CustomTabActivityHelper();
             customTabActivityHelper.setConnectionCallback(this);
-            // currently only available in french translations
+
+            // TODO: Make it international
             nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
+
             customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
 
             Context context = this.getContext();
@@ -280,30 +265,11 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                     salt.getImageLevel()));
             }
 
-            int nutritionGrade = Utils.getImageGrade(product);
-            if (nutritionGrade != Utils.NO_DRAWABLE_RESOURCE) {
-                imageGradeLayout.setVisibility(View.VISIBLE);
-                img.setImageResource(nutritionGrade);
-                img.setOnClickListener(view1 -> {
-                    CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                    CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
-                });
-            } else {
-                imageGradeLayout.setVisibility(View.GONE);
-            }
+            drawNutritionGrade();
         }
 
         //checks the flags and accordingly sets the text of the prompt
-        if (showNutritionPrompt || showCategoryPrompt) {
-            nutriscorePrompt.setVisibility(View.VISIBLE);
-            if (showNutritionPrompt && showCategoryPrompt) {
-                nutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
-            } else if (showNutritionPrompt) {
-                nutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
-            } else if (showCategoryPrompt) {
-                nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
-            }
-        }
+        showPrompts();
 
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
@@ -348,7 +314,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         barcode = product.getCode();
-        List<NutrimentItem> nutrimentItems = new ArrayList<>();
+        List<NutrimentListItem> nutrimentListItems = new ArrayList<>();
 
         final boolean inVolume = ProductUtils.isPerServingInLiter(product);
         textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
@@ -400,20 +366,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         nutrimentsRecyclerView.setNestedScrollingEnabled(false);
 
         // Header hack
-        nutrimentItems.add(new NutrimentItem(inVolume));
+        nutrimentListItems.add(new NutrimentListItem(inVolume));
 
         // Energy
         Nutriment energy = nutriments.get(ENERGY);
         if (energy != null && UnitUtils.ENERGY_KCAL.equalsIgnoreCase(settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL))) {
-            nutrimentItems.add(
-                new NutrimentItem(getString(R.string.nutrition_energy_short_name),
+            nutrimentListItems.add(
+                new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
                     Utils.getEnergy(energy.getFor100gInUnits()),
                     Utils.getEnergy(energy.getForServingInUnits()),
                     UnitUtils.ENERGY_KCAL,
                     nutriments.getModifier(ENERGY)));
         } else if (energy != null && UnitUtils.ENERGY_KJ.equalsIgnoreCase(settingsPreference.getString("energyUnitPreference", UnitUtils.ENERGY_KCAL))) {
-            nutrimentItems.add(
-                new NutrimentItem(getString(R.string.nutrition_energy_short_name),
+            nutrimentListItems.add(
+                new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
                     energy.getFor100gInUnits(),
                     energy.getForServingInUnits(),
                     UnitUtils.ENERGY_KJ.toLowerCase(),
@@ -424,42 +390,42 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         Nutriment fat2 = nutriments.get(FAT);
         if (fat2 != null) {
             String modifier = nutriments.getModifier(FAT);
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat),
+            nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_fat),
                 fat2.getFor100gInUnits(),
                 fat2.getForServingInUnits(),
                 fat2.getUnit(),
                 modifier == null ? "" : modifier));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
         }
 
         // Carbohydrates
         Nutriment carbohydrates = nutriments.get(CARBOHYDRATES);
         if (carbohydrates != null) {
             String modifier = nutriments.getModifier(CARBOHYDRATES);
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_carbohydrate),
+            nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_carbohydrate),
                 carbohydrates.getFor100gInUnits(),
                 carbohydrates.getForServingInUnits(),
                 carbohydrates.getUnit(),
                 modifier == null ? "" : modifier));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
         }
 
         // fiber
-        nutrimentItems.addAll(getNutrimentItems(nutriments, Collections.singletonMap(Nutriments.FIBER, R.string.nutrition_fiber)));
+        nutrimentListItems.addAll(getNutrimentItems(nutriments, Collections.singletonMap(Nutriments.FIBER, R.string.nutrition_fiber)));
 
         // Proteins
         Nutriment proteins = nutriments.get(PROTEINS);
         if (proteins != null) {
             String modifier = nutriments.getModifier(PROTEINS);
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_proteins),
+            nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_proteins),
                 proteins.getFor100gInUnits(),
                 proteins.getForServingInUnits(),
                 proteins.getUnit(),
                 modifier == null ? "" : modifier));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
         }
 
         // salt and alcohol
@@ -467,32 +433,77 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         map.put(Nutriments.SALT, R.string.nutrition_salt);
         map.put(Nutriments.SODIUM, R.string.nutrition_sodium);
         map.put(Nutriments.ALCOHOL, R.string.nutrition_alcohol);
-        nutrimentItems.addAll(getNutrimentItems(nutriments, map));
+        nutrimentListItems.addAll(getNutrimentItems(nutriments, map));
 
         // Vitamins
         if (nutriments.hasVitamins()) {
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_vitamins)));
+            nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_vitamins)));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, VITAMINS_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, VITAMINS_MAP));
         }
 
         // Minerals
         if (nutriments.hasMinerals()) {
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_minerals)));
+            nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_minerals)));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
         }
 
-        RecyclerView.Adapter adapter = new NutrimentsGridAdapter(nutrimentItems);
+        RecyclerView.Adapter adapter = new NutrimentsGridAdapter(nutrimentListItems);
         nutrimentsRecyclerView.setAdapter(adapter);
     }
 
-    private List<NutrimentItem> getNutrimentItems(Nutriments nutriments, Map<String, Integer> nutrimentMap) {
-        List<NutrimentItem> items = new ArrayList<>();
+    private void drawNutritionGrade() {
+        int nutritionGrade = Utils.getImageGrade(product);
+        if (nutritionGrade != Utils.NO_DRAWABLE_RESOURCE) {
+            imageGradeLayout.setVisibility(View.VISIBLE);
+            img.setImageResource(nutritionGrade);
+            img.setOnClickListener(view1 -> {
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+            });
+        } else {
+            imageGradeLayout.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Checks the product states_tags to determine which prompt to be shown
+     */
+    private void checkPrompts() {
+        List<String> statesTags = product.getStatesTags();
+        if (statesTags.contains("en:categories-to-be-completed")) {
+            showCategoryPrompt = true;
+        }
+        if (product.getNoNutritionData() != null && product.getNoNutritionData().equals("on")) {
+            showNutritionPrompt = false;
+            showNutritionData = false;
+        } else {
+            if (statesTags.contains("en:nutrition-facts-to-be-completed")) {
+                showNutritionPrompt = true;
+            }
+        }
+    }
+
+    private void showPrompts() {
+        if (showNutritionPrompt || showCategoryPrompt) {
+            nutriscorePrompt.setVisibility(View.VISIBLE);
+            if (showNutritionPrompt && showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+            } else if (showNutritionPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+            } else if (showCategoryPrompt) {
+                nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
+            }
+        }
+    }
+
+    private List<NutrimentListItem> getNutrimentItems(Nutriments nutriments, Map<String, Integer> nutrimentMap) {
+        List<NutrimentListItem> items = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : nutrimentMap.entrySet()) {
             Nutriment nutriment = nutriments.get(entry.getKey());
             if (nutriment != null) {
-                items.add(new NutrimentItem(getString(entry.getValue()),
+                items.add(new NutrimentListItem(getString(entry.getValue()),
                     nutriment.getFor100gInUnits(),
                     nutriment.getForServingInUnits(),
                     entry.getValue().equals(R.string.ph) ? "" : nutriment.getUnit(),

@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentItem;
-import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
+import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentListItem;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
@@ -42,7 +42,7 @@ import static openfoodfacts.github.scrachx.openfood.models.Nutriments.VITAMINS_M
 public class CalculateDetails extends BaseActivity {
     RecyclerView nutrimentsRecyclerView;
     Nutriments nutriments;
-    List<NutrimentItem> nutrimentItems;
+    List<NutrimentListItem> nutrimentListItems;
     String spinnervalue;
     String weight;
     String pname;
@@ -70,7 +70,7 @@ public class CalculateDetails extends BaseActivity {
         weight = i.getStringExtra("weight");
         value = Float.valueOf(weight);
         nutriments = p.getNutriments();
-        nutrimentItems = new ArrayList<>();
+        nutrimentListItems = new ArrayList<>();
         nutrimentsRecyclerView = findViewById(R.id.nutriments_recycler_view_calc);
         result.setText(getString(R.string.display_fact, weight + " " + spinnervalue));
         nutrimentsRecyclerView.setHasFixedSize(true);
@@ -86,12 +86,12 @@ public class CalculateDetails extends BaseActivity {
         nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
 
         // Header hack
-        nutrimentItems.add(new NutrimentItem(ProductUtils.isPerServingInLiter(p)));
+        nutrimentListItems.add(new NutrimentListItem(ProductUtils.isPerServingInLiter(p)));
 
         // Energy
         Nutriments.Nutriment energy = nutriments.get(ENERGY);
         if (energy != null) {
-            nutrimentItems.add(new NutrimentItem(getString(R.string.nutrition_energy_short_name),
+            nutrimentListItems.add(new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
                 calculateCalories(value, spinnervalue),
                 Utils.getEnergy(energy.getForServingInUnits()),
                 "kcal",
@@ -102,43 +102,43 @@ public class CalculateDetails extends BaseActivity {
         Nutriments.Nutriment fat = nutriments.get(FAT);
         if (fat != null) {
             String modifier = nutriments.getModifier(FAT);
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_fat),
+            nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_fat),
                 fat.getForAnyValue(value, spinnervalue),
                 fat.getForServingInUnits(),
                 fat.getUnit(),
                 modifier == null ? "" : modifier));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
         }
 
         // Carbohydrates
         Nutriments.Nutriment carbohydrates = nutriments.get(CARBOHYDRATES);
         if (carbohydrates != null) {
             String modifier = nutriments.getModifier(CARBOHYDRATES);
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_carbohydrate),
+            nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_carbohydrate),
                 carbohydrates.getForAnyValue(value, spinnervalue),
                 carbohydrates.getForServingInUnits(),
                 carbohydrates.getUnit(),
                 modifier == null ? "" : modifier));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
         }
 
         // fiber
-        nutrimentItems.addAll(getNutrimentItems(nutriments, Collections.singletonMap(Nutriments.FIBER, R.string.nutrition_fiber)));
+        nutrimentListItems.addAll(getNutrimentItems(nutriments, Collections.singletonMap(Nutriments.FIBER, R.string.nutrition_fiber)));
 
         // Proteins
         Nutriments.Nutriment proteins = nutriments.get(PROTEINS);
         if (proteins != null) {
             String modifier = nutriments.getModifier(PROTEINS);
-            nutrimentItems.add(
-                new HeaderNutrimentItem(getString(R.string.nutrition_proteins),
+            nutrimentListItems.add(
+                new HeaderNutrimentListItem(getString(R.string.nutrition_proteins),
                     proteins.getForAnyValue(value, spinnervalue),
                     proteins.getForServingInUnits(),
                     proteins.getUnit(),
                     modifier == null ? "" : modifier));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
         }
 
         // salt and alcohol
@@ -146,31 +146,31 @@ public class CalculateDetails extends BaseActivity {
         map.put(Nutriments.SALT, R.string.nutrition_salt);
         map.put(Nutriments.SODIUM, R.string.nutrition_sodium);
         map.put(Nutriments.ALCOHOL, R.string.nutrition_alcohol);
-        nutrimentItems.addAll(getNutrimentItems(nutriments, map));
+        nutrimentListItems.addAll(getNutrimentItems(nutriments, map));
 
         // Vitamins
         if (nutriments.hasVitamins()) {
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_vitamins)));
+            nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_vitamins)));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, VITAMINS_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, VITAMINS_MAP));
         }
 
         // Minerals
         if (nutriments.hasMinerals()) {
-            nutrimentItems.add(new HeaderNutrimentItem(getString(R.string.nutrition_minerals)));
+            nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_minerals)));
 
-            nutrimentItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
         }
-        RecyclerView.Adapter adapter = new CalculatedNutrimentsGridAdapter(nutrimentItems);
+        RecyclerView.Adapter adapter = new CalculatedNutrimentsGridAdapter(nutrimentListItems);
         nutrimentsRecyclerView.setAdapter(adapter);
     }
 
-    private List<NutrimentItem> getNutrimentItems(Nutriments nutriments, Map<String, Integer> nutrimentMap) {
-        List<NutrimentItem> items = new ArrayList<>();
+    private List<NutrimentListItem> getNutrimentItems(Nutriments nutriments, Map<String, Integer> nutrimentMap) {
+        List<NutrimentListItem> items = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : nutrimentMap.entrySet()) {
             Nutriments.Nutriment nutriment = nutriments.get(entry.getKey());
             if (nutriment != null) {
-                items.add(new NutrimentItem(getString(entry.getValue()),
+                items.add(new NutrimentListItem(getString(entry.getValue()),
                     nutriment.getForAnyValue(value, spinnervalue),
                     nutriment.getForServingInUnits(),
                     nutriment.getUnit(),

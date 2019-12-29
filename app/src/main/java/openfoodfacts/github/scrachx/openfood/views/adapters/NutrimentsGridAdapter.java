@@ -13,7 +13,7 @@ import org.apache.commons.lang.StringUtils;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
 
 import static android.view.View.GONE;
 
@@ -23,11 +23,11 @@ import static android.view.View.GONE;
 public class NutrimentsGridAdapter extends RecyclerView.Adapter {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-    private final List<NutrimentItem> nutrimentItems;
+    private final List<NutrimentListItem> nutrimentListItems;
 
-    public NutrimentsGridAdapter(List<NutrimentItem> nutrimentItems) {
+    public NutrimentsGridAdapter(List<NutrimentListItem> nutrimentListItems) {
         super();
-        this.nutrimentItems = nutrimentItems;
+        this.nutrimentListItems = nutrimentListItems;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
 
         if (isViewTypeHeader) {
             boolean displayServing = false;
-            for (NutrimentItem nutriment : nutrimentItems) {
+            for (NutrimentListItem nutriment : nutrimentListItems) {
                 final CharSequence servingValue = nutriment.getServingValue();
                 if (servingValue != null && !StringUtils.isBlank(servingValue.toString())) {
                     displayServing = true;
@@ -54,15 +54,15 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof NutrimentHeaderViewHolder) {
-            NutrimentItem item = nutrimentItems.get(position);
+            NutrimentListItem item = nutrimentListItems.get(position);
             NutrimentHeaderViewHolder nutrimentViewHolder = (NutrimentHeaderViewHolder) holder;
-            nutrimentViewHolder.vNutrimentValue.setText(item.isHeaderPerVolume() ? R.string.for_100ml : R.string.for_100g);
+            nutrimentViewHolder.vNutrimentValue.setText(item.shouldDisplayVolumeHeader() ? R.string.for_100ml : R.string.for_100g);
         }
         if (!(holder instanceof NutrimentListViewHolder)) {
             return;
         }
 
-        NutrimentItem item = nutrimentItems.get(position);
+        NutrimentListItem item = nutrimentListItems.get(position);
 
         NutrimentListViewHolder nutrimentListViewHolder = (NutrimentListViewHolder) holder;
         nutrimentListViewHolder.fillNutrimentValue(item);
@@ -85,7 +85,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return nutrimentItems.size();
+        return nutrimentListItems.size();
     }
 
     static class NutrimentListViewHolder extends RecyclerView.ViewHolder {
@@ -100,7 +100,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
             vNutrimentServingValue = v.findViewById(R.id.nutriment_serving_value);
         }
 
-        void fillNutrimentValue(NutrimentItem item) {
+        void fillNutrimentValue(NutrimentListItem item) {
             vNutrimentName.setText(item.getTitle());
             vNutrimentValue.append(item.getModifier());
             vNutrimentValue.append(item.getValue());
@@ -108,7 +108,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
             vNutrimentValue.append(item.getUnit());
         }
 
-        void fillServingValue(NutrimentItem item) {
+        void fillServingValue(NutrimentListItem item) {
             final CharSequence servingValue = item.getServingValue();
             if (StringUtils.isBlank(servingValue.toString())) {
                 vNutrimentServingValue.setVisibility(GONE);
