@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -877,18 +878,24 @@ public class AddProductActivity extends AppCompatActivity {
 
                 @Override
                 public void onSuccess(State state) {
+                    // Display toast notification for product upload
+                    // First dismiss the upload dialog
                     materialDialog.dismiss();
-                    Toast toast = Toast.makeText(OFFApplication.getInstance(), R.string.product_uploaded_successfully, Toast.LENGTH_LONG);
+
+                    Toast toast = new Toast(OFFApplication.getInstance());
+
+                    View view = LayoutInflater.from(OFFApplication.getInstance()).inflate(R.layout.toast_upload_success, null);
+
                     toast.setGravity(Gravity.CENTER, 0, 0);
-                    View view = toast.getView();
-                    TextView textView = view.findViewById(android.R.id.message);
-                    textView.setTextSize(18);
-                    view.setBackgroundColor(getResources().getColor(R.color.green_500));
+                    toast.setView(view);
                     toast.setDuration(Toast.LENGTH_SHORT);
                     toast.show();
+
                     mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(code)).list());
+
                     Intent intent = new Intent();
                     intent.putExtra(UPLOADED_TO_SERVER, true);
+
                     setResult(RESULT_OK, intent);
                     finish();
                 }
