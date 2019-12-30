@@ -184,9 +184,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-
                     Utils.hideKeyboard(context);
+                    Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -247,9 +246,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-
                 Utils.hideKeyboard(context);
+                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 Log.e(getClass().getSimpleName(),"onFailure",t);
             }
         });
