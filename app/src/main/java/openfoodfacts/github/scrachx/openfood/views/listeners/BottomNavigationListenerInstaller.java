@@ -6,6 +6,8 @@ import android.content.Context;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.util.Log;
 
+import androidx.fragment.app.FragmentActivity;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -65,7 +67,7 @@ public class BottomNavigationListenerInstaller {
             Log.i(BottomNavigationListenerInstaller.class.getSimpleName(),"install",e);
         }
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity, context));
+        bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener((FragmentActivity) activity, context));
     }
 
 
