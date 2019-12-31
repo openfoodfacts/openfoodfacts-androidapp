@@ -9,9 +9,12 @@ import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+
 import android.view.MenuItem;
 import com.afollestad.materialdialogs.MaterialDialog;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.*;
 
@@ -65,6 +68,7 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
             case R.id.home_page:
             case R.id.home:
                 if(isCurrentActivity(WelcomeActivity.class)||isCurrentActivity(MainActivity.class)){
+                    ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).addToBackStack(null).commit();
                     break;
                 }
                 activity.startActivity((createIntent( MainActivity.class)));
