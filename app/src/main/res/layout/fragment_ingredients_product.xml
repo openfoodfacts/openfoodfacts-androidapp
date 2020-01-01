@@ -45,7 +45,7 @@
 
             <Button
                 android:id="@+id/extract_ingredients_prompt"
-                style="@style/BorderButton"
+                style="@style/ButtonBorder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -318,7 +318,7 @@
 
             <Button
                 android:id="@+id/change_ing_img"
-                style="@style/BorderButton"
+                style="@style/ButtonBorder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

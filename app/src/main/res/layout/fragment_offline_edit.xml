@@ -122,20 +122,19 @@
 
 
         <openfoodfacts.github.scrachx.openfood.utils.CustomButtonView
-                android:id="@+id/buttonSendAll"
-                style="@style/DefaultButtonText"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_normal"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="14dp"
-                android:background="@drawable/rounded_button"
-                android:text="@string/txtSendAll"
-                android:textSize="@dimen/font_normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/buttonSendAll"
+            style="@style/ButtonRounded"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/spacing_normal"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:text="@string/txtSendAll"
+            android:textSize="@dimen/font_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

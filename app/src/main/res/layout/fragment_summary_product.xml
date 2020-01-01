@@ -299,7 +299,7 @@
 
                 <Button
                     android:id="@+id/add_nutriscore_prompt"
-                    style="@style/BorderButton"
+                    style="@style/ButtonBorder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -525,7 +525,7 @@
 
             <Button
                 android:id="@+id/buttonMorePictures"
-                style="@style/BorderButton"
+                style="@style/ButtonBorder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

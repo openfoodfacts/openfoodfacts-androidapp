@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_100"
@@ -12,19 +11,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/green_300"
+        <Button
+            style="@style/ButtonFlat.Success"
             android:contentDescription="@string/app_name"
             android:gravity="center"
             android:padding="@dimen/padding_short"
-            android:scaleType="center"
             android:text="@string/wikidata_information"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_large"
-            android:textStyle="bold"/>
+            android:textSize="@dimen/font_large" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -50,13 +44,13 @@
                     android:text="@string/title_activity_product"
                     android:textAlignment="center"
                     android:textSize="@dimen/font_large"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/titleBottomSheetIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
             </LinearLayout>
 
 
@@ -71,7 +65,7 @@
                 android:padding="@dimen/spacing_small"
                 android:text="@string/description_activity_product"
                 android:textAlignment="center"
-                android:textSize="@dimen/font_normal"/>
+                android:textSize="@dimen/font_normal" />
 
             <include
                 android:id="@+id/exposureEvalTable"
@@ -79,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/description"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/buttonsContainer"
@@ -93,24 +87,24 @@
 
                 <Button
                     android:id="@+id/wikipediaButton"
-                    style="@style/ButtonToBrowseProducts"
+                    style="@style/ButtonFlat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_normal"
                     android:layout_weight="50"
-                    android:background="@color/blue"
-                    android:text="@string/Wikipedia"/>
+                    android:text="@string/Wikipedia"
+                    android:textSize="12sp" />
 
 
                 <Button
                     android:id="@+id/buttonToBrowseProducts"
-                    style="@style/ButtonToBrowseProducts"
+                    style="@style/ButtonFlat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_normal"
                     android:layout_weight="50"
-                    android:background="@color/blue"
-                    android:text="@string/Browse_Products"/>
+                    android:text="@string/Browse_Products"
+                    android:textSize="12sp" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

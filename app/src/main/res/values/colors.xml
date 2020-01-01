@@ -2,11 +2,16 @@
 <resources>
 
     <!-- Basic OpenFoodFacts colors -->
-    <color name="brand_red">#ff0000</color>
-    <color name="brand_yellow">#ffcc00</color>
-    <color name="brand_green">#00d400</color>
+    <color name="brand_red">#FF0000</color>
+    <color name="brand_yellow">#FFCC00</color>
+    <color name="brand_green">#00D400</color>
     <color name="brand_light_blue">#00ccff</color>
     <color name="brand_blue">#0066ff</color>
+
+    <color name="brand_green_dark">#3C950E</color>
+    <color name="brand_red_dark">#E51C23</color>
+
+    <color name="blue">@color/brand_blue</color>
 
     <color name="material_red">#F44336</color>
     <color name="white">#FFFFFF</color>
@@ -63,7 +68,7 @@
     <color name="dot_light_screen2">#8cf9eb</color>
     <color name="dot_light_screen3">#93c6fd</color>
     <color name="dot_light_screen4">#e4b5fc</color>
-    <color name="button_link">#1c72e9</color>
+    <color name="button_link">@color/primary_dark</color>
     <color name="url_link">#1c72e9</color>
     <color name="tag_link">#1c72e9</color>
 

@@ -23,7 +23,7 @@ public class LanguageDataAdapter extends ArrayAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         TextView v = (TextView) super.getView(position, convertView, parent);
         LocaleHelper.LanguageData data = (LocaleHelper.LanguageData) getItem(position);
-        v.setTextColor(ContextCompat.getColor(getContext(), data.isSupported() ? R.color.white : R.color.orange));
+        v.setTextColor(ContextCompat.getColor(getContext(), data.isSupported() ? R.color.white : R.color.brand_yellow));
         return v;
     }
 

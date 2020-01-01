@@ -205,7 +205,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
             textInfo.setTextColor(ContextCompat.getColor(this, R.color.white));
         } else {
             textInfo.setText(R.string.image_not_defined_for_language);
-            textInfo.setTextColor(ContextCompat.getColor(this, R.color.orange));
+            textInfo.setTextColor(ContextCompat.getColor(this, R.color.brand_yellow));
         }
         editButton.setVisibility(languageSupported ? View.VISIBLE : View.GONE);
         btnUnselectImage.setVisibility(editButton.getVisibility());

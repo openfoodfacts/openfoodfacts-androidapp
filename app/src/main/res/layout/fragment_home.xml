@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
@@ -33,15 +35,14 @@
             android:id="@+id/taglineHome"
             android:layout_width="184dp"
             android:layout_height="30dp"
-            android:contentDescription="@string/OFFlogo"
             android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/OFFlogo"
             android:text="@string/tagline"
             android:textStyle="bold"
             app:autoSizeMaxTextSize="28sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeStepGranularity="0.1sp"
-            app:autoSizeTextType="uniform"
-            />
+            app:autoSizeTextType="uniform" />
 
         <TextView
             android:id="@+id/textHome"
@@ -68,5 +69,12 @@
     </LinearLayout>
 
 
-    <include layout="@layout/navigation_bottom" />
-</RelativeLayout>
+    <include
+        android:id="@+id/include"
+        layout="@layout/navigation_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

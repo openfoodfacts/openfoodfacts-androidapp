@@ -29,15 +29,15 @@
         fab:backgroundTint="@color/white" />
 
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/emptyAllergensView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
@@ -46,7 +46,11 @@
             android:layout_marginBottom="16dp"
             android:orientation="vertical"
             android:padding="16dp"
-            tools:visibility="gone">
+            fab:layout_constraintBottom_toBottomOf="parent"
+            fab:layout_constraintEnd_toEndOf="parent"
+            fab:layout_constraintStart_toStartOf="parent"
+            fab:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,24 +71,26 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/allergens_recycle"
             android:layout_width="match_parent"
-            android:layout_height="617dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="57dp"
+            android:layout_height="0dp"
             android:clipChildren="true"
             android:clipToPadding="false"
             android:paddingBottom="100dp"
+            fab:layout_constraintBottom_toTopOf="@+id/include2"
+            fab:layout_constraintEnd_toEndOf="parent"
+            fab:layout_constraintStart_toStartOf="parent"
+            fab:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_allergens" />
 
         <include
+            android:id="@+id/include2"
             layout="@layout/navigation_bottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
 
-            />
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            fab:layout_constraintBottom_toBottomOf="parent"
+            fab:layout_constraintEnd_toEndOf="parent"
+            fab:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

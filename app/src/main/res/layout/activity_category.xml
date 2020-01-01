@@ -19,13 +19,14 @@
                                        android:theme="?attr/actionBarTheme"/>
 
     <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/category_game_btn"
-            android:id="@+id/game_button"
-            android:textSize="@dimen/font_small"
-            android:textColor="@color/white"
-            android:background="@color/orange_400"/>
+        android:id="@+id/game_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/brand_yellow"
+        android:padding="4dp"
+        android:text="@string/category_game_btn"
+        android:textColor="@color/md_light_primary_text"
+        android:textSize="@dimen/font_small" />
 
     <fragment
             android:id="@+id/fragment"
