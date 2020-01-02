@@ -6,12 +6,14 @@
     <color name="brand_yellow">#FFCC00</color>
     <color name="brand_green">#00D400</color>
     <color name="brand_light_blue">#00ccff</color>
-    <color name="brand_blue">#0066ff</color>
+    <color name="brand_blue">#0066FF</color>
 
     <color name="brand_green_dark">#3C950E</color>
     <color name="brand_red_dark">#E51C23</color>
 
     <color name="blue">@color/brand_blue</color>
+    <color name="red">@color/brand_red_dark</color>
+    <color name="orange">@color/brand_yellow</color>
 
     <color name="material_red">#F44336</color>
     <color name="white">#FFFFFF</color>
