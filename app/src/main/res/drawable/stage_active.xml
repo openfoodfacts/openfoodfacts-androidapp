@@ -3,7 +3,7 @@
     <!-- Largest blue circle in back -->
     <item>
         <shape android:shape="oval">
-            <solid android:color="@color/blue" />
+            <solid android:color="@color/primary_dark" />
             <size
                 android:width="15dp"
                 android:height="15dp" />
@@ -28,7 +28,7 @@
             <stroke
                 android:width="10dp"
                 android:color="@android:color/transparent" />
-            <solid android:color="@color/blue" />
+            <solid android:color="@color/primary_dark" />
             <size
                 android:width="5dp"
                 android:height="5dp" />

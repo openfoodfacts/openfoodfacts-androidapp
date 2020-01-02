@@ -9,12 +9,14 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/OFFlogo"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_openfacts_logo_no_tagline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.40" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tagline"

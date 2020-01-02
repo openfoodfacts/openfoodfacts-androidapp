@@ -38,15 +38,15 @@
                 android:paddingLeft="10dip"/>
 
         <Button
-                android:id="@+id/buttonBarcode"
-                style="@style/DefaultButtonText"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_normal"
-                android:background="@drawable/rounded_button"
-                android:gravity="center"
-                android:text="@string/action_find"/>
+            android:id="@+id/buttonBarcode"
+            style="@style/ButtonRounded"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/spacing_normal"
+            android:gravity="center"
+            android:text="@string/action_find"
+            android:textSize="@dimen/font_large" />
     </LinearLayout>
     <include layout="@layout/navigation_bottom"
              android:layout_width="match_parent"

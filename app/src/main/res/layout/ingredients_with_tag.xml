@@ -78,7 +78,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/close"
-        style="@style/BorderButton"
+        style="@style/ButtonBorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_normal"
