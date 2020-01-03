@@ -740,6 +740,6 @@
     <string name="compare_quantity">Quantity :</string>
     <string name="load_ingredient_detection_data">Carrega dades de detecció d\'ingredients</string>
     <string name="load_ingredient_detection_data_summary">No s\'han trobat dades de detećcció d\'ingredients, proveu de carregar-les des del servidor</string>
-    <string name="white_check_image_descr">A white check</string>
+    <string name="white_check_image_descr">Un vist blanc</string>
     <string name="hint_packaging">Exemples: plàstic, paper, vidre</string>
 </resources>
