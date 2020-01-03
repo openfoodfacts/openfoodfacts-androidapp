@@ -368,7 +368,7 @@
     <string name="txtSaturatedFat">Насичені жири</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about Nova</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp1_msg">1 група - необроблені або мінімально оброблені продукти</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
@@ -750,4 +750,7 @@
     <string name="compare_saturated_fat">Насичені жири</string>
     <string name="compare_fat">Жири</string>
     <string name="compare_quantity">Quantity :</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
 </resources>
