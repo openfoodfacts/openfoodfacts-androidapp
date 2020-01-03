@@ -25,7 +25,7 @@
     <string name="action_discover">Scopri</string>
     <string name="contribute">Come contribuire</string>
     <string name="action_find">Trova</string>
-    <string name="product_incomplete_message">Questo prodotto non è completo. Non abbiamo quindi potuto controllare gli allergeni.</string>
+    <string name="product_incomplete_message">L\'elenco degli ingredienti di questo prodotto non è completo. Non abbiamo quindi potuto controllare gli allergeni.</string>
     <string name="product_allergen_prompt">Questo prodotto contiene:</string>
     <string name="no_offline_data">Fatto</string>
     <string name="first_offline">I prodotti aggiunti offline verranno visualizzati qui</string>
@@ -738,4 +738,7 @@
     <string name="compare_saturated_fat">Grassi saturi</string>
     <string name="compare_fat">Grassi</string>
     <string name="compare_quantity">Quantità:</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
 </resources>
