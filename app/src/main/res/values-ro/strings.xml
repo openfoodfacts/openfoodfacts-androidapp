@@ -363,8 +363,8 @@
     <string name="txtSaturatedFat">Acizi grași saturați</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about Nova</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp1_msg">Grupa 1 - Alimente neprocesate sau procesate minim</string>
+    <string name="nova_grp2_msg">Grupa 2 - Ingrediente culinare procesate</string>
     <string name="nova_grp3_msg">Grupa 3 - Alimente procesate</string>
     <string name="nova_grp4_msg">Grupa 4 - Produse alimentare și băuturi ultra-procesate</string>
     <!-- String related to App Shortcuts -->
@@ -744,4 +744,7 @@
     <string name="compare_saturated_fat">Acizi grași saturați</string>
     <string name="compare_fat">Grăsimi</string>
     <string name="compare_quantity">Cantitate:</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
 </resources>
