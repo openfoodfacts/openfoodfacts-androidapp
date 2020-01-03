@@ -1017,4 +1017,9 @@
     <string name="load_ingredient_detection_data">Load ingredient detection data</string>
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
+    <string name="fast_addition_enabled_hint_1">Fast addition is enabled!</string>
+    <string name="fast_addition_enabled_hint_2">Traces can be edited only after the first upload!</string>
+    <string name="fast_addition_enabled_hint_3">Go to settings to disable Fast addition mode</string>
+
+
 </resources>

@@ -221,11 +221,9 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginRight="@dimen/spacing_small"
             android:background="@color/grey_400"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_looks_good" />
+            app:layout_constraintTop_toBottomOf="@+id/fast_addition_3" />
 
         <TextView
             android:id="@+id/section_traces"
@@ -274,6 +272,54 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:text="@string/next"
             app:layout_constraintTop_toBottomOf="@id/traces" />
+
+        <TextView
+            android:id="@+id/fast_addition_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/fast_addition_enabled_hint_1"
+            android:textColor="@color/brand_yellow"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_looks_good" />
+
+        <TextView
+            android:id="@+id/fast_addition_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/fast_addition_enabled_hint_2"
+            android:textColor="@color/brand_yellow"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fast_addition_1" />
+
+        <TextView
+            android:id="@+id/fast_addition_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/fast_addition_enabled_hint_3"
+            android:textColor="@color/grey_500"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fast_addition_2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,38 +5,58 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnTextChanged;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.File;
 import java.net.URI;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 
@@ -75,6 +95,12 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     TextView tracesHint;
     @BindView(R.id.grey_line2)
     View greyLine2;
+    @BindView(R.id.fast_addition_1)
+    TextView fastAddition1;
+    @BindView(R.id.fast_addition_2)
+    TextView fastAddition2;
+    @BindView(R.id.fast_addition_3)
+    TextView fastAddition3;
     private AllergenNameDao mAllergenNameDao;
     private Activity activity;
     private File photoFile;
@@ -124,7 +150,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             } else {
                 //addition
                 final boolean enabled = PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false);
-                enableFastAdditionMode(enabled);
+                toggleFastAdditionMode(enabled);
             }
             if (b.getBoolean("perform_ocr")) {
                 onClickExtractIngredients();
@@ -137,10 +163,10 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             activity.finish();
         }
         if (ingredients.getText().toString().isEmpty() && getImageIngredients() != null && !getImageIngredients().isEmpty()) {
-            extractIngredients.setVisibility(View.VISIBLE);
+            extractIngredients.setVisibility(VISIBLE);
             imagePath = getImageIngredients();
         } else if (edit_product && ingredients.getText().toString().isEmpty() && product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
-            extractIngredients.setVisibility(View.VISIBLE);
+            extractIngredients.setVisibility(VISIBLE);
         }
         loadAutoSuggestions();
         if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
@@ -183,7 +209,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         final String newImageIngredientsUrl = product.getImageIngredientsUrl(getAddProductActivity().getProductLanguageForEdition());
         photoFile = null;
         if (newImageIngredientsUrl != null && !newImageIngredientsUrl.isEmpty()) {
-            imageProgress.setVisibility(View.VISIBLE);
+            imageProgress.setVisibility(VISIBLE);
             imagePath = newImageIngredientsUrl;
             Picasso.get()
                 .load(newImageIngredientsUrl)
@@ -204,8 +230,8 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     private void imageLoaded() {
-        btnEditImageIngredients.setVisibility(View.VISIBLE);
-        imageProgress.setVisibility(View.GONE);
+        btnEditImageIngredients.setVisibility(VISIBLE);
+        imageProgress.setVisibility(GONE);
     }
 
     private String getTracesName(String languageCode, String tag) {
@@ -220,17 +246,25 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     /**
      * To enable fast addition mode
      */
-    private void enableFastAdditionMode(boolean isEnabled) {
-        if (isEnabled) {
-            traces.setVisibility(View.GONE);
-            tracesHeader.setVisibility(View.GONE);
-            tracesHint.setVisibility(View.GONE);
-            greyLine2.setVisibility(View.GONE);
+    private void toggleFastAdditionMode(final boolean enabled) {
+        if (enabled) {
+            traces.setVisibility(GONE);
+            tracesHeader.setVisibility(GONE);
+            tracesHint.setVisibility(GONE);
+            greyLine2.setVisibility(GONE);
+
+            fastAddition1.setVisibility(VISIBLE);
+            fastAddition2.setVisibility(VISIBLE);
+            fastAddition3.setVisibility(VISIBLE);
         } else {
-            traces.setVisibility(View.VISIBLE);
-            tracesHeader.setVisibility(View.VISIBLE);
-            tracesHint.setVisibility(View.VISIBLE);
-            greyLine2.setVisibility(View.VISIBLE);
+            fastAddition1.setVisibility(GONE);
+            fastAddition2.setVisibility(GONE);
+            fastAddition3.setVisibility(GONE);
+
+            traces.setVisibility(VISIBLE);
+            tracesHeader.setVisibility(VISIBLE);
+            tracesHint.setVisibility(VISIBLE);
+            greyLine2.setVisibility(VISIBLE);
         }
     }
 
@@ -241,7 +275,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
             if (getImageIngredients() != null) {
-                imageProgress.setVisibility(View.VISIBLE);
+                imageProgress.setVisibility(VISIBLE);
                 Picasso.get()
                     .load(FileUtils.LOCALE_FILE_SCHEME + getImageIngredients())
                     .resize(dps50ToPixels(), dps50ToPixels())
@@ -249,12 +283,12 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
                     .into(imageIngredients, new Callback() {
                         @Override
                         public void onSuccess() {
-                            imageProgress.setVisibility(View.GONE);
+                            imageProgress.setVisibility(GONE);
                         }
 
                         @Override
                         public void onError(Exception ex) {
-                            imageProgress.setVisibility(View.GONE);
+                            imageProgress.setVisibility(GONE);
                         }
                     });
             }
@@ -338,17 +372,17 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
     @OnClick(R.id.btn_looks_good)
     void ingredientsVerified() {
-        ingredientsVerifiedTick.setVisibility(View.VISIBLE);
+        ingredientsVerifiedTick.setVisibility(VISIBLE);
         traces.requestFocus();
-        btnLooksGood.setVisibility(View.GONE);
-        btnSkipIngredients.setVisibility(View.GONE);
+        btnLooksGood.setVisibility(GONE);
+        btnSkipIngredients.setVisibility(GONE);
     }
 
     @OnClick(R.id.btn_skip_ingredients)
     void skipIngredients() {
         ingredients.setText(null);
-        btnSkipIngredients.setVisibility(View.GONE);
-        btnLooksGood.setVisibility(View.GONE);
+        btnSkipIngredients.setVisibility(GONE);
+        btnLooksGood.setVisibility(GONE);
     }
 
     @OnClick(R.id.btn_extract_ingredients)
@@ -368,9 +402,9 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     @OnTextChanged(value = R.id.ingredients_list, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
     void toggleExtractIngredientsButtonVisibility() {
         if (ingredients.getText().toString().isEmpty()) {
-            extractIngredients.setVisibility(View.VISIBLE);
+            extractIngredients.setVisibility(VISIBLE);
         } else {
-            extractIngredients.setVisibility(View.GONE);
+            extractIngredients.setVisibility(GONE);
         }
     }
 
@@ -429,24 +463,24 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void showImageProgress() {
-        if(!isAdded() || imageProgress==null){
+        if (!isAdded() || imageProgress == null) {
             return;
         }
-        imageProgress.setVisibility(View.VISIBLE);
-        imageProgressText.setVisibility(View.VISIBLE);
+        imageProgress.setVisibility(VISIBLE);
+        imageProgressText.setVisibility(VISIBLE);
         imageProgressText.setText(R.string.toastSending);
         imageIngredients.setVisibility(View.INVISIBLE);
         btnEditImageIngredients.setVisibility(View.INVISIBLE);
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
-        if(!isAdded() || imageProgress==null){
+        if (!isAdded() || imageProgress == null) {
             return;
         }
         imageProgress.setVisibility(View.INVISIBLE);
-        imageProgressText.setVisibility(View.GONE);
-        imageIngredients.setVisibility(View.VISIBLE);
-        btnEditImageIngredients.setVisibility(View.VISIBLE);
+        imageProgressText.setVisibility(GONE);
+        imageIngredients.setVisibility(VISIBLE);
+        btnEditImageIngredients.setVisibility(VISIBLE);
         if (!errorInUploading) {
             Picasso.get()
                 .load(photoFile)
@@ -466,8 +500,8 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
                     break;
                 case "0":
                     ingredients.setText(ocrResult);
-                    btnLooksGood.setVisibility(View.VISIBLE);
-                    btnSkipIngredients.setVisibility(View.VISIBLE);
+                    btnLooksGood.setVisibility(VISIBLE);
+                    btnSkipIngredients.setVisibility(VISIBLE);
                     break;
                 default:
                     Toast.makeText(activity, R.string.unable_to_extract_ingredients, Toast.LENGTH_SHORT).show();
@@ -477,15 +511,15 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void showOCRProgress() {
-        extractIngredients.setVisibility(View.GONE);
+        extractIngredients.setVisibility(GONE);
         ingredients.setText(null);
-        ocrProgress.setVisibility(View.VISIBLE);
-        ocrProgressText.setVisibility(View.VISIBLE);
+        ocrProgress.setVisibility(VISIBLE);
+        ocrProgressText.setVisibility(VISIBLE);
     }
 
     public void hideOCRProgress() {
-        ocrProgress.setVisibility(View.GONE);
-        ocrProgressText.setVisibility(View.GONE);
+        ocrProgress.setVisibility(GONE);
+        ocrProgressText.setVisibility(GONE);
     }
 
     private int dps50ToPixels() {
