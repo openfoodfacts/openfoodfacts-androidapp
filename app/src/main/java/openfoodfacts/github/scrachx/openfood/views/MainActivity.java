@@ -111,6 +111,7 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.workers.OfflineEditPendingProductsWorker;
 
+import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.OFFLINE_EDIT_PENDING_WORK_NAME;
 
@@ -197,6 +198,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
                 ()).commit();
+            bottomNavigationView.setSelectedItemId(R.id.home_page);
+            toolbar.setTitle(APP_NAME);
         }
 
         // chrome custom tab init

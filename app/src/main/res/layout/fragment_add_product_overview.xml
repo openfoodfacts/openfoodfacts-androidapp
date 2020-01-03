@@ -104,20 +104,19 @@
             app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
         <TextView
-                android:id="@+id/barcode"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:background="@drawable/bg_edittext"
-                android:gravity="center_vertical"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/section_product_details"
-                tools:text="Barcode : 8888888888888"/>
+            android:id="@+id/barcode"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_product_details"
+            tools:text="Barcode : 8888888888888" />
 
         <TextView
                 android:id="@+id/language"
@@ -183,19 +182,16 @@
                     app:layout_constraintStart_toStartOf="parent"
             />
         </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
-                android:id="@+id/quantity_hint"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:paddingRight="@dimen/spacing_small"
-                android:paddingLeft="@dimen/spacing_small"
-                android:text="@string/hint_quantity"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/quantity_til"
-                app:layout_constraintStart_toStartOf="@id/quantity_til"
-                app:layout_constraintTop_toBottomOf="@id/quantity_til"/>
+            android:id="@+id/quantity_hint"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_quantity"
+            app:layout_constraintEnd_toEndOf="@id/quantity_til"
+            app:layout_constraintStart_toStartOf="@id/quantity_til"
+            app:layout_constraintTop_toBottomOf="@id/quantity_til" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -256,50 +252,60 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
             />
+
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/categories_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/packaging_til">
-            <com.hootsuite.nachos.NachoTextView
-                    android:id="@+id/categories"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edittext_til"
-                    android:paddingTop="@dimen/floating_hint_margin_nacho"
-                    android:paddingBottom="@dimen/floating_hint_margin_nacho"
-                    android:completionThreshold="1"
-                    android:gravity="center_vertical"
-                    android:hint="@string/category_drawer"
-                    android:imeOptions="actionNext"
-                    android:minHeight="50dp"
-                    android:nextFocusDown="@id/label"
-                    app:chipBackground="#4389FA"
-                    app:chipHeight="30dp"
-                    app:chipTextColor="@color/grey_50"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-            />
-        </com.google.android.material.textfield.TextInputLayout>
         <TextView
-                android:id="@+id/category_hint"
-                android:layout_width="0dp"
+            android:id="@+id/packaging_hint"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hint_packaging"
+            app:layout_constraintEnd_toEndOf="@id/packaging_til"
+            app:layout_constraintStart_toStartOf="@id/packaging_til"
+            app:layout_constraintTop_toBottomOf="@id/packaging_til" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/categories_til"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/packaging_hint">
+
+            <com.hootsuite.nachos.NachoTextView
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:paddingHorizontal="@dimen/spacing_small"
-                android:text="@string/required_to_compute_nutriscore"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/categories_til"
-                app:layout_constraintStart_toStartOf="@+id/categories_til"
-                app:layout_constraintTop_toBottomOf="@+id/categories_til"/>
+                android:background="@drawable/bg_edittext_til"
+                android:completionThreshold="1"
+                android:gravity="center_vertical"
+                android:hint="@string/category_drawer"
+                android:imeOptions="actionNext"
+                android:minHeight="50dp"
+                android:nextFocusDown="@id/label"
+                android:paddingTop="@dimen/floating_hint_margin_nacho"
+                android:paddingBottom="@dimen/floating_hint_margin_nacho"
+                app:chipBackground="#4389FA"
+                app:chipHeight="30dp"
+                app:chipTextColor="@color/grey_50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/category_hint"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/required_to_compute_nutriscore"
+            app:layout_constraintEnd_toEndOf="@+id/categories_til"
+            app:layout_constraintStart_toStartOf="@+id/categories_til"
+            app:layout_constraintTop_toBottomOf="@+id/categories_til" />
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/label_til"
