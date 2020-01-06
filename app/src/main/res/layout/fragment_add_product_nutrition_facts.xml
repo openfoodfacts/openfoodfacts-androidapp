@@ -32,17 +32,16 @@
                 app:layout_constraintTop_toBottomOf="@id/checkbox_no_nutrition_data">
 
             <TextView
-                    android:id="@+id/section_nutrition_facts_picture"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:text="@string/nutrition_facts_picture"
-                    android:textColor="#dd0b16"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                android:id="@+id/section_nutrition_facts_picture"
+                style="@style/EditHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/nutrition_facts_picture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                     android:id="@+id/btnAddImageNutritionFacts"
@@ -57,7 +56,7 @@
             <Button
                     android:id="@+id/btnEditImageNutritionFacts"
                     android:text="@string/update_image"
-                    style="@style/BorderButton"
+                    style="@style/ButtonBorder"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginRight="@dimen/padding_large"
@@ -102,15 +101,14 @@
                     app:layout_constraintTop_toBottomOf="@id/btnAddImageNutritionFacts"/>
 
             <TextView
-                    android:id="@+id/section_nutrition_facts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:text="@string/nutrition_facts"
-                    android:textColor="#dd0b16"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/section_nutrition_facts_picture"
-                    app:layout_constraintTop_toBottomOf="@id/grey_line1"/>
+                android:id="@+id/section_nutrition_facts"
+                style="@style/EditHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/nutrition_facts"
+                app:layout_constraintStart_toStartOf="@id/section_nutrition_facts_picture"
+                app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
             <RadioGroup
                     android:id="@+id/radio_group"
@@ -659,16 +657,16 @@
                     app:layout_constraintTop_toBottomOf="@id/alcohol_til"/>
 
             <Button
-                    android:drawablePadding="5dp"
-                    android:id="@+id/btn_add_a_nutrient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:text="@string/add_a_nutrient"
-                    style="@style/BorderButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/table_layout"/>
+                android:id="@+id/btn_add_a_nutrient"
+                style="@style/ButtonBorder"
+                android:drawablePadding="@dimen/spacing_tiny"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/add_a_nutrient"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/table_layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -689,16 +687,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/nutrition_facts_layout"/>
 
         <Button
-                android:id="@+id/btn_add"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:background="#3C950E"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/add_this_product"
-                android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/global_validation_msg"/>
+            android:id="@+id/btn_add"
+            style="@style/ButtonFlat.Green"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/add_this_product"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/global_validation_msg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

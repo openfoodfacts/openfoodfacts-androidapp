@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.TransitionDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
@@ -49,6 +50,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG;
 
 /**
  * A login screen that offers login via login/password.
@@ -171,24 +174,18 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         }
 
         Snackbar snackbar = Snackbar
-                .make(linearLayout, R.string.toast_retrieving, Snackbar.LENGTH_LONG);
+                .make(linearLayout, R.string.toast_retrieving, LENGTH_LONG);
         snackbar.show();
 
-        final LoadToast lt = new LoadToast(this);
         btnSave.setClickable(false);
-        lt.setText(getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(ContextCompat.getColor(this, R.color.blue));
-        lt.setTextColor(ContextCompat.getColor(this, R.color.white));
-        lt.show();
 
         final Activity context = this;
         apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-
                     Utils.hideKeyboard(context);
+                    Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -207,8 +204,12 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
                     Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
                     fieldPassword.setText("");
+
+                    infoLogin.setTextColor(getResources().getColor(R.color.red));
                     infoLogin.setText(R.string.txtInfoLoginNo);
-                    lt.hide();
+
+
+                    snackbar.dismiss();
 
                 } else {
                     // store the user session id (user_session and user_id)
@@ -223,7 +224,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                         }
                     }
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, R.string.connection, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, R.string.connection, LENGTH_LONG);
 
                     snackbar.show();
 
@@ -231,6 +232,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     editor.putString("user", login);
                     editor.putString("pass", password);
                     editor.apply();
+
+
+                    infoLogin.setTextColor(getResources().getColor(R.color.green_500));
                     infoLogin.setText(R.string.txtInfoLoginOk);
 
                     setResult(RESULT_OK, new Intent());
@@ -242,9 +246,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-
                 Utils.hideKeyboard(context);
+                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 Log.e(getClass().getSimpleName(),"onFailure",t);
             }
         });

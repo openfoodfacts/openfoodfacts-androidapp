@@ -20,7 +20,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="3dp"
-        android:background="@color/blue"
+        android:background="@color/primary_dark"
         app:layout_constraintBottom_toBottomOf="@id/overview_indicator"
         app:layout_constraintEnd_toStartOf="@id/ingredients_indicator"
         app:layout_constraintStart_toEndOf="@id/overview_indicator"
@@ -38,7 +38,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="3dp"
-        android:background="@color/blue"
+        android:background="@color/primary_dark"
         app:layout_constraintBottom_toBottomOf="@id/overview_indicator"
         app:layout_constraintEnd_toStartOf="@id/nutrition_facts_indicator"
         app:layout_constraintStart_toEndOf="@id/ingredients_indicator"

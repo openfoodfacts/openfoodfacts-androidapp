@@ -11,17 +11,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
         <include layout="@layout/toolbar"/>
+
         <Button
-                android:id="@+id/fabAdd"
-                style="@style/BorderButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/add_a_list"
-                android:contentDescription="@string/add_a_list"
-                app:elevation="10dp"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/materialize_baseline_grid_small"
-                />
+            android:id="@+id/fabAdd"
+            style="@style/ButtonBorder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/materialize_baseline_grid_small"
+            android:contentDescription="@string/add_a_list"
+            android:text="@string/add_a_list"
+            app:elevation="10dp" />
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/product_lists_recycler_view"
                 android:layout_width="match_parent"
