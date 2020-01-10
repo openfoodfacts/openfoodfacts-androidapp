@@ -737,4 +737,8 @@
     <string name="compare_saturated_fat">crwdns121772:0crwdne121772:0</string>
     <string name="compare_fat">crwdns121774:0crwdne121774:0</string>
     <string name="compare_quantity">crwdns121776:0crwdne121776:0</string>
+    <string name="load_ingredient_detection_data">crwdns124957:0crwdne124957:0</string>
+    <string name="load_ingredient_detection_data_summary">crwdns124959:0crwdne124959:0</string>
+    <string name="white_check_image_descr">crwdns124961:0crwdne124961:0</string>
+    <string name="hint_packaging">crwdns124963:0crwdne124963:0</string>
 </resources>

@@ -732,4 +732,8 @@
     <string name="compare_saturated_fat">포화 지방</string>
     <string name="compare_fat">지방</string>
     <string name="compare_quantity">Quantity :</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
+    <string name="hint_packaging">Examples: plastic, paper, glass</string>
 </resources>

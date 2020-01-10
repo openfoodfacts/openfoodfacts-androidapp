@@ -359,7 +359,7 @@
     <string name="nutriscore_info_msg">Mehr über Nutri-Score erfahren</string>
     <string name="nova_info_msg">Mehr über Nova erfahren</string>
     <string name="nova_grp1_msg">1. Gruppe • Unverarbeitete oder minimal verarbeitete Lebensmittel</string>
-    <string name="nova_grp2_msg">2. Gruppe • Verarbeitete kulinarische Zutaten</string>
+    <string name="nova_grp2_msg">2. Gruppe • Verarbeitete Küchenzutaten</string>
     <string name="nova_grp3_msg">3. Gruppe • Verarbeitete Lebensmittel</string>
     <string name="nova_grp4_msg">4. Gruppe • Hochverarbeitete Nahrungsmittel und Getränke</string>
     <!-- String related to App Shortcuts -->
@@ -738,4 +738,8 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="compare_saturated_fat">Gesättigte Fettsäuren</string>
     <string name="compare_fat">Fett</string>
     <string name="compare_quantity">Menge:</string>
+    <string name="load_ingredient_detection_data">Daten zur Zutatenerkennung laden</string>
+    <string name="load_ingredient_detection_data_summary">Es wurden keine Daten zur Zutatenerkennung gefunden, versuchen Sie, diese vom Server zu laden</string>
+    <string name="white_check_image_descr">A white check</string>
+    <string name="hint_packaging">Beispiele: Kunststoff, Papier, Glas</string>
 </resources>

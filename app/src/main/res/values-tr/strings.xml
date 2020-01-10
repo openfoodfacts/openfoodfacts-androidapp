@@ -738,4 +738,8 @@
     <string name="compare_saturated_fat">Doymuş yağ</string>
     <string name="compare_fat">Yağ</string>
     <string name="compare_quantity">Miktar:</string>
+    <string name="load_ingredient_detection_data">İçindekiler algılama verilerini yükle</string>
+    <string name="load_ingredient_detection_data_summary">İçindekiler algılama verisi bulunamadı, sunucudan yüklemeyi deneyin</string>
+    <string name="white_check_image_descr">A white check</string>
+    <string name="hint_packaging">Örnekler: plastik, kağıt, cam</string>
 </resources>
