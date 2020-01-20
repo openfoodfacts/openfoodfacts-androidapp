@@ -61,16 +61,16 @@ public class FindProductFragment extends NavigationBaseFragment {
     protected void onSearchBarcodeProduct() {
         Utils.hideKeyboard(getActivity());
         if (mBarCodeText.getText().toString().isEmpty()) {
-            displayToast(getResources().getString(R.string.txtBarcodeRequire));
+            mBarCodeText.setError(getResources().getString(R.string.txtBarcodeRequire));
         } else {
             String barcodeText = mBarCodeText.getText().toString();
             if (barcodeText.length() <= 2 && !ProductUtils.DEBUG_BARCODE.equals(barcodeText)) {
-                displayToast(getResources().getString(R.string.txtBarcodeNotValid));
+                mBarCodeText.setError(getResources().getString(R.string.txtBarcodeNotValid));
             } else {
                 if (ProductUtils.isBarcodeValid(barcodeText)) {
                     api.getProduct(mBarCodeText.getText().toString(), getActivity());
                 } else {
-                    displayToast(getResources().getString(R.string.txtBarcodeNotValid));
+                    mBarCodeText.setError(getResources().getString(R.string.txtBarcodeNotValid));
                 }
             }
         }
