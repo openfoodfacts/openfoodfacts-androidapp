@@ -152,6 +152,7 @@
                     android:background="@drawable/bg_edittext_til"
                     android:gravity="center_vertical"
                     android:hint="@string/product_name"
+                    android:importantForAutofill="no"
                     android:inputType="text"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
