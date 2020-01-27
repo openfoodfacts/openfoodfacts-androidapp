@@ -36,7 +36,6 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -78,6 +77,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Objects;
@@ -145,6 +145,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -749,6 +750,65 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     protected void onStart() {
         super.onStart();
         customTabActivityHelper.bindCustomTabsService(this);
+
+        prefManager = new PrefManager(this);
+        if(isUserLoggedIn() && !prefManager.isFirstTimeLaunch() && !prefManager.getUserAskedToRate()){
+            if(!getPackageName().equals("openfoodfacts.github.scrachx.openfood") && !getPackageName().equals("openfoodfacts.github.scrachx.openbeauty")) {
+                long firstTimeLaunchTime = prefManager.getFirstTimeLaunchTime();
+                //check if it has been a week since first launch
+                if((Calendar.getInstance().getTimeInMillis() - firstTimeLaunchTime) >= (60 * 60 * 24 * 7 * 1000)) {
+                    showFeedbackDialog();
+                }
+            }
+        }
+
+    }
+
+    //show dialog to ask the user to rate the app/give feedback
+    private void showFeedbackDialog(){
+        //dialog for rating the app on play store
+        MaterialDialog.Builder rateDialog = new MaterialDialog.Builder(this);
+        rateDialog.title(R.string.app_name);
+        rateDialog.content(R.string.user_ask_rate_app);
+        rateDialog.positiveText(R.string.rate_app);
+        rateDialog.negativeText(R.string.no_thx);
+        rateDialog.onPositive((dialog, which) -> {
+            //open app page in play store
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+            dialog.dismiss();
+        });
+        rateDialog.onNegative((dialog,which) -> dialog.dismiss());
+
+        //dialog for giving feedback
+        MaterialDialog.Builder feedbackDialog = new MaterialDialog.Builder(this);
+        feedbackDialog.title(R.string.app_name);
+        feedbackDialog.content(R.string.user_ask_show_feedback_form);
+        feedbackDialog.positiveText(R.string.txtOk);
+        feedbackDialog.negativeText(R.string.txtNo);
+        feedbackDialog.onPositive((dialog,which)->{
+            //show feedback form
+            CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                customTabsIntent, Uri.parse(getString(R.string.feedback_form_url)), new WebViewFallback());
+            dialog.dismiss();
+        });
+        feedbackDialog.onNegative((dialog,which)-> dialog.dismiss());
+
+        new MaterialDialog.Builder(this)
+            .title(R.string.app_name)
+            .content(R.string.user_enjoying_app)
+            .positiveText(R.string.txtYes)
+            .onPositive((dialog, which) -> {
+                prefManager.setUserAskedToRate(true);
+                rateDialog.show();
+                dialog.dismiss();
+            })
+            .negativeText(R.string.txtNo)
+            .onNegative((dialog, which) ->{
+                prefManager.setUserAskedToRate(true);
+                feedbackDialog.show();
+                dialog.dismiss();
+            })
+            .show();
     }
 
     @Override
