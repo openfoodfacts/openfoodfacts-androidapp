@@ -4,11 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.DynamicDrawableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
@@ -29,6 +34,7 @@ import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -105,6 +111,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTH
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener, PhotoReceiver {
@@ -570,6 +577,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (categories.isEmpty()) {
             categoryProduct.setVisibility(View.GONE);
         } else {
+            boolean containsAlcohol = false;
             categoryProduct.setVisibility(View.VISIBLE);
             // Add all the categories to text view and link them to wikidata is possible
             for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
@@ -581,7 +589,32 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 if (i != lastIndex) {
                     categoryProduct.append(", ");
                 }
+
+                if(category.getCategoryTag().equals(getString(R.string.categorytag_en_alcoholic_beverages))){
+                    containsAlcohol = true;
+                }
             }
+
+            //add alcohol consumption message to categories string
+            if(containsAlcohol){
+                SpannableStringBuilder alcoholAlertString = new SpannableStringBuilder();
+
+                Drawable alcoholAlertIcon = ContextCompat.getDrawable(getContext(),R.drawable.ic_alert_alcoholic_beverage);
+                alcoholAlertIcon.setBounds(0,0,alcoholAlertIcon.getIntrinsicWidth(),alcoholAlertIcon.getIntrinsicHeight());
+
+                ImageSpan alcoholAlertSpan = new ImageSpan(alcoholAlertIcon, DynamicDrawableSpan.ALIGN_BOTTOM);
+                alcoholAlertString.append("- ");
+                alcoholAlertString.setSpan(alcoholAlertSpan,0,1, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+                String riskAlcoholConsumption = getString(R.string.risk_alcohol_consumption);
+                alcoholAlertString.append(riskAlcoholConsumption);
+                alcoholAlertString.setSpan(new ForegroundColorSpan(getColor(getContext(),R.color.red)),
+                                        alcoholAlertString.length() - riskAlcoholConsumption.length(),
+                                        alcoholAlertString.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                categoryProduct.append(alcoholAlertString);
+            }
+
         }
     }
 
