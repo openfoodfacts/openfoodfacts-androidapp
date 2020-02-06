@@ -22,7 +22,7 @@ Open Product Facts é um projeto sem fins lucrativos desenvolvido por milhares d
 - Não precisa de uma câmera para procurar um produto. Você pode digitar o código de barras se não tiver uma câmera ou caso esteja com problemas.
 
 *** Os seus produtos, os seus dados ***
-- os seus dados são seus e nunca são enviados on-line
+- Seus dados pessoais são seus e nunca serão enviados online
 - Você pode usar o aplicativo anonimamente
 - Você pode exportar seu histórico
 

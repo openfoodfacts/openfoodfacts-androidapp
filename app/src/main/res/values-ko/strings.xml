@@ -710,7 +710,7 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">확대/축소</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">닫기</string>
     <string name="tip_message">TIP: %1$s </string>
