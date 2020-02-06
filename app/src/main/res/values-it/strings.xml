@@ -738,8 +738,8 @@
     <string name="compare_saturated_fat">Grassi saturi</string>
     <string name="compare_fat">Grassi</string>
     <string name="compare_quantity">Quantità:</string>
-    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
-    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
-    <string name="white_check_image_descr">A white check</string>
-    <string name="hint_packaging">Examples: plastic, paper, glass</string>
+    <string name="load_ingredient_detection_data">Carica i dati di rilevamento degli ingredienti</string>
+    <string name="load_ingredient_detection_data_summary">Non sono stati trovati dati di rilevamento degli ingredienti, prova a caricarli dal server</string>
+    <string name="white_check_image_descr">Una spunta bianca</string>
+    <string name="hint_packaging">Esempi: plastica, carta, vetro</string>
 </resources>
