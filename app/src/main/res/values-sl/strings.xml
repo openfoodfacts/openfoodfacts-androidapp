@@ -138,7 +138,7 @@
         <item>Trans maščoba</item>
         <item>Vitamin A</item>
         <item>Vitamin B1 (Tiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
+        <item>Vitamin B12 (kobalamin)</item>
         <item>Vitamin B2 (Riboflavin)</item>
         <item>Vitamin B3 / Vitamin PP (Niacin)</item>
         <item>Vitamin B6 (Pyridoxin)</item>
@@ -169,7 +169,7 @@
     <string name="txtPalmOilProduct">Sestavine iz palmovega olja:</string>
     <string name="txtServingSize">Velikost serviranja :</string>
     <string name="txtNutrientLevel100g">Vsebnost hranil za 100 g:</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Vsebnost hranil na 100 ml:</string>
     <string name="txtNutritionLevelLow">v majhni količini</string>
     <string name="txtNutritionLevelModerate">v zmerni količini</string>
     <string name="txtNutritionLevelHigh">v veliki količini</string>
@@ -277,7 +277,7 @@
     <string name="nutrition_trans_fat">Trans maščoba</string>
     <string name="nutriment_serving_size">Na porcijo : </string>
     <string name="action_manage_account">Upravljajte račun</string>
-    <string name="action_contributes">Vaši prispevki</string>
+    <string name="action_contributes">Moji prispevki</string>
     <string name="choose_energy_unit">Izberite želeno enoto za energijo za tabelo prehranjevanja</string>
     <string name="energy_pref_title">Prednostna enota za energijo</string>
     <string name="choose_volume_unit">Izberite želeno enoto za volumen za tabelo prehranjevanja</string>
@@ -514,13 +514,13 @@
     <string name="preference_show_all_product_photos_summary">Pokaže vse poslane fotografije izdelka v ločenem zavihku</string>
     <string name="offline_product_addition_title">Dodaj nov izdelek</string>
     <string name="productNameNull">Neznano ime</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesUnknown">Dodatki neznani</string>
+    <string name="productAdditivesTemplate">%1$d dodatkov</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="two">%d additives</item>
-        <item quantity="few">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d dodatek</item>
+        <item quantity="two">%d dodatka</item>
+        <item quantity="few">%d dodatki</item>
+        <item quantity="other">%d dodatkov</item>
     </plurals>
     <string name="product_not_complete">Ta izdelek še ni dokončan. \nLahko dodate nekaj podrobnosti?</string>
     <string name="addProductOffline">Zdi se, da ste brez povezave. Dodam izdelek %s v načinu brez povezave?</string>
@@ -534,7 +534,7 @@
     <string name="preferences">Nastavitve</string>
     <string name="OFFlogo">Logotip odprta dejstva o hrani</string>
     <string name="loading_product">Nalaganje izdelka %s</string>
-    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
+    <string name="image_not_defined_for_language">Za izbran jezik ni slike. Lahko jo dodate.</string>
     <string name="error_adding_ingredients">Nekaj je šlo narobe med poskusom dodajanja sestavin izdelka</string>
     <string name="unable_to_extract_ingredients">Iz slike ne morem razbrati sestavin</string>
     <string name="error_adding_nutrition_facts">Nekaj je šlo narobe med poskusom dodajanja prehranskih dejstev</string>
