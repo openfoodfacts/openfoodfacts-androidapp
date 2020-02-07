@@ -738,6 +738,8 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
             }
             return false;
         });
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.scan_bottom_nav);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
     }
 

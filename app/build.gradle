@@ -14,7 +14,7 @@ def obtainTestBuildType() {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion '28.0.3'
 
 
@@ -24,7 +24,7 @@ android {
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 325
         versionName "3.2.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -170,7 +170,7 @@ dependencies {
     implementation "androidx.cardview:cardview:$rootProject.supportLibraryVersion"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.supportLibraryVersion"
     implementation "androidx.legacy:legacy-preference-v14:$rootProject.supportLibraryVersion"
-    implementation "com.google.android.material:material:$rootProject.supportLibraryVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "androidx.annotation:annotation:$rootProject.supportLibraryVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayout"
     implementation "androidx.multidex:multidex:$rootProject.multidexVersion"

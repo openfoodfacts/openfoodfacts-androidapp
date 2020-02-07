@@ -398,15 +398,26 @@
     <string name="translate_help_title">帮助翻译 Open Food Facts</string>
     <string name="translate_help_summary">将 Open Food Facts 数据库带到您的语言 - 没有技术性的知识要求</string>
     <string name="please_check_your_connection">请检查你的网络连接</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">高级搜索和图表</string>
     <string name="compare_products">比较产品</string>
     <string name="connectivity_check">请检查您的互联网连接</string>
     <string name="dismiss">忽略</string>
     <string name="Terms">条款</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://cn.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world-zh.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world-zh.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">一般</string>
     <string name="preference_header_network">网络</string>
     <string name="preference_header_contributing">贡献</string>
@@ -454,8 +465,6 @@
     <string name="sort">排序</string>
     <string name="by_nutrition_grade">营养等级</string>
     <string name="sort_by">排序方式</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world-zh.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">摇动手机以扫描产品</string>
     <string name="shake_title">摇动扫描</string>
     <!-- strings related to share images -->
@@ -586,8 +595,6 @@
     <string name="edit_nutrition_image">编辑营养照片</string>
     <string name="edit_ingredients_image">编辑成分照片</string>
     <string name="edit_other_image">Edit the photo</string>
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">请登录以编辑产品</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">编辑产品</string>
@@ -623,8 +630,6 @@
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">提取成分</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
@@ -727,4 +732,8 @@
     <string name="compare_saturated_fat">饱和脂肪</string>
     <string name="compare_fat">脂肪</string>
     <string name="compare_quantity">Quantity :</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
+    <string name="hint_packaging">例如：塑料、纸张、玻璃</string>
 </resources>

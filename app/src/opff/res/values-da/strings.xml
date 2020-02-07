@@ -37,4 +37,8 @@
     <string name="product_not_found">Produktet %1$s, du har skannet, findes endnu ikke i Open Pet Food Facts. Kan du tilføje det?</string>
     <string name="currently_on_version">I øjeblikket i Open Pet Food Facts</string>
     <string name="category_game_btn">Hjælp med at kategorisere produkter</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">Tilføj næringsfakta til beregning af næringsniveauer</string>
+    <string name="add_category_prompt_text">Tilføj en kategori som hjælp til produktfærdiggørelsen</string>
+    <string name="add_nutrient_category_prompt_text">Tilføj en kategori og ernæringsfakta som hjælp til produktfærdiggørelsen</string>
 </resources>

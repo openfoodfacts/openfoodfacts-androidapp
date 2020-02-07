@@ -5,27 +5,40 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.viewpager.widget.ViewPager;
+
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+
+import org.apache.commons.lang.StringUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnPageChange;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -39,19 +52,18 @@ import openfoodfacts.github.scrachx.openfood.fragments.AddProductNutritionFactsF
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductOverviewFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
+import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
-import org.apache.commons.lang.StringUtils;
-
-import javax.inject.Inject;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
 
@@ -866,18 +878,24 @@ public class AddProductActivity extends AppCompatActivity {
 
                 @Override
                 public void onSuccess(State state) {
+                    // Display toast notification for product upload
+                    // First dismiss the upload dialog
                     materialDialog.dismiss();
-                    Toast toast = Toast.makeText(OFFApplication.getInstance(), R.string.product_uploaded_successfully, Toast.LENGTH_LONG);
+
+                    Toast toast = new Toast(OFFApplication.getInstance());
+
+                    View view = LayoutInflater.from(OFFApplication.getInstance()).inflate(R.layout.toast_upload_success, null);
+
                     toast.setGravity(Gravity.CENTER, 0, 0);
-                    View view = toast.getView();
-                    TextView textView = view.findViewById(android.R.id.message);
-                    textView.setTextSize(18);
-                    view.setBackgroundColor(getResources().getColor(R.color.green_500));
+                    toast.setView(view);
                     toast.setDuration(Toast.LENGTH_SHORT);
                     toast.show();
+
                     mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(code)).list());
+
                     Intent intent = new Intent();
                     intent.putExtra(UPLOADED_TO_SERVER, true);
+
                     setResult(RESULT_OK, intent);
                     finish();
                 }
@@ -911,7 +929,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     /**
-     * save the current product in the offline db
+     * Save the current product in the offline db
      */
     private void saveProductOffline() {
         // Add the images to the productDetails to display them in UI later.

@@ -403,15 +403,26 @@
     <string name="translate_help_title">Aidez à traduire Open Food Facts</string>
     <string name="translate_help_summary">Rendez la base de données Open Food Facts disponible dans votre langue - aucune connaissance technique requise</string>
     <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
-    <string name="donation_url">https://donner.openfoodfacts.org</string>
     <string name="advanced_search_title">Recherche avancée &amp; Graphiques</string>
     <string name="compare_products">Comparer les articles</string>
     <string name="connectivity_check">Veuillez vérifier votre connexion Internet</string>
     <string name="dismiss">Ignorer</string>
     <string name="Terms">Conditions d\'utilisation</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donner.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world-fr.openfoodfacts.org/conditions-d-utilisation</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://world-fr.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world-fr.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world-fr.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://fr.openfoodfacts.org/classification-nova-pour-la-transformation-des-aliments</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Général</string>
     <string name="preference_header_network">Réseau</string>
     <string name="preference_header_contributing">Contribuer</string>
@@ -459,8 +470,6 @@
     <string name="sort">Trier</string>
     <string name="by_nutrition_grade">Note nutritionnelle</string>
     <string name="sort_by">Trier par</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world-fr.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Secouez le téléphone pour scanner des produits</string>
     <string name="shake_title">Secouer pour scanner</string>
     <!-- strings related to share images -->
@@ -592,8 +601,6 @@
     <string name="edit_nutrition_image">Modifier la photo de la nutrition</string>
     <string name="edit_ingredients_image">Modifier la photo des ingrédients</string>
     <string name="edit_other_image">Modifier la photo</string>
-    <string name="url_nova_groups">https://fr.openfoodfacts.org/classification-nova-pour-la-transformation-des-aliments</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Veuillez vous connecter pour modifier un produit.</string>
     <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 onces liquides, 1 livre</string>
     <string name="edit_product_title">Modifier un produit</string>
@@ -629,8 +636,6 @@
     <string name="max_nutrient_val_msg">La valeur entrée est plus que donnée par portion</string>
     <string name="update_image">Envoyer une image mise à jour</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
     <string name="add_category_prompt_text">Ajouter la catégorie pour calculer le Nutri-Score</string>
@@ -733,4 +738,8 @@
     <string name="compare_saturated_fat">Graisses saturées</string>
     <string name="compare_fat">Matières grasses</string>
     <string name="compare_quantity">Quantité :</string>
+    <string name="load_ingredient_detection_data">Charger les données des ingrédients analysés</string>
+    <string name="load_ingredient_detection_data_summary">Aucune donnée disponible pour les ingrédients analysés, essayez de les télécharger</string>
+    <string name="white_check_image_descr">Un coche blanc</string>
+    <string name="hint_packaging">Exemples: plastique, papier, verre</string>
 </resources>

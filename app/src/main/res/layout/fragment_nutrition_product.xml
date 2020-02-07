@@ -41,7 +41,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/spacing_normal"
                 android:text="@string/update_image"
-                style="@style/BorderButton"
+                style="@style/ButtonBorder"
                 android:visibility="gone"/>
             <TextView
                 android:id="@+id/addPhotoLabel"
@@ -91,7 +91,7 @@
                 android:layout_margin="@dimen/spacing_normal"
                 android:text="@string/add_nutrient_prompt_text"
                 android:visibility="gone"
-                style="@style/BorderButton"
+                style="@style/ButtonBorder"
                 />
 
             <TextView
@@ -178,10 +178,10 @@
 
             <Button
                 android:id="@+id/calculateNutritionFacts"
+                style="@style/ButtonBorder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_normal"
-                style="@style/BorderButton"
                 android:text="@string/calculate_nutrition_facts" />
 
             <androidx.cardview.widget.CardView
@@ -189,8 +189,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:visibility="gone"
                 app:cardElevation="@dimen/card_elevation"
-                android:visibility="gone">
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/textServingSize"

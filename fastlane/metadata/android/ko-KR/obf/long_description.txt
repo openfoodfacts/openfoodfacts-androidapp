@@ -26,6 +26,6 @@
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
 Open Beauty Facts는 웹 https://world.openbeautyfacts.org 에서도 볼 수 있습니다.
-Questions, feedback : contact@openfoodfacts.org
+질문 및 피드백 : contact@openfoodfacts.org
 
 For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

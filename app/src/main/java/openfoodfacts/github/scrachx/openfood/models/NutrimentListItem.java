@@ -4,55 +4,57 @@ import org.apache.commons.lang.StringUtils;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
-public class NutrimentItem {
-
-    private final CharSequence title;
-    private final CharSequence value;
-    private final CharSequence servingValue;
-    private final CharSequence unit;
+public class NutrimentListItem {
+    private final boolean displayVolumeHeader;
     private final CharSequence modifier;
-    private final boolean headerPerVolume;
+    private final CharSequence servingValue;
+    private final CharSequence title;
+    private final CharSequence unit;
+    private final CharSequence value;
 
+    public NutrimentListItem(boolean displayVolumeHeader) {
+        this.displayVolumeHeader = displayVolumeHeader;
 
-    public NutrimentItem(boolean headerPerVolume){
-        title=null;
-        value=null;
-        servingValue=null;
-        unit=null;
-        modifier=null;
-        this.headerPerVolume = headerPerVolume;
+        this.title = null;
+        this.value = null;
+        this.servingValue = null;
+        this.unit = null;
+        this.modifier = null;
     }
 
-    public NutrimentItem(CharSequence title, CharSequence value, CharSequence servingValue,
-                         CharSequence unit, CharSequence modifier) {
+    public NutrimentListItem(CharSequence title, CharSequence value, CharSequence servingValue,
+                             CharSequence unit, CharSequence modifier) {
         this.title = title;
         this.value = value;
         this.servingValue = servingValue;
         this.unit = unit;
         this.modifier = modifier;
-        this.headerPerVolume = false;
-    }
 
-    public boolean isHeaderPerVolume() {
-        return headerPerVolume;
+        this.displayVolumeHeader = false;
     }
 
     /**
      * Use a round value for value and servingValue parameters
+     *
      * @param title name of nutriment
      * @param value value of nutriment per 100g
      * @param servingValue value of nutriment per serving
      * @param unit unit of nutriment
      * @param modifier one of the following: "<", ">", or "~"
      */
-    public NutrimentItem( String title, String value, String servingValue, String unit,
-                          String modifier){
+    public NutrimentListItem(String title, String value, String servingValue, String unit,
+                             String modifier) {
         this.title = title;
         this.value = getRoundNumber(value);
-        this.servingValue = StringUtils.isBlank(servingValue)?StringUtils.EMPTY:getRoundNumber(servingValue);
+        this.servingValue = StringUtils.isBlank(servingValue) ? StringUtils.EMPTY : getRoundNumber(servingValue);
         this.unit = unit;
         this.modifier = modifier;
-        this.headerPerVolume = false;
+
+        this.displayVolumeHeader = false;
+    }
+
+    public boolean shouldDisplayVolumeHeader() {
+        return displayVolumeHeader;
     }
 
     public CharSequence getTitle() {

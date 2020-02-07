@@ -1,5 +1,5 @@
 Esses são os slogans mostrados acima das capturas de tela no playstore. Mantenha-os curtos e atraentes.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=pt
 
 =====================
 V2 capturas de ecrã

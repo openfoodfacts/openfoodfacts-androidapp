@@ -230,7 +230,7 @@
 
         <Button
             android:drawablePadding="5dp"
-            style="@style/BorderButton"
+            style="@style/ButtonBorder"
             android:id="@+id/full_product_button"
             android:layout_below="@id/product_comparison_additive"
             android:layout_width="wrap_content"

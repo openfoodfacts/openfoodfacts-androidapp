@@ -1,0 +1,10 @@
+- [ ] Make sure all those issues have been fixed and closed: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Arelease-blocking-issue
+- [ ] Screenshots for new features
+- [ ] Changelog
+- [ ] Bugs
+- [ ] Check migrations
+- [ ] Check new features
+- [ ] Check it works in all languages on display (check on a product with fr_FR and nl_BE)
+- [ ] Check it works in all languages on product addition (check on a product with fr_FR and nl_BE) (notloggedin)
+- [ ] Check it works in all languages on product addition (check on a product with fr_FR and nl_BE) (loggedin)
+- [ ] Check what happens if the server crashes

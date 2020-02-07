@@ -1,6 +1,6 @@
 
 ==================
-Nova različica odprta dejstva o hrani. Vsi prostovoljci na podlagi odprtih podatkov o hrani so na tem delu delali na podlagi vaših predlogov in povratnih informacij :)
+Nova različica Open Food Facts. Vsi prostovoljci na podlagi Open Food Facts so na tem delu delali na podlagi vaših predlogov in povratnih informacij :)
 ==================
 * Odprta dejstva o hrani so zdaj bolj globalno gibanje kot kdaj koli prej. 500k izdanih izdelkov, 10K registriranih sodelavcev, 182 držav. Bi se nam pridružili?
 ==================

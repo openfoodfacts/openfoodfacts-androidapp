@@ -37,4 +37,8 @@
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Products Facts. Pouvez-vous l\'ajouter ?</string>
     <string name="currently_on_version">Actuellement sur Open Products Facts</string>
     <string name="category_game_btn">Aidez à classer les produits</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">Ajoutez des détails supplémentaires pour aider à compléter le produit</string>
+    <string name="add_category_prompt_text">Ajoutez une catégorie pour aider à compléter le produit</string>
+    <string name="add_nutrient_category_prompt_text">Ajoutez une catégorie et des détails supplémentaires pour aider à compléter le produit</string>
 </resources>

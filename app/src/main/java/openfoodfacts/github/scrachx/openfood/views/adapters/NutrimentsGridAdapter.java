@@ -1,55 +1,72 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.NutrimentItem;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
+
+import static android.view.View.GONE;
+
 /**
  * @author herau
  */
-public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
+public class NutrimentsGridAdapter extends RecyclerView.Adapter {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-    private final List<NutrimentItem> nutrimentItems;
+    private final List<NutrimentListItem> nutrimentListItems;
 
-    public NutrimentsRecyclerViewAdapter(List<NutrimentItem> nutrimentItems) {
+    public NutrimentsGridAdapter(List<NutrimentListItem> nutrimentListItems) {
         super();
-        this.nutrimentItems = nutrimentItems;
+        this.nutrimentListItems = nutrimentListItems;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         boolean isViewTypeHeader = viewType == TYPE_HEADER;
 
         int layoutResourceId = isViewTypeHeader ? R.layout.nutriment_item_list_header : R.layout.nutriment_item_list;
         View v = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
 
-        return isViewTypeHeader ? new NutrimentHeaderViewHolder(v) : new NutrimentViewHolder(v);
+        if (isViewTypeHeader) {
+            boolean displayServing = false;
+            for (NutrimentListItem nutriment : nutrimentListItems) {
+                final CharSequence servingValue = nutriment.getServingValue();
+                if (servingValue != null && !StringUtils.isBlank(servingValue.toString())) {
+                    displayServing = true;
+                }
+            }
+            return new NutrimentHeaderViewHolder(v, displayServing);
+        } else {
+            return new NutrimentListViewHolder(v);
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof NutrimentHeaderViewHolder) {
-            NutrimentItem item = nutrimentItems.get(position);
+            NutrimentListItem item = nutrimentListItems.get(position);
             NutrimentHeaderViewHolder nutrimentViewHolder = (NutrimentHeaderViewHolder) holder;
-            nutrimentViewHolder.vNutrimentValue.setText(item.isHeaderPerVolume() ? R.string.for_100ml : R.string.for_100g);
+            nutrimentViewHolder.vNutrimentValue.setText(item.shouldDisplayVolumeHeader() ? R.string.for_100ml : R.string.for_100g);
         }
-        if (!(holder instanceof NutrimentViewHolder)) {
+        if (!(holder instanceof NutrimentListViewHolder)) {
             return;
         }
 
-        NutrimentItem item = nutrimentItems.get(position);
+        NutrimentListItem item = nutrimentListItems.get(position);
 
-        NutrimentViewHolder nutrimentViewHolder = (NutrimentViewHolder) holder;
-        nutrimentViewHolder.fillNutrimentValue(item);
-        nutrimentViewHolder.fillServingValue(item);
+        NutrimentListViewHolder nutrimentListViewHolder = (NutrimentListViewHolder) holder;
+        nutrimentListViewHolder.fillNutrimentValue(item);
+        nutrimentListViewHolder.fillServingValue(item);
     }
 
     @Override
@@ -57,28 +74,33 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
         return isPositionHeader(position) ? TYPE_HEADER : TYPE_ITEM;
     }
 
-    private boolean isPositionHeader(int position) {
+    boolean isPositionHeader(int position) {
         return position == 0;
     }
 
     @Override
-    public int getItemCount() {
-        return nutrimentItems.size();
+    public long getItemId(int position) {
+        return position;
     }
 
-    static class NutrimentViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public int getItemCount() {
+        return nutrimentListItems.size();
+    }
+
+    static class NutrimentListViewHolder extends RecyclerView.ViewHolder {
         private TextView vNutrimentName;
         private TextView vNutrimentValue;
         private TextView vNutrimentServingValue;
 
-        public NutrimentViewHolder(View v) {
+        public NutrimentListViewHolder(View v) {
             super(v);
             vNutrimentName = v.findViewById(R.id.nutriment_name);
             vNutrimentValue = v.findViewById(R.id.nutriment_value);
             vNutrimentServingValue = v.findViewById(R.id.nutriment_serving_value);
         }
 
-        void fillNutrimentValue(NutrimentItem item) {
+        void fillNutrimentValue(NutrimentListItem item) {
             vNutrimentName.setText(item.getTitle());
             vNutrimentValue.append(item.getModifier());
             vNutrimentValue.append(item.getValue());
@@ -86,10 +108,10 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
             vNutrimentValue.append(item.getUnit());
         }
 
-        void fillServingValue(NutrimentItem item) {
+        void fillServingValue(NutrimentListItem item) {
             final CharSequence servingValue = item.getServingValue();
             if (StringUtils.isBlank(servingValue.toString())) {
-                vNutrimentServingValue.setText(StringUtils.EMPTY);
+                vNutrimentServingValue.setVisibility(GONE);
             } else {
                 vNutrimentServingValue.append(item.getModifier());
                 vNutrimentServingValue.append(servingValue);
@@ -102,9 +124,12 @@ public class NutrimentsRecyclerViewAdapter extends RecyclerView.Adapter {
     class NutrimentHeaderViewHolder extends RecyclerView.ViewHolder {
         TextView vNutrimentValue;
 
-        public NutrimentHeaderViewHolder(View itemView) {
+        public NutrimentHeaderViewHolder(View itemView, boolean displayServing) {
             super(itemView);
             vNutrimentValue = itemView.findViewById(R.id.nutriment_value);
+            if (!displayServing) {
+                itemView.findViewById(R.id.nutriment_serving_value).setVisibility(GONE);
+            }
         }
     }
 }

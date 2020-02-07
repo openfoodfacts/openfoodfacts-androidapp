@@ -11,22 +11,22 @@
         android:id="@+id/allergen_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:layout_margin="@dimen/spacing_small"
         android:layout_marginLeft="@dimen/spacing_normal"
         android:layout_marginRight="@dimen/spacing_normal"
-        tools:text="allergen name"/>
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Allergen name" />
 
     <Button
         android:id="@+id/delete_button"
+        style="@style/ButtonRounded.Red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:textSize="13sp"
-        android:background="@drawable/rounded_button"
-        android:textColor="@color/white"
-        android:layout_margin="@dimen/spacing_normal" />
+        tools:text="@string/delete_txt" />
 </LinearLayout>
