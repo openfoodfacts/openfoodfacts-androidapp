@@ -46,6 +46,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         Bundle args = new Bundle();
         args.putString("tag", config.getAnalysisTag());
         args.putString("type", config.getType());
+        args.putString("type_name", config.getTypeName());
         args.putString("icon_url", config.getIconUrl());
         args.putString("color", config.getColor());
         args.putString("name", config.getName().getName());
@@ -107,6 +108,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
 
             String tag = getArguments().getString("tag");
             String type = getArguments().getString("type");
+            String typeName = getArguments().getString("type_name");
             String iconUrl = getArguments().getString("icon_url");
             String color = getArguments().getString("color");
             String name = getArguments().getString("name");
@@ -124,7 +126,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             ((AppCompatTextView) getView().findViewById(R.id.title)).setText(name);
 
             SwitchCompat sc = getView().findViewById(R.id.cb);
-            sc.setText(getString(R.string.display_analysis_tag_status, type));
+            sc.setText(getString(R.string.display_analysis_tag_status, typeName.toLowerCase()));
             sc.setChecked(prefs.getBoolean(type, true));
             sc.setOnCheckedChangeListener((buttonView, isChecked) -> prefs.edit().putBoolean(type, isChecked).apply());
 

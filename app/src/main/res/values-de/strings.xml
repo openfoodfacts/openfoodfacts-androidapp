@@ -740,6 +740,6 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="compare_quantity">Menge:</string>
     <string name="load_ingredient_detection_data">Daten zur Zutatenerkennung laden</string>
     <string name="load_ingredient_detection_data_summary">Es wurden keine Daten zur Zutatenerkennung gefunden, versuchen Sie, diese vom Server zu laden</string>
-    <string name="white_check_image_descr">A white check</string>
+    <string name="white_check_image_descr">Weißer Haken</string>
     <string name="hint_packaging">Beispiele: Kunststoff, Papier, Glas</string>
 </resources>
