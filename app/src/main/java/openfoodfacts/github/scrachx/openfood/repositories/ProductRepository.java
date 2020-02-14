@@ -2,7 +2,9 @@ package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.content.SharedPreferences;
 import android.util.Log;
+
 import com.squareup.picasso.Picasso;
+
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.*;
@@ -11,6 +13,7 @@ import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
 import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 
@@ -323,7 +326,6 @@ public class ProductRepository implements IProductRepository {
         mSettings.edit().putLong(taxonomy.getLastDownloadTimeStampPreferenceId(), lastDownload).apply();
         Log.i(TAG, "Set lastDownload of " + taxonomy + " to " + lastDownload);
     }
-
 
     /**
      * Labels saving to local database
@@ -784,7 +786,6 @@ public class ProductRepository implements IProductRepository {
         return dao.count() == 0;
     }
 
-
     /**
      * Loads question from the local database by code and lang of question.
      *
@@ -907,6 +908,20 @@ public class ProductRepository implements IProductRepository {
                 }
 
                 analysisTagConfig.setName(analysisTagName);
+
+                String type = "en:" + analysisTagConfig.getType();
+                AnalysisTagName analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
+                    .unique();
+                if (analysisTagTypeName == null) {
+                    analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                        .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                            AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                        .unique();
+                }
+
+                analysisTagConfig.setTypeName(analysisTagTypeName != null ? analysisTagTypeName.getName() : analysisTagConfig.getType());
             }
 
             return analysisTagConfig;
