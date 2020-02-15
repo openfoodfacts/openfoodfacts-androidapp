@@ -1,11 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.Serializable;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Question implements Serializable {
 
     private static final long serialVersionUID = 1L;
