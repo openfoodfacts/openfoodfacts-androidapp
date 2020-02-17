@@ -9,9 +9,9 @@
     <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:elevation="4dp"
             android:id="@+id/toolbar"/>
 
