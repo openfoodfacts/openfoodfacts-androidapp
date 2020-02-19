@@ -51,33 +51,31 @@ Data about food is of public interest and has to be open. The complete database 
   <img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w1260-h646" width="212" height="400" />
     <img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" />
 </p>
-
-
-## Translations
-
-### Translate Open Food Facts in your language
-
-You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
-https://translate.openfoodfacts.org
-
-## Screenshot generation
-To generate basic screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots`
-
 ## Bugs and feature requests
 
 Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
 
+## Help translate Open Food Facts in your language
+
+You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
+https://translate.openfoodfacts.org
+
+## Generate screenshots for the Play Store
+To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots`
+[Help is welcome to improve those](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/fastlane)
+
 ## Installation
 
-* [Android Studio](https://developer.android.com/studio/index.html) should be the latest stable build.
-* If you're running the app for the first time, Android Studio will ask you to install the Gradle dependencies.
-* If you're a new contributor to open-source, we recommend you read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
-
-* Select `OFF` as the flavor (`OBF` is Open Beauty Facts, `OPF` - Open Products Facts, `OPFF` - Open Pet Food Facts)
+* Download the latest [Android Studio](https://developer.android.com/studio) stable build.
+* If you are running the app for the first time, Android Studio will ask you to install the Gradle dependencies.
+* If you are a new contributor to open-source, we recommend you read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
+* In Android Studio, make sure to select `OFF` as the default flavor for Open Food Facts (`OBF` is Open Beauty Facts, `OPF` - Open Products Facts, `OPFF` - Open Pet Food Facts)
 <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
+* You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator.
 
-## Libraries Used
-We use the following libraries, and we're not closed to changes where relevant :-) 
+## Libraries we use
+We use the following libraries, and we're not closed to changes where relevant :-)
+If you spot any libraries we added or we don't use anymore, feel free to update this list using a Pull Request.
 
 - [Dagger 2](https://github.com/google/dagger) - A fast dependency injector for Android and Java
 - [Retrofit](http://square.github.io/retrofit/) - Retrofit turns your REST API into a Java interface
@@ -113,22 +111,26 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 
 * Repo owner or admin
 * contact@openfoodfacts.org
-* Join our discussion room at <https://slack.openfoodfacts.org/>
+* Join our #android and #android-alerts discussion room at <https://slack.openfoodfacts.org/>
 
 
-Will you join us ?
+### Will you join us ?
 
 If you're new to open-source, we recommend to checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send a pull request.
+
+### What can I work on ?
 
 Here's a few list of bugs:
 - Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
 - Priority: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority
 
-If you don't have time to contribute code, you're very welcome to scan new products, or make a donation to [_help pay for the hosting and general costs_](https://donate.openfoodfacts.org) 
+If you don't have time to contribute code, you're very welcome to
+* scan new products
+* make a donation to [_help pay for the hosting and general costs_](https://donate.openfoodfacts.org) 
 
 ## Copyright and License
 
-    Copyright 2016-2019 Open Food Facts
+    Copyright 2016-2020 Open Food Facts
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
