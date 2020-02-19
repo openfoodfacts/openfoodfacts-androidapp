@@ -75,7 +75,7 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 * If you're running the app for the first time, Android Studio will ask you to install the Gradle dependencies.
 * If you're a new contributor to open-source, we recommend you read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
 
-* Select 'OFF' as the flavor (OBF is Open Beauty Facts, OPF: Open Products Facts, OPFF: Open Pet Food Facts)
+* Select `OFF` as the flavor (`OBF` is Open Beauty Facts, `OPF` - Open Products Facts, `OPFF` - Open Pet Food Facts)
 <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 
 ## Libraries Used
