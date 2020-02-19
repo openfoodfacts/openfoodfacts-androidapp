@@ -6,7 +6,6 @@
 
 Open Food Facts is a food products database made by everyone, for everyone. Open Food Facts gathers information and data on food products from around the world.
 
-
 [![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
 [![Build Status](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp.svg?branch=master)](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=openfoodfacts_openfoodfacts-androidapp&metric=alert_status)](https://sonarcloud.io/dashboard/index/openfoodfacts_openfoodfacts-androidapp)
@@ -22,11 +21,10 @@ Open Food Facts is a food products database made by everyone, for everyone. Open
 
 Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
 
-
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-25000+ contributors like you have added 968000+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+25000+ contributors like you have added 1,1M+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
