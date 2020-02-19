@@ -73,6 +73,35 @@ To generate localized screenshots of the app on your local computer, launch the 
 <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 * You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator.
 
+### What can I work on ?
+
+Open Food Facts on Android has 0,5M users and 1M products. Each contribution you make will have a large impact on food transparency worldwide. Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
+
+Here are issues and feature requests you can work on:
+- [Very high impact issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact)
+- [Priority issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority)
+- [Issues with a screenshot of the problem](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Ascreenshot-available)
+- [Issues with a visual mockup of the solution](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Amockup-available)
+- [Simplify product addition](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/product%20addition)
+- [Create onboarding features for new users](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/onboarding)
+- [Small Hacktoberfest issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/hacktoberfest)
+- [Improve product comparison](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/comparison)
+- [Help remove some of the technical debt](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/refactoring)
+
+If you don't have time to contribute code, you're very welcome to
+* scan new products
+* make a donation to [_help pay for the hosting and general costs_](https://donate.openfoodfacts.org) 
+
+### Who do I talk to?
+
+* Repo owner or admin
+* contact@openfoodfacts.org
+* Join our #android and #android-alerts discussion room at <https://slack.openfoodfacts.org/>
+
+### Will you join us ?
+
+If you're new to open-source, we recommend to checkout our [Contributing Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send a pull request.
+
 ## Libraries we use
 We use the following libraries, and we're not closed to changes where relevant :-)
 If you spot any libraries we added or we don't use anymore, feel free to update this list using a Pull Request.
@@ -97,7 +126,7 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 
 Big thanks to their contributors!
 
-## Contributing
+## Contributors
 
 The project was initially started by [Scot Scriven](https://github.com/itchix), other contributors include:
 - [Aurélien Leboulanger](https://github.com/herau)
@@ -106,27 +135,6 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Qian Jin](https://github.com/jinqian)
 - [Fred Deniger](https://github.com/deniger)
 - [Full list of the Open Food Facts Android developers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
-
-### Who do I talk to?
-
-* Repo owner or admin
-* contact@openfoodfacts.org
-* Join our #android and #android-alerts discussion room at <https://slack.openfoodfacts.org/>
-
-
-### Will you join us ?
-
-If you're new to open-source, we recommend to checkout our [_Contributing Guidelines_](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send a pull request.
-
-### What can I work on ?
-
-Here's a few list of bugs:
-- Very high impact: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact
-- Priority: https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority
-
-If you don't have time to contribute code, you're very welcome to
-* scan new products
-* make a donation to [_help pay for the hosting and general costs_](https://donate.openfoodfacts.org) 
 
 ## Copyright and License
 
