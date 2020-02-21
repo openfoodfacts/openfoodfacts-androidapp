@@ -91,7 +91,6 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         mDataObserver = new DataObserver();
         bottomNavigationView  = view.findViewById((R.id.bottom_navigation));
         BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
         productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
 
         final String language = LocaleHelper.getLanguage(getContext());
