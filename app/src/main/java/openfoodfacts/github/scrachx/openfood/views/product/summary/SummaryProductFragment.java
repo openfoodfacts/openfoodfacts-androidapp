@@ -4,17 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.DynamicDrawableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.ImageSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -34,7 +28,6 @@ import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -56,6 +49,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.CategoryProductHelper;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
@@ -111,7 +105,6 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTH
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
 import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener, PhotoReceiver {
@@ -135,6 +128,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView categoryProduct;
     @BindView(R.id.textLabelProduct)
     TextView labelProduct;
+    @BindView(R.id.textCategoryAlcoholAlert)
+    TextView categoryAlcoholAlert;
     @BindView(R.id.front_picture_layout)
     LinearLayout frontPictureLayout;
     @BindView(R.id.imageViewFront)
@@ -568,53 +563,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showCategories(List<CategoryName> categories) {
-        categoryProduct.setText(bold(getString(R.string.txtCategories)));
-        categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
-        categoryProduct.append(" ");
-        categoryProduct.setClickable(true);
-        categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
+        CategoryProductHelper categoryProductHelper = new CategoryProductHelper(categoryProduct,categories,this,apiClientForWikiData);
+        categoryProductHelper.showCategories();
 
-        if (categories.isEmpty()) {
-            categoryProduct.setVisibility(View.GONE);
-        } else {
-            boolean containsAlcohol = false;
-            categoryProduct.setVisibility(View.VISIBLE);
-            // Add all the categories to text view and link them to wikidata is possible
-            for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
-                CategoryName category = categories.get(i);
-                CharSequence categoryName = getCategoriesTag(category);
-                // Add category name to text view
-                categoryProduct.append(categoryName);
-                // Add a comma if not the last item
-                if (i != lastIndex) {
-                    categoryProduct.append(", ");
-                }
-
-                if(category.getCategoryTag().equals(getString(R.string.categorytag_en_alcoholic_beverages))){
-                    containsAlcohol = true;
-                }
-            }
-
-            //add alcohol consumption message to categories string
-            if(containsAlcohol){
-                SpannableStringBuilder alcoholAlertString = new SpannableStringBuilder();
-
-                Drawable alcoholAlertIcon = ContextCompat.getDrawable(getContext(),R.drawable.ic_alert_alcoholic_beverage);
-                alcoholAlertIcon.setBounds(0,0,alcoholAlertIcon.getIntrinsicWidth(),alcoholAlertIcon.getIntrinsicHeight());
-
-                ImageSpan alcoholAlertSpan = new ImageSpan(alcoholAlertIcon, DynamicDrawableSpan.ALIGN_BOTTOM);
-                alcoholAlertString.append("- ");
-                alcoholAlertString.setSpan(alcoholAlertSpan,0,1, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-
-                String riskAlcoholConsumption = getString(R.string.risk_alcohol_consumption);
-                alcoholAlertString.append(riskAlcoholConsumption);
-                alcoholAlertString.setSpan(new ForegroundColorSpan(getColor(getContext(),R.color.red)),
-                                        alcoholAlertString.length() - riskAlcoholConsumption.length(),
-                                        alcoholAlertString.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                categoryProduct.append(alcoholAlertString);
-            }
-
+        if(categoryProductHelper.getContainsAlcohol()){
+            categoryProductHelper.showAlcoholAlert(categoryAlcoholAlert);
         }
     }
 
@@ -762,43 +715,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         return embTag;
     }
 
-    private CharSequence getCategoriesTag(CategoryName category) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                if (category.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(category.getWikiDataId(), (value, result) -> {
-                        if (value) {
-                            FragmentActivity activity = getActivity();
-
-                            if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, category,
-                                    activity.getSupportFragmentManager());
-                            }
-                        } else {
-                            ProductBrowsingListActivity.startActivity(getContext(),
-                                category.getCategoryTag(),
-                                category.getName(),
-                                SearchType.CATEGORY);
-                        }
-                    });
-                } else {
-                    ProductBrowsingListActivity.startActivity(getContext(),
-                        category.getCategoryTag(),
-                        category.getName(),
-                        SearchType.CATEGORY);
-                }
-            }
-        };
-        spannableStringBuilder.append(category.getName());
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        if (!category.isNotNull()) {
-            StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
-            spannableStringBuilder.setSpan(iss, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-        return spannableStringBuilder;
-    }
 
     private CharSequence getLabelTag(LabelName label) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
