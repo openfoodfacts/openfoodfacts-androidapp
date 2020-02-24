@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
@@ -71,8 +70,6 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
@@ -159,7 +156,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     private int peekLarge;
     private int peekSmall;
     private boolean isAnalysisTagsEmpty = true;
-    private IProductRepository repository = ProductRepository.getInstance();
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
@@ -234,6 +230,10 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
                 @Override
                 public void onSuccess(State state) {
+                    //clear product tags
+                    isAnalysisTagsEmpty = true;
+                    productTags.setAdapter(null);
+
                     progressBar.setVisibility(GONE);
                     progressText.setVisibility(GONE);
                     if (state.getStatus() == 0) {
@@ -500,6 +500,8 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         imageProgress.setVisibility(VISIBLE);
         if (!isAnalysisTagsEmpty) {
             productTags.setVisibility(VISIBLE);
+        } else {
+            productTags.setVisibility(GONE);
         }
     }
 
@@ -658,6 +660,8 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                         details.setVisibility(VISIBLE);
                         if (!isAnalysisTagsEmpty) {
                             productTags.setVisibility(VISIBLE);
+                        } else {
+                            productTags.setVisibility(GONE);
                         }
                         bottomNavigationView.setVisibility(VISIBLE);
                         if (productNotFound.getVisibility() != VISIBLE) {
