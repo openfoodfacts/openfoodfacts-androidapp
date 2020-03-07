@@ -383,11 +383,12 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
-     * Invalid Barcodess saving to local database
+     * Invalid Barcodess saving to local database. Will clear all previous invalid barcodes stored before.
      *
      * @param invalidBarcodes The list of invalidBarcodes to be saved.
      */
     private void saveInvalidBarcodes(List<InvalidBarcode> invalidBarcodes) {
+        invalidBarcodeDao.deleteAll();
         invalidBarcodeDao.insertOrReplaceInTx(invalidBarcodes);
     }
 
