@@ -145,6 +145,10 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 AnalysisTagConfigDao.createTable(db, true);
                 break;
             }
+            case 16: {
+                InvalidBarcodeDao.createTable(db, true);
+                break;
+            }
         }
     }
 

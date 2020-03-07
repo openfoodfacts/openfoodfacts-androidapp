@@ -40,6 +40,7 @@ public class ProductRepository implements IProductRepository {
     private LabelDao labelDao;
     private LabelNameDao labelNameDao;
     private TagDao tagDao;
+    private InvalidBarcodeDao invalidBarcodeDao;
     private AllergenDao allergenDao;
     private AllergenNameDao allergenNameDao;
     private AdditiveDao additiveDao;
@@ -82,6 +83,7 @@ public class ProductRepository implements IProductRepository {
         labelDao = daoSession.getLabelDao();
         labelNameDao = daoSession.getLabelNameDao();
         tagDao = daoSession.getTagDao();
+        invalidBarcodeDao = daoSession.getInvalidBarcodeDao();
         allergenDao = daoSession.getAllergenDao();
         allergenNameDao = daoSession.getAllergenNameDao();
         additiveDao = daoSession.getAdditiveDao();
@@ -131,6 +133,25 @@ public class ProductRepository implements IProductRepository {
             .doOnSuccess(tags -> {
                 saveTags(tags);
                 updateLastDownloadDateInSettings(Taxonomy.TAGS, lastModifiedDate);
+            });
+    }
+
+    public Single<List<InvalidBarcode>> reloadInvalidBarcodesFromServer() {
+        return getTaxonomyData(Taxonomy.INVALID_BARCODES, true, false, invalidBarcodeDao);
+    }
+
+    Single<List<InvalidBarcode>> loadInvalidBarcodes(long lastModifiedDate) {
+        return productApi.getInvalidBarcodes()
+            .map(strings -> {
+                List<InvalidBarcode> toSave = new ArrayList<>(strings.size());
+                for (String string : strings) {
+                    toSave.add(new InvalidBarcode(string));
+                }
+                return toSave;
+            })
+            .doOnSuccess(invalidBarcodes -> {
+                saveInvalidBarcodes(invalidBarcodes);
+                updateLastDownloadDateInSettings(Taxonomy.INVALID_BARCODES, lastModifiedDate);
             });
     }
 
@@ -359,6 +380,15 @@ public class ProductRepository implements IProductRepository {
      */
     private void saveTags(List<Tag> tags) {
         tagDao.insertOrReplaceInTx(tags);
+    }
+
+    /**
+     * Invalid Barcodess saving to local database
+     *
+     * @param invalidBarcodes The list of invalidBarcodes to be saved.
+     */
+    private void saveInvalidBarcodes(List<InvalidBarcode> invalidBarcodes) {
+        invalidBarcodeDao.insertOrReplaceInTx(invalidBarcodes);
     }
 
     /**
