@@ -746,15 +746,15 @@
     <string name="title_image_type">Vælg billedtype</string>
     <string name="content_image_type">Vælg et foto at arbejde med</string>
     <string name="title_choose_language">Vælg sprog</string>
-    <string name="content_choose_language">Select the language of the photo</string>
-    <string name="title_add_photo">Add Photo</string>
-    <string name="content_add_photo">Press here to take a new photo</string>
-    <string name="title_choose_photo">Choose Photo</string>
-    <string name="content_choose_photo">Choose among existing photos</string>
-    <string name="title_edit_photo">Edit Photo</string>
-    <string name="content_edit_photo">Edit, crop and rotate the photo</string>
-    <string name="title_unselect_photo">Unselect Photo</string>
-    <string name="content_unselect_photo">Press here to unselect current photo</string>
-    <string name="title_exit">Exit</string>
-    <string name="content_exit">Press here to return to the product</string>
+    <string name="content_choose_language">Vælg sprog for fotoet</string>
+    <string name="title_add_photo">Tilføj foto</string>
+    <string name="content_add_photo">Tryk hér for at tage et nyt foto</string>
+    <string name="title_choose_photo">Vælg foto</string>
+    <string name="content_choose_photo">Vælg fra eksisterende fotos</string>
+    <string name="title_edit_photo">Redigér foto</string>
+    <string name="content_edit_photo">Redigér, beskær og rotér fotoet</string>
+    <string name="title_unselect_photo">Fravælg foto</string>
+    <string name="content_unselect_photo">Tryk hér for at fravælge det aktuelle foto</string>
+    <string name="title_exit">Afslut</string>
+    <string name="content_exit">Tryk hér for at returnere til produktet</string>
 </resources>
