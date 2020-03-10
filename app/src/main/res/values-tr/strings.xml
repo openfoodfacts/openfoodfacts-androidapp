@@ -729,6 +729,7 @@
     <string name="help_translate_ingredients">İçindeki malzemelerin konuştuğunuz dile çevrilmesine yardım edin</string>
     <string name="unknown_status_missing_ingredients">Eksik malzemeler nedeniyle ürünün durumunu değerlendiremedik.</string>
     <string name="help_extract_ingredients">%1$s durumunu elde etmek için malzemelerin çıkarılmasına yardım edin.</string>
+    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">Ürün karşılaştırma listesinde zaten var</string>
     <string name="compare_brands">Markalar:</string>
     <string name="compare_additives">Katkı maddeleri :</string>
@@ -741,6 +742,7 @@
     <string name="load_ingredient_detection_data_summary">İçindekiler algılama verisi bulunamadı, sunucudan yüklemeyi deneyin</string>
     <string name="white_check_image_descr">Beyaz tik işareti</string>
     <string name="hint_packaging">Örnekler: plastik, kağıt, cam</string>
+    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>

@@ -727,7 +727,8 @@
     <string name="unknown_status_no_translation">crwdns123508:0crwdne123508:0</string>
     <string name="help_translate_ingredients">crwdns123510:0crwdne123510:0</string>
     <string name="unknown_status_missing_ingredients">crwdns123512:0crwdne123512:0</string>
-    <string name="help_extract_ingredients">crwdns123514:0%1$scrwdne123514:0</string>
+    <string name="help_extract_ingredients">crwdns125130:0%1$scrwdne125130:0</string>
+    <string name="add_photo_to_extract_ingredients">crwdns125132:0crwdne125132:0</string>
     <string name="product_already_exists_in_comparison">crwdns121762:0crwdne121762:0</string>
     <string name="compare_brands">crwdns121764:0crwdne121764:0</string>
     <string name="compare_additives">crwdns121766:0crwdne121766:0</string>
@@ -740,6 +741,7 @@
     <string name="load_ingredient_detection_data_summary">crwdns124959:0crwdne124959:0</string>
     <string name="white_check_image_descr">crwdns124961:0crwdne124961:0</string>
     <string name="hint_packaging">crwdns124963:0crwdne124963:0</string>
+    <string name="risk_alcohol_consumption">crwdns125128:0crwdne125128:0</string>
     <string name="check_first_time">crwdns125092:0crwdne125092:0</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">crwdns125094:0crwdne125094:0</string>
