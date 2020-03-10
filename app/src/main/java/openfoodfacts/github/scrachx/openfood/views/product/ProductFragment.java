@@ -125,7 +125,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         return ProductActivity.onOptionsItemSelected(item, getActivity());
     }
 
-
     @Override
     public void onRefresh() {
         api.getProductFull(productState.getProduct().getCode()).enqueue(new Callback<State>() {
@@ -172,13 +171,20 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
     }
 
-    public void goToIngredients() {
+    public void goToIngredients(String action) {
         if (adapterResult == null || adapterResult.getCount() == 0) {
             return;
         }
         for (int i = 0; i < adapterResult.getCount(); ++i) {
-            if (adapterResult.getItem(i) instanceof IngredientsProductFragment) {
+            Fragment fragment = adapterResult.getItem(i);
+            if (fragment instanceof IngredientsProductFragment) {
                 viewPager.setCurrentItem(i);
+
+                if ("perform_ocr".equals(action)) {
+                    ((IngredientsProductFragment) fragment).extractIngredients();
+                } else if ("send_updated".equals(action)) {
+                    ((IngredientsProductFragment) fragment).change_ing_image();
+                }
                 return;
             }
         }

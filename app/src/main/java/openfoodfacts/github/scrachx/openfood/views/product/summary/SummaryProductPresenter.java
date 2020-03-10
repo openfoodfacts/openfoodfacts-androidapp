@@ -2,13 +2,13 @@ package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
 import android.util.Log;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
@@ -18,8 +18,6 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-
-import java.util.List;
 
 /**
  * Created by Lobster on 17.03.18.
@@ -173,8 +171,8 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     public void loadAnalysisTags() {
         if (OFFApplication.isFlavor(OFFApplication.OFF)) {
             List<String> analysisTags = product.getIngredientsAnalysisTags();
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             if (analysisTags != null && !analysisTags.isEmpty()) {
-                final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
                 disposable.add(
                     Observable.fromIterable(analysisTags)
                         .flatMapSingle(tag -> repository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode))
@@ -195,7 +193,22 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
                         })
                 );
             } else {
-                view.showLabelsState(ProductInfoState.EMPTY);
+                disposable.add(
+                    repository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode)
+                        .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(analysisTagConfigs -> {
+                            if (analysisTagConfigs.isEmpty()) {
+                                view.showLabelsState(ProductInfoState.EMPTY);
+                            } else {
+                                view.showAnalysisTags(analysisTagConfigs);
+                            }
+                        }, e -> {
+                            Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAnalysisTags", e);
+                            view.showLabelsState(ProductInfoState.EMPTY);
+                        })
+                );
             }
         }
     }

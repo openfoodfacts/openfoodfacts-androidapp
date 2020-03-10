@@ -5,6 +5,17 @@ import android.util.Log;
 
 import com.squareup.picasso.Picasso;
 
+import org.greenrobot.greendao.AbstractDao;
+import org.greenrobot.greendao.database.Database;
+import org.greenrobot.greendao.query.WhereCondition;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.*;
@@ -13,16 +24,6 @@ import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
 import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-
-import org.greenrobot.greendao.AbstractDao;
-import org.greenrobot.greendao.database.Database;
-
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * This is a repository class which implements repository interface.
@@ -888,43 +889,59 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    private void updateAnalysisTagConfig(final AnalysisTagConfig analysisTagConfig, String languageCode) {
+        if (analysisTagConfig != null) {
+            AnalysisTagName analysisTagName = analysisTagNameDao.queryBuilder()
+                .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.getAnalysisTag()),
+                    AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
+                .unique();
+            if (analysisTagName == null) {
+                analysisTagName = analysisTagNameDao.queryBuilder()
+                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.getAnalysisTag()),
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                    .unique();
+            }
+
+            analysisTagConfig.setName(analysisTagName);
+
+            String type = "en:" + analysisTagConfig.getType();
+            AnalysisTagName analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                    AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
+                .unique();
+            if (analysisTagTypeName == null) {
+                analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                    .unique();
+            }
+
+            analysisTagConfig.setTypeName(analysisTagTypeName != null ? analysisTagTypeName.getName() : analysisTagConfig.getType());
+        }
+    }
+
     @Override
     public Single<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode) {
         return Single.fromCallable(() -> {
             AnalysisTagConfig analysisTagConfig = analysisTagConfigDao.queryBuilder()
                 .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
                 .unique();
-
-            if (analysisTagConfig != null) {
-                AnalysisTagName analysisTagName = analysisTagNameDao.queryBuilder()
-                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTag),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
-                    .unique();
-                if (analysisTagName == null) {
-                    analysisTagName = analysisTagNameDao.queryBuilder()
-                        .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTag),
-                            AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
-                        .unique();
-                }
-
-                analysisTagConfig.setName(analysisTagName);
-
-                String type = "en:" + analysisTagConfig.getType();
-                AnalysisTagName analysisTagTypeName = analysisTagNameDao.queryBuilder()
-                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
-                    .unique();
-                if (analysisTagTypeName == null) {
-                    analysisTagTypeName = analysisTagNameDao.queryBuilder()
-                        .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
-                            AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
-                        .unique();
-                }
-
-                analysisTagConfig.setTypeName(analysisTagTypeName != null ? analysisTagTypeName.getName() : analysisTagConfig.getType());
-            }
-
+            updateAnalysisTagConfig(analysisTagConfig, languageCode);
             return analysisTagConfig;
+        });
+    }
+
+    @Override
+    public Single<List<AnalysisTagConfig>> getUnknownAnalysisTagConfigsByLanguageCode(String languageCode) {
+        return Single.fromCallable(() -> {
+            List<AnalysisTagConfig> analysisTagConfigs = analysisTagConfigDao.queryBuilder()
+                .where(new WhereCondition.StringCondition(AnalysisTagConfigDao.Properties.AnalysisTag.columnName + " LIKE \"%unknown%\"")).list();
+
+            for (AnalysisTagConfig analysisTagConfig : analysisTagConfigs
+            ) {
+                updateAnalysisTagConfig(analysisTagConfig, languageCode);
+            }
+            return analysisTagConfigs;
         });
     }
 }

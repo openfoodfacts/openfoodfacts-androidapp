@@ -1,10 +1,20 @@
 
 package openfoodfacts.github.scrachx.openfood.repositories;
 
-import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.*;
-
 import java.util.List;
+
+import io.reactivex.Single;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.Category;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.Question;
 
 /**
  * This is a repository class working as an Interface.
@@ -14,12 +24,9 @@ import java.util.List;
  * @since 03.03.18
  */
 public interface IProductRepository {
-
-
     Single<List<Allergen>> getAllergens();
 
     Single<List<Category>> getCategories();
-
 
     void saveIngredient(Ingredient ingredient);
 
@@ -60,6 +67,8 @@ public interface IProductRepository {
     Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation);
 
     Single<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode);
+
+    Single<List<AnalysisTagConfig>> getUnknownAnalysisTagConfigsByLanguageCode(String languageCode);
 
     void deleteIngredientCascade();
 }
