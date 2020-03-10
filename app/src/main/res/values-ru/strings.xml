@@ -731,7 +731,7 @@
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Закрыть</string>
     <string name="tip_message">СОВЕТ: %1$s </string>
-    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
+    <string name="ingredient_analysis_tip">Нажмите на иконки ниже, чтобы узнать больше о продукте и выбрать интересующую вас информацию.</string>
     <string name="got_it">Понятно!</string>
     <string name="ingredients_in_this_product_are">Ингредиенты в этом продукте %1$s.</string>
     <string name="ingredients_in_this_product">Ингредиенты в этом продукте, которые %1$s:</string>
@@ -755,18 +755,18 @@
     <string name="hint_packaging">Примеры: пластик, бумага, стекло</string>
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
-    <string name="title_image_type">Select Image Type</string>
+    <string name="title_image_type">Выберите тип изображения</string>
     <string name="content_image_type">Choose the photo to work on</string>
-    <string name="title_choose_language">Select Language</string>
-    <string name="content_choose_language">Select the language of the photo</string>
-    <string name="title_add_photo">Add Photo</string>
-    <string name="content_add_photo">Press here to take a new photo</string>
-    <string name="title_choose_photo">Choose Photo</string>
-    <string name="content_choose_photo">Choose among existing photos</string>
-    <string name="title_edit_photo">Edit Photo</string>
-    <string name="content_edit_photo">Edit, crop and rotate the photo</string>
-    <string name="title_unselect_photo">Unselect Photo</string>
+    <string name="title_choose_language">Выберите язык</string>
+    <string name="content_choose_language">Выберите язык фото</string>
+    <string name="title_add_photo">Добавить фото</string>
+    <string name="content_add_photo">Нажмите здесь, чтобы сделать новое фото</string>
+    <string name="title_choose_photo">Выбрать фото</string>
+    <string name="content_choose_photo">Выбрать из существующих фотографий</string>
+    <string name="title_edit_photo">Редактировать фото</string>
+    <string name="content_edit_photo">Редактировать, обрезать и повернуть фото</string>
+    <string name="title_unselect_photo">Отменить выбор фото</string>
     <string name="content_unselect_photo">Press here to unselect current photo</string>
-    <string name="title_exit">Exit</string>
-    <string name="content_exit">Press here to return to the product</string>
+    <string name="title_exit">Выход</string>
+    <string name="content_exit">Нажмите здесь, чтобы вернуться к продукту</string>
 </resources>

@@ -755,18 +755,18 @@
     <string name="hint_packaging">דוגמאות: פלסטיק, נייר, זכוכית</string>
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
-    <string name="title_image_type">Select Image Type</string>
-    <string name="content_image_type">Choose the photo to work on</string>
-    <string name="title_choose_language">Select Language</string>
-    <string name="content_choose_language">Select the language of the photo</string>
-    <string name="title_add_photo">Add Photo</string>
-    <string name="content_add_photo">Press here to take a new photo</string>
-    <string name="title_choose_photo">Choose Photo</string>
-    <string name="content_choose_photo">Choose among existing photos</string>
-    <string name="title_edit_photo">Edit Photo</string>
-    <string name="content_edit_photo">Edit, crop and rotate the photo</string>
-    <string name="title_unselect_photo">Unselect Photo</string>
-    <string name="content_unselect_photo">Press here to unselect current photo</string>
-    <string name="title_exit">Exit</string>
-    <string name="content_exit">Press here to return to the product</string>
+    <string name="title_image_type">בחירת סוג תמונה</string>
+    <string name="content_image_type">נא לבחור על איזו תמונה לעבוד</string>
+    <string name="title_choose_language">בחירת שפה</string>
+    <string name="content_choose_language">נא לבחור את שפת התמונה</string>
+    <string name="title_add_photo">הוספת תמונה</string>
+    <string name="content_add_photo">יש ללחוץ כאן כדי לצלם תמונה חדשה</string>
+    <string name="title_choose_photo">בחירת תמונה</string>
+    <string name="content_choose_photo">בחירה מבין תמונות קיימות</string>
+    <string name="title_edit_photo">עריכת תמונה</string>
+    <string name="content_edit_photo">עריכה, חיתוך והטיית התמונה</string>
+    <string name="title_unselect_photo">ביטול בחירת תמונה</string>
+    <string name="content_unselect_photo">יש ללחוץ כאן כדי לבטל את בחירת התמונה הנוכחית</string>
+    <string name="title_exit">יציאה</string>
+    <string name="content_exit">יש ללחוץ כאן כדי לחזור למוצר</string>
 </resources>
