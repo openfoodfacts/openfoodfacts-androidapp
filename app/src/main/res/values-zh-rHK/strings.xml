@@ -723,6 +723,7 @@
     <string name="help_translate_ingredients">把食品成分翻譯至您的語言</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">品牌：</string>
     <string name="compare_additives">添加劑：</string>
@@ -735,6 +736,7 @@
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
+    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
