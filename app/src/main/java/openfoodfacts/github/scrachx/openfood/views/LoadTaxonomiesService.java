@@ -50,6 +50,7 @@ public class LoadTaxonomiesService extends IntentService {
         List<SingleSource<?>> syncObservables = new ArrayList<>();
         syncObservables.add(productRepository.reloadLabelsFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadTagsFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadInvalidBarcodesFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadAllergensFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadIngredientsFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadAnalysisTagConfigsFromServer().subscribeOn(Schedulers.io()));

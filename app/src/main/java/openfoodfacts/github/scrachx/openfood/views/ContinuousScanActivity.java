@@ -66,6 +66,8 @@ import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -90,6 +92,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
     private HistoryProductDao mHistoryProductDao;
+    private InvalidBarcodeDao mInvalidBarcodeDao;
     @BindView(R.id.quick_view)
     LinearLayout quickView;
     @BindView(R.id.barcode_scanner)
@@ -163,10 +166,17 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         @Override
         public void barcodeResult(BarcodeResult result) {
             handler.removeCallbacks(runnable);
-            if (result.getText() == null || result.getText().equals(lastText)) {
+            if (result.getText() == null || result.getText().isEmpty() || result.getText().equals(lastText)) {
                 // Prevent duplicate scans
                 return;
             }
+            InvalidBarcode invalidBarcode = mInvalidBarcodeDao.queryBuilder()
+                .where(InvalidBarcodeDao.Properties.Barcode.eq(result.getText())).unique();
+            if (invalidBarcode != null) {
+                // scanned barcode is in the list of invalid barcodes, do nothing
+                return;
+            }
+
             if (mRing) {
                 beepManager.playBeepSound();
             }
@@ -679,6 +689,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         });
 
         mHistoryProductDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getHistoryProductDao();
+        mInvalidBarcodeDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getInvalidBarcodeDao();
         mOfflineSavedProductDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getOfflineSavedProductDao();
 
         sp = getSharedPreferences("camera", 0);
