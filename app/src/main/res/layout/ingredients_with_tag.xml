@@ -75,10 +75,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/message" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/helpNeeded"
+        style="@style/ButtonBorder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/padding_large"
         android:text="@string/help_translate_ingredients"
         android:textSize="@dimen/font_small"

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SwitchCompat;
@@ -166,7 +167,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             sc.setOnCheckedChangeListener((buttonView, isChecked) -> prefs.edit().putBoolean(type, isChecked).apply());
 
             String messageStr = getString(R.string.ingredients_in_this_product_are, name.toLowerCase());
-            AppCompatTextView helpNeeded = getView().findViewById(R.id.helpNeeded);
+            AppCompatButton helpNeeded = getView().findViewById(R.id.helpNeeded);
             boolean showHelpTakePhoto = getArguments().getBoolean("photos_to_be_validated", false);
             boolean showHelpTranslate = tag != null && tag.contains("unknown");
             boolean showHelpExtract = showHelpTranslate && getArguments().getBoolean("missing_ingredients", false);
@@ -177,7 +178,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                 image.setOnClickListener(v -> {
                     goToAddPhoto();
                 });
-                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.add_photo_to_extract_ingredients) + "</u>"));
+                helpNeeded.setText(Html.fromHtml(getString(R.string.add_photo_to_extract_ingredients)));
                 helpNeeded.setOnClickListener(v -> {
                     goToAddPhoto();
                 });
@@ -190,14 +191,14 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                     goToExtract();
                 });
                 messageStr = getString(R.string.unknown_status_missing_ingredients);
-                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_extract_ingredients, typeName.toLowerCase()) + "</u>"));
+                helpNeeded.setText(Html.fromHtml(getString(R.string.help_extract_ingredients, typeName.toLowerCase())));
                 helpNeeded.setOnClickListener(v -> {
                     goToExtract();
                 });
                 helpNeeded.setVisibility(View.VISIBLE);
             } else if (showHelpTranslate) {
                 messageStr = getString(R.string.unknown_status_no_translation);
-                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_translate_ingredients) + "</u>"));
+                helpNeeded.setText(Html.fromHtml(getString(R.string.help_translate_ingredients)));
                 helpNeeded.setOnClickListener(v -> {
                     CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
                     CustomTabActivityHelper.openCustomTab(
