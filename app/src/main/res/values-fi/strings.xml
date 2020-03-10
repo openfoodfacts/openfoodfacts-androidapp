@@ -729,6 +729,7 @@
     <string name="help_translate_ingredients">Auta kääntämään ainesosat kielellesi</string>
     <string name="unknown_status_missing_ingredients">Tuotteen tilaa ei voitu arvioida puuttuvien ainesosien takia.</string>
     <string name="help_extract_ingredients">Auta poimimaan ainesosat tilan %1$s saamiseksi.</string>
+    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">Tuote on jo vertailuluettelossa</string>
     <string name="compare_brands">Tuotemerkit:</string>
     <string name="compare_additives">Lisäaineet:</string>
@@ -741,6 +742,7 @@
     <string name="load_ingredient_detection_data_summary">Ainesosien tunnistamistietoja ei löydy, yritä ladata ne palvelimelta</string>
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Esimerkkejä: muovi, paperi, lasi</string>
+    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
