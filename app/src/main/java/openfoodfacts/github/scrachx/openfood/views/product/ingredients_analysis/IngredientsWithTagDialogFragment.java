@@ -58,9 +58,9 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             boolean photosToBeValidated = false;
 
             for (String stateTag : statesTags) {
-                if (stateTag.equals("state:ingredients-to-be-completed")) {
+                if (stateTag.equals("en:ingredients-to-be-completed")) {
                     ingredientsToBeCompleted = true;
-                } else if (stateTag.equals("state:photos-to-be-validated")) {
+                } else if (stateTag.equals("en:photos-to-be-validated")) {
                     photosToBeValidated = true;
                 }
             }
