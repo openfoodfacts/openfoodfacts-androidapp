@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -113,6 +114,8 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     TextView progressText;
     @BindView(R.id.quickView_productNotFound)
     TextView productNotFound;
+    @BindView(R.id.quickView_productNotFoundButton)
+    Button productNotFoundButton;
     @BindView(R.id.quickView_image)
     ImageView productImage;
     @BindView(R.id.quickView_name)
@@ -237,7 +240,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                     progressBar.setVisibility(GONE);
                     progressText.setVisibility(GONE);
                     if (state.getStatus() == 0) {
-                        productNotFound(lastBarcode);
+                        productNotFound(getString(R.string.product_not_found, lastBarcode));
                     } else {
                         product = state.getProduct();
                         if (getIntent().getBooleanExtra("compare_product", false)) {
@@ -264,6 +267,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         productShownInBottomView();
                         productNotFound.setVisibility(GONE);
+                        productNotFoundButton.setVisibility(GONE);
 
                         if (product.getProductName() == null || product.getProductName().equals("")) {
                             name.setText(R.string.productNameNull);
@@ -361,8 +365,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                             if (offlineSavedProduct != null) {
                                 showOfflineSavedDetails(offlineSavedProduct);
                             } else {
-                                productNotFound.setText(getString(R.string.addProductOffline, lastBarcode));
-                                productNotFound.setVisibility(VISIBLE);
+                                productNotFound(getString(R.string.addProductOffline, lastBarcode));
                             }
                             quickView.setOnClickListener(v -> navigateToProductAddition(lastBarcode));
                         } else {
@@ -433,13 +436,14 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         summaryProductPresenter.loadAnalysisTags();
     }
 
-    private void productNotFound(String lastText) {
+    private void productNotFound(String text) {
         hideAllViews();
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
-        String s = getString(R.string.product_not_found, lastText);
-        productNotFound.setText(s);
+        productNotFound.setText(text);
         productNotFound.setVisibility(VISIBLE);
+        productNotFoundButton.setVisibility(VISIBLE);
+        productNotFoundButton.setOnClickListener(v -> navigateToProductAddition(lastText));
     }
 
     private void productShownInBottomView() {
@@ -518,6 +522,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         novaGroup.setVisibility(GONE);
         co2Icon.setVisibility(GONE);
         productNotFound.setVisibility(GONE);
+        productNotFoundButton.setVisibility(GONE);
         imageProgress.setVisibility(GONE);
         txtProductCallToAction.setVisibility(GONE);
         productTags.setVisibility(GONE);
