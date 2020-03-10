@@ -50,8 +50,26 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         args.putString("icon_url", config.getIconUrl());
         args.putString("color", config.getColor());
         args.putString("name", config.getName().getName());
+        args.putString("ingredients_image_url", product.getImageIngredientsUrl());
+
         if (product.getIngredients() == null || product.getIngredients().isEmpty()) {
-            args.putBoolean("missing_ingredients", true);
+            final List<String> statesTags = product.getStatesTags();
+            boolean ingredientsToBeCompleted = false;
+            boolean photosToBeValidated = false;
+
+            for (String stateTag : statesTags) {
+                if (stateTag.equals("state:ingredients-to-be-completed")) {
+                    ingredientsToBeCompleted = true;
+                } else if (stateTag.equals("state:photos-to-be-validated")) {
+                    photosToBeValidated = true;
+                }
+            }
+
+            if (ingredientsToBeCompleted && photosToBeValidated) {
+                args.putBoolean("photos_to_be_validated", true);
+            } else {
+                args.putBoolean("missing_ingredients", true);
+            }
         } else {
             String showIngredients = config.getName().getShowIngredients();
             if (showIngredients != null) {
@@ -97,6 +115,24 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         return inflater.inflate(R.layout.ingredients_with_tag, container);
     }
 
+    private void goToAddPhoto() {
+        dismiss();
+        if (getActivity() instanceof ContinuousScanActivity) {
+            ((ContinuousScanActivity) getActivity()).showIngredientsTab("send_updated");
+        } else if (getActivity() instanceof ProductActivity) {
+            ((ProductActivity) getActivity()).showIngredientsTab("send_updated");
+        }
+    }
+
+    private void goToExtract() {
+        dismiss();
+        if (getActivity() instanceof ContinuousScanActivity) {
+            ((ContinuousScanActivity) getActivity()).showIngredientsTab("perform_ocr");
+        } else if (getActivity() instanceof ProductActivity) {
+            ((ProductActivity) getActivity()).showIngredientsTab("perform_ocr");
+        }
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -113,7 +149,6 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             String color = getArguments().getString("color");
             String name = getArguments().getString("name");
             String ingredients = getArguments().getString("ingredients");
-            boolean missingIngredients = getArguments().getBoolean("missing_ingredients", false);
 
             AppCompatImageView icon = getView().findViewById(R.id.icon);
             Picasso.get()
@@ -132,18 +167,32 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
 
             String messageStr = getString(R.string.ingredients_in_this_product_are, name.toLowerCase());
             AppCompatTextView helpNeeded = getView().findViewById(R.id.helpNeeded);
+            boolean showHelpTakePhoto = getArguments().getBoolean("photos_to_be_validated", false);
             boolean showHelpTranslate = tag != null && tag.contains("unknown");
-            boolean showHelpExtract = showHelpTranslate && missingIngredients;
-            if (showHelpExtract) {
+            boolean showHelpExtract = showHelpTranslate && getArguments().getBoolean("missing_ingredients", false);
+            AppCompatImageView image = getView().findViewById(R.id.image);
+            if (showHelpTakePhoto) {
                 messageStr = getString(R.string.unknown_status_missing_ingredients);
-                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_extract_ingredients, name.toLowerCase()) + "</u>"));
+                image.setImageResource(R.drawable.ic_add_a_photo_black_48dp);
+                image.setOnClickListener(v -> {
+                    goToAddPhoto();
+                });
+                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.add_photo_to_extract_ingredients) + "</u>"));
                 helpNeeded.setOnClickListener(v -> {
-                    dismiss();
-                    if (getActivity() instanceof ContinuousScanActivity) {
-                        ((ContinuousScanActivity) getActivity()).showIngredientsTab();
-                    } else if (getActivity() instanceof ProductActivity) {
-                        ((ProductActivity) getActivity()).showIngredientsTab();
-                    }
+                    goToAddPhoto();
+                });
+            } else if (showHelpExtract) {
+                String ingredientsImageUrl = getArguments().getString("ingredients_image_url");
+                Picasso.get()
+                    .load(ingredientsImageUrl)
+                    .into(image);
+                image.setOnClickListener(v -> {
+                    goToExtract();
+                });
+                messageStr = getString(R.string.unknown_status_missing_ingredients);
+                helpNeeded.setText(Html.fromHtml("<u>" + getString(R.string.help_extract_ingredients, typeName.toLowerCase()) + "</u>"));
+                helpNeeded.setOnClickListener(v -> {
+                    goToExtract();
                 });
                 helpNeeded.setVisibility(View.VISIBLE);
             } else if (showHelpTranslate) {
@@ -164,6 +213,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
                 });
                 helpNeeded.setVisibility(View.VISIBLE);
             } else {
+                image.setVisibility(View.GONE);
                 if (!TextUtils.isEmpty(ingredients)) {
                     messageStr = getString(R.string.ingredients_in_this_product, name.toLowerCase()) + ingredients;
                 }

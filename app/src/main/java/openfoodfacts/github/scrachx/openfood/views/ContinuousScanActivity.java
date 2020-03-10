@@ -901,10 +901,10 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         }
     }
 
-    public void showIngredientsTab() {
+    public void showIngredientsTab(String action) {
         if (bottomSheetBehavior != null) {
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         }
-        productFragment.goToIngredients();
+        productFragment.goToIngredients(action);
     }
 }
