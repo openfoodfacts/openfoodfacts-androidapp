@@ -729,6 +729,7 @@
     <string name="help_translate_ingredients">Ajude a traduzir os ingredientes no seu idioma</string>
     <string name="unknown_status_missing_ingredients">Não foi possível avaliar o estado do produto devido à falta de ingredientes.</string>
     <string name="help_extract_ingredients">Ajude a extrair os ingredientes para obter o estado %1$s.</string>
+    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">O produto já existe na lista de comparação</string>
     <string name="compare_brands">Marcas:</string>
     <string name="compare_additives">Aditivos :</string>
@@ -741,6 +742,7 @@
     <string name="load_ingredient_detection_data_summary">Nenhum dado de deteção de ingrediente foi encontrado, tente carregá-lo do servidor</string>
     <string name="white_check_image_descr">Um cheque branco</string>
     <string name="hint_packaging">Exemplos: plástico, papel, vidro</string>
+    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
