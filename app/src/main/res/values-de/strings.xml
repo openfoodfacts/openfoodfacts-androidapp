@@ -728,8 +728,8 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="unknown_status_no_translation">Open Food Facts konnte den Status des Produkts aufgrund nicht erkannter Inhaltsstoffe nicht beurteilen.</string>
     <string name="help_translate_ingredients">Helfen Sie mit, die Zutaten in Ihre Sprache zu übersetzen</string>
     <string name="unknown_status_missing_ingredients">Open Food Facts konnte den Status des Produkts aufgrund fehlender Inhaltsstoffe nicht beurteilen.</string>
-    <string name="help_extract_ingredients">Mithelfen, Zutaten zu erfassen, um den Status %1$s zu erhalten.</string>
-    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
+    <string name="help_extract_ingredients">Helfen Sie mit, Zutaten zu erfassen, um den Status %1$s zu erhalten</string>
+    <string name="add_photo_to_extract_ingredients">Fügen Sie ein Foto hinzu, um mit der Verarbeitung der Inhaltsstoffe zu beginnen</string>
     <string name="product_already_exists_in_comparison">Das Produkt ist bereits in der Vergleichsliste vorhanden</string>
     <string name="compare_brands">Marken:</string>
     <string name="compare_additives">Zusatzstoffe:</string>
@@ -742,7 +742,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="load_ingredient_detection_data_summary">Es wurden keine Daten zur Zutatenerkennung gefunden, versuchen Sie, diese vom Server zu laden</string>
     <string name="white_check_image_descr">Weißer Haken</string>
     <string name="hint_packaging">Beispiele: Kunststoff, Papier, Glas</string>
-    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="risk_alcohol_consumption">Übermäßiger Alkoholkonsum ist gesundheitsschädlich und sollte deshalb nur maßvoll konsumiert werden.</string>
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Grafiktyp auswählen</string>
