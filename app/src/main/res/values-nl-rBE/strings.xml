@@ -729,7 +729,7 @@
     <string name="help_translate_ingredients">Help de ingrediënten in uw taal te vertalen</string>
     <string name="unknown_status_missing_ingredients">We konden de status van het product niet beoordelen vanwege ontbrekende ingrediënten.</string>
     <string name="help_extract_ingredients">Help de ingrediënten te herkennen om de %1$s status te krijgen.</string>
-    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
+    <string name="add_photo_to_extract_ingredients">Voeg een foto toe om te beginnen met het extraheren van ingrediënten</string>
     <string name="product_already_exists_in_comparison">Het product staat al in de vergelijkingslijst</string>
     <string name="compare_brands">Merken :</string>
     <string name="compare_additives">Additieven</string>
@@ -742,7 +742,7 @@
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
-    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="risk_alcohol_consumption">Overmatig alcoholgebruik is schadelijk voor de gezondheid en moet met mate worden geconsumeerd</string>
     <string name="check_first_time">controleer_eerste_keer</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Selecteer Beeldtype</string>
