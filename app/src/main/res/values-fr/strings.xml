@@ -721,7 +721,7 @@
     <string name="tip_message">CONSEIL : %1$s </string>
     <string name="ingredient_analysis_tip">Cliquez sur les icônes ci-dessous pour en savoir plus sur le produit, et sélectionner les informations qui vous intéressent.</string>
     <string name="got_it">Compris !</string>
-    <string name="ingredients_in_this_product_are">Ingrédients de ce produit qui sont %1$s.</string>
+    <string name="ingredients_in_this_product_are">Les ingrédients de ce produit sont %1$s.</string>
     <string name="ingredients_in_this_product">Ingrédients de ce produit qui sont %1$s :</string>
     <string name="display_analysis_tag_status">Afficher le statut %1$s</string>
     <string name="preference_header_display">Afficher</string>
@@ -729,7 +729,7 @@
     <string name="help_translate_ingredients">Aidez à traduire les ingrédients dans votre langue</string>
     <string name="unknown_status_missing_ingredients">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients manquants.</string>
     <string name="help_extract_ingredients">Aidez à extraire les ingrédients pour obtenir le statut de %1$s.</string>
-    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
+    <string name="add_photo_to_extract_ingredients">Ajoutez une photo pour débuter l\'extraction des ingrédients</string>
     <string name="product_already_exists_in_comparison">Le produit existe déjà dans la liste de comparaison</string>
     <string name="compare_brands">Marques :</string>
     <string name="compare_additives">Additifs :</string>
@@ -742,7 +742,7 @@
     <string name="load_ingredient_detection_data_summary">Aucune donnée disponible pour les ingrédients analysés, essayez de les télécharger</string>
     <string name="white_check_image_descr">Un coche blanc</string>
     <string name="hint_packaging">Exemples: plastique, papier, verre</string>
-    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="risk_alcohol_consumption">L\'abus d’alcool est dangereux pour la santé, à consommer avec modération</string>
     <string name="check_first_time">vérifier_la_première_fois</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Sélectionnez le type d\'image</string>
