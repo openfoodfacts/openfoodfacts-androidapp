@@ -1,6 +1,11 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
-Upcoming:
+3.2.8
+
+3.2.5
+
+
+X.X.X
 - Fix for that nasty opening bug. Sorry about that.
 - Fix "Don't allow user to create multiple product lists with same name" (#2512)
 
