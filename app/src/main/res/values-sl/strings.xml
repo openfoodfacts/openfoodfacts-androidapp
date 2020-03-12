@@ -513,7 +513,7 @@
     <string name="preference_show_all_product_photos_summary">Pokaže vse poslane fotografije izdelka v ločenem zavihku</string>
     <string name="offline_product_addition_title">Dodaj nov izdelek</string>
     <string name="productNameNull">Neznano ime</string>
-    <string name="productAdditivesUnknown">Dodatki neznani</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d dodatkov</string>
     <plurals name="productAdditives">
         <item quantity="one">%d dodatek</item>
