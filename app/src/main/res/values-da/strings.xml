@@ -503,7 +503,7 @@
     <string name="preference_show_all_product_photos_summary">Vis alle indsendte produktfotos på en separat fane</string>
     <string name="offline_product_addition_title">Tilføj nyt produkt</string>
     <string name="productNameNull">Ukendt navn</string>
-    <string name="productAdditivesUnknown">Tilsætningsstoffer ukendt</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d tilsætningsstoffer</string>
     <plurals name="productAdditives">
         <item quantity="one">%d tilsætningsstof</item>
