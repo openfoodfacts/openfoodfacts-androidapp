@@ -503,7 +503,7 @@
     <string name="preference_show_all_product_photos_summary">Mostra totes les fotos enviades dels productes en una pestanya separada</string>
     <string name="offline_product_addition_title">Afegeix un nou producte</string>
     <string name="productNameNull">Nom desconegut</string>
-    <string name="productAdditivesUnknown">Es desconeixen els additius</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additius</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additive</item>
