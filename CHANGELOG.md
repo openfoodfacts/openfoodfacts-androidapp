@@ -2,8 +2,24 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 
 3.2.8
 
+NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-)
+Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
+Alert for alcoholic drinks
+Clearer addition card
+
 3.2.5
 
+Add support for ingredient detection
+
+3.2.3
+
+use a dedicated url  for static resources (#2799)
+
+* + Fix #2613
+
+* + Fix static url for image
+
+X.X.X
 
 X.X.X
 - Fix for that nasty opening bug. Sorry about that.
