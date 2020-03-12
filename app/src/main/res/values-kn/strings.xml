@@ -503,7 +503,7 @@
     <string name="preference_show_all_product_photos_summary">ಪ್ರತ್ಯೇಕ ಟ್ಯಾಬ್ನಲ್ಲಿ ಸಲ್ಲಿಸಿದ ಎಲ್ಲಾ ಉತ್ಪನ್ನ ಫೋಟೋಗಳನ್ನು ತೋರಿಸಿ</string>
     <string name="offline_product_addition_title">ಈ ಉತ್ಪನ್ನವನ್ನು ಸೇರಿಸಿ</string>
     <string name="productNameNull">ಹೆಸರು ತಿಳಿದಿಲ್ಲ</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additive</item>

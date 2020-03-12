@@ -498,7 +498,7 @@
     <string name="preference_show_all_product_photos_summary">個別のタブに、送信済のすべての製品の写真を表示します</string>
     <string name="offline_product_addition_title">新しい製品を追加</string>
     <string name="productNameNull">名前不明</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="other">%d additives</item>

@@ -518,7 +518,7 @@
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Ouzhpennañ ur produ nevez</string>
     <string name="productNameNull">Name unknown</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additive</item>

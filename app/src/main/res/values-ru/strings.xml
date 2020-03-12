@@ -513,7 +513,7 @@
     <string name="preference_show_all_product_photos_summary">Показать все отправленные фотографии продуктов на отдельной вкладке</string>
     <string name="offline_product_addition_title">Добавить новый продукт</string>
     <string name="productNameNull">Название неизвестно</string>
-    <string name="productAdditivesUnknown">Добавки неизвестны</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d добавок</string>
     <plurals name="productAdditives">
         <item quantity="one">%d добавка</item>

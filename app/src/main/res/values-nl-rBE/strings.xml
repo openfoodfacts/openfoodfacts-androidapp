@@ -503,7 +503,7 @@
     <string name="preference_show_all_product_photos_summary">Weergeef alle productfoto\'s in een apart tabblad</string>
     <string name="offline_product_addition_title">Voeg een nieuw product toe</string>
     <string name="productNameNull">Naam onbekend</string>
-    <string name="productAdditivesUnknown">Additieven onbekend</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additieven</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additieven</item>

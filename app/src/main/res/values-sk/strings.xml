@@ -513,7 +513,7 @@
     <string name="preference_show_all_product_photos_summary">Zobraziť všetky odoslané fotografie výrobkov na samostatnej karte</string>
     <string name="offline_product_addition_title">Pridať nový výrobok</string>
     <string name="productNameNull">Name unknown</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additive</item>

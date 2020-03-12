@@ -525,7 +525,7 @@
     <string name="preference_show_all_product_photos_summary">عرض جميع صور المنتجات التى تم تحميلها في تابه منفصلة</string>
     <string name="offline_product_addition_title">إضافة منتج جديد</string>
     <string name="productNameNull">الاسم غير معروف</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="zero">%d additives</item>

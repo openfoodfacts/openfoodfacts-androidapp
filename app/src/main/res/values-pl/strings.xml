@@ -534,7 +534,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="preference_show_all_product_photos_summary">Pokaż wszystkie przesłane zdjęcia produktów w oddzielnej karcie</string>
     <string name="offline_product_addition_title">Dodawanie nowego produktu</string>
     <string name="productNameNull">Nazwa nieznana</string>
-    <string name="productAdditivesUnknown">Nieznane dodatki</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d dodatków</string>
     <plurals name="productAdditives">
         <item quantity="one">%d dodatek</item>

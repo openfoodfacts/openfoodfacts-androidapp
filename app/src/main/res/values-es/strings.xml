@@ -503,7 +503,7 @@
     <string name="preference_show_all_product_photos_summary">Muestra todas las fotos del producto enviadas en una pestaña separada</string>
     <string name="offline_product_addition_title">Añadir un nuevo producto</string>
     <string name="productNameNull">Nombre desconocido</string>
-    <string name="productAdditivesUnknown">Aditivos desconocidos</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d aditivos</string>
     <plurals name="productAdditives">
         <item quantity="one">%d aditivos</item>

@@ -503,7 +503,7 @@
     <string name="preference_show_all_product_photos_summary">Az összes beküldött termékfénykép megjelenítése külön fülön</string>
     <string name="offline_product_addition_title">Új termék hozzáadása</string>
     <string name="productNameNull">Ismeretlen név</string>
-    <string name="productAdditivesUnknown">Ismeretlen adalékanyagok</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d adalékanyag</string>
     <plurals name="productAdditives">
         <item quantity="one">%d adalékanyag</item>

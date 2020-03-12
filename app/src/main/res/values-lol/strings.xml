@@ -503,7 +503,7 @@
     <string name="preference_show_all_product_photos_summary">crwdns114212:0crwdne114212:0</string>
     <string name="offline_product_addition_title">crwdns114214:0crwdne114214:0</string>
     <string name="productNameNull">crwdns114216:0crwdne114216:0</string>
-    <string name="productAdditivesUnknown">crwdns119452:0crwdne119452:0</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">crwdns119454:0%1$dcrwdne119454:0</string>
     <plurals name="productAdditives">
         <item quantity="one">crwdns119590:1%dcrwdne119590:1</item>

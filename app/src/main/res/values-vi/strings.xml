@@ -498,7 +498,7 @@
     <string name="preference_show_all_product_photos_summary">Hiển thị tất cả ảnh sản phẩm được gửi trong một tab riêng</string>
     <string name="offline_product_addition_title">Thêm sản phẩm mới</string>
     <string name="productNameNull">Tên không xác định</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="other">%d additives</item>
