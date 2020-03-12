@@ -503,7 +503,7 @@
     <string name="preference_show_all_product_photos_summary">ప్రత్యేక ట్యాబ్లో సమర్పించిన అన్ని ఉత్పత్తి ఫోటోలను చూపించు</string>
     <string name="offline_product_addition_title">క్రొత్త ఉత్పత్తిని జోడించండి</string>
     <string name="productNameNull">పేరు తెలియదు</string>
-    <string name="productAdditivesUnknown">Additives unknown</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additive</item>
