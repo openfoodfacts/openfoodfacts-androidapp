@@ -503,7 +503,7 @@
     <string name="preference_show_all_product_photos_summary">Ayrı bir sekmede gönderilen tüm ürün fotoğraflarını göster</string>
     <string name="offline_product_addition_title">Yeni bir ürün ekle</string>
     <string name="productNameNull">İsim bilinmiyor</string>
-    <string name="productAdditivesUnknown">Bilinmeyen katkı maddeleri</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d katkı maddesi</string>
     <plurals name="productAdditives">
         <item quantity="one">%d katkı maddesi</item>
