@@ -513,7 +513,7 @@
     <string name="preference_show_all_product_photos_summary">הצגת כל תמונות המוצר שהוגשו בלשונית נפרדת</string>
     <string name="offline_product_addition_title">הוספת מוצר חדש</string>
     <string name="productNameNull">שם לא ידוע</string>
-    <string name="productAdditivesUnknown">תוספים בלתי ידועים</string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d תוספים</string>
     <plurals name="productAdditives">
         <item quantity="one">תוסף אחד</item>
