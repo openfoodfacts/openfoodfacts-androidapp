@@ -1,8 +1,16 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.util.Log;
+
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.multidex.MultiDexApplication;
+
+import org.apache.commons.lang.ArrayUtils;
+import org.greenrobot.greendao.database.Database;
+import org.greenrobot.greendao.query.QueryBuilder;
+
+import java.io.IOException;
+
 import io.reactivex.exceptions.UndeliverableException;
 import io.reactivex.plugins.RxJavaPlugins;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -11,11 +19,6 @@ import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
-import org.apache.commons.lang.ArrayUtils;
-import org.greenrobot.greendao.database.Database;
-import org.greenrobot.greendao.query.QueryBuilder;
-
-import java.io.IOException;
 
 public class OFFApplication extends MultiDexApplication {
     public static DaoSession daoSession;
@@ -61,8 +64,10 @@ public class OFFApplication extends MultiDexApplication {
         } else {
             nameDB = "open_beauty_facts";
         }
-        DatabaseHelper helper = new DatabaseHelper(this, nameDB);
-        Database db = helper.getWritableDb();
+        Database db;
+        try (DatabaseHelper helper = new DatabaseHelper(this, nameDB)) {
+            db = helper.getWritableDb();
+        }
         daoSession = new DaoMaster(db).newSession();
 
         // DEBUG
