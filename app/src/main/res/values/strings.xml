@@ -1020,7 +1020,6 @@
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
-    <string name="categorytag_en_alcoholic_beverages" translatable="false">en:alcoholic-beverages</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
     <string name="check_first_time">check_first_time</string>
 
