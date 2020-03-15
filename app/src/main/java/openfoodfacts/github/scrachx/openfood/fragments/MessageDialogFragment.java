@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
@@ -15,6 +16,7 @@ public class MessageDialogFragment extends DialogFragment {
     private String mMessage;
     private MessageDialogListener mListener;
 
+    @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
         setRetainInstance(true);

@@ -5,37 +5,55 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnTextChanged;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.hootsuite.nachos.NachoTextView;
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 
 import java.io.File;
 import java.net.URI;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
@@ -83,7 +101,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     private OfflineSavedProduct mOfflineSavedProduct;
     private HashMap<String, String> productDetails = new HashMap<>();
     private String imagePath;
-    private boolean edit_product;
+    private boolean editProduct;
     private Product product;
     private boolean newImageSelected;
 
@@ -101,21 +119,20 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         photoReceiverHandler = new PhotoReceiverHandler(this);
         extractIngredients.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_compare_arrows_black_18dp, 0, 0, 0);
         final Intent intent = getActivity() == null ? null : getActivity().getIntent();
-        if (intent != null && intent.getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
-            if (!intent.getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
-                ((AddProductActivity) getActivity()).proceed();
-            }
+        if (intent != null && intent.getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false) && !intent
+            .getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
+            ((AddProductActivity) getActivity()).proceed();
         }
         Bundle b = getArguments();
         if (b != null) {
             mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            edit_product = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
+            editProduct = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
             if (product != null) {
                 code = product.getCode();
             }
-            if (edit_product && product != null) {
+            if (editProduct && product != null) {
                 code = product.getCode();
                 preFillProductValues();
             } else if (mOfflineSavedProduct != null) {
@@ -139,7 +156,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         if (ingredients.getText().toString().isEmpty() && getImageIngredients() != null && !getImageIngredients().isEmpty()) {
             extractIngredients.setVisibility(View.VISIBLE);
             imagePath = getImageIngredients();
-        } else if (edit_product && ingredients.getText().toString().isEmpty() && product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
+        } else if (editProduct && ingredients.getText().toString().isEmpty() && product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
             extractIngredients.setVisibility(View.VISIBLE);
         }
         loadAutoSuggestions();
@@ -354,7 +371,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     @OnClick(R.id.btn_extract_ingredients)
     void onClickExtractIngredients() {
         if (activity instanceof AddProductActivity) {
-            if (imagePath != null && (!edit_product || newImageSelected)) {
+            if (imagePath != null && (!editProduct || newImageSelected)) {
                 photoFile = new File(imagePath);
                 ProductImage image = new ProductImage(code, INGREDIENTS, photoFile);
                 image.setFilePath(imagePath);
@@ -429,7 +446,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void showImageProgress() {
-        if(!isAdded() || imageProgress==null){
+        if (!isAdded() || imageProgress == null) {
             return;
         }
         imageProgress.setVisibility(View.VISIBLE);
@@ -440,7 +457,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
-        if(!isAdded() || imageProgress==null){
+        if (!isAdded() || imageProgress == null) {
             return;
         }
         imageProgress.setVisibility(View.INVISIBLE);

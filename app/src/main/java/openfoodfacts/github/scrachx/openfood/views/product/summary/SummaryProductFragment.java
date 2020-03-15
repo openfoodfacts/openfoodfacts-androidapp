@@ -226,13 +226,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         refreshView(state);
     }
 
-
     @Override
     public void refreshView(State state) {
-        //no state-> we can't display anything.
+        // No state -> we can't display anything.
         if (state == null) {
             return;
         }
+
         super.refreshView(state);
         this.state = state;
         product = state.getProduct();
@@ -492,10 +492,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (showNutrientPrompt || showCategoryPrompt) {
             addNutriScorePrompt.setVisibility(View.VISIBLE);
             if (showNutrientPrompt && showCategoryPrompt) {
+                // Both true
                 addNutriScorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
             } else if (showNutrientPrompt) {
+                // showNutrientPrompt true
                 addNutriScorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
-            } else if (showCategoryPrompt) {
+            } else {
+                // showCategoryPrompt true
                 addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
             }
         } else {
@@ -511,16 +514,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showAdditivesState(String state) {
         getActivity().runOnUiThread(() -> {
-            switch (state) {
-                case LOADING: {
-                    additiveProduct.append(getString(R.string.txtLoading));
-                    additiveProduct.setVisibility(View.VISIBLE);
-                    break;
-                }
-                case EMPTY: {
-                    additiveProduct.setVisibility(View.GONE);
-                    break;
-                }
+            if (LOADING.equals(state)) {
+                additiveProduct.append(getString(R.string.txtLoading));
+                additiveProduct.setVisibility(View.VISIBLE);
+            } else if (EMPTY.equals(state)) {
+                additiveProduct.setVisibility(View.GONE);
             }
         });
     }
@@ -563,10 +561,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showCategories(List<CategoryName> categories) {
-        CategoryProductHelper categoryProductHelper = new CategoryProductHelper(categoryProduct,categories,this,apiClientForWikiData);
+        CategoryProductHelper categoryProductHelper = new CategoryProductHelper(categoryProduct, categories, this, apiClientForWikiData);
         categoryProductHelper.showCategories();
 
-        if(categoryProductHelper.getContainsAlcohol()){
+        if (categoryProductHelper.getContainsAlcohol()) {
             categoryProductHelper.showAlcoholAlert(categoryAlcoholAlert);
         }
     }
@@ -575,7 +573,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void showProductQuestion(Question question) {
         if (Utils.isUserLoggedIn(getContext()) && question != null && !question.isEmpty()) {
             productQuestion = question;
-            productQuestionText.setText(String.format("%s\n%s",
+            productQuestionText.setText(String.format("%s%n%s",
                 question.getQuestion(), question.getValue()));
             productQuestionLayout.setVisibility(View.VISIBLE);
             hasCategoryInsightQuestion = question.getInsightType().equals("category");
@@ -664,19 +662,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showCategoriesState(String state) {
         getActivity().runOnUiThread(() -> {
-            switch (state) {
-                case LOADING: {
-                    if (getContext() != null) {
-                        categoryProduct.append(getString(R.string.txtLoading));
-                    }
-                    break;
+            if (LOADING.equals(state)) {
+                if (getContext() != null) {
+                    categoryProduct.append(getString(R.string.txtLoading));
                 }
-                case EMPTY: {
-                    categoryProduct.setVisibility(View.GONE);
-                    break;
-                }
-                default:
-                    break;
+            } else if (EMPTY.equals(state)) {
+                categoryProduct.setVisibility(View.GONE);
             }
         });
     }
@@ -684,17 +675,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showLabelsState(String state) {
         getActivity().runOnUiThread(() -> {
-            switch (state) {
-                case LOADING: {
-                    labelProduct.append(getString(R.string.txtLoading));
-                    break;
-                }
-                case EMPTY: {
-                    labelProduct.setVisibility(View.GONE);
-                    break;
-                }
-                default:
-                    break;
+            if (LOADING.equals(state)) {
+                labelProduct.append(getString(R.string.txtLoading));
+            } else if (EMPTY.equals(state)) {
+                labelProduct.setVisibility(View.GONE);
             }
         });
     }
@@ -714,7 +698,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
         return embTag;
     }
-
 
     private CharSequence getLabelTag(LabelName label) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -897,10 +880,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             shouldRefresh = true;
         }
-        if (shouldRefresh) {
-            if (getActivity() instanceof ProductActivity) {
-                ((ProductActivity) getActivity()).onRefresh();
-            }
+        if (shouldRefresh && getActivity() instanceof ProductActivity) {
+            ((ProductActivity) getActivity()).onRefresh();
         }
         if (resultCode == RESULT_OK) {
             if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && isUserLoggedIn()) {
