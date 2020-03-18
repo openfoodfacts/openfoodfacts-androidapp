@@ -73,7 +73,6 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
         BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
 
     @OnClick(R.id.tvDailyFoodFact)
