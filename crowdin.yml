@@ -12,8 +12,8 @@ files:
         nl: nl
         zh-TW: zh-rTW
         zh-HK: zh-rHK
-        sr-CS: sr-Latn-CS
-        sr: sr-Cyrl
+        sr-CS: b+sr+Latn
+        sr: b+sr+Cyrl
         he: iw
         
   - source: /app/src/obf/res/values/strings.xml
@@ -29,8 +29,8 @@ files:
         nl: nl
         zh-HK: zh-rHK
         zh-TW: zh-rTW
-        sr-CS: sr-Latn-CS
-        sr: sr-Cyrl
+        sr-CS: b+sr+Latn
+        sr: b+sr+Cyrl
         he: iw
         
   - source: /app/src/off/res/values/strings.xml
@@ -45,8 +45,8 @@ files:
         pt-PT: pt-rPT
         zh-HK: zh-rHK
         zh-TW: zh-rTW
-        sr-CS: sr-Latn-CS
-        sr: sr-Cyrl
+        sr-CS: b+sr+Latn
+        sr: b+sr+Cyrl
         he: iw
         
   - source: /app/src/opff/res/values/strings.xml
@@ -61,8 +61,8 @@ files:
         pt-PT: pt-rPT
         zh-TW: zh-rTW
         zh-HK: zh-rHK
-        sr-CS: sr
-        sr-CS: sr-Latn-CS
+        sr-CS: b+sr+Latn
+        sr: b+sr+Cyrl
         sr: sr-Cyrl
         he: iw
 
@@ -78,8 +78,8 @@ files:
         pt-PT: pt-rPT
         zh-TW: zh-rTW
         zh-HK: zh-rHK
-        sr-CS: sr-Latn-CS
-        sr: sr-Cyrl
+        sr-CS: b+sr+Latn
+        sr: b+sr+Cyrl
         he: iw
 
   - source: /fastlane/metadata/android/en-US/off/long_description.txt
