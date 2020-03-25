@@ -4,6 +4,8 @@ package openfoodfacts.github.scrachx.openfood.network;
  * Created by Lobster on 03.03.18.
  */
 
+import java.util.List;
+
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.models.*;
 import retrofit2.http.GET;
@@ -22,6 +24,7 @@ public interface ProductApiService {
     String ANALYSIS_TAG_JSON = "data/taxonomies/ingredients_analysis.json";
     String ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json";
     String TAGS_JSON = "data/taxonomies/packager-codes.json";
+    String INVALID_BARCODES_JSON = "data/invalid-barcodes.json";
 
     @GET(LABELS_JSON)
     Single<LabelsWrapper> getLabels();
@@ -43,6 +46,9 @@ public interface ProductApiService {
 
     @GET(TAGS_JSON)
     Single<TagsWrapper> getTags();
+
+    @GET(INVALID_BARCODES_JSON)
+    Single<List<String>> getInvalidBarcodes();
 
     @GET("data/taxonomies/vitamins.json")
     Single<CategoriesWrapper> getVitamins();

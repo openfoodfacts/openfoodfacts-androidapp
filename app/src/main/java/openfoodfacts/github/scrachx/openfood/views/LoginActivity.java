@@ -5,16 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.TransitionDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import androidx.browser.customtabs.CustomTabsIntent;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -24,7 +20,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.snackbar.Snackbar;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -33,6 +35,7 @@ import java.net.HttpCookie;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -46,6 +49,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG;
 
 /**
  * A login screen that offers login via login/password.
@@ -55,16 +61,20 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
     @BindView(R.id.editTextLogin)
-    EditText loginView;
+    EditText fieldLogin;
     @BindView(R.id.editTextPass)
-    EditText passwordView;
+    EditText fieldPassword;
+
     @BindView(R.id.textInfoLogin)
     TextView infoLogin;
+
     @BindView(R.id.buttonSave)
-    Button save;
+    Button btnSave;
     @BindView(R.id.createaccount)
-    TextView createAccount;
+    TextView lbCreateAccount;
+
     @BindView(R.id.login_linearlayout)
     LinearLayout linearLayout;
 
@@ -108,23 +118,24 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
-        createAccount.setEnabled(true);
+        lbCreateAccount.setEnabled(true);
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString(getResources().getString(R.string.user), getResources().getString(R.string.txt_anonymous));
-        if (loginS.equals(getResources().getString(R.string.user))) {
+        if (loginS != null && loginS.equals(getResources().getString(R.string.user))) {
             new MaterialDialog.Builder(this)
-                    .title(R.string.log_in)
-                    .content(R.string.login_true)
-                    .neutralText(R.string.ok_button)
-                    .show();
+                .title(R.string.log_in)
+                .content(R.string.login_true)
+                .neutralText(R.string.ok_button)
+                .show();
         }
 
         apiClient = new Retrofit.Builder()
-                .baseUrl(BuildConfig.HOST)
-                .client(Utils.HttpClientBuilder())
-                .build()
-                .create(OpenFoodAPIService.class);
+            .baseUrl(BuildConfig.HOST)
+            .client(Utils.HttpClientBuilder())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+            .build()
+            .create(OpenFoodAPIService.class);
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -144,43 +155,37 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @OnClick(R.id.buttonSave)
     protected void attemptLogin() {
-        String login = loginView.getText().toString();
-        String password = passwordView.getText().toString();
+        String login = fieldLogin.getText().toString();
+        String password = fieldPassword.getText().toString();
         if (TextUtils.isEmpty(login)) {
-            loginView.setError(getString(R.string.error_field_required));
-            loginView.requestFocus();
+            fieldLogin.setError(getString(R.string.error_field_required));
+            fieldLogin.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(password)) {
-            passwordView.setError(getString(R.string.error_field_required));
-            passwordView.requestFocus();
+            fieldPassword.setError(getString(R.string.error_field_required));
+            fieldPassword.requestFocus();
             return;
         }
-        if (!(password.length() >= 6)) {
-            Toast.makeText(this,getText(R.string.error_invalid_password),Toast.LENGTH_SHORT).show();
-            passwordView.requestFocus();
+        if (password.length() < 6) {
+            Toast.makeText(this,getText(R.string.error_invalid_password), Toast.LENGTH_SHORT).show();
+            fieldPassword.requestFocus();
             return;
         }
 
         Snackbar snackbar = Snackbar
-                .make(linearLayout, R.string.toast_retrieving, Snackbar.LENGTH_LONG);
+                .make(linearLayout, R.string.toast_retrieving, LENGTH_LONG);
         snackbar.show();
 
-        final LoadToast lt = new LoadToast(this);
-        save.setClickable(false);
-        lt.setText(getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(ContextCompat.getColor(this, R.color.blue));
-        lt.setTextColor(ContextCompat.getColor(this, R.color.white));
-        lt.show();
+        btnSave.setClickable(false);
 
         final Activity context = this;
         apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-
                     Utils.hideKeyboard(context);
+                    Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -193,17 +198,23 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
                 SharedPreferences.Editor editor = context.getSharedPreferences("login", 0).edit();
 
-                if (htmlNoParsed == null || htmlNoParsed.contains("Incorrect user name or password.") || htmlNoParsed.contains("See you soon!")) {
+                if (htmlNoParsed == null
+                    || htmlNoParsed.contains("Incorrect user name or password.")
+                    || htmlNoParsed.contains("See you soon!")) {
 
                     Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
-                    passwordView.setText("");
-                    loginView.setText("");
+                    fieldPassword.setText("");
+
+                    infoLogin.setTextColor(getResources().getColor(R.color.red));
                     infoLogin.setText(R.string.txtInfoLoginNo);
-                    lt.hide();
+
+
+                    snackbar.dismiss();
+
                 } else {
                     // store the user session id (user_session and user_id)
                     for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
-                        //Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
+                        // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
                         if (BuildConfig.HOST.contains(httpCookie.getDomain()) && httpCookie.getPath().equals("/")) {
                             String[] cookieValues = httpCookie.getValue().split("&");
                             for (int i = 0; i < cookieValues.length; i++) {
@@ -213,7 +224,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                         }
                     }
                     Snackbar snackbar = Snackbar
-                            .make(linearLayout, R.string.connection, Snackbar.LENGTH_LONG);
+                            .make(linearLayout, R.string.connection, LENGTH_LONG);
 
                     snackbar.show();
 
@@ -221,6 +232,9 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     editor.putString("user", login);
                     editor.putString("pass", password);
                     editor.apply();
+
+
+                    infoLogin.setTextColor(getResources().getColor(R.color.green_500));
                     infoLogin.setText(R.string.txtInfoLoginOk);
 
                     setResult(RESULT_OK, new Intent());
@@ -232,14 +246,13 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-
                 Utils.hideKeyboard(context);
+                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 Log.e(getClass().getSimpleName(),"onFailure",t);
             }
         });
 
-        save.setClickable(true);
+        btnSave.setClickable(true);
     }
 
     @OnClick(R.id.createaccount)
@@ -257,13 +270,13 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @Override
     public void onCustomTabsConnected() {
-        createAccount.setEnabled(true);
+        lbCreateAccount.setEnabled(true);
     }
 
     @Override
     public void onCustomTabsDisconnected() {
         //TODO find out what do do with it
-        createAccount.setEnabled(false);
+        lbCreateAccount.setEnabled(false);
     }
 
     @Override
@@ -276,7 +289,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     protected void onStop() {
         super.onStop();
         customTabActivityHelper.unbindCustomTabsService(this);
-        createAccount.setEnabled(false);
+        lbCreateAccount.setEnabled(false);
     }
 
     @Override

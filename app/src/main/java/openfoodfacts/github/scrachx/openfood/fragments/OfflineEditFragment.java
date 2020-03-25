@@ -157,6 +157,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         // I kept that line although there was a conflict. Might be that it was deleted.
         BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
 
+
     }
 
     @OnClick(R.id.message_dismiss_icon)

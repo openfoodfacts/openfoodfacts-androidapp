@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
@@ -14,6 +13,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -66,13 +66,13 @@ import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
@@ -92,6 +92,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
     private HistoryProductDao mHistoryProductDao;
+    private InvalidBarcodeDao mInvalidBarcodeDao;
     @BindView(R.id.quick_view)
     LinearLayout quickView;
     @BindView(R.id.barcode_scanner)
@@ -116,6 +117,8 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     TextView progressText;
     @BindView(R.id.quickView_productNotFound)
     TextView productNotFound;
+    @BindView(R.id.quickView_productNotFoundButton)
+    Button productNotFoundButton;
     @BindView(R.id.quickView_image)
     ImageView productImage;
     @BindView(R.id.quickView_name)
@@ -159,15 +162,21 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     private int peekLarge;
     private int peekSmall;
     private boolean isAnalysisTagsEmpty = true;
-    private IProductRepository repository = ProductRepository.getInstance();
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
             handler.removeCallbacks(runnable);
-            if (result.getText() == null || result.getText().equals(lastText)) {
+            if (result.getText() == null || result.getText().isEmpty() || result.getText().equals(lastText)) {
                 // Prevent duplicate scans
                 return;
             }
+            InvalidBarcode invalidBarcode = mInvalidBarcodeDao.queryBuilder()
+                .where(InvalidBarcodeDao.Properties.Barcode.eq(result.getText())).unique();
+            if (invalidBarcode != null) {
+                // scanned barcode is in the list of invalid barcodes, do nothing
+                return;
+            }
+
             if (mRing) {
                 beepManager.playBeepSound();
             }
@@ -234,10 +243,14 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
                 @Override
                 public void onSuccess(State state) {
+                    //clear product tags
+                    isAnalysisTagsEmpty = true;
+                    productTags.setAdapter(null);
+
                     progressBar.setVisibility(GONE);
                     progressText.setVisibility(GONE);
                     if (state.getStatus() == 0) {
-                        productNotFound(lastBarcode);
+                        productNotFound(getString(R.string.product_not_found, lastBarcode));
                     } else {
                         product = state.getProduct();
                         if (getIntent().getBooleanExtra("compare_product", false)) {
@@ -264,6 +277,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         productShownInBottomView();
                         productNotFound.setVisibility(GONE);
+                        productNotFoundButton.setVisibility(GONE);
 
                         if (product.getProductName() == null || product.getProductName().equals("")) {
                             name.setText(R.string.productNameNull);
@@ -361,8 +375,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                             if (offlineSavedProduct != null) {
                                 showOfflineSavedDetails(offlineSavedProduct);
                             } else {
-                                productNotFound.setText(getString(R.string.addProductOffline, lastBarcode));
-                                productNotFound.setVisibility(VISIBLE);
+                                productNotFound(getString(R.string.addProductOffline, lastBarcode));
                             }
                             quickView.setOnClickListener(v -> navigateToProductAddition(lastBarcode));
                         } else {
@@ -433,13 +446,14 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         summaryProductPresenter.loadAnalysisTags();
     }
 
-    private void productNotFound(String lastText) {
+    private void productNotFound(String text) {
         hideAllViews();
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
-        String s = getString(R.string.product_not_found, lastText);
-        productNotFound.setText(s);
+        productNotFound.setText(text);
         productNotFound.setVisibility(VISIBLE);
+        productNotFoundButton.setVisibility(VISIBLE);
+        productNotFoundButton.setOnClickListener(v -> navigateToProductAddition(lastText));
     }
 
     private void productShownInBottomView() {
@@ -500,6 +514,8 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         imageProgress.setVisibility(VISIBLE);
         if (!isAnalysisTagsEmpty) {
             productTags.setVisibility(VISIBLE);
+        } else {
+            productTags.setVisibility(GONE);
         }
     }
 
@@ -516,6 +532,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         novaGroup.setVisibility(GONE);
         co2Icon.setVisibility(GONE);
         productNotFound.setVisibility(GONE);
+        productNotFoundButton.setVisibility(GONE);
         imageProgress.setVisibility(GONE);
         txtProductCallToAction.setVisibility(GONE);
         productTags.setVisibility(GONE);
@@ -658,6 +675,8 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
                         details.setVisibility(VISIBLE);
                         if (!isAnalysisTagsEmpty) {
                             productTags.setVisibility(VISIBLE);
+                        } else {
+                            productTags.setVisibility(GONE);
                         }
                         bottomNavigationView.setVisibility(VISIBLE);
                         if (productNotFound.getVisibility() != VISIBLE) {
@@ -670,6 +689,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         });
 
         mHistoryProductDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getHistoryProductDao();
+        mInvalidBarcodeDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getInvalidBarcodeDao();
         mOfflineSavedProductDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getOfflineSavedProductDao();
 
         sp = getSharedPreferences("camera", 0);
@@ -731,6 +751,8 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
             }
             return false;
         });
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.scan_bottom_nav);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
     }
 
@@ -895,10 +917,10 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
         }
     }
 
-    public void showIngredientsTab() {
+    public void showIngredientsTab(String action) {
         if (bottomSheetBehavior != null) {
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         }
-        productFragment.goToIngredients();
+        productFragment.goToIngredients(action);
     }
 }

@@ -60,6 +60,12 @@ public enum Taxonomy {
         public Single<List<Tag>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadTags(lastModifiedDate);
         }
+    },
+    INVALID_BARCODES(ProductApiService.INVALID_BARCODES_JSON) {
+        @Override
+        public Single<List<InvalidBarcode>> load(ProductRepository repository, long lastModifiedDate) {
+            return repository.loadInvalidBarcodes(lastModifiedDate);
+        }
     };
     public final String jsonUrl;
 

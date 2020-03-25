@@ -130,13 +130,15 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/action_buttons_layout"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:background="@color/white">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="8dp">
 
                 <LinearLayout
                     android:id="@+id/action_compare_button_layout"
                     style="@style/ActionButtonLayout"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toStartOf="@id/action_add_to_list_button_layout"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -155,7 +157,8 @@
                 <LinearLayout
                     android:id="@+id/action_add_to_list_button_layout"
                     style="@style/ActionButtonLayout"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toStartOf="@id/action_edit_button_layout"
                     app:layout_constraintStart_toEndOf="@id/action_compare_button_layout"
                     app:layout_constraintTop_toTopOf="parent">
@@ -174,7 +177,8 @@
                 <LinearLayout
                     android:id="@+id/action_edit_button_layout"
                     style="@style/ActionButtonLayout"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toStartOf="@id/action_share_button_layout"
                     app:layout_constraintStart_toEndOf="@id/action_add_to_list_button_layout"
                     app:layout_constraintTop_toTopOf="parent">
@@ -193,10 +197,9 @@
                 <LinearLayout
                     android:id="@+id/action_share_button_layout"
                     style="@style/ActionButtonLayout"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     app:layout_constrainedWidth="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/action_edit_button_layout"
                     app:layout_constraintTop_toTopOf="parent">
@@ -222,7 +225,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <openfoodfacts.github.scrachx.openfood.views.TipBox
                     android:id="@+id/tipBox"
@@ -237,11 +241,11 @@
                     android:id="@+id/analysis_tags"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@null"
                     android:layout_marginStart="@dimen/spacing_large"
                     android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:background="@null"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
@@ -254,61 +258,69 @@
                 android:id="@+id/scores_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:padding="8dp">
 
-                <ImageView
-                    android:id="@+id/imageGrade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:maxHeight="90dp"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toTopOf="@id/add_nutriscore_prompt"
-                    app:layout_constraintEnd_toStartOf="@id/nova_group"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/nnc_a" />
-
-                <ImageView
-                    android:id="@+id/nova_group"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="80dp"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toTopOf="@id/add_nutriscore_prompt"
-                    app:layout_constraintEnd_toStartOf="@id/co2_icon"
-                    app:layout_constraintStart_toEndOf="@id/imageGrade"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/ic_nova_group_1" />
-
-                <ImageView
-                    android:id="@+id/co2_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="60dp"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toTopOf="@id/add_nutriscore_prompt"
+                <LinearLayout
+                    android:id="@+id/grades_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/nova_group"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@drawable/ic_co2_high_24dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageGrade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:adjustViewBounds="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:maxHeight="90dp"
+                        android:scaleType="fitCenter"
+                        tools:src="@drawable/nnc_a"
+                        tools:visibility="visible" />
+
+                    <ImageView
+                        android:id="@+id/nova_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="80dp"
+                        android:scaleType="fitCenter"
+                        tools:src="@drawable/ic_nova_group_1"
+                        tools:visibility="visible" />
+
+                    <ImageView
+                        android:id="@+id/co2_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="60dp"
+                        android:scaleType="fitCenter"
+                        tools:srcCompat="@drawable/ic_co2_high_24dp" />
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/add_nutriscore_prompt"
-                    style="@style/BorderButton"
+                    style="@style/ButtonBorder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/spacing_normal"
+                    android:layout_marginTop="8dp"
                     android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/nova_group"
+                    app:layout_constraintTop_toBottomOf="@+id/grades_wrapper"
                     tools:text="@string/add_nutrition_facts_for_nutriscore"
                     tools:visibility="visible" />
 
@@ -324,7 +336,8 @@
                 android:orientation="horizontal"
                 android:paddingTop="@dimen/spacing_tiny"
                 android:paddingBottom="@dimen/spacing_tiny"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <ImageView
                     android:id="@+id/product_question_icon"
@@ -364,7 +377,7 @@
                         android:paddingRight="@dimen/spacing_tiny"
                         android:paddingBottom="@dimen/spacing_small"
                         android:text="@string/product_question_prompt"
-                        android:textColor="@android:color/darker_gray" />
+                        android:textColor="@color/grey_400" />
                 </LinearLayout>
 
                 <ImageView
@@ -491,6 +504,20 @@
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal"
                         tools:text="Packager codes: ..." />
+
+                    <TextView
+                        android:id="@+id/textCategoryAlcoholAlert"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textSize="@dimen/font_normal"
+                        />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -525,7 +552,7 @@
 
             <Button
                 android:id="@+id/buttonMorePictures"
-                style="@style/BorderButton"
+                style="@style/ButtonBorder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

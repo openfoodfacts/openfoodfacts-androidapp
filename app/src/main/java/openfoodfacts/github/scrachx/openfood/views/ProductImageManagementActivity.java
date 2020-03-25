@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.views.adapters.LanguageDataAdapter;
 import org.apache.commons.lang.StringUtils;
 import pl.aprilapps.easyphotopicker.EasyImage;
+import smartdevelop.ir.eram.showcaseviewlib.GuideView;
 
 import java.io.File;
 import java.util.*;
@@ -79,6 +81,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     private PhotoViewAttacher mAttacher;
     private OpenFoodAPIClient client;
     private File lastViewedImage;
+    private SharedPreferences settings;
     private static final List<ProductImageField> TYPE_IMAGE = Arrays.asList(ProductImageField.FRONT, ProductImageField.INGREDIENTS, ProductImageField.NUTRITION);
 
     @Override
@@ -86,6 +89,11 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         super.onCreate(savedInstanceState);
         client = new OpenFoodAPIClient(this);
         setContentView(R.layout.activity_full_screen_image);
+
+        settings = getSharedPreferences("prefs", 0);
+        if (settings.getBoolean(getString(R.string.check_first_time),true)) {
+            startShowCase(getString(R.string.title_image_type),getString(R.string.content_image_type),R.id.comboImageType,1);
+        }
 
         Intent intent = getIntent();
 
@@ -123,6 +131,45 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         comboImageType.setSelection(TYPE_IMAGE.indexOf(getSelectedType()));
         updateProductImagesInfo(null);
         onRefresh(false);
+    }
+
+    private void startShowCase(String title, String content, int viewId, final int type) {
+        new GuideView.Builder(this)
+            .setTitle(title)
+            .setContentText(content)
+            .setTargetView(findViewById(viewId))
+            .setContentTextSize(12)
+            .setTitleTextSize(16)
+            .setDismissType(GuideView.DismissType.outside)
+            .setGuideListener(view -> {
+                switch (type) {
+                    case 1:
+                        startShowCase(getString(R.string.title_choose_language), getString(R.string.content_choose_language), R.id.comboLanguages, 2);
+                        break;
+                    case 2:
+                        startShowCase(getString(R.string.title_add_photo), getString(R.string.content_add_photo), R.id.btnAddImage, 3);
+                        break;
+                    case 3:
+                        startShowCase(getString(R.string.title_choose_photo), getString(R.string.content_choose_photo), R.id.btnChooseImage, 4);
+                        break;
+                    case 4:
+                        startShowCase(getString(R.string.title_edit_photo), getString(R.string.content_edit_photo), R.id.btnEditImage, 5);
+                        break;
+                    case 5:
+                        startShowCase(getString(R.string.title_unselect_photo), getString(R.string.content_unselect_photo), R.id.btnUnselectImage, 6);
+                        break;
+                    case 6:
+                        startShowCase(getString(R.string.title_exit), getString(R.string.content_exit), R.id.btnClose, 7);
+                        break;
+                    case 7:
+                        SharedPreferences.Editor editor = settings.edit();
+                        editor.putBoolean(getString(R.string.check_first_time),false);
+                        editor.commit();
+                        break;
+                }
+            })
+            .build()
+            .show();
     }
 
     private List<String> generateImageTypeNames() {

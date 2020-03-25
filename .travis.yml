@@ -52,10 +52,10 @@ before_script:
   - echo y | sdkmanager --channel=4 "emulator" >/dev/null # Use canary channel to get emulator 29.x for x86_64 image support
   - echo y | sdkmanager "extras;android;m2repository" >/dev/null
   - echo y | sdkmanager "system-images;android-$API;$EMU_FLAVOR;$ABI" >/dev/null # install our emulator
-  - echo no | avdmanager create avd --force -n test -k "system-images;android-$API;$EMU_FLAVOR;$ABI" -c 10M
-  - emulator -verbose -avd test -no-accel -no-snapshot -no-window $AUDIO -selinux permissive -qemu -m 2048 &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
+  #- echo no | avdmanager create avd --force -n test -k "system-images;android-$API;$EMU_FLAVOR;$ABI" -c 10M
+  #- emulator -verbose -avd test -no-accel -no-snapshot -no-window $AUDIO -selinux permissive -qemu -m 2048 &
+  #- android-wait-for-emulator
+  #- adb shell input keyevent 82 &
 
 jobs:
  include:
@@ -70,22 +70,22 @@ jobs:
 
   - stage: test
     script:
-      - ./gradlew testObfDebugUnitTest connectedObfDebugAndroidTest assembleObfDebug --stacktrace
+      - ./gradlew testObfDebugUnitTest assembleObfDebug --stacktrace # removed "connectedObfDebugAndroidTest"
       - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
 
   - stage: test
     script:
-      - ./gradlew testOffDebugUnitTest connectedOffDebugAndroidTest assembleOffDebug --stacktrace
+      - ./gradlew testOffDebugUnitTest assembleOffDebug --stacktrace # removed "connectedOffDebugAndroidTest"
       - mv app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
 
   - stage: test
     script:
-      - ./gradlew testOpfDebugUnitTest connectedOpfDebugAndroidTest assembleOpfDebug --stacktrace
+      - ./gradlew testOpfDebugUnitTest assembleOpfDebug --stacktrace # removed "connectedOpfDebugAndroidTest"
       - mv app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
 
   - stage: test
     script:
-      - ./gradlew testOpffDebugUnitTest connectedOpffDebugAndroidTest assembleOpffDebug --stacktrace
+      - ./gradlew testOpffDebugUnitTest assembleOpffDebug --stacktrace # removed "connectedOpffDebugAndroidTest"
       - mv app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
 
 sudo: required

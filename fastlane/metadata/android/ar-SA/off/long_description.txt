@@ -1,11 +1,11 @@
 مسح المنتجات الغذائية أو الباركود للحصول على بيانات عن المكونات والمواد المضافة والحقائق الغذائية للمنتج.
 
-▶ Find & Compare more than 800.000 products
+البحث ومقارنة بين أكثر من 800,000 منتَجًا
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+يسمح التطبيق بعرض 800,000 منتجًا (من بينهم 175,000 في الولايات المتحدة) موجودًا بالفعل في قاعدة البيانات الحرة والمفتوحة Open Food Facts، ويسمح أيضًا بإضافة الصور والبيانات للمنتجات.
 
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+ﻻكتشاف مشروع Open Food Facts التطوعي، قم بزيارة موقعنا https://world.openfoodfacts.org
 
 ▶ Choose the products that are good for you
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
@@ -64,7 +64,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
 
-▶ Say hello and/or join us!
+◄ قُل "مرحبًا" و/أو انضم لنا!
 
 
 حقائق الغذاء المفتوحة متاحة أيضا على شبكة الإنترنت في https://world.openfoodfacts.org

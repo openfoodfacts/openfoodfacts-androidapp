@@ -15,6 +15,8 @@ public class AnalysisTagConfig {
     private Long id;
     private String analysisTag;
     private String type;
+    @Transient
+    private String typeName;
     private String icon;
     private String color;
     @Transient
@@ -95,5 +97,13 @@ public class AnalysisTagConfig {
 
     public void setName(AnalysisTagName name) {
         this.name = name;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public String getTypeName() {
+        return this.typeName;
     }
 }

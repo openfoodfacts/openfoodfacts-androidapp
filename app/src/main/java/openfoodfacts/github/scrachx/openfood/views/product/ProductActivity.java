@@ -10,16 +10,15 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
-
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.MenuItem;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -106,6 +105,8 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                 Utils.scan(ProductActivity.this);
             }
         });
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
     }
 
@@ -224,13 +225,20 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         }
     }
 
-    public void showIngredientsTab() {
+    public void showIngredientsTab(String action) {
         if (adapterResult == null || adapterResult.getCount() == 0) {
             return;
         }
         for (int i = 0; i < adapterResult.getCount(); ++i) {
-            if (adapterResult.getItem(i) instanceof IngredientsProductFragment) {
+            Fragment fragment = adapterResult.getItem(i);
+            if (fragment instanceof IngredientsProductFragment) {
                 viewPager.setCurrentItem(i);
+
+                if ("perform_ocr".equals(action)) {
+                    ((IngredientsProductFragment) fragment).extractIngredients();
+                } else if ("send_updated".equals(action)) {
+                    ((IngredientsProductFragment) fragment).change_ing_image();
+                }
                 return;
             }
         }

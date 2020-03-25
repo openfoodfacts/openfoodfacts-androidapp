@@ -36,6 +36,7 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,6 +48,7 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.FormatException;
@@ -108,8 +110,10 @@ import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryAct
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.workers.OfflineEditPendingProductsWorker;
 
+import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.OFFLINE_EDIT_PENDING_WORK_NAME;
 
@@ -122,6 +126,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String BARCODE_SHORTCUT = "BARCODE";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
+
     PrimaryDrawerItem primaryDrawerItem;
     private AccountHeader headerResult = null;
     private Drawer result = null;
@@ -149,6 +156,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         setContentView(R.layout.activity_main);
+
 
         final PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(OfflineEditPendingProductsWorker.class, 60, TimeUnit.MINUTES, 10, TimeUnit.MINUTES)
             .setConstraints(new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
@@ -194,6 +202,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
                 ()).commit();
+            bottomNavigationView.setSelectedItemId(R.id.home_page);
+            toolbar.setTitle(APP_NAME);
         }
 
         // chrome custom tab init
@@ -511,6 +521,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         //Scheduling background image upload job
         Utils.scheduleProductUploadJob(this);
 
+
+
         //Adds nutriscore and quantity values in old history for schema 5 update
         SharedPreferences mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
         boolean isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false);
@@ -518,6 +530,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             OpenFoodAPIClient apiClient = new OpenFoodAPIClient(this);
             apiClient.syncOldHistory();
         }
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
+        BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
+
 
         handleIntent(getIntent());
     }

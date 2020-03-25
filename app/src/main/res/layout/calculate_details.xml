@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails">
 
 
@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:theme="@style/Black_Back_Arrow"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/Black_Back_Arrow" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -30,23 +30,23 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/result_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/result_text_view"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:gravity="center"
-            android:paddingBottom="10dp"
-            android:textSize="15sp"
             android:maxLines="2"
-            />
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:textSize="15sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/nutriments_recycler_view_calc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listheader="@layout/nutrition_fact_header_new"
-            tools:listitem="@layout/nutriment_item_list"
             android:paddingBottom="60dp"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical"
+            tools:listheader="@layout/nutrition_fact_header_calc"
+            tools:listitem="@layout/nutriment_item_list" />
 
     </LinearLayout>
 </LinearLayout>

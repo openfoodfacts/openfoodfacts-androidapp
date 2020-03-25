@@ -31,23 +31,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding_normal"
         android:layout_marginLeft="@dimen/padding_normal"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:textSize="@dimen/font_normal"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/icon_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/icon_frame"
         app:layout_constraintTop_toTopOf="@id/icon_frame"
         tools:text="Non-Vegan" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/cb"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_large"
         android:checked="true"
         android:textSize="@dimen/font_small"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
-        tools:text="@string/preference_display_vegan_status" />
+        tools:text="Display vegan status" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/message"
@@ -55,27 +60,46 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_large"
         android:textSize="@dimen/font_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cb" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_large"
+        android:maxHeight="128dp"
+        android:scaleType="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/message" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/helpNeeded"
+        style="@style/ButtonBorder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/padding_large"
         android:text="@string/help_translate_ingredients"
         android:textSize="@dimen/font_small"
         android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/message" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/close"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        style="@style/ButtonBorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_normal"
         android:text="@string/close_button"
         android:textSize="@dimen/font_normal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/helpNeeded" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
