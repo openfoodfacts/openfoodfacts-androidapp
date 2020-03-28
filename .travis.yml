@@ -92,7 +92,7 @@ sudo: required
 
 notifications:
   email: false
-  slack: openfoodfacts:mXLLSlWjBKA9e03ELQ83rNvB
+  slack: $SLACK_KEY
   
 before_deploy:
    # no GIT tag for debug apk
