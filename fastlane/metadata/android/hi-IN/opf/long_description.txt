@@ -4,7 +4,7 @@ Open Food Facts सामग्री, एलर्जी, संकेत औ�
 
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. हमारे पास कई रोमांचक परियोजनाएं हैं जो आप कई अलग-अलग तरीकों से योगदान कर सकते हैं। 
 - You can start contributing today by adding your first product. 
 
 *** Get the Facts ***

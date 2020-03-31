@@ -114,7 +114,6 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
             DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration(dividerItemDecoration);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
 
     @OnClick(R.id.message_dismiss_icon)

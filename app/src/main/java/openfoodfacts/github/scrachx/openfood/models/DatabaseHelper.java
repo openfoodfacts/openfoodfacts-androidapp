@@ -11,7 +11,6 @@ import org.greenrobot.greendao.database.Database;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class DatabaseHelper extends DaoMaster.OpenHelper {
-
     private SharedPreferences settings;
 
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
@@ -25,7 +24,6 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
 
         settings = context.getSharedPreferences("prefs", 0);
     }
-
 
     @Override
     public void onCreate(Database db) {
@@ -42,8 +40,6 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
         }
 
         //db model has changed we need to invalidate and reload taxonomies
-
-
         if (settings != null && oldVersion != newVersion) {
             settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, true).apply();
         }
@@ -139,7 +135,6 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 YourListedProductDao.createTable(db, true);
                 break;
             }
-
             //12 -13 - 14 - issue with merge and bad numerotation
             case 15: {
                 IngredientDao.createTable(db, true);
@@ -151,6 +146,10 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 break;
             }
             case 16: {
+                InvalidBarcodeDao.createTable(db, true);
+                break;
+            }
+            case 17: {
                 DietDao.createTable(db,true);
                 DietNameDao.createTable(db,true);
                 DietIngredientsDao.createTable(db,true);

@@ -38,6 +38,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
     public void refreshData() {
         activateDownload(Taxonomy.CATEGORY);
         activateDownload(Taxonomy.TAGS);
+        activateDownload(Taxonomy.INVALID_BARCODES);
         activateDownload(Taxonomy.ADDITIVE, OFFApplication.OFF, OFFApplication.OBF);
         activateDownload(Taxonomy.COUNTRY, OFFApplication.OFF, OFFApplication.OBF);
         activateDownload(Taxonomy.LABEL, OFFApplication.OFF, OFFApplication.OBF);

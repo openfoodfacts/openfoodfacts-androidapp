@@ -3,7 +3,20 @@ package openfoodfacts.github.scrachx.openfood.repositories;
 import android.database.Cursor;
 import android.content.SharedPreferences;
 import android.util.Log;
+
 import com.squareup.picasso.Picasso;
+
+import org.greenrobot.greendao.AbstractDao;
+import org.greenrobot.greendao.database.Database;
+import org.greenrobot.greendao.query.WhereCondition;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.*;
@@ -12,15 +25,6 @@ import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
 import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import org.greenrobot.greendao.AbstractDao;
-import org.greenrobot.greendao.database.Database;
-
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * This is a repository class which implements repository interface.
@@ -38,6 +42,7 @@ public class ProductRepository implements IProductRepository {
     private LabelDao labelDao;
     private LabelNameDao labelNameDao;
     private TagDao tagDao;
+    private InvalidBarcodeDao invalidBarcodeDao;
     private AllergenDao allergenDao;
     private AllergenNameDao allergenNameDao;
     private AdditiveDao additiveDao;
@@ -80,6 +85,7 @@ public class ProductRepository implements IProductRepository {
         labelDao = daoSession.getLabelDao();
         labelNameDao = daoSession.getLabelNameDao();
         tagDao = daoSession.getTagDao();
+        invalidBarcodeDao = daoSession.getInvalidBarcodeDao();
         allergenDao = daoSession.getAllergenDao();
         allergenNameDao = daoSession.getAllergenNameDao();
         additiveDao = daoSession.getAdditiveDao();
@@ -129,6 +135,25 @@ public class ProductRepository implements IProductRepository {
             .doOnSuccess(tags -> {
                 saveTags(tags);
                 updateLastDownloadDateInSettings(Taxonomy.TAGS, lastModifiedDate);
+            });
+    }
+
+    public Single<List<InvalidBarcode>> reloadInvalidBarcodesFromServer() {
+        return getTaxonomyData(Taxonomy.INVALID_BARCODES, true, false, invalidBarcodeDao);
+    }
+
+    Single<List<InvalidBarcode>> loadInvalidBarcodes(long lastModifiedDate) {
+        return productApi.getInvalidBarcodes()
+            .map(strings -> {
+                List<InvalidBarcode> toSave = new ArrayList<>(strings.size());
+                for (String string : strings) {
+                    toSave.add(new InvalidBarcode(string));
+                }
+                return toSave;
+            })
+            .doOnSuccess(invalidBarcodes -> {
+                saveInvalidBarcodes(invalidBarcodes);
+                updateLastDownloadDateInSettings(Taxonomy.INVALID_BARCODES, lastModifiedDate);
             });
     }
 
@@ -322,7 +347,6 @@ public class ProductRepository implements IProductRepository {
         Log.i(TAG, "Set lastDownload of " + taxonomy + " to " + lastDownload);
     }
 
-
     /**
      * Labels saving to local database
      *
@@ -355,6 +379,16 @@ public class ProductRepository implements IProductRepository {
      */
     private void saveTags(List<Tag> tags) {
         tagDao.insertOrReplaceInTx(tags);
+    }
+
+    /**
+     * Invalid Barcodess saving to local database. Will clear all previous invalid barcodes stored before.
+     *
+     * @param invalidBarcodes The list of invalidBarcodes to be saved.
+     */
+    private void saveInvalidBarcodes(List<InvalidBarcode> invalidBarcodes) {
+        invalidBarcodeDao.deleteAll();
+        invalidBarcodeDao.insertOrReplaceInTx(invalidBarcodes);
     }
 
     /**
@@ -821,7 +855,6 @@ public class ProductRepository implements IProductRepository {
         return dao.count() == 0;
     }
 
-
     /**
      * Loads question from the local database by code and lang of question.
      *
@@ -924,29 +957,59 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    private void updateAnalysisTagConfig(final AnalysisTagConfig analysisTagConfig, String languageCode) {
+        if (analysisTagConfig != null) {
+            AnalysisTagName analysisTagName = analysisTagNameDao.queryBuilder()
+                .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.getAnalysisTag()),
+                    AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
+                .unique();
+            if (analysisTagName == null) {
+                analysisTagName = analysisTagNameDao.queryBuilder()
+                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.getAnalysisTag()),
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                    .unique();
+            }
+
+            analysisTagConfig.setName(analysisTagName);
+
+            String type = "en:" + analysisTagConfig.getType();
+            AnalysisTagName analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                    AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
+                .unique();
+            if (analysisTagTypeName == null) {
+                analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                    .unique();
+            }
+
+            analysisTagConfig.setTypeName(analysisTagTypeName != null ? analysisTagTypeName.getName() : analysisTagConfig.getType());
+        }
+    }
+
     @Override
     public Single<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode) {
         return Single.fromCallable(() -> {
             AnalysisTagConfig analysisTagConfig = analysisTagConfigDao.queryBuilder()
                 .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
                 .unique();
-
-            if (analysisTagConfig != null) {
-                AnalysisTagName analysisTagName = analysisTagNameDao.queryBuilder()
-                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTag),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
-                    .unique();
-                if (analysisTagName == null) {
-                    analysisTagName = analysisTagNameDao.queryBuilder()
-                        .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTag),
-                            AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
-                        .unique();
-                }
-
-                analysisTagConfig.setName(analysisTagName);
-            }
-
+            updateAnalysisTagConfig(analysisTagConfig, languageCode);
             return analysisTagConfig;
+        });
+    }
+
+    @Override
+    public Single<List<AnalysisTagConfig>> getUnknownAnalysisTagConfigsByLanguageCode(String languageCode) {
+        return Single.fromCallable(() -> {
+            List<AnalysisTagConfig> analysisTagConfigs = analysisTagConfigDao.queryBuilder()
+                .where(new WhereCondition.StringCondition(AnalysisTagConfigDao.Properties.AnalysisTag.columnName + " LIKE \"%unknown%\"")).list();
+
+            for (AnalysisTagConfig analysisTagConfig : analysisTagConfigs
+            ) {
+                updateAnalysisTagConfig(analysisTagConfig, languageCode);
+            }
+            return analysisTagConfigs;
         });
     }
 }

@@ -40,6 +40,7 @@ import org.greenrobot.greendao.query.WhereCondition;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -50,6 +51,8 @@ import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
@@ -242,7 +245,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
 
         if (BuildConfig.FLAVOR.equals("off")) {
-            buildDisplayCategory(daoSession);
+            new GetAnalysisTagConfigs(this).execute(daoSession);
         } else {
             PreferenceScreen preferenceScreen = getPreferenceScreen();
             PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
@@ -250,65 +253,56 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
     }
 
-    private void buildDisplayCategory(DaoSession daoSession) {
-        AsyncSession asyncSessionAnalysisTags = daoSession.startAsyncSession();
-        AnalysisTagConfigDao analysisTagConfigDao = daoSession.getAnalysisTagConfigDao();
-        asyncSessionAnalysisTags.setListenerMainThread(operation -> {
-            if (isAdded()) {
-                PreferenceScreen preferenceScreen = getPreferenceScreen();
-                PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
-                displayCategory.removeAll();
-                preferenceScreen.addPreference(displayCategory);
+    private void buildDisplayCategory(List<AnalysisTagConfig> configs) {
+        if (isAdded()) {
+            PreferenceScreen preferenceScreen = getPreferenceScreen();
+            PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+            displayCategory.removeAll();
+            preferenceScreen.addPreference(displayCategory);
+            // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
+            if (configs == null || configs.isEmpty()) {
+                Preference preference = new Preference(preferenceScreen.getContext());
+                preference.setTitle(R.string.load_ingredient_detection_data);
+                preference.setSummary(R.string.load_ingredient_detection_data_summary);
+                preference.setOnPreferenceClickListener(pref -> {
+                    pref.setOnPreferenceClickListener(null);
+                    //the service will load server resources only if newer than already downloaded...
+                    Intent intent = new Intent(context, LoadTaxonomiesService.class);
+                    intent.putExtra("receiver", new ResultReceiver(new Handler()) {
+                        @Override
+                        protected void onReceiveResult(int resultCode, Bundle resultData) {
+                            super.onReceiveResult(resultCode, resultData);
 
-                List<AnalysisTagConfig> analysisTagConfigs = (List<AnalysisTagConfig>) operation.getResult();
-                // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
-                if (analysisTagConfigs.isEmpty()) {
-                    Preference preference = new Preference(preferenceScreen.getContext());
-                    preference.setTitle(R.string.load_ingredient_detection_data);
-                    preference.setSummary(R.string.load_ingredient_detection_data_summary);
-                    preference.setOnPreferenceClickListener(pref -> {
-                        pref.setOnPreferenceClickListener(null);
-                        //the service will load server resources only if newer than already downloaded...
-                        Intent intent = new Intent(context, LoadTaxonomiesService.class);
-                        intent.putExtra("receiver", new ResultReceiver(new Handler()) {
-                            @Override
-                            protected void onReceiveResult(int resultCode, Bundle resultData) {
-                                super.onReceiveResult(resultCode, resultData);
-
-                                if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
-                                    preference.setTitle(R.string.please_wait);
-                                    preference.setIcon(R.drawable.ic_cloud_download_black_24dp);
-                                    preference.setSummary(null);
-                                    preference.setWidgetLayoutResource(R.layout.loading);
-                                } else {
-                                    buildDisplayCategory(daoSession);
-                                }
+                            if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
+                                preference.setTitle(R.string.please_wait);
+                                preference.setIcon(R.drawable.ic_cloud_download_black_24dp);
+                                preference.setSummary(null);
+                                preference.setWidgetLayoutResource(R.layout.loading);
+                            } else {
+                                new GetAnalysisTagConfigs(PreferencesFragment.this).execute(OFFApplication.getInstance().getDaoSession());
                             }
-                        });
-                        context.startService(intent);
-                        return true;
+                        }
                     });
-                    displayCategory.addPreference(preference);
-                } else {
-                    for (AnalysisTagConfig config :
-                        analysisTagConfigs) {
-                        CheckBoxPreference preference = new CheckBoxPreference(preferenceScreen.getContext());
-                        preference.setKey(config.getType());
-                        preference.setDefaultValue(true);
-                        preference.setSummary(null);
-                        preference.setSummaryOn(null);
-                        preference.setSummaryOff(null);
-                        preference.setTitle(getString(R.string.display_analysis_tag_status, config.getType()));
-                        displayCategory.addPreference(preference);
-                    }
-                }
+                    context.startService(intent);
+                    return true;
+                });
+                displayCategory.addPreference(preference);
+            } else {
+                for (AnalysisTagConfig config : configs) {
 
-                displayCategory.setVisible(true);
+                    CheckBoxPreference preference = new CheckBoxPreference(preferenceScreen.getContext());
+                    preference.setKey(config.getType());
+                    preference.setDefaultValue(true);
+                    preference.setSummary(null);
+                    preference.setSummaryOn(null);
+                    preference.setSummaryOff(null);
+                    preference.setTitle(getString(R.string.display_analysis_tag_status, config.getTypeName().toLowerCase()));
+                    displayCategory.addPreference(preference);
+                }
             }
-        });
-        asyncSessionAnalysisTags.queryList(analysisTagConfigDao.queryBuilder()
-            .where(new WhereCondition.StringCondition("1 GROUP BY type"))
-            .orderAsc(AnalysisTagConfigDao.Properties.Type).build());
+
+            displayCategory.setVisible(true);
+        }
     }
 
     private boolean openWebCustomTab(int faqUrl) {
@@ -343,6 +337,52 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             }
         } catch (NullPointerException e) {
             Log.e(getClass().getSimpleName(), "on resume error", e);
+        }
+    }
+
+    private static class GetAnalysisTagConfigs extends AsyncTask<DaoSession, Void, List<AnalysisTagConfig>> {
+        private WeakReference<PreferencesFragment> wRefFragment;
+        private String language;
+
+        GetAnalysisTagConfigs(PreferencesFragment fragment) {
+            this.wRefFragment = new WeakReference<>(fragment);
+            language = LocaleHelper.getLanguage(fragment.context);
+        }
+
+        @Override
+        protected List<AnalysisTagConfig> doInBackground(DaoSession... daoSession) {
+            AnalysisTagConfigDao analysisTagConfigDao = daoSession[0].getAnalysisTagConfigDao();
+            List<AnalysisTagConfig> analysisTagConfigs = analysisTagConfigDao.queryBuilder()
+                .where(new WhereCondition.StringCondition("1 GROUP BY type"))
+                .orderAsc(AnalysisTagConfigDao.Properties.Type).build().list();
+
+            AnalysisTagNameDao analysisTagNameDao = daoSession[0].getAnalysisTagNameDao();
+            for (AnalysisTagConfig config :
+                analysisTagConfigs) {
+                String type = "en:" + config.getType();
+                AnalysisTagName analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(language))
+                    .unique();
+                if (analysisTagTypeName == null) {
+                    analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                        .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                            AnalysisTagNameDao.Properties.LanguageCode.eq("en"))
+                        .unique();
+                }
+
+                config.setTypeName(analysisTagTypeName != null ? analysisTagTypeName.getName() : config.getType());
+            }
+            return analysisTagConfigs;
+        }
+
+        @Override
+        protected void onPostExecute(final List<AnalysisTagConfig> result) {
+            super.onPostExecute(result);
+            PreferencesFragment fragment = wRefFragment.get();
+            if (fragment != null) {
+                fragment.buildDisplayCategory(result);
+            }
         }
     }
 

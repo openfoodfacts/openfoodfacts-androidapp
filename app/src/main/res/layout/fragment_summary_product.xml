@@ -548,6 +548,20 @@
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal"
                         tools:text="Packager codes: ..." />
+
+                    <TextView
+                        android:id="@+id/textCategoryAlcoholAlert"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textSize="@dimen/font_normal"
+                        />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
