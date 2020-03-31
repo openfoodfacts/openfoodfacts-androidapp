@@ -398,15 +398,26 @@
     <string name="translate_help_title">Giúp dịch Open Food Facts</string>
     <string name="translate_help_summary">Mang cơ sở dữ liệu Sự Open Food Facts sang ngôn ngữ của bạn - không yêu cầu kiến ​​thức kỹ thuật</string>
     <string name="please_check_your_connection">Vui lòng kiểm tra kết nối của bạn.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Tìm kiếm nâng cao &amp; Biểu đồ</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Xin vui lòng kiểm tra kết nối Internet của bạn</string>
     <string name="dismiss">Dismiss</string>
     <string name="Terms">Điều khoản sử dụng</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://vn.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://vn.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world-vi.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Chung</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
@@ -453,9 +464,7 @@
     <string name="by_time">Đã xem gần đây</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Lớp dinh dưỡng</string>
-    <string name="sort_by">Sort by</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="sort_by">Xếp theo</string>
     <string name="shake_summary">Lắc điện thoại để quét sản phẩm</string>
     <string name="shake_title">Lắc để quét</string>
     <!-- strings related to share images -->
@@ -466,7 +475,7 @@
     <string name="code_detected">Chúng tôi đã phát hiện mã vạch</string>
     <string name="do_you_want_to">Bạn có muốn thêm ảnh vào mã vạch này không?</string>
     <string name="bottomNav_history">History</string>
-    <string name="products_added">Products you added or edited</string>
+    <string name="products_added">Các sản phẩm bạn đã thêm hoặc chỉnh sửa</string>
     <string name="products_incomplete">Các sản phẩm bạn đã thêm cần được hoàn thành</string>
     <string name="product_pictures_contributed">Sản phẩm bạn chụp ảnh cho</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
@@ -586,8 +595,6 @@
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
-    <string name="url_nova_groups">https://world-vi.openfoodfacts.org/nova-groups-for-food-processing</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Vui lòng đăng nhập để chỉnh sửa sản phẩm.</string>
     <string name="hint_quantity">Ví dụ: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Chỉnh sửa sản phẩm</string>
@@ -623,8 +630,6 @@
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Trích xuất thành phần</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
@@ -727,4 +732,8 @@
     <string name="compare_saturated_fat">Chất béo bão hòa</string>
     <string name="compare_fat">Fat</string>
     <string name="compare_quantity">Quantity :</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
+    <string name="hint_packaging">Examples: plastic, paper, glass</string>
 </resources>

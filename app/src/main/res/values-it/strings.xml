@@ -25,7 +25,7 @@
     <string name="action_discover">Scopri</string>
     <string name="contribute">Come contribuire</string>
     <string name="action_find">Trova</string>
-    <string name="product_incomplete_message">Questo prodotto non è completo. Non abbiamo quindi potuto controllare gli allergeni.</string>
+    <string name="product_incomplete_message">L\'elenco degli ingredienti di questo prodotto non è completo. Non abbiamo quindi potuto controllare gli allergeni.</string>
     <string name="product_allergen_prompt">Questo prodotto contiene:</string>
     <string name="no_offline_data">Fatto</string>
     <string name="first_offline">I prodotti aggiunti offline verranno visualizzati qui</string>
@@ -403,15 +403,26 @@
     <string name="translate_help_title">Aiuta a tradurre Open Food Facts</string>
     <string name="translate_help_summary">Porta il database di Open Food Facts nella tua lingua - non è richiesta alcuna conoscenza tecnica</string>
     <string name="please_check_your_connection">Controlla la connessione.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Ricerca avanzata &amp; grafici</string>
     <string name="compare_products">Compara prodotti</string>
     <string name="connectivity_check">Per favore controlla la tua connessione Internet</string>
     <string name="dismiss">Chiudi</string>
     <string name="Terms">Termini</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://it.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://it.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world-it.openfoodfacts.org/nova</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Generale</string>
     <string name="preference_header_network">Rete</string>
     <string name="preference_header_contributing">Contribuire</string>
@@ -459,8 +470,6 @@
     <string name="sort">Ordine</string>
     <string name="by_nutrition_grade">Grado-nutrizione</string>
     <string name="sort_by">Ordina per</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Scuoti il telefono per scansionare i prodotti</string>
     <string name="shake_title">Scuoti per scansionare</string>
     <!-- strings related to share images -->
@@ -592,8 +601,6 @@
     <string name="edit_nutrition_image">Modifica la foto nutrizionale</string>
     <string name="edit_ingredients_image">Modifica la foto degli ingredienti</string>
     <string name="edit_other_image">Modifica la foto</string>
-    <string name="url_nova_groups">https://world-it.openfoodfacts.org/nova</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Accedi per modificare un prodotto.</string>
     <string name="hint_quantity">Esempi: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Modifica un prodotto</string>
@@ -629,8 +636,6 @@
     <string name="max_nutrient_val_msg">Il valore inserito è maggiore del dato per porzione</string>
     <string name="update_image">Invia un\'immagine aggiornata</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
     <string name="add_nutrient_prompt_text">Aggiungi i dati nutrizionali per calcolare il punteggio-Nutri</string>
     <string name="add_category_prompt_text">Aggiungi una categoria per calcolare il punteggio-Nutri</string>
@@ -733,4 +738,8 @@
     <string name="compare_saturated_fat">Grassi saturi</string>
     <string name="compare_fat">Grassi</string>
     <string name="compare_quantity">Quantità:</string>
+    <string name="load_ingredient_detection_data">Carica i dati di rilevamento degli ingredienti</string>
+    <string name="load_ingredient_detection_data_summary">Non sono stati trovati dati di rilevamento degli ingredienti, prova a caricarli dal server</string>
+    <string name="white_check_image_descr">Una spunta bianca</string>
+    <string name="hint_packaging">Esempi: plastica, carta, vetro</string>
 </resources>

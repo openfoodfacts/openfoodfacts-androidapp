@@ -35,4 +35,9 @@
     <string name="product_not_found">crwdns114630:0%1$scrwdne114630:0</string>
     <string name="currently_on_version">crwdns114632:0crwdne114632:0</string>
     <string name="category_game_btn">crwdns114634:0crwdne114634:0</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">crwdns124533:0crwdne124533:0</string>
+    <string name="add_category_prompt_text">crwdns124535:0crwdne124535:0</string>
+    <string name="add_nutrient_category_prompt_text">crwdns124537:0crwdne124537:0</string>
+    <string name="required_to_compute_nutriscore"></string>
 </resources>

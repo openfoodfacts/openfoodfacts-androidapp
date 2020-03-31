@@ -403,15 +403,26 @@
     <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardımcı olun</string>
     <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize çevirin - teknik bilgi gerektirmez</string>
     <string name="please_check_your_connection">Bağlantınızı kontrol ediniz.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Gelişmiş Arama &amp; Grafikler</string>
     <string name="compare_products">Ürünleri karşılaştır</string>
     <string name="connectivity_check">İnternet bağlantınızı kontrol ediniz</string>
     <string name="dismiss">Yoksay</string>
     <string name="Terms">Kurallar</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://tr.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://tr.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://tr.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://tr.openfoodfacts.org/nova</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://tr.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Genel</string>
     <string name="preference_header_network">Ağ</string>
     <string name="preference_header_contributing">Katılım</string>
@@ -459,8 +470,6 @@
     <string name="sort">Sırala</string>
     <string name="by_nutrition_grade">Besin Derecesi</string>
     <string name="sort_by">Şuna göre sırala</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://tr.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Ürünleri taramak için telefonu sallayın</string>
     <string name="shake_title">Taramak için sallayın</string>
     <!-- strings related to share images -->
@@ -592,8 +601,6 @@
     <string name="edit_nutrition_image">Beslenme fotoğrafını düzenleyin</string>
     <string name="edit_ingredients_image">İçindekiler fotoğrafını düzenleyin</string>
     <string name="edit_other_image">Fotoğrafı düzenle</string>
-    <string name="url_nova_groups">https://tr.openfoodfacts.org/nova</string>
-    <string name="url_nutrient_values">https://tr.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Ürün düzenlemek için lütfen oturum açın.</string>
     <string name="hint_quantity">Örnekler: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Ürün düzenle</string>
@@ -629,8 +636,6 @@
     <string name="max_nutrient_val_msg">Girilen değer, bir porsiyon için belirtilenden daha fazla</string>
     <string name="update_image">Güncellenmiş Bir Resim Gönder</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">İçindekileri çıkartın</string>
     <string name="add_nutrient_prompt_text">Nutri-Score hesaplamak için besin değerlerini ekleyin</string>
     <string name="add_category_prompt_text">Nutri-Score hesaplamak için bir kategori ekleyin</string>
@@ -733,4 +738,8 @@
     <string name="compare_saturated_fat">Doymuş yağ</string>
     <string name="compare_fat">Yağ</string>
     <string name="compare_quantity">Miktar:</string>
+    <string name="load_ingredient_detection_data">İçindekiler algılama verilerini yükle</string>
+    <string name="load_ingredient_detection_data_summary">İçindekiler algılama verisi bulunamadı, sunucudan yüklemeyi deneyin</string>
+    <string name="white_check_image_descr">Beyaz tik işareti</string>
+    <string name="hint_packaging">Örnekler: plastik, kağıt, cam</string>
 </resources>

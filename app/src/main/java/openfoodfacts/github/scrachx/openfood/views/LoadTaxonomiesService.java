@@ -25,7 +25,7 @@ public class LoadTaxonomiesService extends IntentService {
     private ResultReceiver receiver;
     private Disposable disposable;
     public static final int STATUS_RUNNING = 0;
-    private static final int STATUS_FINISHED = 1;
+    public static final int STATUS_FINISHED = 1;
     public static final int STATUS_ERROR = 2;
 
     public LoadTaxonomiesService() {
@@ -45,7 +45,6 @@ public class LoadTaxonomiesService extends IntentService {
     }
 
     private void doTask() {
-
         final Consumer<Throwable> throwableConsumer = this::handleError;
         showLoading();
         List<SingleSource<?>> syncObservables = new ArrayList<>();
@@ -55,7 +54,7 @@ public class LoadTaxonomiesService extends IntentService {
         syncObservables.add(productRepository.reloadIngredientsFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadAnalysisTagConfigsFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadAnalysisTagsFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.relodCountriesFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadCountriesFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadAdditivesFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadCategoriesFromServer().subscribeOn(Schedulers.io()));
 

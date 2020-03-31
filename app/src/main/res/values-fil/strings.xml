@@ -403,15 +403,26 @@
     <string name="translate_help_title">Tulungang Isalin ang Mga Buksan na mga katotohanan sa pagkain</string>
     <string name="translate_help_summary">Dalhin ang database ng Buksan ang Mga Katotohanan sa Pagkain sa iyong wika - walang kinakailangang kaalaman sa teknikal</string>
     <string name="please_check_your_connection">Pakisuri sa koneksiyon ng iyong internet.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Masusing Paghahanap &amp; Chart</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Tingnan ang iyong Koneksyon sa internet</string>
     <string name="dismiss">Alisin</string>
     <string name="Terms">Mga alituntunin</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Panlahat</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Tumulong</string>
@@ -459,8 +470,6 @@
     <string name="sort">Uri</string>
     <string name="by_nutrition_grade">Marka ng nutrisyon</string>
     <string name="sort_by">Ayusin ayon sa</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">I-shake ang telepono upang masuri ang mga produkto</string>
     <string name="shake_title">Shake to scan</string>
     <!-- strings related to share images -->
@@ -592,8 +601,6 @@
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">I-edit ang produkto</string>
@@ -629,8 +636,6 @@
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
@@ -733,4 +738,8 @@
     <string name="compare_saturated_fat">Saturated na taba</string>
     <string name="compare_fat">Taba</string>
     <string name="compare_quantity">Quantity :</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
+    <string name="hint_packaging">Examples: plastic, paper, glass</string>
 </resources>

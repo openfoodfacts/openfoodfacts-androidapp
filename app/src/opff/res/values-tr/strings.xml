@@ -37,4 +37,8 @@
     <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Pet Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
     <string name="currently_on_version">Open Pet Food Facts\'te mevcut olan</string>
     <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">Besin ögesi seviyelerini hesaplamak için besin değerlerini ekleyin</string>
+    <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
+    <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve besin değerlerini ekleyin</string>
 </resources>

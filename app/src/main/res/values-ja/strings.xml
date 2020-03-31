@@ -398,15 +398,26 @@
     <string name="translate_help_title">Open Food Factsの翻訳を手伝う</string>
     <string name="translate_help_summary">Open Food Factsデータベースをあなたの言語に対応させます - 技術的な知識は必要ありません</string>
     <string name="please_check_your_connection">インターネット接続を確認して下さい</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">高度な検索 &amp; グラフ</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">インターネット接続を確認してください</string>
     <string name="dismiss">消去</string>
     <string name="Terms">利用規約</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">全般</string>
     <string name="preference_header_network">ネットワーク</string>
     <string name="preference_header_contributing">貢献</string>
@@ -454,8 +465,6 @@
     <string name="sort">並べ替え</string>
     <string name="by_nutrition_grade">栄養グレード</string>
     <string name="sort_by">並び替え</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">携帯電話を振って製品をスキャンします</string>
     <string name="shake_title">振ってスキャン</string>
     <!-- strings related to share images -->
@@ -586,8 +595,6 @@
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">商品を編集するにはログインしてください。</string>
     <string name="hint_quantity">例：2リットル、250リットル、1リットル、25リットル、6リットル、1ポンド</string>
     <string name="edit_product_title">製品を編集</string>
@@ -623,8 +630,6 @@
     <string name="max_nutrient_val_msg">入力された値が一食分量あたりの値を超えています</string>
     <string name="update_image">更新された画像を送信</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">原材料を抽出</string>
     <string name="add_nutrient_prompt_text">栄養成分を追加してニュートリスコアを計算する</string>
     <string name="add_category_prompt_text">カテゴリーを追加してニュートリスコアを計算する</string>
@@ -727,4 +732,8 @@
     <string name="compare_saturated_fat">飽和脂肪酸</string>
     <string name="compare_fat">脂肪</string>
     <string name="compare_quantity">Quantity :</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
+    <string name="hint_packaging">Examples: plastic, paper, glass</string>
 </resources>

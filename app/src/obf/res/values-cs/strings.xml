@@ -35,4 +35,9 @@
     <string name="product_not_found">Produkt %1$s, který jste naskenovali, ještě neexistuje v databázi Open Beauty Facts. Můžete jej prosím přidat?</string>
     <string name="currently_on_version">Currently on Open Beauty Facts</string>
     <string name="category_game_btn">Pomozte roztřídit produkty</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
+    <string name="required_to_compute_nutriscore"></string>
 </resources>

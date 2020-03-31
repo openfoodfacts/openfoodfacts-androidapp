@@ -403,15 +403,26 @@
     <string name="translate_help_title">ಆಹಾರದ ಸತ್ಯಗಳನ್ನು ತೆರೆಯಲು ಅನುವಾದಿಸಲು ಸಹಾಯ ಮಾಡಿ</string>
     <string name="translate_help_summary">ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಡೇಟಾಬೇಸ್ ಅನ್ನು ನಿಮ್ಮ ಭಾಷೆಗೆ ತರಲು - ಯಾವುದೇ ತಾಂತ್ರಿಕ ಜ್ಞಾನ ಅಗತ್ಯವಿಲ್ಲ</string>
     <string name="please_check_your_connection">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">ಸುಧಾರಿತ ಹುಡುಕಾಟ &amp; ಚಾರ್ಟ್ಗಳು</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ</string>
     <string name="dismiss">ವಜಾಮಾಡು</string>
     <string name="Terms">ನಿಯಮಗಳು</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">ಸಾಮಾನ್ಯ</string>
     <string name="preference_header_network">ನೆಟ್ವರ್ಕ್</string>
     <string name="preference_header_contributing">ಕೊಡುಗೆಗಳು</string>
@@ -459,8 +470,6 @@
     <string name="sort">ವಿಂಗಡಿಸಿ</string>
     <string name="by_nutrition_grade">ನ್ಯೂಟ್ರಿಷನ್ ಟೇಬಲ್</string>
     <string name="sort_by">Sort by</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಫೋನ್ ಅನ್ನು ಶೇಕ್ ಮಾಡಿ</string>
     <string name="shake_title">ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಶೇಕ್ ಮಾಡಿ</string>
     <!-- strings related to share images -->
@@ -592,8 +601,6 @@
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">ಉತ್ಪನ್ನವನ್ನು ಸಂಪಾದಿಸಲು ದಯವಿಟ್ಟು ಸೈನ್ ಇನ್ ಮಾಡಿ.</string>
     <string name="hint_quantity">ಉದಾಹರಣೆಗಳು: 2 ಎಲ್, 250 ಗ್ರಾಂ, 1 ಕೆಜಿ, 25 ಕ್ಲಾ, 6 ಫ್ಲ್ ಔಜ್, 1 ಪೌಂಡ್</string>
     <string name="edit_product_title">Edit a product</string>
@@ -629,8 +636,6 @@
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಿರಿ</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
@@ -733,4 +738,8 @@
     <string name="compare_saturated_fat">ಪರಿಷ್ಕರಿಸಿದ ಕೊಬ್ಬು</string>
     <string name="compare_fat">ಫ್ಯಾಟ್</string>
     <string name="compare_quantity">Quantity :</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
+    <string name="hint_packaging">Examples: plastic, paper, glass</string>
 </resources>

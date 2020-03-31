@@ -403,15 +403,26 @@
     <string name="translate_help_title">crwdns114006:0crwdne114006:0</string>
     <string name="translate_help_summary">crwdns115948:0crwdne115948:0</string>
     <string name="please_check_your_connection">crwdns114010:0crwdne114010:0</string>
-    <string name="donation_url">crwdns115724:0crwdne115724:0</string>
     <string name="advanced_search_title">crwdns114014:0crwdne114014:0</string>
     <string name="compare_products">crwdns115950:0crwdne115950:0</string>
     <string name="connectivity_check">crwdns114016:0crwdne114016:0</string>
     <string name="dismiss">crwdns114018:0crwdne114018:0</string>
     <string name="Terms">crwdns114020:0crwdne114020:0</string>
     <string name="TermsOfUse">crwdns114022:0crwdne114022:0</string>
+    <string name="donation_url">crwdns115724:0crwdne115724:0</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">crwdns114024:0crwdne114024:0</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">crwdns114026:0crwdne114026:0</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">crwdns115744:0crwdne115744:0</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">crwdns114144:0crwdne114144:0</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">crwdns124529:0crwdne124529:0</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">crwdns124531:0crwdne124531:0</string>
     <string name="preference_header_general">crwdns114030:0crwdne114030:0</string>
     <string name="preference_header_network">crwdns114032:0crwdne114032:0</string>
     <string name="preference_header_contributing">crwdns114036:0crwdne114036:0</string>
@@ -459,8 +470,6 @@
     <string name="sort">crwdns114138:0crwdne114138:0</string>
     <string name="by_nutrition_grade">crwdns114140:0crwdne114140:0</string>
     <string name="sort_by">crwdns115966:0crwdne115966:0</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">crwdns114144:0crwdne114144:0</string>
     <string name="shake_summary">crwdns114146:0crwdne114146:0</string>
     <string name="shake_title">crwdns114148:0crwdne114148:0</string>
     <!-- strings related to share images -->
@@ -592,8 +601,6 @@
     <string name="edit_nutrition_image">crwdns119468:0crwdne119468:0</string>
     <string name="edit_ingredients_image">crwdns119470:0crwdne119470:0</string>
     <string name="edit_other_image">crwdns119472:0crwdne119472:0</string>
-    <string name="url_nova_groups">crwdns114388:0crwdne114388:0</string>
-    <string name="url_nutrient_values">crwdns114390:0crwdne114390:0</string>
     <string name="sign_in_to_edit">crwdns114392:0crwdne114392:0</string>
     <string name="hint_quantity">crwdns114394:0crwdne114394:0</string>
     <string name="edit_product_title">crwdns114396:0crwdne114396:0</string>
@@ -629,8 +636,6 @@
     <string name="max_nutrient_val_msg">crwdns114458:0crwdne114458:0</string>
     <string name="update_image">crwdns114460:0crwdne114460:0</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">crwdns114488:0crwdne114488:0</string>
     <string name="add_nutrient_prompt_text">crwdns114490:0crwdne114490:0</string>
     <string name="add_category_prompt_text">crwdns114492:0crwdne114492:0</string>
@@ -732,4 +737,8 @@
     <string name="compare_saturated_fat">crwdns121772:0crwdne121772:0</string>
     <string name="compare_fat">crwdns121774:0crwdne121774:0</string>
     <string name="compare_quantity">crwdns121776:0crwdne121776:0</string>
+    <string name="load_ingredient_detection_data">crwdns124957:0crwdne124957:0</string>
+    <string name="load_ingredient_detection_data_summary">crwdns124959:0crwdne124959:0</string>
+    <string name="white_check_image_descr">crwdns124961:0crwdne124961:0</string>
+    <string name="hint_packaging">crwdns124963:0crwdne124963:0</string>
 </resources>

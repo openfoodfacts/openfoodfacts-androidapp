@@ -37,4 +37,8 @@
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Pet Food Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="currently_on_version">כרגע ב־Open Pet Food Facts</string>
     <string name="category_game_btn">סיוע בסיווג מוצרים</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">ניתן להוסיף עובדות תזונתיות כדי לחשב רמות הזנה</string>
+    <string name="add_category_prompt_text">ניתן להוסיף קטגוריה כדי לסייע בהשלמת תיעוד המוצר</string>
+    <string name="add_nutrient_category_prompt_text">ניתן להוסיף קטגוריה ועובדות תזונתיות כדי לסייע בהשלמת תיעוד המוצר</string>
 </resources>

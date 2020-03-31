@@ -35,4 +35,9 @@
     <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Beauty Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
     <string name="currently_on_version">Open Beauty Facts\'te mevcut olan</string>
     <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">Ürünü tamamlamaya yardım etmek için daha fazla ayrıntı ekleyin</string>
+    <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
+    <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve daha fazla ayrıntı ekleyin</string>
+    <string name="required_to_compute_nutriscore"></string>
 </resources>

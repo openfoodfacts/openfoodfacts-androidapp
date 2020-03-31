@@ -37,4 +37,8 @@
     <string name="product_not_found">Отсканированного продукта %1$s ещё нет в базе Open Products Facts. Вы можете добавить его?</string>
     <string name="currently_on_version">В настоящее время на Open Products Facts</string>
     <string name="category_game_btn">Помогите классифицировать продукты</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
 </resources>

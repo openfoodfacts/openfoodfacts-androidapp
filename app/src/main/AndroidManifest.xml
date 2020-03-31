@@ -124,6 +124,9 @@
                 android:value=".views.MainActivity" />
         </activity>
         <activity
+            android:name=".views.ProductComparisonActivity"
+            android:parentActivityName=".views.MainActivity" />
+        <activity
             android:name=".views.category.activity.CategoryActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".views.MainActivity">
@@ -197,8 +200,6 @@
             android:name=".views.ProductListsActivity"
             android:parentActivityName=".views.MainActivity" />
         <activity android:name=".views.YourListedProducts" />
-        <activity android:name=".views.ProductComparisonActivity" />
-
     </application>
 
 </manifest>

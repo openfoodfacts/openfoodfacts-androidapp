@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/toast_background_success"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_normal">
+
+    <!-- Don't remove android:src, otherwise some devices will not load the icon -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:contentDescription="@string/white_check_image_descr"
+        android:src="@drawable/ic_check_white_24dp"
+        android:visibility="visible"
+        app:srcCompat="@drawable/ic_check_white_24dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/product_uploaded_successfully"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:visibility="visible" />
+
+</LinearLayout>

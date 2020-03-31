@@ -106,6 +106,8 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                 Utils.scan(ProductActivity.this);
             }
         });
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
     }
 

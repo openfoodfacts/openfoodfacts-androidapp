@@ -394,7 +394,7 @@
     <string name="airplane_mode_active_dialog_negative">Zamítnout</string>
     <string name="airplane_mode_active_dialog_positive">Nastavení</string>
     <string name="device_offline_dialog_title">Síť není k dispozici</string>
-    <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
+    <string name="device_offline_dialog_message">K této akci je potřeba připojení k síti. Chcete provést změny v nastavení?</string>
     <string name="device_offline_dialog_negative">Zamítnout</string>
     <string name="device_offline_dialog_positive">Nastavení</string>
     <string name="scan_first_product">Skenovat první produkt</string>
@@ -413,15 +413,26 @@
     <string name="translate_help_title">Pomozte přeložit Open Food Facts</string>
     <string name="translate_help_summary">Přineste databázi Open Food Facts do vašeho jazyka - nejsou na to třeba žádné technické znalosti</string>
     <string name="please_check_your_connection">Zkontrolujte připojení k Internetu.</string>
-    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <string name="advanced_search_title">Rozšířené vyhledávání &amp; Grafy</string>
     <string name="compare_products">Porovnat výrobky</string>
     <string name="connectivity_check">Zkontrolujte připojení k internetu</string>
     <string name="dismiss">Zamítnout</string>
     <string name="Terms">Podmínky</string>
     <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world-cs.openfoodfacts.org/hunger-game</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world-cs.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Hlavní nastavení</string>
     <string name="preference_header_network">Síť</string>
     <string name="preference_header_contributing">Přispívání</string>
@@ -469,8 +480,6 @@
     <string name="sort">Řazení</string>
     <string name="by_nutrition_grade">Výživová hodnota</string>
     <string name="sort_by">Seřadit podle</string>
-    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world-cs.openfoodfacts.org/nutriscore</string>
     <string name="shake_summary">Pokud zatřesete telefonem, spustíte se skenování</string>
     <string name="shake_title">Zatřeste a skenujte</string>
     <!-- strings related to share images -->
@@ -570,7 +579,7 @@
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
     <string name="traces">Stopy</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
-    <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
+    <string name="nutrition_facts_not_specified">Výživové hodnoty nejsou na výrobku specifikovány.</string>
     <string name="nutrition_facts_picture">Snímek tabulky výživových údajů</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
@@ -604,8 +613,6 @@
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="sign_in_to_edit">Pro úpravu produktu se musíte přihlásit.</string>
     <string name="hint_quantity">Například: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 libra</string>
     <string name="edit_product_title">Upravit produkt</string>
@@ -641,8 +648,6 @@
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
-    <!-- Used for diets AddOn -->
-    <!-- End of used for diets AddOn -->
     <string name="extract_ingredients_prompt">Aut. rozpoznat složení</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
@@ -745,4 +750,8 @@
     <string name="compare_saturated_fat">Nasycené tuky</string>
     <string name="compare_fat">Tuky</string>
     <string name="compare_quantity">Quantity :</string>
+    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
+    <string name="white_check_image_descr">A white check</string>
+    <string name="hint_packaging">Examples: plastic, paper, glass</string>
 </resources>

@@ -20,10 +20,10 @@ Bạn có thể tìm thấy (dựa trên các chỉ dẫn có trên bao bì sả
 - thương hiệu, chất có thể gây dị ứng, nhãn ( hữu cơ, thuần chay...)
 - Chỉ dẫn trên dành cho các loại thức ăn cho chó ( loại khô & ướt), thức ăn cho mèo, thức ăn cho thỏ, rắn, cá, chim, ngựa và bất cứ loại thú cưng nào.
 
-*** Works well in any condition ***
+*** Hoạt động tốt trong mọi điều kiện ***
 - You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Ứng dụng chỉ nạp các thông tin cần thiết để giảm mức tiêu thụ dữ liệu và pin
+- Bạn không cần camera để tra cứu sản phẩm. Bạn cũng có thể nhập mã vạch nếu không có máy ảnh.
 
 *** Thức ăn thú cưng của bạn, dữ liệu của bạn ***
 - Đảm bảo dữ sự an toàn của dữ liệu cá nhân của bạn

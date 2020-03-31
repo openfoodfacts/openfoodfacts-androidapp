@@ -326,17 +326,11 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <include
+        layout="@layout/navigation_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:itemBackground="@color/blue_500"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/quick_view_layout"
-        app:menu="@menu/navigation_bottom" />
+        app:layout_constraintTop_toBottomOf="@id/quick_view_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -201,7 +201,7 @@ public class ProductRepository implements IProductRepository {
      *
      * @return The list of countries.
      */
-    public Single<List<Country>> relodCountriesFromServer() {
+    public Single<List<Country>> reloadCountriesFromServer() {
         return getTaxonomyData(Taxonomy.COUNTRY, true, false, countryDao);
     }
 
