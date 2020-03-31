@@ -714,7 +714,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="imageFullscreen">Vergrößern</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Schließen</string>
-    <string name="tip_message">TIP: %1$s </string>
+    <string name="tip_message">TIPP: %1$s </string>
     <string name="ingredient_analysis_tip">Klicken Sie auf die untenstehenden Symbole, um mehr über das Produkt zu erfahren und auszuwählen, für welche Informationen Sie sich interessieren.</string>
     <string name="got_it">Verstanden!</string>
     <string name="ingredients_in_this_product_are">Die Inhaltsstoffe in diesem Produkt sind %1$s.</string>
