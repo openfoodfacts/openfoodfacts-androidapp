@@ -742,10 +742,10 @@
     <string name="load_ingredient_detection_data_summary">Nenhum dado de deteção de ingrediente foi encontrado, tente carregá-lo do servidor</string>
     <string name="white_check_image_descr">Um cheque branco</string>
     <string name="hint_packaging">Exemplos: plástico, papel, vidro</string>
-    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
-    <string name="check_first_time">check_first_time</string>
+    <string name="risk_alcohol_consumption">O consumo excessivo de álcool é prejudicial à saúde e deve ser consumido com moderação</string>
+    <string name="check_first_time">verificar_primeira_vez</string>
     <!--ShowcaseView Strings-->
-    <string name="title_image_type">Select Image Type</string>
+    <string name="title_image_type">Escolha o tipo de imagem</string>
     <string name="content_image_type">Choose the photo to work on</string>
     <string name="title_choose_language">Select Language</string>
     <string name="content_choose_language">Select the language of the photo</string>
