@@ -2,7 +2,7 @@ Skenirajte prehrambene izdelke ali črtno kodo, da pridobite podatke o sestavina
 
 ▶ Poiščite in primerjajte več kot 800.000 izdelkov
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+Aplikacija omogoča ogled 800.000 izdelkov (vključno s 175.000 v ZDA), ki so že vsebovane v brezplačni in odprti zbirki podatkov Open Food Facts, lahko pa tudi dodate slike in podatke za manjkajoče izdelke.
 
 
 Če želite raziskati projekt Open Food Facts, obiščite https://world.openfoodfacts.org
@@ -10,7 +10,7 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 ▶ Izberite izdelke, ki so primerni za vas
 - Ocena Nutri-Score, od "A" do "E" >> Kakovost hranilne vrednosti
 - Skupina NOVA, od "1" do "4" >> Poiščite ultra obdelano hrano
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+- Z lahkoto lahko primerjate izdelke, ki jih želite, enega ob drugem, tako da jih preprosto skenirate. 
 
 ▶Dobro za naš planet!
 - Vpliv ogljika na hrano
@@ -26,8 +26,8 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 - Odprta dejstva o hrani je neprofitni projekt, ki ga je razvilo na tisoče prostovoljcev iz vsega sveta. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov.
 - Sodelujete lahko že danes, tako da dodate izdeleke iz vašega hladilnika.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+▶ Ustvarite sezname
+Ustvarite nakupovalne sezname, spremljajte, kaj ste pojedli, in jih preprosto delite in izvozite.
 
 ▶ Pridobite dejstva
 - Open Food Facts vam pomagajo razumeti smisel drobnega tiska na nalepkah izdelkov. Našli boste lahko:
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - Skupnost Open Food Facts sodeluje z raziskovalnimi skupinami po vsem svetu, da bi izboljšala raziskave o prehrani, ki koristijo vsem.
 
 
-▶ Offline Scan: skeniranje v vseh pogojih! (coming soon)
+▶ Offline Scan: skeniranje v vseh pogojih! (prihaja kmalu)
 Skenirajte s hitrostjo svetlobe (tudi če ste na letalu, podmornici ali v supermarketu)
 
 - Cel planet, v tvojem žepu!

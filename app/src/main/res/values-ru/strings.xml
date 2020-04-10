@@ -739,7 +739,7 @@
     <string name="preference_header_display">Показать</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Помогите перевести ингредиенты на ваш язык</string>
-    <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_missing_ingredients">Мы не смогли оценить состояние продукта из-за отсутствия ингредиентов.</string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">Продукт уже существует в списке сравнения</string>
@@ -758,7 +758,7 @@
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Выберите тип изображения</string>
-    <string name="content_image_type">Choose the photo to work on</string>
+    <string name="content_image_type">Выбрать фото для работы</string>
     <string name="title_choose_language">Выберите язык</string>
     <string name="content_choose_language">Выберите язык фото</string>
     <string name="title_add_photo">Добавить фото</string>
