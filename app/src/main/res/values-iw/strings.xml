@@ -741,7 +741,7 @@
     <string name="help_translate_ingredients">נשמח לקבל את עזרתך בתרגום הרכיבים לשפה שלך</string>
     <string name="unknown_status_missing_ingredients">לא הצלחנו להעריך את מצב המוצר עקב רכיבים חסרים.</string>
     <string name="help_extract_ingredients">סיוע בחילוץ הרכיבים לקבלת מצב %1$s.</string>
-    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
+    <string name="add_photo_to_extract_ingredients">יש להוסיף תמונה כדי להתחיל לחלץ רכיבים</string>
     <string name="product_already_exists_in_comparison">המוצר כבר קיים ברשימת ההשוואה</string>
     <string name="compare_brands">מותגים:</string>
     <string name="compare_additives">תוספים :</string>
@@ -754,7 +754,7 @@
     <string name="load_ingredient_detection_data_summary">לא נמצאו נתוני זיהוי רכיבים, כדאי לנסות לטעון אותם מהשרת</string>
     <string name="white_check_image_descr">סימון לבן</string>
     <string name="hint_packaging">דוגמאות: פלסטיק, נייר, זכוכית</string>
-    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="risk_alcohol_consumption">צריכה מופרזת של אלכוהול מסוכנת לבריאות, יש לצרוך בכמות מתונה</string>
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">בחירת סוג תמונה</string>

@@ -729,7 +729,7 @@
     <string name="help_translate_ingredients">Aiuta a tradurre gli ingredienti nella tua lingua</string>
     <string name="unknown_status_missing_ingredients">Non siamo riusciti a valutare lo stato del prodotto a causa di ingredienti mancanti.</string>
     <string name="help_extract_ingredients">Aiuta ad estrarre gli ingredienti per ottenere lo stato di %1$s.</string>
-    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
+    <string name="add_photo_to_extract_ingredients">Aggiungi una foto per iniziare ad estrarre gli ingredienti</string>
     <string name="product_already_exists_in_comparison">Il prodotto esiste già nell\'elenco di confronto</string>
     <string name="compare_brands">Marche:</string>
     <string name="compare_additives">Additivi:</string>

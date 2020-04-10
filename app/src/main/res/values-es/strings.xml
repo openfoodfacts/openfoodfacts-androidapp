@@ -746,17 +746,17 @@
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
-    <string name="content_image_type">Choose the photo to work on</string>
-    <string name="title_choose_language">Select Language</string>
-    <string name="content_choose_language">Select the language of the photo</string>
-    <string name="title_add_photo">Add Photo</string>
+    <string name="content_image_type">Elegir la foto trabajar en</string>
+    <string name="title_choose_language">Elegir idioma</string>
+    <string name="content_choose_language">Elegir el idioma de la foto</string>
+    <string name="title_add_photo">Añadir foto</string>
     <string name="content_add_photo">Press here to take a new photo</string>
-    <string name="title_choose_photo">Choose Photo</string>
-    <string name="content_choose_photo">Choose among existing photos</string>
-    <string name="title_edit_photo">Edit Photo</string>
-    <string name="content_edit_photo">Edit, crop and rotate the photo</string>
-    <string name="title_unselect_photo">Unselect Photo</string>
+    <string name="title_choose_photo">Elegir foto</string>
+    <string name="content_choose_photo">Elegir entre fotos existentes</string>
+    <string name="title_edit_photo">Editar foto</string>
+    <string name="content_edit_photo">Editar, recortar y rotar la foto</string>
+    <string name="title_unselect_photo">Desmarcar foto</string>
     <string name="content_unselect_photo">Press here to unselect current photo</string>
-    <string name="title_exit">Exit</string>
+    <string name="title_exit">Salir</string>
     <string name="content_exit">Press here to return to the product</string>
 </resources>
