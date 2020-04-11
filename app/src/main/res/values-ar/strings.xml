@@ -255,11 +255,11 @@
     <string name="prefs_language">اللغة</string>
     <string name="prefs_language_summary">تغيير اللغة</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
-    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
-    <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="user_enjoying_app">هل تستمتع بتجربتك مع Open Food Facts؟</string>
+    <string name="user_ask_show_feedback_form">نأسف لسماع ذلك! هل يمكنك إخبارنا بما حدث؟</string>
+    <string name="user_ask_rate_app">رائع! دع اﻷخرين يعرفون رأيك في هذا التطبيق!</string>
+    <string name="rate_app">قيِّم التطبيق</string>
+    <string name="no_thx">ﻻ، شكرًا</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">السجل</string>
     <string name="clear_history">محو السجل</string>
