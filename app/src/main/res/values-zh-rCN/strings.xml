@@ -227,6 +227,12 @@
     <string name="prefs_power_mode_summary">快速扫描超市中的商品，查看哪些产品不在数据库中。</string>
     <string name="prefs_language">语言</string>
     <string name="prefs_language_summary">更改语言</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
+    <string name="rate_app">Rate app</string>
+    <string name="no_thx">No thanks</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">历史记录</string>
     <string name="clear_history">清除历史记录</string>
