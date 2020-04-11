@@ -7,4 +7,10 @@
         android:title="@string/export_csv_history"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/action_sort_listed_products"
+        android:icon="@drawable/ic_sort_black_24dp"
+        android:title="@string/sort"
+        app:showAsAction="ifRoom" />
+
 </menu>
