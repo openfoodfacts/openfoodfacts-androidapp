@@ -232,6 +232,12 @@
     <string name="prefs_power_mode_summary">Mabilisang i-scan ang mga produkto sa isang supermarket upang makita kung alin ang wala sa database.</string>
     <string name="prefs_language">Wika</string>
     <string name="prefs_language_summary">Baguhin ang wika</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
+    <string name="rate_app">Rate app</string>
+    <string name="no_thx">No thanks</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Kasaysayan</string>
     <string name="clear_history">Linisin ang kasaysayan</string>
