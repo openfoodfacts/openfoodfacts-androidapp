@@ -232,6 +232,12 @@
     <string name="prefs_power_mode_summary">crwdns113618:0crwdne113618:0</string>
     <string name="prefs_language">crwdns113620:0crwdne113620:0</string>
     <string name="prefs_language_summary">crwdns113622:0crwdne113622:0</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">crwdns125382:0crwdne125382:0</string>
+    <string name="user_ask_show_feedback_form">crwdns125384:0crwdne125384:0</string>
+    <string name="user_ask_rate_app">crwdns125386:0crwdne125386:0</string>
+    <string name="rate_app">crwdns125388:0crwdne125388:0</string>
+    <string name="no_thx">crwdns125390:0crwdne125390:0</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">crwdns113624:0crwdne113624:0</string>
     <string name="clear_history">crwdns113626:0crwdne113626:0</string>
