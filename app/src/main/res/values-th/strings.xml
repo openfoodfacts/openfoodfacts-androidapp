@@ -228,6 +228,12 @@
     <string name="prefs_power_mode_summary">สแกนผลิตภัณฑ์อย่างรวดเร็วในซุปเปอร์มาร์เก็ตเพื่อดูว่าผลิตภัณฑ์ใดไม่อยู่ในฐานข้อมูล</string>
     <string name="prefs_language">ภาษา</string>
     <string name="prefs_language_summary">เปลี่ยนภาษา</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
+    <string name="rate_app">Rate app</string>
+    <string name="no_thx">No thanks</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">ประวัติการเข้าใช้</string>
     <string name="clear_history">ล้างประวัติการเข้าใช้งาน</string>

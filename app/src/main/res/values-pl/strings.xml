@@ -262,6 +262,12 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="prefs_power_mode_summary">Szybko skanuj produkty w supermarkecie by sprawdzić które z nich nie znajdują siew bazie danych.</string>
     <string name="prefs_language">Język</string>
     <string name="prefs_language_summary">Zmiana języka</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
+    <string name="rate_app">Rate app</string>
+    <string name="no_thx">No thanks</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historia</string>
     <string name="clear_history">Usuń historię</string>
