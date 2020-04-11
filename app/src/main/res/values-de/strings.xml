@@ -233,11 +233,11 @@
     <string name="prefs_language">Sprache</string>
     <string name="prefs_language_summary">Sprache ändern</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
-    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
-    <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="user_enjoying_app">Sind Sie mit Open Food Facts zufrieden?</string>
+    <string name="user_ask_show_feedback_form">Es tut uns leid, das zu hören! Könnten Sie uns die Gründe dafür nennen?</string>
+    <string name="user_ask_rate_app">Großartig! Lassen Sie andere wissen, was Sie von dieser App halten!</string>
+    <string name="rate_app">App bewerten</string>
+    <string name="no_thx">Nein, danke</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Verlauf</string>
     <string name="clear_history">Verlauf leeren</string>
