@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.hardware.Camera;
 import android.os.Bundle;
+
 import androidx.fragment.app.DialogFragment;
 
 import openfoodfacts.github.scrachx.openfood.R;
@@ -17,6 +18,7 @@ public class CameraSelectorDialogFragment extends DialogFragment {
     private int mCameraId;
     private CameraSelectorDialogListener mListener;
 
+    @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
         setRetainInstance(true);

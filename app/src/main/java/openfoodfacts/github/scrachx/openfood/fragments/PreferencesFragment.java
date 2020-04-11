@@ -155,14 +155,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             .orderAsc(CountryNameDao.Properties.Name).build());
 
         countryPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
-            if (preference instanceof ListPreference) {
-                if (preference.getKey().equals(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)) {
-                    String country = (String) newValue;
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putString(preference.getKey(), country);
-                    editor.apply();
-                    Toast.makeText(getContext(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
-                }
+            if (preference instanceof ListPreference &&
+                preference.getKey().equals(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)) {
+                String country = (String) newValue;
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString(preference.getKey(), country);
+                editor.apply();
+                Toast.makeText(getContext(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
             }
             return true;
         }));

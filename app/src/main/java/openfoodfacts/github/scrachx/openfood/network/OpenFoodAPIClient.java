@@ -8,10 +8,28 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.firebase.jobdispatcher.JobParameters;
+
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -25,7 +43,17 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
+import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
+import openfoodfacts.github.scrachx.openfood.models.Search;
+import openfoodfacts.github.scrachx.openfood.models.SendProduct;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
+import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -33,8 +61,6 @@ import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.Installation;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,17 +69,15 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.util.*;
-
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.*;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 
 public class OpenFoodAPIClient {
     public static final String TEXT_PLAIN = "text/plain";
     private static final String USER_ID = "user_id";
+    public static final String PNG_EXT = ".png\"";
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
     private OfflineUploadingTask task = new OfflineUploadingTask();
@@ -412,10 +436,9 @@ public class OpenFoodAPIClient {
 
                             @Override
                             public void onSuccess(JsonNode jsonNode) {
-                                if ("status ok".equals(jsonNode.get("status").asText())) {
-                                    if (imageUploadListener != null) {
-                                        imageUploadListener.onSuccess();
-                                    }
+                                if ("status ok".equals(jsonNode.get("status").asText())
+                                    && imageUploadListener != null) {
+                                    imageUploadListener.onSuccess();
                                 }
                             }
 
@@ -449,16 +472,16 @@ public class OpenFoodAPIClient {
         imgMap.put("code", image.getCode());
         imgMap.put("imagefield", image.getField());
         if (image.getImguploadFront() != null) {
-            imgMap.put("imgupload_front\"; filename=\"front_" + lang + ".png\"", image.getImguploadFront());
+            imgMap.put("imgupload_front\"; filename=\"front_" + lang + PNG_EXT, image.getImguploadFront());
         }
         if (image.getImguploadIngredients() != null) {
-            imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImguploadIngredients());
+            imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + PNG_EXT, image.getImguploadIngredients());
         }
         if (image.getImguploadNutrition() != null) {
-            imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
+            imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + PNG_EXT, image.getImguploadNutrition());
         }
         if (image.getImguploadOther() != null) {
-            imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
+            imgMap.put("imgupload_other\"; filename=\"other_" + lang + PNG_EXT, image.getImguploadOther());
         }
 
         // Attribute the upload to the connected user
@@ -494,20 +517,63 @@ public class OpenFoodAPIClient {
         void onProductSentResponse(boolean value);
     }
 
-    public interface onCountryCallback {
-        void onCountryResponse(boolean value, Search country);
+    public void getProductsByCountry(String country, final int page, final OnCountryCallback onCountryCallback) {
+        apiService.getProductsByCountry(country, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+                if (response.isSuccessful()) {
+                    onCountryCallback.onCountryResponse(true, response.body());
+                } else {
+                    onCountryCallback.onCountryResponse(false, null);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+
+                onCountryCallback.onCountryResponse(false, null);
+            }
+        });
     }
 
-    public interface onLabelCallback {
-        void onLabelResponse(boolean value, Search label);
+    public void getProductsByLabel(String label, final int page, final OnLabelCallback onLabelCallback) {
+        apiService.getProductByLabel(label, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+                if (response.isSuccessful()) {
+                    onLabelCallback.onLabelResponse(true, response.body());
+                } else {
+                    onLabelCallback.onLabelResponse(false, null);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+                onLabelCallback.onLabelResponse(false, null);
+            }
+        });
     }
 
-    public interface onCategoryCallback {
-        void onCategoryResponse(boolean value, Search category);
+    public void getProductsByCategory(String category, final int page, final OnCategoryCallback onCategoryCallback) {
+        apiService.getProductByCategory(category, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+                if (response.isSuccessful()) {
+                    onCategoryCallback.onCategoryResponse(true, response.body());
+                } else {
+                    onCategoryCallback.onCategoryResponse(false, null);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+                onCategoryCallback.onCategoryResponse(false, null);
+            }
+        });
     }
 
-    public interface onContributorCallback {
-        void onContributorResponse(boolean value, Search contributor);
+    public void getProductsByContributor(String contributor, final int page, final OnContributorCallback onContributorCallback) {
+        apiService.searchProductsByContributor(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
     public interface OnIngredientListCallback {
@@ -794,23 +860,22 @@ public class OpenFoodAPIClient {
         apiService.getProductsByManufacturingPlace(manufacturingPlace, page).enqueue(createStoreCallback(onStoreCallback));
     }
 
-    public void getProductsByCountry(String country, final int page, final onCountryCallback onCountryCallback) {
-        apiService.getProductsByCountry(country, page).enqueue(new Callback<Search>() {
+    private Callback<Search> createCallback(OnContributorCallback onContributorCallback) {
+        return new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
-                    onCountryCallback.onCountryResponse(true, response.body());
+                    onContributorCallback.onContributorResponse(true, response.body());
                 } else {
-                    onCountryCallback.onCountryResponse(false, null);
+                    onContributorCallback.onContributorResponse(false, null);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
-                onCountryCallback.onCountryResponse(false, null);
+                onContributorCallback.onContributorResponse(false, null);
             }
-        });
+        };
     }
 
     public void getProductsByAdditive(final String additive, final int page, final OnAdditiveCallback onAdditiveCallback) {
@@ -850,62 +915,20 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void getProductsByLabel(String label, final int page, final onLabelCallback onLabelCallback) {
-        apiService.getProductByLabel(label, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onLabelCallback.onLabelResponse(true, response.body());
-                } else {
-                    onLabelCallback.onLabelResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onLabelCallback.onLabelResponse(false, null);
-            }
-        });
+    public void getToBeCompletedProductsByContributor(String contributor, final int page, final OnContributorCallback onContributorCallback) {
+        apiService.getToBeCompletedProductsByContributor(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
-    public void getProductsByCategory(String category, final int page, final onCategoryCallback onCategoryCallback) {
-        apiService.getProductByCategory(category, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onCategoryCallback.onCategoryResponse(true, response.body());
-                } else {
-                    onCategoryCallback.onCategoryResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onCategoryCallback.onCategoryResponse(false, null);
-            }
-        });
+    public void getPicturesContributedProducts(String contributor, final int page, final OnContributorCallback onContributorCallback) {
+        apiService.getPicturesContributedProducts(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
-    public void getProductsByContributor(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.searchProductsByContributor(contributor, page).enqueue(createCallback(onContributorCallback));
+    public void getPicturesContributedIncompleteProducts(String contributor, final int page, final OnContributorCallback onContributorCallback) {
+        apiService.getPicturesContributedIncompleteProducts(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
-    private Callback<Search> createCallback(onContributorCallback onContributorCallback) {
-        return new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onContributorCallback.onContributorResponse(true, response.body());
-                } else {
-                    onContributorCallback.onContributorResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onContributorCallback.onContributorResponse(false, null);
-            }
-        };
+    public void getInfoAddedProducts(String contributor, final int page, final OnContributorCallback onContributorCallback) {
+        apiService.getInfoAddedProducts(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
     public interface OnIncompleteCallback {
@@ -931,24 +954,24 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void getToBeCompletedProductsByContributor(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.getToBeCompletedProductsByContributor(contributor, page).enqueue(createCallback(onContributorCallback));
-    }
-
-    public void getPicturesContributedProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.getPicturesContributedProducts(contributor, page).enqueue(createCallback(onContributorCallback));
-    }
-
-    public void getPicturesContributedIncompleteProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.getPicturesContributedIncompleteProducts(contributor, page).enqueue(createCallback(onContributorCallback));
-    }
-
-    public void getInfoAddedProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
-        apiService.getInfoAddedProducts(contributor, page).enqueue(createCallback(onContributorCallback));
-    }
-
-    public void getInfoAddedIncompleteProducts(String contributor, final int page, final onContributorCallback onContributorCallback) {
+    public void getInfoAddedIncompleteProducts(String contributor, final int page, final OnContributorCallback onContributorCallback) {
         apiService.getInfoAddedIncompleteProducts(contributor, page).enqueue(createCallback(onContributorCallback));
+    }
+
+    public interface OnCountryCallback {
+        void onCountryResponse(boolean value, Search country);
+    }
+
+    public interface OnLabelCallback {
+        void onLabelResponse(boolean value, Search label);
+    }
+
+    public interface OnCategoryCallback {
+        void onCategoryResponse(boolean value, Search category);
+    }
+
+    public interface OnContributorCallback {
+        void onContributorResponse(boolean value, Search contributor);
     }
 
     public interface onStateCallback {

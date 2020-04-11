@@ -6,19 +6,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.util.Log;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import android.util.Log;
+
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import java.io.File;
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
-
-import java.io.File;
-import java.util.List;
 
 public class PhotoReceiverHandler {
     private final PhotoReceiver photoReceiver;
@@ -44,7 +47,7 @@ public class PhotoReceiverHandler {
         final Context fragmentContext = fragment == null ? OFFApplication.getInstance() : fragment.getContext();
         final Context mainContext = activity == null ? fragmentContext : activity;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OFFApplication.getInstance());
-        final boolean cropActionEnabled = preferences == null ? true : preferences.getBoolean("cropNewImage", true);
+        final boolean cropActionEnabled = preferences == null || preferences.getBoolean("cropNewImage", true);
         EasyImage.handleActivityResult(requestCode, resultCode, data, mainActivity, new DefaultCallback() {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {

@@ -109,7 +109,7 @@ public class CategoryName {
         String res = this.wikiDataId;
         int startIndex = res.indexOf("en");
         startIndex= startIndex + 5;
-        int lastIndex = res.lastIndexOf("\"");
+        int lastIndex = res.lastIndexOf('\"');
         if(startIndex<3 || lastIndex < 3 ){
             return res;
         }
