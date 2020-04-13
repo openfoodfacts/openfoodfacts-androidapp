@@ -233,11 +233,11 @@
     <string name="prefs_language">Sprog</string>
     <string name="prefs_language_summary">Skift sprog</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
-    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
-    <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="user_enjoying_app">Synes du om din oplevelse med Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">Det er vi kede af at høre! Kan du fortælle os, hvad der skete?</string>
+    <string name="user_ask_rate_app">Storartet! Lad andre vide, hvad du synes om appen!</string>
+    <string name="rate_app">Bedøm appen</string>
+    <string name="no_thx">Nei takk</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historik</string>
     <string name="clear_history">Ryd historik</string>
