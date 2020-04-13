@@ -64,10 +64,9 @@ public class OFFApplication extends MultiDexApplication {
         } else {
             nameDB = "open_beauty_facts";
         }
-        Database db;
-        try (DatabaseHelper helper = new DatabaseHelper(this, nameDB)) {
-            db = helper.getWritableDb();
-        }
+        
+        DatabaseHelper helper = new DatabaseHelper(this, nameDB);
+        Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
 
         // DEBUG
