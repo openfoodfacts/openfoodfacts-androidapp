@@ -243,11 +243,11 @@
     <string name="prefs_language">שפה</string>
     <string name="prefs_language_summary">החלפת שפה</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
-    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
-    <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="user_enjoying_app">האם החוויה שלך עם Open Food Facts חיובית?</string>
+    <string name="user_ask_show_feedback_form">לא לנו לשמוע על כך! נוכל להבין ממך מה קרה?</string>
+    <string name="user_ask_rate_app">מצוין! אנו בטוחים שכולם ישמחו לשמוע מה דעתך על היישומון!</string>
+    <string name="rate_app">דירוג היישומון</string>
+    <string name="no_thx">לא, תודה</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">היסטוריה</string>
     <string name="clear_history">פינוי ההיסטוריה</string>
