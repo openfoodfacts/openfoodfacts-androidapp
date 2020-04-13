@@ -977,7 +977,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 .centerInside()
                 .into(binding.btnAddImageNutritionFacts);
         }
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     private class ValidTextWatcher implements TextWatcher, AdapterView.OnItemSelectedListener {

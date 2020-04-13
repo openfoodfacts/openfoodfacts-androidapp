@@ -482,7 +482,6 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
                 .centerInside()
                 .into(binding.btnAddImageIngredients);
         }
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     /**

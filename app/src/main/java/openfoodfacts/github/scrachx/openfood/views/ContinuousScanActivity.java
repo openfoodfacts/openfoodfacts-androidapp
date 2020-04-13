@@ -814,16 +814,10 @@ public class ContinuousScanActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            boolean uploadedToServer = data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, true);
-            if (uploadedToServer) {
-                findProduct(lastText, true);
-            } else {
-                // Not uploaded to server, saved locally
-                OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastText)).unique();
-                if (offlineSavedProduct != null) {
-                    hideAllViews();
-                    showOfflineSavedDetails(offlineSavedProduct);
-                }
+            OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastText)).unique();
+            if (offlineSavedProduct != null) {
+                hideAllViews();
+                showOfflineSavedDetails(offlineSavedProduct);
             }
         } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
