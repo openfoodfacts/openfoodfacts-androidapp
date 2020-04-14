@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
 def obtainTestBuildType() {
-    //to activate  screenshots buildType in IDE; uncomment next line and comment other
-    //otherwise the folder androidTestScreenshots is not recognized as a test folder.
-//    def result = "screenshots"
+    // To activate  screenshots buildType in IDE; uncomment next line and comment other
+    // otherwise the folder androidTestScreenshots is not recognized as a test folder.
+    // def result = "screenshots"
     def result = "debug"
     if (project.hasProperty("testBuildType")) {
         result = project.getProperties().get("testBuildType")
@@ -36,8 +36,9 @@ android {
         release {
             crunchPngs true
         }
-        screenshots{
+        screenshots {
             initWith debug
+            applicationIdSuffix = '.screenshots'
         }
 
 
@@ -60,7 +61,6 @@ android {
             buildConfigField 'String', 'STATICURL', '"https://static.openfoodfacts.org"'
 
         }
-
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
             resValue "string", "app_name", "OpenBeautyFacts"
