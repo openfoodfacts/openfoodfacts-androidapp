@@ -142,7 +142,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             swipeRefreshLayout.setRefreshing(false);
         });
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.history_bottom_nav);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
     }
 
@@ -508,6 +507,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     public void onResume() {
         super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.history_bottom_nav);
         if (scanOnShake) {
             //unregister the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);

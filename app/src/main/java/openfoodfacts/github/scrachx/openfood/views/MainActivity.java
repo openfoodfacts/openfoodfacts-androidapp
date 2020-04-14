@@ -197,7 +197,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
                 ()).commit();
-            bottomNavigationView.setSelectedItemId(R.id.home_page);
             toolbar.setTitle(APP_NAME);
         }
 
@@ -921,6 +920,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public void onResume() {
         super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
