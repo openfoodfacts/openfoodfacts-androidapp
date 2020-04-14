@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">Scan de producten ook als u offline bent, om ze later aan Open Pet Food Facts toe te voegen. De gescande producten verschijnen hier en u kunt ze verzenden via de onderstaande knop.</string>
     <string name="warning_alert_data">Uw allergieën-info wordt nooit naar de Open Food Facts-server verzonden. Let er ook op dat productgegevens mogelijk niet nauwkeurig zijn en detectie niet 100% nauwkeurig is, dus controleer het zelf! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="tagline">free pet food products database</string>
+    <string name="tagline">de open diervoeding-database</string>
     <string name="product_not_found">Product %1$s door jou gescand, bestaat nog niet. Wil je het toevoegen?</string>
     <string name="currently_on_version">Momenteel op Open Pet Food Facts</string>
     <string name="category_game_btn">Help producten te categoriseren</string>

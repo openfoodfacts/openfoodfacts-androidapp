@@ -157,7 +157,7 @@
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
-    <string name="txtSave">Save</string>
+    <string name="txtSave">Simpan</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt</string>
@@ -276,7 +276,7 @@
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="action_search">Gelintar</string>
-    <string name="search_hint">Search a product</string>
+    <string name="search_hint">Cari sesuatu produk</string>
     <string name="number_of_results">Number of results: </string>
     <string name="number_of_products">Number of products: </string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
@@ -480,7 +480,7 @@
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
     <string name="bottomNav_history">History</string>
-    <string name="products_added">Products you added or edited</string>
+    <string name="products_added">Produk yang anda tambah atau sunting</string>
     <string name="products_incomplete">Produk yang anda tambah yang perlu dilengkapkan</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
@@ -561,7 +561,7 @@
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
-    <string name="extracting_ingredients">Extracting ingredients</string>
+    <string name="extracting_ingredients">Mengekstrak ramuan</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
     <string name="traces">Traces</string>
@@ -574,13 +574,13 @@
     <string name="per_serving">Per serving</string>
     <string name="serving_size">Serving size</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Add a nutrient</string>
+    <string name="add_a_nutrient">Tambah nutrien</string>
     <string name="add_this_product">Add this product</string>
     <string name="product_picture">Product Picture</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
-    <string name="product_name">Product name</string>
-    <string name="quantity">Quantity</string>
+    <string name="product_name">Nama Produk</string>
+    <string name="quantity">Kuantiti</string>
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Tempoh masa selepas pembukaan</string>
     <string name="manufacturing_details">Manufacturing Details</string>
