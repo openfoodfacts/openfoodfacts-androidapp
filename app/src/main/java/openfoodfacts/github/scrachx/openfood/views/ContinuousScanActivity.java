@@ -558,6 +558,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     @Override
     protected void onResume() {
         super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.scan_bottom_nav);
         if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
             barcodeView.resume();
         }
@@ -752,7 +753,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
             return false;
         });
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.scan_bottom_nav);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
     }
 

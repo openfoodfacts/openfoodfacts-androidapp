@@ -87,7 +87,6 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
             }
         });
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.compare_products);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 
@@ -100,5 +99,12 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         photoReceiverHandler.onActivityResult(this,requestCode,resultCode,data);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.compare_products);
+
     }
 }
