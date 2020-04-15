@@ -99,34 +99,38 @@
             android:id="@+id/product_comparison_scores_layout"
             android:layout_width="match_parent"
             android:layout_height="85dp"
-            android:layout_below="@id/product_comparison_details_cv">
+            android:layout_below="@id/product_comparison_details_cv"
+            tools:visibility="visible">
 
             <ImageView
                 android:id="@+id/product_comparison_imageGrade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:adjustViewBounds="true"
                 android:maxWidth="180dp"
                 android:scaleType="fitCenter"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="4dp"
-                tools:src="@drawable/nnc_a"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="16dp"
-                android:layout_alignParentStart="true" />
+                tools:src="@drawable/nnc_a" />
 
             <ImageView
                 android:id="@+id/product_comparison_nova_group"
                 android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginLeft="@dimen/spacing_small"
                 android:layout_marginTop="@dimen/horizontal_margin"
                 android:layout_marginBottom="@dimen/horizontal_margin"
-                android:layout_marginLeft="@dimen/spacing_small"
+                android:layout_toEndOf="@id/product_comparison_imageGrade"
+                android:layout_toRightOf="@id/product_comparison_imageGrade"
                 android:paddingStart="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="@dimen/spacing_small"
@@ -134,35 +138,33 @@
                 android:paddingRight="@dimen/spacing_small"
                 android:paddingBottom="@dimen/spacing_small"
                 android:scaleType="fitCenter"
-                android:layout_toRightOf="@id/product_comparison_imageGrade"
-                tools:src="@drawable/ic_nova_group_1"
-                android:layout_marginStart="@dimen/spacing_small"
-                android:layout_toEndOf="@id/product_comparison_imageGrade" />
+                tools:src="@drawable/ic_nova_group_1" />
 
             <ImageView
                 android:id="@+id/product_comparison_co2_icon"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/product_comparison_nova_group"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/spacing_tiny"
                 android:layout_marginRight="@dimen/spacing_tiny"
+                android:layout_toEndOf="@id/product_comparison_nova_group"
+                android:layout_toRightOf="@id/product_comparison_nova_group"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/ic_co2_high_24dp"
-                android:layout_toEndOf="@id/product_comparison_nova_group" />
+                tools:srcCompat="@drawable/ic_co2_high_24dp" />
 
         </RelativeLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/product_comparison_nutrient_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/product_comparison_nutrient_cv"
-            android:layout_marginBottom="2dp"
-            android:layout_marginRight="2dp"
+            android:layout_below="@id/product_comparison_scores_layout"
             android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
             app:cardElevation="4dp"
-            android:layout_below="@id/product_comparison_scores_layout">
+            tools:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -174,8 +176,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
                     android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
                     android:background="@drawable/textview_full"
                     android:padding="@dimen/spacing_small"
                     android:text="@string/no_nutrient_information_available_for_this_product"
@@ -187,17 +189,18 @@
                     android:id="@+id/product_comparison_listNutrientLevels"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:visibility="gone"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
                     android:layout_marginLeft="@dimen/spacing_normal"
                     android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
                     android:background="@drawable/textview_full"
                     android:divider="@color/white"
-                    tools:listitem="@layout/nutrient_lvl_list_item"
                     android:dividerHeight="0dp"
                     android:padding="@dimen/spacing_small"
                     android:paddingBottom="60dp"
-                    android:scrollbars="vertical" />
+                    android:scrollbars="vertical"
+                    android:visibility="gone"
+                    tools:listitem="@layout/nutrient_lvl_list_item"
+                    tools:visibility="visible" />
 
             </LinearLayout>
 
