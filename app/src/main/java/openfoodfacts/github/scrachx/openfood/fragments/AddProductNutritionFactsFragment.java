@@ -280,12 +280,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     /**
      * Load the nutrition image uploaded form AddProductActivity
-     * */
+     */
     public void loadNutritionImage() {
         if (getAddProductActivity() == null) {
             return;
         }
-        photoFile=null;
+        photoFile = null;
         final String newImageNutritionUrl = product.getImageNutritionUrl(getAddProductActivity().getProductLanguageForEdition());
         if (newImageNutritionUrl != null && !newImageNutritionUrl.isEmpty()) {
             imageProgress.setVisibility(View.VISIBLE);
@@ -398,8 +398,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     /**
      * lads nutrition image into the ImageView
+     *
      * @param path path of the image
-     * */
+     */
     private void loadNutritionsImage(String path) {
         Picasso.get()
             .load(path)
@@ -678,7 +679,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (servingSize.getText()==null || servingSize.getText().toString().isEmpty()) {
+                if (servingSize.getText() == null || servingSize.getText().toString().isEmpty()) {
                     targetMap.put(PARAM_SERVING_SIZE, "");
                 } else {
                     String servingSizeValue = this.servingSize.getText().toString() + ObjectUtils.toString(this.servingSize.getAttachedSpinner().getSelectedItem());
@@ -716,7 +717,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 } else if (isDataPerServing()) {
                     targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (servingSize.getText()!=null && !servingSize.getText().toString().isEmpty()) {
+                if (servingSize.getText() != null && !servingSize.getText().toString().isEmpty()) {
                     String servingSizeValue = this.servingSize.getText().toString() + ObjectUtils.toString(this.servingSize.getAttachedSpinner().getSelectedItem().toString());
                     targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
                 }
@@ -724,7 +725,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                     if (servingSize.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
-                    if (editTextView.getText()!=null && !editTextView.getText().toString().isEmpty()) {
+                    if (editTextView.getText() != null && !editTextView.getText().toString().isEmpty()) {
                         addNutrientToMap(editTextView, targetMap);
                     }
                 }
@@ -734,9 +735,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     /**
      * Add nutients to the map by from the text enetered into EditText
+     *
      * @param editTextView EditText with spinner for entering the nutients
      * @param targetMap map to enter the nutrient value recieved from edit texts
-     * */
+     */
     private void addNutrientToMap(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
         String completeName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
         targetMap.put(completeName, editTextView.getText().toString());
@@ -873,9 +875,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     /**
      * Validate the value of carbohydrate using carbs value and sugar value
+     *
      * @param editText CustomValidatingEditTextView for retrieving the value enterd by the user
      * @param value quality value with known prefix
-     * */
+     */
     private ValueState checkCarbohydrate(CustomValidatingEditTextView editText, float value) {
         if (!carbohydrate.getEntryName().equals(editText.getEntryName())) {
             return ValueState.NOT_TESTED;
@@ -901,9 +904,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     /**
      * Validate oh value according to Nutriments.PH
+     *
      * @param editText CustomValidatingEditTextView for recieving value inputed from user
      * @param value quality value with known prefix
-     * */
+     */
     private ValueState checkPh(CustomValidatingEditTextView editText, float value) {
         if (Nutriments.PH.equals(editText.getEntryName())) {
             double maxPhValue = 14;
@@ -917,7 +921,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     /**
      * Validate serving size value entered by user
-     * */
+     */
     private ValueState checkPerServing(CustomValidatingEditTextView editText) {
         if (servingSize.getEntryName().equals(editText.getEntryName())) {
             if (isDataPer100()) {
@@ -935,7 +939,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     /**
      * Validate energy value entered by user
-     * */
+     */
     private ValueState checkEnergy(CustomValidatingEditTextView editTextView, float value) {
         if (energy.getEntryName().equals(editTextView.getEntryName())) {
             float energyInKcal = UnitUtils.convertToKiloCalories(value, getSelectedEnergyUnit());
@@ -952,7 +956,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     /**
-     * validate alcohol content entered by user*/
+     * validate alcohol content entered by user
+     */
     private ValueState checkAlcohol(CustomValidatingEditTextView editTextView, float value) {
         if (alcohol.getEntryName().equals(editTextView.getEntryName())) {
             if (value > 100) {
@@ -999,7 +1004,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void showImageProgress() {
-        if(!isAdded() || imageProgress==null){
+        if (!isAdded() || imageProgress == null) {
             return;
         }
         imageProgress.setVisibility(View.VISIBLE);
@@ -1009,7 +1014,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
-        if(!isAdded() || imageProgress==null){
+        if (!isAdded() || imageProgress == null) {
             return;
         }
         imageProgress.setVisibility(View.GONE);

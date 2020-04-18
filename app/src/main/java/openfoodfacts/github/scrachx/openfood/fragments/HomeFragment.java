@@ -121,7 +121,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                             .putString("pass", "")
                             .apply();
 
-                        if(getActivity()!=null) {
+                        if (getActivity() != null) {
                             new MaterialDialog.Builder(getActivity())
                                 .title(R.string.alert_dialog_warning_title)
                                 .content(R.string.alert_dialog_warning_msg_user)
@@ -161,15 +161,15 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
             .subscribe(new SingleObserver<Search>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    disposable=d;
-                    if(isAdded()) {
+                    disposable = d;
+                    if (isAdded()) {
                         updateTextHome(productCount);
                     }
                 }
 
                 @Override
                 public void onSuccess(Search search) {
-                    if(isAdded()) {
+                    if (isAdded()) {
                         int totalProductCount = productCount;
                         try {
                             totalProductCount = Integer.parseInt(search.getCount());
@@ -185,7 +185,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
                 @Override
                 public void onError(Throwable e) {
-                    if(isAdded()) {
+                    if (isAdded()) {
                         updateTextHome(productCount);
                     }
                 }
@@ -230,7 +230,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     /**
      * get tag line url from OpenFoodAPIService
-     * */
+     */
     private void getTagline() {
         OpenFoodAPIService openFoodAPIService = new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
         Call<ArrayList<TaglineLanguageModel>> call = openFoodAPIService.getTagline(Utils.getUserAgent());

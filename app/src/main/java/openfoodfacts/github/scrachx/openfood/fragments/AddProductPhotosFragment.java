@@ -73,7 +73,7 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler=new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(this);
         Bundle b = getArguments();
         if (b != null) {
             Product product = (Product) b.getSerializable("product");
@@ -129,7 +129,7 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        photoReceiverHandler.onActivityResult(this,requestCode,resultCode,data);
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
 
     public void showImageProgress() {
@@ -152,7 +152,7 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
 
     /**
      * Load image into the image view and add it to tableLayout
-     * */
+     */
     private void addImageRow() {
         TableRow image = new TableRow(activity);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(100));

@@ -43,9 +43,10 @@ class DeserializerHelper {
 
     /**
      * Extracts child nodes from a map of subnodes
+     *
      * @param subNode map of subnodes
      * @param key get the JsonNode for the given key
-     * */
+     */
     static List<String> extractChildNodeAsText(Map.Entry<String, JsonNode> subNode, String key) {
         List<String> stringList = new ArrayList<>();
         JsonNode jsonNode = subNode.getValue().get(key);

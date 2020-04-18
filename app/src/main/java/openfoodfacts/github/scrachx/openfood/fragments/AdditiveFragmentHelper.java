@@ -31,7 +31,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
  * Helper class for additive fragment
  */
 public class AdditiveFragmentHelper {
-    private AdditiveFragmentHelper(){
+    private AdditiveFragmentHelper() {
         //helper class
     }
 
@@ -51,22 +51,23 @@ public class AdditiveFragmentHelper {
         additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
 
         for (int i = 0; i < additives.size() - 1; i++) {
-            additiveProduct.append(getAdditiveTag(additives.get(i),apiClientForWikiData,fragment));
+            additiveProduct.append(getAdditiveTag(additives.get(i), apiClientForWikiData, fragment));
             additiveProduct.append("\n");
         }
 
-        additiveProduct.append(getAdditiveTag(additives.get(additives.size() - 1),apiClientForWikiData,fragment));
+        additiveProduct.append(getAdditiveTag(additives.get(additives.size() - 1), apiClientForWikiData, fragment));
     }
 
     /**
      * Returns additive tag from additive name using WikidataApiClient
+     *
      * @param additive name of the additive
      * @param apiClientForWikiData object of WikidataApiClient
      * @param fragment holds a reference to the calling fragment
-     * */
+     **/
     private static CharSequence getAdditiveTag(AdditiveName additive, final WikidataApiClient apiClientForWikiData, BaseFragment fragment) {
-        FragmentActivity activity=fragment.getActivity();
-        Context context=fragment.getContext();
+        FragmentActivity activity = fragment.getActivity();
+        Context context = fragment.getContext();
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override

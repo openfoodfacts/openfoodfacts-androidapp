@@ -14,12 +14,14 @@ import java.util.Map;
 import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.CategoryResponse;
 
+/*
+ * Created by Lobster on 03.03.18.
+ */
+
 /**
  * custom deserializer for CategoriesWrapper
  */
 public class CategoriesWrapperDeserializer extends StdDeserializer<CategoriesWrapper> {
-
-
     public CategoriesWrapperDeserializer() {
         super(CategoriesWrapper.class);
     }

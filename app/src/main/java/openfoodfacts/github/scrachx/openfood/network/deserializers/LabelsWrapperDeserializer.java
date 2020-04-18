@@ -14,6 +14,9 @@ import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.models.LabelResponse;
 import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+/*
+ * Created by Lobster on 03.03.18.
+ */
 
 /**
  * Custom deserializer for LabelsWrapper

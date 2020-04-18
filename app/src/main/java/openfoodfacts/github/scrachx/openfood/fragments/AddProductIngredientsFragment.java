@@ -200,7 +200,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
     /**
      * Load ingredients image on the image view
-     * */
+     */
     public void loadIngredientsImage() {
         if (getAddProductActivity() == null) {
             return;
@@ -230,7 +230,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
     /**
      * Set visibility parameters when image is loaded
-     * */
+     */
     private void imageLoaded() {
         btnEditImageIngredients.setVisibility(View.VISIBLE);
         imageProgress.setVisibility(View.GONE);
@@ -238,9 +238,10 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
     /**
      * returns alergen name from tag
+     *
      * @param languageCode language in which additive name and tag are written
      * @param tag Tag associated with the allergen
-     * */
+     */
     private String getTracesName(String languageCode, String tag) {
         AllergenName allergenName = mAllergenNameDao.queryBuilder().where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
             .unique();
@@ -306,7 +307,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
     /**
      * Automaticcely load suggestions for allergen names
-     * */
+     */
     private void loadAutoSuggestions() {
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         AsyncSession asyncSessionAllergens = daoSession.startAsyncSession();
@@ -466,7 +467,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
     /**
      * Displays progress bar and hides other views util image is loaded
-     * */
+     */
     public void showImageProgress() {
         if (!isAdded() || imageProgress == null) {
             return;
@@ -480,9 +481,10 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
     /**
      * After image is loaded hide image progress
+     *
      * @param errorInUploading boolean variable is true, if there is an error while showing image
      * @param message error message in case of failure to display image
-     * */
+     */
     public void hideImageProgress(boolean errorInUploading, String message) {
         if (!isAdded() || imageProgress == null) {
             return;
@@ -503,9 +505,10 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
     /**
      * Display the list of ingredients based on the result from ocr of IngredientsList photo
+     *
      * @param status status of ocr, in case of proper OCR it returns "set" or "0"
      * @param ocrResult resultant string obtained after OCR of image
-     * */
+     */
     public void setIngredients(String status, String ocrResult) {
         if (getActivity() != null && !getActivity().isFinishing()) {
             switch (status) {

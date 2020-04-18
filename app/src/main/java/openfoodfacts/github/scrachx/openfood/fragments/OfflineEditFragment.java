@@ -167,7 +167,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
                             intentAirplaneMode.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intentAirplaneMode);
                         } catch (ActivityNotFoundException e) {
-                            Log.e(OfflineEditFragment.class.getSimpleName(),"onSendAllProducts",e);
+                            Log.e(OfflineEditFragment.class.getSimpleName(), "onSendAllProducts", e);
                         }
                     } else {
                         Intent intent1 = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
@@ -350,7 +350,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
      * @param imageServer ImageView
      */
     private void showFullscreenView(String s, ImageView imageServer) {
-        FullScreenActivityOpener.openZoom(this,s,imageServer);
+        FullScreenActivityOpener.openZoom(this, s, imageServer);
     }
 
     /**
@@ -541,7 +541,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + productDetails.get("lang") + ".png\"", image);
 
             // Attribute the upload to the connected user
-            String login=fillWithUserLoginInfo(imgMap);
+            String login = fillWithUserLoginInfo(imgMap);
 
             client.saveImageSingle(imgMap)
                 .subscribeOn(Schedulers.io())
@@ -622,7 +622,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + productDetails.get("lang") + ".png\"", image);
 
             // Attribute the upload to the connected user
-            String login=fillWithUserLoginInfo(imgMap);
+            String login = fillWithUserLoginInfo(imgMap);
             client.saveImageSingle(imgMap)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -762,7 +762,7 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
 
     /**
      * After resuming the OfflineEditFragment resume the previous versions
-     * */
+     */
     private void fillAdapter() {
         saveItems.clear();
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
@@ -822,7 +822,8 @@ public class OfflineEditFragment extends NavigationBaseFragment implements SaveL
     }
 
     /**
-     * Populate views depending on whether image is uploaded/msgdismissed */
+     * Populate views depending on whether image is uploaded/msgdismissed
+     */
     private void updateDataViews(boolean firstUpload, boolean msgdismissed) {
         if (msgdismissed) {
             noDataImage.setVisibility(View.VISIBLE);

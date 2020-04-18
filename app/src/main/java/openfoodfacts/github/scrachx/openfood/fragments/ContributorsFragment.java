@@ -23,13 +23,14 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
+/*
+ * Created by prajwalm on 14/04/18.
+ */
 
 /**
  * @see R.layout#fragment_contributors
  */
-
 public class ContributorsFragment extends BaseFragment {
-
     private State stateFromActivity;
     @BindView(R.id.creator)
     TextView creatorText;
@@ -48,7 +49,7 @@ public class ContributorsFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        stateFromActivity =getStateFromActivityIntent();
+        stateFromActivity = getStateFromActivityIntent();
         refreshView(stateFromActivity);
     }
 
@@ -98,7 +99,6 @@ public class ContributorsFragment extends BaseFragment {
                 statesText.append("\n ");
             }
         }
-
     }
 
     /**
@@ -129,7 +129,6 @@ public class ContributorsFragment extends BaseFragment {
         return spannableStringBuilder;
     }
 
-
     private CharSequence getStatesTag(String state) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -143,7 +142,5 @@ public class ContributorsFragment extends BaseFragment {
         spannableStringBuilder.append(" ");
         return spannableStringBuilder;
     }
-
-
 }
 

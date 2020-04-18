@@ -27,6 +27,7 @@ import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
 
 /**
+ * @author prajwalm
  * @see R.layout#fragment_product_photos
  */
 public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter.OnImageClickInterface {
@@ -48,7 +49,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        State state=getStateFromActivityIntent();
+        State state = getStateFromActivityIntent();
         product = state.getProduct();
         // initialize the arraylist
         imageNames = new ArrayList<>();
@@ -107,18 +108,19 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
      */
     public void openFullScreen(String mUrlImage) {
         if (mUrlImage != null) {
-            FullScreenActivityOpener.openZoom(this,mUrlImage,null);
+            FullScreenActivityOpener.openZoom(this, mUrlImage, null);
         }
     }
 
     /**
      * retrieves url of the imae clicked to open FullScreenActivity
+     *
      * @param position position of the image clicked
-     * */
+     */
     @Override
     public void onImageClick(int position) {
 
-        String baseUrlString = BuildConfig.STATICURL+ "/images/products/";
+        String baseUrlString = BuildConfig.STATICURL + "/images/products/";
         String barcodePattern = product.getCode();
         if (barcodePattern.length() > 8) {
             barcodePattern = new StringBuilder(product.getCode())

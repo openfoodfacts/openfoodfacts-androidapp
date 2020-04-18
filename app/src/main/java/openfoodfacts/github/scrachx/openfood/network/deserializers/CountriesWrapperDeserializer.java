@@ -17,12 +17,7 @@ import openfoodfacts.github.scrachx.openfood.models.CountryResponse;
 /**
  * custom deserializer for CountriesWrapper
  */
-
 public class CountriesWrapperDeserializer extends StdDeserializer<CountriesWrapper> {
-
-
-
-
     public CountriesWrapperDeserializer() {
         super(CountriesWrapper.class);
     }
