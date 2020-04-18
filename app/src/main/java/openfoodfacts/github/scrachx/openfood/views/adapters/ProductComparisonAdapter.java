@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
@@ -74,44 +76,181 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     private ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
     private Integer onPhotoReturnPosition;
 
-    static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
-        NestedScrollView listItemLayout;
-        CardView productComparisonDetailsCv;
-        TextView productNameTextView;
-        TextView productQuantityTextView;
-        TextView productBrandTextView;
-        TextView productComparisonNutrientText;
-        RecyclerView nutrientsRecyclerView;
-        CardView productComparisonNutrientCv;
-        ImageButton productComparisonImage;
-        TextView productComparisonLabel;
-        ImageView productComparisonImageGrade;
-        ImageView productComparisonNovaGroup;
-        CardView productComparisonAdditiveCv;
-        TextView productComparisonAdditiveText;
-        Button fullProductButton;
-        ImageView productComparisonCo2Icon;
-
-        public ProductComparisonViewHolder(View view) {
-            super(view);
-            listItemLayout = view.findViewById(R.id.product_comparison_list_item_layout);
-            productComparisonDetailsCv = view.findViewById(R.id.product_comparison_details_cv);
-            productNameTextView = view.findViewById(R.id.product_comparison_name);
-            productQuantityTextView = view.findViewById(R.id.product_comparison_quantity);
-            productBrandTextView = view.findViewById(R.id.product_comparison_brand);
-            productComparisonNutrientText = view.findViewById(R.id.product_comparison_textNutrientTxt);
-            nutrientsRecyclerView = view.findViewById(R.id.product_comparison_listNutrientLevels);
-            productComparisonNutrientCv = view.findViewById(R.id.product_comparison_nutrient_cv);
-            productComparisonImage = view.findViewById(R.id.product_comparison_image);
-            productComparisonLabel = view.findViewById(R.id.product_comparison_label);
-            productComparisonImageGrade = view.findViewById(R.id.product_comparison_imageGrade);
-            productComparisonNovaGroup = view.findViewById(R.id.product_comparison_nova_group);
-            productComparisonAdditiveCv = view.findViewById(R.id.product_comparison_additive);
-            productComparisonAdditiveText = view.findViewById(R.id.product_comparison_additive_text);
-            fullProductButton = view.findViewById(R.id.full_product_button);
-            fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp,0,0,0);
-            productComparisonCo2Icon = view.findViewById(R.id.product_comparison_co2_icon);
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onBindViewHolder(@NonNull ProductComparisonViewHolder holder, int position) {
+        if (productsToCompare.isEmpty()) {
+            holder.listItemLayout.setVisibility(View.GONE);
+            return;
         }
+
+        // Support synchronous scrolling
+        if (CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
+            holder.listItemLayout.setOnScrollChangeListener((View.OnScrollChangeListener) (view, i, i1, i2, i3) -> {
+                for (ProductComparisonViewHolder viewHolder : viewHolders) {
+                    viewHolder.listItemLayout.setScrollX(i);
+                    viewHolder.listItemLayout.setScrollY(i1);
+                }
+            });
+        }
+
+        Product product = productsToCompare.get(position);
+
+        // Set the visibility of UI components
+        holder.productNameTextView.setVisibility(View.VISIBLE);
+        holder.productQuantityTextView.setVisibility(View.VISIBLE);
+        holder.productBrandTextView.setVisibility(View.VISIBLE);
+
+        // Modify the text on the button for adding products
+        if (this.addProductButton != null) {
+            addProductButton.setText(R.string.add_another_product);
+        }
+
+        // Image
+        final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(context));
+        holder.productComparisonImage.setOnClickListener(view -> {
+            if (imageUrl != null) {
+                FullScreenActivityOpener.openForUrl((Activity) context, product, FRONT, imageUrl, holder.productComparisonImage);
+            } else {
+                // take a picture
+                if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    onPhotoReturnPosition = position;
+                    if (Utils.isHardwareCameraInstalled(context)) {
+                        EasyImage.openCamera(((Activity) context), 0);
+                    } else {
+                        EasyImage.openGallery(((Activity) context), 0, false);
+                    }
+                }
+            }
+        });
+
+        if (isNotBlank(imageUrl)) {
+            holder.productComparisonLabel.setVisibility(View.INVISIBLE);
+
+            if (Utils.isDisableImageLoad(context) && Utils.getBatteryLevel(context)) {
+                isLowBatteryMode = true;
+            }
+            // Load Image if isLowBatteryMode is false
+            if (!isLowBatteryMode) {
+                Picasso.get()
+                    .load(imageUrl)
+                    .into(holder.productComparisonImage);
+            } else {
+                holder.productComparisonImage.setVisibility(View.GONE);
+            }
+        }
+
+        // Name
+        if (isNotBlank(product.getProductName())) {
+            holder.productNameTextView.setText(product.getProductName());
+        } else {
+            //product name placeholder text goes here
+        }
+
+        // Quantity
+        if (isNotBlank(product.getQuantity())) {
+            holder.productQuantityTextView.setText(bold(
+                context.getString(R.string.compare_quantity)
+            ));
+            holder.productQuantityTextView.append(' ' + product.getQuantity());
+        } else {
+            //product quantity placeholder goes here
+        }
+
+        // Brands
+        if (isNotBlank(product.getBrands())) {
+            holder.productBrandTextView.setText(bold(context.getString(R.string.compare_brands)));
+            holder.productBrandTextView.append(" ");
+
+            String[] brands = product.getBrands().split(",");
+            for (int i = 0; i < brands.length - 1; i++) {
+                holder.productBrandTextView.append(brands[i].trim());
+                holder.productBrandTextView.append(", ");
+            }
+            holder.productBrandTextView.append(brands[brands.length - 1].trim());
+        } else {
+            //product brand placeholder goes here
+        }
+
+        // Open Food Facts specific
+        if ("off".equals(BuildConfig.FLAVOR)) {
+            // NutriScore
+            int nutritionGradeResource = Utils.getImageGrade(product);
+            if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
+                holder.productComparisonImageGrade.setVisibility(View.VISIBLE);
+                holder.productComparisonImageGrade.setImageResource(nutritionGradeResource);
+            } else {
+                holder.productComparisonImageGrade.setVisibility(View.INVISIBLE);
+            }
+
+            // Nova group
+            if (product.getNovaGroups() != null) {
+                holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+            } else {
+                holder.productComparisonNovaGroup.setVisibility(View.INVISIBLE);
+            }
+
+            // Environment impact
+            int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
+            if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+                holder.productComparisonCo2Icon.setVisibility(View.VISIBLE);
+                holder.productComparisonCo2Icon.setImageResource(environmentImpactResource);
+            } else {
+                holder.productComparisonCo2Icon.setVisibility(View.GONE);
+            }
+
+            // Nutriments
+            if (product.getNutriments() != null) {
+                holder.nutrientsRecyclerView.setVisibility(View.VISIBLE);
+                holder.productComparisonNutrientText.setText(context.getString(R.string.txtNutrientLevel100g));
+                holder.nutrientsRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+                holder.nutrientsRecyclerView.setAdapter(new NutrientLevelListAdapter(context, loadLevelItems(product)));
+            }
+        } else {
+            holder.productComparisonScoresLayout.setVisibility(View.GONE);
+            holder.productComparisonNutrientCv.setVisibility(View.GONE);
+        }
+
+        // Additives
+        List<String> additivesTags = product.getAdditivesTags();
+        if (additivesTags != null && !additivesTags.isEmpty()) {
+            loadAdditives(product, holder.productComparisonAdditiveText);
+        }
+
+        // Full product button
+        holder.fullProductButton.setOnClickListener(view -> {
+            if (product != null) {
+                String barcode = product.getCode();
+                if (Utils.isNetworkConnected(context)) {
+                    api.getProduct(barcode, (Activity) context);
+                    try {
+                        View view1 = ((Activity) context).getCurrentFocus();
+                        if (view != null) {
+                            InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                        }
+                    } catch (NullPointerException e) {
+                        Log.e(ProductComparisonAdapter.class.getSimpleName(), "setOnClickListener", e);
+                    }
+                } else {
+                    new MaterialDialog.Builder(context)
+                        .title(R.string.device_offline_dialog_title)
+                        .content(R.string.connectivity_check)
+                        .positiveText(R.string.txt_try_again)
+                        .negativeText(R.string.dismiss)
+                        .onPositive((dialog, which) -> {
+                            if (Utils.isNetworkConnected(context)) {
+                                api.getProduct(barcode, (Activity) context);
+                            } else {
+                                Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .show();
+                }
+            }
+        });
     }
 
     public ProductComparisonAdapter(List<Product> productsToCompare, Context context) {
@@ -130,163 +269,45 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         return viewHolder;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
-    public void onBindViewHolder(@NonNull ProductComparisonViewHolder holder, int position) {
-        if (!productsToCompare.isEmpty()) {
+    static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
+        NestedScrollView listItemLayout;
+        CardView productComparisonDetailsCv;
+        TextView productNameTextView;
+        TextView productQuantityTextView;
+        TextView productBrandTextView;
+        TextView productComparisonNutrientText;
+        RecyclerView nutrientsRecyclerView;
+        CardView productComparisonNutrientCv;
+        ImageButton productComparisonImage;
+        TextView productComparisonLabel;
+        ImageView productComparisonImageGrade;
+        ImageView productComparisonNovaGroup;
+        CardView productComparisonAdditiveCv;
+        TextView productComparisonAdditiveText;
+        Button fullProductButton;
+        ImageView productComparisonCo2Icon;
+        RelativeLayout productComparisonScoresLayout;
 
-            //support synchronous scrolling
-
-            if (CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
-                holder.listItemLayout.setOnScrollChangeListener((View.OnScrollChangeListener) (view, i, i1, i2, i3) -> {
-                    for (ProductComparisonViewHolder viewHolder : viewHolders) {
-                        viewHolder.listItemLayout.setScrollX(i);
-                        viewHolder.listItemLayout.setScrollY(i1);
-                    }
-                });
-            }
-
-            Product product = productsToCompare.get(position);
-
-            //set the visibility of UI components
-            holder.productNameTextView.setVisibility(View.VISIBLE);
-            holder.productQuantityTextView.setVisibility(View.VISIBLE);
-            holder.productBrandTextView.setVisibility(View.VISIBLE);
-
-            //Modify the text on the button for adding products
-            if (this.addProductButton != null) {
-                addProductButton.setText(R.string.add_another_product);
-            }
-
-            final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(context));
-            holder.productComparisonImage.setOnClickListener(view -> {
-                if (imageUrl != null) {
-                    FullScreenActivityOpener.openForUrl((Activity) context, product, FRONT, imageUrl, holder.productComparisonImage);
-                } else {
-                    // take a picture
-                    if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-                    } else {
-                        onPhotoReturnPosition = position;
-                        if (Utils.isHardwareCameraInstalled(context)) {
-                            EasyImage.openCamera(((Activity) context), 0);
-                        } else {
-                            EasyImage.openGallery(((Activity) context), 0, false);
-                        }
-                    }
-                }
-            });
-
-            if (isNotBlank(imageUrl)) {
-                holder.productComparisonLabel.setVisibility(View.INVISIBLE);
-
-                if (Utils.isDisableImageLoad(context) && Utils.getBatteryLevel(context)) {
-                    isLowBatteryMode = true;
-                }
-                // Load Image if isLowBatteryMode is false
-                if (!isLowBatteryMode) {
-                    Picasso.get()
-                        .load(imageUrl)
-                        .into(holder.productComparisonImage);
-                } else {
-                    holder.productComparisonImage.setVisibility(View.GONE);
-                }
-            }
-
-            if (isNotBlank(product.getProductName())) {
-                holder.productNameTextView.setText(product.getProductName());
-            } else {
-                //product name placeholder text goes here
-            }
-
-            if (isNotBlank(product.getQuantity())) {
-                holder.productQuantityTextView.setText(bold(
-                    context.getString(R.string.compare_quantity)
-                ));
-                holder.productQuantityTextView.append(' ' + product.getQuantity());
-            } else {
-                //product quantity placeholder goes here
-            }
-
-            if (isNotBlank(product.getBrands())) {
-                holder.productBrandTextView.setText(bold(context.getString(R.string.compare_brands)));
-                holder.productBrandTextView.append(" ");
-
-                String[] brands = product.getBrands().split(",");
-                for (int i = 0; i < brands.length - 1; i++) {
-                    holder.productBrandTextView.append(brands[i].trim());
-                    holder.productBrandTextView.append(", ");
-                }
-                holder.productBrandTextView.append(brands[brands.length - 1].trim());
-            } else {
-                //product brand placeholder goes here
-            }
-
-            Nutriments nutriments = product.getNutriments();
-
-            int nutritionGradeResource = Utils.getImageGrade(product);
-            if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
-                holder.productComparisonImageGrade.setVisibility(View.VISIBLE);
-                holder.productComparisonImageGrade.setImageResource(nutritionGradeResource);
-            } else {
-                holder.productComparisonImageGrade.setVisibility(View.INVISIBLE);
-            }
-            if (nutriments != null) {
-                holder.nutrientsRecyclerView.setVisibility(View.VISIBLE);
-                holder.productComparisonNutrientText.setText(context.getString(R.string.txtNutrientLevel100g));
-                holder.nutrientsRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-                holder.nutrientsRecyclerView.setAdapter(new NutrientLevelListAdapter(context, loadLevelItems(product)));
-            }
-            if (product.getNovaGroups() != null) {
-                holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
-            } else {
-                holder.productComparisonNovaGroup.setVisibility(View.INVISIBLE);
-            }
-            int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
-            if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
-                holder.productComparisonCo2Icon.setVisibility(View.VISIBLE);
-                holder.productComparisonCo2Icon.setImageResource(environmentImpactResource);
-            } else {
-                holder.productComparisonCo2Icon.setVisibility(View.GONE);
-            }
-            List<String> additivesTags = product.getAdditivesTags();
-            if (additivesTags != null && !additivesTags.isEmpty()) {
-                loadAdditives(product, holder.productComparisonAdditiveText);
-            }
-
-            holder.fullProductButton.setOnClickListener(view -> {
-                if (product != null) {
-                    String barcode = product.getCode();
-                    if (Utils.isNetworkConnected(context)) {
-                        api.getProduct(barcode, (Activity) context);
-                        try {
-                            View view1 = ((Activity) context).getCurrentFocus();
-                            if (view != null) {
-                                InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
-                            }
-                        } catch (NullPointerException e) {
-                            Log.e(ProductComparisonAdapter.class.getSimpleName(), "setOnClickListener", e);
-                        }
-                    } else {
-                        new MaterialDialog.Builder(context)
-                            .title(R.string.device_offline_dialog_title)
-                            .content(R.string.connectivity_check)
-                            .positiveText(R.string.txt_try_again)
-                            .negativeText(R.string.dismiss)
-                            .onPositive((dialog, which) -> {
-                                if (Utils.isNetworkConnected(context)) {
-                                    api.getProduct(barcode, (Activity) context);
-                                } else {
-                                    Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
-                                }
-                            })
-                            .show();
-                    }
-                }
-            });
-        } else {
-            holder.listItemLayout.setVisibility(View.GONE);
+        public ProductComparisonViewHolder(View view) {
+            super(view);
+            listItemLayout = view.findViewById(R.id.product_comparison_list_item_layout);
+            productComparisonDetailsCv = view.findViewById(R.id.product_comparison_details_cv);
+            productNameTextView = view.findViewById(R.id.product_comparison_name);
+            productQuantityTextView = view.findViewById(R.id.product_comparison_quantity);
+            productBrandTextView = view.findViewById(R.id.product_comparison_brand);
+            productComparisonNutrientText = view.findViewById(R.id.product_comparison_textNutrientTxt);
+            nutrientsRecyclerView = view.findViewById(R.id.product_comparison_listNutrientLevels);
+            productComparisonNutrientCv = view.findViewById(R.id.product_comparison_nutrient_cv);
+            productComparisonImage = view.findViewById(R.id.product_comparison_image);
+            productComparisonLabel = view.findViewById(R.id.product_comparison_label);
+            productComparisonImageGrade = view.findViewById(R.id.product_comparison_imageGrade);
+            productComparisonNovaGroup = view.findViewById(R.id.product_comparison_nova_group);
+            productComparisonAdditiveCv = view.findViewById(R.id.product_comparison_additive);
+            productComparisonAdditiveText = view.findViewById(R.id.product_comparison_additive_text);
+            fullProductButton = view.findViewById(R.id.full_product_button);
+            fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0);
+            productComparisonCo2Icon = view.findViewById(R.id.product_comparison_co2_icon);
+            productComparisonScoresLayout = view.findViewById(R.id.product_comparison_scores_layout);
         }
     }
 
