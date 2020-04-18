@@ -1,14 +1,22 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -18,14 +26,8 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
 /**
- * @author prajwalm
+ * @see R.layout#fragment_product_photos
  */
 public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter.OnImageClickInterface {
     private OpenFoodAPIClient openFoodAPIClient;
@@ -98,12 +100,21 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
         });
     }
 
+    /**
+     * Call an intent to open full screen activity for a given image
+     *
+     * @param mUrlImage url of the image in FullScreenImage
+     */
     public void openFullScreen(String mUrlImage) {
         if (mUrlImage != null) {
             FullScreenActivityOpener.openZoom(this,mUrlImage,null);
         }
     }
 
+    /**
+     * retrieves url of the imae clicked to open FullScreenActivity
+     * @param position position of the image clicked
+     * */
     @Override
     public void onImageClick(int position) {
 

@@ -21,7 +21,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
- * Created by Shubham Vishwakarma on 14.03.18.
+ * API client to recieve data from WikiData APIs
  */
 
 public class WikidataApiClient {
@@ -34,16 +34,26 @@ public class WikidataApiClient {
         this(BuildConfig.WIKIDATA);
     }
 
+    /**
+     * Initializing the object of WikidataApiService using the apiUrl
+     *
+     * @param apiUrl Url of the WikiData API
+     */
     public WikidataApiClient(String apiUrl) {
         wikidataApiService = new Retrofit.Builder()
-                .baseUrl(apiUrl)
-                .client(httpClient)
-                .addConverterFactory(JacksonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-                .build()
-                .create(WikidataApiService.class);
+            .baseUrl(apiUrl)
+            .client(httpClient)
+            .addConverterFactory(JacksonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+            .build()
+            .create(WikidataApiService.class);
     }
 
+    /**
+     * Get json response of the WikiData for Additive/Ingredient/Category/label using their WikiDataId
+     * @param code WikiData Id of Additive/Ingredient/Category/label
+     * @param onWikiResponse object of class OnWikiResponse
+     * */
     public void doSomeThing(String code, OnWikiResponse onWikiResponse) {
         wikidataApiService.getWikiCategory(code).enqueue(new Callback<Object>() {
             @Override
@@ -70,8 +80,10 @@ public class WikidataApiClient {
         });
     }
 
+    /**
+     * Interface to call the function onresponse
+     * */
     public interface OnWikiResponse {
-
         void onresponse(boolean value, JSONObject result);
     }
 

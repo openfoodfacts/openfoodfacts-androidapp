@@ -49,6 +49,9 @@ import retrofit2.Response;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
+/**
+ * @see R.layout#fragment_home
+ */
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
     @BindView(R.id.tvDailyFoodFact)
     TextView tvDailyFoodFact;
@@ -198,12 +201,16 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         }
     }
 
+    /**
+     * Set text displayed on HOme based on build variant
+     *
+     * @param totalProductCount count of total products availab;e on the apps database
+     */
     private void updateTextHome(int totalProductCount) {
         try {
             textHome.setText(R.string.txtHome);
             if (totalProductCount != 0) {
                 String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
-
                 textHome.setText(String.format(txtHomeOnline, totalProductCount));
             }
         } catch (Exception e) {
@@ -221,6 +228,9 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     }
 
+    /**
+     * get tag line url from OpenFoodAPIService
+     * */
     private void getTagline() {
         OpenFoodAPIService openFoodAPIService = new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
         Call<ArrayList<TaglineLanguageModel>> call = openFoodAPIService.getTagline(Utils.getUserAgent());

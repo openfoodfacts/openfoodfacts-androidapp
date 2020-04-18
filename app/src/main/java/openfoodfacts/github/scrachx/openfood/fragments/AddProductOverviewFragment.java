@@ -88,6 +88,9 @@ import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHI
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 
+/**
+ * Product Overview fragment of AddProductActivity
+ */
 public class AddProductOverviewFragment extends BaseFragment implements PhotoReceiver {
     private static final String PARAM_NAME = "product_name";
     private static final String PARAM_BARCODE = "code";
@@ -381,6 +384,11 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         setProductLanguage(lang);
     }
 
+    /**
+     * Loads front image of the product into the imageview
+     *
+     * @param language language used for adding product
+     */
     private void loadFrontImage(String language) {
         photoFile=null;
         final String imageFrontUrl = product.getImageFrontUrl(language);
@@ -533,6 +541,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         }
     }
 
+    /**
+     * Auto load suggestions into various NachoTextViews
+     * */
     private void loadAutoSuggestions() {
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
@@ -596,6 +607,10 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         }
     }
 
+    /**
+     * Set language of the product to the language entered
+     * @param lang language code
+     * */
     private void setProductLanguage(String lang) {
         languageCode = lang;
         Locale current = LocaleHelper.getLocale(lang);
@@ -919,6 +934,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             .show();
     }
 
+    /**
+     * Before moving next check if the required feilds are empty
+     * */
     public boolean areRequiredFieldsEmpty() {
         if (mImageUrl == null || mImageUrl.equals("")) {
             Toast.makeText(getContext(), R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();

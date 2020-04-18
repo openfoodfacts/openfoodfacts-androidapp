@@ -4,10 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import com.google.android.material.textfield.TextInputLayout;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -17,11 +13,48 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.*;
-import butterknife.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.textfield.TextInputLayout;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.File;
+import java.net.URI;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
@@ -30,17 +63,20 @@ import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.utils.*;
+import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
+import openfoodfacts.github.scrachx.openfood.utils.QuantityParserUtil;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.ValueState;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import org.apache.commons.lang.ObjectUtils;
-import org.apache.commons.lang.StringUtils;
-
-import java.io.File;
-import java.net.URI;
-import java.util.*;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 
+/**
+ * @see R.layout#fragment_add_product_nutrition_facts
+ */
 public class AddProductNutritionFactsFragment extends BaseFragment implements PhotoReceiver {
     private static final String[] ALL_UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_DV, UnitUtils.UNIT_IU};
     private static final String[] ALL_UNIT_SERVING = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_LITER, UnitUtils.UNIT_MILLILITRE};
@@ -242,6 +278,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
     }
 
+    /**
+     * Load the nutrition image uploaded form AddProductActivity
+     * */
     public void loadNutritionImage() {
         if (getAddProductActivity() == null) {
             return;
@@ -357,6 +396,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         radioGroup.jumpDrawablesToCurrentState();
     }
 
+    /**
+     * lads nutrition image into the ImageView
+     * @param path path of the image
+     * */
     private void loadNutritionsImage(String path) {
         Picasso.get()
             .load(path)
@@ -429,7 +472,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         super.onAttach(context);
         activity = getActivity();
     }
-
 
     @OnClick(R.id.btnAddImageNutritionFacts)
     void addNutritionFactsImage() {
@@ -690,6 +732,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
     }
 
+    /**
+     * Add nutients to the map by from the text enetered into EditText
+     * @param editTextView EditText with spinner for entering the nutients
+     * @param targetMap map to enter the nutrient value recieved from edit texts
+     * */
     private void addNutrientToMap(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
         String completeName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
         targetMap.put(completeName, editTextView.getText().toString());
@@ -824,6 +871,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return sugar.getEntryName().equals(entryName) || (starchEditText != null && entryName.equals(starchEditText.getEntryName()));
     }
 
+    /**
+     * Validate the value of carbohydrate using carbs value and sugar value
+     * @param editText CustomValidatingEditTextView for retrieving the value enterd by the user
+     * @param value quality value with known prefix
+     * */
     private ValueState checkCarbohydrate(CustomValidatingEditTextView editText, float value) {
         if (!carbohydrate.getEntryName().equals(editText.getEntryName())) {
             return ValueState.NOT_TESTED;
@@ -847,6 +899,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
     }
 
+    /**
+     * Validate oh value according to Nutriments.PH
+     * @param editText CustomValidatingEditTextView for recieving value inputed from user
+     * @param value quality value with known prefix
+     * */
     private ValueState checkPh(CustomValidatingEditTextView editText, float value) {
         if (Nutriments.PH.equals(editText.getEntryName())) {
             double maxPhValue = 14;
@@ -858,6 +915,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return ValueState.NOT_TESTED;
     }
 
+    /**
+     * Validate serving size value entered by user
+     * */
     private ValueState checkPerServing(CustomValidatingEditTextView editText) {
         if (servingSize.getEntryName().equals(editText.getEntryName())) {
             if (isDataPer100()) {
@@ -873,6 +933,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return ValueState.NOT_TESTED;
     }
 
+    /**
+     * Validate energy value entered by user
+     * */
     private ValueState checkEnergy(CustomValidatingEditTextView editTextView, float value) {
         if (energy.getEntryName().equals(editTextView.getEntryName())) {
             float energyInKcal = UnitUtils.convertToKiloCalories(value, getSelectedEnergyUnit());
@@ -888,6 +951,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return ValueState.NOT_TESTED;
     }
 
+    /**
+     * validate alcohol content entered by user*/
     private ValueState checkAlcohol(CustomValidatingEditTextView editTextView, float value) {
         if (alcohol.getEntryName().equals(editTextView.getEntryName())) {
             if (value > 100) {
