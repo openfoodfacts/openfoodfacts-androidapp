@@ -1,17 +1,17 @@
 package openfoodfacts.github.scrachx.openfood.views.viewmodel.category;
 
-import androidx.databinding.ObservableField;
-import androidx.databinding.ObservableInt;
-import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -27,7 +27,6 @@ import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
 /**
  * Created by Abdelali Eramli on 27/12/2017.
  */
-
 public class CategoryFragmentViewModel extends ViewModel {
     private final IProductRepository repository;
     private final List<CategoryName> categories;
@@ -50,46 +49,44 @@ public class CategoryFragmentViewModel extends ViewModel {
 
     public void loadCategories() {
         subscriptions.add(repository.getAllCategoriesByLanguageCode(LocaleHelper.getLanguage(OFFApplication.getInstance()))
-                .doOnSubscribe(disposable -> {
-                    showOffline.set(View.GONE);
-                    showProgress.set(View.VISIBLE);
-                })
-                .flatMap(categoryNames -> {
-                    if (categoryNames.isEmpty()) {
-                        return repository.getAllCategoriesByDefaultLanguageCode();
-                    } else {
-                        return Single.just(categoryNames);
+            .doOnSubscribe(disposable -> {
+                showOffline.set(View.GONE);
+                showProgress.set(View.VISIBLE);
+            })
+            .flatMap(categoryNames -> {
+                if (categoryNames.isEmpty()) {
+                    return repository.getAllCategoriesByDefaultLanguageCode();
+                } else {
+                    return Single.just(categoryNames);
+                }
+            })
+            .flatMap(categoryNames -> {
+                if (categoryNames.isEmpty()) {
+                    return repository.getCategories()
+                        .flatMap(categories -> Single.just(extractCategoriesNames(categories)));
+                } else {
+                    return Single.just(categoryNames);
+                }
+            })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(categoryList -> {
+                    categories.addAll(categoryList);
+                    filteredCategories.set(categoryList);
+                    showProgress.set(View.GONE);
+                },
+                throwable -> {
+                    Log.e(CategoryFragmentViewModel.class.getCanonicalName(), "Error loading categories", throwable);
+                    if (throwable instanceof UnknownHostException) {
+                        showOffline.set(View.VISIBLE);
+                        showProgress.set(View.GONE);
                     }
-                })
-                .flatMap(categoryNames -> {
-                    if (categoryNames.isEmpty()) {
-                        return repository.getCategories()
-                                .flatMap(categories -> {
-                                    return Single.just(extractCategoriesNames(categories));
-                                });
-                    } else {
-                        return Single.just(categoryNames);
-                    }
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(categoryList -> {
-                            categories.addAll(categoryList);
-                            filteredCategories.set(categoryList);
-                            showProgress.set(View.GONE);
-                        },
-                        throwable -> {
-                            Log.e(CategoryFragmentViewModel.class.getCanonicalName(), "Error loading categories", throwable);
-                            if (throwable instanceof UnknownHostException) {
-                                showOffline.set(View.VISIBLE);
-                                showProgress.set(View.GONE);
-                            }
-                        }));
+                }));
     }
 
     private List<CategoryName> extractCategoriesNames(List<Category> categories) {
         List<CategoryName> categoryNames = new ArrayList<>();
-        final String languageCode=LocaleHelper.getLanguage(OFFApplication.getInstance());
+        final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
         for (Category category : categories) {
             for (CategoryName categoryName : category.getNames()) {
                 if (categoryName.getLanguageCode().equals(languageCode)) {
@@ -113,11 +110,11 @@ public class CategoryFragmentViewModel extends ViewModel {
     public ObservableInt getShowOffline() {
         return showOffline;
     }
-  
+
     public void searchCategories(String query) {
         List<CategoryName> newFilteredCategories = new ArrayList<>();
         for (CategoryName categoryName : categories) {
-            if (categoryName.getName()!=null && categoryName.getName().toLowerCase().startsWith(query)) {
+            if (categoryName.getName() != null && categoryName.getName().toLowerCase().startsWith(query)) {
                 newFilteredCategories.add(categoryName);
             }
         }

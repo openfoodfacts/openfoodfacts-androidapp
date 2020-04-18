@@ -73,7 +73,10 @@
           <section>
             <rule>
               <match>
-                <FIELD>true</FIELD>
+                <AND>
+                  <FIELD>true</FIELD>
+                  <visibility />
+                </AND>
               </match>
               <order>BY_NAME</order>
             </rule>

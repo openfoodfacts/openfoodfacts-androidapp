@@ -4,9 +4,10 @@ import org.apache.commons.lang.StringUtils;
 
 import java.util.Map;
 
+@SuppressWarnings("WeakerAccess")
 public class NumberParserUtils {
     private NumberParserUtils() {
-
+        // Utility class
     }
 
     public static float getAsFloat(Object in, float defaultValue) {
@@ -23,13 +24,14 @@ public class NumberParserUtils {
         if (imgDetails == null || key == null) {
             return defaultValue;
         }
-        return NumberParserUtils.getAsFloat(imgDetails.get(key),defaultValue);
+        return NumberParserUtils.getAsFloat(imgDetails.get(key), defaultValue);
     }
+
     public static int getAsInt(Map<String, ?> imgDetails, String key, int defaultValue) {
         if (imgDetails == null || key == null) {
             return defaultValue;
         }
-        return NumberParserUtils.getAsInt(imgDetails.get(key),defaultValue);
+        return NumberParserUtils.getAsInt(imgDetails.get(key), defaultValue);
     }
 
     public static int getAsInt(Object in, int defaultValue) {

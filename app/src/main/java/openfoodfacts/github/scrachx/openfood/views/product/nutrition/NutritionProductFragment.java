@@ -305,7 +305,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             serving.append(servingSize);
         }
 
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext()) && Utils.isBatteryLow(getContext())) {
             isLowBatteryMode = true;
         }
 
@@ -633,8 +633,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
     @OnClick(R.id.get_nutriscore_prompt)
     public void onNutriscoreButtonClick() {
-        if (BuildConfig.FLAVOR.equals("off")) {
-            if (isUserNotLoggedIn()) {
+        if ("off".equals(BuildConfig.FLAVOR)) {
+            if (!isUserLoggedIn()) {
                 startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE);
             } else {
                 startEditProduct();

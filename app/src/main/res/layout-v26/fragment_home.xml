@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@id/imageHome" />
 
         <TextView
-            android:id="@+id/textHome"
+            android:id="@+id/text_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -54,7 +54,7 @@
             android:textSize="@dimen/font_normal" />
 
         <TextView
-            android:id="@+id/tvDailyFoodFact"
+            android:id="@+id/tv_daily_food_fact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"

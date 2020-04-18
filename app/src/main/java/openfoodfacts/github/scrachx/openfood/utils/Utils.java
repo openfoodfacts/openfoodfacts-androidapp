@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -32,35 +33,34 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.firebase.jobdispatcher.*;
-import okhttp3.CipherSuite;
-import okhttp3.ConnectionSpec;
-import okhttp3.OkHttpClient;
-import okhttp3.TlsVersion;
-import okhttp3.logging.HttpLoggingInterceptor;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import com.firebase.jobdispatcher.Constraint;
+import com.firebase.jobdispatcher.Driver;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.Trigger;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -69,9 +69,30 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import okhttp3.CipherSuite;
+import okhttp3.ConnectionSpec;
+import okhttp3.OkHttpClient;
+import okhttp3.TlsVersion;
+import okhttp3.logging.HttpLoggingInterceptor;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.text.TextUtils.isEmpty;
 
 public class Utils {
+    private Utils() {
+        // Utility class
+    }
+
     public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
@@ -174,7 +195,7 @@ public class Utils {
         if (version >= 23) {
             return ContextCompat.getColor(context, id);
         } else {
-            return context.getResources().getColor(id);
+            return context.getResources().getColor(id, null);
         }
     }
 
@@ -383,7 +404,9 @@ public class Utils {
 
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
-        if(drawable==null){return null;}
+        if (drawable == null) {
+            return null;
+        }
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable
             .getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -427,7 +450,7 @@ public class Utils {
         return ((OFFApplication) context.getApplicationContext()).getDaoSession();
     }
 
-    public static DaoSession getDaoSession(Context context) {
+    public static DaoSession getDaoSession() {
         return OFFApplication.daoSession;
     }
 
@@ -436,6 +459,7 @@ public class Utils {
      *
      * @return true if installed, false otherwise.
      */
+    @SuppressLint("UnsupportedChromeOsCameraSystemFeature")
     public static boolean isHardwareCameraInstalled(Context context) {
         if (context == null) {
             return false;
@@ -445,9 +469,8 @@ public class Utils {
                 return true;
             }
         } catch (NullPointerException e) {
-            if (BuildConfig.DEBUG) {
-                Log.i(context.getClass().getSimpleName(), e.toString());
-            }
+            Log.d(context.getClass().getSimpleName(), e.toString());
+
             return false;
         }
         return false;
@@ -477,7 +500,7 @@ public class Utils {
         isUploadJobInitialised = true;
     }
 
-    public static OkHttpClient HttpClientBuilder() {
+    public static OkHttpClient buildHttpClient() {
         OkHttpClient httpClient;
         if (Build.VERSION.SDK_INT == 24) {
             ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
@@ -509,7 +532,7 @@ public class Utils {
      * @param context of the application.
      * @return true if airplane mode is active.
      */
-    @SuppressWarnings("depreciation")
+    @SuppressWarnings("deprecation")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static boolean isAirplaneModeActive(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -603,10 +626,9 @@ public class Utils {
         }
         // creates the directory if not present yet
         final boolean mkdir = picDir.mkdir();
-        if(!mkdir){
-            Log.e(Utils.class.getSimpleName(),"Can create dir "+picDir);
+        if (!mkdir) {
+            Log.e(Utils.class.getSimpleName(), "Can create dir " + picDir);
         }
-
 
         return picDir;
     }
@@ -617,7 +639,7 @@ public class Utils {
     }
 
     public static Uri getOutputPicUri(Context context) {
-        return (Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context), "/" + Utils.timeStamp() + ".jpg")));
+        return (Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context), Utils.timeStamp() + ".jpg")));
     }
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
@@ -682,17 +704,17 @@ public class Utils {
         Matcher matcher = regex.matcher(servingSize);
         if (servingSize.toLowerCase().contains("ml")) {
             matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
+            float val = Float.parseFloat(matcher.group(1));
             val *= 0.033814f;
             servingSize = getRoundNumber(val).concat(" oz");
         } else if (servingSize.toLowerCase().contains("cl")) {
             matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
+            float val = Float.parseFloat(matcher.group(1));
             val *= 0.33814f;
             servingSize = getRoundNumber(val).concat(" oz");
         } else if (servingSize.toLowerCase().contains("l")) {
             matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
+            float val = Float.parseFloat(matcher.group(1));
             val *= 33.814f;
             servingSize = getRoundNumber(val).concat(" oz");
         }
@@ -711,7 +733,7 @@ public class Utils {
             Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
             Matcher matcher = regex.matcher(servingSize);
             matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
+            float val = Float.parseFloat(matcher.group(1));
             val /= 33.814f;
             servingSize = Float.toString(val).concat(" l");
         }
@@ -725,7 +747,7 @@ public class Utils {
      * @param context the context
      * @return true if battery is low or false if battery in not low
      */
-    public static boolean getBatteryLevel(Context context) {
+    public static boolean isBatteryLow(Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
@@ -809,6 +831,18 @@ public class Utils {
             Log.e(Utils.class.getSimpleName(), "createJsonObject", e);
         }
         return jsonObject;
+    }
+
+    public static boolean isAllGranted(@NonNull int[] grantResults) {
+        if (grantResults.length == 0) {
+            return false;
+        }
+        for (int result : grantResults) {
+            if (result != PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 

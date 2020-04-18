@@ -10,7 +10,7 @@ public interface APIUtils {
 
 
     default OkHttpClient HttpClientBuilder() {
-        return Utils.HttpClientBuilder();
+        return Utils.buildHttpClient();
     }
 }
 

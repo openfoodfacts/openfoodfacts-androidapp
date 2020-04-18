@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -24,16 +25,10 @@ import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.OnClick;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.views.adapters.YourListedProductsAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -44,12 +39,30 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.adapters.YourListedProductsAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 import static org.apache.commons.lang.StringUtils.capitalize;
 import static org.apache.commons.lang.StringUtils.isNotEmpty;
@@ -84,10 +97,10 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
+        if (Utils.isDisableImageLoad(this) && Utils.isBatteryLow(this)) {
             isLowBatteryMode = true;
         }
-        ProductListsDao  productListsDao = Utils.getDaoSession(this).getProductListsDao();
+        ProductListsDao productListsDao = Utils.getDaoSession().getProductListsDao();
         yourListedProductDao = Utils.getAppDaoSession(this).getYourListedProductDao();
         historyProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
 
@@ -118,7 +131,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         }
 
         thisProductList = productListsDao.load(id);
-        if(thisProductList==null){
+        if (thisProductList == null) {
             return;
         }
         thisProductList.resetProducts();
@@ -253,52 +266,50 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         }
     }
 
-    private void sortProducts(){
-        switch(sortType){
+    private void sortProducts() {
+        switch (sortType) {
             case "title":
-                Collections.sort(products,(p1,p2)->{
+                Collections.sort(products, (p1, p2) -> {
                     return p1.getProductName().compareToIgnoreCase(p2.getProductName());
                 });
                 break;
 
             case "brand":
-                Collections.sort(products,(p1,p2)->{
+                Collections.sort(products, (p1, p2) -> {
                     return p1.getProductDetails().compareToIgnoreCase(p2.getProductDetails());
                 });
                 break;
 
             case "barcode":
-                Collections.sort(products,(p1,p2)->{
-                    return p1.getBarcode().compareToIgnoreCase(p2.getBarcode());
-                });
+                Collections.sort(products, (p1, p2) -> p1.getBarcode().compareToIgnoreCase(p2.getBarcode()));
                 break;
             case "grade":
 
                 //get list of HistoryProduct items for the YourListProduct items
                 WhereCondition[] conditionsGrade = new WhereCondition[products.size()];
                 int i = 0;
-                for (YourListedProduct p:products){
+                for (YourListedProduct p : products) {
                     conditionsGrade[i] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
                     i++;
                 }
                 List<HistoryProduct> historyProductsGrade;
                 QueryBuilder<HistoryProduct> qbGrade = historyProductDao.queryBuilder();
-                qbGrade.whereOr(conditionsGrade[0],conditionsGrade[1], Arrays.copyOfRange(conditionsGrade,2,conditionsGrade.length));
+                qbGrade.whereOr(conditionsGrade[0], conditionsGrade[1], Arrays.copyOfRange(conditionsGrade, 2, conditionsGrade.length));
                 historyProductsGrade = qbGrade.list();
 
-                Collections.sort(products,(p1,p2)->{
+                Collections.sort(products, (p1, p2) -> {
 
                     String g1 = "E";
                     String g2 = "E";
 
-                    for (HistoryProduct h:historyProductsGrade){
-                        if(h.getBarcode().equals(p1.getBarcode())){
-                            if(h.getNutritionGrade() != null) {
+                    for (HistoryProduct h : historyProductsGrade) {
+                        if (h.getBarcode().equals(p1.getBarcode())) {
+                            if (h.getNutritionGrade() != null) {
                                 g1 = h.getNutritionGrade();
                             }
                         }
-                        if(h.getBarcode().equals(p2.getBarcode())) {
-                            if(h.getNutritionGrade() != null) {
+                        if (h.getBarcode().equals(p2.getBarcode())) {
+                            if (h.getNutritionGrade() != null) {
                                 g2 = h.getNutritionGrade();
                             }
                         }
@@ -311,29 +322,28 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
                 //get list of HistoryProduct items for the YourListProduct items
                 WhereCondition[] conditionsTime = new WhereCondition[products.size()];
                 int j = 0;
-                for (YourListedProduct p:products){
+                for (YourListedProduct p : products) {
                     conditionsTime[j] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
                     j++;
                 }
                 List<HistoryProduct> historyProductsTime;
                 QueryBuilder<HistoryProduct> qbTime = historyProductDao.queryBuilder();
-                qbTime.whereOr(conditionsTime[0],conditionsTime[1], Arrays.copyOfRange(conditionsTime,2,conditionsTime.length));
+                qbTime.whereOr(conditionsTime[0], conditionsTime[1], Arrays.copyOfRange(conditionsTime, 2, conditionsTime.length));
                 historyProductsTime = qbTime.list();
 
-
-                Collections.sort(products,(p1,p2)->{
+                Collections.sort(products, (p1, p2) -> {
 
                     Date d1 = new Date(0);
                     Date d2 = new Date(0);
 
-                    for(HistoryProduct h:historyProductsTime){
-                        if(h.getBarcode().equals(p1.getBarcode())){
-                            if(h.getLastSeen() != null) {
+                    for (HistoryProduct h : historyProductsTime) {
+                        if (h.getBarcode().equals(p1.getBarcode())) {
+                            if (h.getLastSeen() != null) {
                                 d1 = h.getLastSeen();
                             }
                         }
-                        if(h.getBarcode().equals(p2.getBarcode())){
-                            if(h.getLastSeen() != null ){
+                        if (h.getBarcode().equals(p2.getBarcode())) {
+                            if (h.getLastSeen() != null) {
                                 d2 = h.getLastSeen();
                             }
                         }
@@ -344,7 +354,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
                 break;
 
             default:
-                Collections.sort(products,(p1,p2)->0);
+                Collections.sort(products, (p1, p2) -> 0);
         }
     }
 
@@ -388,8 +398,8 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             baseDir.mkdirs();
         }
         String productListName = thisProductList.getListName();
-        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + productListName + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
-        File f = new File(baseDir,fileName);
+        String fileName = String.format("%s-%s-%s.csv", BuildConfig.FLAVOR.toUpperCase(), productListName, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        File f = new File(baseDir, fileName);
         boolean isDownload;
         try (CSVPrinter writer = new CSVPrinter(new FileWriter(f), CSVFormat.DEFAULT.withHeader(getResources().getStringArray(R.array.your_products_headers)))) {
             List<YourListedProduct> listProducts = thisProductList.getProducts();

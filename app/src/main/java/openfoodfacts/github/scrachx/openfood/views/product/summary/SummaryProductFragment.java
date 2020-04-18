@@ -240,7 +240,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         categoryProduct.setText(bold(getString(R.string.txtCategories)));
         labelProduct.setText(bold(getString(R.string.txtLabels)));
 
-        //refresh visibility of UI components
+        // Refresh visibility of UI components
         labelProduct.setVisibility(View.VISIBLE);
         brandProduct.setVisibility(View.VISIBLE);
         quantityProduct.setVisibility(View.VISIBLE);
@@ -248,11 +248,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         nameProduct.setVisibility(View.VISIBLE);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext()) && Utils.isBatteryLow(getContext())) {
             isLowBatteryMode = true;
         }
 
-        //checks the product states_tags to determine which prompt to be shown
+        // Checks the product states_tags to determine which prompt to be shown
         refreshNutriscorePrompt();
 
         presenter.loadAllergens(null);
@@ -341,7 +341,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
         }
 
-        if (BuildConfig.FLAVOR.equals("off")) {
+        if ("off".equals(BuildConfig.FLAVOR)) {
             scoresLayout.setVisibility(View.VISIBLE);
             List<NutrientLevelItem> levelItem = new ArrayList<>();
             Nutriments nutriments = product.getNutriments();
@@ -738,7 +738,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @OnClick(R.id.add_nutriscore_prompt)
     public void onAddNutriScorePromptClick() {
         if (BuildConfig.FLAVOR.equals("off")) {
-            if (isUserNotLoggedIn()) {
+            if (!isUserLoggedIn()) {
                 startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN);
             } else {
                 editProductNutriscore();
@@ -780,7 +780,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @OnClick(R.id.action_edit_button)
     public void onEditProductButtonClick() {
-        if (isUserNotLoggedIn()) {
+        if (!isUserLoggedIn()) {
             startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN);
         } else {
             editProduct();
@@ -932,12 +932,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onSuccess() {
         uploadingImageProgress.setVisibility(View.GONE);
         uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

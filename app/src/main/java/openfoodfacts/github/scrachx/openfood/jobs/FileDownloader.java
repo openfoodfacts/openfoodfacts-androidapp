@@ -25,10 +25,6 @@ import retrofit2.Response;
 public class FileDownloader {
     private Context context;
 
-    public interface FileReceiver {
-        void fileDownloaded(File file);
-    }
-
     /**
      * Constructor of the class used to initialize the objects.
      *
@@ -55,7 +51,7 @@ public class FileDownloader {
                     Log.d(FileDownloader.class.getSimpleName(), "server contacted and has file");
                     File writtenToDisk = writeResponseBodyToDisk(context, response.body(), fileUrl);
                     if (writtenToDisk != null) {
-                        callback.fileDownloaded(writtenToDisk);
+                        callback.onFileDownloaded(writtenToDisk);
                     }
                     Log.d(FileDownloader.class.getSimpleName(), "file download was a success " + writtenToDisk);
                 } else {
@@ -82,11 +78,10 @@ public class FileDownloader {
         final Uri decode = Uri.parse(url);
         File res = new File(Utils.makeOrGetPictureDirectory(context), System.currentTimeMillis() + "-" + decode.getLastPathSegment());
         try {
-            InputStream inputStream = null;
-            try (OutputStream outputStream = new FileOutputStream(res)) {
-                byte[] fileReader = new byte[4096];
-                inputStream = body.byteStream();
+            try (OutputStream outputStream = new FileOutputStream(res);
+                InputStream inputStream = body.byteStream()) {
 
+                byte[] fileReader = new byte[4096];
                 while (true) {
                     int read = inputStream.read(fileReader);
 
@@ -99,16 +94,14 @@ public class FileDownloader {
                 outputStream.flush();
 
                 return res;
-            } catch (IOException e) {
-                return null;
-            } finally {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
             }
         } catch (IOException e) {
             Log.w(FileDownloader.class.getSimpleName(), "writeResponseBodyToDisk", e);
             return null;
         }
+    }
+
+    public interface FileReceiver {
+        void onFileDownloaded(File file);
     }
 }

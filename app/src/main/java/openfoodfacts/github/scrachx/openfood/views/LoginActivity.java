@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.TransitionDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
@@ -23,12 +22,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.core.content.ContextCompat;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.snackbar.Snackbar;
-
-import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.IOException;
 import java.net.HttpCookie;
@@ -122,7 +118,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString(getResources().getString(R.string.user), getResources().getString(R.string.txt_anonymous));
-        if (loginS != null && loginS.equals(getResources().getString(R.string.user))) {
+        if (loginS.equals(getResources().getString(R.string.user))) {
             new MaterialDialog.Builder(this)
                 .title(R.string.log_in)
                 .content(R.string.login_true)
@@ -132,7 +128,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         apiClient = new Retrofit.Builder()
             .baseUrl(BuildConfig.HOST)
-            .client(Utils.HttpClientBuilder())
+            .client(Utils.buildHttpClient())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
             .create(OpenFoodAPIService.class);

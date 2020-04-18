@@ -11,22 +11,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
-import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
-import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -37,6 +31,20 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import butterknife.BindView;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
     private static final int ACTIVITY_CHOOSE_FILE = 123;
@@ -57,7 +65,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     }
 
     public static ProductListsDao getProducListsDaoWithDefaultList(Context context) {
-        ProductListsDao productListsDao = Utils.getDaoSession(context).getProductListsDao();
+        ProductListsDao productListsDao = Utils.getDaoSession().getProductListsDao();
         if (productListsDao.loadAll().isEmpty()) {
             ProductLists eatenList = new ProductLists(context.getString(R.string.txt_eaten_products), 0);
             productListsDao.insert(eatenList);
@@ -177,6 +185,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK && data.getExtras().getBoolean("update")) {
             adapter.notifyDataSetChanged();
         } else if (requestCode == ACTIVITY_CHOOSE_FILE) {

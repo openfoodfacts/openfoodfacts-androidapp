@@ -85,7 +85,7 @@ public class OpenFoodAPIClient {
     private ToUploadProductDao mToUploadProductDao;
     private OfflineUploadingTask task = new OfflineUploadingTask();
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
-    private static OkHttpClient httpClient = Utils.HttpClientBuilder();
+    private static OkHttpClient httpClient = Utils.buildHttpClient();
     private final OpenFoodAPIService apiService;
     private Context mActivity;
 
@@ -99,7 +99,7 @@ public class OpenFoodAPIClient {
     //used to upload in background
     public OpenFoodAPIClient(Context context) {
         this(BuildConfig.HOST);
-        DaoSession daoSession = Utils.getDaoSession(context);
+        DaoSession daoSession = Utils.getDaoSession();
         mToUploadProductDao = daoSession.getToUploadProductDao();
     }
 
@@ -622,18 +622,22 @@ public class OpenFoodAPIClient {
         void onStateResponse(State newState);
     }
 
-    /**
-     * Create an history product asynchronously
-     */
-    private class HistoryTask extends AsyncTask<Product, Void, Void> {
-        @Override
-        protected Void doInBackground(Product... products) {
-            if (ArrayUtils.isNotEmpty(products)) {
-                Product product = products[0];
-                addToHistory(mHistoryProductDao, product);
+    public void getProductsByStates(String state, final int page, final OnStateCallback onStateCallback) {
+        apiService.getProductsByState(state, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+                if (response.isSuccessful()) {
+                    onStateCallback.onStateResponse(true, response.body());
+                } else {
+                    onStateCallback.onStateResponse(false, null);
+                }
             }
-            return null;
-        }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+                onStateCallback.onStateResponse(false, null);
+            }
+        });
     }
 
     public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
@@ -777,64 +781,8 @@ public class OpenFoodAPIClient {
         void onImageResponse(boolean value, String response);
     }
 
-    public class OfflineUploadingTask extends AsyncTask<Context, Void, Void> {
-        JobParameters job;
-        WeakReference<SavedProductUploadJob> service;
-
-        @Override
-        protected Void doInBackground(Context... context) {
-            List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder().where(ToUploadProductDao.Properties.Uploaded.eq(false)
-            ).list();
-            int totalSize = toUploadProductList.size();
-            for (int i = 0; i < totalSize; i++) {
-                ToUploadProduct uploadProduct = toUploadProductList.get(i);
-                File imageFile;
-                try {
-                    imageFile = new File(uploadProduct.getImageFilePath());
-                } catch (Exception e) {
-                    Log.e("OfflineUploadingTask", "doInBackground", e);
-                    continue;
-                }
-                ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
-                    uploadProduct.getProductField(), imageFile);
-
-                apiService.saveImage(getUploadableMap(productImage))
-                    .enqueue(new Callback<JsonNode>() {
-                        @Override
-                        public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
-                            if (!response.isSuccessful()) {
-                                Toast.makeText(context[0], response.toString(), Toast.LENGTH_LONG).show();
-                                return;
-                            }
-
-                            JsonNode body = response.body();
-                            if (body != null) {
-                                Log.d("onResponse", body.toString());
-                                if (!body.isObject()) {
-
-                                } else if (body.get("status").asText().contains("status not ok")) {
-                                    mToUploadProductDao.delete(uploadProduct);
-                                } else {
-                                    mToUploadProductDao.delete(uploadProduct);
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
-
-                        }
-                    });
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Log.d("serviceValue", service.get().toString());
-            service.get().jobFinished(job, false);
-        }
+    public interface OnStateCallback {
+        void onStateResponse(boolean value, Search state);
     }
 
     public Callback<Search> createStoreCallback(OnStoreCallback onStoreCallback) {
@@ -1020,26 +968,80 @@ public class OpenFoodAPIClient {
         void onContributorResponse(boolean value, Search contributor);
     }
 
-    public interface onStateCallback {
-        void onStateResponse(boolean value, Search state);
-    }
-
-    public void getProductsByStates(String state, final int page, final onStateCallback onStateCallback) {
-        apiService.getProductsByState(state, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onStateCallback.onStateResponse(true, response.body());
-                } else {
-                    onStateCallback.onStateResponse(false, null);
+    /**
+     * Create an history product asynchronously
+     */
+    private class HistoryTask extends AsyncTask<Product, Void, Void> {
+        @Override
+        protected Void doInBackground(Product... products) {
+            if (ArrayUtils.isNotEmpty(products)) {
+                for (Product product : products) {
+                    addToHistory(mHistoryProductDao, product);
                 }
             }
+            return null;
+        }
+    }
 
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onStateCallback.onStateResponse(false, null);
+    public class OfflineUploadingTask extends AsyncTask<Context, Void, Void> {
+        JobParameters job;
+        WeakReference<SavedProductUploadJob> service;
+
+        @Override
+        protected Void doInBackground(Context... context) {
+            List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder().where(ToUploadProductDao.Properties.Uploaded.eq(false)
+            ).list();
+            int totalSize = toUploadProductList.size();
+            for (int i = 0; i < totalSize; i++) {
+                ToUploadProduct uploadProduct = toUploadProductList.get(i);
+                File imageFile;
+                try {
+                    imageFile = new File(uploadProduct.getImageFilePath());
+                } catch (Exception e) {
+                    Log.e("OfflineUploadingTask", "doInBackground", e);
+                    continue;
+                }
+                ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
+                    uploadProduct.getProductField(), imageFile);
+
+                apiService.saveImage(getUploadableMap(productImage))
+                    .enqueue(new Callback<JsonNode>() {
+                        @Override
+                        public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
+                            if (!response.isSuccessful()) {
+                                Toast.makeText(context[0], response.toString(), Toast.LENGTH_LONG).show();
+                                return;
+                            }
+
+                            JsonNode body = response.body();
+                            if (body != null) {
+                                Log.d("onResponse", body.toString());
+                                if (body.isObject()) {
+                                    // FIXME: Something wrong here? Same body?
+                                    if (body.get("status").asText().contains("status not ok")) {
+                                        mToUploadProductDao.delete(uploadProduct);
+                                    } else {
+                                        mToUploadProductDao.delete(uploadProduct);
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
+
+                        }
+                    });
             }
-        });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Log.d("serviceValue", service.get().toString());
+            service.get().jobFinished(job, false);
+        }
     }
 
     /**

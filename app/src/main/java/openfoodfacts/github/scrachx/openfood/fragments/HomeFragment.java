@@ -53,16 +53,16 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  * @see R.layout#fragment_home
  */
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
-    @BindView(R.id.tvDailyFoodFact)
-    TextView tvDailyFoodFact;
-    @BindView(R.id.textHome)
-    TextView textHome;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
+    @BindView(R.id.text_home)
+    TextView textHome;
+    @BindView(R.id.tv_daily_food_fact)
+    TextView tvDailyFoodFact;
     private OpenFoodAPIService apiClient;
+    private Disposable disposable;
     private SharedPreferences sp;
     private String taglineURL;
-    private Disposable disposable;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,13 +72,16 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Setup api client
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
+
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
         BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
     }
 
-    @OnClick(R.id.tvDailyFoodFact)
+    @OnClick(R.id.tv_daily_food_fact)
     protected void setDailyFoodFact() {
         // chrome custom tab init
         CustomTabsIntent customTabsIntent;
@@ -100,43 +103,45 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     }
 
     private void checkUserCredentials() {
-        final SharedPreferences settings = OFFApplication.getInstance().getSharedPreferences("login", 0);
-        String login = settings.getString("user", "");
-        String password = settings.getString("pass", "");
+        final SharedPreferences loginSettings = OFFApplication.getInstance().getSharedPreferences("login", 0);
+        final String login = loginSettings.getString("user", "");
+        final String password = loginSettings.getString("pass", "");
 
-        if (!login.isEmpty() && !password.isEmpty()) {
-            apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-                    String htmlNoParsed = null;
-                    try {
-                        htmlNoParsed = response.body().string();
-                    } catch (IOException e) {
-                        Log.e(HomeFragment.class.getSimpleName(), "signin", e);
-                    }
-                    if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
-                        || htmlNoParsed.contains("See you soon!"))) {
-                        settings.edit()
-                            .putString("user", "")
-                            .putString("pass", "")
-                            .apply();
-
-                        if (getActivity() != null) {
-                            new MaterialDialog.Builder(getActivity())
-                                .title(R.string.alert_dialog_warning_title)
-                                .content(R.string.alert_dialog_warning_msg_user)
-                                .positiveText(R.string.txtOk)
-                                .show();
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                    Log.e(HomeFragment.class.getName(), "Unable to Sign-in");
-                }
-            });
+        if (login.isEmpty() || password.isEmpty()) {
+            return;
         }
+
+        apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                String htmlNoParsed = null;
+                try {
+                    htmlNoParsed = response.body().string();
+                } catch (IOException e) {
+                    Log.e(HomeFragment.class.getSimpleName(), "signin", e);
+                }
+                if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
+                    || htmlNoParsed.contains("See you soon!"))) {
+                    loginSettings.edit()
+                        .putString("user", "")
+                        .putString("pass", "")
+                        .apply();
+
+                    if (getActivity() != null) {
+                        new MaterialDialog.Builder(getActivity())
+                            .title(R.string.alert_dialog_warning_title)
+                            .content(R.string.alert_dialog_warning_msg_user)
+                            .positiveText(R.string.txtOk)
+                            .show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                Log.e(HomeFragment.class.getName(), "Unable to Sign-in");
+            }
+        });
     }
 
     @Override
@@ -150,10 +155,25 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     @Override
     public void onResume() {
-
         super.onResume();
+
+        // Set the navigation item to prevent wrong selected item
         BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
 
+        updateProductCount();
+
+        getTagline();
+
+        // Set title to ""
+        if (getActivity() instanceof AppCompatActivity) {
+            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setTitle("");
+            }
+        }
+    }
+
+    private void updateProductCount() {
         int productCount = sp.getInt("productCount", 0);
         apiClient.getTotalProductCount(Utils.getUserAgent())
             .subscribeOn(Schedulers.io())
@@ -190,15 +210,6 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                     }
                 }
             });
-
-        getTagline();
-
-        if (getActivity() instanceof AppCompatActivity) {
-            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-            if (actionBar != null) {
-                actionBar.setTitle("");
-            }
-        }
     }
 
     /**

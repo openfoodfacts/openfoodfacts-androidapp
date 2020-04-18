@@ -190,7 +190,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         mAllergenNameDao = Utils.getAppDaoSession(getActivity()).getAllergenNameDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext()) && Utils.isBatteryLow(getContext())) {
             isLowBatteryMode = true;
         }
 

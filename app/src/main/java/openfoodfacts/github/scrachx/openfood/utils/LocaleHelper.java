@@ -6,11 +6,18 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
+
 import androidx.annotation.NonNull;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
 import org.apache.commons.lang.StringUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * This class is used to change your application locale and persist this change for the next time
@@ -18,7 +25,8 @@ import java.util.*;
  * <p/>
  * You can also change the locale of your application on the fly by using the setLocale method.
  * <p/>
- * Created by gunhansancar on 07/10/15.
+ * @author gunhansancar
+ * @since 07/10/15
  */
 public class LocaleHelper {
     public static int find(List<LanguageData> availableLanguageForImage, String language) {

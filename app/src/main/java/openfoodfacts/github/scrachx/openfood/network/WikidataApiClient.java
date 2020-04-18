@@ -26,7 +26,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
  * API client to recieve data from WikiData APIs
  */
 public class WikidataApiClient {
-    private static OkHttpClient httpClient = Utils.HttpClientBuilder();
+    private static OkHttpClient httpClient = Utils.buildHttpClient();
     private final WikidataApiService wikidataApiService;
 
     public WikidataApiClient() {

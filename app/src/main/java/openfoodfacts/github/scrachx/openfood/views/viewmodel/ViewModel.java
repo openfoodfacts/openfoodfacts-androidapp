@@ -7,9 +7,7 @@ import io.reactivex.disposables.CompositeDisposable;
 /**
  * Created by Abdelali Eramli on 27/12/2017.
  */
-
 public abstract class ViewModel {
-
     protected CompositeDisposable subscriptions;
 
     public ViewModel() {
@@ -29,6 +27,4 @@ public abstract class ViewModel {
     }
 
     protected abstract void subscribe(@NonNull final CompositeDisposable subscriptions);
-
-
 }
